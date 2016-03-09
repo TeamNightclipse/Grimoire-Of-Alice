@@ -8,15 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice.client;
 
-import net.minecraft.client.renderer.entity.RenderSnowball;
+import arekkuusu.grimoireOfAlice.ProxyServer;
+import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingExplosiveDoll;
+import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingNeedleDoll;
+import arekkuusu.grimoireOfAlice.client.lib.LibResource;
+import arekkuusu.grimoireOfAlice.client.model.ModelDoll;
+import arekkuusu.grimoireOfAlice.client.render.RenderDoll;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import arekkuusu.grimoireofalice.ProxyServer;
-import arekkuusu.grimoireofalice.client.entity.proyectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireofalice.client.entity.proyectile.EntityThrowingNeedleDoll;
-import arekkuusu.grimoireofalice.client.lib.LibResource;
-import arekkuusu.grimoireofalice.client.model.ModelDoll;
-import arekkuusu.grimoireofalice.client.render.RenderDoll;
-import arekkuusu.grimoireofalice.item.GOAItem;
 
 public class ProxyClient extends ProxyServer{
 

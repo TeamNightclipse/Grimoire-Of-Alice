@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireOfAlice.lib;
 
-public class libMod {
+public class LibMod {
 
 	public static final String MODID = "grimoireofalice";
 	//ID for MOD

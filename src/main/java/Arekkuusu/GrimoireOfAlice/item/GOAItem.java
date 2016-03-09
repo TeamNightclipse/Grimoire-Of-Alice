@@ -8,13 +8,9 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
-import arekkuusu.grimoireofalice.client.entity.proyectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.lib.libMod;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import arekkuusu.grimoireOfAlice.lib.LibItemName;
+import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class GOAItem {
@@ -29,13 +25,13 @@ public class GOAItem {
 	
 	public static void preInit() {
 		
-		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(libMod.MODID + ":EnchantedBook");
-		itemGrimoireBook = new ItemGrimoireBook().setUnlocalizedName("GrimoireBook").setTextureName(libMod.MODID + ":GrimoireBook");
-		itemVolatileString = new ItemVolatileString().setUnlocalizedName("VolatileString").setTextureName(libMod.MODID + ":VolatileString");
-		itemShimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(libMod.MODID + ":ShimenawaRope");
-		itemThrowingExplosiveDoll = new ItemThrowingExplosiveDoll().setUnlocalizedName("ThrowingExplosiveDoll").setTextureName(libMod.MODID + ":ThrowingExplosiveDoll");
-		itemThrowingNeedleDoll = new ItemThrowingNeedleDoll().setUnlocalizedName("ThrowingNeedleDoll").setTextureName(libMod.MODID + ":ThrowingNeedleDoll");
-		itemAlicesDoll = new ItemAlicesDoll().setUnlocalizedName("AlicesDoll").setTextureName(libMod.MODID + ":AlicesDoll");
+		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
+		itemGrimoireBook = new ItemGrimoireBook().setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook");
+		itemVolatileString = new ItemVolatileString().setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString");
+		itemShimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(LibMod.MODID + ":ShimenawaRope");
+		itemThrowingExplosiveDoll = new ItemThrowingExplosiveDoll().setUnlocalizedName("ThrowingExplosiveDoll").setTextureName(LibMod.MODID + ":ThrowingExplosiveDoll");
+		itemThrowingNeedleDoll = new ItemThrowingNeedleDoll().setUnlocalizedName("ThrowingNeedleDoll").setTextureName(LibMod.MODID + ":ThrowingNeedleDoll");
+		itemAlicesDoll = new ItemAlicesDoll().setUnlocalizedName("AlicesDoll").setTextureName(LibMod.MODID + ":AlicesDoll");
 		
 		GameRegistry.registerItem(itemEnchantedBook, LibItemName.ENCHANTEDBOOK);
 		GameRegistry.registerItem(itemGrimoireBook, LibItemName.GRIMOIREBOOK);

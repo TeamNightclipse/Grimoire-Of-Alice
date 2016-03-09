@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.handler;
 
 import java.io.File;
 
-import arekkuusu.grimoireofalice.lib.libMod;
+import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -47,7 +47,7 @@ public class ConfigHandler {
 		@SubscribeEvent
 		public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
 
-			if (event.modID.equalsIgnoreCase(libMod.MODID)) {
+			if (event.modID.equalsIgnoreCase(LibMod.MODID)) {
 				loadConfig();
 			}
 		}

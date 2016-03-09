@@ -8,13 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice;
 
-import arekkuusu.grimoireofalice.block.GOABlock;
-import arekkuusu.grimoireofalice.client.entity.proyectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireofalice.client.entity.proyectile.EntityThrowingNeedleDoll;
-import arekkuusu.grimoireofalice.helper.LogHelper;
-import arekkuusu.grimoireofalice.item.GOAItem;
-import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
-import arekkuusu.grimoireofalice.lib.libMod;
+import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingExplosiveDoll;
+import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingNeedleDoll;
+import arekkuusu.grimoireOfAlice.helper.LogHelper;
+import arekkuusu.grimoireOfAlice.item.GOAItem;
+import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
+import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -26,11 +26,11 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 @Mod
-(modid = libMod.MODID,  name = libMod.MODNAME, version = libMod.MODVER, dependencies = "required-after:THKaguyaMod;")
+(modid = LibMod.MODID,  name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "required-after:THKaguyaMod;")
 
 public class GrimoireOfAlice {
 	
-	@SidedProxy (clientSide = libMod.PROXYCLIENT, serverSide = libMod.PROXYSERVER)
+	@SidedProxy (clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
 	
 	public static ProxyServer proxy;
 	

@@ -10,21 +10,12 @@ package arekkuusu.grimoireOfAlice.block;
 
 import java.util.Random;
 
-import javax.swing.Icon;
-
-import com.sun.xml.internal.stream.Entity;
-
-import arekkuusu.grimoireofalice.lib.libMod;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 

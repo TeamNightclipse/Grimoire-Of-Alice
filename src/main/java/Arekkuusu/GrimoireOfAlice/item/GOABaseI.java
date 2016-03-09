@@ -8,11 +8,6 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.lib.libMod;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class GOABaseI extends Item{

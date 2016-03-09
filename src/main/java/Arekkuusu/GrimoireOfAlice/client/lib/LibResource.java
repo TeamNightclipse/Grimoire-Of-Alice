@@ -8,13 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice.client.lib;
 
-import arekkuusu.grimoireofalice.lib.libMod;
+import arekkuusu.grimoireOfAlice.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 
 public class LibResource {
 
 	//@formatter:off
-	public static final ResourceLocation ALICE_DOLL = new ResourceLocation(libMod.MODID, "textures/entity/mob/AliceDoll.png");
+	public static final ResourceLocation ALICE_DOLL = new ResourceLocation(LibMod.MODID, "textures/entity/mob/AliceDoll.png");
 	//@formatter:on
 
 }

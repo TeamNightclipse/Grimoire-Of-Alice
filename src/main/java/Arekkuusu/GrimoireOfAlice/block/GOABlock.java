@@ -8,8 +8,8 @@
  */
 package arekkuusu.grimoireOfAlice.block;
 
-import arekkuusu.grimoireofalice.lib.LibBlockName;
-import arekkuusu.grimoireofalice.lib.libMod;
+import arekkuusu.grimoireOfAlice.lib.LibBlockName;
+import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,7 +20,7 @@ public class GOABlock {
 
 	public static void preInit(){
 		
-		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName("HolyKeyStone").setBlockTextureName(libMod.MODID + ":HolyKeyStone");
+		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName("HolyKeyStone").setBlockTextureName(LibMod.MODID + ":HolyKeyStone");
 		
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);
 	}

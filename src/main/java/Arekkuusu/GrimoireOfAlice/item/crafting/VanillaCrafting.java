@@ -8,16 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice.item.crafting;
 
-import arekkuusu.grimoireofalice.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.item.GOAItem;
-import arekkuusu.grimoireofalice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
+import arekkuusu.grimoireOfAlice.item.GOAItem;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class VanillaCrafting {
 

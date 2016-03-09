@@ -8,17 +8,16 @@
  */
 package arekkuusu.grimoireOfAlice.helper;
 
-import cpw.mods.fml.common.FMLLog;
-
-import arekkuusu.grimoireofalice.lib.libMod;
-
 import org.apache.logging.log4j.Level;
+
+import arekkuusu.grimoireOfAlice.lib.LibMod;
+import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper {
 
 	public static void log(Level loglevel, Object object){
 		
-		FMLLog.log(libMod.MODNAME, loglevel, String.valueOf(object));
+		FMLLog.log(LibMod.MODNAME, loglevel, String.valueOf(object));
 		
 	}
 	
