@@ -6,7 +6,7 @@
  * Journey To Gensokyo is Open Source and distributed under the
  * a modifed Botania license: https://github.com/Katrix-/JTG/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.helper;
+package arekkuusu.grimoireOfAlice.helper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

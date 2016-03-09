@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.block;
+package arekkuusu.grimoireOfAlice.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

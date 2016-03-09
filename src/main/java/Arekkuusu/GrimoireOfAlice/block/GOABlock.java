@@ -6,7 +6,7 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.block;
+package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import arekkuusu.grimoireofalice.lib.libMod;

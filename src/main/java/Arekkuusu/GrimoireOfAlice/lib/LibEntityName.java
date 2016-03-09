@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.lib;
+package arekkuusu.grimoireOfAlice.lib;
 
 public class LibEntityName {
 

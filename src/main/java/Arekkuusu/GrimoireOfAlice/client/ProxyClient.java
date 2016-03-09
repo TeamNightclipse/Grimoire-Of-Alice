@@ -6,7 +6,7 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.client;
+package arekkuusu.grimoireOfAlice.client;
 
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import cpw.mods.fml.client.registry.RenderingRegistry;

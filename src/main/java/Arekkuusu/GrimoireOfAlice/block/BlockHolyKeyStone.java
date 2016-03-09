@@ -6,7 +6,7 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.block;
+package arekkuusu.grimoireOfAlice.block;
 
 import java.util.Random;
 

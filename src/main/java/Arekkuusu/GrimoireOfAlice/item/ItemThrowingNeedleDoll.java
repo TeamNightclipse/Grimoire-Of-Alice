@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireOfAlice.item;
 
 import java.util.Random;
 
