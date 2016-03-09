@@ -14,6 +14,7 @@ import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import arekkuusu.grimoireOfAlice.helper.LogHelper;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
+import arekkuusu.grimoireOfAlice.lib.LibEntityName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -29,7 +30,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 (modid = LibMod.MODID,  name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "required-after:THKaguyaMod;")
 
 public class GrimoireOfAlice {
-	
+
 	@SidedProxy (clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
 	
 	public static ProxyServer proxy;
@@ -48,8 +49,8 @@ public class GrimoireOfAlice {
 		//All Entity Items Go Here
 		int modEntityID = 0;
 		
-		EntityRegistry.registerModEntity(EntityThrowingExplosiveDoll.class, "ThrowingExplosiveDoll", ++modEntityID, this, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityThrowingNeedleDoll.class, "ThrowingNeedleDoll", ++modEntityID, this, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityThrowingExplosiveDoll.class, LibEntityName.THROWING_EXPLOSIVE_DOLL, ++modEntityID, this, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityThrowingNeedleDoll.class, LibEntityName.THROWING_NEEDLE_DOLL, ++modEntityID, this, 64, 10, true);
 		
 	}
 	
