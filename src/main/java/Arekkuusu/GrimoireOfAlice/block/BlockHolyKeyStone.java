@@ -19,7 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockHolyKeyStone extends GOABaseB {
+public class BlockHolyKeyStone extends BlockGOABase {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon txTop;

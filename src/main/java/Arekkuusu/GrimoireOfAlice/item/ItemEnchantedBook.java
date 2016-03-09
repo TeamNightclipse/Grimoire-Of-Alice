@@ -14,7 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemEnchantedBook extends GOABaseI {
+public class ItemEnchantedBook extends ItemGOABase {
 
 	public ItemEnchantedBook(){
 		

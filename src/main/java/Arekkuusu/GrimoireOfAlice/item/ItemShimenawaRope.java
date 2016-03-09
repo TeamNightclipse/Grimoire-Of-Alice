@@ -14,7 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemShimenawaRope extends GOABaseI{
+public class ItemShimenawaRope extends ItemGOABase{
 	
 	public ItemShimenawaRope(){
 		

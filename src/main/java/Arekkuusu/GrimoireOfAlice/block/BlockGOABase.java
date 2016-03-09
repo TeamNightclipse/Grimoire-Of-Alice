@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class GOABaseB extends Block{
+public class BlockGOABase extends Block{
 	
-	public GOABaseB(Material material) {
+	public BlockGOABase(Material material) {
 		super(material);
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}

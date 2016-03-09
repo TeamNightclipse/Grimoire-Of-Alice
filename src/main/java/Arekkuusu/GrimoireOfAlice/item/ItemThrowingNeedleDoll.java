@@ -1,6 +1,6 @@
 package arekkuusu.grimoireOfAlice.item;
 
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingNeedleDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -9,7 +9,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemThrowingNeedleDoll extends GOABaseI{
+public class ItemThrowingNeedleDoll extends ItemGOABase{
 
 	public ItemThrowingNeedleDoll(){
 		

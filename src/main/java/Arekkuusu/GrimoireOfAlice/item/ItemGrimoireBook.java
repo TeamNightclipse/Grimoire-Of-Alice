@@ -14,7 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemGrimoireBook extends GOABaseI {
+public class ItemGrimoireBook extends ItemGOABase {
 	
 	public ItemGrimoireBook(){
 		

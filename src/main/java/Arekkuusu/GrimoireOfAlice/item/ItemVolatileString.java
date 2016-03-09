@@ -14,7 +14,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemVolatileString extends GOABaseI{
+public class ItemVolatileString extends ItemGOABase{
 
 	public ItemVolatileString(){
 		

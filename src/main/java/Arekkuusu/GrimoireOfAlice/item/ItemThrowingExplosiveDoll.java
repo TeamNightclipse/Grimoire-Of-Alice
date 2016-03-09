@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.Random;
 
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingExplosiveDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +19,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemThrowingExplosiveDoll extends GOABaseI{
+public class ItemThrowingExplosiveDoll extends ItemGOABase{
 	
 	public ItemThrowingExplosiveDoll(){
 		

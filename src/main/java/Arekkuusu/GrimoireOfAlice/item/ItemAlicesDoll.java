@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 
-public class ItemAlicesDoll extends GOABaseI {
+public class ItemAlicesDoll extends ItemGOABase {
 
 	public ItemAlicesDoll(){
 		
