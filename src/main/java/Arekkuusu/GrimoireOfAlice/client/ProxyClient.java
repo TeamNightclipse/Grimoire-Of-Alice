@@ -16,15 +16,12 @@ import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
-public class ProxyClient extends ProxyServer{
+public class ProxyClient extends ProxyServer {
 
 	@Override
-	public void RegisterRenders(){
-		
-	  //RenderingRegistry.registerEntityRenderingHandler(EntityTHDoll.class, new RenderLivingGOA(new ModelTHDoll(), LibResource.Doll_O));
-	  RenderingRegistry.registerEntityRenderingHandler(EntityThrowingExplosiveDoll.class, new RenderDoll(new ModelDoll(), LibResource.ALICE_DOLL));
-	  RenderingRegistry.registerEntityRenderingHandler(EntityThrowingNeedleDoll.class, new RenderDoll(new ModelDoll(), LibResource.ALICE_DOLL));
-		
+	public void RegisterRenders() {
+		//RenderingRegistry.registerEntityRenderingHandler(EntityTHDoll.class, new RenderLivingGOA(new ModelTHDoll(), LibResource.Doll_O));
+		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingExplosiveDoll.class, new RenderDoll(new ModelDoll(), LibResource.ALICE_DOLL));
+		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingNeedleDoll.class, new RenderDoll(new ModelDoll(), LibResource.ALICE_DOLL));
 	}
-	
 }

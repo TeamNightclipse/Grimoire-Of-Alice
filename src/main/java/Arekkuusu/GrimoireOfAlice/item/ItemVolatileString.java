@@ -14,21 +14,17 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemVolatileString extends ItemGOABase{
+public class ItemVolatileString extends ItemGOABase {
 
-	public ItemVolatileString(){
-		
+	public ItemVolatileString() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack){
-		
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
-		
 	}
-	
 }

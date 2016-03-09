@@ -12,12 +12,9 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemAlicesDoll extends ItemGOABase {
 
-	public ItemAlicesDoll(){
-		
-	super();
-	setMaxStackSize(1);
-	setCreativeTab(CreativeTabs.tabDecorations);
-	
+	public ItemAlicesDoll() {
+		super();
+		setMaxStackSize(1);
+		setCreativeTab(CreativeTabs.tabDecorations);
 	}
-	
 }

@@ -9,44 +9,34 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemThrowingNeedleDoll extends ItemGOABase{
+public class ItemThrowingNeedleDoll extends ItemGOABase {
 
-	public ItemThrowingNeedleDoll(){
-		
-	super();
-	setMaxStackSize(1);
-	setCreativeTab(CreativeTabs.tabCombat);
-	
+	public ItemThrowingNeedleDoll() {
+		super();
+		setMaxStackSize(1);
+		setCreativeTab(CreativeTabs.tabCombat);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack){
-		
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
-		
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		
-	if (!player.capabilities.isCreativeMode) {
-		
-	--stack.stackSize;
-	
-	}
 
-	world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		if(!player.capabilities.isCreativeMode) {
+			--stack.stackSize;
+		}
 
-	if (!world.isRemote) {
-		
-	world.spawnEntityInWorld(new EntityThrowingNeedleDoll(world, player));
-	
-	}
+		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-	return stack;
-	
+		if(!world.isRemote) {
+			world.spawnEntityInWorld(new EntityThrowingNeedleDoll(world, player));
+		}
+
+		return stack;
 	}
-	
 }

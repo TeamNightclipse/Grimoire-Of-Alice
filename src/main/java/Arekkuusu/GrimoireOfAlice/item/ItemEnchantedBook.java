@@ -16,26 +16,20 @@ import net.minecraft.item.ItemStack;
 
 public class ItemEnchantedBook extends ItemGOABase {
 
-	public ItemEnchantedBook(){
-		
+	public ItemEnchantedBook() {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack){
-		
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.rare;
-		
 	}
-	
+
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack){
-		
+	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
-		
 	}
-	
 }

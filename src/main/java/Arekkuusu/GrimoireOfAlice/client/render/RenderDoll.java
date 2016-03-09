@@ -10,17 +10,12 @@ public class RenderDoll extends RenderLiving {
 	private ResourceLocation texture;
 
 	public RenderDoll(ModelBase p_i1262_1_, ResourceLocation texture) {
-		
 		super(p_i1262_1_, 0.25F);
 		this.texture = texture;
-
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-		
 		return texture;
-		
 	}
-
 }

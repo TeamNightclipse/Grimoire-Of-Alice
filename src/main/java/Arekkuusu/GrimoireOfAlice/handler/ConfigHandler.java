@@ -19,9 +19,9 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigHandler {
 
 	public static Configuration config;
-	
+
 	public static final String RBooks = "RecipeBooks";
-	
+
 	public static boolean RecipesBook;
 
 	public static void setConfig(File configFile) {
@@ -32,25 +32,24 @@ public class ConfigHandler {
 	}
 
 	private static void loadConfig() {
-		
+
 		config.addCustomCategoryComment(RBooks, "Enable Easy Mode... EHHHH?!? EASY MODO?!?");
-		
+
 		RecipesBook = config.get(RBooks, "Enable Book Recipe", false, "Can players Craft GOA Books?").getBoolean();
-		
-		if (config.hasChanged()) {
+
+		if(config.hasChanged()) {
 			config.save();
 		}
 	}
-	
+
 	public static class ChangeListener {
-		
+
 		@SubscribeEvent
 		public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
 
-			if (event.modID.equalsIgnoreCase(LibMod.MODID)) {
+			if(event.modID.equalsIgnoreCase(LibMod.MODID)) {
 				loadConfig();
 			}
 		}
 	}
-	
 }

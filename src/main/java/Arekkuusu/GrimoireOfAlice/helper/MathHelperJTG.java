@@ -21,7 +21,6 @@ public class MathHelperJTG {
 	static int size = 0;
 
 	static {
-
 		size = 5000; //TODO: Try finding optimal size
 		table = new double[size];
 		table2 = new double[size];

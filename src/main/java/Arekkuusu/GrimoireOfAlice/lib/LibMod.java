@@ -12,7 +12,7 @@ public class LibMod {
 
 	public static final String MODID = "grimoireofalice";
 	//ID for MOD
-	public static final String  MODNAME = "Grimoire of Alice";
+	public static final String MODNAME = "Grimoire of Alice";
 	//Name of MOD
 	public static final String MODVER = "0.1";
 	//Version of MOD

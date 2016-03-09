@@ -10,12 +10,9 @@ package arekkuusu.grimoireOfAlice.item;
 
 import net.minecraft.item.Item;
 
-public class ItemGOABase extends Item{
+public class ItemGOABase extends Item {
 
 	public ItemGOABase() {
-		
 		super();
-		
 	}
-	
 }

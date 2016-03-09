@@ -14,28 +14,22 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
-public class ItemShimenawaRope extends ItemGOABase{
-	
-	public ItemShimenawaRope(){
-		
+public class ItemShimenawaRope extends ItemGOABase {
+
+	public ItemShimenawaRope() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack){
-		
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
-		
-	}
-	
-	@Override
-	public boolean hasEffect(ItemStack par1ItemStack){
-		
-		return true;
-	
 	}
 
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack) {
+		return true;
+	}
 }

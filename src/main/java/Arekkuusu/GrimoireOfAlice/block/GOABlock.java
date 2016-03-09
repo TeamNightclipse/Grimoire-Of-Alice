@@ -15,14 +15,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class GOABlock {
-	
+
 	public static Block blockHolyKeyStone;
 
-	public static void preInit(){
-		
+	public static void preInit() {
+
 		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName("HolyKeyStone").setBlockTextureName(LibMod.MODID + ":HolyKeyStone");
-		
+
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);
 	}
-	
 }

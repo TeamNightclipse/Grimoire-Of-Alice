@@ -35,12 +35,12 @@ public class ModelBipedDanmaku extends ModelBase {
 		if(bipedBody != null && bipedLeftArm != null) bipedBody.addChild(bipedLeftArm);
 		if(bipedBody != null && bipedRightArm != null) bipedBody.addChild(bipedRightArm);
 		if(bipedBody != null && skirtTop != null) bipedBody.addChild(skirtTop);
-		if(skirtTop  != null && skirtBottom != null) skirtTop.addChild(skirtBottom);
+		if(skirtTop != null && skirtBottom != null) skirtTop.addChild(skirtBottom);
 		if(bipedHead != null && longHair != null) bipedHead.addChild(longHair);
 		if(bipedHead != null && leftRibbon != null) bipedHead.addChild(leftRibbon);
 		if(bipedHead != null && rightRibbon != null) bipedHead.addChild(rightRibbon);
 	}
-	
+
 	@Override
 	public void render(Entity entity, float movement, float far, float tick, float yaw, float pitch, float size) {
 		setRotationAngles(movement, far, tick, yaw, pitch, size, entity);
@@ -66,7 +66,7 @@ public class ModelBipedDanmaku extends ModelBase {
 
 		skirtTop.rotateAngleX = 0F;
 
-		if (danmakuMob.isSneaking()) {
+		if(danmakuMob.isSneaking()) {
 			bipedBody.rotateAngleY = cosMovTimes0_66PlusPi * 2.4F * far;
 			skirtTop.rotateAngleY = cosMovTimes0_66PlusPi * 2.4F * far;
 			bipedRightArm.rotateAngleX = cosMovTimes0_66PlusPi * 1.4F * far;
@@ -74,7 +74,7 @@ public class ModelBipedDanmaku extends ModelBase {
 			bipedHead.rotateAngleX -= 0.5F;
 		}
 
-		else if (danmakuMob.isRiding()) {
+		else if(danmakuMob.isRiding()) {
 
 			float piDiv5 = (float)(Math.PI / 5F);
 			float piDiv14 = (float)(Math.PI / 14F);
@@ -95,7 +95,7 @@ public class ModelBipedDanmaku extends ModelBase {
 
 		else {
 
-			if (danmakuMob.getFlyingHeight() == 0) {
+			if(danmakuMob.getFlyingHeight() == 0) {
 				float cosMovement = (float)MathHelperJTG.cos(movement);
 				float cosMovementPlussPi = (float)MathHelperJTG.cos(movement + Math.PI);
 
@@ -104,7 +104,7 @@ public class ModelBipedDanmaku extends ModelBase {
 				bipedRightLeg.rotateAngleZ = 0F;
 				bipedLeftLeg.rotateAngleZ = 0F;
 
-				if (movement > 0F) {
+				if(movement > 0F) {
 					bipedRightArm.rotateAngleX = cosMovementPlussPi * 2.0F * far * 0.5F;
 					bipedLeftArm.rotateAngleX = cosMovement * 2.0F * far * 0.5F;
 					bipedRightArm.rotateAngleY = (float)Math.toRadians(-10F);

@@ -22,9 +22,9 @@ public class GOAItem {
 	public static Item itemThrowingExplosiveDoll;
 	public static Item itemThrowingNeedleDoll;
 	public static Item itemAlicesDoll;
-	
+
 	public static void preInit() {
-		
+		//@formatter:off
 		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
 		itemGrimoireBook = new ItemGrimoireBook().setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook");
 		itemVolatileString = new ItemVolatileString().setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString");
@@ -32,7 +32,8 @@ public class GOAItem {
 		itemThrowingExplosiveDoll = new ItemThrowingExplosiveDoll().setUnlocalizedName("ThrowingExplosiveDoll").setTextureName(LibMod.MODID + ":ThrowingExplosiveDoll");
 		itemThrowingNeedleDoll = new ItemThrowingNeedleDoll().setUnlocalizedName("ThrowingNeedleDoll").setTextureName(LibMod.MODID + ":ThrowingNeedleDoll");
 		itemAlicesDoll = new ItemAlicesDoll().setUnlocalizedName("AlicesDoll").setTextureName(LibMod.MODID + ":AlicesDoll");
-		
+		//@formatter:on
+
 		GameRegistry.registerItem(itemEnchantedBook, LibItemName.ENCHANTEDBOOK);
 		GameRegistry.registerItem(itemGrimoireBook, LibItemName.GRIMOIREBOOK);
 		GameRegistry.registerItem(itemVolatileString, LibItemName.VOLATILESTRING);
@@ -40,7 +41,5 @@ public class GOAItem {
 		GameRegistry.registerItem(itemThrowingExplosiveDoll, LibItemName.EXPLOSIVEDOLL);
 		GameRegistry.registerItem(itemThrowingNeedleDoll, LibItemName.NEEDLEDOLL);
 		GameRegistry.registerItem(itemAlicesDoll, LibItemName.ALICESDOLL);
-
 	}
-
 }

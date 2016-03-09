@@ -12,7 +12,5 @@ public class ProxyServer {
 
 	public void RegisterRenders() {
 		// Uh oh! Nothing here
-		
 	}
-
 }

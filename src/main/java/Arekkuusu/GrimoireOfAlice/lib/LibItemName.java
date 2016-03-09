@@ -10,12 +10,12 @@ package arekkuusu.grimoireOfAlice.lib;
 
 public class LibItemName {
 
-	public final static String ENCHANTEDBOOK ="EnchantedBook";
-	public final static String GRIMOIREBOOK ="GrimoireBook";
+	public final static String ENCHANTEDBOOK = "EnchantedBook";
+	public final static String GRIMOIREBOOK = "GrimoireBook";
 	public static final String VOLATILESTRING = "VolatileString";
 	public static final String SHIMENAWAROPE = "ShimenawaRope";
 	public static final String EXPLOSIVEDOLL = "ExplosiveDoll";
-	public static final String ALICESDOLL = "AlicesDoll";	
+	public static final String ALICESDOLL = "AlicesDoll";
 	public static final String NEEDLEDOLL = "NeedleDoll";
 
 }

@@ -15,26 +15,21 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 
 public class ItemGrimoireBook extends ItemGOABase {
-	
-	public ItemGrimoireBook(){
-		
+
+	public ItemGrimoireBook() {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
-		
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack){
-		
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.epic;
-		
 	}
-	
+
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack){
+	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
 	}
-	
 }

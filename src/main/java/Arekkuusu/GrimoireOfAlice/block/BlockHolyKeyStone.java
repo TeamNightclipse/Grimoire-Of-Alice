@@ -25,62 +25,64 @@ public class BlockHolyKeyStone extends BlockGOABase {
 	private IIcon txTop;
 	@SideOnly(Side.CLIENT)
 	private IIcon txFront;
-	
-	public BlockHolyKeyStone(Material material){
-		
+
+	public BlockHolyKeyStone(Material material) {
+
 		super(material);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
-		
+
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World w, int x, int y, int z, Random rand) {
 		renderParticle(w, x, y, z);
 	}
+
 	@SideOnly(Side.CLIENT)
 	private void renderParticle(World w, int x, int y, int z) {
 		Random random = w.rand;
 		double d0 = 0.0625D;
 		for(int l = 0; l < 6; ++l) {
-			double d1 = (double)((float)x + random.nextFloat());
-			double d2 = (double)((float)y + random.nextFloat());
-			double d3 = (double)((float)z + random.nextFloat());
-			if(l == 0 && !w.getBlock(x, y + 1, z).isOpaqueCube()) d2 = (double)(y + 1) + d0;
-			if(l == 1 && !w.getBlock(x, y - 1, z).isOpaqueCube()) d2 = (double)(y + 0) - d0;
-			if(l == 2 && !w.getBlock(x, y, z + 1).isOpaqueCube()) d3 = (double)(z + 1) + d0;   
-			if(l == 3 && !w.getBlock(x, y, z - 1).isOpaqueCube()) d3 = (double)(z + 0) - d0;
-			if(l == 4 && !w.getBlock(x + 1, y, z).isOpaqueCube()) d1 = (double)(x + 1) + d0;
-			if(l == 5 && !w.getBlock(x - 1, y, z).isOpaqueCube()) d1 = (double)(x + 0) - d0;
-			if(d1 < (double)x || d1 > (double)(x + 1) || d2 < 0.0D || d2 > (double)(y + 1) || d3 < (double)z || d3 > (double)(z + 1)) {
+			double d1 = x + random.nextFloat();
+			double d2 = y + random.nextFloat();
+			double d3 = z + random.nextFloat();
+			if(l == 0 && !w.getBlock(x, y + 1, z).isOpaqueCube()) d2 = y + 1 + d0;
+			if(l == 1 && !w.getBlock(x, y - 1, z).isOpaqueCube()) d2 = y + 0 - d0;
+			if(l == 2 && !w.getBlock(x, y, z + 1).isOpaqueCube()) d3 = z + 1 + d0;
+			if(l == 3 && !w.getBlock(x, y, z - 1).isOpaqueCube()) d3 = z + 0 - d0;
+			if(l == 4 && !w.getBlock(x + 1, y, z).isOpaqueCube()) d1 = x + 1 + d0;
+			if(l == 5 && !w.getBlock(x - 1, y, z).isOpaqueCube()) d1 = x + 0 - d0;
+			if(d1 < x || d1 > x + 1 || d2 < 0.0D || d2 > y + 1 || d3 < z || d3 > z + 1) {
 				w.spawnParticle("enchantmenttable", d1, d2, d3, 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
-	
-    public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e){
-    	
-        world.createExplosion(null, (double)x, (double)y, (double)z, 2.0F, false);
-        
-    }
+
+	@Override
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e) {
+
+		world.createExplosion(null, x, y, z, 2.0F, false);
+
+	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		
-		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side): side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
-	
+
+		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side) : side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
+
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister icon) {
-		
+
 		blockIcon = icon.registerIcon(getTextureName() + "_side");
-		
+
 	}
 }
 

@@ -15,50 +15,38 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityThrowingExplosiveDoll extends EntityThrowable{
-	
-	public EntityThrowingExplosiveDoll(World world){
-	
+public class EntityThrowingExplosiveDoll extends EntityThrowable {
+
+	private int explosionRadius = 2;
+
+	public EntityThrowingExplosiveDoll(World world) {
 		super(world);
-
 	}
-	
+
 	public EntityThrowingExplosiveDoll(World world, EntityLivingBase entity) {
-		
 		super(world, entity);
-		
-		}
+	}
 
-	private int explosionRadius= 2;
-	
 	public EntityThrowingExplosiveDoll(World world, double x, double y, double z) {
-			
 		super(world, x, y, z);
-		
-		}
+	}
 
-	protected float getGravityVelocity(){
-			
-			return 0.07F;
-			
-		}
-		@SideOnly(Side.CLIENT)
-		@Override
+	@Override
+	protected float getGravityVelocity() {
+		return 0.07F;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
 	protected void onImpact(MovingObjectPosition mop) {
-		
-	for (int l = 0; l < 4; ++l) {
-			
-		this.worldObj.spawnParticle("splash", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-		
+		for(int l = 0; l < 4; ++l) {
+			worldObj.spawnParticle("splash", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
 		}
 
-	if (!worldObj.isRemote) {
-		
-	    boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
-		
-		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, explosionRadius, flag);
-		setDead();
-		
+		if(!worldObj.isRemote) {
+			boolean flag = worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+			worldObj.createExplosion(this, posX, posY, posZ, explosionRadius, flag);
+			setDead();
 		}
 	}
 }

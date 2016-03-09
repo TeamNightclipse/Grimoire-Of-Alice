@@ -16,7 +16,7 @@ public class ModelDoll extends ModelBase {
 	public ModelRenderer longHair;
 	public ModelRenderer rightRibbon;
 	public ModelRenderer leftRibbon;
-	
+
 	public ModelRenderer cape;
 	public ModelRenderer ribbon1;
 	public ModelRenderer ribbon2;
@@ -32,7 +32,7 @@ public class ModelDoll extends ModelBase {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-	
+
 	public ModelDoll() {
 		textureWidth = 32;
 		textureHeight = 32;
@@ -97,7 +97,7 @@ public class ModelDoll extends ModelBase {
 		bipedRightArm.addBox(-1.0F, -1.0F, -1.0F, 2, 4, 2, 0.0F);
 		setChild();
 	}
-	
+
 	//@Override
 	public void setChild() {
 		//super.setChild();
@@ -110,18 +110,18 @@ public class ModelDoll extends ModelBase {
 		bipedLeftLeg.addChild(bibedLeftLeg2);
 		bipedRightLeg.addChild(bipedRightLeg2);
 		bipedRightArm.addChild(bipedRightArm2);
-		
+
 		if(bipedBody != null && bipedHead != null) bipedBody.addChild(bipedHead);
 		if(bipedBody != null && bipedLeftLeg != null) bipedBody.addChild(bipedLeftLeg);
 		if(bipedBody != null && bipedRightLeg != null) bipedBody.addChild(bipedRightLeg);
 		if(bipedBody != null && bipedLeftArm != null) bipedBody.addChild(bipedLeftArm);
 		if(bipedBody != null && bipedRightArm != null) bipedBody.addChild(bipedRightArm);
 		if(bipedBody != null && skirtTop != null) bipedBody.addChild(skirtTop);
-		if(skirtTop  != null && skirtBottom != null) skirtTop.addChild(skirtBottom);
+		if(skirtTop != null && skirtBottom != null) skirtTop.addChild(skirtBottom);
 		if(bipedHead != null && longHair != null) bipedHead.addChild(longHair);
 		if(bipedHead != null && leftRibbon != null) bipedHead.addChild(leftRibbon);
 		if(bipedHead != null && rightRibbon != null) bipedHead.addChild(rightRibbon);
 	}
 
-	
+
 }

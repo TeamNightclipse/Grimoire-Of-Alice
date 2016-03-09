@@ -26,54 +26,45 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-@Mod
-(modid = LibMod.MODID,  name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "required-after:THKaguyaMod;")
+@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "required-after:THKaguyaMod;")
 
 public class GrimoireOfAlice {
 
-	@SidedProxy (clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
-	
+	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
+
 	public static ProxyServer proxy;
-	
-	@Instance ("grimoireofalice")
+
+	@Instance("grimoireofalice")
 	public static GrimoireOfAlice instance;
-	
+
 	public static boolean THKaguyaModDetected;
-	
+
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event){
-		
+	public void preInit(FMLPreInitializationEvent event) {
 		GOAItem.preInit();
 		GOABlock.preInit();
-	
+
 		//All Entity Items Go Here
 		int modEntityID = 0;
-		
+
 		EntityRegistry.registerModEntity(EntityThrowingExplosiveDoll.class, LibEntityName.THROWING_EXPLOSIVE_DOLL, ++modEntityID, this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityThrowingNeedleDoll.class, LibEntityName.THROWING_NEEDLE_DOLL, ++modEntityID, this, 64, 10, true);
-		
 	}
-	
+
 	@EventHandler
-	public void Init(FMLInitializationEvent event){
-		
+	public void Init(FMLInitializationEvent event) {
 		proxy.RegisterRenders();
-		
+
 		VanillaCrafting.BooksAndStrings();
 		VanillaCrafting.Blocks();
 		VanillaCrafting.ThrowEntity();
-		
 	}
-	
+
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event){
+	public void postInit(FMLPostInitializationEvent event) {
 		THKaguyaModDetected = Loader.isModLoaded("THKaguyaMod");
-		if (THKaguyaModDetected){
-			LogHelper.info("THKaguyaMod Detected" );
-			
-			
+		if(THKaguyaModDetected) {
+			LogHelper.info("THKaguyaMod Detected");
 		}
-		
 	}
-	
 }
