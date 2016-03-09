@@ -1,4 +1,4 @@
-package arekkuusu.grimoireOfAlice.client.entity.proyectile;
+package arekkuusu.grimoireOfAlice.entity.projectile;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

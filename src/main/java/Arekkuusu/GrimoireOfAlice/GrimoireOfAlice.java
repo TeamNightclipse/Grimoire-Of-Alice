@@ -9,8 +9,8 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingNeedleDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import arekkuusu.grimoireOfAlice.helper.LogHelper;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
@@ -34,7 +34,7 @@ public class GrimoireOfAlice {
 	
 	public static ProxyServer proxy;
 	
-	@Instance ("goa")
+	@Instance ("grimoireofalice")
 	public static GrimoireOfAlice instance;
 	
 	public static boolean THKaguyaModDetected;

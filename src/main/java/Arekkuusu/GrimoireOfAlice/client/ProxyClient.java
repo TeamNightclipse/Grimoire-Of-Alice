@@ -9,11 +9,11 @@
 package arekkuusu.grimoireOfAlice.client;
 
 import arekkuusu.grimoireOfAlice.ProxyServer;
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireOfAlice.client.entity.proyectile.EntityThrowingNeedleDoll;
 import arekkuusu.grimoireOfAlice.client.lib.LibResource;
 import arekkuusu.grimoireOfAlice.client.model.ModelDoll;
 import arekkuusu.grimoireOfAlice.client.render.RenderDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ProxyClient extends ProxyServer{
