@@ -16,9 +16,9 @@ public class LibMod {
 	//Name of MOD
 	public static final String MODVER = "0.1";
 	//Version of MOD
-	public static final String PROXYCLIENT = "arekkuusu.grimoireofalice.client.ProxyClient";
+	public static final String PROXYCLIENT = "arekkuusu.grimoireOfAlice.client.ProxyClient";
 	//Client Required
-	public static final String PROXYSERVER = "arekkuusu.grimoireofalice.ProxyServer";
+	public static final String PROXYSERVER = "arekkuusu.grimoireOfAlice.ProxyServer";
 	//Server Required
 	public static final String KAGUYAMOD = "thkaguyamod";
 
