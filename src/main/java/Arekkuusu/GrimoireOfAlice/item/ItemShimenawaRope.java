@@ -16,20 +16,20 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemEnchantedBook extends GOABaseI {
-
-	public ItemEnchantedBook(){
+public class ItemShimenawaRope extends GOABaseI{
+	
+	public ItemShimenawaRope(){
 		
 		super();
-		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabCombat);
+		setMaxStackSize(16);
+		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack){
 		
-		return EnumRarity.rare;
+		return EnumRarity.uncommon;
 		
 	}
 	
@@ -37,7 +37,7 @@ public class ItemEnchantedBook extends GOABaseI {
 	public boolean hasEffect(ItemStack par1ItemStack){
 		
 		return true;
-		
-	}
 	
+	}
+
 }

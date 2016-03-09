@@ -1,20 +1,25 @@
 /**
  * This class was created by <ArekkuusuJerii>. It's distributed as
- * part of the Grimore Of Alice Mod. Get the Source Code in github:
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
  *
- * Grimore Of Alice is Open Source and distributed under the
- * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package Arekkuusu.GrimoireOfAlice.lib;
+package arekkuusu.grimoireofalice.lib;
 
-public class LibMod {
+public class libMod {
 
 	public static final String MODID = "grimoireofalice";
-	public static final String NAME = "Grimoire Of Alice";
-	public static final String VERSION = "@VERSION@";
-	public static final String CLIENT_PROXY_CLASS = "Arekkuusu.GrimoireOfAlice.client.ClientProxy";
-	public static final String SERVER_PROXY_CLASS = "Arekkuusu.GrimoireOfAlice.CommonProxy";
-	public static final String GUI_FACTORY_CLASS = "Arekkuusu.GrimoireOfAlice.client.gui.GuiFactory";
-	public static final String KAGUYAMOD = "thKaguyaMod";
+	//ID for MOD
+	public static final String  MODNAME = "Grimoire of Alice";
+	//Name of MOD
+	public static final String MODVER = "0.1";
+	//Version of MOD
+	public static final String PROXYCLIENT = "arekkuusu.grimoireofalice.client.ProxyClient";
+	//Client Required
+	public static final String PROXYSERVER = "arekkuusu.grimoireofalice.ProxyServer";
+	//Server Required
+	public static final String KAGUYAMOD = "thkaguyamod";
+
 }
