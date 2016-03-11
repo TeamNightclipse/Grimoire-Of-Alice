@@ -29,7 +29,6 @@ public class ProxyClient extends ProxyServer {
 		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingExplosiveDoll.class, new RenderExplosiveDoll());
 		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingNeedleDoll.class, new RenderNeedleDoll());
 		
-		TileEntitySpecialRenderer render10 = new RenderHolyKeyStone();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, render10);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 	}
 }

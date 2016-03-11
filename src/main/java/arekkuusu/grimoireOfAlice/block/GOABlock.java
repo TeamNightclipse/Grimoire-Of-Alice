@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireOfAlice.block;
 
+import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireOfAlice.lib.LibBlockName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -20,8 +21,8 @@ public class GOABlock {
 
 	public static void preInit() {
 
-		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName("HolyKeyStone").setBlockTextureName(LibMod.MODID + ":HolyKeyStone");
-
+		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName(LibBlockName.ILLUBLOCK).setBlockTextureName(LibMod.MODID + ":HolyKeyStone");
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);
+		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.ILLUBLOCK);
 	}
 }

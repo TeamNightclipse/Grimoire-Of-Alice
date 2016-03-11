@@ -14,7 +14,7 @@ import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,7 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockHolyKeyStone extends BlockContainer {
+public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon txTop;
@@ -115,6 +115,12 @@ public class BlockHolyKeyStone extends BlockContainer {
 
 		 }
 	}
+	
+	@Override
+    public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
+        super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
+        world.removeTileEntity(x, y, z);
+    }
 
 	@SideOnly(Side.CLIENT)
 	@Override
