@@ -12,9 +12,9 @@ import arekkuusu.grimoireOfAlice.ProxyServer;
 import arekkuusu.grimoireOfAlice.client.render.RenderExplosiveDoll;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderNeedleDoll;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

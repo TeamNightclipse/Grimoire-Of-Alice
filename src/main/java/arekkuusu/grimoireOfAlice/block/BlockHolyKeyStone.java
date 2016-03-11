@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.block;
 
 import java.util.Random;
 
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
