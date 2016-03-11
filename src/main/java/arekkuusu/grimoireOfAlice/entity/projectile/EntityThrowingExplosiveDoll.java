@@ -8,14 +8,11 @@
  */
 package arekkuusu.grimoireOfAlice.entity.projectile;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityThrowingExplosiveDoll extends EntityThrowable {
+public class EntityThrowingExplosiveDoll extends EntityThrowingDoll {
 
 	private int explosionRadius = 2;
 
@@ -31,12 +28,6 @@ public class EntityThrowingExplosiveDoll extends EntityThrowable {
 		super(world, x, y, z);
 	}
 
-	@Override
-	protected float getGravityVelocity() {
-		return 0.04F;
-	}
-
-	@SideOnly(Side.CLIENT)
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
 		for(int l = 0; l < 4; ++l) {
