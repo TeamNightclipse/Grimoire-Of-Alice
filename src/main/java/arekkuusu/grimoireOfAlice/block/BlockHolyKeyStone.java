@@ -19,9 +19,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.event.ClickEvent.Action;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -37,37 +35,31 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 	private IIcon txFront;
 
 	public BlockHolyKeyStone(Material material) {
-
 		super(material);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
 		setCreativeTab(CreativeTabs.tabDecorations);
+	}
 
-	}
-	
-	public int getRenderType(){
-		
+	@Override
+	public int getRenderType() {
 		return -1;
-		
 	}
-	
-	public boolean isOpaqueCube(){
-		
+
+	@Override
+	public boolean isOpaqueCube() {
 		return false;
-		
 	}
-	
-	public boolean renderAsNormalBlock(){
-		
+
+	@Override
+	public boolean renderAsNormalBlock() {
 		return false;
-		
 	}
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		// TODO Auto-generated method stub
 		return new TileEntityHolyKeyStone();
 	}
 
@@ -99,44 +91,36 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e) {
-
 		world.createExplosion(null, x, y, z, 2.0F, false);
-
 	}
-	
+
 	@Override
 	public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		 if (par5Entity instanceof EntityLivingBase) {
-			 
-			 EntityLivingBase livingEntity = (EntityLivingBase)par5Entity;
-			 livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
-			 livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
-			 livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
+		if(par5Entity instanceof EntityLivingBase) {
 
-		 }
+			EntityLivingBase livingEntity = (EntityLivingBase)par5Entity;
+			livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
+			livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
+			livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
+
+		}
 	}
-	
+
 	@Override
-    public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
-        super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
-        world.removeTileEntity(x, y, z);
-    }
+	public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
+		super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
+		world.removeTileEntity(x, y, z);
+	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta) {
-
 		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side) : side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
-
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister icon) {
-
 		blockIcon = icon.registerIcon(getTextureName() + "_side");
-
 	}
-
 }
-

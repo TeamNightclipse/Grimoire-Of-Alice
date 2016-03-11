@@ -52,17 +52,17 @@ public class GrimoireOfAlice {
 	}
 
 	@EventHandler
-	public void Init(FMLInitializationEvent event) {
-		proxy.RegisterRenders();
+	public void init(FMLInitializationEvent event) {
+		proxy.registerRenders();
 
-		VanillaCrafting.BooksAndStrings();
-		VanillaCrafting.Blocks();
-		VanillaCrafting.ThrowEntity();
+		VanillaCrafting.booksAndStrings();
+		VanillaCrafting.blocks();
+		VanillaCrafting.throwEntity();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		THKaguyaModDetected = Loader.isModLoaded("THKaguyaMod");
+		THKaguyaModDetected = Loader.isModLoaded(LibMod.KAGUYAMOD);
 		if(THKaguyaModDetected) {
 			LogHelper.info("THKaguyaMod Detected");
 		}

@@ -20,7 +20,7 @@ public class ConfigHandler {
 
 	public static Configuration config;
 
-	public static final String RBooks = "RecipeBooks";
+	public static final String R_BOOKS = "RecipeBooks";
 
 	public static boolean RecipesBook;
 
@@ -33,9 +33,9 @@ public class ConfigHandler {
 
 	private static void loadConfig() {
 
-		config.addCustomCategoryComment(RBooks, "Enable Easy Mode... EHHHH?!? EASY MODO?!?");
+		config.addCustomCategoryComment(R_BOOKS, "Enable Easy Mode... EHHHH?!? EASY MODO?!?");
 
-		RecipesBook = config.get(RBooks, "Enable Book Recipe", false, "Can players Craft GOA Books?").getBoolean();
+		RecipesBook = config.get(R_BOOKS, "Enable Book Recipe", false, "Can players Craft GOA Books?").getBoolean();
 
 		if(config.hasChanged()) {
 			config.save();

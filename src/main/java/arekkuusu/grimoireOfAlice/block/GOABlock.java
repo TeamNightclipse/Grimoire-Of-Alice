@@ -20,9 +20,10 @@ public class GOABlock {
 	public static Block blockHolyKeyStone;
 
 	public static void preInit() {
-
+		//@formatter:off
 		blockHolyKeyStone = new BlockHolyKeyStone(Material.rock).setBlockName(LibBlockName.ILLUBLOCK).setBlockTextureName(LibMod.MODID + ":HolyKeyStone");
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);
 		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.ILLUBLOCK);
+		//@formatter:on
 	}
 }

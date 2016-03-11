@@ -16,32 +16,23 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderHolyKeyStone extends TileEntitySpecialRenderer{
+public class RenderHolyKeyStone extends TileEntitySpecialRenderer {
 
-	ResourceLocation texture = new ResourceLocation(LibMod.MODID + ":" + "textures/models/HolyKeyStone.png");
-	
-	private ModelHolyKeyStone model;
-	
-	public RenderHolyKeyStone(){
-		
-		this.model = new ModelHolyKeyStone();
-		
-	}
-	
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/models/HolyKeyStone.png");
+	private static final ModelHolyKeyStone MODEL = new ModelHolyKeyStone();
+
 	@Override
 	public void renderTileEntityAt(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)p_147500_2_ + 0.5F, (float)p_147500_4_ + 1.5F, (float)p_147500_6_ + 0.5F);
 		GL11.glRotatef(180, 0F, 0f, 1f);
-		
-		this.bindTexture(texture);
-		
-		GL11.glPushMatrix();
-		this.model.renderModel(0.0625F);
-		GL11.glPopMatrix();
-		GL11.glPopMatrix();
-		
-	}
 
+		bindTexture(TEXTURE);
+
+		GL11.glPushMatrix();
+		MODEL.renderModel(0.0625F);
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
+	}
 }

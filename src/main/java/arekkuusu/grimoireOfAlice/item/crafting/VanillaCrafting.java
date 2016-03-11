@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireOfAlice.item.crafting;
 
-import arekkuusu.grimoireOfAlice.block.GOABlock;
 import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -18,7 +17,7 @@ import net.minecraft.item.ItemStack;
 
 public class VanillaCrafting {
 
-	public static void BooksAndStrings() {
+	public static void booksAndStrings() {
 
 		GameRegistry.addRecipe(new ItemStack(GOAItem.itemVolatileString, 16, 1), 
 				"GSG", 
@@ -48,7 +47,7 @@ public class VanillaCrafting {
 
 	}
 
-	public static void Blocks() {
+	public static void blocks() {
 
 		/**GameRegistry.addRecipe(new ItemStack(GOABlock.blockHolyKeyStone, 1, 5), 
 				"GSG", 
@@ -57,7 +56,7 @@ public class VanillaCrafting {
 				'S', GOAItem.itemShimenawaRope, 'G', Items.flint, 'A', Blocks.stone);*/
 	}
 
-	public static void ThrowEntity() {
+	public static void throwEntity() {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingExplosiveDoll, 1, 6), GOAItem.itemAlicesDoll, Items.fire_charge);
 	}

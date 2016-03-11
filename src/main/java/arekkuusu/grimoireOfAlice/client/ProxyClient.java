@@ -8,14 +8,11 @@
  */
 package arekkuusu.grimoireOfAlice.client;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import arekkuusu.grimoireOfAlice.ProxyServer;
-import arekkuusu.grimoireOfAlice.client.model.ModelDoll;
 import arekkuusu.grimoireOfAlice.client.render.RenderExplosiveDoll;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderNeedleDoll;
 import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
-import arekkuusu.grimoireOfAlice.entity.mob.EntityAlicesDoll;
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -24,11 +21,11 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class ProxyClient extends ProxyServer {
 
 	@Override
-	public void RegisterRenders() {
+	public void registerRenders() {
 		//RenderingRegistry.registerEntityRenderingHandler(EntityTHDoll.class, new RenderLivingGOA(new ModelTHDoll(), LibResource.Doll_O));
 		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingExplosiveDoll.class, new RenderExplosiveDoll());
 		RenderingRegistry.registerEntityRenderingHandler(EntityThrowingNeedleDoll.class, new RenderNeedleDoll());
-		
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 	}
 }

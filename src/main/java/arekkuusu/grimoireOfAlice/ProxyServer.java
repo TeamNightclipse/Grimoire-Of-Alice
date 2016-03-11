@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice;
 
 public class ProxyServer {
 
-	public void RegisterRenders() {
+	public void registerRenders() {
 		// Uh oh! Nothing here
 	}
 }

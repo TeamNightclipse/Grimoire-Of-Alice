@@ -17,25 +17,14 @@ public class EntityAlicesDoll extends Entity {
 
 	public EntityAlicesDoll(World p_i1582_1_, EntityPlayer player) {
 		super(p_i1582_1_);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void entityInit() {
-		// TODO Auto-generated method stub
-
-	}
+	protected void entityInit() {}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {
-		// TODO Auto-generated method stub
-
-	}
+	protected void readEntityFromNBT(NBTTagCompound p_70037_1_) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
-		// TODO Auto-generated method stub
-
-	}
-
+	protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {}
 }
