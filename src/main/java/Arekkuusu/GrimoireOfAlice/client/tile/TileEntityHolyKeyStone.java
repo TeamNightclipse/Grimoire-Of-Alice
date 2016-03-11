@@ -6,11 +6,10 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireOfAlice.lib;
+package arekkuusu.grimoireOfAlice.client.tile;
 
-public class LibEntityName {
+import net.minecraft.tileentity.TileEntity;
 
-	public static final String THROWING_EXPLOSIVE_DOLL = "Explosive Doll";
-	public static final String THROWING_NEEDLE_DOLL = "Needle Doll";
+public class TileEntityHolyKeyStone extends TileEntity {
 
 }

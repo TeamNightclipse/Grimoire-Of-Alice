@@ -10,16 +10,26 @@ package arekkuusu.grimoireOfAlice.block;
 
 import java.util.Random;
 
+import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.event.ClickEvent.Action;
 import net.minecraft.init.Blocks;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockHolyKeyStone extends BlockGOABase {
+public class BlockHolyKeyStone extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon txTop;
@@ -33,7 +43,32 @@ public class BlockHolyKeyStone extends BlockGOABase {
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
+		setCreativeTab(CreativeTabs.tabDecorations);
 
+	}
+	
+	public int getRenderType(){
+		
+		return -1;
+		
+	}
+	
+	public boolean isOpaqueCube(){
+		
+		return false;
+		
+	}
+	
+	public boolean renderAsNormalBlock(){
+		
+		return false;
+		
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+		// TODO Auto-generated method stub
+		return new TileEntityHolyKeyStone();
 	}
 
 	@Override
@@ -68,6 +103,18 @@ public class BlockHolyKeyStone extends BlockGOABase {
 		world.createExplosion(null, x, y, z, 2.0F, false);
 
 	}
+	
+	@Override
+	public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+		 if (par5Entity instanceof EntityLivingBase) {
+			 
+			 EntityLivingBase livingEntity = (EntityLivingBase)par5Entity;
+			 livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
+			 livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
+			 livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
+
+		 }
+	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -84,5 +131,6 @@ public class BlockHolyKeyStone extends BlockGOABase {
 		blockIcon = icon.registerIcon(getTextureName() + "_side");
 
 	}
+
 }
 

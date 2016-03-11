@@ -14,7 +14,7 @@ public class LibMod {
 	//ID for MOD
 	public static final String MODNAME = "Grimoire of Alice";
 	//Name of MOD
-	public static final String MODVER = "0.1";
+	public static final String MODVER = "0.5";
 	//Version of MOD
 	public static final String PROXYCLIENT = "arekkuusu.grimoireOfAlice.client.ProxyClient";
 	//Client Required

@@ -8,7 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
+import arekkuusu.grimoireOfAlice.entity.mob.EntityAlicesDoll;
+import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ItemAlicesDoll extends ItemGOABase {
 
@@ -17,4 +22,19 @@ public class ItemAlicesDoll extends ItemGOABase {
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
+	
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
+		
+		if(!player.capabilities.isCreativeMode) {
+			--stack.stackSize;
+		}
+		
+		if(!world.isRemote) {
+			world.spawnEntityInWorld(new EntityAlicesDoll(world, player));
+		}
+
+		return stack;
+		
+	}
+	
 }

@@ -3,7 +3,7 @@
   "modid": "grimoireofalice",
   "name": "Grimoire of Alice",
   "description": "Addon of THKaguyaMod",
-  "version":"0.1",
+  "version":"0.5",
   "mcversion": "${1.7.10}",
   "url": "",
   "updateUrl": "",

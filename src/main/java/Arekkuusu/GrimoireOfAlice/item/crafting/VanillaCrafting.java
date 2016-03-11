@@ -50,11 +50,11 @@ public class VanillaCrafting {
 
 	public static void Blocks() {
 
-		GameRegistry.addRecipe(new ItemStack(GOABlock.blockHolyKeyStone, 1, 5), 
+		/**GameRegistry.addRecipe(new ItemStack(GOABlock.blockHolyKeyStone, 1, 5), 
 				"GSG", 
 				"SAS", 
 				"GSG", 
-				'S', GOAItem.itemShimenawaRope, 'G', Items.flint, 'A', Blocks.stone);
+				'S', GOAItem.itemShimenawaRope, 'G', Items.flint, 'A', Blocks.stone);*/
 	}
 
 	public static void ThrowEntity() {
