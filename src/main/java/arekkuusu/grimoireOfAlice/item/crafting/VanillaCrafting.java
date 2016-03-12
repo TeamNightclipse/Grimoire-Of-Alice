@@ -37,13 +37,10 @@ public class VanillaCrafting {
 				"GSG", 
 				'S', Items.string, 'G', Items.dye, 'A', Items.iron_ingot);
 
-		if(ConfigHandler.RecipesBook) {
-			GameRegistry.addRecipe(new ItemStack(GOAItem.itemGrimoireBook, 1, 4),
-					"GSG", 
-					"SAS", 
-					"GSG", 
-					'S', Items.sugar, 'G', Items.cake, 'A', Items.nether_star);
-		}
+		//if(ConfigHandler.RecipesBook) {
+			GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemYoukaiBook, 1, 4),
+					Items.leather, Items.book, GOAItem.itemVolatileString, Items.feather);
+		//}
 
 	}
 
@@ -58,6 +55,8 @@ public class VanillaCrafting {
 
 	public static void throwEntity() {
 
-		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingExplosiveDoll, 1, 6), GOAItem.itemAlicesDoll, Items.fire_charge);
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingExplosiveDoll, 1, 5), GOAItem.itemAlicesDoll, Items.fire_charge, Items.flint);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingNeedleDoll, 1, 6), GOAItem.itemAlicesDoll, Items.iron_ingot, Items.stick);
 	}
 }

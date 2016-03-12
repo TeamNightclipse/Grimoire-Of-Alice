@@ -26,7 +26,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "required-after:THKaguyaMod;")
+@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
 
 public class GrimoireOfAlice {
 

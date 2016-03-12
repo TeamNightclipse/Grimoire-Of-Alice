@@ -17,5 +17,6 @@ public class LibItemName {
 	public static final String EXPLOSIVEDOLL = "ExplosiveDoll";
 	public static final String ALICESDOLL = "AlicesDoll";
 	public static final String NEEDLEDOLL = "NeedleDoll";
+	public static final String YOUKAIBOOK = "YoukaiBook";
 
 }

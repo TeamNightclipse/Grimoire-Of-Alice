@@ -11,6 +11,7 @@ package arekkuusu.grimoireOfAlice.item;
 import arekkuusu.grimoireOfAlice.lib.LibItemName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public class GOAItem {
@@ -22,6 +23,7 @@ public class GOAItem {
 	public static Item itemThrowingExplosiveDoll;
 	public static Item itemThrowingNeedleDoll;
 	public static Item itemAlicesDoll;
+	public static Item itemYoukaiBook;
 
 	public static void preInit() {
 		//@formatter:off
@@ -32,6 +34,7 @@ public class GOAItem {
 		itemThrowingExplosiveDoll = new ItemThrowingExplosiveDoll().setUnlocalizedName("ThrowingExplosiveDoll").setTextureName(LibMod.MODID + ":ThrowingExplosiveDoll");
 		itemThrowingNeedleDoll = new ItemThrowingNeedleDoll().setUnlocalizedName("ThrowingNeedleDoll").setTextureName(LibMod.MODID + ":ThrowingNeedleDoll");
 		itemAlicesDoll = new ItemAlicesDoll().setUnlocalizedName("AlicesDoll").setTextureName(LibMod.MODID + ":AlicesDoll");
+		itemYoukaiBook = new ItemYoukaiBook().setUnlocalizedName("YoukaiBook").setTextureName(LibMod.MODID + ":YoukaiBook");
 		//@formatter:on
 
 		GameRegistry.registerItem(itemEnchantedBook, LibItemName.ENCHANTEDBOOK);
@@ -41,5 +44,6 @@ public class GOAItem {
 		GameRegistry.registerItem(itemThrowingExplosiveDoll, LibItemName.EXPLOSIVEDOLL);
 		GameRegistry.registerItem(itemThrowingNeedleDoll, LibItemName.NEEDLEDOLL);
 		GameRegistry.registerItem(itemAlicesDoll, LibItemName.ALICESDOLL);
+		GameRegistry.registerItem(itemYoukaiBook, LibItemName.YOUKAIBOOK);
 	}
 }

@@ -38,6 +38,7 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 		super(material);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
+		//setBreakSound(Block.end_gateway.spawn);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
 		setCreativeTab(CreativeTabs.tabDecorations);
