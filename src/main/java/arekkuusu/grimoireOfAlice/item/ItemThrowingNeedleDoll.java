@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,6 +17,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 public class ItemThrowingNeedleDoll extends ItemGOABase {
@@ -23,6 +26,15 @@ public class ItemThrowingNeedleDoll extends ItemGOABase {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
+	}
+	
+	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_){
+		
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
+				+ "Curse ~ Hanged Hourai Dolls");
+		p_77624_3_.add(EnumChatFormatting.GOLD
+				+ " -Applies wither effect");
+		
 	}
 
 	@Override

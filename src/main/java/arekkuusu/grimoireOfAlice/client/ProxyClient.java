@@ -28,4 +28,10 @@ public class ProxyClient extends ProxyServer {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 	}
+	
+	public int addArmor(String armor){
+		
+		return RenderingRegistry.addNewArmourRendererPrefix(armor);
+		
+	}
 }

@@ -14,8 +14,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemYoukaiBook extends ItemGOABase{
 	
-private static final String __OBFID = "CL_00000076";
-	
 	public ItemYoukaiBook() {
 		super();
 		setMaxStackSize(1);

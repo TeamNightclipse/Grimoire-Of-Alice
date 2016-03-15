@@ -13,4 +13,10 @@ public class ProxyServer {
 	public void registerRenders() {
 		// Uh oh! Nothing here
 	}
+	
+	public int addArmor(String armor){
+		
+		return 0;
+		
+	}
 }

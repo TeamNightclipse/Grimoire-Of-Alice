@@ -37,26 +37,22 @@ public class VanillaCrafting {
 				"GSG", 
 				'S', Items.string, 'G', Items.dye, 'A', Items.iron_ingot);
 
-		//if(ConfigHandler.RecipesBook) {
-			GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemYoukaiBook, 1, 4),
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemYoukaiBook, 1, 4),
 					Items.leather, Items.book, GOAItem.itemVolatileString, Items.feather);
-		//}
 
 	}
 
-	public static void blocks() {
+	public static void masks() {
 
-		/**GameRegistry.addRecipe(new ItemStack(GOABlock.blockHolyKeyStone, 1, 5), 
-				"GSG", 
-				"SAS", 
-				"GSG", 
-				'S', GOAItem.itemShimenawaRope, 'G', Items.flint, 'A', Blocks.stone);*/
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemKokorosMasks, 1, 5), 
+					GOAItem.itemFoxMask, GOAItem.itemFukuNoKamiMask, GOAItem.itemHannyaMask, GOAItem.itemHyottokoMask, GOAItem.itemKoomoteMask, GOAItem.itemMaskOfHope, GOAItem.itemMonkeyMask, GOAItem.itemRaidenMask, GOAItem.itemUbaMask);
+		
 	}
 
 	public static void throwEntity() {
 
-		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingExplosiveDoll, 1, 5), GOAItem.itemAlicesDoll, Items.fire_charge, Items.flint);
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingExplosiveDoll, 1, 6), GOAItem.itemAlicesDoll, Items.fire_charge, Items.flint);
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingNeedleDoll, 1, 6), GOAItem.itemAlicesDoll, Items.iron_ingot, Items.stick);
+		GameRegistry.addShapelessRecipe(new ItemStack(GOAItem.itemThrowingNeedleDoll, 1, 7), GOAItem.itemAlicesDoll, Items.iron_ingot, Items.stick);
 	}
 }

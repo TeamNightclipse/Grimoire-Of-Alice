@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
+import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
@@ -17,6 +18,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 public class ItemThrowingExplosiveDoll extends ItemGOABase {
@@ -25,6 +27,15 @@ public class ItemThrowingExplosiveDoll extends ItemGOABase {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
+	}
+	
+	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_){
+		
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
+				+ "Some say Dolls lifes matter too");
+		p_77624_3_.add(EnumChatFormatting.GOLD
+				+ " -#Dollslifesmatter!");
+		
 	}
 
 	@Override

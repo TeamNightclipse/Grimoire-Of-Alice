@@ -7,5 +7,18 @@ item.ThrowingNeedleDoll.name=Needle Doll
 item.AlicesDoll.name=Alice's Doll
 item.YoukaiBook.name=Youkai Book
 
+item.FoxMask.name=Fox Mask
+item.RaidenMask.name=Raiden Mask
+item.MonkeyMask.name=Monkey Mask
+item.HyottokoMask.name=Hyottoko Mask
+item.FukuNoKamiMask.name=Fuku no Kami Mask
+item.UbaMask.name=Uba Mask
+item.HannyaMask.name=Hannya Mask
+item.KoomoteMask.name=Ko-omote Mask
+item.MaskOfHope.name=Mask Of Hope
+
+item.MochiHammer.name=Mochi Hammer
+item.MomijisScimitarSword.name=Momiji's Scimitar Sword
+
 tile.HolyKeyStone.name=Holy KeyStone
 

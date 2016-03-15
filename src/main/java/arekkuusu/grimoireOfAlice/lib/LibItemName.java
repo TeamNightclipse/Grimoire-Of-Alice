@@ -10,6 +10,7 @@ package arekkuusu.grimoireOfAlice.lib;
 
 public class LibItemName {
 
+	//Item
 	public static final String ENCHANTEDBOOK = "EnchantedBook";
 	public static final String GRIMOIREBOOK = "GrimoireBook";
 	public static final String VOLATILESTRING = "VolatileString";
@@ -18,5 +19,17 @@ public class LibItemName {
 	public static final String ALICESDOLL = "AlicesDoll";
 	public static final String NEEDLEDOLL = "NeedleDoll";
 	public static final String YOUKAIBOOK = "YoukaiBook";
+	//Armor
+	public static final String FOXMASK = "FoxMask";
+	public static final String RAIDENMASK = "RaidenMask";
+	public static final String MONKEYMASK = "MonkeyMask";
+	public static final String HYOTTOKOMASK = "HyottokoMask";
+	public static final String FUKUNOKAMIMASK = "FukuNoKamiMask";
+	public static final String UBAMASK = "UbaMask";
+	public static final String HANNYAMASK = "HannyaMask";
+	public static final String KOOMOTEMASK = "KoomoteMask";
+	public static final String MOCHIHAMMER = "MochiHammer";
+	public static final String MOMIJISSCIMITARSWORD = "MomijisScimitarSword";
+	public static final String MASKOFHOPE = "MaskOfHope";
 
 }

@@ -403,7 +403,7 @@ public class GuiScreenYoukaiBook extends GuiScreen
                 }
                 else
                 {
-                    s = s + "" + EnumChatFormatting.GRAY + "_";
+                    s = s + "" + EnumChatFormatting.DARK_PURPLE + "_";
                 }
             }
 
@@ -440,7 +440,7 @@ public class GuiScreenYoukaiBook extends GuiScreen
                 }
                 else
                 {
-                    s1 = s1 + "" + EnumChatFormatting.GRAY + "_";
+                    s1 = s1 + "" + EnumChatFormatting.DARK_PURPLE + "_";
                 }
             }
 

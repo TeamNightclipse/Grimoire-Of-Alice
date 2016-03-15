@@ -41,6 +41,7 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		
 		GOAItem.preInit();
 		GOABlock.preInit();
 
@@ -49,22 +50,29 @@ public class GrimoireOfAlice {
 
 		EntityRegistry.registerModEntity(EntityThrowingExplosiveDoll.class, LibEntityName.THROWING_EXPLOSIVE_DOLL, ++modEntityID, this, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityThrowingNeedleDoll.class, LibEntityName.THROWING_NEEDLE_DOLL, ++modEntityID, this, 64, 10, true);
+		
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		
 		proxy.registerRenders();
 
 		VanillaCrafting.booksAndStrings();
-		VanillaCrafting.blocks();
+		VanillaCrafting.masks();
 		VanillaCrafting.throwEntity();
+		
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		
 		THKaguyaModDetected = Loader.isModLoaded(LibMod.KAGUYAMOD);
+		
 		if(THKaguyaModDetected) {
+			
 			LogHelper.info("THKaguyaMod Detected");
+			
 		}
 	}
 }
