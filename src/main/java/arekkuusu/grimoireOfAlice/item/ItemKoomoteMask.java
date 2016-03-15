@@ -53,7 +53,7 @@ public class ItemKoomoteMask extends ItemArmor{
 		
 		}
 		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ " *Vulnerable to Magic");
+				+ " *Vulnerable to Explosions");
 
 	}
 

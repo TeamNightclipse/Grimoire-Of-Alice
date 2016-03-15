@@ -31,5 +31,6 @@ public class LibItemName {
 	public static final String MOCHIHAMMER = "MochiHammer";
 	public static final String MOMIJISSCIMITARSWORD = "MomijisScimitarSword";
 	public static final String MASKOFHOPE = "MaskOfHope";
+	public static final String KOKOROSMASKS = "KokorosMasks";
 
 }

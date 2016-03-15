@@ -68,7 +68,7 @@ public class GOAItem {
 		itemHannyaMask= new ItemHannyaMask(SoldifiedPaper, GrimoireOfAlice.proxy.addArmor("HannyaMask"), 0).setUnlocalizedName("HannyaMask").setTextureName(LibMod.MODID + ":HannyaMask");
 		itemKoomoteMask= new ItemKoomoteMask(SoldifiedPaper, GrimoireOfAlice.proxy.addArmor("KoomoteMask"), 0).setUnlocalizedName("KoomoteMask").setTextureName(LibMod.MODID + ":KoomoteMask");
 		itemMaskOfHope= new ItemMaskOfHope(SoldifiedPaper, GrimoireOfAlice.proxy.addArmor("MaskOfHope"), 0).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
-		itemKokorosMasks= new ItemKokorosMasks().setUnlocalizedName("KokorosMasks").setTextureName("KokorosMasks");
+		itemKokorosMasks= new ItemKokorosMasks().setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":MaskOfHope");
 		//Weapon
 		itemMochiHammer= new ItemMochiHammer(GoldenIron).setUnlocalizedName("MochiHammer").setTextureName(LibMod.MODID + ":MochiHammer");
 		itemMomijisScimitarSword= new ItemMomijisScimitarSword(GoldenIron).setUnlocalizedName("MomijisScimitarSword").setTextureName(LibMod.MODID + ":MomijisScimitarSword");
@@ -93,6 +93,7 @@ public class GOAItem {
 		GameRegistry.registerItem(itemHannyaMask, LibItemName.HANNYAMASK);
 		GameRegistry.registerItem(itemKoomoteMask, LibItemName.KOOMOTEMASK);
 		GameRegistry.registerItem(itemMaskOfHope, LibItemName.MASKOFHOPE);
+		GameRegistry.registerItem(itemKokorosMasks, LibItemName.KOKOROSMASKS);
 		//Weapon
 		GameRegistry.registerItem(itemMochiHammer, LibItemName.MOCHIHAMMER);
 		GameRegistry.registerItem(itemMomijisScimitarSword, LibItemName.MOMIJISSCIMITARSWORD);

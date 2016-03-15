@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0"
-group= "Arekkuusu.GrimoireOfAlice" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "arekkuusu.grimoireOfAlice" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "grimoireOfAlice"
 
 minecraft {
