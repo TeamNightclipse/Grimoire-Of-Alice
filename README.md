@@ -1,8 +1,6 @@
 # Grimoire-Of-Alice
-Touhou+ Mod
+Bringing the ~ze to minecraft
 
                                                  ***///~~Welcome to Gensokyo~~///***
 
-Grimoire of Alice is a mod that adds Unique Items and Enhanced Books to minecraft. 
-
-Mobs and Weapons to be added in the future.
+Grimoire of Alice is a mod that adds Unique Items and Enhanced blocks to minecraft. 
