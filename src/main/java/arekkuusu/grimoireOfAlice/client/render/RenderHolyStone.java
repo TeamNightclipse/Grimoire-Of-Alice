@@ -31,6 +31,5 @@ public class RenderHolyStone extends TileEntitySpecialRenderer {
 		MODEL.renderModel(0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
-
 	}
 }

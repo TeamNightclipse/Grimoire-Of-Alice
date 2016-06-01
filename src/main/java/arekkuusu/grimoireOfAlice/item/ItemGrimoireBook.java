@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemGrimoireBook extends ItemGOABase {
 
-	public ItemGrimoireBook() {
+	ItemGrimoireBook() {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
@@ -30,7 +30,7 @@ public class ItemGrimoireBook extends ItemGOABase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+		return super.hasEffect(par1ItemStack, pass);
 	}
 }

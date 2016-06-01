@@ -21,11 +21,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
-
 public class GrimoireOfAlice {
 
 	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
-
 	public static ProxyServer proxy;
 
 	@Instance("grimoireofalice")
@@ -35,22 +33,17 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-
 		GOAItem.preInit();
 		GOABlock.preInit();
-
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
 		proxy.init(event);
-
 		proxy.registerRenders();
 
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
-
 	}
 
 	@EventHandler

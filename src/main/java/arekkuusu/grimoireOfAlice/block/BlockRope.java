@@ -23,26 +23,30 @@ import net.minecraft.world.World;
 
 public class BlockRope extends BlockGOABase {
 
-	public IIcon Bottom;
-	public IIcon Top;
-	public IIcon Front;
-	public IIcon Back;
-	public IIcon Sides;
+	@SideOnly(Side.CLIENT)
+	private IIcon Bottom;
+	@SideOnly(Side.CLIENT)
+	private IIcon Top;
+	@SideOnly(Side.CLIENT)
+	private IIcon Front;
+	@SideOnly(Side.CLIENT)
+	private IIcon Back;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sides;
 
-	public BlockRope(Material material) {
+	BlockRope(Material material) {
 		super(material);
 		setHardness(0.5F);
 		setStepSound(Block.soundTypeSnow);
 		setHarvestLevel("axe", 1);
 		setResistance(5.0F);
 		setCreativeTab(CreativeTabs.tabDecorations);
-
 	}
 
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
-		int l = MathHelper.floor_double(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F + 2.5D) & 3;
-		par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack stack) {
+		int l = MathHelper.floor_double(livingBase.rotationYaw * 4.0F / 360.0F + 2.5D) & 3;
+		world.setBlockMetadataWithNotify(x, y, z, l, 2);
 	}
 
 	@Override
@@ -80,5 +84,4 @@ public class BlockRope extends BlockGOABase {
 		else if(side == 5) { return meta == 0 ? Sides : meta == 1 ? Front : meta == 2 ? Sides : Back; }
 		return null;
 	}
-
 }

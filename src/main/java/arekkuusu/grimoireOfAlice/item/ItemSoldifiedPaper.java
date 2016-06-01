@@ -12,10 +12,9 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemSoldifiedPaper extends ItemGOABase {
 
-	public ItemSoldifiedPaper() {
+	ItemSoldifiedPaper() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
-
 }

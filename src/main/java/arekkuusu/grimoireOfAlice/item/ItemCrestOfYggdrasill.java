@@ -26,50 +26,48 @@ import net.minecraft.world.World;
 
 public class ItemCrestOfYggdrasill extends ItemSword {
 
-	public ItemCrestOfYggdrasill(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
-		// TODO Auto-generated constructor stub
+	public ItemCrestOfYggdrasill(ToolMaterial material) {
+		super(material);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.WHITE + "Contains time itself");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "Once used by a great God to");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "manipulate space and time");
-		p_77624_3_.add(EnumChatFormatting.RED + "EXTREMELY[WARNING]EXPLOSIVE");
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.WHITE + "Contains time itself");
+		list.add(EnumChatFormatting.GOLD + "Once used by a great God to");
+		list.add(EnumChatFormatting.GOLD + "manipulate space and time");
+		list.add(EnumChatFormatting.RED + "EXTREMELY[WARNING]EXPLOSIVE");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.epic;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack stack, int pass) {
 		return true;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_) {
-		p_77659_2_.spawnEntityInWorld(new EntityLightningBolt(p_77659_2_, p_77659_3_.posX + 0.5, p_77659_3_.posY + 3, p_77659_3_.posZ + 0.5));
-		return p_77659_1_;
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		world.spawnEntityInWorld(new EntityLightningBolt(world, player.posX + 0.5, player.posY + 3, player.posZ + 0.5));
+		return stack;
 	}
 
 
 	@Override
-	public boolean hitEntity(ItemStack p_77644_1_, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
+	public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
 		p_77644_2_.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 4));
 		return true;
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack p_150894_1_, World p_150894_2_, Block p_150894_3_, int p_150894_4_, int p_150894_5_, int p_150894_6_,
-			EntityLivingBase p_150894_7_) {
+	public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase p_150894_7_) {
 		for(float i = 0; i < 5; i++) {
-			p_150894_2_.createExplosion(null, p_150894_4_ + 0.5, p_150894_5_ - 4 + i, p_150894_6_ + 0.5, 8.0F, true);
+			world.createExplosion(null, x + 0.5, y - 4 + i, z + 0.5, 8.0F, true);
 		}
 		return true;
 	}

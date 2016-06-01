@@ -14,26 +14,25 @@ import net.minecraft.entity.Entity;
 
 public class ModelHolyKeyStone extends ModelBase {
 
-	//fields
-	ModelRenderer stone1;
-	ModelRenderer stone2;
-	ModelRenderer stone3;
-	ModelRenderer stone4;
-	ModelRenderer stone5;
-	ModelRenderer stone6;
-	ModelRenderer stone7;
-	ModelRenderer string1;
-	ModelRenderer string2;
-	ModelRenderer string3;
-	ModelRenderer string4;
-	ModelRenderer string5;
-	ModelRenderer string6;
-	ModelRenderer string7;
-	ModelRenderer string8;
-	ModelRenderer string9;
-	ModelRenderer string10;
-	ModelRenderer string11;
-	ModelRenderer string12;
+	private ModelRenderer stone1;
+	private ModelRenderer stone2;
+	private ModelRenderer stone3;
+	private ModelRenderer stone4;
+	private ModelRenderer stone5;
+	private ModelRenderer stone6;
+	private ModelRenderer stone7;
+	private ModelRenderer string1;
+	private ModelRenderer string2;
+	private ModelRenderer string3;
+	private ModelRenderer string4;
+	private ModelRenderer string5;
+	private ModelRenderer string6;
+	private ModelRenderer string7;
+	private ModelRenderer string8;
+	private ModelRenderer string9;
+	private ModelRenderer string10;
+	private ModelRenderer string11;
+	private ModelRenderer string12;
 
 	public ModelHolyKeyStone() {
 		textureWidth = 64;
@@ -159,29 +158,10 @@ public class ModelHolyKeyStone extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		stone1.render(f5);
-		stone2.render(f5);
-		stone3.render(f5);
-		stone4.render(f5);
-		stone5.render(f5);
-		stone6.render(f5);
-		stone7.render(f5);
-		string1.render(f5);
-		string2.render(f5);
-		string3.render(f5);
-		string4.render(f5);
-		string5.render(f5);
-		string6.render(f5);
-		string7.render(f5);
-		string8.render(f5);
-		string9.render(f5);
-		string10.render(f5);
-		string11.render(f5);
-		string12.render(f5);
+		renderModel(f5);
 	}
 
 	public void renderModel(float f5) {
-
 		stone1.render(f5);
 		stone2.render(f5);
 		stone3.render(f5);
@@ -201,17 +181,11 @@ public class ModelHolyKeyStone extends ModelBase {
 		string10.render(f5);
 		string11.render(f5);
 		string12.render(f5);
-
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

@@ -18,21 +18,19 @@ import net.minecraftforge.common.config.Configuration;
 
 public class ConfigHandler {
 
-	public static Configuration config;
+	private static Configuration config;
 
-	public static final String R_BOOKS = "RecipeBooks";
+	private static final String R_BOOKS = "RecipeBooks";
 
 	public static boolean RecipesBook;
 
 	public static void setConfig(File configFile) {
-
 		config = new Configuration(configFile);
 		loadConfig();
 		FMLCommonHandler.instance().bus().register(new ChangeListener());
 	}
 
 	private static void loadConfig() {
-
 		config.addCustomCategoryComment(R_BOOKS, "Enable Easy Mode... EHHHH?!? EASY MODO?!?");
 
 		RecipesBook = config.get(R_BOOKS, "Enable Book Recipe", false, "Can players Craft GOA Books?").getBoolean();

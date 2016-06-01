@@ -23,7 +23,7 @@ import net.minecraftforge.common.EnumPlantType;
 
 public class BlockShroom extends BlockBush {
 
-	public BlockShroom(Material material) {
+	BlockShroom(Material material) {
 		super(material);
 		setTickRandomly(true);
 		setLightLevel(0.5F);
@@ -39,18 +39,18 @@ public class BlockShroom extends BlockBush {
 	}
 
 	@Override
-	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
-		canBlockStay(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
+	public void updateTick(World world, int x, int y, int z, Random random) {
+		canBlockStay(world, x, y, z);
 	}
 
 	@Override
-	public boolean canBlockStay(World p_149718_1_, int p_149718_2_, int p_149718_3_, int p_149718_4_) {
-		return canPlaceBlockOn(p_149718_1_.getBlock(p_149718_2_, p_149718_3_ - 1, p_149718_4_));
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		return canPlaceBlockOn(world.getBlock(x, y - 1, z));
 	}
 
 	@Override
-	public boolean canPlaceBlockOn(Block p_149854_1_) {
-		return p_149854_1_ == Blocks.hardened_clay || p_149854_1_ == Blocks.stained_hardened_clay || p_149854_1_ == Blocks.stone
-				|| p_149854_1_ == Blocks.grass || p_149854_1_ == Blocks.dirt || p_149854_1_ == GOABlock.blockCompactStone;
+	public boolean canPlaceBlockOn(Block block) {
+		return block == Blocks.hardened_clay || block == Blocks.stained_hardened_clay || block == Blocks.stone
+				|| block == Blocks.grass || block == Blocks.dirt || block == GOABlock.blockCompactStone;
 	}
 }

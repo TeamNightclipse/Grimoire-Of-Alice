@@ -16,8 +16,6 @@ import net.minecraft.world.World;
 
 public class EntityFireBall extends EntityFireball {
 
-	public int field_92057_e = 1;
-
 	public EntityFireBall(World p_i1759_1_) {
 		super(p_i1759_1_);
 	}
@@ -36,7 +34,5 @@ public class EntityFireBall extends EntityFireball {
 			worldObj.createExplosion(this, posX, posY, posZ, 2, false);
 			setDead();
 		}
-
 	}
-
 }

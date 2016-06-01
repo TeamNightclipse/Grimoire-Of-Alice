@@ -58,13 +58,13 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	private GuiButton buttonFinalize;
 	private GuiButton buttonCancel;
 
-	public GuiScreenYoukaiBook(EntityPlayer p_i1080_1_, ItemStack p_i1080_2_, boolean p_i1080_3_) {
-		editingPlayer = p_i1080_1_;
-		bookObj = p_i1080_2_;
-		bookIsUnsigned = p_i1080_3_;
+	public GuiScreenYoukaiBook(EntityPlayer player, ItemStack stack, boolean isSigned) {
+		editingPlayer = player;
+		bookObj = stack;
+		bookIsUnsigned = isSigned;
 
-		if(p_i1080_2_.hasTagCompound()) {
-			NBTTagCompound nbttagcompound = p_i1080_2_.getTagCompound();
+		if(stack.hasTagCompound()) {
+			NBTTagCompound nbttagcompound = stack.getTagCompound();
 			bookPages = nbttagcompound.getTagList("pages", 8);
 
 			if(bookPages != null) {
@@ -77,7 +77,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			}
 		}
 
-		if(bookPages == null && p_i1080_3_) {
+		if(bookPages == null && isSigned) {
 			bookPages = new NBTTagList();
 			bookPages.appendTag(new NBTTagString(""));
 			bookTotalPages = 1;
@@ -96,15 +96,13 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 
 		if(bookIsUnsigned) {
-			buttonList
-					.add(buttonSign = new GuiButton(3, width / 2 - 100, 4 + bookImageHeight, 98, 20, I18n.format("book.signButton", new Object[0])));
-			buttonList.add(buttonDone = new GuiButton(0, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.done", new Object[0])));
-			buttonList.add(buttonFinalize = new GuiButton(5, width / 2 - 100, 4 + bookImageHeight, 98, 20,
-					I18n.format("book.finalizeButton", new Object[0])));
-			buttonList.add(buttonCancel = new GuiButton(4, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.cancel", new Object[0])));
+			buttonList.add(buttonSign = new GuiButton(3, width / 2 - 100, 4 + bookImageHeight, 98, 20, I18n.format("book.signButton")));
+			buttonList.add(buttonDone = new GuiButton(0, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.done")));
+			buttonList.add(buttonFinalize = new GuiButton(5, width / 2 - 100, 4 + bookImageHeight, 98, 20, I18n.format("book.finalizeButton")));
+			buttonList.add(buttonCancel = new GuiButton(4, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.cancel")));
 		}
 		else {
-			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + bookImageHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + bookImageHeight, 200, 20, I18n.format("gui.done")));
 		}
 
 		int i = (width - bookImageWidth) / 2;
@@ -181,16 +179,16 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton p_146284_1_) {
-		if(p_146284_1_.enabled) {
-			if(p_146284_1_.id == 0) {
-				mc.displayGuiScreen((GuiScreen)null);
+	protected void actionPerformed(GuiButton button) {
+		if(button.enabled) {
+			if(button.id == 0) {
+				mc.displayGuiScreen(null);
 				sendBookToServer(false);
 			}
-			else if(p_146284_1_.id == 3 && bookIsUnsigned) {
+			else if(button.id == 3 && bookIsUnsigned) {
 				field_146480_s = true;
 			}
-			else if(p_146284_1_.id == 1) {
+			else if(button.id == 1) {
 				if(currPage < bookTotalPages - 1) {
 					++currPage;
 				}
@@ -202,16 +200,16 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 					}
 				}
 			}
-			else if(p_146284_1_.id == 2) {
+			else if(button.id == 2) {
 				if(currPage > 0) {
 					--currPage;
 				}
 			}
-			else if(p_146284_1_.id == 5 && field_146480_s) {
+			else if(button.id == 5 && field_146480_s) {
 				sendBookToServer(true);
-				mc.displayGuiScreen((GuiScreen)null);
+				mc.displayGuiScreen(null);
 			}
-			else if(p_146284_1_.id == 4 && field_146480_s) {
+			else if(button.id == 4 && field_146480_s) {
 				field_146480_s = false;
 			}
 
@@ -281,7 +279,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			case 156:
 				if(!bookTitle.isEmpty()) {
 					sendBookToServer(true);
-					mc.displayGuiScreen((GuiScreen)null);
+					mc.displayGuiScreen(null);
 				}
 
 				return;
@@ -338,7 +336,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				}
 			}
 
-			s1 = I18n.format("book.editTitle", new Object[0]);
+			s1 = I18n.format("book.editTitle");
 			l = fontRendererObj.getStringWidth(s1);
 			fontRendererObj.drawString(s1, k + 36 + (116 - l) / 2, b0 + 16 + 16, 0);
 			int i1 = fontRendererObj.getStringWidth(s);
@@ -346,7 +344,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			String s2 = I18n.format("book.byAuthor", new Object[] {editingPlayer.getCommandSenderName()});
 			int j1 = fontRendererObj.getStringWidth(s2);
 			fontRendererObj.drawString(EnumChatFormatting.DARK_RED + s2, k + 36 + (116 - j1) / 2, b0 + 48 + 10, 0);
-			String s3 = I18n.format("book.finalizeWarning", new Object[0]);
+			String s3 = I18n.format("book.finalizeWarning");
 			fontRendererObj.drawSplitString(s3, k + 36, b0 + 80, 116, 0);
 		}
 		else {
@@ -378,7 +376,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	}
 
 	@SideOnly(Side.CLIENT)
-	static class NextPageButton extends GuiButton {
+	private static class NextPageButton extends GuiButton {
 
 		private final boolean field_146151_o;
 
@@ -388,12 +386,12 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		}
 
 		@Override
-		public void drawButton(Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_) {
+		public void drawButton(Minecraft minecraft, int p_146112_2_, int p_146112_3_) {
 			if(visible) {
 				boolean flag = p_146112_2_ >= xPosition && p_146112_3_ >= yPosition && p_146112_2_ < xPosition + width
 						&& p_146112_3_ < yPosition + height;
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				p_146112_1_.getTextureManager().bindTexture(GuiScreenYoukaiBook.bookGuiTextures);
+				minecraft.getTextureManager().bindTexture(GuiScreenYoukaiBook.bookGuiTextures);
 				int k = 0;
 				int l = 192;
 

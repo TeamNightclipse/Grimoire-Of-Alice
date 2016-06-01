@@ -15,22 +15,19 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityHolyStone extends TileEntity {
 
-	public boolean anyPlayerInRange() {
+	private boolean anyPlayerInRange() {
 		boolean isRain = worldObj.isRaining();
 		if(isRain) {
 			EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, 10);
 			if(player != null) {
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 1));
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 50, 1));
+				return true;
+
 			}
-			else {
-				return false;
-			}
-			return true;
 		}
-		else {
-			return false;
-		}
+
+		return false;
 	}
 
 	@Override

@@ -74,46 +74,5 @@ public class ItemRenderHolyStone implements IItemRenderer {
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityHolyStone(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
-		/*switch(type){
-		case ENTITY: {
-			GL11.glPushMatrix();
-			//GL11.glRotatef(0, 0, 0, 1);
-			//GL11.glRotatef(180, 0, 1, 0);
-			//GL11.glRotatef(180, 1, 0, 0);
-			//GL11.glTranslatef(0, -2.95f, 0f);
-			GL11.glScalef(0.6F, 0.6F, 0.6F);;
-			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			GL11.glPushMatrix();
-			MODEL.render((Entity)data[1], 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
-			GL11.glPopMatrix();
-			GL11.glPopMatrix();
-		}
-		case EQUIPPED: {
-		}
-		case EQUIPPED_FIRST_PERSON:{
-			GL11.glPushMatrix();
-			GL11.glRotatef(180, 0F, 0f, 1f);
-			GL11.glTranslatef(0f, -1f, 0f);
-			GL11.glScalef(1.0F, 1.0F, 1.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			GL11.glPushMatrix();
-			MODEL.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
-			GL11.glPopMatrix();
-			GL11.glPopMatrix();
-		}
-		case INVENTORY:{
-			GL11.glPushMatrix();
-			GL11.glRotatef(180, 0F, 0f, 1f);
-			GL11.glTranslatef(0f, -1f, 0f);
-			GL11.glScalef(1.0F, 1.0F, 1.0F);
-			Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-			GL11.glPushMatrix();
-			MODEL.render(null, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
-			GL11.glPopMatrix();
-			GL11.glPopMatrix();
-		}
-		default: break;
-		}*/
 	}
-
 }

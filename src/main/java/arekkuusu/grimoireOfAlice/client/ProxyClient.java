@@ -30,13 +30,9 @@ public class ProxyClient extends ProxyServer {
 
 	@Override
 	public void registerRenders() {
-
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOnbashira.class, new RenderOnbashira());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyStone.class, new RenderHolyStone());
-
-		new RenderHolyKeyStone();
-		new RenderHolyStone();
 
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.blockHolyKeyStone), new ItemRenderHolyKeyStone());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.blockHolyStone), new ItemRenderHolyStone());
@@ -47,8 +43,6 @@ public class ProxyClient extends ProxyServer {
 
 	@Override
 	public int addArmor(String armor) {
-
 		return RenderingRegistry.addNewArmourRendererPrefix(armor);
-
 	}
 }

@@ -9,6 +9,9 @@
 package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyStone;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -19,6 +22,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -67,46 +71,40 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int S, float X, float Y, float Z) {
-		if(world.isRemote) {
-			ItemStack stack = player.getCurrentEquippedItem();
-			if(stack != null && stack.getItem() == Items.gold_nugget) {
+		ItemStack stack = player.getCurrentEquippedItem();
+		if(!world.isRemote && stack != null) {
+			Optional<Consumer<EntityPlayer>> effect = getEffectForItem(stack.getItem());
+			if(effect.isPresent()) {
 				--stack.stackSize;
-				player.addExperience(5);
+				effect.get().accept(player);
 				return true;
 			}
-			else if(stack != null && stack.getItem() == Items.gold_ingot) {
-				--stack.stackSize;
-				player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2490, 0));
-				return true;
-			}
-			else if(stack != null && stack.getItem() == Items.iron_ingot) {
-				--stack.stackSize;
-				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 2490, 0));
-				return true;
-			}
-			else if(stack != null && stack.getItem() == Items.blaze_powder) {
-				--stack.stackSize;
-				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 2490, 0));
-				return true;
-			}
-			else if(stack != null && stack.getItem() == Items.speckled_melon) {
-				--stack.stackSize;
-				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2490, 0));
-				return true;
-			}
-			else if(stack != null && stack.getItem() == Items.diamond) {
-				--stack.stackSize;
-				player.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 2490, 4));
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		else {
-			return false;
 		}
 
+		return false;
+	}
+
+	private Optional<Consumer<EntityPlayer>> getEffectForItem(Item item) {
+		if(item == Items.gold_nugget) {
+			return Optional.of(player -> player.addExperience(5));
+		}
+		else if(item == Items.gold_ingot) {
+			return Optional.of(player -> player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2490, 0)));
+		}
+		else if(item == Items.iron_ingot) {
+			return Optional.of(player -> player.addPotionEffect(new PotionEffect(Potion.resistance.id, 2490, 0)));
+		}
+		else if(item == Items.blaze_powder) {
+			return Optional.of(player -> player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 2490, 0)));
+		}
+		else if(item == Items.speckled_melon) {
+			return Optional.of(player -> player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2490, 0)));
+		}
+		else if(item == Items.diamond) {
+			return Optional.of(player -> player.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 2490, 4)));
+		}
+
+		return Optional.empty();
 	}
 
 	@SideOnly(Side.CLIENT)

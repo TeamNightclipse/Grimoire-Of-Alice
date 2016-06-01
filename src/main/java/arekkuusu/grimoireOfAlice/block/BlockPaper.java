@@ -19,10 +19,12 @@ import net.minecraft.util.IIcon;
 
 public class BlockPaper extends BlockGOABase {
 
-	public IIcon BottomTop;
-	public IIcon Sides;
+	@SideOnly(Side.CLIENT)
+	private IIcon BottomTop;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sides;
 
-	public BlockPaper(Material material) {
+	BlockPaper(Material material) {
 		super(material);
 		setHardness(0.5F);
 		setStepSound(Block.soundTypeCloth);
@@ -41,7 +43,6 @@ public class BlockPaper extends BlockGOABase {
 	public void registerBlockIcons(IIconRegister icon) {
 		BottomTop = icon.registerIcon(LibMod.MODID + ":Paper0");
 		Sides = icon.registerIcon(LibMod.MODID + ":Paper1");
-
 	}
 
 	@SideOnly(Side.CLIENT)

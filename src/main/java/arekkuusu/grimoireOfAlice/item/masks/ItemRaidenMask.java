@@ -30,21 +30,21 @@ import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
 public class ItemRaidenMask extends ItemArmor {
 
-	public ItemRaidenMask(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
-		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+	public ItemRaidenMask(ArmorMaterial material, int p_i45325_2_, int p_i45325_3_) {
+		super(material, p_i45325_2_, p_i45325_3_);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Surprise");
-		if(p_77624_2_.experienceLevel >= 50) {
+		list.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Surprise");
+		if(player.experienceLevel >= 50) {
 
-			p_77624_3_.add(EnumChatFormatting.GOLD + " -Haste IV");
+			list.add(EnumChatFormatting.GOLD + " -Haste IV");
 		}
-		p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Weakness");
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Fire");
+		list.add(EnumChatFormatting.LIGHT_PURPLE + " -Weakness");
+		list.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Fire");
 
 	}
 
@@ -59,7 +59,6 @@ public class ItemRaidenMask extends ItemArmor {
 			player.addPotionEffect(new PotionEffect(Potion.weakness.id, 0, 0));
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 0, 2));
 		}
-
 	}
 
 	@Override
@@ -75,27 +74,6 @@ public class ItemRaidenMask extends ItemArmor {
 
 	}
 
-	@SideOnly(Side.CLIENT)
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-
-		if(source == DamageSource.inFire) {
-			return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 50D));
-		}
-		else {
-			return new ArmorProperties(0, 0, 0);
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return 3;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		stack.damageItem(damage * 2, entity);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
@@ -104,8 +82,7 @@ public class ItemRaidenMask extends ItemArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack stack, int pass) {
 		return true;
 	}
-
 }

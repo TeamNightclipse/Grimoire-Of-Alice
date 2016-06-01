@@ -30,17 +30,17 @@ public class ItemNazrinStick extends ItemSword {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.WHITE + "Rare treasure form an old era");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "Used by mice to find cheese");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "some meters away form their");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "homes...mmmmm");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "O-Only works for mice? Oh well");
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.WHITE + "Rare treasure form an old era");
+		list.add(EnumChatFormatting.GOLD + "Used by mice to find cheese");
+		list.add(EnumChatFormatting.GOLD + "some meters away form their");
+		list.add(EnumChatFormatting.GOLD + "homes...mmmmm");
+		list.add(EnumChatFormatting.GOLD + "O-Only works for mice? Oh well");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
 
@@ -61,23 +61,23 @@ public class ItemNazrinStick extends ItemSword {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack p_77615_1_, World world, EntityPlayer player, int p_77615_4_) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int p_77615_4_) {
 		if(player.experienceLevel > 40) {
 			player.inventory.consumeInventoryItem(Items.coal);
 			//Vec3 look = player.getLookVec();
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ, 2.5F, false);
-			world.createExplosion(null, player.posX, player.posY, player.posZ + 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
-			world.createExplosion(null, player.posX, player.posY, player.posZ - 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
 			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
 			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
+			world.createExplosion(null, player.posX, player.posY, player.posZ + 5.0, 2.5F, false);
+			world.createExplosion(null, player.posX, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ, 2.5F, false);
+			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
 		}
 		else {
 			player.inventory.consumeInventoryItem(Items.coal);
 			world.createExplosion(null, player.posX, player.posY, player.posZ, 1.0F, false);
-			p_77615_1_.damageItem(1, player);
+			stack.damageItem(1, player);
 		}
 	}
 

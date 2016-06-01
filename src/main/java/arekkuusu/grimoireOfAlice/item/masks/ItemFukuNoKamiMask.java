@@ -30,27 +30,27 @@ import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
 public class ItemFukuNoKamiMask extends ItemArmor {
 
-	public ItemFukuNoKamiMask(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
-		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+	public ItemFukuNoKamiMask(ArmorMaterial material, int p_i45325_2_, int p_i45325_3_) {
+		super(material, p_i45325_2_, p_i45325_3_);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Humor");
+		list.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Humor");
 
-		if(p_77624_2_.experienceLevel >= 80) {
+		if(player.experienceLevel >= 80) {
 
-			p_77624_3_.add(EnumChatFormatting.GOLD + " -Fire Resistance");
-			p_77624_3_.add(EnumChatFormatting.GOLD + " -Night Vision");
+			list.add(EnumChatFormatting.GOLD + " -Fire Resistance");
+			list.add(EnumChatFormatting.GOLD + " -Night Vision");
 		}
 		else {
 
-			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Confusion");
+			list.add(EnumChatFormatting.LIGHT_PURPLE + " -Confusion");
 
 		}
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Wither Effect");
+		list.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Wither Effect");
 
 	}
 
@@ -83,33 +83,15 @@ public class ItemFukuNoKamiMask extends ItemArmor {
 
 	}
 
-	@SideOnly(Side.CLIENT)
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-
-		if(source == DamageSource.wither) { return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 10.00D)); }
-		return new ArmorProperties(0, 0, 0);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return 3;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		stack.damageItem(damage * 2, entity);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack stack, int pass) {
 		return true;
 	}
-
 }

@@ -23,13 +23,13 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class ItemEllyScythe extends ItemSword {
 
-	public ItemEllyScythe(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public ItemEllyScythe(ToolMaterial material) {
+		super(material);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.rare;
 	}
 
@@ -45,19 +45,19 @@ public class ItemEllyScythe extends ItemSword {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack p_77644_1_, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
-		EntityPlayer player = (EntityPlayer)p_77644_3_;
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
+		EntityPlayer player = (EntityPlayer)user;
 		if(player.experienceLevel > 40) {
-			p_77644_2_.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
-			p_77644_2_.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
-			p_77644_3_.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
-			p_77644_1_.damageItem(1, p_77644_3_);
+			target.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
+			target.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
+			user.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
+			stack.damageItem(1, user);
 		}
 		else {
-			p_77644_2_.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
-			p_77644_3_.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
-			p_77644_3_.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
-			p_77644_1_.damageItem(1, p_77644_3_);
+			target.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
+			user.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
+			user.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
+			stack.damageItem(1, user);
 		}
 		return true;
 	}

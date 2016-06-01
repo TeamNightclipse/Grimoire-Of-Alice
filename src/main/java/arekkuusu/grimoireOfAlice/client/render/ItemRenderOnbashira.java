@@ -75,5 +75,4 @@ public class ItemRenderOnbashira implements IItemRenderer {
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
-
 }

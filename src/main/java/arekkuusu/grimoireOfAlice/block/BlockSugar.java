@@ -9,6 +9,8 @@
 package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,14 +19,20 @@ import net.minecraft.util.IIcon;
 
 public class BlockSugar extends BlockGOABase {
 
-	public IIcon Bottom;
-	public IIcon Top;
-	public IIcon Sugar2;
-	public IIcon Sugar3;
-	public IIcon Sugar4;
-	public IIcon Sugar5;
+	@SideOnly(Side.CLIENT)
+	private IIcon Bottom;
+	@SideOnly(Side.CLIENT)
+	private IIcon Top;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sugar2;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sugar3;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sugar4;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sugar5;
 
-	public BlockSugar(Material material) {
+	BlockSugar(Material material) {
 		super(material);
 		setHardness(0.2F);
 		setStepSound(Block.soundTypeSnow);
@@ -64,6 +72,5 @@ public class BlockSugar extends BlockGOABase {
 		else if(side == 5) { return Sugar5; }
 
 		return null;
-
 	}
 }

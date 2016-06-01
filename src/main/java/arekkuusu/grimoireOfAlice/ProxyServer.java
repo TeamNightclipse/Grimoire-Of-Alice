@@ -18,13 +18,9 @@ public class ProxyServer {
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenShroom());
 	}
 
-	public void registerRenders() {
-		// Uh oh! Nothing here
-	}
+	public void registerRenders() {} //NO-OP
 
 	public int addArmor(String armor) {
-
 		return 0;
-
 	}
 }

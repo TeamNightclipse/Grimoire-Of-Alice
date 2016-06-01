@@ -12,7 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemMask extends ItemGOABase {
 
-	public ItemMask() {
+	ItemMask() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);

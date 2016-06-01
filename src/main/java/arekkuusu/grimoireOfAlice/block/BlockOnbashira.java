@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 
 public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider {
 
-	public BlockOnbashira(Material material) {
+	BlockOnbashira(Material material) {
 		super(material);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeWood);
@@ -55,20 +55,20 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	}
 
 	@Override
-	public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List,
-			Entity par7Entity) {
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list,
+			Entity collidingEntity) {
 		setBlockBounds(0f, 0f, 0f, 1F, 3.5F, 1F);
-		super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		super.addCollisionBoxesToList(world, x, y, z, mask, list, collidingEntity);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
 		return new TileEntityOnbashira();
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
-		super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		super.breakBlock(world, x, y, z, block, meta);
 		world.removeTileEntity(x, y, z);
 	}
 

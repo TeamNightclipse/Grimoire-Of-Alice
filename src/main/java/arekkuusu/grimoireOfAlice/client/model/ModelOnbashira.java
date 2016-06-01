@@ -14,44 +14,44 @@ import net.minecraft.entity.Entity;
 
 public class ModelOnbashira extends ModelBase {
 
-	ModelRenderer SideA;
-	ModelRenderer SideB;
-	ModelRenderer SideC;
-	ModelRenderer SideD;
-	ModelRenderer SideE;
-	ModelRenderer SideF;
-	ModelRenderer SideG;
-	ModelRenderer SideH;
-	ModelRenderer Top;
-	ModelRenderer Top0;
-	ModelRenderer Top1;
-	ModelRenderer Top2;
-	ModelRenderer Top3;
-	ModelRenderer Top4;
-	ModelRenderer Top5;
-	ModelRenderer Top6;
-	ModelRenderer Top7;
-	ModelRenderer Bottom7;
-	ModelRenderer Bottom6;
-	ModelRenderer Bottom5;
-	ModelRenderer Bottom4;
-	ModelRenderer Bottom3;
-	ModelRenderer Bottom2;
-	ModelRenderer Bottom1;
-	ModelRenderer Bottom0;
-	ModelRenderer Bottom;
-	ModelRenderer Side0;
-	ModelRenderer Side1;
-	ModelRenderer Side2;
-	ModelRenderer Side3;
-	ModelRenderer Side4;
-	ModelRenderer Side5;
-	ModelRenderer Side6;
-	ModelRenderer Side7;
-	ModelRenderer Paper0;
-	ModelRenderer Paper1;
-	ModelRenderer Paper2;
-	ModelRenderer Paper3;
+	private ModelRenderer SideA;
+	private ModelRenderer SideB;
+	private ModelRenderer SideC;
+	private ModelRenderer SideD;
+	private ModelRenderer SideE;
+	private ModelRenderer SideF;
+	private ModelRenderer SideG;
+	private ModelRenderer SideH;
+	private ModelRenderer Top;
+	private ModelRenderer Top0;
+	private ModelRenderer Top1;
+	private ModelRenderer Top2;
+	private ModelRenderer Top3;
+	private ModelRenderer Top4;
+	private ModelRenderer Top5;
+	private ModelRenderer Top6;
+	private ModelRenderer Top7;
+	private ModelRenderer Bottom7;
+	private ModelRenderer Bottom6;
+	private ModelRenderer Bottom5;
+	private ModelRenderer Bottom4;
+	private ModelRenderer Bottom3;
+	private ModelRenderer Bottom2;
+	private ModelRenderer Bottom1;
+	private ModelRenderer Bottom0;
+	private ModelRenderer Bottom;
+	private ModelRenderer Side0;
+	private ModelRenderer Side1;
+	private ModelRenderer Side2;
+	private ModelRenderer Side3;
+	private ModelRenderer Side4;
+	private ModelRenderer Side5;
+	private ModelRenderer Side6;
+	private ModelRenderer Side7;
+	private ModelRenderer Paper0;
+	private ModelRenderer Paper1;
+	private ModelRenderer Paper2;
+	private ModelRenderer Paper3;
 
 	public ModelOnbashira() {
 		textureWidth = 64;
@@ -291,48 +291,10 @@ public class ModelOnbashira extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		SideA.render(f5);
-		SideB.render(f5);
-		SideC.render(f5);
-		SideD.render(f5);
-		SideE.render(f5);
-		SideF.render(f5);
-		SideG.render(f5);
-		SideH.render(f5);
-		Top.render(f5);
-		Top0.render(f5);
-		Top1.render(f5);
-		Top2.render(f5);
-		Top3.render(f5);
-		Top4.render(f5);
-		Top5.render(f5);
-		Top6.render(f5);
-		Top7.render(f5);
-		Bottom7.render(f5);
-		Bottom6.render(f5);
-		Bottom5.render(f5);
-		Bottom4.render(f5);
-		Bottom3.render(f5);
-		Bottom2.render(f5);
-		Bottom1.render(f5);
-		Bottom0.render(f5);
-		Bottom.render(f5);
-		Side0.render(f5);
-		Side1.render(f5);
-		Side2.render(f5);
-		Side3.render(f5);
-		Side4.render(f5);
-		Side5.render(f5);
-		Side6.render(f5);
-		Side7.render(f5);
-		Paper0.render(f5);
-		Paper1.render(f5);
-		Paper2.render(f5);
-		Paper3.render(f5);
+		renderModel(f5);
 	}
 
 	public void renderModel(float f5) {
-
 		SideA.render(f5);
 		SideB.render(f5);
 		SideC.render(f5);
@@ -371,17 +333,11 @@ public class ModelOnbashira extends ModelBase {
 		Paper1.render(f5);
 		Paper2.render(f5);
 		Paper3.render(f5);
-
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

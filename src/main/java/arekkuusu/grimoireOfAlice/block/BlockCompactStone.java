@@ -18,10 +18,12 @@ import net.minecraft.util.IIcon;
 
 public class BlockCompactStone extends BlockGOABase {
 
-	public IIcon BottomTop;
-	public IIcon Sides;
+	@SideOnly(Side.CLIENT)
+	private IIcon BottomTop;
+	@SideOnly(Side.CLIENT)
+	private IIcon Sides;
 
-	public BlockCompactStone(Material material) {
+	BlockCompactStone(Material material) {
 		super(material);
 		setHardness(3.0F);
 		setStepSound(Block.soundTypeStone);
@@ -45,7 +47,5 @@ public class BlockCompactStone extends BlockGOABase {
 		}
 		else if(side == 2 || side == 3 || side == 4 || side == 5) { return Sides; }
 		return null;
-
 	}
-
 }

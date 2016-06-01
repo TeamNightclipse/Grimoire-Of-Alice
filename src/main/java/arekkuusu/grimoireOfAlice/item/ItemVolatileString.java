@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemVolatileString extends ItemGOABase {
 
-	public ItemVolatileString() {
+	ItemVolatileString() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);

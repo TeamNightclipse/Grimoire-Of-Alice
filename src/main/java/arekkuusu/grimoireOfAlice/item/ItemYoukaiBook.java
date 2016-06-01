@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 
 public class ItemYoukaiBook extends ItemWritableBook {
 
-	public ItemYoukaiBook() {
+	ItemYoukaiBook() {
 		super();
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabMisc);
@@ -29,9 +29,9 @@ public class ItemYoukaiBook extends ItemWritableBook {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ItemStack onItemRightClick(ItemStack item, World p_77659_2_, EntityPlayer p_77659_3_) {
-		if(p_77659_3_.worldObj.isRemote) {
-			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenYoukaiBook(p_77659_3_, item, true));
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
+		if(player.worldObj.isRemote) {
+			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenYoukaiBook(player, item, true));
 		}
 		return item;
 	}
@@ -41,5 +41,4 @@ public class ItemYoukaiBook extends ItemWritableBook {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
-
 }

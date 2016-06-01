@@ -68,6 +68,7 @@ public class GOAItem {
 
 	public static void preInit() {
 		//@formatter:off
+
 		//Item
 		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
 		itemGrimoireBook = new ItemGrimoireBook().setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook");
@@ -77,8 +78,10 @@ public class GOAItem {
 		itemShimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(LibMod.MODID + ":ShimenawaRope");
 		itemYoukaiBook = new ItemYoukaiBook().setUnlocalizedName("YoukaiBook").setTextureName(LibMod.MODID + ":YoukaiBook");
 		itemMask = new ItemMask().setUnlocalizedName("Mask").setTextureName(LibMod.MODID + ":Mask");
+
 		//Food
 		itemShroomSlice =new ItemShroomSlice(4, 1.2F, false).setAlwaysEdible().setUnlocalizedName("ShroomSlice").setTextureName(LibMod.MODID + ":ShroomSlice");
+
 		//Armor  Dont really know the dif between 0 and proxy.addArmor
 		itemFoxMask= new ItemFoxMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FoxMask")*/, 0).setUnlocalizedName("FoxMask").setTextureName(LibMod.MODID + ":FoxMask");
 		itemRaidenMask= new ItemRaidenMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("RaidenMask")*/, 0).setUnlocalizedName("RaidenMask").setTextureName(LibMod.MODID + ":RaidenMask");
@@ -91,6 +94,7 @@ public class GOAItem {
 		itemMaskOfHope= new ItemMaskOfHope(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MaskOfHope")*/, 0).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
 		itemKokorosMasks= new ItemKokorosMasks(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KokorosMasks")*/, 0).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
 		itemPrimordialShield= new ItemPrimordialShield(WetNoodle).setUnlocalizedName("PrimordialShield").setTextureName(LibMod.MODID + ":PrimordialShield");
+
 		//Weapon
 		itemMochiHammer= new ItemMochiHammer(Goldyron).setUnlocalizedName("MochiHammer").setTextureName(LibMod.MODID + ":MochiHammer");
 		itemMomijisScimitarSword= new ItemMomijisScimitarSword(Goldyron).setUnlocalizedName("MomijisScimitarSword").setTextureName(LibMod.MODID + ":MomijisScimitarSword");
@@ -111,8 +115,10 @@ public class GOAItem {
 		GameRegistry.registerItem(itemShimenawaRope, LibItemName.SHIMENAWAROPE);
 		GameRegistry.registerItem(itemYoukaiBook, LibItemName.YOUKAIBOOK);
 		GameRegistry.registerItem(itemMask, LibItemName.MASK);
+
 		//Food
 		GameRegistry.registerItem(itemShroomSlice, LibItemName.SHROOMSLICE);
+
 		//Armor
 		GameRegistry.registerItem(itemFoxMask, LibItemName.FOXMASK);
 		GameRegistry.registerItem(itemRaidenMask, LibItemName.RAIDENMASK);
@@ -125,6 +131,7 @@ public class GOAItem {
 		GameRegistry.registerItem(itemMaskOfHope, LibItemName.MASKOFHOPE);
 		GameRegistry.registerItem(itemKokorosMasks, LibItemName.KOKOROSMASKS);
 		GameRegistry.registerItem(itemPrimordialShield, LibItemName.PRIMORDIALSHIELD);
+
 		//Weapon
 		GameRegistry.registerItem(itemMochiHammer, LibItemName.MOCHIHAMMER);
 		GameRegistry.registerItem(itemMomijisScimitarSword, LibItemName.MOMIJISSCIMITARSWORD);

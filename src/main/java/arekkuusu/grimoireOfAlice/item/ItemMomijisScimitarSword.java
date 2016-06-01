@@ -29,23 +29,20 @@ public class ItemMomijisScimitarSword extends ItemSword {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.AQUA + "Awwww~!! Momiji~!!! Wooooff!!! ");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "Awooooo~!!");
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.AQUA + "Awwww~!! Momiji~!!! Wooooff!!! ");
+		list.add(EnumChatFormatting.GOLD + "Awooooo~!!");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 
-		super.onUpdate(p_77663_1_, p_77663_2_, p_77663_3_, p_77663_4_, p_77663_5_);
-		{
-			EntityPlayer player = (EntityPlayer)p_77663_3_;
-			ItemStack equiped = player.getCurrentEquippedItem();
-			if(equiped == p_77663_1_) {
-				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 0));
-
-			}
+		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
+		EntityPlayer player = (EntityPlayer)entity;
+		ItemStack equiped = player.getCurrentEquippedItem();
+		if(equiped == stack) {
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 0));
 		}
 	}
 }

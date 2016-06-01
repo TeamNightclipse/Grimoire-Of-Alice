@@ -15,15 +15,15 @@ import net.minecraft.entity.Entity;
 public class ModelKokorosMasks extends ModelBiped {
 
 	//fields
-	ModelRenderer Mask1;
-	ModelRenderer Mask2;
-	ModelRenderer Mask3;
-	ModelRenderer Maks4;
-	ModelRenderer Mask5;
-	ModelRenderer Mask6;
-	ModelRenderer Mask7;
-	ModelRenderer Mask8;
-	ModelRenderer Mask9;
+	private ModelRenderer Mask1;
+	private ModelRenderer Mask2;
+	private ModelRenderer Mask3;
+	private ModelRenderer Maks4;
+	private ModelRenderer Mask5;
+	private ModelRenderer Mask6;
+	private ModelRenderer Mask7;
+	private ModelRenderer Mask8;
+	private ModelRenderer Mask9;
 
 	public ModelKokorosMasks() {
 		textureWidth = 256;
@@ -104,10 +104,5 @@ public class ModelKokorosMasks extends ModelBiped {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

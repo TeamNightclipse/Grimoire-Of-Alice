@@ -31,30 +31,30 @@ public class ItemShimenawaRope extends ItemGOABase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.WHITE + "Tenshi's little gift");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "A little piece of Heaven,");
-		p_77624_3_.add(EnumChatFormatting.RED + "Might cause an incident");
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.WHITE + "Tenshi's little gift");
+		list.add(EnumChatFormatting.GOLD + "A little piece of Heaven,");
+		list.add(EnumChatFormatting.RED + "Might cause an incident");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
 		return true;
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
-		if(par7 != 1) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10) {
+		if(side != 1) {
 			return false;
 		}
-		else if(player.canPlayerEdit(x, y, z, par7, stack) && world.isAirBlock(x, y + 1, z)) {
+		else if(player.canPlayerEdit(x, y, z, side, stack) && world.isAirBlock(x, y + 1, z)) {
 			if(!world.isRaining()) {
 				return false;
 			}

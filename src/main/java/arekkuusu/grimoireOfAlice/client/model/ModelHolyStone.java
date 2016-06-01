@@ -14,20 +14,19 @@ import net.minecraft.entity.Entity;
 
 public class ModelHolyStone extends ModelBase {
 
-	//fields
-	ModelRenderer Cube;
-	ModelRenderer Side0;
-	ModelRenderer Side1;
-	ModelRenderer Side2;
-	ModelRenderer Side3;
-	ModelRenderer Paper0;
-	ModelRenderer Paper1;
-	ModelRenderer Paper2;
-	ModelRenderer Paper3;
-	ModelRenderer Paper4;
-	ModelRenderer Paper5;
-	ModelRenderer Paper6;
-	ModelRenderer Paper7;
+	private ModelRenderer Cube;
+	private ModelRenderer Side0;
+	private ModelRenderer Side1;
+	private ModelRenderer Side2;
+	private ModelRenderer Side3;
+	private ModelRenderer Paper0;
+	private ModelRenderer Paper1;
+	private ModelRenderer Paper2;
+	private ModelRenderer Paper3;
+	private ModelRenderer Paper4;
+	private ModelRenderer Paper5;
+	private ModelRenderer Paper6;
+	private ModelRenderer Paper7;
 
 	public ModelHolyStone() {
 		textureWidth = 32;
@@ -117,19 +116,7 @@ public class ModelHolyStone extends ModelBase {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		Cube.render(f5);
-		Side0.render(f5);
-		Side1.render(f5);
-		Side2.render(f5);
-		Side3.render(f5);
-		Paper0.render(f5);
-		Paper1.render(f5);
-		Paper2.render(f5);
-		Paper3.render(f5);
-		Paper4.render(f5);
-		Paper5.render(f5);
-		Paper6.render(f5);
-		Paper7.render(f5);
+		renderModel(f5);
 	}
 
 	public void renderModel(float f5) {
@@ -153,10 +140,4 @@ public class ModelHolyStone extends ModelBase {
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	}
-
 }
