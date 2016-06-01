@@ -8,19 +8,15 @@
  */
 package arekkuusu.grimoireOfAlice.block;
 
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class BlockHyperconcentratedMagic extends BlockGOABase{
+public class BlockHyperconcentratedMagic extends BlockGOABase {
 
 	public IIcon Sides;
-	
+
 	public BlockHyperconcentratedMagic(Material material) {
 		super(material);
 		setHardness(0.5F);
@@ -29,14 +25,14 @@ public class BlockHyperconcentratedMagic extends BlockGOABase{
 		setResistance(5.0F);
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
-	
+
 	/*@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister icon){
 		Sides = icon.registerIcon(LibMod.MODID + ":Paper1");
-		
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta){
@@ -45,5 +41,5 @@ public class BlockHyperconcentratedMagic extends BlockGOABase{
 		}
 		return null;
 	}*/
-	
+
 }

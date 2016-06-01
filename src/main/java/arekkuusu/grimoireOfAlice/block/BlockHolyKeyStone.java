@@ -66,19 +66,19 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileEntityHolyKeyStone();
 	}
-	
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
-    {
-        float f = 0.125F;
-        return AxisAlignedBB.getBoundingBox((double)p_149668_2_, (double)p_149668_3_, (double)p_149668_4_, (double)(p_149668_2_ + 1), (double)((float)(p_149668_3_ + 1) - f), (double)(p_149668_4_ + 1));
-    }
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_) {
+		float f = 0.125F;
+		return AxisAlignedBB.getBoundingBox(p_149668_2_, p_149668_3_, p_149668_4_, p_149668_2_ + 1, p_149668_3_ + 1 - f, p_149668_4_ + 1);
+	}
 
 	/*@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World w, int x, int y, int z, Random rand) {
 		renderParticle(w, x, y, z);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	private void renderParticle(World w, int x, int y, int z) {
 		Random random = w.rand;
@@ -101,30 +101,31 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e) {
-		world.createExplosion(null, x+0.5, y, z+0.5, 2.0F, false);
+		world.createExplosion(null, x + 0.5, y, z + 0.5, 2.0F, false);
 	}
-	
+
 	@Override
-	public Item getItemDropped(int metadata, Random random, int fortune){
+	public Item getItemDropped(int metadata, Random random, int fortune) {
 		return null;
 	}
-	
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata) {
-        return false;
-    }
-	
+
 	@Override
-	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_)
-    {
+	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata) {
+		return false;
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_) {
 		if(p_149670_5_ instanceof EntityLivingBase) {
-		boolean isRain = p_149670_1_.isRaining();
-		if(!isRain){
-		EntityLivingBase livingEntity = (EntityLivingBase)p_149670_5_;
-		livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
-		livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
-		livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
-		}}
-    }
+			boolean isRain = p_149670_1_.isRaining();
+			if(!isRain) {
+				EntityLivingBase livingEntity = (EntityLivingBase)p_149670_5_;
+				livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
+				livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
+				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
+			}
+		}
+	}
 
 	/*@Override
 	public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity) {

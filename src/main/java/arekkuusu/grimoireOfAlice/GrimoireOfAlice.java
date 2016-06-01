@@ -9,11 +9,9 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import arekkuusu.grimoireOfAlice.helper.LogHelper;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -21,7 +19,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.EntityRegistry;
 
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
 
@@ -38,25 +35,24 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+
 		GOAItem.preInit();
 		GOABlock.preInit();
-		
+
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		
+
 		proxy.init(event);
-		
+
 		proxy.registerRenders();
 
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
-		
+
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-	}
+	public void postInit(FMLPostInitializationEvent event) {}
 }

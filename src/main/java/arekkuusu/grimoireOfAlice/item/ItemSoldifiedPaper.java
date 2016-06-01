@@ -11,7 +11,7 @@ package arekkuusu.grimoireOfAlice.item;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemSoldifiedPaper extends ItemGOABase {
-	
+
 	public ItemSoldifiedPaper() {
 		super();
 		setMaxStackSize(16);

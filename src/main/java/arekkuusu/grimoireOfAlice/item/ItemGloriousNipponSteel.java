@@ -18,31 +18,28 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
-public class ItemGloriousNipponSteel extends ItemGOABase{
+public class ItemGloriousNipponSteel extends ItemGOABase {
 
 	public ItemGloriousNipponSteel() {
 		super();
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "100% quality guaranteed");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Glorious Nippon Steel");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Flolded over 1000 times");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Can cut through anything");
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "100% quality guaranteed");
+		p_77624_3_.add(EnumChatFormatting.GOLD + "Glorious Nippon Steel");
+		p_77624_3_.add(EnumChatFormatting.GOLD + "Flolded over 1000 times");
+		p_77624_3_.add(EnumChatFormatting.GOLD + "Can cut through anything");
 
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
-	
+
 }

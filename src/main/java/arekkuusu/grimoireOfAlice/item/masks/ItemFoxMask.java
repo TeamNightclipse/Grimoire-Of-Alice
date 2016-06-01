@@ -10,74 +10,69 @@ package arekkuusu.grimoireOfAlice.item.masks;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.creativetab.CreativeTabs;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
-public class ItemFoxMask extends ItemArmor{
+public class ItemFoxMask extends ItemArmor {
 
 	public ItemFoxMask(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
 		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
 
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "Tsukumogami of Determination");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ " -Speed");
-		
-		if(p_77624_2_.experienceLevel >= 40){
-			p_77624_3_.add(EnumChatFormatting.GOLD
-					+ " -Resistance");
-		
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Determination");
+		p_77624_3_.add(EnumChatFormatting.GOLD + " -Speed");
+
+		if(p_77624_2_.experienceLevel >= 40) {
+			p_77624_3_.add(EnumChatFormatting.GOLD + " -Resistance");
+
 		}
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ " *Vulnerable to Magic");
+		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Magic");
 
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		
-		if(player.experienceLevel <= 40){
+
+		if(player.experienceLevel <= 40) {
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
-		} else {
-		player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
-		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
-		
 		}
-		
+		else {
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
+
+		}
+
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 
-		if (stack.getItem() == GOAItem.itemFoxMask) {
+		if(stack.getItem() == GOAItem.itemFoxMask) {
 			return LibMod.MODID + ":textures/models/armor/FoxMask.png";
-			
-		} else {
+
+		}
+		else {
 			return null;
 		}
 
@@ -85,11 +80,12 @@ public class ItemFoxMask extends ItemArmor{
 
 	@SideOnly(Side.CLIENT)
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		
-		if (source == source.magic) {
+
+		if(source == DamageSource.magic) {
 			return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 50D));
-		} else {
-			return new ArmorProperties(0, 0, 0);	
+		}
+		else {
+			return new ArmorProperties(0, 0, 0);
 		}
 	}
 

@@ -12,6 +12,8 @@ import java.util.List;
 
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,62 +27,57 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMaskOfHope extends ItemArmor{
+public class ItemMaskOfHope extends ItemArmor {
 
 	public ItemMaskOfHope(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
 		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "Tsukumogami of Jizo Statue");
-		p_77624_3_.add(EnumChatFormatting.DARK_GRAY
-				+ "Return to Kokoro if found... or not...");
-		if(p_77624_2_.experienceLevel <= 120){
-		p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-				+ " -Wither");
-		} else {
-		p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-				+ " -Poison.");
-				}
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ " *Vulnerable to Wither");
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Jizo Statue");
+		p_77624_3_.add(EnumChatFormatting.DARK_GRAY + "Return to Kokoro if found... or not...");
+		if(p_77624_2_.experienceLevel <= 120) {
+			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Wither");
+		}
+		else {
+			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Poison.");
+		}
+		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Wither");
 
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(player.experienceLevel <= 120){
+		if(player.experienceLevel <= 120) {
 			player.addPotionEffect(new PotionEffect(Potion.wither.id, 666, 4));
-		}else{
-			 player.addPotionEffect(new PotionEffect(Potion.poison.id, 666, 4));
 		}
-	 
+		else {
+			player.addPotionEffect(new PotionEffect(Potion.poison.id, 666, 4));
+		}
+
 	}
-	
+
+	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type){
-		
-		if(stack.getItem() == GOAItem.itemMaskOfHope){
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+
+		if(stack.getItem() == GOAItem.itemMaskOfHope) {
 			return LibMod.MODID + ":textures/models/armor/MaskOfHope.png";
-		} else{
+		}
+		else {
 			return null;
 		}
-		
+
 	}
 
 	@SideOnly(Side.CLIENT)
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-	
-		if (source == source.wither) {
-			return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 1.75D));
-		}
+
+		if(source == DamageSource.wither) { return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 1.75D)); }
 		return new ArmorProperties(0, 0, 0);
 	}
 
@@ -99,11 +96,11 @@ public class ItemMaskOfHope extends ItemArmor{
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.rare;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
 	}
-	
+
 }

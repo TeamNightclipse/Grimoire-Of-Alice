@@ -13,34 +13,36 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityHolyStone extends TileEntity{
+public class TileEntityHolyStone extends TileEntity {
 
-	public boolean anyPlayerInRange(){
+	public boolean anyPlayerInRange() {
 		boolean isRain = worldObj.isRaining();
-		if(isRain){
-			EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, 10);
-			if(player!=null){
+		if(isRain) {
+			EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, 10);
+			if(player != null) {
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 1));
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 50, 1));
-				}
+			}
 			else {
 				return false;
-				}
-			return true;
-		} else {
-			return false;
 			}
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-    public void updateEntity() {
-        if (this.anyPlayerInRange()) {
-            if (this.worldObj.isRemote) {
-                double yus1 = (double)((float)this.xCoord + this.worldObj.rand.nextFloat());
-                double yus3 = (double)((float)this.yCoord + this.worldObj.rand.nextFloat());
-                double yus5 = (double)((float)this.zCoord + this.worldObj.rand.nextFloat());
-                this.worldObj.spawnParticle("smoke", yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
-                this.worldObj.spawnParticle("flame", yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
-            	}
-            }
-        }
+
+	@Override
+	public void updateEntity() {
+		if(anyPlayerInRange()) {
+			if(worldObj.isRemote) {
+				double yus1 = xCoord + worldObj.rand.nextFloat();
+				double yus3 = yCoord + worldObj.rand.nextFloat();
+				double yus5 = zCoord + worldObj.rand.nextFloat();
+				worldObj.spawnParticle("smoke", yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
+				worldObj.spawnParticle("flame", yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
+			}
+		}
+	}
 }

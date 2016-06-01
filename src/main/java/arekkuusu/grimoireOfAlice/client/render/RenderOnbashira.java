@@ -8,14 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice.client.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireOfAlice.client.model.ModelOnbashira;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderOnbashira extends TileEntitySpecialRenderer {
 

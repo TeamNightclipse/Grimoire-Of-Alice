@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class BlockSugar extends BlockGOABase{
+public class BlockSugar extends BlockGOABase {
 
 	public IIcon Bottom;
 	public IIcon Top;
@@ -23,7 +23,7 @@ public class BlockSugar extends BlockGOABase{
 	public IIcon Sugar3;
 	public IIcon Sugar4;
 	public IIcon Sugar5;
-	
+
 	public BlockSugar(Material material) {
 		super(material);
 		setHardness(0.2F);
@@ -33,32 +33,37 @@ public class BlockSugar extends BlockGOABase{
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 
-	public void registerBlockIcons(IIconRegister icon){
+	@Override
+	public void registerBlockIcons(IIconRegister icon) {
 		Bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
 		Top = icon.registerIcon(LibMod.MODID + ":Sugar1");
 		Sugar2 = icon.registerIcon(LibMod.MODID + ":Sugar2");
 		Sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
 		Sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
 		Sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
-		
+
 	}
-	
-	public IIcon getIcon(int side, int meta){
-		if(side == 0){
+
+	@Override
+	public IIcon getIcon(int side, int meta) {
+		if(side == 0) {
 			return Bottom;
-		}else if(side == 1){
-			return Top;
-		} else if(side == 2){
-			return Sugar2;
-		} else if(side == 3){
-			return Sugar3;
-		} else if(side == 4){
-			return Sugar4;
-		} else if(side == 5){
-			return Sugar5;
 		}
-		
+		else if(side == 1) {
+			return Top;
+		}
+		else if(side == 2) {
+			return Sugar2;
+		}
+		else if(side == 3) {
+			return Sugar3;
+		}
+		else if(side == 4) {
+			return Sugar4;
+		}
+		else if(side == 5) { return Sugar5; }
+
 		return null;
-		
+
 	}
 }

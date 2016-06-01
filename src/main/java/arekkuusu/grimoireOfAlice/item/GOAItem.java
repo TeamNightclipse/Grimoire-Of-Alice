@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
-import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
 import arekkuusu.grimoireOfAlice.item.food.ItemShroomSlice;
 import arekkuusu.grimoireOfAlice.item.masks.ItemFoxMask;
 import arekkuusu.grimoireOfAlice.item.masks.ItemFukuNoKamiMask;
@@ -23,7 +22,6 @@ import arekkuusu.grimoireOfAlice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireOfAlice.lib.LibItemName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -32,7 +30,7 @@ import net.minecraftforge.common.util.EnumHelper;
 public class GOAItem {
 
 	//Material
-	public static ArmorMaterial SolidPaper = EnumHelper.addArmorMaterial("SolidPaper", 1000, new int[]{3}, 30);
+	public static ArmorMaterial SolidPaper = EnumHelper.addArmorMaterial("SolidPaper", 1000, new int[] {3}, 30);
 	public static ToolMaterial Goldyron = EnumHelper.addToolMaterial("Goldyron", 3, 2000, 15.0F, 2.0F, 30);
 	public static ToolMaterial WetNoodle = EnumHelper.addToolMaterial("WetNoodle", 3, 2000, 15.0F, 0.2F, 30);
 	//Item
@@ -67,7 +65,7 @@ public class GOAItem {
 	public static Item itemMikoStick;
 	public static Item itemCrestOfYggdrasill;
 	public static Item itemAmenonuhoko;
-	
+
 	public static void preInit() {
 		//@formatter:off
 		//Item

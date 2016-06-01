@@ -10,11 +10,10 @@ package arekkuusu.grimoireOfAlice.item.masks;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.creativetab.CreativeTabs;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,66 +26,63 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
-public class ItemUbaMask extends ItemArmor{
+public class ItemUbaMask extends ItemArmor {
 
 	public ItemUbaMask(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
 		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
 
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "Tsukumogami of Phatos");
-		if(p_77624_2_.experienceLevel <= 90){
-			
-		p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-				+ " -Dig Slowdown");
-		p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-				+ " -Blindness");
-		} else {
-			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-					+ " -Melancholy");
+		p_77624_3_.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Phatos");
+		if(p_77624_2_.experienceLevel <= 90) {
+
+			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Dig Slowdown");
+			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Blindness");
 		}
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ " *Vulnerable to Magic");
+		else {
+			p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE + " -Melancholy");
+		}
+		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Magic");
 
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(player.experienceLevel <= 90){
+		if(player.experienceLevel <= 90) {
 			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.blindness.id, 0, 0));
-		}else{
-			 player.addPotionEffect(new PotionEffect(Potion.weakness.id, 0, 2));
 		}
-	 
+		else {
+			player.addPotionEffect(new PotionEffect(Potion.weakness.id, 0, 2));
+		}
+
 	}
-	
+
+	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type){
-		
-		if(stack.getItem() == GOAItem.itemUbaMask){
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+
+		if(stack.getItem() == GOAItem.itemUbaMask) {
 			return LibMod.MODID + ":textures/models/armor/UbaMask.png";
-		} else{
+		}
+		else {
 			return null;
 		}
-		
+
 	}
 
 	@SideOnly(Side.CLIENT)
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		
-		if (source == source.wither) {
-			return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 1.75D));
-		}
+
+		if(source == DamageSource.wither) { return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 1.75D)); }
 		return new ArmorProperties(0, 0, 0);
-	
+
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -98,13 +94,13 @@ public class ItemUbaMask extends ItemArmor{
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 		stack.damageItem(damage * 2, entity);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {

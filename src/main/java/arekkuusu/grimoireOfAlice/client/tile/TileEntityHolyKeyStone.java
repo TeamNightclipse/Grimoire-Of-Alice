@@ -17,44 +17,46 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityHolyKeyStone extends TileEntity {
 
-	public boolean anyPlayerInRange(){
+	public boolean anyPlayerInRange() {
 		boolean isRain = worldObj.isRaining();
-		if(isRain){
-			EntityPlayer player = this.worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, 3);
-			if(player!=null){
+		if(isRain) {
+			EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, 3);
+			if(player != null) {
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 3));
 				player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 3));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 3));
-				}
+			}
 			else {
 				return false;
-				}
-			return true;
-		} else {
-			return false;
 			}
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
+
+	@Override
 	public void updateEntity() {
-        if (this.anyPlayerInRange()) {
-            if (this.worldObj.isRemote) {
-            	Random random = worldObj.rand;
-        		double d0 = 0.0625D;
-        		for(int l = 0; l < 6; ++l) {
-        			double d1 = xCoord + random.nextFloat();
-        			double d2 = yCoord + random.nextFloat();
-        			double d3 = zCoord + random.nextFloat();
-        			if(l == 0 && !worldObj.getBlock(xCoord, yCoord + 1, zCoord).isOpaqueCube()) d2 = yCoord + 1 + d0;
-        			if(l == 1 && !worldObj.getBlock(xCoord, yCoord - 1, zCoord).isOpaqueCube()) d2 = yCoord + 0 - d0;
-        			if(l == 2 && !worldObj.getBlock(xCoord, yCoord, zCoord + 1).isOpaqueCube()) d3 = zCoord + 1 + d0;
-        			if(l == 3 && !worldObj.getBlock(xCoord, yCoord, zCoord - 1).isOpaqueCube()) d3 = zCoord + 0 - d0;
-        			if(l == 4 && !worldObj.getBlock(xCoord + 1, yCoord, zCoord).isOpaqueCube()) d1 = xCoord + 1 + d0;
-        			if(l == 5 && !worldObj.getBlock(xCoord - 1, yCoord, zCoord).isOpaqueCube()) d1 = xCoord + 0 - d0;
-        			if(d1 < xCoord || d1 > xCoord + 1 || d2 < 0.0D || d2 > yCoord + 1 || d3 < zCoord || d3 > zCoord + 1) {
-        				worldObj.spawnParticle("enchantmenttable", d1, d2, d3, 0.0D, 0.0D, 0.0D);
-        			}
-        		}
-            }
-        }
-    }
+		if(anyPlayerInRange()) {
+			if(worldObj.isRemote) {
+				Random random = worldObj.rand;
+				double d0 = 0.0625D;
+				for(int l = 0; l < 6; ++l) {
+					double d1 = xCoord + random.nextFloat();
+					double d2 = yCoord + random.nextFloat();
+					double d3 = zCoord + random.nextFloat();
+					if(l == 0 && !worldObj.getBlock(xCoord, yCoord + 1, zCoord).isOpaqueCube()) d2 = yCoord + 1 + d0;
+					if(l == 1 && !worldObj.getBlock(xCoord, yCoord - 1, zCoord).isOpaqueCube()) d2 = yCoord + 0 - d0;
+					if(l == 2 && !worldObj.getBlock(xCoord, yCoord, zCoord + 1).isOpaqueCube()) d3 = zCoord + 1 + d0;
+					if(l == 3 && !worldObj.getBlock(xCoord, yCoord, zCoord - 1).isOpaqueCube()) d3 = zCoord + 0 - d0;
+					if(l == 4 && !worldObj.getBlock(xCoord + 1, yCoord, zCoord).isOpaqueCube()) d1 = xCoord + 1 + d0;
+					if(l == 5 && !worldObj.getBlock(xCoord - 1, yCoord, zCoord).isOpaqueCube()) d1 = xCoord + 0 - d0;
+					if(d1 < xCoord || d1 > xCoord + 1 || d2 < 0.0D || d2 > yCoord + 1 || d3 < zCoord || d3 > zCoord + 1) {
+						worldObj.spawnParticle("enchantmenttable", d1, d2, d3, 0.0D, 0.0D, 0.0D);
+					}
+				}
+			}
+		}
+	}
 }

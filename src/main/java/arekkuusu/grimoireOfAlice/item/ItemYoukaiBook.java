@@ -9,20 +9,18 @@
 package arekkuusu.grimoireOfAlice.item;
 
 import arekkuusu.grimoireOfAlice.client.gui.GuiScreenYoukaiBook;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemYoukaiBook extends ItemWritableBook{
-	
+public class ItemYoukaiBook extends ItemWritableBook {
+
 	public ItemYoukaiBook() {
 		super();
 		setMaxStackSize(1);
@@ -31,13 +29,13 @@ public class ItemYoukaiBook extends ItemWritableBook{
 
 	@SideOnly(Side.CLIENT)
 	@Override
-    public ItemStack onItemRightClick(ItemStack item, World p_77659_2_, EntityPlayer p_77659_3_){
-    	if (p_77659_3_.worldObj.isRemote){
-    	Minecraft.getMinecraft().displayGuiScreen(new GuiScreenYoukaiBook(p_77659_3_, item, true));
-    	}
-    	return item;
-    }
-	
+	public ItemStack onItemRightClick(ItemStack item, World p_77659_2_, EntityPlayer p_77659_3_) {
+		if(p_77659_3_.worldObj.isRemote) {
+			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenYoukaiBook(p_77659_3_, item, true));
+		}
+		return item;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {

@@ -40,7 +40,7 @@ public class GOABlock {
 		blockCompactStone = new BlockCompactStone(Material.rock).setBlockName(LibBlockName.COMPACTSTONE);
 		blockHyperconcentratedMagic = new BlockHyperconcentratedMagic(Material.iron).setBlockName(LibBlockName.HYPERMAGIC).setBlockTextureName(LibMod.MODID + ":HyperconcentratedMagic");
 		blockShroom = new BlockShroom(Material.plants).setBlockName(LibBlockName.SHROOM).setBlockTextureName(LibMod.MODID + ":Shroom");
-		
+
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);
 		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.ILLUBLOCK);
 		GameRegistry.registerBlock(blockOnbashira, LibBlockName.ONBASHIRA);

@@ -10,64 +10,58 @@ package arekkuusu.grimoireOfAlice.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 import arekkuusu.grimoireOfAlice.client.model.ModelHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
 
-public class ItemRenderHolyKeyStone implements IItemRenderer{
+public class ItemRenderHolyKeyStone implements IItemRenderer {
 
 	private ModelBase MODEL;
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/HolyKeyStone.png");
-	
-	public ItemRenderHolyKeyStone(){
+
+	public ItemRenderHolyKeyStone() {
 		MODEL = new ModelHolyKeyStone();
 	}
-	
+
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		switch (type) {
-		case EQUIPPED:
-		case EQUIPPED_FIRST_PERSON:
-		case ENTITY:
-		case INVENTORY:
-			return true;
-		default:
-			return false;
+		switch(type) {
+			case EQUIPPED:
+			case EQUIPPED_FIRST_PERSON:
+			case ENTITY:
+			case INVENTORY:
+				return true;
+			default:
+				return false;
 		}
-			}
+	}
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		switch (type) {
-		case ENTITY: {
-			return false;
-		}
-		case EQUIPPED: {
-			return false;
-		}
-		case EQUIPPED_FIRST_PERSON: {
-			return false;
-		}
-		case INVENTORY: {
-			return helper == ItemRendererHelper.INVENTORY_BLOCK;
-		}
-		default: {
-			return false;
-				}
+		switch(type) {
+			case ENTITY: {
+				return false;
+			}
+			case EQUIPPED: {
+				return false;
+			}
+			case EQUIPPED_FIRST_PERSON: {
+				return false;
+			}
+			case INVENTORY: {
+				return helper == ItemRendererHelper.INVENTORY_BLOCK;
+			}
+			default: {
+				return false;
 			}
 		}
-	
+	}
+
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glPushMatrix();
@@ -117,5 +111,5 @@ public class ItemRenderHolyKeyStone implements IItemRenderer{
 		default: break;
 		}*/
 	}
-	
+
 }

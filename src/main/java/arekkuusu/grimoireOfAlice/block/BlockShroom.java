@@ -10,22 +10,12 @@ package arekkuusu.grimoireOfAlice.block;
 
 import static net.minecraftforge.common.EnumPlantType.Cave;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
-import arekkuusu.grimoireOfAlice.item.GOAItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
@@ -35,31 +25,32 @@ public class BlockShroom extends BlockBush {
 
 	public BlockShroom(Material material) {
 		super(material);
-		this.setTickRandomly(true);
+		setTickRandomly(true);
 		setLightLevel(0.5F);
 		setHardness(0.0F);
 		setStepSound(soundTypeGrass);
 		float f = 0.4F;
-        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
+		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
 	}
-	
+
 	@Override
-    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) { 
-        return Cave;
-    }
-	
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
+		return Cave;
+	}
+
 	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
-        this.canBlockStay(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
-    }
-	
+		canBlockStay(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
+	}
+
 	@Override
 	public boolean canBlockStay(World p_149718_1_, int p_149718_2_, int p_149718_3_, int p_149718_4_) {
-        return  canPlaceBlockOn(p_149718_1_.getBlock(p_149718_2_, p_149718_3_ - 1, p_149718_4_));
-    }
-	
+		return canPlaceBlockOn(p_149718_1_.getBlock(p_149718_2_, p_149718_3_ - 1, p_149718_4_));
+	}
+
 	@Override
 	public boolean canPlaceBlockOn(Block p_149854_1_) {
-        return p_149854_1_ == Blocks.hardened_clay || p_149854_1_ == Blocks.stained_hardened_clay || p_149854_1_ == Blocks.stone || p_149854_1_ == Blocks.grass || p_149854_1_ == Blocks.dirt || p_149854_1_ == GOABlock.blockCompactStone;
-    }
+		return p_149854_1_ == Blocks.hardened_clay || p_149854_1_ == Blocks.stained_hardened_clay || p_149854_1_ == Blocks.stone
+				|| p_149854_1_ == Blocks.grass || p_149854_1_ == Blocks.dirt || p_149854_1_ == GOABlock.blockCompactStone;
+	}
 }

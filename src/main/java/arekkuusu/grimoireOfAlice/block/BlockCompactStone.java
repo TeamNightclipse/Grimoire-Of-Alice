@@ -16,11 +16,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
-public class BlockCompactStone extends BlockGOABase{
+public class BlockCompactStone extends BlockGOABase {
 
 	public IIcon BottomTop;
 	public IIcon Sides;
-	
+
 	public BlockCompactStone(Material material) {
 		super(material);
 		setHardness(3.0F);
@@ -28,25 +28,24 @@ public class BlockCompactStone extends BlockGOABase{
 		setHarvestLevel("pickaxe", 2);
 		setResistance(20.0F);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister icon){
+	public void registerBlockIcons(IIconRegister icon) {
 		BottomTop = icon.registerIcon(LibMod.MODID + ":CompactStone0");
 		Sides = icon.registerIcon(LibMod.MODID + ":CompactStone1");
-		
+
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon getIcon(int side, int meta){
-		if(side == 0 || side == 1){
+	public IIcon getIcon(int side, int meta) {
+		if(side == 0 || side == 1) {
 			return BottomTop;
-		}else if(side == 2 || side == 3 || side == 4 || side == 5){
-			return Sides;
 		}
+		else if(side == 2 || side == 3 || side == 4 || side == 5) { return Sides; }
 		return null;
-		
+
 	}
 
 }

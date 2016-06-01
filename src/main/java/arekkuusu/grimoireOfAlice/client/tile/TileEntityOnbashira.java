@@ -10,6 +10,6 @@ package arekkuusu.grimoireOfAlice.client.tile;
 
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityOnbashira extends TileEntity{
+public class TileEntityOnbashira extends TileEntity {
 
 }
