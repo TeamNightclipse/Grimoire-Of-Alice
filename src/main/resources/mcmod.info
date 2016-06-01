@@ -2,15 +2,15 @@
 {
   "modid": "grimoireofalice",
   "name": "Grimoire of Alice",
-  "description": "Addon of THKaguyaMod",
+  "description": "Looks like Yukari left a gap open... Im going in!!",
   "version":"${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Arekkuusu, Katrix"],
-  "credits": "The Forge, FML guys, ZUN, and all Mod autors",
+  "authorList": ["Arekkuusu"],
+  "credits": "The Forge, FML guys, ZUN, Katrix, and all Gensokyo",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": [THKaguyaMod]
+  "dependencies": []
 }
 ]

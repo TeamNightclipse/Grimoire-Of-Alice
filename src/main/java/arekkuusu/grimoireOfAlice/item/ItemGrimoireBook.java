@@ -29,6 +29,7 @@ public class ItemGrimoireBook extends ItemGOABase {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
 	}

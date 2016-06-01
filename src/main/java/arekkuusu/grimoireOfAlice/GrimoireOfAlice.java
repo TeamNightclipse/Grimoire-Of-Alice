@@ -9,12 +9,9 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingExplosiveDoll;
-import arekkuusu.grimoireOfAlice.entity.projectile.EntityThrowingNeedleDoll;
 import arekkuusu.grimoireOfAlice.helper.LogHelper;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
-import arekkuusu.grimoireOfAlice.lib.LibEntityName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -44,35 +41,22 @@ public class GrimoireOfAlice {
 		
 		GOAItem.preInit();
 		GOABlock.preInit();
-
-		//All Entity Items Go Here
-		int modEntityID = 0;
-
-		EntityRegistry.registerModEntity(EntityThrowingExplosiveDoll.class, LibEntityName.THROWING_EXPLOSIVE_DOLL, ++modEntityID, this, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityThrowingNeedleDoll.class, LibEntityName.THROWING_NEEDLE_DOLL, ++modEntityID, this, 64, 10, true);
 		
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		
+		proxy.init(event);
+		
 		proxy.registerRenders();
 
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
-		VanillaCrafting.throwEntity();
 		
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
-		THKaguyaModDetected = Loader.isModLoaded(LibMod.KAGUYAMOD);
-		
-		if(THKaguyaModDetected) {
-			
-			LogHelper.info("THKaguyaMod Detected");
-			
-		}
 	}
 }

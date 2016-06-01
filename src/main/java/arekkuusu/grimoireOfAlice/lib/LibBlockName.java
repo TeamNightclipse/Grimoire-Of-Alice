@@ -11,5 +11,13 @@ package arekkuusu.grimoireOfAlice.lib;
 public class LibBlockName {
 
 	public static final String ILLUBLOCK = "HolyKeyStone";
+	public static final String SUGARBLOCK = "SugarBlock";
+	public static final String ROPEBLOCK = "RopeBlock";
+	public static final String PAPERBLOCK = "PaperBlock";
+	public static final String ONBASHIRA = "Onbashira";
+	public static final String HOLYSTONE = "HolyStone";
+	public static final String COMPACTSTONE = "CompactStone";
+	public static final String HYPERMAGIC = "HyperconcentratedMagic";
+	public static final String SHROOM = "Shroom";
 
 }

@@ -1,11 +1,13 @@
 item.EnchantedBook.name=Enchanted Book
 item.GrimoireBook.name=Grimoire Book
 item.VolatileString.name=Volatile String
+item.SoldifiedPaper.name=Soldified Paper
+item.GloriousNipponSteel.name=Glorious Nippon Steel
 item.ShimenawaRope.name=Shimenawa Rope
-item.ThrowingExplosiveDoll.name=Explosive Doll
-item.ThrowingNeedleDoll.name=Needle Doll
-item.AlicesDoll.name=Alice's Doll
 item.YoukaiBook.name=Youkai Book
+item.Mask.name=Mask
+
+item.ShroomSlice.name=Shroom Slice
 
 item.FoxMask.name=Fox Mask
 item.RaidenMask.name=Raiden Mask
@@ -17,9 +19,25 @@ item.HannyaMask.name=Hannya Mask
 item.KoomoteMask.name=Ko-omote Mask
 item.MaskOfHope.name=Mask Of Hope
 item.KokorosMasks.name=Kokoro's Masks
+item.PrimordialShield.name=Primordial Shield
 
 item.MochiHammer.name=Mochi Hammer
 item.MomijisScimitarSword.name=Momiji's Scimitar Sword
+item.Laevatein.name=Laevatein
+item.NazrinStick.name=Nazrin's Stick
+item.EllyScythe.name=Elly's Scythe
+item.MikoStick.name=Miko's Stick
+item.CrestOfYggdrasill.name=Crest Of Yggdrasill
+item.Amenonuhoko.name=Amenonuhoko
 
+tile.RopeBlock.name=Enchanted Rope
+tile.PaperBlock.name=Enchanted Paper
+tile.SugarBlock.name=Sugar Block
+tile.CompactStone.name=Compact Stone
+tile.HyperconcentratedMagic.name=Hyperconcentrated Magic
 tile.HolyKeyStone.name=Holy KeyStone
+tile.Onbashira.name=Onbashira
+tile.HolyStone.name=Holy Stone
+
+tile.Shroom.name=Shroom
 
