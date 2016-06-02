@@ -8,31 +8,20 @@
  */
 package arekkuusu.grimoireOfAlice.client.tile;
 
+import java.util.Optional;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityHolyStone extends TileEntity {
-
-	private boolean anyPlayerInRange() {
-		boolean isRain = worldObj.isRaining();
-		if(isRain) {
-			EntityPlayer player = worldObj.getClosestPlayer(xCoord, yCoord, zCoord, 10);
-			if(player != null) {
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 1));
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 50, 1));
-				return true;
-
-			}
-		}
-
-		return false;
-	}
+public class TileEntityHolyStone extends TileEntityRangeEffect {
 
 	@Override
 	public void updateEntity() {
-		if(anyPlayerInRange()) {
+		Optional<EntityPlayer> optPlayer = getPlayerInRange(10, true);
+		if(optPlayer.isPresent()) {
+			addPlayerEffect(optPlayer.get());
+
 			if(worldObj.isRemote) {
 				double yus1 = xCoord + worldObj.rand.nextFloat();
 				double yus3 = yCoord + worldObj.rand.nextFloat();
@@ -41,5 +30,11 @@ public class TileEntityHolyStone extends TileEntity {
 				worldObj.spawnParticle("flame", yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
 			}
 		}
+	}
+
+	@Override
+	protected void addPlayerEffect(EntityPlayer player) {
+		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 50, 1));
+		player.addPotionEffect(new PotionEffect(Potion.jump.id, 50, 1));
 	}
 }
