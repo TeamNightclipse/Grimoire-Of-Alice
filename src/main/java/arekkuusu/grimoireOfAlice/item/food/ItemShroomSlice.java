@@ -31,7 +31,6 @@ public class ItemShroomSlice extends ItemFood {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
@@ -42,6 +41,7 @@ public class ItemShroomSlice extends ItemFood {
 		return stack.getItemDamage() > 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -69,6 +69,7 @@ public class ItemShroomSlice extends ItemFood {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List list) {
 		list.add(new ItemStack(item, 1, 0));

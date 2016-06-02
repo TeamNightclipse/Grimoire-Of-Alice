@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall;
+import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall2;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,23 +33,10 @@ import net.minecraft.world.World;
 public class ItemEnchantedBook extends ItemGOABase {
 
 	ItemEnchantedBook() {
-		super();
+		super(EnumRarity.epic, true);
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabCombat);
 		setMaxDamage(50);
-	}
-
-	public static boolean validBookTagContents(NBTTagCompound p_77828_0_) {
-		if(!ItemWritableBook.func_150930_a(p_77828_0_)) {
-			return false;
-		}
-		else if(!p_77828_0_.hasKey("title", 8)) {
-			return false;
-		}
-		else {
-			String s = p_77828_0_.getString("title");
-			return (s != null && s.length() <= 16) && p_77828_0_.hasKey("author", 8);
-		}
 	}
 
 	@Override
@@ -64,6 +51,7 @@ public class ItemEnchantedBook extends ItemGOABase {
 		return super.getItemStackDisplayName(stack);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -85,7 +73,7 @@ public class ItemEnchantedBook extends ItemGOABase {
 				world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "mob.ghast.scream", 1.0F,
 						itemRand.nextFloat() * 0.4F + 0.8F);
 				Vec3 look = player.getLookVec();
-				EntityFireBall fireball2 = new EntityFireBall(world, player, 1, 1, 1);
+				EntityFireBall2 fireball2 = new EntityFireBall2(world, player, 1, 1, 1);
 				fireball2.setPosition(player.posX + look.xCoord * 5, player.posY + look.yCoord * 5, player.posZ + look.zCoord * 5);
 				fireball2.accelerationX = look.xCoord * 0.1;
 				fireball2.accelerationY = look.yCoord * 0.1;
@@ -101,17 +89,16 @@ public class ItemEnchantedBook extends ItemGOABase {
 					player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 25, 0));
 					player.setItemInUse(stack, getMaxItemUseDuration(stack));
 				}
-				else if(player.experienceLevel > 60 && player.experienceLevel < 80) {
-					if(player.experienceLevel < 70) {
-						player.setFire(120);
-					}
-					else {
-						player.addExperienceLevel(-1);
-						player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 60, 4));
-					}
-					player.setItemInUse(stack, getMaxItemUseDuration(stack));
-					return stack;
+			}
+			else if(player.experienceLevel > 60 && player.experienceLevel < 80) {
+				if(player.experienceLevel < 70) {
+					player.setFire(120);
 				}
+				else {
+					player.addExperienceLevel(-1);
+					player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 60, 4));
+				}
+				player.setItemInUse(stack, getMaxItemUseDuration(stack));
 			}
 		}
 		return stack;
@@ -162,7 +149,7 @@ public class ItemEnchantedBook extends ItemGOABase {
 				if(success) {
 					world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "mob.blaze.death", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 				}
-				return true;
+				return success;
 			}
 		}
 		else if(player.experienceLevel > 30 && player.experienceLevel < 40) {
@@ -173,22 +160,5 @@ public class ItemEnchantedBook extends ItemGOABase {
 		else {
 			return false;
 		}
-	}
-
-	@Override
-	public boolean getShareTag() {
-		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
 	}
 }

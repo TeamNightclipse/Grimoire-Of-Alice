@@ -44,15 +44,6 @@ public class ItemRenderHolyStone implements IItemRenderer {
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 		switch(type) {
-			case ENTITY: {
-				return false;
-			}
-			case EQUIPPED: {
-				return false;
-			}
-			case EQUIPPED_FIRST_PERSON: {
-				return false;
-			}
 			case INVENTORY: {
 				return helper == ItemRendererHelper.INVENTORY_BLOCK;
 			}

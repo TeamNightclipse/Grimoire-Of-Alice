@@ -22,15 +22,58 @@ public class VanillaCrafting {
 
 	public static void booksAndStrings() {
 
-		addOreDictRecipe(new ItemStack(GOAItem.itemVolatileString, 16), "ISG", "SAS", "GSI", 'S', Items.string, 'G', "dustGlowstone", 'I', Items.gunpowder, 'A', Items.firework_charge);
-		addOreDictRecipe(new ItemStack(GOAItem.itemShimenawaRope), "HHH", "STS", "STS", 'S', GOAItem.itemVolatileString, 'H', GOABlock.blockRope, 'T', GOAItem.itemSoldifiedPaper);
-		addOreDictRecipe(new ItemStack(GOAItem.itemSoldifiedPaper, 4), "STS", "TAT", "STS", 'S', Items.paper, 'A', Items.coal, 'T', "stickWood");
-		addOreDictRecipe(new ItemStack(GOAItem.itemMomijisScimitarSword), "SSS", "SA ", "SA ", 'S', GOAItem.itemGloriousNipponSteel, 'A', "stickWood");
-		addOreDictRecipe(new ItemStack(GOAItem.itemMochiHammer), "SSG", " A ", " A ", 'G', GOAItem.itemGloriousNipponSteel, 'A', "stickWood", 'S', "ingotBrick");
-		addOreDictRecipe(new ItemStack(GOABlock.blockSugar), "SSS", "SSS", "SSS", 'S', Items.sugar);
-		addOreDictRecipe(new ItemStack(GOABlock.blockRope, 8), "ACA", "CSC", "ACA", 'S', "logWood", 'A', GOAItem.itemVolatileString, 'C', Items.coal);
-		addOreDictRecipe(new ItemStack(GOABlock.blockPaper, 8), "AAA", "ASA", "AAA", 'A', Items.paper, 'S', GOAItem.itemSoldifiedPaper);
-		addOreDictRecipe(new ItemStack(GOABlock.blockCompactStone), "AAA", "ASA", "AAA", 'A', "stone", 'S', GOAItem.itemVolatileString);
+		//@formatter:off
+		shaped().grid("ISG", "SAS", "GSI")
+				.where('S').mapsTo(Items.string)
+				.where('G').mapsTo("dustGlowstone")
+				.where('I').mapsTo(Items.gunpowder)
+				.where('A').mapsTo(Items.firework_charge)
+				.outputs(new ItemStack(GOAItem.itemVolatileString, 16)).build();
+
+		shaped().grid("HHH", "STS", "STS")
+				.where('S').mapsTo(GOAItem.itemVolatileString)
+				.where('H').mapsTo(GOABlock.blockRope)
+				.where('T').mapsTo(GOAItem.itemSoldifiedPaper)
+				.outputs(GOAItem.itemShimenawaRope).build();
+
+		shaped().grid("STS", "TAT", "STS")
+				.where('S').mapsTo(Items.paper)
+				.where('A').mapsTo(Items.coal)
+				.where('T').mapsTo("stickWood")
+				.outputs(new ItemStack(GOAItem.itemSoldifiedPaper, 4)).build();
+
+		shaped().grid("SSS", "SA ", "SA ")
+				.where('S').mapsTo(GOAItem.itemGloriousNipponSteel)
+				.where('A').mapsTo("stickWood")
+				.mirrored(true)
+				.outputs(GOAItem.itemMomijisScimitarSword).build();
+
+		shaped().grid("SSG", " A ", " A ")
+				.where('G').mapsTo(GOAItem.itemGloriousNipponSteel)
+				.where('A').mapsTo("stickWood")
+				.where('S').mapsTo("ingotBrick")
+				.outputs(GOAItem.itemMochiHammer).build();
+
+		shaped().grid("SSS", "SSS", "SSS")
+				.where('S').mapsTo(Items.sugar)
+				.outputs(GOABlock.blockSugar).build();
+
+		shaped().grid("ACA", "CSC", "ACA")
+				.where('S').mapsTo("logWood")
+				.where('A').mapsTo(GOAItem.itemVolatileString)
+				.where('C').mapsTo(Items.coal)
+				.outputs(new ItemStack(GOABlock.blockRope, 8)).build();
+
+		shaped().grid("AAA", "ASA", "AAA")
+				.where('A').mapsTo(Items.paper)
+				.where('S').mapsTo(GOAItem.itemSoldifiedPaper)
+				.outputs(new ItemStack(GOABlock.blockPaper, 8)).build();
+
+		shaped().grid("AAA", "ASA", "AAA")
+				.where('A').mapsTo("stone")
+				.where('S').mapsTo(GOAItem.itemVolatileString)
+				.outputs(GOABlock.blockCompactStone).build();
+
 		addOreDictRecipe(new ItemStack(GOABlock.blockHolyStone), "AOA", "OSO", "AOA", 'A', GOABlock.blockCompactStone, 'S', GOAItem.itemShimenawaRope, 'O', GOABlock.blockHyperconcentratedMagic);
 		addOreDictRecipe(new ItemStack(GOABlock.blockOnbashira), "AHA", "HSH", "AHA", 'A', "logWood", 'H', GOAItem.itemVolatileString, 'S', GOABlock.blockRope);
 		addOreDictRecipe(new ItemStack(GOABlock.blockHyperconcentratedMagic), "AHA", "HSH", "AHA", 'A', GOAItem.itemVolatileString, 'H', GOABlock.blockCompactStone, 'S', GOABlock.blockShroom);
@@ -42,28 +85,65 @@ public class VanillaCrafting {
 		addOreDictRecipe(new ItemStack(GOAItem.itemAmenonuhoko), "STS", "HUG", "DUD", 'U', GOABlock.blockHyperconcentratedMagic, 'H', "blockEmerald", 'S', GOABlock.blockCompactStone, 'T', Blocks.beacon, 'G', Blocks.diamond_block, 'D', Items.nether_star);
 		addOreDictRecipe(new ItemStack(GOAItem.itemPrimordialShield), "SQS", "QTQ", "OUO", 'Q', GOABlock.blockHyperconcentratedMagic, 'S', Items.nether_star, 'U', GOABlock.blockCompactStone, 'T', Blocks.beacon, 'O', GOABlock.blockHolyStone);
 
-		addShapelessOreDictRecipe(new ItemStack(Items.sugar, 9), new ItemStack(GOABlock.blockSugar));
-		addShapelessOreDictRecipe(new ItemStack(GOAItem.itemShroomSlice, 1, 0), GOABlock.blockShroom);
-		addShapelessOreDictRecipe(new ItemStack(GOAItem.itemShroomSlice, 1, 1), GOAItem.itemShroomSlice, Items.fermented_spider_eye, Items.poisonous_potato);
-		addShapelessOreDictRecipe(new ItemStack(GOAItem.itemYoukaiBook), Items.leather, Items.book, GOAItem.itemVolatileString, Items.feather);
+		shapeless()
+				.add(GOABlock.blockSugar)
+				.outputs(new ItemStack(Items.sugar, 9)).build();
+
+		shapeless()
+				.add(GOABlock.blockShroom)
+				.outputs(new ItemStack(GOAItem.itemShroomSlice, 1, 0)).build();
+
+		shapeless()
+				.add(GOAItem.itemShroomSlice)
+				.add(Items.fermented_spider_eye)
+				.add(Items.poisonous_potato)
+				.outputs(new ItemStack(GOAItem.itemShroomSlice, 1, 1)).build();
+
+		shapeless()
+				.add(Items.leather)
+				.add(Items.book)
+				.add(GOAItem.itemVolatileString)
+				.add(Items.feather)
+				.outputs(GOAItem.itemYoukaiBook).build();
+
+		//@formatter:on
 
 		GameRegistry.addSmelting(Items.iron_sword, new ItemStack(GOAItem.itemGloriousNipponSteel), 0);
 	}
 
 	public static void masks() {
 
-		addShapelessOreDictRecipe(new ItemStack(GOAItem.itemKokorosMasks, 1), GOAItem.itemFoxMask, GOAItem.itemFukuNoKamiMask, GOAItem.itemHannyaMask, GOAItem.itemHyottokoMask, GOAItem.itemKoomoteMask, GOAItem.itemMaskOfHope, GOAItem.itemMonkeyMask, GOAItem.itemRaidenMask, GOAItem.itemUbaMask);
+		//@formatter:off
 
-		addOreDictRecipe(new ItemStack(GOAItem.itemMask, 1), "SSS", "GAG", "SSS", 'S', GOAItem.itemSoldifiedPaper, 'G', GOAItem.itemVolatileString, 'A', Items.clay_ball);
-		addOreDictRecipe(new ItemStack(GOAItem.itemFoxMask, 1), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.sugar);
-		addOreDictRecipe(new ItemStack(GOAItem.itemFukuNoKamiMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.blaze_powder);
-		addOreDictRecipe(new ItemStack(GOAItem.itemHannyaMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.poisonous_potato);
-		addOreDictRecipe(new ItemStack(GOAItem.itemHyottokoMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.ghast_tear);
-		addOreDictRecipe(new ItemStack(GOAItem.itemKoomoteMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.rotten_flesh);
-		addOreDictRecipe(new ItemStack(GOAItem.itemMaskOfHope), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.fermented_spider_eye);
-		addOreDictRecipe(new ItemStack(GOAItem.itemMonkeyMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.mushroom_stew);
-		addOreDictRecipe(new ItemStack(GOAItem.itemRaidenMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', "slimeball");
-		addOreDictRecipe(new ItemStack(GOAItem.itemUbaMask), "IAR", "SGS", " S ", 'S', GOAItem.itemVolatileString, 'G', GOAItem.itemMask, 'A', Items.nether_star, 'I', new ItemStack(Items.potionitem, 1, 16), 'R', Items.nether_wart);
+		shapeless()
+				.add(GOAItem.itemFoxMask)
+				.add(GOAItem.itemFukuNoKamiMask)
+				.add(GOAItem.itemHannyaMask)
+				.add(GOAItem.itemHyottokoMask)
+				.add(GOAItem.itemKoomoteMask)
+				.add(GOAItem.itemMaskOfHope)
+				.add(GOAItem.itemMonkeyMask)
+				.add(GOAItem.itemRaidenMask)
+				.add(GOAItem.itemUbaMask)
+				.outputs(GOAItem.itemKokorosMasks).build();
+
+		shaped().grid("SSS", "GAG", "SSS")
+				.where('S').mapsTo(GOAItem.itemSoldifiedPaper)
+				.where('G').mapsTo(GOAItem.itemVolatileString)
+				.where('A').mapsTo(Items.clay_ball)
+				.outputs(GOAItem.itemMask).build();
+
+		mask().where('R').mapsTo(Items.sugar).outputs(GOAItem.itemFoxMask).build();
+		mask().where('R').mapsTo(Items.blaze_powder).outputs(GOAItem.itemFukuNoKamiMask).build();
+		mask().where('R').mapsTo(Items.poisonous_potato).outputs(GOAItem.itemHannyaMask).build();
+		mask().where('R').mapsTo(Items.ghast_tear).outputs(GOAItem.itemHyottokoMask).build();
+		mask().where('R').mapsTo(Items.rotten_flesh).outputs(GOAItem.itemKoomoteMask).build();
+		mask().where('R').mapsTo(Items.fermented_spider_eye).outputs(GOAItem.itemMaskOfHope).build();
+		mask().where('R').mapsTo(Items.mushroom_stew).outputs(GOAItem.itemMonkeyMask).build();
+		mask().where('R').mapsTo("slimeball").outputs(GOAItem.itemRaidenMask).build();
+		mask().where('R').mapsTo(Items.nether_wart).outputs(GOAItem.itemUbaMask).build();
+
+		//@formatter:on
 	}
 
 	private static void addOreDictRecipe(ItemStack output, Object... recipe) {
@@ -72,5 +152,21 @@ public class VanillaCrafting {
 
 	private static void addShapelessOreDictRecipe(ItemStack output, Object... recipe) {
 		CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(output, recipe));
+	}
+
+	private static ShapedRecipe shaped() {
+		return new ShapedRecipe();
+	}
+
+	private static ShapelessRecipe shapeless() {
+		return new ShapelessRecipe();
+	}
+
+	private static ShapedRecipe mask() {
+		return new ShapedRecipe().grid("IAR", "SGS", " S ")
+				.where('S').mapsTo(GOAItem.itemVolatileString)
+				.where('G').mapsTo(GOAItem.itemMask)
+				.where('A').mapsTo(Items.nether_star)
+				.where('I').mapsTo(new ItemStack(Items.potionitem, 1, 16));
 	}
 }

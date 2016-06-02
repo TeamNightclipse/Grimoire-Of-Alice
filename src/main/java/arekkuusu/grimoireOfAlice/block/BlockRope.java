@@ -32,7 +32,7 @@ public class BlockRope extends BlockGOABase {
 	@SideOnly(Side.CLIENT)
 	private IIcon Back;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sides;
+	private IIcon sides;
 
 	BlockRope(Material material) {
 		super(material);
@@ -56,8 +56,7 @@ public class BlockRope extends BlockGOABase {
 		Top = icon.registerIcon(LibMod.MODID + ":Rope1");
 		Front = icon.registerIcon(LibMod.MODID + ":Rope2");
 		Back = icon.registerIcon(LibMod.MODID + ":Rope3");
-		Sides = icon.registerIcon(LibMod.MODID + ":Rope4");
-
+		sides = icon.registerIcon(LibMod.MODID + ":Rope4");
 	}
 
 	@Override
@@ -66,22 +65,13 @@ public class BlockRope extends BlockGOABase {
 		if(meta > 5) {
 			meta = 0;
 		}
+
 		if(side == 0) {
 			return Bottom;
 		}
 		else if(side == 1) {
 			return Top;
 		}
-		else if(side == 2) {
-			return meta == 0 ? Front : meta == 1 ? Sides : meta == 2 ? Back : Sides;
-		}
-		else if(side == 3) {
-			return meta == 0 ? Back : meta == 1 ? Sides : meta == 2 ? Front : Sides;
-		}
-		else if(side == 4) {
-			return meta == 0 ? Sides : meta == 1 ? Back : meta == 2 ? Sides : Front;
-		}
-		else if(side == 5) { return meta == 0 ? Sides : meta == 1 ? Front : meta == 2 ? Sides : Back; }
-		return null;
+		else return meta == 0 ? sides : meta == 1 ? Front : meta == 2 ? sides : Back;
 	}
 }

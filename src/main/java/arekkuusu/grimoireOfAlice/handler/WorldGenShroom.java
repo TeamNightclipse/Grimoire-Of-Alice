@@ -25,9 +25,9 @@ public class WorldGenShroom {
 				int z = event.chunkZ + event.rand.nextInt(16) + 8;
 				int y = event.rand.nextInt(26) + 4;
 
-				int Lolis = event.rand.nextInt(16);
+				int lolis = event.rand.nextInt(16);
 				if(event.world.isAirBlock(x, y, z) && GOABlock.blockShroom.canBlockStay(event.world, x, y, z))
-					event.world.setBlock(x, y, z, GOABlock.blockShroom, Lolis, 2);
+					event.world.setBlock(x, y, z, GOABlock.blockShroom, lolis, 2);
 			}
 		}
 	}

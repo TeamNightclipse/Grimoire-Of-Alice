@@ -38,7 +38,8 @@ public class GOABlock {
 		blockRope = new BlockRope(Material.wood).setBlockName(LibBlockName.ROPEBLOCK);
 		blockPaper = new BlockPaper(Material.carpet).setBlockName(LibBlockName.PAPERBLOCK);
 		blockCompactStone = new BlockCompactStone(Material.rock).setBlockName(LibBlockName.COMPACTSTONE);
-		blockHyperconcentratedMagic = new BlockHyperconcentratedMagic(Material.iron).setBlockName(LibBlockName.HYPERMAGIC).setBlockTextureName(LibMod.MODID + ":HyperconcentratedMagic");
+		blockHyperconcentratedMagic = new BlockGOABase(Material.iron).setBlockName(LibBlockName.HYPERMAGIC).setBlockTextureName(LibMod.MODID + ":HyperconcentratedMagic").setHardness(0.5F).setStepSound(Block.soundTypeSnow).setResistance(5.0F);
+		blockHyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
 		blockShroom = new BlockShroom(Material.plants).setBlockName(LibBlockName.SHROOM).setBlockTextureName(LibMod.MODID + ":Shroom");
 
 		GameRegistry.registerBlock(blockHolyKeyStone, LibBlockName.ILLUBLOCK);

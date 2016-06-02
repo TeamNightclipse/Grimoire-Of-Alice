@@ -27,6 +27,7 @@ public class ItemMomijisScimitarSword extends ItemSword {
 		super(p_i45356_1_);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -35,13 +36,11 @@ public class ItemMomijisScimitarSword extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		EntityPlayer player = (EntityPlayer)entity;
-		ItemStack equiped = player.getCurrentEquippedItem();
-		if(equiped == stack) {
+		ItemStack equipped = player.getCurrentEquippedItem();
+		if(equipped == stack) {
 			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 0));
 		}
 	}

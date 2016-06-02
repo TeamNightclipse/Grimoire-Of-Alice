@@ -21,7 +21,7 @@ public class BlockCompactStone extends BlockGOABase {
 	@SideOnly(Side.CLIENT)
 	private IIcon BottomTop;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sides;
+	private IIcon sides;
 
 	BlockCompactStone(Material material) {
 		super(material);
@@ -35,8 +35,7 @@ public class BlockCompactStone extends BlockGOABase {
 	@Override
 	public void registerBlockIcons(IIconRegister icon) {
 		BottomTop = icon.registerIcon(LibMod.MODID + ":CompactStone0");
-		Sides = icon.registerIcon(LibMod.MODID + ":CompactStone1");
-
+		sides = icon.registerIcon(LibMod.MODID + ":CompactStone1");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -45,7 +44,6 @@ public class BlockCompactStone extends BlockGOABase {
 		if(side == 0 || side == 1) {
 			return BottomTop;
 		}
-		else if(side == 2 || side == 3 || side == 4 || side == 5) { return Sides; }
-		return null;
+		else return sides;
 	}
 }

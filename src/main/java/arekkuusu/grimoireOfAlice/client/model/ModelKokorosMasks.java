@@ -86,18 +86,18 @@ public class ModelKokorosMasks extends ModelBiped {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		Mask1.render(f5);
-		Mask2.render(f5);
-		Mask3.render(f5);
-		Maks4.render(f5);
-		Mask5.render(f5);
-		Mask6.render(f5);
-		Mask7.render(f5);
-		Mask8.render(f5);
-		Mask9.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		super.render(entity, limbSwing, limbSwingAmount, age, headYaw, headPitch, scale);
+		setRotationAngles(limbSwing, limbSwingAmount, age, headYaw, headPitch, scale, entity);
+		Mask1.render(scale);
+		Mask2.render(scale);
+		Mask3.render(scale);
+		Maks4.render(scale);
+		Mask5.render(scale);
+		Mask6.render(scale);
+		Mask7.render(scale);
+		Mask8.render(scale);
+		Mask9.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

@@ -288,51 +288,47 @@ public class ModelOnbashira extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		renderModel(f5);
-	}
-
-	public void renderModel(float f5) {
-		SideA.render(f5);
-		SideB.render(f5);
-		SideC.render(f5);
-		SideD.render(f5);
-		SideE.render(f5);
-		SideF.render(f5);
-		SideG.render(f5);
-		SideH.render(f5);
-		Top.render(f5);
-		Top0.render(f5);
-		Top1.render(f5);
-		Top2.render(f5);
-		Top3.render(f5);
-		Top4.render(f5);
-		Top5.render(f5);
-		Top6.render(f5);
-		Top7.render(f5);
-		Bottom7.render(f5);
-		Bottom6.render(f5);
-		Bottom5.render(f5);
-		Bottom4.render(f5);
-		Bottom3.render(f5);
-		Bottom2.render(f5);
-		Bottom1.render(f5);
-		Bottom0.render(f5);
-		Bottom.render(f5);
-		Side0.render(f5);
-		Side1.render(f5);
-		Side2.render(f5);
-		Side3.render(f5);
-		Side4.render(f5);
-		Side5.render(f5);
-		Side6.render(f5);
-		Side7.render(f5);
-		Paper0.render(f5);
-		Paper1.render(f5);
-		Paper2.render(f5);
-		Paper3.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		super.render(entity, limbSwing, limbSwingAmount, age, headYaw, headPitch, scale);
+		setRotationAngles(limbSwing, limbSwingAmount, age, headYaw, headPitch, scale, entity);
+		SideA.render(scale);
+		SideB.render(scale);
+		SideC.render(scale);
+		SideD.render(scale);
+		SideE.render(scale);
+		SideF.render(scale);
+		SideG.render(scale);
+		SideH.render(scale);
+		Top.render(scale);
+		Top0.render(scale);
+		Top1.render(scale);
+		Top2.render(scale);
+		Top3.render(scale);
+		Top4.render(scale);
+		Top5.render(scale);
+		Top6.render(scale);
+		Top7.render(scale);
+		Bottom7.render(scale);
+		Bottom6.render(scale);
+		Bottom5.render(scale);
+		Bottom4.render(scale);
+		Bottom3.render(scale);
+		Bottom2.render(scale);
+		Bottom1.render(scale);
+		Bottom0.render(scale);
+		Bottom.render(scale);
+		Side0.render(scale);
+		Side1.render(scale);
+		Side2.render(scale);
+		Side3.render(scale);
+		Side4.render(scale);
+		Side5.render(scale);
+		Side6.render(scale);
+		Side7.render(scale);
+		Paper0.render(scale);
+		Paper1.render(scale);
+		Paper2.render(scale);
+		Paper3.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

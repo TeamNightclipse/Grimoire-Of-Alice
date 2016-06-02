@@ -68,8 +68,6 @@ public class ItemRenderHolyKeyStone implements IItemRenderer {
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		float s = 1F;
-		GL11.glScalef(s, s, s);
 		GL11.glRotatef(-5F, 1F, 0F, 0F);
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityHolyKeyStone(), 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glDisable(GL11.GL_BLEND);

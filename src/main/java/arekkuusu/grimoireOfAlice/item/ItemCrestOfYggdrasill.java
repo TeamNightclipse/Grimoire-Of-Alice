@@ -30,6 +30,7 @@ public class ItemCrestOfYggdrasill extends ItemSword {
 		super(material);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -40,7 +41,6 @@ public class ItemCrestOfYggdrasill extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.epic;
 	}

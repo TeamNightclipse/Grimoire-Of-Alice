@@ -14,6 +14,8 @@ import arekkuusu.grimoireOfAlice.client.model.ModelPrimordialShield;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -41,27 +43,34 @@ public class ItemRenderPrimordialShield implements IItemRenderer {
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		switch(type) {
-			case EQUIPPED_FIRST_PERSON: {
-				return false;
-			}
-			default: {
-				return false;
-			}
-		}
+		return false;
 	}
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch(type) {
-			case EQUIPPED: {}
+			case EQUIPPED:
+				break;
 			case EQUIPPED_FIRST_PERSON: {
+				Entity entity = (Entity)data[1];
+				float limbSwing = 0F;
+				float limbSwingAmount = 0F;
+				float age = 0F;
+
+				if(entity instanceof EntityLivingBase) {
+					EntityLivingBase livingBase = (EntityLivingBase)entity;
+					limbSwing = livingBase.limbSwing;
+					limbSwingAmount = livingBase.limbSwingAmount;
+					age = livingBase.getAge();
+				}
+
 				GL11.glPushMatrix();
 				Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-				GL11.glRotatef(60, 0F, 0f, 1f);
+				GL11.glRotatef(60F, 0F, 0F, 1F);
 				GL11.glTranslatef(0.5F, -0.5F, -0.2F);
-				MODEL.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+				MODEL.render(entity, limbSwing, limbSwingAmount, age, entity.getRotationYawHead(), entity.rotationPitch, 0.0625F);
 				GL11.glPopMatrix();
+				break;
 			}
 			default:
 				break;

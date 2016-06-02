@@ -14,18 +14,15 @@ import arekkuusu.grimoireOfAlice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 public class RenderKokorosMask implements IItemRenderer {
 
-	private ModelKokorosMasks MODEL;
+	private ModelKokorosMasks MODEL = new ModelKokorosMasks();
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/KokorosMasks_layer_1.png");
-
-	public RenderKokorosMask() {
-		MODEL = new ModelKokorosMasks();
-	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -41,31 +38,35 @@ public class RenderKokorosMask implements IItemRenderer {
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		switch(type) {
-			case EQUIPPED_FIRST_PERSON: {
-				return false;
-			}
-			default: {
-				return false;
-			}
-		}
+		return false;
 	}
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch(type) {
 			case EQUIPPED: {
+				Entity entity = (Entity)data[1];
+				float limbSwing = 0F;
+				float limbSwingAmount = 0F;
+				float age = 0F;
+
+				if(entity instanceof EntityLivingBase) {
+					EntityLivingBase livingBase = (EntityLivingBase)entity;
+					limbSwing = livingBase.limbSwing;
+					limbSwingAmount = livingBase.limbSwingAmount;
+					age = livingBase.getAge();
+				}
+
 				GL11.glPushMatrix();
 				Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
 				GL11.glRotatef(60, 0F, 0f, 1f);
 				GL11.glTranslatef(0.5F, -0.5F, -0.2F);
-				MODEL.render((Entity)data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+				MODEL.render(entity, limbSwing, limbSwingAmount, age, entity.getRotationYawHead(), entity.rotationPitch, 0.0625F);
 				GL11.glPopMatrix();
+				break;
 			}
 			default:
 				break;
 		}
-
 	}
-
 }

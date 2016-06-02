@@ -22,13 +22,13 @@ public class RenderHolyStone extends TileEntitySpecialRenderer {
 	private static final ModelHolyStone MODEL = new ModelHolyStone();
 
 	@Override
-	public void renderTileEntityAt(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_) {
+	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float p_147500_8_) {
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)p_147500_2_ + 0.5F, (float)p_147500_4_ + 1.5F, (float)p_147500_6_ + 0.5F);
+		GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
 		GL11.glRotatef(180, 0F, 0f, 1f);
 		bindTexture(TEXTURE);
 		GL11.glPushMatrix();
-		MODEL.renderModel(0.0625F);
+		MODEL.render(null, 0F, 0F, 0F, 0F, 0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}

@@ -90,6 +90,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		++updateCount;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui() {
 		buttonList.clear();
@@ -341,14 +342,14 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			fontRendererObj.drawString(s1, k + 36 + (116 - l) / 2, b0 + 16 + 16, 0);
 			int i1 = fontRendererObj.getStringWidth(s);
 			fontRendererObj.drawString(s, k + 36 + (116 - i1) / 2, b0 + 48, 0);
-			String s2 = I18n.format("book.byAuthor", new Object[] {editingPlayer.getCommandSenderName()});
+			String s2 = I18n.format("book.byAuthor", editingPlayer.getCommandSenderName());
 			int j1 = fontRendererObj.getStringWidth(s2);
 			fontRendererObj.drawString(EnumChatFormatting.DARK_RED + s2, k + 36 + (116 - j1) / 2, b0 + 48 + 10, 0);
 			String s3 = I18n.format("book.finalizeWarning");
 			fontRendererObj.drawSplitString(s3, k + 36, b0 + 80, 116, 0);
 		}
 		else {
-			s = I18n.format("book.pageIndicator", new Object[] {Integer.valueOf(currPage + 1), Integer.valueOf(bookTotalPages)});
+			s = I18n.format("book.pageIndicator", currPage + 1, bookTotalPages);
 			s1 = "";
 
 			if(bookPages != null && currPage >= 0 && currPage < bookPages.tagCount()) {
@@ -380,16 +381,16 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 
 		private final boolean field_146151_o;
 
-		public NextPageButton(int p_i1079_1_, int p_i1079_2_, int p_i1079_3_, boolean p_i1079_4_) {
-			super(p_i1079_1_, p_i1079_2_, p_i1079_3_, 23, 13, "");
+		public NextPageButton(int id, int xPos, int yPos, boolean p_i1079_4_) {
+			super(id, xPos, yPos, 23, 13, "");
 			field_146151_o = p_i1079_4_;
 		}
 
 		@Override
-		public void drawButton(Minecraft minecraft, int p_146112_2_, int p_146112_3_) {
+		public void drawButton(Minecraft minecraft, int x, int y) {
 			if(visible) {
-				boolean flag = p_146112_2_ >= xPosition && p_146112_3_ >= yPosition && p_146112_2_ < xPosition + width
-						&& p_146112_3_ < yPosition + height;
+				boolean flag = x >= xPosition && y >= yPosition && x < xPosition + width
+						&& y < yPosition + height;
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				minecraft.getTextureManager().bindTexture(GuiScreenYoukaiBook.bookGuiTextures);
 				int k = 0;

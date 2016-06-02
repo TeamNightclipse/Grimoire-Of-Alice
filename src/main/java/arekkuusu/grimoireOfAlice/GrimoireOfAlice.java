@@ -29,8 +29,6 @@ public class GrimoireOfAlice {
 	@Instance("grimoireofalice")
 	public static GrimoireOfAlice instance;
 
-	public static boolean THKaguyaModDetected;
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		GOAItem.preInit();

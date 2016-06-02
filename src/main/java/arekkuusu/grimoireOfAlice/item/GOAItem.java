@@ -22,6 +22,8 @@ import arekkuusu.grimoireOfAlice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireOfAlice.lib.LibItemName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -71,13 +73,13 @@ public class GOAItem {
 
 		//Item
 		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
-		itemGrimoireBook = new ItemGrimoireBook().setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook");
-		itemVolatileString = new ItemVolatileString().setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString");
-		itemSoldifiedPaper = new ItemSoldifiedPaper().setUnlocalizedName("SoldifiedPaper").setTextureName(LibMod.MODID + ":SoldifiedPaper");
+		itemGrimoireBook = new ItemGOABase(EnumRarity.epic, true).setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook").setMaxStackSize(1).setCreativeTab(CreativeTabs.tabCombat);
+		itemVolatileString = new ItemGOABase(EnumRarity.uncommon).setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
+		itemSoldifiedPaper = new ItemGOABase().setUnlocalizedName("SoldifiedPaper").setTextureName(LibMod.MODID + ":SoldifiedPaper").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
 		itemGloriousNipponSteel = new ItemGloriousNipponSteel().setUnlocalizedName("GloriousNipponSteel").setTextureName(LibMod.MODID + ":GloriousNipponSteel");
 		itemShimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(LibMod.MODID + ":ShimenawaRope");
 		itemYoukaiBook = new ItemYoukaiBook().setUnlocalizedName("YoukaiBook").setTextureName(LibMod.MODID + ":YoukaiBook");
-		itemMask = new ItemMask().setUnlocalizedName("Mask").setTextureName(LibMod.MODID + ":Mask");
+		itemMask = new ItemGOABase().setUnlocalizedName("Mask").setTextureName(LibMod.MODID + ":Mask").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
 
 		//Food
 		itemShroomSlice =new ItemShroomSlice(4, 1.2F, false).setAlwaysEdible().setUnlocalizedName("ShroomSlice").setTextureName(LibMod.MODID + ":ShroomSlice");

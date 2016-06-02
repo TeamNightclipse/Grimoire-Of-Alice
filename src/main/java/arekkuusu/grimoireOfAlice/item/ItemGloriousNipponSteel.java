@@ -21,11 +21,12 @@ import net.minecraft.util.EnumChatFormatting;
 public class ItemGloriousNipponSteel extends ItemGOABase {
 
 	ItemGloriousNipponSteel() {
-		super();
+		super(EnumRarity.uncommon);
 		setMaxStackSize(16);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -33,13 +34,5 @@ public class ItemGloriousNipponSteel extends ItemGOABase {
 		list.add(EnumChatFormatting.GOLD + "Glorious Nippon Steel");
 		list.add(EnumChatFormatting.GOLD + "Flolded over 1000 times");
 		list.add(EnumChatFormatting.GOLD + "Can cut through anything");
-
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
-	}
-
 }

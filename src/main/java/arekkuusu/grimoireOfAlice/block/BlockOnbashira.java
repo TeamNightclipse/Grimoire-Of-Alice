@@ -36,7 +36,6 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 		setStepSound(Block.soundTypeWood);
 		setHarvestLevel("axe", 1);
 		setResistance(15.0F);
-		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 
 	@Override
@@ -67,12 +66,6 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-		super.breakBlock(world, x, y, z, block, meta);
-		world.removeTileEntity(x, y, z);
-	}
-
-	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune) {
 		return null;
 	}
@@ -93,7 +86,7 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side) : side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
+		return side == 1 || side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -49,7 +49,6 @@ public class BlockSugar extends BlockGOABase {
 		Sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
 		Sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
 		Sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
-
 	}
 
 	@Override
@@ -69,8 +68,6 @@ public class BlockSugar extends BlockGOABase {
 		else if(side == 4) {
 			return Sugar4;
 		}
-		else if(side == 5) { return Sugar5; }
-
-		return null;
+		else return Sugar5;
 	}
 }

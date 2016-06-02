@@ -29,10 +29,10 @@ public class ModelPrimordialShield extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		Shape1.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		super.render(entity, limbSwing, limbSwingAmount, age, headYaw, headPitch, scale);
+		setRotationAngles(limbSwing, limbSwingAmount, age, headYaw, headPitch, scale, entity);
+		Shape1.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

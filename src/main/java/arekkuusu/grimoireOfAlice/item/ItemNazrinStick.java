@@ -24,10 +24,11 @@ import net.minecraft.world.World;
 
 public class ItemNazrinStick extends ItemSword {
 
-	public ItemNazrinStick(ToolMaterial p_i45356_1_) {
+	ItemNazrinStick(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -39,7 +40,6 @@ public class ItemNazrinStick extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}

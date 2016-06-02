@@ -27,8 +27,9 @@ public class ItemYoukaiBook extends ItemWritableBook {
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
-	@SideOnly(Side.CLIENT)
+
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
 		if(player.worldObj.isRemote) {
 			Minecraft.getMinecraft().displayGuiScreen(new GuiScreenYoukaiBook(player, item, true));
@@ -37,7 +38,6 @@ public class ItemYoukaiBook extends ItemWritableBook {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}

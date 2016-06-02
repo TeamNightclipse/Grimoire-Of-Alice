@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall;
+import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall2;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -34,11 +34,11 @@ public class ItemLaevatein extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -72,7 +72,7 @@ public class ItemLaevatein extends ItemSword {
 					world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "mob.ghast.scream", 1.0F,
 							itemRand.nextFloat() * 0.4F + 0.8F);
 					Vec3 look = player.getLookVec();
-					EntityFireBall fireball2 = new EntityFireBall(world, player, 1, 1, 1);
+					EntityFireBall2 fireball2 = new EntityFireBall2(world, player, 1, 1, 1);
 					fireball2.setPosition(player.posX + look.xCoord * 5, player.posY + look.yCoord * 5, player.posZ + look.zCoord * 5);
 					fireball2.accelerationX = look.xCoord * 0.1;
 					fireball2.accelerationY = look.yCoord * 0.1;

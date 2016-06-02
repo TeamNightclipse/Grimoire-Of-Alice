@@ -38,7 +38,6 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
-		setCreativeTab(CreativeTabs.tabDecorations);
 		float size = 3F / 16F;
 		setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 	}
@@ -61,12 +60,6 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TileEntityHolyStone();
-	}
-
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
-		super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
-		world.removeTileEntity(x, y, z);
 	}
 
 	@Override
@@ -110,7 +103,7 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side) : side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
+		return side == 1 || side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
 	}
 
 	@SideOnly(Side.CLIENT)

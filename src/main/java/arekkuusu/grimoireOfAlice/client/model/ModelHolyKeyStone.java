@@ -155,32 +155,28 @@ public class ModelHolyKeyStone extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		renderModel(f5);
-	}
-
-	public void renderModel(float f5) {
-		stone1.render(f5);
-		stone2.render(f5);
-		stone3.render(f5);
-		stone4.render(f5);
-		stone5.render(f5);
-		stone6.render(f5);
-		stone7.render(f5);
-		string1.render(f5);
-		string2.render(f5);
-		string3.render(f5);
-		string4.render(f5);
-		string5.render(f5);
-		string6.render(f5);
-		string7.render(f5);
-		string8.render(f5);
-		string9.render(f5);
-		string10.render(f5);
-		string11.render(f5);
-		string12.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		super.render(entity, limbSwing, limbSwingAmount, age, headYaw, headPitch, scale);
+		setRotationAngles(limbSwing, limbSwingAmount, age, headYaw, headPitch, scale, entity);
+		stone1.render(scale);
+		stone2.render(scale);
+		stone3.render(scale);
+		stone4.render(scale);
+		stone5.render(scale);
+		stone6.render(scale);
+		stone7.render(scale);
+		string1.render(scale);
+		string2.render(scale);
+		string3.render(scale);
+		string4.render(scale);
+		string5.render(scale);
+		string6.render(scale);
+		string7.render(scale);
+		string8.render(scale);
+		string9.render(scale);
+		string10.render(scale);
+		string11.render(scale);
+		string12.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

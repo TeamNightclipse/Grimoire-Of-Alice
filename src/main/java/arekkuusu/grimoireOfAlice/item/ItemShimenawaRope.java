@@ -23,24 +23,19 @@ import net.minecraft.world.World;
 
 public class ItemShimenawaRope extends ItemGOABase {
 
-	public ItemShimenawaRope() {
-		super();
+	ItemShimenawaRope() {
+		super(EnumRarity.uncommon);
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 		list.add(EnumChatFormatting.WHITE + "Tenshi's little gift");
 		list.add(EnumChatFormatting.GOLD + "A little piece of Heaven,");
 		list.add(EnumChatFormatting.RED + "Might cause an incident");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.uncommon;
 	}
 
 	@Override

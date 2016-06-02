@@ -38,7 +38,6 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
-		setCreativeTab(CreativeTabs.tabDecorations);
 		setLightLevel(0.5F);
 	}
 
@@ -96,16 +95,10 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 		}
 	}
 
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block p_149749_5_, int p_149749_6_) {
-		super.breakBlock(world, x, y, z, p_149749_5_, p_149749_6_);
-		world.removeTileEntity(x, y, z);
-	}
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return side == 1 ? Blocks.stone.getBlockTextureFromSide(side) : side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
+		return side == 1 || side == 0 ? Blocks.stone.getBlockTextureFromSide(side) : blockIcon;
 	}
 
 	@SideOnly(Side.CLIENT)

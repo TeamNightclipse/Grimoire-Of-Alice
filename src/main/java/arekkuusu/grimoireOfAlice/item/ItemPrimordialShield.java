@@ -31,11 +31,11 @@ public class ItemPrimordialShield extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.epic;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -48,7 +48,6 @@ public class ItemPrimordialShield extends ItemSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 		if(stack.getItemDamage() < stack.getMaxDamage()) {
 			stack.setItemDamage(stack.getItemDamage() - 1);
