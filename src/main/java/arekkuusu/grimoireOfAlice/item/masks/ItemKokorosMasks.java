@@ -11,7 +11,6 @@ package arekkuusu.grimoireOfAlice.item.masks;
 import java.util.List;
 
 import arekkuusu.grimoireOfAlice.client.model.ModelKokorosMasks;
-import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,37 +23,25 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 
-public class ItemKokorosMasks extends ItemArmor {
+public class ItemKokorosMasks extends ItemMask {
 
 	private static final ModelBiped var10 = new ModelKokorosMasks();
 
-	public ItemKokorosMasks(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
-		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+	public ItemKokorosMasks(ArmorMaterial p_i45325_1_, int p_i45325_2_) {
+		super(p_i45325_1_, p_i45325_2_, LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png");
 	}
 
 	@SideOnly(Side.CLIENT)
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		if(stack.getItem() == GOAItem.itemKokorosMasks) {
-			return LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png";
-		}
-		else {
-			return null;
-		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(int id) {
+	private ModelBiped getArmorModel(int id) {
 		return var10;
 	}
 
 	@SideOnly(Side.CLIENT)
-	ModelBiped armorModel = new ModelBiped();
+	private ModelBiped armorModel = new ModelBiped();
 
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack stack, int armorSlot) {
@@ -88,6 +75,7 @@ public class ItemKokorosMasks extends ItemArmor {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
@@ -97,7 +85,6 @@ public class ItemKokorosMasks extends ItemArmor {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		EntityPlayer player = (EntityPlayer)entity;
@@ -113,7 +100,6 @@ public class ItemKokorosMasks extends ItemArmor {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel >= 30) {
 			player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 0, 4));
@@ -128,7 +114,6 @@ public class ItemKokorosMasks extends ItemArmor {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.epic;
 	}

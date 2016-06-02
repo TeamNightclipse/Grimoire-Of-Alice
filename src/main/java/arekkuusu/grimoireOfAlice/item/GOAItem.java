@@ -83,16 +83,16 @@ public class GOAItem {
 		itemShroomSlice =new ItemShroomSlice(4, 1.2F, false).setAlwaysEdible().setUnlocalizedName("ShroomSlice").setTextureName(LibMod.MODID + ":ShroomSlice");
 
 		//Armor  Dont really know the dif between 0 and proxy.addArmor
-		itemFoxMask= new ItemFoxMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FoxMask")*/, 0).setUnlocalizedName("FoxMask").setTextureName(LibMod.MODID + ":FoxMask");
-		itemRaidenMask= new ItemRaidenMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("RaidenMask")*/, 0).setUnlocalizedName("RaidenMask").setTextureName(LibMod.MODID + ":RaidenMask");
-		itemMonkeyMask= new ItemMonkeyMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MonkeyMask")*/, 0).setUnlocalizedName("MonkeyMask").setTextureName(LibMod.MODID + ":MonkeyMask");
-		itemHyottokoMask= new ItemHyottokoMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HyottokoMask")*/, 0).setUnlocalizedName("HyottokoMask").setTextureName(LibMod.MODID + ":HyottokoMask");
-		itemFukuNoKamiMask= new ItemFukuNoKamiMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FukuNoKamiMask")*/, 0).setUnlocalizedName("FukuNoKamiMask").setTextureName(LibMod.MODID + ":FukuNoKamiMask");
-		itemUbaMask= new ItemUbaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("UbaMask")*/, 0).setUnlocalizedName("UbaMask").setTextureName(LibMod.MODID + ":UbaMask");
-		itemHannyaMask= new ItemHannyaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HannyaMask")*/, 0).setUnlocalizedName("HannyaMask").setTextureName(LibMod.MODID + ":HannyaMask");
-		itemKoomoteMask= new ItemKoomoteMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KoomoteMask")*/, 0).setUnlocalizedName("KoomoteMask").setTextureName(LibMod.MODID + ":KoomoteMask");
-		itemMaskOfHope= new ItemMaskOfHope(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MaskOfHope")*/, 0).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
-		itemKokorosMasks= new ItemKokorosMasks(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KokorosMasks")*/, 0).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
+		itemFoxMask= new ItemFoxMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FoxMask")*/ ).setUnlocalizedName("FoxMask").setTextureName(LibMod.MODID + ":FoxMask");
+		itemRaidenMask= new ItemRaidenMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("RaidenMask")*/ ).setUnlocalizedName("RaidenMask").setTextureName(LibMod.MODID + ":RaidenMask");
+		itemMonkeyMask= new ItemMonkeyMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MonkeyMask")*/ ).setUnlocalizedName("MonkeyMask").setTextureName(LibMod.MODID + ":MonkeyMask");
+		itemHyottokoMask= new ItemHyottokoMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HyottokoMask")*/ ).setUnlocalizedName("HyottokoMask").setTextureName(LibMod.MODID + ":HyottokoMask");
+		itemFukuNoKamiMask= new ItemFukuNoKamiMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FukuNoKamiMask")*/ ).setUnlocalizedName("FukuNoKamiMask").setTextureName(LibMod.MODID + ":FukuNoKamiMask");
+		itemUbaMask= new ItemUbaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("UbaMask")*/ ).setUnlocalizedName("UbaMask").setTextureName(LibMod.MODID + ":UbaMask");
+		itemHannyaMask= new ItemHannyaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HannyaMask")*/ ).setUnlocalizedName("HannyaMask").setTextureName(LibMod.MODID + ":HannyaMask");
+		itemKoomoteMask= new ItemKoomoteMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KoomoteMask")*/ ).setUnlocalizedName("KoomoteMask").setTextureName(LibMod.MODID + ":KoomoteMask");
+		itemMaskOfHope= new ItemMaskOfHope(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MaskOfHope")*/ ).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
+		itemKokorosMasks= new ItemKokorosMasks(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KokorosMasks")*/ ).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
 		itemPrimordialShield= new ItemPrimordialShield(WetNoodle).setUnlocalizedName("PrimordialShield").setTextureName(LibMod.MODID + ":PrimordialShield");
 
 		//Weapon
