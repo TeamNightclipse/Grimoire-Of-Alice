@@ -47,10 +47,10 @@ public class BlockSugar extends BlockGOABase {
 	public void registerBlockIcons(IIconRegister icon) {
 		bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
 		top = icon.registerIcon(LibMod.MODID + ":Sugar1");
-		sugar2 = icon.registerIcon(LibMod.MODID + ":sugar2");
-		sugar3 = icon.registerIcon(LibMod.MODID + ":sugar3");
-		sugar4 = icon.registerIcon(LibMod.MODID + ":sugar4");
-		sugar5 = icon.registerIcon(LibMod.MODID + ":sugar5");
+		sugar2 = icon.registerIcon(LibMod.MODID + ":Sugar2");
+		sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
+		sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
+		sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
 	}
 
 	@Override
