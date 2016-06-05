@@ -21,6 +21,8 @@ version = "2.1"
 group= "arekkuusu.grimoireOfAlice" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "grimoireOfAlice"
 
+compileJava.options.encoding = 'UTF-8'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
