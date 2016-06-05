@@ -8,25 +8,17 @@
  */
 package arekkuusu.grimoireOfAlice;
 
-import net.minecraftforge.common.MinecraftForge;
 import arekkuusu.grimoireOfAlice.handler.WorldGenShroom;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.common.MinecraftForge;
 
+@CleanupDone
 public class ProxyServer {
-	
+
 	public void init(FMLInitializationEvent event) {
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenShroom());
 	}
 
-	public void registerRenders() {
-		// Uh oh! Nothing here
-	}
-	
-	public int addArmor(String armor){
-		
-		return 0;
-		
-	}
+	public void registerRenders() {} //NO-OP
 }

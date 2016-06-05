@@ -10,219 +10,166 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.block.GOABlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import arekkuusu.grimoireOfAlice.block.GOABlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemAmenonuhoko extends ItemSword{
+public class ItemAmenonuhoko extends ItemGOASword {
 
-	private boolean isactive = false;
-	
-	public ItemAmenonuhoko(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	ItemAmenonuhoko(ToolMaterial material) {
+		super(material);
 		setMaxDamage(200);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.WHITE
-				+ "Heavenly jeweled spear");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Created by Elder Gods,");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "once used to raise the");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "primordial land-mass,");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Onogoro-shima, from the sea");
-	}
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.WHITE + "Heavenly jeweled spear");
+		list.add(EnumChatFormatting.GOLD + "Created by Elder Gods,");
+		list.add(EnumChatFormatting.GOLD + "once used to raise the");
+		list.add(EnumChatFormatting.GOLD + "primordial land-mass,");
+		list.add(EnumChatFormatting.GOLD + "Onogoro-shima, from the sea");
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.rare;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack stack, int pass) {
 		return true;
 	}
 
-	public boolean hitEntity(ItemStack p_77644_1_, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
 		return true;
-    }
-	
-	 public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-             if (par1ItemStack.getItemDamage() < par1ItemStack.getMaxDamage()) {
-                     par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() - 1);
-             }
+	}
 
-             if (par5 && (par3Entity instanceof EntityPlayer)) {
-                     EntityPlayer entityplayer = (EntityPlayer)par3Entity;
-                     if (!par2World.isRemote && !entityplayer.capabilities.isCreativeMode) {
-                             if (entityplayer.getCurrentEquippedItem().getItem() == GOAItem.itemAmenonuhoko) {
-                                     if (par1ItemStack.getItemDamage() > 0) {
-                                             entityplayer.fallDistance = 0.0F;
-                                     }
-                             }
-                     	}
-             		}
-             	}
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
+		if(stack.getItemDamage() < stack.getMaxDamage()) {
+			stack.setItemDamage(stack.getItemDamage() - 1);
+		}
 
-	 public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		 
-         if(stack.getItemDamage() == 0) {
-         stack.damageItem(199, player);
-                 }
-                 return stack;
-     }
-	
-	public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-		if(p_77648_1_.getItemDamage() == 0) {
-		if (p_77648_7_ == 0){
-            --p_77648_5_;
-        }
-
-        if (p_77648_7_ == 1){
-            ++p_77648_5_;
-        }
-
-        if (p_77648_7_ == 2){
-            --p_77648_6_;
-        }
-
-        if (p_77648_7_ == 3){
-            ++p_77648_6_;
-        }
-
-        if (p_77648_7_ == 4){
-            --p_77648_4_;
-        }
-
-        if (p_77648_7_ == 5){
-            ++p_77648_4_		;
-        }
-
-        if (!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_)) {
-            return false;
-        } else {
-        	p_77648_3_.playSoundEffect((double)p_77648_4_ + 0.5D, (double)p_77648_5_ + 0.5D, (double)p_77648_6_ + 0.5D, "mob.endermen.portal", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            //Layer1
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            //Layer2/3/4
-            for(int i=1; i<=3; i++){
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+i, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+i, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+i, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+i, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+i, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+i, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+i, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+i, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+2, p_77648_5_+i, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_+2, p_77648_5_+i, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+i, p_77648_6_+2)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+i, p_77648_6_+2, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-2, p_77648_5_+i, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_-2, p_77648_5_+i, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+i, p_77648_6_-2)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+i, p_77648_6_-2, GOABlock.blockCompactStone);
-                }
-            		}
-            //Layer3 Corner
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+2, p_77648_6_+2)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+2, p_77648_6_+2, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+2, p_77648_6_-2)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+2, p_77648_6_-2, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+2, p_77648_6_+2)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+2, p_77648_6_+2, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+2, p_77648_6_-2)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+2, p_77648_6_-2, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+2, p_77648_5_+2, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_+2, p_77648_5_+2, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-2, p_77648_5_+2, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_-2, p_77648_5_+2, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+2, p_77648_5_+2, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_+2, p_77648_5_+2, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-2, p_77648_5_+2, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_-2, p_77648_5_+2, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            //Layer5
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+4, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+4, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_+4, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_+4, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+4, p_77648_6_+1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+4, p_77648_6_+1, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_+4, p_77648_6_)){
-                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_+4, p_77648_6_, GOABlock.blockCompactStone);
-                }
-            if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_+4, p_77648_6_-1)){
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_+4, p_77648_6_-1, GOABlock.blockCompactStone);
-                }
-            p_77648_1_.damageItem(199, p_77648_2_);
-            }
-        return true;
-		} else {
-			return false;
+		//TODO: What is par5?
+		if(par5 && entity instanceof EntityPlayer) {
+			EntityPlayer entityplayer = (EntityPlayer)entity;
+			if(!world.isRemote && !entityplayer.capabilities.isCreativeMode) {
+				if(entityplayer.getCurrentEquippedItem().getItem() == GOAItem.amenonuhoko) {
+					if(stack.getItemDamage() > 0) {
+						entityplayer.fallDistance = 0.0F;
+					}
+				}
 			}
+		}
 	}
-	
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if(stack.getItemDamage() == 0) {
+			stack.damageItem(199, player);
+		}
+		return stack;
+	}
+
+	@Override
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_,
+			float p_77648_10_) {
+		if(stack.getItemDamage() == 0) {
+			if(side == 0) {
+				--y;
+			}
+
+			if(side == 1) {
+				++y;
+			}
+
+			if(side == 2) {
+				--z;
+			}
+
+			if(side == 3) {
+				++z;
+			}
+
+			if(side == 4) {
+				--x;
+			}
+
+			if(side == 5) {
+				++x;
+			}
+
+			if(!player.canPlayerEdit(x, y, z, side, stack)) {
+				return false;
+			}
+			else {
+				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "mob.endermen.portal", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+
+				//Layer1
+				replaceAirComact(world, x - 1, y, z);
+				replaceAirComact(world, x, y, z - 1);
+				replaceAirComact(world, x, y, z);
+				replaceAirComact(world, x, y, z + 1);
+				replaceAirComact(world, x + 1, y, z);
+
+				//Layer2/3/4
+				for(int i = 1; i <= 3; i++) {
+
+					for(int j = -1; j <= 1; j++) {
+						for(int k = -1; k <= 1; k++) {
+							replaceAirComact(world, x + j, y + i, z + k);
+						}
+					}
+
+					replaceAirComact(world, x - 2, y + i, z);
+					replaceAirComact(world, x, y + i, z - 2);
+					replaceAirComact(world, x, y + i, z + 2);
+					replaceAirComact(world, x + 2, y + i, z);
+				}
+
+				//Layer3 Corner
+				replaceAirComact(world, x - 2, y + 2, z - 1);
+				replaceAirComact(world, x - 2, y + 2, z + 1);
+
+				replaceAirComact(world, x - 1, y + 2, z - 2);
+				replaceAirComact(world, x - 1, y + 2, z + 2);
+
+				replaceAirComact(world, x + 1, y + 2, z - 2);
+				replaceAirComact(world, x + 1, y + 2, z + 2);
+
+				replaceAirComact(world, x + 2, y + 2, z + 1);
+				replaceAirComact(world, x + 2, y + 2, z - 1);
+
+				//Layer5
+				replaceAirComact(world, x - 1, y + 4, z);
+				replaceAirComact(world, x, y + 4, z - 1);
+				replaceAirComact(world, x, y + 4, z);
+				replaceAirComact(world, x, y + 4, z + 1);
+				replaceAirComact(world, x + 1, y + 4, z);
+
+				stack.damageItem(199, player);
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	private void replaceAirComact(World world, int x, int y, int z) {
+		if(world.isAirBlock(x, y, z)) {
+			world.setBlock(x, y, z, GOABlock.compactStone);
+		}
+	}
 }

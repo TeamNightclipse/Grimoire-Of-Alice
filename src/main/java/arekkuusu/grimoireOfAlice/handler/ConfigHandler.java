@@ -11,21 +11,18 @@ package arekkuusu.grimoireOfAlice.handler;
 import java.io.File;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.common.config.Configuration;
 
+@CleanupDone
 public class ConfigHandler {
 
-	public static Configuration config;
-
-	public static final String R_BOOKS = "RecipeBooks";
-
-	public static boolean RecipesBook;
+	private static Configuration config;
 
 	public static void setConfig(File configFile) {
-
 		config = new Configuration(configFile);
 		loadConfig();
 		FMLCommonHandler.instance().bus().register(new ChangeListener());
@@ -33,20 +30,16 @@ public class ConfigHandler {
 
 	private static void loadConfig() {
 
-		config.addCustomCategoryComment(R_BOOKS, "Enable Easy Mode... EHHHH?!? EASY MODO?!?");
-
-		RecipesBook = config.get(R_BOOKS, "Enable Book Recipe", false, "Can players Craft GOA Books?").getBoolean();
-
 		if(config.hasChanged()) {
 			config.save();
 		}
 	}
 
+	@CleanupDone
 	public static class ChangeListener {
 
 		@SubscribeEvent
 		public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
-
 			if(event.modID.equalsIgnoreCase(LibMod.MODID)) {
 				loadConfig();
 			}

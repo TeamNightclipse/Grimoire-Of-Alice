@@ -10,39 +10,29 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
-public class ItemGloriousNipponSteel extends ItemGOABase{
+@CleanupDone
+public class ItemGloriousNipponSteel extends ItemGOABase {
 
-	public ItemGloriousNipponSteel() {
-		super();
+	ItemGloriousNipponSteel() {
+		super(EnumRarity.uncommon);
 		setMaxStackSize(16);
-		setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "100% quality guaranteed");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Glorious Nippon Steel");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Flolded over 1000 times");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ "Can cut through anything");
 
-	}
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.DARK_AQUA + "100% quality guaranteed");
+		list.add(EnumChatFormatting.GOLD + "Glorious Nippon Steel");
+		list.add(EnumChatFormatting.GOLD + "Flolded over 1000 times");
+		list.add(EnumChatFormatting.GOLD + "Can cut through anything");
 	}
-	
 }

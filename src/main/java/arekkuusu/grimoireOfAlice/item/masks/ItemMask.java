@@ -6,41 +6,44 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireOfAlice.item;
+package arekkuusu.grimoireOfAlice.item.masks;
 
 import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 @CleanupDone
-public class ItemGOABase extends Item {
+public class ItemMask extends ItemArmor {
 
-	private final EnumRarity rarity;
-	private final boolean effect;
+	private final String texture;
 
-	public ItemGOABase() {
-		this(EnumRarity.common);
-	}
-
-	public ItemGOABase(EnumRarity rarity) {
-		this(rarity, false);
-	}
-
-	public ItemGOABase(EnumRarity rarity, boolean hasEffect) {
-		effect = hasEffect;
-		this.rarity = rarity;
+	public ItemMask(ArmorMaterial material, int p_i45325_2_, String texture) {
+		super(material, p_i45325_2_, 0);
+		this.texture = texture;
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 
 	@Override
-	public EnumRarity getRarity(ItemStack p_77613_1_) {
-		return rarity;
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+
+		if(stack.getItem() == this) {
+			return texture;
+		}
+		else {
+			return null;
+		}
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.uncommon;
 	}
 
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
-		return effect || super.hasEffect(par1ItemStack, pass);
+		return true;
 	}
 }

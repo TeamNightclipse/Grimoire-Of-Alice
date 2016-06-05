@@ -8,6 +8,9 @@
  */
 package arekkuusu.grimoireOfAlice.lib;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
+
+@CleanupDone
 public class LibBlockName {
 
 	public static final String ILLUBLOCK = "HolyKeyStone";

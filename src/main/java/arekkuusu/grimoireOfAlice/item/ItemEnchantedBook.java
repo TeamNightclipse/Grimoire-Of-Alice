@@ -10,10 +10,10 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall;
+import arekkuusu.grimoireOfAlice.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -29,166 +29,134 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class ItemEnchantedBook extends ItemGOABase {
-	
-	public ItemEnchantedBook() {
-		super();
+
+	ItemEnchantedBook() {
+		super(EnumRarity.epic, true);
 		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabCombat);
 		setMaxDamage(50);
 	}
 
-	public static boolean validBookTagContents(NBTTagCompound p_77828_0_) {
-        if (!ItemYoukaiBook.func_150930_a(p_77828_0_)) {
-            return false;
-        }
-        else if (!p_77828_0_.hasKey("title", 8)) {
-            return false;
-        }
-        else {
-            String s = p_77828_0_.getString("title");
-            return s != null && s.length() <= 16 ? p_77828_0_.hasKey("author", 8) : false;
-        }
-    }
-	
 	@Override
-    public String getItemStackDisplayName(ItemStack p_77653_1_) {
-        if (p_77653_1_.hasTagCompound()) {
-            NBTTagCompound nbttagcompound = p_77653_1_.getTagCompound();
-            String s = nbttagcompound.getString("title");
+	public String getItemStackDisplayName(ItemStack stack) {
+		if(stack.hasTagCompound()) {
+			NBTTagCompound nbttagcompound = stack.getTagCompound();
+			String s = nbttagcompound.getString("title");
 
-            if (!StringUtils.isNullOrEmpty(s)){
-                return s;
-            }
-        }
+			if(!StringUtils.isNullOrEmpty(s)) { return s; }
+		}
 
-        return super.getItemStackDisplayName(p_77653_1_);
-    }
+		return super.getItemStackDisplayName(stack);
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-    	p_77624_3_.add(EnumChatFormatting.LIGHT_PURPLE
-				+ "Are you worthy of this magic?");
-    	if (p_77624_1_.hasTagCompound()) {
-            NBTTagCompound nbttagcompound = p_77624_1_.getTagCompound();
-            String s = nbttagcompound.getString("author");
+	@SuppressWarnings("unchecked")
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.LIGHT_PURPLE + "Are you worthy of this magic?");
+		if(stack.hasTagCompound()) {
+			NBTTagCompound nbttagcompound = stack.getTagCompound();
+			String s = nbttagcompound.getString("author");
 
-            if (!StringUtils.isNullOrEmpty(s)) {
-            	 p_77624_3_.add(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocalFormatted("book.byAuthor", new Object[] {s}));
-            }
-        }
-    }
+			if(!StringUtils.isNullOrEmpty(s)) {
+				list.add(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocalFormatted("book.byAuthor", s));
+			}
+		}
+	}
 
-    @Override
-    public ItemStack onItemRightClick(ItemStack p_77624_13_, World p_77624_3_, EntityPlayer p_77624_2_) {
-    	if (!p_77624_3_.isRemote) {
-			if (p_77624_2_.capabilities.isCreativeMode || p_77624_2_.inventory.hasItem(Items.fire_charge)) {
-				p_77624_3_.playSoundEffect((double)p_77624_2_.posX + 0.5D, (double)p_77624_2_.posY + 0.5D, (double)p_77624_2_.posZ + 0.5D, "mob.ghast.scream", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-			Vec3 look = p_77624_2_.getLookVec();
-			EntityFireBall fireball2 = new EntityFireBall(p_77624_3_, p_77624_2_, 1, 1, 1);
-			fireball2.setPosition(
-			p_77624_2_.posX + look.xCoord * 5,
-			p_77624_2_.posY + look.yCoord * 5,
-			p_77624_2_.posZ + look.zCoord * 5);
-			fireball2.accelerationX = look.xCoord * 0.1;
-			fireball2.accelerationY = look.yCoord * 0.1;
-			fireball2.accelerationZ = look.zCoord * 0.1;
-			p_77624_3_.spawnEntityInWorld(fireball2);
-			p_77624_2_.inventory.consumeInventoryItem(Items.fire_charge);
-			p_77624_13_.damageItem(1, p_77624_2_);
-    			} else if(p_77624_2_.experienceLevel > 30 && p_77624_2_.experienceLevel < 60){
-					if (p_77624_2_.capabilities.isCreativeMode || p_77624_2_.inventory.hasItem(Items.coal)) {
-						p_77624_2_.inventory.consumeInventoryItem(Items.coal);
-						p_77624_2_.addPotionEffect(new PotionEffect(Potion.blindness.id, 25, 0));
-						p_77624_2_.addPotionEffect(new PotionEffect(Potion.invisibility.id, 25, 0));
-						p_77624_2_.setItemInUse(p_77624_13_, this.getMaxItemUseDuration(p_77624_13_));
-			        } else if(p_77624_2_.experienceLevel > 60 && p_77624_2_.experienceLevel < 80){
-			        	if(p_77624_2_.experienceLevel < 70){
-			        		p_77624_2_.setFire(120);
-			    		} else {
-			    			p_77624_2_.addExperienceLevel(-1);
-			    			p_77624_2_.addPotionEffect(new PotionEffect(Potion.regeneration.id, 60, 4));
-			    		}
-			        	p_77624_2_.setItemInUse(p_77624_13_, this.getMaxItemUseDuration(p_77624_13_));
-			            return p_77624_13_;
-			        }
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if(!world.isRemote) {
+			if(player.capabilities.isCreativeMode || player.inventory.hasItem(Items.fire_charge)) {
+				world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "mob.ghast.scream", 1.0F,
+						itemRand.nextFloat() * 0.4F + 0.8F);
+				Vec3 look = player.getLookVec();
+				Vec3 position = Vec3.createVectorHelper(player.posX, player.posY, player.posZ);
+				Vec3 fireBallPos = Vec3.createVectorHelper(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
+				EntityFireBall2 fireball2 = new EntityFireBall2(world, player, fireBallPos, look);
+
+				world.spawnEntityInWorld(fireball2);
+				player.inventory.consumeInventoryItem(Items.fire_charge);
+				stack.damageItem(1, player);
+			}
+			else if(player.experienceLevel > 30 && player.experienceLevel < 60) {
+				if(player.capabilities.isCreativeMode || player.inventory.hasItem(Items.coal)) {
+					player.inventory.consumeInventoryItem(Items.coal);
+					player.addPotionEffect(new PotionEffect(Potion.blindness.id, 25, 0));
+					player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 25, 0));
+					player.setItemInUse(stack, getMaxItemUseDuration(stack));
 				}
 			}
-		return p_77624_13_;
-    }
-    
-    @Override
-    public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
-    	if(p_77648_2_.experienceLevel <= 30){
-    		if (p_77648_7_ == 0){
-                --p_77648_5_;
-            }
-
-            if (p_77648_7_ == 1){
-                ++p_77648_5_;
-            }
-
-            if (p_77648_7_ == 2){
-                --p_77648_6_;
-            }
-
-            if (p_77648_7_ == 3){
-                ++p_77648_6_;
-            }
-
-            if (p_77648_7_ == 4){
-                --p_77648_4_;
-            }
-
-            if (p_77648_7_ == 5){
-                ++p_77648_4_		;
-            }
-
-            if (!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_)){
-                return false;
-            } else {
-                if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_)){
-                    p_77648_3_.playSoundEffect((double)p_77648_4_ + 0.5D, (double)p_77648_5_ + 0.5D, (double)p_77648_6_ + 0.5D, "mob.blaze.death", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-                    p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, Blocks.fire);
-                    if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_, p_77648_6_+1)){
-                        p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_, p_77648_6_+1, Blocks.fire);
-                        if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_, p_77648_6_-1)){
-                            p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_, p_77648_6_-1, Blocks.fire);
-                            if (p_77648_3_.isAirBlock(p_77648_4_-1, p_77648_5_, p_77648_6_+1)){
-                                p_77648_3_.setBlock(p_77648_4_-1, p_77648_5_, p_77648_6_+1, Blocks.fire);
-                                if (p_77648_3_.isAirBlock(p_77648_4_+1, p_77648_5_, p_77648_6_-1)){
-                                    p_77648_3_.setBlock(p_77648_4_+1, p_77648_5_, p_77648_6_-1, Blocks.fire);
-                                }
-                            }
-                        }
-                    }
-                }
-                return true;
-            }
-		} else if(p_77648_2_.experienceLevel > 30 && p_77648_2_.experienceLevel < 40){
-			p_77648_3_.spawnEntityInWorld(new EntityLightningBolt(p_77648_3_, p_77648_4_+0.5, p_77648_5_, p_77648_6_+0.5));
-			p_77648_1_.damageItem(1, p_77648_2_);
-			return true;
-		} else{
-			return false;
+			else if(player.experienceLevel > 60 && player.experienceLevel < 80) {
+				if(player.experienceLevel < 70) {
+					player.setFire(120);
+				}
+				else {
+					player.addExperienceLevel(-1);
+					player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 60, 4));
+				}
+				player.setItemInUse(stack, getMaxItemUseDuration(stack));
 			}
-    }
-
-    @Override
-    public boolean getShareTag() {
-        return true;
-    }
-    
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+		}
+		return stack;
 	}
-	
+
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_,
+			float p_77648_10_) {
+		if(player.experienceLevel <= 30) {
+			if(side == 0) {
+				--y;
+			}
+
+			if(side == 1) {
+				++y;
+			}
+
+			if(side == 2) {
+				--z;
+			}
+
+			if(side == 3) {
+				++z;
+			}
+
+			if(side == 4) {
+				--x;
+			}
+
+			if(side == 5) {
+				++x;
+			}
+
+			if(!player.canPlayerEdit(x, y, z, side, stack)) {
+				return false;
+			}
+			else {
+				boolean success = false;
+				for(int i = -1; i <= 1; i++) {
+					for(int j = -1; j <= 1; j++) {
+						if(world.isAirBlock(x + i, y, z + j)) {
+							world.setBlock(x + i, y, z + j, Blocks.fire);
+							success = true;
+						}
+					}
+				}
+
+				if(success) {
+					world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "mob.blaze.death", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				}
+				return success;
+			}
+		}
+		else if(player.experienceLevel > 30 && player.experienceLevel < 40) {
+			world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y, z + 0.5));
+			stack.damageItem(1, player);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

@@ -10,59 +10,35 @@ package arekkuusu.grimoireOfAlice.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import arekkuusu.grimoireOfAlice.client.model.ModelOnbashira;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityOnbashira;
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
+import arekkuusu.grimoireOfAlice.tile.TileEntityOnbashira;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 
-public class ItemRenderOnbashira implements IItemRenderer{
+@CleanupDone
+public class ItemRenderOnbashira implements IItemRenderer {
 
-	private ModelBase MODEL;
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/Onbashira.png");
-	
-	public ItemRenderOnbashira(){
-		MODEL = new ModelOnbashira();
-	}
-	
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		switch (type) {
-		case EQUIPPED:
-		case EQUIPPED_FIRST_PERSON:
-		case ENTITY:
-		case INVENTORY:
-			return true;
-		default:
-			return false;
+		switch(type) {
+			case INVENTORY:
+				return true;
+			default:
+				return false;
 		}
 	}
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		switch (type) {
-		case ENTITY: {
-			return false;
-		}
-		case EQUIPPED: {
-			return false;
-		}
-		case EQUIPPED_FIRST_PERSON: {
-			return false;
-		}
-		case INVENTORY: {
-			return helper == ItemRendererHelper.INVENTORY_BLOCK;
-		}
-		default: {
-			return false;
-				}
+		switch(type) {
+			case INVENTORY: {
+				return helper == ItemRendererHelper.INVENTORY_BLOCK;
 			}
+			default: {
+				return false;
+			}
+		}
 	}
 
 	@Override
@@ -78,5 +54,4 @@ public class ItemRenderOnbashira implements IItemRenderer{
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
-
 }

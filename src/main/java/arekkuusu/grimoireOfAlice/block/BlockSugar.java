@@ -9,23 +9,33 @@
 package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
-public class BlockSugar extends BlockGOABase{
+@CleanupDone
+public class BlockSugar extends BlockGOABase {
 
-	public IIcon Bottom;
-	public IIcon Top;
-	public IIcon Sugar2;
-	public IIcon Sugar3;
-	public IIcon Sugar4;
-	public IIcon Sugar5;
-	
-	public BlockSugar(Material material) {
-		super(material);
+	@SideOnly(Side.CLIENT)
+	private IIcon bottom;
+	@SideOnly(Side.CLIENT)
+	private IIcon top;
+	@SideOnly(Side.CLIENT)
+	private IIcon sugar2;
+	@SideOnly(Side.CLIENT)
+	private IIcon sugar3;
+	@SideOnly(Side.CLIENT)
+	private IIcon sugar4;
+	@SideOnly(Side.CLIENT)
+	private IIcon sugar5;
+
+	BlockSugar() {
+		super(Material.clay);
 		setHardness(0.2F);
 		setStepSound(Block.soundTypeSnow);
 		setHarvestLevel("axe", 1);
@@ -33,32 +43,33 @@ public class BlockSugar extends BlockGOABase{
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 
-	public void registerBlockIcons(IIconRegister icon){
-		Bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
-		Top = icon.registerIcon(LibMod.MODID + ":Sugar1");
-		Sugar2 = icon.registerIcon(LibMod.MODID + ":Sugar2");
-		Sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
-		Sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
-		Sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
-		
+	@Override
+	public void registerBlockIcons(IIconRegister icon) {
+		bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
+		top = icon.registerIcon(LibMod.MODID + ":Sugar1");
+		sugar2 = icon.registerIcon(LibMod.MODID + ":Sugar2");
+		sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
+		sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
+		sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
 	}
-	
-	public IIcon getIcon(int side, int meta){
-		if(side == 0){
-			return Bottom;
-		}else if(side == 1){
-			return Top;
-		} else if(side == 2){
-			return Sugar2;
-		} else if(side == 3){
-			return Sugar3;
-		} else if(side == 4){
-			return Sugar4;
-		} else if(side == 5){
-			return Sugar5;
+
+	@Override
+	public IIcon getIcon(int side, int meta) {
+		if(side == 0) {
+			return bottom;
 		}
-		
-		return null;
-		
+		else if(side == 1) {
+			return top;
+		}
+		else if(side == 2) {
+			return sugar2;
+		}
+		else if(side == 3) {
+			return sugar3;
+		}
+		else if(side == 4) {
+			return sugar4;
+		}
+		else return sugar5;
 	}
 }

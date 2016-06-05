@@ -9,11 +9,12 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import arekkuusu.grimoireOfAlice.helper.LogHelper;
+import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
+import arekkuusu.grimoireOfAlice.handler.GuiHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
-import cpw.mods.fml.common.Loader;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -21,42 +22,42 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
+@CleanupDone
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
-
 public class GrimoireOfAlice {
 
+	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab(LibMod.MODID);
+
 	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
+	private static ProxyServer proxy;
 
-	public static ProxyServer proxy;
-
-	@Instance("grimoireofalice")
+	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
-
-	public static boolean THKaguyaModDetected;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
 		GOAItem.preInit();
 		GOABlock.preInit();
-		
+		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.init(event);
-		
 		proxy.registerRenders();
 
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
-		
+	}
+
+	public ProxyServer getProxy() {
+		return proxy;
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-	}
+	public void postInit(FMLPostInitializationEvent event) {}
+
 }

@@ -9,25 +9,27 @@
 package arekkuusu.grimoireOfAlice.handler;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 
+@CleanupDone
 public class WorldGenShroom {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.type == EventType.FLOWERS) {
-		for(int i = 0; i < 20; i++) {
-			int x = event.chunkX + event.rand.nextInt(16) + 8;
-			int z = event.chunkZ + event.rand.nextInt(16) + 8;
-			int y = event.rand.nextInt(26) + 4;
+			for(int i = 0; i < 20; i++) {
+				int x = event.chunkX + event.rand.nextInt(16) + 8;
+				int z = event.chunkZ + event.rand.nextInt(16) + 8;
+				int y = event.rand.nextInt(26) + 4;
 
-			int Lolis = event.rand.nextInt(16);
-			if(event.world.isAirBlock(x, y, z) && GOABlock.blockShroom.canBlockStay(event.world, x, y, z))
-				event.world.setBlock(x, y, z, GOABlock.blockShroom, Lolis, 2);
+				int lolis = event.rand.nextInt(16);
+				if(event.world.isAirBlock(x, y, z) && GOABlock.shroom.canBlockStay(event.world, x, y, z))
+					event.world.setBlock(x, y, z, GOABlock.shroom, lolis, 2);
 			}
 		}
 	}

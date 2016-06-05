@@ -10,6 +10,8 @@ package arekkuusu.grimoireOfAlice.item.food;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,55 +25,58 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemShroomSlice extends ItemFood{
+@CleanupDone
+public class ItemShroomSlice extends ItemFood {
 
-	public ItemShroomSlice(int p_i45339_1_, float p_i45339_2_, boolean p_i45339_3_) {
-		super(p_i45339_1_, p_i45339_2_, p_i45339_3_);
-		this.setHasSubtypes(true);
+	public ItemShroomSlice() {
+		super(4, 1.2F, false);
+		setHasSubtypes(true);
+		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
-	
+
 	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
+	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.uncommon;
 	}
-	
+
+	@Override
 	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack p_77636_1_)
-    {
-        return p_77636_1_.getItemDamage() > 0;
-    }
-	
+	public boolean hasEffect(ItemStack stack, int pass) {
+		return stack.getItemDamage() > 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-	    p_77624_3_.add(EnumChatFormatting.GREEN
-				+ "Psilocybin mushroom");
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ "WaNna HaVE a TrIP bRo??!?");
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.GREEN + "Psilocybin mushroom");
+		list.add(EnumChatFormatting.DARK_PURPLE + "WaNna HaVE a TrIP bRo??!?");
+	}
+
+	@Override
+	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+		if(!world.isRemote) {
+			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 2400, 0));
+			player.addPotionEffect(new PotionEffect(Potion.blindness.id, 2400, 0));
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 2400, 1));
 		}
-	
-	protected void onFoodEaten(ItemStack p_77849_1_, World p_77849_2_, EntityPlayer p_77849_3_) {
-        if (!p_77849_2_.isRemote) {
-            p_77849_3_.addPotionEffect(new PotionEffect(Potion.confusion.id, 2400, 0));
-            p_77849_3_.addPotionEffect(new PotionEffect(Potion.blindness.id, 2400, 0));
-            p_77849_3_.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 2400, 1));
-        }
 
-        if (p_77849_1_.getItemDamage() > 0) {
-            if (!p_77849_2_.isRemote) {
-                p_77849_3_.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 0));
-                p_77849_3_.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 2400, 1));
-                p_77849_3_.addPotionEffect(new PotionEffect(Potion.weakness.id, 2400, 0));
-            }
-        }
-        else {
-            super.onFoodEaten(p_77849_1_, p_77849_2_, p_77849_3_);
-        }
-    }
-	
-	public void getSubItems(Item p_150895_1_, CreativeTabs p_150895_2_, List p_150895_3_) {
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 0));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 1));
-    }
+		if(stack.getItemDamage() > 0) {
+			if(!world.isRemote) {
+				player.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 0));
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 2400, 1));
+				player.addPotionEffect(new PotionEffect(Potion.weakness.id, 2400, 0));
+			}
+		}
+		else {
+			super.onFoodEaten(stack, world, player);
+		}
+	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list) {
+		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
+	}
 }

@@ -17,9 +17,14 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
+version = "2.1"
 group= "arekkuusu.grimoireOfAlice" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "grimoireOfAlice"
+
+compileJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 minecraft {
     version = "1.7.10-10.13.4.1448-1.7.10"
@@ -62,5 +67,11 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+idea{
+    module{
+        inheritOutputDirs = true
     }
 }

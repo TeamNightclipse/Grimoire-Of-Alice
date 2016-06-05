@@ -11,11 +11,14 @@ package arekkuusu.grimoireOfAlice.helper;
 import org.apache.logging.log4j.Level;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.FMLLog;
 
+@SuppressWarnings("unused")
+@CleanupDone
 public class LogHelper {
 
-	public static void log(Level loglevel, Object object) {
+	private static void log(Level loglevel, Object object) {
 		FMLLog.log(LibMod.MODNAME, loglevel, String.valueOf(object));
 	}
 

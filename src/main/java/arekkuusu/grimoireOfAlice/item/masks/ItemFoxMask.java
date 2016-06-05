@@ -10,109 +10,46 @@ package arekkuusu.grimoireOfAlice.item.masks;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import arekkuusu.grimoireOfAlice.item.GOAItem;
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.StringUtils;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 
-public class ItemFoxMask extends ItemArmor{
+@CleanupDone
+public class ItemFoxMask extends ItemMask {
 
-	public ItemFoxMask(ArmorMaterial p_i45325_1_, int p_i45325_2_, int p_i45325_3_) {
-		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
+	public ItemFoxMask(ArmorMaterial material, int p_i45325_2_) {
+		super(material, p_i45325_2_, LibMod.MODID + ":textures/models/armor/FoxMask.png");
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Determination");
+		list.add(EnumChatFormatting.GOLD + " -Speed");
 
-		p_77624_3_.add(EnumChatFormatting.DARK_AQUA
-				+ "Tsukumogami of Determination");
-		p_77624_3_.add(EnumChatFormatting.GOLD
-				+ " -Speed");
-		
-		if(p_77624_2_.experienceLevel >= 40){
-			p_77624_3_.add(EnumChatFormatting.GOLD
-					+ " -Resistance");
-		
+		if(player.experienceLevel >= 40) {
+			list.add(EnumChatFormatting.GOLD + " -Resistance");
 		}
-		p_77624_3_.add(EnumChatFormatting.DARK_PURPLE
-				+ " *Vulnerable to Magic");
 
+		list.add(EnumChatFormatting.DARK_PURPLE + " *Vulnerable to Magic");
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		
-		if(player.experienceLevel <= 40){
+		if(player.experienceLevel <= 40) {
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
-		} else {
-		player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
-		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
-		
 		}
-		
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-
-		if (stack.getItem() == GOAItem.itemFoxMask) {
-			return LibMod.MODID + ":textures/models/armor/FoxMask.png";
-			
-		} else {
-			return null;
-		}
-
-	}
-
-	@SideOnly(Side.CLIENT)
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		
-		if (source == source.magic) {
-			return new ArmorProperties(1, 1, MathHelper.floor_double(damage * 50D));
-		} else {
-			return new ArmorProperties(0, 0, 0);	
+		else {
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 0));
 		}
 	}
-
-	@SideOnly(Side.CLIENT)
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return 3;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		stack.damageItem(damage * 2, entity);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
-	}
-
 }

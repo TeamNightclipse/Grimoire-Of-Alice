@@ -6,16 +6,12 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireOfAlice.item;
+package arekkuusu.grimoireOfAlice.lib;
 
-import net.minecraft.creativetab.CreativeTabs;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 
-public class ItemSoldifiedPaper extends ItemGOABase {
-	
-	public ItemSoldifiedPaper() {
-		super();
-		setMaxStackSize(16);
-		setCreativeTab(CreativeTabs.tabMaterials);
-	}
+@CleanupDone
+public class LibGuiID {
 
+	public static final int YOUKAI_BOOK = 0;
 }

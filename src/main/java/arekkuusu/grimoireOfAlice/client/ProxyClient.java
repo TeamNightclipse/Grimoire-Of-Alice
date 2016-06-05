@@ -8,48 +8,37 @@
  */
 package arekkuusu.grimoireOfAlice.client;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.MinecraftForgeClient;
 import arekkuusu.grimoireOfAlice.ProxyServer;
 import arekkuusu.grimoireOfAlice.block.GOABlock;
-import arekkuusu.grimoireOfAlice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderHolyStone;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderOnbashira;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderPrimordialShield;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyStone;
-import arekkuusu.grimoireOfAlice.client.render.RenderKokorosMask;
 import arekkuusu.grimoireOfAlice.client.render.RenderOnbashira;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyStone;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityOnbashira;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyStone;
+import arekkuusu.grimoireOfAlice.tile.TileEntityOnbashira;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 
+@CleanupDone
 public class ProxyClient extends ProxyServer {
-	
+
+	@Override
 	public void registerRenders() {
-		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOnbashira.class, new RenderOnbashira());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyStone.class, new RenderHolyStone());
-		
-		TileEntitySpecialRenderer KEYSTONE = new RenderHolyKeyStone();
-		TileEntitySpecialRenderer HOLYSTONE = new RenderHolyStone();
-		
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.blockHolyKeyStone), new ItemRenderHolyKeyStone());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.blockHolyStone), new ItemRenderHolyStone());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.blockOnbashira), new ItemRenderOnbashira());
-		MinecraftForgeClient.registerItemRenderer(GOAItem.itemPrimordialShield, new ItemRenderPrimordialShield());
-		//MinecraftForgeClient.registerItemRenderer(GOAItem.itemKokorosMasks, new RenderKokorosMask());
-	}
 
-	public int addArmor(String armor){
-		
-		return RenderingRegistry.addNewArmourRendererPrefix(armor);
-		
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.holyKeyStone), new ItemRenderHolyKeyStone());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.holyStone), new ItemRenderHolyStone());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.onbashira), new ItemRenderOnbashira());
+		MinecraftForgeClient.registerItemRenderer(GOAItem.primordialShield, new ItemRenderPrimordialShield());
 	}
 }
