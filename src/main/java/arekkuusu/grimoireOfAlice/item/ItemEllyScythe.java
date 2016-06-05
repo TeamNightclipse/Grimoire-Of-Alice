@@ -10,20 +10,21 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 
-public class ItemEllyScythe extends ItemSword {
+@CleanupDone
+public class ItemEllyScythe extends ItemGOASword {
 
-	public ItemEllyScythe(ToolMaterial material) {
+	ItemEllyScythe(ToolMaterial material) {
 		super(material);
 	}
 
@@ -46,20 +47,22 @@ public class ItemEllyScythe extends ItemSword {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		EntityPlayer player = (EntityPlayer)user;
-		if(player.experienceLevel > 40) {
-			target.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
-			target.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
-			user.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
-			stack.damageItem(1, user);
+		if(user instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)user;
+			if(player.experienceLevel > 40) {
+				target.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
+				target.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
+				user.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
+				stack.damageItem(1, user);
+			}
+			else {
+				target.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
+				user.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
+				user.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
+				stack.damageItem(1, user);
+			}
 		}
-		else {
-			target.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));
-			user.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
-			user.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
-			stack.damageItem(1, user);
-		}
+
 		return true;
 	}
-
 }

@@ -10,6 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -18,15 +19,15 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemCrestOfYggdrasill extends ItemSword {
+@CleanupDone
+public class ItemCrestOfYggdrasill extends ItemGOASword {
 
-	public ItemCrestOfYggdrasill(ToolMaterial material) {
+	ItemCrestOfYggdrasill(ToolMaterial material) {
 		super(material);
 	}
 
@@ -59,8 +60,8 @@ public class ItemCrestOfYggdrasill extends ItemSword {
 
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
-		p_77644_2_.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 4));
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
+		target.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 4));
 		return true;
 	}
 

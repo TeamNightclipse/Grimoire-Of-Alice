@@ -12,6 +12,7 @@ import static net.minecraftforge.common.EnumPlantType.Cave;
 
 import java.util.Random;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -21,10 +22,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
 
+@CleanupDone
 public class BlockShroom extends BlockBush {
 
-	BlockShroom(Material material) {
-		super(material);
+	BlockShroom() {
+		super(Material.plants);
 		setTickRandomly(true);
 		setLightLevel(0.5F);
 		setHardness(0.0F);
@@ -51,6 +53,6 @@ public class BlockShroom extends BlockBush {
 	@Override
 	public boolean canPlaceBlockOn(Block block) {
 		return block == Blocks.hardened_clay || block == Blocks.stained_hardened_clay || block == Blocks.stone
-				|| block == Blocks.grass || block == Blocks.dirt || block == GOABlock.blockCompactStone;
+				|| block == Blocks.grass || block == Blocks.dirt || block == GOABlock.compactStone;
 	}
 }

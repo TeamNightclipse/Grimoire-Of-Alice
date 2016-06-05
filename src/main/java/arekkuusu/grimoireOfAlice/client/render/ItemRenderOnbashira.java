@@ -10,30 +10,18 @@ package arekkuusu.grimoireOfAlice.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import arekkuusu.grimoireOfAlice.client.model.ModelOnbashira;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityOnbashira;
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.client.model.ModelBase;
+import arekkuusu.grimoireOfAlice.tile.TileEntityOnbashira;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
+@CleanupDone
 public class ItemRenderOnbashira implements IItemRenderer {
-
-	private ModelBase MODEL;
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/Onbashira.png");
-
-	public ItemRenderOnbashira() {
-		MODEL = new ModelOnbashira();
-	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		switch(type) {
-			case EQUIPPED:
-			case EQUIPPED_FIRST_PERSON:
-			case ENTITY:
 			case INVENTORY:
 				return true;
 			default:

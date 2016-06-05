@@ -9,6 +9,7 @@
 package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -16,15 +17,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
+@CleanupDone
 public class BlockCompactStone extends BlockGOABase {
 
 	@SideOnly(Side.CLIENT)
-	private IIcon BottomTop;
+	private IIcon bottomTop;
 	@SideOnly(Side.CLIENT)
 	private IIcon sides;
 
-	BlockCompactStone(Material material) {
-		super(material);
+	BlockCompactStone() {
+		super(Material.rock);
 		setHardness(3.0F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 2);
@@ -34,7 +36,7 @@ public class BlockCompactStone extends BlockGOABase {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister icon) {
-		BottomTop = icon.registerIcon(LibMod.MODID + ":CompactStone0");
+		bottomTop = icon.registerIcon(LibMod.MODID + ":CompactStone0");
 		sides = icon.registerIcon(LibMod.MODID + ":CompactStone1");
 	}
 
@@ -42,7 +44,7 @@ public class BlockCompactStone extends BlockGOABase {
 	@Override
 	public IIcon getIcon(int side, int meta) {
 		if(side == 0 || side == 1) {
-			return BottomTop;
+			return bottomTop;
 		}
 		else return sides;
 	}

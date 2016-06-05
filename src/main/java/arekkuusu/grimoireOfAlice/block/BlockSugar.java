@@ -9,6 +9,7 @@
 package arekkuusu.grimoireOfAlice.block;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -17,23 +18,24 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 
+@CleanupDone
 public class BlockSugar extends BlockGOABase {
 
 	@SideOnly(Side.CLIENT)
-	private IIcon Bottom;
+	private IIcon bottom;
 	@SideOnly(Side.CLIENT)
-	private IIcon Top;
+	private IIcon top;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sugar2;
+	private IIcon sugar2;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sugar3;
+	private IIcon sugar3;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sugar4;
+	private IIcon sugar4;
 	@SideOnly(Side.CLIENT)
-	private IIcon Sugar5;
+	private IIcon sugar5;
 
-	BlockSugar(Material material) {
-		super(material);
+	BlockSugar() {
+		super(Material.clay);
 		setHardness(0.2F);
 		setStepSound(Block.soundTypeSnow);
 		setHarvestLevel("axe", 1);
@@ -43,31 +45,31 @@ public class BlockSugar extends BlockGOABase {
 
 	@Override
 	public void registerBlockIcons(IIconRegister icon) {
-		Bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
-		Top = icon.registerIcon(LibMod.MODID + ":Sugar1");
-		Sugar2 = icon.registerIcon(LibMod.MODID + ":Sugar2");
-		Sugar3 = icon.registerIcon(LibMod.MODID + ":Sugar3");
-		Sugar4 = icon.registerIcon(LibMod.MODID + ":Sugar4");
-		Sugar5 = icon.registerIcon(LibMod.MODID + ":Sugar5");
+		bottom = icon.registerIcon(LibMod.MODID + ":Sugar0");
+		top = icon.registerIcon(LibMod.MODID + ":Sugar1");
+		sugar2 = icon.registerIcon(LibMod.MODID + ":sugar2");
+		sugar3 = icon.registerIcon(LibMod.MODID + ":sugar3");
+		sugar4 = icon.registerIcon(LibMod.MODID + ":sugar4");
+		sugar5 = icon.registerIcon(LibMod.MODID + ":sugar5");
 	}
 
 	@Override
 	public IIcon getIcon(int side, int meta) {
 		if(side == 0) {
-			return Bottom;
+			return bottom;
 		}
 		else if(side == 1) {
-			return Top;
+			return top;
 		}
 		else if(side == 2) {
-			return Sugar2;
+			return sugar2;
 		}
 		else if(side == 3) {
-			return Sugar3;
+			return sugar3;
 		}
 		else if(side == 4) {
-			return Sugar4;
+			return sugar4;
 		}
-		else return Sugar5;
+		else return sugar5;
 	}
 }

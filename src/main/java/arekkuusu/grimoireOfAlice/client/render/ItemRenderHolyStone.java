@@ -10,30 +10,18 @@ package arekkuusu.grimoireOfAlice.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import arekkuusu.grimoireOfAlice.client.model.ModelHolyStone;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyStone;
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.client.model.ModelBase;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyStone;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
+@CleanupDone
 public class ItemRenderHolyStone implements IItemRenderer {
-
-	private ModelBase MODEL;
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/HolyStone.png");
-
-	public ItemRenderHolyStone() {
-		MODEL = new ModelHolyStone();
-	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		switch(type) {
-			case EQUIPPED:
-			case EQUIPPED_FIRST_PERSON:
-			case ENTITY:
 			case INVENTORY:
 				return true;
 			default:

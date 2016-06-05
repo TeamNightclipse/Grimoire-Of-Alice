@@ -10,21 +10,22 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemMomijisScimitarSword extends ItemSword {
+@CleanupDone
+public class ItemMomijisScimitarSword extends ItemGOASword {
 
-	public ItemMomijisScimitarSword(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	ItemMomijisScimitarSword(ToolMaterial material) {
+		super(material);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -38,10 +39,11 @@ public class ItemMomijisScimitarSword extends ItemSword {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
-		EntityPlayer player = (EntityPlayer)entity;
-		ItemStack equipped = player.getCurrentEquippedItem();
-		if(equipped == stack) {
-			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 0));
+		if(entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if(player.getCurrentEquippedItem() == stack) {
+				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 0, 0));
+			}
 		}
 	}
 }

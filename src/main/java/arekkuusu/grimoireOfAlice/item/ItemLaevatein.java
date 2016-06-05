@@ -10,7 +10,8 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -20,14 +21,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class ItemLaevatein extends ItemSword {
+@CleanupDone
+public class ItemLaevatein extends ItemGOASword {
 
 	ItemLaevatein(ToolMaterial material) {
 		super(material);
@@ -50,9 +51,11 @@ public class ItemLaevatein extends ItemSword {
 	@SideOnly(Side.CLIENT)
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
-		EntityPlayer player = (EntityPlayer)entity;
-		if(player.getCurrentEquippedItem() == stack) {
-			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 0, 0));
+		if(entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if(player.getCurrentEquippedItem() == stack) {
+				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 0, 0));
+			}
 		}
 	}
 
@@ -72,11 +75,10 @@ public class ItemLaevatein extends ItemSword {
 					world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "mob.ghast.scream", 1.0F,
 							itemRand.nextFloat() * 0.4F + 0.8F);
 					Vec3 look = player.getLookVec();
-					EntityFireBall2 fireball2 = new EntityFireBall2(world, player, 1, 1, 1);
-					fireball2.setPosition(player.posX + look.xCoord * 5, player.posY + look.yCoord * 5, player.posZ + look.zCoord * 5);
-					fireball2.accelerationX = look.xCoord * 0.1;
-					fireball2.accelerationY = look.yCoord * 0.1;
-					fireball2.accelerationZ = look.zCoord * 0.1;
+					Vec3 position = Vec3.createVectorHelper(player.posX, player.posY, player.posZ);
+					Vec3 fireBallPos = Vec3.createVectorHelper(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
+					EntityFireBall2 fireball2 = new EntityFireBall2(world, player, fireBallPos, look);
+
 					world.spawnEntityInWorld(fireball2);
 					player.inventory.consumeInventoryItem(Items.fire_charge);
 				}
@@ -138,5 +140,4 @@ public class ItemLaevatein extends ItemSword {
 			return true;
 		}
 	}
-
 }

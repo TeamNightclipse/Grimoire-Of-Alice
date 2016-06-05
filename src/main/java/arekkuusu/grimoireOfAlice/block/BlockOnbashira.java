@@ -11,14 +11,14 @@ package arekkuusu.grimoireOfAlice.block;
 import java.util.List;
 import java.util.Random;
 
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityOnbashira;
+import arekkuusu.grimoireOfAlice.tile.TileEntityOnbashira;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -28,10 +28,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider {
 
-	BlockOnbashira(Material material) {
-		super(material);
+	BlockOnbashira() {
+		super(Material.wood);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeWood);
 		setHarvestLevel("axe", 1);
@@ -94,5 +95,4 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	public void registerBlockIcons(IIconRegister icon) {
 		blockIcon = icon.registerIcon(getTextureName() + "_side");
 	}
-
 }

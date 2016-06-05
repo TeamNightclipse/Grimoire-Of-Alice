@@ -10,8 +10,6 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import com.google.common.collect.Range;
-
 import arekkuusu.grimoireOfAlice.block.GOABlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,11 +18,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemAmenonuhoko extends ItemSword {
+public class ItemAmenonuhoko extends ItemGOASword {
 
 	ItemAmenonuhoko(ToolMaterial material) {
 		super(material);
@@ -64,10 +61,11 @@ public class ItemAmenonuhoko extends ItemSword {
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 
+		//TODO: What is par5?
 		if(par5 && entity instanceof EntityPlayer) {
 			EntityPlayer entityplayer = (EntityPlayer)entity;
 			if(!world.isRemote && !entityplayer.capabilities.isCreativeMode) {
-				if(entityplayer.getCurrentEquippedItem().getItem() == GOAItem.itemAmenonuhoko) {
+				if(entityplayer.getCurrentEquippedItem().getItem() == GOAItem.amenonuhoko) {
 					if(stack.getItemDamage() > 0) {
 						entityplayer.fallDistance = 0.0F;
 					}
@@ -78,7 +76,6 @@ public class ItemAmenonuhoko extends ItemSword {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-
 		if(stack.getItemDamage() == 0) {
 			stack.damageItem(199, player);
 		}
@@ -172,7 +169,7 @@ public class ItemAmenonuhoko extends ItemSword {
 
 	private void replaceAirComact(World world, int x, int y, int z) {
 		if(world.isAirBlock(x, y, z)) {
-			world.setBlock(x, y, z, GOABlock.blockCompactStone);
+			world.setBlock(x, y, z, GOABlock.compactStone);
 		}
 	}
 }

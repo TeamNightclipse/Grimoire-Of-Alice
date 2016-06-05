@@ -11,9 +11,9 @@ package arekkuusu.grimoireOfAlice.item;
 import java.util.List;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -21,12 +21,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class ItemShimenawaRope extends ItemGOABase {
 
 	ItemShimenawaRope() {
 		super(EnumRarity.uncommon);
 		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,7 +56,7 @@ public class ItemShimenawaRope extends ItemGOABase {
 			else {
 				--stack.stackSize;
 				world.createExplosion(null, x + 0.5, y, z + 0.5, 3.0F, true);
-				world.setBlock(x, y + 1, z, GOABlock.blockHolyKeyStone);
+				world.setBlock(x, y + 1, z, GOABlock.holyKeyStone);
 				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5));
 				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5));
 

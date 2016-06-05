@@ -10,22 +10,23 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemNazrinStick extends ItemSword {
+@CleanupDone
+public class ItemNazrinStick extends ItemGOASword {
 
-	ItemNazrinStick(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	ItemNazrinStick(ToolMaterial material) {
+		super(material);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,7 +48,6 @@ public class ItemNazrinStick extends ItemSword {
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int meta, float p_77648_8_, float p_77648_9_,
 			float p_77648_10_) {
-
 		return true;
 	}
 
@@ -65,20 +65,19 @@ public class ItemNazrinStick extends ItemSword {
 		if(player.experienceLevel > 40) {
 			player.inventory.consumeInventoryItem(Items.coal);
 			//Vec3 look = player.getLookVec();
-			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
-			world.createExplosion(null, player.posX - 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX, player.posY, player.posZ + 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX, player.posY, player.posZ - 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ, 2.5F, false);
-			world.createExplosion(null, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
+			world.createExplosion(player, player.posX - 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX, player.posY, player.posZ + 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX + 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
+			world.createExplosion(player, player.posX + 5.0, player.posY, player.posZ, 2.5F, false);
+			world.createExplosion(player, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
 		}
 		else {
 			player.inventory.consumeInventoryItem(Items.coal);
-			world.createExplosion(null, player.posX, player.posY, player.posZ, 1.0F, false);
+			world.createExplosion(player, player.posX, player.posY, player.posZ, 1.0F, false);
 			stack.damageItem(1, player);
 		}
 	}
-
 }

@@ -8,17 +8,17 @@
  */
 package arekkuusu.grimoireOfAlice.block;
 
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyStone;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyStone;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -30,10 +30,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider {
 
-	public BlockHolyStone(Material material) {
-		super(material);
+	BlockHolyStone() {
+		super(Material.rock);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
@@ -70,6 +71,7 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 			if(effect.isPresent()) {
 				--stack.stackSize;
 				effect.get().accept(player);
+				player.worldObj.playSoundAtEntity(player, "random.levelup", 0.1F, 1.0F);
 				return true;
 			}
 		}
@@ -111,5 +113,4 @@ public class BlockHolyStone extends BlockGOABase implements ITileEntityProvider 
 	public void registerBlockIcons(IIconRegister icon) {
 		blockIcon = icon.registerIcon(getTextureName() + "_side");
 	}
-
 }

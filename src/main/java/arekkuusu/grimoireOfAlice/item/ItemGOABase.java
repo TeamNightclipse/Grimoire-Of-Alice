@@ -8,10 +8,13 @@
  */
 package arekkuusu.grimoireOfAlice.item;
 
+import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+@CleanupDone
 public class ItemGOABase extends Item {
 
 	private final EnumRarity rarity;
@@ -26,9 +29,9 @@ public class ItemGOABase extends Item {
 	}
 
 	public ItemGOABase(EnumRarity rarity, boolean hasEffect) {
-		super();
 		effect = hasEffect;
 		this.rarity = rarity;
+		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 
 	@Override

@@ -10,20 +10,20 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
+@CleanupDone
 public class ItemGloriousNipponSteel extends ItemGOABase {
 
 	ItemGloriousNipponSteel() {
 		super(EnumRarity.uncommon);
 		setMaxStackSize(16);
-		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
 	@SuppressWarnings("unchecked")

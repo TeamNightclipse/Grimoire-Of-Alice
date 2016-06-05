@@ -8,10 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.client.model;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@CleanupDone
 public class ModelPrimordialShield extends ModelBase {
 
 	private ModelRenderer Shape1;

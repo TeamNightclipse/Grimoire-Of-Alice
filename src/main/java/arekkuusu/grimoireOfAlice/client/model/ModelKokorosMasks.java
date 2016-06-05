@@ -8,10 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.client.model;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@CleanupDone
 public class ModelKokorosMasks extends ModelBiped {
 
 	//fields

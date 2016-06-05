@@ -8,10 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.client.model;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@CleanupDone
 public class ModelOnbashira extends ModelBase {
 
 	private ModelRenderer SideA;
@@ -56,6 +58,7 @@ public class ModelOnbashira extends ModelBase {
 	public ModelOnbashira() {
 		textureWidth = 64;
 		textureHeight = 64;
+		float piHalf = (float)(Math.PI / 2);
 
 		SideA = new ModelRenderer(this, 0, 0);
 		SideA.addBox(-3.5F, -32F, 7F, 7, 56, 1);
@@ -128,7 +131,7 @@ public class ModelOnbashira extends ModelBase {
 		Top2.setRotationPoint(0F, 0F, 0F);
 		Top2.setTextureSize(64, 64);
 		Top2.mirror = true;
-		setRotation(Top2, 0F, 1.570796F, 0F);
+		setRotation(Top2, 0F, piHalf, 0F);
 		Top3 = new ModelRenderer(this, 44, 12);
 		Top3.addBox(-8F, -32F, -3.5F, 3, 1, 7);
 		Top3.setRotationPoint(0F, 0F, 0F);
@@ -188,13 +191,13 @@ public class ModelOnbashira extends ModelBase {
 		Bottom3.setRotationPoint(0F, 0F, 0F);
 		Bottom3.setTextureSize(64, 64);
 		Bottom3.mirror = true;
-		setRotation(Bottom3, 0F, -1.570796F, 0F);
+		setRotation(Bottom3, 0F, -piHalf, 0F);
 		Bottom2 = new ModelRenderer(this, 44, 12);
 		Bottom2.addBox(-8F, 24F, -3.5F, 3, 0, 7);
 		Bottom2.setRotationPoint(0F, 0F, 0F);
 		Bottom2.setTextureSize(64, 64);
 		Bottom2.mirror = true;
-		setRotation(Bottom2, 0F, 1.570796F, 0F);
+		setRotation(Bottom2, 0F, piHalf, 0F);
 		Bottom1 = new ModelRenderer(this, 44, 12);
 		Bottom1.addBox(5F, 24F, -3.5F, 3, 0, 7);
 		Bottom1.setRotationPoint(0F, 0F, 0F);

@@ -11,6 +11,7 @@ package arekkuusu.grimoireOfAlice.item.masks;
 import java.util.List;
 
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class ItemKoomoteMask extends ItemMask {
 
 	public ItemKoomoteMask(ArmorMaterial material, int p_i45325_2_) {

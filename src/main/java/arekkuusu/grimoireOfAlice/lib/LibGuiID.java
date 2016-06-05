@@ -11,16 +11,7 @@ package arekkuusu.grimoireOfAlice.lib;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 
 @CleanupDone
-public class LibMod {
+public class LibGuiID {
 
-	public static final String MODID = "grimoireofalice";
-	//ID for MOD
-	public static final String MODNAME = "Grimoire of Alice";
-	//Name of MOD
-	public static final String MODVER = "@VERSION@";
-	//Version of MOD
-	public static final String PROXYCLIENT = "arekkuusu.grimoireOfAlice.client.ProxyClient";
-	//Client Required
-	public static final String PROXYSERVER = "arekkuusu.grimoireOfAlice.ProxyServer";
-
+	public static final int YOUKAI_BOOK = 0;
 }

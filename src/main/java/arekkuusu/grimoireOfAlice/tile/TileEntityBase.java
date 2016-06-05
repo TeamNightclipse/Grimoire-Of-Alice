@@ -6,6 +6,10 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireOfAlice.client.tile;
+package arekkuusu.grimoireOfAlice.tile;
 
-public class TileEntityOnbashira extends TileEntityBase {}
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
+import net.minecraft.tileentity.TileEntity;
+
+@CleanupDone
+public class TileEntityBase extends TileEntity {}

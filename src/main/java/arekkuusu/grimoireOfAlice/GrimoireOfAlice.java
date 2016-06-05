@@ -9,9 +9,12 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
+import arekkuusu.grimoireOfAlice.handler.GuiHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,24 +22,30 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
+@CleanupDone
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
 public class GrimoireOfAlice {
 
-	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
-	public static ProxyServer proxy;
+	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab(LibMod.MODID);
 
-	@Instance("grimoireofalice")
+	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYSERVER)
+	private static ProxyServer proxy;
+
+	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		GOAItem.preInit();
 		GOABlock.preInit();
+		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.init(event);
 		proxy.registerRenders();
 
@@ -44,6 +53,11 @@ public class GrimoireOfAlice {
 		VanillaCrafting.masks();
 	}
 
+	public ProxyServer getProxy() {
+		return proxy;
+	}
+
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {}
+
 }

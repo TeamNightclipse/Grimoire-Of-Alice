@@ -8,10 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.client.model;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@CleanupDone
 public class ModelHolyStone extends ModelBase {
 
 	private ModelRenderer cube;
@@ -31,6 +33,8 @@ public class ModelHolyStone extends ModelBase {
 	public ModelHolyStone() {
 		textureWidth = 32;
 		textureHeight = 32;
+		float piHalf = (float)(Math.PI / 2);
+		float pi = (float)Math.PI;
 
 		cube = new ModelRenderer(this, 0, 0);
 		cube.addBox(-4F, -4F, -4F, 8, 8, 8);
@@ -49,13 +53,13 @@ public class ModelHolyStone extends ModelBase {
 		side1.setRotationPoint(0F, 17F, 0F);
 		side1.setTextureSize(64, 32);
 		side1.mirror = true;
-		setRotation(side1, 0F, 1.570796F, 0F);
+		setRotation(side1, 0F, piHalf, 0F);
 		side2 = new ModelRenderer(this, 0, 29);
 		side2.addBox(-5F, -2F, -5F, 10, 1, 1);
 		side2.setRotationPoint(0F, 17F, 0F);
 		side2.setTextureSize(64, 32);
 		side2.mirror = true;
-		setRotation(side2, 0F, 3.141593F, 0F);
+		setRotation(side2, 0F, pi, 0F);
 		side3 = new ModelRenderer(this, 0, 23);
 		side3.addBox(-5F, -2F, -5F, 10, 1, 1);
 		side3.setRotationPoint(0F, 17F, 0F);
@@ -85,19 +89,19 @@ public class ModelHolyStone extends ModelBase {
 		paper3.setRotationPoint(0F, 17F, 0F);
 		paper3.setTextureSize(64, 32);
 		paper3.mirror = true;
-		setRotation(paper3, -0.0698132F, 3.141593F, 0F);
+		setRotation(paper3, -0.0698132F, pi, 0F);
 		paper4 = new ModelRenderer(this, 25, 23);
 		paper4.addBox(-3F, -1.5F, -5.15F, 2, 4, 0);
 		paper4.setRotationPoint(0F, 17F, 0F);
 		paper4.setTextureSize(64, 32);
 		paper4.mirror = true;
-		setRotation(paper4, -0.0698132F, 1.570796F, 0F);
+		setRotation(paper4, -0.0698132F, piHalf, 0F);
 		paper5 = new ModelRenderer(this, 25, 23);
 		paper5.addBox(1F, -1.5F, -5.15F, 2, 4, 0);
 		paper5.setRotationPoint(0F, 17F, 0F);
 		paper5.setTextureSize(64, 32);
 		paper5.mirror = true;
-		setRotation(paper5, -0.0698132F, 1.570796F, 0F);
+		setRotation(paper5, -0.0698132F, piHalf, 0F);
 		paper6 = new ModelRenderer(this, 25, 23);
 		paper6.addBox(-3F, -1.5F, -5.15F, 2, 4, 0);
 		paper6.setRotationPoint(0F, 17F, 0F);

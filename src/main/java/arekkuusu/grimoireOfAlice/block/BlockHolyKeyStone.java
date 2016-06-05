@@ -10,16 +10,15 @@ package arekkuusu.grimoireOfAlice.block;
 
 import java.util.Random;
 
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -30,10 +29,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvider {
 
-	BlockHolyKeyStone(Material material) {
-		super(material);
+	BlockHolyKeyStone() {
+		super(Material.rock);
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 1);
@@ -84,14 +84,11 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
-		if(entity instanceof EntityLivingBase) {
-			boolean isRain = world.isRaining();
-			if(!isRain) {
-				EntityLivingBase livingEntity = (EntityLivingBase)entity;
-				livingEntity.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
-				livingEntity.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
-				livingEntity.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
-			}
+		if(entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
+			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
 		}
 	}
 

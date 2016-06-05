@@ -6,22 +6,29 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireOfAlice.client.entity;
+package arekkuusu.grimoireOfAlice.entity;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+/**
+ * A fireball entity that doesn't destroy blocks
+ */
+@CleanupDone
 public class EntityFireBall2 extends EntityFireball {
 
-	public EntityFireBall2(World p_i1759_1_) {
-		super(p_i1759_1_);
+	public EntityFireBall2(World world) {
+		super(world);
 	}
 
-	public EntityFireBall2(World p_i1769_1_, EntityLivingBase p_i1769_2_, double p_i1769_3_, double p_i1769_5_, double p_i1769_7_) {
-		super(p_i1769_1_, p_i1769_2_, p_i1769_3_, p_i1769_5_, p_i1769_7_);
+	public EntityFireBall2(World world, EntityLivingBase shooter, Vec3 position, Vec3 acceleration) {
+		super(world, position.xCoord, position.yCoord, position.zCoord, acceleration.xCoord, acceleration.yCoord, acceleration.zCoord);
+		shootingEntity = shooter;
 	}
 
 	@Override

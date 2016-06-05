@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireOfAlice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
@@ -19,25 +20,19 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-
+@CleanupDone
 public class ItemKokorosMasks extends ItemMask {
 
-	private static final ModelBiped var10 = new ModelKokorosMasks();
+	private static final ModelBiped MODEL_KOKOROS_MASKS = new ModelKokorosMasks();
 
-	public ItemKokorosMasks(ArmorMaterial p_i45325_1_, int p_i45325_2_) {
-		super(p_i45325_1_, p_i45325_2_, LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png");
-	}
-
-	@SideOnly(Side.CLIENT)
-	private ModelBiped getArmorModel(int id) {
-		return var10;
+	public ItemKokorosMasks(ArmorMaterial material, int p_i45325_2_) {
+		super(material, p_i45325_2_, LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -48,23 +43,11 @@ public class ItemKokorosMasks extends ItemMask {
 
 		if(stack != null) {
 			if(stack.getItem() instanceof ItemKokorosMasks) {
-				int type = ((ItemArmor)stack.getItem()).armorType;
-
-				if(type == 1) {
-					armorModel = getArmorModel(1);
-				}
-				else {
-					armorModel = getArmorModel(1);
-				}
+				armorModel = MODEL_KOKOROS_MASKS;
 			}
+
 			if(armorModel != null) {
-				armorModel.bipedHead.showModel = armorSlot == 3;
-				armorModel.bipedHeadwear.showModel = armorSlot == 3;
 				armorModel.bipedBody.showModel = armorSlot == 0;
-				armorModel.bipedRightArm.showModel = armorSlot == 3;
-				armorModel.bipedLeftArm.showModel = armorSlot == 3;
-				armorModel.bipedRightLeg.showModel = armorSlot == 3;
-				armorModel.bipedLeftLeg.showModel = armorSlot == 3;
 				armorModel.isSneak = entityLiving.isSneaking();
 				armorModel.isRiding = entityLiving.isRiding();
 				armorModel.isChild = entityLiving.isChild();
@@ -85,15 +68,17 @@ public class ItemKokorosMasks extends ItemMask {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
-		EntityPlayer player = (EntityPlayer)entity;
-		if(!world.isRemote && entity != null) {
-			ItemStack[] inventory = player.inventory.mainInventory;
-			for(int i = 0; i < inventory.length; i++) {
-				if(inventory[i] != null && inventory[i].getItem() == this && i != p_77663_4_) {
-					player.dropPlayerItemWithRandomChoice(inventory[i], true);
-					inventory[i] = null;
+	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean p_77663_5_) {
+		super.onUpdate(stack, world, entity, slot, p_77663_5_);
+		if(entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if(!world.isRemote) {
+				ItemStack[] inventory = player.inventory.mainInventory;
+				for(int i = 0; i < inventory.length; i++) {
+					if(inventory[i] != null && inventory[i].getItem() == this && i != slot) {
+						player.dropPlayerItemWithRandomChoice(inventory[i], true);
+						inventory[i] = null;
+					}
 				}
 			}
 		}

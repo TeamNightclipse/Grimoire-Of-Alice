@@ -10,17 +10,16 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.client.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemWritableBook;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -30,12 +29,12 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class ItemEnchantedBook extends ItemGOABase {
 
 	ItemEnchantedBook() {
 		super(EnumRarity.epic, true);
 		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabCombat);
 		setMaxDamage(50);
 	}
 
@@ -73,11 +72,10 @@ public class ItemEnchantedBook extends ItemGOABase {
 				world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "mob.ghast.scream", 1.0F,
 						itemRand.nextFloat() * 0.4F + 0.8F);
 				Vec3 look = player.getLookVec();
-				EntityFireBall2 fireball2 = new EntityFireBall2(world, player, 1, 1, 1);
-				fireball2.setPosition(player.posX + look.xCoord * 5, player.posY + look.yCoord * 5, player.posZ + look.zCoord * 5);
-				fireball2.accelerationX = look.xCoord * 0.1;
-				fireball2.accelerationY = look.yCoord * 0.1;
-				fireball2.accelerationZ = look.zCoord * 0.1;
+				Vec3 position = Vec3.createVectorHelper(player.posX, player.posY, player.posZ);
+				Vec3 fireBallPos = Vec3.createVectorHelper(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
+				EntityFireBall2 fireball2 = new EntityFireBall2(world, player, fireBallPos, look);
+
 				world.spawnEntityInWorld(fireball2);
 				player.inventory.consumeInventoryItem(Items.fire_charge);
 				stack.damageItem(1, player);

@@ -10,6 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -17,13 +18,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.World;;
+import net.minecraft.world.World;
 
-public class ItemPrimordialShield extends ItemSword {
+@CleanupDone
+public class ItemPrimordialShield extends ItemGOASword {
 
 	public ItemPrimordialShield(ToolMaterial material) {
 		super(material);
@@ -53,25 +54,13 @@ public class ItemPrimordialShield extends ItemSword {
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 
-		if(p_77663_5_ && entity instanceof EntityPlayer) {
-			EntityPlayer entityplayer = (EntityPlayer)entity;
-			if(!world.isRemote && !entityplayer.capabilities.isCreativeMode) {
-				if(entityplayer.getCurrentEquippedItem().getItem() == GOAItem.itemPrimordialShield) {
-					if(entityplayer.experienceLevel < 1000) {
-						entityplayer.fallDistance = 5.0F;
-					}
+		if(entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if(player.getCurrentEquippedItem() == stack && !isWorthy(player)) {
+				if(!world.isRemote && p_77663_5_) {
+					player.fallDistance = 5.0F;
 				}
-			}
-		}
 
-		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
-
-		EntityPlayer player = (EntityPlayer)entity;
-		ItemStack equiped = player.getCurrentEquippedItem();
-		if(equiped == stack) {
-			if(player.experienceLevel < 1000) {
-				player.motionX *= 0.0D;
-				player.motionZ *= 0.0D;
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 25, 5));
 				player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 25, 5));
 			}
@@ -80,7 +69,7 @@ public class ItemPrimordialShield extends ItemSword {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if(player.experienceLevel > 1000) {
+		if(isWorthy(player)) {
 			if(stack.getItemDamage() == 0) {
 				player.capabilities.disableDamage = true;
 				player.setItemInUse(stack, getMaxItemUseDuration(stack));
@@ -102,4 +91,7 @@ public class ItemPrimordialShield extends ItemSword {
 		return true;
 	}
 
+	private boolean isWorthy(EntityPlayer player) {
+		return player.experienceLevel >= 1000 | player.capabilities.isCreativeMode;
+	}
 }

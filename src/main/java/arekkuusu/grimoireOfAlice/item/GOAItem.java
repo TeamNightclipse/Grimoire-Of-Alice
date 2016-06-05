@@ -21,127 +21,128 @@ import arekkuusu.grimoireOfAlice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireOfAlice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireOfAlice.lib.LibItemName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
+@CleanupDone
 public class GOAItem {
 
 	//Material
-	public static ArmorMaterial SolidPaper = EnumHelper.addArmorMaterial("SolidPaper", 1000, new int[] {3}, 30);
-	public static ToolMaterial Goldyron = EnumHelper.addToolMaterial("Goldyron", 3, 2000, 15.0F, 2.0F, 30);
-	public static ToolMaterial WetNoodle = EnumHelper.addToolMaterial("WetNoodle", 3, 2000, 15.0F, 0.2F, 30);
+	public static final ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", 1000, new int[] {3}, 30);
+	public static final ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 2000, 15.0F, 2.0F, 30);
+	public static final ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 2000, 15.0F, 0.2F, 30);
 	//Item
-	public static Item itemEnchantedBook;
-	public static Item itemGrimoireBook;
-	public static Item itemVolatileString;
-	public static Item itemSoldifiedPaper;
-	public static Item itemGloriousNipponSteel;
-	public static Item itemShimenawaRope;
-	public static Item itemYoukaiBook;
-	public static Item itemMask;
+	public static Item enchantedBook;
+	public static Item grimoireBook;
+	public static Item volatileString;
+	public static Item soldifiedPaper;
+	public static Item gloriousNipponSteel;
+	public static Item shimenawaRope;
+	public static Item youkaiBook;
+	public static Item mask;
 	//Food
-	public static Item itemShroomSlice;
+	public static Item shroomSlice;
 	//Armor
-	public static Item itemFoxMask;
-	public static Item itemRaidenMask;
-	public static Item itemMonkeyMask;
-	public static Item itemHyottokoMask;
-	public static Item itemFukuNoKamiMask;
-	public static Item itemUbaMask;
-	public static Item itemHannyaMask;
-	public static Item itemKoomoteMask;
-	public static Item itemMaskOfHope;
-	public static Item itemKokorosMasks;
-	public static Item itemPrimordialShield;
+	public static Item foxMask;
+	public static Item raidenMask;
+	public static Item nonkeyMask;
+	public static Item hyottokoMask;
+	public static Item fukuNoKamiMask;
+	public static Item ubaMask;
+	public static Item hannyaMask;
+	public static Item koomoteMask;
+	public static Item maskOfHope;
+	public static Item kokorosMasks;
+	public static Item primordialShield;
 	//Weapons
-	public static Item itemMochiHammer;
-	public static Item itemMomijisScimitarSword;
-	public static Item itemLaevatein;
-	public static Item itemNazrinStick;
-	public static Item itemEllyScythe;
-	public static Item itemMikoStick;
-	public static Item itemCrestOfYggdrasill;
-	public static Item itemAmenonuhoko;
+	public static Item mochiHammer;
+	public static Item momijisScimitarSword;
+	public static Item laevatein;
+	public static Item nazrinStick;
+	public static Item ellyScythe;
+	public static Item mikoStick;
+	public static Item crestOfYggdrasill;
+	public static Item amenonuhoko;
 
 	public static void preInit() {
 		//@formatter:off
 
 		//Item
-		itemEnchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
-		itemGrimoireBook = new ItemGOABase(EnumRarity.epic, true).setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook").setMaxStackSize(1).setCreativeTab(CreativeTabs.tabCombat);
-		itemVolatileString = new ItemGOABase(EnumRarity.uncommon).setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
-		itemSoldifiedPaper = new ItemGOABase().setUnlocalizedName("SoldifiedPaper").setTextureName(LibMod.MODID + ":SoldifiedPaper").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
-		itemGloriousNipponSteel = new ItemGloriousNipponSteel().setUnlocalizedName("GloriousNipponSteel").setTextureName(LibMod.MODID + ":GloriousNipponSteel");
-		itemShimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(LibMod.MODID + ":ShimenawaRope");
-		itemYoukaiBook = new ItemYoukaiBook().setUnlocalizedName("YoukaiBook").setTextureName(LibMod.MODID + ":YoukaiBook");
-		itemMask = new ItemGOABase().setUnlocalizedName("Mask").setTextureName(LibMod.MODID + ":Mask").setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMaterials);
+		enchantedBook = new ItemEnchantedBook().setUnlocalizedName("EnchantedBook").setTextureName(LibMod.MODID + ":EnchantedBook");
+		grimoireBook = new ItemGOABase(EnumRarity.epic, true).setUnlocalizedName("GrimoireBook").setTextureName(LibMod.MODID + ":GrimoireBook").setMaxStackSize(1);
+		volatileString = new ItemGOABase(EnumRarity.uncommon).setUnlocalizedName("VolatileString").setTextureName(LibMod.MODID + ":VolatileString");
+		soldifiedPaper = new ItemGOABase().setUnlocalizedName("SoldifiedPaper").setTextureName(LibMod.MODID + ":SoldifiedPaper").setMaxStackSize(16);
+		gloriousNipponSteel = new ItemGloriousNipponSteel().setUnlocalizedName("GloriousNipponSteel").setTextureName(LibMod.MODID + ":GloriousNipponSteel");
+		shimenawaRope = new ItemShimenawaRope().setUnlocalizedName("ShimenawaRope").setTextureName(LibMod.MODID + ":ShimenawaRope");
+		youkaiBook = new ItemYoukaiBook().setUnlocalizedName("YoukaiBook").setTextureName(LibMod.MODID + ":YoukaiBook");
+		mask = new ItemGOABase().setUnlocalizedName("Mask").setTextureName(LibMod.MODID + ":Mask").setMaxStackSize(16);
 
 		//Food
-		itemShroomSlice =new ItemShroomSlice(4, 1.2F, false).setAlwaysEdible().setUnlocalizedName("ShroomSlice").setTextureName(LibMod.MODID + ":ShroomSlice");
+		shroomSlice =new ItemShroomSlice().setAlwaysEdible().setUnlocalizedName("ShroomSlice").setTextureName(LibMod.MODID + ":ShroomSlice");
 
-		//Armor  Dont really know the dif between 0 and proxy.addArmor
-		itemFoxMask= new ItemFoxMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FoxMask")*/ ).setUnlocalizedName("FoxMask").setTextureName(LibMod.MODID + ":FoxMask");
-		itemRaidenMask= new ItemRaidenMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("RaidenMask")*/ ).setUnlocalizedName("RaidenMask").setTextureName(LibMod.MODID + ":RaidenMask");
-		itemMonkeyMask= new ItemMonkeyMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MonkeyMask")*/ ).setUnlocalizedName("MonkeyMask").setTextureName(LibMod.MODID + ":MonkeyMask");
-		itemHyottokoMask= new ItemHyottokoMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HyottokoMask")*/ ).setUnlocalizedName("HyottokoMask").setTextureName(LibMod.MODID + ":HyottokoMask");
-		itemFukuNoKamiMask= new ItemFukuNoKamiMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("FukuNoKamiMask")*/ ).setUnlocalizedName("FukuNoKamiMask").setTextureName(LibMod.MODID + ":FukuNoKamiMask");
-		itemUbaMask= new ItemUbaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("UbaMask")*/ ).setUnlocalizedName("UbaMask").setTextureName(LibMod.MODID + ":UbaMask");
-		itemHannyaMask= new ItemHannyaMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("HannyaMask")*/ ).setUnlocalizedName("HannyaMask").setTextureName(LibMod.MODID + ":HannyaMask");
-		itemKoomoteMask= new ItemKoomoteMask(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KoomoteMask")*/ ).setUnlocalizedName("KoomoteMask").setTextureName(LibMod.MODID + ":KoomoteMask");
-		itemMaskOfHope= new ItemMaskOfHope(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("MaskOfHope")*/ ).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
-		itemKokorosMasks= new ItemKokorosMasks(SolidPaper, 0/*GrimoireOfAlice.proxy.addArmor("KokorosMasks")*/ ).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
-		itemPrimordialShield= new ItemPrimordialShield(WetNoodle).setUnlocalizedName("PrimordialShield").setTextureName(LibMod.MODID + ":PrimordialShield");
+		//Armor
+		foxMask= new ItemFoxMask(SOLID_PAPER, 0).setUnlocalizedName("FoxMask").setTextureName(LibMod.MODID + ":FoxMask");
+		raidenMask= new ItemRaidenMask(SOLID_PAPER, 0).setUnlocalizedName("RaidenMask").setTextureName(LibMod.MODID + ":RaidenMask");
+		nonkeyMask= new ItemMonkeyMask(SOLID_PAPER, 0).setUnlocalizedName("MonkeyMask").setTextureName(LibMod.MODID + ":MonkeyMask");
+		hyottokoMask= new ItemHyottokoMask(SOLID_PAPER, 0).setUnlocalizedName("HyottokoMask").setTextureName(LibMod.MODID + ":HyottokoMask");
+		fukuNoKamiMask= new ItemFukuNoKamiMask(SOLID_PAPER, 0).setUnlocalizedName("FukuNoKamiMask").setTextureName(LibMod.MODID + ":FukuNoKamiMask");
+		ubaMask= new ItemUbaMask(SOLID_PAPER, 0).setUnlocalizedName("UbaMask").setTextureName(LibMod.MODID + ":UbaMask");
+		hannyaMask= new ItemHannyaMask(SOLID_PAPER, 0).setUnlocalizedName("HannyaMask").setTextureName(LibMod.MODID + ":HannyaMask");
+		koomoteMask= new ItemKoomoteMask(SOLID_PAPER, 0).setUnlocalizedName("KoomoteMask").setTextureName(LibMod.MODID + ":KoomoteMask");
+		maskOfHope= new ItemMaskOfHope(SOLID_PAPER, 0).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
+		kokorosMasks= new ItemKokorosMasks(SOLID_PAPER, 0).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
+		primordialShield= new ItemPrimordialShield(WET_NOODLE).setUnlocalizedName("PrimordialShield").setTextureName(LibMod.MODID + ":PrimordialShield");
 
 		//Weapon
-		itemMochiHammer= new ItemMochiHammer(Goldyron).setUnlocalizedName("MochiHammer").setTextureName(LibMod.MODID + ":MochiHammer");
-		itemMomijisScimitarSword= new ItemMomijisScimitarSword(Goldyron).setUnlocalizedName("MomijisScimitarSword").setTextureName(LibMod.MODID + ":MomijisScimitarSword");
-		itemLaevatein= new ItemLaevatein(WetNoodle).setUnlocalizedName("Laevatein").setTextureName(LibMod.MODID + ":Laevatein");
-		itemNazrinStick= new ItemNazrinStick(WetNoodle).setUnlocalizedName("NazrinStick").setTextureName(LibMod.MODID + ":NazrinStick");
-		itemEllyScythe= new ItemEllyScythe(WetNoodle).setUnlocalizedName("EllyScythe").setTextureName(LibMod.MODID + ":EllyScythe");
-		itemMikoStick= new ItemMikoStick(WetNoodle).setUnlocalizedName("MikoStick").setTextureName(LibMod.MODID + ":MikoStick2");
-		itemCrestOfYggdrasill= new ItemCrestOfYggdrasill(WetNoodle).setUnlocalizedName("CrestOfYggdrasill").setTextureName(LibMod.MODID + ":CrestOfYggdrasill");
-		itemAmenonuhoko= new ItemAmenonuhoko(Goldyron).setUnlocalizedName("Amenonuhoko").setTextureName(LibMod.MODID + ":Amenonuhoko");
+		mochiHammer= new ItemMochiHammer(GOLDYRON).setUnlocalizedName("MochiHammer").setTextureName(LibMod.MODID + ":MochiHammer");
+		momijisScimitarSword= new ItemMomijisScimitarSword(GOLDYRON).setUnlocalizedName("MomijisScimitarSword").setTextureName(LibMod.MODID + ":MomijisScimitarSword");
+		laevatein= new ItemLaevatein(WET_NOODLE).setUnlocalizedName("Laevatein").setTextureName(LibMod.MODID + ":Laevatein");
+		nazrinStick= new ItemNazrinStick(WET_NOODLE).setUnlocalizedName("NazrinStick").setTextureName(LibMod.MODID + ":NazrinStick");
+		ellyScythe= new ItemEllyScythe(WET_NOODLE).setUnlocalizedName("EllyScythe").setTextureName(LibMod.MODID + ":EllyScythe");
+		mikoStick= new ItemMikoStick(WET_NOODLE).setUnlocalizedName("MikoStick").setTextureName(LibMod.MODID + ":MikoStick2");
+		crestOfYggdrasill= new ItemCrestOfYggdrasill(WET_NOODLE).setUnlocalizedName("CrestOfYggdrasill").setTextureName(LibMod.MODID + ":CrestOfYggdrasill");
+		amenonuhoko= new ItemAmenonuhoko(GOLDYRON).setUnlocalizedName("Amenonuhoko").setTextureName(LibMod.MODID + ":Amenonuhoko");
 		//@formatter:on
 
 		//Item
-		GameRegistry.registerItem(itemEnchantedBook, LibItemName.ENCHANTEDBOOK);
-		GameRegistry.registerItem(itemGrimoireBook, LibItemName.GRIMOIREBOOK);
-		GameRegistry.registerItem(itemVolatileString, LibItemName.VOLATILESTRING);
-		GameRegistry.registerItem(itemSoldifiedPaper, LibItemName.SOLDIFIEDPAPER);
-		GameRegistry.registerItem(itemGloriousNipponSteel, LibItemName.GLORIOUSNIPPONSTEEL);
-		GameRegistry.registerItem(itemShimenawaRope, LibItemName.SHIMENAWAROPE);
-		GameRegistry.registerItem(itemYoukaiBook, LibItemName.YOUKAIBOOK);
-		GameRegistry.registerItem(itemMask, LibItemName.MASK);
+		GameRegistry.registerItem(enchantedBook, LibItemName.ENCHANTEDBOOK);
+		GameRegistry.registerItem(grimoireBook, LibItemName.GRIMOIREBOOK);
+		GameRegistry.registerItem(volatileString, LibItemName.VOLATILESTRING);
+		GameRegistry.registerItem(soldifiedPaper, LibItemName.SOLDIFIEDPAPER);
+		GameRegistry.registerItem(gloriousNipponSteel, LibItemName.GLORIOUSNIPPONSTEEL);
+		GameRegistry.registerItem(shimenawaRope, LibItemName.SHIMENAWAROPE);
+		GameRegistry.registerItem(youkaiBook, LibItemName.YOUKAIBOOK);
+		GameRegistry.registerItem(mask, LibItemName.MASK);
 
 		//Food
-		GameRegistry.registerItem(itemShroomSlice, LibItemName.SHROOMSLICE);
+		GameRegistry.registerItem(shroomSlice, LibItemName.SHROOMSLICE);
 
 		//Armor
-		GameRegistry.registerItem(itemFoxMask, LibItemName.FOXMASK);
-		GameRegistry.registerItem(itemRaidenMask, LibItemName.RAIDENMASK);
-		GameRegistry.registerItem(itemMonkeyMask, LibItemName.MONKEYMASK);
-		GameRegistry.registerItem(itemHyottokoMask, LibItemName.HYOTTOKOMASK);
-		GameRegistry.registerItem(itemFukuNoKamiMask, LibItemName.FUKUNOKAMIMASK);
-		GameRegistry.registerItem(itemUbaMask, LibItemName.UBAMASK);
-		GameRegistry.registerItem(itemHannyaMask, LibItemName.HANNYAMASK);
-		GameRegistry.registerItem(itemKoomoteMask, LibItemName.KOOMOTEMASK);
-		GameRegistry.registerItem(itemMaskOfHope, LibItemName.MASKOFHOPE);
-		GameRegistry.registerItem(itemKokorosMasks, LibItemName.KOKOROSMASKS);
-		GameRegistry.registerItem(itemPrimordialShield, LibItemName.PRIMORDIALSHIELD);
+		GameRegistry.registerItem(foxMask, LibItemName.FOXMASK);
+		GameRegistry.registerItem(raidenMask, LibItemName.RAIDENMASK);
+		GameRegistry.registerItem(nonkeyMask, LibItemName.MONKEYMASK);
+		GameRegistry.registerItem(hyottokoMask, LibItemName.HYOTTOKOMASK);
+		GameRegistry.registerItem(fukuNoKamiMask, LibItemName.FUKUNOKAMIMASK);
+		GameRegistry.registerItem(ubaMask, LibItemName.UBAMASK);
+		GameRegistry.registerItem(hannyaMask, LibItemName.HANNYAMASK);
+		GameRegistry.registerItem(koomoteMask, LibItemName.KOOMOTEMASK);
+		GameRegistry.registerItem(maskOfHope, LibItemName.MASKOFHOPE);
+		GameRegistry.registerItem(kokorosMasks, LibItemName.KOKOROSMASKS);
+		GameRegistry.registerItem(primordialShield, LibItemName.PRIMORDIALSHIELD);
 
 		//Weapon
-		GameRegistry.registerItem(itemMochiHammer, LibItemName.MOCHIHAMMER);
-		GameRegistry.registerItem(itemMomijisScimitarSword, LibItemName.MOMIJISSCIMITARSWORD);
-		GameRegistry.registerItem(itemLaevatein, LibItemName.LAEVATEIN);
-		GameRegistry.registerItem(itemNazrinStick, LibItemName.NAZRINSTICK);
-		GameRegistry.registerItem(itemEllyScythe, LibItemName.ELLYSCYTHE);
-		GameRegistry.registerItem(itemMikoStick, LibItemName.MIKOSTICK);
-		GameRegistry.registerItem(itemCrestOfYggdrasill, LibItemName.CRESTOFYGGDRASILL);
-		GameRegistry.registerItem(itemAmenonuhoko, LibItemName.AMENONUHOKO);
+		GameRegistry.registerItem(mochiHammer, LibItemName.MOCHIHAMMER);
+		GameRegistry.registerItem(momijisScimitarSword, LibItemName.MOMIJISSCIMITARSWORD);
+		GameRegistry.registerItem(laevatein, LibItemName.LAEVATEIN);
+		GameRegistry.registerItem(nazrinStick, LibItemName.NAZRINSTICK);
+		GameRegistry.registerItem(ellyScythe, LibItemName.ELLYSCYTHE);
+		GameRegistry.registerItem(mikoStick, LibItemName.MIKOSTICK);
+		GameRegistry.registerItem(crestOfYggdrasill, LibItemName.CRESTOFYGGDRASILL);
+		GameRegistry.registerItem(amenonuhoko, LibItemName.AMENONUHOKO);
 	}
 }

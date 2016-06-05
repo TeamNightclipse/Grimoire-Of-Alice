@@ -12,14 +12,15 @@ import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireOfAlice.client.model.ModelPrimordialShield;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
+@CleanupDone
 public class ItemRenderPrimordialShield implements IItemRenderer {
 
 	private ModelPrimordialShield MODEL;
@@ -48,32 +49,37 @@ public class ItemRenderPrimordialShield implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		Entity entity = (Entity)data[1];
 		switch(type) {
 			case EQUIPPED:
+				render(entity);
 				break;
 			case EQUIPPED_FIRST_PERSON: {
-				Entity entity = (Entity)data[1];
-				float limbSwing = 0F;
-				float limbSwingAmount = 0F;
-				float age = 0F;
-
-				if(entity instanceof EntityLivingBase) {
-					EntityLivingBase livingBase = (EntityLivingBase)entity;
-					limbSwing = livingBase.limbSwing;
-					limbSwingAmount = livingBase.limbSwingAmount;
-					age = livingBase.getAge();
-				}
-
-				GL11.glPushMatrix();
-				Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
-				GL11.glRotatef(60F, 0F, 0F, 1F);
-				GL11.glTranslatef(0.5F, -0.5F, -0.2F);
-				MODEL.render(entity, limbSwing, limbSwingAmount, age, entity.getRotationYawHead(), entity.rotationPitch, 0.0625F);
-				GL11.glPopMatrix();
+				render(entity);
 				break;
 			}
 			default:
 				break;
 		}
+	}
+
+	private void render(Entity entity) {
+		float limbSwing = 0F;
+		float limbSwingAmount = 0F;
+		float age = 0F;
+
+		if(entity instanceof EntityLivingBase) {
+			EntityLivingBase livingBase = (EntityLivingBase)entity;
+			limbSwing = livingBase.limbSwing;
+			limbSwingAmount = livingBase.limbSwingAmount;
+			age = livingBase.getAge();
+		}
+
+		GL11.glPushMatrix();
+		Minecraft.getMinecraft().renderEngine.bindTexture(TEXTURE);
+		GL11.glRotatef(60F, 0F, 0F, 1F);
+		GL11.glTranslatef(0.5F, -0.5F, -0.2F);
+		MODEL.render(entity, limbSwing, limbSwingAmount, age, entity.getRotationYawHead(), entity.rotationPitch, 0.0625F);
+		GL11.glPopMatrix();
 	}
 }

@@ -9,12 +9,14 @@
 package arekkuusu.grimoireOfAlice.handler;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 
+@CleanupDone
 public class WorldGenShroom {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
@@ -26,8 +28,8 @@ public class WorldGenShroom {
 				int y = event.rand.nextInt(26) + 4;
 
 				int lolis = event.rand.nextInt(16);
-				if(event.world.isAirBlock(x, y, z) && GOABlock.blockShroom.canBlockStay(event.world, x, y, z))
-					event.world.setBlock(x, y, z, GOABlock.blockShroom, lolis, 2);
+				if(event.world.isAirBlock(x, y, z) && GOABlock.shroom.canBlockStay(event.world, x, y, z))
+					event.world.setBlock(x, y, z, GOABlock.shroom, lolis, 2);
 			}
 		}
 	}

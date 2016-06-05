@@ -8,10 +8,12 @@
  */
 package arekkuusu.grimoireOfAlice.client.model;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+@CleanupDone
 public class ModelHolyKeyStone extends ModelBase {
 
 	private ModelRenderer stone1;
@@ -37,6 +39,7 @@ public class ModelHolyKeyStone extends ModelBase {
 	public ModelHolyKeyStone() {
 		textureWidth = 64;
 		textureHeight = 64;
+		float piHalf = (float)(Math.PI / 2);
 
 		stone1 = new ModelRenderer(this, 7, 46);
 		stone1.addBox(-7F, 2F, -7F, 14, 4, 14);
@@ -103,19 +106,19 @@ public class ModelHolyKeyStone extends ModelBase {
 		string4.setRotationPoint(0F, 9F, 0F);
 		string4.setTextureSize(64, 64);
 		string4.mirror = true;
-		setRotation(string4, -0.1047198F, 1.570796F, 0F);
+		setRotation(string4, -0.1047198F, piHalf, 0F);
 		string5 = new ModelRenderer(this, 16, 0);
 		string5.addBox(-1F, 1.8F, -6.9F, 2, 8, 0);
 		string5.setRotationPoint(0F, 9F, 0F);
 		string5.setTextureSize(64, 64);
 		string5.mirror = true;
-		setRotation(string5, -0.1047198F, 1.570796F, 0F);
+		setRotation(string5, -0.1047198F, piHalf, 0F);
 		string6 = new ModelRenderer(this, 28, 0);
 		string6.addBox(-5F, 1.8F, -6.9F, 2, 8, 0);
 		string6.setRotationPoint(0F, 9F, 0F);
 		string6.setTextureSize(64, 64);
 		string6.mirror = true;
-		setRotation(string6, -0.1047198F, 1.570796F, 0F);
+		setRotation(string6, -0.1047198F, piHalf, 0F);
 		string7 = new ModelRenderer(this, 16, 0);
 		string7.addBox(-5F, 1.8F, 6.9F, 2, 8, 0);
 		string7.setRotationPoint(0F, 9F, 0F);
@@ -139,19 +142,19 @@ public class ModelHolyKeyStone extends ModelBase {
 		string10.setRotationPoint(0F, 9F, 0F);
 		string10.setTextureSize(64, 64);
 		string10.mirror = true;
-		setRotation(string10, 0.1047198F, 1.570796F, 0F);
+		setRotation(string10, 0.1047198F, piHalf, 0F);
 		string11 = new ModelRenderer(this, 4, 0);
 		string11.addBox(-1F, 1.8F, 6.9F, 2, 8, 0);
 		string11.setRotationPoint(0F, 9F, 0F);
 		string11.setTextureSize(64, 64);
 		string11.mirror = true;
-		setRotation(string11, 0.1047198F, 1.570796F, 0F);
+		setRotation(string11, 0.1047198F, piHalf, 0F);
 		string12 = new ModelRenderer(this, 28, 0);
 		string12.addBox(3F, 1.8F, 6.9F, 2, 8, 0);
 		string12.setRotationPoint(0F, 9F, 0F);
 		string12.setTextureSize(64, 64);
 		string12.mirror = true;
-		setRotation(string12, 0.1047198F, 1.570796F, 0F);
+		setRotation(string12, 0.1047198F, piHalf, 0F);
 	}
 
 	@Override

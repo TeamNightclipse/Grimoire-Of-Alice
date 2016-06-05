@@ -8,11 +8,14 @@
  */
 package arekkuusu.grimoireOfAlice.item.masks;
 
+import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
+@CleanupDone
 public class ItemMask extends ItemArmor {
 
 	private final String texture;
@@ -20,6 +23,7 @@ public class ItemMask extends ItemArmor {
 	public ItemMask(ArmorMaterial material, int p_i45325_2_, String texture) {
 		super(material, p_i45325_2_, 0);
 		this.texture = texture;
+		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 
 	@Override

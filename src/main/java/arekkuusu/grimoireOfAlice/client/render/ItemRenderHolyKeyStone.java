@@ -10,30 +10,18 @@ package arekkuusu.grimoireOfAlice.client.render;
 
 import org.lwjgl.opengl.GL11;
 
-import arekkuusu.grimoireOfAlice.client.model.ModelHolyKeyStone;
-import arekkuusu.grimoireOfAlice.client.tile.TileEntityHolyKeyStone;
-import arekkuusu.grimoireOfAlice.lib.LibMod;
-import net.minecraft.client.model.ModelBase;
+import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
+@CleanupDone
 public class ItemRenderHolyKeyStone implements IItemRenderer {
-
-	private ModelBase MODEL;
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/HolyKeyStone.png");
-
-	public ItemRenderHolyKeyStone() {
-		MODEL = new ModelHolyKeyStone();
-	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		switch(type) {
-			case EQUIPPED:
-			case EQUIPPED_FIRST_PERSON:
-			case ENTITY:
 			case INVENTORY:
 				return true;
 			default:
@@ -44,15 +32,6 @@ public class ItemRenderHolyKeyStone implements IItemRenderer {
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 		switch(type) {
-			case ENTITY: {
-				return false;
-			}
-			case EQUIPPED: {
-				return false;
-			}
-			case EQUIPPED_FIRST_PERSON: {
-				return false;
-			}
 			case INVENTORY: {
 				return helper == ItemRendererHelper.INVENTORY_BLOCK;
 			}

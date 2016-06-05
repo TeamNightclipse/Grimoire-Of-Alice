@@ -10,6 +10,8 @@ package arekkuusu.grimoireOfAlice.item.food;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.GrimoireOfAlice;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,11 +25,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+@CleanupDone
 public class ItemShroomSlice extends ItemFood {
 
-	public ItemShroomSlice(int p_i45339_1_, float p_i45339_2_, boolean p_i45339_3_) {
-		super(p_i45339_1_, p_i45339_2_, p_i45339_3_);
+	public ItemShroomSlice() {
+		super(4, 1.2F, false);
 		setHasSubtypes(true);
+		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 
 	@Override
@@ -75,5 +79,4 @@ public class ItemShroomSlice extends ItemFood {
 		list.add(new ItemStack(item, 1, 0));
 		list.add(new ItemStack(item, 1, 1));
 	}
-
 }

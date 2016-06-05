@@ -10,19 +10,20 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ItemMikoStick extends ItemSword {
+@CleanupDone
+public class ItemMikoStick extends ItemGOASword {
 
 	ItemMikoStick(ToolMaterial material) {
 		super(material);
@@ -57,9 +58,8 @@ public class ItemMikoStick extends ItemSword {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
-		p_77644_2_.extinguish();
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
+		target.extinguish();
 		return true;
 	}
-
 }

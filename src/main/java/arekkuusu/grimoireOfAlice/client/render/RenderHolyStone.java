@@ -12,10 +12,12 @@ import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireOfAlice.client.model.ModelHolyStone;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+@CleanupDone
 public class RenderHolyStone extends TileEntitySpecialRenderer {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/HolyStone.png");

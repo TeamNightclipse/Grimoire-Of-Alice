@@ -8,6 +8,9 @@
  */
 package arekkuusu.grimoireOfAlice.lib;
 
+import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
+
+@CleanupDone
 public class LibItemName {
 
 	//Item
@@ -15,7 +18,7 @@ public class LibItemName {
 	public static final String GRIMOIREBOOK = "GrimoireBook";
 	public static final String VOLATILESTRING = "VolatileString";
 	public static final String SOLDIFIEDPAPER = "SoldifiedPaper";
-	public static final String GLORIOUSNIPPONSTEEL = "Goldyron";
+	public static final String GLORIOUSNIPPONSTEEL = "GOLDYRON";
 	public static final String SHIMENAWAROPE = "ShimenawaRope";
 	public static final String YOUKAIBOOK = "YoukaiBook";
 	public static final String MASK = "Mask";

@@ -37,16 +37,17 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class GuiScreenYoukaiBook extends GuiScreen {
 
-	private static final Logger logger = LogManager.getLogger();
-	private static final ResourceLocation bookGuiTextures = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/YoukaiBook.png");
+	private static final Logger LOGGER = LogManager.getLogger();
+	private static final ResourceLocation BOOK_GUI_TEXTURES = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/YoukaiBook.png");
+	private static final int BOOK_IMAGE_WIDTH = 192;
+	private static final int BOOK_IMAGE_HEIGHT = 192;
+
 	private final EntityPlayer editingPlayer;
 	private final ItemStack bookObj;
 	private final boolean bookIsUnsigned;
 	private boolean field_146481_r;
 	private boolean field_146480_s;
 	private int updateCount;
-	private int bookImageWidth = 192;
-	private int bookImageHeight = 192;
 	private int bookTotalPages = 1;
 	private int currPage;
 	private NBTTagList bookPages;
@@ -97,16 +98,16 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 
 		if(bookIsUnsigned) {
-			buttonList.add(buttonSign = new GuiButton(3, width / 2 - 100, 4 + bookImageHeight, 98, 20, I18n.format("book.signButton")));
-			buttonList.add(buttonDone = new GuiButton(0, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.done")));
-			buttonList.add(buttonFinalize = new GuiButton(5, width / 2 - 100, 4 + bookImageHeight, 98, 20, I18n.format("book.finalizeButton")));
-			buttonList.add(buttonCancel = new GuiButton(4, width / 2 + 2, 4 + bookImageHeight, 98, 20, I18n.format("gui.cancel")));
+			buttonList.add(buttonSign = new GuiButton(3, width / 2 - 100, 4 + BOOK_IMAGE_HEIGHT, 98, 20, I18n.format("book.signButton")));
+			buttonList.add(buttonDone = new GuiButton(0, width / 2 + 2, 4 + BOOK_IMAGE_HEIGHT, 98, 20, I18n.format("gui.done")));
+			buttonList.add(buttonFinalize = new GuiButton(5, width / 2 - 100, 4 + BOOK_IMAGE_HEIGHT, 98, 20, I18n.format("book.finalizeButton")));
+			buttonList.add(buttonCancel = new GuiButton(4, width / 2 + 2, 4 + BOOK_IMAGE_HEIGHT, 98, 20, I18n.format("gui.cancel")));
 		}
 		else {
-			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + bookImageHeight, 200, 20, I18n.format("gui.done")));
+			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + BOOK_IMAGE_HEIGHT, 200, 20, I18n.format("gui.done")));
 		}
 
-		int i = (width - bookImageWidth) / 2;
+		int i = (width - BOOK_IMAGE_WIDTH) / 2;
 		byte b0 = 2;
 		buttonList.add(buttonNextPage = new GuiScreenYoukaiBook.NextPageButton(1, i + 120, b0 + 154, true));
 		buttonList.add(buttonPreviousPage = new GuiScreenYoukaiBook.NextPageButton(2, i + 38, b0 + 154, false));
@@ -160,7 +161,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 					s = "MC|BSign";
 					bookObj.setTagInfo("author", new NBTTagString(editingPlayer.getCommandSenderName()));
 					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim()));
-					bookObj.func_150996_a(GOAItem.itemEnchantedBook);
+					bookObj.func_150996_a(GOAItem.enchantedBook);
 				}
 
 				ByteBuf bytebuf = Unpooled.buffer();
@@ -170,7 +171,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 					mc.getNetHandler().addToSendQueue(new C17PacketCustomPayload(s, bytebuf));
 				}
 				catch(Exception exception) {
-					logger.error("Couldn\'t send book info", exception);
+					LOGGER.error("Couldn\'t send book info", exception);
 				}
 				finally {
 					bytebuf.release();
@@ -317,10 +318,10 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	@Override
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(bookGuiTextures);
-		int k = (width - bookImageWidth) / 2;
+		mc.getTextureManager().bindTexture(BOOK_GUI_TEXTURES);
+		int k = (width - BOOK_IMAGE_WIDTH) / 2;
 		byte b0 = 2;
-		drawTexturedModalRect(k, b0, 0, 0, bookImageWidth, bookImageHeight);
+		drawTexturedModalRect(k, b0, 0, 0, BOOK_IMAGE_WIDTH, BOOK_IMAGE_HEIGHT);
 		String s;
 		String s1;
 		int l;
@@ -369,7 +370,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			}
 
 			l = fontRendererObj.getStringWidth(s);
-			fontRendererObj.drawString(s, k - l + bookImageWidth - 44, b0 + 16, 0);
+			fontRendererObj.drawString(s, k - l + BOOK_IMAGE_WIDTH - 44, b0 + 16, 0);
 			fontRendererObj.drawSplitString(s1, k + 36, b0 + 16 + 16, 116, 0);
 		}
 
@@ -392,7 +393,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				boolean flag = x >= xPosition && y >= yPosition && x < xPosition + width
 						&& y < yPosition + height;
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				minecraft.getTextureManager().bindTexture(GuiScreenYoukaiBook.bookGuiTextures);
+				minecraft.getTextureManager().bindTexture(GuiScreenYoukaiBook.BOOK_GUI_TEXTURES);
 				int k = 0;
 				int l = 192;
 
