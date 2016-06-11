@@ -24,7 +24,7 @@ public abstract class TileEntityRangeEffect extends TileEntityBase {
 		}
 
 		if(valid) {
-			Optional.ofNullable(worldObj.getClosestPlayer(xCoord, yCoord, zCoord, getRange()));
+			return Optional.ofNullable(worldObj.getClosestPlayer(xCoord, yCoord, zCoord, getRange()));
 		}
 
 		return Optional.empty();
