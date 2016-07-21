@@ -34,6 +34,7 @@ public class LibItemName {
 	public static final String MASKOFHOPE = "MaskOfHope";
 	public static final String KOKOROSMASKS = "KokorosMasks";
 	public static final String PRIMORDIALSHIELD = "PrimordialShield";
+	public static final String MAPLELEAFSHIELD = "MapleLeafShield";
 	//Weapons
 	public static final String MOCHIHAMMER = "MochiHammer";
 	public static final String MOMIJISSCIMITARSWORD = "MomijisScimitarSword";

@@ -46,6 +46,12 @@ public class VanillaCrafting {
 				.where('A').mapsTo("stickWood")
 				.mirrored(true)
 				.outputs(GOAItem.momijisScimitarSword).build();
+		
+		shaped().grid("ASA", "SHS", "ASA")
+			.where('S').mapsTo(GOAItem.gloriousNipponSteel)
+			.where('A').mapsTo("stickWood")
+			.where('H').mapsTo("treeSapling")
+			.outputs(GOAItem.momijisMapleLeafShield).build();
 
 		shaped().grid("SSG", " A ", " A ")
 				.where('G').mapsTo(GOAItem.gloriousNipponSteel)

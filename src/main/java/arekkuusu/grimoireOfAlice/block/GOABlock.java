@@ -30,6 +30,9 @@ public class GOABlock {
 	public static Block compactStone;
 	public static Block hyperconcentratedMagic;
 	public static Block shroom;
+	
+	public static Block onbashiraMiddle;
+	public static Block onbashiraTop;
 
 	public static void preInit() {
 		//@formatter:off
@@ -44,6 +47,9 @@ public class GOABlock {
 		hyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
 		shroom = new BlockShroom().setBlockName(LibBlockName.SHROOM).setBlockTextureName(LibMod.MODID + ":Shroom");
 
+		onbashiraMiddle= new BlockOnbashiraMiddle().setBlockName(LibBlockName.ONBASHIRAMIDDLE);
+		onbashiraTop= new BlockOnbashiraTop().setBlockName(LibBlockName.ONBASHIRATOP);
+		
 		GameRegistry.registerBlock(holyKeyStone, LibBlockName.ILLUBLOCK);
 		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.ILLUBLOCK);
 		GameRegistry.registerBlock(onbashira, LibBlockName.ONBASHIRA);
@@ -56,6 +62,9 @@ public class GOABlock {
 		GameRegistry.registerBlock(compactStone, LibBlockName.COMPACTSTONE);
 		GameRegistry.registerBlock(hyperconcentratedMagic, LibBlockName.HYPERMAGIC);
 		GameRegistry.registerBlock(shroom, LibBlockName.SHROOM);
+		
+		GameRegistry.registerBlock(onbashiraMiddle, LibBlockName.ONBASHIRAMIDDLE);
+		GameRegistry.registerBlock(onbashiraTop, LibBlockName.ONBASHIRATOP);
 		//@formatter:on
 	}
 }

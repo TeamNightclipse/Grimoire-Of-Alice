@@ -13,10 +13,12 @@ import arekkuusu.grimoireOfAlice.block.GOABlock;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderHolyStone;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderOnbashira;
-import arekkuusu.grimoireOfAlice.client.render.ItemRenderPrimordialShield;
+import arekkuusu.grimoireOfAlice.client.render.ItemRenderShield;
+import arekkuusu.grimoireOfAlice.client.render.RenderEllyScytheProyectile;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderOnbashira;
+import arekkuusu.grimoireOfAlice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireOfAlice.tile.TileEntityHolyStone;
@@ -35,10 +37,13 @@ public class ProxyClient extends ProxyServer {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOnbashira.class, new RenderOnbashira());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyStone.class, new RenderHolyStone());
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScytheThrowable.class, new RenderEllyScytheProyectile());
 
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.holyKeyStone), new ItemRenderHolyKeyStone());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.holyStone), new ItemRenderHolyStone());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.onbashira), new ItemRenderOnbashira());
-		MinecraftForgeClient.registerItemRenderer(GOAItem.primordialShield, new ItemRenderPrimordialShield());
+		MinecraftForgeClient.registerItemRenderer(GOAItem.primordialShield, new ItemRenderShield("PrimordialShield.png"));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.momijisMapleLeafShield, new ItemRenderShield("MapleLeafShield.png"));
 	}
 }

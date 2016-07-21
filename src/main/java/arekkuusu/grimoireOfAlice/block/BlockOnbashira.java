@@ -26,6 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 @CleanupDone
@@ -36,7 +37,7 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 		setHardness(2.0F);
 		setStepSound(Block.soundTypeWood);
 		setHarvestLevel("axe", 1);
-		setResistance(15.0F);
+		setResistance(-1F);
 	}
 
 	@Override
@@ -55,11 +56,17 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	}
 
 	@Override
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list,
-			Entity collidingEntity) {
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity collidingEntity) {
 		setBlockBounds(0f, 0f, 0f, 1F, 3.5F, 1F);
 		super.addCollisionBoxesToList(world, x, y, z, mask, list, collidingEntity);
 	}
+	
+	public int onBlockPlaced(World world, int x, int y, int z, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_) {
+		world.setBlock(x, y+1, z, GOABlock.onbashiraMiddle);
+		world.setBlock(x, y+2, z, GOABlock.onbashiraMiddle);
+		world.setBlock(x, y+3, z, GOABlock.onbashiraTop);
+		return p_149660_9_;
+    }
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
@@ -74,6 +81,9 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e) {
 		world.createExplosion(null, x + 0.5, y, z + 0.5, 2.0F, false);
+		world.setBlockToAir(x, y+1, z);
+		world.setBlockToAir(x, y+2, z);
+		world.setBlockToAir(x, y+3, z);
 		world.createExplosion(null, x + 0.5, y + 1, z + 0.5, 2.0F, false);
 		world.createExplosion(null, x + 0.5, y + 2, z + 0.5, 2.0F, false);
 		world.createExplosion(null, x + 0.5, y + 3, z + 0.5, 2.0F, false);

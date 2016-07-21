@@ -10,7 +10,7 @@ package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireOfAlice.entity.EntityFireBall2;
+import arekkuusu.grimoireOfAlice.entity.EntityFireBalloon;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -74,7 +74,7 @@ public class ItemEnchantedBook extends ItemGOABase {
 				Vec3 look = player.getLookVec();
 				Vec3 position = Vec3.createVectorHelper(player.posX, player.posY, player.posZ);
 				Vec3 fireBallPos = Vec3.createVectorHelper(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
-				EntityFireBall2 fireball2 = new EntityFireBall2(world, player, fireBallPos, look);
+				EntityFireBalloon fireball2 = new EntityFireBalloon(world, player, fireBallPos, look);
 
 				world.spawnEntityInWorld(fireball2);
 				player.inventory.consumeInventoryItem(Items.fire_charge);

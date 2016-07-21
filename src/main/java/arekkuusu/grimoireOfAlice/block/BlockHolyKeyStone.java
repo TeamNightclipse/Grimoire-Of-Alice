@@ -86,7 +86,7 @@ public class BlockHolyKeyStone extends BlockGOABase implements ITileEntityProvid
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 50, 2));
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 75, 2));
 			player.addPotionEffect(new PotionEffect(Potion.digSpeed.getId(), 50, 2));
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 50, 2));
 		}

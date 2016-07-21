@@ -22,5 +22,7 @@ public class LibBlockName {
 	public static final String COMPACTSTONE = "CompactStone";
 	public static final String HYPERMAGIC = "HyperconcentratedMagic";
 	public static final String SHROOM = "Shroom";
+	public static final String ONBASHIRAMIDDLE = "OnbashiraMiddle";
+	public static final String ONBASHIRATOP = "OnbashiraTop";
 
 }

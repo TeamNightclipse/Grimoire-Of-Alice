@@ -59,6 +59,7 @@ public class GOAItem {
 	public static Item maskOfHope;
 	public static Item kokorosMasks;
 	public static Item primordialShield;
+	public static Item momijisMapleLeafShield;
 	//Weapons
 	public static Item mochiHammer;
 	public static Item momijisScimitarSword;
@@ -97,6 +98,7 @@ public class GOAItem {
 		maskOfHope= new ItemMaskOfHope(SOLID_PAPER, 0).setUnlocalizedName("MaskOfHope").setTextureName(LibMod.MODID + ":MaskOfHope");
 		kokorosMasks= new ItemKokorosMasks(SOLID_PAPER, 0).setUnlocalizedName("KokorosMasks").setTextureName(LibMod.MODID + ":KokorosMasks");
 		primordialShield= new ItemPrimordialShield(WET_NOODLE).setUnlocalizedName("PrimordialShield").setTextureName(LibMod.MODID + ":PrimordialShield");
+		momijisMapleLeafShield= new MomijisMapleLeafShield(WET_NOODLE).setUnlocalizedName("MapleLeafShield").setTextureName(LibMod.MODID + ":MapleLeafShield");
 
 		//Weapon
 		mochiHammer= new ItemMochiHammer(GOLDYRON).setUnlocalizedName("MochiHammer").setTextureName(LibMod.MODID + ":MochiHammer");
@@ -134,6 +136,7 @@ public class GOAItem {
 		GameRegistry.registerItem(maskOfHope, LibItemName.MASKOFHOPE);
 		GameRegistry.registerItem(kokorosMasks, LibItemName.KOKOROSMASKS);
 		GameRegistry.registerItem(primordialShield, LibItemName.PRIMORDIALSHIELD);
+		GameRegistry.registerItem(momijisMapleLeafShield, LibItemName.MAPLELEAFSHIELD);
 
 		//Weapon
 		GameRegistry.registerItem(mochiHammer, LibItemName.MOCHIHAMMER);

@@ -20,5 +20,6 @@ public class ProxyServer {
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenShroom());
 	}
 
-	public void registerRenders() {} //NO-OP
+	public void registerRenders() {
+	} //NO-OP
 }

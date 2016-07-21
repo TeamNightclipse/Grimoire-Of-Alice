@@ -94,7 +94,7 @@ public class ItemKokorosMasks extends ItemMask {
 			player.addPotionEffect(new PotionEffect(Potion.jump.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 0, 4));
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 25, 4));
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 75, 4));
 		}
 	}
 

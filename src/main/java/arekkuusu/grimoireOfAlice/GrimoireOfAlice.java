@@ -9,6 +9,7 @@
 package arekkuusu.grimoireOfAlice;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.handler.GuiHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
@@ -23,6 +24,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 @CleanupDone
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
@@ -45,7 +47,9 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		int modEntityID = 0;
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "PotatoArrow", ++modEntityID, this, 64, 10, true);
 		proxy.init(event);
 		proxy.registerRenders();
 
