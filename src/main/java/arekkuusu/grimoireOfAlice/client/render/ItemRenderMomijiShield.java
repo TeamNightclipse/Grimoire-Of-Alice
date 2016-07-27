@@ -21,14 +21,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 @CleanupDone
-public class ItemRenderShield implements IItemRenderer {
+public class ItemRenderMomijiShield implements IItemRenderer {
 
 	private ModelPrimordialShield MODEL;
 	private static ResourceLocation TEXTURE;
 
-	public ItemRenderShield(String Name) {
+	public ItemRenderMomijiShield() {
 		MODEL = new ModelPrimordialShield();
-		TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/"+Name);
+		TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/MapleLeafShield.png");
 	}
 
 	@Override

@@ -33,10 +33,8 @@ public class ItemNazrinStick extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Rare treasure form an old era");
+		list.add(EnumChatFormatting.WHITE + "Rare treasure from an old era");
 		list.add(EnumChatFormatting.GOLD + "Used by mice to find cheese");
-		list.add(EnumChatFormatting.GOLD + "some meters away form their");
-		list.add(EnumChatFormatting.GOLD + "homes...mmmmm");
 		list.add(EnumChatFormatting.GOLD + "O-Only works for mice? Oh well");
 	}
 

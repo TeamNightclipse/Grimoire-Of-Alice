@@ -17,7 +17,7 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 
 @CleanupDone
-public class WorldGenShroom {
+public class WorldGenPlants {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
@@ -30,6 +30,15 @@ public class WorldGenShroom {
 				int lolis = event.rand.nextInt(16);
 				if(event.world.isAirBlock(x, y, z) && GOABlock.shroom.canBlockStay(event.world, x, y, z))
 					event.world.setBlock(x, y, z, GOABlock.shroom, lolis, 2);
+			}
+			for(int i = 0; i < 20; i++) {
+				int x = event.chunkX + event.rand.nextInt(16) + 8;
+				int z = event.chunkZ + event.rand.nextInt(16) + 8;
+				int y = event.rand.nextInt(26) + 4;
+
+				int lolis = event.rand.nextInt(16);
+				if(event.world.isAirBlock(x, y, z) && GOABlock.kyoumarubotan.canBlockStay(event.world, x, y, z))
+					event.world.setBlock(x, y, z, GOABlock.kyoumarubotan, lolis, 2);
 			}
 		}
 	}

@@ -44,7 +44,7 @@ public class ItemLaevatein extends ItemGOASword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 		list.add(EnumChatFormatting.WHITE + "'Damage twig'");
-		list.add(EnumChatFormatting.GOLD + "Only true Lolis can wield this sword");
+		list.add(EnumChatFormatting.GOLD + "Magic staff gambantein, Lævateinn of fire and chaos");
 	}
 
 	@Override

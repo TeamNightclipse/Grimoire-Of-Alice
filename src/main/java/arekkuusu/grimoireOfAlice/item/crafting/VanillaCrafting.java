@@ -9,6 +9,7 @@
 package arekkuusu.grimoireOfAlice.item.crafting;
 
 import arekkuusu.grimoireOfAlice.block.GOABlock;
+import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -48,10 +49,24 @@ public class VanillaCrafting {
 				.outputs(GOAItem.momijisScimitarSword).build();
 		
 		shaped().grid("ASA", "SHS", "ASA")
-			.where('S').mapsTo(GOAItem.gloriousNipponSteel)
-			.where('A').mapsTo("stickWood")
-			.where('H').mapsTo("treeSapling")
-			.outputs(GOAItem.momijisMapleLeafShield).build();
+				.where('S').mapsTo(GOAItem.gloriousNipponSteel)
+				.where('A').mapsTo("stickWood")
+				.where('H').mapsTo("treeSapling")
+				.outputs(GOAItem.momijisMapleLeafShield).build();
+		
+		shaped().grid("HHH", "PIP", "PIP")
+				.where('H').mapsTo(Items.blaze_rod)
+				.where('I').mapsTo("stickWood")
+				.where('P').mapsTo(GOAItem.soldifiedPaper)
+				.mirrored(true)
+				.outputs(GOAItem.NueTrident).build();
+		
+		shaped().grid("L S", "DS ", "SD ")
+				.where('S').mapsTo(GOAItem.Hihiirokane)
+				.where('D').mapsTo(Items.skull)
+				.where('L').mapsTo("dyeRed")
+				.mirrored(true)
+				.outputs(GOAItem.swordOfKusanagi).build();
 
 		shaped().grid("SSG", " A ", " A ")
 				.where('G').mapsTo(GOAItem.gloriousNipponSteel)
@@ -59,6 +74,11 @@ public class VanillaCrafting {
 				.where('S').mapsTo("ingotBrick")
 				.outputs(GOAItem.mochiHammer).build();
 
+		shaped().grid("  S", "SS ", "OS ")
+				.where('O').mapsTo(GOAItem.gloriousNipponSteel)
+				.where('S').mapsTo("ingotIron")
+				.outputs(GOAItem.needle).build();
+		
 		shaped().grid("SSS", "SSS", "SSS")
 				.where('S').mapsTo(Items.sugar)
 				.outputs(GOABlock.sugarBlock).build();
@@ -120,6 +140,18 @@ public class VanillaCrafting {
 				.where('S').mapsTo(Items.flint)
 				.where('H').mapsTo(GOAItem.soldifiedPaper)
 				.outputs(GOAItem.nazrinStick).build();
+		
+		shaped().grid("HIH", "HSH", "HHH")
+				.where('S').mapsTo(Blocks.coal_block)
+				.where('H').mapsTo(GOAItem.soldifiedPaper)
+				.where('I').mapsTo(GOAItem.volatileString)
+				.outputs(GOAItem.ibarakiBoxEmpty).build();
+		
+		shaped().grid("CIC", "CHC", "CCC")
+				.where('C').mapsTo(Items.brick)
+				.where('I').mapsTo(Items.ghast_tear)
+				.where('H').mapsTo(GOAItem.shroomSlice)
+				.outputs(GOAItem.kappasNostrum).build();
 
 		shaped().grid("STS", "HOH", " U ")
 				.where('U').mapsTo(GOABlock.hyperconcentratedMagic)
@@ -133,7 +165,7 @@ public class VanillaCrafting {
 				.where('U').mapsTo(GOABlock.hyperconcentratedMagic)
 				.where('H').mapsTo("blockEmerald")
 				.where('S').mapsTo(GOABlock.compactStone)
-				.where('T').mapsTo(Blocks.beacon)
+				.where('T').mapsTo(GOAItem.Hihiirokane)
 				.where('G').mapsTo(Items.diamond)
 				.where('D').mapsTo(Items.nether_star)
 				.outputs(GOAItem.amenonuhoko).build();
@@ -142,13 +174,17 @@ public class VanillaCrafting {
 				.where('Q').mapsTo(GOABlock.hyperconcentratedMagic)
 				.where('S').mapsTo(Items.nether_star)
 				.where('U').mapsTo(GOABlock.compactStone)
-				.where('T').mapsTo(Blocks.beacon)
+				.where('T').mapsTo(GOAItem.Hihiirokane)
 				.where('O').mapsTo(GOABlock.holyStone)
 				.outputs(GOAItem.primordialShield).build();
 
 		shapeless()
 				.add(GOABlock.sugarBlock)
 				.outputs(new ItemStack(Items.sugar, 9)).build();
+		
+		shapeless()
+				.add(GOABlock.kyoumarubotan)
+				.outputs(Items.gold_ingot).build();
 
 		shapeless()
 				.add(GOABlock.shroom)
@@ -161,15 +197,22 @@ public class VanillaCrafting {
 				.outputs(new ItemStack(GOAItem.shroomSlice, 1, 1)).build();
 
 		shapeless()
-				.add(Items.leather)
-				.add(Items.book)
+				.add(GOAItem.gloriousNipponSteel)
+				.add(Blocks.coal_block)
+				.add(Items.lava_bucket)
+				.outputs(GOAItem.impureRock).build();
+		
+		shapeless()
+				.add(GOAItem.gloriousNipponSteel)
+				.add(GOABlock.hyperconcentratedMagic)
 				.add(GOAItem.volatileString)
 				.add(Items.feather)
 				.outputs(GOAItem.youkaiBook).build();
 
 		//@formatter:on
 
-		GameRegistry.addSmelting(Items.iron_sword, new ItemStack(GOAItem.gloriousNipponSteel), 0);
+		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(GOAItem.gloriousNipponSteel), 0);
+		GameRegistry.addSmelting(GOAItem.impureRock, new ItemStack(GOAItem.Hihiirokane), 0);
 	}
 
 	public static void masks() {
@@ -193,7 +236,7 @@ public class VanillaCrafting {
 				.where('G').mapsTo(GOAItem.volatileString)
 				.where('A').mapsTo(Items.clay_ball)
 				.outputs(GOAItem.mask).build();
-
+		if(ConfigHandler.maskRecipes){
 		mask().where('R').mapsTo(Items.sugar).outputs(GOAItem.foxMask).build();
 		mask().where('R').mapsTo(Items.blaze_powder).outputs(GOAItem.fukuNoKamiMask).build();
 		mask().where('R').mapsTo(Items.poisonous_potato).outputs(GOAItem.hannyaMask).build();
@@ -203,7 +246,8 @@ public class VanillaCrafting {
 		mask().where('R').mapsTo(Items.mushroom_stew).outputs(GOAItem.nonkeyMask).build();
 		mask().where('R').mapsTo("slimeball").outputs(GOAItem.raidenMask).build();
 		mask().where('R').mapsTo(Items.nether_wart).outputs(GOAItem.ubaMask).build();
-
+		}
+		
 		//@formatter:on
 	}
 

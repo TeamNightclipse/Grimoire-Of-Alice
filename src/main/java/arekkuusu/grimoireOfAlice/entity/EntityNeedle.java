@@ -1,5 +1,8 @@
 package arekkuusu.grimoireOfAlice.entity;
 
+import java.util.List;
+
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,12 +11,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityEllyScytheThrowable extends EntityThrow{
+public class EntityNeedle extends EntityThrow{
 
 	public static final double RETURN_STRENGTH	= 0.05D;
 	public static final float MIN_FLOAT_STRENGTH = 0.4F;
@@ -21,16 +26,16 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 	public float strength;
 	protected ItemStack	itemThrown;
 	
-	public EntityEllyScytheThrowable(World world) {
+	public EntityNeedle(World world) {
 		super(world);
 	}
 
-	public EntityEllyScytheThrowable(World world, double x, double y, double z) {
+	public EntityNeedle(World world, double x, double y, double z) {
 		this(world);
 		setPosition(x, y, z);
 	}
 	
-	public EntityEllyScytheThrowable(World world, EntityLivingBase entityliving, ItemStack itemstack, float f) {
+	public EntityNeedle(World world, EntityLivingBase entityliving, ItemStack itemstack, float f) {
 		this(world);
 		shootingEntity = entityliving;
 		setPickupModeFromEntity(entityliving);
@@ -47,13 +52,14 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 		setThrowableHeading(motionX, motionY, motionZ, f, 5.0F);
 		soundTimer = 0;
 		strength = Math.min(1.5F, f);
-		dataWatcher.updateObject(25, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		setTimeToLive(600);
+		dataWatcher.updateObject(30, Integer.valueOf(Float.floatToRawIntBits(strength)));
 	}
 	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		strength = Float.intBitsToFloat(dataWatcher.getWatchableObjectInt(25));
+		strength = Float.intBitsToFloat(dataWatcher.getWatchableObjectInt(30));
 		
 		if (inGround) return;
 		
@@ -83,10 +89,6 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 			dy /= d;
 			dz /= d;
 			
-			motionX -= RETURN_STRENGTH * dx;
-			motionY -= RETURN_STRENGTH * dy;
-			motionZ -= RETURN_STRENGTH * dz;
-			
 			soundTimer += limitedStrength;
 			if (soundTimer > 3F) {
 				worldObj.playSoundAtEntity(this, "random.bow", 0.6F, 1.0F / (rand.nextFloat() * 0.2F + 2.2F - limitedStrength));
@@ -94,28 +96,12 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 			}
 		}
 		
-		dataWatcher.updateObject(25, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		dataWatcher.updateObject(30, Integer.valueOf(Float.floatToRawIntBits(strength)));
 	}
 	
 	@Override
 	public void onEntityHit(Entity entity) {
 		if (worldObj.isRemote || strength < MIN_FLOAT_STRENGTH) return;
-		
-		if (entity == shootingEntity) {
-			if (entity instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entity;
-				ItemStack item = getPickupItem();
-				if (item == null) return;
-				
-				if (player.capabilities.isCreativeMode || player.inventory.addItemStackToInventory(item)) {
-					worldObj.playSoundAtEntity(this, "random.pop", 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-					onItemPickup(player);
-					setDead();
-					return;
-				}
-			}
-			return;
-		}
 		
 		DamageSource damagesource = null;
 		float damage = 3.5F;
@@ -127,22 +113,24 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 			applyHitEffects(entity);
 			if (entity instanceof EntityLivingBase) {
 				EntityLivingBase Potionable = (EntityLivingBase)entity;
-				Potionable.addPotionEffect(new PotionEffect(Potion.wither.id, 80, 1));
+				Potionable.addPotionEffect(new PotionEffect(Potion.poison.id, 80, 1));
 			}
 			playHitSound();
-			if (itemThrown.getItemDamage() + 1 > itemThrown.getMaxDamage()) {
-				itemThrown.stackSize--;
-				setDead();
-			} else {
-				if (shootingEntity instanceof EntityLivingBase) {
-					itemThrown.damageItem(1, (EntityLivingBase) shootingEntity);
-				} else {
-					itemThrown.attemptDamageItem(1, rand);
-				}
-				setVelocity(0D, 0D, 0D);
-			}
+			float f1 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
+			posX -= (motionX / f1) * 0.05D;
+			posY -= (motionY / f1) * 0.05D;
+			posZ -= (motionZ / f1) * 0.05D;
+			
+			motionX *= -rand.nextFloat() * 0.5F;
+			motionZ *= -rand.nextFloat() * 0.5F;
+			motionY = rand.nextFloat() * 0.1F;
+			
+			inGround = true;
+			setIsCritical(false);
+			wasInGround = true;
+			strength = 0F;
 		} else {
-			bounceBack();
+			setDead();
 		}
 	}
 	
@@ -163,11 +151,7 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 		motionX *= -rand.nextFloat() * 0.5F;
 		motionZ *= -rand.nextFloat() * 0.5F;
 		motionY = rand.nextFloat() * 0.1F;
-		if (mop.sideHit == 1) {
-			inGround = true;
-		} else {
-			inGround = false;
-		}
+		inGround = true;
 		setIsCritical(false);
 		wasInGround = true;
 		strength = 0F;
@@ -250,14 +234,14 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 	@Override
 	public void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(25, Integer.valueOf(Float.floatToRawIntBits(0F)));
+		dataWatcher.addObject(30, Integer.valueOf(Float.floatToRawIntBits(0F)));
 	}
 	
 	public float getMeleeHitDamage(Entity entity) {
 		if (shootingEntity instanceof EntityLivingBase && entity instanceof EntityLivingBase) {
 			return EnchantmentHelper.getEnchantmentModifierLiving((EntityLivingBase) shootingEntity, (EntityLivingBase) entity);
 		}
-		return 0F;
+		return 2F;
 	}
 	
 	public void setThrownItemStack(ItemStack itemstack) {
@@ -266,11 +250,11 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 	
 	@Override
 	public ItemStack getPickupItem() {
-		return itemThrown;
+		return null;
 	}
 	
 	public int getWeaponMaterialId() {
-		return dataWatcher.getWatchableObjectInt(25);
+		return dataWatcher.getWatchableObjectInt(30);
 	}
 	
 	@Override
@@ -286,5 +270,5 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 		super.readEntityFromNBT(nbttagcompound);
 		setThrownItemStack(ItemStack.loadItemStackFromNBT(nbttagcompound.getCompoundTag("thrI")));
 	}
-	
+
 }

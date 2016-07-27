@@ -31,14 +31,15 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 	protected int tileY = -1;
 	protected int tileZ = -1;
     protected Block inBlock;
-    private int inData;
+    protected int inData;
     protected boolean inGround;
     protected boolean wasInGround;
     public int canBePickedUp;
     public int arrowShake;
     public Entity shootingEntity;
-    private int ticksInGround;
+    protected int ticksInGround;
     protected int ticksInAir;
+    protected int timeToLive;
     private double damage = 2.0D;
     private int knockbackStrength;
 	
@@ -57,6 +58,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		canBePickedUp = NO_PICKUP;
 		damage = 0;
 		knockbackStrength = 0;
+		setTimeToLive(2400);
 		setSize(0.5F, 0.5F);
 	}
 
@@ -113,14 +115,12 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 	}
 	
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		onEntityUpdate();
 	}
 	
 	@Override
-	public void onEntityUpdate()
-	{
+	public void onEntityUpdate() {
 		super.onEntityUpdate();
 		if (aimRotation()) {
 			float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
@@ -128,35 +128,28 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY, f) * 180D) / Math.PI);
 		}
 		Block i = worldObj.getBlock(tileX, tileY, tileZ);
-		if (i != null)
-		{
+		if (i != null) {
 			i.setBlockBoundsBasedOnState(worldObj, tileX, tileY, tileZ);
 			AxisAlignedBB axisalignedbb = i.getCollisionBoundingBoxFromPool(worldObj, tileX, tileY, tileZ);
-			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ)))
-			{
+			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) {
 				inGround = true;
 			}
 		}
 		
-		if (arrowShake > 0)
-		{
+		if (arrowShake > 0) {
 			arrowShake--;
 		}
 		
-		if (inGround)
-		{
+		if (inGround) {
 			Block j = worldObj.getBlock(tileX, tileY, tileZ);
 			int k = worldObj.getBlockMetadata(tileX, tileY, tileZ);
-			if (j == inBlock && k == inData)
-			{
+			if (j == inBlock && k == inData) {
 				ticksInGround++;
 				int t = getTimeToLive();
-				if (t != 0 && ticksInGround >= t)
-				{
+				if (t != 0 && ticksInGround >= t) {
 					setDead();
 				}
-			} else
-			{
+			} else {
 				inGround = false;
 				motionX *= rand.nextFloat() * 0.2F;
 				motionY *= rand.nextFloat() * 0.2F;
@@ -174,8 +167,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		MovingObjectPosition movingobjectposition = worldObj.func_147447_a(vec3d, vec3d1, false, true, false);
 		vec3d = Vec3.createVectorHelper(posX, posY, posZ);
 		vec3d1 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-		if (movingobjectposition != null)
-		{
+		if (movingobjectposition != null) {
 			vec3d1 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
 		}
 		
@@ -272,7 +264,6 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		}
 		if (entity instanceof EntityLivingBase) {
 			EntityLivingBase entityliving = (EntityLivingBase) entity;
-			entityliving.addPotionEffect(new PotionEffect(Potion.wither.id, 80, 1));
 			if (knockbackStrength > 0) {
 				float loli = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 				if (loli > 0.0F) {
@@ -435,8 +426,12 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		return Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
 	}
 	
+	public void setTimeToLive(int time) {
+		timeToLive=time;
+	}
+	
 	public int getTimeToLive() {
-		return 1200;
+		return timeToLive;
 	}
 	
 	public ItemStack getPickupItem() {

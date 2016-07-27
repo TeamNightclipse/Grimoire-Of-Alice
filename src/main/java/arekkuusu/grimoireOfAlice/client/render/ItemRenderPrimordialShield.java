@@ -24,10 +24,11 @@ import net.minecraftforge.client.IItemRenderer;
 public class ItemRenderPrimordialShield implements IItemRenderer {
 
 	private ModelPrimordialShield MODEL;
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/PrimordialShield.png");
+	private static ResourceLocation TEXTURE;
 
 	public ItemRenderPrimordialShield() {
 		MODEL = new ModelPrimordialShield();
+		TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/PrimordialShield.png");
 	}
 
 	@Override

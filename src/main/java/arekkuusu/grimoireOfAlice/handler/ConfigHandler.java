@@ -21,6 +21,9 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigHandler {
 
 	private static Configuration config;
+	
+	public static boolean maskRecipes;
+	public static boolean pointItemRecipes;
 
 	public static void setConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -30,6 +33,9 @@ public class ConfigHandler {
 
 	private static void loadConfig() {
 
+		config.addCustomCategoryComment("Grimoire of Alice", "Don't change this if you don't know what you are doing");
+		maskRecipes = config.get("Masks", "Masks Recipes", true, "Can players get Kokoro's Masks?").getBoolean();
+		pointItemRecipes = config.get("Points", "Point Item Recipes (Only works if thKaguyaMod installed)", true, "Can players get Point Items?").getBoolean();
 		if(config.hasChanged()) {
 			config.save();
 		}

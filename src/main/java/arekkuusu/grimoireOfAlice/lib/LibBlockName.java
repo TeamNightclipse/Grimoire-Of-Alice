@@ -24,5 +24,6 @@ public class LibBlockName {
 	public static final String SHROOM = "Shroom";
 	public static final String ONBASHIRAMIDDLE = "OnbashiraMiddle";
 	public static final String ONBASHIRATOP = "OnbashiraTop";
+	public static final String KYOUMARUBOTAN = "Kyoumarubotan";
 
 }

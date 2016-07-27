@@ -22,6 +22,13 @@ public class LibItemName {
 	public static final String SHIMENAWAROPE = "ShimenawaRope";
 	public static final String YOUKAIBOOK = "YoukaiBook";
 	public static final String MASK = "Mask";
+	public static final String HIHIIROKANE = "Hihiirokane";
+	//Food
+	public static final String SHROOMSLICE = "ShroomSlice";
+	public static final String GRILLEDLAMPREY = "GrilledLamprey";
+	public static final String IBARAKIBOXFILLED = "IbarakiBoxFilled";
+	public static final String IBARAKIBOXEMPTY = "IbarakiBoxEmpty";
+	public static final String KAPPASNOSTRUM = "KappasNostrum";
 	//Armor
 	public static final String FOXMASK = "FoxMask";
 	public static final String RAIDENMASK = "RaidenMask";
@@ -44,6 +51,21 @@ public class LibItemName {
 	public static final String MIKOSTICK = "MikoStick";
 	public static final String CRESTOFYGGDRASILL = "CrestOfYggdrasill";
 	public static final String AMENONUHOKO = "Amenonuhoko";
-	public static final String SHROOMSLICE = "ShroomSlice";
+	public static final String NEEDLE = "Needle";
+	public static final String NUETRIDENT = "NueTrident";
+	public static final String SWORDOFKUSANAGI = "SwordofKusanagi";
+	
+	//THPlugin Items
+	public static final String FULLPOWER = "FullPowerItem";
+	public static final String STAR = "StarItem";
+	public static final String CHERRY = "CherryItem";
+	public static final String TIMEORB = "TimeOrb";
+	public static final String FAITH = "FaithItem";
+	public static final String UFORED = "UFORed";
+	public static final String UFOBLUE = "UFOBlue";
+	public static final String UFOGREEN = "UFOGreen";
+	public static final String UFOs = "UFOs";
+	public static final String IMPUREROCK = "ImpureRock";
+	
 
 }

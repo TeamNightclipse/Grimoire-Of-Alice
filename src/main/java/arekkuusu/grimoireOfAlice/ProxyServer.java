@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireOfAlice;
 
-import arekkuusu.grimoireOfAlice.handler.WorldGenShroom;
+import arekkuusu.grimoireOfAlice.handler.WorldGenPlants;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,7 +17,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class ProxyServer {
 
 	public void init(FMLInitializationEvent event) {
-		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenShroom());
+		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 	}
 
 	public void registerRenders() {

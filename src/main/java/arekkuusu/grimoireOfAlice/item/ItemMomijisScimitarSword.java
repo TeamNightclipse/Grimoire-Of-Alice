@@ -32,8 +32,8 @@ public class ItemMomijisScimitarSword extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.AQUA + "Awwww~!! Momiji~!!! Wooooff!!! ");
-		list.add(EnumChatFormatting.GOLD + "Awooooo~!!");
+		list.add(EnumChatFormatting.AQUA + "Awooooo~!!");
+		list.add(EnumChatFormatting.GOLD + "Very sharp and heavy");
 	}
 
 	@Override

@@ -30,6 +30,7 @@ public class GOABlock {
 	public static Block compactStone;
 	public static Block hyperconcentratedMagic;
 	public static Block shroom;
+	public static Block kyoumarubotan;
 	
 	public static Block onbashiraMiddle;
 	public static Block onbashiraTop;
@@ -46,6 +47,7 @@ public class GOABlock {
 		hyperconcentratedMagic = new BlockGOABase(Material.iron).setBlockName(LibBlockName.HYPERMAGIC).setBlockTextureName(LibMod.MODID + ":HyperconcentratedMagic").setHardness(0.5F).setStepSound(Block.soundTypeSnow).setResistance(5.0F);
 		hyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
 		shroom = new BlockShroom().setBlockName(LibBlockName.SHROOM).setBlockTextureName(LibMod.MODID + ":Shroom");
+		kyoumarubotan = new BlockKyoumarubotan().setBlockName(LibBlockName.KYOUMARUBOTAN).setBlockTextureName(LibMod.MODID + ":Kyoumarubotan");
 
 		onbashiraMiddle= new BlockOnbashiraMiddle().setBlockName(LibBlockName.ONBASHIRAMIDDLE);
 		onbashiraTop= new BlockOnbashiraTop().setBlockName(LibBlockName.ONBASHIRATOP);
@@ -62,6 +64,7 @@ public class GOABlock {
 		GameRegistry.registerBlock(compactStone, LibBlockName.COMPACTSTONE);
 		GameRegistry.registerBlock(hyperconcentratedMagic, LibBlockName.HYPERMAGIC);
 		GameRegistry.registerBlock(shroom, LibBlockName.SHROOM);
+		GameRegistry.registerBlock(kyoumarubotan, LibBlockName.KYOUMARUBOTAN);
 		
 		GameRegistry.registerBlock(onbashiraMiddle, LibBlockName.ONBASHIRAMIDDLE);
 		GameRegistry.registerBlock(onbashiraTop, LibBlockName.ONBASHIRATOP);

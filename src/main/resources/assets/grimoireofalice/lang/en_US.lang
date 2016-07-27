@@ -2,12 +2,18 @@ item.EnchantedBook.name=Enchanted Book
 item.GrimoireBook.name=Grimoire Book
 item.VolatileString.name=Volatile String
 item.SoldifiedPaper.name=Soldified Paper
-item.GloriousNipponSteel.name=Glorious Nippon Steel
+item.GloriousNipponSteel.name=Tamahagane
 item.ShimenawaRope.name=Shimenawa Rope
 item.YoukaiBook.name=Youkai Book
 item.Mask.name=Mask
+item.Hihiirokane.name=Hihi'irokane
+item.ImpureRock.name=Impure Mineral
 
 item.ShroomSlice.name=Shroom Slice
+item.GrilledLamprey.name=Grilled Lamprey
+item.IbarakiBox.name=Ibaraki Box
+item.KappasNostrum.name=Kappas Nostrum
+item.IbarakiBox.name=Ibaraki Box
 
 item.FoxMask.name=Fox Mask
 item.RaidenMask.name=Raiden Mask
@@ -24,12 +30,15 @@ item.MapleLeafShield.name=Maple Leaf Shield
 
 item.MochiHammer.name=Mochi Hammer
 item.MomijisScimitarSword.name=Momiji's Scimitar Sword
-item.Laevatein.name=Laevatein
+item.Laevatein.name=Lævateinn
 item.NazrinStick.name=Nazrin's Stick
 item.EllyScythe.name=Elly's Scythe
-item.MikoStick.name=Miko's Stick
+item.MikoStick.name=Toyosatomimi's Stick
 item.CrestOfYggdrasill.name=Crest Of Yggdrasill
 item.Amenonuhoko.name=Amenonuhoko
+item.Needle.name=Needle
+item.NueTrident.name=Nue Trident
+item.SwordofKusanagi.name=Sword of Kusanagi
 
 tile.RopeBlock.name=Enchanted Rope
 tile.PaperBlock.name=Enchanted Paper
@@ -41,6 +50,14 @@ tile.Onbashira.name=Onbashira
 tile.HolyStone.name=Holy Stone
 
 tile.Shroom.name=Shroom
+tile.Kyoumarubotan.name=Kyoumarubotan
+
+item.FullPower.name=Full Power Item
+item.Star.name=Star Item
+item.Cherry.name=Cherry Item
+item.TimeOrb.name=Time Orb
+item.Faith.name=Faith Item
+item.UFOs.name=UFOs
 
 itemGroup.grimoireofalice=Grimoire of Alice
 

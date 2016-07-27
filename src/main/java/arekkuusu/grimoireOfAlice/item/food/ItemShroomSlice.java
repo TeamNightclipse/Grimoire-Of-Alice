@@ -50,7 +50,7 @@ public class ItemShroomSlice extends ItemFood {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
 		list.add(EnumChatFormatting.GREEN + "Psilocybin mushroom");
-		list.add(EnumChatFormatting.DARK_PURPLE + "WaNna HaVE a TrIP bRo??!?");
+		list.add(EnumChatFormatting.DARK_PURPLE + "Shrooms~ze!");
 	}
 
 	@Override
