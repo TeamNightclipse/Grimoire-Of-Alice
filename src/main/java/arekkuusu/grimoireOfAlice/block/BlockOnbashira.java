@@ -62,9 +62,9 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	}
 	
 	public int onBlockPlaced(World world, int x, int y, int z, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_) {
-		world.setBlock(x, y+1, z, GOABlock.onbashiraMiddle);
-		world.setBlock(x, y+2, z, GOABlock.onbashiraMiddle);
-		world.setBlock(x, y+3, z, GOABlock.onbashiraTop);
+		world.setBlock(x, y + 1, z, GOABlock.onbashiraMiddle);
+		world.setBlock(x, y + 2, z, GOABlock.onbashiraMiddle);
+		world.setBlock(x, y + 3, z, GOABlock.onbashiraTop);
 		return p_149660_9_;
     }
 
@@ -81,12 +81,11 @@ public class BlockOnbashira extends BlockGOABase implements ITileEntityProvider 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int e) {
 		world.createExplosion(null, x + 0.5, y, z + 0.5, 2.0F, false);
-		world.setBlockToAir(x, y+1, z);
-		world.setBlockToAir(x, y+2, z);
-		world.setBlockToAir(x, y+3, z);
-		world.createExplosion(null, x + 0.5, y + 1, z + 0.5, 2.0F, false);
-		world.createExplosion(null, x + 0.5, y + 2, z + 0.5, 2.0F, false);
-		world.createExplosion(null, x + 0.5, y + 3, z + 0.5, 2.0F, false);
+
+		for(int i = 1; i < 4; i++) {
+			world.setBlockToAir(x, y + i, z);
+			world.createExplosion(null, x + 0.5, y + i, z + 0.5, 2.0F, false);
+		}
 	}
 
 	@Override

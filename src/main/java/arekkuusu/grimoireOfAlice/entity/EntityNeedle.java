@@ -18,6 +18,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import static arekkuusu.grimoireOfAlice.entity.EntityThrow.PickupMode.*;
+
 public class EntityNeedle extends EntityThrow{
 
 	public static final double RETURN_STRENGTH	= 0.05D;
@@ -46,20 +48,20 @@ public class EntityNeedle extends EntityThrow{
 		posZ -= MathHelper.sin((rotationYaw / 180F) * 3.141593F) * 0.16F;
 		setPosition(posX, posY, posZ);
 		yOffset = 0.0F;
-		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
-		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
-		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
+		motionX = -MathHelper.sin((float)((rotationYaw / 180F) * Math.PI)) * MathHelper.cos((float)((rotationPitch / 180F) * Math.PI));
+		motionZ = MathHelper.cos((float)((rotationYaw / 180F) * Math.PI)) * MathHelper.cos((float)((rotationPitch / 180F) * Math.PI));
+		motionY = -MathHelper.sin((float)((rotationPitch / 180F) * Math.PI));
 		setThrowableHeading(motionX, motionY, motionZ, f, 5.0F);
 		soundTimer = 0;
 		strength = Math.min(1.5F, f);
 		setTimeToLive(600);
-		dataWatcher.updateObject(30, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		dataWatcher.updateObject(30, strength);
 	}
 	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		strength = Float.intBitsToFloat(dataWatcher.getWatchableObjectInt(30));
+		strength = dataWatcher.getWatchableObjectFloat(30);
 		
 		if (inGround) return;
 		
@@ -77,18 +79,7 @@ public class EntityNeedle extends EntityThrow{
 		}
 		
 		if (!wasInGround && shootingEntity != null && strength > 0F) {
-			double dx;
-			double dy;
-			double dz;
-			dx = posX - shootingEntity.posX;
-			dy = posY - shootingEntity.posY - shootingEntity.getEyeHeight();
-			dz = posZ - shootingEntity.posZ;
-			
-			double d = Math.sqrt(dx * dx + dy * dy + dz * dz);
-			dx /= d;
-			dy /= d;
-			dz /= d;
-			
+
 			soundTimer += limitedStrength;
 			if (soundTimer > 3F) {
 				worldObj.playSoundAtEntity(this, "random.bow", 0.6F, 1.0F / (rand.nextFloat() * 0.2F + 2.2F - limitedStrength));
@@ -96,20 +87,19 @@ public class EntityNeedle extends EntityThrow{
 			}
 		}
 		
-		dataWatcher.updateObject(30, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		dataWatcher.updateObject(30, strength);
 	}
 	
 	@Override
 	public void onEntityHit(Entity entity) {
 		if (worldObj.isRemote || strength < MIN_FLOAT_STRENGTH) return;
 		
-		DamageSource damagesource = null;
 		float damage = 3.5F;
 		damage += getMeleeHitDamage(entity);
 		if (getIsCritical()) {
 			damage += 2;
 		}
-		if (entity.attackEntityFrom(damagesource.generic, damage)) {
+		if (entity.attackEntityFrom(DamageSource.generic, damage)) {
 			applyHitEffects(entity);
 			if (entity instanceof EntityLivingBase) {
 				EntityLivingBase Potionable = (EntityLivingBase)entity;
@@ -234,7 +224,7 @@ public class EntityNeedle extends EntityThrow{
 	@Override
 	public void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(30, Integer.valueOf(Float.floatToRawIntBits(0F)));
+		dataWatcher.addObject(30, 0F);
 	}
 	
 	public float getMeleeHitDamage(Entity entity) {
@@ -253,10 +243,6 @@ public class EntityNeedle extends EntityThrow{
 		return null;
 	}
 	
-	public int getWeaponMaterialId() {
-		return dataWatcher.getWatchableObjectInt(30);
-	}
-	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
 		super.writeEntityToNBT(nbttagcompound);
@@ -270,5 +256,4 @@ public class EntityNeedle extends EntityThrow{
 		super.readEntityFromNBT(nbttagcompound);
 		setThrownItemStack(ItemStack.loadItemStackFromNBT(nbttagcompound.getCompoundTag("thrI")));
 	}
-
 }

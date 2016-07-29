@@ -13,7 +13,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityEllyScytheThrowable extends EntityThrow{
+import static arekkuusu.grimoireOfAlice.entity.EntityThrow.PickupMode.*;
+
+public class EntityEllyScytheThrowable extends EntityThrow {
 
 	public static final double RETURN_STRENGTH	= 0.05D;
 	public static final float MIN_FLOAT_STRENGTH = 0.4F;
@@ -47,13 +49,13 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 		setThrowableHeading(motionX, motionY, motionZ, f, 5.0F);
 		soundTimer = 0;
 		strength = Math.min(1.5F, f);
-		dataWatcher.updateObject(25, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		dataWatcher.updateObject(25, strength);
 	}
 	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		strength = Float.intBitsToFloat(dataWatcher.getWatchableObjectInt(25));
+		strength = dataWatcher.getWatchableObjectFloat(25);
 		
 		if (inGround) return;
 		
@@ -94,7 +96,7 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 			}
 		}
 		
-		dataWatcher.updateObject(25, Integer.valueOf(Float.floatToRawIntBits(strength)));
+		dataWatcher.updateObject(25, strength);
 	}
 	
 	@Override
@@ -117,13 +119,12 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 			return;
 		}
 		
-		DamageSource damagesource = null;
 		float damage = 3.5F;
 		damage += getMeleeHitDamage(entity);
 		if (getIsCritical()) {
 			damage += 2;
 		}
-		if (entity.attackEntityFrom(damagesource.generic, damage)) {
+		if (entity.attackEntityFrom(DamageSource.generic, damage)) {
 			applyHitEffects(entity);
 			if (entity instanceof EntityLivingBase) {
 				EntityLivingBase Potionable = (EntityLivingBase)entity;
@@ -163,11 +164,7 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 		motionX *= -rand.nextFloat() * 0.5F;
 		motionZ *= -rand.nextFloat() * 0.5F;
 		motionY = rand.nextFloat() * 0.1F;
-		if (mop.sideHit == 1) {
-			inGround = true;
-		} else {
-			inGround = false;
-		}
+		inGround = mop.sideHit == 1;
 		setIsCritical(false);
 		wasInGround = true;
 		strength = 0F;
@@ -250,7 +247,7 @@ public class EntityEllyScytheThrowable extends EntityThrow{
 	@Override
 	public void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(25, Integer.valueOf(Float.floatToRawIntBits(0F)));
+		dataWatcher.addObject(25, 0F);
 	}
 	
 	public float getMeleeHitDamage(Entity entity) {

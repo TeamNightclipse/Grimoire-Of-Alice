@@ -24,9 +24,17 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityThrow extends EntityArrow implements IThrowableEntity{
+import static arekkuusu.grimoireOfAlice.entity.EntityThrow.PickupMode.*;
 
-	public static final int	NO_PICKUP = 0, PICKUP_ALL = 1, PICKUP_CREATIVE = 2, PICKUP_OWNER = 3;
+public class EntityThrow extends EntityArrow implements IThrowableEntity {
+
+	public enum PickupMode {
+		NO_PICKUP,
+		PICKUP_ALL,
+		PICKUP_CREATIVE,
+		PICKUP_OWNER
+	}
+
 	protected int tileX = -1;
 	protected int tileY = -1;
 	protected int tileZ = -1;
@@ -34,7 +42,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
     protected int inData;
     protected boolean inGround;
     protected boolean wasInGround;
-    public int canBePickedUp;
+    public PickupMode canBePickedUp;
     public int arrowShake;
     public Entity shootingEntity;
     protected int ticksInGround;
@@ -69,37 +77,16 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 	
 	@Override
 	public void setThrowableHeading(double x, double y, double z, float speed, float deviation) {
-		float f2 = MathHelper.sqrt_double(x * x + y * y + z * z);
-		x /= f2;
-		y /= f2;
-		z /= f2;
-		x += rand.nextGaussian() * 0.0075F * deviation;
-		y += rand.nextGaussian() * 0.0075F * deviation;
-		z += rand.nextGaussian() * 0.0075F * deviation;
-		x *= speed;
-		y *= speed;
-		z *= speed;
-		motionX = x;
-		motionY = y;
-		motionZ = z;
-		float f3 = MathHelper.sqrt_double(x * x + z * z);
-		prevRotationYaw = rotationYaw = (float) ((Math.atan2(x, z) * 180D) / Math.PI);
-		prevRotationPitch = rotationPitch = (float) ((Math.atan2(y, f3) * 180D) / Math.PI);
+		super.setThrowableHeading(x, y, z, speed, deviation);
 		ticksInGround = 0;
 	}
 	
 	@Override
-	public void setVelocity(double d, double d1, double d2) {
-		motionX = d;
-		motionY = d1;
-		motionZ = d2;
+	public void setVelocity(double x, double y, double z) {
 		if (prevRotationPitch == 0.0F && prevRotationYaw == 0.0F) {
-			float f = MathHelper.sqrt_double(d * d + d2 * d2);
-			prevRotationYaw = rotationYaw = (float) ((Math.atan2(d, d2) * 180D) / Math.PI);
-			prevRotationPitch = rotationPitch = (float) ((Math.atan2(d1, f) * 180D) / Math.PI);
-			setLocationAndAngles(posX, posY, posZ, rotationYaw, rotationPitch);
 			ticksInGround = 0;
 		}
+		super.setVelocity(x, y, z);
 }
 	
 	protected void setPickupModeFromEntity(EntityLivingBase entityliving) {
@@ -127,10 +114,11 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 			prevRotationYaw = rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / Math.PI);
 			prevRotationPitch = rotationPitch = (float) ((Math.atan2(motionY, f) * 180D) / Math.PI);
 		}
-		Block i = worldObj.getBlock(tileX, tileY, tileZ);
-		if (i != null) {
-			i.setBlockBoundsBasedOnState(worldObj, tileX, tileY, tileZ);
-			AxisAlignedBB axisalignedbb = i.getCollisionBoundingBoxFromPool(worldObj, tileX, tileY, tileZ);
+
+		Block block = worldObj.getBlock(tileX, tileY, tileZ);
+		if (block != null) {
+			block.setBlockBoundsBasedOnState(worldObj, tileX, tileY, tileZ);
+			AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(worldObj, tileX, tileY, tileZ);
 			if (axisalignedbb != null && axisalignedbb.isVecInside(Vec3.createVectorHelper(posX, posY, posZ))) {
 				inGround = true;
 			}
@@ -141,9 +129,8 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		}
 		
 		if (inGround) {
-			Block j = worldObj.getBlock(tileX, tileY, tileZ);
-			int k = worldObj.getBlockMetadata(tileX, tileY, tileZ);
-			if (j == inBlock && k == inData) {
+			int metadata = worldObj.getBlockMetadata(tileX, tileY, tileZ);
+			if (block == inBlock && metadata == inData) {
 				ticksInGround++;
 				int t = getTimeToLive();
 				if (t != 0 && ticksInGround >= t) {
@@ -164,45 +151,44 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		
 		Vec3 vec3d = Vec3.createVectorHelper(posX, posY, posZ);
 		Vec3 vec3d1 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-		MovingObjectPosition movingobjectposition = worldObj.func_147447_a(vec3d, vec3d1, false, true, false);
+		MovingObjectPosition mop = worldObj.func_147447_a(vec3d, vec3d1, false, true, false);
 		vec3d = Vec3.createVectorHelper(posX, posY, posZ);
 		vec3d1 = Vec3.createVectorHelper(posX + motionX, posY + motionY, posZ + motionZ);
-		if (movingobjectposition != null) {
-			vec3d1 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+		if (mop != null) {
+			vec3d1 = Vec3.createVectorHelper(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
 		}
 		
 		Entity entity = null;
 		@SuppressWarnings("unchecked")
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 		double d = 0.0D;
-		for (int l = 0; l < list.size(); l++) {
-			Entity entity1 = list.get(l);
-			if (!entity1.canBeCollidedWith() || entity1 == shootingEntity && ticksInAir < 5) {
+		for(Entity entity1 : list) {
+			if(!entity1.canBeCollidedWith() || entity1 == shootingEntity && ticksInAir < 5) {
 				continue;
 			}
 			float f4 = 0.3F;
 			AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand(f4, f4, f4);
-			MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec3d, vec3d1);
-			if (movingobjectposition1 == null) {
+			MovingObjectPosition mop1 = axisalignedbb1.calculateIntercept(vec3d, vec3d1);
+			if(mop1 == null) {
 				continue;
 			}
-			double d1 = vec3d.distanceTo(movingobjectposition1.hitVec);
-			if (d1 < d || d == 0.0D) {
+			double d1 = vec3d.distanceTo(mop1.hitVec);
+			if(d1 < d || d == 0.0D) {
 				entity = entity1;
 				d = d1;
 			}
 		}
 		
 		if (entity != null) {
-			movingobjectposition = new MovingObjectPosition(entity);
+			mop = new MovingObjectPosition(entity);
 		}
 		
-		if (movingobjectposition != null)
+		if (mop != null)
 		{
-			if (movingobjectposition.entityHit != null) {
-				onEntityHit(movingobjectposition.entityHit);
+			if (mop.entityHit != null) {
+				onEntityHit(mop.entityHit);
 			} else {
-				onGroundHit(movingobjectposition);
+				onGroundHit(mop);
 			}
 		}
 		
@@ -215,21 +201,25 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		posX += motionX;
 		posY += motionY;
 		posZ += motionZ;
+
 		if (aimRotation()) {
 			float f2 = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 			rotationYaw = (float) ((Math.atan2(motionX, motionZ) * 180D) / Math.PI);
-			for (rotationPitch = (float) ((Math.atan2(motionY, f2) * 180D) / Math.PI); rotationPitch - prevRotationPitch < -180F; prevRotationPitch -= 360F) {}
-			for (; rotationPitch - prevRotationPitch >= 180F; prevRotationPitch += 360F) {}
-			for (; rotationYaw - prevRotationYaw < -180F; prevRotationYaw -= 360F) {}
-			for (; rotationYaw - prevRotationYaw >= 180F; prevRotationYaw += 360F) {}
+
+			rotationPitch = (float) ((Math.atan2(motionY, f2) * 180D) / Math.PI);
+			while(rotationPitch - prevRotationPitch < -180F) {prevRotationPitch -= 360F;}
+			while(rotationPitch - prevRotationPitch >= 180F) {prevRotationPitch += 360F;}
+			while(rotationYaw - prevRotationYaw < -180F) {prevRotationYaw -= 360F;}
+			while(rotationYaw - prevRotationYaw >= 180F) {prevRotationYaw += 360F;}
 			rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 			rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		}
+
 		float res = getAirResistance();
 		float grav = getGravity();
 		if (isInWater()) {
 			wasInGround = true;
-			for (int i1 = 0; i1 < 4; i1++) {
+			for (int i = 0; i < 4; i++) {
 				float f6 = 0.25F;
 				worldObj.spawnParticle("bubble", posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX, motionY, motionZ);
 			}
@@ -262,6 +252,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		if (isBurning() && !(entity instanceof EntityEnderman)) {
 			entity.setFire(5);
 		}
+
 		if (entity instanceof EntityLivingBase) {
 			EntityLivingBase entityliving = (EntityLivingBase) entity;
 			if (knockbackStrength > 0) {
@@ -289,10 +280,10 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		motionX = mop.hitVec.xCoord - posX;
 		motionY = mop.hitVec.yCoord - posY;
 		motionZ = mop.hitVec.zCoord - posZ;
-		float f1 = MathHelper.sqrt_double(motionX * motionX + motionY * motionY + motionZ * motionZ);
-		posX -= motionX / f1 * 0.05D;
-		posY -= motionY / f1 * 0.05D;
-		posZ -= motionZ / f1 * 0.05D;
+		double velocity = getTotalVelocity();
+		posX -= motionX / velocity * 0.05D;
+		posY -= motionY / velocity * 0.05D;
+		posZ -= motionZ / velocity * 0.05D;
 		inGround = true;
 		wasInGround = true;
 		setIsCritical(false);
@@ -303,21 +294,13 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		}
 	}
 	
-	public boolean canPickup(EntityPlayer entityplayer)
-	{
-		if (canBePickedUp == PICKUP_ALL)
-		{
+	public boolean canPickup(EntityPlayer entityplayer) {
+		if (canBePickedUp == PICKUP_ALL) {
 			return true;
-		} else if (canBePickedUp == PICKUP_CREATIVE)
-		{
+		} else if(canBePickedUp == PICKUP_CREATIVE) {
 			return entityplayer.capabilities.isCreativeMode;
-		} else if (canBePickedUp == PICKUP_OWNER)
-		{
-			return entityplayer == shootingEntity;
-		} else
-		{
-			return false;
 		}
+		else return canBePickedUp == PICKUP_OWNER && entityplayer == shootingEntity;
 	}
 	
 	@Override
@@ -348,7 +331,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		nbttagcompound.setByte("shake", (byte) arrowShake);
 		nbttagcompound.setBoolean("inGround", inGround);
 		nbttagcompound.setBoolean("beenInGround", wasInGround);
-		nbttagcompound.setByte("pickup", (byte) canBePickedUp);
+		nbttagcompound.setString("pickup", canBePickedUp.name());
 	}
 	
 	@Override
@@ -361,7 +344,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		arrowShake = nbttagcompound.getByte("shake") & 0xFF;
 		inGround = nbttagcompound.getBoolean("inGround");
 		wasInGround = nbttagcompound.getBoolean("beenInGrond");
-		canBePickedUp = nbttagcompound.getByte("pickup");
+		canBePickedUp = PickupMode.valueOf(nbttagcompound.getString("pickup"));
 	}
 	
 	protected void onItemPickup(EntityPlayer entityplayer) {
@@ -386,7 +369,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 	@Override
 	public void setIsCritical(boolean flag) {
 		if (canBeCritical()) {
-			dataWatcher.updateObject(16, Byte.valueOf((byte) (flag ? 1 : 0)));
+			dataWatcher.updateObject(16, (byte)(flag ? 1 : 0));
 		}
 	}
 	
@@ -410,16 +393,16 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 		knockbackStrength = i;
 	}
 	
-	public void setPickupMode(int i) {
+	public void setPickupMode(PickupMode i) {
 		canBePickedUp = i;
 	}
 	
-	public int getPickupMode() {
+	public PickupMode getPickupMode() {
 		return canBePickedUp;
 	}
 	
-	private void canBePickedUp(int canI){
-		canBePickedUp= canI;
+	private void canBePickedUp(PickupMode canI){
+		canBePickedUp = canI;
 	}
 	
 	public final double getTotalVelocity() {
@@ -427,7 +410,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity{
 	}
 	
 	public void setTimeToLive(int time) {
-		timeToLive=time;
+		timeToLive = time;
 	}
 	
 	public int getTimeToLive() {

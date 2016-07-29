@@ -26,12 +26,12 @@ public class RenderEllyScytheProyectile extends Render {
 	}
 	
 	@Override
-	public void doRender(Entity ellyScythe, double bdo, double ub, double le, float o, float f1) {
+	public void doRender(Entity ellyScythe, double x, double y, double z, float yaw, float pitch) {
 		GL11.glPushMatrix();
 		bindEntityTexture(ellyScythe);
-		GL11.glTranslatef((float) bdo, (float) ub, (float) le);
-		GL11.glRotatef(ellyScythe.prevRotationPitch + (ellyScythe.rotationPitch - ellyScythe.prevRotationPitch) * f1, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef((ellyScythe.prevRotationYaw + (ellyScythe.rotationYaw - ellyScythe.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
+		GL11.glTranslatef((float) x, (float) y, (float) z);
+		GL11.glRotatef(ellyScythe.prevRotationPitch + (ellyScythe.rotationPitch - ellyScythe.prevRotationPitch) * pitch, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef((ellyScythe.prevRotationYaw + (ellyScythe.rotationYaw - ellyScythe.prevRotationYaw) * pitch) - 90F, 0.0F, 1.0F, 0.0F);
 		model.render(ellyScythe, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 	}
