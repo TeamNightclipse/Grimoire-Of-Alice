@@ -8,9 +8,14 @@
  */
 package arekkuusu.grimoireOfAlice;
 
+import arekkuusu.grimoireOfAlice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireOfAlice.handler.WorldGenPlants;
+import arekkuusu.grimoireOfAlice.plugin.touhou.InventoryPouch;
+import arekkuusu.grimoireOfAlice.plugin.touhou.SpellCardContainer;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 @CleanupDone
@@ -22,4 +27,5 @@ public class ProxyServer {
 
 	public void registerRenders() {
 	} //NO-OP
+
 }

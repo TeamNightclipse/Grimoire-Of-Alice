@@ -6,20 +6,19 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
-import thKaguyaMod.init.THKaguyaItems;
+//import thKaguyaMod.init.THKaguyaItems;
 
 public class THCrafting {
 
 	public static void pointsAndItems() {
-		//@formatter:off
+		/*//@formatter:off
 		if(ConfigHandler.pointItemRecipes){
 		shaped().grid("GGG", "GGG", "GGG")
 			.where('G').mapsTo(THKaguyaItems.power_up_item_big)
 		.outputs(GOAItem.FullPower).build();
 		
-		shaped().grid("GIG", "IHI", "GIG")
+		shaped().grid("GIG", "I I", "GIG")
 			.where('G').mapsTo(THKaguyaItems.point_item)
-			.where('H').mapsTo(THKaguyaItems.small_star_shot)
 			.where('I').mapsTo(THKaguyaItems.shot_material)
 		.outputs(GOAItem.Star).build();
 		
@@ -39,6 +38,10 @@ public class THCrafting {
 		.outputs(GOAItem.Faith).build();
 		
 		shapeless()
+		    .add(GOAItem.FullPower)
+	    .outputs(THKaguyaItems.bomb_item).build();
+		
+		shapeless()
 			.add(GOAItem.UFORed)
 			.add(GOAItem.UFOBlue)
 			.add(GOAItem.UFOGreen)
@@ -47,8 +50,7 @@ public class THCrafting {
 		ufo().where('U').mapsTo("dyeRed").outputs(GOAItem.UFORed).build();
 		ufo().where('U').mapsTo("dyeBlue").outputs(GOAItem.UFOBlue).build();
 		ufo().where('U').mapsTo("dyeGreen").outputs(GOAItem.UFOGreen).build();
-		}
-		
+		}*/
 		//@formatter:on
 	}
 	
@@ -60,12 +62,12 @@ public class THCrafting {
 		return new ShapelessRecipe();
 	}
 	
-	private static ShapedRecipe ufo() {
+	/*private static ShapedRecipe ufo() {
 		return new ShapedRecipe().grid("IOI", "UHU", "SSS")
 				.where('I').mapsTo(GOAItem.TimeOrb)
 				.where('H').mapsTo(THKaguyaItems.diffusion_amulet)
-				.where('S').mapsTo(THKaguyaItems.bomb_item)
+				.where('S').mapsTo(GOAItem.Star)
 				.where('O').mapsTo(Blocks.glass);
-	}
+	}*/
 	
 }

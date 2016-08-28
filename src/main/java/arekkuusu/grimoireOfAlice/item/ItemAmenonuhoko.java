@@ -18,6 +18,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
@@ -28,15 +29,25 @@ public class ItemAmenonuhoko extends ItemGOASword {
 		setMaxDamage(200);
 	}
 
+	@Override
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+	    if( stack.stackTagCompound == null )
+	    	stack.setTagCompound( new NBTTagCompound( ) );
+	    stack.stackTagCompound.setString("GrimoireOwner", player.getDisplayName());
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Heavenly jeweled spear");
-		list.add(EnumChatFormatting.GOLD + "Created by Elder Gods,");
-		list.add(EnumChatFormatting.GOLD + "once used to raise the");
-		list.add(EnumChatFormatting.GOLD + "primordial land-mass,");
-		list.add(EnumChatFormatting.GOLD + "Onogoro-shima, from the sea");
+		list.add(EnumChatFormatting.GOLD + "Heavenly jeweled spear");
+		list.add(EnumChatFormatting.GRAY + "Created by Elder Gods");
+		list.add(EnumChatFormatting.ITALIC + "Once used to raise the");
+		list.add(EnumChatFormatting.ITALIC + "primordial land-mass,");
+		list.add(EnumChatFormatting.ITALIC + "Onogoro-shima, from the sea");
+		if(stack.hasTagCompound()) {
+			list.add(EnumChatFormatting.ITALIC + "Property of " + stack.stackTagCompound.getString("GrimoireOwner"));
+		}
 	}
 
 	@Override
@@ -83,9 +94,9 @@ public class ItemAmenonuhoko extends ItemGOASword {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_,
-			float p_77648_10_) {
-		if(stack.getItemDamage() == 0) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+		if(!stack.hasTagCompound()) {return false;}
+		if(stack.getItemDamage() == 0 && stack.stackTagCompound.getString("GrimoireOwner").equals(player.getDisplayName())) {
 			if(side == 0) {
 				--y;
 			}

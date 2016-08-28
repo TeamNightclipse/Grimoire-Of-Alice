@@ -42,7 +42,7 @@ public class VanillaCrafting {
 				.where('T').mapsTo("stickWood")
 				.outputs(new ItemStack(GOAItem.soldifiedPaper, 4)).build();
 
-		shaped().grid("SSS", "SA ", "SA ")
+		shaped().grid("SSS", " AS", "A S")
 				.where('S').mapsTo(GOAItem.gloriousNipponSteel)
 				.where('A').mapsTo("stickWood")
 				.mirrored(true)
@@ -75,8 +75,8 @@ public class VanillaCrafting {
 				.outputs(GOAItem.mochiHammer).build();
 
 		shaped().grid("  S", "SS ", "OS ")
-				.where('O').mapsTo(GOAItem.gloriousNipponSteel)
-				.where('S').mapsTo("ingotIron")
+				.where('O').mapsTo("ingotIron")
+				.where('S').mapsTo("nuggetGold ")
 				.outputs(GOAItem.needle).build();
 		
 		shaped().grid("SSS", "SSS", "SSS")
@@ -177,6 +177,12 @@ public class VanillaCrafting {
 				.where('T').mapsTo(GOAItem.Hihiirokane)
 				.where('O').mapsTo(GOABlock.holyStone)
 				.outputs(GOAItem.primordialShield).build();
+		
+		shaped().grid("SCS", "SLS", "SSS")
+				.where('C').mapsTo(Blocks.coal_block)
+				.where('L').mapsTo(Items.lava_bucket)
+				.where('S').mapsTo(GOABlock.compactStone)
+				.outputs(GOAItem.impureRock).build();
 
 		shapeless()
 				.add(GOABlock.sugarBlock)
@@ -195,15 +201,9 @@ public class VanillaCrafting {
 				.add(Items.fermented_spider_eye)
 				.add(Items.poisonous_potato)
 				.outputs(new ItemStack(GOAItem.shroomSlice, 1, 1)).build();
-
-		shapeless()
-				.add(GOAItem.gloriousNipponSteel)
-				.add(Blocks.coal_block)
-				.add(Items.lava_bucket)
-				.outputs(GOAItem.impureRock).build();
 		
 		shapeless()
-				.add(GOAItem.gloriousNipponSteel)
+				.add(Items.book)
 				.add(GOABlock.hyperconcentratedMagic)
 				.add(GOAItem.volatileString)
 				.add(Items.feather)
@@ -211,7 +211,7 @@ public class VanillaCrafting {
 
 		//@formatter:on
 
-		GameRegistry.addSmelting(Blocks.iron_block, new ItemStack(GOAItem.gloriousNipponSteel), 0);
+		GameRegistry.addSmelting(Blocks.quartz_block, new ItemStack(GOAItem.gloriousNipponSteel), 0);
 		GameRegistry.addSmelting(GOAItem.impureRock, new ItemStack(GOAItem.Hihiirokane), 0);
 	}
 
@@ -236,6 +236,7 @@ public class VanillaCrafting {
 				.where('G').mapsTo(GOAItem.volatileString)
 				.where('A').mapsTo(Items.clay_ball)
 				.outputs(GOAItem.mask).build();
+		
 		if(ConfigHandler.maskRecipes){
 		mask().where('R').mapsTo(Items.sugar).outputs(GOAItem.foxMask).build();
 		mask().where('R').mapsTo(Items.blaze_powder).outputs(GOAItem.fukuNoKamiMask).build();

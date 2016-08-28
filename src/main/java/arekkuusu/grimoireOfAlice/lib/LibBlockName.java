@@ -18,12 +18,12 @@ public class LibBlockName {
 	public static final String ROPEBLOCK = "RopeBlock";
 	public static final String PAPERBLOCK = "PaperBlock";
 	public static final String ONBASHIRA = "Onbashira";
+	public static final String ONBASHIRAMIDDLE = "OnbashiraMiddle";
+	public static final String ONBASHIRATOP = "OnbashiraTop";
 	public static final String HOLYSTONE = "HolyStone";
 	public static final String COMPACTSTONE = "CompactStone";
 	public static final String HYPERMAGIC = "HyperconcentratedMagic";
 	public static final String SHROOM = "Shroom";
-	public static final String ONBASHIRAMIDDLE = "OnbashiraMiddle";
-	public static final String ONBASHIRATOP = "OnbashiraTop";
 	public static final String KYOUMARUBOTAN = "Kyoumarubotan";
 
 }

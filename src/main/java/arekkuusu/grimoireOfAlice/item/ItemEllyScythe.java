@@ -17,6 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -43,19 +45,19 @@ public class ItemEllyScythe extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.WHITE + "War ma fé, heman zo eun Anko drouk");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "Oberour ar maro known as the grave");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "yard watcher, they said that he");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "protects the graveyard and the souls");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "around it for some unknown reason and");
-		p_77624_3_.add(EnumChatFormatting.GOLD + "collects the lost souls on his land");
+		p_77624_3_.add(EnumChatFormatting.GOLD + "War ma fé, heman zo eun Anko drouk");
+		p_77624_3_.add(EnumChatFormatting.ITALIC + "Oberour ar maro known as the grave");
+		p_77624_3_.add(EnumChatFormatting.ITALIC + "yard watcher, they said that he");
+		p_77624_3_.add(EnumChatFormatting.ITALIC + "protects the graveyard and the souls");
+		p_77624_3_.add(EnumChatFormatting.ITALIC + "around it for some unknown reason and");
+		p_77624_3_.add(EnumChatFormatting.ITALIC + "collects the lost souls on his land");
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		if(user instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)user;
-			if(player.experienceLevel > 40) {
+			if(target instanceof EntityZombie || target instanceof EntitySkeleton) {
 				target.addPotionEffect(new PotionEffect(Potion.harm.id, 128, 0));
 				target.addPotionEffect(new PotionEffect(Potion.blindness.id, 128, 0));
 				user.addPotionEffect(new PotionEffect(Potion.heal.id, 128, 0));

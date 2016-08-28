@@ -33,8 +33,8 @@ public class ItemShimenawaRope extends ItemGOABase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Tenshi's little gift");
-		list.add(EnumChatFormatting.GOLD + "A little piece of Heaven,");
+		list.add(EnumChatFormatting.GOLD + "Tenshi's little gift");
+		list.add(EnumChatFormatting.GRAY + "A little piece of Heaven,");
 		list.add(EnumChatFormatting.RED + "Might cause an incident");
 	}
 

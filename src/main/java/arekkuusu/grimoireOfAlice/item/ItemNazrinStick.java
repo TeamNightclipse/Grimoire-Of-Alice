@@ -33,9 +33,9 @@ public class ItemNazrinStick extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Rare treasure from an old era");
-		list.add(EnumChatFormatting.GOLD + "Used by mice to find cheese");
-		list.add(EnumChatFormatting.GOLD + "O-Only works for mice? Oh well");
+		list.add(EnumChatFormatting.GOLD + "Rare treasure from an old era");
+		list.add(EnumChatFormatting.ITALIC + "By holding it you become the");
+		list.add(EnumChatFormatting.ITALIC + "the Little Dowser General");
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class ItemNazrinStick extends ItemGOASword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int p_77615_4_) {
-		if(player.experienceLevel > 40) {
+		if(player.experienceLevel > 30) {
 			player.inventory.consumeInventoryItem(Items.coal);
 			//Vec3 look = player.getLookVec();
 			world.createExplosion(player, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
@@ -74,7 +74,8 @@ public class ItemNazrinStick extends ItemGOASword {
 		}
 		else {
 			player.inventory.consumeInventoryItem(Items.coal);
-			world.createExplosion(player, player.posX, player.posY, player.posZ, 1.0F, false);
+			player.setVelocity(0, 10, 0);
+			world.createExplosion(player, player.posX, player.posY+1, player.posZ, 2.0F, false);
 			stack.damageItem(1, player);
 		}
 	}

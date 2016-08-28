@@ -19,13 +19,14 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 @CleanupDone
-public class ItemCrestOfYggdrasill extends ItemGOASword {
+public class ItemCrestOfYggdrasill extends ItemSword {
 
 	ItemCrestOfYggdrasill(ToolMaterial material) {
 		super(material);
@@ -35,10 +36,10 @@ public class ItemCrestOfYggdrasill extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Contains time itself");
-		list.add(EnumChatFormatting.GOLD + "Once used by a great God to");
-		list.add(EnumChatFormatting.GOLD + "manipulate space and time");
-		list.add(EnumChatFormatting.RED + "EXTREMELY[WARNING]EXPLOSIVE");
+		list.add(EnumChatFormatting.GOLD + "Contains time itself");
+		list.add(EnumChatFormatting.GRAY + "Once used by a great God to");
+		list.add(EnumChatFormatting.GRAY + "manipulate space and time");
+		list.add(EnumChatFormatting.RED + "[WARNING] EXPLOSIVE [WARNING]");
 	}
 
 	@Override

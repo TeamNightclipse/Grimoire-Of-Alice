@@ -28,8 +28,8 @@ public class ItemkappasNostrum extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.DARK_PURPLE + "Powerful healing ointment said to be created");
-		list.add(EnumChatFormatting.DARK_PURPLE + "by cutting off the arm of a kappa");
+		list.add(EnumChatFormatting.DARK_AQUA + "Powerful healing ointment said to be created");
+		list.add(EnumChatFormatting.DARK_AQUA + "by cutting off the arm of a kappa");
 	}
 
 	@Override

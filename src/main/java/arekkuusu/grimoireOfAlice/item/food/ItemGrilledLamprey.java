@@ -25,7 +25,7 @@ public class ItemGrilledLamprey extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.GREEN + "Alternative to grilled chicken");
+		list.add(EnumChatFormatting.ITALIC + "Alternative to grilled chicken");
 	}
 
 	@Override

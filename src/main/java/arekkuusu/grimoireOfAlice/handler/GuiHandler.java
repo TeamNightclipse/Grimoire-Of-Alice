@@ -8,8 +8,11 @@
  */
 package arekkuusu.grimoireOfAlice.handler;
 
+import arekkuusu.grimoireOfAlice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireOfAlice.client.gui.GuiScreenYoukaiBook;
 import arekkuusu.grimoireOfAlice.helper.LogHelper;
+import arekkuusu.grimoireOfAlice.plugin.touhou.InventoryPouch;
+import arekkuusu.grimoireOfAlice.plugin.touhou.SpellCardContainer;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +24,8 @@ public class GuiHandler implements IGuiHandler{
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
+			case 1:
+				return new SpellCardContainer(player, player.inventory, new InventoryPouch(player.getHeldItem()));
 			default:
 				return null;
 		}
@@ -31,6 +36,8 @@ public class GuiHandler implements IGuiHandler{
 		switch(ID) {
 			case 0:
 				return new GuiScreenYoukaiBook(player, player.getCurrentEquippedItem(), true);
+			case 1:
+				return new GuiItemInventory((SpellCardContainer) new SpellCardContainer(player, player.inventory, new InventoryPouch(player.getHeldItem())));
 			default:
 				return null;
 		}

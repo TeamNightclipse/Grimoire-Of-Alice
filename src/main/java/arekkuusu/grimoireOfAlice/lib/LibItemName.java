@@ -66,6 +66,8 @@ public class LibItemName {
 	public static final String UFOGREEN = "UFOGreen";
 	public static final String UFOs = "UFOs";
 	public static final String IMPUREROCK = "ImpureRock";
+	public static final String EYE = "3rdEye";
+	public static final String POUCH = "SpellCardPouch";
 	
 
 }

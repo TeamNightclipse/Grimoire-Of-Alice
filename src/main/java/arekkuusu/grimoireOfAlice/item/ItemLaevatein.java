@@ -43,7 +43,6 @@ public class ItemLaevatein extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "'Damage twig'");
 		list.add(EnumChatFormatting.GOLD + "Magic staff gambantein, Lævateinn of fire and chaos");
 	}
 
@@ -68,7 +67,7 @@ public class ItemLaevatein extends ItemGOASword {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if(player.experienceLevel > 42) {
+		if(player.experienceLevel > 30) {
 			stack.damageItem(10, player);
 			if(!world.isRemote) {
 				if(player.capabilities.isCreativeMode || player.inventory.hasItem(Items.fire_charge)) {

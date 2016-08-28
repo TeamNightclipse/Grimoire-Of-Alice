@@ -11,6 +11,7 @@ package arekkuusu.grimoireOfAlice;
 import arekkuusu.grimoireOfAlice.block.GOABlock;
 import arekkuusu.grimoireOfAlice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireOfAlice.entity.EntityNeedle;
+import arekkuusu.grimoireOfAlice.handler.ChestGenerator;
 import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.handler.GuiHandler;
 import arekkuusu.grimoireOfAlice.helper.LogHelper;
@@ -18,6 +19,7 @@ import arekkuusu.grimoireOfAlice.item.GOAItem;
 import arekkuusu.grimoireOfAlice.item.crafting.THCrafting;
 import arekkuusu.grimoireOfAlice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.plugin.touhou.GOATouhou;
 import arekkuusu.grimoireOfAlice.tmp.CleanupDone;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -48,6 +50,7 @@ public class GrimoireOfAlice {
 		tohouInstalled = Loader.isModLoaded("THKaguyaMod");
 		GOAItem.preInit();
 		GOABlock.preInit();
+		GOATouhou.preInit();
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
 		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 	}
@@ -67,6 +70,8 @@ public class GrimoireOfAlice {
 			LogHelper.info("is 42");
 			THCrafting.pointsAndItems();
 		}
+		LogHelper.info("Adding Chest Gen");
+		ChestGenerator.init();
 	}
 
 	public ProxyServer getProxy() {

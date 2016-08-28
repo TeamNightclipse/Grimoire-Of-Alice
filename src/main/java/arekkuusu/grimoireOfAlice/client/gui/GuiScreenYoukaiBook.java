@@ -51,7 +51,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	private int bookTotalPages = 1;
 	private int currPage;
 	private NBTTagList bookPages;
-	private String bookTitle = "";
+	private String bookTitle = "§kS§kp";
 	private GuiScreenYoukaiBook.NextPageButton buttonNextPage;
 	private GuiScreenYoukaiBook.NextPageButton buttonPreviousPage;
 	private GuiButton buttonDone;
@@ -128,7 +128,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 			buttonSign.visible = !field_146480_s;
 			buttonCancel.visible = field_146480_s;
 			buttonFinalize.visible = field_146480_s;
-			buttonFinalize.enabled = bookTitle.trim().length() > 0;
+			buttonFinalize.enabled = bookTitle.trim().length() > 6;
 		}
 	}
 
@@ -160,7 +160,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				if(p_146462_1_) {
 					s = "MC|BSign";
 					bookObj.setTagInfo("author", new NBTTagString(editingPlayer.getCommandSenderName()));
-					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim()));
+					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim().replace("§k", "")));
 					bookObj.func_150996_a(GOAItem.enchantedBook);
 				}
 
@@ -252,7 +252,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 						String s = func_146456_p();
 
 						if(s.length() > 0) {
-							func_146457_a(s.substring(0, s.length() - 1));
+							func_146457_a(s.substring(0, s.length() - 3));
 						}
 
 						return;
@@ -262,7 +262,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 						return;
 					default:
 						if(ChatAllowedCharacters.isAllowedCharacter(p_146463_1_)) {
-							func_146459_b(Character.toString(p_146463_1_));
+							func_146459_b("§k"+Character.toString(p_146463_1_));
 						}
 				}
 		}
@@ -272,7 +272,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		switch(p_146460_2_) {
 			case 14:
 				if(!bookTitle.isEmpty()) {
-					bookTitle = bookTitle.substring(0, bookTitle.length() - 1);
+					bookTitle = bookTitle.substring(0, bookTitle.length() - 3);
 					updateButtons();
 				}
 
@@ -286,8 +286,8 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 
 				return;
 			default:
-				if(bookTitle.length() < 16 && ChatAllowedCharacters.isAllowedCharacter(p_146460_1_)) {
-					bookTitle = bookTitle + Character.toString(p_146460_1_);
+				if(bookTitle.length() < 30 && ChatAllowedCharacters.isAllowedCharacter(p_146460_1_)) {
+					bookTitle = bookTitle + "§k" +Character.toString(p_146460_1_);
 					updateButtons();
 					field_146481_r = true;
 				}
@@ -338,15 +338,15 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				}
 			}
 
-			s1 = I18n.format("book.editTitle");
+			s1 = I18n.format("Secret spell for Grimoire");
 			l = fontRendererObj.getStringWidth(s1);
 			fontRendererObj.drawString(s1, k + 36 + (116 - l) / 2, b0 + 16 + 16, 0);
 			int i1 = fontRendererObj.getStringWidth(s);
 			fontRendererObj.drawString(s, k + 36 + (116 - i1) / 2, b0 + 48, 0);
-			String s2 = I18n.format("book.byAuthor", editingPlayer.getCommandSenderName());
+			String s2 = I18n.format("Grimoire of " + editingPlayer.getCommandSenderName());
 			int j1 = fontRendererObj.getStringWidth(s2);
 			fontRendererObj.drawString(EnumChatFormatting.DARK_RED + s2, k + 36 + (116 - j1) / 2, b0 + 48 + 10, 0);
-			String s3 = I18n.format("book.finalizeWarning");
+			String s3 = I18n.format("This book must be sealed to prevent someone else from reading the scriptures");
 			fontRendererObj.drawSplitString(s3, k + 36, b0 + 80, 116, 0);
 		}
 		else {

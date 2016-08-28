@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireOfAlice.item;
 
 import java.util.List;
@@ -32,11 +40,9 @@ public class ItemIbarakiBoxEmpty extends Item{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.GREEN + "Cure all illnesses or heal any injuries");
-		list.add(EnumChatFormatting.GREEN + "to the person who drinks from it");
-		list.add(EnumChatFormatting.DARK_PURPLE + "In exchange for curing illnesses, the personality of the one who");
-		list.add(EnumChatFormatting.DARK_PURPLE + "drinks from will temporarily become like an Oni's");
-		list.add(EnumChatFormatting.DARK_RED + "Use like bucket");
+		list.add(EnumChatFormatting.GOLD + "In exchange for curing illnesses, the personality of the");
+		list.add(EnumChatFormatting.GOLD + "one who drinks from will temporarily become like an Oni's");
+		list.add(EnumChatFormatting.ITALIC + "Use like bucket");
 	}
 	
 	@Override

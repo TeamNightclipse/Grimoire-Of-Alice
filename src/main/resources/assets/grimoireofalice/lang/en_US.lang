@@ -30,7 +30,7 @@ item.MapleLeafShield.name=Maple Leaf Shield
 
 item.MochiHammer.name=Mochi Hammer
 item.MomijisScimitarSword.name=Momiji's Scimitar Sword
-item.Laevatein.name=Lævateinn
+item.Laevatein.name=Laevatein
 item.NazrinStick.name=Nazrin's Stick
 item.EllyScythe.name=Elly's Scythe
 item.MikoStick.name=Toyosatomimi's Stick
@@ -47,6 +47,8 @@ tile.CompactStone.name=Compact Stone
 tile.HyperconcentratedMagic.name=Hyperconcentrated Magic
 tile.HolyKeyStone.name=Holy KeyStone
 tile.Onbashira.name=Onbashira
+tile.OnbashiraMiddle.name=Onbashira
+tile.OnbashiraTop.name=Onbashira
 tile.HolyStone.name=Holy Stone
 
 tile.Shroom.name=Shroom
@@ -58,6 +60,8 @@ item.Cherry.name=Cherry Item
 item.TimeOrb.name=Time Orb
 item.Faith.name=Faith Item
 item.UFOs.name=UFOs
+item.3rdEye.name=3rdEye
+item.SpellCardPouch.name=Spell Card Pouch
 
 itemGroup.grimoireofalice=Grimoire of Alice
 

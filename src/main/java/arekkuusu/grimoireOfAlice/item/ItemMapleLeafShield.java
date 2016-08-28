@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireOfAlice.item;
 
 import java.util.Collection;
@@ -36,12 +44,10 @@ public class ItemMapleLeafShield extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Momiji goes awoooo~");
-		list.add(EnumChatFormatting.GOLD + "Round shield with a red");
-		list.add(EnumChatFormatting.GOLD + "maple leaf print on it");
-		list.add(EnumChatFormatting.GOLD + "Cures potion effects");
-		list.add(EnumChatFormatting.GOLD + "in exchange for some speed");
-		list.add(EnumChatFormatting.RED + "awoowawowowoooaowowo");
+		list.add(EnumChatFormatting.GOLD + "Momiji goes awoooo~");
+		list.add(EnumChatFormatting.GRAY + "Round shield with a red");
+		list.add(EnumChatFormatting.GRAY + "maple leaf print on it");
+		list.add(EnumChatFormatting.DARK_PURPLE + "Cures potion effects");
 	}
 	
 	@Override

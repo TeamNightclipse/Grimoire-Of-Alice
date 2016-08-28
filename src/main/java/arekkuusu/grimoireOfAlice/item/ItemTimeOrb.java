@@ -23,9 +23,9 @@ public class ItemTimeOrb extends ItemPoint {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.DARK_AQUA + "Exclusive to Imperishable Night,");
-		list.add(EnumChatFormatting.DARK_AQUA + "they are believed to slow");
-		list.add(EnumChatFormatting.DARK_AQUA + "the passing of the night");
+		list.add(EnumChatFormatting.GOLD + "Exclusive to Imperishable Night");
+		list.add(EnumChatFormatting.ITALIC + "They are believed to slow");
+		list.add(EnumChatFormatting.ITALIC + "the passing of the night");
 	}
 	
 	@Override

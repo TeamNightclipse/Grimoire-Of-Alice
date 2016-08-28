@@ -21,43 +21,31 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
 
 @CleanupDone
-public class ItemKokorosMasks extends ItemMask {
+public class ItemKokorosMasks extends ItemMask implements ISpecialArmor{
 
-	private static final ModelBiped MODEL_KOKOROS_MASKS = new ModelKokorosMasks();
+	protected ModelBiped[] models;
+	public int type;
 
 	public ItemKokorosMasks(ArmorMaterial material, int p_i45325_2_) {
 		super(material, p_i45325_2_, LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png");
 	}
-
-	@SideOnly(Side.CLIENT)
-	private ModelBiped armorModel = new ModelBiped();
-
+	
 	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack stack, int armorSlot) {
-
-		if(stack != null) {
-			if(stack.getItem() instanceof ItemKokorosMasks) {
-				armorModel = MODEL_KOKOROS_MASKS;
-			}
-
-			if(armorModel != null) {
-				armorModel.bipedBody.showModel = armorSlot == 0;
-				armorModel.isSneak = entityLiving.isSneaking();
-				armorModel.isRiding = entityLiving.isRiding();
-				armorModel.isChild = entityLiving.isChild();
-				armorModel.heldItemRight = entityLiving.getEquipmentInSlot(0) != null ? 1 : 0;
-				return armorModel;
-			}
-		}
-		return null;
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+	    if( stack.stackTagCompound == null )
+	    	stack.setTagCompound( new NBTTagCompound( ) );
+	    stack.stackTagCompound.setString("GrimoireOwner", player.getDisplayName());
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -65,6 +53,9 @@ public class ItemKokorosMasks extends ItemMask {
 		list.add(EnumChatFormatting.DARK_AQUA + "Tsukumogami of Emotions");
 		list.add(EnumChatFormatting.GOLD + "Feel the power of 66 masks");
 		list.add(EnumChatFormatting.GOLD + "being worn at the same time");
+		if(stack.hasTagCompound()) {
+			list.add(EnumChatFormatting.ITALIC + "Property of " + stack.stackTagCompound.getString("GrimoireOwner"));
+		}
 	}
 
 	@Override
@@ -86,7 +77,8 @@ public class ItemKokorosMasks extends ItemMask {
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(player.experienceLevel >= 30) {
+		if(!armor.hasTagCompound()) {return;}
+		if(player.experienceLevel >= 30 && armor.stackTagCompound.getString("GrimoireOwner").equals(player.getDisplayName())) {
 			player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 0, 4));
@@ -101,5 +93,45 @@ public class ItemKokorosMasks extends ItemMask {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.epic;
+	}
+	
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		return damageReduceAmount;
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+			ModelBiped model = getArmorModelForSlot(entityLiving, itemStack, armorSlot);
+			if(model == null)
+				model = provideArmorModelForSlot(itemStack, armorSlot);
+
+			if(model != null)
+				return model;
+
+		return super.getArmorModel(entityLiving, itemStack, armorSlot);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModelForSlot(EntityLivingBase entity, ItemStack stack, int slot) {
+		if(models == null)
+			models = new ModelBiped[4];
+
+		return models[slot];
+	}
+
+	@SideOnly(Side.CLIENT)
+	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
+		models[slot] = new ModelKokorosMasks();
+		return models[slot];
 	}
 }

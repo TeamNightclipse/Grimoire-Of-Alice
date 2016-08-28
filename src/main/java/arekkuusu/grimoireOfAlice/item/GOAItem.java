@@ -95,6 +95,7 @@ public class GOAItem {
 	public static Item UFOBlue;
 	public static Item UFOGreen;
 	public static Item UFOs;
+	public static Item Eye;
 
 	public static void preInit() {
 		//@formatter:off
@@ -156,6 +157,7 @@ public class GOAItem {
 		UFOBlue = new ItemPoint().setUnlocalizedName("UFOs").setTextureName(LibMod.MODID + ":UFOBlue");
 		UFOGreen = new ItemPoint().setUnlocalizedName("UFOs").setTextureName(LibMod.MODID + ":UFOGreen");
 		UFOs = new ItemUFOs().setUnlocalizedName("UFOs").setTextureName(LibMod.MODID + ":UFOs");
+		Eye = new Item3rdEye().setUnlocalizedName("3rdEye").setTextureName(LibMod.MODID + ":3rdEye");
 		
 		//@formatter:on
 
@@ -215,5 +217,6 @@ public class GOAItem {
 		GameRegistry.registerItem(UFOBlue, LibItemName.UFOBLUE);
 		GameRegistry.registerItem(UFOGreen, LibItemName.UFOGREEN);
 		GameRegistry.registerItem(UFOs, LibItemName.UFOs);
+		GameRegistry.registerItem(Eye, LibItemName.EYE);
 	}
 }

@@ -30,11 +30,9 @@ public class ItemIbarakiBoxFilled extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.GREEN + "Cure all illnesses or heal any injuries");
-		list.add(EnumChatFormatting.GREEN + "to the person who drinks from it");
-		list.add(EnumChatFormatting.DARK_PURPLE + "In exchange for curing illnesses,");
-		list.add(EnumChatFormatting.DARK_PURPLE + "the personality of the one who drinks");
-		list.add(EnumChatFormatting.DARK_PURPLE + "from will temporarily become like an Oni's");
+		list.add(EnumChatFormatting.GOLD + "In exchange for curing illnesses, the personality of the one who");
+		list.add(EnumChatFormatting.GOLD + "drinks from will temporarily become like an Oni's");
+		list.add(EnumChatFormatting.ITALIC + "Use like bucket");
 	}
 	
 	@Override

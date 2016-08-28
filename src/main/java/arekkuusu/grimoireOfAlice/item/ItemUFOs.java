@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireOfAlice.item;
 
 import java.util.Iterator;
@@ -27,8 +35,8 @@ public class ItemUFOs extends ItemPoint{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.DARK_AQUA + "Gathers items around the player");
-		list.add(EnumChatFormatting.DARK_AQUA + "in a very high range.");
+		list.add(EnumChatFormatting.GRAY + "Gathers items around the player");
+		list.add(EnumChatFormatting.ITALIC + "Does not work with point items");
 	}
 	
 	@Override

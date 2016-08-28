@@ -30,7 +30,6 @@ public class ItemGloriousNipponSteel extends ItemGOABase {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.DARK_AQUA + "Round and precious steel");
-		list.add(EnumChatFormatting.GOLD + "Can cut through anything");
+		list.add(EnumChatFormatting.GRAY + "Round and precious steel");
 	}
 }

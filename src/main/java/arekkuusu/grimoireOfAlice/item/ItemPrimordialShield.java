@@ -18,13 +18,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 @CleanupDone
-public class ItemPrimordialShield extends ItemGOASword {
+public class ItemPrimordialShield extends ItemSword {
 
 	public ItemPrimordialShield(ToolMaterial material) {
 		super(material);
@@ -40,25 +41,25 @@ public class ItemPrimordialShield extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Supermassive unidentified object");
-		list.add(EnumChatFormatting.GOLD + "After melting the bases of a");
-		list.add(EnumChatFormatting.GOLD + "forgoten universe, an unknown");
-		list.add(EnumChatFormatting.GOLD + "entity decided to store the");
-		list.add(EnumChatFormatting.GOLD + "remains in the form of a shield");
-		list.add(EnumChatFormatting.RED + "Only a god would be able to lift it");
+		list.add(EnumChatFormatting.GOLD + "Supermassive unidentified object");
+		list.add(EnumChatFormatting.GRAY + "After melting the bases of a");
+		list.add(EnumChatFormatting.GRAY + "forgoten universe, an unknown");
+		list.add(EnumChatFormatting.GRAY + "entity decided to store the");
+		list.add(EnumChatFormatting.GRAY + "remains in the form of a shield");
+		list.add(EnumChatFormatting.ITALIC + "Said to protect the injured in");
+		list.add(EnumChatFormatting.ITALIC + "times of desperation");
 	}
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-		if(stack.getItemDamage() < stack.getMaxDamage()) {
+		if(stack.isItemDamaged()){
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
-
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getCurrentEquippedItem() == stack && !isWorthy(player)) {
 				if(!world.isRemote && p_77663_5_) {
-					player.fallDistance = 5.0F;
+					player.fallDistance = 2.0F;
 				}
 
 				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 25, 5));
@@ -80,7 +81,7 @@ public class ItemPrimordialShield extends ItemGOASword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int p_77615_4_) {
-		if(stack.getItemDamage() == 0) {
+		if(stack.getItemDamage() == 0 && !player.capabilities.isCreativeMode) {
 			player.capabilities.disableDamage = false;
 			stack.damageItem(999, player);
 		}
@@ -92,6 +93,6 @@ public class ItemPrimordialShield extends ItemGOASword {
 	}
 
 	private boolean isWorthy(EntityPlayer player) {
-		return player.experienceLevel >= 1000 | player.capabilities.isCreativeMode;
+		return player.getHealth() <= 4 | player.capabilities.isCreativeMode;
 	}
 }

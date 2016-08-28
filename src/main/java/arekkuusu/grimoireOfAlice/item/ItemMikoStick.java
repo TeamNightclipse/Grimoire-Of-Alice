@@ -38,15 +38,13 @@ public class ItemMikoStick extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Oh look! A stick! Uh-oh...");
 		list.add(EnumChatFormatting.GOLD + "Property of Toyosatomimi no Miko");
-		list.add(EnumChatFormatting.RED + "Use with caution, its a little");
-		list.add(EnumChatFormatting.RED + "hot to the touch");
+		list.add(EnumChatFormatting.ITALIC + "Better than a bucket of water");
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if(player.experienceLevel < 40) {
+		if(player.experienceLevel < 30) {
 			player.setFire(120);
 		}
 		else {

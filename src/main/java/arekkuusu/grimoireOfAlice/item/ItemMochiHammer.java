@@ -33,8 +33,11 @@ public class ItemMochiHammer extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.WHITE + "Mochitsuki, 'Food for the Gods'");
-		list.add(EnumChatFormatting.GOLD + "Looks like Tewi chew on it...");
+		list.add(EnumChatFormatting.GOLD + "Ooguninushi no Mikoto");
+		list.add(EnumChatFormatting.ITALIC + "\"The first strike is for Lord Daikoku~");
+		list.add(EnumChatFormatting.ITALIC + "The Second strike is for Lord Daikoku~");
+		list.add(EnumChatFormatting.ITALIC + "And for all of the 180 children...\"");
+		list.add(EnumChatFormatting.LIGHT_PURPLE + "Master of the Great Land");
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import arekkuusu.grimoireOfAlice.client.render.ItemRenderHolyStone;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderMomijiShield;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderOnbashira;
 import arekkuusu.grimoireOfAlice.client.render.ItemRenderPrimordialShield;
+import arekkuusu.grimoireOfAlice.client.render.LargeItemRenderer;
 import arekkuusu.grimoireOfAlice.client.render.RenderEllyScytheProyectile;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyKeyStone;
 import arekkuusu.grimoireOfAlice.client.render.RenderHolyStone;
@@ -49,5 +50,14 @@ public class ProxyClient extends ProxyServer {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(GOABlock.onbashira), new ItemRenderOnbashira());
 		MinecraftForgeClient.registerItemRenderer(GOAItem.primordialShield, new ItemRenderPrimordialShield());
 		MinecraftForgeClient.registerItemRenderer(GOAItem.momijisMapleLeafShield, new ItemRenderMomijiShield());
+		
+		MinecraftForgeClient.registerItemRenderer(GOAItem.mochiHammer, new LargeItemRenderer(1));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.laevatein, new LargeItemRenderer(1));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.NueTrident, new LargeItemRenderer(1));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.nazrinStick, new LargeItemRenderer(0.8));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.amenonuhoko, new LargeItemRenderer(1));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.swordOfKusanagi, new LargeItemRenderer(0.8));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.ellyScythe, new LargeItemRenderer(1, 45));
+		MinecraftForgeClient.registerItemRenderer(GOAItem.momijisScimitarSword, new LargeItemRenderer(0.7));
 	}
 }
