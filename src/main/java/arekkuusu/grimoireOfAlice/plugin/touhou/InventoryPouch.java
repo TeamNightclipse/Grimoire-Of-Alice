@@ -69,7 +69,7 @@ public class InventoryPouch implements IInventory{
 
 	@Override
 	public String getInventoryName() {
-		return "§fSpell Card Pouch";
+		return "Â§fSpell Card Pouch";
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class ItemLaevatein extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.GOLD + "Magic staff gambantein, Lævateinn of fire and chaos");
+		list.add(EnumChatFormatting.GOLD + "Magic staff gambantein, LÃ¦vateinn of fire and chaos");
 	}
 
 	@Override

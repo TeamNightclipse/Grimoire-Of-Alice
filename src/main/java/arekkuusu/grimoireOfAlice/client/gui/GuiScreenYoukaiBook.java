@@ -51,7 +51,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 	private int bookTotalPages = 1;
 	private int currPage;
 	private NBTTagList bookPages;
-	private String bookTitle = "§kS§kp";
+	private String bookTitle = "Â§kSÂ§kp";
 	private GuiScreenYoukaiBook.NextPageButton buttonNextPage;
 	private GuiScreenYoukaiBook.NextPageButton buttonPreviousPage;
 	private GuiButton buttonDone;
@@ -160,7 +160,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				if(p_146462_1_) {
 					s = "MC|BSign";
 					bookObj.setTagInfo("author", new NBTTagString(editingPlayer.getCommandSenderName()));
-					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim().replace("§k", "").substring(2)));
+					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim().replace("Â§k", "").substring(2)));
 					bookObj.func_150996_a(GOAItem.enchantedBook);
 				}
 
@@ -262,7 +262,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 						return;
 					default:
 						if(ChatAllowedCharacters.isAllowedCharacter(p_146463_1_)) {
-							func_146459_b("§k"+Character.toString(p_146463_1_));
+							func_146459_b("Â§k"+Character.toString(p_146463_1_));
 						}
 				}
 		}
@@ -287,7 +287,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				return;
 			default:
 				if(bookTitle.length() < 30 && ChatAllowedCharacters.isAllowedCharacter(p_146460_1_)) {
-					bookTitle = bookTitle + "§k" +Character.toString(p_146460_1_);
+					bookTitle = bookTitle + "Â§k" +Character.toString(p_146460_1_);
 					updateButtons();
 					field_146481_r = true;
 				}

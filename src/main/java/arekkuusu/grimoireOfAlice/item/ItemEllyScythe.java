@@ -45,7 +45,7 @@ public class ItemEllyScythe extends ItemGOASword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(EnumChatFormatting.GOLD + "War ma fé, heman zo eun Anko drouk");
+		p_77624_3_.add(EnumChatFormatting.GOLD + "War ma fÃ©, heman zo eun Anko drouk");
 		p_77624_3_.add(EnumChatFormatting.ITALIC + "Oberour ar maro known as the grave");
 		p_77624_3_.add(EnumChatFormatting.ITALIC + "yard watcher, they said that he");
 		p_77624_3_.add(EnumChatFormatting.ITALIC + "protects the graveyard and the souls");
