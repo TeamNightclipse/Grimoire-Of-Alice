@@ -1,7 +1,5 @@
 package arekkuusu.grimoireOfAlice.plugin.touhou;
 
-import arekkuusu.grimoireOfAlice.item.Item3rdEye;
-import arekkuusu.grimoireOfAlice.item.masks.ItemMask;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -19,14 +17,14 @@ public class SpellCardContainer extends Container{
 
 		int i;
 		
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 10, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 30, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 50, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 70, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 90, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 110, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 0, 10, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 1, 30, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 2, 50, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 3, 70, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 4, 90, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 5, 110, 30));
 		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 130, 30));
-		this.addSlotToContainer(new SlotItemInv(this.inventory, 6, 150, 30));
+		this.addSlotToContainer(new SlotItemInv(this.inventory, 7, 150, 30));
 
 		for (i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
@@ -43,6 +41,7 @@ public class SpellCardContainer extends Container{
 		return inventory.isUseableByPlayer(entityplayer);
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int index) {
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(index);
@@ -50,30 +49,27 @@ public class SpellCardContainer extends Container{
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			if (index < INV_START) {
-				if (itemstack1.getItem() instanceof Item3rdEye) {
+				if (index < INV_START) {
 					if (!this.mergeItemStack(itemstack1, INV_START, HOTBAR_END+1, true)) {
 						return null;
 					}
+					slot.onSlotChange(itemstack1, itemstack);
 				}
-				slot.onSlotChange(itemstack1, itemstack);
-			}
-			else {
-				if (itemstack1.getItem() instanceof Item3rdEye) {
+				else {
 					if (!this.mergeItemStack(itemstack1, 0, InventoryPouch.INV_SIZE, false)) {
 						return null;
 					}
+					slot.onSlotChange(itemstack1, itemstack);
 				}
-			}
 
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			}
-			else {
-				slot.onSlotChanged();
-			}
+				if (itemstack1.stackSize == 0) {
+					slot.putStack((ItemStack) null);
+				}
+				else {
+					slot.onSlotChanged();
+				}
 
-			slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+				slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
 		}
 
 		return itemstack;

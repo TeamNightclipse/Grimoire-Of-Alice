@@ -130,7 +130,7 @@ public class InventoryPouch implements IInventory{
 				NBTTagCompound item = new NBTTagCompound();
 				item.setInteger("Slot", i);
 				getStackInSlot(i).writeToNBT(item);
-				items.appendTag(tagcompound);
+				items.appendTag(item);
 			}
 		}
 		tagcompound.setTag("ItemInventory", items);

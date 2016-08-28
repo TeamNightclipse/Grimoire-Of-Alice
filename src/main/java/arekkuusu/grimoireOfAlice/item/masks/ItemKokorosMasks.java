@@ -80,13 +80,12 @@ public class ItemKokorosMasks extends ItemMask implements ISpecialArmor{
 		if(!armor.hasTagCompound()) {return;}
 		if(player.experienceLevel >= 30 && armor.stackTagCompound.getString("GrimoireOwner").equals(player.getDisplayName())) {
 			player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 0, 4));
-			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 4));
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 0, 3));
 			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.jump.id, 0, 4));
 			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 0, 4));
-			player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 0, 4));
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 75, 4));
+			player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 0, 3));
 		}
 	}
 

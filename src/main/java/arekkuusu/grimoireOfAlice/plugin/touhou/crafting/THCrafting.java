@@ -1,4 +1,4 @@
-package arekkuusu.grimoireOfAlice.item.crafting;
+package arekkuusu.grimoireOfAlice.plugin.touhou.crafting;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -6,12 +6,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import arekkuusu.grimoireOfAlice.handler.ConfigHandler;
 import arekkuusu.grimoireOfAlice.item.GOAItem;
-//import thKaguyaMod.init.THKaguyaItems;
+import thKaguyaMod.init.THKaguyaItems;
+import arekkuusu.grimoireOfAlice.item.crafting.ShapedRecipe;
+import arekkuusu.grimoireOfAlice.item.crafting.ShapelessRecipe;
 
 public class THCrafting {
 
 	public static void pointsAndItems() {
-		/*//@formatter:off
+		//@formatter:off
 		if(ConfigHandler.pointItemRecipes){
 		shaped().grid("GGG", "GGG", "GGG")
 			.where('G').mapsTo(THKaguyaItems.power_up_item_big)
@@ -50,7 +52,7 @@ public class THCrafting {
 		ufo().where('U').mapsTo("dyeRed").outputs(GOAItem.UFORed).build();
 		ufo().where('U').mapsTo("dyeBlue").outputs(GOAItem.UFOBlue).build();
 		ufo().where('U').mapsTo("dyeGreen").outputs(GOAItem.UFOGreen).build();
-		}*/
+		}
 		//@formatter:on
 	}
 	
@@ -62,12 +64,12 @@ public class THCrafting {
 		return new ShapelessRecipe();
 	}
 	
-	/*private static ShapedRecipe ufo() {
+	private static ShapedRecipe ufo() {
 		return new ShapedRecipe().grid("IOI", "UHU", "SSS")
 				.where('I').mapsTo(GOAItem.TimeOrb)
 				.where('H').mapsTo(THKaguyaItems.diffusion_amulet)
 				.where('S').mapsTo(GOAItem.Star)
 				.where('O').mapsTo(Blocks.glass);
-	}*/
+	}
 	
 }

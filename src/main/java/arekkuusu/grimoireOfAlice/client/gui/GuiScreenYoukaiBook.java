@@ -160,7 +160,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 				if(p_146462_1_) {
 					s = "MC|BSign";
 					bookObj.setTagInfo("author", new NBTTagString(editingPlayer.getCommandSenderName()));
-					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim().replace("§k", "")));
+					bookObj.setTagInfo("title", new NBTTagString(bookTitle.trim().replace("§k", "").substring(2)));
 					bookObj.func_150996_a(GOAItem.enchantedBook);
 				}
 
@@ -323,7 +323,7 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 		byte b0 = 2;
 		drawTexturedModalRect(k, b0, 0, 0, BOOK_IMAGE_WIDTH, BOOK_IMAGE_HEIGHT);
 		String s;
-		String s1;
+		String s1 = "Secret spell for Grimoire";
 		int l;
 
 		if(field_146480_s) {
@@ -337,8 +337,6 @@ public class GuiScreenYoukaiBook extends GuiScreen {
 					s = s + "" + EnumChatFormatting.DARK_PURPLE + "_";
 				}
 			}
-
-			s1 = I18n.format("Secret spell for Grimoire");
 			l = fontRendererObj.getStringWidth(s1);
 			fontRendererObj.drawString(s1, k + 36 + (116 - l) / 2, b0 + 16 + 16, 0);
 			int i1 = fontRendererObj.getStringWidth(s);

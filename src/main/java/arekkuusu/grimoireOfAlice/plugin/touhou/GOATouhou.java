@@ -2,6 +2,7 @@ package arekkuusu.grimoireOfAlice.plugin.touhou;
 
 import arekkuusu.grimoireOfAlice.lib.LibItemName;
 import arekkuusu.grimoireOfAlice.lib.LibMod;
+import arekkuusu.grimoireOfAlice.plugin.touhou.crafting.THCrafting;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
@@ -19,6 +20,6 @@ public class GOATouhou {
 	}
 	
 	public static void init() {
-		
+		THCrafting.pointsAndItems();
 	}
 }
