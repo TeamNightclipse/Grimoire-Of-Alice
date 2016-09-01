@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="filecomment_context" deleted="false" description="Comment for created Java files" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.filecomment" name="filecomment">/**
- * This class was created by &lt;ArekkuusuJerii&gt;. It's distributed as
- * part of the Grimore Of Alice Mod. Get the Source Code in github:
- * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
- * Grimore Of Alice is Open Source and distributed under the
- * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
- */</template></templates>

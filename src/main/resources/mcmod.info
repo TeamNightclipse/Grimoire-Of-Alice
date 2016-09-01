@@ -1,16 +1,16 @@
 [
 {
-  "modid": "grimoireofalice",
-  "name": "Grimoire of Alice",
-  "description": "Looks like Yukari left a gap open... Im going in!!",
-  "version":"${version}",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Arekkuusu"],
-  "credits": "Loli is love, Loli is life",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": [THKaguyaMod]
+  "dependencies": []
 }
 ]
