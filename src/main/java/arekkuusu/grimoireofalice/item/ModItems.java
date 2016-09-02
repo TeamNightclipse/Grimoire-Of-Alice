@@ -2,7 +2,6 @@ package arekkuusu.grimoireofalice.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 public final class ModItems {
@@ -74,13 +73,13 @@ public final class ModItems {
 		gloriousNipponSteel = new ItemGloriousNipponSteel();
 		hihiirokane = new ItemHihiirokane();
 		laevatein = new ItemLaevatein(WET_NOODLE);
-		mapleLeafShield = new ItemMapleLeafShield(WET_NOODLE);
+		mapleLeafShield = new ItemMapleLeafShield();
 		mikoStick = new ItemMikoStick(WET_NOODLE);
 		mochiHammer = new ItemMochiHammer(GOLDYRON);
 		momijisScimitarSword = new ItemMomijisScimitarSword(GOLDYRON);
 		nazrinStick = new ItemNazrinStick(WET_NOODLE);
 		nueTrident = new ItemNueTrident(WET_NOODLE);
-		primordialShield = new ItemPrimordialShield(WET_NOODLE);
+		primordialShield = new ItemPrimordialShield();
 		shimenawaRope = new ItemShimenawaRope();
 		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
 		timeOrb = new ItemTimeOrb();

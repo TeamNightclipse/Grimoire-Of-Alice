@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,14 +25,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMochiHammer extends ItemModSword {
 
 	ItemMochiHammer(ToolMaterial material) {
-		super(material);
-		setUnlocalizedName(LibItemName.MOCHIHAMMER);
+		super(material, LibItemName.MOCHIHAMMER);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Ooguninushi no Mikoto");
 		list.add(TextFormatting.ITALIC + "\"The first strike is for Lord Daikoku~");
 		list.add(TextFormatting.ITALIC + "The Second strike is for Lord Daikoku~");
@@ -45,8 +44,12 @@ public class ItemMochiHammer extends ItemModSword {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getHeldItemMainhand() == stack) {
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(3), 0, 0));
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(4), 0, 0));
+				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 3
+				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 4
+				if(potion1 != null && potion2 != null) {
+					player.addPotionEffect(new PotionEffect(potion1, 0, 0));
+					player.addPotionEffect(new PotionEffect(potion2, 0, 0));
+				}
 			}
 		}
 	}

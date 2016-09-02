@@ -21,9 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemGloriousNipponSteel extends ItemMod {
 
 	ItemGloriousNipponSteel() {
-		super();
+		super(LibItemName.GLORIOUSNIPPONSTEEL);
 		setMaxStackSize(16);
-		setUnlocalizedName(LibItemName.GLORIOUSNIPPONSTEEL);
 	}
 	
 	@Override
@@ -31,10 +30,9 @@ public class ItemGloriousNipponSteel extends ItemMod {
 		return EnumRarity.UNCOMMON;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GRAY + "Round and precious steel");
 	}
 }

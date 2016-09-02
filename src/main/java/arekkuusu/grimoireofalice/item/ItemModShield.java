@@ -1,12 +1,12 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemShield;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemMod extends Item {
+public class ItemModShield extends ItemShield {
 
-	public ItemMod(String id) {
+	public ItemModShield(String id) {
 		super();
 		setRegistryName(id);
 		setUnlocalizedName(id);

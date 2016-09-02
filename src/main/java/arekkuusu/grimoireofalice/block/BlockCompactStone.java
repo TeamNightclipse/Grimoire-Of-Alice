@@ -8,13 +8,12 @@
  */
 package arekkuusu.grimoireofalice.block;
 
-import arekkuusu.grimoireofalice.lib.LibMod;
-import net.minecraft.block.Block;
+import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.material.Material;
 
 public class BlockCompactStone extends BlockMod {
 
 	BlockCompactStone() {
-		super(Material.ROCK);
+		super(LibBlockName.COMPACTSTONE, Material.ROCK);
 	}
 }

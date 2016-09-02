@@ -22,6 +22,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -31,8 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemNazrinStick extends ItemModSword {
 
 	ItemNazrinStick(ToolMaterial material) {
-		super(material);
-		setUnlocalizedName(LibItemName.NAZRINSTICK);
+		super(material, LibItemName.NAZRINSTICK);
 	}
 
 	@Override
@@ -40,10 +40,9 @@ public class ItemNazrinStick extends ItemModSword {
 		return EnumRarity.UNCOMMON;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Rare treasure from an old era");
 		list.add(TextFormatting.ITALIC + "By holding it you become the");
 		list.add(TextFormatting.ITALIC + "the Little Dowser General");
@@ -57,10 +56,13 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))) {
-			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(15), 25, 0));
+			Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
+			if(potion != null) {
+				playerIn.addPotionEffect(new PotionEffect(potion, 25, 0));
+			}
 			//playerIn.setItemInUse(p_77659_1_, getMaxItemUseDuration(p_77659_1_));
 		}
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override

@@ -16,9 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -36,16 +34,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemAmenonuhoko extends ItemModSword {
 
 	ItemAmenonuhoko(ToolMaterial material) {
-		super(material);
+		super(material, LibItemName.AMENONUHOKO);
 		setMaxDamage(200);
-		setUnlocalizedName(LibItemName.AMENONUHOKO);
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-	    if( stack.getTagCompound() == null )
-	    	stack.setTagCompound( new NBTTagCompound( ) );
-	    stack.getTagCompound().setTag("GrimoireOwner", (NBTBase) player.getDisplayName());
+	    if(stack.getTagCompound() == null) stack.setTagCompound(new NBTTagCompound());
+	    stack.getTagCompound().setString("GrimoireOwner", player.getDisplayName().getFormattedText());
 	}
 
 	@Override
@@ -53,10 +50,10 @@ public class ItemAmenonuhoko extends ItemModSword {
 		return EnumRarity.RARE;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Heavenly jeweled spear");
 		list.add(TextFormatting.GRAY + "Created by Elder Gods");
 		list.add(TextFormatting.ITALIC + "Once used to raise the");
@@ -88,7 +85,8 @@ public class ItemAmenonuhoko extends ItemModSword {
 		if(par5 && entity instanceof EntityPlayer) {
 			EntityPlayer entityplayer = (EntityPlayer)entity;
 			if(!world.isRemote && !entityplayer.capabilities.isCreativeMode) {
-				if(entityplayer.getHeldItemMainhand().getItem() == ModItems.amenonuhoko) {
+				ItemStack held = entityplayer.getHeldItemMainhand();
+				if(held != null && held.getItem() == ModItems.amenonuhoko) {
 					if(stack.getItemDamage() > 0) {
 						entityplayer.fallDistance = 0.0F;
 					}
@@ -102,13 +100,16 @@ public class ItemAmenonuhoko extends ItemModSword {
 		if(itemStackIn.getItemDamage() == 0) {
 			itemStackIn.damageItem(199, playerIn);
 		}
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		if(!stack.hasTagCompound()) {return EnumActionResult.FAIL;}
-		if(stack.getItemDamage() == 0 && stack.getTagCompound().getString("GrimoireOwner").equals(player.getDisplayName())) {
+		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
+
+		//TODO: Replace with structure
+		if(stack.getItemDamage() == 0 && stack.getTagCompound().getString("GrimoireOwner").equals(player.getDisplayName().getFormattedText())) {
 			int side = facing.getIndex();
 			if(side == 0) {
 				--y;
@@ -192,8 +193,9 @@ public class ItemAmenonuhoko extends ItemModSword {
 	}
 
 	private void replaceAirComact(World world, float x, float y, float z) {
-		if(world.isAirBlock(new BlockPos(x, y, z))) {
-			world.addBlockEvent(new BlockPos(x, y, z), ModBlocks.compactStone, 1, 1);
+		BlockPos pos = new BlockPos(x, y, z);
+		if(world.isAirBlock(pos)) {
+			world.setBlockState(pos, ModBlocks.compactStone.getDefaultState());
 		}
 	}
 }

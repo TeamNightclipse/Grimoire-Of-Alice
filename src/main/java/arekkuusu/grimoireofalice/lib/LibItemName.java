@@ -11,60 +11,60 @@ package arekkuusu.grimoireofalice.lib;
 public class LibItemName {
 
 	//Item
-	public static final String ENCHANTEDBOOK = "EnchantedBook";
-	public static final String GRIMOIREBOOK = "GrimoireBook";
-	public static final String VOLATILESTRING = "VolatileString";
-	public static final String SOLDIFIEDPAPER = "SoldifiedPaper";
-	public static final String GLORIOUSNIPPONSTEEL = "GOLDYRON";
-	public static final String SHIMENAWAROPE = "ShimenawaRope";
-	public static final String YOUKAIBOOK = "YoukaiBook";
-	public static final String MASK = "Mask";
-	public static final String HIHIIROKANE = "Hihiirokane";
+	public static final String ENCHANTEDBOOK = "enchantedbook";
+	public static final String GRIMOIREBOOK = "grimoirebook";
+	public static final String VOLATILESTRING = "volatilestring";
+	public static final String SOLDIFIEDPAPER = "soldifiedpaper";
+	public static final String GLORIOUSNIPPONSTEEL = "goldyron";
+	public static final String SHIMENAWAROPE = "shimenawarope";
+	public static final String YOUKAIBOOK = "youkaibook";
+	public static final String MASK = "mask";
+	public static final String HIHIIROKANE = "hihiirokane";
 	//Food
-	public static final String SHROOMSLICE = "ShroomSlice";
-	public static final String GRILLEDLAMPREY = "GrilledLamprey";
-	public static final String IBARAKIBOXFILLED = "IbarakiBoxFilled";
-	public static final String IBARAKIBOXEMPTY = "IbarakiBoxEmpty";
-	public static final String KAPPASNOSTRUM = "KappasNostrum";
+	public static final String SHROOMSLICE = "shroomslice";
+	public static final String GRILLEDLAMPREY = "grilledlamprey";
+	public static final String IBARAKIBOXFILLED = "ibarakiboxfilled";
+	public static final String IBARAKIBOXEMPTY = "ibarakiboxempty";
+	public static final String KAPPASNOSTRUM = "kappasnostrum";
 	//Armor
-	public static final String FOXMASK = "FoxMask";
-	public static final String RAIDENMASK = "RaidenMask";
-	public static final String MONKEYMASK = "MonkeyMask";
-	public static final String HYOTTOKOMASK = "HyottokoMask";
-	public static final String FUKUNOKAMIMASK = "FukuNoKamiMask";
-	public static final String UBAMASK = "UbaMask";
-	public static final String HANNYAMASK = "HannyaMask";
-	public static final String KOOMOTEMASK = "KoomoteMask";
-	public static final String MASKOFHOPE = "MaskOfHope";
-	public static final String KOKOROSMASKS = "KokorosMasks";
-	public static final String PRIMORDIALSHIELD = "PrimordialShield";
-	public static final String MAPLELEAFSHIELD = "MapleLeafShield";
+	public static final String FOXMASK = "foxmask";
+	public static final String RAIDENMASK = "raidenmask";
+	public static final String MONKEYMASK = "monkeymask";
+	public static final String HYOTTOKOMASK = "hyottokomask";
+	public static final String FUKUNOKAMIMASK = "fukunokamimask";
+	public static final String UBAMASK = "Uuamask";
+	public static final String HANNYAMASK = "hannyamask";
+	public static final String KOOMOTEMASK = "koomotemask";
+	public static final String MASKOFHOPE = "maskofhope";
+	public static final String KOKOROSMASKS = "kokorosmasks";
+	public static final String PRIMORDIALSHIELD = "primordialshield";
+	public static final String MAPLELEAFSHIELD = "mapleleafshield";
 	//Weapons
-	public static final String MOCHIHAMMER = "MochiHammer";
-	public static final String MOMIJISSCIMITARSWORD = "MomijisScimitarSword";
-	public static final String LAEVATEIN = "Laevatein";
-	public static final String NAZRINSTICK = "NazrinStick";
-	public static final String ELLYSCYTHE = "EllyScythe";
-	public static final String MIKOSTICK = "MikoStick";
-	public static final String CRESTOFYGGDRASILL = "CrestOfYggdrasill";
-	public static final String AMENONUHOKO = "Amenonuhoko";
-	public static final String NEEDLE = "Needle";
-	public static final String NUETRIDENT = "NueTrident";
-	public static final String SWORDOFKUSANAGI = "SwordofKusanagi";
+	public static final String MOCHIHAMMER = "mochihammer";
+	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";
+	public static final String LAEVATEIN = "laevatein";
+	public static final String NAZRINSTICK = "nazrinstick";
+	public static final String ELLYSCYTHE = "ellyscythe";
+	public static final String MIKOSTICK = "mikostick";
+	public static final String CRESTOFYGGDRASILL = "crestOfyggdrasill";
+	public static final String AMENONUHOKO = "amenonuhoko";
+	public static final String NEEDLE = "needle";
+	public static final String NUETRIDENT = "nuetrident";
+	public static final String SWORDOFKUSANAGI = "swordofkusanagi";
 	
 	//THPlugin Items
-	public static final String FULLPOWER = "FullPowerItem";
-	public static final String STAR = "StarItem";
-	public static final String CHERRY = "CherryItem";
-	public static final String TIMEORB = "TimeOrb";
-	public static final String FAITH = "FaithItem";
-	public static final String UFORED = "UFORed";
-	public static final String UFOBLUE = "UFOBlue";
-	public static final String UFOGREEN = "UFOGreen";
-	public static final String UFOs = "UFOs";
-	public static final String IMPUREROCK = "ImpureRock";
-	public static final String EYE = "3rdEye";
-	public static final String POUCH = "SpellCardPouch";
+	public static final String FULLPOWER = "fullpowerItem";
+	public static final String STAR = "staritem";
+	public static final String CHERRY = "cherryitem";
+	public static final String TIMEORB = "timeorb";
+	public static final String FAITH = "faithitem";
+	public static final String UFORED = "ufored";
+	public static final String UFOBLUE = "ufoblue";
+	public static final String UFOGREEN = "ufogreen";
+	public static final String UFOs = "ufos";
+	public static final String IMPUREROCK = "impurerock";
+	public static final String EYE = "3rdeye";
+	public static final String POUCH = "spellcardpouch";
 	
 
 }

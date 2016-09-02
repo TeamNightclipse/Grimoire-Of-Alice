@@ -9,6 +9,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -16,8 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemNueTrident extends ItemModSword {
 
 	public ItemNueTrident(ToolMaterial material) {
-		super(material);
-		setUnlocalizedName(LibItemName.NUETRIDENT);
+		super(material, LibItemName.NUETRIDENT);
 	}
 	
 	@Override
@@ -25,10 +25,9 @@ public class ItemNueTrident extends ItemModSword {
 		return EnumRarity.UNCOMMON;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Trident of sealed beast, Seed of Unknown Form");
 		list.add(TextFormatting.OBFUSCATED + "Fear the unknown, weak human!");
 	}
@@ -36,8 +35,12 @@ public class ItemNueTrident extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		stack.damageItem(1, user);
-		target.addPotionEffect(new PotionEffect(Potion.getPotionById(15), 2400, 0));
-		target.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 2400, 0));
+		Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
+		Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 9
+		if(potion1 != null && potion2 != null) {
+			target.addPotionEffect(new PotionEffect(potion1, 2400, 0));
+			target.addPotionEffect(new PotionEffect(potion2, 2400, 0));
+		}
 		return true;
 	}
 	

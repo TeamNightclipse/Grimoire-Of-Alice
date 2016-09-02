@@ -11,30 +11,28 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemCrestOfYggdrasill extends ItemSword {
+public class ItemCrestOfYggdrasill extends ItemModSword {
 
 	ItemCrestOfYggdrasill(ToolMaterial material) {
-		super(material);
-		setUnlocalizedName(LibItemName.CRESTOFYGGDRASILL);
+		super(material, LibItemName.CRESTOFYGGDRASILL);
 	}
 
 	@Override
@@ -42,10 +40,9 @@ public class ItemCrestOfYggdrasill extends ItemSword {
 		return EnumRarity.EPIC;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Contains time itself");
 		list.add(TextFormatting.GRAY + "Once used by a great God to");
 		list.add(TextFormatting.GRAY + "manipulate space and time");
@@ -61,13 +58,16 @@ public class ItemCrestOfYggdrasill extends ItemSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, playerIn.posX + 0.5, playerIn.posY + 3, playerIn.posZ + 0.5, bFull3D));
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		target.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 100, 4));
+		Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 2
+		if(potion != null) {
+			target.addPotionEffect(new PotionEffect(potion, 100, 4));
+		}
 		return true;
 	}
 

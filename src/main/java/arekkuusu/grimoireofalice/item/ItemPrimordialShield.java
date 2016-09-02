@@ -16,23 +16,22 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemPrimordialShield extends ItemSword {
+public class ItemPrimordialShield extends ItemModShield {
 
-	public ItemPrimordialShield(ToolMaterial material) {
-		super(material);
+	public ItemPrimordialShield() {
+		super(LibItemName.PRIMORDIALSHIELD);
 		setMaxDamage(1000);
-		setUnlocalizedName(LibItemName.PRIMORDIALSHIELD);
 	}
 
 	@Override
@@ -40,10 +39,9 @@ public class ItemPrimordialShield extends ItemSword {
 		return EnumRarity.EPIC;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Supermassive unidentified object");
 		list.add(TextFormatting.GRAY + "After melting the bases of a");
 		list.add(TextFormatting.GRAY + "forgoten universe, an unknown");
@@ -65,8 +63,13 @@ public class ItemPrimordialShield extends ItemSword {
 					player.fallDistance = 2.0F;
 				}
 
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(2), 25, 5));
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(4), 25, 5));
+				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 2
+				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 4
+
+				if(potion1 != null && potion2 != null) {
+					player.addPotionEffect(new PotionEffect(potion1, 25, 5));
+					player.addPotionEffect(new PotionEffect(potion2, 25, 5));
+				}
 			}
 		}
 	}
@@ -79,7 +82,7 @@ public class ItemPrimordialShield extends ItemSword {
 				//playerIn.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
 			}
 		}
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override
@@ -100,6 +103,6 @@ public class ItemPrimordialShield extends ItemSword {
 	}
 
 	private boolean isWorthy(EntityPlayer player) {
-		return player.getHealth() <= 4 | player.capabilities.isCreativeMode;
+		return player.getHealth() <= 4 || player.capabilities.isCreativeMode;
 	}
 }

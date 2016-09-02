@@ -20,6 +20,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,8 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMikoStick extends ItemModSword {
 
 	ItemMikoStick(ToolMaterial material) {
-		super(material);
-		setUnlocalizedName(LibItemName.MIKOSTICK);
+		super(material, LibItemName.MIKOSTICK);
 	}
 
 	@Override
@@ -37,10 +37,9 @@ public class ItemMikoStick extends ItemModSword {
 		return EnumRarity.UNCOMMON;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Property of Toyosatomimi no Miko");
 		list.add(TextFormatting.ITALIC + "Better than a bucket of water");
 	}
@@ -52,10 +51,13 @@ public class ItemMikoStick extends ItemModSword {
 		}
 		else {
 			playerIn.addExperienceLevel(-1);
-			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(10), 60, 4));
+			Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 10
+			if(potion != null) {
+				playerIn.addPotionEffect(new PotionEffect(potion, 60, 4));
+			}
 		}
 		//.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override

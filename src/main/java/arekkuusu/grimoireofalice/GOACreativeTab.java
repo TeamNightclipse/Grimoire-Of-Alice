@@ -18,8 +18,7 @@ import net.minecraft.item.ItemStack;
 
 public class GOACreativeTab extends CreativeTabs {
 
-	public static GOACreativeTab INSTANCE = new GOACreativeTab();
-	List<ItemStack> list;
+	private List<ItemStack> list;
 	
 	GOACreativeTab() {
 		super(LibMod.MODID);

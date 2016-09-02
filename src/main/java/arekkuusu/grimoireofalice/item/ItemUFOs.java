@@ -8,21 +8,17 @@
  */
 package arekkuusu.grimoireofalice.item;
 
-import java.util.Iterator;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -33,8 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemUFOs extends ItemMod {
 
 	public ItemUFOs() {
+		super(LibItemName.UFOs);
 		setMaxStackSize(1);
-		setUnlocalizedName(LibItemName.UFOs);
 	}
 	
 	@Override
@@ -42,10 +38,9 @@ public class ItemUFOs extends ItemMod {
 		return EnumRarity.RARE;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GRAY + "Gathers items around the player");
 		list.add(TextFormatting.ITALIC + "Does not work with point items");
 	}
@@ -61,29 +56,28 @@ public class ItemUFOs extends ItemMod {
 	}
 	
 	private void itemsInRange(World world, EntityPlayer player, double bdouble) {
-		List aList = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(player.posX - bdouble, player.posY - bdouble, player.posZ - bdouble, player.posX + bdouble, player.posY + bdouble, player.posZ + bdouble));
-		Iterator anIterator = aList.iterator();
-		while(anIterator.hasNext()){
-			EntityItem item = (EntityItem) anIterator.next();
-			if (!stackHasRoom(item.getEntityItem(), player)) {
-                continue;
-            }
-                item.setPickupDelay(0);
-            if (player.getDistanceToEntity(item) < 1.5D) {
-                continue;
-            }
-            givePlayerItems(item, player);
+		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(player.posX - bdouble, player.posY - bdouble, player.posZ - bdouble, player.posX + bdouble, player.posY + bdouble, player.posZ + bdouble));
+
+		for(EntityItem item : aList) {
+			if(!stackHasRoom(item.getEntityItem(), player)) {
+				continue;
+			}
+			item.setPickupDelay(0);
+			if(player.getDistanceToEntity(item) < 1.5D) {
+				continue;
+			}
+			givePlayerItems(item, player);
 		}
 	}
 	
-	private void givePlayerItems(Entity item, EntityPlayer player) {
+	private void givePlayerItems(EntityItem item, EntityPlayer player) {
         player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + 0.5D + player.worldObj.rand.nextGaussian() / 8, item.posY + 0.2D, item.posZ + 0.5D + player.worldObj.rand.nextGaussian() / 8, 0.9D, 0.9D, 0.0D);
         player.getLookVec();
         double x = player.posX + player.getLookVec().xCoord * 0.2D;
         double y = player.posY - player.height / 2F;
         double z = player.posZ + player.getLookVec().zCoord * 0.2D;
         item.setPosition(x, y, z);
-        player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), new SoundEvent( new ResourceLocation("random.levelup")), SoundCategory.HOSTILE, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
+        player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.HOSTILE, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
 	}
 	
 	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {

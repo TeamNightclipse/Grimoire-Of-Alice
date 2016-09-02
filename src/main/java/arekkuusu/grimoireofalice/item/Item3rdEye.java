@@ -12,17 +12,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class Item3rdEye extends ItemMod{
+public class Item3rdEye extends ItemMod {
 	
 	public Item3rdEye() {
-		super();
-		setUnlocalizedName(LibItemName.EYE);
+		super(LibItemName.EYE);
 		setMaxStackSize(1);
 		setMaxDamage(300);
 	}
@@ -32,20 +31,19 @@ public class Item3rdEye extends ItemMod{
 		return EnumRarity.RARE;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Satori's 3rdEye");
 		list.add(TextFormatting.ITALIC + "Shift right click to activate");
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.isSneaking() && itemStackIn.getItemDamage() == 0) {
-			itemStackIn.setItemDamage(300);
+	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
+		if(player.isSneaking() && stack.getItemDamage() == 0) {
+			stack.setItemDamage(300);
 		}
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
 	}
 	
 	@Override
@@ -54,8 +52,12 @@ public class Item3rdEye extends ItemMod{
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.inventory.hasItemStack(stack) && !(stack.getItemDamage() == 0)) {
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(14), 10, 0));
-				player.addPotionEffect(new PotionEffect(Potion.getPotionById(15), 10, 0));
+				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 14
+				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
+				if(potion1 != null && potion2 != null) {
+					player.addPotionEffect(new PotionEffect(potion1, 10, 0));
+					player.addPotionEffect(new PotionEffect(potion2, 10, 0));
+				}
 			}
 		}
 		if(stack.isItemDamaged()){

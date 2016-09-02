@@ -28,9 +28,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemShimenawaRope extends ItemMod {
 
 	ItemShimenawaRope() {
-		super();
+		super(LibItemName.SHIMENAWAROPE);
 		setMaxStackSize(1);
-		setUnlocalizedName(LibItemName.SHIMENAWAROPE);
 	}
 	
 	@Override
@@ -38,10 +37,9 @@ public class ItemShimenawaRope extends ItemMod {
 		return EnumRarity.UNCOMMON;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Tenshi's little gift");
 		list.add(TextFormatting.GRAY + "A little piece of Heaven,");
 		list.add(TextFormatting.RED + "Might cause an incident");
@@ -66,7 +64,7 @@ public class ItemShimenawaRope extends ItemMod {
 			else {
 				--stack.stackSize;
 				world.createExplosion(null, x + 0.5, y, z + 0.5, 3.0F, true);
-				world.addBlockEvent(new BlockPos(x, y + 1, z), ModBlocks.holyKeyStone, 1, 1);
+				world.setBlockState(new BlockPos(x, y + 1, z), ModBlocks.holyKeyStone.getDefaultState());
 				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, bFull3D));
 				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, bFull3D));
 

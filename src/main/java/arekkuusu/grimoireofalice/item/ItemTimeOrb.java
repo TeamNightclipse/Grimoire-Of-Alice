@@ -5,16 +5,14 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -24,8 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemTimeOrb extends ItemMod{
 
 	public ItemTimeOrb() {
+		super(LibItemName.TIMEORB);
 		setMaxStackSize(64);
-		setUnlocalizedName(LibItemName.TIMEORB);
 	}
 	
 	@Override
@@ -33,10 +31,9 @@ public class ItemTimeOrb extends ItemMod{
 		return EnumRarity.UNCOMMON;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Exclusive to Imperishable Night");
 		list.add(TextFormatting.ITALIC + "They are believed to slow");
 		list.add(TextFormatting.ITALIC + "the passing of the night");
@@ -45,7 +42,7 @@ public class ItemTimeOrb extends ItemMod{
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		//p_77659_3_.setItemInUse(p_77659_1_, getMaxItemUseDuration(p_77659_1_));
-		return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
     }
 	
 	@Override
@@ -57,7 +54,7 @@ public class ItemTimeOrb extends ItemMod{
 				if (--itemstack2.stackSize == 0) {
 					itemstack2 = null;
 				}
-				worldIn.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D), new SoundEvent( new ResourceLocation("fireworks.twinkle")), SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				worldIn.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D), SoundEvents.ENTITY_FIREWORK_TWINKLE, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 				player.inventory.mainInventory[player.inventory.currentItem] = itemstack2;
 				if(!worldIn.isDaytime()){
 					long moonTime = worldIn.getWorldTime() - 500;
