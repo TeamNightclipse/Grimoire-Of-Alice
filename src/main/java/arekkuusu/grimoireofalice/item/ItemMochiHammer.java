@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -44,12 +45,8 @@ public class ItemMochiHammer extends ItemModSword {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getHeldItemMainhand() == stack) {
-				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 3
-				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 4
-				if(potion1 != null && potion2 != null) {
-					player.addPotionEffect(new PotionEffect(potion1, 0, 0));
-					player.addPotionEffect(new PotionEffect(potion2, 0, 0));
-				}
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 0, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 0));
 			}
 		}
 	}

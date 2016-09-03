@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -56,10 +57,7 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))) {
-			Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
-			if(potion != null) {
-				playerIn.addPotionEffect(new PotionEffect(potion, 25, 0));
-			}
+			playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 25, 0));
 			//playerIn.setItemInUse(p_77659_1_, getMaxItemUseDuration(p_77659_1_));
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
@@ -81,7 +79,9 @@ public class ItemNazrinStick extends ItemModSword {
 				worldIn.createExplosion(player, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
 			}
 			else {
-				player.setVelocity(0, 10, 0);
+				player.motionX = 0;
+				player.motionY = 10;
+				player.motionZ = 0;
 				worldIn.createExplosion(player, player.posX, player.posY+1, player.posZ, 2.0F, false);
 				stack.damageItem(1, player);
 			}

@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -30,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHyottokoMask extends ItemModMask {
 
 	public ItemHyottokoMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.HYOTTOKOMASK);
+		super(material, dmg, LibItemName.HYOTTOKOMASK);
 	}
 
 	@Override
@@ -49,25 +50,18 @@ public class ItemHyottokoMask extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 70) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 8
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 0, 2));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 2));
 		}
 		else {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 10
-			Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 8
-			if(potion1 != null && potion2 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 80, 4));
-				player.addPotionEffect(new PotionEffect(potion2, 0, 4));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
 		}
 	}
 	
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		if (player instanceof EntityPlayer && source.isMagicDamage()) {
-			player.attackEntityFrom(source.generic, (float)damage*2);
+			player.attackEntityFrom(DamageSource.generic, (float)damage*2);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}

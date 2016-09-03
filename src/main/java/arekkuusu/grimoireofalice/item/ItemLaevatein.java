@@ -17,6 +17,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -59,20 +60,14 @@ public class ItemLaevatein extends ItemModSword {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getHeldItemMainhand() == stack) {
-				Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 12
-				if(potion != null) {
-					player.addPotionEffect(new PotionEffect(potion, 0, 0));
-				}
+				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
 			}
 		}
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 12
-		if(potion != null) {
-			target.addPotionEffect(new PotionEffect(potion, 128, 0));
-		}
+		target.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 128, 0));
 		stack.damageItem(1, user);
 		return true;
 	}
@@ -83,7 +78,8 @@ public class ItemLaevatein extends ItemModSword {
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
-					worldIn.playSound(playerIn, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D), new SoundEvent( new ResourceLocation("mob.ghast.scream")), SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					worldIn.playSound(playerIn, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
+							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 					Vec3d look = playerIn.getLookVec();
 					Vec3d position = new Vec3d(playerIn.posX, playerIn.posY, playerIn.posZ);
 					Vec3d fireBallPos = new Vec3d(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
@@ -95,11 +91,9 @@ public class ItemLaevatein extends ItemModSword {
 			}
 		}
 		else {
-			Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 9
-			if(potion != null) {
-				playerIn.addPotionEffect(new PotionEffect(potion, 256, 0));
-			}
-			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));
+			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
+					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
@@ -124,7 +118,8 @@ public class ItemLaevatein extends ItemModSword {
 			}
 
 			if(success) {
-				world.playSound(player, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, SoundEvents.ENTITY_BLAZE_DEATH, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				world.playSound(player, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, SoundEvents.ENTITY_BLAZE_DEATH,
+						SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 			}
 			stack.damageItem(1, player);
 			return EnumActionResult.SUCCESS;

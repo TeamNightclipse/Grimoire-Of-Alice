@@ -5,6 +5,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Item3rdEye extends ItemMod {
 	
-	public Item3rdEye() {
+	Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
 		setMaxDamage(300);
@@ -52,12 +53,8 @@ public class Item3rdEye extends ItemMod {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.inventory.hasItemStack(stack) && !(stack.getItemDamage() == 0)) {
-				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 14
-				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
-				if(potion1 != null && potion2 != null) {
-					player.addPotionEffect(new PotionEffect(potion1, 10, 0));
-					player.addPotionEffect(new PotionEffect(potion2, 10, 0));
-				}
+				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
 			}
 		}
 		if(stack.isItemDamaged()){

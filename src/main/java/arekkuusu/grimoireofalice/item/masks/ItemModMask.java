@@ -23,8 +23,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModMask extends ItemArmor implements ISpecialArmor {
 
-	public ItemModMask(ArmorMaterial material, int dmg, EntityEquipmentSlot type, String id) {
-		super(material, dmg, type);
+	public ItemModMask(ArmorMaterial material, int dmg, String id) {
+		super(material, dmg, EntityEquipmentSlot.HEAD);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		GameRegistry.register(this);

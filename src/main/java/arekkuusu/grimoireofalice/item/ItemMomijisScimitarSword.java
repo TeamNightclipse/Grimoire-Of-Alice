@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -41,10 +42,7 @@ public class ItemMomijisScimitarSword extends ItemModSword {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getHeldItemMainhand() == stack) {
-				Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 4
-				if(potion != null) {
-					player.addPotionEffect(new PotionEffect(potion, 0, 0));
-				}
+				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 0));
 			}
 		}
 	}

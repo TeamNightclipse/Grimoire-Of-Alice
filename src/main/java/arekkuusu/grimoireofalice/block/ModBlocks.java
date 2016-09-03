@@ -1,6 +1,8 @@
 package arekkuusu.grimoireofalice.block;
 
+import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 public class ModBlocks {
 
@@ -20,8 +22,8 @@ public class ModBlocks {
 	
 	public static void init() {
 		
-		compactStone = new BlockCompactStone();
-		
+		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK);
+
 	}
 
 }

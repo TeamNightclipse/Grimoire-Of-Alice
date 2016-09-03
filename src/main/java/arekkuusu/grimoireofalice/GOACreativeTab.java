@@ -17,6 +17,8 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GOACreativeTab extends CreativeTabs {
 
@@ -28,11 +30,13 @@ public class GOACreativeTab extends CreativeTabs {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ItemStack getIconItemStack() {
 		return new ItemStack(ModItems.uFOs);
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() {
 		return getIconItemStack().getItem();
 	}
@@ -43,6 +47,7 @@ public class GOACreativeTab extends CreativeTabs {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void displayAllRelevantItems(List<ItemStack> list) {
 		this.list = list;
 
@@ -83,11 +88,13 @@ public class GOACreativeTab extends CreativeTabs {
 		//addBlock(ModBlocks.compactStone);
 		
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	private void addItem(Item item) {
 		item.getSubItems(item, this, list);
 	}
 
+	@SideOnly(Side.CLIENT)
 	private void addBlock(Block block) {
 		ItemStack stack = new ItemStack(block);
 		block.getSubBlocks(stack.getItem(), this, list);

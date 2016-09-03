@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTimeOrb extends ItemMod{
 
-	public ItemTimeOrb() {
+	ItemTimeOrb() {
 		super(LibItemName.TIMEORB);
 		setMaxStackSize(64);
 	}

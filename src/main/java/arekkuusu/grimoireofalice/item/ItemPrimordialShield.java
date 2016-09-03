@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -29,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemPrimordialShield extends ItemModShield {
 
-	public ItemPrimordialShield() {
+	ItemPrimordialShield() {
 		super(LibItemName.PRIMORDIALSHIELD);
 		setMaxDamage(1000);
 	}
@@ -63,13 +64,8 @@ public class ItemPrimordialShield extends ItemModShield {
 					player.fallDistance = 2.0F;
 				}
 
-				Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 2
-				Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 4
-
-				if(potion1 != null && potion2 != null) {
-					player.addPotionEffect(new PotionEffect(potion1, 25, 5));
-					player.addPotionEffect(new PotionEffect(potion2, 25, 5));
-				}
+				player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 25, 5));
+				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 25, 5));
 			}
 		}
 	}

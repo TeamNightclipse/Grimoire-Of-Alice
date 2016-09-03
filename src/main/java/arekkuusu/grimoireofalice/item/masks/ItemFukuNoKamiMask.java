@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -24,14 +25,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFukuNoKamiMask extends ItemModMask {
 
 	public ItemFukuNoKamiMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.FUKUNOKAMIMASK);
+		super(material, dmg, LibItemName.FUKUNOKAMIMASK);
 	}
 
 	@Override
@@ -53,32 +53,25 @@ public class ItemFukuNoKamiMask extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 80) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 9
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 200, 0));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
 		}
 		else {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 12
-			Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 16
-			if(potion1 != null && potion2 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 0, 0));
-				player.addPotionEffect(new PotionEffect(potion2, 0, 0));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
+			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 0));
 		}
 	}
 	
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if (player instanceof EntityPlayer && source.equals(source.wither)) {
-			player.attackEntityFrom(source.generic, (float)damage*10);
+		if (player instanceof EntityPlayer && source.equals(DamageSource.wither)) {
+			player.attackEntityFrom(DamageSource.generic, (float)damage*10);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		if(source.equals(source.wither)){
+		if(source.equals(DamageSource.wither)){
 			stack.damageItem(damage * 10, entity);
 		}
 	}

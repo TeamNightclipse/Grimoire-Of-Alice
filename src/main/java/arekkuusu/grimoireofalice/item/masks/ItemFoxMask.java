@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -30,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFoxMask extends ItemModMask {
 
 	public ItemFoxMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.FOXMASK);
+		super(material, dmg, LibItemName.FOXMASK);
 	}
 
 	@Override
@@ -49,25 +50,18 @@ public class ItemFoxMask extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 40) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 1
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 0, 0));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 0));
 		}
 		else {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 11
-			Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 1
-			if(potion1 != null && potion2 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion2, 0, 0));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 0));
 		}
 	}
 
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		if (player instanceof EntityPlayer && source.isMagicDamage()) {
-			player.attackEntityFrom(source.generic, (float)damage*2);
+			player.attackEntityFrom(DamageSource.generic, (float)damage*2);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}

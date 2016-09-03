@@ -24,7 +24,7 @@ public class CommonProxy {
 	}
 
 	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
-		
+
 	}
 
 	public void serverStarting(FMLServerStartingEvent event) {

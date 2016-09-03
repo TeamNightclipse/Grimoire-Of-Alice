@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -64,10 +65,7 @@ public class ItemCrestOfYggdrasill extends ItemModSword {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 2
-		if(potion != null) {
-			target.addPotionEffect(new PotionEffect(potion, 100, 4));
-		}
+		target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 4));
 		return true;
 	}
 

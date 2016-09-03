@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -24,14 +25,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemKoomoteMask extends ItemModMask {
 
 	public ItemKoomoteMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.KOOMOTEMASK);
+		super(material, dmg, LibItemName.KOOMOTEMASK);
 	}
 
 	@Override
@@ -52,23 +52,17 @@ public class ItemKoomoteMask extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 110) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 17
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 200, 2));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 200, 2));
 		}
 		else {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 22
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 200, 2));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 200, 2));
 		}
 	}
 	
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		if (player instanceof EntityPlayer && source.isExplosion()) {
-			player.attackEntityFrom(source.generic, (float)damage*2);
+			player.attackEntityFrom(DamageSource.generic, (float)damage*2);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}

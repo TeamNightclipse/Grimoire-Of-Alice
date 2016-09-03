@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -51,10 +52,7 @@ public class ItemMikoStick extends ItemModSword {
 		}
 		else {
 			playerIn.addExperienceLevel(-1);
-			Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 10
-			if(potion != null) {
-				playerIn.addPotionEffect(new PotionEffect(potion, 60, 4));
-			}
+			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 		}
 		//.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);

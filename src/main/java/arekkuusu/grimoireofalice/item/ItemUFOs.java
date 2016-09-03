@@ -21,6 +21,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemUFOs extends ItemMod {
 
-	public ItemUFOs() {
+	ItemUFOs() {
 		super(LibItemName.UFOs);
 		setMaxStackSize(1);
 	}
@@ -56,6 +57,7 @@ public class ItemUFOs extends ItemMod {
 	}
 	
 	private void itemsInRange(World world, EntityPlayer player, double bdouble) {
+		//TODO: Expand instead of creating a new AABB
 		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(player.posX - bdouble, player.posY - bdouble, player.posZ - bdouble, player.posX + bdouble, player.posY + bdouble, player.posZ + bdouble));
 
 		for(EntityItem item : aList) {
@@ -72,10 +74,10 @@ public class ItemUFOs extends ItemMod {
 	
 	private void givePlayerItems(EntityItem item, EntityPlayer player) {
         player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + 0.5D + player.worldObj.rand.nextGaussian() / 8, item.posY + 0.2D, item.posZ + 0.5D + player.worldObj.rand.nextGaussian() / 8, 0.9D, 0.9D, 0.0D);
-        player.getLookVec();
-        double x = player.posX + player.getLookVec().xCoord * 0.2D;
+		Vec3d look = player.getLookVec();
+		double x = player.posX + look.xCoord * 0.2D;
         double y = player.posY - player.height / 2F;
-        double z = player.posZ + player.getLookVec().zCoord * 0.2D;
+        double z = player.posZ + look.zCoord * 0.2D;
         item.setPosition(x, y, z);
         player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.HOSTILE, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
 	}

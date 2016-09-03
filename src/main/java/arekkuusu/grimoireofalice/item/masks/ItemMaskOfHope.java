@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMaskOfHope extends ItemModMask {
 
 	public ItemMaskOfHope(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.MASKOFHOPE);
+		super(material, dmg, LibItemName.MASKOFHOPE);
 	}
 
 	@Override
@@ -55,16 +56,10 @@ public class ItemMaskOfHope extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 120) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 20
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 666, 4));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 666, 4));
 		}
 		else {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 19
-			if(potion1 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 666, 4));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.POISON, 666, 4));
 		}
 	}
 	

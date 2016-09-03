@@ -7,8 +7,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockMod extends Block {
 
-	public BlockMod(String id, Material par2Material) {
-		super(par2Material);
+	public BlockMod(String id, Material material) {
+		super(material);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		GameRegistry.register(this);

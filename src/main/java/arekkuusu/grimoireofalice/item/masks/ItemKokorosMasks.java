@@ -17,29 +17,29 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemKokorosMasks extends ItemModMask implements ISpecialArmor{
+public class ItemKokorosMasks extends ItemModMask {
 
-	protected ModelBiped[] models;
-	public int type;
+	@SideOnly(Side.CLIENT)
+	private ModelBiped model;
 
 	public ItemKokorosMasks(ArmorMaterial material, int dmg) {
-		super(material, dmg, EntityEquipmentSlot.HEAD, LibItemName.KOKOROSMASKS);
+		super(material, dmg, LibItemName.KOKOROSMASKS);
 	}
 	
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if(stack.getTagCompound() == null) stack.setTagCompound(new NBTTagCompound());
@@ -51,6 +51,7 @@ public class ItemKokorosMasks extends ItemModMask implements ISpecialArmor{
 		return EnumRarity.EPIC;
 	}
 	
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -79,26 +80,18 @@ public class ItemKokorosMasks extends ItemModMask implements ISpecialArmor{
 		}
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(!armor.hasTagCompound()) {return;}
+		if(!armor.hasTagCompound()) return;
 		if(player.experienceLevel >= 30 && armor.getTagCompound().getString("GrimoireOwner").equals(player.getDisplayName().getFormattedText())) {
-			Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 13
-			Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 11
-			Potion potion3 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 16
-			Potion potion4 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 8
-			Potion potion5 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 1
-			Potion potion6 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 12
-			Potion potion7 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 5
-			if(potion1 != null && potion2 != null) {
-				player.addPotionEffect(new PotionEffect(potion1, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion2, 0, 3));
-				player.addPotionEffect(new PotionEffect(potion3, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion4, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion5, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion6, 0, 4));
-				player.addPotionEffect(new PotionEffect(potion7, 0, 3));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
+			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 0, 3));
 		}
 	}
 	
@@ -117,29 +110,10 @@ public class ItemKokorosMasks extends ItemModMask implements ISpecialArmor{
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, net.minecraft.client.model.ModelBiped imodel) {
-			ModelBiped model = getArmorModelForSlot(entityLiving, itemStack, Ui.getIndex());
-			if(model == null)
-				model = provideArmorModelForSlot(itemStack, Ui.getIndex());
-
-			if(model != null)
-				return model;
-
-		return super.getArmorModel(entityLiving, itemStack, Ui, model);
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModelForSlot(EntityLivingBase entity, ItemStack stack, int slot) {
-		if(models == null)
-			models = new ModelBiped[4];
-
-		return models[slot];
-	}
-
-	@SideOnly(Side.CLIENT)
-	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
-		models[slot] = new ModelKokorosMasks();
-		return models[slot];
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+		if(model == null) model = new ModelKokorosMasks();
+		model.setModelAttributes(imodel);
+		return model;
 	}
 	
 	@Override

@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -28,10 +29,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 //TODO: Redo to make it work more like a shield
 public class ItemMapleLeafShield extends ItemModShield {
 
-	public ItemMapleLeafShield() {
+	ItemMapleLeafShield() {
 		super(LibItemName.MAPLELEAFSHIELD);
 		setMaxDamage(250);
-		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@Override
@@ -52,11 +52,8 @@ public class ItemMapleLeafShield extends ItemModShield {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		if(stack.getItemDamage() == 0) {
 			if (!worldIn.isRemote) {
-				Potion potion = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 1
-				if(potion != null && !entityLiving.isPotionActive(potion)){
-					entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
-					entityLiving.addPotionEffect(new PotionEffect(potion, 240, 0));
-				}
+				entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
+				entityLiving.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, 0));
 			stack.damageItem(1, entityLiving);
 			}
 		}

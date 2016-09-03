@@ -5,6 +5,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -16,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemNueTrident extends ItemModSword {
 
-	public ItemNueTrident(ToolMaterial material) {
+	ItemNueTrident(ToolMaterial material) {
 		super(material, LibItemName.NUETRIDENT);
 	}
 	
@@ -35,12 +36,8 @@ public class ItemNueTrident extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		stack.damageItem(1, user);
-		Potion potion1 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 15
-		Potion potion2 = Potion.REGISTRY.getObject(new ResourceLocation("")); //TODO: id 9
-		if(potion1 != null && potion2 != null) {
-			target.addPotionEffect(new PotionEffect(potion1, 2400, 0));
-			target.addPotionEffect(new PotionEffect(potion2, 2400, 0));
-		}
+		target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
+		target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
 		return true;
 	}
 	

@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -76,13 +77,12 @@ public class ItemAmenonuhoko extends ItemModSword {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if(stack.getItemDamage() < stack.getMaxDamage()) {
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 
-		//TODO: What is par5?
-		if(par5 && entity instanceof EntityPlayer) {
+		if(selected && entity instanceof EntityPlayer) {
 			EntityPlayer entityplayer = (EntityPlayer)entity;
 			if(!world.isRemote && !entityplayer.capabilities.isCreativeMode) {
 				ItemStack held = entityplayer.getHeldItemMainhand();
@@ -139,7 +139,8 @@ public class ItemAmenonuhoko extends ItemModSword {
 				return EnumActionResult.PASS;
 			}
 			else {
-				world.playSound(player, new BlockPos(x + 0.5D, y + 0.5D, z + 0.5D), new SoundEvent( new ResourceLocation("mob.endermen.portal")), SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				world.playSound(player, new BlockPos(x + 0.5D, y + 0.5D, z + 0.5D),
+						SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
 				//Layer1
 				replaceAirComact(world, x - 1, y, z);

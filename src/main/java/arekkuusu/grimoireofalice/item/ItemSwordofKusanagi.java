@@ -79,15 +79,17 @@ public class ItemSwordofKusanagi extends ItemModSword {
 						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX+0.5, player.posY, player.posZ+0.5, -rand0.nextDouble(), 0, rand0.nextDouble());
 					}
 				}
-				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getRenderBoundingBox().expand(4.0D, 4.0D, 4.0D));
+				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
 				for (EntityMob mob : list){
 					mob.attackEntityFrom(DamageSource.magic, durr);
 					float yaw = mob.rotationYaw;
 					float pitch = mob.rotationPitch;
-					float f = 1.0F;
-					double motionX = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * f;
-					double motionZ = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI) * f;
-					mob.setVelocity(-motionX, .3F, -motionZ);
+					//FIXME: Is this right? Shouldn't one of these be sin, also only calculate the radians once
+					double motionX = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
+					double motionZ = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
+					mob.motionX = -motionX;
+					mob.motionY = .3F;
+					mob.motionZ = -motionZ;
 				}
 			}
 		}
