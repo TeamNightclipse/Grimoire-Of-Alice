@@ -141,4 +141,10 @@ public class ItemKokorosMasks extends ItemModMask implements ISpecialArmor{
 		models[slot] = new ModelKokorosMasks();
 		return models[slot];
 	}
+	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+        return LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png";
+    }
+	
 }

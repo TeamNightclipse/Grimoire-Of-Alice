@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
@@ -66,4 +67,10 @@ public class ItemMaskOfHope extends ItemModMask {
 			}
 		}
 	}
+	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+        return LibMod.MODID + ":textures/models/armor/MaskOfHope.png";
+    }
+	
 }

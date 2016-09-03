@@ -9,6 +9,8 @@
 package arekkuusu.grimoireofalice;
 
 import java.util.List;
+
+import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
@@ -76,6 +78,9 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.nazrinStick);
 		addItem(ModItems.nueTrident);
 		addItem(ModItems.swordOfKusanagi);
+		
+		//Blocks
+		//addBlock(ModBlocks.compactStone);
 		
 	}
 	

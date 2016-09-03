@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -77,4 +78,10 @@ public class ItemFoxMask extends ItemModMask {
 			stack.damageItem(damage * 10, entity);
 		}
 	}
+	
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+        return LibMod.MODID + ":textures/models/armor/FoxMask.png";
+    }
+	
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "all": "grimoireofalice:items/NazrinStick"
+    }
+}
