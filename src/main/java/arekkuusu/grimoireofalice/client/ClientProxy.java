@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.client;
 
+import arekkuusu.grimoireofalice.block.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -48,10 +50,18 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.momijisScimitarSword, 0);
 		registerItem(ModItems.primordialShield, 0);
 		registerItem(ModItems.mapleLeafShield, 0);
+
+		registerBlock(ModBlocks.compactStone, 0);
 	}
 	
 	private void registerItem(Item item, int damage) {
 		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+	}
+
+	private void registerBlock(Block block, int meta) {
+		Item iBlock = Item.getItemFromBlock(block);
+		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 	
 }

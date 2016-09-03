@@ -65,7 +65,7 @@ public class ItemMaskOfHope extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/MaskOfHope.png";
+        return LibMod.MODID + ":textures/models/armor/maskofhope.png";
     }
 	
 }

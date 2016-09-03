@@ -75,7 +75,7 @@ public class ItemMonkeyMask extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/MonkeyMask.png";
+        return LibMod.MODID + ":textures/models/armor/monkeymask.png";
     }
 	
 }

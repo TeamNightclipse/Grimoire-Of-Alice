@@ -3,6 +3,8 @@ package arekkuusu.grimoireofalice.block;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
@@ -19,11 +21,11 @@ public class ModBlocks {
 	
 	public static Block onbashiraMiddle;
 	public static Block onbashiraTop;
-	
+
 	public static void init() {
 		
 		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK);
-
+		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
 	}
 
 }

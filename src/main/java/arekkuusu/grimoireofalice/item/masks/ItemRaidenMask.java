@@ -75,7 +75,7 @@ public class ItemRaidenMask extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/RaidenMask.png";
+        return LibMod.MODID + ":textures/models/armor/raidenMask.png";
     }
 	
 }

@@ -69,7 +69,7 @@ public class ItemHannyaMask extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/HannyaMask.png";
+        return LibMod.MODID + ":textures/models/armor/hannyamask.png";
     }
 	
 }

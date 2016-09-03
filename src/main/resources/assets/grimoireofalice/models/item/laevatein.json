@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "all": "grimoireofalice:items/Laevatein"
+        "all": "grimoireofalice:items/laevatein"
     }
 }

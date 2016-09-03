@@ -75,7 +75,7 @@ public class ItemHyottokoMask extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/HyottokoMask.png";
+        return LibMod.MODID + ":textures/models/armor/hyottokomask.png";
     }
 	
 }

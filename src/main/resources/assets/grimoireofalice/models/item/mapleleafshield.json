@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "grimoireofalice:items/MapleLeafShield"
+        "layer0": "grimoireofalice:items/mapleleafshield"
     }
 }

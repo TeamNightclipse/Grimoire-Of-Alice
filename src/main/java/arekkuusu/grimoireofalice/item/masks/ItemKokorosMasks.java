@@ -118,7 +118,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/KokorosMasks_layer_1.png";
+        return LibMod.MODID + ":textures/models/kokorosmasks_layer_1.png";
     }
 	
 }
