@@ -44,21 +44,39 @@ public class GOACreativeTab extends CreativeTabs {
 	public void displayAllRelevantItems(List<ItemStack> list) {
 		this.list = list;
 
+		//Item
 		addItem(ModItems.thirdEye);
-		addItem(ModItems.amenonuhoko);
 		addItem(ModItems.gloriousNipponSteel);
 		addItem(ModItems.hihiirokane);
-		addItem(ModItems.laevatein);
+		addItem(ModItems.shimenawaRope);
+		addItem(ModItems.timeOrb);
+		addItem(ModItems.uFOs);
+		
+		//Food
+		
+		//Armor
 		addItem(ModItems.mapleLeafShield);
+		addItem(ModItems.foxMask);
+		addItem(ModItems.fukuNoKamiMask);
+		addItem(ModItems.hannyaMask);
+		addItem(ModItems.hyottokoMask);
+		addItem(ModItems.kokorosMasks);
+		addItem(ModItems.koomoteMask);
+		addItem(ModItems.maskOfHope);
+		addItem(ModItems.monkeyMask);
+		addItem(ModItems.raidenMask);
+		addItem(ModItems.ubaMask);
+		
+		//Weapons
+		addItem(ModItems.amenonuhoko);
+		addItem(ModItems.laevatein);
 		addItem(ModItems.mikoStick);
 		addItem(ModItems.mochiHammer);
 		addItem(ModItems.momijisScimitarSword);
 		addItem(ModItems.nazrinStick);
 		addItem(ModItems.nueTrident);
-		addItem(ModItems.shimenawaRope);
 		addItem(ModItems.swordOfKusanagi);
-		addItem(ModItems.timeOrb);
-		addItem(ModItems.uFOs);
+		
 	}
 	
 	private void addItem(Item item) {

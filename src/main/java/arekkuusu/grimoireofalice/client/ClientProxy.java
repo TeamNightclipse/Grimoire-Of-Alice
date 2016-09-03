@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import arekkuusu.grimoireofalice.CommonProxy;
+import arekkuusu.grimoireofalice.item.ModItems;
 
 public class ClientProxy extends CommonProxy{
 
@@ -27,11 +28,12 @@ public class ClientProxy extends CommonProxy{
 	}
 	
 	private void initRenderers() {
-		
+		registerItem(ModItems.foxMask, 0);
 	}
 	
 	private void registerItem(Item item, int damage) {
 		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		System.out.println(item.getRegistryName() + "inventory");
 	}
 	
 }

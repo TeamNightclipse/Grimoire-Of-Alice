@@ -15,7 +15,7 @@ public class LibItemName {
 	public static final String GRIMOIREBOOK = "grimoirebook";
 	public static final String VOLATILESTRING = "volatilestring";
 	public static final String SOLDIFIEDPAPER = "soldifiedpaper";
-	public static final String GLORIOUSNIPPONSTEEL = "goldyron";
+	public static final String GLORIOUSNIPPONSTEEL = "gloriousnipponsteel";
 	public static final String SHIMENAWAROPE = "shimenawarope";
 	public static final String YOUKAIBOOK = "youkaibook";
 	public static final String MASK = "mask";
@@ -32,7 +32,7 @@ public class LibItemName {
 	public static final String MONKEYMASK = "monkeymask";
 	public static final String HYOTTOKOMASK = "hyottokomask";
 	public static final String FUKUNOKAMIMASK = "fukunokamimask";
-	public static final String UBAMASK = "Uuamask";
+	public static final String UBAMASK = "ubamask";
 	public static final String HANNYAMASK = "hannyamask";
 	public static final String KOOMOTEMASK = "koomotemask";
 	public static final String MASKOFHOPE = "maskofhope";
@@ -46,7 +46,7 @@ public class LibItemName {
 	public static final String NAZRINSTICK = "nazrinstick";
 	public static final String ELLYSCYTHE = "ellyscythe";
 	public static final String MIKOSTICK = "mikostick";
-	public static final String CRESTOFYGGDRASILL = "crestOfyggdrasill";
+	public static final String CRESTOFYGGDRASILL = "crestofyggdrasill";
 	public static final String AMENONUHOKO = "amenonuhoko";
 	public static final String NEEDLE = "needle";
 	public static final String NUETRIDENT = "nuetrident";
