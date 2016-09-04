@@ -1,6 +1,16 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimore Of Alice is Open Source and distributed under the
+ * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.block;
 
+import arekkuusu.grimoireofalice.block.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -23,9 +33,10 @@ public class ModBlocks {
 	public static Block onbashiraTop;
 
 	public static void init() {
-		
 		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK);
 		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
+		holyKeyStone = new BlockHolyKeyStone();
+		GameRegistry.register(new ItemBlock(holyKeyStone).setRegistryName(holyKeyStone.getRegistryName()));
+		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.HOLYKEY);
 	}
-
 }

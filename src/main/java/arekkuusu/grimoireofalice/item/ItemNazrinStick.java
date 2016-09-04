@@ -58,7 +58,6 @@ public class ItemNazrinStick extends ItemModSword {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))) {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 25, 0));
-			//playerIn.setItemInUse(p_77659_1_, getMaxItemUseDuration(p_77659_1_));
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
@@ -68,7 +67,6 @@ public class ItemNazrinStick extends ItemModSword {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(player.experienceLevel > 30) {
-				//Vec3 look = player.getLookVec();
 				worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
 				worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
 				worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
@@ -82,7 +80,6 @@ public class ItemNazrinStick extends ItemModSword {
 				player.motionX = 0;
 				player.motionY = 10;
 				player.motionZ = 0;
-				worldIn.createExplosion(player, player.posX, player.posY+1, player.posZ, 2.0F, false);
 				stack.damageItem(1, player);
 			}
 			player.inventory.deleteStack(new ItemStack(Items.COAL));

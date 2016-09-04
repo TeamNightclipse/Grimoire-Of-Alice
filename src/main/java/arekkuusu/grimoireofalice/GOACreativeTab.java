@@ -85,7 +85,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.swordOfKusanagi);
 		
 		//Blocks
-		//addBlock(ModBlocks.compactStone);
+		addBlock(ModBlocks.compactStone);
 		
 	}
 

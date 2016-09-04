@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.lib;
 
 public class LibBlockName {
 
-	public static final String ILLUBLOCK = "holykeystone";
+	public static final String HOLYKEY = "holykeystone";
 	public static final String SUGARBLOCK = "sugarblock";
 	public static final String ROPEBLOCK = "ropeblock";
 	public static final String PAPERBLOCK = "paperblock";

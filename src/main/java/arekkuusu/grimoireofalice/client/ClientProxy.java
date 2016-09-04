@@ -1,10 +1,21 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimore Of Alice is Open Source and distributed under the
+ * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.block.tile.TileEntityHolyKeyStone;
+import arekkuusu.grimoireofalice.client.render.RenderHolyKeyStone;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,6 +33,7 @@ public class ClientProxy extends CommonProxy{
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
 		initRenderers();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 	}
 	
 	@Override
@@ -50,7 +62,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.momijisScimitarSword, 0);
 		registerItem(ModItems.primordialShield, 0);
 		registerItem(ModItems.mapleLeafShield, 0);
-
+		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
 	}
 	

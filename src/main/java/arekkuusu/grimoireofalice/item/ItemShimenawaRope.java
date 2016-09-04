@@ -53,21 +53,20 @@ public class ItemShimenawaRope extends ItemMod {
 
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		int side = facing.getIndex();
-		if(side != 1) {
-			return EnumActionResult.PASS;
-		}
+		if (facing != EnumFacing.UP) {
+            return EnumActionResult.PASS;
+        }
 		else if(player.canPlayerEdit(new BlockPos(x, y, z), facing, stack) && world.isAirBlock(new BlockPos(x, y + 1, z))) {
 			if(!world.isRaining()) {
 				return EnumActionResult.PASS;
 			}
 			else {
-				--stack.stackSize;
 				world.createExplosion(null, x + 0.5, y, z + 0.5, 3.0F, true);
 				world.setBlockState(new BlockPos(x, y + 1, z), ModBlocks.holyKeyStone.getDefaultState());
-				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, bFull3D));
-				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, bFull3D));
-
+				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, true));
+				world.spawnEntityInWorld(new EntityLightningBolt(world, x + 0.5, y + 2, z + 0.5, true));
+				--stack.stackSize;
+				
 				return EnumActionResult.SUCCESS;
 			}
 		}
