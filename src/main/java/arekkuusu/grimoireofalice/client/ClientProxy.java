@@ -8,14 +8,15 @@
  */
 package arekkuusu.grimoireofalice.client;
 
+import java.util.Locale;
+
 import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.block.tile.TileEntityHolyKeyStone;
-import arekkuusu.grimoireofalice.client.render.RenderHolyKeyStone;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -27,13 +28,12 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
+		initRenderers();
 	}
 	
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		initRenderers();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHolyKeyStone.class, new RenderHolyKeyStone());
 	}
 	
 	@Override
@@ -64,6 +64,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.mapleLeafShield, 0);
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
+		registerBlock(ModBlocks.holyKeyStone, 0);
 	}
 	
 	private void registerItem(Item item, int damage) {

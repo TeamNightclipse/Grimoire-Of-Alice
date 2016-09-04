@@ -14,7 +14,6 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.relauncher.Side;
 
-@SideOnly(Side.CLIENT)
 public class ModelEllyScythe extends ModelBase {
 
 	private ModelRenderer Shape1;

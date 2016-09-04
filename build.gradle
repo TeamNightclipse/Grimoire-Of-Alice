@@ -25,10 +25,6 @@ group= "arekkuusu.grimoireofalice" // http://maven.apache.org/guides/mini/guide-
 archivesBaseName = "grimoireOfAlice"
 
 sourceCompatibility = targetCompatibility = "1.8"
-targetCompatibility = targetCompatibility = "1.8"
-compileJava {
-    sourceCompatibility = targetCompatibility = "1.6"
-}
 
 minecraft {
     version = "1.10.2-12.18.1.2076"

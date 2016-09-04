@@ -8,9 +8,7 @@
  */
 package arekkuusu.grimoireofalice.block;
 
-import arekkuusu.grimoireofalice.block.tile.TileEntityHolyKeyStone;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
-import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
@@ -37,6 +35,5 @@ public class ModBlocks {
 		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
 		holyKeyStone = new BlockHolyKeyStone();
 		GameRegistry.register(new ItemBlock(holyKeyStone).setRegistryName(holyKeyStone.getRegistryName()));
-		GameRegistry.registerTileEntity(TileEntityHolyKeyStone.class, LibBlockName.HOLYKEY);
 	}
 }

@@ -8,9 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -19,8 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
-import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
-import arekkuusu.grimoireofalice.entity.EntityThrow;
 import arekkuusu.grimoireofalice.lib.LibMod;
 
 public class RenderEllyScytheProyectile extends Render {
@@ -30,7 +26,7 @@ public class RenderEllyScytheProyectile extends Render {
 	}
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/EllyScythe.png");
-	private static final ModelBase model = new ModelEllyScythe();
+	private static final ModelBase MODEL = new ModelEllyScythe();
 	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
@@ -44,7 +40,7 @@ public class RenderEllyScytheProyectile extends Render {
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glRotatef(ellyScythe.prevRotationPitch + (ellyScythe.rotationPitch - ellyScythe.prevRotationPitch) * pitch, 0.0F, 0.0F, 1.0F);
 		GL11.glRotatef((ellyScythe.prevRotationYaw + (ellyScythe.rotationYaw - ellyScythe.prevRotationYaw) * pitch) - 90F, 0.0F, 1.0F, 0.0F);
-		model.render(ellyScythe, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		MODEL.render(ellyScythe, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 	}
 	
