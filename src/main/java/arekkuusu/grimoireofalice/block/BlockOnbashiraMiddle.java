@@ -8,7 +8,8 @@ import net.minecraft.block.state.IBlockState;
 
 public class BlockOnbashiraMiddle extends BlockMod {
 
-	public BlockOnbashiraMiddle() {
+	@SuppressWarnings("ConstantConditions")
+	BlockOnbashiraMiddle() {
 		super(LibBlockName.ONBASHIRAMIDDLE, Material.ROCK);
 		setCreativeTab(null);
 		setResistance(-1F);
@@ -20,5 +21,4 @@ public class BlockOnbashiraMiddle extends BlockMod {
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
-	
 }

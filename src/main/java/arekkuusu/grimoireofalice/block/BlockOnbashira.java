@@ -8,25 +8,20 @@
  */
 package arekkuusu.grimoireofalice.block;
 
-import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockOnbashira extends BlockMod /*implements ITileEntityProvider*/ {
+public class BlockOnbashira extends BlockMod {
 
 	BlockOnbashira() {
 		super(LibBlockName.ONBASHIRA, Material.WOOD);
@@ -36,23 +31,13 @@ public class BlockOnbashira extends BlockMod /*implements ITileEntityProvider*/ 
 		setResistance(-1F);
 	}
 
-	/*@Override
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity collidingEntity) {
-		setBlockBounds(0f, 0f, 0f, 1F, 3.5F, 1F);
-		super.addCollisionBoxesToList(world, x, y, z, mask, list, collidingEntity);
-	}*/
-	
-	public int onBlockPlaced(World world, int x, int y, int z, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_) {
-		world.setBlockState(new BlockPos(x, y + 1, z), ModBlocks.onbashiraMiddle.getDefaultState());
-		world.setBlockState(new BlockPos(x, y + 2, z), ModBlocks.onbashiraMiddle.getDefaultState());
-		world.setBlockState(new BlockPos(x, y + 3, z), ModBlocks.onbashiraTop.getDefaultState());
-		return p_149660_9_;
-    }
-
-	/*@Override
-	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-		return new TileEntityOnbashira();
-	}*/
+	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		world.setBlockState(pos.up(1), ModBlocks.onbashiraMiddle.getDefaultState());
+		world.setBlockState(pos.up(2), ModBlocks.onbashiraMiddle.getDefaultState());
+		world.setBlockState(pos.up(3), ModBlocks.onbashiraTop.getDefaultState());
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	}
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
@@ -70,7 +55,7 @@ public class BlockOnbashira extends BlockMod /*implements ITileEntityProvider*/ 
 	}
 
 	@Override
-	public boolean canSilkHarvest() {
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		return false;
 	}
 }

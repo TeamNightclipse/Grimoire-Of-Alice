@@ -26,8 +26,8 @@ public class BlockMod extends Block {
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 	
-	public void setSound(SoundType type){
-		super.setSoundType(type);
+	public Block setSound(SoundType type){
+		return super.setSoundType(type);
 	}
 
 	protected IBlockState defualtState() {

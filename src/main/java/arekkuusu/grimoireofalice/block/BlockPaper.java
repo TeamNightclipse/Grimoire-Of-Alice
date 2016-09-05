@@ -15,9 +15,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 
-public class BlockPaper extends BlockMod {
+public class BlockPaper extends BlockModPillar {
 
-	public BlockPaper() {
+	BlockPaper() {
 		super(LibBlockName.PAPERBLOCK, Material.CARPET);
 		setHardness(0.5F);
 		setSoundType(SoundType.CLOTH);

@@ -1,8 +1,7 @@
 {
     "variants": {
-        "axis=y":    { "model": "ropeblock" },
-        "axis=z":     { "model": "ropeblock", "x": 90 },
-        "axis=x":     { "model": "ropeblock", "x": 90, "y": 90 },
-        "axis=none":   { "model": "ropeblock_bark" }
+        "axis=y": { "model": "grimoireofalice:ropeblock" },
+        "axis=z": { "model": "grimoireofalice:ropeblock", "x": 90 },
+        "axis=x": { "model": "grimoireofalice:ropeblock", "x": 90, "y": 90 }
     }
 }

@@ -39,7 +39,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockHolyStone extends BlockMod /*implements ITileEntityProvider*/ {
+public class BlockHolyStone extends BlockMod {
 
 	BlockHolyStone() {
 		super(LibBlockName.HOLYSTONE,Material.ROCK);
@@ -47,7 +47,7 @@ public class BlockHolyStone extends BlockMod /*implements ITileEntityProvider*/ 
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
-		float size = 3F / 16F;
+		//float size = 3F / 16F;
 		//setBlockBounds(size, size, size, 1F - size, 1F - size, 1F - size);
 	}
 
@@ -57,21 +57,15 @@ public class BlockHolyStone extends BlockMod /*implements ITileEntityProvider*/ 
 		list.add(TextFormatting.GOLD + "Magical stone with its own weak gravity field");
 		list.add(TextFormatting.ITALIC + "Accepts gifts as items");
 	}
-	
-	/*@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new TileEntityHolyStone();
-	}*/
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack stack = playerIn.getHeldItemMainhand();
-		if(!worldIn.isRemote && stack != null) {
-			Optional<Consumer<EntityPlayer>> effect = getEffectForItem(stack.getItem());
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if(!world.isRemote && heldItem != null) {
+			Optional<Consumer<EntityPlayer>> effect = getEffectForItem(heldItem.getItem());
 			if(effect.isPresent()) {
-				--stack.stackSize;
-				effect.get().accept(playerIn);
-				playerIn.worldObj.playSound(playerIn, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
+				--heldItem.stackSize;
+				effect.get().accept(player);
+				player.worldObj.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
 				return true;
 			}
 		}

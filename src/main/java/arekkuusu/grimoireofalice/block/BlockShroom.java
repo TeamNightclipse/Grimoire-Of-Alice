@@ -8,13 +8,10 @@
  */
 package arekkuusu.grimoireofalice.block;
 
-import static net.minecraftforge.common.EnumPlantType.Cave;
-
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BlockShroom extends BlockModGeorgeBush {
+public class BlockShroom extends BlockModBush {
 
 	BlockShroom() {
 		super(LibBlockName.SHROOM, Material.PLANTS);
@@ -32,32 +29,33 @@ public class BlockShroom extends BlockModGeorgeBush {
 		setLightLevel(0.5F);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
-		float f = 0.4F;
+		//float f = 0.4F;
 		//setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
 	}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
-		return Cave;
+		return EnumPlantType.Cave;
 	}
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		canBlockStay(worldIn, pos);
+		canBlockStay(worldIn, pos, state);
 	}
 
-	public boolean canBlockStay(World world, BlockPos pos) {
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		return canPlaceBlockAt(world, pos);
 	}
-	
+
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState soil = worldIn.getBlockState(pos.down());
 		Block block = soil.getBlock();
-        return super.canPlaceBlockAt(worldIn, pos) && (block.canSustainPlant(soil, worldIn, pos.down(), net.minecraft.util.EnumFacing.UP, this) 
+        return super.canPlaceBlockAt(worldIn, pos)
         		|| block == Blocks.HARDENED_CLAY 
         		|| block == Blocks.STAINED_HARDENED_CLAY 
         		|| block == Blocks.STONE 
-        		|| block == ModBlocks.compactStone);
+        		|| block == ModBlocks.compactStone;
 	}
 }

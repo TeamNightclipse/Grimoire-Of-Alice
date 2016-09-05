@@ -20,14 +20,16 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class CommonProxy {
 
+	@SuppressWarnings("UnusedAssignment")
 	public void preInit(FMLPreInitializationEvent event) {
 		ModBlocks.init();
 		ModItems.init();
+
+		int modEntityID = 0;
+		EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "ellyScythe", modEntityID++, GrimoireOfAlice.instance, 64, 10, true);
 	}
 	
 	public void init(FMLInitializationEvent event) {
-		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "PotatoArrow", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {

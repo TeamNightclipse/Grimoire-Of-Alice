@@ -6,9 +6,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 
-public class BlockModGeorgeBush extends BlockBush {
+public class BlockModBush extends BlockBush {
 	
-	public BlockModGeorgeBush(String id, Material material) {
+	public BlockModBush(String id, Material material) {
 		super(material);
 		setUnlocalizedName(id);
 		setDefaultState(defualtState());

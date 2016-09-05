@@ -17,7 +17,8 @@ public class BlockOnbashiraTop extends BlockMod{
 
 	protected static final AxisAlignedBB BOTTOM = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 	
-	public BlockOnbashiraTop() {
+	@SuppressWarnings("ConstantConditions")
+	BlockOnbashiraTop() {
 		super(LibBlockName.ONBASHIRATOP, Material.ROCK);
 		setCreativeTab(null);
 		setResistance(-1F);
@@ -28,12 +29,6 @@ public class BlockOnbashiraTop extends BlockMod{
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return BOTTOM;
 	}
-	
-	/*@Override
-	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity collidingEntity) {
-		setBlockBounds(0f, 0f, 0f, 1F, 0.5F, 1F);
-		super.addCollisionBoxesToList(world, x, y, z, mask, list, collidingEntity);
-	}*/
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
