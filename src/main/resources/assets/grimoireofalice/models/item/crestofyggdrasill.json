@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "grimoireofalice:items/crestofyggdrasill"
+        "all": "grimoireofalice:items/crestofyggdrasill"
     }
 }

@@ -9,12 +9,14 @@
 package arekkuusu.grimoireofalice;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class CommonProxy {
 
@@ -24,7 +26,8 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
-		
+		int modEntityID = 0;
+		EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "PotatoArrow", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {

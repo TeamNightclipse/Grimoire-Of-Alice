@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":    { "model": "paperblock" },
+        "axis=z":     { "model": "paperblock", "x": 90 },
+        "axis=x":     { "model": "paperblock", "x": 90, "y": 90 },
+        "axis=none":   { "model": "paperblock_bark" }
+    }
+}

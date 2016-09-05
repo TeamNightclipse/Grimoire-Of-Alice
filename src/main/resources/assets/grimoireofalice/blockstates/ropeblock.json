@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":    { "model": "ropeblock" },
+        "axis=z":     { "model": "ropeblock", "x": 90 },
+        "axis=x":     { "model": "ropeblock", "x": 90, "y": 90 },
+        "axis=none":   { "model": "ropeblock_bark" }
+    }
+}

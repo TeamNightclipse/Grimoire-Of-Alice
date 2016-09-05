@@ -4,16 +4,21 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.*;
 
@@ -21,6 +26,8 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 
 	public static final double RETURN_STRENGTH	= 0.05D;
 	public static final float MIN_FLOAT_STRENGTH = 0.4F;
+
+	private static final DataParameter<Byte> CRITICAL = EntityDataManager.<Byte>createKey(EntityEllyScytheThrowable.class, DataSerializers.BYTE);
 	private float soundTimer;
 	public float strength;
 	protected ItemStack	itemThrown;
@@ -51,13 +58,13 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 		setThrowableHeading(motionX, motionY, motionZ, f, 5.0F);
 		soundTimer = 0;
 		strength = Math.min(1.5F, f);
-		dataWatcher.updateObject(25, strength);
+		dataManager.set(CRITICAL, Byte.valueOf((byte) strength));
 	}
 	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		strength = dataWatcher.getWatchableObjectFloat(25);
+		strength = ((Byte)this.dataManager.get(CRITICAL)).floatValue();
 		
 		if (inGround) return;
 		
@@ -98,7 +105,8 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 			}
 		}
 		
-		dataWatcher.updateObject(25, strength);
+		byte b0 = ((Byte)dataManager.get(CRITICAL)).byteValue();
+		dataManager.set(CRITICAL, Byte.valueOf((byte)(b0 | 1)));
 	}
 	
 	@Override
@@ -150,10 +158,11 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 	}
 	
 	@Override
-	public void onGroundHit(MovingObjectPosition mop) {
-		tileX = mop.blockX;
-		tileY = mop.blockY;
-		tileZ = mop.blockZ;
+	public void onGroundHit(RayTraceResult mop) {
+		BlockPos pos = mop.getBlockPos();
+		tileX = pos.getX();
+		tileY = pos.getY();
+		tileZ = pos.getZ();
 		inBlock = worldObj.getBlockState(new BlockPos(tileX, tileY, tileZ)).getBlock();
 		motionX = (float) (mop.hitVec.xCoord - posX);
 		motionY = (float) (mop.hitVec.yCoord - posY);
@@ -166,7 +175,7 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 		motionX *= -rand.nextFloat() * 0.5F;
 		motionZ *= -rand.nextFloat() * 0.5F;
 		motionY = rand.nextFloat() * 0.1F;
-		inGround = mop.sideHit == 1;
+		inGround = mop.sideHit.getIndex() == 1;
 		setIsCritical(false);
 		wasInGround = true;
 		strength = 0F;
@@ -249,7 +258,7 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 	@Override
 	public void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(25, 0F);
+		dataManager.register(CRITICAL, Byte.valueOf((byte)0));
 	}
 	
 	public float getMeleeHitDamage(Entity entity) {
@@ -266,10 +275,6 @@ public class EntityEllyScytheThrowable extends EntityThrow {
 	@Override
 	public ItemStack getPickupItem() {
 		return itemThrown;
-	}
-	
-	public int getWeaponMaterialId() {
-		return dataWatcher.getWatchableObjectInt(25);
 	}
 	
 	@Override

@@ -79,7 +79,7 @@ public class ItemUFOs extends ItemMod {
         double y = player.posY - player.height / 2F;
         double z = player.posZ + look.zCoord * 0.2D;
         item.setPosition(x, y, z);
-        player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.HOSTILE, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
+        player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
 	}
 	
 	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {

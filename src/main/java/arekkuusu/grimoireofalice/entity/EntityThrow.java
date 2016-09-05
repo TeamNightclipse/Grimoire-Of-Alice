@@ -25,6 +25,9 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SPacketChangeGameState;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -33,6 +36,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.*;
@@ -61,6 +65,8 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
     protected int timeToLive;
     private double damage = 2.0D;
     private int knockbackStrength;
+
+	private static final DataParameter<Byte> CRITICAL = EntityDataManager.<Byte>createKey(EntityThrow.class, DataSerializers.BYTE);
 	
 	public EntityThrow(World world) {
 		super(world);
@@ -162,7 +168,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 		
 		Vec3d vec3d = new Vec3d(posX, posY, posZ);
 		Vec3d vec3d1 = new Vec3d(posX + motionX, posY + motionY, posZ + motionZ);
-		MovingObjectPosition mop = worldObj.func_147447_a(vec3d, vec3d1, false, true, false);
+		RayTraceResult mop = worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
 		vec3d = new Vec3d(posX, posY, posZ);
 		vec3d1 = new Vec3d(posX + motionX, posY + motionY, posZ + motionZ);
 		if (mop != null) {
@@ -179,7 +185,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 			}
 			float f4 = 0.3F;
 			AxisAlignedBB axisalignedbb1 = entity1.getEntityBoundingBox().expand(f4, f4, f4);
-			MovingObjectPosition mop1 = axisalignedbb1.calculateIntercept(vec3d, vec3d1);
+			RayTraceResult mop1 = axisalignedbb1.calculateIntercept(vec3d, vec3d1);
 			if(mop1 == null) {
 				continue;
 			}
@@ -191,7 +197,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 		}
 		
 		if (entity != null) {
-			mop = new MovingObjectPosition(entity);
+			mop = new RayTraceResult(entity);
 		}
 		
 		if (mop != null)
@@ -242,7 +248,7 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 		motionZ *= res;
 		motionY -= grav;
 		setPosition(posX, posY, posZ);
-		func_145775_I();
+		//func_145775_I();
 	}
 	
 	public void onEntityHit(Entity entity) {
@@ -282,10 +288,11 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 		}
 	}
 	
-	public void onGroundHit(MovingObjectPosition mop) {
-		tileX = mop.blockX;
-		tileY = mop.blockY;
-		tileZ = mop.blockZ;
+	public void onGroundHit(RayTraceResult mop) {
+		BlockPos pos = mop.getBlockPos();
+		tileX = pos.getX();
+		tileY = pos.getY();
+		tileZ = pos.getZ();
 		inBlock = worldObj.getBlockState(new BlockPos(tileX, tileY, tileY)).getBlock();
 		inData = worldObj.getBlockState(new BlockPos(tileX, tileY, tileZ)).getBlock().getMetaFromState(worldObj.getBlockState(new BlockPos(tileX, tileY, tileZ)));
 		motionX = mop.hitVec.xCoord - posX;
@@ -373,14 +380,16 @@ public class EntityThrow extends EntityArrow implements IThrowableEntity {
 	
 	@Override
 	public void setIsCritical(boolean flag) {
+		byte b0 = ((Byte)dataManager.get(CRITICAL)).byteValue();
 		if (canBeCritical()) {
-			dataWatcher.updateObject(16, (byte)(flag ? 1 : 0));
+			dataManager.set(CRITICAL, Byte.valueOf((byte)(b0 | 1)));
 		}
 	}
 	
 	@Override
 	public boolean getIsCritical() {
-		return canBeCritical() && dataWatcher.getWatchableObjectByte(16) != 0;
+		byte b0 = ((Byte)this.dataManager.get(CRITICAL)).byteValue();
+        return (b0 & 1) != 0;
 	}
 	
 	public void setExtraDamage(float loli) {

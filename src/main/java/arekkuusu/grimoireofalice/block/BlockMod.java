@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.block;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -23,6 +24,10 @@ public class BlockMod extends Block {
 		setRegistryName(id);
 		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+	}
+	
+	public void setSound(SoundType type){
+		super.setSoundType(type);
 	}
 
 	protected IBlockState defualtState() {

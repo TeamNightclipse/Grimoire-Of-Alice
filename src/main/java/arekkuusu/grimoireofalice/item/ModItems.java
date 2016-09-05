@@ -122,6 +122,7 @@ public final class ModItems {
 		nazrinStick = new ItemNazrinStick(WET_NOODLE);
 		nueTrident = new ItemNueTrident(WET_NOODLE);
 		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
+		ellyScythe = new ItemEllyScythe(WET_NOODLE);
 		
 	}
 	

@@ -1,0 +1,7 @@
+{
+	"parent": "block/cube_column",
+    "textures": {
+        "end": "grimoireofalice:blocks/rope_top",
+        "side": "grimoireofalice:blocks/rope"
+    }
+}

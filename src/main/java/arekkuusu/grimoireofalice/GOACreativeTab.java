@@ -86,6 +86,14 @@ public class GOACreativeTab extends CreativeTabs {
 		
 		//Blocks
 		addBlock(ModBlocks.compactStone);
+		addBlock(ModBlocks.holyStone);
+		addBlock(ModBlocks.kyoumarubotan);
+		addBlock(ModBlocks.onbashira);
+		addBlock(ModBlocks.paperBlock);
+		addBlock(ModBlocks.ropeBlock);
+		addBlock(ModBlocks.shroom);
+		addBlock(ModBlocks.sugarBlock);
+		addBlock(ModBlocks.hyperconcentratedMagic);
 		
 	}
 
