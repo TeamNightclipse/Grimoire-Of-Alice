@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.item.masks;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -18,7 +17,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModMask extends ItemArmor implements ISpecialArmor {

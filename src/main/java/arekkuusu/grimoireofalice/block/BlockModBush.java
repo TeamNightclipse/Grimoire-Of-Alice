@@ -1,10 +1,10 @@
 package arekkuusu.grimoireofalice.block;
 
+import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import arekkuusu.grimoireofalice.GrimoireOfAlice;
 
 public class BlockModBush extends BlockBush {
 	

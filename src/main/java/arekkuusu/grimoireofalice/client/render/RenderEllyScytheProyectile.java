@@ -8,16 +8,15 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import org.lwjgl.opengl.GL11;
+
+import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
-import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
-import arekkuusu.grimoireofalice.lib.LibMod;
 
 public class RenderEllyScytheProyectile extends Render {
 

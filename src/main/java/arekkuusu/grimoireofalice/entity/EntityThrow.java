@@ -1,6 +1,9 @@
 package arekkuusu.grimoireofalice.entity;
 
-import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.*;
+import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.NO_PICKUP;
+import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_ALL;
+import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_CREATIVE;
+import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;

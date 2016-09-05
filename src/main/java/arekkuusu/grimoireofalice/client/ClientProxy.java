@@ -8,20 +8,16 @@
  */
 package arekkuusu.grimoireofalice.client;
 
-import java.util.Locale;
-
+import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import arekkuusu.grimoireofalice.CommonProxy;
-import arekkuusu.grimoireofalice.item.ModItems;
 
 public class ClientProxy extends CommonProxy{
 
