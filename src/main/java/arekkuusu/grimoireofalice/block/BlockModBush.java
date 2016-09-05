@@ -6,7 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 
-public class BlockModGeorgeBush extends BlockBush{
+public class BlockModGeorgeBush extends BlockBush {
 	
 	public BlockModGeorgeBush(String id, Material material) {
 		super(material);
