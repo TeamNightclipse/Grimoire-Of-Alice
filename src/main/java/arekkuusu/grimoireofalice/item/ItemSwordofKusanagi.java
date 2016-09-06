@@ -93,7 +93,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 					mob.attackEntityFrom(DamageSource.magic, durr);
 					float yaw = mob.rotationYaw;
 					float pitch = mob.rotationPitch;
-					//FIXME: Is this right? Shouldn't one of these be DEADLY SIN OF HELL, also only calculate the radians once
+					//FIXME: Is this right? Shouldn't one of these be MathHelper.sin, also only calculate the radians once
 					double motionX = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
 					double motionZ = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
 					mob.motionX = -motionX;
