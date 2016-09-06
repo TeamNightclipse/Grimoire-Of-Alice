@@ -73,14 +73,13 @@ public class ItemPrimordialShield extends ItemModShield {
 		if(isWorthy(playerIn)) {
 			if(itemStackIn.getItemDamage() == 0) {
 				playerIn.capabilities.disableDamage = true;
-				//playerIn.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
 			}
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(stack.getItemDamage() == 0 && !player.capabilities.isCreativeMode) {
@@ -88,7 +87,6 @@ public class ItemPrimordialShield extends ItemModShield {
 				stack.damageItem(999, player);
 			}
 		}
-		return stack;
 	}
 
 	@Override

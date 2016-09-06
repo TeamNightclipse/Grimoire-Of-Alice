@@ -1,6 +1,8 @@
 {
-    "parent": "block/cube_all",
+	"parent": "block/half_slab",
     "textures": {
-        "all": "grimoireofalice:blocks/invisibleblock"
+        "bottom": "grimoireofalice:blocks/invisibleblock",
+        "top": "grimoireofalice:blocks/invisibleblock",
+        "side": "grimoireofalice:blocks/invisibleblock"
     }
 }

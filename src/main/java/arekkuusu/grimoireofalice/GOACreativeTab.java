@@ -83,7 +83,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.nazrinStick);
 		addItem(ModItems.nueTrident);
 		addItem(ModItems.swordOfKusanagi);
-		
+		addItem(ModItems.ellyScythe);		
 		//Blocks
 		addBlock(ModBlocks.compactStone);
 		addBlock(ModBlocks.holyStone);

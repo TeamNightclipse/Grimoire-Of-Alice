@@ -10,7 +10,9 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
+
+
+//import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +25,9 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -67,18 +72,24 @@ public class ItemEllyScythe extends ItemModSword {
 		}
 		return true;
 	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		playerIn.setActiveHand(hand);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(!player.inventory.hasItemStack(stack)) return stack;
+			if(!player.inventory.hasItemStack(stack)) return;
 
-			int duration = getMaxItemUseDuration(stack);
+			int duration = getMaxItemUseDuration(stack) - timeLeft;
 			float durationSeconds = duration / 20F;
 			//TODO: What does this do?
 			durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
-			if(durationSeconds < 0.1F) return stack;
+			if(durationSeconds < 0.1F) return;
 
 			boolean critical = false;
 			if(durationSeconds > 1.5F) {
@@ -90,13 +101,13 @@ public class ItemEllyScythe extends ItemModSword {
 			worldIn.playSound(player, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
 					0.6F, 1.0F / (2F * 0.4F + 1.0F));
 			if(!worldIn.isRemote) {
-				EntityEllyScytheThrowable throwable = new EntityEllyScytheThrowable(worldIn, player, stack, durationSeconds);
+				/*EntityEllyScytheThrowable throwable = new EntityEllyScytheThrowable(worldIn, player, stack, durationSeconds);
 				throwable.setIsCritical(critical);
 				throwable.setKnockbackStrength(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, stack));
 				if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
 					throwable.setFire(100);
 				}
-				worldIn.spawnEntityInWorld(throwable);
+				worldIn.spawnEntityInWorld(throwable);*/
 			}
 
 			if(!player.capabilities.isCreativeMode) {
@@ -107,16 +118,15 @@ public class ItemEllyScythe extends ItemModSword {
 				player.inventory.mainInventory[player.inventory.currentItem] = reducedStack;
 			}
 		}
-		return stack;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack itemstack) {
-		return 72000;
 	}
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack itemstack) {
+		return 72000;
 	}
 }

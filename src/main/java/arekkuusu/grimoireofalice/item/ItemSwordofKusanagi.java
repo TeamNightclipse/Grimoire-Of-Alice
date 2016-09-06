@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -62,22 +63,22 @@ public class ItemSwordofKusanagi extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		//player.setItemInUse(stack, getMaxItemUseDuration(stack));
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		playerIn.setActiveHand(hand);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 	
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		if(!stack.hasTagCompound()) return stack;
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+		if(!stack.hasTagCompound()) return;
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(stack.getTagCompound().getString("GrimoireOwner").equals(player.getDisplayName().getFormattedText())){
-				int hurr = getMaxItemUseDuration(stack);
+				int hurr = getMaxItemUseDuration(stack) - timeLeft;
 				float durr = (hurr*6) / 20F;
 				durr = (durr * durr + durr * 2.0F) / 3F;
 				durr *= 1.5F;
-				if (durr > 10F) return stack;
+				if (durr > 10F) return;
 				for(int t=0; t<durr; t++){
 					for(int u=0;u<10;u++){
 						Random rand0 = player.getRNG();
@@ -92,7 +93,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 					mob.attackEntityFrom(DamageSource.magic, durr);
 					float yaw = mob.rotationYaw;
 					float pitch = mob.rotationPitch;
-					//FIXME: Is this right? Shouldn't one of these be sin, also only calculate the radians once
+					//FIXME: Is this right? Shouldn't one of these be DEADLY SIN OF HELL, also only calculate the radians once
 					double motionX = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
 					double motionZ = MathHelper.cos(yaw / 180.0F * (float)Math.PI) * MathHelper.cos(pitch / 180.0F * (float)Math.PI);
 					mob.motionX = -motionX;
@@ -101,7 +102,16 @@ public class ItemSwordofKusanagi extends ItemModSword {
 				}
 			}
 		}
-		return stack;
 	}
+	
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+        return EnumAction.BLOCK;
+    }
+
+	@Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 72000;
+    }
 	
 }

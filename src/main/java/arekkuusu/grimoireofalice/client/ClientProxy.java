@@ -38,7 +38,9 @@ public class ClientProxy extends CommonProxy{
 	}
 	
 	private void initRenderers() {
-		//Masks
+		//Armor
+		registerItem(ModItems.primordialShield, 0);
+		registerItem(ModItems.mapleLeafShield, 0);
 		registerItem(ModItems.foxMask, 0);
 		registerItem(ModItems.fukuNoKamiMask, 0);
 		registerItem(ModItems.hannyaMask, 0);
@@ -50,17 +52,37 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.raidenMask, 0);
 		registerItem(ModItems.ubaMask, 0);
 		//Items
-		registerItem(ModItems.uFOs, 0);
+		registerItem(ModItems.thirdEye, 0);
+		registerItem(ModItems.gloriousNipponSteel, 0);
+		registerItem(ModItems.hihiirokane, 0);
 		registerItem(ModItems.shimenawaRope, 0);
+		registerItem(ModItems.timeOrb, 0);
+		registerItem(ModItems.uFOs, 0);
+		registerItem(ModItems.mask, 0);
 		//Weapons
+		registerItem(ModItems.amenonuhoko, 0);
 		registerItem(ModItems.crestOfYggdrasill, 0);
+		registerItem(ModItems.laevatein, 0);
+		registerItem(ModItems.mikoStick, 0);
 		registerItem(ModItems.mochiHammer, 0);
 		registerItem(ModItems.momijisScimitarSword, 0);
-		registerItem(ModItems.primordialShield, 0);
-		registerItem(ModItems.mapleLeafShield, 0);
+		registerItem(ModItems.nazrinStick, 0);
+		registerItem(ModItems.nueTrident, 0);
+		registerItem(ModItems.swordOfKusanagi, 0);
+		registerItem(ModItems.ellyScythe, 0);
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
 		registerBlock(ModBlocks.holyKeyStone, 0);
+		registerBlock(ModBlocks.holyStone, 0);
+		registerBlock(ModBlocks.kyoumarubotan, 0);
+		registerBlock(ModBlocks.onbashira, 0);
+		registerBlock(ModBlocks.onbashiraMiddle, 0);
+		registerBlock(ModBlocks.onbashiraTop, 0);
+		registerBlock(ModBlocks.paperBlock, 0);
+		registerBlock(ModBlocks.ropeBlock, 0);
+		registerBlock(ModBlocks.shroom, 0);
+		registerBlock(ModBlocks.sugarBlock, 0);
+		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
 	}
 	
 	private void registerItem(Item item, int damage) {

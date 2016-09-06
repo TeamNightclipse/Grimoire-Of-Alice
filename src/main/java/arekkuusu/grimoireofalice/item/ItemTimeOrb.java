@@ -49,12 +49,12 @@ public class ItemTimeOrb extends ItemMod{
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		//p_77659_3_.setItemInUse(p_77659_1_, getMaxItemUseDuration(p_77659_1_));
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		playerIn.setActiveHand(hand);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
     }
 	
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if (!player.capabilities.isCreativeMode) {
@@ -70,7 +70,6 @@ public class ItemTimeOrb extends ItemMod{
 				}
 			}
 		}
-		return stack;
 	}
 	
 	@Override

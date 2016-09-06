@@ -1,5 +1,6 @@
 {
     "variants": {
-        "normal": { "model": "grimoireofalice:onbashiratop" }
+        "half=bottom": { "model": "grimoireofalice:blocks/invisibleblock" },
+        "half=top": { "model": "grimoireofalice:blocks/invisibleblock" }
     }
 }

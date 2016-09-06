@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
+    "parent": "grimoireofalice:item/handheld_big",
     "textures": {
-        "all": "grimoireofalice:items/nuetrident"
+        "layer0": "grimoireofalice:items/nuetrident"
     }
 }

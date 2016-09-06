@@ -98,7 +98,7 @@ public abstract class EntityThrow extends EntityThrowable {
 	}
 
 	public void applyHitEffects(Entity entity) {
-		if (isBurning() && !(entity instanceof EntityEnderman)) {
+		/*if (isBurning() && !(entity instanceof EntityEnderman)) {
 			entity.setFire(5);
 		}
 
@@ -119,7 +119,7 @@ public abstract class EntityThrow extends EntityThrowable {
 					((EntityPlayerMP) thrower).connection.sendPacket(new SPacketChangeGameState(6, 0));
 				}
 			}
-		}
+		}*/
 	}
 
 	@Override

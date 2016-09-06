@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.block;
 
+import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
@@ -11,10 +12,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockKyoumarubotan extends BlockModBush {
 	
@@ -26,6 +31,13 @@ public class BlockKyoumarubotan extends BlockModBush {
 		setSoundType(SoundType.METAL);
 		//float f = 0.4F;
 		//setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "Mythical tree peony");
+		list.add(TextFormatting.ITALIC + "Hematite in the shape of a flower");
 	}
 
 	@Override

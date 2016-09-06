@@ -10,10 +10,12 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.EntityFireBalloon;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -92,7 +94,7 @@ public class ItemLaevatein extends ItemModSword {
 			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
 					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override

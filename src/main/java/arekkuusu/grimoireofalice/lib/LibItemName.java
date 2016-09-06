@@ -52,7 +52,7 @@ public class LibItemName {
 	public static final String NUETRIDENT = "nuetrident";
 	public static final String SWORDOFKUSANAGI = "swordofkusanagi";
 	
-	//THPlugin Items
+	//THItems
 	public static final String FULLPOWER = "fullpowerItem";
 	public static final String STAR = "staritem";
 	public static final String CHERRY = "cherryitem";
@@ -63,7 +63,7 @@ public class LibItemName {
 	public static final String UFOGREEN = "ufogreen";
 	public static final String UFOs = "ufos";
 	public static final String IMPUREROCK = "impurerock";
-	public static final String EYE = "3rdeye";
+	public static final String EYE = "thirdeye";
 	public static final String POUCH = "spellcardpouch";
 	
 

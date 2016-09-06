@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
+    "parent": "grimoireofalice:item/handheld_big",
     "textures": {
-        "all": "grimoireofalice:items/nazrinstick"
+        "layer0": "grimoireofalice:items/nazrinstick"
     }
 }

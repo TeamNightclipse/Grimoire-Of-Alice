@@ -18,6 +18,7 @@ import arekkuusu.grimoireofalice.item.masks.ItemMaskOfHope;
 import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
 import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
+import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -95,6 +96,7 @@ public final class ModItems {
 		shimenawaRope = new ItemShimenawaRope();
 		timeOrb = new ItemTimeOrb();
 		uFOs = new ItemUFOs();
+		mask = new ItemMod(LibItemName.MASK);
 		
 		//Food
 		

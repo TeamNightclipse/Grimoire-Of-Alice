@@ -46,7 +46,7 @@ public class ItemMapleLeafShield extends ItemModShield {
 	}
 	
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(stack.getItemDamage() == 0) {
 			if (!worldIn.isRemote) {
 				entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
@@ -54,7 +54,6 @@ public class ItemMapleLeafShield extends ItemModShield {
 			stack.damageItem(1, entityLiving);
 			}
 		}
-		return stack;
 	}
 	
 	@Override
