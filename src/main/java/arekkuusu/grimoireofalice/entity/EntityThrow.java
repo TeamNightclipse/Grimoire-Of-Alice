@@ -6,18 +6,17 @@ import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_CRE
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.network.play.server.SPacketChangeGameState;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -34,6 +33,7 @@ public abstract class EntityThrow extends EntityThrowable {
 	private static final DataParameter<Boolean> CRITICAL = EntityDataManager.createKey(EntityThrow.class, DataSerializers.BOOLEAN);
 
 	private PickupMode canBePickedUp = NO_PICKUP;
+	private ItemStack stack;
 
 	public EntityThrow(World world) {
 		super(world);
@@ -59,6 +59,25 @@ public abstract class EntityThrow extends EntityThrowable {
 
 	public void setCritical(boolean flag) {
 		dataManager.set(CRITICAL, flag);
+	}
+
+	public ItemStack getStack() {
+		return stack;
+	}
+
+	public void setStack(ItemStack stack) {
+		this.stack = stack;
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if(getCritical()) {
+			for(int i = 0; i < 2; i++) {
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX + (motionX * i) / 4D, posY + (motionY * i) / 4D,
+						posZ + (motionZ * i) / 4D, -motionX, -motionY + 0.2D, -motionZ);
+			}
+		}
 	}
 
 	@Override
@@ -120,6 +139,25 @@ public abstract class EntityThrow extends EntityThrowable {
 				}
 			}
 		}*/
+	}
+
+	@Override
+	public void onCollideWithPlayer(EntityPlayer entityplayer) {
+		if (inGround && throwableShake <= 0) {
+			if (canPickup(entityplayer)) {
+				if (!worldObj.isRemote) {
+					if (stack == null) return;
+
+					if (canBePickedUp == PICKUP_CREATIVE && entityplayer.capabilities.isCreativeMode || entityplayer.inventory.addItemStackToInventory(stack)) {
+						playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+						if(!worldObj.isRemote) {
+							entityplayer.inventory.addItemStackToInventory(stack);
+							setDead();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
