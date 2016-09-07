@@ -22,10 +22,12 @@ public class BlockOnbashiraTop extends BlockMod{
 		setHardness(-1F);
 	}
 	
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return BOTTOM;
 	}
 	
+	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.INVISIBLE;
     }

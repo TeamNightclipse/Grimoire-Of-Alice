@@ -33,7 +33,6 @@ public final class ModItems {
 	public static final ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
 	
 		//Item
-		public static Item enchantedBook;
 		public static Item grimoireBook;
 		public static Item volatileString;
 		public static Item soldifiedPaper;
@@ -86,6 +85,7 @@ public final class ModItems {
 		public static Item uFOGreen;
 		public static Item uFOs;
 		public static Item thirdEye;
+		public static Item leaf;
 	
 	public static void init() {
 		
@@ -97,6 +97,19 @@ public final class ModItems {
 		timeOrb = new ItemTimeOrb();
 		uFOs = new ItemUFOs();
 		mask = new ItemMod(LibItemName.MASK);
+		grimoireBook = new ItemGrimoireBook();
+		youkaiBook = new ItemYoukaiBook();
+		volatileString = new ItemMod(LibItemName.VOLATILESTRING);
+		soldifiedPaper = new ItemMod(LibItemName.SOLDIFIEDPAPER);
+		impureRock = new ItemMod(LibItemName.IMPUREROCK);
+		fullPower = new ItemMod(LibItemName.FULLPOWER);
+		star = new ItemMod(LibItemName.STAR);
+		cherry = new ItemMod(LibItemName.CHERRY);
+		faith = new ItemMod(LibItemName.FAITH);
+		uFORed = new ItemMod(LibItemName.UFORED);
+		uFOBlue = new ItemMod(LibItemName.UFOBLUE);
+		uFOGreen = new ItemMod(LibItemName.UFOGREEN);
+		leaf = new ItemLeaf();
 		
 		//Food
 		

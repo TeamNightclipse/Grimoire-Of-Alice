@@ -22,6 +22,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -132,4 +133,9 @@ public class BlockHolyKeyStone extends BlockMod {
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50, 2));
 		}
 	}
+	
+	/*@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}*/
 }

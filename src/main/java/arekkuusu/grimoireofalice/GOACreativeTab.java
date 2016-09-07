@@ -32,7 +32,7 @@ public class GOACreativeTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getIconItemStack() {
-		return new ItemStack(ModItems.uFOs);
+		return new ItemStack(ModItems.grimoireBook);
 	}
 	
 	@Override
@@ -58,6 +58,20 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.shimenawaRope);
 		addItem(ModItems.timeOrb);
 		addItem(ModItems.uFOs);
+		addItem(ModItems.mask);
+		addItem(ModItems.grimoireBook);
+		addItem(ModItems.youkaiBook);
+		addItem(ModItems.volatileString);
+		addItem(ModItems.soldifiedPaper);
+		addItem(ModItems.impureRock);
+		addItem(ModItems.fullPower);
+		addItem(ModItems.star);
+		addItem(ModItems.cherry);
+		addItem(ModItems.faith);
+		addItem(ModItems.uFOBlue);
+		addItem(ModItems.uFOGreen);
+		addItem(ModItems.uFORed);
+		addItem(ModItems.leaf);
 		
 		//Food
 		

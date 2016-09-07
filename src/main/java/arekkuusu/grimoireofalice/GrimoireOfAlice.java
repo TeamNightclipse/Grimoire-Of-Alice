@@ -8,7 +8,9 @@
  */
 package arekkuusu.grimoireofalice;
 
+import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 public class GrimoireOfAlice {
 
 	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab();
+	public static boolean tohouInstalled; 
 	
 	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
@@ -34,12 +37,20 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		tohouInstalled = Loader.isModLoaded("KatrixTouhouMod");
 		proxy.preInit(event);
+		LogHelper.info("Answer to the ultimate question of life the universe and everything");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		if(tohouInstalled){
+			LogHelper.info("is 42");
+		} else {
+			LogHelper.info("is her");
+		}
+		LogHelper.info("Adding Chest Gen");
 	}
 
 	@EventHandler

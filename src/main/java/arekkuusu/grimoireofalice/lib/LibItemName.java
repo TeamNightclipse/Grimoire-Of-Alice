@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.lib;
 public class LibItemName {
 
 	//Item
-	public static final String ENCHANTEDBOOK = "enchantedbook";
 	public static final String GRIMOIREBOOK = "grimoirebook";
 	public static final String VOLATILESTRING = "volatilestring";
 	public static final String SOLDIFIEDPAPER = "soldifiedpaper";
@@ -53,7 +52,7 @@ public class LibItemName {
 	public static final String SWORDOFKUSANAGI = "swordofkusanagi";
 	
 	//THItems
-	public static final String FULLPOWER = "fullpowerItem";
+	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";
 	public static final String CHERRY = "cherryitem";
 	public static final String TIMEORB = "timeorb";
@@ -65,6 +64,7 @@ public class LibItemName {
 	public static final String IMPUREROCK = "impurerock";
 	public static final String EYE = "thirdeye";
 	public static final String POUCH = "spellcardpouch";
+	public static final String LEAF = "leafitem";
 	
 
 }

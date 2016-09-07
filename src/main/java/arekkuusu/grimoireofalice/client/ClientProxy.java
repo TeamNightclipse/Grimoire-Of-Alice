@@ -9,7 +9,9 @@
 package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.CommonProxy;
+import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -18,6 +20,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class ClientProxy extends CommonProxy{
 
@@ -30,6 +33,7 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
+		NetworkRegistry.INSTANCE.registerGuiHandler(GrimoireOfAlice.instance, new GuiHandler());
 	}
 	
 	@Override
@@ -51,6 +55,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.monkeyMask, 0);
 		registerItem(ModItems.raidenMask, 0);
 		registerItem(ModItems.ubaMask, 0);
+		
 		//Items
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -59,6 +64,23 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.timeOrb, 0);
 		registerItem(ModItems.uFOs, 0);
 		registerItem(ModItems.mask, 0);
+		registerItem(ModItems.grimoireBook, 0);
+		registerItem(ModItems.youkaiBook, 0);
+		registerItem(ModItems.volatileString, 0);
+		registerItem(ModItems.soldifiedPaper, 0);
+		registerItem(ModItems.impureRock, 0);
+		registerItem(ModItems.fullPower, 0);
+		registerItem(ModItems.star, 0);
+		registerItem(ModItems.cherry, 0);
+		registerItem(ModItems.faith, 0);
+		registerItem(ModItems.uFOBlue, 0);
+		registerItem(ModItems.uFOGreen, 0);
+		registerItem(ModItems.uFORed, 0);
+		registerItem(ModItems.leaf, 0);
+		
+		//Food
+		
+		
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);
 		registerItem(ModItems.crestOfYggdrasill, 0);
@@ -70,6 +92,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.nueTrident, 0);
 		registerItem(ModItems.swordOfKusanagi, 0);
 		registerItem(ModItems.ellyScythe, 0);
+		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
 		registerBlock(ModBlocks.holyKeyStone, 0);

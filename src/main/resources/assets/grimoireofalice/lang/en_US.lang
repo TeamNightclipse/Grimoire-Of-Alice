@@ -54,14 +54,18 @@ tile.holystone.name=Holy Stone
 tile.shroom.name=Shroom
 tile.kyoumarubotan.name=Kyoumarubotan
 
-item.fullPower.name=Full Power Item
-item.star.name=Star Item
-item.cherry.name=Cherry Item
+item.fullpoweritem.name=Full Power Item
+item.staritem.name=Star Item
+item.cherryitem.name=Cherry Item
 item.timeorb.name=Time Orb
-item.faith.name=Faith Item
+item.faithitem.name=Faith Item
 item.ufos.name=UFOs
+item.ufored.name=UFOs
+item.ufoblue.name=UFOs
+item.ufogreen.name=UFOs
 item.thirdeye.name=3rdEye
-item.spellCardPouch.name=Spell Card Pouch
+item.spellcardpouch.name=Spell Card Pouch
+item.leafitem.name=Leaf
 
 itemGroup.grimoireofalice=Grimoire of Alice
 
