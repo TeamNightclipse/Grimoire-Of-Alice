@@ -8,6 +8,10 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
+import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
+import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
+import arekkuusu.grimoireofalice.item.food.ItemkappasNostrum;
 import arekkuusu.grimoireofalice.item.masks.ItemFoxMask;
 import arekkuusu.grimoireofalice.item.masks.ItemFukuNoKamiMask;
 import arekkuusu.grimoireofalice.item.masks.ItemHannyaMask;
@@ -19,6 +23,7 @@ import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
 import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -102,6 +107,7 @@ public final class ModItems {
 		volatileString = new ItemMod(LibItemName.VOLATILESTRING);
 		soldifiedPaper = new ItemMod(LibItemName.SOLDIFIEDPAPER);
 		impureRock = new ItemMod(LibItemName.IMPUREROCK);
+		ibarakiBoxEmpty = new ItemIbarakiBoxEmpty(Blocks.AIR);
 		fullPower = new ItemMod(LibItemName.FULLPOWER);
 		star = new ItemMod(LibItemName.STAR);
 		cherry = new ItemMod(LibItemName.CHERRY);
@@ -112,6 +118,10 @@ public final class ModItems {
 		leaf = new ItemLeaf();
 		
 		//Food
+		shroomSlice = new ItemShroomSlice();
+		grilledLamprey = new ItemGrilledLamprey();
+		ibarakiBoxFilled = new ItemIbarakiBoxFilled();
+		kappasNostrum = new ItemkappasNostrum();
 		
 		//Armor
 		mapleLeafShield = new ItemMapleLeafShield();

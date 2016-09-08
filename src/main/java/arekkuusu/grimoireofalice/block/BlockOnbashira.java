@@ -66,7 +66,7 @@ public class BlockOnbashira extends BlockMod {
 	}
 	
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 }
