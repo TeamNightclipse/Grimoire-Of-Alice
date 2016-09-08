@@ -50,7 +50,6 @@ public class GrimoireOfAlice {
 		} else {
 			LogHelper.info("is her");
 		}
-		LogHelper.info("Adding Chest Gen");
 	}
 
 	@EventHandler

@@ -9,10 +9,11 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+//TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
 	
 	private int timeLive = 5;
-	private int ticksInAir;
+	private int ticksInAir; //TODO: Use and AT to get access to this field
 
 	public EntityLeaf(World worldIn) {
         super(worldIn);
@@ -56,7 +57,7 @@ public class EntityLeaf extends EntityThrowable {
             this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
         }
 
-        if (worldObj.isRemote) {
+        if(!worldObj.isRemote) {
             this.setDead();
         }
     }
@@ -72,9 +73,9 @@ public class EntityLeaf extends EntityThrowable {
 	*/
 	private void doEffects(){
 		for (int j = 0; j < 8; ++j) {
-		this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0, 0, 0);
+			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0, 0, 0);
 		}
-		if (worldObj.isRemote){
+		if(!worldObj.isRemote){
 			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
 			//TODO: Spawn Entity always heading up with 45 degrees in the direction of this Entity.
 			entityAnimalShot.setThrowableHeading(45, this.rotationYaw, 0.0F, 0.3F, 5.0F);

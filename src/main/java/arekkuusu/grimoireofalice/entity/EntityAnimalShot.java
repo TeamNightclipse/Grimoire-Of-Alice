@@ -6,10 +6,10 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+//TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityAnimalShot extends EntityThrowable {
-	
-	private int timeLive = 50;
-	private int ticksInAir;
+
+	private int ticksInAir; //TODO: Use and AT to get access to this field
 
 	public EntityAnimalShot(World worldIn) {
         super(worldIn);
@@ -27,9 +27,9 @@ public class EntityAnimalShot extends EntityThrowable {
 	public void onUpdate() {
 		super.onUpdate();
 		doEffects();
-		++this.ticksInAir;
-		if(this.ticksInAir >= timeLive){
-			if (worldObj.isRemote) {
+		++ticksInAir;
+		if(ticksInAir >= 50){
+			if(!worldObj.isRemote) {
 	            this.setDead();
 	        }
 		}
@@ -40,7 +40,7 @@ public class EntityAnimalShot extends EntityThrowable {
 		for (int j = 0; j < 8; ++j) {
             this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
         }
-		if (worldObj.isRemote) {
+		if(!worldObj.isRemote) {
             this.setDead();
         }
 	}

@@ -9,8 +9,9 @@
 package arekkuusu.grimoireofalice.handler;
 
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;
-import arekkuusu.grimoireofalice.helper.LogHelper;
+import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
@@ -28,7 +29,11 @@ public class GuiHandler implements IGuiHandler{
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 			case 0:
-				return new GuiScreenBookYoukai(player, player.getHeldItemMainhand(), true);
+				ItemStack heldItem = player.getHeldItemMainhand();
+				if(heldItem == null || heldItem.getItem() != ModItems.youkaiBook) heldItem = player.getHeldItemOffhand();
+
+				if(heldItem == null || heldItem.getItem() != ModItems.youkaiBook) return null;
+				else return new GuiScreenBookYoukai(player, heldItem, true);
 			default:
 				return null;
 		}
