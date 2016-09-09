@@ -8,8 +8,12 @@
  */
 package arekkuusu.grimoireofalice;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

@@ -19,6 +19,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
@@ -51,15 +52,15 @@ public class ItemPrimordialShield extends ItemModShield {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean isSelected) {
 		if(stack.isItemDamaged()){
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getHeldItemMainhand() == stack && !isWorthy(player)) {
-				if(!world.isRemote && p_77663_5_) {
-					player.fallDistance = 2.0F;
+			if(isSelected && !isWorthy(player)) {
+				if(!world.isRemote) {
+					player.attackEntityFrom(DamageSource.generic, 0.5F);
 				}
 
 				player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 25, 5));
@@ -68,6 +69,7 @@ public class ItemPrimordialShield extends ItemModShield {
 		}
 	}
 
+	//FIXME: Buggy
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(isWorthy(playerIn)) {
@@ -75,7 +77,7 @@ public class ItemPrimordialShield extends ItemModShield {
 				playerIn.capabilities.disableDamage = true;
 			}
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override

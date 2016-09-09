@@ -48,9 +48,10 @@ public class Item3rdEye extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
 		if(player.isSneaking() && stack.getItemDamage() == 0) {
+			//FIXME: Buggy with creative players
 			stack.setItemDamage(300);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
+		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
 	
 	@Override

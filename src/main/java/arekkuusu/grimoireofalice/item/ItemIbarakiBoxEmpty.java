@@ -39,7 +39,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 		setMaxStackSize(1);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -47,65 +47,60 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 		list.add(TextFormatting.GOLD + "one who drinks from will temporarily become like an Oni's");
 		list.add(TextFormatting.ITALIC + "Use like bucket");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		 RayTraceResult raytraceresult = this.rayTrace(worldIn, playerIn, true);
-	     ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
-	     if (ret != null) return ret;
+		RayTraceResult raytraceresult = this.rayTrace(worldIn, playerIn, true);
+		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
+		if(ret != null) return ret;
 
 		//noinspection ConstantConditions
-		if (raytraceresult == null) {
-	    	 return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
-	     }
-	     else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
-	         return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
-	     }
-	     else {
-	         BlockPos blockpos = raytraceresult.getBlockPos();
+		if(raytraceresult == null) {
+			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		}
+		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		}
+		else {
+			BlockPos blockpos = raytraceresult.getBlockPos();
 
-	         if (!worldIn.isBlockModifiable(playerIn, blockpos)) {
-	             return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
-	         }
-	         else {
-	             if (!playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
-	                 return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
-	             }
-	             else { //No needed to try place content as its always empty
-	                 IBlockState iblockstate = worldIn.getBlockState(blockpos);
-	                 Material material = iblockstate.getMaterial();
-	                 //Modified so it accepts both Water and Lava, as both return the same Item
-	                 if ((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
-	                     worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
-						 StatBase stateBase = StatList.getObjectUseStats(this);
-						 if(stateBase != null) {
-						 	playerIn.addStat(stateBase);
-						 }
-	                     playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-	                     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.ibarakiBoxFilled));
-	                 }
-	                 else {
-	                     return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
-	                 }
-	             }
-	         }
-	     }
-    }
-	
+			if(!worldIn.isBlockModifiable(playerIn, blockpos) || !playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
+				return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+			}
+			else { //No needed to try place content as its always empty
+				IBlockState iblockstate = worldIn.getBlockState(blockpos);
+				Material material = iblockstate.getMaterial();
+				//Modified so it accepts both Water and Lava, as both return the same Item
+				if((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
+					worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
+					StatBase stateBase = StatList.getObjectUseStats(this);
+					if(stateBase != null) {
+						playerIn.addStat(stateBase);
+					}
+					playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
+					return new ActionResult<>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.ibarakiBoxFilled));
+				}
+				else {
+					return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+				}
+			}
+		}
+	}
+
 	private ItemStack fillBucket(ItemStack emptyBuckets, EntityPlayer player, Item fullBucket) {
-        if (player.capabilities.isCreativeMode) {
-            return emptyBuckets;
-        }
-        else if (--emptyBuckets.stackSize <= 0) {
-            return new ItemStack(fullBucket);
-        }
-        else {
-            if (!player.inventory.addItemStackToInventory(new ItemStack(fullBucket))) {
-                player.dropItem(new ItemStack(fullBucket), false);
-            }
+		if(player.capabilities.isCreativeMode) {
+			return emptyBuckets;
+		}
+		else if(--emptyBuckets.stackSize <= 0) {
+			return new ItemStack(fullBucket);
+		}
+		else {
+			if(!player.inventory.addItemStackToInventory(new ItemStack(fullBucket))) {
+				player.dropItem(new ItemStack(fullBucket), false);
+			}
 
-            return emptyBuckets;
-        }
-    }
-	
+			return emptyBuckets;
+		}
+	}
+
 }

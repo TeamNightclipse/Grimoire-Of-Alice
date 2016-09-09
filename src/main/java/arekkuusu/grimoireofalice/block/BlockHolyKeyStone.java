@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -49,10 +50,15 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	@Override
-	public boolean getTickRandomly() {
-        return true;
-    }
-	
+	public int tickRate(World worldIn) {
+		return worldIn.isRaining() ? 40 : 100;
+	}
+
+	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
+	}
+
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		Optional<EntityPlayer> optPlayer = getPlayerInRange(world, pos);
@@ -60,7 +66,9 @@ public class BlockHolyKeyStone extends BlockMod {
 			EntityPlayer player = optPlayer.get();
 			addPlayerEffect(player);
 			ifNear(world, pos, rand);
+			world.scheduleUpdate(pos, this, 10); //Update more frequently if a player is around
 		}
+		else world.scheduleUpdate(pos, this, tickRate(world));
 	}
 
 	private void addPlayerEffect(EntityPlayer player) {

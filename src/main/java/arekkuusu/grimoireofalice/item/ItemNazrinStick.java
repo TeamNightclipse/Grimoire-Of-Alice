@@ -8,8 +8,11 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
@@ -32,6 +35,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemNazrinStick extends ItemModSword {
 
@@ -52,7 +56,7 @@ public class ItemNazrinStick extends ItemModSword {
 		list.add(TextFormatting.ITALIC + "the Little Dowser General");
 		if(GuiScreen.isShiftKeyDown()){
 			list.add(TextFormatting.ITALIC + "Use with Nazrin Sticks in both Hands");
-			if(!isHoldingItemsBothHands(player, stack)){
+			if(!isHoldingItemsBothHands(player)){
 				list.add(TextFormatting.DARK_RED + "Inactive");
 			}
 			else {
@@ -68,16 +72,27 @@ public class ItemNazrinStick extends ItemModSword {
 	
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		if(facing == EnumFacing.UP && !world.isRemote && isHoldingItemsBothHands(player, stack)){
-			Block block_layer[] = new Block[10];
-			for(int i = 1; i < block_layer.length; i++){
-				block_layer[i - 1] = world.getBlockState(pos.down(i)).getBlock();
+		if(facing == EnumFacing.UP && !world.isRemote && isHoldingItemsBothHands(player)){
+			List<Block> blockLayer = new ArrayList<>(10);
+			for(int i = 1; i < 10; i++){
+				Block block = world.getBlockState(pos.down(i)).getBlock();
+				OreDictionary.getOreIDs(new ItemStack(block));
+				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+						.mapToObj(OreDictionary::getOreName)
+						.anyMatch(s -> s.startsWith("ore"));
+
+				if(isOre) {
+					blockLayer.add(block);
+				}
 			}
 			player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
-			for(Block block : block_layer){
-				if(block instanceof BlockOre){
+			if(!blockLayer.isEmpty()) {
+				for(Block block : blockLayer){
 					player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You have found " + block.getLocalizedName() + "!"));
 				}
+			}
+			else {
+				player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You didn't find anything."));
 			}
 			player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
 			stack.damageItem(1, player);
@@ -87,19 +102,19 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(isHoldingItemsBothHands(playerIn, itemStackIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL)) || playerIn.experienceLevel > 30)) {
+		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL)) || playerIn.experienceLevel > 30)) {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 75, 0));
 			playerIn.setActiveHand(EnumHand.MAIN_HAND);
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(player.experienceLevel > 30) {
+			if(player.experienceLevel > 30 || !player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
 			}
 			else {
@@ -116,7 +131,7 @@ public class ItemNazrinStick extends ItemModSword {
 		}
 	}
 	
-	private boolean isHoldingItemsBothHands(EntityPlayer player, ItemStack stack) {
+	private boolean isHoldingItemsBothHands(EntityPlayer player) {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
 		return main != null && off != null && main.getItem() == off.getItem();

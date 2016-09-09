@@ -23,6 +23,7 @@ public class BlockPaper extends BlockModPillar {
 		setResistance(5.0F);
 	}
 
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

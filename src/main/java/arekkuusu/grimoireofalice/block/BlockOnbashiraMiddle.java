@@ -20,10 +20,12 @@ public class BlockOnbashiraMiddle extends BlockMod {
 		setHardness(-1F);
 	}
 	
+	@SuppressWarnings("deprecation") //Internal
 	public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.INVISIBLE;
     }
 	
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

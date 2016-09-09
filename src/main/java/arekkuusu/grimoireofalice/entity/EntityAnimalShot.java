@@ -38,7 +38,8 @@ public class EntityAnimalShot extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		for (int j = 0; j < 8; ++j) {
-            this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+			//FIXME: Barely visible
+            this.worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.posX, this.posY, this.posZ, 0.0D, 0.5D, 0.0D);
         }
 		if(!worldObj.isRemote) {
             this.setDead();

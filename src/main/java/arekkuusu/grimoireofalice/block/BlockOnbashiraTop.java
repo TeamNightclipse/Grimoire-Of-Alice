@@ -33,6 +33,7 @@ public class BlockOnbashiraTop extends BlockMod{
 		setHardness(-1F);
 	}
 	
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return BOTTOM;
@@ -79,11 +80,13 @@ public class BlockOnbashiraTop extends BlockMod{
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

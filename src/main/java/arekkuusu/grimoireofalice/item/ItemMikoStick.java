@@ -45,7 +45,7 @@ public class ItemMikoStick extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.experienceLevel < 30) {
+		if(playerIn.experienceLevel < 30 && !playerIn.capabilities.isCreativeMode) {
 			playerIn.setFire(120);
 		}
 		else {
@@ -53,7 +53,7 @@ public class ItemMikoStick extends ItemModSword {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 		}
 		//.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override

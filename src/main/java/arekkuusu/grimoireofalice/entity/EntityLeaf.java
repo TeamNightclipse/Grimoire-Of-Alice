@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.entity;
 
+import arekkuusu.grimoireofalice.helper.LogHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -43,23 +44,23 @@ public class EntityLeaf extends EntityThrowable {
 	
 	@Override
 	protected void onImpact(RayTraceResult result) {
-        if (result.entityHit != null) {
-            int i = 0;
 
-            if (result.entityHit instanceof EntityPlayer) {
-                i = 3;
-            }
+		for (int j = 0; j < 8; ++j) {
+			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+		}
 
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)i);
-        }
+		if(!worldObj.isRemote) {
+			if (result.entityHit != null) {
+				float i = 5F;
 
-        for (int j = 0; j < 8; ++j) {
-            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-        }
+				if (result.entityHit instanceof EntityPlayer) {
+					i = 3F;
+				}
 
-        if(!worldObj.isRemote) {
-            this.setDead();
-        }
+				result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), i);
+			}
+			this.setDead();
+		}
     }
 	
 	@Override
@@ -77,8 +78,9 @@ public class EntityLeaf extends EntityThrowable {
 		}
 		if(!worldObj.isRemote){
 			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
-			Vec3d vec = getLookVec().rotatePitch(45);
-			entityAnimalShot.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 5.0F);
+			//FIXME: Only works for two facing directions
+			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotateYaw(45F).rotatePitch(45F); //These needs to be negative for some reason
+			entityAnimalShot.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
 			this.worldObj.spawnEntityInWorld(entityAnimalShot);
 			this.setDead();
 		}

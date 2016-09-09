@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -35,7 +36,7 @@ public class ItemLeaf extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 		
 	/*
@@ -49,15 +50,18 @@ public class ItemLeaf extends ItemMod {
             --stack.stackSize;
         }
 
-        worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        if (worldIn.isRemote) {
+        if (!worldIn.isRemote) {
         	EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
         	entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
             worldIn.spawnEntityInWorld(entityLeaf);
         }
 
-        playerIn.addStat(StatList.getObjectUseStats(this));
+		StatBase statBase = StatList.getObjectUseStats(this);
+		if(statBase != null) {
+			playerIn.addStat(statBase);
+		}
 	}
 	
 	@Override

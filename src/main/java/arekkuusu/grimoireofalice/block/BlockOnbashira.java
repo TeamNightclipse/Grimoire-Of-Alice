@@ -71,11 +71,13 @@ public class BlockOnbashira extends BlockMod {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

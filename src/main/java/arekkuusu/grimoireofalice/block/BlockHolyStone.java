@@ -26,9 +26,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -59,15 +57,27 @@ public class BlockHolyStone extends BlockMod {
 		list.add(TextFormatting.GOLD + "Magical stone with its own weak gravity field");
 		list.add(TextFormatting.ITALIC + "Accepts gifts as items");
 	}
-	
+
+	@Override
+	public int tickRate(World worldIn) {
+		return worldIn.isRaining() ? 40 : 100;
+	}
+
+	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
+	}
+
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		Optional<EntityPlayer> optPlayer = getPlayerInRange(world, pos);
 		if(optPlayer.isPresent()) {
 			EntityPlayer player = optPlayer.get();
 			addPlayerEffect(player);
-			ifNear(world, pos, rand);
+			ifNear(world, pos);
+			world.scheduleUpdate(pos, this, 10); //Update more frequently if a player is around
 		}
+		else world.scheduleUpdate(pos, this, tickRate(world));
 	}
 	
 	protected void addPlayerEffect(EntityPlayer player) {
@@ -75,7 +85,7 @@ public class BlockHolyStone extends BlockMod {
 		player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 50, 1));
 	}
 
-	protected void ifNear(World world, BlockPos pos, Random rand) {
+	protected void ifNear(World world, BlockPos pos) {
 		if(world.isRemote) {
 			double yus1 = pos.getX() + world.rand.nextFloat();
 			double yus3 = pos.getY() + world.rand.nextFloat();
@@ -131,11 +141,13 @@ public class BlockHolyStone extends BlockMod {
 		return Optional.empty();
 	}
 	
+	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
         return false;
@@ -147,6 +159,7 @@ public class BlockHolyStone extends BlockMod {
         return BlockRenderLayer.CUTOUT;
     }
 	
+	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return SMALL;

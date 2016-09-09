@@ -17,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,6 +27,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class ItemUFOs extends ItemMod {
 
@@ -47,18 +50,18 @@ public class ItemUFOs extends ItemMod {
 	}
 	
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean yus) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean selected) {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getHeldItemMainhand() == stack) {
+			if(selected) {
 				itemsInRange(world, player, 10);
 			}
 		}
 	}
 	
 	private void itemsInRange(World world, EntityPlayer player, double bdouble) {
-		//TODO: Expand instead of creating a new AABB
-		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(player.posX - bdouble, player.posY - bdouble, player.posZ - bdouble, player.posX + bdouble, player.posY + bdouble, player.posZ + bdouble));
+		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(bdouble));
+		IItemHandler inventory = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 		for(EntityItem item : aList) {
 			if(!stackHasRoom(item.getEntityItem(), player)) {

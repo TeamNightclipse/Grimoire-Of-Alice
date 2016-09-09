@@ -73,11 +73,13 @@ public class ItemLaevatein extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.experienceLevel > 30) {
+		if(playerIn.capabilities.isCreativeMode || playerIn.experienceLevel > 30) {
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
-					worldIn.playSound(playerIn, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
+
+					//For some reason the player passed in here is not the "client" player
+					worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
 							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 					Vec3d look = playerIn.getLookVec();
 					Vec3d position = new Vec3d(playerIn.posX, playerIn.posY, playerIn.posZ);
@@ -94,12 +96,12 @@ public class ItemLaevatein extends ItemModSword {
 			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
 					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		BlockPos block = pos.subtract(facing.getDirectionVec());
+		BlockPos block = pos.offset(facing);
 
 		if(!player.canPlayerEdit(block, facing, stack)) {
 			return EnumActionResult.PASS;

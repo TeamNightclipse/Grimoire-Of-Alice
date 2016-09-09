@@ -37,7 +37,7 @@ public class ItemSyringe extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Eirin's Syringe");
 		list.add(TextFormatting.ITALIC + "\"Dont worry, it just hurts a lot\"");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (!worldIn.isRemote) { // Are potions supposed to be Remote or not?
@@ -47,7 +47,7 @@ public class ItemSyringe extends ItemModSword {
 			}
 		}
 		playerIn.setActiveHand(hand);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 	
 	@Override
