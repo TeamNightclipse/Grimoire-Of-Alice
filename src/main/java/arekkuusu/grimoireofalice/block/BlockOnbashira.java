@@ -19,7 +19,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -62,7 +61,7 @@ public class BlockOnbashira extends BlockMod {
 		worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 2.0F, false);
 
 		for(int i = 1; i < 4; i++) {
-			worldIn.setBlockToAir(new BlockPos(pos.getX(), pos.getY() + i, pos.getZ()));
+			worldIn.setBlockToAir(pos.up(i));
 			worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + i, pos.getZ() + 0.5, 2.0F, false);
 		}
 	}
@@ -71,7 +70,7 @@ public class BlockOnbashira extends BlockMod {
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;

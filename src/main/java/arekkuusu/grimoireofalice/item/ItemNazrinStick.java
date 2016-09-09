@@ -20,7 +20,6 @@ import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
@@ -117,19 +116,10 @@ public class ItemNazrinStick extends ItemModSword {
 		}
 	}
 	
-	private boolean isHoldingItemsBothHands(EntityPlayer player, ItemStack stack){
-		Item main;
-		Item off;
-		try{
-			main = player.getHeldItem(EnumHand.OFF_HAND).getItem();
-			off = player.getHeldItem(EnumHand.MAIN_HAND).getItem();
-		} catch(NullPointerException e){
-			return false;
-		}
-		if(main instanceof ItemNazrinStick && off instanceof ItemNazrinStick){
-			return true;
-		}
-		return false;
+	private boolean isHoldingItemsBothHands(EntityPlayer player, ItemStack stack) {
+		ItemStack main = player.getHeldItemMainhand();
+		ItemStack off = player.getHeldItemOffhand();
+		return main != null && off != null && main.getItem() == off.getItem();
 	}
 	
 	@Override

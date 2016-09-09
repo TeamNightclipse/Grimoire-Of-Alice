@@ -23,7 +23,6 @@ import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
 import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -108,7 +107,7 @@ public final class ModItems {
 		volatileString = new ItemMod(LibItemName.VOLATILESTRING);
 		soldifiedPaper = new ItemMod(LibItemName.SOLDIFIEDPAPER);
 		impureRock = new ItemMod(LibItemName.IMPUREROCK);
-		ibarakiBoxEmpty = new ItemIbarakiBoxEmpty(Blocks.AIR);
+		ibarakiBoxEmpty = new ItemIbarakiBoxEmpty();
 		fullPower = new ItemMod(LibItemName.FULLPOWER);
 		star = new ItemMod(LibItemName.STAR);
 		cherry = new ItemMod(LibItemName.CHERRY);

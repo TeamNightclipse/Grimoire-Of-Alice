@@ -12,42 +12,34 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemIbarakiBoxEmpty extends ItemMod {
 
-	private Block isFull;
-	
-	public ItemIbarakiBoxEmpty(Block aBlock) {
+	public ItemIbarakiBoxEmpty() {
 		super(LibItemName.IBARAKIBOXEMPTY);
-		isFull = aBlock;
 		setMaxStackSize(1);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -62,34 +54,38 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 	     ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
 	     if (ret != null) return ret;
 
-	     if (raytraceresult == null) {
-	    	 return new ActionResult(EnumActionResult.PASS, itemStackIn);
+		//noinspection ConstantConditions
+		if (raytraceresult == null) {
+	    	 return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	     }
 	     else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
-	         return new ActionResult(EnumActionResult.PASS, itemStackIn);
+	         return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStackIn);
 	     }
 	     else {
 	         BlockPos blockpos = raytraceresult.getBlockPos();
 
 	         if (!worldIn.isBlockModifiable(playerIn, blockpos)) {
-	             return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+	             return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 	         }
 	         else {
 	             if (!playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
-	                 return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+	                 return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 	             }
 	             else { //No needed to try place content as its always empty
 	                 IBlockState iblockstate = worldIn.getBlockState(blockpos);
 	                 Material material = iblockstate.getMaterial();
 	                 //Modified so it accepts both Water and Lava, as both return the same Item
-	                 if ((material == Material.WATER || material == Material.LAVA) && ((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() == 0) {
+	                 if ((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
 	                     worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
-	                     playerIn.addStat(StatList.getObjectUseStats(this));
+						 StatBase stateBase = StatList.getObjectUseStats(this);
+						 if(stateBase != null) {
+						 	playerIn.addStat(stateBase);
+						 }
 	                     playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-	                     return new ActionResult(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.ibarakiBoxFilled));
+	                     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.ibarakiBoxFilled));
 	                 }
 	                 else {
-	                     return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+	                     return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
 	                 }
 	             }
 	         }
