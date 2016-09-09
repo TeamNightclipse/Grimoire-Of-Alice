@@ -10,12 +10,12 @@ package arekkuusu.grimoireofalice.block;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
-import arekkuusu.grimoireofalice.tile.TileEntityHolyStone;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -31,6 +31,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -58,7 +59,40 @@ public class BlockHolyStone extends BlockMod {
 		list.add(TextFormatting.GOLD + "Magical stone with its own weak gravity field");
 		list.add(TextFormatting.ITALIC + "Accepts gifts as items");
 	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		Optional<EntityPlayer> optPlayer = getPlayerInRange(world, pos);
+		if(optPlayer.isPresent()) {
+			EntityPlayer player = optPlayer.get();
+			addPlayerEffect(player);
+			ifNear(world, pos, rand);
+		}
+	}
+	
+	protected void addPlayerEffect(EntityPlayer player) {
+		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 50, 1));
+		player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 50, 1));
+	}
 
+	protected void ifNear(World world, BlockPos pos, Random rand) {
+		if(world.isRemote) {
+			double yus1 = pos.getX() + world.rand.nextFloat();
+			double yus3 = pos.getY() + world.rand.nextFloat();
+			double yus5 = pos.getZ() + world.rand.nextFloat();
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
+			world.spawnParticle(EnumParticleTypes.FLAME, yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
+		}
+	}
+
+	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
+		if(world.isRaining()) {
+			return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false));
+		}
+
+		return Optional.empty();
+	}
+	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(!world.isRemote && heldItem != null) {
@@ -117,14 +151,4 @@ public class BlockHolyStone extends BlockMod {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return SMALL;
 	}
-	
-	@Override
-	public boolean hasTileEntity(IBlockState state) {
-        return true;
-    }
-	
-	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityHolyStone();
-    }
 }

@@ -1,3 +1,6 @@
 {
-    "parent": "grimoireofalice:block/kyoumarubotan"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "grimoireofalice:blocks/kyoumarubotan"
+    }
 }

@@ -74,6 +74,11 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.leaf);
 		
 		//Food
+		addItem(ModItems.shroomSlice);
+		addItem(ModItems.grilledLamprey);
+		addItem(ModItems.ibarakiBoxEmpty);
+		addItem(ModItems.ibarakiBoxFilled);
+		addItem(ModItems.kappasNostrum);
 		
 		//Armor
 		addItem(ModItems.mapleLeafShield);
@@ -97,7 +102,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.nazrinStick);
 		addItem(ModItems.nueTrident);
 		addItem(ModItems.swordOfKusanagi);
-		addItem(ModItems.ellyScythe);		
+		addItem(ModItems.ellyScythe);
+		addItem(ModItems.syringe);
 		//Blocks
 		addBlock(ModBlocks.compactStone);
 		addBlock(ModBlocks.holyStone);

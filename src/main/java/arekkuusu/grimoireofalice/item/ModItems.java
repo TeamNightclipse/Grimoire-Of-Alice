@@ -78,6 +78,7 @@ public final class ModItems {
 		public static Item needle;
 		public static Item nueTrident;
 		public static Item swordOfKusanagi;
+		public static Item syringe;
 		
 		//PointItem
 		public static Item fullPower;
@@ -148,6 +149,7 @@ public final class ModItems {
 		nueTrident = new ItemNueTrident(WET_NOODLE);
 		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
 		ellyScythe = new ItemEllyScythe(WET_NOODLE);
+		syringe = new ItemSyringe(WET_NOODLE);
 		
 	}
 	

@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityLeaf;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,12 +14,22 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemLeaf extends ItemMod {
 
 	public ItemLeaf() {
 		super(LibItemName.LEAF);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "Mamisou's Leaf from Ten Desires");
+		list.add(TextFormatting.ITALIC + "Right click to shoot");
 	}
 	
 	@Override

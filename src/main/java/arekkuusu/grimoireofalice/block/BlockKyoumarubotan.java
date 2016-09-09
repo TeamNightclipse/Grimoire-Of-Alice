@@ -29,8 +29,6 @@ public class BlockKyoumarubotan extends BlockModBush {
 		setLightLevel(0.5F);
 		setHardness(0.5F);
 		setSoundType(SoundType.METAL);
-		//float f = 0.4F;
-		//setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
 	}
 	
 	@Override

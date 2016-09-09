@@ -81,6 +81,7 @@ public class ClientProxy extends CommonProxy{
 		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);
+		registerItem(ModItems.shroomSlice, 1);
 		registerItem(ModItems.grilledLamprey, 0);
 		registerItem(ModItems.ibarakiBoxFilled, 0);
 		registerItem(ModItems.kappasNostrum, 0);
@@ -96,6 +97,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.nueTrident, 0);
 		registerItem(ModItems.swordOfKusanagi, 0);
 		registerItem(ModItems.ellyScythe, 0);
+		registerItem(ModItems.syringe, 0);
 		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);

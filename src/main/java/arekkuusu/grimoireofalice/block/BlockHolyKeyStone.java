@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import arekkuusu.grimoireofalice.lib.LibBlockName;
-import arekkuusu.grimoireofalice.tile.TileEntityHolyKeyStone;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -23,18 +21,18 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import arekkuusu.grimoireofalice.lib.LibBlockName;
 
 public class BlockHolyKeyStone extends BlockMod {
-
+	
 	BlockHolyKeyStone() {
 		super(LibBlockName.HOLYKEY, Material.ROCK);
 		setHardness(2.0F);
@@ -51,16 +49,13 @@ public class BlockHolyKeyStone extends BlockMod {
 		list.add(TextFormatting.ITALIC + "Step on it to activate");
 	}
 
-	/*
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
-		float f = 0.125F;
-        return blockState.getBoundingBox(worldIn, new BlockPos(pos.getX() + 1, pos.getY() + 1 - f, pos.getX() + 1));
+	public boolean getTickRandomly() {
+        return true;
     }
-    */
-
+	
 	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+	public void randomTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		Optional<EntityPlayer> optPlayer = getPlayerInRange(world, pos);
 		if(optPlayer.isPresent()) {
 			EntityPlayer player = optPlayer.get();
@@ -135,14 +130,4 @@ public class BlockHolyKeyStone extends BlockMod {
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50, 2));
 		}
 	}
-	
-	@Override
-	public boolean hasTileEntity(IBlockState state) {
-        return true;
-    }
-	
-	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityHolyKeyStone();
-    }
 }

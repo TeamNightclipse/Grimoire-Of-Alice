@@ -50,6 +50,7 @@ public class LibItemName {
 	public static final String NEEDLE = "needle";
 	public static final String NUETRIDENT = "nuetrident";
 	public static final String SWORDOFKUSANAGI = "swordofkusanagi";
+	public static final String SYRINGE = "syringe";
 	
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
@@ -66,5 +67,4 @@ public class LibItemName {
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
 	
-
 }

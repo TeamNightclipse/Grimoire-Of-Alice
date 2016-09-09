@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
 	
-	private int timeLive = 5;
+	private int timeLive = 7;
 	private int ticksInAir; //TODO: Use and AT to get access to this field
 
 	public EntityLeaf(World worldIn) {
@@ -75,11 +75,11 @@ public class EntityLeaf extends EntityThrowable {
 		for (int j = 0; j < 8; ++j) {
 			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0, 0, 0);
 		}
-		if(!worldObj.isRemote){
-			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
-			//TODO: Spawn Entity always heading up with 45 degrees in the direction of this Entity.
-			entityAnimalShot.setThrowableHeading(45, this.rotationYaw, 0.0F, 0.3F, 5.0F);
-			this.worldObj.spawnEntityInWorld(entityAnimalShot);
+		EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
+		//TODO: Spawn Entity always heading up with 45 degrees in the direction of this Entity.
+		if(worldObj.isRemote){ //Looks like it does nothing if the !worldObj.isRemote
+		entityAnimalShot.setThrowableHeading(45, this.rotationYaw, 0.0F, 0.3F, 5.0F);
+		this.worldObj.spawnEntityInWorld(entityAnimalShot);
 			this.setDead();
 		}
 	}

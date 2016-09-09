@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.block;
 
+import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
@@ -15,11 +16,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockShroom extends BlockModBush {
 
@@ -29,8 +35,13 @@ public class BlockShroom extends BlockModBush {
 		setLightLevel(0.5F);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
-		//float f = 0.4F;
-		//setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "\"Mmmmm Shrooms\" ~ Marisa 2016");
+		list.add(TextFormatting.ITALIC + "Craft into tasty snack");
 	}
 
 	@Override

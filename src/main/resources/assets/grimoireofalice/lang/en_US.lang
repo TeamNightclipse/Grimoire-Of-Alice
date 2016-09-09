@@ -11,9 +11,9 @@ item.impurerock.name=Impure Mineral
 
 item.shroomslice.name=Shroom Slice
 item.grilledlamprey.name=Grilled Lamprey
-item.ibarakibox.name=Ibaraki Box
+item.ibarakiboxfilled.name=Ibaraki Box
 item.kappasnostrum.name=Kappas Nostrum
-item.ibarakibox.name=Ibaraki Box
+item.ibarakiboxempty.name=Ibaraki Box
 
 item.foxmask.name=Fox Mask
 item.raidenmask.name=Raiden Mask
@@ -32,13 +32,14 @@ item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
 item.laevatein.name=Laevatein
 item.nazrinstick.name=Nazrin's Stick
-item.ellyscythe.name=Elly's Scythe
+item.ellyscythe.name=Scythe of the Useless Gatekeeper
 item.mikostick.name=Toyosatomimi's Stick
 item.crestofyggdrasill.name=Crest Of Yggdrasill
 item.amenonuhoko.name=Amenonuhoko
 item.needle.name=Needle
 item.nuetrident.name=Nue Trident
 item.swordofkusanagi.name=Sword of Kusanagi
+item.syringe.name=Syringe
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper
