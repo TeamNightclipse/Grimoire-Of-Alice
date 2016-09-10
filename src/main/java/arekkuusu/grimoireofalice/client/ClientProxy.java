@@ -94,10 +94,24 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.mochiHammer, 0);
 		registerItem(ModItems.momijisScimitarSword, 0);
 		registerItem(ModItems.nazrinStick, 0);
+		registerItem(ModItems.nazrinStickB, 0);
 		registerItem(ModItems.nueTrident, 0);
 		registerItem(ModItems.swordOfKusanagi, 0);
 		registerItem(ModItems.ellyScythe, 0);
 		registerItem(ModItems.syringe, 0);
+		registerItem(ModItems.ichirinRing, 0);
+		registerItem(ModItems.kanakoOnbashira, 0);
+		registerItem(ModItems.lunasaViolin, 0);
+		registerItem(ModItems.lyricaPiano, 0);
+		registerItem(ModItems.merlinTrumpet, 0);
+		registerItem(ModItems.shichiSeiken, 0);
+		registerItem(ModItems.cattailPlant, 0);
+		registerItem(ModItems.popsicleStick, 0);
+		registerItem(ModItems.rumiaSword, 0);
+		registerItem(ModItems.sarielWand, 0);
+		registerItem(ModItems.shouLamp, 0);
+		registerItem(ModItems.watermelonBlade, 0);
+		registerItem(ModItems.watermelonSword, 0);
 		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);

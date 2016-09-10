@@ -39,8 +39,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemNazrinStick extends ItemModSword {
 
-	ItemNazrinStick(ToolMaterial material) {
-		super(material, LibItemName.NAZRINSTICK);
+	ItemNazrinStick(ToolMaterial material, String id) {
+		super(material, id);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class ItemNazrinStick extends ItemModSword {
 	}
 
 	/* In short, I made the Item only work when you
-	 * put the same Item in the OFF_HAND and MAIN_HAND.*/
+	 * put the two Nazrin Items in the OFF_HAND and MAIN_HAND.*/
 	
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
@@ -134,7 +134,7 @@ public class ItemNazrinStick extends ItemModSword {
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
-		return main != null && off != null && main.getItem() == off.getItem();
+		return main != null && off != null && (main.getItem() instanceof ItemNazrinStick) && (off.getItem() instanceof ItemNazrinStick) && main.getItem() != off.getItem();
 	}
 	
 	@Override

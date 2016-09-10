@@ -47,6 +47,10 @@ public final class ModItems {
 		public static Item hihiirokane;
 		public static Item ibarakiBoxEmpty;
 		public static Item impureRock;
+		public static Item lunasaViolin;
+		public static Item lyricaPiano;
+		public static Item merlinTrumpet;
+		public static Item shouLamp;
 		//Food
 		public static Item shroomSlice;
 		public static Item grilledLamprey;
@@ -70,6 +74,7 @@ public final class ModItems {
 		public static Item momijisScimitarSword;
 		public static Item laevatein;
 		public static Item nazrinStick;
+		public static Item nazrinStickB;
 		public static Item ellyScythe;
 		public static Item mikoStick;
 		public static Item crestOfYggdrasill;
@@ -78,6 +83,15 @@ public final class ModItems {
 		public static Item nueTrident;
 		public static Item swordOfKusanagi;
 		public static Item syringe;
+		public static Item ichirinRing;
+		public static Item kanakoOnbashira;
+		public static Item shichiSeiken;
+		public static Item cattailPlant;
+		public static Item popsicleStick;
+		public static Item rumiaSword;
+		public static Item sarielWand;
+		public static Item watermelonBlade;
+		public static Item watermelonSword;
 		
 		//PointItem
 		public static Item fullPower;
@@ -116,6 +130,10 @@ public final class ModItems {
 		uFOBlue = new ItemMod(LibItemName.UFOBLUE);
 		uFOGreen = new ItemMod(LibItemName.UFOGREEN);
 		leaf = new ItemLeaf();
+		lunasaViolin = new ItemViolin();
+		lyricaPiano = new ItemPiano();
+		merlinTrumpet = new ItemTrumpet();
+		shouLamp = new ItemShouLamp();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -141,14 +159,24 @@ public final class ModItems {
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);
 		crestOfYggdrasill = new ItemCrestOfYggdrasill(WET_NOODLE);
 		laevatein = new ItemLaevatein(WET_NOODLE);
-		mikoStick = new ItemMikoStick(WET_NOODLE);
+		mikoStick = new ItemMikoStick(NOT_A_MELEE_WEAPON);
 		mochiHammer = new ItemMochiHammer(GOLDYRON);
 		momijisScimitarSword = new ItemMomijisScimitarSword(GOLDYRON);
-		nazrinStick = new ItemNazrinStick(WET_NOODLE);
+		nazrinStick = new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRINSTICK);
+		nazrinStickB = new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRINSTICKB);
 		nueTrident = new ItemNueTrident(WET_NOODLE);
 		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
 		ellyScythe = new ItemEllyScythe(WET_NOODLE);
-		syringe = new ItemSyringe(WET_NOODLE);
+		syringe = new ItemSyringe(NOT_A_MELEE_WEAPON);
+		ichirinRing = new ItemIchirinRing(NOT_A_MELEE_WEAPON);
+		kanakoOnbashira = new ItemOnbashira(WET_NOODLE);
+		shichiSeiken = new ItemShichiSeiken(WET_NOODLE);
+		cattailPlant = new ItemCattailPlant(WET_NOODLE);
+		popsicleStick = new ItemPopsicleStick(WET_NOODLE);
+		rumiaSword = new ItemModSword(WET_NOODLE, LibItemName.RUMIASWORD);
+		sarielWand = new ItemSarielWand(WET_NOODLE);
+		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
+		watermelonSword = new ItemWatermelonSword(WET_NOODLE);
 		
 	}
 	

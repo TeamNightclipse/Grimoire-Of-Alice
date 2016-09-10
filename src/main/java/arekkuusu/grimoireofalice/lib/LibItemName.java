@@ -43,6 +43,7 @@ public class LibItemName {
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";
 	public static final String LAEVATEIN = "laevatein";
 	public static final String NAZRINSTICK = "nazrinstick";
+	public static final String NAZRINSTICKB = "nazrinstickb";
 	public static final String ELLYSCYTHE = "ellyscythe";
 	public static final String MIKOSTICK = "mikostick";
 	public static final String CRESTOFYGGDRASILL = "crestofyggdrasill";
@@ -51,6 +52,19 @@ public class LibItemName {
 	public static final String NUETRIDENT = "nuetrident";
 	public static final String SWORDOFKUSANAGI = "swordofkusanagi";
 	public static final String SYRINGE = "syringe";
+	public static final String ICHIRINRING = "ichirinring";
+	public static final String KANAKOONBASHIRA = "kanakoonbashira";
+	public static final String LUNASAVIOLIN = "lunasaviolin";
+	public static final String LYRICAPIANO = "lyricapiano";
+	public static final String MERLINTRUMPET = "merlintrumpet";
+	public static final String SHICHISEIKEN = "shichiseiken";
+	public static final String CATTAILPLANT = "cattailplant";
+	public static final String POPSICLESTICK = "popsiclestick";
+	public static final String RUMIASWORD = "rumiasword";
+	public static final String SARIELWAND = "sarielwand";
+	public static final String SHOUSLAMP = "shoulamp";
+	public static final String WATERMELONBLADE = "watermelonblade";
+	public static final String WATERMELONSWORD = "watermelonsword";
 	
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";

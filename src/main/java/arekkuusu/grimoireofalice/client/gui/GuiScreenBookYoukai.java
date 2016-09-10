@@ -132,10 +132,10 @@ public class GuiScreenBookYoukai extends GuiScreen {
 		Keyboard.enableRepeatEvents(false);
 	}
 
-	private void updateButtons() { //Commented these so I don't crash the game
-		//this.buttonNextPage.visible = !this.bookGettingSigned && (this.currPage < this.bookTotalPages - 1 || this.bookIsUnsigned);
-		//this.buttonPreviousPage.visible = !this.bookGettingSigned && this.currPage > 0;
-		//this.buttonDone.visible = !this.bookIsUnsigned || !this.bookGettingSigned;
+	private void updateButtons() {
+		this.buttonNextPage.visible = !this.bookGettingSigned && (this.currPage < this.bookTotalPages - 1 || this.bookIsUnsigned);
+		this.buttonPreviousPage.visible = !this.bookGettingSigned && this.currPage > 0;
+		this.buttonDone.visible = !this.bookIsUnsigned || !this.bookGettingSigned;
 
 		if(this.bookIsUnsigned) {
 			this.buttonSign.visible = !this.bookGettingSigned;

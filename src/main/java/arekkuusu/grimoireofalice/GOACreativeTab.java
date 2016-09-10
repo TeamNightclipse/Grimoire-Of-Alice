@@ -100,10 +100,24 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.mochiHammer);
 		addItem(ModItems.momijisScimitarSword);
 		addItem(ModItems.nazrinStick);
+		addItem(ModItems.nazrinStickB);
 		addItem(ModItems.nueTrident);
 		addItem(ModItems.swordOfKusanagi);
 		addItem(ModItems.ellyScythe);
 		addItem(ModItems.syringe);
+		addItem(ModItems.ichirinRing);
+		addItem(ModItems.kanakoOnbashira);
+		addItem(ModItems.lunasaViolin);
+		addItem(ModItems.lyricaPiano);
+		addItem(ModItems.merlinTrumpet);
+		addItem(ModItems.shichiSeiken);
+		addItem(ModItems.cattailPlant);
+		addItem(ModItems.popsicleStick);
+		addItem(ModItems.rumiaSword);
+		addItem(ModItems.sarielWand);
+		addItem(ModItems.watermelonBlade);
+		addItem(ModItems.watermelonSword);
+		
 		//Blocks
 		addBlock(ModBlocks.compactStone);
 		addBlock(ModBlocks.holyStone);

@@ -10,10 +10,9 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-
-
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -50,11 +49,15 @@ public class ItemEllyScythe extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "War ma fé, heman zo eun Anko drouk");
-		list.add(TextFormatting.ITALIC + "Oberour ar maro known as the grave");
-		list.add(TextFormatting.ITALIC + "yard watcher, they said that he");
-		list.add(TextFormatting.ITALIC + "protects the graveyard and the souls");
-		list.add(TextFormatting.ITALIC + "around it for some unknown reason and");
-		list.add(TextFormatting.ITALIC + "collects the lost souls on his land");
+		if(GuiScreen.isShiftKeyDown()){
+			list.add(TextFormatting.ITALIC + "Oberour ar maro known as the grave");
+			list.add(TextFormatting.ITALIC + "yard watcher, they said that he");
+			list.add(TextFormatting.ITALIC + "protects the graveyard and the souls");
+			list.add(TextFormatting.ITALIC + "around it for some unknown reason and");
+			list.add(TextFormatting.ITALIC + "collects the lost souls on his land");
+		} else {
+			list.add(TextFormatting.ITALIC + "Shift for details");
+		}
 	}
 
 	@Override

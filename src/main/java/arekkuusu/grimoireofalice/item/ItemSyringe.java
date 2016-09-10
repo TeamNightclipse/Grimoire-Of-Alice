@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
@@ -37,12 +38,13 @@ public class ItemSyringe extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Eirin's Syringe");
 		list.add(TextFormatting.ITALIC + "\"Dont worry, it just hurts a lot\"");
 	}
-
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (!worldIn.isRemote) { // Are potions supposed to be Remote or not?
 			Potion potion = getRandomPotion(playerIn.getRNG());
 			if(potion != null) {
+				playerIn.attackEntityFrom(DamageSource.generic, 3F);
 				playerIn.addPotionEffect(new PotionEffect(potion, 1200, 0));
 			}
 		}
