@@ -24,5 +24,13 @@
     },
     "textures": {
         "layer0": "grimoireofalice:items/merlintrumpet"
-    }
+    },
+    "overrides":  [
+        {
+            "predicate": {
+                "damaged": "1"
+            },
+            "model": "grimoireofalice:items/merlintrumpetused"
+        }
+    ]
 }

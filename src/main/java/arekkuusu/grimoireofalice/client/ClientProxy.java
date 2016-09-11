@@ -88,11 +88,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
 		
-		registerMesh(ModItems.thirdEye, ":3rdeye0", new Mesh3rdEye());
-		registerMesh(ModItems.lunasaViolin, ":lunasaviolinused", new MeshViolin());
-		registerMesh(ModItems.lyricaPiano, ":lyricapianoused", new MeshPiano());
-		registerMesh(ModItems.merlinTrumpet, ":merlintrumpetused", new MeshTrumpet());
-		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);
 		registerItem(ModItems.shroomSlice, 1);
@@ -146,10 +141,5 @@ public class ClientProxy extends CommonProxy{
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
-	}
-	
-	private void registerMesh(Item item, String names, ItemModMesh mesh){
-		ModelBakery.registerItemVariants(item, new ModelResourceLocation(item.getRegistryName(), "inventory"), new ModelResourceLocation(LibMod.MODID + names, "inventory"));
-		ModelLoader.setCustomMeshDefinition(item, mesh);
 	}
 }

@@ -2,5 +2,13 @@
     "parent": "item/generated",
     "textures": {
         "layer0": "grimoireofalice:items/3rdeye"
-    }
+    },
+    "overrides":  [
+        {
+            "predicate": {
+                "damaged": "1"
+            },
+            "model": "grimoireofalice:items/3rdeye0"
+        }
+    ]
 }
