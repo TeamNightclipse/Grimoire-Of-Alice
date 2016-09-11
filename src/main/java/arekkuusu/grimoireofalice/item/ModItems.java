@@ -51,6 +51,7 @@ public final class ModItems {
 		public static Item lyricaPiano;
 		public static Item merlinTrumpet;
 		public static Item shouLamp;
+		public static Item patchyBook;
 		//Food
 		public static Item shroomSlice;
 		public static Item grilledLamprey;
@@ -134,6 +135,7 @@ public final class ModItems {
 		lyricaPiano = new ItemPiano();
 		merlinTrumpet = new ItemTrumpet();
 		shouLamp = new ItemShouLamp();
+		patchyBook = new ItemPatchyBook();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -176,7 +178,7 @@ public final class ModItems {
 		rumiaSword = new ItemModSword(WET_NOODLE, LibItemName.RUMIASWORD);
 		sarielWand = new ItemSarielWand(WET_NOODLE);
 		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
-		watermelonSword = new ItemWatermelonSword(WET_NOODLE);
+		watermelonSword = new ItemWatermelonSword(GOLDYRON);
 		
 	}
 	

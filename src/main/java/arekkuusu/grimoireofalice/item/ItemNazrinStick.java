@@ -101,9 +101,13 @@ public class ItemNazrinStick extends ItemModSword {
 	}
 
 	@Override
+	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+		player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 0));
+    }
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL)) || playerIn.experienceLevel > 30)) {
-			playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 75, 0));
 			playerIn.setActiveHand(EnumHand.MAIN_HAND);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}

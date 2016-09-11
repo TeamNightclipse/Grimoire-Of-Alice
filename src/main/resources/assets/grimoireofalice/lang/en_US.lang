@@ -8,6 +8,11 @@ item.youkaibook.name=Youkai Book
 item.mask.name=Mask
 item.hihiirokane.name=Hihi'irokane
 item.impurerock.name=Impure Mineral
+item.patchybook.name=Patchy Book
+item.lunasaviolin.name=Lunasa's Violin
+item.lyricapiano.name=Lyrica's Piano
+item.merlintrumpet.name=Merlin's Trumpet
+item.shoulamp.name=Bishamonten's Pagoda
 
 item.shroomslice.name=Shroom Slice
 item.grilledlamprey.name=Grilled Lamprey
@@ -43,15 +48,11 @@ item.swordofkusanagi.name=Sword of Kusanagi
 item.syringe.name=Syringe
 item.ichirinring.name=Ichirin's Ring
 item.kanakoonbashira.name=Kanako's Onbashira
-item.lunasaviolin.name=Lunasa's Violin
-item.lyricapiano.name=Lyrica's Piano
-item.merlintrumpet.name=Merlin's Trumpet
 item.shichiseiken.name=Shi-chi Seiken
 item.cattailplant.name=Kappa's Cattail Plant
 item.popsiclestick.name=Popsicle Stick
 item.rumiasword.name=Rumias' sword
 item.sarielwand.name=Sariel's wand
-item.shoulamp.name=Shou's Lamp
 item.watermelonblade.name=Watermelon Blade
 item.watermelonsword.name=Watermelon Sword
 

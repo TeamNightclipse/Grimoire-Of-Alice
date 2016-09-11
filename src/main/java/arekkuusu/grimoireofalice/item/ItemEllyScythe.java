@@ -64,13 +64,13 @@ public class ItemEllyScythe extends ItemModSword {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		if(user instanceof EntityPlayer) {
 			if(target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 128, 0));
+				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 64, 0));
 			}
 			else {
-				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 128, 0));
+				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 64, 0));
 			}
-			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 128, 0));
-			user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 128, 3));
+			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 64, 0));
+			user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 64, 3));
 			stack.damageItem(1, user);
 		}
 		return true;

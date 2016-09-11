@@ -72,6 +72,11 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.uFOGreen);
 		addItem(ModItems.uFORed);
 		addItem(ModItems.leaf);
+		addItem(ModItems.lunasaViolin);
+		addItem(ModItems.lyricaPiano);
+		addItem(ModItems.merlinTrumpet);
+		addItem(ModItems.shouLamp);
+		addItem(ModItems.patchyBook);
 		
 		//Food
 		addItem(ModItems.shroomSlice);
@@ -107,9 +112,6 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.syringe);
 		addItem(ModItems.ichirinRing);
 		addItem(ModItems.kanakoOnbashira);
-		addItem(ModItems.lunasaViolin);
-		addItem(ModItems.lyricaPiano);
-		addItem(ModItems.merlinTrumpet);
 		addItem(ModItems.shichiSeiken);
 		addItem(ModItems.cattailPlant);
 		addItem(ModItems.popsicleStick);

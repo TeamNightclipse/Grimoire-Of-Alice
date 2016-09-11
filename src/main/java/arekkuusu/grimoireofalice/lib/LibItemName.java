@@ -19,6 +19,11 @@ public class LibItemName {
 	public static final String YOUKAIBOOK = "youkaibook";
 	public static final String MASK = "mask";
 	public static final String HIHIIROKANE = "hihiirokane";
+	public static final String LUNASAVIOLIN = "lunasaviolin";
+	public static final String LYRICAPIANO = "lyricapiano";
+	public static final String MERLINTRUMPET = "merlintrumpet";
+	public static final String SHOULAMP = "shoulamp";
+	public static final String PATCHYBOOK = "patchybook";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -54,18 +59,13 @@ public class LibItemName {
 	public static final String SYRINGE = "syringe";
 	public static final String ICHIRINRING = "ichirinring";
 	public static final String KANAKOONBASHIRA = "kanakoonbashira";
-	public static final String LUNASAVIOLIN = "lunasaviolin";
-	public static final String LYRICAPIANO = "lyricapiano";
-	public static final String MERLINTRUMPET = "merlintrumpet";
 	public static final String SHICHISEIKEN = "shichiseiken";
 	public static final String CATTAILPLANT = "cattailplant";
 	public static final String POPSICLESTICK = "popsiclestick";
 	public static final String RUMIASWORD = "rumiasword";
 	public static final String SARIELWAND = "sarielwand";
-	public static final String SHOUSLAMP = "shoulamp";
 	public static final String WATERMELONBLADE = "watermelonblade";
 	public static final String WATERMELONSWORD = "watermelonsword";
-	
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";

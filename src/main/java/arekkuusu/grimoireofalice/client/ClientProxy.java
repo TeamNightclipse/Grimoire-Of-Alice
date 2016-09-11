@@ -12,10 +12,18 @@ import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
+import arekkuusu.grimoireofalice.handler.textures.ItemModMesh;
+import arekkuusu.grimoireofalice.handler.textures.Mesh3rdEye;
+import arekkuusu.grimoireofalice.handler.textures.MeshPiano;
+import arekkuusu.grimoireofalice.handler.textures.MeshTrumpet;
+import arekkuusu.grimoireofalice.handler.textures.MeshViolin;
 import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -57,7 +65,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.ubaMask, 0);
 		
 		//Items
-		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.gloriousNipponSteel, 0);
 		registerItem(ModItems.hihiirokane, 0);
 		registerItem(ModItems.shimenawaRope, 0);
@@ -78,6 +85,13 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.uFOGreen, 0);
 		registerItem(ModItems.uFORed, 0);
 		registerItem(ModItems.leaf, 0);
+		registerItem(ModItems.shouLamp, 0);
+		registerItem(ModItems.patchyBook, 0);
+		
+		registerMesh(ModItems.thirdEye, ":3rdeye0", new Mesh3rdEye());
+		registerMesh(ModItems.lunasaViolin, ":lunasaviolinused", new MeshViolin());
+		registerMesh(ModItems.lyricaPiano, ":lyricapianoused", new MeshPiano());
+		registerMesh(ModItems.merlinTrumpet, ":merlintrumpetused", new MeshTrumpet());
 		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);
@@ -101,15 +115,11 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.syringe, 0);
 		registerItem(ModItems.ichirinRing, 0);
 		registerItem(ModItems.kanakoOnbashira, 0);
-		registerItem(ModItems.lunasaViolin, 0);
-		registerItem(ModItems.lyricaPiano, 0);
-		registerItem(ModItems.merlinTrumpet, 0);
 		registerItem(ModItems.shichiSeiken, 0);
 		registerItem(ModItems.cattailPlant, 0);
 		registerItem(ModItems.popsicleStick, 0);
 		registerItem(ModItems.rumiaSword, 0);
 		registerItem(ModItems.sarielWand, 0);
-		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.watermelonBlade, 0);
 		registerItem(ModItems.watermelonSword, 0);
 		
@@ -138,4 +148,8 @@ public class ClientProxy extends CommonProxy{
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 	
+	private void registerMesh(Item item, String names, ItemModMesh mesh){
+		ModelBakery.registerItemVariants(item, new ModelResourceLocation(item.getRegistryName(), "inventory"), new ModelResourceLocation(LibMod.MODID + names, "inventory"));
+		ModelLoader.setCustomMeshDefinition(item, mesh);
+	}
 }

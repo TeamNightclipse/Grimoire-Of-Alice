@@ -34,7 +34,7 @@ public class ModBlocks {
 	public static Block hyperconcentratedMagic;
 
 	public static void init() {
-		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK);
+		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK).setHardness(2.0F).setResistance(-1F);
 		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
 
 		holyKeyStone = new BlockHolyKeyStone();

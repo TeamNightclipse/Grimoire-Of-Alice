@@ -13,6 +13,7 @@ import java.util.UUID;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -57,10 +58,13 @@ public class ItemAmenonuhoko extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Heavenly jeweled spear");
-		list.add(TextFormatting.GRAY + "Created by Elder Gods");
-		list.add(TextFormatting.ITALIC + "Once used to raise the");
-		list.add(TextFormatting.ITALIC + "primordial land-mass,");
-		list.add(TextFormatting.ITALIC + "Onogoro-shima, from the sea");
+		if(GuiScreen.isShiftKeyDown()){
+			list.add(TextFormatting.ITALIC + "Once used to raise the");
+			list.add(TextFormatting.ITALIC + "primordial land-mass,");
+			list.add(TextFormatting.ITALIC + "Onogoro-shima, from the sea");
+		} else {
+			list.add(TextFormatting.ITALIC + "Shift for details");
+		}
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
 			if(ownerUuid != null) {

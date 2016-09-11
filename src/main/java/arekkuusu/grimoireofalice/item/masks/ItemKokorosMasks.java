@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.item.masks;
 
 import java.util.List;
+import java.util.UUID;
 
 import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -26,6 +27,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -41,8 +43,10 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(stack.getTagCompound() == null) stack.setTagCompound(new NBTTagCompound());
-	    stack.getTagCompound().setString("GrimoireOwner", player.getDisplayName().getFormattedText());
+		if(!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 
 	@Override
@@ -58,15 +62,31 @@ public class ItemKokorosMasks extends ItemModMask {
 		list.add(TextFormatting.GOLD + "Feel the power of 66 masks");
 		list.add(TextFormatting.GOLD + "being worn at the same time");
 		if(stack.hasTagCompound()) {
-			list.add(TextFormatting.ITALIC + "Property of " + stack.getTagCompound().getString("GrimoireOwner"));
+			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
+			if(ownerUuid != null) {
+				if(UsernameCache.containsUUID(ownerUuid)) {
+					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
+				}
+			}
 		}
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean p_77663_5_) {
-		super.onUpdate(stack, world, entity, slot, p_77663_5_);
-		if(entity instanceof EntityPlayer) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+		super.onUpdate(stack, world, entity, slot, selected);
+		
+		if(selected && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
+
+			if(!stack.hasTagCompound()) {
+				stack.setTagCompound(new NBTTagCompound());
+			}
+			NBTTagCompound compound = stack.getTagCompound();
+			//noinspection ConstantConditions
+			if(!compound.hasKey("GrimoireOwner")) {
+				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
+			}
+		
 			if(!world.isRemote) {
 				ItemStack[] inventory = player.inventory.mainInventory;
 				for(int i = 0; i < inventory.length; i++) {
@@ -83,7 +103,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(!armor.hasTagCompound()) return;
-		if(player.experienceLevel >= 30 && armor.getTagCompound().getString("GrimoireOwner").equals(player.getDisplayName().getFormattedText())) {
+			if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))){
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 0, 4));
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
 			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 4));

@@ -30,7 +30,7 @@ public class BlockOnbashiraTop extends BlockMod{
 		setCreativeTab(null);
 		setResistance(-1F);
 		setSoundType(SoundType.WOOD);
-		setHardness(-1F);
+		setHardness(2.0F);
 	}
 	
 	@SuppressWarnings("deprecation") //Internal
