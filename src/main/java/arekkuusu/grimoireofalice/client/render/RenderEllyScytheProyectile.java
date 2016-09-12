@@ -24,7 +24,7 @@ public class RenderEllyScytheProyectile extends Render {
 		super(renderManager);
 	}
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/EllyScythe.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/ellyscythe.png");
 	private static final ModelBase MODEL = new ModelEllyScythe();
 	
 	@Override

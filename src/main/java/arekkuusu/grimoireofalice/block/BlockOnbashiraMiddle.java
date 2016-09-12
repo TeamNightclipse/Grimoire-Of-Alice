@@ -15,9 +15,9 @@ public class BlockOnbashiraMiddle extends BlockMod {
 	BlockOnbashiraMiddle() {
 		super(LibBlockName.ONBASHIRAMIDDLE, Material.AIR);
 		setCreativeTab(null);
-		setResistance(-1F);
+		setResistance(2000.0F);
 		setSoundType(SoundType.WOOD);
-		setHardness(-1F);
+		setHardness(2000.0F);
 	}
 	
 	@SuppressWarnings("deprecation") //Internal

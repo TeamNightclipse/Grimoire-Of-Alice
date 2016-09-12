@@ -28,7 +28,7 @@ public class BlockOnbashiraTop extends BlockMod{
 	BlockOnbashiraTop() {
 		super(LibBlockName.ONBASHIRATOP, Material.WOOD);
 		setCreativeTab(null);
-		setResistance(-1F);
+		setResistance(2000.0F);
 		setSoundType(SoundType.WOOD);
 		setHardness(2.0F);
 	}

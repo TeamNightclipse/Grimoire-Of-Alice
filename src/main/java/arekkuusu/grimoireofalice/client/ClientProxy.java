@@ -11,20 +11,21 @@ package arekkuusu.grimoireofalice.client;
 import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.client.render.RenderMagicCircle;
+import arekkuusu.grimoireofalice.client.render.RenderLeaf;
+import arekkuusu.grimoireofalice.entity.EntityLeaf;
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
-import arekkuusu.grimoireofalice.handler.textures.ItemModMesh;
-import arekkuusu.grimoireofalice.handler.textures.Mesh3rdEye;
-import arekkuusu.grimoireofalice.handler.textures.MeshPiano;
-import arekkuusu.grimoireofalice.handler.textures.MeshTrumpet;
-import arekkuusu.grimoireofalice.handler.textures.MeshViolin;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -88,6 +89,16 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
 		
+		ModelBakery.registerItemVariants(ModItems.thirdEye, new ModelResourceLocation(ModItems.thirdEye.getRegistryName(), 
+				"inventory"), new ModelResourceLocation(LibMod.MODID + ":thirdeye0", "inventory"));
+		ModelBakery.registerItemVariants(ModItems.lyricaPiano, new ModelResourceLocation(ModItems.lyricaPiano.getRegistryName(), 
+				"inventory"), new ModelResourceLocation(LibMod.MODID + ":lyricapianoused", "inventory"));
+		ModelBakery.registerItemVariants(ModItems.lunasaViolin, new ModelResourceLocation(ModItems.lunasaViolin.getRegistryName(), 
+				"inventory"), new ModelResourceLocation(LibMod.MODID + ":lunasaviolinused", "inventory"));
+		ModelBakery.registerItemVariants(ModItems.merlinTrumpet, new ModelResourceLocation(ModItems.merlinTrumpet.getRegistryName(), 
+				"inventory"), new ModelResourceLocation(LibMod.MODID + ":merlintrumpetused", "inventory"));
+		registerMesh();
+		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);
 		registerItem(ModItems.shroomSlice, 1);
@@ -131,6 +142,10 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.shroom, 0);
 		registerBlock(ModBlocks.sugarBlock, 0);
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
+		
+		//Entities
+		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, manager -> {return new RenderMagicCircle(manager);});
+		RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, manager -> {return new RenderLeaf(manager);});
 	}
 	
 	private void registerItem(Item item, int damage) {
@@ -142,4 +157,43 @@ public class ClientProxy extends CommonProxy{
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
+	
+	private void registerMesh(){ //It was too messy, to I placed it down here
+		ModelLoader.setCustomMeshDefinition(ModItems.thirdEye, stack -> {
+            if(stack.isItemDamaged()) {
+                return new ModelResourceLocation(new ResourceLocation(LibMod.MODID, "thirdeye0"), "inventory");
+            }
+            else {
+                return new ModelResourceLocation(stack.getItem().getRegistryName(), "inventory");
+            }
+        });
+		
+		ModelLoader.setCustomMeshDefinition(ModItems.lyricaPiano, stack -> {
+            if(stack.isItemDamaged()) {
+                return new ModelResourceLocation(new ResourceLocation(LibMod.MODID, "lyricapianoused"), "inventory");
+            }
+            else {
+                return new ModelResourceLocation(stack.getItem().getRegistryName(), "inventory");
+            }
+        });
+		
+		ModelLoader.setCustomMeshDefinition(ModItems.lunasaViolin, stack -> {
+            if(stack.isItemDamaged()) {
+                return new ModelResourceLocation(new ResourceLocation(LibMod.MODID, "lunasaviolinused"), "inventory");
+            }
+            else {
+                return new ModelResourceLocation(stack.getItem().getRegistryName(), "inventory");
+            }
+        });
+		
+		ModelLoader.setCustomMeshDefinition(ModItems.merlinTrumpet, stack -> {
+            if(stack.isItemDamaged()) {
+                return new ModelResourceLocation(new ResourceLocation(LibMod.MODID, "merlintrumpetused"), "inventory");
+            }
+            else {
+                return new ModelResourceLocation(stack.getItem().getRegistryName(), "inventory");
+            }
+        });
+	}
+	
 }

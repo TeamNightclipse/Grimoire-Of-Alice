@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -11,6 +12,8 @@ import net.minecraft.world.World;
 
 public class ItemGrimoireBook extends ItemMod {
 
+	public EntityMagicCircle circle;
+	
 	public ItemGrimoireBook() {
 		super(LibItemName.GRIMOIREBOOK);
 		setMaxStackSize(1);
@@ -18,6 +21,10 @@ public class ItemGrimoireBook extends ItemMod {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+    	if(!worldIn.isRemote) {
+    		circle = new EntityMagicCircle(worldIn, playerIn, 100);
+    		worldIn.spawnEntityInWorld(circle);
+    	}
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

@@ -33,7 +33,7 @@ public class BlockOnbashira extends BlockMod {
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("axe", 1);
-		setResistance(-1F);
+		setResistance(2000.0F);
 	}
 	
 	@Override
