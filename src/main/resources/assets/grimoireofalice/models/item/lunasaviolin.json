@@ -24,5 +24,13 @@
     },
     "textures": {
         "layer0": "grimoireofalice:items/lunasaviolin"
-    }
+    },
+    "override": [
+        {
+            "predicate": {
+                "damaged": 1.0
+            },
+            "model": "grimoireofalice:items/lunasaviolinused"
+        }
+    ]
 }

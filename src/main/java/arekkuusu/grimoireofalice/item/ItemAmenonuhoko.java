@@ -21,7 +21,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -36,7 +35,6 @@ public class ItemAmenonuhoko extends ItemModSword {
 
 	ItemAmenonuhoko(ToolMaterial material) {
 		super(material, LibItemName.AMENONUHOKO);
-		setMaxDamage(200);
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -88,10 +86,6 @@ public class ItemAmenonuhoko extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if(stack.getItemDamage() < stack.getMaxDamage()) {
-			stack.setItemDamage(stack.getItemDamage() - 1);
-		}
-
 		if(selected && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 
@@ -104,23 +98,10 @@ public class ItemAmenonuhoko extends ItemModSword {
 				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
 			}
 
-			if(!world.isRemote && !player.capabilities.isCreativeMode) {
-				ItemStack held = player.getHeldItemMainhand();
-				if(held != null && held.getItem() == ModItems.amenonuhoko) {
-					if(stack.getItemDamage() > 0) {
-						player.fallDistance = 0.0F;
-					}
-				}
+			if(!world.isRemote && !player.capabilities.isCreativeMode && player.getCooldownTracker().hasCooldown(this)) {
+				player.fallDistance = 0.0F;
 			}
 		}
-	}
-
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(itemStackIn.getItemDamage() == 0) {
-			itemStackIn.damageItem(199, playerIn);
-		}
-		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -129,7 +110,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
 
 		//TODO: Replace with structure, structure is already in assets
-		if(stack.getItemDamage() == 0 && player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if(player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			pos = pos.offset(facing);
 
 			if(!player.canPlayerEdit(new BlockPos(hitX, hitY, hitZ), facing, stack)) {
@@ -182,7 +163,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 				replaceAirComact(world, pos.add(0, 4, 1));
 				replaceAirComact(world, pos.add(1, 4, 0));
 
-				stack.damageItem(199, player);
+				player.getCooldownTracker().setCooldown(this, 199);
 			}
 			return EnumActionResult.SUCCESS;
 		}

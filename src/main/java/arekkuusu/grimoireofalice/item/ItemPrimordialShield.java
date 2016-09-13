@@ -31,7 +31,6 @@ public class ItemPrimordialShield extends ItemModShield {
 
 	ItemPrimordialShield() {
 		super(LibItemName.PRIMORDIALSHIELD);
-		setMaxDamage(1000);
 	}
 
 	@Override
@@ -53,9 +52,6 @@ public class ItemPrimordialShield extends ItemModShield {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean isSelected) {
-		if(stack.isItemDamaged()){
-			stack.setItemDamage(stack.getItemDamage() - 1);
-		}
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(isSelected && !isWorthy(player)) {
@@ -73,7 +69,7 @@ public class ItemPrimordialShield extends ItemModShield {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(isWorthy(playerIn)) {
-			if(itemStackIn.getItemDamage() == 0) {
+			if(!playerIn.getCooldownTracker().hasCooldown(this)) {
 				playerIn.capabilities.disableDamage = true;
 			}
 		}
@@ -84,9 +80,9 @@ public class ItemPrimordialShield extends ItemModShield {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(stack.getItemDamage() == 0 && !player.capabilities.isCreativeMode) {
-				player.capabilities.disableDamage = false;
-				stack.damageItem(999, player);
+			if(!player.getCooldownTracker().hasCooldown(this) && !player.capabilities.isCreativeMode) {
+				player.capabilities.disableDamage = false; //FIXME: Never disabled
+				player.getCooldownTracker().setCooldown(this, 999);
 			}
 		}
 	}

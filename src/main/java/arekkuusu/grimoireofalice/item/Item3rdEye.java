@@ -11,8 +11,6 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.lib.LibMod;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -32,7 +30,6 @@ public class Item3rdEye extends ItemMod {
 	Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
-		setMaxDamage(300);
 	}
 
 	@Override
@@ -49,9 +46,8 @@ public class Item3rdEye extends ItemMod {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
-		if(player.isSneaking() && stack.getItemDamage() == 0) {
-			//FIXME: Buggy with creative players
-			stack.setItemDamage(300);
+		if(player.isSneaking()) {
+			player.getCooldownTracker().setCooldown(this, 300);
 		}
 		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
@@ -61,13 +57,10 @@ public class Item3rdEye extends ItemMod {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.inventory.hasItemStack(stack) && !(stack.getItemDamage() == 0)) {
+			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() ==this) {
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
 			}
-		}
-		if(stack.isItemDamaged()){
-			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 	}
 	
