@@ -8,17 +8,16 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import org.lwjgl.opengl.GL11;
-
 import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
+import arekkuusu.grimoireofalice.entity.EntityThrow;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderEllyScytheProyectile extends Render {
+public class RenderEllyScytheProyectile extends Render<EntityThrow> { //TODO: Change me to EntityEllyProjectile when that comes back
 
 	protected RenderEllyScytheProyectile(RenderManager renderManager) {
 		super(renderManager);
@@ -28,19 +27,19 @@ public class RenderEllyScytheProyectile extends Render {
 	private static final ModelBase MODEL = new ModelEllyScythe();
 	
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
+	protected ResourceLocation getEntityTexture(EntityThrow entity) {
 		return TEXTURE;
 	}
 	
 	@Override
-	public void doRender(Entity ellyScythe, double x, double y, double z, float yaw, float pitch) {
-		GL11.glPushMatrix();
+	public void doRender(EntityThrow ellyScythe, double x, double y, double z, float yaw, float pitch) {
+		GlStateManager.pushMatrix();
 		bindEntityTexture(ellyScythe);
-		GL11.glTranslatef((float) x, (float) y, (float) z);
-		GL11.glRotatef(ellyScythe.prevRotationPitch + (ellyScythe.rotationPitch - ellyScythe.prevRotationPitch) * pitch, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef((ellyScythe.prevRotationYaw + (ellyScythe.rotationYaw - ellyScythe.prevRotationYaw) * pitch) - 90F, 0.0F, 1.0F, 0.0F);
+		GlStateManager.translate(x, y, z);
+		GlStateManager.rotate(ellyScythe.prevRotationPitch + (ellyScythe.rotationPitch - ellyScythe.prevRotationPitch) * pitch, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate((ellyScythe.prevRotationYaw + (ellyScythe.rotationYaw - ellyScythe.prevRotationYaw) * pitch) - 90F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(ellyScythe, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 	
 }
