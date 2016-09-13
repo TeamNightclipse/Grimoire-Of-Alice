@@ -28,9 +28,9 @@
     "overrides": [
         {
             "predicate": {
-                "damaged": 1.0
+                "playing": 1
             },
-            "model": "grimoireofalice:items/lyricapianoused"
+            "model": "grimoireofalice:item/lyricapianoused"
         }
     ]
 }

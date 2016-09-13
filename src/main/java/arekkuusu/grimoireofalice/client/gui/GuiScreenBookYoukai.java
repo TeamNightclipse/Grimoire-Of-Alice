@@ -106,14 +106,14 @@ public class GuiScreenBookYoukai extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 		// ----> Commented these so I dont get a message at run.
 		if(this.bookIsUnsigned) {
-			this.buttonSign = this.func_189646_b(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
-			this.buttonDone = this.func_189646_b(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
-			this.buttonFinalize = this.func_189646_b(
+			this.buttonSign = this.addButton(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
+			this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
+			this.buttonFinalize = this.addButton(
 					new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
-			this.buttonCancel = this.func_189646_b(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
+			this.buttonCancel = this.addButton(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
 		}
 		else {
-			this.buttonDone = this.func_189646_b(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
+			this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
 		}
 
 		int i = (this.width - 192) / 2;

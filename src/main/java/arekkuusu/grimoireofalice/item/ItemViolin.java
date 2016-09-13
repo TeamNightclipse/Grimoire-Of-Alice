@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -23,7 +24,8 @@ public class ItemViolin extends ItemMod {
 
 	public ItemViolin() {
 		super(LibItemName.LUNASAVIOLIN);
-		setMaxDamage(1);
+		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
+				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 	
 	@Override
@@ -40,16 +42,8 @@ public class ItemViolin extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		itemStackIn.setItemDamage(1);
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
-	
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(stack.isItemDamaged()){
-			stack.setItemDamage(0);
-		}
 	}
 	
 	@Override

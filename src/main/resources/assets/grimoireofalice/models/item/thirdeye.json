@@ -6,9 +6,9 @@
     "overrides":  [
         {
             "predicate": {
-                "damaged": 1.0
+                "cooldown": 0.01
             },
-            "model": "grimoireofalice:items/3rdeye0"
+            "model": "grimoireofalice:item/thirdeye0"
         }
     ]
 }

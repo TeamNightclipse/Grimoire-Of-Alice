@@ -20,6 +20,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,7 +31,6 @@ public class Item3rdEye extends ItemMod {
 	Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
-		setMaxDamage(1);
 	}
 
 	@Override
@@ -58,12 +58,9 @@ public class Item3rdEye extends ItemMod {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() ==this) {
-				stack.setItemDamage(1);
+			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() == this) {
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
-			} else if(stack.getItem() ==this){
-				stack.setItemDamage(0);
 			}
 		}
 	}
