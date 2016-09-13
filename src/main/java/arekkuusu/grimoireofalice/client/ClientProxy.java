@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.entity.EntityLeaf;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -84,6 +85,11 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.leaf, 0);
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
+		
+		registerItem(ModItems.thirdEye, 0);
+		registerItem(ModItems.lunasaViolin, 0);
+		registerItem(ModItems.lyricaPiano, 0);
+		registerItem(ModItems.merlinTrumpet, 0);
 		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);

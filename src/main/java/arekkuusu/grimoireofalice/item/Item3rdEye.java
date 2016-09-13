@@ -30,6 +30,7 @@ public class Item3rdEye extends ItemMod {
 	Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
+		setMaxDamage(1);
 	}
 
 	@Override
@@ -58,8 +59,11 @@ public class Item3rdEye extends ItemMod {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() ==this) {
+				stack.setItemDamage(1);
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
+			} else if(stack.getItem() ==this){
+				stack.setItemDamage(0);
 			}
 		}
 	}

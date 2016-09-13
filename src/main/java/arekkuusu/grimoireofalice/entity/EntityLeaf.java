@@ -4,6 +4,9 @@ import arekkuusu.grimoireofalice.helper.LogHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
@@ -13,8 +16,9 @@ import net.minecraft.world.World;
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
 	
-	private int timeLive = 7;
-	private int ticksInAir; //TODO: Use and AT to get access to this field
+	private static final DataParameter<Float> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private int timeLive = 15;
+	private float ticksInAir; //TODO: Use and AT to get access to this field
 
 	public EntityLeaf(World worldIn) {
         super(worldIn);
@@ -27,6 +31,11 @@ public class EntityLeaf extends EntityThrowable {
     public EntityLeaf(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
     }
+    
+    @Override
+	protected void entityInit() {
+    	dataManager.register(TIME, ticksInAir);
+    }
 	
     /*
      * After living for some ticksInAir, it will spawn 
@@ -37,6 +46,7 @@ public class EntityLeaf extends EntityThrowable {
 	public void onUpdate() {
 		super.onUpdate();
 		++this.ticksInAir;
+		setTime(ticksInAir);
 		if(this.ticksInAir >= timeLive){
 			doEffects();
 		}
@@ -79,11 +89,19 @@ public class EntityLeaf extends EntityThrowable {
 		if(!worldObj.isRemote){
 			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
 			//FIXME: Only works for two facing directions
-			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotateYaw(45F).rotatePitch(45F); //These needs to be negative for some reason
+			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F); //These needs to be negative for some reason
 			entityAnimalShot.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
 			this.worldObj.spawnEntityInWorld(entityAnimalShot);
 			this.setDead();
 		}
+	}
+	
+	public void setTime(float time) {
+		dataManager.set(TIME, Float.valueOf(time));
+	}
+
+	public float getTime() {
+		return dataManager.get(TIME);
 	}
 
 }

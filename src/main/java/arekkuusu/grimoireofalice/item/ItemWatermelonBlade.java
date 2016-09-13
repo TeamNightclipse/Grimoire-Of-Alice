@@ -18,7 +18,7 @@ public class ItemWatermelonBlade extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.ITALIC + "Yes, this exists");
+		list.add(TextFormatting.AQUA + "Yes, this exists");
 	}
 
 }

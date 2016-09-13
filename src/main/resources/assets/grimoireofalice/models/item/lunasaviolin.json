@@ -25,7 +25,7 @@
     "textures": {
         "layer0": "grimoireofalice:items/lunasaviolin"
     },
-    "override": [
+    "overrides": [
         {
             "predicate": {
                 "damaged": 1.0

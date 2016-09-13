@@ -56,8 +56,6 @@ public class GuiScreenBookYoukai extends GuiScreen {
 	private String bookTitle = "§kS§kp";
 	private List<ITextComponent> cachedComponents;
 	private int cachedPage = -1;
-	private GuiScreenBookYoukai.NextPageButton buttonNextPage;
-	private GuiScreenBookYoukai.NextPageButton buttonPreviousPage;
 	private GuiButton buttonDone;
 	/** The GuiButton to sign this book. */
 	private GuiButton buttonSign;
@@ -108,19 +106,17 @@ public class GuiScreenBookYoukai extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 		// ----> Commented these so I dont get a message at run.
 		if(this.bookIsUnsigned) {
-			//this.buttonSign = this.addButton(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
-			//this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
-			//this.buttonFinalize = this.addButton(
-					//new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
-			//this.buttonCancel = this.addButton(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
+			this.buttonSign = this.func_189646_b(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
+			this.buttonDone = this.func_189646_b(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
+			this.buttonFinalize = this.func_189646_b(
+					new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
+			this.buttonCancel = this.func_189646_b(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
 		}
 		else {
-			//this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
+			this.buttonDone = this.func_189646_b(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
 		}
 
 		int i = (this.width - 192) / 2;
-		//this.buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 156, true));
-		//this.buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 156, false));
 		this.updateButtons();
 	}
 
@@ -133,8 +129,6 @@ public class GuiScreenBookYoukai extends GuiScreen {
 	}
 
 	private void updateButtons() {
-		this.buttonNextPage.visible = !this.bookGettingSigned && (this.currPage < this.bookTotalPages - 1 || this.bookIsUnsigned);
-		this.buttonPreviousPage.visible = !this.bookGettingSigned && this.currPage > 0;
 		this.buttonDone.visible = !this.bookIsUnsigned || !this.bookGettingSigned;
 
 		if(this.bookIsUnsigned) {

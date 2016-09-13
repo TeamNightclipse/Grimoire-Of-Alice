@@ -25,7 +25,7 @@
     "textures": {
         "layer0": "grimoireofalice:items/merlintrumpet"
     },
-    "override": [
+    "overrides": [
         {
             "predicate": {
                 "damaged": 1.0
