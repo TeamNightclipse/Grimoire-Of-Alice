@@ -8,6 +8,9 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
 import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
 import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
 import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
@@ -52,6 +55,7 @@ public final class ModItems {
 		public static Item merlinTrumpet;
 		public static Item shouLamp;
 		public static Item patchyBook;
+		public static Item skull;
 		//Food
 		public static Item shroomSlice;
 		public static Item grilledLamprey;
@@ -70,6 +74,9 @@ public final class ModItems {
 		public static Item kokorosMasks;
 		public static Item primordialShield;
 		public static Item mapleLeafShield;
+		public static Item byakurenAura;
+		public static Item mokouAura;
+		public static Item toyosatomimiAura;
 		//Weapons
 		public static Item mochiHammer;
 		public static Item momijisScimitarSword;
@@ -136,6 +143,7 @@ public final class ModItems {
 		merlinTrumpet = new ItemTrumpet();
 		shouLamp = new ItemShouLamp();
 		patchyBook = new ItemPatchyBook();
+		skull = new ItemSkull();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -156,6 +164,9 @@ public final class ModItems {
 		koomoteMask = new ItemKoomoteMask(SOLID_PAPER, 3);
 		maskOfHope = new ItemMaskOfHope(SOLID_PAPER, 3);
 		kokorosMasks = new ItemKokorosMasks(SOLID_PAPER, 3);
+		byakurenAura = new ItemAuraByakuren(SOLID_PAPER, 3);
+		mokouAura = new ItemAuraMokou(SOLID_PAPER, 3);
+		toyosatomimiAura = new ItemAuraToyosatomimi(SOLID_PAPER, 3);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);

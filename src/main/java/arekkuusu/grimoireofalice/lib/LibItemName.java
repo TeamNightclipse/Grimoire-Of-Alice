@@ -24,6 +24,7 @@ public class LibItemName {
 	public static final String MERLINTRUMPET = "merlintrumpet";
 	public static final String SHOULAMP = "shoulamp";
 	public static final String PATCHYBOOK = "patchybook";
+	public static final String SKULL = "orinskull";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -43,6 +44,9 @@ public class LibItemName {
 	public static final String KOKOROSMASKS = "kokorosmasks";
 	public static final String PRIMORDIALSHIELD = "primordialshield";
 	public static final String MAPLELEAFSHIELD = "mapleleafshield";
+	public static final String AURABYAKUREN = "aurabyakuren";
+	public static final String AURAMOKOU = "auramokou";
+	public static final String AURATOYOSATOMIMI = "auratoyosatomimi";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";

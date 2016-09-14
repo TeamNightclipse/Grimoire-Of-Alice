@@ -77,6 +77,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.merlinTrumpet);
 		addItem(ModItems.shouLamp);
 		addItem(ModItems.patchyBook);
+		addItem(ModItems.skull);
 		
 		//Food
 		addItem(ModItems.shroomSlice);
@@ -97,6 +98,9 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.monkeyMask);
 		addItem(ModItems.raidenMask);
 		addItem(ModItems.ubaMask);
+		addItem(ModItems.byakurenAura);
+		addItem(ModItems.mokouAura);
+		addItem(ModItems.toyosatomimiAura);
 		
 		//Weapons
 		addItem(ModItems.amenonuhoko);

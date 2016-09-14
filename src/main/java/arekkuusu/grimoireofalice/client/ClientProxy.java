@@ -61,6 +61,9 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.monkeyMask, 0);
 		registerItem(ModItems.raidenMask, 0);
 		registerItem(ModItems.ubaMask, 0);
+		registerItem(ModItems.byakurenAura, 0);
+		registerItem(ModItems.mokouAura, 0);
+		registerItem(ModItems.toyosatomimiAura, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -85,6 +88,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.leaf, 0);
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
+		registerItem(ModItems.skull, 0);
 		
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);
