@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.EntityAnimalShot;
 import arekkuusu.grimoireofalice.entity.EntityLeaf;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.entity.EntityNote;
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -31,6 +32,7 @@ public class CommonProxy {
 		int modEntityID = 0;
 		EntityRegistry.registerModEntity(EntityLeaf.class, "Leaf", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityAnimalShot.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityNote.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		//EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		//EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "ellyScythe", modEntityID++, GrimoireOfAlice.instance, 64, 10, true);
 	}

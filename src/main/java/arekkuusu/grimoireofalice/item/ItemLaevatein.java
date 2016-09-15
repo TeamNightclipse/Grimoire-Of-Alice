@@ -58,7 +58,7 @@ public class ItemLaevatein extends ItemModSword {
 		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getHeldItemMainhand() == stack) {
+			if(player.getHeldItemMainhand() == stack || player.getHeldItemOffhand() == stack) {
 				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
 			}
 		}

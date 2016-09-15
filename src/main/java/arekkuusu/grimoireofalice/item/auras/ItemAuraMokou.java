@@ -6,8 +6,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -31,6 +33,12 @@ public class ItemAuraMokou extends ItemModAura {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.DARK_RED + "Endless pain");
+	}
+	
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 15, 0));
+			player.setFire(1);
 	}
 	
 	@Override

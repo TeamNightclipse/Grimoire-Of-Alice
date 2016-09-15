@@ -13,8 +13,10 @@ import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.client.render.RenderLeaf;
 import arekkuusu.grimoireofalice.client.render.RenderMagicCircle;
+import arekkuusu.grimoireofalice.client.render.RenderNote;
 import arekkuusu.grimoireofalice.entity.EntityLeaf;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.entity.EntityNote;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -142,6 +144,7 @@ public class ClientProxy extends CommonProxy{
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityNote.class, RenderNote::new);
 	}
 	
 	private void registerItem(Item item, int damage) {

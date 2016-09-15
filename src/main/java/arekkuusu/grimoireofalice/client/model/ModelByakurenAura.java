@@ -10,12 +10,12 @@ public class ModelByakurenAura extends ModelBiped {
   
   public ModelByakurenAura() {
 	  textureWidth = 1024;
-	  textureHeight = 1024;
+	  textureHeight = 512;
 	    
 	  Shape1 = new ModelRenderer(this, 0, 0);
 	  Shape1.addBox(-254F, -153F, 0F, 511, 315, 1);
 	  Shape1.setRotationPoint(0F, -16F, 10F);
-	  Shape1.setTextureSize(1024, 1024);
+	  Shape1.setTextureSize(1024, 512);
 	  Shape1.mirror = true;
 	  setRotation(Shape1, 0F, 0F, 0F);
   }
