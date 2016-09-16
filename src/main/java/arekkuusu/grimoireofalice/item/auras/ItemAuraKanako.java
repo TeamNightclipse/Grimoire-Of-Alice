@@ -6,8 +6,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -29,12 +31,15 @@ public class ItemAuraKanako extends ItemModAura {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.DARK_RED + "Infinite knowledge");
+        list.add(TextFormatting.GOLD + "Its true power is unknown, the legend says");
+        list.add(TextFormatting.GOLD + "it possesses a power unimaginable to humans");
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-
+        if(world.isRaining()){
+            player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 15, 0));
+        }
     }
 
     @Override

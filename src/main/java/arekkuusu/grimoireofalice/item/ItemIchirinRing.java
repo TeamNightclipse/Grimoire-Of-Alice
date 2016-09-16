@@ -26,9 +26,7 @@ public class ItemIchirinRing extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Rare treasure from an old era");
-		list.add(TextFormatting.ITALIC + "By holding it you become the");
-		list.add(TextFormatting.ITALIC + "the Little Dowser General");
+		list.add(TextFormatting.GOLD + "Nyuudou bender");
 		if(GuiScreen.isShiftKeyDown()){
 			list.add(TextFormatting.ITALIC + "Use with Rings in both Hands");
 			if(!isHoldingItemsBothHands(player)){

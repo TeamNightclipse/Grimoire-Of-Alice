@@ -47,7 +47,6 @@ public class ItemModAura extends ItemArmor implements ISpecialArmor {
 		if(selected && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(!world.isRemote) {
-
 				//We need to be careful and iterate over the entire inventory here
 				int size = player.inventory.getSizeInventory();
 				for(int i = 0; i < size; i++) {

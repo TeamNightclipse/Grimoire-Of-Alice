@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.handler;
 
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;
+import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,8 @@ public class GuiHandler implements IGuiHandler{
 
 				if(heldItem == null || heldItem.getItem() != ModItems.youkaiBook) return null;
 				else return new GuiScreenBookYoukai(player, heldItem, true);
+			case 1:
+				return new GuiScreenGuide();
 			default:
 				return null;
 		}

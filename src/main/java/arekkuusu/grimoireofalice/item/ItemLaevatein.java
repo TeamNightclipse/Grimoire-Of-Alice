@@ -55,7 +55,6 @@ public class ItemLaevatein extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
-		super.onUpdate(stack, world, entity, itemSlot, isSelected);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(isSelected) {

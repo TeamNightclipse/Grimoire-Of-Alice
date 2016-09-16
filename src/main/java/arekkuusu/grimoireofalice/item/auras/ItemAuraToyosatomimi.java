@@ -2,8 +2,6 @@ package arekkuusu.grimoireofalice.item.auras;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,6 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+
+import javax.annotation.Nullable;
 
 public class ItemAuraToyosatomimi extends ItemModAura {
 	
@@ -51,7 +51,7 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
-	
+
 	@SuppressWarnings("NullableProblems") //Liar
 	@Override
 	@SideOnly(Side.CLIENT)

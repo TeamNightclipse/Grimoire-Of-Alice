@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -34,11 +35,15 @@ public class ItemOnbashira extends ItemModSword {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
-		super.onUpdate(stack, world, entity, itemSlot, isSelected);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(isSelected) {
-				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 3));
+				ItemStack armorItemInSlot = player.inventory.armorItemInSlot(2);
+				if(armorItemInSlot != null && armorItemInSlot.getItem() instanceof ItemAuraKanako) {
+					player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 0, 0));
+				} else {
+					player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 5));
+				}
 			}
 		}
 	}

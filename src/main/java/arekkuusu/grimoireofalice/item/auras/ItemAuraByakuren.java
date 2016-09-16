@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.item.auras;
 import java.util.List;
 
 import javax.annotation.Nullable;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -54,7 +53,7 @@ public class ItemAuraByakuren extends ItemModAura {
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
-	
+
 	@SuppressWarnings("NullableProblems") //Liar
 	@Override
 	@SideOnly(Side.CLIENT)
