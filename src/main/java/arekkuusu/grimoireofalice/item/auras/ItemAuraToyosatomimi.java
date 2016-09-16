@@ -2,6 +2,8 @@ package arekkuusu.grimoireofalice.item.auras;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -38,23 +40,6 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	}
 	
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		super.onUpdate(stack, world, entity, slot, selected);
-		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-			if(!world.isRemote) {
-				ItemStack[] inventory = player.inventory.mainInventory;
-				for(int i = 0; i < inventory.length; i++) {
-					if(inventory[i] != null && inventory[i].getItem() == this && i != slot) {
-						player.dropItem(inventory[i], true);
-						inventory[i] = null;
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
 	}
@@ -67,8 +52,10 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
 	
+	@SuppressWarnings("NullableProblems") //Liar
 	@Override
 	@SideOnly(Side.CLIENT)
+	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		if(entityLiving.isSneaking()) {
 			if (model == null) model = new ModelToyosatomimiAura();

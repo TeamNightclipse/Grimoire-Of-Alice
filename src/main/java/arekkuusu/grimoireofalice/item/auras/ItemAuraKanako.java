@@ -38,23 +38,6 @@ public class ItemAuraKanako extends ItemModAura {
     }
 
     @Override
-    public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.onUpdate(stack, world, entity, slot, selected);
-        if(selected && entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer)entity;
-            if(!world.isRemote) {
-                ItemStack[] inventory = player.inventory.mainInventory;
-                for(int i = 0; i < inventory.length; i++) {
-                    if(inventory[i] != null && inventory[i].getItem() == this && i != slot) {
-                        player.dropItem(inventory[i], true);
-                        inventory[i] = null;
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
     }

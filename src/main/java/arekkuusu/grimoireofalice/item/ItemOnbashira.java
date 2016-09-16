@@ -33,11 +33,11 @@ public class ItemOnbashira extends ItemModSword {
 	}
 	
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
+	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		super.onUpdate(stack, world, entity, itemSlot, isSelected);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getHeldItemMainhand() == stack || player.getHeldItemOffhand() == stack) {
+			if(isSelected) {
 				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 3));
 			}
 		}

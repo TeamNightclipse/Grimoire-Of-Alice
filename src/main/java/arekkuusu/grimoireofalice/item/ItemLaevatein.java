@@ -54,11 +54,11 @@ public class ItemLaevatein extends ItemModSword {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
+	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		super.onUpdate(stack, world, entity, itemSlot, isSelected);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(player.getHeldItemMainhand() == stack || player.getHeldItemOffhand() == stack) {
+			if(isSelected) {
 				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
 			}
 		}
@@ -78,7 +78,6 @@ public class ItemLaevatein extends ItemModSword {
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
 
-					//For some reason the player passed in here is not the "client" player
 					worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
 							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 					Vec3d look = playerIn.getLookVec();

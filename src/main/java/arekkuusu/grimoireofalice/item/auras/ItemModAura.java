@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.item.auras;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -16,6 +17,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -37,6 +39,25 @@ public class ItemModAura extends ItemArmor implements ISpecialArmor {
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return false;
+	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+		super.onUpdate(stack, world, entity, slot, selected);
+		if(selected && entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if(!world.isRemote) {
+
+				//We need to be careful and iterate over the entire inventory here
+				int size = player.inventory.getSizeInventory();
+				for(int i = 0; i < size; i++) {
+					ItemStack stackInSlot = player.inventory.getStackInSlot(i);
+					if(i != slot && stackInSlot != null && stackInSlot.getItem() == this) {
+						player.dropItem(player.inventory.removeStackFromSlot(i), true);
+					}
+				}
+			}
+		}
 	}
 
 	@Override
