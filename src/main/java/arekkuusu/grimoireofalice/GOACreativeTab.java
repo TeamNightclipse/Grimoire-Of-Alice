@@ -101,6 +101,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.byakurenAura);
 		addItem(ModItems.mokouAura);
 		addItem(ModItems.toyosatomimiAura);
+		addItem(ModItems.kanakoAura);
 		
 		//Weapons
 		addItem(ModItems.amenonuhoko);

@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
 import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
 import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
 import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
@@ -77,6 +78,7 @@ public final class ModItems {
 		public static Item byakurenAura;
 		public static Item mokouAura;
 		public static Item toyosatomimiAura;
+		public static Item kanakoAura;
 		//Weapons
 		public static Item mochiHammer;
 		public static Item momijisScimitarSword;
@@ -167,6 +169,7 @@ public final class ModItems {
 		byakurenAura = new ItemAuraByakuren(SOLID_PAPER, 3);
 		mokouAura = new ItemAuraMokou(SOLID_PAPER, 3);
 		toyosatomimiAura = new ItemAuraToyosatomimi(SOLID_PAPER, 3);
+		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);

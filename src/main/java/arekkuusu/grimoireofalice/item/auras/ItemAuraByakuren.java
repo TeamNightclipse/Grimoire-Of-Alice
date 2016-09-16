@@ -13,11 +13,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import arekkuusu.grimoireofalice.client.model.ModelByakurenAura;
-import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 
@@ -75,9 +73,12 @@ public class ItemAuraByakuren extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelByakurenAura();
-		model.setModelAttributes(imodel);
-		return model;
+		if(entityLiving.isSneaking()) {
+			if (model == null) model = new ModelByakurenAura();
+			model.setModelAttributes(imodel);
+			return model;
+		}
+		return null;
 	}
 	
 	@Override

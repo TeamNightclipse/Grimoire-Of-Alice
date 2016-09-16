@@ -47,6 +47,7 @@ public class LibItemName {
 	public static final String AURABYAKUREN = "aurabyakuren";
 	public static final String AURAMOKOU = "auramokou";
 	public static final String AURATOYOSATOMIMI = "auratoyosatomimi";
+	public static final String AURAKANAKO = "aurakanako";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";

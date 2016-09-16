@@ -66,6 +66,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.byakurenAura, 0);
 		registerItem(ModItems.mokouAura, 0);
 		registerItem(ModItems.toyosatomimiAura, 0);
+		registerItem(ModItems.kanakoAura, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);

@@ -61,7 +61,6 @@ public class ItemUFOs extends ItemMod {
 	
 	private void itemsInRange(World world, EntityPlayer player, double bdouble) {
 		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(bdouble));
-		IItemHandler inventory = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.DOWN);
 
 		for(EntityItem item : aList) {
 			if(!stackHasRoom(item.getEntityItem(), player)) {

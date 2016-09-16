@@ -2,23 +2,17 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -59,14 +53,14 @@ public class ItemPiano extends ItemMod {
 			EntityPlayer playerIn = (EntityPlayer)player;
 			if (!player.worldObj.isRemote) {
 				EntityNote entityNote = new EntityNote(player.worldObj, playerIn);
-				entityNote.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 5.0F);
+				entityNote.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 5.0F);
 				player.worldObj.spawnEntityInWorld(entityNote);
 			}
 
 			StatBase statBase = StatList.getObjectUseStats(this);
 			if(statBase != null) {
 				playerIn.addStat(statBase);
-			};
+			}
 		}
     }
 	
@@ -76,7 +70,7 @@ public class ItemPiano extends ItemMod {
 		if (!playerIn.capabilities.isCreativeMode) {
 			int hurr = (getMaxItemUseDuration(stack) - timeLeft) / 2;
 			stack.damageItem(hurr, playerIn);
-			playerIn.getCooldownTracker().setCooldown(this, 150);
+			playerIn.getCooldownTracker().setCooldown(this, 50);
         }
 	}
 	
