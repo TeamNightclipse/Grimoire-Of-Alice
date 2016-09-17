@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.entity.EntityNote;
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -38,6 +39,8 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
+		VanillaCrafting.booksAndStrings();
+		VanillaCrafting.masks();
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {

@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.block;
 
+import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
@@ -17,8 +18,11 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockOnbashiraTop extends BlockMod{
 
@@ -31,6 +35,13 @@ public class BlockOnbashiraTop extends BlockMod{
 		setResistance(2000.0F);
 		setSoundType(SoundType.WOOD);
 		setHardness(2.0F);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "Honored pillars");
+		list.add(TextFormatting.ITALIC + "Kinda heavy");
 	}
 	
 	@SuppressWarnings("deprecation") //Internal

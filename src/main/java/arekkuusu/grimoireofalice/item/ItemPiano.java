@@ -25,6 +25,7 @@ public class ItemPiano extends ItemMod {
 	public ItemPiano() {
 		super(LibItemName.LYRICAPIANO);
 		setMaxDamage(500);
+		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
 				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
