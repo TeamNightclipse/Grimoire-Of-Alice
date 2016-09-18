@@ -45,7 +45,7 @@ public class GuiHandler implements IGuiHandler{
 				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) heldItem0 = player.getHeldItemOffhand();
 
 				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) return null;
-				return new GuiItemInventory(new SpellCardContainer(player, player.inventory, new InventoryPouch(heldItem0)));
+				return new GuiItemInventory(new SpellCardContainer(player.inventory, new InventoryPouch(heldItem0)));
 			default:
 				return null;
 		}

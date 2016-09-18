@@ -9,9 +9,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiItemInventory extends GuiContainer {
-	
-	private float xSize_lo;
-	private float ySize_lo;
 
 	private static final ResourceLocation iconLocation = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
 
@@ -24,12 +21,12 @@ public class GuiItemInventory extends GuiContainer {
 
 	public void drawScreen(int par1, int par2, float par3) {
 		super.drawScreen(par1, par2, par3);
-		this.xSize_lo = (float)par1;
-		this.ySize_lo = (float)par2;
+		float xSize_lo = (float) par1;
+		float ySize_lo = (float) par2;
 	}
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		String s = this.inventory.hasCustomName() ? this.inventory.getName() : I18n.format(this.inventory.getName());
+		String s = "§fSpell Card Pouch";
 		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 0, 4210752);
 	}
 
@@ -39,6 +36,5 @@ public class GuiItemInventory extends GuiContainer {
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
-		int i1;
 	}
 }
