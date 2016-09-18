@@ -14,6 +14,7 @@ public class ItemSkull extends ItemMod {
 
 	public ItemSkull() {
 		super(LibItemName.SKULL);
+		setMaxStackSize(1);
 	}
 
 	@Override

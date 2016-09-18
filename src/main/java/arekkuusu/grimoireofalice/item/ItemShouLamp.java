@@ -26,6 +26,7 @@ public class ItemShouLamp extends ItemMod {
 
 	public ItemShouLamp() {
 		super(LibItemName.SHOULAMP);
+		setMaxStackSize(1);
 	}
 
 	@Override

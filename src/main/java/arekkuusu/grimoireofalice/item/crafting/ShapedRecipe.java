@@ -90,7 +90,7 @@ public class ShapedRecipe {
 	public void build() throws IllegalArgumentException {
 		List<String> rows = ImmutableList.of(row1, row2, row3);
 		if(rows.stream().allMatch(String::isEmpty)) throw new IllegalArgumentException("Please specify at least one grid row for recipe builder");
-		rows = rows.stream().filter(String::isEmpty).collect(Collectors.toList());
+		rows = rows.stream().filter(s -> !s.isEmpty()).collect(Collectors.toList());
 
 		List<Object> objects = new ArrayList<>();
 

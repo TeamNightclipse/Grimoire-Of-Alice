@@ -8,9 +8,12 @@
  */
 package arekkuusu.grimoireofalice.handler;
 
+import arekkuusu.grimoireofalice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.plugin.touhou.InventoryPouch;
+import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -37,6 +40,12 @@ public class GuiHandler implements IGuiHandler{
 				else return new GuiScreenBookYoukai(player, heldItem, true);
 			case 1:
 				return new GuiScreenGuide();
+			case 2:
+				ItemStack heldItem0 = player.getHeldItemMainhand();
+				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) heldItem0 = player.getHeldItemOffhand();
+
+				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) return null;
+				return new GuiItemInventory(new SpellCardContainer(player, player.inventory, new InventoryPouch(heldItem0)));
 			default:
 				return null;
 		}

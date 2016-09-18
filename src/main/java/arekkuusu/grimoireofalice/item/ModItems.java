@@ -27,6 +27,7 @@ import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
 import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.plugin.touhou.ItemSpellCardPouch;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -57,6 +58,7 @@ public final class ModItems {
 		public static Item shouLamp;
 		public static Item patchyBook;
 		public static Item skull;
+	    public static Item pouch;
 		//Food
 		public static Item shroomSlice;
 		public static Item grilledLamprey;
@@ -146,6 +148,7 @@ public final class ModItems {
 		shouLamp = new ItemShouLamp();
 		patchyBook = new ItemPatchyBook();
 		skull = new ItemSkull();
+        pouch = new ItemSpellCardPouch();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();

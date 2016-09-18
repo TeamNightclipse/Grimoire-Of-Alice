@@ -21,6 +21,7 @@ public class ItemIchirinRing extends ItemModSword {
 
 	public ItemIchirinRing(ToolMaterial material) {
 		super(material, LibItemName.ICHIRINRING);
+		setMaxStackSize(1);
 	}
 
 	@Override

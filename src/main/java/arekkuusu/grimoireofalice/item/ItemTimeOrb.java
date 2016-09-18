@@ -32,7 +32,6 @@ public class ItemTimeOrb extends ItemMod{
 
 	ItemTimeOrb() {
 		super(LibItemName.TIMEORB);
-		setMaxStackSize(64);
 	}
 	
 	@Override

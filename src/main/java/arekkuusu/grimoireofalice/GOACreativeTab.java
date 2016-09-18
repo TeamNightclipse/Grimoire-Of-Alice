@@ -78,6 +78,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.shouLamp);
 		addItem(ModItems.patchyBook);
 		addItem(ModItems.skull);
+		addItem(ModItems.pouch);
 		
 		//Food
 		addItem(ModItems.shroomSlice);
