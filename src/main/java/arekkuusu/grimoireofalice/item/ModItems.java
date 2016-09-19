@@ -8,10 +8,7 @@
  */
 package arekkuusu.grimoireofalice.item;
 
-import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
-import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
-import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
-import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
+import arekkuusu.grimoireofalice.item.auras.*;
 import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
 import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
 import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
@@ -81,6 +78,7 @@ public final class ModItems {
 		public static Item mokouAura;
 		public static Item toyosatomimiAura;
 		public static Item kanakoAura;
+        public static Item ichirinAura;
 		//Weapons
 		public static Item mochiHammer;
 		public static Item momijisScimitarSword;
@@ -173,6 +171,7 @@ public final class ModItems {
 		mokouAura = new ItemAuraMokou(SOLID_PAPER, 3);
 		toyosatomimiAura = new ItemAuraToyosatomimi(SOLID_PAPER, 3);
 		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
+        ichirinAura = new ItemAuraIchirin(SOLID_PAPER, 3);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);
@@ -192,7 +191,7 @@ public final class ModItems {
 		shichiSeiken = new ItemShichiSeiken(WET_NOODLE);
 		cattailPlant = new ItemCattailPlant(WET_NOODLE);
 		popsicleStick = new ItemPopsicleStick(WET_NOODLE);
-		rumiaSword = new ItemModSword(WET_NOODLE, LibItemName.RUMIASWORD);
+		rumiaSword = new ItemRumiaSword(WET_NOODLE);
 		sarielWand = new ItemSarielWand(WET_NOODLE);
 		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
 		watermelonSword = new ItemWatermelonSword(GOLDYRON);

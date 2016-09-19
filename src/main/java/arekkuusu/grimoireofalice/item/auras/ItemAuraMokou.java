@@ -27,7 +27,7 @@ public class ItemAuraMokou extends ItemModAura {
 	private ModelBiped model;
 
 	public ItemAuraMokou(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURAMOKOU);
+		super(material, dmg, LibItemName.AURAMOKOU, EntityEquipmentSlot.HEAD);
 	}
 	
 	@Override
@@ -65,12 +65,15 @@ public class ItemAuraMokou extends ItemModAura {
 			model.setModelAttributes(imodel);
 			return model;
 		}
-		return null;
+		return imodel;
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/mokou_aura.png";
+		if(entity.isSneaking()) {
+			return LibMod.MODID + ":textures/models/armor/mokou_aura.png";
+		}
+		return LibMod.MODID + ":textures/models/armor/mokou.png";
     }
 
 }

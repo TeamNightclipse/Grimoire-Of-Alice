@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -72,5 +71,5 @@ public class ItemIchirinRing extends ItemModSword {
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
     }
-	
+
 }

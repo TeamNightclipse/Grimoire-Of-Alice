@@ -47,7 +47,7 @@ public class ItemPiano extends ItemMod {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-	
+
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		if(player instanceof EntityPlayer){

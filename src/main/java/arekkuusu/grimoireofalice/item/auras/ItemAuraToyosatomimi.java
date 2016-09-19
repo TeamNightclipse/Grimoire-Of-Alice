@@ -25,7 +25,7 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	private ModelBiped model;
 
 	public ItemAuraToyosatomimi(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURATOYOSATOMIMI);
+		super(material, dmg, LibItemName.AURATOYOSATOMIMI, EntityEquipmentSlot.HEAD);
 	}
 	
 	@Override
@@ -62,12 +62,15 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 			model.setModelAttributes(imodel);
 			return model;
 		}
-		return null;
+		return imodel;
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/toyosatomimi_aura.png";
+		if(entity.isSneaking()) {
+        	return LibMod.MODID + ":textures/models/armor/toyosatomimi_aura.png";
+		}
+		return LibMod.MODID + ":textures/models/armor/toyosatomimi.png";
     }
 
 }

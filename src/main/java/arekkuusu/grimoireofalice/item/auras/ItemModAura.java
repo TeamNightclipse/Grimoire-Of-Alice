@@ -23,8 +23,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModAura extends ItemArmor implements ISpecialArmor {
 
-	public ItemModAura(ArmorMaterial material, int dmg, String id) {
-		super(material, dmg, EntityEquipmentSlot.CHEST);
+	public ItemModAura(ArmorMaterial material, int dmg, String id, EntityEquipmentSlot slot) {
+		super(material, dmg, slot);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		GameRegistry.register(this);

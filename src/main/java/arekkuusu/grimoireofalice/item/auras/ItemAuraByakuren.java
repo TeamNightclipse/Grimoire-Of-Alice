@@ -26,7 +26,7 @@ public class ItemAuraByakuren extends ItemModAura {
 	private ModelBiped model;
 
 	public ItemAuraByakuren(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURABYAKUREN);
+		super(material, dmg, LibItemName.AURABYAKUREN, EntityEquipmentSlot.HEAD);
 	}
 	
 	@Override
@@ -64,12 +64,15 @@ public class ItemAuraByakuren extends ItemModAura {
 			model.setModelAttributes(imodel);
 			return model;
 		}
-		return null;
+		return imodel;
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/byakuren_aura.png";
+		if(entity.isSneaking()) {
+			return LibMod.MODID + ":textures/models/armor/byakuren_aura.png";
+		}
+		return LibMod.MODID + ":textures/models/armor/byakuren.png";
     }
 
 }

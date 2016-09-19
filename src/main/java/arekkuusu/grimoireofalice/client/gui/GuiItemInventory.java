@@ -5,24 +5,15 @@ import arekkuusu.grimoireofalice.plugin.touhou.InventoryPouch;
 import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiItemInventory extends GuiContainer {
 
 	private static final ResourceLocation iconLocation = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
 
-	private final InventoryPouch inventory;
-
-	public GuiItemInventory(SpellCardContainer containerItem) {
-		super(containerItem);
-		this.inventory = containerItem.inventory;
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		super.drawScreen(par1, par2, par3);
-		float xSize_lo = (float) par1;
-		float ySize_lo = (float) par2;
+	public GuiItemInventory(InventoryPlayer playerInv, InventoryPouch flowerBagInv) {
+		super(new SpellCardContainer(playerInv, flowerBagInv));
 	}
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {

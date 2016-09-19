@@ -48,6 +48,7 @@ public class LibItemName {
 	public static final String AURAMOKOU = "auramokou";
 	public static final String AURATOYOSATOMIMI = "auratoyosatomimi";
 	public static final String AURAKANAKO = "aurakanako";
+	public static final String AURAICHIRIN = "auraichirin";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";
@@ -85,5 +86,5 @@ public class LibItemName {
 	public static final String EYE = "thirdeye";
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
-	
+
 }
