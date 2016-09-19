@@ -12,10 +12,10 @@ import arekkuusu.grimoireofalice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.item.ModItems;
-import arekkuusu.grimoireofalice.plugin.touhou.InventoryPouch;
 import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
@@ -24,6 +24,11 @@ public class GuiHandler implements IGuiHandler{
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
+			case 2:
+				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+				ItemStack heldItem = player.getHeldItem(hand);
+				if(heldItem == null || heldItem.getItem() != ModItems.pouch) return null;
+				return new SpellCardContainer(player.inventory, heldItem);
 			default:
 				return null;
 		}
@@ -41,11 +46,10 @@ public class GuiHandler implements IGuiHandler{
 			case 1:
 				return new GuiScreenGuide();
 			case 2:
-				ItemStack heldItem0 = player.getHeldItemMainhand();
-				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) heldItem0 = player.getHeldItemOffhand();
-
+				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+				ItemStack heldItem0 = player.getHeldItem(hand);
 				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) return null;
-				return new GuiItemInventory(player.inventory, new InventoryPouch(heldItem0));
+				return new GuiItemInventory(player.inventory, heldItem0);
 			default:
 				return null;
 		}

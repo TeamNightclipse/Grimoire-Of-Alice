@@ -1,18 +1,18 @@
 package arekkuusu.grimoireofalice.client.gui;
 
 import arekkuusu.grimoireofalice.lib.LibMod;
-import arekkuusu.grimoireofalice.plugin.touhou.InventoryPouch;
 import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiItemInventory extends GuiContainer {
 
 	private static final ResourceLocation iconLocation = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
 
-	public GuiItemInventory(InventoryPlayer playerInv, InventoryPouch flowerBagInv) {
+	public GuiItemInventory(InventoryPlayer playerInv, ItemStack flowerBagInv) {
 		super(new SpellCardContainer(playerInv, flowerBagInv));
 	}
 

@@ -1,12 +1,17 @@
 package arekkuusu.grimoireofalice.plugin.touhou;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibGuiID;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,27 +24,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
-
-public class ItemSpellCardPouch extends Item {
-
-    private static final String TAG_ITEMS = "InvItems";
+public class ItemSpellCardPouch extends ItemMod {
 
 	public ItemSpellCardPouch() {
-		super();
-		setRegistryName(LibItemName.POUCH);
-		setUnlocalizedName(LibItemName.POUCH);
-		GameRegistry.register(this);
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		super(LibItemName.POUCH);
 		setMaxStackSize(1);
 	}
 
@@ -67,9 +61,7 @@ public class ItemSpellCardPouch extends Item {
         private final IItemHandler inv = new ItemStackHandler(8) {
             @Override
             public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
-                if(toInsert != null && toInsert.getItem() == ModItems.faith)
-                    return super.insertItem(slot, toInsert, simulate);
-                else return toInsert;
+                return toInsert.getItem() == ModItems.faith ? super.insertItem(slot, toInsert, simulate) : toInsert;
             }
         };
 
@@ -78,6 +70,7 @@ public class ItemSpellCardPouch extends Item {
             return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
         }
 
+        @Nullable
         @Override
         public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
             if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
@@ -96,20 +89,6 @@ public class ItemSpellCardPouch extends Item {
         }
     }
 
-    /*public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(stack.getTagCompound() != null && stack.getTagCompound().hasKey(TAG_ITEMS)) {
-            NBTTagList oldData = stack.getTagCompound().getTagList(TAG_ITEMS, Constants.NBT.TAG_COMPOUND);
-            IItemHandler newInv = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-
-            CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(newInv, null, oldData);
-
-            stack.getTagCompound().removeTag(TAG_ITEMS);
-
-            if(stack.getTagCompound().getSize() == 0)
-                stack.setTagCompound(null);
-        }
-    }*/
-
     @Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 1;
@@ -118,7 +97,7 @@ public class ItemSpellCardPouch extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         if (!playerIn.isSneaking()) {
-            playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, worldIn, (int) playerIn.posX, (int) playerIn.posY, (int) playerIn.posZ);
+            playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, worldIn, hand.ordinal(), -1, -1);
         }
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

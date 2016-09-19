@@ -1,21 +1,24 @@
 package arekkuusu.grimoireofalice.plugin.touhou;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-
-import javax.annotation.Nonnull;
 
 public class SpellCardContainer extends Container {
 
-    private final InventoryPouch pouchInv;
+	private final ItemStack stack;
 
-    public SpellCardContainer (InventoryPlayer playerInv, InventoryPouch pouchInv) {
-        this.pouchInv = pouchInv;
+    public SpellCardContainer (InventoryPlayer playerInv, ItemStack pouchStack) {
+		IItemHandler pouchInv = pouchStack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		stack = pouchStack;
 
         addSlotToContainer(new SlotItemHandler(pouchInv, 0, 10, 30));
         addSlotToContainer(new SlotItemHandler(pouchInv, 1, 30, 30));
@@ -34,14 +37,14 @@ public class SpellCardContainer extends Container {
                 addSlotToContainer(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 
         for(i = 0; i < 9; ++i) {
-            if(playerInv.getStackInSlot(i) == pouchInv.pouch)
+            if(playerInv.getStackInSlot(i) == pouchStack)
                 addSlotToContainer(new SlotLocked(playerInv, i, 8 + i * 18, 142));
             else addSlotToContainer(new Slot(playerInv, i, 8 + i * 18, 142));
         }
     }
 
     private class SlotLocked extends Slot {
-        public SlotLocked(IInventory inv, int index, int xPos, int yPos) {
+        SlotLocked(IInventory inv, int index, int xPos, int yPos) {
             super(inv, index, xPos, yPos);
         }
 
@@ -51,15 +54,15 @@ public class SpellCardContainer extends Container {
         }
 
         @Override
-        public boolean isItemValid(ItemStack stack) {
+        public boolean isItemValid(@Nullable ItemStack stack) {
             return false;
         }
     }
 
     @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
-        return playerIn.getHeldItemMainhand() == pouchInv.pouch
-                || playerIn.getHeldItemOffhand() == pouchInv.pouch;
+    public boolean canInteractWith(EntityPlayer playerIn) {
+        return playerIn.getHeldItemMainhand() == stack
+                || playerIn.getHeldItemOffhand() == stack;
     }
 
     @Override
