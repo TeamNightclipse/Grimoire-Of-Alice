@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.plugin.touhou;
 
 import java.util.List;
@@ -46,7 +54,6 @@ public class ItemSpellCardPouch extends ItemMod {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
         list.add(TextFormatting.GOLD + "Holds Items for you");
-        list.add(TextFormatting.GOLD + "IM BUGGY HI!!");
     }
 
     @Nonnull
@@ -61,6 +68,7 @@ public class ItemSpellCardPouch extends ItemMod {
         private final IItemHandler inv = new ItemStackHandler(8) {
             @Override
             public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
+                //TODO: Change to SpellCards once available
                 return toInsert.getItem() == ModItems.faith ? super.insertItem(slot, toInsert, simulate) : toInsert;
             }
         };

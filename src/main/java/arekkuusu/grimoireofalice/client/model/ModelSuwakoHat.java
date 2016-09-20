@@ -4,6 +4,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+/**
+ * SuwakoHat - Arekkuusu
+ * Created using Tabula 5.1.0
+ */
 public class ModelSuwakoHat extends ModelBiped {
 
 	public ModelRenderer shape15;

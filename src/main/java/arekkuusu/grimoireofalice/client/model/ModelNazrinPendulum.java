@@ -4,6 +4,10 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+/**
+ * NazrinPendulum - Arekkuusu
+ * Created using Tabula 5.1.0
+ */
 public class ModelNazrinPendulum extends ModelBase {
 
 	public ModelRenderer shape1;

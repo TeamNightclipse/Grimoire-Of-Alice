@@ -93,6 +93,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.pouch, 0);
         registerItem(ModItems.windStick, 0);
         registerItem(ModItems.nazrinPendulum, 0);
+		registerItem(ModItems.ghostDipper, 0);
 		
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);

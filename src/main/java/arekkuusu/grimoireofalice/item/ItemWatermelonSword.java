@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
@@ -37,12 +45,19 @@ public class ItemWatermelonSword extends ItemModSword {
         stack.damageItem(1, attacker);
         --stack.stackSize;
         if(attacker instanceof EntityPlayer){
-        	((EntityPlayer)attacker).inventory.addItemStackToInventory(stack.stackSize <= 0 ? new ItemStack(ModItems.popsicleStick) : stack);
+        	if(!((EntityPlayer)attacker).inventory.addItemStackToInventory(new ItemStack(ModItems.popsicleStick))){
+				attacker.dropItem(ModItems.popsicleStick, 1);
+			}
         }
         if(target instanceof EntityPlayer){
         	Random rand = new Random();
-        	((EntityPlayer)target).inventory.addItemStackToInventory(new ItemStack(Items.MELON, rand.nextInt(3)));
-        }
+        	if(!((EntityPlayer)target).inventory.addItemStackToInventory(new ItemStack(Items.MELON, rand.nextInt(3)))){
+				attacker.dropItem(Items.MELON, rand.nextInt(3));
+			}
+        } else {
+			Random rand = new Random();
+			attacker.dropItem(Items.MELON, rand.nextInt(3));
+		}
         return true;
     }
 

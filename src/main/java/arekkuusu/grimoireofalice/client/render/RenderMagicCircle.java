@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
@@ -34,7 +42,6 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 		MODEL.render(circle, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
-		System.out.println("Tajdad"); //Never prints
     }
 	
 	@Override

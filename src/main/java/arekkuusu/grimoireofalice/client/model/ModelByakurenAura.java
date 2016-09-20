@@ -4,6 +4,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+/**
+ * ByakurenAura - Arekkuusu
+ * Created using Tabula 5.1.0
+ */
 public class ModelByakurenAura extends ModelBiped {
   //fields
     ModelRenderer Shape1;

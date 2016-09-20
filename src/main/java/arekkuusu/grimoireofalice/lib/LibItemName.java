@@ -27,6 +27,7 @@ public class LibItemName {
 	public static final String SKULL = "orinskull";
 	public static final String TENGUFAN = "tengufan";
 	public static final String NAZRINPENDULUM = "nazrinpendulum";
+	public static final String GHOSTDIPPER = "ghostdipper";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
