@@ -11,15 +11,17 @@ import net.minecraft.world.World;
 
 public class ItemNazrinPendulum extends ItemMod {
 
-    public ItemNazrinPendulum() {
-        super(LibItemName.NAZRINPENDULUM);
-    }
+	public ItemNazrinPendulum() {
+		super(LibItemName.NAZRINPENDULUM);
+	}
 
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn);
-        pendulum.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
-        worldIn.spawnEntityInWorld(pendulum);
-        return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-    }
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		if(!worldIn.isRemote) {
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn);
+			pendulum.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
+			worldIn.spawnEntityInWorld(pendulum);
+		}
+		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+	}
 }

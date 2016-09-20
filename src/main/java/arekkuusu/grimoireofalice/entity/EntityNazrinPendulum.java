@@ -1,5 +1,10 @@
 package arekkuusu.grimoireofalice.entity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -10,11 +15,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 public class EntityNazrinPendulum extends Entity {
 
@@ -31,11 +31,11 @@ public class EntityNazrinPendulum extends Entity {
         if(user == null) {
             stopEntity();
         }
-        if(user != null) {
+        else {
             if(ticksExisted > 10 && user.isSneaking()) {
                 stopEntity();
             }
-            if(user.hurtTime > 0) {
+            else if(user.hurtTime > 0) {
                 stopEntity();
             }
         }
@@ -46,8 +46,14 @@ public class EntityNazrinPendulum extends Entity {
         BlockPos pos = new BlockPos(posX, posY, posZ);
         for(int i = 1; i < 10; i++){
             Block block = worldObj.getBlockState(pos.down(i)).getBlock();
-            OreDictionary.getOreIDs(new ItemStack(block));
-            boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+			ItemStack stack = new ItemStack(block);
+
+			//noinspection ConstantConditions Liar
+			if(stack.getItem() == null) {
+				continue;
+			}
+
+			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
                     .mapToObj(OreDictionary::getOreName)
                     .anyMatch(s -> s.startsWith("ore"));
 
@@ -55,6 +61,7 @@ public class EntityNazrinPendulum extends Entity {
                 blockLayer.add(block);
             }
         }
+
         if(!blockLayer.isEmpty()) {
             for(Block block : blockLayer){
                 Random rand = new Random();
@@ -76,25 +83,21 @@ public class EntityNazrinPendulum extends Entity {
     }
 
     private void stopEntity() {
-        if(user != null) {
-            if(user.capabilities.isCreativeMode) {
-                setDead();
-                return;
-            }
-        }
-        if(user != null) {
-            if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.nazrinPendulum, 1))) {
-                if(!worldObj.isRemote){
-                    user.dropItem(ModItems.nazrinPendulum, 1);
-                }
-            }
-        }
-        else {
-            if(!worldObj.isRemote) {
-                dropItem(ModItems.nazrinPendulum, 1);
-            }
-        }
-        setDead();
+        if(!worldObj.isRemote) {
+			if(user != null) {
+				if(user.capabilities.isCreativeMode) {
+					setDead();
+					return;
+				}
+				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.nazrinPendulum, 1))) {
+					user.dropItem(ModItems.nazrinPendulum, 1);
+				}
+			}
+			else {
+				dropItem(ModItems.nazrinPendulum, 1);
+				setDead();
+			}
+		}
     }
 
     @Override

@@ -25,20 +25,20 @@ public class ItemLeaf extends ItemMod {
 	public ItemLeaf() {
 		super(LibItemName.LEAF);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Mamisou's Leaf from Ten Desires");
 		list.add(TextFormatting.ITALIC + "Right click to shoot");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-		
+
 	/*
 	 * After a player uses the item, it will spawn in the world 
 	 * an EntityLeaf that will travel and fall slowly.
@@ -46,30 +46,33 @@ public class ItemLeaf extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		EntityPlayer playerIn = (EntityPlayer)entityLiving;
-		if (!playerIn.capabilities.isCreativeMode) {
-            --stack.stackSize;
-        }
+		if(!playerIn.capabilities.isCreativeMode) {
+			--stack.stackSize;
+		}
 
-        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F,
+				0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-		EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
-		entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
-		worldIn.spawnEntityInWorld(entityLeaf);
+		if(!worldIn.isRemote) {
+			EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
+			entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
+			worldIn.spawnEntityInWorld(entityLeaf);
 
-		StatBase statBase = StatList.getObjectUseStats(this);
-		if(statBase != null) {
-			playerIn.addStat(statBase);
+			StatBase statBase = StatList.getObjectUseStats(this);
+			if(statBase != null) {
+				playerIn.addStat(statBase);
+			}
 		}
 	}
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BLOCK;
-    }
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
-    }
-	
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
+	}
+
 }

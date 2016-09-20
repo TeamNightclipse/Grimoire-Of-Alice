@@ -9,16 +9,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModArmor extends ItemArmor {
 
-    public ItemModArmor(ArmorMaterial materialIn, int dmg, String id, EntityEquipmentSlot equipmentSlotIn) {
-        super(materialIn, dmg, equipmentSlotIn);
-        setRegistryName(id);
-        setUnlocalizedName(id);
-        GameRegistry.register(this);
-        setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
-    }
+	public ItemModArmor(ArmorMaterial materialIn, int dmg, String id, EntityEquipmentSlot equipmentSlotIn) {
+		super(materialIn, dmg, equipmentSlotIn);
+		setRegistryName(id);
+		setUnlocalizedName(id);
+		GameRegistry.register(this);
+		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+	}
 
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.UNCOMMON;
-    }
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
+	}
 }
