@@ -136,7 +136,7 @@ public class ItemKokorosMasks extends ItemModMask {
 			model.setModelAttributes(imodel);
 			return model;
 		}
-		return null;
+		return imodel;
 	}
 	
 	@Override

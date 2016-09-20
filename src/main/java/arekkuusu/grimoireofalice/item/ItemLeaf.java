@@ -52,11 +52,9 @@ public class ItemLeaf extends ItemMod {
 
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        if (!worldIn.isRemote) {
-        	EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
-        	entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
-            worldIn.spawnEntityInWorld(entityLeaf);
-        }
+		EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
+		entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
+		worldIn.spawnEntityInWorld(entityLeaf);
 
 		StatBase statBase = StatList.getObjectUseStats(this);
 		if(statBase != null) {

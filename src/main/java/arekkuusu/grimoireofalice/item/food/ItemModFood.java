@@ -14,8 +14,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModFood extends ItemFood {
 
-	public ItemModFood(int healAmount, float potionEffectProbability, boolean alwaysEdible, String id) {
-		super(healAmount, potionEffectProbability, alwaysEdible);
+	public ItemModFood(int healAmount, float potionEffectProbability, boolean isWolfFood, String id) {
+		super(healAmount, potionEffectProbability, isWolfFood);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		GameRegistry.register(this);

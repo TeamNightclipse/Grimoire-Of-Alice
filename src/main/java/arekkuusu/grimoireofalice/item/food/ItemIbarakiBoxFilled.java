@@ -24,6 +24,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood {
 	public ItemIbarakiBoxFilled() {
 		super(2, 2F, false, LibItemName.IBARAKIBOXFILLED);
 		setMaxStackSize(1);
+		setAlwaysEdible();
 	}
 	
 	@Override

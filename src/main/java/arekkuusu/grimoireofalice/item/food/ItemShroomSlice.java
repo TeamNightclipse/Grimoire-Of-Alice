@@ -28,6 +28,7 @@ public class ItemShroomSlice extends ItemModFood {
 	public ItemShroomSlice() {
 		super(4, 1.2F, false, LibItemName.SHROOMSLICE);
 		setHasSubtypes(true);
+		setAlwaysEdible();
 	}
 
 	@Override

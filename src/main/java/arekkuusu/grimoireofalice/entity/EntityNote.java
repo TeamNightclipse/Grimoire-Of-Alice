@@ -51,7 +51,7 @@ public class EntityNote extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if(result.entityHit instanceof EntityLiving){
-			result.entityHit.attackEntityFrom(DamageSource.magic, 4);
+			result.entityHit.attackEntityFrom(DamageSource.magic, 3);
 		}
 		setDead();
 	}

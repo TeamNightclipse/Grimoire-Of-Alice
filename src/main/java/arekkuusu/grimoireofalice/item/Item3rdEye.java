@@ -54,7 +54,6 @@ public class Item3rdEye extends ItemMod {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
-		super.onUpdate(stack, world, entity, p_77663_4_, p_77663_5_);
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() == this) {

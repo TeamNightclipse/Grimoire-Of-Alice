@@ -24,6 +24,7 @@ public class ItemkappasNostrum extends ItemModFood {
 		super(1, 1F, false, LibItemName.KAPPASNOSTRUM);
 		setMaxStackSize(1);
 		setMaxDamage(4);
+		setAlwaysEdible();
 	}
 	
 	@Override

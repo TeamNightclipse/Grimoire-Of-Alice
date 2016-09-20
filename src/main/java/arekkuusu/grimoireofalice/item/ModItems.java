@@ -9,20 +9,8 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.item.auras.*;
-import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
-import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
-import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
-import arekkuusu.grimoireofalice.item.food.ItemkappasNostrum;
-import arekkuusu.grimoireofalice.item.masks.ItemFoxMask;
-import arekkuusu.grimoireofalice.item.masks.ItemFukuNoKamiMask;
-import arekkuusu.grimoireofalice.item.masks.ItemHannyaMask;
-import arekkuusu.grimoireofalice.item.masks.ItemHyottokoMask;
-import arekkuusu.grimoireofalice.item.masks.ItemKokorosMasks;
-import arekkuusu.grimoireofalice.item.masks.ItemKoomoteMask;
-import arekkuusu.grimoireofalice.item.masks.ItemMaskOfHope;
-import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
-import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
-import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
+import arekkuusu.grimoireofalice.item.food.*;
+import arekkuusu.grimoireofalice.item.masks.*;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.plugin.touhou.ItemSpellCardPouch;
 import net.minecraft.init.SoundEvents;
@@ -56,11 +44,14 @@ public final class ModItems {
 		public static Item patchyBook;
 		public static Item skull;
 	    public static Item pouch;
+        public static Item windStick;
+        public static Item nazrinPendulum;
 		//Food
 		public static Item shroomSlice;
 		public static Item grilledLamprey;
 		public static Item ibarakiBoxFilled;
 		public static Item kappasNostrum;
+	    public static Item heavenlyPeach;
 		//Armor
 		public static Item foxMask;
 		public static Item raidenMask;
@@ -79,6 +70,7 @@ public final class ModItems {
 		public static Item toyosatomimiAura;
 		public static Item kanakoAura;
         public static Item ichirinAura;
+        public static Item suwakoHat;
 		//Weapons
 		public static Item mochiHammer;
 		public static Item momijisScimitarSword;
@@ -102,7 +94,6 @@ public final class ModItems {
 		public static Item sarielWand;
 		public static Item watermelonBlade;
 		public static Item watermelonSword;
-		
 		//PointItem
 		public static Item fullPower;
 		public static Item star;
@@ -147,12 +138,15 @@ public final class ModItems {
 		patchyBook = new ItemPatchyBook();
 		skull = new ItemSkull();
         pouch = new ItemSpellCardPouch();
+        windStick = new ItemTenguFan();
+        nazrinPendulum = new ItemNazrinPendulum();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();
 		grilledLamprey = new ItemGrilledLamprey();
 		ibarakiBoxFilled = new ItemIbarakiBoxFilled();
 		kappasNostrum = new ItemkappasNostrum();
+		heavenlyPeach = new ItemHeavelyPeach();
 		
 		//Armor
 		mapleLeafShield = new ItemMapleLeafShield();
@@ -172,6 +166,7 @@ public final class ModItems {
 		toyosatomimiAura = new ItemAuraToyosatomimi(SOLID_PAPER, 3);
 		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
         ichirinAura = new ItemAuraIchirin(SOLID_PAPER, 3);
+        suwakoHat = new ItemSuwakoHat(SOLID_PAPER,3);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);

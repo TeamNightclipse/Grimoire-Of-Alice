@@ -11,12 +11,8 @@ package arekkuusu.grimoireofalice.client;
 import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.client.render.RenderLeaf;
-import arekkuusu.grimoireofalice.client.render.RenderMagicCircle;
-import arekkuusu.grimoireofalice.client.render.RenderNote;
-import arekkuusu.grimoireofalice.entity.EntityLeaf;
-import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.entity.EntityNote;
+import arekkuusu.grimoireofalice.client.render.*;
+import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -68,6 +64,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.toyosatomimiAura, 0);
 		registerItem(ModItems.kanakoAura, 0);
 		registerItem(ModItems.ichirinAura, 0);
+        registerItem(ModItems.suwakoHat, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -94,6 +91,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.patchyBook, 0);
 		registerItem(ModItems.skull, 0);
 		registerItem(ModItems.pouch, 0);
+        registerItem(ModItems.windStick, 0);
+        registerItem(ModItems.nazrinPendulum, 0);
 		
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);
@@ -106,6 +105,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.grilledLamprey, 0);
 		registerItem(ModItems.ibarakiBoxFilled, 0);
 		registerItem(ModItems.kappasNostrum, 0);
+		registerItem(ModItems.heavenlyPeach, 0);
 		
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);
@@ -148,6 +148,8 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNote.class, RenderNote::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityWind.class, RenderWind::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
 	}
 	
 	private void registerItem(Item item, int damage) {
