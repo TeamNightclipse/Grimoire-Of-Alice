@@ -28,6 +28,7 @@ public class LibItemName {
 	public static final String TENGUFAN = "tengufan";
 	public static final String NAZRINPENDULUM = "nazrinpendulum";
 	public static final String GHOSTDIPPER = "ghostdipper";
+	public static final String WALLPASSINGCHISEL = "wallpassingchisel";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -91,5 +92,4 @@ public class LibItemName {
 	public static final String EYE = "thirdeye";
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
-
 }

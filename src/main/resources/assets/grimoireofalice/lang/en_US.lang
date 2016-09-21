@@ -14,6 +14,9 @@ item.lyricapiano.name=Lyrica's Piano
 item.merlintrumpet.name=Merlin's Trumpet
 item.shoulamp.name=Bishamonten's Pagoda
 item.orinskull.name=Orin's Skull
+item.nazrinpendulum.name=Nazrin Pendulum
+item.ghostdipper.name=Ship Ghost's Dipper
+item.wallpassingchisel.name=Seiga's Hairpin
 
 item.shroomslice.name=Shroom Slice
 item.grilledlamprey.name=Grilled Lamprey
@@ -64,8 +67,6 @@ item.sarielwand.name=Sariel's wand
 item.watermelonblade.name=Watermelon Blade
 item.watermelonsword.name=Watermelon Sword
 item.tengufan.name=Tengu Fan
-item.nazrinpendulum.name=Nazrin Pendulum
-item.ghostdipper.name=Ship Ghost's Dipper
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper

@@ -82,6 +82,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.windStick);
         addItem(ModItems.nazrinPendulum);
 		addItem(ModItems.ghostDipper);
+		addItem(ModItems.wallPassingchisel);
 		
 		//Food
 		addItem(ModItems.shroomSlice);

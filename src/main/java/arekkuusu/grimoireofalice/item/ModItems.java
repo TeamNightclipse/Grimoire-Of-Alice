@@ -47,6 +47,7 @@ public final class ModItems {
 	public static Item windStick;
 	public static Item nazrinPendulum;
 	public static Item ghostDipper;
+	public static Item wallPassingchisel;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -142,6 +143,7 @@ public final class ModItems {
         windStick = new ItemTenguFan();
         nazrinPendulum = new ItemNazrinPendulum();
 		ghostDipper = new ItemGhostDipper();
+		wallPassingchisel = new ItemWallPassingChisel();
 		
 		//Food
 		shroomSlice = new ItemShroomSlice();

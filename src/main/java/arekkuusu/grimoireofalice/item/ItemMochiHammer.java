@@ -43,7 +43,6 @@ public class ItemMochiHammer extends ItemModSword {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getHeldItemMainhand() == stack) {
-				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 0, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 0));
 			}
 		}
