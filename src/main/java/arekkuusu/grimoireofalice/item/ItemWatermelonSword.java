@@ -9,19 +9,25 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
-import java.util.Random;
 
+import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemWatermelonSword extends ItemModSword {
+
+	@CapabilityInject(IItemHandler.class)
+	private static Capability<IItemHandler> itemHandlerCapability;
 
 	public ItemWatermelonSword(ToolMaterial material) {
 		super(material, LibItemName.WATERMELONSWORD);
@@ -40,24 +46,31 @@ public class ItemWatermelonSword extends ItemModSword {
 		list.add(TextFormatting.ITALIC + "as salty as life...");
 	}
 
+	@SuppressWarnings("ConstantConditions") //Liar
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         --stack.stackSize;
-        if(attacker instanceof EntityPlayer){
-        	if(!((EntityPlayer)attacker).inventory.addItemStackToInventory(new ItemStack(ModItems.popsicleStick))){
-				attacker.dropItem(ModItems.popsicleStick, 1);
+
+		if(attacker.hasCapability(itemHandlerCapability, null)) {
+			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(itemHandlerCapability, null),
+					new ItemStack(ModItems.popsicleStick), false);
+			if(rest != null) {
+				attacker.dropItem(rest.getItem(), rest.stackSize);
 			}
-        }
-        if(target instanceof EntityPlayer){
-        	Random rand = new Random();
-        	if(!((EntityPlayer)target).inventory.addItemStackToInventory(new ItemStack(Items.MELON, rand.nextInt(3)))){
-				attacker.dropItem(Items.MELON, rand.nextInt(3));
-			}
-        } else {
-			Random rand = new Random();
-			attacker.dropItem(Items.MELON, rand.nextInt(3));
 		}
+
+		if(target.hasCapability(itemHandlerCapability, null)) {
+			ItemStack rest = ItemHandlerHelper.insertItemStacked(target.getCapability(itemHandlerCapability, null),
+					new ItemStack(Items.MELON, itemRand.nextInt(3)), false);
+			if(rest != null) {
+				attacker.dropItem(rest.getItem(), rest.stackSize);
+			}
+		}
+		else {
+			attacker.dropItem(Items.MELON, itemRand.nextInt(3));
+		}
+
         return true;
     }
 

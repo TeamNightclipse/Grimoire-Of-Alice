@@ -15,9 +15,9 @@ import java.util.Random;
 
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
@@ -66,7 +66,7 @@ public class EntityNazrinPendulum extends Entity {
 
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
                     .mapToObj(OreDictionary::getOreName)
-                    .anyMatch(s -> s.startsWith("ore")) || block instanceof BlockChest;
+                    .anyMatch(s -> s.startsWith("ore")) || block == Blocks.CHEST;
 
             if(isOre) {
                 blockLayer.add(block);

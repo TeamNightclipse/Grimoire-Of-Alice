@@ -59,13 +59,15 @@ public class ItemTenguFan extends ItemMod {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			player.swingArm(EnumHand.MAIN_HAND);
-			float speed = (getMaxItemUseDuration(stack) - timeLeft) / 7.0F;
-			int used = getMaxItemUseDuration(stack) - timeLeft;
-			if(used <= 5){return;}
+			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+			float speed = timeUsed / 7.0F;
+			if(timeUsed <= 5) {
+				return;
+			}
 			worldIn.playSound(null, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
 					itemRand.nextFloat() * 0.4F + 0.8F);
 			if(!worldIn.isRemote) {
-				EntityWind wind = new EntityWind(worldIn, player, used);
+				EntityWind wind = new EntityWind(worldIn, player, timeUsed);
 				wind.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 1.0F);
 				worldIn.spawnEntityInWorld(wind);
 			}
