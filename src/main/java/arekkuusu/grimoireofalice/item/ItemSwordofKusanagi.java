@@ -102,12 +102,12 @@ public class ItemSwordofKusanagi extends ItemModSword {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))){
-				int hurr = getMaxItemUseDuration(stack) - timeLeft;
-				float durr = (hurr * 6) / 20F;
-				durr = (durr * durr + durr * 2.0F) / 3F;
-				durr *= 1.5F;
-				if (durr > 10F) return;
-				for(int t = 0; t < durr; t++){
+				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+				float convert = (timeUsed * 6) / 20F;
+				convert = (convert * convert + convert * 2.0F) / 3F;
+				convert *= 1.5F;
+				if (convert > 10F) return;
+				for(int t = 0; t < convert; t++){
 					for(int u = 0;u < 10; u++){
 						Random rand0 = player.getRNG();
 						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, rand0.nextDouble(), 0, rand0.nextDouble());
@@ -118,7 +118,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 				}
 				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
 				for (EntityMob mob : list){
-					mob.attackEntityFrom(DamageSource.magic, durr);
+					mob.attackEntityFrom(DamageSource.magic, convert);
 					Vec3d playerPos = player.getPositionVector();
 					Vec3d mobPos = mob.getPositionVector();
 					double ratio = playerPos.distanceTo(mobPos) / 4;

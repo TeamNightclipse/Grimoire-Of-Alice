@@ -8,7 +8,7 @@ item.youkaibook.name=Youkai Book
 item.mask.name=Mask
 item.hihiirokane.name=Hihi'irokane
 item.impurerock.name=Impure Mineral
-item.patchybook.name=Patchy Book
+item.patchybook.name=Grimoire of Alice Stuff
 item.lunasaviolin.name=Lunasa's Violin
 item.lyricapiano.name=Lyrica's Piano
 item.merlintrumpet.name=Merlin's Trumpet
@@ -17,6 +17,7 @@ item.orinskull.name=Orin's Skull
 item.nazrinpendulum.name=Nazrin Pendulum
 item.ghostdipper.name=Ship Ghost's Dipper
 item.wallpassingchisel.name=Seiga's Hairpin
+item.miraclemallet.name=Miracle Mallet
 
 item.shroomslice.name=Shroom Slice
 item.grilledlamprey.name=Grilled Lamprey
@@ -67,6 +68,7 @@ item.sarielwand.name=Sariel's wand
 item.watermelonblade.name=Watermelon Blade
 item.watermelonsword.name=Watermelon Sword
 item.tengufan.name=Tengu Fan
+item.sacredswordoftoyosatomimi.name= Sacred Sword of Toyosatomimi
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper

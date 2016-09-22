@@ -55,11 +55,24 @@ public class ItemWallPassingChisel extends ItemMod {
 	 */
 	@Nullable
 	private BlockPos getPos(World world, BlockPos pos, EnumFacing facing) {
+		facing = facing.getOpposite();
 		BlockPos triedPos = pos;
 
 		for(int i = 0; i < 50; i++) {
 			if(world.getBlockState(triedPos).getBlock() == Blocks.AIR) {
-				return triedPos.offset(facing);
+				//Logic to prevent player to suffocate or get in awkward positions
+				if(facing == EnumFacing.DOWN){
+					if (world.getBlockState(triedPos.offset(facing)).getBlock() != Blocks.AIR) {
+						return null;
+					}
+					triedPos = triedPos.offset(facing);
+				} else if(facing != EnumFacing.UP){
+					if (world.getBlockState(triedPos.down()).getBlock() == Blocks.AIR) {
+						triedPos = triedPos.down();
+					}
+				}
+
+				return triedPos;
 			}
 			else {
 				triedPos = triedPos.offset(facing);

@@ -83,6 +83,7 @@ public class GOACreativeTab extends CreativeTabs {
         addItem(ModItems.nazrinPendulum);
 		addItem(ModItems.ghostDipper);
 		addItem(ModItems.wallPassingchisel);
+		addItem(ModItems.miracleMallet);
 		
 		//Food
 		addItem(ModItems.shroomSlice);
@@ -132,6 +133,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.sarielWand);
 		addItem(ModItems.watermelonBlade);
 		addItem(ModItems.watermelonSword);
+		addItem(ModItems.sacredToyosatomimi);
 		
 		//Blocks
 		addBlock(ModBlocks.compactStone);

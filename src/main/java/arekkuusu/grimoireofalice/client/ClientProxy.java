@@ -95,6 +95,7 @@ public class ClientProxy extends CommonProxy{
         registerItem(ModItems.nazrinPendulum, 0);
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.wallPassingchisel, 0);
+		registerItem(ModItems.miracleMallet, 0);
 		
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);
@@ -131,6 +132,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.sarielWand, 0);
 		registerItem(ModItems.watermelonBlade, 0);
 		registerItem(ModItems.watermelonSword, 0);
+		registerItem(ModItems.sacredToyosatomimi, 0);
 		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);

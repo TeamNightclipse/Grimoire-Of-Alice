@@ -18,6 +18,8 @@ public class LibItemName {
 	public static final String SHIMENAWAROPE = "shimenawarope";
 	public static final String YOUKAIBOOK = "youkaibook";
 	public static final String MASK = "mask";
+	public static final String IMPUREROCK = "impurerock";
+	public static final String EYE = "thirdeye";
 	public static final String HIHIIROKANE = "hihiirokane";
 	public static final String LUNASAVIOLIN = "lunasaviolin";
 	public static final String LYRICAPIANO = "lyricapiano";
@@ -29,6 +31,7 @@ public class LibItemName {
 	public static final String NAZRINPENDULUM = "nazrinpendulum";
 	public static final String GHOSTDIPPER = "ghostdipper";
 	public static final String WALLPASSINGCHISEL = "wallpassingchisel";
+	public static final String MIRACLEMALLET = "miraclemallet";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -78,6 +81,7 @@ public class LibItemName {
 	public static final String SARIELWAND = "sarielwand";
 	public static final String WATERMELONBLADE = "watermelonblade";
 	public static final String WATERMELONSWORD = "watermelonsword";
+	public static final String SACREDTOYOSATOMIMI = "sacredswordoftoyosatomimi";
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";
@@ -88,8 +92,6 @@ public class LibItemName {
 	public static final String UFOBLUE = "ufoblue";
 	public static final String UFOGREEN = "ufogreen";
 	public static final String UFOs = "ufos";
-	public static final String IMPUREROCK = "impurerock";
-	public static final String EYE = "thirdeye";
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
 }

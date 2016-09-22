@@ -83,15 +83,20 @@ public class SpellCardContainer extends Container {
             itemstack = itemstack1.copy();
 
             if(slotIndex < 8) {
-                if(!mergeItemStack(itemstack1, 8, 52, true))
+                if(!mergeItemStack(itemstack1, 8, 43, true))
                     return null;
+				else slot.onSlotChange(itemstack1, itemstack);
             } else {
-                int i = itemstack.getItemDamage();
-                if(i < 8) {
-                    Slot slot1 = inventorySlots.get(i);
-                    if(slot1.isItemValid(itemstack) && !mergeItemStack(itemstack1, i, i + 1, true))
-                        return null;
-                }
+               // int i = itemstack.getItemDamage();
+                //if(i < 8) {
+                  //  Slot slot1 = inventorySlots.get(i);
+                   // if(slot1.isItemValid(itemstack) && !mergeItemStack(itemstack1, i, i + 1, true))
+                     //   return null;
+                //}
+				if (!this.mergeItemStack(itemstack1, 0, 8, false)) {
+					return null;
+				}
+				slot.onSlotChange(itemstack1, itemstack);
             }
 
             if(itemstack1.stackSize == 0)

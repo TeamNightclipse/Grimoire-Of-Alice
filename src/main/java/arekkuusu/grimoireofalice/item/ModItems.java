@@ -48,6 +48,7 @@ public final class ModItems {
 	public static Item nazrinPendulum;
 	public static Item ghostDipper;
 	public static Item wallPassingchisel;
+	public static Item miracleMallet;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -96,6 +97,7 @@ public final class ModItems {
 	public static Item sarielWand;
 	public static Item watermelonBlade;
 	public static Item watermelonSword;
+	public static Item sacredToyosatomimi;
 	//PointItem
 	public static Item fullPower;
 	public static Item star;
@@ -144,7 +146,8 @@ public final class ModItems {
         nazrinPendulum = new ItemNazrinPendulum();
 		ghostDipper = new ItemGhostDipper();
 		wallPassingchisel = new ItemWallPassingChisel();
-		
+		miracleMallet = new ItemMiracleMallet();
+
 		//Food
 		shroomSlice = new ItemShroomSlice();
 		grilledLamprey = new ItemGrilledLamprey();
@@ -194,6 +197,7 @@ public final class ModItems {
 		sarielWand = new ItemSarielWand(WET_NOODLE);
 		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
 		watermelonSword = new ItemWatermelonSword(GOLDYRON);
+		sacredToyosatomimi = new ItemSacredToyosatomimi(GOLDYRON);
 		
 	}
 	

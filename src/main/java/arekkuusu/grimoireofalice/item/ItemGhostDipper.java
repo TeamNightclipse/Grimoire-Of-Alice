@@ -65,8 +65,9 @@ public class ItemGhostDipper extends ItemMod {
 		RayTraceResult raytraceresult = this.rayTrace(worldIn, playerIn, true);
 		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
 		if(ret != null) return ret;
-
-		if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+		if (raytraceresult == null) { //NOTE: Must not remove this piece of code, it prevents a NullPointerException in line 70
+			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		} else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		}
 		else {
