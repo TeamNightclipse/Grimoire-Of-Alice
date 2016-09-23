@@ -96,6 +96,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.wallPassingchisel, 0);
 		registerItem(ModItems.miracleMallet, 0);
+		registerItem(ModItems.rodRemorse, 0);
 		
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);
@@ -133,6 +134,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.watermelonBlade, 0);
 		registerItem(ModItems.watermelonSword, 0);
 		registerItem(ModItems.sacredToyosatomimi, 0);
+		registerItem(ModItems.needle, 0);
+		registerItem(ModItems.hisou, 0);
 		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
@@ -154,6 +157,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityNote.class, RenderNote::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityWind.class, RenderWind::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
 	}
 	
 	private void registerItem(Item item, int damage) {

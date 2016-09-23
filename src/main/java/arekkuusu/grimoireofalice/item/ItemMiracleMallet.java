@@ -22,9 +22,9 @@ public class ItemMiracleMallet extends ItemMod {
 		if(!worldIn.isRemote && (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode)) {
 			List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn, playerIn.getEntityBoundingBox().expandXyz(20.0D));
 			if(!list.isEmpty())
-			for(Entity ent : list){
+				for(Entity ent : list){
 
-			}
+				}
 		}
 		playerIn.swingArm(hand);
 		playerIn.getCooldownTracker().setCooldown(this, 50);

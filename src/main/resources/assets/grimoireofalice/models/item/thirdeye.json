@@ -3,7 +3,7 @@
     "textures": {
         "layer0": "grimoireofalice:items/3rdeye"
     },
-    "overrides":  [
+    "overrides": [
         {
             "predicate": {
                 "cooldown": 0.01

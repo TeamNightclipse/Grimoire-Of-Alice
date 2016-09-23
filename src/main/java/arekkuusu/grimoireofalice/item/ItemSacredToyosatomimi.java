@@ -110,6 +110,7 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - No souls found - - - - - - -"));
 					}
 				}
+				player.getCooldownTracker().setCooldown(this, timeLeft);
 				stack.damageItem(1, player);
 			}
 		}

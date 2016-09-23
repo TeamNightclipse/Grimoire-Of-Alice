@@ -32,6 +32,7 @@ public class LibItemName {
 	public static final String GHOSTDIPPER = "ghostdipper";
 	public static final String WALLPASSINGCHISEL = "wallpassingchisel";
 	public static final String MIRACLEMALLET = "miraclemallet";
+	public static final String RODREMORSE = "rodofremorse";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -82,6 +83,7 @@ public class LibItemName {
 	public static final String WATERMELONBLADE = "watermelonblade";
 	public static final String WATERMELONSWORD = "watermelonsword";
 	public static final String SACREDTOYOSATOMIMI = "sacredswordoftoyosatomimi";
+	public static final String HISOU = "hisou";
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";

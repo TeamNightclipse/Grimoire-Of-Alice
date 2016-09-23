@@ -105,7 +105,7 @@ public class EntityLeaf extends EntityThrowable {
 	}
 	
 	public void setTime(float time) {
-		dataManager.set(TIME, Float.valueOf(time));
+		dataManager.set(TIME, time);
 	}
 
 	public float getTime() {

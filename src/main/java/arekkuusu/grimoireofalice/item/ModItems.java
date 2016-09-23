@@ -49,6 +49,7 @@ public final class ModItems {
 	public static Item ghostDipper;
 	public static Item wallPassingchisel;
 	public static Item miracleMallet;
+	public static Item rodRemorse;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -98,6 +99,7 @@ public final class ModItems {
 	public static Item watermelonBlade;
 	public static Item watermelonSword;
 	public static Item sacredToyosatomimi;
+	public static Item hisou;
 	//PointItem
 	public static Item fullPower;
 	public static Item star;
@@ -147,6 +149,7 @@ public final class ModItems {
 		ghostDipper = new ItemGhostDipper();
 		wallPassingchisel = new ItemWallPassingChisel();
 		miracleMallet = new ItemMiracleMallet();
+		rodRemorse = new ItemRodOfRemorse();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -198,6 +201,8 @@ public final class ModItems {
 		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
 		watermelonSword = new ItemWatermelonSword(GOLDYRON);
 		sacredToyosatomimi = new ItemSacredToyosatomimi(GOLDYRON);
+		needle = new ItemNeedle(NOT_A_MELEE_WEAPON);
+		hisou = new ItemSwordOfHisou(GOLDYRON);
 		
 	}
 	

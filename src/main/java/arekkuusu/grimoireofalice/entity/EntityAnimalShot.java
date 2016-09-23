@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
@@ -36,6 +37,10 @@ public class EntityAnimalShot extends EntityThrowable {
 		super.onUpdate();
 		doEffects();
 		++ticksInAir;
+		if(ticksInAir == 10 || ticksInAir == 20 || ticksInAir == 30 || ticksInAir == 40){
+			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F); //These needs to be negative for some reason
+			setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
+		}
 		if(ticksInAir >= 50){
 			if(!worldObj.isRemote) {
 	            this.setDead();

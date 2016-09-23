@@ -18,6 +18,7 @@ item.nazrinpendulum.name=Nazrin Pendulum
 item.ghostdipper.name=Ship Ghost's Dipper
 item.wallpassingchisel.name=Seiga's Hairpin
 item.miraclemallet.name=Miracle Mallet
+item.rodofremorse.name=Rod of Remorse
 
 item.shroomslice.name=Shroom Slice
 item.grilledlamprey.name=Grilled Lamprey
@@ -68,7 +69,8 @@ item.sarielwand.name=Sariel's wand
 item.watermelonblade.name=Watermelon Blade
 item.watermelonsword.name=Watermelon Sword
 item.tengufan.name=Tengu Fan
-item.sacredswordoftoyosatomimi.name= Sacred Sword of Toyosatomimi
+item.sacredswordoftoyosatomimi.name=Sacred Sword of Toyosatomimi
+item.hisou.name=Sword of Hisou
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper
