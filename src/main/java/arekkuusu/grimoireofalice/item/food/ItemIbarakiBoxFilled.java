@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemIbarakiBoxFilled extends ItemModFood {
 
 	public ItemIbarakiBoxFilled() {
-		super(2, 2F, false, LibItemName.IBARAKIBOXFILLED);
+		super(0, 2F, false, LibItemName.IBARAKIBOXFILLED);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}

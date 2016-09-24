@@ -40,6 +40,7 @@ public class LibItemName {
 	public static final String IBARAKIBOXEMPTY = "ibarakiboxempty";
 	public static final String KAPPASNOSTRUM = "kappasnostrum";
 	public static final String HEAVENLYPEACH = "heavenlypeach";
+	public static final String IBUKIGOURD = "ibukigourd";
 	//Armor
 	public static final String FOXMASK = "foxmask";
 	public static final String RAIDENMASK = "raidenmask";
@@ -84,6 +85,7 @@ public class LibItemName {
 	public static final String WATERMELONSWORD = "watermelonsword";
 	public static final String SACREDTOYOSATOMIMI = "sacredswordoftoyosatomimi";
 	public static final String HISOU = "hisou";
+	public static final String DEATHSCYTHE = "deathscythe";
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";

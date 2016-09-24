@@ -56,6 +56,7 @@ public final class ModItems {
 	public static Item ibarakiBoxFilled;
 	public static Item kappasNostrum;
 	public static Item heavenlyPeach;
+	public static Item ibukiGourd;
 	//Armor
 	public static Item foxMask;
 	public static Item raidenMask;
@@ -100,6 +101,7 @@ public final class ModItems {
 	public static Item watermelonSword;
 	public static Item sacredToyosatomimi;
 	public static Item hisou;
+	public static Item deathScythe;
 	//PointItem
 	public static Item fullPower;
 	public static Item star;
@@ -155,8 +157,9 @@ public final class ModItems {
 		shroomSlice = new ItemShroomSlice();
 		grilledLamprey = new ItemGrilledLamprey();
 		ibarakiBoxFilled = new ItemIbarakiBoxFilled();
-		kappasNostrum = new ItemkappasNostrum();
+		kappasNostrum = new ItemKappasNostrum();
 		heavenlyPeach = new ItemHeavelyPeach();
+		ibukiGourd = new ItemIbukiGourd();
 		
 		//Armor
 		mapleLeafShield = new ItemMapleLeafShield();
@@ -203,6 +206,7 @@ public final class ModItems {
 		sacredToyosatomimi = new ItemSacredToyosatomimi(GOLDYRON);
 		needle = new ItemNeedle(NOT_A_MELEE_WEAPON);
 		hisou = new ItemSwordOfHisou(GOLDYRON);
+		deathScythe = new ItemDeathScythe(WET_NOODLE);
 		
 	}
 	

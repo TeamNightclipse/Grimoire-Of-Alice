@@ -93,6 +93,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.ibarakiBoxFilled);
 		addItem(ModItems.kappasNostrum);
 		addItem(ModItems.heavenlyPeach);
+		addItem(ModItems.ibukiGourd);
 		
 		//Armor
 		addItem(ModItems.mapleLeafShield);
@@ -137,6 +138,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.sacredToyosatomimi);
 		addItem(ModItems.needle);
 		addItem(ModItems.hisou);
+		addItem(ModItems.deathScythe);
 		
 		//Blocks
 		addBlock(ModBlocks.compactStone);

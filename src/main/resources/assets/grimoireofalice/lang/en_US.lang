@@ -26,6 +26,7 @@ item.ibarakiboxfilled.name=Ibaraki Box
 item.kappasnostrum.name=Kappas Nostrum
 item.ibarakiboxempty.name=Ibaraki Box
 item.heavenlypeach.name=Heavenly Peach
+item.ibukigourd.name=Ibuki Gourd
 
 item.foxmask.name=Fox Mask
 item.raidenmask.name=Raiden Mask
@@ -71,6 +72,7 @@ item.watermelonsword.name=Watermelon Sword
 item.tengufan.name=Tengu Fan
 item.sacredswordoftoyosatomimi.name=Sacred Sword of Toyosatomimi
 item.hisou.name=Sword of Hisou
+item.deathscythe.name=Death Scythe
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper

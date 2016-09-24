@@ -13,9 +13,12 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -24,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHeavelyPeach extends ItemModFood {
 
 	public ItemHeavelyPeach() {
-		super(10, 5F, false, LibItemName.HEAVENLYPEACH);
+		super(20, 5F, false, LibItemName.HEAVENLYPEACH);
 		setMaxStackSize(16);
 		setAlwaysEdible();
 	}
@@ -44,6 +47,8 @@ public class ItemHeavelyPeach extends ItemModFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
+		world.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
+				SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 160, 0));
 	}
 }
