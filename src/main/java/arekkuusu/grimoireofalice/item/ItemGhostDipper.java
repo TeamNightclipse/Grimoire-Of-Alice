@@ -72,7 +72,9 @@ public class ItemGhostDipper extends ItemMod {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 			if(absorb(worldIn, blockpos)) {
 				worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+				if(itemStackIn.isItemDamaged()){
+					itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+				}
 				playerIn.setActiveHand(hand);
 				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 			}
@@ -106,6 +108,7 @@ public class ItemGhostDipper extends ItemMod {
 				world.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				stack.damageItem(1, player);
 				world.setBlockState(posUp, Blocks.WATER.getDefaultState(), 11);
+				player.setActiveHand(hand);
 			}
 		}
 		return EnumActionResult.SUCCESS;

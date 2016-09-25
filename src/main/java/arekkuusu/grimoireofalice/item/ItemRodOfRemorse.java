@@ -26,7 +26,7 @@ public class ItemRodOfRemorse extends ItemMod {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (target.getMaxHealth() * 0.75f < target.getHealth() && !stack.isItemDamaged()) {
+		if (!stack.isItemDamaged()) {
 			target.setHealth(target.getMaxHealth() * 0.75F);
 			stack.setItemDamage(1);
 			return true;

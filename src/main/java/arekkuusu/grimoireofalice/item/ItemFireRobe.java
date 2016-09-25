@@ -11,6 +11,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -47,6 +48,10 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 		boolean isActive = player.getActivePotionEffects().contains(new PotionEffect(MobEffects.GLOWING));
 		if(player.isBurning() && !isActive){
 			player.extinguish();
+			for(int k = 0; k < 8; ++k) {
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX + 0.5 + itemRand.nextDouble(), player.posY + itemRand.nextDouble(),
+						player.posZ + 0.5 + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+			}
 		}
 	}
 
@@ -54,6 +59,10 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		if(target instanceof EntityPlayer) {
 			target.extinguish();
+			for(int k = 0; k < 8; ++k) {
+				((EntityPlayer) target).worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX + itemRand.nextDouble(), target.posY + itemRand.nextDouble(),
+						target.posZ + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+			}
 		} else {
 			target.setFire(10);
 		}
@@ -62,7 +71,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		boolean isActive = entity.getActivePotionEffects().contains(new PotionEffect(MobEffects.GLOWING));
+		boolean isActive = entity.isPotionActive(MobEffects.GLOWING);
 		if(isActive){
 			stack.damageItem(damage * 10, entity);
 		}
@@ -70,7 +79,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		boolean isActive = player.getActivePotionEffects().contains(new PotionEffect(MobEffects.GLOWING));
+		boolean isActive = player.isPotionActive(MobEffects.GLOWING);
 		if(isActive){
 			return new ArmorProperties(4, 0, 0);
 		}

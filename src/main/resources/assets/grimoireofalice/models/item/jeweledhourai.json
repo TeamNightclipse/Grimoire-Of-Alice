@@ -2,5 +2,43 @@
     "parent": "item/handheld",
     "textures": {
         "layer0": "grimoireofalice:items/jeweledhourai"
-    }
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "jewels": 0.0
+            },
+            "model": "grimoireofalice:item/jeweledhourai4"
+        },
+		{
+            "predicate": {
+                "jewels": 1.0
+            },
+            "model": "grimoireofalice:item/jeweledhourai3"
+        },
+		{
+            "predicate": {
+                "jewels": 2.0
+            },
+            "model": "grimoireofalice:item/jeweledhourai2"
+        },
+		{
+            "predicate": {
+                "jewels": 3.0
+            },
+            "model": "grimoireofalice:item/jeweledhourai1"
+        },
+		{
+            "predicate": {
+                "jewels": 4.0
+            },
+            "model": "grimoireofalice:item/jeweledhourai0"
+        },
+		{
+            "predicate": {
+                "jewels": 5.0
+            },
+            "model": "grimoireofalice:item/jeweledhouraifull"
+        }
+	]
 }
