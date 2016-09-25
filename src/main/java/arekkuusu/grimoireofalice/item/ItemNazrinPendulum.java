@@ -16,7 +16,9 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,9 +28,15 @@ import java.util.List;
 
 public class ItemNazrinPendulum extends ItemMod {
 
-	public ItemNazrinPendulum() {
+	ItemNazrinPendulum() {
 		super(LibItemName.NAZRINPENDULUM);
         setMaxStackSize(1);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	@Override
@@ -56,5 +64,16 @@ public class ItemNazrinPendulum extends ItemMod {
 		}
 		--itemStackIn.stackSize;
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	}
+
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if(!worldIn.isRemote) {
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn);
+			pendulum.setPosition(pos.getX()+ 0.5, pos.getY() + 2, pos.getZ() + 0.5);
+			worldIn.spawnEntityInWorld(pendulum);
+		}
+		--stack.stackSize;
+		return EnumActionResult.SUCCESS;
 	}
 }

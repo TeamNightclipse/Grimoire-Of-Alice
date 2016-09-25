@@ -25,7 +25,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemOnbashira extends ItemModSword {
 
-	public ItemOnbashira(ToolMaterial material) {
+	ItemOnbashira(ToolMaterial material) {
 		super(material, LibItemName.KANAKOONBASHIRA);
 	}
 
@@ -55,5 +55,14 @@ public class ItemOnbashira extends ItemModSword {
 			}
 		}
 	}
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

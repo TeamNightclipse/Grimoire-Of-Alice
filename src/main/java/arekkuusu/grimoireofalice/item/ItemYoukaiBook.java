@@ -27,11 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemYoukaiBook extends ItemMod {
 
-	public ItemYoukaiBook() {
+	ItemYoukaiBook() {
 		super(LibItemName.YOUKAIBOOK);
 		setMaxStackSize(1);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
@@ -61,5 +61,9 @@ public class ItemYoukaiBook extends ItemMod {
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
     }
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
 }

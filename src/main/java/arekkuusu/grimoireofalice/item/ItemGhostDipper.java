@@ -20,15 +20,10 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.Tuple;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
@@ -38,9 +33,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGhostDipper extends ItemMod {
 
-	public ItemGhostDipper() {
+	ItemGhostDipper() {
 		super(LibItemName.GHOSTDIPPER);
 		setMaxStackSize(1);
+		setMaxDamage(100);
+		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
+				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -74,6 +72,8 @@ public class ItemGhostDipper extends ItemMod {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 			if(absorb(worldIn, blockpos)) {
 				worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+				playerIn.setActiveHand(hand);
 				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 			}
 		}
@@ -104,6 +104,7 @@ public class ItemGhostDipper extends ItemMod {
 			else if(!world.isRemote && canReplace && !material.isLiquid()) {
 				world.destroyBlock(posUp, true);
 				world.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				stack.damageItem(1, player);
 				world.setBlockState(posUp, Blocks.WATER.getDefaultState(), 11);
 			}
 		}
@@ -139,5 +140,25 @@ public class ItemGhostDipper extends ItemMod {
 		}
 
 		return blocksChanged > 0;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack itemstack) {
+		return EnumAction.NONE;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 7000;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

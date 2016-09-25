@@ -9,7 +9,9 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemMod extends Item {

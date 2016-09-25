@@ -29,7 +29,13 @@ public class ItemPatchyBook extends ItemMod {
 	ItemPatchyBook(){
 		super(LibItemName.PATCHYBOOK);
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
@@ -49,4 +55,13 @@ public class ItemPatchyBook extends ItemMod {
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

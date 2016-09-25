@@ -76,5 +76,14 @@ public class ItemSyringe extends ItemModSword {
 	public Potion getRandomPotion(Random rand){
 		return Potion.REGISTRY.getRandomObject(rand);
 	}
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

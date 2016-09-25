@@ -61,4 +61,14 @@ public class ItemMapleLeafShield extends ItemModShield {
         stack.damageItem(10, user);
         return true;
     }
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

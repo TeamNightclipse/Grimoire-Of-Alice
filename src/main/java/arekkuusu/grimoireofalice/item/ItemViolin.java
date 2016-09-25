@@ -30,7 +30,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemViolin extends ItemMod {
 
-	public ItemViolin() {
+	ItemViolin() {
 		super(LibItemName.LUNASAVIOLIN);
 		setMaxDamage(500);
 		setMaxStackSize(1);
@@ -92,4 +92,14 @@ public class ItemViolin extends ItemMod {
     public int getMaxItemUseDuration(ItemStack stack) {
         return 500;
     }
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

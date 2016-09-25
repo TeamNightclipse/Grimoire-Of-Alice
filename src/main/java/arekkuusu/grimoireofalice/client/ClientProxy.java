@@ -65,6 +65,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.kanakoAura, 0);
 		registerItem(ModItems.ichirinAura, 0);
         registerItem(ModItems.suwakoHat, 0);
+		registerItem(ModItems.fireRobe, 0);
+		registerItem(ModItems.dragonJewel, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -93,15 +95,18 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.pouch, 0);
         registerItem(ModItems.windStick, 0);
         registerItem(ModItems.nazrinPendulum, 0);
-		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.wallPassingchisel, 0);
 		registerItem(ModItems.miracleMallet, 0);
 		registerItem(ModItems.rodRemorse, 0);
-		
+		registerItem(ModItems.budahBoul, 0);
+
+		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
 		registerItem(ModItems.lunasaViolin, 0);
 		registerItem(ModItems.lyricaPiano, 0);
 		registerItem(ModItems.merlinTrumpet, 0);
+
+		registerItem(ModItems.jeweledHourai, 0);
 		
 		//Food
 		registerItem(ModItems.shroomSlice, 0);
@@ -111,6 +116,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.kappasNostrum, 0);
 		registerItem(ModItems.heavenlyPeach, 0);
 		registerItem(ModItems.ibukiGourd, 0);
+		registerItem(ModItems.cowrieShell, 0);
 		
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);

@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemIbarakiBoxEmpty extends ItemMod {
 
-	public ItemIbarakiBoxEmpty() {
+	ItemIbarakiBoxEmpty() {
 		super(LibItemName.IBARAKIBOXEMPTY);
 		setMaxStackSize(1);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);

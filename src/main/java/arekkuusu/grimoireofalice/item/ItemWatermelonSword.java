@@ -29,9 +29,10 @@ public class ItemWatermelonSword extends ItemModSword {
 	@CapabilityInject(IItemHandler.class)
 	private static Capability<IItemHandler> itemHandlerCapability;
 
-	public ItemWatermelonSword(ToolMaterial material) {
+	ItemWatermelonSword(ToolMaterial material) {
 		super(material, LibItemName.WATERMELONSWORD);
 		setMaxDamage(1);
+		setNoRepair();
 	}
 	
 	@Override
@@ -74,4 +75,13 @@ public class ItemWatermelonSword extends ItemModSword {
         return true;
     }
 
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

@@ -2,8 +2,6 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -17,8 +15,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -26,7 +22,7 @@ import java.util.List;
 
 public class ItemDeathScythe extends ItemModSword {
 
-	public ItemDeathScythe(ToolMaterial material) {
+	ItemDeathScythe(ToolMaterial material) {
 		super(material, LibItemName.DEATHSCYTHE);
 	}
 
@@ -38,8 +34,8 @@ public class ItemDeathScythe extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Leg of an Ent sealed with magic.");
-		list.add(TextFormatting.DARK_AQUA + "Its massive density make it almost unwieldable");
+		list.add(TextFormatting.GOLD + "Scythe from a Shinigami");
+		list.add(TextFormatting.DARK_AQUA + "Makes undead chill around you");
 	}
 
 	@Override
@@ -78,7 +74,7 @@ public class ItemDeathScythe extends ItemModSword {
 				}
 			}
 			if (entity != null && !player.worldObj.isRemote) {
-				double back = 0.5;
+				double back = 0.4;
 				if (player.isSneaking()) {
 					entity.motionX += look.xCoord * back;
 					entity.motionY += look.yCoord * back;
@@ -112,5 +108,15 @@ public class ItemDeathScythe extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 7000;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

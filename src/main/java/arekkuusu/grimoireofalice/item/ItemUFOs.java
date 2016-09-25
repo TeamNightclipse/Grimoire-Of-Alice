@@ -36,7 +36,13 @@ public class ItemUFOs extends ItemMod {
 		super(LibItemName.UFOs);
 		setMaxStackSize(1);
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
@@ -110,5 +116,9 @@ public class ItemUFOs extends ItemMod {
 	        	}
 	        return false;
 	}
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
 }

@@ -19,9 +19,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 public class ItemRumiaSword extends ItemModSword {
-    public ItemRumiaSword(ToolMaterial material) {
+
+    ItemRumiaSword(ToolMaterial material) {
         super(material, LibItemName.RUMIASWORD);
     }
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
@@ -34,4 +41,14 @@ public class ItemRumiaSword extends ItemModSword {
         list.add(TextFormatting.GOLD + "Extremely Big");
         list.add(TextFormatting.ITALIC + "And you can hold it");
     }
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

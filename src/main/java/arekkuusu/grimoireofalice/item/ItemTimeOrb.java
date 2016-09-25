@@ -33,7 +33,13 @@ public class ItemTimeOrb extends ItemMod{
 	ItemTimeOrb() {
 		super(LibItemName.TIMEORB);
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
@@ -87,5 +93,9 @@ public class ItemTimeOrb extends ItemMod{
 	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
         return 42;
     }
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
 }

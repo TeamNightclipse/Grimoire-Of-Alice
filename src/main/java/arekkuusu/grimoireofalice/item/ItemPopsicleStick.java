@@ -21,7 +21,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemPopsicleStick extends ItemModSword {
 
-	public ItemPopsicleStick(ToolMaterial material) {
+	ItemPopsicleStick(ToolMaterial material) {
 		super(material, LibItemName.POPSICLESTICK);
 	}
 	

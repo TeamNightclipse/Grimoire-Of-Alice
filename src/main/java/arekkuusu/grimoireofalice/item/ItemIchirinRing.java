@@ -26,9 +26,15 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemIchirinRing extends ItemModSword {
 
-	public ItemIchirinRing(ToolMaterial material) {
+	ItemIchirinRing(ToolMaterial material) {
 		super(material, LibItemName.ICHIRINRING);
 		setMaxStackSize(1);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	@Override
@@ -80,4 +86,13 @@ public class ItemIchirinRing extends ItemModSword {
         return 72000;
     }
 
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

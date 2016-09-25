@@ -24,7 +24,7 @@ import java.util.UUID;
 
 public class ItemSacredToyosatomimi extends ItemModSword {
 
-	public ItemSacredToyosatomimi(ToolMaterial material) {
+	ItemSacredToyosatomimi(ToolMaterial material) {
 		super(material, LibItemName.SACREDTOYOSATOMIMI);
 	}
 
@@ -35,6 +35,12 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	@Override
@@ -124,5 +130,15 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 50;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

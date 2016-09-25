@@ -27,7 +27,7 @@ import java.util.UUID;
 
 public class ItemSwordOfHisou extends ItemModSword {
 
-	public ItemSwordOfHisou(ToolMaterial material) {
+	ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU);
 	}
 
@@ -38,6 +38,12 @@ public class ItemSwordOfHisou extends ItemModSword {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	@Override
@@ -176,5 +182,15 @@ public class ItemSwordOfHisou extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 100;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

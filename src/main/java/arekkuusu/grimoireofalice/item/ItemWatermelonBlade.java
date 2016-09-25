@@ -19,8 +19,9 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemWatermelonBlade extends ItemModSword {
 
-	public ItemWatermelonBlade(ToolMaterial material) {
+	ItemWatermelonBlade(ToolMaterial material) {
 		super(material, LibItemName.WATERMELONBLADE);
+		setNoRepair();
 	}
 	
 	@Override
@@ -28,5 +29,4 @@ public class ItemWatermelonBlade extends ItemModSword {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.AQUA + "Yes, this exists");
 	}
-
 }

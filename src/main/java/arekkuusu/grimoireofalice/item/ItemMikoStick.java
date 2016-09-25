@@ -52,7 +52,6 @@ public class ItemMikoStick extends ItemModSword {
 			playerIn.addExperienceLevel(-1);
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 		}
-		//.setItemInUse(itemStackIn, getMaxItemUseDuration(itemStackIn));
 		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
@@ -60,5 +59,15 @@ public class ItemMikoStick extends ItemModSword {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		target.extinguish();
 		return true;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

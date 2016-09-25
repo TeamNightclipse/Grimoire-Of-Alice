@@ -20,7 +20,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemSkull extends ItemMod {
 
-	public ItemSkull() {
+	ItemSkull() {
 		super(LibItemName.SKULL);
 		setMaxStackSize(1);
 	}

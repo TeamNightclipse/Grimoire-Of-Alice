@@ -46,5 +46,14 @@ public class ItemNueTrident extends ItemModSword {
 		target.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
 		return true;
 	}
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

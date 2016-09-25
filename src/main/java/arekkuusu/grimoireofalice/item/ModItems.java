@@ -50,6 +50,9 @@ public final class ModItems {
 	public static Item wallPassingchisel;
 	public static Item miracleMallet;
 	public static Item rodRemorse;
+	public static Item jeweledHourai;
+	public static Item budahBoul;
+	public static Item dragonJewel;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -57,6 +60,7 @@ public final class ModItems {
 	public static Item kappasNostrum;
 	public static Item heavenlyPeach;
 	public static Item ibukiGourd;
+	public static Item cowrieShell;
 	//Armor
 	public static Item foxMask;
 	public static Item raidenMask;
@@ -76,6 +80,7 @@ public final class ModItems {
 	public static Item kanakoAura;
 	public static Item ichirinAura;
 	public static Item suwakoHat;
+	public static Item fireRobe;
 	//Weapons
 	public static Item mochiHammer;
 	public static Item momijisScimitarSword;
@@ -152,6 +157,9 @@ public final class ModItems {
 		wallPassingchisel = new ItemWallPassingChisel();
 		miracleMallet = new ItemMiracleMallet();
 		rodRemorse = new ItemRodOfRemorse();
+		jeweledHourai = new ItemJeweledHourai();
+		budahBoul = new ItemBudahBoul(Item.ToolMaterial.DIAMOND);
+		dragonJewel = new ItemDragonJewel();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -160,6 +168,7 @@ public final class ModItems {
 		kappasNostrum = new ItemKappasNostrum();
 		heavenlyPeach = new ItemHeavelyPeach();
 		ibukiGourd = new ItemIbukiGourd();
+		cowrieShell = new ItemSwallowCowrieShell();
 		
 		//Armor
 		mapleLeafShield = new ItemMapleLeafShield();
@@ -180,6 +189,7 @@ public final class ModItems {
 		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
         ichirinAura = new ItemAuraIchirin(SOLID_PAPER, 3);
         suwakoHat = new ItemSuwakoHat(SOLID_PAPER,3);
+		fireRobe = new ItemFireRobe(SOLID_PAPER,5);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);

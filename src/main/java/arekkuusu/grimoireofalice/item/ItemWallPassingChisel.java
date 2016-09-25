@@ -7,11 +7,13 @@ import javax.annotation.Nullable;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -20,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWallPassingChisel extends ItemMod {
 
-	public ItemWallPassingChisel() {
+	ItemWallPassingChisel() {
 		super(LibItemName.WALLPASSINGCHISEL);
 	}
 
@@ -41,7 +43,8 @@ public class ItemWallPassingChisel extends ItemMod {
 		BlockPos suPos = getPos(world, pos, facing);
 		if(suPos != null && world.getBlockState(suPos.up()).getBlock() == Blocks.AIR) { //If BlockPos isn't null and the block above is Air -->
 			player.setPosition(suPos.getX() + 0.5, suPos.getY(), suPos.getZ() + 0.5); //Move player to center of block
-			stack.damageItem(1, player);
+			world.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
+					SoundEvents.ENTITY_ENDEREYE_LAUNCH, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
@@ -80,5 +83,15 @@ public class ItemWallPassingChisel extends ItemMod {
 		}
 
 		return null;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

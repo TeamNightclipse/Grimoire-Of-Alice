@@ -33,6 +33,10 @@ public class LibItemName {
 	public static final String WALLPASSINGCHISEL = "wallpassingchisel";
 	public static final String MIRACLEMALLET = "miraclemallet";
 	public static final String RODREMORSE = "rodofremorse";
+	public static final String JEWELEDHOURAI = "jeweledhourai";
+	public static final String BUDAHBOUL = "budahboul";
+	public static final String DRAGONJEWEL = "dragonjewel";
+	public static final String COWRIESHELL = "cowrieshell";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -60,6 +64,7 @@ public class LibItemName {
 	public static final String AURAKANAKO = "aurakanako";
 	public static final String AURAICHIRIN = "auraichirin";
 	public static final String SUWAKOHAT = "suwakohat";
+	public static final String FIREROBE = "firerobe";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";

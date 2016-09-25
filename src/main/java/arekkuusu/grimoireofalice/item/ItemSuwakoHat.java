@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.item.masks;
+package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.client.model.ModelSuwakoHat;
 import arekkuusu.grimoireofalice.item.ItemModArmor;
@@ -22,7 +22,7 @@ public class ItemSuwakoHat extends ItemModArmor {
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
-	public ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
+	ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.SUWAKOHAT, EntityEquipmentSlot.HEAD);
 	}
 

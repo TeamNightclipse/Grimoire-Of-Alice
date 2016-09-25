@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemNeedle extends ItemModSword {
 
-	public ItemNeedle(ToolMaterial material) {
+	ItemNeedle(ToolMaterial material) {
 		super(material, LibItemName.NEEDLE);
 	}
 
@@ -91,5 +91,15 @@ public class ItemNeedle extends ItemModSword {
 	@Override
 	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

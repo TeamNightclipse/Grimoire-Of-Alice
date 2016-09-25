@@ -34,7 +34,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemSarielWand extends ItemModSword {
 
-	public ItemSarielWand(ToolMaterial material) {
+	ItemSarielWand(ToolMaterial material) {
 		super(material, LibItemName.SARIELWAND);
 	}
 
@@ -116,5 +116,14 @@ public class ItemSarielWand extends ItemModSword {
 		entity.attackEntityFrom(DamageSource.magic, 9999);
         return false;
     }
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

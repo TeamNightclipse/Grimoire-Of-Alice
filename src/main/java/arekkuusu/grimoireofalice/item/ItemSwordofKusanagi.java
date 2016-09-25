@@ -37,7 +37,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSwordofKusanagi extends ItemModSword {
 
-	public ItemSwordofKusanagi(ToolMaterial material) {
+	ItemSwordofKusanagi(ToolMaterial material) {
 		super(material, LibItemName.SWORDOFKUSANAGI);
 	}
 	
@@ -49,7 +49,13 @@ public class ItemSwordofKusanagi extends ItemModSword {
 		}
 		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
@@ -141,5 +147,14 @@ public class ItemSwordofKusanagi extends ItemModSword {
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
     }
-	
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 }

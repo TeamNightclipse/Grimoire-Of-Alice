@@ -2,5 +2,13 @@
     "parent": "grimoireofalice:item/handheld_big",
     "textures": {
         "layer0": "grimoireofalice:items/ghostdipper"
-    }
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "playing": 1
+            },
+            "model": "grimoireofalice:item/ghostdipperused"
+        }
+    ]
 }

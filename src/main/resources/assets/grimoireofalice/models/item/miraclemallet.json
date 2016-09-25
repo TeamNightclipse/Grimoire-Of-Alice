@@ -1,5 +1,5 @@
 {
-    "parent": "grimoireofalice:item/handheld_big",
+    "parent": "item/handheld",
     "textures": {
         "layer0": "grimoireofalice:items/miraclemallet"
     }

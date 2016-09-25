@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.entity.EntityWind;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -30,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTenguFan extends ItemMod {
 
-	public ItemTenguFan() {
+	ItemTenguFan() {
 		super(LibItemName.TENGUFAN);
 	}
 
@@ -83,5 +84,15 @@ public class ItemTenguFan extends ItemMod {
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
 		return 24;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

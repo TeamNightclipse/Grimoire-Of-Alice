@@ -7,22 +7,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRodOfRemorse extends ItemMod {
 
-	public ItemRodOfRemorse() {
+	ItemRodOfRemorse() {
 		super(LibItemName.RODREMORSE);
 		setMaxDamage(1);
 	}
 
-	/*@Override
-	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-		if(entity instanceof EntityLiving){
-			EntityLiving affected = (EntityLiving)entity;
-			affected.setHealth(affected.getMaxHealth() * 0.75F);
-		}
-		return false;
-	}*/
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
@@ -40,5 +39,15 @@ public class ItemRodOfRemorse extends ItemMod {
 			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- Health: " + target.getHealth()));
 		}
 		return true;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }
