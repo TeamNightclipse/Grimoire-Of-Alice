@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -36,7 +37,8 @@ public class ItemRodOfRemorse extends ItemMod {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if(!target.worldObj.isRemote) {
-			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- Health: " + target.getHealth()));
+			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
+					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage").appendText(": ")));
 		}
 		return true;
 	}

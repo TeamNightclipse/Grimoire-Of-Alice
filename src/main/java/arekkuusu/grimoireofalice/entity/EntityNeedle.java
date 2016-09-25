@@ -30,13 +30,13 @@ public class EntityNeedle extends EntityArrow {
 		++this.ticksInAir;
 		worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
 				SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 0.4F + 0.8F);
-		if(this.ticksInAir >= 15){
+		if(this.ticksInAir >= 15 && !worldObj.isRemote){
 			setDead();
 		}
 	}
 
 	@Override
 	protected ItemStack getArrowStack() {
-		return null;
+		return null; //FIXME: This could cause NPE
 	}
 }

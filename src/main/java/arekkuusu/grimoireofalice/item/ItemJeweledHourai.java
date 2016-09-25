@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,14 +35,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-import java.util.List;
-import java.util.Random;
-
 public class ItemJeweledHourai extends ItemMod {
 
 	@CapabilityInject(IItemHandler.class)
 	private static Capability<IItemHandler> itemHandlerCapability;
-	private static final Item[] JEWELS = {Items.DIAMOND, ModItems.hihiirokane, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
+	private static final Item[] JEWELS =
+			{Items.DIAMOND, ModItems.hihiirokane, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
 
 	ItemJeweledHourai() {
 		super(LibItemName.JEWELEDHOURAI);
@@ -67,12 +67,14 @@ public class ItemJeweledHourai extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(getJewels(stack) > 0 && entityIn.ticksExisted % 50 == 0) {
-			addJewels(stack, -50);
-			if(getJewels(stack) < 0) {
-				setJewels(stack, 0);
+		int jewels = getJewels(stack);
+		if(jewels > 0 && entityIn.ticksExisted % 50 == 0) {
+			jewels -= 50;
+			if(jewels < 0) {
+				jewels = 0;
 			}
-			System.out.println(getJewels(stack));
+			setJewels(stack, jewels);
+			System.out.println(jewels);
 		}
 	}
 
@@ -82,67 +84,60 @@ public class ItemJeweledHourai extends ItemMod {
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	@SuppressWarnings("ConstantConditions") //Liar
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
-			if (!worldIn.isRemote) {
-				if (player.isSneaking()) {
-					if (getJewels(stack) <= 200) {
-						addJewels(stack, 50);
-					}
-				} else {
-					if (getJewels(stack) <= 200) {
-						Random rand = new Random();
-						if (player.hasCapability(itemHandlerCapability, null)) {
-							int pos = rand.nextInt(5);
-							ItemStack rest = ItemHandlerHelper.insertItemStacked(player.getCapability(itemHandlerCapability, null),
-									new ItemStack(JEWELS[pos]), false);
-							if (rest != null) {
-								player.dropItem(rest.getItem(), rest.stackSize);
-							}
-							addJewels(stack, 400);
+		if(!worldIn.isRemote) {
+			if(entityLiving.isSneaking()) {
+				if(getJewels(stack) <= 200) {
+					addJewels(stack, 50);
+				}
+			}
+			else {
+				if(getJewels(stack) <= 200) {
+					if(entityLiving.hasCapability(itemHandlerCapability, null)) {
+						int pos = itemRand.nextInt(5);
+						ItemStack rest = ItemHandlerHelper.insertItemStacked(entityLiving.getCapability(itemHandlerCapability, null),
+								new ItemStack(JEWELS[pos]), false);
+						if(rest != null) {
+							entityLiving.dropItem(rest.getItem(), rest.stackSize);
 						}
+						addJewels(stack, 400);
 					}
 				}
 			}
-			worldIn.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-					SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
+		worldIn.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
+				SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 	}
 
-	private void addJewels(ItemStack itemStack, int charge){
+	private void addJewels(ItemStack itemStack, int charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null){
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 			nbt.setShort("Jewels", (short)charge);
-		} else {
-			if(nbt.getShort("Jewels") >= 0){
-				nbt.setShort("Jewels", (short)(nbt.getShort("Jewels") + charge));
-			}
+		}
+		else if(nbt.getShort("Jewels") >= 0) {
+			nbt.setShort("Jewels", (short)(nbt.getShort("Jewels") + charge));
 		}
 	}
 
-	private void setJewels(ItemStack itemStack, int charge){
+	private void setJewels(ItemStack itemStack, int charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null){
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 			nbt.setShort("Jewels", (short)charge);
-		} else {
-			if(nbt.getShort("Jewels") >= 0){
-				nbt.setShort("Jewels", (short)(charge));
-			}
+		}
+		else if(nbt.getShort("Jewels") >= 0) {
+			nbt.setShort("Jewels", (short)(charge));
 		}
 	}
 
-	private int getJewels(ItemStack itemStack){
+	private int getJewels(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null){
-			return 0;
-		}
-		return nbt.getShort("Jewels");
+		return nbt == null ? 0 : nbt.getShort("Jewels");
 	}
 
 	@Override

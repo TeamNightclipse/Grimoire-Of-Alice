@@ -61,10 +61,8 @@ public class ItemSwordOfHisou extends ItemModSword {
 		list.add(TextFormatting.GRAY + "It takes the form of a golden Chinese jian.");
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
+			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
+				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
 			}
 		}
 	}
@@ -103,8 +101,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 				double d = 0.0D;
 				for (Entity entity1 : list) {
 					if (entity1 instanceof EntityLivingBase) {
-						float f2 = 0.3F;
-						AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
+						AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz(0.3F);
 						RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 						if (movingObjectPosition1 != null) {
 							double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
@@ -116,12 +113,11 @@ public class ItemSwordOfHisou extends ItemModSword {
 					}
 				}
 				if (entity != null && !player.worldObj.isRemote) {
-					double back = 0.5;
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
 					entity.attackEntityFrom(DamageSource.lightningBolt, 2);
-					entity.motionX -= look.xCoord * back;
-					entity.motionY -= look.yCoord * back;
-					entity.motionZ -= look.zCoord * back;
+					entity.motionX -= look.xCoord * 0.5;
+					entity.motionY -= look.yCoord * 0.5;
+					entity.motionZ -= look.zCoord * 0.5;
 					itemStackIn.damageItem(1, player);
 				}
 			}
