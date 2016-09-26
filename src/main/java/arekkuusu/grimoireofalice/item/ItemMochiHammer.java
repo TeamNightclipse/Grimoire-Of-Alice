@@ -11,9 +11,13 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
@@ -46,5 +50,9 @@ public class ItemMochiHammer extends ItemModSword {
 				player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 0));
 			}
 		}
+	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Item.getItemFromBlock(Blocks.PLANKS);
 	}
 }

@@ -29,6 +29,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 
 	ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU);
+		setNoRepair();
 	}
 
 	@SuppressWarnings("ConstantConditions")

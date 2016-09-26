@@ -40,12 +40,11 @@ public class EntityNote extends EntityThrowable {
 	public void onUpdate() {
 		super.onUpdate();
 		worldObj.spawnParticle(EnumParticleTypes.NOTE, posX, posY, posZ, (double)ticksInAir / 24.0D, 0.0D, 0.0D);
-		Random rand = new Random();
 		if (rand.nextInt(8) == 4) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
 		}
 		int timeLive = 50;
-		if(this.ticksInAir >= timeLive){
+		if(this.ticksInAir >= timeLive && !worldObj.isRemote){
 			setDead();
 		}
 		++this.ticksInAir;
@@ -61,6 +60,8 @@ public class EntityNote extends EntityThrowable {
 		if(result.entityHit instanceof EntityLiving){
 			result.entityHit.attackEntityFrom(DamageSource.magic, 3);
 		}
-		setDead();
+		if(!worldObj.isRemote) {
+			setDead();
+		}
 	}
 }

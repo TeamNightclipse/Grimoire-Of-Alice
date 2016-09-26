@@ -35,6 +35,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 
 	ItemAmenonuhoko(ToolMaterial material) {
 		super(material, LibItemName.AMENONUHOKO);
+		setNoRepair();
 	}
 
 	@SuppressWarnings("ConstantConditions")

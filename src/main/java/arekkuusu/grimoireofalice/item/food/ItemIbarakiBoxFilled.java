@@ -56,8 +56,8 @@ public class ItemIbarakiBoxFilled extends ItemModFood {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        playerIn.setActiveHand(EnumHand.MAIN_HAND);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+        playerIn.setActiveHand(hand);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
     }
 	
 	@Override

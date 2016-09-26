@@ -33,6 +33,7 @@ public class ItemTenguFan extends ItemMod {
 
 	ItemTenguFan() {
 		super(LibItemName.TENGUFAN);
+		setMaxDamage(500);
 	}
 
 	@Override
@@ -74,6 +75,10 @@ public class ItemTenguFan extends ItemMod {
 			}
 			stack.damageItem(1, entityLiving);
 		}
+	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.LEAD;
 	}
 
 	@Override

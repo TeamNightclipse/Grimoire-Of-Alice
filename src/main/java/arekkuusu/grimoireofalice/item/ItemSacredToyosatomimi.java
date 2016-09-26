@@ -26,6 +26,7 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 
 	ItemSacredToyosatomimi(ToolMaterial material) {
 		super(material, LibItemName.SACREDTOYOSATOMIMI);
+		setNoRepair();
 	}
 
 	@SuppressWarnings("ConstantConditions")

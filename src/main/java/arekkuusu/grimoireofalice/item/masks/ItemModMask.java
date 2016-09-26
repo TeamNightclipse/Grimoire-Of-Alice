@@ -26,6 +26,7 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor {
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		GameRegistry.register(this);
+		setNoRepair();
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 
@@ -52,5 +53,15 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor {
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 		stack.damageItem(damage, entity);
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

@@ -24,6 +24,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	ItemFireRobe(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.FIREROBE, EntityEquipmentSlot.CHEST);
+		setNoRepair();
 	}
 
 	@Override
@@ -41,6 +42,9 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Made from the fur of a mystical rat that could live in fire");
+		list.add(TextFormatting.DARK_AQUA + "Completely fire proof, the user is protected from hell itself");
+		list.add(TextFormatting.DARK_AQUA + "Stronger than any man-made armor, demonic by nature");
+		list.add(TextFormatting.DARK_PURPLE + "Can be nullified by purification barriers");
 	}
 
 	@Override
@@ -49,8 +53,8 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 		if(player.isBurning() && !isActive){
 			player.extinguish();
 			for(int k = 0; k < 8; ++k) {
-				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX + 0.5 + itemRand.nextDouble(), player.posY + itemRand.nextDouble(),
-						player.posZ + 0.5 + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX - 0.5 + itemRand.nextDouble(), player.posY + itemRand.nextDouble(),
+						player.posZ - 0.5 + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

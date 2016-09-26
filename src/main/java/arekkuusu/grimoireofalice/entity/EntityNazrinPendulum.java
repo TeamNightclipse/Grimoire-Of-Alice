@@ -43,8 +43,7 @@ public class EntityNazrinPendulum extends Entity {
         super.onUpdate();
         if(user == null) {
             stopEntity();
-        }
-        else {
+        } else {
             if(ticksExisted > 10 && user.isSneaking()) {
                 stopEntity();
             }

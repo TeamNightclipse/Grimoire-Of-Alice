@@ -12,6 +12,7 @@ import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -82,7 +83,11 @@ public class ItemTrumpet extends ItemMod {
 			playerIn.getCooldownTracker().setCooldown(this, 50);
         }
 	}
-	
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.GOLD_INGOT;
+	}
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
         return EnumAction.NONE;

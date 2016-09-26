@@ -44,4 +44,8 @@ public class ItemMomijisScimitarSword extends ItemModSword {
 			}
 		}
 	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == ModItems.hihiirokane;
+	}
 }

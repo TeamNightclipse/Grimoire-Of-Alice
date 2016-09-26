@@ -38,6 +38,7 @@ public class ItemEllyScythe extends ItemModSword {
 
 	ItemEllyScythe(ToolMaterial material) {
 		super(material, LibItemName.ELLYSCYTHE);
+		setNoRepair();
 	}
 
 	@Override

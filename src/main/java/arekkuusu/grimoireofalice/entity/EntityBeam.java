@@ -1,0 +1,111 @@
+package arekkuusu.grimoireofalice.entity;
+
+import arekkuusu.grimoireofalice.item.ModItems;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.World;
+
+import java.util.List;
+
+public class EntityBeam extends Entity {
+
+	private EntityLivingBase host;
+
+	public EntityBeam(World worldIn) {
+		super(worldIn);
+	}
+
+	public EntityBeam(World worldIn, EntityLivingBase player) {
+		super(worldIn);
+		this.host = player;
+	}
+	@Override
+	protected void entityInit() {
+
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if(worldObj != null && !worldObj.isRemote) {
+			if(host == null){
+				setDead();
+			} else {
+				if(ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
+					stopEntity();
+				}
+			}
+			if (ticksExisted > 500) {
+				stopEntity();
+			}
+			getEntities();
+		}
+		if (ticksExisted % 50 == 0) {
+			if(worldObj != null)
+			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_PORTAL_AMBIENT, SoundCategory.NEUTRAL, 0.5F, 1F);
+			for(int u = 0;u < 10; u++) {
+				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, rand.nextDouble());
+			}
+		}
+	}
+
+	private void getEntities(){
+		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
+		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
+		if(!list.isEmpty()) {
+			for(Entity mob : list){
+				if(mob instanceof EntityMob){
+					((EntityMob) mob).setAttackTarget(null);
+					((EntityMob) mob).setRevengeTarget(null);
+					((EntityMob) mob).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
+				}
+			}
+		}
+	}
+
+	private void stopEntity() {
+		if(!worldObj.isRemote) {
+			if(host != null && host instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)host;
+				if(player.capabilities.isCreativeMode) {
+					setDead();
+					return;
+				}
+				if(!player.inventory.addItemStackToInventory(new ItemStack(ModItems.dragonJewel, 1))) {
+					host.dropItem(ModItems.dragonJewel, 1);
+				}
+			}
+			else {
+				dropItem(ModItems.dragonJewel, 1);
+			}
+			setDead();
+		}
+	}
+
+	public int getTicksAlive(){
+		return ticksExisted;
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+
+	}
+}

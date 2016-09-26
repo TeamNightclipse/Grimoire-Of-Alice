@@ -78,7 +78,7 @@ public class ItemLaevatein extends ItemModSword {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
 
 					worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
-							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
 					Vec3d look = playerIn.getLookVec();
 					Vec3d position = new Vec3d(playerIn.posX, playerIn.posY, playerIn.posZ);
 					Vec3d fireBallPos = new Vec3d(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
@@ -92,7 +92,7 @@ public class ItemLaevatein extends ItemModSword {
 		else {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));
 			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
-					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
@@ -123,6 +123,10 @@ public class ItemLaevatein extends ItemModSword {
 			stack.damageItem(1, player);
 			return EnumActionResult.SUCCESS;
 		}
+	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.BLAZE_ROD;
 	}
 
 	@Override

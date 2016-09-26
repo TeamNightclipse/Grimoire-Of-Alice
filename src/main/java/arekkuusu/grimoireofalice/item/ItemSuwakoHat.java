@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -55,6 +56,10 @@ public class ItemSuwakoHat extends ItemModArmor {
 		if(model == null) model = new ModelSuwakoHat();
 		model.setModelAttributes(imodel);
 		return model;
+	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.SLIME_BALL;
 	}
 
 	@Override

@@ -1,13 +1,15 @@
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.entity.EntityBeam;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +21,7 @@ public class ItemDragonJewel extends ItemMod {
 
 	ItemDragonJewel() {
 		super(LibItemName.DRAGONJEWEL);
+		setMaxStackSize(1);
 	}
 
 	@Override
@@ -51,9 +54,33 @@ public class ItemDragonJewel extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (!worldIn.isRemote) {
-				//Do something TIP: Try to be original
+				EntityBeam beam = new EntityBeam(worldIn, player);
+				beam.setPosition(player.posX, player.posY + 2, player.posZ);
+				worldIn.spawnEntityInWorld(beam);
 			}
+			--stack.stackSize;
 		}
+	}
+
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if(!worldIn.isRemote) {
+			EntityBeam beam = new EntityBeam(worldIn, playerIn);
+			beam.setPosition(pos.getX(), pos.getY() + 3, pos.getZ());
+			worldIn.spawnEntityInWorld(beam);
+		}
+		--stack.stackSize;
+		return EnumActionResult.SUCCESS;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BOW;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
 	}
 
 	@Override

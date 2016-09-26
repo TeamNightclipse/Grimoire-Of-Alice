@@ -39,6 +39,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 
 	ItemSwordofKusanagi(ToolMaterial material) {
 		super(material, LibItemName.SWORDOFKUSANAGI);
+		setNoRepair();
 	}
 	
 	@SuppressWarnings("ConstantConditions")

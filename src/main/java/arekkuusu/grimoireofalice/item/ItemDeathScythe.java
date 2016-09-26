@@ -24,6 +24,7 @@ public class ItemDeathScythe extends ItemModSword {
 
 	ItemDeathScythe(ToolMaterial material) {
 		super(material, LibItemName.DEATHSCYTHE);
+		setNoRepair();
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class ItemDeathScythe extends ItemModSword {
 				vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
 			}
 			EntityLivingBase entity = null;
-			List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expand(1.0D, 1.0D, 1.0D));
+			List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D));
 			double d = 0.0D;
 			for (Entity entity1 : list) {
 				if (entity1 instanceof EntityLivingBase) {

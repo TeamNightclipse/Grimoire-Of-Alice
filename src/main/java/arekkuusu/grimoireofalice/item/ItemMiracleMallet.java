@@ -19,6 +19,7 @@ public class ItemMiracleMallet extends ItemMod {
 
 	ItemMiracleMallet() {
 		super(LibItemName.MIRACLEMALLET);
+		setNoRepair();
 	}
 
 	@Override

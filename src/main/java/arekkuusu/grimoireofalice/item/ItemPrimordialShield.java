@@ -31,6 +31,7 @@ public class ItemPrimordialShield extends ItemModShield {
 
 	ItemPrimordialShield() {
 		super(LibItemName.PRIMORDIALSHIELD);
+		setNoRepair();
 	}
 
 	@Override

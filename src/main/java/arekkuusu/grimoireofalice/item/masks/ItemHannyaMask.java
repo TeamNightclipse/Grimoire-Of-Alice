@@ -69,5 +69,4 @@ public class ItemHannyaMask extends ItemModMask {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
         return LibMod.MODID + ":textures/models/armor/hannyamask.png";
     }
-	
 }

@@ -70,7 +70,7 @@ public class ItemNeedle extends ItemModSword {
 			if (!worldIn.isRemote) {
 				EntityNeedle entityNeedle = new EntityNeedle(worldIn, entityplayer);
 				entityNeedle.setIsCritical(isLoli);
-				entityNeedle.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, convert, 1.0F);
+				entityNeedle.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 5.0F, convert, 1.0F);
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByID(20), stack) > 0) {
 					entityNeedle.setFire(100);
 				}

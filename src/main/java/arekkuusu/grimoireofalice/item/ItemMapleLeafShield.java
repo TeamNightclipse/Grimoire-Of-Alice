@@ -55,6 +55,10 @@ public class ItemMapleLeafShield extends ItemModShield {
 			}
 		}
 	}
+
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.IRON_INGOT;
+	}
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {

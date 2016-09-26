@@ -42,6 +42,7 @@ public class ItemJeweledHourai extends ItemMod {
 	ItemJeweledHourai() {
 		super(LibItemName.JEWELEDHOURAI);
 		setNoRepair();
+		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("jewels"), (stack, world, entity) ->
 				entity != null && stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
 	}
@@ -110,7 +111,6 @@ public class ItemJeweledHourai extends ItemMod {
 		}
 		worldIn.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
 				SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-
 	}
 
 	private void addJewels(ItemStack itemStack, int charge) {

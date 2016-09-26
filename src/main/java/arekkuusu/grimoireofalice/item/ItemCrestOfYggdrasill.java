@@ -32,6 +32,7 @@ public class ItemCrestOfYggdrasill extends ItemModSword {
 
 	ItemCrestOfYggdrasill(ToolMaterial material) {
 		super(material, LibItemName.CRESTOFYGGDRASILL);
+		setNoRepair();
 	}
 
 	@Override

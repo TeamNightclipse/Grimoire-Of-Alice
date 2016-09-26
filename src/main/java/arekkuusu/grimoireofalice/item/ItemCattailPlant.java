@@ -21,6 +21,7 @@ public class ItemCattailPlant extends ItemModSword {
 
 	ItemCattailPlant(ToolMaterial material) {
 		super(material, LibItemName.CATTAILPLANT);
+		setNoRepair();
 	}
 	
 	@Override
