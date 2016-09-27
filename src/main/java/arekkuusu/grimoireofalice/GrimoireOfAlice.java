@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.world.gen.structure.template.TemplateManager;
@@ -44,8 +45,10 @@ public class GrimoireOfAlice {
 		tohouInstalled = Loader.isModLoaded("KatrixTouhouMod");
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
+		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 	}
-	
+
+
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);

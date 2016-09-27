@@ -1,5 +1,20 @@
 {
     "variants": {
-        "normal": { "model": "grimoireofalice:shroom" }
+	"color=white": { "model": "grimoireofalice:shroom_0" },
+    "color=orange": { "model": "grimoireofalice:shroom_1" },
+    "color=magenta": { "model": "grimoireofalice:shroom_2" },
+    "color=light_blue": { "model": "grimoireofalice:shroom_3" },
+    "color=yellow": { "model": "grimoireofalice:shroom_4" },
+    "color=lime": { "model": "grimoireofalice:shroom_5" },
+    "color=pink": { "model": "grimoireofalice:shroom_6" },
+    "color=gray": { "model": "grimoireofalice:shroom_7" },
+    "color=silver": { "model": "grimoireofalice:shroom_8" },
+    "color=cyan": { "model": "grimoireofalice:shroom_9" },
+    "color=purple": { "model": "grimoireofalice:shroom_10" },
+    "color=blue": { "model": "grimoireofalice:shroom_11" },
+    "color=brown": { "model": "grimoireofalice:shroom_12" },
+    "color=green": { "model": "grimoireofalice:shroom_13" },
+    "color=red": { "model": "grimoireofalice:shroom_14" },
+	"color=black": { "model": "grimoireofalice:shroom_15" }
     }
 }

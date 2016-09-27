@@ -90,7 +90,23 @@ tile.onbashiramiddle.name=Onbashira
 tile.onbashiratop.name=Onbashira
 tile.holystone.name=Holy Stone
 
-tile.shroom.name=Shroom
+tile.shroom.white.name=White Shroom
+tile.shroom.orange.name=Very Orange Shroom
+tile.shroom.magenta.name=Magenta Shroom
+tile.shroom.lightBlue.name=Light Blueish Shroom
+tile.shroom.yellow.name=Very Yellow Shroom
+tile.shroom.lime.name=Lime Shroom
+tile.shroom.pink.name=Pinkish Shroom
+tile.shroom.gray.name=Gray Shroom
+tile.shroom.silver.name=Silver Shroom
+tile.shroom.cyan.name=Very Cyan Shroom
+tile.shroom.purple.name=Very Purple Shroom
+tile.shroom.blue.name=Blue Shroom
+tile.shroom.brown.name=Very Brown Shroom
+tile.shroom.green.name=Greenish Shroom
+tile.shroom.red.name=Red Shroom
+tile.shroom.black.name=Very Black Shroom
+
 tile.kyoumarubotan.name=Kyoumarubotan
 
 item.fullpoweritem.name=Full Power Item

@@ -155,7 +155,7 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.onbashiraTop, 0);
 		registerBlock(ModBlocks.paperBlock, 0);
 		registerBlock(ModBlocks.ropeBlock, 0);
-		registerBlock(ModBlocks.shroom, 0);
+		registerBlockWithColorTypes(ModBlocks.shroom, 16);
 		registerBlock(ModBlocks.sugarBlock, 0);
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
 		
@@ -178,5 +178,12 @@ public class ClientProxy extends CommonProxy{
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
-	
+
+	private void registerBlockWithColorTypes(Block block, int meta){
+		Item iBlock = Item.getItemFromBlock(block);
+		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		for (int i = 0; i < meta; i++) {
+			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
+		}
+	}
 }

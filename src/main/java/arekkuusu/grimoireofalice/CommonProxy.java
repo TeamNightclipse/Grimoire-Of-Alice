@@ -11,8 +11,10 @@ package arekkuusu.grimoireofalice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.*;
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
+import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -32,11 +34,12 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityAnimalShot.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNote.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-        EntityRegistry.registerModEntity(EntityWind.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityWind.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityBeam.class, "Beam", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		//EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "ellyScythe", modEntityID++, GrimoireOfAlice.instance, 64, 10, true);
+		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 	}
 	
 	public void init(FMLInitializationEvent event) {

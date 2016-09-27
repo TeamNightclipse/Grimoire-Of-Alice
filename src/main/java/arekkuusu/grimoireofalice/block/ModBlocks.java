@@ -13,9 +13,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemCloth;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
+
 
 
 	public static Block compactStone;
@@ -34,6 +37,7 @@ public class ModBlocks {
 	public static Block hyperconcentratedMagic;
 
 	public static void init() {
+
 		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK).setHardness(2.0F).setResistance(-1F);
 		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
 
@@ -62,7 +66,7 @@ public class ModBlocks {
 		GameRegistry.register(new ItemBlock(ropeBlock).setRegistryName(ropeBlock.getRegistryName()));
 
 		shroom = new BlockShroom();
-		GameRegistry.register(new ItemBlock(shroom).setRegistryName(shroom.getRegistryName()));
+		GameRegistry.register(new ItemCloth(shroom).setRegistryName(shroom.getRegistryName()));
 	
 		sugarBlock = new BlockMod(LibBlockName.SUGARBLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
 		sugarBlock.setHarvestLevel("axe", 1);

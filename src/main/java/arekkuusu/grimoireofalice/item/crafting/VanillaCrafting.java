@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.item.crafting;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -83,7 +84,7 @@ public class VanillaCrafting {
                 .where('A').mapsTo(Items.CLAY_BALL)
                 .outputs(ModItems.mask).build();
 
-        if(/*ConfigHandler.maskRecipes*/true){
+        if(ConfigHandler.maskRecipes){
             mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.foxMask).build();
             mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.fukuNoKamiMask).build();
             mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.hannyaMask).build();
