@@ -21,8 +21,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGrimoireBook extends ItemMod {
-
-	public EntityMagicCircle circle;
 	
 	ItemGrimoireBook() {
 		super(LibItemName.GRIMOIREBOOK);
@@ -38,7 +36,8 @@ public class ItemGrimoireBook extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
     	if(!worldIn.isRemote) {
-    		circle = new EntityMagicCircle(worldIn, playerIn, 100);
+			EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, 100);
+			circle.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
     		worldIn.spawnEntityInWorld(circle);
     	}
 		playerIn.setActiveHand(hand);

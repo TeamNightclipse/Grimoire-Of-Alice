@@ -165,7 +165,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityWind.class, RenderWind::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityBeam.class, RenderBeam::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDragonJewel.class, RenderDragonJewel::new);
 	}
 	
 	private void registerItem(Item item, int damage) {

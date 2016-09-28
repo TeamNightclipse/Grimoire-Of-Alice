@@ -17,15 +17,15 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class EntityBeam extends Entity {
+public class EntityDragonJewel extends Entity {
 
 	private EntityLivingBase host;
 
-	public EntityBeam(World worldIn) {
+	public EntityDragonJewel(World worldIn) {
 		super(worldIn);
 	}
 
-	public EntityBeam(World worldIn, EntityLivingBase player) {
+	public EntityDragonJewel(World worldIn, EntityLivingBase player) {
 		super(worldIn);
 		this.host = player;
 	}
@@ -52,7 +52,7 @@ public class EntityBeam extends Entity {
 		}
 		if (ticksExisted % 50 == 0) {
 			if(worldObj != null)
-			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_PORTAL_AMBIENT, SoundCategory.NEUTRAL, 0.5F, 1F);
+			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
 			for(int u = 0;u < 10; u++) {
 				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, rand.nextDouble());
 				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, -rand.nextDouble());

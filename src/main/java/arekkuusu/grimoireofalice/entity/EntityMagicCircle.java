@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -23,8 +22,12 @@ public class EntityMagicCircle extends Entity {
 	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> ANIMATION = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private EntityLivingBase host;
-	protected int last;
-	
+	private int last;
+
+	public EntityMagicCircle(World world){
+		super(world);
+	}
+
 	public EntityMagicCircle(World worldIn, EntityLivingBase entityLiving, int end) {
 		super(worldIn);
 		setSize(0.5F, 0.5F);
@@ -79,13 +82,13 @@ public class EntityMagicCircle extends Entity {
 	
 	@Override
 	protected void entityInit() {
-		dataManager.register(SIZE, new Float(0));
-		dataManager.register(TIME, new Integer(0));
-		dataManager.register(ANIMATION, new Integer(0));
+		dataManager.register(SIZE, 0f);
+		dataManager.register(TIME, 0);
+		dataManager.register(ANIMATION, 0);
 	}
 	
 	public void setCircleSize(float size) {
-		dataManager.set(SIZE, Float.valueOf(size));
+		dataManager.set(SIZE, size);
 	}
 
 	public float getCircleSize() {
@@ -93,7 +96,7 @@ public class EntityMagicCircle extends Entity {
 	}
 	
 	public void setEndTime(int time) {
-		dataManager.set(TIME, Integer.valueOf(time));
+		dataManager.set(TIME, time);
 	}
 
 	public int getEndTime() {
@@ -101,7 +104,7 @@ public class EntityMagicCircle extends Entity {
 	}
 	
 	public void setAnimationCount(int time) {
-		dataManager.set(ANIMATION, Integer.valueOf(time));
+		dataManager.set(ANIMATION, time);
 	}
 	
 	public int getAnimationCount() {

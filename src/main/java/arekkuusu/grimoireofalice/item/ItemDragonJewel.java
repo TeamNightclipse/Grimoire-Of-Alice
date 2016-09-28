@@ -1,10 +1,9 @@
 package arekkuusu.grimoireofalice.item;
 
-import arekkuusu.grimoireofalice.entity.EntityBeam;
+import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -54,7 +53,7 @@ public class ItemDragonJewel extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (!worldIn.isRemote) {
-				EntityBeam beam = new EntityBeam(worldIn, player);
+				EntityDragonJewel beam = new EntityDragonJewel(worldIn, player);
 				beam.setPosition(player.posX, player.posY + 2, player.posZ);
 				worldIn.spawnEntityInWorld(beam);
 			}
@@ -65,7 +64,7 @@ public class ItemDragonJewel extends ItemMod {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			EntityBeam beam = new EntityBeam(worldIn, playerIn);
+			EntityDragonJewel beam = new EntityDragonJewel(worldIn, playerIn);
 			beam.setPosition(pos.getX(), pos.getY() + 3, pos.getZ());
 			worldIn.spawnEntityInWorld(beam);
 		}
