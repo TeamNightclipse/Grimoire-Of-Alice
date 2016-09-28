@@ -109,8 +109,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.jeweledHourai, 0);
 		
 		//Food
-		registerItem(ModItems.shroomSlice, 0);
-		registerItem(ModItems.shroomSlice, 1);
+		registerItemWithTypes(ModItems.shroomSlice, 17);
 		registerItem(ModItems.grilledLamprey, 0);
 		registerItem(ModItems.ibarakiBoxFilled, 0);
 		registerItem(ModItems.kappasNostrum, 0);
@@ -177,6 +176,12 @@ public class ClientProxy extends CommonProxy{
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+	}
+
+	private void registerItemWithTypes(Item item, int damage) {
+		for (int i = 0; i < damage; i++) {
+			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroomslice_" + i, "inventory"));
+		}
 	}
 
 	private void registerBlockWithColorTypes(Block block, int meta){

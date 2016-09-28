@@ -3,10 +3,7 @@ package arekkuusu.grimoireofalice.client.render;
 import arekkuusu.grimoireofalice.entity.EntityBeam;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -30,7 +27,7 @@ public class RenderBeam extends Render<EntityBeam> {
 		ItemStack stack = new ItemStack(ModItems.dragonJewel);
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D); // move it into position where it looks good - change these as needed
+		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.scale(2F, 2F, 2F);
 		GlStateManager.rotate(entity.getTicksAlive() * 32, 0.0F, 1.0F, 0.0F);
@@ -52,7 +49,7 @@ public class RenderBeam extends Render<EntityBeam> {
 			GlStateManager.glTexParameteri(3553, 10243, 10497);
 			GlStateManager.disableLighting();
 			GlStateManager.disableCull();
-			GlStateManager.disableBlend();
+			GlStateManager.disableBlend(); //TODO: Very ugly effect. Change for Light beams or something pretty. NOT A BEACON
 			GlStateManager.depthMask(true);
 			GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			Tessellator tessellator = Tessellator.getInstance();

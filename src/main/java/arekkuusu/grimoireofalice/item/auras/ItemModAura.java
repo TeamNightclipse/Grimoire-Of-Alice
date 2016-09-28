@@ -20,6 +20,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemModAura extends ItemArmor implements ISpecialArmor {
 
@@ -34,11 +36,12 @@ public class ItemModAura extends ItemArmor implements ISpecialArmor {
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.UNCOMMON;
+		return EnumRarity.RARE;
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
 		return false;
 	}
 

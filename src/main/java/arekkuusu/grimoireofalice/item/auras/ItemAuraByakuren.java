@@ -36,6 +36,12 @@ public class ItemAuraByakuren extends ItemModAura {
 	public ItemAuraByakuren(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.AURABYAKUREN, EntityEquipmentSlot.HEAD);
 	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

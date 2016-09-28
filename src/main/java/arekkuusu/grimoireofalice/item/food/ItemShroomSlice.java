@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -39,7 +40,7 @@ public class ItemShroomSlice extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
-		return stack.getItemDamage() > 0;
+		return stack.getItemDamage() == 16;
 	}
 
 	@Override
@@ -51,27 +52,29 @@ public class ItemShroomSlice extends ItemModFood {
 
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		if(!world.isRemote) {
-			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
-			player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
-			player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));
-		}
+		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
+		player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
+		player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));
 
-		if(stack.getItemDamage() > 0) {
-			if(!world.isRemote) {
-				player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
-				player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2400, 1));
-				player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 2400, 0));
-			}
-		}
-		else {
+		if (stack.getItemDamage() == 16) {
+			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
+			player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2400, 1));
+			player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 2400, 0));
+		} else {
 			super.onFoodEaten(stack, world, player);
 		}
 	}
 
 	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		int i = stack.getMetadata();
+		return super.getUnlocalizedName() + "." + (i != 16 ? EnumDyeColor.byDyeDamage(i).getUnlocalizedName() : "soup");
+	}
+
+	@Override
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> list) {
-		list.add(new ItemStack(item, 1, 0));
-		list.add(new ItemStack(item, 1, 1));
+		for (int i = 0; i < 17; i++){
+			list.add(new ItemStack(item, 1, i));
+		}
 	}
 }

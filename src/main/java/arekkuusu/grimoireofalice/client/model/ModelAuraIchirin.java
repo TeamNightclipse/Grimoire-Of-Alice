@@ -68,22 +68,22 @@ public class ModelAuraIchirin extends ModelBiped {
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_5.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_7.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_3.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_4.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
@@ -93,12 +93,12 @@ public class ModelAuraIchirin extends ModelBiped {
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_9.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_10.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
@@ -113,12 +113,12 @@ public class ModelAuraIchirin extends ModelBiped {
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_2.render(size);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
         this.shape1_6.render(size);
         GlStateManager.disableBlend();
     }

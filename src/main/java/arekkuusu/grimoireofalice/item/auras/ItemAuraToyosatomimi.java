@@ -35,7 +35,13 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	public ItemAuraToyosatomimi(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.AURATOYOSATOMIMI, EntityEquipmentSlot.HEAD);
 	}
-	
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return true;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

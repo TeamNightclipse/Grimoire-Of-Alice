@@ -51,6 +51,18 @@ public class GOACreativeTab extends CreativeTabs {
 	public void displayAllRelevantItems(List<ItemStack> list) {
 		this.list = list;
 
+		//Blocks
+		addBlock(ModBlocks.compactStone);
+		addBlock(ModBlocks.holyStone);
+		addBlock(ModBlocks.kyoumarubotan);
+		addBlock(ModBlocks.onbashira);
+		addBlock(ModBlocks.paperBlock);
+		addBlock(ModBlocks.ropeBlock);
+		addBlock(ModBlocks.sugarBlock);
+		addBlock(ModBlocks.hyperconcentratedMagic);
+		addBlock(ModBlocks.shroom);
+		addItem(ModItems.shroomSlice); //Goes here for being related to a Block
+
 		//Item
 		addItem(ModItems.thirdEye);
 		addItem(ModItems.gloriousNipponSteel);
@@ -90,7 +102,6 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.dragonJewel);
 		
 		//Food
-		addItem(ModItems.shroomSlice);
 		addItem(ModItems.grilledLamprey);
 		addItem(ModItems.ibarakiBoxEmpty);
 		addItem(ModItems.ibarakiBoxFilled);
@@ -144,18 +155,6 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.needle);
 		addItem(ModItems.hisou);
 		addItem(ModItems.deathScythe);
-		
-		//Blocks
-		addBlock(ModBlocks.compactStone);
-		addBlock(ModBlocks.holyStone);
-		addBlock(ModBlocks.kyoumarubotan);
-		addBlock(ModBlocks.onbashira);
-		addBlock(ModBlocks.paperBlock);
-		addBlock(ModBlocks.ropeBlock);
-		addBlock(ModBlocks.shroom);
-		addBlock(ModBlocks.sugarBlock);
-		addBlock(ModBlocks.hyperconcentratedMagic);
-		
 	}
 
 	@SideOnly(Side.CLIENT)
