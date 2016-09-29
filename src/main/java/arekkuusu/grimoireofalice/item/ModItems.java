@@ -107,6 +107,7 @@ public final class ModItems {
 	public static Item sacredToyosatomimi;
 	public static Item hisou;
 	public static Item deathScythe;
+	public static Item roukanken;
 	//PointItem
 	public static Item fullPower;
 	public static Item star;
@@ -219,6 +220,7 @@ public final class ModItems {
 		needle = new ItemNeedle(NOT_A_MELEE_WEAPON);
 		hisou = new ItemSwordOfHisou(GOLDYRON);
 		deathScythe = new ItemDeathScythe(WET_NOODLE);
+		roukanken = new ItemSwordRoukanken(WET_NOODLE);
 		
 	}
 	

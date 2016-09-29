@@ -12,6 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -83,7 +84,13 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 		}
 	}
 
-
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		double speed = 1;
+		target.motionX = -Math.sin(Math.toRadians(attacker.rotationYaw)) * speed;
+		target.motionZ = Math.cos(Math.toRadians(attacker.rotationYaw)) * speed;
+		return true;
+	}
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {

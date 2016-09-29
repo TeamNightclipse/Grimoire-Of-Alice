@@ -12,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -23,8 +24,9 @@ import java.util.List;
 
 public class ItemBloodThirstyOrb extends ItemMod {
 
-	public ItemBloodThirstyOrb() {
+	ItemBloodThirstyOrb() {
 		super(LibItemName.BLOODTHIRSTYORB);
+		setMaxStackSize(1);
 		setNoRepair();
 	}
 
@@ -47,53 +49,76 @@ public class ItemBloodThirstyOrb extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) { //Recycled code...
-		if(!worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
-				double range = 32.0D;
-				Vec3d look = player.getLookVec();
-				Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-				Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
-				RayTraceResult movingObjectPosition = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
-				if (movingObjectPosition != null) {
-					vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if (player.isSneaking()) {
+				moveToClosestPlayer(worldIn, player);
+			} else {
+				moveToMob(player);
+			}
+			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+			player.getCooldownTracker().setCooldown(this, timeUsed);
+			player.attackEntityFrom(DamageSource.generic, 1);
+		}
+	}
+
+	private void moveToClosestPlayer(World worldIn, EntityPlayer player){
+		List<Entity> entities = worldIn.getEntitiesWithinAABBExcludingEntity(player, new AxisAlignedBB(player.getPosition()).expandXyz(30));
+		if(!entities.isEmpty()) {
+			for (Entity entity : entities){
+				if(entity instanceof EntityPlayer) {
+					int x = (int) (entity.posX + 0.5);
+					int y = (int) entity.posY;
+					int z = (int) (entity.posZ + 0.5);
+					player.setPosition(x, y, z);
+					break;
 				}
-				EntityLivingBase entity = null;
-				List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D));
-				double d = 0.0D;
-				for (Entity entity1 : list) {
-					if (entity1 instanceof EntityLivingBase) {
-						float f2 = 0.3F;
-						AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
-						RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
-						if (movingObjectPosition1 != null) {
-							double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-							if (d1 < d || d == 0.0D) {
-								entity = (EntityLivingBase) entity1;
-								d = d1;
-							}
-						}
+			}
+		}
+	}
+
+	private void moveToMob(EntityPlayer player){
+		double range = 32.0D;
+		Vec3d look = player.getLookVec();
+		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
+		RayTraceResult movingObjectPosition = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
+		if (movingObjectPosition != null) {
+			vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
+		}
+		EntityLivingBase entity = null;
+		List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D));
+		double d = 0.0D;
+		for (Entity entity1 : list) {
+			if (entity1 instanceof EntityLivingBase) {
+				float f2 = 0.3F;
+				AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
+				RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+				if (movingObjectPosition1 != null) {
+					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
+					if (d1 < d || d == 0.0D) {
+						entity = (EntityLivingBase) entity1;
+						d = d1;
 					}
 				}
-				if (entity != null && !player.worldObj.isRemote) {
-					player.setPosition(entity.posX - look.xCoord, entity.posY, entity.posZ  - look.zCoord);
-					System.out.println("Nope");
-				}
-				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-				player.getCooldownTracker().setCooldown(this, timeUsed);
-				player.attackEntityFrom(DamageSource.generic, 1);
 			}
+		}
+		if (entity != null) {
+			double x = entity.posX + 0.5;
+			double y = entity.posY -  look.yCoord;
+			double z = entity.posZ + 0.5;
+			player.setPosition(x, y, z);
 		}
 	}
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 7000;
+		return 500;
 	}
 
 	@Override

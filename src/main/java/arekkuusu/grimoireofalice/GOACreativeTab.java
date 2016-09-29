@@ -156,6 +156,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.needle);
 		addItem(ModItems.hisou);
 		addItem(ModItems.deathScythe);
+		addItem(ModItems.roukanken);
 	}
 
 	@SideOnly(Side.CLIENT)

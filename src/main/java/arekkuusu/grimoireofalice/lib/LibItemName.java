@@ -91,6 +91,7 @@ public class LibItemName {
 	public static final String SACREDTOYOSATOMIMI = "sacredswordoftoyosatomimi";
 	public static final String HISOU = "hisou";
 	public static final String DEATHSCYTHE = "deathscythe";
+	public static final String ROUKANKEN = "roukanken";
 	//THItems
 	public static final String FULLPOWER = "fullpoweritem";
 	public static final String STAR = "staritem";

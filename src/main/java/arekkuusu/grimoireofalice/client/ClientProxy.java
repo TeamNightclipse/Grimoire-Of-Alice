@@ -144,6 +144,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.needle, 0);
 		registerItem(ModItems.hisou, 0);
 		registerItem(ModItems.deathScythe, 0);
+		registerItem(ModItems.roukanken, 0);
 		
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);

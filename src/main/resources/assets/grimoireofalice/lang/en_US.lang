@@ -94,6 +94,7 @@ item.tengufan.name=Tengu Fan
 item.sacredswordoftoyosatomimi.name=Sacred Sword of Toyosatomimi
 item.hisou.name=Sword of Hisou
 item.deathscythe.name=Death Scythe
+item.roukanken.name=Roukanken
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper
@@ -137,6 +138,7 @@ item.ufogreen.name=UFOs
 item.thirdeye.name=3rdEye
 item.spellcardpouch.name=Spell Card Pouch
 item.leafitem.name=Leaf
+item.bloodthirstyorb.name=Blood Thirsty Orb
 
 itemGroup.grimoireofalice=Grimoire of Alice
 
