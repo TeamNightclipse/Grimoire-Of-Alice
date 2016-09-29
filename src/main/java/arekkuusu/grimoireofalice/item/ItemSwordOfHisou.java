@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -148,6 +149,8 @@ public class ItemSwordOfHisou extends ItemModSword {
 							for (EntityMob mob : list) {
 								count += mob.getHealth();
 							}
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, count);
+							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}
 					} else if (timeUsed >= 50  && player.isSneaking()) {

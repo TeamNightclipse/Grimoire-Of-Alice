@@ -119,6 +119,7 @@ public final class ModItems {
 	public static Item uFOs;
 	public static Item thirdEye;
 	public static Item leaf;
+	public static Item bloodOrb;
 	
 	public static void init() {
 		
@@ -160,6 +161,7 @@ public final class ModItems {
 		jeweledHourai = new ItemJeweledHourai();
 		budahBoul = new ItemBudahBoul(Item.ToolMaterial.DIAMOND);
 		dragonJewel = new ItemDragonJewel();
+		bloodOrb = new ItemBloodThirstyOrb();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();

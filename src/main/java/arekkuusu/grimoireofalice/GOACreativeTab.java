@@ -100,6 +100,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.jeweledHourai);
 		addItem(ModItems.budahBoul);
 		addItem(ModItems.dragonJewel);
+		addItem(ModItems.bloodOrb);
 		
 		//Food
 		addItem(ModItems.grilledLamprey);

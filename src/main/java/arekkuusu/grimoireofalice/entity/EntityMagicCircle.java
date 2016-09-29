@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityMagicCircle extends Entity {
@@ -32,7 +33,7 @@ public class EntityMagicCircle extends Entity {
 		super(worldIn);
 		setSize(0.5F, 0.5F);
 		setEndTime(end);
-		host = entityLiving; //This is mostly an experiment...
+		host = entityLiving;
 		posX = host.posX;
     	posY = host.posY + 0.1D;
     	posZ = host.posZ;
@@ -42,52 +43,55 @@ public class EntityMagicCircle extends Entity {
 	@Override
     public void onUpdate() {
     	super.onUpdate();
-    	if(!worldObj.isRemote || host == null ) {
-    		setDead();
-    		return;
-    	}
-    	
-    	setAnimationCount(last);
-    	
-    	if(getEndTime() < ticksExisted && getEndTime() >= 0) {
-    		if(!worldObj.isRemote) {
-    			setDead();
-    		}
-    	}
-    	if(getAnimationCount() < 5) {
-    		setCircleSize(((float)getAnimationCount()) / 5.0F);
-    	}
-    	else {
-    		float end2 = (float)getEndTime();
-    		setCircleSize((end2 - (float)getAnimationCount()) / end2);
-    	}
-    	posX = host.posX;
-        posY = host.posY + 0.1D;
-    	posZ = host.posZ;
-    	rotationYaw = host.rotationYawHead;
-    	rotationPitch = host.rotationPitch;
-    	setPosition(posX, posY, posZ);
-    	
-    	if(rotationYaw >  180F)rotationYaw -= 360F;
-    	if(rotationYaw < -180F)rotationYaw += 360F;
-    	if(rotationPitch >  180F)rotationPitch -= 360F;
-    	if(rotationPitch < -180F)rotationPitch += 360F;
+		if(host != null) {
+			if (host.isHandActive() && !worldObj.isRemote) {
+				setDead();
+				return;
+			}
 
-    	setRotation(rotationYaw, rotationPitch);
-    	
-    	if(ticksExisted > last) {
-    		last = ticksExisted;
-    	}
+			setAnimationCount(last);
+
+			if (getEndTime() < ticksExisted && getEndTime() >= 0) {
+				if (!worldObj.isRemote) {
+					setDead();
+				}
+			}
+			if (getAnimationCount() < 5) {
+				setCircleSize(((float) getAnimationCount()) / 5.0F);
+			} else {
+				float end2 = (float) getEndTime();
+				setCircleSize((end2 - (float) getAnimationCount()) / end2);
+			}
+			posX = host.posX;
+			posY = host.posY + 0.1D;
+			posZ = host.posZ;
+			rotationYaw = host.rotationYawHead;
+			rotationPitch = host.rotationPitch;
+			setPosition(posX, posY, posZ);
+
+			if (rotationYaw > 180F) rotationYaw -= 360F;
+			if (rotationYaw < -180F) rotationYaw += 360F;
+			if (rotationPitch > 180F) rotationPitch -= 360F;
+			if (rotationPitch < -180F) rotationPitch += 360F;
+
+			setRotation(rotationYaw, rotationPitch);
+
+			if (ticksExisted > last) {
+				last = ticksExisted;
+			}
+		} else if (!worldObj.isRemote) {
+			setDead();
+		}
     }
-	
+
 	@Override
 	protected void entityInit() {
 		dataManager.register(SIZE, 0f);
 		dataManager.register(TIME, 0);
 		dataManager.register(ANIMATION, 0);
 	}
-	
-	public void setCircleSize(float size) {
+
+	private void setCircleSize(float size) {
 		dataManager.set(SIZE, size);
 	}
 
@@ -95,20 +99,24 @@ public class EntityMagicCircle extends Entity {
 		return dataManager.get(SIZE);
 	}
 	
-	public void setEndTime(int time) {
+	private void setEndTime(int time) {
 		dataManager.set(TIME, time);
 	}
 
 	public int getEndTime() {
 		return dataManager.get(TIME);
 	}
-	
-	public void setAnimationCount(int time) {
+
+	private void setAnimationCount(int time) {
 		dataManager.set(ANIMATION, time);
 	}
 	
 	public int getAnimationCount() {
 		return dataManager.get(ANIMATION);
+	}
+
+	public int getTicksExisted(){
+		return ticksExisted;
 	}
 
 	@Override

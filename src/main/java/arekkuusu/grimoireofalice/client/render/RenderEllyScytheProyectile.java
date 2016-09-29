@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
+import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
 import arekkuusu.grimoireofalice.entity.EntityThrow;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
@@ -24,7 +24,7 @@ public class RenderEllyScytheProyectile extends Render<EntityThrow> { //TODO: Ch
 	}
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/ellyscythe.png");
-	private static final ModelBase MODEL = new ModelEllyScythe();
+	private static final ModelBase MODEL = new ModelFlatTexture();
 	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityThrow entity) {

@@ -12,11 +12,11 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelEllyScythe extends ModelBase {
+public class ModelFlatTexture extends ModelBase {
 
 	private ModelRenderer Shape1;
 
-	public ModelEllyScythe() {
+	public ModelFlatTexture() {
 		textureWidth = 32;
 		textureHeight = 32;
 

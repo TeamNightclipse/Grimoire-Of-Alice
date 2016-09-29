@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.entity;
 
-import arekkuusu.grimoireofalice.helper.LogHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -24,7 +23,7 @@ import net.minecraft.world.World;
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
 	
-	private static final DataParameter<Float> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private static final DataParameter<Float> TIME = EntityDataManager.createKey(EntityGrimoireSpell.class, DataSerializers.FLOAT);
 	private int timeLive = 15;
 	private float ticksInAir; //TODO: Use and AT to get access to this field
 

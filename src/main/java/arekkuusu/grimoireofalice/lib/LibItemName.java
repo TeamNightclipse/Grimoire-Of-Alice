@@ -103,4 +103,5 @@ public class LibItemName {
 	public static final String UFOs = "ufos";
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
+	public static final String BLOODTHIRSTYORB = "bloodthirstyorb";
 }

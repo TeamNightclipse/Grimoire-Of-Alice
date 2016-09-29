@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelEllyScythe;
+import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
 import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -18,7 +18,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	private static final ResourceLocation TEXTURE_BEAM = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle.png");
 	private final RenderItem renderItem;
-	private static final ModelBase MODEL = new ModelEllyScythe();
+	private static final ModelBase MODEL = new ModelFlatTexture();
 
 	public RenderDragonJewel(RenderManager renderManager) {
 		super(renderManager);

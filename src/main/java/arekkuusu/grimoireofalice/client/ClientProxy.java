@@ -66,7 +66,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.ichirinAura, 0);
         registerItem(ModItems.suwakoHat, 0);
 		registerItem(ModItems.fireRobe, 0);
-		registerItem(ModItems.dragonJewel, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -99,6 +98,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.miracleMallet, 0);
 		registerItem(ModItems.rodRemorse, 0);
 		registerItem(ModItems.budahBoul, 0);
+		registerItem(ModItems.dragonJewel, 0);
+		registerItem(ModItems.bloodOrb, 0);
 
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
@@ -160,6 +161,7 @@ public class ClientProxy extends CommonProxy{
 		
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNote.class, RenderNote::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityWind.class, RenderWind::new);
