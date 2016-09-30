@@ -8,18 +8,19 @@
  */
 package arekkuusu.grimoireofalice.entity;
 
+import arekkuusu.grimoireofalice.handler.EnumTextures;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityMagicCircle extends Entity {
 
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private static final DataParameter<Integer> TEXTURE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> ANIMATION = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private EntityLivingBase host;
@@ -29,9 +30,10 @@ public class EntityMagicCircle extends Entity {
 		super(world);
 	}
 
-	public EntityMagicCircle(World worldIn, EntityLivingBase entityLiving, int end) {
+	public EntityMagicCircle(World worldIn, EntityLivingBase entityLiving, EnumTextures texture, int end) {
 		super(worldIn);
 		setSize(0.5F, 0.5F);
+		setTexture(texture.getNumber());
 		setEndTime(end);
 		host = entityLiving;
 		posX = host.posX;
@@ -88,6 +90,7 @@ public class EntityMagicCircle extends Entity {
 	protected void entityInit() {
 		dataManager.register(SIZE, 0f);
 		dataManager.register(TIME, 0);
+		dataManager.register(TEXTURE, 0);
 		dataManager.register(ANIMATION, 0);
 	}
 
@@ -115,8 +118,12 @@ public class EntityMagicCircle extends Entity {
 		return dataManager.get(ANIMATION);
 	}
 
-	public int getTicksExisted(){
-		return ticksExisted;
+	private void setTexture(int texture) {
+		dataManager.set(TEXTURE, texture);
+	}
+
+	public int getTexture(){
+		return dataManager.get(TEXTURE);
 	}
 
 	@Override

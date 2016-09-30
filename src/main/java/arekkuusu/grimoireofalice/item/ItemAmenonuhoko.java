@@ -62,7 +62,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 			list.add(TextFormatting.ITALIC + "primordial land-mass,");
 			list.add(TextFormatting.ITALIC + "Onogoro-shima, from the sea");
 		} else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");

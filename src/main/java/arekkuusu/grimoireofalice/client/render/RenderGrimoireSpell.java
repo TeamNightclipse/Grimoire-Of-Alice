@@ -21,8 +21,8 @@ import net.minecraft.util.math.MathHelper;
 
 public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 
-	private static final ResourceLocation CIRCLE_TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle.png");
-	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation("textures/entity/enchanting_table_book.png");
+	private static final ResourceLocation CIRCLE_TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_2.png");
+	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
 	private static final ModelBase MODEL = new ModelFlatTexture();
 	

@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -60,7 +61,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Sword of Scarlet Perceptions");
 		list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
 		list.add(TextFormatting.GRAY + "no matter the circumstances.");
-		list.add(TextFormatting.GRAY + "It takes the form of a golden Chinese jian.");
+		list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
 			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
@@ -149,7 +150,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 							for (EntityMob mob : list) {
 								count += mob.getHealth();
 							}
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, count);
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLACK_TRIANGLE_MAGIC_CIRCLE, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}

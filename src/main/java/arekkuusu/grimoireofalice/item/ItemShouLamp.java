@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 import java.util.Random;
 
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.EnumTextures;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -52,7 +54,7 @@ public class ItemShouLamp extends ItemMod {
 			list.add(TextFormatting.YELLOW + "Short use periods give Luck to only you");
 			list.add(TextFormatting.DARK_AQUA + "Hitting entities gives them Unluck");
 		} else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
 	
@@ -71,18 +73,25 @@ public class ItemShouLamp extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			int hurr = getMaxItemUseDuration(stack) - timeLeft;
-			float durr = (hurr * 6) / 20F;
-			durr = (durr * durr + durr * 2.0F) / 3F;
-			durr *= 1.5F;
-			if (durr < 10F) {
+			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+			float convert = (timeUsed * 6) / 20F;
+			convert = (convert * convert + convert * 2.0F) / 3F;
+			convert *= 1.5F;
+			if (convert < 10F) {
 				player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
+				if(!worldIn.isRemote) {
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLUE_HEXAGRAM_MAGIC_CIRCLE, 20);
+					worldIn.spawnEntityInWorld(circle);
+				}
 			} else {
-				//Will add a spell particle
 				player.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, player.posX, player.posY, player.posZ, 0, 0, 0);
 				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
 				for (EntityMob mob : list){
 					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
+					if(!mob.worldObj.isRemote) {
+						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.BLUE_HEXAGRAM_MAGIC_CIRCLE, 20);
+						worldIn.spawnEntityInWorld(circle);
+					}
 				}
 			}
 		}

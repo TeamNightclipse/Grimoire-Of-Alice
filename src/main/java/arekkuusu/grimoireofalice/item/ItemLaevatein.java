@@ -10,12 +10,10 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.EntityFireBalloon;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

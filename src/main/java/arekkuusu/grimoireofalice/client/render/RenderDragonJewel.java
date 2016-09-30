@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
-	private static final ResourceLocation TEXTURE_BEAM = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle.png");
+	private static final ResourceLocation TEXTURE_BEAM = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png");
 	private final RenderItem renderItem;
 	private static final ModelBase MODEL = new ModelFlatTexture();
 
