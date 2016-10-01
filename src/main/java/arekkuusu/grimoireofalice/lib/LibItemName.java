@@ -65,6 +65,7 @@ public class LibItemName {
 	public static final String AURAICHIRIN = "auraichirin";
 	public static final String SUWAKOHAT = "suwakohat";
 	public static final String FIREROBE = "firerobe";
+	public static final String AURAUTSUHO = "aurautsuho";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";

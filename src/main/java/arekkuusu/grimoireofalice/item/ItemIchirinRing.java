@@ -10,11 +10,14 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -66,8 +69,19 @@ public class ItemIchirinRing extends ItemModSword {
 	
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer){
-				int i = this.getMaxItemUseDuration(stack) - timeLeft;
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer playerIn = (EntityPlayer) entityLiving;
+			if(!worldIn.isRemote) {
+				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
+				fist.setHeadingFromThrower(playerIn, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0F, 1.0F, 0);
+				worldIn.spawnEntityInWorld(fist);
+
+				StatBase statBase = StatList.getObjectUseStats(this);
+				if (statBase != null) {
+					playerIn.addStat(statBase);
+				}
+			}
+			playerIn.getCooldownTracker().setCooldown(this, timeLeft);
 		}
 	}
 		
@@ -84,7 +98,7 @@ public class ItemIchirinRing extends ItemModSword {
 
 	@Override
     public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
+        return 100;
     }
 
 	@Override

@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
-import java.util.Random;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
@@ -80,7 +79,7 @@ public class ItemShouLamp extends ItemMod {
 			if (convert < 10F) {
 				player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 				if(!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLUE_HEXAGRAM_MAGIC_CIRCLE, 20);
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLUE_STAR, 125);
 					worldIn.spawnEntityInWorld(circle);
 				}
 			} else {
@@ -89,7 +88,7 @@ public class ItemShouLamp extends ItemMod {
 				for (EntityMob mob : list){
 					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 					if(!mob.worldObj.isRemote) {
-						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.BLUE_HEXAGRAM_MAGIC_CIRCLE, 20);
+						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.BLUE_STAR_SMALL, 125);
 						worldIn.spawnEntityInWorld(circle);
 					}
 				}

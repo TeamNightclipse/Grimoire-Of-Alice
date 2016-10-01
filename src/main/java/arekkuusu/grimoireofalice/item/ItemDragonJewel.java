@@ -57,7 +57,7 @@ public class ItemDragonJewel extends ItemMod {
 				beam.setPosition(player.posX, player.posY + 2, player.posZ);
 				worldIn.spawnEntityInWorld(beam);
 			}
-			--stack.stackSize;
+			stack.stackSize--;
 		}
 	}
 

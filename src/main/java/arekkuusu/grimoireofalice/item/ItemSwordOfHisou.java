@@ -150,7 +150,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 							for (EntityMob mob : list) {
 								count += mob.getHealth();
 							}
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLACK_TRIANGLE_MAGIC_CIRCLE, count);
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}

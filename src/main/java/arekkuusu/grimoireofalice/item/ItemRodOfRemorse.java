@@ -38,8 +38,8 @@ public class ItemRodOfRemorse extends ItemMod {
 			for (int i = 0; i < player.inventory.mainInventory.length; i++) {
 				ItemStack item = player.inventory.mainInventory[i];
 				if (item != null && item.getItem() == Items.DYE && item.getItemDamage() == 0) {
-					if (item.stackSize > 0) {
-						--player.inventory.mainInventory[i].stackSize;
+					if (item.stackSize > 1) {
+						player.inventory.mainInventory[i].stackSize--;
 					} else {
 						player.inventory.mainInventory[i] = null;
 					}

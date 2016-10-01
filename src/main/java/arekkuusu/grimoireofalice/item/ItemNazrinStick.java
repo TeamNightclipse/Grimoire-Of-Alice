@@ -14,10 +14,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
-import arekkuusu.grimoireofalice.helper.LogHelper;
-import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -127,7 +124,7 @@ public class ItemNazrinStick extends ItemModSword {
 				player.inventory.deleteStack(new ItemStack(Items.COAL));
 			}
 			if(!worldIn.isRemote){
-				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.FANCY_SYMBOLS_MAGIC_CIRCLE, 50);
+				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, 50);
 				worldIn.spawnEntityInWorld(circle);
 			}
 			player.getCooldownTracker().setCooldown(stack.getItem(), 50);

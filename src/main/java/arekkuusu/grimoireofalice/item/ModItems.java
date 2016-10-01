@@ -81,6 +81,7 @@ public final class ModItems {
 	public static Item ichirinAura;
 	public static Item suwakoHat;
 	public static Item fireRobe;
+	public static Item utsuhoAura;
 	//Weapons
 	public static Item mochiHammer;
 	public static Item momijisScimitarSword;
@@ -192,7 +193,8 @@ public final class ModItems {
 		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
         ichirinAura = new ItemAuraIchirin(SOLID_PAPER, 3);
         suwakoHat = new ItemSuwakoHat(SOLID_PAPER,3);
-		fireRobe = new ItemFireRobe(SOLID_PAPER,5);
+		fireRobe = new ItemFireRobe(SOLID_PAPER,3);
+		utsuhoAura = new ItemWingsUtsuho(SOLID_PAPER,5);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);

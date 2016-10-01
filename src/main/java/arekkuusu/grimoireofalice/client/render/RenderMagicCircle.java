@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderMagicCircle extends Render<EntityMagicCircle> {
 
-	private ResourceLocation CIRCLE_TEXTURE[] = {
+	private static final ResourceLocation CIRCLE_TEXTURE[] = {
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_0.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_1.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_2.png"),

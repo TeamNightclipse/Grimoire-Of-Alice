@@ -12,7 +12,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -33,6 +32,11 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return true;
 	}
 
 	@Override
