@@ -17,6 +17,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -56,8 +57,13 @@ public class ItemNazrinPendulum extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(!worldIn.isRemote) {
-			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn);
-			pendulum.setPosition(playerIn.posX, playerIn.posY + 1, playerIn.posZ);
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, !playerIn.isSneaking());
+			Vec3d look = playerIn.getLookVec();
+			float distance = 2F;
+			double dx = playerIn.posX + (look.xCoord * distance);
+			double dy = playerIn.posY + playerIn.getEyeHeight() - 0.5;
+			double dz = playerIn.posZ + (look.zCoord * distance);
+			pendulum.setPosition(dx, dy, dz);
 			worldIn.spawnEntityInWorld(pendulum);
 		}
 		--itemStackIn.stackSize;
@@ -67,7 +73,7 @@ public class ItemNazrinPendulum extends ItemMod {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn);
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, false);
 			pendulum.setPosition(pos.getX()+ 0.5, pos.getY() + 2, pos.getZ() + 0.5);
 			worldIn.spawnEntityInWorld(pendulum);
 		}

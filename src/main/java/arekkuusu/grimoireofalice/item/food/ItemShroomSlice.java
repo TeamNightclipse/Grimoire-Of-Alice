@@ -40,7 +40,7 @@ public class ItemShroomSlice extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
-		return stack.getItemDamage() == 16;
+		return true;
 	}
 
 	@Override

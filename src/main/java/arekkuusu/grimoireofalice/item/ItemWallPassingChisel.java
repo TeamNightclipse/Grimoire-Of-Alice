@@ -62,7 +62,7 @@ public class ItemWallPassingChisel extends ItemMod {
 		BlockPos triedPos = pos;
 
 		for(int i = 0; i < 50; i++) {
-			if(world.getBlockState(triedPos).getBlock() == Blocks.AIR) {
+			if(world.getBlockState(triedPos).getBlock() == Blocks.AIR && world.getBlockState(triedPos).getBlock() != Blocks.BEDROCK) {
 				//Logic to prevent player to suffocate or get in awkward positions
 				if(facing == EnumFacing.DOWN){
 					if (world.getBlockState(triedPos.offset(facing)).getBlock() != Blocks.AIR) {

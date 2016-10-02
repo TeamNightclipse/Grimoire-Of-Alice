@@ -21,17 +21,13 @@ public class RenderUnzanFist extends Render<EntityUnzanFist> {
 
 	@Override
 	public void doRender(EntityUnzanFist entity, double x, double y, double z, float entityYaw, float partialTicks) {
-		EntityLivingBase entityHost = entity.getThrower();
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		GlStateManager.scale(1.5, 1.5, 1.5);
-		if(entityHost != null) {
-			GlStateManager.rotate(180 - entityHost.rotationPitch, 1.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(entityHost.rotationYaw, 0.0F, 1.0F, 0.0F);
-		}
+		GlStateManager.rotate(-entityYaw, 0, 1F, 0);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();

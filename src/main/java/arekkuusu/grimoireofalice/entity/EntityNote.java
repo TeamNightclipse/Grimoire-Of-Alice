@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.entity;
 
-import java.util.Random;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -17,7 +15,9 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 //TODO: Replace with DanmakuCore form once that is here
@@ -29,6 +29,13 @@ public class EntityNote extends EntityThrowable {
 
 	public EntityNote(World worldIn, EntityLivingBase throwerIn) {
         super(worldIn, throwerIn);
+		Vec3d look = throwerIn.getLookVec();
+		look.rotateYaw(45);
+		float distance = 1.5F;
+		double dx = throwerIn.posX + (look.xCoord * distance);
+		double dy = throwerIn.posY + throwerIn.getEyeHeight();
+		double dz = throwerIn.posZ + (look.zCoord * distance);
+		setPosition(dx, dy, dz);
     }
 
 	@Override
@@ -39,7 +46,7 @@ public class EntityNote extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		worldObj.spawnParticle(EnumParticleTypes.NOTE, posX, posY, posZ, (double)ticksInAir / 24.0D, 0.0D, 0.0D);
+		worldObj.spawnParticle(EnumParticleTypes.NOTE, posX + 0.5, posY, posZ + 0.5, 0.0D, 0.0D, 0.0D);
 		if (rand.nextInt(8) == 4) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
 		}

@@ -98,7 +98,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	protected void onImpactBlock(RayTraceResult result) {
+	private void onImpactBlock(RayTraceResult result) {
 		BlockPos pos = result.getBlockPos();
 		IBlockState tile = worldObj.getBlockState(pos);
 		motionX = result.hitVec.xCoord - posX;
@@ -117,37 +117,14 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	protected void onImpactEntity(RayTraceResult result) {
+	private void onImpactEntity(RayTraceResult result) {
 		bounceBack();
 		if(result.entityHit != null) {
 			applyHitEffects(result.entityHit);
 		}
 	}
 
-	public void applyHitEffects(Entity entity) {
-		/*if (isBurning() && !(entity instanceof EntityEnderman)) {
-			entity.setFire(5);
-		}
-
-		if (entity instanceof EntityLivingBase) {
-			EntityLivingBase entityliving = (EntityLivingBase) entity;
-			if (knockbackStrength > 0) {
-				double speed = Math.sqrt(motionX * motionX + motionZ * motionZ);
-				if (speed > 0.0F) {
-					entity.addVelocity(motionX * knockbackStrength * 0.6D / speed, 0.1D, motionZ * knockbackStrength * 0.6D / speed);
-				}
-			}
-			EntityLivingBase thrower = getThrower();
-			if (thrower != null) {
-				EnchantmentHelper.applyThornEnchantments(entityliving, thrower);
-				EnchantmentHelper.applyArthropodEnchantments(thrower, entityliving);
-
-				if (thrower instanceof EntityPlayerMP && thrower != entity && entity instanceof EntityPlayer) {
-					((EntityPlayerMP) thrower).connection.sendPacket(new SPacketChangeGameState(6, 0));
-				}
-			}
-		}*/
-	}
+	abstract void applyHitEffects(Entity entity);
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
@@ -177,7 +154,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		else return 0F;
 	}
 
-	protected abstract double gravityThreshold();
+	abstract double gravityThreshold();
 
 	protected void setPickupModeFromEntity(EntityLivingBase entityliving) {
 		if (entityliving instanceof EntityPlayer) {
@@ -191,7 +168,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	protected void bounceBack() {
+	private void bounceBack() {
 		motionX *= -0.1D;
 		motionY *= -0.1D;
 		motionZ *= -0.1D;
@@ -199,7 +176,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		prevRotationYaw += 180F;
 	}
 
-	public boolean canPickup(EntityPlayer entityplayer) {
+	private boolean canPickup(EntityPlayer entityplayer) {
 		if (canBePickedUp == PICKUP_ALL) {
 			return true;
 		} else if(canBePickedUp == PICKUP_CREATIVE) {

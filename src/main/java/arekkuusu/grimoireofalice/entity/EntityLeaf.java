@@ -95,8 +95,8 @@ public class EntityLeaf extends EntityThrowable {
 		}
 		if(!worldObj.isRemote){
 			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
-			//FIXME: Only works for two facing directions
-			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F); //These needs to be negative for some reason
+			//TODO: Make random movements
+			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F);
 			entityAnimalShot.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
 			this.worldObj.spawnEntityInWorld(entityAnimalShot);
 			this.setDead();

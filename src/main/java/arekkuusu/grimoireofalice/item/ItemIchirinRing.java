@@ -14,13 +14,17 @@ import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,7 +58,7 @@ public class ItemIchirinRing extends ItemModSword {
 				list.add(TextFormatting.DARK_AQUA + "Active");
 			}
 		} else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
 	
@@ -69,19 +73,24 @@ public class ItemIchirinRing extends ItemModSword {
 	
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
+		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if(!worldIn.isRemote) {
+			if (!worldIn.isRemote && isWearingUnzan(playerIn)) { //FIXME: Entity renders for a second, then it vanishes... Something is wrong somewhere
 				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
+				Vec3d look = playerIn.getLookVec();
+				float distance = 1.5F;
+				double dx = playerIn.posX + (look.xCoord * distance);
+				double dy = playerIn.posY + playerIn.getEyeHeight() - 1;
+				double dz = playerIn.posZ + (look.zCoord * distance);
+				fist.setPosition(dx, dy, dz);
 				fist.setHeadingFromThrower(playerIn, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0F, 1.0F, 0);
 				worldIn.spawnEntityInWorld(fist);
-
 				StatBase statBase = StatList.getObjectUseStats(this);
 				if (statBase != null) {
 					playerIn.addStat(statBase);
 				}
 			}
-			playerIn.getCooldownTracker().setCooldown(this, timeLeft);
+			playerIn.getCooldownTracker().setCooldown(this, 10);
 		}
 	}
 		
@@ -89,6 +98,11 @@ public class ItemIchirinRing extends ItemModSword {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
 		return main != null && off != null && main.getItem() == off.getItem();
+	}
+
+	private boolean isWearingUnzan(EntityPlayer player){
+		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+		return stack != null && stack.getItem() == ModItems.ichirinAura;
 	}
 	
 	@Override

@@ -67,6 +67,7 @@ item.auratoyosatomimi.name=Hermit Sign "Taoist of the Land of the Rising Sun"
 item.aurakanako.name=Goddess of wind and rain
 item.auraichirin.name=Nyuudou Unzan
 item.suwakohat.name=Suwako's Hat
+item.aurautsuho.name=Utsuho Wings
 
 item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
@@ -108,7 +109,7 @@ tile.onbashiratop.name=Onbashira
 tile.holystone.name=Holy Stone
 
 tile.shroom.white.name=White Shroom
-tile.shroom.orange.name=Very Orange Shroom
+tile.shroom.orange.name=Orange Shroom
 tile.shroom.magenta.name=Magenta Shroom
 tile.shroom.lightBlue.name=Light Blue Shroom
 tile.shroom.yellow.name=Very Yellow Shroom
@@ -116,8 +117,8 @@ tile.shroom.lime.name=Lime Shroom
 tile.shroom.pink.name=Pink Shroom
 tile.shroom.gray.name=Gray Shroom
 tile.shroom.silver.name=Silver Shroom
-tile.shroom.cyan.name=Very Cyan Shroom
-tile.shroom.purple.name=Very Purple Shroom
+tile.shroom.cyan.name=Cyan Shroom
+tile.shroom.purple.name=Purple Shroom
 tile.shroom.blue.name=Blue Shroom
 tile.shroom.brown.name=Very Brown Shroom
 tile.shroom.green.name=Green Shroom

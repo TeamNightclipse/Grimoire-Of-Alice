@@ -64,7 +64,7 @@ public class ItemLeaf extends ItemMod {
 
 			if (!worldIn.isRemote) {
 				EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
-				entityLeaf.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
+				entityLeaf.setHeadingFromThrower(playerIn, -45, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
 				worldIn.spawnEntityInWorld(entityLeaf);
 
 				StatBase statBase = StatList.getObjectUseStats(this);
