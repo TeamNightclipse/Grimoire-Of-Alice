@@ -51,7 +51,7 @@ public class BlockShroom extends BlockModBush {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "\"Smells and tastes good\" ~ Marisa 2016");
+		list.add(TextFormatting.GOLD + "\"Smells and tastes good\"");
 		list.add(TextFormatting.ITALIC + "Craft into tasty snack");
 	}
 

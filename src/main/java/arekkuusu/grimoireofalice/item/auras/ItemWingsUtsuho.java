@@ -10,12 +10,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemWingsUtsuho extends ItemModAura {
 
 	public ItemWingsUtsuho(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.AURAUTSUHO, EntityEquipmentSlot.CHEST);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.DARK_RED + "\"Manipulation of Nuclear Fusion\"");
+		list.add(TextFormatting.ITALIC + "Hell raven with Yatagarasu");
 	}
 
 	@Override

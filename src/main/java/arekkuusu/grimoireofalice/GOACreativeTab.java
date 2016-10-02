@@ -101,6 +101,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.budahBoul);
 		addItem(ModItems.dragonJewel);
 		addItem(ModItems.bloodOrb);
+		addItem(ModItems.foldingUmbrella);
 		
 		//Food
 		addItem(ModItems.grilledLamprey);
@@ -110,6 +111,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.heavenlyPeach);
 		addItem(ModItems.ibukiGourd);
 		addItem(ModItems.cowrieShell);
+		addItem(ModItems.orbElixir);
+		addItem(ModItems.houraiElixir);
 		
 		//Armor
 		addItem(ModItems.mapleLeafShield);

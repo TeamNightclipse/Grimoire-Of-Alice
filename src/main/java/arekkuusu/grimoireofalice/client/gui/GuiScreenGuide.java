@@ -36,19 +36,19 @@ public class GuiScreenGuide extends GuiScreen {
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
 
-    @Override
-    public void initGui() {
-        buttonList.clear();
-        Keyboard.enableRepeatEvents(true);
+	@Override
+	public void initGui() {
+		buttonList.clear();
+		Keyboard.enableRepeatEvents(true);
 
-        buttonDone = new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done"));
+		buttonDone = new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done"));
 
-        buttonList.add(buttonDone);
-        int i = (this.width - 192) / 2;
-        buttonList.add(buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 156, true)));
-        buttonList.add(buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 156, false)));
+		buttonList.add(buttonDone);
+		int i = (this.width - 192) / 2;
+		buttonList.add(buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 156, true)));
+		buttonList.add(buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 156, false)));
 
-    }
+	}
 
     @Override
     public void updateScreen() {
@@ -159,4 +159,9 @@ public class GuiScreenGuide extends GuiScreen {
             }
         }
     }
+
+	private <T extends GuiButton> T addButton(T p_189646_1_) {
+		this.buttonList.add(p_189646_1_);
+		return (T)p_189646_1_;
+	}
 }

@@ -45,7 +45,9 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "Infinite knowledge");
+		list.add(TextFormatting.DARK_RED + "\"Infinite knowledge\"");
+		list.add(TextFormatting.ITALIC + "Ten desires from ten men from ten mouths to two ears");
+		list.add(TextFormatting.ITALIC + "To hear it all is your fate, to listen it all isn't");
 	}
 	
 	@Override

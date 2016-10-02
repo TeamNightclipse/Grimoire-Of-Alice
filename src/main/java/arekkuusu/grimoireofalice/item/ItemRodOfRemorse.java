@@ -4,6 +4,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -14,6 +15,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemRodOfRemorse extends ItemMod {
 
@@ -26,6 +29,18 @@ public class ItemRodOfRemorse extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "The worse the sin, the heavier the rod becomes");
+		list.add(TextFormatting.ITALIC + "The person in question will be beaten up until they repent");
 	}
 
 	@Override

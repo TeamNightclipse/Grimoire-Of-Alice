@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -50,8 +51,12 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Sword of Scarlet Perceptions");
-		list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
-		list.add(TextFormatting.GRAY + "no matter the circumstances.");
+		if(GuiScreen.isShiftKeyDown()) {
+			list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
+			list.add(TextFormatting.GRAY + "no matter the circumstances.");
+		} else {
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
+		}
 		list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
 		super.addInformation(stack, player, list, p_77624_4_);
 	}
@@ -111,6 +116,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(!worldIn.isRemote) {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
+				if (!stack.hasTagCompound()) return;
 				if (isOwner(stack, player)) {
 					if (timeUsed < 50 && timeUsed > 10) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));

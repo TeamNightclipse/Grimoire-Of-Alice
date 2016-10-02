@@ -37,7 +37,7 @@ public class ItemOnbashira extends ItemModSword {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

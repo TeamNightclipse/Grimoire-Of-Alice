@@ -101,6 +101,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.budahBoul, 0);
 		registerItem(ModItems.dragonJewel, 0);
 		registerItem(ModItems.bloodOrb, 0);
+		registerItem(ModItems.foldingUmbrella, 0);
 
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
@@ -118,6 +119,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.heavenlyPeach, 0);
 		registerItem(ModItems.ibukiGourd, 0);
 		registerItem(ModItems.cowrieShell, 0);
+		registerItem(ModItems.orbElixir, 0);
+		registerItem(ModItems.houraiElixir, 0);
 		
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);

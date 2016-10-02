@@ -130,7 +130,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(!itemStack.hasTagCompound()) return null;
+		if(!itemStack.hasTagCompound()) return imodel;
 		if(((EntityPlayer)entityLiving).getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			if (model == null) model = new ModelKokorosMasks();
 			model.setModelAttributes(imodel);
@@ -141,11 +141,11 @@ public class ItemKokorosMasks extends ItemModMask {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(!stack.hasTagCompound()) return null;
+		if(!stack.hasTagCompound()) return LibMod.MODID + ":textures/models/armor/maskofhope.png";
 		if(((EntityPlayer)entity).getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			return LibMod.MODID + ":textures/models/armor/kokorosmasks_layer_1.png";
 		}
-		return LibMod.MODID + ":textures/models/armor/maskofhope.png";
+		return "";
     }
 	
 }

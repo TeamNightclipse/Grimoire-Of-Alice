@@ -39,8 +39,9 @@ public class ItemAuraKanako extends ItemModAura {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.GOLD + "Its true power is unknown, the legend says");
-        list.add(TextFormatting.GOLD + "it possesses a power unimaginable to humans");
+		list.add(TextFormatting.DARK_RED + "Represents the figure of an entwined snake");
+        list.add(TextFormatting.ITALIC + "Its true power is unknown, the legend says");
+        list.add(TextFormatting.ITALIC + "it possesses a power unimaginable to humans");
     }
 
     @Override

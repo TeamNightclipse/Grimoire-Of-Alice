@@ -35,6 +35,7 @@ public class ItemWallPassingChisel extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Wall passing chisel");
+		list.add(TextFormatting.ITALIC + "It works as a fancy hair pin");
 	}
 
 	@Override
@@ -62,7 +63,8 @@ public class ItemWallPassingChisel extends ItemMod {
 		BlockPos triedPos = pos;
 
 		for(int i = 0; i < 50; i++) {
-			if(world.getBlockState(triedPos).getBlock() == Blocks.AIR && world.getBlockState(triedPos).getBlock() != Blocks.BEDROCK) {
+			if(world.getBlockState(triedPos).getBlock() != Blocks.BEDROCK)
+			if(world.getBlockState(triedPos).getBlock() == Blocks.AIR) {
 				//Logic to prevent player to suffocate or get in awkward positions
 				if(facing == EnumFacing.DOWN){
 					if (world.getBlockState(triedPos.offset(facing)).getBlock() != Blocks.AIR) {

@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -46,9 +47,13 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Divine sword from Toyosatomimi");
-		list.add(TextFormatting.GRAY + "Finds all souls around the player");
-		list.add(TextFormatting.GRAY + "and gathers the essence of life");
-		list.add(TextFormatting.GRAY + "in the form of an orb");
+		if(GuiScreen.isShiftKeyDown()) {
+			list.add(TextFormatting.GRAY + "Finds all souls around the player");
+			list.add(TextFormatting.GRAY + "and gathers the essence of life");
+			list.add(TextFormatting.GRAY + "in the form of an orb");
+		} else {
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
+		}
 		super.addInformation(stack, player, list, p_77624_4_);
 	}
 

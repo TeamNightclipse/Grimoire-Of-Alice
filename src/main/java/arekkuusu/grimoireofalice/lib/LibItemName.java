@@ -37,6 +37,7 @@ public class LibItemName {
 	public static final String BUDAHBOUL = "budahboul";
 	public static final String DRAGONJEWEL = "dragonjewel";
 	public static final String COWRIESHELL = "cowrieshell";
+	public static final String FOLDINGUMBRELLA = "foldingumbrella";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";
@@ -45,6 +46,8 @@ public class LibItemName {
 	public static final String KAPPASNOSTRUM = "kappasnostrum";
 	public static final String HEAVENLYPEACH = "heavenlypeach";
 	public static final String IBUKIGOURD = "ibukigourd";
+	public static final String ORBELIXIR = "orbelixir";
+	public static final String HOURAIELIXIR = "houraielixir";
 	//Armor
 	public static final String FOXMASK = "foxmask";
 	public static final String RAIDENMASK = "raidenmask";
@@ -106,4 +109,7 @@ public class LibItemName {
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
 	public static final String BLOODTHIRSTYORB = "bloodthirstyorb";
+	//Potion
+
+	public static final String ELIXIRPOTION = "elixirpotion";
 }

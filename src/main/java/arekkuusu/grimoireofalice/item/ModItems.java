@@ -17,6 +17,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.EnumHelper;
 
 public final class ModItems {
@@ -53,6 +54,7 @@ public final class ModItems {
 	public static Item jeweledHourai;
 	public static Item budahBoul;
 	public static Item dragonJewel;
+	public static Item foldingUmbrella;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -61,6 +63,10 @@ public final class ModItems {
 	public static Item heavenlyPeach;
 	public static Item ibukiGourd;
 	public static Item cowrieShell;
+	public static Item orbElixir;
+	public static Item houraiElixir;
+	//Potion
+	public static Potion elixir;
 	//Armor
 	public static Item foxMask;
 	public static Item raidenMask;
@@ -164,6 +170,7 @@ public final class ModItems {
 		budahBoul = new ItemBudahBoul(Item.ToolMaterial.DIAMOND);
 		dragonJewel = new ItemDragonJewel();
 		bloodOrb = new ItemBloodThirstyOrb();
+		foldingUmbrella = new ItemGapFoldingUmbrella();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -173,6 +180,11 @@ public final class ModItems {
 		heavenlyPeach = new ItemHeavelyPeach();
 		ibukiGourd = new ItemIbukiGourd();
 		cowrieShell = new ItemSwallowCowrieShell();
+		orbElixir = new ItemUltramarineOrbElixir();
+		houraiElixir = new ItemHouraiElixir();
+
+		//Potion
+		elixir = new ElixirPotion();
 		
 		//Armor
 		mapleLeafShield = new ItemMapleLeafShield();

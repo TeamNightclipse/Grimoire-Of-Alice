@@ -62,7 +62,7 @@ public class ItemNazrinStick extends ItemModSword {
 				list.add(TextFormatting.DARK_AQUA + "Active");
 			}
 		} else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
 

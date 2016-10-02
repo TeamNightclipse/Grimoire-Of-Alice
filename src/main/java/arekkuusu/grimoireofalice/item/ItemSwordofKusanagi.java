@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -58,9 +59,13 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Divine sword forged with Hihi'irokane, a mythic metal");
-		list.add(TextFormatting.GRAY + "Discovered within the fourth tail of the eight-headed,");
-		list.add(TextFormatting.GRAY + "eight-tailed serpent Yamata-no-Orochi when it was slain ");
-		list.add(TextFormatting.GRAY + "by the Shinto god Susanoo-no-Mikoto.");
+		if(GuiScreen.isShiftKeyDown()) {
+			list.add(TextFormatting.GRAY + "Discovered within the fourth tail of the eight-headed,");
+			list.add(TextFormatting.GRAY + "eight-tailed serpent Yamata-no-Orochi when it was slain ");
+			list.add(TextFormatting.GRAY + "by the Shinto god Susanoo-no-Mikoto.");
+		} else {
+			list.add(TextFormatting.ITALIC + "SHIFT for details");
+		}
 		super.addInformation(stack, player, list, p_77624_4_);
 	}
 

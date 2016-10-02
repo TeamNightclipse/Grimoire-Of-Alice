@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.*;
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
+import arekkuusu.grimoireofalice.event.YukkuriDeathEvent;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +43,7 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		//EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "ellyScythe", modEntityID++, GrimoireOfAlice.instance, 64, 10, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
+		MinecraftForge.EVENT_BUS.register(new YukkuriDeathEvent());
 	}
 	
 	public void init(FMLInitializationEvent event) {

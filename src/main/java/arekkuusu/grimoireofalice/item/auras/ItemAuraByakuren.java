@@ -46,7 +46,8 @@ public class ItemAuraByakuren extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "Demonic in nature");
+		list.add(TextFormatting.DARK_RED + "\"The Sealed Great Magician\"");
+		list.add(TextFormatting.ITALIC + "These powers are demonic in nature");
 	}
 	
 	@Override

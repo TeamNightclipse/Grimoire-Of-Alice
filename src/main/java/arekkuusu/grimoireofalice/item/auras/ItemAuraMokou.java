@@ -21,6 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import arekkuusu.grimoireofalice.client.model.ModelMokouAura;
@@ -41,12 +42,14 @@ public class ItemAuraMokou extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "Endless pain");
+		list.add(TextFormatting.DARK_RED + "\"~na no kashira?\"");
+		list.add(TextFormatting.ITALIC + "Manipulate fire as if it was water");
 	}
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 15, 0));
+		if(player.isSneaking())
 			player.setFire(1);
 	}
 	
@@ -83,5 +86,4 @@ public class ItemAuraMokou extends ItemModAura {
 		}
 		return LibMod.MODID + ":textures/models/armor/mokou.png";
     }
-
 }

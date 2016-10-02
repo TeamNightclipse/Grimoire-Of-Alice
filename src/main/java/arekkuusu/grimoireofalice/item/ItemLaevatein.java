@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityFireBalloon;
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -84,6 +86,9 @@ public class ItemLaevatein extends ItemModSword {
 
 					worldIn.spawnEntityInWorld(fireball2);
 					playerIn.inventory.deleteStack(new ItemStack(Items.FIRE_CHARGE));
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EnumTextures.RED_NORMAL, 10);
+					worldIn.spawnEntityInWorld(circle);
+					playerIn.getCooldownTracker().setCooldown(this, 10);
 				}
 			}
 		}
@@ -91,7 +96,9 @@ public class ItemLaevatein extends ItemModSword {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));
 			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
 					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
+			playerIn.getCooldownTracker().setCooldown(this, 500);
 		}
+		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 

@@ -24,6 +24,7 @@ item.budahboul.name=Budah's Boul
 item.firerobe.name=Fire Rat Robe
 item.dragonjewel.name=Jewel from a Dragon's neck
 item.cowrieshell.name=Swallow Cowrie Shell
+item.foldingumbrella.name=Gap folding umbrella
 
 item.shroomslice.white.name=White Shroom Slice
 item.shroomslice.orange.name= Orange Shroom Slice
@@ -48,6 +49,8 @@ item.kappasnostrum.name=Kappas Nostrum
 item.ibarakiboxempty.name=Ibaraki Box
 item.heavenlypeach.name=Heavenly Peach
 item.ibukigourd.name=Ibuki Gourd
+item.orbelixir.name=Ultramarine Orb Elixir
+item.houraielixir.name=Hourai Elixir
 
 item.foxmask.name=Fox Mask
 item.raidenmask.name=Raiden Mask
@@ -140,6 +143,8 @@ item.thirdeye.name=3rdEye
 item.spellcardpouch.name=Spell Card Pouch
 item.leafitem.name=Leaf
 item.bloodthirstyorb.name=Blood Thirsty Orb
+
+effect.elixir=Elixir
 
 itemGroup.grimoireofalice=Grimoire of Alice
 

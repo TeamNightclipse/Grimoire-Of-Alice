@@ -37,7 +37,8 @@ public class ItemAuraIchirin extends ItemModAura {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.GOLD + "Cloud Spirit Nyuudou");
+        list.add(TextFormatting.DARK_RED + "Cloud Spirit Nyuudou");
+		list.add(TextFormatting.ITALIC + "Grant the user a powerful Nyuudou");
     }
 
     @Override

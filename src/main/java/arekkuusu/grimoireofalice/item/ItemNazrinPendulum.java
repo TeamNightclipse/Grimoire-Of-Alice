@@ -50,7 +50,7 @@ public class ItemNazrinPendulum extends ItemMod {
         if(GuiScreen.isShiftKeyDown()){
             list.add(TextFormatting.YELLOW + "Right click to activate, Shift to dismiss");
         } else {
-            list.add(TextFormatting.ITALIC + "Shift for details");
+            list.add(TextFormatting.ITALIC + "SHIFT for details");
         }
 	}
 
