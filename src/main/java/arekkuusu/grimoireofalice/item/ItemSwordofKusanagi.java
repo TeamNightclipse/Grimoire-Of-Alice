@@ -35,20 +35,11 @@ import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSwordofKusanagi extends ItemModSword {
+public class ItemSwordofKusanagi extends ItemSwordOwner {
 
 	ItemSwordofKusanagi(ToolMaterial material) {
 		super(material, LibItemName.SWORDOFKUSANAGI);
 		setNoRepair();
-	}
-	
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 
 	@Override
@@ -70,30 +61,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 		list.add(TextFormatting.GRAY + "Discovered within the fourth tail of the eight-headed,");
 		list.add(TextFormatting.GRAY + "eight-tailed serpent Yamata-no-Orochi when it was slain ");
 		list.add(TextFormatting.GRAY + "by the Shinto god Susanoo-no-Mikoto.");
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
-			}
-		}
-	}
-
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-
-			if(!stack.hasTagCompound()) {
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound compound = stack.getTagCompound();
-			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-		}
+		super.addInformation(stack, player, list, p_77624_4_);
 	}
 
 	@Override
@@ -108,7 +76,7 @@ public class ItemSwordofKusanagi extends ItemModSword {
 		if(!stack.hasTagCompound()) return;
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))){
+			if(isOwner(stack, player)){
 				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 				float convert = (timeUsed * 6) / 20F;
 				convert = (convert * convert + convert * 2.0F) / 3F;

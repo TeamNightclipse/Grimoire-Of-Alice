@@ -23,20 +23,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.UUID;
 
-public class ItemSacredToyosatomimi extends ItemModSword {
+public class ItemSacredToyosatomimi extends ItemSwordOwner {
 
 	ItemSacredToyosatomimi(ToolMaterial material) {
 		super(material, LibItemName.SACREDTOYOSATOMIMI);
 		setNoRepair();
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 
 	@Override
@@ -58,30 +49,7 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 		list.add(TextFormatting.GRAY + "Finds all souls around the player");
 		list.add(TextFormatting.GRAY + "and gathers the essence of life");
 		list.add(TextFormatting.GRAY + "in the form of an orb");
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
-			}
-		}
-	}
-
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-
-			if(!stack.hasTagCompound()) {
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound compound = stack.getTagCompound();
-			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-		}
+		super.addInformation(stack, player, list, p_77624_4_);
 	}
 
 	@Override
@@ -109,7 +77,7 @@ public class ItemSacredToyosatomimi extends ItemModSword {
 			if(!stack.hasTagCompound()) return;
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
-				if(player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))){
+				if(isOwner(stack, player)) {
 					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(timeUsed));
 					if(!list.isEmpty()) {
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));

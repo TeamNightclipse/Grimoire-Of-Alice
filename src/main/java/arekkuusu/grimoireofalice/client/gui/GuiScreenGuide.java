@@ -45,8 +45,8 @@ public class GuiScreenGuide extends GuiScreen {
 
         buttonList.add(buttonDone);
         int i = (this.width - 192) / 2;
-        buttonList.add(buttonNextPage = this.func_189646_b(new NextPageButton(1, i + 120, 156, true)));
-        buttonList.add(buttonPreviousPage = this.func_189646_b(new NextPageButton(2, i + 38, 156, false)));
+        buttonList.add(buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 156, true)));
+        buttonList.add(buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 156, false)));
 
     }
 

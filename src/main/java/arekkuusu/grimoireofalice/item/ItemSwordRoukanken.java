@@ -58,14 +58,13 @@ public class ItemSwordRoukanken extends ItemModSword {
 				double xx, zz;
 				xx = player.motionX;
 				zz = player.motionZ;
-				if (Math.sqrt(xx*xx + zz*zz) > 3.0) {
-					List<?> list = worldIn.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
-					for (Object aList : list) {
-						Entity entity1 = (Entity) aList;
-						if (!entity1.canBeCollidedWith()) {
+				if (Math.sqrt(xx * xx + zz * zz) > 3.0) {
+					List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
+					for (Entity entity : list) {
+						if (!entity.canBeCollidedWith()) {
 							continue;
 						}
-						RayTraceResult rayTraceResult = new RayTraceResult(entity1);
+						RayTraceResult rayTraceResult = new RayTraceResult(entity);
 						if (rayTraceResult.entityHit instanceof EntityLivingBase) {
 							EntityLivingBase living = (EntityLivingBase) rayTraceResult.entityHit;
 							if (player.canEntityBeSeen(living)) {

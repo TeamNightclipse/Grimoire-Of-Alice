@@ -32,19 +32,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 
-public class ItemSarielWand extends ItemModSword {
+public class ItemSarielWand extends ItemSwordOwner {
 
 	ItemSarielWand(ToolMaterial material) {
 		super(material, LibItemName.SARIELWAND);
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 	
 	@Override
@@ -62,36 +53,13 @@ public class ItemSarielWand extends ItemModSword {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.DARK_PURPLE + "Immense Knowledge, Angel of Death, Commaner of God...");
 		list.add(TextFormatting.ITALIC + "Legendary wand from a fallen Angel");
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
-			}
-		}
-	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-
-			if(!stack.hasTagCompound()) {
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound compound = stack.getTagCompound();
-			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-		}
+		super.addInformation(stack, player, list, p_77624_4_);
 	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if(!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);;
-			if(player.getUniqueID().equals(itemStackIn.getTagCompound().getUniqueId("GrimoireOwner"))){
+		if(!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+			if(isOwner(itemStackIn, player)){
 				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ - 5.0, false));
 				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ, false));
 				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ + 5.0, false));

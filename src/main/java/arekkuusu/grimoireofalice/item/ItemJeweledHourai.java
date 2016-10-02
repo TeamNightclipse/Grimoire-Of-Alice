@@ -98,7 +98,7 @@ public class ItemJeweledHourai extends ItemMod {
 			} else {
 				if(getJewels(stack) == 5) {
 					if(entityLiving.hasCapability(itemHandlerCapability, null)) {
-						int pos = itemRand.nextInt(4);
+						int pos = itemRand.nextInt(JEWELS.length);
 						ItemStack rest = ItemHandlerHelper.insertItemStacked(entityLiving.getCapability(itemHandlerCapability, null),
 								new ItemStack(JEWELS[pos]), false);
 						if(rest != null) {

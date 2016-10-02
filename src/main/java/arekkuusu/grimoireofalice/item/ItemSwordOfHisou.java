@@ -27,20 +27,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.UUID;
 
-public class ItemSwordOfHisou extends ItemModSword {
+public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU);
 		setNoRepair();
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 
 	@Override
@@ -62,28 +53,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 		list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
 		list.add(TextFormatting.GRAY + "no matter the circumstances.");
 		list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
-				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-			}
-		}
-	}
-
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-
-			if(!stack.hasTagCompound()) {
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound compound = stack.getTagCompound();
-			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-		}
+		super.addInformation(stack, player, list, p_77624_4_);
 	}
 
 	@Override
@@ -141,8 +111,7 @@ public class ItemSwordOfHisou extends ItemModSword {
 		if(!worldIn.isRemote) {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
-				if (!stack.hasTagCompound()) return;
-				if (player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+				if (isOwner(stack, player)) {
 					if (timeUsed < 50 && timeUsed > 10) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 						if (!list.isEmpty()) {

@@ -31,20 +31,11 @@ import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemAmenonuhoko extends ItemModSword {
+public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	ItemAmenonuhoko(ToolMaterial material) {
 		super(material, LibItemName.AMENONUHOKO);
 		setNoRepair();
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if(!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
 	}
 
 	@Override
@@ -64,14 +55,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 		} else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
-			}
-		}
+		super.addInformation(stack, player, list, p_77624_4_);
 	}
 
 	@Override
@@ -87,18 +71,9 @@ public class ItemAmenonuhoko extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+		super.onUpdate(stack, world, entity, slot, selected);
 		if(selected && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-
-			if(!stack.hasTagCompound()) {
-				stack.setTagCompound(new NBTTagCompound());
-			}
-			NBTTagCompound compound = stack.getTagCompound();
-			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-
 			if(!world.isRemote && !player.capabilities.isCreativeMode && player.getCooldownTracker().hasCooldown(this)) {
 				player.fallDistance = 0.0F;
 			}
@@ -111,7 +86,7 @@ public class ItemAmenonuhoko extends ItemModSword {
 		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
 
 		//TODO: Replace with structure, structure is already in assets
-		if(player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if(isOwner(stack, player)) {
 			pos = pos.offset(facing);
 
 			if(!player.canPlayerEdit(new BlockPos(hitX, hitY, hitZ), facing, stack)) {

@@ -33,7 +33,7 @@ public class EntityMagicCircle extends Entity {
 	public EntityMagicCircle(World worldIn, EntityLivingBase entityLiving, EnumTextures texture, int end) {
 		super(worldIn);
 		setSize(0.5F, 0.5F);
-		setTexture(texture.getNumber());
+		setTexture(texture.ordinal());
 		setEndTime(end);
 		host = entityLiving;
 		posX = host.posX;

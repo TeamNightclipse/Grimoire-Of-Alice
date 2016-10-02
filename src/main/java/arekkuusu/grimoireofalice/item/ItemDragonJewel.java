@@ -53,9 +53,9 @@ public class ItemDragonJewel extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (!worldIn.isRemote) {
-				EntityDragonJewel beam = new EntityDragonJewel(worldIn, player);
-				beam.setPosition(player.posX, player.posY + 2, player.posZ);
-				worldIn.spawnEntityInWorld(beam);
+				EntityDragonJewel jewel = new EntityDragonJewel(worldIn, player);
+				jewel.setPosition(player.posX, player.posY + 2, player.posZ);
+				worldIn.spawnEntityInWorld(jewel);
 			}
 			stack.stackSize--;
 		}

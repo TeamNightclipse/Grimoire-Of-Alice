@@ -37,7 +37,7 @@ public class EntityDragonJewel extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(worldObj != null && !worldObj.isRemote) {
+		if(!worldObj.isRemote) {
 			if(host == null){
 				setDead();
 			} else {
@@ -51,7 +51,6 @@ public class EntityDragonJewel extends Entity {
 			getEntities();
 		}
 		if (ticksExisted % 50 == 0) {
-			if(worldObj != null)
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
 			for(int u = 0;u < 10; u++) {
 				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, rand.nextDouble());
@@ -66,13 +65,11 @@ public class EntityDragonJewel extends Entity {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
 		if(!list.isEmpty()) {
-			for(Entity mob : list){
-				if(mob instanceof EntityMob){
-					((EntityMob) mob).setAttackTarget(null);
-					((EntityMob) mob).setRevengeTarget(null);
-					((EntityMob) mob).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
-				}
-			}
+			list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
+				mob.setAttackTarget(null);
+				mob.setRevengeTarget(null);
+				mob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
+			});
 		}
 	}
 

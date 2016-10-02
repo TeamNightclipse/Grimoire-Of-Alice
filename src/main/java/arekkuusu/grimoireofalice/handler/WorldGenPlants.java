@@ -8,7 +8,10 @@
  */
 package arekkuusu.grimoireofalice.handler;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
@@ -28,9 +31,10 @@ public class WorldGenPlants {
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);
-				int meta = event.getRand().nextInt(15);
+				List<IBlockState> states = ModBlocks.shroom.getBlockState().getValidStates();
+				int type = event.getRand().nextInt(states.size());
 				if(event.getWorld().isAirBlock(pos3) && ModBlocks.shroom.canPlaceBlockAt(event.getWorld(),pos3))
-					event.getWorld().setBlockState(pos3, ModBlocks.shroom.getStateFromMeta(meta), 2);
+					event.getWorld().setBlockState(pos3, states.get(type), 2);
 			}
 			int mush = ConfigHandler.mushroomSpawningRate;
 			for(int i = 0; i < mush; i++) {

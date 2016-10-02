@@ -90,7 +90,7 @@ public class BlockShroom extends BlockModBush {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubBlocks(@Nonnull Item item, CreativeTabs tab, List<ItemStack> stacks) {
+	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> stacks) {
 		for(int i = 0; i < 16; i++)
 			stacks.add(new ItemStack(item, 1, i));
 	}
@@ -100,7 +100,6 @@ public class BlockShroom extends BlockModBush {
 		return getMetaFromState(state);
 	}
 
-	@Nonnull
 	@Override
 	public BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, COLOR);
@@ -111,7 +110,7 @@ public class BlockShroom extends BlockModBush {
 		return state.getValue(COLOR).getMetadata();
 	}
 
-	@Nonnull
+	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		if (meta >= EnumDyeColor.values().length) {
