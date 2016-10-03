@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.entity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -31,7 +32,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	public EntityUnzanFist(World world, EntityLivingBase thrower) {
 		super(world, thrower);
-		setPositionAndRotation(thrower.posX, thrower.posY, thrower.posZ, thrower.rotationYaw, thrower.rotationPitch);
+		setRotation(thrower.rotationYaw, thrower.rotationPitch);
 	}
 
 	@Override
@@ -44,7 +45,9 @@ public class EntityUnzanFist extends EntityThrowable {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
 		if(thrower == null) {
-			setDead();
+			if (!worldObj.isRemote) {
+				setDead();
+			}
 		} else if (isReturning) {
 			double dx, dy, dz;
 			dx = posX - thrower.posX;
@@ -147,10 +150,22 @@ public class EntityUnzanFist extends EntityThrowable {
 		bounceBack();
 		if(result.entityHit != null && result.entityHit != this) {
 			if(result.entityHit == this.getThrower()){
-				setDead();
+				if (!worldObj.isRemote) {
+					setDead();
+				}
 				return;
 			}
 			applyHitEffects(result.entityHit);
+		}
+	}
+
+	@Override
+	public void onCollideWithPlayer(EntityPlayer entityplayer) {
+		if(entityplayer != this.getThrower()){
+			bounceBack();
+			applyHitEffects(entityplayer);
+		} else {
+			if(!worldObj.isRemote) setDead();
 		}
 	}
 

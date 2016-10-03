@@ -13,6 +13,7 @@ import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_ALL
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_CREATIVE;
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
+import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -98,7 +99,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	private void onImpactBlock(RayTraceResult result) {
+	protected void onImpactBlock(RayTraceResult result) {
 		BlockPos pos = result.getBlockPos();
 		IBlockState tile = worldObj.getBlockState(pos);
 		motionX = result.hitVec.xCoord - posX;
@@ -117,9 +118,9 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	private void onImpactEntity(RayTraceResult result) {
+	protected void onImpactEntity(RayTraceResult result) {
 		bounceBack();
-		if(result.entityHit != null) {
+		if(result.entityHit != null && result.entityHit != getThrower()) {
 			applyHitEffects(result.entityHit);
 		}
 	}
@@ -128,19 +129,21 @@ public abstract class EntityThrow extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if (inGround && throwableShake <= 0) {
+		if (inGround || throwableShake <= 0) {
+			if(getThrower() != null)
 			if (canPickup(entityplayer)) {
-				if (!worldObj.isRemote) {
-					if (stack == null) return;
-
-					if (canBePickedUp == PICKUP_CREATIVE && entityplayer.capabilities.isCreativeMode || entityplayer.inventory.addItemStackToInventory(stack)) {
-						playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-						if(!worldObj.isRemote) {
-							entityplayer.inventory.addItemStackToInventory(stack);
-							setDead();
-						}
+				if(!worldObj.isRemote) {
+					if (entityplayer.capabilities.isCreativeMode) {
+						setDead();
+						return;
 					}
+					if (!entityplayer.inventory.addItemStackToInventory(stack)) {
+						entityplayer.dropItem(stack.getItem(), 1);
+					}
+					setDead();
 				}
+			} else {
+				bounceBack();
 			}
 		}
 	}
@@ -168,7 +171,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		}
 	}
 
-	private void bounceBack() {
+	protected void bounceBack() {
 		motionX *= -0.1D;
 		motionY *= -0.1D;
 		motionZ *= -0.1D;
@@ -193,7 +196,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		return canBePickedUp;
 	}
 
-	private void canBePickedUp(PickupMode canI){
+	protected void canBePickedUp(PickupMode canI){
 		canBePickedUp = canI;
 	}
 

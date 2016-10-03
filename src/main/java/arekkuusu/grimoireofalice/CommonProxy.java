@@ -12,7 +12,7 @@ import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.entity.*;
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
-import arekkuusu.grimoireofalice.event.YukkuriDeathEvent;
+import arekkuusu.grimoireofalice.event.YukkuriEvent;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,10 +40,10 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Beam", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		//EntityRegistry.registerModEntity(EntityEllyScytheThrowable.class, "ellyScythe", modEntityID++, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); // Wont move properly
+		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); //Set to 1, but might have to increase it...
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
-		MinecraftForge.EVENT_BUS.register(new YukkuriDeathEvent());
+		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
 	}
 	
 	public void init(FMLInitializationEvent event) {

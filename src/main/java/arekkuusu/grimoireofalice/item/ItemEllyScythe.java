@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
+import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -85,18 +86,17 @@ public class ItemEllyScythe extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(!player.inventory.hasItemStack(stack)) return;
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
 
 			int duration = getMaxItemUseDuration(stack) - timeLeft;
 			float durationSeconds = duration / 20F;
 			//TODO: What does this do?
 			durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
-			if(durationSeconds < 0.1F) return;
+			if (durationSeconds < 0.1F) return;
 
 			boolean critical = false;
-			if(durationSeconds > 1.5F) {
+			if (durationSeconds > 1.5F) {
 				durationSeconds = 1.5F;
 				critical = true;
 			}
@@ -105,21 +105,19 @@ public class ItemEllyScythe extends ItemModSword {
 			worldIn.playSound(player, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
 					0.6F, 1.0F / (2F * 0.4F + 1.0F));
 			if(!worldIn.isRemote) {
-				/*EntityEllyScytheThrowable throwable = new EntityEllyScytheThrowable(worldIn, player, stack, durationSeconds);
-				throwable.setIsCritical(critical);
-				throwable.setKnockbackStrength(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, stack));
-				if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
-					throwable.setFire(100);
+				EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
+				scythe.setCritical(critical);
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
+					scythe.setFire(100);
 				}
-				worldIn.spawnEntityInWorld(throwable);*/
+				worldIn.spawnEntityInWorld(scythe);
 			}
 
-			if(!player.capabilities.isCreativeMode) {
-				ItemStack reducedStack = stack.copy();
-				if(--reducedStack.stackSize == 0) {
-					reducedStack = null;
+			if (!player.capabilities.isCreativeMode) {
+				if (--stack.stackSize == 0) {
+					stack = null;
 				}
-				player.inventory.mainInventory[player.inventory.currentItem] = reducedStack;
+				player.inventory.mainInventory[player.inventory.currentItem] = stack;
 			}
 		}
 	}

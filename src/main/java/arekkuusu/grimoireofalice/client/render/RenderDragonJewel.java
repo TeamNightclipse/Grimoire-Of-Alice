@@ -50,11 +50,6 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		GlStateManager.rotate(-renderManager.playerViewX - entity.getTicksAlive() * 16, 1.0F, 0.0F, 0.0F);
 		this.bindTexture(TEXTURE_BEAM);
 		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertex = tessellator.getBuffer(); // Coloring done bad?
-		vertex.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-		vertex.pos(x, y, z).tex(1.0D, 50.0D).color(1, 2, 0, 1.0F).endVertex();
-		tessellator.draw();
 		GlStateManager.rotate(angle * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.enableLighting();

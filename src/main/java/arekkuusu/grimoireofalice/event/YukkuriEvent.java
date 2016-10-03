@@ -14,7 +14,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class YukkuriDeathEvent {
+public class YukkuriEvent {
 
 	@SubscribeEvent
 	public void LivingDeathEvent(LivingDeathEvent event) {
