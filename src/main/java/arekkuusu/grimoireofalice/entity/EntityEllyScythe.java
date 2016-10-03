@@ -6,12 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
-
 
 public class EntityEllyScythe extends EntityThrow {
 
@@ -82,45 +77,6 @@ public class EntityEllyScythe extends EntityThrow {
 			throwableShake--;
 		}
 
-		Vec3d vec3d = new Vec3d(posX, posY, posZ);
-		Vec3d vec3d1 = new Vec3d(posX + motionX, posY + motionY, posZ + motionZ);
-		RayTraceResult mop = worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-		if (mop != null) {
-			vec3d1 = new Vec3d(mop.hitVec.xCoord, mop.hitVec.yCoord, mop.hitVec.zCoord);
-		}
-
-		Entity entity = null;
-		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(motionX, motionY, motionZ).expandXyz(1.0D));
-		double d = 0.0D;
-		for(Entity entity1 : list) {
-			if (!entity1.canBeCollidedWith() || entity1 == thrower && ticksExisted < 5) {
-				continue;
-			}
-			float f4 = 0.3F;
-			AxisAlignedBB axisalignedbb1 = entity1.getEntityBoundingBox().expandXyz(f4);
-			RayTraceResult mop1 = axisalignedbb1.calculateIntercept(vec3d, vec3d1);
-			if (mop1 == null) {
-				continue;
-			}
-			double d1 = vec3d.distanceTo(mop1.hitVec);
-			if (d1 < d || d == 0.0D) {
-				entity = entity1;
-				d = d1;
-			}
-		}
-
-		if (entity != null) {
-			mop = new RayTraceResult(entity);
-		}
-
-		if (mop != null) {
-			if (mop.entityHit != null) {
-				onImpactEntity(mop);
-			} else {
-				onImpactBlock(mop);
-			}
-		}
-
 		posX += motionX;
 		posY += motionY;
 		posZ += motionZ;
@@ -144,6 +100,11 @@ public class EntityEllyScythe extends EntityThrow {
 	@Override
 	void applyHitEffects(Entity entity) {
 		entity.attackEntityFrom(DamageSource.causeThornsDamage(this), 5);
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		return super.getEntityBoundingBox().expandXyz(1D);
 	}
 
 	@Override

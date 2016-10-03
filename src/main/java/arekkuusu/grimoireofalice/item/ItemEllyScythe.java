@@ -30,6 +30,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -110,6 +111,11 @@ public class ItemEllyScythe extends ItemModSword {
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
 					scythe.setFire(100);
 				}
+				Vec3d look = player.getLookVec();
+				float distance = 1.5F;
+				double dx = player.posX + (look.xCoord * distance);
+				double dz = player.posZ + (look.zCoord * distance);
+				scythe.setPosition(dx, player.posY + 1.5, dz);
 				worldIn.spawnEntityInWorld(scythe);
 			}
 
