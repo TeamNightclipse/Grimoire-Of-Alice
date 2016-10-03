@@ -102,6 +102,10 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.dragonJewel);
 		addItem(ModItems.bloodOrb);
 		addItem(ModItems.foldingUmbrella);
+		addItem(ModItems.substituteJizo);
+		addItem(ModItems.nimbleFabric);
+		addItem(ModItems.fakeMiracleMallet);
+		addItem(ModItems.ghastlySendOffLantern);
 		
 		//Food
 		addItem(ModItems.grilledLamprey);

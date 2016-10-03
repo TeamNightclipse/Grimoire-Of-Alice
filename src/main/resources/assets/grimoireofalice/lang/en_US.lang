@@ -143,6 +143,10 @@ item.thirdeye.name=3rdEye
 item.spellcardpouch.name=Spell Card Pouch
 item.leafitem.name=Leaf
 item.bloodthirstyorb.name=Blood Thirsty Orb
+item.fakemiraclemallet.name=Fake Miracle Mallet
+item.substitutejizo.name=Substitute Jizo
+item.nimblefabric.name=Nimble Fabric
+item.sendofflantern.name=Ghastly Send-Off Lantern
 
 effect.elixir=Elixir
 

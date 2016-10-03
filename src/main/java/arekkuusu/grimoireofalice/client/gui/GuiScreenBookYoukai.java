@@ -75,7 +75,7 @@ public class GuiScreenBookYoukai extends GuiScreen {
 		this.bookObj = book;
 		this.bookIsUnsigned = isUnsigned;
 
-		if(book.hasTagCompound()) {
+		if (book.hasTagCompound()) {
 			NBTTagCompound nbttagcompound = book.getTagCompound();
 			//noinspection ConstantConditions
 			this.bookPages = nbttagcompound.getTagList("pages", 8);
@@ -83,12 +83,12 @@ public class GuiScreenBookYoukai extends GuiScreen {
 			this.bookPages = this.bookPages.copy();
 			this.bookTotalPages = this.bookPages.tagCount();
 
-			if(this.bookTotalPages < 1) {
+			if (this.bookTotalPages < 1) {
 				this.bookTotalPages = 1;
 			}
 		}
 
-		if(this.bookPages == null && isUnsigned) {
+		if (this.bookPages == null && isUnsigned) {
 			this.bookPages = new NBTTagList();
 			this.bookPages.appendTag(new NBTTagString(""));
 			this.bookTotalPages = 1;
@@ -112,14 +112,13 @@ public class GuiScreenBookYoukai extends GuiScreen {
 	public void initGui() {
 		this.buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
-		if(this.bookIsUnsigned) {
+		if (this.bookIsUnsigned) {
 			this.buttonSign = this.addButton(new GuiButton(3, this.width / 2 - 100, 196, 98, 20, I18n.format("book.signButton")));
 			this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.done")));
 			this.buttonFinalize = this.addButton(
 					new GuiButton(5, this.width / 2 - 100, 196, 98, 20, I18n.format("book.finalizeButton")));
 			this.buttonCancel = this.addButton(new GuiButton(4, this.width / 2 + 2, 196, 98, 20, I18n.format("gui.cancel")));
-		}
-		else {
+		} else {
 			this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
 		}
 

@@ -46,6 +46,9 @@ public class EntityMagicCircle extends Entity {
     public void onUpdate() {
     	super.onUpdate();
 		if(host != null) {
+			if(host.isDead){
+				setDead();
+			}
 			if (host.isHandActive() && !worldObj.isRemote) {
 				setDead();
 				return;

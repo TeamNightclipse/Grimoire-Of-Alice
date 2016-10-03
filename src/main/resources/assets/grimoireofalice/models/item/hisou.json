@@ -1,7 +1,7 @@
 {
     "parent": "grimoireofalice:item/handheld_big",
     "textures": {
-        "layer0": "grimoireofalice:items/swordofkusanagi"
+        "layer0": "grimoireofalice:items/hisou"
     },
     "overrides": [
         {

@@ -86,7 +86,7 @@ public class ItemLaevatein extends ItemModSword {
 
 					worldIn.spawnEntityInWorld(fireball2);
 					playerIn.inventory.deleteStack(new ItemStack(Items.FIRE_CHARGE));
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EnumTextures.RED_NORMAL, 10);
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EnumTextures.RED_NORMAL, 15);
 					worldIn.spawnEntityInWorld(circle);
 					playerIn.getCooldownTracker().setCooldown(this, 10);
 				}

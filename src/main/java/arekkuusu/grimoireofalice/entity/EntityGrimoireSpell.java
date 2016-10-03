@@ -55,6 +55,9 @@ public class EntityGrimoireSpell extends Entity {
     public void onUpdate() {
     	super.onUpdate();
 		if(host != null) {
+			if(host.isDead){
+				setDead();
+			}
 			if (ticksExisted > getEndTime()  && !worldObj.isRemote) {
 				setDead();
 				return;

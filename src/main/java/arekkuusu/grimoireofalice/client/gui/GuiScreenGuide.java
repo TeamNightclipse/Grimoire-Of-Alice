@@ -52,68 +52,66 @@ public class GuiScreenGuide extends GuiScreen {
 
     @Override
     public void updateScreen() {
-        buttonDone.visible = (currPage == bookTotalPages - 1);
-        buttonNextPage.visible = (currPage < bookTotalPages - 1);
-        buttonPreviousPage.visible = currPage > 0;
-    }
+		buttonDone.visible = (currPage == bookTotalPages - 1);
+		buttonNextPage.visible = (currPage < bookTotalPages - 1);
+		buttonPreviousPage.visible = currPage > 0;
+	}
 
     @Override
     protected void actionPerformed(GuiButton parButton) { //For some reason this goes 2 4 6 8 10 12 16 18...
-        if (parButton == buttonDone) {
-            mc.displayGuiScreen(null);
-        }
-        else if (parButton == buttonNextPage) {
-            if (currPage < bookTotalPages - 1) {
-                ++currPage;
-            }
-        }
-        else if (parButton == buttonPreviousPage) {
-            if (currPage > 0) {
-                --currPage;
-            }
-        }
-    }
+		if (parButton == buttonDone) {
+			mc.displayGuiScreen(null);
+		} else if (parButton == buttonNextPage) {
+			if (currPage < bookTotalPages - 1) {
+				++currPage;
+			}
+		} else if (parButton == buttonPreviousPage) {
+			if (currPage > 0) {
+				--currPage;
+			}
+		}
+	}
 
     @Override
     public void drawScreen(int parWidth, int parHeight, float p_73863_3_) {
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        ResourceLocation TEXTURE;
-        switch(currPage){
-            case 2:
-                TEXTURE = BOOK_GUI_TEXTURES[1];
-                break;
-            case 4:
-                TEXTURE = BOOK_GUI_TEXTURES[2];
-                break;
-            case 6:
-                TEXTURE = BOOK_GUI_TEXTURES[3];
-                break;
-            case 8:
-                TEXTURE = BOOK_GUI_TEXTURES[4];
-                break;
-            case 10:
-                TEXTURE = BOOK_GUI_TEXTURES[5];
-                break;
-            case 12:
-                TEXTURE = BOOK_GUI_TEXTURES[6];
-                break;
-            case 14:
-                TEXTURE = BOOK_GUI_TEXTURES[7];
-                break;
-            case 16:
-                TEXTURE = BOOK_GUI_TEXTURES[8];
-                break;
-            case 18:
-                TEXTURE = BOOK_GUI_TEXTURES[9];
-                break;
-            default:
-                TEXTURE = BOOK_GUI_TEXTURES[0];
-        }
-        mc.getTextureManager().bindTexture(TEXTURE);
-        int i = (this.width - 192) / 2;
-        this.drawTexturedModalRect(i, 2, 0, 0, 192, 192);
-        super.drawScreen(parWidth, parHeight, p_73863_3_);
-    }
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		ResourceLocation TEXTURE;
+		switch (currPage) {
+			case 2:
+				TEXTURE = BOOK_GUI_TEXTURES[1];
+				break;
+			case 4:
+				TEXTURE = BOOK_GUI_TEXTURES[2];
+				break;
+			case 6:
+				TEXTURE = BOOK_GUI_TEXTURES[3];
+				break;
+			case 8:
+				TEXTURE = BOOK_GUI_TEXTURES[4];
+				break;
+			case 10:
+				TEXTURE = BOOK_GUI_TEXTURES[5];
+				break;
+			case 12:
+				TEXTURE = BOOK_GUI_TEXTURES[6];
+				break;
+			case 14:
+				TEXTURE = BOOK_GUI_TEXTURES[7];
+				break;
+			case 16:
+				TEXTURE = BOOK_GUI_TEXTURES[8];
+				break;
+			case 18:
+				TEXTURE = BOOK_GUI_TEXTURES[9];
+				break;
+			default:
+				TEXTURE = BOOK_GUI_TEXTURES[0];
+		}
+		mc.getTextureManager().bindTexture(TEXTURE);
+		int i = (this.width - 192) / 2;
+		this.drawTexturedModalRect(i, 2, 0, 0, 192, 192);
+		super.drawScreen(parWidth, parHeight, p_73863_3_);
+	}
 
     @Override
     protected void mouseClickMove(int parMouseX, int parMouseY, int parLastButtonClicked, long parTimeSinceMouseClick) {

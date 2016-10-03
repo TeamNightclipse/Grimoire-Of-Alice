@@ -1,0 +1,14 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "grimoireofalice:items/fakemiraclemallet"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "swinging": 1
+            },
+            "model": "grimoireofalice:item/fakemiraclemalletswing"
+        }
+    ]
+}

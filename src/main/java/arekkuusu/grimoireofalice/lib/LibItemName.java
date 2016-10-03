@@ -109,6 +109,10 @@ public class LibItemName {
 	public static final String POUCH = "spellcardpouch";
 	public static final String LEAF = "leafitem";
 	public static final String BLOODTHIRSTYORB = "bloodthirstyorb";
+	public static final String SENDOFFLANTERN = "sendofflantern";
+	public static final String SUBSTITUTEJIZO = "substitutejizo";
+	public static final String NIMBLEFABRIC = "nimblefabric";
+	public static final String FAKEMIRACLEMALLET = "fakemiraclemallet";
 	//Potion
 
 	public static final String ELIXIRPOTION = "elixirpotion";

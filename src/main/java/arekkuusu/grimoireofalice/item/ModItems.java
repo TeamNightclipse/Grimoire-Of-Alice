@@ -54,7 +54,6 @@ public final class ModItems {
 	public static Item jeweledHourai;
 	public static Item budahBoul;
 	public static Item dragonJewel;
-	public static Item foldingUmbrella;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -128,7 +127,12 @@ public final class ModItems {
 	public static Item thirdEye;
 	public static Item leaf;
 	public static Item bloodOrb;
-	
+	public static Item foldingUmbrella;
+	public static Item substituteJizo;
+	public static Item nimbleFabric;
+	public static Item fakeMiracleMallet;
+	public static Item ghastlySendOffLantern;
+
 	public static void init() {
 		
 		//Item
@@ -171,6 +175,10 @@ public final class ModItems {
 		dragonJewel = new ItemDragonJewel();
 		bloodOrb = new ItemBloodThirstyOrb();
 		foldingUmbrella = new ItemGapFoldingUmbrella();
+		substituteJizo = new ItemSubstituteJizo();
+		nimbleFabric = new ItemNimbleFabric();
+		fakeMiracleMallet = new ItemFakeMiracleMallet();
+		ghastlySendOffLantern = new ItemGhastlySendOffLantern();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
