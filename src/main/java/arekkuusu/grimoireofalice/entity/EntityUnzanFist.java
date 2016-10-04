@@ -90,7 +90,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
+		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 		worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
 				SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1.0F, rand.nextFloat() * 1.0F + 0.8F);
 		if(result.typeOfHit == RayTraceResult.Type.BLOCK) {

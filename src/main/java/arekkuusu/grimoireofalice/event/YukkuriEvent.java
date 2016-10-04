@@ -56,17 +56,19 @@ public class YukkuriEvent {
 				if(player.getCooldownTracker().hasCooldown(ModItems.ghastlySendOffLantern)){
 					event.setCanceled(true);
 				}
-			} else
-			for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-				if (player.inventory.mainInventory[i] != null &&
-						player.inventory.mainInventory[i].getItem() == ModItems.substituteJizo) {
-					if(player.inventory.mainInventory[i].stackSize > 1) {
-						player.inventory.mainInventory[i].stackSize--;
-					} else {
-						player.inventory.mainInventory[i] = null;
+			}
+			if (player.inventory.hasItemStack(new ItemStack(ModItems.substituteJizo))) {
+				for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+					if (player.inventory.mainInventory[i] != null &&
+							player.inventory.mainInventory[i].getItem() == ModItems.substituteJizo) {
+						if (player.inventory.mainInventory[i].stackSize > 1) {
+							player.inventory.mainInventory[i].stackSize--;
+						} else {
+							player.inventory.mainInventory[i] = null;
+						}
+						event.setCanceled(true);
+						break;
 					}
-					event.setCanceled(true);
-					break;
 				}
 			}
 		}

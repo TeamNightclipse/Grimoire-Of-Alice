@@ -113,6 +113,7 @@ public class LibItemName {
 	public static final String SUBSTITUTEJIZO = "substitutejizo";
 	public static final String NIMBLEFABRIC = "nimblefabric";
 	public static final String FAKEMIRACLEMALLET = "fakemiraclemallet";
+	public static final String DECOYDOLL = "decoydoll";
 	//Potion
 
 	public static final String ELIXIRPOTION = "elixirpotion";

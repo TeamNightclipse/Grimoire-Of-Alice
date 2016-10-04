@@ -31,9 +31,9 @@ public class EntityNazrinPendulum extends Entity {
     public EntityPlayer user;
 	private boolean follow;
 
-    public EntityNazrinPendulum(World worldIn) {
-        super(worldIn);
-    }
+	public EntityNazrinPendulum(World worldIn) {
+		super(worldIn);
+	}
 
     public EntityNazrinPendulum(World worldIn, EntityPlayer player, boolean follow) {
         super(worldIn);

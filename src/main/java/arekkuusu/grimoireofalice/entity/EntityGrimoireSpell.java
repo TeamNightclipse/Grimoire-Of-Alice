@@ -48,7 +48,8 @@ public class EntityGrimoireSpell extends Entity {
 		posX = host.posX;
     	posY = host.posY + 0.1D;
     	posZ = host.posZ;
-    	this.setPositionAndRotation(posX, posY, posZ, host.rotationYaw, host.rotationPitch);
+    	setPosition(posX, posY, posZ);
+		setRotation(host.rotationYaw,0);
 	}
 
 	@Override

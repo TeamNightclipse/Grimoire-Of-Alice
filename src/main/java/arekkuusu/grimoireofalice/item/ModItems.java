@@ -132,6 +132,7 @@ public final class ModItems {
 	public static Item nimbleFabric;
 	public static Item fakeMiracleMallet;
 	public static Item ghastlySendOffLantern;
+	public static Item cursedDecoyDoll;
 
 	public static void init() {
 		
@@ -179,6 +180,7 @@ public final class ModItems {
 		nimbleFabric = new ItemNimbleFabric();
 		fakeMiracleMallet = new ItemFakeMiracleMallet();
 		ghastlySendOffLantern = new ItemGhastlySendOffLantern();
+		cursedDecoyDoll = new ItemCursedDecoyDoll();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
