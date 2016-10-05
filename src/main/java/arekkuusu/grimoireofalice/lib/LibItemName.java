@@ -38,6 +38,7 @@ public class LibItemName {
 	public static final String DRAGONJEWEL = "dragonjewel";
 	public static final String COWRIESHELL = "cowrieshell";
 	public static final String FOLDINGUMBRELLA = "foldingumbrella";
+	public static final String STOPWATCH = "stopwatch";
 	//Food
 	public static final String SHROOMSLICE = "shroomslice";
 	public static final String GRILLEDLAMPREY = "grilledlamprey";

@@ -54,6 +54,7 @@ public final class ModItems {
 	public static Item jeweledHourai;
 	public static Item budahBoul;
 	public static Item dragonJewel;
+	public static Item stopWatch;
 	//Food
 	public static Item shroomSlice;
 	public static Item grilledLamprey;
@@ -186,6 +187,7 @@ public final class ModItems {
 		cursedDecoyDoll = new ItemCursedDecoyDoll();
 		ayaCamera = new ItemTenguCamera(LibItemName.AYACAMERA);
 		hatateCamera = new ItemTenguCamera(LibItemName.HATATECAMERA);
+		stopWatch = new ItemStopWatch();
 
 		//Food
 		shroomSlice = new ItemShroomSlice();

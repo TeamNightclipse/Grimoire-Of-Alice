@@ -109,6 +109,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.cursedDecoyDoll);
 		addItem(ModItems.ayaCamera);
 		addItem(ModItems.hatateCamera);
+		addItem(ModItems.stopWatch);
 		
 		//Food
 		addItem(ModItems.grilledLamprey);

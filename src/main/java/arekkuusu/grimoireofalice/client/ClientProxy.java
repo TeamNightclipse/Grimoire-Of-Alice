@@ -110,6 +110,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.cursedDecoyDoll, 0);
 		registerItem(ModItems.ayaCamera, 0);
 		registerItem(ModItems.hatateCamera, 0);
+		registerItem(ModItems.stopWatch, 0);
 
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
@@ -185,6 +186,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCursedDecoyDoll.class, RenderCursedDecoyDoll::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 	}
 	
 	private void registerItem(Item item, int damage) {

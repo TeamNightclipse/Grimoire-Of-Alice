@@ -57,8 +57,7 @@ public class ItemTenguCamera extends ItemMod {
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		player.motionY = player.motionX = player.motionZ = 0;
 		player.setPosition(player.prevPosX, player.prevPosY, player.prevPosZ);
-		player.rotationYaw = player.prevRotationYaw;
-		player.rotationPitch = player.prevRotationPitch;
+		player.cameraPitch = player.prevCameraPitch;
 		List<Entity> list = getEntities(player);
 		if (!list.isEmpty()) {
 			list.stream().filter(entity -> entity instanceof EntityLivingBase).forEach(entity -> {
