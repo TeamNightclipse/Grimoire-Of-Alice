@@ -1,8 +1,10 @@
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.lib.LibItemName;
+
 public class ItemHomingAmulet extends ItemMod {
 
-	public ItemHomingAmulet(String id) {
-		super(id);
+	public ItemHomingAmulet() {
+		super(LibItemName.HOMINGAMULET);
 	}
 }

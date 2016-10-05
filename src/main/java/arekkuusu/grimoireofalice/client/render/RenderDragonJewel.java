@@ -10,13 +10,12 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
-	private static final ResourceLocation TEXTURE_BEAM = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png");
 	private final RenderItem renderItem;
 	private static final ModelBase MODEL = new ModelFlatTexture();
 
@@ -48,8 +47,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		GlStateManager.rotate(180F - renderManager.playerViewY + angle, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(180F - renderManager.playerViewX, 0.0F, 0.0F, 1.0F);
 		GlStateManager.rotate(-renderManager.playerViewX - entity.getTicksAlive() * 16, 1.0F, 0.0F, 0.0F);
-		this.bindTexture(TEXTURE_BEAM);
-		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		this.bindTexture(TEXTURE);
 		GlStateManager.rotate(angle * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.enableLighting();
@@ -59,6 +57,6 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityDragonJewel entity) {
-		return TEXTURE_BEAM;
+		return TEXTURE;
 	}
 }

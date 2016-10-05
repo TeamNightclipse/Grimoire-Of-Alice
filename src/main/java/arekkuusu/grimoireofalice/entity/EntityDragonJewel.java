@@ -29,6 +29,7 @@ public class EntityDragonJewel extends Entity {
 		super(worldIn);
 		this.host = player;
 	}
+
 	@Override
 	protected void entityInit() {
 

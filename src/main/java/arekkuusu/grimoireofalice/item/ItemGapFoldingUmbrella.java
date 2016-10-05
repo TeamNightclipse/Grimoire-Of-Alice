@@ -6,12 +6,10 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -20,6 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Random;
 
 public class ItemGapFoldingUmbrella extends ItemMod {
 
@@ -65,6 +64,9 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 		if(isSafe(worldIn, dx, dy, dz)) {
 			playerIn.setPosition(dx, dy, dz);
 		}
+		itemStackIn.damageItem(10, playerIn);
+		worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
+				SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		playerIn.getCooldownTracker().setCooldown(this,10);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

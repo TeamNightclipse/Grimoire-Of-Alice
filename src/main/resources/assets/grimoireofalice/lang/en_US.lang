@@ -71,6 +71,7 @@ item.aurakanako.name=Goddess of wind and rain
 item.auraichirin.name=Nyuudou Unzan
 item.suwakohat.name=Suwako's Hat
 item.aurautsuho.name=Utsuho Wings
+item.kappahat.name=Nitori's Hat
 
 item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
@@ -148,6 +149,8 @@ item.substitutejizo.name=Substitute Jizo
 item.nimblefabric.name=Nimble Fabric
 item.sendofflantern.name=Ghastly Send-Off Lantern
 item.decoydoll.name=Cursed Decoy Doll
+item.ayacamera.name=Aya's Camera
+item.hatatehamera.name=Hatate's Camera
 
 effect.elixir=Elixir
 

@@ -107,6 +107,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.fakeMiracleMallet);
 		addItem(ModItems.ghastlySendOffLantern);
 		addItem(ModItems.cursedDecoyDoll);
+		addItem(ModItems.ayaCamera);
+		addItem(ModItems.hatateCamera);
 		
 		//Food
 		addItem(ModItems.grilledLamprey);
@@ -139,6 +141,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.ichirinAura);
         addItem(ModItems.suwakoHat);
 		addItem(ModItems.fireRobe);
+		addItem(ModItems.kappaHat);
 		
 		//Weapons
 		addItem(ModItems.amenonuhoko);

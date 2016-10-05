@@ -61,6 +61,13 @@ public class VanillaCrafting {
                 .where('A').mapsTo(ModItems.shimenawaRope)
                 .outputs(ModBlocks.compactStone).build();
 
+		for (int i = 0; i < 16; ++i) {
+			shapeless()
+					.add(new ItemStack(ModItems.shroomSlice, 1, i))
+					.add(ModItems.budahBoul)
+					.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.budahBoul), 1, i));
+		}
+
         GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.gloriousNipponSteel), 0);
         GameRegistry.addSmelting(ModItems.impureRock, new ItemStack(ModItems.hihiirokane), 0);
     }

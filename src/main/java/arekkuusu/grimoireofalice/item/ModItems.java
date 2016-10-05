@@ -87,6 +87,7 @@ public final class ModItems {
 	public static Item suwakoHat;
 	public static Item fireRobe;
 	public static Item utsuhoAura;
+	public static Item kappaHat;
 	//Weapons
 	public static Item mochiHammer;
 	public static Item momijisScimitarSword;
@@ -133,6 +134,8 @@ public final class ModItems {
 	public static Item fakeMiracleMallet;
 	public static Item ghastlySendOffLantern;
 	public static Item cursedDecoyDoll;
+	public static Item ayaCamera;
+	public static Item hatateCamera;
 
 	public static void init() {
 		
@@ -181,6 +184,8 @@ public final class ModItems {
 		fakeMiracleMallet = new ItemFakeMiracleMallet();
 		ghastlySendOffLantern = new ItemGhastlySendOffLantern();
 		cursedDecoyDoll = new ItemCursedDecoyDoll();
+		ayaCamera = new ItemTenguCamera(LibItemName.AYACAMERA);
+		hatateCamera = new ItemTenguCamera(LibItemName.HATATECAMERA);
 
 		//Food
 		shroomSlice = new ItemShroomSlice();
@@ -217,6 +222,7 @@ public final class ModItems {
         suwakoHat = new ItemSuwakoHat(SOLID_PAPER,3);
 		fireRobe = new ItemFireRobe(SOLID_PAPER,3);
 		utsuhoAura = new ItemWingsUtsuho(SOLID_PAPER,5);
+		kappaHat = new ItemKappaHat(SOLID_PAPER,3);
 		
 		//Weapons
 		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);
@@ -245,7 +251,5 @@ public final class ModItems {
 		hisou = new ItemSwordOfHisou(GOLDYRON);
 		deathScythe = new ItemDeathScythe(WET_NOODLE);
 		roukanken = new ItemSwordRoukanken(WET_NOODLE);
-		
 	}
-	
 }

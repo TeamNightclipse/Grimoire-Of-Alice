@@ -67,6 +67,7 @@ public class ClientProxy extends CommonProxy{
         registerItem(ModItems.suwakoHat, 0);
 		registerItem(ModItems.fireRobe, 0);
 		registerItem(ModItems.utsuhoAura, 0);
+		registerItem(ModItems.kappaHat, 0);
 		
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -107,6 +108,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.fakeMiracleMallet, 0);
 		registerItem(ModItems.ghastlySendOffLantern, 0);
 		registerItem(ModItems.cursedDecoyDoll, 0);
+		registerItem(ModItems.ayaCamera, 0);
+		registerItem(ModItems.hatateCamera, 0);
 
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
@@ -181,6 +184,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityUnzanFist.class, RenderUnzanFist::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCursedDecoyDoll.class, RenderCursedDecoyDoll::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);
 	}
 	
 	private void registerItem(Item item, int damage) {

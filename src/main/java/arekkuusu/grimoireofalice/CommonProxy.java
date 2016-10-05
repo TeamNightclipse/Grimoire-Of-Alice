@@ -43,6 +43,7 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); // Wont move properly
 		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); //Set to 1, but might have to increase it...
 		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
 	}

@@ -69,6 +69,7 @@ public class LibItemName {
 	public static final String SUWAKOHAT = "suwakohat";
 	public static final String FIREROBE = "firerobe";
 	public static final String AURAUTSUHO = "aurautsuho";
+	public static final String KAPPAHAT = "kappahat";
 	//Weapons
 	public static final String MOCHIHAMMER = "mochihammer";
 	public static final String MOMIJISSCIMITARSWORD = "momijisscimitarsword";
@@ -114,6 +115,9 @@ public class LibItemName {
 	public static final String NIMBLEFABRIC = "nimblefabric";
 	public static final String FAKEMIRACLEMALLET = "fakemiraclemallet";
 	public static final String DECOYDOLL = "decoydoll";
+	public static final String HOMINGAMULET = "homingamulet";
+	public static final String AYACAMERA = "ayacamera";
+	public static final String HATATECAMERA = "hatatecamera";
 	//Potion
 
 	public static final String ELIXIRPOTION = "elixirpotion";
