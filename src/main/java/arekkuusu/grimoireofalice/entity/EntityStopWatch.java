@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.entity;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityTameable;
@@ -22,6 +23,8 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
+	private ArrayList<Entity> entities = new ArrayList<>();
+	private HashMap<UUID,double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -80,47 +83,56 @@ public class EntityStopWatch extends Entity {
 		}
 	}
 
-	private void inRange(Entity entity){
-		if(entity instanceof EntityStopWatch){return;} //If entity is a Watch it wont be affected
-		if(entity instanceof EntityPlayerMP){
-			if(!players.isEmpty() && players.contains(entity.getUniqueID())){ //If the player is in the list, it wont be affected
-				return;
+	private void inRange(Entity entity) {
+		if (entity instanceof EntityStopWatch) {
+			return;
+		} //If entity is a Watch it wont be affected
+		if(!worldObj.isRemote) {
+			if (entity instanceof EntityPlayerMP) {
+				if (!players.isEmpty() && players.contains(entity.getUniqueID())) { //If the player is in the list, it wont be affected
+					return;
+				}
+			}
+			if (!dataEntities.containsKey(entity.getUniqueID()) && !entities.contains(entity)) {
+				entities.add(entity);
+				double x = entity.motionX;
+				double y = entity.motionX;
+				double z = entity.motionX;
+				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
 			}
 		}
-		if(entity.ticksExisted >= 2 ) {
-			entity.setPosition( entity.prevPosX, entity.prevPosY, entity.prevPosZ);
+		if (entity.ticksExisted >= 2) {
+			entity.setPosition(entity.prevPosX, entity.prevPosY, entity.prevPosZ);
 			entity.rotationYaw = entity.prevRotationYaw;
 			entity.rotationPitch = entity.prevRotationPitch;
-			entity.motionX = 0.0D;
+			entity.motionX = 0;
 
-			if(!entity.onGround ) {
-				if(worldObj.isRemote) {
-					entity.motionY = 0;
-				}
-				else {
-					entity.motionY = 0;
-				}
+			if (!entity.onGround) {
+				entity.motionY = 0;
 			}
-			entity.motionZ = 0.0D;
+			entity.motionZ = 0;
+
+			entity.lastTickPosX = prevPosX;
+			entity.lastTickPosY = prevPosY;
+			entity.lastTickPosZ = prevPosZ;
 			entity.setAir(0);
 			entity.ticksExisted--;
-			entity.fallDistance -= 0.076865F;
-			if(entity instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase)entity;
+			entity.fallDistance = 0;
+			if (entity instanceof EntityLivingBase) {
+				EntityLivingBase living = (EntityLivingBase) entity;
 				living.rotationYawHead = living.prevRotationYawHead;
-
-				if(living instanceof EntityCreeper) {
-					EntityCreeper entityCreeper = (EntityCreeper)living;
+				if (living instanceof EntityCreeper) {
+					EntityCreeper entityCreeper = (EntityCreeper) living;
 					entityCreeper.setCreeperState(-1);
-				} else if(living instanceof EntityGhast) {
-					EntityGhast entityGhast = (EntityGhast)living;
+				} else if (living instanceof EntityGhast) {
+					EntityGhast entityGhast = (EntityGhast) living;
 					entityGhast.setAttacking(false);
 				}
-				if(living instanceof EntityTameable) {
-					living.motionY-=0.000001D;
+				if (living instanceof EntityTameable) {
+					living.motionY -= 0.000001D;
 				}
-				if(living instanceof EntityPlayerMP) {
-					EntityPlayerMP player = (EntityPlayerMP)living;
+				if (living instanceof EntityPlayerMP) {
+					EntityPlayerMP player = (EntityPlayerMP) living;
 					player.setPositionAndRotation(player.prevPosX, player.prevPosY, player.prevPosZ, player.rotationYaw, player.rotationPitch);
 				}
 			}
@@ -128,17 +140,24 @@ public class EntityStopWatch extends Entity {
 	}
 
 	private void stopEntity() {
+		if (!entities.isEmpty()) {
+			entities.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
+				double[] motion = dataEntities.get(entity.getUniqueID());
+				entity.motionX = motion[0];
+				entity.motionY = motion[1]; //References the original motion... which is 0 sometimes.
+				entity.motionZ = motion[2];
+			});
+		}
 		if(!worldObj.isRemote) {
-			if(user != null) {
-				if(user.capabilities.isCreativeMode) {
+			if (user != null) {
+				if (user.capabilities.isCreativeMode) {
 					setDead();
 					return;
 				}
-				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.stopWatch, 1))) {
+				if (!user.inventory.addItemStackToInventory(new ItemStack(ModItems.stopWatch, 1))) {
 					user.dropItem(ModItems.stopWatch, 1);
 				}
-			}
-			else {
+			} else {
 				dropItem(ModItems.stopWatch, 1);
 			}
 			setDead();

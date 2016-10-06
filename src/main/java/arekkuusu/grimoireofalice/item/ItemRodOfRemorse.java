@@ -90,7 +90,9 @@ public class ItemRodOfRemorse extends ItemMod {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if(!target.worldObj.isRemote) {
 			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
-					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage").appendText(": ")));
+					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage")
+							.appendText(": "))
+					.appendText(String.valueOf((int)target.getHealth())));
 		}
 		return true;
 	}
