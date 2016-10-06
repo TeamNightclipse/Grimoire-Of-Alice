@@ -8,18 +8,20 @@ import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
-	private List<UUID> players;
+	private ArrayList<UUID> players = new ArrayList<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -28,31 +30,43 @@ public class EntityStopWatch extends Entity {
 	public EntityStopWatch(World worldIn, EntityPlayer player) {
 		super(worldIn);
 		user = player;
-		players.add(user.getUniqueID());
+		ignoreFrustumCheck = true;
+		preventEntitySpawning = true;
 	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(user == null | isEntityInsideOpaqueBlock()) {
-			stopEntity();
-		} else if (ticksExisted > 500 || (user.isSneaking() && user.isSwingInProgress)) {
-			stopEntity();
-		}
 		if(user != null) {
+			if (ticksExisted > 500 || (user.isSneaking() && user.isSwingInProgress)) {
+				stopEntity();
+			} else {
+				ItemStack stack = user.getHeldItem(user.getActiveHand());
+				if ((user.isHandActive() && stack != null && stack.getItem() == ModItems.stopWatch)) {
+					stopEntity();
+				}
+			}
+
 			Vec3d look = user.getLookVec();
 			float distance = 1F;
 			double dx = user.posX + (look.xCoord * distance);
 			double dy = user.posY + user.getEyeHeight() - 0.5;
 			double dz = user.posZ + (look.zCoord * distance);
 			setPosition(dx, dy, dz);
-		}
-		if(!worldObj.isRemote) {
-			List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-			if (!list.isEmpty()) {
-				list.forEach(this::setIgnoredPlayers);
-				list.forEach(this::inRange);
+
+			if (!worldObj.isRemote) {
+				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				if (!list.isEmpty()) {
+					list.forEach(this::setIgnoredPlayers);
+					list.forEach(this::inRange);
+				}
 			}
+		} else {
+			stopEntity();
+		}
+		if(ticksExisted % 8 == 0) {
+			worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
+					SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, SoundCategory.NEUTRAL, 1.0F, 1.0F + 0.8F);
 		}
 	}
 

@@ -2,12 +2,15 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -21,6 +24,8 @@ public class ItemStopWatch extends ItemMod {
 	ItemStopWatch() {
 		super(LibItemName.STOPWATCH);
 		setMaxStackSize(1);
+		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
+				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -42,18 +47,47 @@ public class ItemStopWatch extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isRemote) {
-			EntityStopWatch watch = new EntityStopWatch(worldIn, playerIn);
-			Vec3d look = playerIn.getLookVec();
-			float distance = 1F;
-			double dx = playerIn.posX + (look.xCoord * distance);
-			double dy = playerIn.posY + playerIn.getEyeHeight() - 0.5;
-			double dz = playerIn.posZ + (look.zCoord * distance);
-			watch.setPosition(dx, dy, dz);
-			worldIn.spawnEntityInWorld(watch);
-		}
-		--itemStackIn.stackSize;
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
+		player.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	}
+
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if(!worldIn.isRemote) {
+				EntityStopWatch watch = new EntityStopWatch(worldIn, player);
+				Vec3d look = player.getLookVec();
+				float distance = 1F;
+				double dx = player.posX + (look.xCoord);
+				double dy = player.posY + player.getEyeHeight() - 0.5;
+				double dz = player.posZ + (look.zCoord * distance);
+				watch.setPosition(dx, dy, dz);
+				worldIn.spawnEntityInWorld(watch);
+			}
+			if(!player.capabilities.isCreativeMode)
+			--stack.stackSize;
+		}
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.NONE;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 7000;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+		return false;
+	}
+
+	@Override
+	public int getItemEnchantability() {
+		return 0;
 	}
 }

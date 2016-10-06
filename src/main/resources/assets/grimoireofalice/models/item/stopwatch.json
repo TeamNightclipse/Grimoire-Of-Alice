@@ -2,5 +2,13 @@
     "parent": "item/generated",
     "textures": {
         "layer0": "grimoireofalice:items/stopwatch"
-    }
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "playing": 1
+            },
+            "model": "grimoireofalice:item/stopwatchused"
+        }
+    ]
 }

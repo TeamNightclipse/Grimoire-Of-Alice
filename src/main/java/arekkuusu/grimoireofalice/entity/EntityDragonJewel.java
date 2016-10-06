@@ -28,6 +28,8 @@ public class EntityDragonJewel extends Entity {
 	public EntityDragonJewel(World worldIn, EntityLivingBase player) {
 		super(worldIn);
 		this.host = player;
+		ignoreFrustumCheck = true;
+		preventEntitySpawning = true;
 	}
 
 	@Override
