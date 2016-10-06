@@ -95,10 +95,10 @@ public class EntityStopWatch extends Entity {
 
 			if(!entity.onGround ) {
 				if(worldObj.isRemote) {
-					entity.motionY = -0.0D;
+					entity.motionY = 0;
 				}
 				else {
-					entity.motionY = -0.0D;
+					entity.motionY = 0;
 				}
 			}
 			entity.motionZ = 0.0D;
