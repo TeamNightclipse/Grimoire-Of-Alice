@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.entity;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityTameable;
@@ -23,7 +22,6 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
-	private ArrayList<Entity> entities = new ArrayList<>();
 	private HashMap<UUID,double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
@@ -93,11 +91,10 @@ public class EntityStopWatch extends Entity {
 					return;
 				}
 			}
-			if (!dataEntities.containsKey(entity.getUniqueID()) && !entities.contains(entity)) {
-				entities.add(entity);
-				double x = entity.motionX;
-				double y = entity.motionX;
-				double z = entity.motionX;
+			if (!dataEntities.containsKey(entity.getUniqueID())) {
+				double x = new Double(entity.motionX);
+				double y = new Double(entity.motionY);
+				double z = new Double(entity.motionZ);
 				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
 			}
 		}
@@ -112,9 +109,6 @@ public class EntityStopWatch extends Entity {
 			}
 			entity.motionZ = 0;
 
-			entity.lastTickPosX = prevPosX;
-			entity.lastTickPosY = prevPosY;
-			entity.lastTickPosZ = prevPosZ;
 			entity.setAir(0);
 			entity.ticksExisted--;
 			entity.fallDistance = 0;
@@ -140,16 +134,18 @@ public class EntityStopWatch extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!entities.isEmpty()) {
-			entities.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
-				double[] motion = dataEntities.get(entity.getUniqueID());
-				entity.motionX = motion[0];
-				entity.motionY = motion[1]; //References the original motion... which is 0 sometimes.
-				entity.motionZ = motion[2];
-			});
-		}
 		if(!worldObj.isRemote) {
 			if (user != null) {
+				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				if (!list.isEmpty()) {
+					list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
+						double[] motion = dataEntities.get(entity.getUniqueID());
+						entity.motionX = motion[0];
+						entity.motionY = motion[1];
+						entity.motionZ = motion[2];
+						entity.setVelocity(entity.motionX,entity.motionY,entity.motionZ);
+					});
+				}
 				if (user.capabilities.isCreativeMode) {
 					setDead();
 					return;
