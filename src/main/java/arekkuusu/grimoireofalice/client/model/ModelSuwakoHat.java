@@ -10,13 +10,14 @@ import net.minecraft.entity.Entity;
  */
 public class ModelSuwakoHat extends ModelBiped {
 
-	public ModelRenderer shape15;
-	public ModelRenderer shape15_1;
-	public ModelRenderer shape15_2;
-	public ModelRenderer shape15_3;
-	public ModelRenderer shape15_4;
-	public ModelRenderer shape15_5;
-	public ModelRenderer shape15_6;
+	//TODO: Name these
+	private final ModelRenderer shape15;
+	private final ModelRenderer shape15_1;
+	private final ModelRenderer shape15_2;
+	private final ModelRenderer shape15_3;
+	private final ModelRenderer shape15_4;
+	private final ModelRenderer shape15_5;
+	private final ModelRenderer shape15_6;
 
 	public ModelSuwakoHat() {
 		this.textureWidth = 64;

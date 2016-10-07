@@ -51,12 +51,9 @@ public class ItemFakeMiracleMallet extends ItemMod {
 		if(entityLiving instanceof  EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			Vec3d vec = player.getLookVec();
-			List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3));
-			if (!list.isEmpty()) {
-				list.stream().filter(entity -> entity instanceof EntityLivingBase).forEach(entity -> {
-					entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F);
-				});
-			}
+			List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+					entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
+			list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
 		}
 		entityLiving.worldObj.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
 				SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);

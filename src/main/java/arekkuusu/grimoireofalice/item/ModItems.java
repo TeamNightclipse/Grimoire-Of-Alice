@@ -8,11 +8,13 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.item.auras.*;
 import arekkuusu.grimoireofalice.item.food.*;
 import arekkuusu.grimoireofalice.item.masks.*;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSwordOfHisou;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -250,8 +252,11 @@ public final class ModItems {
 		watermelonSword = new ItemWatermelonSword(GOLDYRON);
 		sacredToyosatomimi = new ItemSacredToyosatomimi(GOLDYRON);
 		needle = new ItemNeedle(NOT_A_MELEE_WEAPON);
-		hisou = new ItemSwordOfHisou(GOLDYRON);
 		deathScythe = new ItemDeathScythe(WET_NOODLE);
 		roukanken = new ItemSwordRoukanken(WET_NOODLE);
+
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			hisou = new ItemSwordOfHisou(GOLDYRON);
+		}
 	}
 }

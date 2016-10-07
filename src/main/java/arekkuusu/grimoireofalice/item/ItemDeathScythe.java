@@ -1,7 +1,8 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -17,8 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemDeathScythe extends ItemModSword {
 
@@ -47,40 +46,41 @@ public class ItemDeathScythe extends ItemModSword {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int count) {
-		if(playerIn instanceof  EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) playerIn;
+		if(playerIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)playerIn;
 			double range = 16.0D;
 			Vec3d look = player.getLookVec();
 			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 			Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
 			RayTraceResult movingObjectPosition = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
-			if (movingObjectPosition != null) {
+			if(movingObjectPosition != null) {
 				vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
 			}
 			EntityLivingBase entity = null;
-			List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D));
+			List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+					player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D),
+					entityFound -> entityFound != playerIn);
 			double d = 0.0D;
-			for (Entity entity1 : list) {
-				if (entity1 instanceof EntityLivingBase) {
-					float f2 = 0.3F;
-					AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
-					RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
-					if (movingObjectPosition1 != null) {
-						double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-						if (d1 < d || d == 0.0D) {
-							entity = (EntityLivingBase) entity1;
-							d = d1;
-						}
+			for(EntityLivingBase entity1 : list) {
+				float f2 = 0.3F;
+				AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
+				RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+				if(movingObjectPosition1 != null) {
+					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
+					if(d1 < d || d == 0.0D) {
+						entity = entity1;
+						d = d1;
 					}
 				}
 			}
-			if (entity != null && !player.worldObj.isRemote) {
+			if(entity != null && !player.worldObj.isRemote) {
 				double back = 0.4;
-				if (player.isSneaking()) {
+				if(player.isSneaking()) {
 					entity.motionX += look.xCoord * back;
 					entity.motionY += look.yCoord * back;
 					entity.motionZ += look.zCoord * back;
-				} else {
+				}
+				else {
 					entity.motionX -= look.xCoord * back;
 					entity.motionY -= look.yCoord * back;
 					entity.motionZ -= look.zCoord * back;
@@ -92,8 +92,8 @@ public class ItemDeathScythe extends ItemModSword {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(!worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
+			if(entityLiving instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)entityLiving;
 				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 				player.getCooldownTracker().setCooldown(this, timeUsed);
 			}

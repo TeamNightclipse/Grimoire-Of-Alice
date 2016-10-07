@@ -24,7 +24,7 @@ public class ItemStopWatch extends ItemMod {
 	ItemStopWatch() {
 		super(LibItemName.STOPWATCH);
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
+		addPropertyOverride(new ResourceLocation("using"), (stack, world, entity) ->
 				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 

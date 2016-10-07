@@ -23,6 +23,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -79,21 +80,18 @@ public class BlockHolyKeyStone extends BlockMod {
 
 	private void ifNear(World world, BlockPos pos, Random rand) {
 		if(world.isRemote) {
-			int xCoord = pos.getX();
-			int yCoord = pos.getY();
-			int zCoord = pos.getZ();
-			double d0 = 0.0625D;
+			float d0 = 0.0625F;
 			for(int l = 0; l < 6; ++l) {
-				double d1 = xCoord + rand.nextFloat();
-				double d2 = yCoord + rand.nextFloat();
-				double d3 = zCoord + rand.nextFloat();
-				if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(xCoord, yCoord + 1, zCoord))==0)) d2 = yCoord + 1 + d0;
-				if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(xCoord, yCoord - 1, zCoord))==0)) d2 = yCoord - d0;
-				if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(xCoord, yCoord, zCoord + 1))==0)) d3 = zCoord + 1 + d0;
-				if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(xCoord, yCoord - 1, zCoord))==0)) d3 = zCoord - d0;
-				if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(xCoord + 1, yCoord, zCoord))==0)) d1 = xCoord + 1 + d0;
-				if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(xCoord - 1, yCoord, zCoord))==0)) d1 = xCoord - d0;
-				if(d1 < xCoord || d1 > xCoord + 1 || d2 < 0.0D || d2 > yCoord + 1 || d3 < zCoord || d3 > zCoord + 1) {
+				float d1 = pos.getX() + rand.nextFloat();
+				float d2 = pos.getY() + rand.nextFloat();
+				float d3 = pos.getZ() + rand.nextFloat();
+				if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) == 0)) d2 = pos.getY() + 1 + d0;
+				if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) d2 = pos.getY() - d0;
+				if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)) == 0)) d3 = pos.getZ() + 1 + d0;
+				if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) d3 = pos.getZ() - d0;
+				if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())) == 0)) d1 = pos.getX() + 1 + d0;
+				if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())) == 0)) d1 = pos.getX() - d0;
+				if(d1 < pos.getX() || d1 > pos.getX() + 1 || d2 < 0.0D || d2 > pos.getY() + 1 || d3 < pos.getZ() || d3 > pos.getZ() + 1) {
 					world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, d1, d2, d3, 0.0D, 0.0D, 0.0D, 0);
 				}
 			}

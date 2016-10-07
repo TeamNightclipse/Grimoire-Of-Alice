@@ -13,10 +13,11 @@ import net.minecraft.entity.Entity;
  */
 public class ModelWind extends ModelBase {
 
-	public ModelRenderer shape1;
-	public ModelRenderer shape1_1;
-	public ModelRenderer shape1_2;
-	public ModelRenderer shape1_3;
+	//TODO: Name these
+	private final ModelRenderer shape1;
+	private final ModelRenderer shape1_1;
+	private final ModelRenderer shape1_2;
+	private final ModelRenderer shape1_3;
 
 	public ModelWind() {
 		this.textureWidth = 128;
@@ -43,29 +44,19 @@ public class ModelWind extends ModelBase {
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+
 		this.shape1.render(f5);
-		GlStateManager.disableBlend();
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
 		this.shape1_2.render(f5);
-		GlStateManager.disableBlend();
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
 		this.shape1_3.render(f5);
-		GlStateManager.disableBlend();
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
 		this.shape1_1.render(f5);
+
 		GlStateManager.disableBlend();
 	}
 
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+	private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;

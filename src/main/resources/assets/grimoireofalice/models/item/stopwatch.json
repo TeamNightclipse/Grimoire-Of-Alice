@@ -5,7 +5,7 @@
     },
     "overrides": [
         {
-            "predicate": {
+            "using": {
                 "playing": 1
             },
             "model": "grimoireofalice:item/stopwatchused"

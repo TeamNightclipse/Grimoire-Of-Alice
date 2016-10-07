@@ -6,7 +6,7 @@
     "overrides": [
         {
             "predicate": {
-                "playing": 1
+                "using": 1
             },
             "model": "grimoireofalice:item/ghostdipperused"
         }

@@ -27,8 +27,6 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
-		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
-				entity != null && entity instanceof EntityPlayer &&((EntityPlayer)entity).getCooldownTracker().hasCooldown(stack.getItem()) ? 1F : 0F);
 	}
 
 	@Override

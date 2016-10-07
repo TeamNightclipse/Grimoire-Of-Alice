@@ -32,12 +32,13 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 
 	@Override
     public void doRender(EntityGrimoireSpell circle, double x, double y, double z, float yaw, float pitch) {
+
+		//TODO: Name variables here
 		GlStateManager.pushMatrix();
 		bindEntityTexture(circle);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.disableLighting();
-		double size = 6.0F;
-		size -= circle.getTickCount() * 0.01;
+		float size = 6.0F - (circle.getTickCount() * 0.01F);
 		GlStateManager.scale(size, size, size);
 		GlStateManager.rotate(circle.getTickCount() * 16F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(circle, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
@@ -45,17 +46,17 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float)x + 0.5F, (float)y + 0.75F, (float)z + 0.5F);
-		float f = (float)circle.getTickCount() + 5;
+		GlStateManager.translate(x + 0.5F, y + 0.75F, z + 0.5F);
+		float f = circle.getTickCount() + 5;
 		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(f * 0.1F) * 0.01F, 0.0F);
-		float f1;
 
-		for (f1 = circle.getBookRotation() - circle.getBookRotationPrev(); f1 >= (float)Math.PI; f1 -= ((float)Math.PI * 2F)) {
-			;
+		float f1 = circle.getBookRotation() - circle.getBookRotationPrev();
+
+		while(f1 >= Math.PI) {
+			f1 -= Math.PI * 2F;
 		}
-
-		while (f1 < -(float)Math.PI) {
-			f1 += ((float)Math.PI * 2F);
+		while (f1 < -Math.PI) {
+			f1 += Math.PI * 2F;
 		}
 
 		float f2 = circle.getBookRotationPrev() + f1 * 5;
@@ -64,8 +65,8 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		this.bindTexture(TEXTURE_BOOK);
 		float f3 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
 		float f4 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
-		f3 = (f3 - (float)MathHelper.truncateDoubleToInt((double)f3)) * 1.6F - 0.3F;
-		f4 = (f4 - (float)MathHelper.truncateDoubleToInt((double)f4)) * 1.6F - 0.3F;
+		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
+		f4 = (f4 - MathHelper.truncateDoubleToInt(f4)) * 1.6F - 0.3F;
 
 		if (f3 < 0.0F) {
 			f3 = 0.0F;

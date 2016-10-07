@@ -1,8 +1,14 @@
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
+import arekkuusu.grimoireofalice.item.ItemSwordOwner;
+import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Vector3;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
@@ -26,11 +32,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class ItemSwordOfHisou extends ItemSwordOwner {
 
-	ItemSwordOfHisou(ToolMaterial material) {
+	public ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU);
 		setNoRepair();
 	}
@@ -46,7 +53,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		return EnumRarity.EPIC;
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -62,35 +68,16 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	}
 
 	@Override
-	public boolean onEntitySwing(EntityLivingBase playerIn, ItemStack itemStackIn) {
-		if(playerIn instanceof  EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)playerIn;
+	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
+		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof  EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
-				double range = 30.0D;
-				Vec3d look = player.getLookVec();
-				Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-				Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
-				RayTraceResult movingObjectPosition = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
-				if (movingObjectPosition != null) {
-					vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
-				}
-				EntityLivingBase entity = null;
-				List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expand(1.0D, 1.0D, 1.0D));
-				double d = 0.0D;
-				for (Entity entity1 : list) {
-					if (entity1 instanceof EntityLivingBase) {
-						AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz(0.3F);
-						RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
-						if (movingObjectPosition1 != null) {
-							double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-							if (d1 < d || d == 0.0D) {
-								entity = (EntityLivingBase) entity1;
-								d = d1;
-							}
-						}
-					}
-				}
-				if (entity != null && !player.worldObj.isRemote) {
+				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase);
+
+				if (lookedAt.isPresent()) {
+					EntityLivingBase entity = (EntityLivingBase)lookedAt.get();
+					Vec3d look = player.getLookVec();
+
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
 					entity.attackEntityFrom(DamageSource.lightningBolt, 2);
 					entity.motionX -= look.xCoord * 0.5;
@@ -100,7 +87,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 				}
 			}
 		}
-		return super.onEntitySwing(playerIn, itemStackIn);
+		return super.onEntitySwing(entityLivingBase, itemStackIn);
 	}
 
 	@Override
@@ -116,7 +103,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(!worldIn.isRemote) {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
-				if (!stack.hasTagCompound()) return;
 				if (isOwner(stack, player)) {
 					if (timeUsed < 50 && timeUsed > 10) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
@@ -130,7 +116,12 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 							player.getCooldownTracker().setCooldown(this, count);
 						}
 					} else if (timeUsed >= 50  && player.isSneaking()) {
-						//TODO: Make this Item shoot a bunch of red danmaku
+						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+								.setUser(player)
+								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibShotData.COLOR_SATURATED_RED))
+								.build();
+
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 10 + itemRand.nextInt(5), 45F, 0.5D);
 					}
 				}
 			}
@@ -141,7 +132,8 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
 		if(state.getMaterial() == Material.LEAVES ) {
-			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5 , pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.heavenlyPeach));
+			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5 , pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(
+					ModItems.heavenlyPeach));
 			if (!worldIn.isRemote) {
 				entityLiving.worldObj.spawnEntityInWorld(entityItem);
 			}

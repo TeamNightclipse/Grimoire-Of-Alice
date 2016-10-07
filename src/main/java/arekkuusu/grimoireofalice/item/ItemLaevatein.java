@@ -55,11 +55,9 @@ public class ItemLaevatein extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
-		if(entity instanceof EntityPlayer) {
+		if(entity instanceof EntityPlayer && isSelected) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(isSelected) {
-				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
-			}
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
 		}
 	}
 
@@ -73,8 +71,8 @@ public class ItemLaevatein extends ItemModSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.capabilities.isCreativeMode || playerIn.experienceLevel > 30) {
-			worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
-					SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
+			worldIn.playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 1.0F,
+					itemRand.nextFloat() * 0.1F + 0.8F);
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {

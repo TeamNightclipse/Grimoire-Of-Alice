@@ -58,9 +58,9 @@ public class ItemTenguCamera extends ItemMod {
 		player.motionY = player.motionX = player.motionZ = 0;
 		player.setPosition(player.prevPosX, player.prevPosY, player.prevPosZ);
 		player.cameraPitch = player.prevCameraPitch;
-		List<Entity> list = getEntities(player);
-		if (!list.isEmpty()) {
-			list.stream().filter(entity -> entity instanceof EntityLivingBase).forEach(entity -> {
+
+		if(!player.worldObj.isRemote) {
+			getEntities(player).forEach(entity -> {
 				entity.motionY = entity.motionX = entity.motionZ = 0;
 				entity.rotationYaw = entity.prevRotationYaw;
 				entity.rotationPitch = entity.prevRotationPitch;
@@ -68,22 +68,21 @@ public class ItemTenguCamera extends ItemMod {
 		}
 	}
 
-	public List<Entity> getEntities(EntityLivingBase player){
+	public List<EntityLivingBase> getEntities(EntityLivingBase player){
 		Vec3d vec = player.getLookVec();
-		return player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3));
+		return player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+				player.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3),
+				entity -> entity != player);
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			List<Entity> list = getEntities(player);
-			if (!list.isEmpty()) {
-				list.stream().filter(entity -> entity instanceof EntityLivingBase).forEach(entity -> {
-					entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10);
-				});
+			getEntities(player).forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10));
+			if(!player.worldObj.isRemote) {
+				player.getCooldownTracker().setCooldown(this, 100);
 			}
-			player.getCooldownTracker().setCooldown(this, 100);
 		}
 	}
 

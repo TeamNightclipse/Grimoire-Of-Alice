@@ -69,7 +69,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 		if(target instanceof EntityPlayer) {
 			target.extinguish();
 			for(int k = 0; k < 8; ++k) {
-				((EntityPlayer) target).worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX + itemRand.nextDouble(), target.posY + itemRand.nextDouble(),
+				target.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX + itemRand.nextDouble(), target.posY + itemRand.nextDouble(),
 						target.posZ + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
 			}
 		} else {

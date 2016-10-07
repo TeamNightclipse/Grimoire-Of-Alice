@@ -9,46 +9,48 @@ import net.minecraft.entity.Entity;
  * Created using Tabula 5.1.0
  */
 public class ModelStopWatch extends ModelBase {
-	public ModelRenderer shape1;
-	public ModelRenderer shape1_1;
-	public ModelRenderer shape1_2;
-	public ModelRenderer shape1_3;
-	public ModelRenderer shape1_4;
-	public ModelRenderer shape1_5;
-	public ModelRenderer shape1_6;
-	public ModelRenderer shape1_7;
-	public ModelRenderer shape1_8;
-	public ModelRenderer shape1_9;
-	public ModelRenderer shape1_10;
-	public ModelRenderer shape1_11;
-	public ModelRenderer shape1_12;
-	public ModelRenderer shape1_13;
-	public ModelRenderer shape1_14;
-	public ModelRenderer shape1_15;
-	public ModelRenderer shape1_16;
-	public ModelRenderer shape1_17;
-	public ModelRenderer shape1_18;
-	public ModelRenderer shape1_19;
-	public ModelRenderer shape1_20;
-	public ModelRenderer shape1_21;
-	public ModelRenderer shape1_22;
-	public ModelRenderer shape1_23;
-	public ModelRenderer shape1_24;
-	public ModelRenderer shape1_25;
-	public ModelRenderer shape1_26;
-	public ModelRenderer shape1_27;
-	public ModelRenderer shape1_28;
-	public ModelRenderer shape1_29;
-	public ModelRenderer shape1_30;
-	public ModelRenderer shape1_31;
-	public ModelRenderer shape1_32;
-	public ModelRenderer shape1_33;
-	public ModelRenderer shape1_34;
-	public ModelRenderer shape1_35;
-	public ModelRenderer shape1_36;
-	public ModelRenderer shape1_37;
-	public ModelRenderer shape1_38;
-	public ModelRenderer shape1_39;
+
+	//TODO: Name these
+	private final ModelRenderer shape1;
+	private final ModelRenderer shape1_1;
+	private final ModelRenderer shape1_2;
+	private final ModelRenderer shape1_3;
+	private final ModelRenderer shape1_4;
+	private final ModelRenderer shape1_5;
+	private final ModelRenderer shape1_6;
+	private final ModelRenderer shape1_7;
+	private final ModelRenderer shape1_8;
+	private final ModelRenderer shape1_9;
+	private final ModelRenderer shape1_10;
+	private final ModelRenderer shape1_11;
+	private final ModelRenderer shape1_12;
+	private final ModelRenderer shape1_13;
+	private final ModelRenderer shape1_14;
+	private final ModelRenderer shape1_15;
+	private final ModelRenderer shape1_16;
+	private final ModelRenderer shape1_17;
+	private final ModelRenderer shape1_18;
+	private final ModelRenderer shape1_19;
+	private final ModelRenderer shape1_20;
+	private final ModelRenderer shape1_21;
+	private final ModelRenderer shape1_22;
+	private final ModelRenderer shape1_23;
+	private final ModelRenderer shape1_24;
+	private final ModelRenderer shape1_25;
+	private final ModelRenderer shape1_26;
+	private final ModelRenderer shape1_27;
+	private final ModelRenderer shape1_28;
+	private final ModelRenderer shape1_29;
+	private final ModelRenderer shape1_30;
+	private final ModelRenderer shape1_31;
+	private final ModelRenderer shape1_32;
+	private final ModelRenderer shape1_33;
+	private final ModelRenderer shape1_34;
+	private final ModelRenderer shape1_35;
+	private final ModelRenderer shape1_36;
+	private final ModelRenderer shape1_37;
+	private final ModelRenderer shape1_38;
+	private final ModelRenderer shape1_39;
 
 	public ModelStopWatch() {
 		this.textureWidth = 128;
@@ -226,7 +228,7 @@ public class ModelStopWatch extends ModelBase {
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+	private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;

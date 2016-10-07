@@ -157,9 +157,4 @@ public class GuiScreenGuide extends GuiScreen {
             }
         }
     }
-
-	private <T extends GuiButton> T addButton(T p_189646_1_) {
-		this.buttonList.add(p_189646_1_);
-		return (T)p_189646_1_;
-	}
 }

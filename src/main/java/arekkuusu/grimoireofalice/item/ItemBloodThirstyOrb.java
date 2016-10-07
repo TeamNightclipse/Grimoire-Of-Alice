@@ -65,20 +65,15 @@ public class ItemBloodThirstyOrb extends ItemMod {
 		}
 	}
 
-	private void moveToClosestPlayer(World worldIn, EntityPlayer player){
-		List<Entity> entities = worldIn.getEntitiesWithinAABBExcludingEntity(player, new AxisAlignedBB(player.getPosition()).expandXyz(30));
-		if(!entities.isEmpty()) {
-			for (Entity entity : entities){
-				if(entity instanceof EntityPlayer) {
-					int x = (int) (entity.posX + 0.5);
-					int y = (int) entity.posY;
-					int z = (int) (entity.posZ + 0.5);
-					player.setPosition(x, y, z);
-					player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-							SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-					break;
-				}
-			}
+	private void moveToClosestPlayer(World worldIn, EntityPlayer player) {
+		EntityPlayer closest = worldIn.getClosestPlayerToEntity(player, 30D);
+		if(closest != null) {
+			int x = (int) (closest.posX + 0.5);
+			int y = (int) closest.posY;
+			int z = (int) (closest.posZ + 0.5);
+			player.setPosition(x, y, z);
+			player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
+					SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
 	}
 
@@ -92,19 +87,18 @@ public class ItemBloodThirstyOrb extends ItemMod {
 			vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
 		}
 		EntityLivingBase entity = null;
-		List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D));
+		List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox()
+				.addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D), foundEntity -> foundEntity != player);
 		double d = 0.0D;
-		for (Entity entity1 : list) {
-			if (entity1 instanceof EntityLivingBase) {
-				float f2 = 0.3F;
-				AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
-				RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
-				if (movingObjectPosition1 != null) {
-					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if (d1 < d || d == 0.0D) {
-						entity = (EntityLivingBase) entity1;
-						d = d1;
-					}
+		for (EntityLivingBase entity1 : list) {
+			float f2 = 0.3F;
+			AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expand(f2, f2, f2);
+			RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+			if (movingObjectPosition1 != null) {
+				double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
+				if (d1 < d || d == 0.0D) {
+					entity = entity1;
+					d = d1;
 				}
 			}
 		}

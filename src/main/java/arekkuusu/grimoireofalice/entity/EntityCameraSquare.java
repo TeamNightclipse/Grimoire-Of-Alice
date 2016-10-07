@@ -21,25 +21,17 @@ public class EntityCameraSquare extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(player == null){
-			if(!worldObj.isRemote) setDead();
-		} else if(!player.isHandActive() || player.isDead){
-			if(!worldObj.isRemote) setDead();
+		if(!worldObj.isRemote && (player == null || !player.isHandActive() || player.isDead)) {
+			setDead();
 		}
 	}
 
 	@Override
-	protected void entityInit() {
-
-	}
+	protected void entityInit() {}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 }

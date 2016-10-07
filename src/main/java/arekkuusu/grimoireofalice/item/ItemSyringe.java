@@ -49,7 +49,7 @@ public class ItemSyringe extends ItemModSword {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (!worldIn.isRemote) { // Are potions supposed to be Remote or not?
+		if (!worldIn.isRemote) {
 			Potion potion = getRandomPotion(playerIn.getRNG());
 			if(potion != null) {
 				playerIn.attackEntityFrom(DamageSource.generic, 3F);
@@ -73,7 +73,7 @@ public class ItemSyringe extends ItemModSword {
 	}
 
 	@Nullable
-	public Potion getRandomPotion(Random rand){
+	private Potion getRandomPotion(Random rand){
 		return Potion.REGISTRY.getRandomObject(rand);
 	}
 

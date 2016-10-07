@@ -10,15 +10,15 @@ import net.minecraft.entity.Entity;
  */
 public class ModelNazrinPendulum extends ModelBase {
 
-	public ModelRenderer shape1;
-	public ModelRenderer shape1_1;
-	public ModelRenderer shape1_2;
-	public ModelRenderer shape1_3;
-	public ModelRenderer shape5;
-	public ModelRenderer shape5_1;
-	public ModelRenderer shape5_2;
-	public ModelRenderer shape5_3;
-	public ModelRenderer shape10;
+	private final ModelRenderer shape1;
+	private final ModelRenderer shape1_1;
+	private final ModelRenderer shape1_2;
+	private final ModelRenderer shape1_3;
+	private final ModelRenderer shape5;
+	private final ModelRenderer shape5_1;
+	private final ModelRenderer shape5_2;
+	private final ModelRenderer shape5_3;
+	private final ModelRenderer shape10;
 
 	public ModelNazrinPendulum() {
 		this.textureWidth = 128;
@@ -76,7 +76,7 @@ public class ModelNazrinPendulum extends ModelBase {
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+	private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;

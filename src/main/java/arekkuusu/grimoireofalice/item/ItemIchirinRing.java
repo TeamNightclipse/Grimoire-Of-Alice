@@ -78,7 +78,7 @@ public class ItemIchirinRing extends ItemModSword {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (!worldIn.isRemote && isWearingUnzan(playerIn)) { //FIXME: Entity renders for a second, then it vanishes... Something is wrong somewhere
+			if (!worldIn.isRemote && isWearingUnzan(playerIn)) {
 				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
 				fist.setHeadingFromThrower(playerIn, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0F, 1.0F, 0);
 				Vec3d look = playerIn.getLookVec();

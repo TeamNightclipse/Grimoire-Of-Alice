@@ -41,7 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHolyStone extends BlockMod {
 	
-	protected static final AxisAlignedBB SMALL = new AxisAlignedBB(0.1875F, 0.1875F, 0.1875F, 1F - 0.1875F, 1F - 0.1875F, 1F - 0.1875F);
+	private static final AxisAlignedBB SMALL = new AxisAlignedBB(0.1875F, 0.1875F, 0.1875F, 1F - 0.1875F, 1F - 0.1875F, 1F - 0.1875F);
 
 	BlockHolyStone() {
 		super(LibBlockName.HOLYSTONE,Material.ROCK);
@@ -87,11 +87,11 @@ public class BlockHolyStone extends BlockMod {
 
 	protected void ifNear(World world, BlockPos pos) {
 		if(world.isRemote) {
-			double yus1 = pos.getX() + world.rand.nextFloat();
-			double yus3 = pos.getY() + world.rand.nextFloat();
-			double yus5 = pos.getZ() + world.rand.nextFloat();
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
-			world.spawnParticle(EnumParticleTypes.FLAME, yus1, yus3, yus5, 0.0D, 0.0D, 0.0D);
+			float randX = pos.getX() + world.rand.nextFloat();
+			float randY = pos.getY() + world.rand.nextFloat();
+			float randZ = pos.getZ() + world.rand.nextFloat();
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
+			world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
 		}
 	}
 

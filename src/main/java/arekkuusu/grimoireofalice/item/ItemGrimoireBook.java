@@ -44,7 +44,6 @@ public class ItemGrimoireBook extends ItemMod {
 		return EnumRarity.EPIC;
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -65,13 +64,11 @@ public class ItemGrimoireBook extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
-				EntityGrimoireSpell circle = new EntityGrimoireSpell(worldIn, player, 500);
-				worldIn.spawnEntityInWorld(circle);
-				player.getCooldownTracker().setCooldown(this, 500);
-			}
+		if(!worldIn.isRemote && entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityGrimoireSpell circle = new EntityGrimoireSpell(worldIn, player, 500);
+			worldIn.spawnEntityInWorld(circle);
+			player.getCooldownTracker().setCooldown(this, 500);
 		}
 	}
 

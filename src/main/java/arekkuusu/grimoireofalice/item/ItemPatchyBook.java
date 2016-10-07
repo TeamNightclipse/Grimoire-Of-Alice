@@ -52,7 +52,7 @@ public class ItemPatchyBook extends ItemMod {
 		if(worldIn.isRemote) {
 			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override

@@ -44,6 +44,7 @@ public class ItemMiracleMallet extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode) {
+			//TODO: Set boundingBox too
 			if (!playerIn.getEntityData().hasKey("MalletResized")) {
 				float size = playerIn.isSneaking() ? 0.5F : 1.5F;
 				playerIn.getEntityData().setFloat("MalletResized", size);

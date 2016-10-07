@@ -6,7 +6,7 @@
     "overrides": [
         {
             "predicate": {
-                "playing": 1
+                "cooldown": 0.01
             },
             "model": "grimoireofalice:item/foldingumbrella0"
         }

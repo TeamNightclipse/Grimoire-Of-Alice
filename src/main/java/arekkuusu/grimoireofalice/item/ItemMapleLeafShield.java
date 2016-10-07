@@ -51,7 +51,7 @@ public class ItemMapleLeafShield extends ItemModShield {
 			if (!worldIn.isRemote) {
 				entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 				entityLiving.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, 0));
-			stack.damageItem(1, entityLiving);
+				stack.damageItem(1, entityLiving);
 			}
 		}
 	}

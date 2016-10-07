@@ -68,7 +68,6 @@ public class ItemNazrinStick extends ItemModSword {
 
 	/* In short, I made the Item only work when you
 	 * put the two Nazrin Items in the OFF_HAND and MAIN_HAND.*/
-	
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
 		if(facing == EnumFacing.UP && !world.isRemote && isHoldingItemsBothHands(player)){

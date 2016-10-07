@@ -15,15 +15,15 @@ import net.minecraft.entity.Entity;
 public class ModelKokorosMasks extends ModelBiped {
 
 	//fields
-	private ModelRenderer Mask1;
-	private ModelRenderer Mask2;
-	private ModelRenderer Mask3;
-	private ModelRenderer Mask4;
-	private ModelRenderer Mask5;
-	private ModelRenderer Mask6;
-	private ModelRenderer Mask7;
-	private ModelRenderer Mask8;
-	private ModelRenderer Mask9;
+	private final ModelRenderer Mask1;
+	private final ModelRenderer Mask2;
+	private final ModelRenderer Mask3;
+	private final ModelRenderer Mask4;
+	private final ModelRenderer Mask5;
+	private final ModelRenderer Mask6;
+	private final ModelRenderer Mask7;
+	private final ModelRenderer Mask8;
+	private final ModelRenderer Mask9;
 
 	public ModelKokorosMasks() {
 		textureWidth = 256;

@@ -59,6 +59,7 @@ public class ItemWingsUtsuho extends ItemModAura {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
 		ModelMokouAura aura = new ModelMokouAura();
 		aura.setModelAttributes(_default);
