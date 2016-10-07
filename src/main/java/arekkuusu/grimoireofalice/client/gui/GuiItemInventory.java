@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.client.gui;
 
 import arekkuusu.grimoireofalice.lib.LibMod;
-import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.SpellCardContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

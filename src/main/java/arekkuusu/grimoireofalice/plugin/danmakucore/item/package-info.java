@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package arekkuusu.grimoireofalice.plugin.touhou;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

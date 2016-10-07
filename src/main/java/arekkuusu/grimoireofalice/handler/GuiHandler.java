@@ -12,7 +12,7 @@ import arekkuusu.grimoireofalice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.item.ModItems;
-import arekkuusu.grimoireofalice.plugin.touhou.SpellCardContainer;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.SpellCardContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;

@@ -12,7 +12,7 @@ import arekkuusu.grimoireofalice.item.auras.*;
 import arekkuusu.grimoireofalice.item.food.*;
 import arekkuusu.grimoireofalice.item.masks.*;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.plugin.touhou.ItemSpellCardPouch;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;

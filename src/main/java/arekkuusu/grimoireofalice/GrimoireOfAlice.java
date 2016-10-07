@@ -28,11 +28,11 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
-@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER)
+@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "after:danmakucore")
 public class GrimoireOfAlice {
 
 	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab();
-	public static boolean tohouInstalled; 
+	public static boolean danmakuCoreInstalled;
 	
 	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
@@ -42,7 +42,8 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		tohouInstalled = Loader.isModLoaded("KatrixTouhouMod");
+		danmakuCoreInstalled = Loader.isModLoaded("danamkucore");
+
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
 		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
@@ -52,7 +53,7 @@ public class GrimoireOfAlice {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		if(tohouInstalled){
+		if(danmakuCoreInstalled){
 			LogHelper.info("is 42");
 		} else {
 			LogHelper.info("is her");
