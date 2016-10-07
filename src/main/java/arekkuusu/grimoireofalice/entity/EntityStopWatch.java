@@ -3,11 +3,14 @@ package arekkuusu.grimoireofalice.entity;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -51,7 +54,7 @@ public class EntityStopWatch extends Entity {
 			Vec3d look = user.getLookVec();
 			float distance = 1F;
 			double dx = user.posX + (look.xCoord * distance);
-			double dy = user.posY + user.getEyeHeight() - 0.5;
+			double dy = user.posY + user.getEyeHeight() - 1;
 			double dz = user.posZ + (look.zCoord * distance);
 			setPosition(dx, dy, dz);
 
@@ -82,9 +85,12 @@ public class EntityStopWatch extends Entity {
 	}
 
 	private void inRange(Entity entity) {
-		if (entity instanceof EntityStopWatch) {
+		if (entity instanceof EntityStopWatch
+				|| entity instanceof  EntityCameraSquare
+				|| entity instanceof EntityMagicCircle
+				|| entity instanceof EntityGrimoireSpell) {
 			return;
-		} //If entity is a Watch it wont be affected
+		}
 		if(!worldObj.isRemote) {
 			if (entity instanceof EntityPlayerMP) {
 				if (!players.isEmpty() && players.contains(entity.getUniqueID())) { //If the player is in the list, it wont be affected
@@ -112,6 +118,11 @@ public class EntityStopWatch extends Entity {
 			entity.setAir(0);
 			entity.ticksExisted--;
 			entity.fallDistance = 0;
+			if(entity instanceof EntityThrowable){
+				++((EntityThrowable)entity).throwableShake;
+			} else if(entity instanceof EntityArrow){
+				++((EntityArrow)entity).arrowShake;
+			}
 			if (entity instanceof EntityLivingBase) {
 				EntityLivingBase living = (EntityLivingBase) entity;
 				living.rotationYawHead = living.prevRotationYawHead;

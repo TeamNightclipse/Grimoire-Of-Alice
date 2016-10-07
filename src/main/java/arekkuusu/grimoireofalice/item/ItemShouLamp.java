@@ -88,7 +88,7 @@ public class ItemShouLamp extends ItemMod {
 				for (EntityMob mob : list){
 					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 					if(!mob.worldObj.isRemote) {
-						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.BLUE_STAR_SMALL, 125);
+						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.GOLD_STAR_SMALL, 125);
 						worldIn.spawnEntityInWorld(circle);
 					}
 				}

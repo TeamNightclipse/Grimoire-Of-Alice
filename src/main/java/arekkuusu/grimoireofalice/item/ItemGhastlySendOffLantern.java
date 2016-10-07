@@ -50,7 +50,10 @@ public class ItemGhastlySendOffLantern extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			player.getCooldownTracker().setCooldown(this, 100);
+			player.getCooldownTracker().setCooldown(this, 50);
+			if(!player.capabilities.isCreativeMode) {
+				--stack.stackSize;
+			}
 		}
 	}
 

@@ -59,7 +59,7 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 		Vec3d look = playerIn.getLookVec();
 		float distance = 40F;
 		double dx = playerIn.posX + (look.xCoord * distance);
-		double dy = playerIn.posY + playerIn.getEyeHeight();
+		double dy = playerIn.posY + 1 + (look.yCoord * distance);
 		double dz = playerIn.posZ + (look.zCoord * distance);
 		if(isSafe(worldIn, dx, dy, dz)) {
 			playerIn.setPosition(dx, dy, dz);

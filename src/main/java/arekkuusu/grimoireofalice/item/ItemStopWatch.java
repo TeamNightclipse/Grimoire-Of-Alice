@@ -61,7 +61,7 @@ public class ItemStopWatch extends ItemMod {
 				Vec3d look = player.getLookVec();
 				float distance = 1F;
 				double dx = player.posX + (look.xCoord);
-				double dy = player.posY + player.getEyeHeight() - 0.5;
+				double dy = player.posY + player.getEyeHeight() - 1;
 				double dz = player.posZ + (look.zCoord * distance);
 				watch.setPosition(dx, dy, dz);
 				worldIn.spawnEntityInWorld(watch);

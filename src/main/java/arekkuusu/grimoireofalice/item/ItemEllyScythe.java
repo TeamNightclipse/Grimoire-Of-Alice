@@ -12,6 +12,8 @@ import java.util.List;
 
 //import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -89,41 +91,46 @@ public class ItemEllyScythe extends ItemModSword {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
+			if(player.isSneaking()) {
+				int duration = getMaxItemUseDuration(stack) - timeLeft;
+				float durationSeconds = duration / 20F;
+				//TODO: What does this do?
+				durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
+				if (durationSeconds < 0.1F) return;
 
-			int duration = getMaxItemUseDuration(stack) - timeLeft;
-			float durationSeconds = duration / 20F;
-			//TODO: What does this do?
-			durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
-			if (durationSeconds < 0.1F) return;
-
-			boolean critical = false;
-			if (durationSeconds > 1.5F) {
-				durationSeconds = 1.5F;
-				critical = true;
-			}
-			durationSeconds *= 1.5F;
-
-			worldIn.playSound(player, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
-					0.6F, 1.0F / (2F * 0.4F + 1.0F));
-			if(!worldIn.isRemote) {
-				EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
-				scythe.setCritical(critical);
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
-					scythe.setFire(100);
+				boolean critical = false;
+				if (durationSeconds > 1.5F) {
+					durationSeconds = 1.5F;
+					critical = true;
 				}
-				Vec3d look = player.getLookVec();
-				float distance = 1.5F;
-				double dx = player.posX + (look.xCoord * distance);
-				double dz = player.posZ + (look.zCoord * distance);
-				scythe.setPosition(dx, player.posY + 1.5, dz);
-				worldIn.spawnEntityInWorld(scythe);
-			}
+				durationSeconds *= 1.5F;
 
-			if (!player.capabilities.isCreativeMode) {
-				if (--stack.stackSize == 0) {
-					stack = null;
+				worldIn.playSound(player, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
+						0.6F, 1.0F / (2F * 0.4F + 1.0F));
+				if (!worldIn.isRemote) {
+					EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
+					scythe.setCritical(critical);
+					if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
+						scythe.setFire(100);
+					}
+					Vec3d look = player.getLookVec();
+					float distance = 1.5F;
+					double dx = player.posX + (look.xCoord * distance);
+					double dz = player.posZ + (look.zCoord * distance);
+					scythe.setPosition(dx, player.posY + 1.5, dz);
+					worldIn.spawnEntityInWorld(scythe);
 				}
-				player.inventory.mainInventory[player.inventory.currentItem] = stack;
+
+				if (!player.capabilities.isCreativeMode) {
+					if (--stack.stackSize == 0) {
+						stack = null;
+					}
+					player.inventory.mainInventory[player.inventory.currentItem] = stack;
+				}
+			} else if(!worldIn.isRemote){
+				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, 50);
+				worldIn.spawnEntityInWorld(circle);
+				player.getCooldownTracker().setCooldown(this, 50);
 			}
 		}
 	}

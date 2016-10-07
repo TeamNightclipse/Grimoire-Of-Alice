@@ -73,12 +73,11 @@ public class ItemLaevatein extends ItemModSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.capabilities.isCreativeMode || playerIn.experienceLevel > 30) {
+			worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
+					SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
-
-					worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
-							SoundEvents.ENTITY_GHAST_SCREAM, SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
 					Vec3d look = playerIn.getLookVec();
 					Vec3d position = new Vec3d(playerIn.posX, playerIn.posY, playerIn.posZ);
 					Vec3d fireBallPos = new Vec3d(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);

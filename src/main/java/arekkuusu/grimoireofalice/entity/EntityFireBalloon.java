@@ -15,9 +15,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-/**
- * A fireball entity that doesn't destroy blocks
- */
+//TODO: Replace with Spellcard once avaliable
 public class EntityFireBalloon extends EntityFireball {
 
 	public EntityFireBalloon(World world) {

@@ -47,7 +47,7 @@ public class EntityNote extends EntityThrowable {
 	public void onUpdate() {
 		super.onUpdate();
 		worldObj.spawnParticle(EnumParticleTypes.NOTE, posX + 0.5, posY, posZ + 0.5, 0.0D, 0.0D, 0.0D);
-		if (rand.nextInt(8) == 4) {
+		if (rand.nextInt(10) == 5) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
 		}
 		int timeLive = 50;

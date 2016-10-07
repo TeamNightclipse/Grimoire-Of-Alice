@@ -13,6 +13,7 @@ import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.entity.*;
+import arekkuusu.grimoireofalice.event.MalletEvent;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -20,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -32,6 +34,7 @@ public class ClientProxy extends CommonProxy{
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 		initRenderers();
+		MinecraftForge.EVENT_BUS.register(new MalletEvent());
 	}
 	
 	@Override

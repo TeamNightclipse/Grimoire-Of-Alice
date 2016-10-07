@@ -76,6 +76,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	@Override // Why hit the entity if its going to dye anyway? :p
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+		player.attackEntityFrom(DamageSource.magic, 9999);
 		entity.attackEntityFrom(DamageSource.magic, 9999);
 		return false;
 	}

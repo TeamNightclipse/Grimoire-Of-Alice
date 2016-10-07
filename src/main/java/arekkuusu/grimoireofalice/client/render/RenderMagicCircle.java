@@ -25,8 +25,7 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_2.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_3.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png"),
-			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_5.png"),
-			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_6.png")};
+			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_5.png")};
 	private static final ModelBase MODEL = new ModelFlatTexture();
 
 	public RenderMagicCircle(RenderManager renderManager) {

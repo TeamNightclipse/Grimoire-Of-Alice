@@ -44,7 +44,7 @@ public class EntityWind extends EntityThrowable {
 				setDead();
 			}
 		}
-        if (rand.nextInt(4) == 2) {
+        if (ticksExisted % 4 == 0) {
             worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX, posY, posZ, 0.0D, 0.0D, 0.0D);
             worldObj.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.5F, 1F);
         }

@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_0.png");
 	private final RenderItem renderItem;
 	private static final ModelBase MODEL = new ModelFlatTexture();
 
@@ -41,6 +41,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		bindEntityTexture(entity);
 		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);
 		GlStateManager.disableLighting();
+		GlStateManager.enableBlend();
 		float size = 6.0F;
 		GlStateManager.scale(size, size, size);
 		float angle = 90;
@@ -50,6 +51,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		this.bindTexture(TEXTURE);
 		GlStateManager.rotate(angle * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}

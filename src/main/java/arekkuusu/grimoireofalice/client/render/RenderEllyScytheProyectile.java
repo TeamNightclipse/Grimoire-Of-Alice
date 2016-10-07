@@ -38,7 +38,8 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 		GlStateManager.translate(x, y, z);
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.scale(4F, 4F, 4F);
-		GlStateManager.rotate(90, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(180, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(90, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(ellyScythe.ticksExisted * 16, 0.0F, 0.0F, 1.0F);
 		renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
 		GlStateManager.disableRescaleNormal();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -42,16 +43,48 @@ public class ItemMiracleMallet extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isRemote && (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode)) {
-			List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(playerIn, playerIn.getEntityBoundingBox().expandXyz(20.0D));
-			if(!list.isEmpty())
-				for(Entity ent : list){
-
+		if (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode) {
+			if (!playerIn.getEntityData().hasKey("MalletResized")) {
+				float size = playerIn.isSneaking() ? 0.5F : 1.5F;
+				playerIn.getEntityData().setFloat("MalletResized", size);
+			} else {
+				float size = playerIn.getEntityData().getFloat("MalletResized");
+				if (playerIn.isSneaking()) {
+					size -= 0.5;
+				} else {
+					size += 0.5;
 				}
+				playerIn.getEntityData().setFloat("MalletResized", size);
+			}
 		}
 		playerIn.swingArm(hand);
 		playerIn.getCooldownTracker().setCooldown(this, 50);
+		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	}
+
+	@Override
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+		if (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode) {
+			if (!target.getEntityData().hasKey("MalletResized")) {
+				float mode = playerIn.isSneaking() ? 0.5F : 1.5F;
+				target.getEntityData().setFloat("MalletResized", mode);
+			} else {
+				float size = target.getEntityData().getFloat("MalletResized");
+				if (playerIn.isSneaking()) {
+					size -= 0.25F;
+				} else {
+					size += 0.25F;
+				}
+				if(size <= 0){size = 0.25F;}
+				if(size > 2){size = 2.0F;}
+				target.getEntityData().setFloat("MalletResized", size);
+			}
+		}
+		playerIn.swingArm(hand);
+		playerIn.getCooldownTracker().setCooldown(this, 50);
+		playerIn.setActiveHand(hand);
+		return true;
 	}
 
 	@Override
