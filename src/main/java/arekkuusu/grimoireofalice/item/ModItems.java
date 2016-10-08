@@ -13,6 +13,8 @@ import arekkuusu.grimoireofalice.item.auras.*;
 import arekkuusu.grimoireofalice.item.food.*;
 import arekkuusu.grimoireofalice.item.masks.*;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemEllyScythe;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemJeweledHourai;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSwordOfHisou;
 import net.minecraft.init.SoundEvents;
@@ -170,7 +172,6 @@ public final class ModItems {
 		shouLamp = new ItemShouLamp();
 		patchyBook = new ItemPatchyBook();
 		skull = new ItemSkull();
-        pouch = new ItemSpellCardPouch();
         windStick = new ItemTenguFan();
         nazrinPendulum = new ItemNazrinPendulum();
 		ghostDipper = new ItemGhostDipper();
@@ -239,7 +240,6 @@ public final class ModItems {
 		nazrinStickB = new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRINSTICKB);
 		nueTrident = new ItemNueTrident(WET_NOODLE);
 		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
-		ellyScythe = new ItemEllyScythe(WET_NOODLE);
 		syringe = new ItemSyringe(NOT_A_MELEE_WEAPON);
 		ichirinRing = new ItemIchirinRing(NOT_A_MELEE_WEAPON);
 		kanakoOnbashira = new ItemOnbashira(WET_NOODLE);
@@ -256,6 +256,8 @@ public final class ModItems {
 		roukanken = new ItemSwordRoukanken(WET_NOODLE);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			pouch = new ItemSpellCardPouch();
+			ellyScythe = new ItemEllyScythe(WET_NOODLE);
 			hisou = new ItemSwordOfHisou(GOLDYRON);
 		}
 	}

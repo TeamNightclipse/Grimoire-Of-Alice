@@ -6,11 +6,15 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +43,7 @@ public class ItemJeweledHourai extends ItemMod {
 	private static final Item[] JEWELS =
 			{Items.DIAMOND, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
 
-	ItemJeweledHourai() {
+	public ItemJeweledHourai() {
 		super(LibItemName.JEWELEDHOURAI);
 		setNoRepair();
 		setMaxStackSize(1);
@@ -93,6 +97,12 @@ public class ItemJeweledHourai extends ItemMod {
 		if(!worldIn.isRemote) {
 			if(entityLiving.isSneaking()) {
 				if (getJewels(stack) >= 1) {
+					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
+					if(timeUsed > 15){timeUsed = 15;}
+					DanmakuBuilder danmaku = DanmakuBuilder.builder()
+							.setUser(entityLiving)
+							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(LibShotData.COLOR_SATURATED_MAGENTA)).build();
+					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4, 1);
 					addJewels(stack, -1);
 				}
 			} else {

@@ -96,7 +96,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
 		registerItem(ModItems.skull, 0);
-		registerItem(ModItems.pouch, 0);
         registerItem(ModItems.windStick, 0);
         registerItem(ModItems.nazrinPendulum, 0);
 		registerItem(ModItems.wallPassingchisel, 0);
@@ -145,7 +144,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.nazrinStickB, 0);
 		registerItem(ModItems.nueTrident, 0);
 		registerItem(ModItems.swordOfKusanagi, 0);
-		registerItem(ModItems.ellyScythe, 0);
 		registerItem(ModItems.syringe, 0);
 		registerItem(ModItems.ichirinRing, 0);
 		registerItem(ModItems.kanakoOnbashira, 0);
@@ -158,7 +156,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.watermelonSword, 0);
 		registerItem(ModItems.sacredToyosatomimi, 0);
 		registerItem(ModItems.needle, 0);
-		registerItem(ModItems.hisou, 0);
 		registerItem(ModItems.deathScythe, 0);
 		registerItem(ModItems.roukanken, 0);
 		
@@ -175,6 +172,12 @@ public class ClientProxy extends CommonProxy{
 		registerBlockWithColorTypes(ModBlocks.shroom, 16);
 		registerBlock(ModBlocks.sugarBlock, 0);
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
+
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			registerItem(ModItems.pouch, 0);
+			registerItem(ModItems.ellyScythe, 0);
+			registerItem(ModItems.hisou, 0);
+		}
 		
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);

@@ -121,7 +121,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibShotData.COLOR_SATURATED_RED))
 								.build();
 
-						DanmakuCreationHelper.createRandomRingShot(danmaku, 10 + itemRand.nextInt(5), 45F, 0.5D);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 15 + itemRand.nextInt(5), 45F, 0.5D);
 					}
 				}
 			}

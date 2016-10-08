@@ -6,15 +6,21 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
+import java.util.Random;
 
-//import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
 import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
+import arekkuusu.grimoireofalice.item.ItemModSword;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.katsstuff.danmakucore.data.AbstractVector3;
+import net.katsstuff.danmakucore.data.Vector3;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,6 +38,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -40,7 +47,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemEllyScythe extends ItemModSword {
 
-	ItemEllyScythe(ToolMaterial material) {
+	public ItemEllyScythe(ToolMaterial material) {
 		super(material, LibItemName.ELLYSCYTHE);
 		setNoRepair();
 	}
@@ -128,11 +135,38 @@ public class ItemEllyScythe extends ItemModSword {
 					player.inventory.mainInventory[player.inventory.currentItem] = stack;
 				}
 			} else if(!worldIn.isRemote){
+				for(int i = 0; i < 25; i++) {
+					spawnGroundDanmaku(player);
+				}
 				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, 50);
 				worldIn.spawnEntityInWorld(circle);
 				player.getCooldownTracker().setCooldown(this, 50);
 			}
 		}
+	}
+
+	//Taken from DanmakuCore in SpellcardEntityDelusionEnlightenment
+	private void spawnGroundDanmaku(EntityPlayer player) {
+		AbstractVector3 angle = Vector3.getVecWithoutY(Vector3.randomVector());
+		Random random = new Random();
+		Vector3 posSource = new Vector3(player).offset(angle, random.nextDouble() * 16);
+		Vector3 posReach = posSource.offset(Vector3.Down(), 16);
+
+		RayTraceResult ray = player.worldObj.rayTraceBlocks(posSource.toVec3d(), posReach.toVec3d());
+
+		Vector3 spawnPos = ray != null ?
+				new Vector3(ray.hitVec) :
+				posReach;
+
+		EntityDanmaku danmaku = DanmakuBuilder.builder()
+				.setUser(player)
+				.setAngle(Vector3.Up())
+				.setMovementData(0.2D)
+				.setPos(spawnPos)
+				.setShot(LibShotData.SHOT_SCALE.setColor(LibShotData.COLOR_SATURATED_RED))
+				.build().asEntity();
+
+		player.worldObj.spawnEntityInWorld(danmaku);
 	}
 
 	@Override
