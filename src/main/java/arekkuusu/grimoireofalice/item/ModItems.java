@@ -178,7 +178,6 @@ public final class ModItems {
 		wallPassingchisel = new ItemWallPassingChisel();
 		miracleMallet = new ItemMiracleMallet();
 		rodRemorse = new ItemRodOfRemorse();
-		jeweledHourai = new ItemJeweledHourai();
 		budahBoul = new ItemBudahBoul(Item.ToolMaterial.DIAMOND);
 		dragonJewel = new ItemDragonJewel();
 		bloodOrb = new ItemBloodThirstyOrb();
@@ -256,6 +255,7 @@ public final class ModItems {
 		roukanken = new ItemSwordRoukanken(WET_NOODLE);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			jeweledHourai = new ItemJeweledHourai();
 			pouch = new ItemSpellCardPouch();
 			ellyScythe = new ItemEllyScythe(WET_NOODLE);
 			hisou = new ItemSwordOfHisou(GOLDYRON);

@@ -99,7 +99,9 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.wallPassingchisel);
 		addItem(ModItems.miracleMallet);
 		addItem(ModItems.rodRemorse);
-		addItem(ModItems.jeweledHourai);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.jeweledHourai);
+		}
 		addItem(ModItems.budahBoul);
 		addItem(ModItems.dragonJewel);
 		addItem(ModItems.bloodOrb);

@@ -119,8 +119,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.lunasaViolin, 0);
 		registerItem(ModItems.lyricaPiano, 0);
 		registerItem(ModItems.merlinTrumpet, 0);
-
-		registerItem(ModItems.jeweledHourai, 0);
 		
 		//Food
 		registerItemWithTypes(ModItems.shroomSlice, 17);
@@ -174,6 +172,7 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			registerItem(ModItems.jeweledHourai, 0);
 			registerItem(ModItems.pouch, 0);
 			registerItem(ModItems.ellyScythe, 0);
 			registerItem(ModItems.hisou, 0);

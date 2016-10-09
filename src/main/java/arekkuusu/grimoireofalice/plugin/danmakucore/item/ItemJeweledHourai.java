@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
+import java.util.Random;
 
 import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -99,9 +100,15 @@ public class ItemJeweledHourai extends ItemMod {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 15){timeUsed = 15;}
+					int num = new Random().nextInt(7);
+					int color = num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
+							: num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
+							: num == 0 ? LibShotData.COLOR_SATURATED_MAGENTA
+							: num == 0 ? LibShotData.COLOR_SATURATED_RED
+							: LibShotData.COLOR_SATURATED_BLUE;
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)
-							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(LibShotData.COLOR_SATURATED_MAGENTA)).build();
+							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color)).build();
 					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4, 1);
 					addJewels(stack, -1);
 				}
