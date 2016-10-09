@@ -104,7 +104,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
 				if (isOwner(stack, player)) {
-					if (timeUsed < 50 && timeUsed > 10) {
+					if (timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 						if (!list.isEmpty()) {
 							int count = 0;
@@ -115,13 +115,13 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}
-					} else if (timeUsed >= 50  && player.isSneaking()) {
+					} else if (timeUsed >= 20  && player.isSneaking()) {
 						DanmakuBuilder danmaku = DanmakuBuilder.builder()
 								.setUser(player)
 								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibShotData.COLOR_SATURATED_RED))
 								.build();
 
-						DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 45F, 0.5D);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 5, 0.5D);
 					}
 				}
 			}

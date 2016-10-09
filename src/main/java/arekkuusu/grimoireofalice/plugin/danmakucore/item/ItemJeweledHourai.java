@@ -99,7 +99,7 @@ public class ItemJeweledHourai extends ItemMod {
 			if(entityLiving.isSneaking()) {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
-					if(timeUsed > 15){timeUsed = 15;}
+					if(timeUsed > 30){timeUsed = 30;}
 					int num = new Random().nextInt(7);
 					int color = num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
 							: num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
