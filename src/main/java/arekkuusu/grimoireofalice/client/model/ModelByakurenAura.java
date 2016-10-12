@@ -12,6 +12,7 @@ public class ModelByakurenAura extends ModelBiped {
 
 	//fields
 	private final ModelRenderer aura;
+	private final ModelRenderer neck;
 
 	public ModelByakurenAura() {
 		textureWidth = 1024;
@@ -20,10 +21,20 @@ public class ModelByakurenAura extends ModelBiped {
 		aura = new ModelRenderer(this, 1024, 512);
 		aura.setRotationPoint(0F, -16F, 10F);
 		aura.addBox(-254F, -153F, 0F, 511, 315, 1);
+		neck = new ModelRenderer(this, 16, 445);
+		neck.setRotationPoint(0.0F, 0.0F, 0.0F);
+		neck.addBox(-16.0F, 0.0F, -8.0F, 32, 48, 16, 0.25F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.aura.render(0.05F);
+		bipedHeadwear.showModel = false;
+		bipedBody.showModel = true;
+
+		bipedBody = this.neck;
+		aura.showModel = entity.isSneaking();
+
+		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, 0.025F);
 	}
 
 	public void setRotationAngles(ModelRenderer modelRenderer, float x, float y, float z) {
@@ -31,5 +42,4 @@ public class ModelByakurenAura extends ModelBiped {
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-
 }

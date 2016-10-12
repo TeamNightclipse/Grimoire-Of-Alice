@@ -117,7 +117,7 @@ tile.shroom.white.name=White Shroom
 tile.shroom.orange.name=Orange Shroom
 tile.shroom.magenta.name=Magenta Shroom
 tile.shroom.lightBlue.name=Light Blue Shroom
-tile.shroom.yellow.name=Very Yellow Shroom
+tile.shroom.yellow.name=Yellow Shroom
 tile.shroom.lime.name=Lime Shroom
 tile.shroom.pink.name=Pink Shroom
 tile.shroom.gray.name=Gray Shroom
@@ -125,10 +125,10 @@ tile.shroom.silver.name=Silver Shroom
 tile.shroom.cyan.name=Cyan Shroom
 tile.shroom.purple.name=Purple Shroom
 tile.shroom.blue.name=Blue Shroom
-tile.shroom.brown.name=Very Brown Shroom
+tile.shroom.brown.name=Brown Shroom
 tile.shroom.green.name=Green Shroom
 tile.shroom.red.name=Red Shroom
-tile.shroom.black.name=Very Black Shroom
+tile.shroom.black.name=Black Shroom
 
 tile.kyoumarubotan.name=Kyoumarubotan
 

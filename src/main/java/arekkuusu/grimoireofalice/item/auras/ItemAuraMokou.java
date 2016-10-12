@@ -21,10 +21,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.client.model.ModelMokouAura;
+import arekkuusu.grimoireofalice.client.model.ModelAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 
@@ -70,20 +69,14 @@ public class ItemAuraMokou extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	@Nullable
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(entityLiving.isSneaking()) {
-			if (model == null) model = new ModelMokouAura();
-			model.setModelAttributes(imodel);
-			return model;
-		}
-		return imodel;
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
+		if (model == null) model = new ModelAura(armorSlot);
+		model.setModelAttributes(imodel);
+		return model;
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(entity.isSneaking()) {
-			return LibMod.MODID + ":textures/models/armor/mokou_aura.png";
-		}
-		return LibMod.MODID + ":textures/models/armor/mokou.png";
-    }
+		return LibMod.MODID + ":textures/models/armor/mokou_aura.png";
+	}
 }

@@ -100,11 +100,11 @@ public class ItemJeweledHourai extends ItemMod {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 30){timeUsed = 30;}
-					int num = new Random().nextInt(7);
+					int num = new Random().nextInt(5);
 					int color = num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
-							: num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
-							: num == 0 ? LibShotData.COLOR_SATURATED_MAGENTA
-							: num == 0 ? LibShotData.COLOR_SATURATED_RED
+							: num == 1 ? LibShotData.COLOR_SATURATED_YELLOW
+							: num == 2 ? LibShotData.COLOR_SATURATED_MAGENTA
+							: num == 3 ? LibShotData.COLOR_SATURATED_RED
 							: LibShotData.COLOR_SATURATED_BLUE;
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)

@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
  */
 public class ModelNazrinPendulum extends ModelBase {
 
+	//TODO: Name these
 	private final ModelRenderer shape1;
 	private final ModelRenderer shape1_1;
 	private final ModelRenderer shape1_2;

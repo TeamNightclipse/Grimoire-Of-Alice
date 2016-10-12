@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.item.auras;
 
-import arekkuusu.grimoireofalice.client.model.ModelMokouAura;
+import arekkuusu.grimoireofalice.client.model.ModelAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
@@ -32,7 +32,7 @@ public class ItemWingsUtsuho extends ItemModAura {
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if (!player.isSneaking()) {
+		if(player.isSneaking()){
 			player.capabilities.allowFlying = true;
 		} else {
 			player.capabilities.allowFlying = false;
@@ -61,7 +61,7 @@ public class ItemWingsUtsuho extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-		ModelMokouAura aura = new ModelMokouAura();
+		ModelAura aura = new ModelAura(armorSlot);
 		aura.setModelAttributes(_default);
 		return aura;
 	}

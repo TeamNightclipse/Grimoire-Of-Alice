@@ -38,20 +38,18 @@ public class ItemAuraIchirin extends ItemModAura {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
         list.add(TextFormatting.DARK_RED + "Cloud Spirit Nyuudou");
-		list.add(TextFormatting.ITALIC + "Grant the user a powerful Nyuudou");
+		list.add(TextFormatting.ITALIC + "Grants the user a powerful Nyuudou");
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-            if (!player.isSneaking()) {
-                player.capabilities.allowFlying = true;
-                player.capabilities.isFlying = true;
-            }
-            else {
-                player.capabilities.allowFlying = false;
-                player.capabilities.isFlying = false;
-            }
-    }
+		if(player.isSneaking()){
+			player.capabilities.allowFlying = true;
+		} else {
+			player.capabilities.allowFlying = false;
+			player.capabilities.isFlying = false;
+		}
+	}
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {

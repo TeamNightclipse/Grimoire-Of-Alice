@@ -74,20 +74,14 @@ public class ItemAuraByakuren extends ItemModAura {
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(entityLiving.isSneaking()) {
-			if (model == null) model = new ModelByakurenAura();
-			model.setModelAttributes(imodel);
-			return model;
-		}
-		return imodel;
+		if (model == null) model = new ModelByakurenAura();
+		model.setModelAttributes(imodel);
+		return model;
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(entity.isSneaking()) {
-			return LibMod.MODID + ":textures/models/armor/byakuren_aura.png";
-		}
-		return LibMod.MODID + ":textures/models/armor/byakuren.png";
+		return LibMod.MODID + ":textures/models/armor/byakuren_aura.png";
     }
 
 }

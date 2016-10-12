@@ -162,60 +162,60 @@ public class ModelCursedDecoyDoll extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 
 		GlStateManager.pushMatrix();
 		//TODO: Cleanup this mess
 		GlStateManager.translate(this.shape36_1.offsetX, this.shape36_1.offsetY, this.shape36_1.offsetZ);
-		GlStateManager.translate(this.shape36_1.rotationPointX * f5, this.shape36_1.rotationPointY * f5, this.shape36_1.rotationPointZ * f5);
+		GlStateManager.translate(this.shape36_1.rotationPointX * scale, this.shape36_1.rotationPointY * scale, this.shape36_1.rotationPointZ * scale);
 		GlStateManager.scale(0.9D, 0.9D, 0.9D);
 		GlStateManager.translate(-this.shape36_1.offsetX, -this.shape36_1.offsetY, -this.shape36_1.offsetZ);
-		GlStateManager.translate(-this.shape36_1.rotationPointX * f5, -this.shape36_1.rotationPointY * f5, -this.shape36_1.rotationPointZ * f5);
+		GlStateManager.translate(-this.shape36_1.rotationPointX * scale, -this.shape36_1.rotationPointY * scale, -this.shape36_1.rotationPointZ * scale);
 
-		this.shape36_1.render(f5);
+		this.shape36_1.render(scale);
 
 		GlStateManager.popMatrix();
 
-		this.shape1_10.render(f5);
-		this.shape1_17.render(f5);
-		this.shape1_8.render(f5);
-		this.shape1_20.render(f5);
-		this.shape1_12.render(f5);
-		this.shape1_23.render(f5);
-		this.shape1_2.render(f5);
-		this.shape1_19.render(f5);
-		this.shape1_21.render(f5);
-		this.shape25_2.render(f5);
-		this.shape1_16.render(f5);
-		this.shape1_18.render(f5);
-		this.shape1_1.render(f5);
-		this.shape1_22.render(f5);
-		this.shape1_14.render(f5);
-		this.shape25_1.render(f5);
-		this.shape1.render(f5);
+		this.shape1_10.render(scale);
+		this.shape1_17.render(scale);
+		this.shape1_8.render(scale);
+		this.shape1_20.render(scale);
+		this.shape1_12.render(scale);
+		this.shape1_23.render(scale);
+		this.shape1_2.render(scale);
+		this.shape1_19.render(scale);
+		this.shape1_21.render(scale);
+		this.shape25_2.render(scale);
+		this.shape1_16.render(scale);
+		this.shape1_18.render(scale);
+		this.shape1_1.render(scale);
+		this.shape1_22.render(scale);
+		this.shape1_14.render(scale);
+		this.shape25_1.render(scale);
+		this.shape1.render(scale);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(this.shape36.offsetX, this.shape36.offsetY, this.shape36.offsetZ);
-		GlStateManager.translate(this.shape36.rotationPointX * f5, this.shape36.rotationPointY * f5, this.shape36.rotationPointZ * f5);
+		GlStateManager.translate(this.shape36.rotationPointX * scale, this.shape36.rotationPointY * scale, this.shape36.rotationPointZ * scale);
 		GlStateManager.scale(0.9D, 0.9D, 0.9D);
 		GlStateManager.translate(-this.shape36.offsetX, -this.shape36.offsetY, -this.shape36.offsetZ);
-		GlStateManager.translate(-this.shape36.rotationPointX * f5, -this.shape36.rotationPointY * f5, -this.shape36.rotationPointZ * f5);
+		GlStateManager.translate(-this.shape36.rotationPointX * scale, -this.shape36.rotationPointY * scale, -this.shape36.rotationPointZ * scale);
 
-		this.shape36.render(f5);
+		this.shape36.render(scale);
 
 		GlStateManager.popMatrix();
 
-		this.shape1_13.render(f5);
-		this.shape25.render(f5);
-		this.shape1_15.render(f5);
-		this.shape1_5.render(f5);
-		this.shape1_4.render(f5);
-		this.shape1_7.render(f5);
-		this.shape1_3.render(f5);
-		this.shape1_6.render(f5);
-		this.shape1_11.render(f5);
-		this.shape1_9.render(f5);
-		this.shape25_3.render(f5);
+		this.shape1_13.render(scale);
+		this.shape25.render(scale);
+		this.shape1_15.render(scale);
+		this.shape1_5.render(scale);
+		this.shape1_4.render(scale);
+		this.shape1_7.render(scale);
+		this.shape1_3.render(scale);
+		this.shape1_6.render(scale);
+		this.shape1_11.render(scale);
+		this.shape1_9.render(scale);
+		this.shape25_3.render(scale);
 	}
 
 	/**

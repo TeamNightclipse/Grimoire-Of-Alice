@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.client.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 
 public class ModelKokorosMasks extends ModelBiped {
@@ -69,6 +70,8 @@ public class ModelKokorosMasks extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(age * 5, 0.0F, 1.0F, 0.0F);
 		this.Mask1.render(scale);
 		this.Mask2.render(scale);
 		this.Mask3.render(scale);
@@ -77,6 +80,7 @@ public class ModelKokorosMasks extends ModelBiped {
 		this.Mask6.render(scale);
 		this.Mask7.render(scale);
 		this.Mask8.render(scale);
+		GlStateManager.popMatrix();
 		this.Mask9.render(scale);
 	}
 

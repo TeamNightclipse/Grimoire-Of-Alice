@@ -43,7 +43,6 @@ public class ModelSuwakoHat extends ModelBiped {
 		this.shape15_3 = new ModelRenderer(this, 0, 32);
 		this.shape15_3.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.shape15_3.addBox(-7.0F, -8.0F, -7.0F, 14, 1, 1, 0.0F);
-		bipedHeadwear.addChild(shape15);
 		this.shape15.addChild(this.shape15_4);
 		this.shape15.addChild(this.shape15_6);
 		this.shape15.addChild(this.shape15_2);
@@ -53,9 +52,10 @@ public class ModelSuwakoHat extends ModelBiped {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		bipedHeadwear.render(f5);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		bipedHeadwear.showModel = false;
+		bipedHead = this.shape15;
+		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}
 
 	/**

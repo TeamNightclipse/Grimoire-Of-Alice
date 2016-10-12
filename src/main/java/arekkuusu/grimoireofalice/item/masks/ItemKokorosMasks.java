@@ -131,7 +131,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		if(!itemStack.hasTagCompound()) return imodel;
-		if(((EntityPlayer)entityLiving).getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if((entityLiving).getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			if (model == null) model = new ModelKokorosMasks();
 			model.setModelAttributes(imodel);
 			return model;
