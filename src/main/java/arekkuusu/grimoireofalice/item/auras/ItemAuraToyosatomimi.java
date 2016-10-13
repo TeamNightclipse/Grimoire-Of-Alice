@@ -33,7 +33,7 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	private ModelBiped model;
 
 	public ItemAuraToyosatomimi(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURATOYOSATOMIMI, EntityEquipmentSlot.HEAD);
+		super(material, dmg, LibItemName.AURA_TOYOSATOMIMI, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override

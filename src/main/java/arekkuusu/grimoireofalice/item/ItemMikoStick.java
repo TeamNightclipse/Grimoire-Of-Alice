@@ -27,8 +27,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMikoStick extends ItemModSword {
 
-	ItemMikoStick(ToolMaterial material) {
-		super(material, LibItemName.MIKOSTICK);
+	public ItemMikoStick(ToolMaterial material) {
+		super(material, LibItemName.MIKO_STICK);
 		setNoRepair();
 	}
 

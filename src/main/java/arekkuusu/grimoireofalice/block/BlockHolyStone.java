@@ -43,7 +43,7 @@ public class BlockHolyStone extends BlockMod {
 	
 	private static final AxisAlignedBB SMALL = new AxisAlignedBB(0.1875F, 0.1875F, 0.1875F, 1F - 0.1875F, 1F - 0.1875F, 1F - 0.1875F);
 
-	BlockHolyStone() {
+	public BlockHolyStone() {
 		super(LibBlockName.HOLYSTONE,Material.ROCK);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);

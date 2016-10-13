@@ -38,7 +38,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemNazrinStick extends ItemModSword {
 
-	ItemNazrinStick(ToolMaterial material, String id) {
+	public ItemNazrinStick(ToolMaterial material, String id) {
 		super(material, id);
 	}
 

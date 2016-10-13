@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemUbaMask extends ItemModMask {
 
 	public ItemUbaMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.UBAMASK);
+		super(material, dmg, LibItemName.UBA_MASK);
 	}
 
 	@Override

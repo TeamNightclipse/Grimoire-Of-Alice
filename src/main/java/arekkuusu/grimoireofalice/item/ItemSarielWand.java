@@ -29,8 +29,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemSarielWand extends ItemSwordOwner {
 
-	ItemSarielWand(ToolMaterial material) {
-		super(material, LibItemName.SARIELWAND);
+	public ItemSarielWand(ToolMaterial material) {
+		super(material, LibItemName.SARIEL_WAND);
 	}
 
 	@Override

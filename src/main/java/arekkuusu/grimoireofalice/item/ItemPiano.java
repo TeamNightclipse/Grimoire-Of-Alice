@@ -30,8 +30,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemPiano extends ItemMod {
 
-	ItemPiano() {
-		super(LibItemName.LYRICAPIANO);
+	public ItemPiano() {
+		super(LibItemName.LYRICA_PIANO);
 		setMaxDamage(500);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->

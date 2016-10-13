@@ -18,7 +18,6 @@ public class ItemModShield extends ItemShield {
 		super();
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 }

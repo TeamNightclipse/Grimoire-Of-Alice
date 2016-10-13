@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -21,8 +20,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemPopsicleStick extends ItemModSword {
 
-	ItemPopsicleStick(ToolMaterial material) {
-		super(material, LibItemName.POPSICLESTICK);
+	public ItemPopsicleStick(ToolMaterial material) {
+		super(material, LibItemName.POPSICLE_STICK);
 	}
 	
 	@Override

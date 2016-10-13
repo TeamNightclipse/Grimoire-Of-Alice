@@ -24,12 +24,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.UUID;
 
 public class ItemGrimoireBook extends ItemMod {
 	
-	ItemGrimoireBook() {
-		super(LibItemName.GRIMOIREBOOK);
+	public ItemGrimoireBook() {
+		super(LibItemName.GRIMOIRE_BOOK);
 		setMaxStackSize(1);
 	}
 

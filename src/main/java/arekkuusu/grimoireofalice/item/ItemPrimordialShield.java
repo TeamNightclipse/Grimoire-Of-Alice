@@ -29,8 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemPrimordialShield extends ItemModShield {
 
-	ItemPrimordialShield() {
-		super(LibItemName.PRIMORDIALSHIELD);
+	public ItemPrimordialShield() {
+		super(LibItemName.PRIMORDIAL_SHIELD);
 		setNoRepair();
 	}
 

@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHolyKeyStone extends BlockMod {
 	
-	BlockHolyKeyStone() {
+	public BlockHolyKeyStone() {
 		super(LibBlockName.HOLYKEY, Material.ROCK);
 		setHardness(2.0F);
 		setHarvestLevel("pickaxe", 1);

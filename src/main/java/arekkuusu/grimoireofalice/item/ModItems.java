@@ -8,257 +8,223 @@
  */
 package arekkuusu.grimoireofalice.item;
 
-import arekkuusu.grimoireofalice.GrimoireOfAlice;
-import arekkuusu.grimoireofalice.item.auras.*;
-import arekkuusu.grimoireofalice.item.food.*;
-import arekkuusu.grimoireofalice.item.masks.*;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemEllyScythe;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemJeweledHourai;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSwordOfHisou;
-import net.minecraft.init.SoundEvents;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.potion.Potion;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
+@ObjectHolder(LibMod.MODID)
 public final class ModItems {
 
-	public static final ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[] {1,2,3,4}, 30, SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0);
-	public static final ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
-	public static final ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
-	public static final ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
-	
 	//Item
-	public static Item grimoireBook;
-	public static Item volatileString;
-	public static Item soldifiedPaper;
-	public static Item gloriousNipponSteel;
-	public static Item shimenawaRope;
-	public static Item youkaiBook;
-	public static Item mask;
-	public static Item hihiirokane;
-	public static Item ibarakiBoxEmpty;
-	public static Item impureRock;
-	public static Item lunasaViolin;
-	public static Item lyricaPiano;
-	public static Item merlinTrumpet;
-	public static Item shouLamp;
-	public static Item patchyBook;
-	public static Item skull;
-	public static Item pouch;
-	public static Item windStick;
-	public static Item nazrinPendulum;
-	public static Item ghostDipper;
-	public static Item wallPassingchisel;
-	public static Item miracleMallet;
-	public static Item rodRemorse;
-	public static Item jeweledHourai;
-	public static Item budahBoul;
-	public static Item dragonJewel;
-	public static Item stopWatch;
+	@ObjectHolder(LibItemName.GRIMOIRE_BOOK)
+	public static final Item grimoireBook = new Item();
+	@ObjectHolder(LibItemName.VOLATILE_STRING)
+	public static final Item volatileString = new Item();
+	@ObjectHolder(LibItemName.SOLDIFIED_PAPER)
+	public static final Item soldifiedPaper = new Item();
+	@ObjectHolder(LibItemName.GLORIOUS_NIPPON_STEEL)
+	public static final Item gloriousNipponSteel = new Item();
+	@ObjectHolder(LibItemName.SHIMENAWA_ROPE)
+	public static final Item shimenawaRope = new Item();
+	@ObjectHolder(LibItemName.YOUKAI_BOOK)
+	public static final Item youkaiBook = new Item();
+	@ObjectHolder(LibItemName.MASK)
+	public static final Item mask = new Item();
+	@ObjectHolder(LibItemName.HIHIIROKANE)
+	public static final Item hihiirokane = new Item();
+	@ObjectHolder(LibItemName.IBARAKI_BOX_EMPTY)
+	public static final Item ibarakiBoxEmpty = new Item();
+	@ObjectHolder(LibItemName.IMPURE_ROCK)
+	public static final Item impureRock = new Item();
+	@ObjectHolder(LibItemName.LUNASA_VIOLIN)
+	public static final Item lunasaViolin = new Item();
+	@ObjectHolder(LibItemName.LYRICA_PIANO)
+	public static final Item lyricaPiano = new Item();
+	@ObjectHolder(LibItemName.MERLIN_TRUMPET)
+	public static final Item merlinTrumpet = new Item();
+	@ObjectHolder(LibItemName.SHOU_LAMP)
+	public static final Item shouLamp = new Item();
+	@ObjectHolder(LibItemName.PATCHY_BOOK)
+	public static final Item patchyBook = new Item();
+	@ObjectHolder(LibItemName.SKULL)
+	public static final Item skull = new Item();
+	@ObjectHolder(LibItemName.POUCH)
+	public static final Item pouch = new Item();
+	@ObjectHolder(LibItemName.TENGU_FAN)
+	public static final Item windStick = new Item();
+	@ObjectHolder(LibItemName.NAZRIN_PENDULUM)
+	public static final Item nazrinPendulum = new Item();
+	@ObjectHolder(LibItemName.GHOST_DIPPER)
+	public static final Item ghostDipper = new Item();
+	@ObjectHolder(LibItemName.WALL_PASSING_CHISEL)
+	public static final Item wallPassingchisel = new Item();
+	@ObjectHolder(LibItemName.MIRACLE_MALLET)
+	public static final Item miracleMallet = new Item();
+	@ObjectHolder(LibItemName.ROD_REMORSE)
+	public static final Item rodRemorse = new Item();
+	@ObjectHolder(LibItemName.JEWELED_HOURAI)
+	public static final Item jeweledHourai = new Item();
+	@ObjectHolder(LibItemName.BUDAH_BOUL)
+	public static final Item budahBoul = new Item();
+	@ObjectHolder(LibItemName.DRAGON_JEWEL)
+	public static final Item dragonJewel = new Item();
+	@ObjectHolder(LibItemName.STOP_WATCH)
+	public static final Item stopWatch = new Item();
 	//Food
-	public static Item shroomSlice;
-	public static Item grilledLamprey;
-	public static Item ibarakiBoxFilled;
-	public static Item kappasNostrum;
-	public static Item heavenlyPeach;
-	public static Item ibukiGourd;
-	public static Item cowrieShell;
-	public static Item orbElixir;
-	public static Item houraiElixir;
-	//Potion
-	public static Potion elixir;
+	@ObjectHolder(LibItemName.SHROOM_SLICE)
+	public static final Item shroomSlice = new Item();
+	@ObjectHolder(LibItemName.GRILLED_LAMPREY)
+	public static final Item grilledLamprey = new Item();
+	@ObjectHolder(LibItemName.IBARAKI_BOX_FILLED)
+	public static final Item ibarakiBoxFilled = new Item();
+	@ObjectHolder(LibItemName.KAPPAS_NOSTRUM)
+	public static final Item kappasNostrum = new Item();
+	@ObjectHolder(LibItemName.HEAVENLY_PEACH)
+	public static final Item heavenlyPeach = new Item();
+	@ObjectHolder(LibItemName.IBUKI_GOURD)
+	public static final Item ibukiGourd = new Item();
+	@ObjectHolder(LibItemName.COWRIE_SHELL)
+	public static final Item cowrieShell = new Item();
+	@ObjectHolder(LibItemName.ORB_ELIXIR)
+	public static final Item orbElixir = new Item();
+	@ObjectHolder(LibItemName.HOURAI_ELIXIR)
+	public static final Item houraiElixir = new Item();
 	//Armor
-	public static Item foxMask;
-	public static Item raidenMask;
-	public static Item monkeyMask;
-	public static Item hyottokoMask;
-	public static Item fukuNoKamiMask;
-	public static Item ubaMask;
-	public static Item hannyaMask;
-	public static Item koomoteMask;
-	public static Item maskOfHope;
-	public static Item kokorosMasks;
-	public static Item primordialShield;
-	public static Item mapleLeafShield;
-	public static Item byakurenAura;
-	public static Item mokouAura;
-	public static Item toyosatomimiAura;
-	public static Item kanakoAura;
-	public static Item ichirinAura;
-	public static Item suwakoHat;
-	public static Item fireRobe;
-	public static Item utsuhoAura;
-	public static Item kappaHat;
+	@ObjectHolder(LibItemName.FOX_MASK)
+	public static final Item foxMask = new Item();
+	@ObjectHolder(LibItemName.RAIDEN_MASK)
+	public static final Item raidenMask = new Item();
+	@ObjectHolder(LibItemName.MONKEY_MASK)
+	public static final Item monkeyMask = new Item();
+	@ObjectHolder(LibItemName.HYOTTOKO_MASK)
+	public static final Item hyottokoMask = new Item();
+	@ObjectHolder(LibItemName.FUKUNOKAMI_MASK)
+	public static final Item fukuNoKamiMask = new Item();
+	@ObjectHolder(LibItemName.UBA_MASK)
+	public static final Item ubaMask = new Item();
+	@ObjectHolder(LibItemName.HANNYA_MASK)
+	public static final Item hannyaMask = new Item();
+	@ObjectHolder(LibItemName.KOOMOTE_MASK)
+	public static final Item koomoteMask = new Item();
+	@ObjectHolder(LibItemName.MASKOF_HOPE)
+	public static final Item maskOfHope = new Item();
+	@ObjectHolder(LibItemName.KOKOROS_MASKS)
+	public static final Item kokorosMasks = new Item();
+	@ObjectHolder(LibItemName.PRIMORDIAL_SHIELD)
+	public static final Item primordialShield = new Item();
+	@ObjectHolder(LibItemName.MAPLE_LEAF_SHIELD)
+	public static final Item mapleLeafShield = new Item();
+	@ObjectHolder(LibItemName.AURA_BYAKUREN)
+	public static final Item byakurenAura = new Item();
+	@ObjectHolder(LibItemName.AURA_MOKOU)
+	public static final Item mokouAura = new Item();
+	@ObjectHolder(LibItemName.AURA_TOYOSATOMIMI)
+	public static final Item toyosatomimiAura = new Item();
+	@ObjectHolder(LibItemName.AURA_KANAKO)
+	public static final Item kanakoAura = new Item();
+	@ObjectHolder(LibItemName.AURA_ICHIRIN)
+	public static final Item ichirinAura = new Item();
+	@ObjectHolder(LibItemName.SUWAKO_HAT)
+	public static final Item suwakoHat = new Item();
+	@ObjectHolder(LibItemName.FIRE_ROBE)
+	public static final Item fireRobe = new Item();
+	@ObjectHolder(LibItemName.AURA_UTSUHO)
+	public static final Item utsuhoAura = new Item();
+	@ObjectHolder(LibItemName.KAPPA_HAT)
+	public static final Item kappaHat = new Item();
 	//Weapons
-	public static Item mochiHammer;
-	public static Item momijisScimitarSword;
-	public static Item laevatein;
-	public static Item nazrinStick;
-	public static Item nazrinStickB;
-	public static Item ellyScythe;
-	public static Item mikoStick;
-	public static Item crestOfYggdrasill;
-	public static Item amenonuhoko;
-	public static Item needle;
-	public static Item nueTrident;
-	public static Item swordOfKusanagi;
-	public static Item syringe;
-	public static Item ichirinRing;
-	public static Item kanakoOnbashira;
-	public static Item shichiSeiken;
-	public static Item cattailPlant;
-	public static Item popsicleStick;
-	public static Item rumiaSword;
-	public static Item sarielWand;
-	public static Item watermelonBlade;
-	public static Item watermelonSword;
-	public static Item sacredToyosatomimi;
-	public static Item hisou;
-	public static Item deathScythe;
-	public static Item roukanken;
+	@ObjectHolder(LibItemName.MOCHI_HAMMER)
+	public static final Item mochiHammer = new Item();
+	@ObjectHolder(LibItemName.MOMIJIS_SCIMITAR_SWORD)
+	public static final Item momijisScimitarSword = new Item();
+	@ObjectHolder(LibItemName.LAEVATEIN)
+	public static final Item laevatein = new Item();
+	@ObjectHolder(LibItemName.NAZRIN_STICK)
+	public static final Item nazrinStick = new Item();
+	@ObjectHolder(LibItemName.NAZRIN_STICKB)
+	public static final Item nazrinStickB = new Item();
+	@ObjectHolder(LibItemName.ELLY_SCYTHE)
+	public static final Item ellyScythe = new Item();
+	@ObjectHolder(LibItemName.MIKO_STICK)
+	public static final Item mikoStick = new Item();
+	@ObjectHolder(LibItemName.CREST_OF_YGGDRASILL)
+	public static final Item crestOfYggdrasill = new Item();
+	@ObjectHolder(LibItemName.AMENONUHOKO)
+	public static final Item amenonuhoko = new Item();
+	@ObjectHolder(LibItemName.NEEDLE)
+	public static final Item needle = new Item();
+	@ObjectHolder(LibItemName.NUE_TRIDENT)
+	public static final Item nueTrident = new Item();
+	@ObjectHolder(LibItemName.SWORD_OF_KUSANAGI)
+	public static final Item swordOfKusanagi = new Item();
+	@ObjectHolder(LibItemName.SYRINGE)
+	public static final Item syringe = new Item();
+	@ObjectHolder(LibItemName.ICHIRIN_RING)
+	public static final Item ichirinRing = new Item();
+	@ObjectHolder(LibItemName.KANAKO_ONBASHIRA)
+	public static final Item kanakoOnbashira = new Item();
+	@ObjectHolder(LibItemName.SHICHI_SEIKEN)
+	public static final Item shichiSeiken = new Item();
+	@ObjectHolder(LibItemName.CATTAIL_PLANT)
+	public static final Item cattailPlant = new Item();
+	@ObjectHolder(LibItemName.POPSICLE_STICK)
+	public static final Item popsicleStick = new Item();
+	@ObjectHolder(LibItemName.RUMIA_SWORD)
+	public static final Item rumiaSword = new Item();
+	@ObjectHolder(LibItemName.SARIEL_WAND)
+	public static final Item sarielWand = new Item();
+	@ObjectHolder(LibItemName.WATERMELON_BLADE)
+	public static final Item watermelonBlade = new Item();
+	@ObjectHolder(LibItemName.WATERMELON_SWORD)
+	public static final Item watermelonSword = new Item();
+	@ObjectHolder(LibItemName.SACRED_TOYOSATOMIMI)
+	public static final Item sacredToyosatomimi = new Item();
+	@ObjectHolder(LibItemName.HISOU)
+	public static final Item hisou = new Item();
+	@ObjectHolder(LibItemName.DEATH_SCYTHE)
+	public static final Item deathScythe = new Item();
+	@ObjectHolder(LibItemName.ROUKANKEN)
+	public static final Item roukanken = new Item();
 	//PointItem
-	public static Item fullPower;
-	public static Item star;
-	public static Item cherry;
-	public static Item timeOrb;
-	public static Item faith;
-	public static Item uFORed;
-	public static Item uFOBlue;
-	public static Item uFOGreen;
-	public static Item uFOs;
-	public static Item thirdEye;
-	public static Item leaf;
-	public static Item bloodOrb;
-	public static Item foldingUmbrella;
-	public static Item substituteJizo;
-	public static Item nimbleFabric;
-	public static Item fakeMiracleMallet;
-	public static Item ghastlySendOffLantern;
-	public static Item cursedDecoyDoll;
-	public static Item ayaCamera;
-	public static Item hatateCamera;
-
-	public static void init() {
-		
-		//Item
-		thirdEye = new Item3rdEye();
-		gloriousNipponSteel = new ItemGloriousNipponSteel();
-		hihiirokane = new ItemHihiirokane();
-		shimenawaRope = new ItemShimenawaRope();
-		timeOrb = new ItemTimeOrb();
-		uFOs = new ItemUFOs();
-		mask = new ItemMod(LibItemName.MASK);
-		grimoireBook = new ItemGrimoireBook();
-		youkaiBook = new ItemYoukaiBook();
-		volatileString = new ItemMod(LibItemName.VOLATILESTRING);
-		soldifiedPaper = new ItemMod(LibItemName.SOLDIFIEDPAPER);
-		impureRock = new ItemMod(LibItemName.IMPUREROCK);
-		ibarakiBoxEmpty = new ItemIbarakiBoxEmpty();
-		fullPower = new ItemMod(LibItemName.FULLPOWER);
-		star = new ItemMod(LibItemName.STAR);
-		cherry = new ItemMod(LibItemName.CHERRY);
-		faith = new ItemMod(LibItemName.FAITH);
-		uFORed = new ItemMod(LibItemName.UFORED);
-		uFOBlue = new ItemMod(LibItemName.UFOBLUE);
-		uFOGreen = new ItemMod(LibItemName.UFOGREEN);
-		leaf = new ItemLeaf();
-		lunasaViolin = new ItemViolin();
-		lyricaPiano = new ItemPiano();
-		merlinTrumpet = new ItemTrumpet();
-		shouLamp = new ItemShouLamp();
-		patchyBook = new ItemPatchyBook();
-		skull = new ItemSkull();
-        windStick = new ItemTenguFan();
-        nazrinPendulum = new ItemNazrinPendulum();
-		ghostDipper = new ItemGhostDipper();
-		wallPassingchisel = new ItemWallPassingChisel();
-		miracleMallet = new ItemMiracleMallet();
-		rodRemorse = new ItemRodOfRemorse();
-		budahBoul = new ItemBudahBoul(Item.ToolMaterial.DIAMOND);
-		dragonJewel = new ItemDragonJewel();
-		bloodOrb = new ItemBloodThirstyOrb();
-		foldingUmbrella = new ItemGapFoldingUmbrella();
-		substituteJizo = new ItemSubstituteJizo();
-		nimbleFabric = new ItemNimbleFabric();
-		fakeMiracleMallet = new ItemFakeMiracleMallet();
-		ghastlySendOffLantern = new ItemGhastlySendOffLantern();
-		cursedDecoyDoll = new ItemCursedDecoyDoll();
-		ayaCamera = new ItemTenguCamera(LibItemName.AYACAMERA);
-		hatateCamera = new ItemTenguCamera(LibItemName.HATATECAMERA);
-		stopWatch = new ItemStopWatch();
-
-		//Food
-		shroomSlice = new ItemShroomSlice();
-		grilledLamprey = new ItemGrilledLamprey();
-		ibarakiBoxFilled = new ItemIbarakiBoxFilled();
-		kappasNostrum = new ItemKappasNostrum();
-		heavenlyPeach = new ItemHeavelyPeach();
-		ibukiGourd = new ItemIbukiGourd();
-		cowrieShell = new ItemSwallowCowrieShell();
-		orbElixir = new ItemUltramarineOrbElixir();
-		houraiElixir = new ItemHouraiElixir();
-
-		//Potion
-		elixir = new ElixirPotion();
-		
-		//Armor
-		mapleLeafShield = new ItemMapleLeafShield();
-		primordialShield = new ItemPrimordialShield();
-		foxMask = new ItemFoxMask(SOLID_PAPER, 3);
-		raidenMask = new ItemRaidenMask(SOLID_PAPER, 3);
-		monkeyMask = new ItemMonkeyMask(SOLID_PAPER, 3);
-		hyottokoMask = new ItemHyottokoMask(SOLID_PAPER, 3);
-		fukuNoKamiMask = new ItemFukuNoKamiMask(SOLID_PAPER, 3);
-		ubaMask = new ItemUbaMask(SOLID_PAPER, 3);
-		hannyaMask = new ItemHannyaMask(SOLID_PAPER, 3);
-		koomoteMask = new ItemKoomoteMask(SOLID_PAPER, 3);
-		maskOfHope = new ItemMaskOfHope(SOLID_PAPER, 3);
-		kokorosMasks = new ItemKokorosMasks(SOLID_PAPER, 3);
-		byakurenAura = new ItemAuraByakuren(SOLID_PAPER, 3);
-		mokouAura = new ItemAuraMokou(SOLID_PAPER, 3);
-		toyosatomimiAura = new ItemAuraToyosatomimi(SOLID_PAPER, 3);
-		kanakoAura = new ItemAuraKanako(SOLID_PAPER, 3);
-        ichirinAura = new ItemAuraIchirin(SOLID_PAPER, 3);
-        suwakoHat = new ItemSuwakoHat(SOLID_PAPER,3);
-		fireRobe = new ItemFireRobe(SOLID_PAPER,3);
-		utsuhoAura = new ItemWingsUtsuho(SOLID_PAPER,5);
-		kappaHat = new ItemKappaHat(SOLID_PAPER,3);
-		
-		//Weapons
-		amenonuhoko = new ItemAmenonuhoko(WET_NOODLE);
-		crestOfYggdrasill = new ItemCrestOfYggdrasill(WET_NOODLE);
-		laevatein = new ItemLaevatein(WET_NOODLE);
-		mikoStick = new ItemMikoStick(NOT_A_MELEE_WEAPON);
-		mochiHammer = new ItemMochiHammer(GOLDYRON);
-		momijisScimitarSword = new ItemMomijisScimitarSword(GOLDYRON);
-		nazrinStick = new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRINSTICK);
-		nazrinStickB = new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRINSTICKB);
-		nueTrident = new ItemNueTrident(WET_NOODLE);
-		swordOfKusanagi = new ItemSwordofKusanagi(GOLDYRON);
-		syringe = new ItemSyringe(NOT_A_MELEE_WEAPON);
-		ichirinRing = new ItemIchirinRing(NOT_A_MELEE_WEAPON);
-		kanakoOnbashira = new ItemOnbashira(WET_NOODLE);
-		shichiSeiken = new ItemShichiSeiken(WET_NOODLE);
-		cattailPlant = new ItemCattailPlant(WET_NOODLE);
-		popsicleStick = new ItemPopsicleStick(WET_NOODLE);
-		rumiaSword = new ItemRumiaSword(WET_NOODLE);
-		sarielWand = new ItemSarielWand(WET_NOODLE);
-		watermelonBlade = new ItemWatermelonBlade(WET_NOODLE);
-		watermelonSword = new ItemWatermelonSword(GOLDYRON);
-		sacredToyosatomimi = new ItemSacredToyosatomimi(GOLDYRON);
-		needle = new ItemNeedle(NOT_A_MELEE_WEAPON);
-		deathScythe = new ItemDeathScythe(WET_NOODLE);
-		roukanken = new ItemSwordRoukanken(WET_NOODLE);
-
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			jeweledHourai = new ItemJeweledHourai();
-			pouch = new ItemSpellCardPouch();
-			ellyScythe = new ItemEllyScythe(WET_NOODLE);
-			hisou = new ItemSwordOfHisou(GOLDYRON);
-		}
-	}
+	@ObjectHolder(LibItemName.FULL_POWER)
+	public static final Item fullPower = new Item();
+	@ObjectHolder(LibItemName.STAR)
+	public static final Item star = new Item();
+	@ObjectHolder(LibItemName.CHERRY)
+	public static final Item cherry = new Item();
+	@ObjectHolder(LibItemName.TIME_ORB)
+	public static final Item timeOrb = new Item();
+	@ObjectHolder(LibItemName.FAITH)
+	public static final Item faith = new Item();
+	@ObjectHolder(LibItemName.UFO_RED)
+	public static final Item uFORed = new Item();
+	@ObjectHolder(LibItemName.UFO_BLUE)
+	public static final Item uFOBlue = new Item();
+	@ObjectHolder(LibItemName.UFO_GREEN)
+	public static final Item uFOGreen = new Item();
+	@ObjectHolder(LibItemName.UFOS)
+	public static final Item uFOs = new Item();
+	@ObjectHolder(LibItemName.EYE)
+	public static final Item thirdEye = new Item();
+	@ObjectHolder(LibItemName.LEAF)
+	public static final Item leaf = new Item();
+	@ObjectHolder(LibItemName.BLOOD_THIRSTY_ORB)
+	public static final Item bloodOrb = new Item();
+	@ObjectHolder(LibItemName.FOLDING_UMBRELLA)
+	public static final Item foldingUmbrella = new Item();
+	@ObjectHolder(LibItemName.SUBSTITUTE_JIZO)
+	public static final Item substituteJizo = new Item();
+	@ObjectHolder(LibItemName.NIMBLE_FABRIC)
+	public static final Item nimbleFabric = new Item();
+	@ObjectHolder(LibItemName.FAKE_MIRACLE_MALLET)
+	public static final Item fakeMiracleMallet = new Item();
+	@ObjectHolder(LibItemName.SEND_OFF_LANTERN)
+	public static final Item ghastlySendOffLantern = new Item();
+	@ObjectHolder(LibItemName.DECOY_DOLL)
+	public static final Item cursedDecoyDoll = new Item();
+	@ObjectHolder(LibItemName.AYA_CAMERA)
+	public static final Item ayaCamera = new Item();
+	@ObjectHolder(LibItemName.HATATE_CAMERA)
+	public static final Item hatateCamera = new Item();
 }

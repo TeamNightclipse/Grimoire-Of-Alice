@@ -23,8 +23,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMomijisScimitarSword extends ItemModSword {
 
-	ItemMomijisScimitarSword(ToolMaterial material) {
-		super(material, LibItemName.MOMIJISSCIMITARSWORD);
+	public ItemMomijisScimitarSword(ToolMaterial material) {
+		super(material, LibItemName.MOMIJIS_SCIMITAR_SWORD);
 	}
 
 	@Override

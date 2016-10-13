@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.item;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -18,12 +17,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.Random;
 
 public class ItemGapFoldingUmbrella extends ItemMod {
 
-	ItemGapFoldingUmbrella() {
-		super(LibItemName.FOLDINGUMBRELLA);
+	public ItemGapFoldingUmbrella() {
+		super(LibItemName.FOLDING_UMBRELLA);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();

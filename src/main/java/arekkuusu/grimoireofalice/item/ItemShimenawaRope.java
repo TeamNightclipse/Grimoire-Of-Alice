@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,8 +27,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemShimenawaRope extends ItemMod {
 
-	ItemShimenawaRope() {
-		super(LibItemName.SHIMENAWAROPE);
+	public ItemShimenawaRope() {
+		super(LibItemName.SHIMENAWA_ROPE);
 		setMaxStackSize(1);
 	}
 	

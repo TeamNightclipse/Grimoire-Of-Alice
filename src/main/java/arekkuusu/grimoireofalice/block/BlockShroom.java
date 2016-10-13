@@ -39,7 +39,7 @@ public class BlockShroom extends BlockModBush {
 
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
 
-	BlockShroom() {
+	public BlockShroom() {
 		super(LibBlockName.SHROOM, Material.PLANTS);
 		setTickRandomly(true);
 		setLightLevel(0.5F);

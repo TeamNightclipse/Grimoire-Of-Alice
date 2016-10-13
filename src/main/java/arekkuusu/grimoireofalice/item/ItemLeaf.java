@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemLeaf extends ItemMod {
 
-	ItemLeaf() {
+	public ItemLeaf() {
 		super(LibItemName.LEAF);
 	}
 

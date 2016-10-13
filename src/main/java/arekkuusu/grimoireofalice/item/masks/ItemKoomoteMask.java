@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemKoomoteMask extends ItemModMask {
 
 	public ItemKoomoteMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.KOOMOTEMASK);
+		super(material, dmg, LibItemName.KOOMOTE_MASK);
 	}
 
 	@Override

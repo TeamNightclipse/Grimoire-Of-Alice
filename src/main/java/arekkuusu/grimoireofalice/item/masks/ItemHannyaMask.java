@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHannyaMask extends ItemModMask {
 
 	public ItemHannyaMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.HANNYAMASK);
+		super(material, dmg, LibItemName.HANNYA_MASK);
 	}
 
 	@Override

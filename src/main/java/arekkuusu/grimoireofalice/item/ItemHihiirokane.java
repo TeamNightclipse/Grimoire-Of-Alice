@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHihiirokane extends ItemMod {
 
-	ItemHihiirokane() {
+	public ItemHihiirokane() {
 		super(LibItemName.HIHIIROKANE);
 		setMaxStackSize(32);
 	}

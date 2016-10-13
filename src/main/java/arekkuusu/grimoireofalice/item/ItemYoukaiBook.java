@@ -27,8 +27,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemYoukaiBook extends ItemMod {
 
-	ItemYoukaiBook() {
-		super(LibItemName.YOUKAIBOOK);
+	public ItemYoukaiBook() {
+		super(LibItemName.YOUKAI_BOOK);
 		setMaxStackSize(1);
 	}
 

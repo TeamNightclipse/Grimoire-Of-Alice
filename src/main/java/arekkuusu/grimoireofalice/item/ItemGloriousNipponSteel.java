@@ -20,8 +20,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGloriousNipponSteel extends ItemMod {
 
-	ItemGloriousNipponSteel() {
-		super(LibItemName.GLORIOUSNIPPONSTEEL);
+	public ItemGloriousNipponSteel() {
+		super(LibItemName.GLORIOUS_NIPPON_STEEL);
 		setMaxStackSize(16);
 	}
 	

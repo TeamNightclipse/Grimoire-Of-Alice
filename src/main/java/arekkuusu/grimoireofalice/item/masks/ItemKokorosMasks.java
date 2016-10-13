@@ -37,7 +37,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemKokorosMasks(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.KOKOROSMASKS);
+		super(material, dmg, LibItemName.KOKOROS_MASKS);
 	}
 	
 	@SuppressWarnings("ConstantConditions")

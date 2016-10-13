@@ -8,28 +8,332 @@
  */
 package arekkuusu.grimoireofalice;
 
-import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.entity.*;
-//import arekkuusu.grimoireofalice.entity.EntityEllyScytheThrowable;
-import arekkuusu.grimoireofalice.handler.WorldGenPlants;
+import arekkuusu.grimoireofalice.block.BlockHolyKeyStone;
+import arekkuusu.grimoireofalice.block.BlockHolyStone;
+import arekkuusu.grimoireofalice.block.BlockKyoumarubotan;
+import arekkuusu.grimoireofalice.block.BlockMod;
+import arekkuusu.grimoireofalice.block.BlockOnbashira;
+import arekkuusu.grimoireofalice.block.BlockOnbashiraMiddle;
+import arekkuusu.grimoireofalice.block.BlockOnbashiraTop;
+import arekkuusu.grimoireofalice.block.BlockPaper;
+import arekkuusu.grimoireofalice.block.BlockRope;
+import arekkuusu.grimoireofalice.block.BlockShroom;
+import arekkuusu.grimoireofalice.entity.EntityAnimalShot;
+import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
+import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
+import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
+import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
+import arekkuusu.grimoireofalice.entity.EntityLeaf;
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
+import arekkuusu.grimoireofalice.entity.EntityNeedle;
+import arekkuusu.grimoireofalice.entity.EntityNote;
+import arekkuusu.grimoireofalice.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
+import arekkuusu.grimoireofalice.entity.EntityWind;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
-import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.handler.WorldGenPlants;
+import arekkuusu.grimoireofalice.item.Item3rdEye;
+import arekkuusu.grimoireofalice.item.ItemAmenonuhoko;
+import arekkuusu.grimoireofalice.item.ItemBloodThirstyOrb;
+import arekkuusu.grimoireofalice.item.ItemBudahBoul;
+import arekkuusu.grimoireofalice.item.ItemCattailPlant;
+import arekkuusu.grimoireofalice.item.ItemCrestOfYggdrasill;
+import arekkuusu.grimoireofalice.item.ItemCursedDecoyDoll;
+import arekkuusu.grimoireofalice.item.ItemDeathScythe;
+import arekkuusu.grimoireofalice.item.ItemDragonJewel;
+import arekkuusu.grimoireofalice.item.ItemFakeMiracleMallet;
+import arekkuusu.grimoireofalice.item.ItemFireRobe;
+import arekkuusu.grimoireofalice.item.ItemGapFoldingUmbrella;
+import arekkuusu.grimoireofalice.item.ItemGhastlySendOffLantern;
+import arekkuusu.grimoireofalice.item.ItemGhostDipper;
+import arekkuusu.grimoireofalice.item.ItemGloriousNipponSteel;
+import arekkuusu.grimoireofalice.item.ItemGrimoireBook;
+import arekkuusu.grimoireofalice.item.ItemHihiirokane;
+import arekkuusu.grimoireofalice.item.ItemIbarakiBoxEmpty;
+import arekkuusu.grimoireofalice.item.ItemIchirinRing;
+import arekkuusu.grimoireofalice.item.ItemKappaHat;
+import arekkuusu.grimoireofalice.item.ItemLaevatein;
+import arekkuusu.grimoireofalice.item.ItemLeaf;
+import arekkuusu.grimoireofalice.item.ItemMapleLeafShield;
+import arekkuusu.grimoireofalice.item.ItemMikoStick;
+import arekkuusu.grimoireofalice.item.ItemMiracleMallet;
+import arekkuusu.grimoireofalice.item.ItemMochiHammer;
+import arekkuusu.grimoireofalice.item.ItemMod;
+import arekkuusu.grimoireofalice.item.ItemMomijisScimitarSword;
+import arekkuusu.grimoireofalice.item.ItemNazrinPendulum;
+import arekkuusu.grimoireofalice.item.ItemNazrinStick;
+import arekkuusu.grimoireofalice.item.ItemNeedle;
+import arekkuusu.grimoireofalice.item.ItemNimbleFabric;
+import arekkuusu.grimoireofalice.item.ItemNueTrident;
+import arekkuusu.grimoireofalice.item.ItemOnbashira;
+import arekkuusu.grimoireofalice.item.ItemPatchyBook;
+import arekkuusu.grimoireofalice.item.ItemPiano;
+import arekkuusu.grimoireofalice.item.ItemPopsicleStick;
+import arekkuusu.grimoireofalice.item.ItemPrimordialShield;
+import arekkuusu.grimoireofalice.item.ItemRodOfRemorse;
+import arekkuusu.grimoireofalice.item.ItemRumiaSword;
+import arekkuusu.grimoireofalice.item.ItemSacredToyosatomimi;
+import arekkuusu.grimoireofalice.item.ItemSarielWand;
+import arekkuusu.grimoireofalice.item.ItemShichiSeiken;
+import arekkuusu.grimoireofalice.item.ItemShimenawaRope;
+import arekkuusu.grimoireofalice.item.ItemShouLamp;
+import arekkuusu.grimoireofalice.item.ItemSkull;
+import arekkuusu.grimoireofalice.item.ItemStopWatch;
+import arekkuusu.grimoireofalice.item.ItemSubstituteJizo;
+import arekkuusu.grimoireofalice.item.ItemSuwakoHat;
+import arekkuusu.grimoireofalice.item.ItemSwallowCowrieShell;
+import arekkuusu.grimoireofalice.item.ItemSwordRoukanken;
+import arekkuusu.grimoireofalice.item.ItemSwordofKusanagi;
+import arekkuusu.grimoireofalice.item.ItemSyringe;
+import arekkuusu.grimoireofalice.item.ItemTenguCamera;
+import arekkuusu.grimoireofalice.item.ItemTenguFan;
+import arekkuusu.grimoireofalice.item.ItemTimeOrb;
+import arekkuusu.grimoireofalice.item.ItemTrumpet;
+import arekkuusu.grimoireofalice.item.ItemUFOs;
+import arekkuusu.grimoireofalice.item.ItemViolin;
+import arekkuusu.grimoireofalice.item.ItemWallPassingChisel;
+import arekkuusu.grimoireofalice.item.ItemWatermelonBlade;
+import arekkuusu.grimoireofalice.item.ItemWatermelonSword;
+import arekkuusu.grimoireofalice.item.ItemYoukaiBook;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraIchirin;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
+import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
+import arekkuusu.grimoireofalice.item.auras.ItemWingsUtsuho;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
+import arekkuusu.grimoireofalice.potion.PotionElixir;
+import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
+import arekkuusu.grimoireofalice.item.food.ItemHeavelyPeach;
+import arekkuusu.grimoireofalice.item.food.ItemHouraiElixir;
+import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
+import arekkuusu.grimoireofalice.item.food.ItemIbukiGourd;
+import arekkuusu.grimoireofalice.item.food.ItemKappasNostrum;
+import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
+import arekkuusu.grimoireofalice.item.food.ItemUltramarineOrbElixir;
+import arekkuusu.grimoireofalice.item.masks.ItemFoxMask;
+import arekkuusu.grimoireofalice.item.masks.ItemFukuNoKamiMask;
+import arekkuusu.grimoireofalice.item.masks.ItemHannyaMask;
+import arekkuusu.grimoireofalice.item.masks.ItemHyottokoMask;
+import arekkuusu.grimoireofalice.item.masks.ItemKokorosMasks;
+import arekkuusu.grimoireofalice.item.masks.ItemKoomoteMask;
+import arekkuusu.grimoireofalice.item.masks.ItemMaskOfHope;
+import arekkuusu.grimoireofalice.item.masks.ItemMonkeyMask;
+import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
+import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
+import arekkuusu.grimoireofalice.lib.LibBlockName;
+import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemEllyScythe;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemJeweledHourai;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSwordOfHisou;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemCloth;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameData;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
+@Mod.EventBusSubscriber
 public class CommonProxy {
+
+	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[] {1,2,3,4}, 30, SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0);
+	public static final Item.ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
+	public static final Item.ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
+	public static final Item.ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
+
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event) {
+		event.getRegistry().registerAll(
+				new Item3rdEye(),
+				new ItemGloriousNipponSteel(),
+				new ItemHihiirokane(),
+				new ItemShimenawaRope(),
+				new ItemTimeOrb(),
+				new ItemUFOs(),
+				new ItemMod(LibItemName.MASK),
+				new ItemGrimoireBook(),
+				new ItemYoukaiBook(),
+				new ItemMod(LibItemName.VOLATILE_STRING),
+				new ItemMod(LibItemName.SOLDIFIED_PAPER),
+				new ItemMod(LibItemName.IMPURE_ROCK),
+				new ItemIbarakiBoxEmpty(),
+				new ItemMod(LibItemName.FULL_POWER),
+				new ItemMod(LibItemName.STAR),
+				new ItemMod(LibItemName.CHERRY),
+				new ItemMod(LibItemName.FAITH),
+				new ItemMod(LibItemName.UFO_RED),
+				new ItemMod(LibItemName.UFO_BLUE),
+				new ItemMod(LibItemName.UFO_GREEN),
+				new ItemLeaf(),
+				new ItemViolin(),
+				new ItemPiano(),
+				new ItemTrumpet(),
+				new ItemShouLamp(),
+				new ItemPatchyBook(),
+				new ItemSkull(),
+				new ItemTenguFan(),
+				new ItemNazrinPendulum(),
+				new ItemGhostDipper(),
+				new ItemWallPassingChisel(),
+				new ItemMiracleMallet(),
+				new ItemRodOfRemorse(),
+				new ItemBudahBoul(Item.ToolMaterial.DIAMOND),
+				new ItemDragonJewel(),
+				new ItemBloodThirstyOrb(),
+				new ItemGapFoldingUmbrella(),
+				new ItemSubstituteJizo(),
+				new ItemNimbleFabric(),
+				new ItemFakeMiracleMallet(),
+				new ItemGhastlySendOffLantern(),
+				new ItemCursedDecoyDoll(),
+				new ItemTenguCamera(LibItemName.AYA_CAMERA),
+				new ItemTenguCamera(LibItemName.HATATE_CAMERA),
+				new ItemStopWatch(),
+
+				//Food
+				new ItemShroomSlice(),
+				new ItemGrilledLamprey(),
+				new ItemIbarakiBoxFilled(),
+				new ItemKappasNostrum(),
+				new ItemHeavelyPeach(),
+				new ItemIbukiGourd(),
+				new ItemSwallowCowrieShell(),
+				new ItemUltramarineOrbElixir(),
+				new ItemHouraiElixir(),
+
+				//Armor
+				new ItemMapleLeafShield(),
+				new ItemPrimordialShield(),
+				new ItemFoxMask(SOLID_PAPER, 3),
+				new ItemRaidenMask(SOLID_PAPER, 3),
+				new ItemMonkeyMask(SOLID_PAPER, 3),
+				new ItemHyottokoMask(SOLID_PAPER, 3),
+				new ItemFukuNoKamiMask(SOLID_PAPER, 3),
+				new ItemUbaMask(SOLID_PAPER, 3),
+				new ItemHannyaMask(SOLID_PAPER, 3),
+				new ItemKoomoteMask(SOLID_PAPER, 3),
+				new ItemMaskOfHope(SOLID_PAPER, 3),
+				new ItemKokorosMasks(SOLID_PAPER, 3),
+				new ItemAuraByakuren(SOLID_PAPER, 3),
+				new ItemAuraMokou(SOLID_PAPER, 3),
+				new ItemAuraToyosatomimi(SOLID_PAPER, 3),
+				new ItemAuraKanako(SOLID_PAPER, 3),
+				new ItemAuraIchirin(SOLID_PAPER, 3),
+				new ItemSuwakoHat(SOLID_PAPER,3),
+				new ItemFireRobe(SOLID_PAPER,3),
+				new ItemWingsUtsuho(SOLID_PAPER,5),
+				new ItemKappaHat(SOLID_PAPER,3),
+
+				//Weapons
+				new ItemAmenonuhoko(WET_NOODLE),
+				new ItemCrestOfYggdrasill(WET_NOODLE),
+				new ItemLaevatein(WET_NOODLE),
+				new ItemMikoStick(NOT_A_MELEE_WEAPON),
+				new ItemMochiHammer(GOLDYRON),
+				new ItemMomijisScimitarSword(GOLDYRON),
+				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICK),
+				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICKB),
+				new ItemNueTrident(WET_NOODLE),
+				new ItemSwordofKusanagi(GOLDYRON),
+				new ItemSyringe(NOT_A_MELEE_WEAPON),
+				new ItemIchirinRing(NOT_A_MELEE_WEAPON),
+				new ItemOnbashira(WET_NOODLE),
+				new ItemShichiSeiken(WET_NOODLE),
+				new ItemCattailPlant(WET_NOODLE),
+				new ItemPopsicleStick(WET_NOODLE),
+				new ItemRumiaSword(WET_NOODLE),
+				new ItemSarielWand(WET_NOODLE),
+				new ItemWatermelonBlade(WET_NOODLE),
+				new ItemWatermelonSword(GOLDYRON),
+				new ItemSacredToyosatomimi(GOLDYRON),
+				new ItemNeedle(NOT_A_MELEE_WEAPON),
+				new ItemDeathScythe(WET_NOODLE),
+				new ItemSwordRoukanken(WET_NOODLE)
+		);
+
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			event.getRegistry().registerAll(
+					new ItemJeweledHourai(),
+					new ItemSpellCardPouch(),
+					new ItemEllyScythe(WET_NOODLE),
+					new ItemSwordOfHisou(GOLDYRON)
+			);
+		}
+	}
+
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+		Block compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK).setHardness(2.0F).setResistance(-1F);
+		Block holyKeyStone = new BlockHolyKeyStone();
+		Block holyStone = new BlockHolyStone();
+		Block kyoumarubotan = new BlockKyoumarubotan();
+		Block onbashira = new BlockOnbashira();
+		Block onbashiraMiddle = new BlockOnbashiraMiddle();
+		Block onbashiraTop = new BlockOnbashiraTop();
+		Block paperBlock = new BlockPaper();
+		Block ropeBlock = new BlockRope();
+		Block shroom = new BlockShroom();
+
+		Block sugarBlock = new BlockMod(LibBlockName.SUGARBLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
+		sugarBlock.setHarvestLevel("axe", 1);
+
+		Block hyperconcentratedMagic = new BlockMod(LibBlockName.HYPERMAGIC, Material.IRON).setSound(SoundType.SNOW).setHardness(0.5F).setResistance(2.0F);
+		hyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
+
+		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
+		GameRegistry.register(new ItemBlock(holyKeyStone).setRegistryName(holyKeyStone.getRegistryName()));
+		GameRegistry.register(new ItemBlock(holyStone).setRegistryName(holyStone.getRegistryName()));
+		GameRegistry.register(new ItemBlock(kyoumarubotan).setRegistryName(kyoumarubotan.getRegistryName()));
+		GameRegistry.register(new ItemBlock(onbashira).setRegistryName(onbashira.getRegistryName()));
+		GameRegistry.register(new ItemBlock(onbashiraMiddle).setRegistryName(onbashiraMiddle.getRegistryName()));
+		GameRegistry.register(new ItemBlock(onbashiraTop).setRegistryName(onbashiraTop.getRegistryName()));
+		GameRegistry.register(new ItemBlock(paperBlock).setRegistryName(paperBlock.getRegistryName()));
+		GameRegistry.register(new ItemBlock(ropeBlock).setRegistryName(ropeBlock.getRegistryName()));
+		GameRegistry.register(new ItemCloth(shroom).setRegistryName(shroom.getRegistryName()));
+		GameRegistry.register(new ItemBlock(sugarBlock).setRegistryName(sugarBlock.getRegistryName()));
+		GameRegistry.register(new ItemBlock(hyperconcentratedMagic).setRegistryName(hyperconcentratedMagic.getRegistryName()));
+
+		event.getRegistry().registerAll(
+				compactStone,
+				holyKeyStone,
+				holyStone,
+				kyoumarubotan,
+				onbashira,
+				onbashiraMiddle,
+				onbashiraTop,
+				paperBlock,
+				ropeBlock,
+				shroom,
+				sugarBlock,
+				hyperconcentratedMagic
+		);
+	}
+
+	@SubscribeEvent
+	public static void registerPotions(RegistryEvent.Register<Potion> event) {
+		event.getRegistry().registerAll(
+				new PotionElixir()
+		);
+	}
 
 	@SuppressWarnings("UnusedAssignment")
 	public void preInit(FMLPreInitializationEvent event) {
-		ModBlocks.init();
-		ModItems.init();
-
 		int modEntityID = 0;
 		EntityRegistry.registerModEntity(EntityLeaf.class, "Leaf", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityAnimalShot.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
@@ -53,17 +357,4 @@ public class CommonProxy {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
 	}
-	
-	public void postInit(FMLPostInitializationEvent event) {
-		
-	}
-
-	public void serverAboutToStart(FMLServerAboutToStartEvent event) {
-
-	}
-
-	public void serverStarting(FMLServerStartingEvent event) {
-		
-	}
-	
 }

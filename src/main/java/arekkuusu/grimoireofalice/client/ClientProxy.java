@@ -20,14 +20,18 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+@Mod.EventBusSubscriber
 public class ClientProxy extends CommonProxy{
 
 	@Override
@@ -42,13 +46,9 @@ public class ClientProxy extends CommonProxy{
 		super.init(event);
 		NetworkRegistry.INSTANCE.registerGuiHandler(GrimoireOfAlice.instance, new GuiHandler());
 	}
-	
-	@Override
-	public void postInit(FMLPostInitializationEvent event) {
-		super.postInit(event);
-	}
-	
-	private void initRenderers() {
+
+	@SubscribeEvent
+	public static void registerItemModels(ModelRegistryEvent event) {
 		//Armor
 		registerItem(ModItems.primordialShield, 0);
 		registerItem(ModItems.mapleLeafShield, 0);
@@ -67,11 +67,11 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.toyosatomimiAura, 0);
 		registerItem(ModItems.kanakoAura, 0);
 		registerItem(ModItems.ichirinAura, 0);
-        registerItem(ModItems.suwakoHat, 0);
+		registerItem(ModItems.suwakoHat, 0);
 		registerItem(ModItems.fireRobe, 0);
 		registerItem(ModItems.utsuhoAura, 0);
 		registerItem(ModItems.kappaHat, 0);
-		
+
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
 		registerItem(ModItems.hihiirokane, 0);
@@ -96,8 +96,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
 		registerItem(ModItems.skull, 0);
-        registerItem(ModItems.windStick, 0);
-        registerItem(ModItems.nazrinPendulum, 0);
+		registerItem(ModItems.windStick, 0);
+		registerItem(ModItems.nazrinPendulum, 0);
 		registerItem(ModItems.wallPassingchisel, 0);
 		registerItem(ModItems.miracleMallet, 0);
 		registerItem(ModItems.rodRemorse, 0);
@@ -119,7 +119,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.lunasaViolin, 0);
 		registerItem(ModItems.lyricaPiano, 0);
 		registerItem(ModItems.merlinTrumpet, 0);
-		
+
 		//Food
 		registerItemWithTypes(ModItems.shroomSlice, 17);
 		registerItem(ModItems.grilledLamprey, 0);
@@ -130,7 +130,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.cowrieShell, 0);
 		registerItem(ModItems.orbElixir, 0);
 		registerItem(ModItems.houraiElixir, 0);
-		
+
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);
 		registerItem(ModItems.crestOfYggdrasill, 0);
@@ -156,7 +156,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.needle, 0);
 		registerItem(ModItems.deathScythe, 0);
 		registerItem(ModItems.roukanken, 0);
-		
+
 		//Blocks
 		registerBlock(ModBlocks.compactStone, 0);
 		registerBlock(ModBlocks.holyKeyStone, 0);
@@ -177,7 +177,9 @@ public class ClientProxy extends CommonProxy{
 			registerItem(ModItems.ellyScythe, 0);
 			registerItem(ModItems.hisou, 0);
 		}
-		
+	}
+	
+	private void initRenderers() {
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
@@ -194,23 +196,23 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 	}
 	
-	private void registerItem(Item item, int damage) {
+	private static void registerItem(Item item, int damage) {
 		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
-	private void registerBlock(Block block, int meta) {
+	private static void registerBlock(Block block, int meta) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 
-	private void registerItemWithTypes(Item item, int damage) {
+	private static void registerItemWithTypes(Item item, int damage) {
 		for (int i = 0; i < damage; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroomslice_" + i, "inventory"));
 		}
 	}
 
-	private void registerBlockWithColorTypes(Block block, int meta){
+	private static void registerBlockWithColorTypes(Block block, int meta){
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		for (int i = 0; i < meta; i++) {

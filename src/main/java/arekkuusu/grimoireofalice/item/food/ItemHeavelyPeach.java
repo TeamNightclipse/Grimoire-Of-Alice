@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHeavelyPeach extends ItemModFood {
 
 	public ItemHeavelyPeach() {
-		super(20, 5F, false, LibItemName.HEAVENLYPEACH);
+		super(20, 5F, false, LibItemName.HEAVENLY_PEACH);
 		setMaxStackSize(16);
 		setAlwaysEdible();
 	}

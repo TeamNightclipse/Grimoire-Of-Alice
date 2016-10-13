@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemDeathScythe extends ItemModSword {
 
-	ItemDeathScythe(ToolMaterial material) {
-		super(material, LibItemName.DEATHSCYTHE);
+	public ItemDeathScythe(ToolMaterial material) {
+		super(material, LibItemName.DEATH_SCYTHE);
 		setNoRepair();
 	}
 

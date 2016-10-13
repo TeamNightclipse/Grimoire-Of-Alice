@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ItemDragonJewel extends ItemMod {
 
-	ItemDragonJewel() {
-		super(LibItemName.DRAGONJEWEL);
+	public ItemDragonJewel() {
+		super(LibItemName.DRAGON_JEWEL);
 		setMaxStackSize(1);
 	}
 

@@ -21,7 +21,6 @@ public class ItemModArmor extends ItemArmor {
 		super(materialIn, dmg, equipmentSlotIn);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 

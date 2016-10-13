@@ -30,8 +30,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCrestOfYggdrasill extends ItemModSword {
 
-	ItemCrestOfYggdrasill(ToolMaterial material) {
-		super(material, LibItemName.CRESTOFYGGDRASILL);
+	public ItemCrestOfYggdrasill(ToolMaterial material) {
+		super(material, LibItemName.CREST_OF_YGGDRASILL);
 		setNoRepair();
 	}
 

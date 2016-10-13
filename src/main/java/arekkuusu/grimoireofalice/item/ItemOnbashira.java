@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
 import com.google.common.collect.Multimap;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -29,8 +28,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemOnbashira extends ItemModSword {
 
-	ItemOnbashira(ToolMaterial material) {
-		super(material, LibItemName.KANAKOONBASHIRA);
+	public ItemOnbashira(ToolMaterial material) {
+		super(material, LibItemName.KANAKO_ONBASHIRA);
 	}
 
 	@Override

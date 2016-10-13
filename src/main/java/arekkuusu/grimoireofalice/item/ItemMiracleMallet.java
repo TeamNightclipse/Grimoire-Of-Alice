@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -18,8 +17,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMiracleMallet extends ItemMod {
 
-	ItemMiracleMallet() {
-		super(LibItemName.MIRACLEMALLET);
+	public ItemMiracleMallet() {
+		super(LibItemName.MIRACLE_MALLET);
 		setNoRepair();
 	}
 

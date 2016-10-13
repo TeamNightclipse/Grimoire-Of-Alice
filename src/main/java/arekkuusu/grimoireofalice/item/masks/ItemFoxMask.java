@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFoxMask extends ItemModMask {
 
 	public ItemFoxMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.FOXMASK);
+		super(material, dmg, LibItemName.FOX_MASK);
 	}
 
 	@Override

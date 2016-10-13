@@ -26,8 +26,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemPatchyBook extends ItemMod {
 	
-	ItemPatchyBook(){
-		super(LibItemName.PATCHYBOOK);
+	public ItemPatchyBook(){
+		super(LibItemName.PATCHY_BOOK);
 	}
 
 	@Override

@@ -20,8 +20,8 @@ import java.util.List;
 
 public class ItemRumiaSword extends ItemModSword {
 
-    ItemRumiaSword(ToolMaterial material) {
-        super(material, LibItemName.RUMIASWORD);
+    public ItemRumiaSword(ToolMaterial material) {
+        super(material, LibItemName.RUMIA_SWORD);
     }
 
 	@Override

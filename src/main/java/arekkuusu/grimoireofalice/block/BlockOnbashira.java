@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockOnbashira extends BlockMod {
 
-	BlockOnbashira() {
+	public BlockOnbashira() {
 		super(LibBlockName.ONBASHIRA, Material.WOOD);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);

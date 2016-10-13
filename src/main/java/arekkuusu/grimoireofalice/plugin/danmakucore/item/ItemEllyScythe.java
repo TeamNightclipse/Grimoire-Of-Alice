@@ -49,7 +49,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemEllyScythe extends ItemModSword {
 
 	public ItemEllyScythe(ToolMaterial material) {
-		super(material, LibItemName.ELLYSCYTHE);
+		super(material, LibItemName.ELLY_SCYTHE);
 		setNoRepair();
 	}
 

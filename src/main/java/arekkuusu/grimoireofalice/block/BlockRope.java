@@ -15,7 +15,7 @@ import net.minecraft.block.material.Material;
 //Lots of code from BlockLog
 public class BlockRope extends BlockModPillar {
 
-	BlockRope() {
+	public BlockRope() {
 		super(LibBlockName.ROPEBLOCK, Material.WOOD);
 		setHardness(0.5F);
 		setSoundType(SoundType.LADDER);

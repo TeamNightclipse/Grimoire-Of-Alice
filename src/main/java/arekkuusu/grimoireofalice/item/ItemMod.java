@@ -20,7 +20,6 @@ public class ItemMod extends Item {
 		super();
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 }

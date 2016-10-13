@@ -46,7 +46,7 @@ public class ItemJeweledHourai extends ItemMod {
 			{Items.DIAMOND, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
 
 	public ItemJeweledHourai() {
-		super(LibItemName.JEWELEDHOURAI);
+		super(LibItemName.JEWELED_HOURAI);
 		setNoRepair();
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("jewels"), (stack, world, entity) ->

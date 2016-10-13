@@ -9,71 +9,38 @@
 package arekkuusu.grimoireofalice.block;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemCloth;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
+@ObjectHolder(LibMod.MODID)
 public class ModBlocks {
 
+	@ObjectHolder(LibBlockName.COMPACTSTONE)
+	public static final Block compactStone = new Block(Material.ROCK);
 
+	@ObjectHolder(LibBlockName.HOLYKEY)
+	public static final Block holyKeyStone = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.HOLYSTONE)
+	public static final Block holyStone = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.KYOUMARUBOTAN)
+	public static final Block kyoumarubotan = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.ONBASHIRA)
+	public static final Block onbashira = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.ONBASHIRAMIDDLE)
+	public static final Block onbashiraMiddle = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.ONBASHIRATOP)
+	public static final Block onbashiraTop = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.PAPERBLOCK)
+	public static final Block paperBlock = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.ROPEBLOCK)
+	public static final Block ropeBlock = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.SHROOM)
+	public static final Block shroom = new Block(Material.ROCK);
 
-	public static Block compactStone;
-	
-	public static Block holyKeyStone;
-	public static Block holyStone;
-	public static Block kyoumarubotan;
-	public static Block onbashira;
-	public static Block onbashiraMiddle;
-	public static Block onbashiraTop;
-	public static Block paperBlock;
-	public static Block ropeBlock;
-	public static Block shroom;
-	
-	public static Block sugarBlock;
-	public static Block hyperconcentratedMagic;
-
-	public static void init() {
-
-		compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK).setHardness(2.0F).setResistance(-1F);
-		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
-
-		holyKeyStone = new BlockHolyKeyStone();
-		GameRegistry.register(new ItemBlock(holyKeyStone).setRegistryName(holyKeyStone.getRegistryName()));
-
-		holyStone = new BlockHolyStone();
-		GameRegistry.register(new ItemBlock(holyStone).setRegistryName(holyStone.getRegistryName()));
-
-		kyoumarubotan = new BlockKyoumarubotan();
-		GameRegistry.register(new ItemBlock(kyoumarubotan).setRegistryName(kyoumarubotan.getRegistryName()));
-
-		onbashira = new BlockOnbashira();
-		GameRegistry.register(new ItemBlock(onbashira).setRegistryName(onbashira.getRegistryName()));
-
-		onbashiraMiddle = new BlockOnbashiraMiddle();
-		GameRegistry.register(new ItemBlock(onbashiraMiddle).setRegistryName(onbashiraMiddle.getRegistryName()));
-
-		onbashiraTop = new BlockOnbashiraTop();
-		GameRegistry.register(new ItemBlock(onbashiraTop).setRegistryName(onbashiraTop.getRegistryName()));
-
-		paperBlock = new BlockPaper();
-		GameRegistry.register(new ItemBlock(paperBlock).setRegistryName(paperBlock.getRegistryName()));
-
-		ropeBlock = new BlockRope();
-		GameRegistry.register(new ItemBlock(ropeBlock).setRegistryName(ropeBlock.getRegistryName()));
-
-		shroom = new BlockShroom();
-		GameRegistry.register(new ItemCloth(shroom).setRegistryName(shroom.getRegistryName()));
-	
-		sugarBlock = new BlockMod(LibBlockName.SUGARBLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
-		sugarBlock.setHarvestLevel("axe", 1);
-		GameRegistry.register(new ItemBlock(sugarBlock).setRegistryName(sugarBlock.getRegistryName()));
-
-		hyperconcentratedMagic = new BlockMod(LibBlockName.HYPERMAGIC, Material.IRON).setSound(SoundType.SNOW).setHardness(0.5F).setResistance(2.0F);
-		hyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
-		GameRegistry.register(new ItemBlock(hyperconcentratedMagic).setRegistryName(hyperconcentratedMagic.getRegistryName()));
-	}
+	@ObjectHolder(LibBlockName.SUGARBLOCK)
+	public static final Block sugarBlock = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.HYPERMAGIC)
+	public static final Block hyperconcentratedMagic = new Block(Material.ROCK);
 }

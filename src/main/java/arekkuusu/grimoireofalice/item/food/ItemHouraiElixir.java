@@ -21,7 +21,7 @@ import java.util.List;
 public class ItemHouraiElixir extends ItemModFood {
 
 	public ItemHouraiElixir() {
-		super(50, 0, false, LibItemName.HOURAIELIXIR);
+		super(50, 0, false, LibItemName.HOURAI_ELIXIR);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}

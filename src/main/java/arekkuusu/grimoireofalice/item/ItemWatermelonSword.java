@@ -29,8 +29,8 @@ public class ItemWatermelonSword extends ItemModSword {
 	@CapabilityInject(IItemHandler.class)
 	private static Capability<IItemHandler> itemHandlerCapability;
 
-	ItemWatermelonSword(ToolMaterial material) {
-		super(material, LibItemName.WATERMELONSWORD);
+	public ItemWatermelonSword(ToolMaterial material) {
+		super(material, LibItemName.WATERMELON_SWORD);
 		setMaxDamage(1);
 		setNoRepair();
 	}

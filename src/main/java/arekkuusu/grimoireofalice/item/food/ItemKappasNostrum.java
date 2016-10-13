@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemKappasNostrum extends ItemModFood {
 
 	public ItemKappasNostrum() {
-		super(0, 1F, false, LibItemName.KAPPASNOSTRUM);
+		super(0, 1F, false, LibItemName.KAPPAS_NOSTRUM);
 		setMaxStackSize(1);
 		setMaxDamage(4);
 		setAlwaysEdible();

@@ -23,8 +23,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemNueTrident extends ItemModSword {
 
-	ItemNueTrident(ToolMaterial material) {
-		super(material, LibItemName.NUETRIDENT);
+	public ItemNueTrident(ToolMaterial material) {
+		super(material, LibItemName.NUE_TRIDENT);
 	}
 	
 	@Override

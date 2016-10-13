@@ -26,8 +26,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 //TODO: Redo to make it work more like a shield
 public class ItemMapleLeafShield extends ItemModShield {
 
-	ItemMapleLeafShield() {
-		super(LibItemName.MAPLELEAFSHIELD);
+	public ItemMapleLeafShield() {
+		super(LibItemName.MAPLE_LEAF_SHIELD);
 		setMaxDamage(250);
 	}
 	

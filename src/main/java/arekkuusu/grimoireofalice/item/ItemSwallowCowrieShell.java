@@ -20,8 +20,8 @@ import java.util.List;
 
 public class ItemSwallowCowrieShell extends ItemMod {
 
-	ItemSwallowCowrieShell() {
-		super(LibItemName.COWRIESHELL);
+	public ItemSwallowCowrieShell() {
+		super(LibItemName.COWRIE_SHELL);
 		setMaxStackSize(1);
 	}
 

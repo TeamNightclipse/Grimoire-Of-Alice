@@ -1,7 +1,6 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.client.model.ModelSuwakoHat;
-import arekkuusu.grimoireofalice.item.ItemModArmor;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
@@ -23,8 +22,8 @@ public class ItemSuwakoHat extends ItemModArmor {
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
-	ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.SUWAKOHAT, EntityEquipmentSlot.HEAD);
+	public ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
+		super(materialIn, dmg, LibItemName.SUWAKO_HAT, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override

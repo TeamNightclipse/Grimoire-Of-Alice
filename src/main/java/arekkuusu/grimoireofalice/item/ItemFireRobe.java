@@ -23,8 +23,8 @@ import java.util.List;
 
 public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
-	ItemFireRobe(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.FIREROBE, EntityEquipmentSlot.CHEST);
+	public ItemFireRobe(ArmorMaterial materialIn, int dmg) {
+		super(materialIn, dmg, LibItemName.FIRE_ROBE, EntityEquipmentSlot.CHEST);
 		setNoRepair();
 	}
 

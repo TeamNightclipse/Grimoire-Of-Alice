@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ItemSwordRoukanken extends ItemModSword {
 
-	ItemSwordRoukanken(ToolMaterial material) {
+	public ItemSwordRoukanken(ToolMaterial material) {
 		super(material, LibItemName.ROUKANKEN);
 	}
 

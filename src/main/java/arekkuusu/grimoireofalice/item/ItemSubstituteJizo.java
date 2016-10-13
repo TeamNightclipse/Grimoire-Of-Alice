@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ItemSubstituteJizo extends ItemMod {
 
-	ItemSubstituteJizo() {
-		super(LibItemName.SUBSTITUTEJIZO);
+	public ItemSubstituteJizo() {
+		super(LibItemName.SUBSTITUTE_JIZO);
 		setMaxStackSize(4);
 	}
 

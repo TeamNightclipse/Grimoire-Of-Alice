@@ -33,8 +33,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemShouLamp extends ItemMod {
 
-	ItemShouLamp() {
-		super(LibItemName.SHOULAMP);
+	public ItemShouLamp() {
+		super(LibItemName.SHOU_LAMP);
 		setMaxStackSize(1);
 	}
 

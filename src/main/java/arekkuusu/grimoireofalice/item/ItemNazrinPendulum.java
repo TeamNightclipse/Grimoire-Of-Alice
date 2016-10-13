@@ -27,8 +27,8 @@ import java.util.List;
 
 public class ItemNazrinPendulum extends ItemMod {
 
-	ItemNazrinPendulum() {
-		super(LibItemName.NAZRINPENDULUM);
+	public ItemNazrinPendulum() {
+		super(LibItemName.NAZRIN_PENDULUM);
         setMaxStackSize(1);
 	}
 

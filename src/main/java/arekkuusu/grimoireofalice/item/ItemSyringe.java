@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSyringe extends ItemModSword {
 
-	ItemSyringe(ToolMaterial material) {
+	public ItemSyringe(ToolMaterial material) {
 		super(material, LibItemName.SYRINGE);
 	}
 	

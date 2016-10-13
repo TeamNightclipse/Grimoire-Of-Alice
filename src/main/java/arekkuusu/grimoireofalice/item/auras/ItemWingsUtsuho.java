@@ -20,7 +20,7 @@ import java.util.List;
 public class ItemWingsUtsuho extends ItemModAura {
 
 	public ItemWingsUtsuho(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURAUTSUHO, EntityEquipmentSlot.CHEST);
+		super(material, dmg, LibItemName.AURA_UTSUHO, EntityEquipmentSlot.CHEST);
 	}
 
 	@Override

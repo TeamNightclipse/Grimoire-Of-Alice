@@ -20,8 +20,8 @@ import java.util.List;
 
 public class ItemRodOfRemorse extends ItemMod {
 
-	ItemRodOfRemorse() {
-		super(LibItemName.RODREMORSE);
+	public ItemRodOfRemorse() {
+		super(LibItemName.ROD_REMORSE);
 		setMaxDamage(1);
 	}
 

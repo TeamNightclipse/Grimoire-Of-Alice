@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ItemGhastlySendOffLantern extends ItemMod {
 
-	ItemGhastlySendOffLantern() {
-		super(LibItemName.SENDOFFLANTERN);
+	public ItemGhastlySendOffLantern() {
+		super(LibItemName.SEND_OFF_LANTERN);
 	}
 
 	@Override

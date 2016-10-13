@@ -35,7 +35,7 @@ public class ItemAuraMokou extends ItemModAura {
 	private ModelBiped model;
 
 	public ItemAuraMokou(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.AURAMOKOU, EntityEquipmentSlot.HEAD);
+		super(material, dmg, LibItemName.AURA_MOKOU, EntityEquipmentSlot.HEAD);
 	}
 	
 	@Override

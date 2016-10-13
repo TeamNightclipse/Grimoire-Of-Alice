@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHyottokoMask extends ItemModMask {
 
 	public ItemHyottokoMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.HYOTTOKOMASK);
+		super(material, dmg, LibItemName.HYOTTOKO_MASK);
 	}
 
 	@Override

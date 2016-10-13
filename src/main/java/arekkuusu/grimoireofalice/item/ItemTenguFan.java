@@ -31,8 +31,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTenguFan extends ItemMod {
 
-	ItemTenguFan() {
-		super(LibItemName.TENGUFAN);
+	public ItemTenguFan() {
+		super(LibItemName.TENGU_FAN);
 		setMaxDamage(500);
 	}
 

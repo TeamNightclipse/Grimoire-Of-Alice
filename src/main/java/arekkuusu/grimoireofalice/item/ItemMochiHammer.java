@@ -11,12 +11,10 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,8 +26,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMochiHammer extends ItemModSword {
 
-	ItemMochiHammer(ToolMaterial material) {
-		super(material, LibItemName.MOCHIHAMMER);
+	public ItemMochiHammer(ToolMaterial material) {
+		super(material, LibItemName.MOCHI_HAMMER);
 	}
 
 	@Override

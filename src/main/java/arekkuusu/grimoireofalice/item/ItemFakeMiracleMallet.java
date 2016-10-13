@@ -1,14 +1,12 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -21,8 +19,8 @@ import java.util.List;
 
 public class ItemFakeMiracleMallet extends ItemMod {
 
-	ItemFakeMiracleMallet() {
-		super(LibItemName.FAKEMIRACLEMALLET);
+	public ItemFakeMiracleMallet() {
+		super(LibItemName.FAKE_MIRACLE_MALLET);
 		setMaxStackSize(1);
 		setNoRepair();
 		addPropertyOverride(new ResourceLocation("swinging"), (stack, world, entity) ->

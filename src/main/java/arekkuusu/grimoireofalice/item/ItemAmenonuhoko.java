@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAmenonuhoko extends ItemSwordOwner {
 
-	ItemAmenonuhoko(ToolMaterial material) {
+	public ItemAmenonuhoko(ToolMaterial material) {
 		super(material, LibItemName.AMENONUHOKO);
 		setNoRepair();
 	}

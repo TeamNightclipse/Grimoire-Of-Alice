@@ -22,8 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWallPassingChisel extends ItemMod {
 
-	ItemWallPassingChisel() {
-		super(LibItemName.WALLPASSINGCHISEL);
+	public ItemWallPassingChisel() {
+		super(LibItemName.WALL_PASSING_CHISEL);
 	}
 
 	@Override

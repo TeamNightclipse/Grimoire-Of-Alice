@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockKyoumarubotan extends BlockModBush {
 	
-	BlockKyoumarubotan() {
+	public BlockKyoumarubotan() {
 		super(LibBlockName.KYOUMARUBOTAN, Material.ROCK);
 		setTickRandomly(true);
 		setLightLevel(0.5F);

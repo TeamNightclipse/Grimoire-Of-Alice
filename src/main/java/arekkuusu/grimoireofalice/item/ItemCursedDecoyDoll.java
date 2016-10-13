@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ItemCursedDecoyDoll extends ItemMod {
 
-	ItemCursedDecoyDoll() {
-		super(LibItemName.DECOYDOLL);
+	public ItemCursedDecoyDoll() {
+		super(LibItemName.DECOY_DOLL);
 		setMaxStackSize(1);
 	}
 

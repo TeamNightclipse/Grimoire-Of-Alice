@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.event;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.potion.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -40,7 +41,8 @@ public class YukkuriEvent {
 				event.setCanceled(true);
 			}
 			else {
-				boolean potion = player.isPotionActive(ModItems.elixir);
+				@SuppressWarnings("ConstantConditions")
+				boolean potion = player.isPotionActive(ModPotions.ELIXIR);
 				if(potion) {
 					player.hurtResistantTime = 100;
 					player.isDead = false;

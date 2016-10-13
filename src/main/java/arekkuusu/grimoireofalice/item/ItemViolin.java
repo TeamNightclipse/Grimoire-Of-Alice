@@ -31,8 +31,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemViolin extends ItemMod {
 
-	ItemViolin() {
-		super(LibItemName.LUNASAVIOLIN);
+	public ItemViolin() {
+		super(LibItemName.LUNASA_VIOLIN);
 		setMaxDamage(500);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->

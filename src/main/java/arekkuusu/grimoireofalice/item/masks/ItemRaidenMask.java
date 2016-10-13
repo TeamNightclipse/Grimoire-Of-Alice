@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemRaidenMask extends ItemModMask {
 
 	public ItemRaidenMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.RAIDENMASK);
+		super(material, dmg, LibItemName.RAIDEN_MASK);
 	}
 
 	@Override

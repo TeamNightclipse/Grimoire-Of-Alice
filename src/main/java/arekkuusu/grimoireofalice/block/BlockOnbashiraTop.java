@@ -37,7 +37,7 @@ public class BlockOnbashiraTop extends BlockMod{
 	protected static final AxisAlignedBB BOTTOM = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 	
 	@SuppressWarnings("ConstantConditions")
-	BlockOnbashiraTop() {
+	public BlockOnbashiraTop() {
 		super(LibBlockName.ONBASHIRATOP, Material.WOOD);
 		setCreativeTab(null);
 		setResistance(2000.0F);

@@ -2,8 +2,8 @@ package arekkuusu.grimoireofalice.item.food;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
-import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.potion.ModPotions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ItemUltramarineOrbElixir extends ItemModFood {
 
 	public ItemUltramarineOrbElixir() {
-		super(0, 0, false, LibItemName.ORBELIXIR);
+		super(0, 0, false, LibItemName.ORB_ELIXIR);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}
@@ -50,7 +50,8 @@ public class ItemUltramarineOrbElixir extends ItemModFood {
 		super.onFoodEaten(stack, world, player);
 		world.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
 				SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		player.addPotionEffect(new PotionEffect(ModItems.elixir, 1000, 0));
+		//noinspection ConstantConditions
+		player.addPotionEffect(new PotionEffect(ModPotions.ELIXIR, 1000, 0));
 		if(!world.isRemote) {
 			EntityMagicCircle circle = new EntityMagicCircle(world, player, EnumTextures.RED_NORMAL, 1000);
 			world.spawnEntityInWorld(circle);

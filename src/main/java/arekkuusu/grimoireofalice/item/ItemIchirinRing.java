@@ -18,7 +18,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
@@ -26,7 +25,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -36,8 +34,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemIchirinRing extends ItemModSword {
 
-	ItemIchirinRing(ToolMaterial material) {
-		super(material, LibItemName.ICHIRINRING);
+	public ItemIchirinRing(ToolMaterial material) {
+		super(material, LibItemName.ICHIRIN_RING);
 		setMaxStackSize(1);
 		setNoRepair();
 	}

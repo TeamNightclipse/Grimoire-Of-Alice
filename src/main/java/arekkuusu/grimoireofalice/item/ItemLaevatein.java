@@ -38,7 +38,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemLaevatein extends ItemModSword {
 
-	ItemLaevatein(ToolMaterial material) {
+	public ItemLaevatein(ToolMaterial material) {
 		super(material, LibItemName.LAEVATEIN);
 	}
 

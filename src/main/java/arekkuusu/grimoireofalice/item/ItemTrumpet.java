@@ -31,8 +31,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemTrumpet extends ItemMod {
 
-	ItemTrumpet() {
-		super(LibItemName.MERLINTRUMPET);
+	public ItemTrumpet() {
+		super(LibItemName.MERLIN_TRUMPET);
 		setMaxDamage(500);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->

@@ -33,11 +33,11 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		danmakuCoreInstalled = Loader.isModLoaded("danamkucore");
+		danmakuCoreInstalled = Loader.isModLoaded("danmakucore");
+		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
-		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
 	}
 
 

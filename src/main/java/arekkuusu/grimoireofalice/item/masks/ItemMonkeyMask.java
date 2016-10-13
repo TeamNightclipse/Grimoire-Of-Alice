@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMonkeyMask extends ItemModMask {
 
 	public ItemMonkeyMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.MONKEYMASK);
+		super(material, dmg, LibItemName.MONKEY_MASK);
 	}
 
 	@Override

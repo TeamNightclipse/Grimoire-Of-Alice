@@ -16,8 +16,8 @@ import java.util.List;
 
 public class ItemKappaHat extends ItemModArmor {
 
-	ItemKappaHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.KAPPAHAT, EntityEquipmentSlot.HEAD);
+	public ItemKappaHat(ArmorMaterial materialIn, int dmg) {
+		super(materialIn, dmg, LibItemName.KAPPA_HAT, EntityEquipmentSlot.HEAD);
 		setMaxDamage(200);
 		setNoRepair();
 		setMaxStackSize(1);

@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemFukuNoKamiMask extends ItemModMask {
 
 	public ItemFukuNoKamiMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.FUKUNOKAMIMASK);
+		super(material, dmg, LibItemName.FUKUNOKAMI_MASK);
 	}
 
 	@Override

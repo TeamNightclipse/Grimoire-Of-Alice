@@ -18,7 +18,6 @@ public class ItemModSword extends ItemSword {
 		super(material);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 }

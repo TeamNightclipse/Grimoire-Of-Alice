@@ -33,7 +33,7 @@ public class ItemAuraKanako extends ItemModAura {
     private ModelBiped model;
 
     public ItemAuraKanako(ArmorMaterial material, int dmg) {
-        super(material, dmg, LibItemName.AURAKANAKO, EntityEquipmentSlot.CHEST);
+        super(material, dmg, LibItemName.AURA_KANAKO, EntityEquipmentSlot.CHEST);
     }
 
     @Override

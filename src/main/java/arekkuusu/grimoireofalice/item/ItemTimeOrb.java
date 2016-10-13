@@ -30,8 +30,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTimeOrb extends ItemMod{
 
-	ItemTimeOrb() {
-		super(LibItemName.TIMEORB);
+	public ItemTimeOrb() {
+		super(LibItemName.TIME_ORB);
 	}
 
 	@Override

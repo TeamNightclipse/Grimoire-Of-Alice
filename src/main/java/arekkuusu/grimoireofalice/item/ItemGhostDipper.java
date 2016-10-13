@@ -33,8 +33,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGhostDipper extends ItemMod {
 
-	ItemGhostDipper() {
-		super(LibItemName.GHOSTDIPPER);
+	public ItemGhostDipper() {
+		super(LibItemName.GHOST_DIPPER);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();

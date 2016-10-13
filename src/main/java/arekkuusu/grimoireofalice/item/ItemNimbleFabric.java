@@ -19,8 +19,8 @@ import java.util.List;
 
 public class ItemNimbleFabric extends ItemMod {
 
-	ItemNimbleFabric() {
-		super(LibItemName.NIMBLEFABRIC);
+	public ItemNimbleFabric() {
+		super(LibItemName.NIMBLE_FABRIC);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("blocking"), (stack, world, entity) ->
 				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);

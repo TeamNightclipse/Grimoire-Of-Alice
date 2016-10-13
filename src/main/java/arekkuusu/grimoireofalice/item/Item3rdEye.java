@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Item3rdEye extends ItemMod {
 	
-	Item3rdEye() {
+	public Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
 	}

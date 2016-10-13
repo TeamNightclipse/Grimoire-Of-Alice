@@ -41,10 +41,10 @@ public class ItemBudahBoul extends ItemTool {
 	private static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(
 			Material.PLANTS, Material.VINE, Material.CORAL, Material.LEAVES, Material.GOURD);
 
-	ItemBudahBoul(ToolMaterial materialIn) {
+	public ItemBudahBoul(ToolMaterial materialIn) {
 		super(4.0F, -2.8F, materialIn, Collections.emptySet());
-		setRegistryName(LibItemName.BUDAHBOUL);
-		setUnlocalizedName(LibItemName.BUDAHBOUL);
+		setRegistryName(LibItemName.BUDAH_BOUL);
+		setUnlocalizedName(LibItemName.BUDAH_BOUL);
 		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 

@@ -20,7 +20,7 @@ import java.util.List;
 public class ItemIbukiGourd extends ItemModFood {
 
 	public ItemIbukiGourd() {
-		super(0, 2F, false, LibItemName.IBUKIGOURD);
+		super(0, 2F, false, LibItemName.IBUKI_GOURD);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}

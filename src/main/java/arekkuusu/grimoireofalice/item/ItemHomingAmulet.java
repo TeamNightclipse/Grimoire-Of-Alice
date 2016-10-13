@@ -5,6 +5,6 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 public class ItemHomingAmulet extends ItemMod {
 
 	public ItemHomingAmulet() {
-		super(LibItemName.HOMINGAMULET);
+		super(LibItemName.HOMING_AMULET);
 	}
 }

@@ -1,7 +1,6 @@
 package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -22,8 +21,8 @@ import java.util.List;
 
 public class ItemBloodThirstyOrb extends ItemMod {
 
-	ItemBloodThirstyOrb() {
-		super(LibItemName.BLOODTHIRSTYORB);
+	public ItemBloodThirstyOrb() {
+		super(LibItemName.BLOOD_THIRSTY_ORB);
 		setMaxStackSize(1);
 		setNoRepair();
 	}

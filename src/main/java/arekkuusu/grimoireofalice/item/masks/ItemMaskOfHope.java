@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMaskOfHope extends ItemModMask {
 
 	public ItemMaskOfHope(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.MASKOFHOPE);
+		super(material, dmg, LibItemName.MASKOF_HOPE);
 	}
 
 	@Override

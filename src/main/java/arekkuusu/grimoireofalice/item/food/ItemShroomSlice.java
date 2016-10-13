@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemShroomSlice extends ItemModFood {
 
 	public ItemShroomSlice() {
-		super(4, 1.2F, false, LibItemName.SHROOMSLICE);
+		super(4, 1.2F, false, LibItemName.SHROOM_SLICE);
 		setHasSubtypes(true);
 		setAlwaysEdible();
 	}

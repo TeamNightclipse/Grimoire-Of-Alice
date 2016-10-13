@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemNeedle extends ItemModSword {
 
-	ItemNeedle(ToolMaterial material) {
+	public ItemNeedle(ToolMaterial material) {
 		super(material, LibItemName.NEEDLE);
 	}
 

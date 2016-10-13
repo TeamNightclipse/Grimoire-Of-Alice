@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockOnbashiraMiddle extends BlockMod {
 
 	@SuppressWarnings("ConstantConditions")
-	BlockOnbashiraMiddle() {
+	public BlockOnbashiraMiddle() {
 		super(LibBlockName.ONBASHIRAMIDDLE, Material.AIR);
 		setCreativeTab(null);
 		setResistance(2000.0F);

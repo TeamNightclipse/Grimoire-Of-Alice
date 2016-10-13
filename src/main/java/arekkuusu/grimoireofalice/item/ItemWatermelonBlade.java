@@ -19,8 +19,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemWatermelonBlade extends ItemModSword {
 
-	ItemWatermelonBlade(ToolMaterial material) {
-		super(material, LibItemName.WATERMELONBLADE);
+	public ItemWatermelonBlade(ToolMaterial material) {
+		super(material, LibItemName.WATERMELON_BLADE);
 		setNoRepair();
 	}
 	

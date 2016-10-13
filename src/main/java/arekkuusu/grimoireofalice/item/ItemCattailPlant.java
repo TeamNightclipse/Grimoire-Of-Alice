@@ -19,8 +19,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemCattailPlant extends ItemModSword {
 
-	ItemCattailPlant(ToolMaterial material) {
-		super(material, LibItemName.CATTAILPLANT);
+	public ItemCattailPlant(ToolMaterial material) {
+		super(material, LibItemName.CATTAIL_PLANT);
 		setNoRepair();
 	}
 	

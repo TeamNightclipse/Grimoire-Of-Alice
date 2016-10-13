@@ -21,8 +21,8 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemShichiSeiken extends ItemModSword {
 
-	ItemShichiSeiken(ToolMaterial material) {
-		super(material, LibItemName.SHICHISEIKEN);
+	public ItemShichiSeiken(ToolMaterial material) {
+		super(material, LibItemName.SHICHI_SEIKEN);
 	}
 
 	@Override
