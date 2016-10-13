@@ -45,6 +45,14 @@ public class ItemJeweledHourai extends ItemMod {
 	private static final Item[] JEWELS =
 			{Items.DIAMOND, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
 
+	private static final int[] COLORS = {
+			LibColor.COLOR_SATURATED_YELLOW,
+			LibColor.COLOR_SATURATED_YELLOW,
+			LibColor.COLOR_SATURATED_MAGENTA,
+			LibColor.COLOR_SATURATED_RED,
+			LibColor.COLOR_SATURATED_BLUE
+	};
+
 	public ItemJeweledHourai() {
 		super(LibItemName.JEWELED_HOURAI);
 		setNoRepair();
@@ -101,16 +109,11 @@ public class ItemJeweledHourai extends ItemMod {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 30){timeUsed = 30;}
-					int num = new Random().nextInt(5);
-					int color = num == 0 ? LibColor.COLOR_SATURATED_YELLOW
-							: num == 1 ? LibColor.COLOR_SATURATED_YELLOW
-							: num == 2 ? LibColor.COLOR_SATURATED_MAGENTA
-							: num == 3 ? LibColor.COLOR_SATURATED_RED
-							: LibColor.COLOR_SATURATED_BLUE;
+					int color = COLORS[itemRand.nextInt(COLORS.length)];
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color)).build();
-					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4, 1);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
 					addJewels(stack, -1);
 				}
 			} else {
