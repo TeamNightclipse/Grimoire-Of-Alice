@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -101,11 +102,11 @@ public class ItemJeweledHourai extends ItemMod {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 30){timeUsed = 30;}
 					int num = new Random().nextInt(5);
-					int color = num == 0 ? LibShotData.COLOR_SATURATED_YELLOW
-							: num == 1 ? LibShotData.COLOR_SATURATED_YELLOW
-							: num == 2 ? LibShotData.COLOR_SATURATED_MAGENTA
-							: num == 3 ? LibShotData.COLOR_SATURATED_RED
-							: LibShotData.COLOR_SATURATED_BLUE;
+					int color = num == 0 ? LibColor.COLOR_SATURATED_YELLOW
+							: num == 1 ? LibColor.COLOR_SATURATED_YELLOW
+							: num == 2 ? LibColor.COLOR_SATURATED_MAGENTA
+							: num == 3 ? LibColor.COLOR_SATURATED_RED
+							: LibColor.COLOR_SATURATED_BLUE;
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color)).build();

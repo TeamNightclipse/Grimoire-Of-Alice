@@ -17,7 +17,7 @@ import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibGuiID;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.katsstuff.danmakucore.item.DanmakuCoreItem;
+import net.katsstuff.danmakucore.lib.data.LibItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -68,7 +68,7 @@ public class ItemSpellCardPouch extends ItemMod {
         private final IItemHandler inv = new ItemStackHandler(8) {
             @Override
             public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
-                return toInsert.getItem() == DanmakuCoreItem.spellcard ? super.insertItem(slot, toInsert, simulate) : toInsert;
+                return toInsert.getItem() == LibItems.SPELLCARD ? super.insertItem(slot, toInsert, simulate) : toInsert;
             }
         };
 

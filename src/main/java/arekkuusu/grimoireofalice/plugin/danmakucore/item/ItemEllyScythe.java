@@ -20,6 +20,7 @@ import net.katsstuff.danmakucore.data.AbstractVector3;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -163,7 +164,7 @@ public class ItemEllyScythe extends ItemModSword {
 				.setAngle(Vector3.Up())
 				.setMovementData(0.2D)
 				.setPos(spawnPos)
-				.setShot(LibShotData.SHOT_SCALE.setColor(LibShotData.COLOR_SATURATED_RED))
+				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
 				.build().asEntity();
 
 		player.worldObj.spawnEntityInWorld(danmaku);

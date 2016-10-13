@@ -8,6 +8,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -118,7 +119,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					} else if (timeUsed >= 20  && player.isSneaking()) {
 						DanmakuBuilder danmaku = DanmakuBuilder.builder()
 								.setUser(player)
-								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibShotData.COLOR_SATURATED_RED))
+								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED))
 								.build();
 
 						DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 5, 0.5D);
