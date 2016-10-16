@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,17 +44,35 @@ public class ItemMiracleMallet extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode) {
-			//TODO: Set boundingBox too
 			if (!playerIn.getEntityData().hasKey("MalletResized")) {
 				float size = playerIn.isSneaking() ? 0.5F : 1.5F;
 				playerIn.getEntityData().setFloat("MalletResized", size);
+				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox(); //Get Bounding Box
+				float eyeHeight = playerIn.eyeHeight;
+				eyeHeight += playerIn.isSneaking() ? -0.92F: 1.00F;
+				if(eyeHeight < 3.00F) eyeHeight += 1.00F;
+				axisAlignedBB.expand(0, playerIn.isSneaking() ? -2.00F: 2.00F, 0); //Expand bounding Box
+				playerIn.eyeHeight = eyeHeight;
+				playerIn.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			} else {
 				float size = playerIn.getEntityData().getFloat("MalletResized");
+				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox();
+				float eyeHeight = playerIn.getEyeHeight();
 				if (playerIn.isSneaking()) {
 					size -= 0.5;
+					if (eyeHeight > 1.00F) {
+						eyeHeight -= 0.92F;
+						playerIn.eyeHeight = eyeHeight;
+					}
 				} else {
 					size += 0.5;
+					axisAlignedBB.expand(0, size, 0);
+					if(eyeHeight < 3.00F) eyeHeight += 1.00F;
+					playerIn.eyeHeight = eyeHeight;
 				}
+				if(size <= 0){size = 0.5F;}
+				if(size > 2){size = 2.0F;}
+				playerIn.setEntityBoundingBox(axisAlignedBB);
 				playerIn.getEntityData().setFloat("MalletResized", size);
 			}
 		}
@@ -72,11 +91,11 @@ public class ItemMiracleMallet extends ItemMod {
 			} else {
 				float size = target.getEntityData().getFloat("MalletResized");
 				if (playerIn.isSneaking()) {
-					size -= 0.25F;
+					size -= 0.5F;
 				} else {
-					size += 0.25F;
+					size += 0.5F;
 				}
-				if(size <= 0){size = 0.25F;}
+				if(size <= 0){size = 0.5F;}
 				if(size > 2){size = 2.0F;}
 				target.getEntityData().setFloat("MalletResized", size);
 			}

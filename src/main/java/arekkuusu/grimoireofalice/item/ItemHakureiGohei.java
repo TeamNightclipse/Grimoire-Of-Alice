@@ -6,17 +6,15 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -27,16 +25,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ItemHakureiGohei extends ItemMod {
 
 	private static final String[] MODES = {
-			"Passive",
-			"Aura manipulation",
-			"Hakurei Yin-Yang Orbs",
-			"Exploding Barrier",
-			"Motion Barrier","Offensive"
+			"§fPassive",
+			"§bAura manipulation",
+			"§dHakurei Yin-Yang Orbs",
+			"§eExploding Barrier",
+			"§6Motion Barrier",
+			"§4Offensive"
 	};
 
 	public ItemHakureiGohei() {
@@ -44,11 +42,15 @@ public class ItemHakureiGohei extends ItemMod {
 	}
 
 	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.EPIC;
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Gohei from a powerful Shrine Maiden");
-		list.add(TextFormatting.ITALIC + "Aura Manipulation. God summoning");
-		list.add(TextFormatting.DARK_AQUA + "Gohei Mode: " + MODES[getMode(stack)]);
+		list.add("§7Gohei Mode: " + MODES[getMode(stack)]);
 	}
 
 	@Override
@@ -79,6 +81,8 @@ public class ItemHakureiGohei extends ItemMod {
 		int mode = getMode(itemStackIn);
 		if(!playerIn.isSneaking())
 		if (mode == 2) {
+			worldIn.playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.HOSTILE, 1.0F,
+					itemRand.nextFloat() * 0.1F + 0.8F);
 			EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
 			if (!worldIn.isRemote) {
 				worldIn.spawnEntityInWorld(orb);
@@ -96,8 +100,8 @@ public class ItemHakureiGohei extends ItemMod {
 	public void onUsingTick(ItemStack itemStackIn, EntityLivingBase playerIn, int ticks) {
 		if (getMode(itemStackIn) == 1) {
 			if (playerIn instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) playerIn;
-				double range = 16.0D;
+				EntityPlayer player = (EntityPlayer)playerIn;
+				double range = 5.0D;
 				Vec3d look = player.getLookVec();
 				Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 				Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
@@ -123,11 +127,13 @@ public class ItemHakureiGohei extends ItemMod {
 					}
 				}
 				if (entity != null && !player.worldObj.isRemote) {
-					float distance = 16F;
+					float distance = 5F;
 					double dx = player.posX + (look.xCoord * distance);
-					double dy = player.posY + (look.yCoord * distance);
+					double dy = player.posY + 2 + (look.yCoord * distance);
 					double dz = player.posZ + (look.zCoord * distance);
 					if(isSafe(player.worldObj, dx, dy, dz)) {
+						entity.motionY = 0D;
+						entity.fallDistance = 0;
 						entity.setPosition(dx, dy, dz);
 					}
 				}
@@ -139,7 +145,6 @@ public class ItemHakureiGohei extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			playerIn.swingArm(EnumHand.MAIN_HAND);
 			if (playerIn.isSneaking()) {
 				int mode = getMode(stack);
 				mode += 1;
@@ -161,9 +166,26 @@ public class ItemHakureiGohei extends ItemMod {
 						playerIn.setPosition(dx, dy, dz);
 					}
 				}
+				playerIn.swingArm(EnumHand.MAIN_HAND);
 			}
 			stack.damageItem(1, playerIn);
 		}
+	}
+
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if(getMode(stack) == 5)
+		if(target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD){
+			attacker.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
+		} else if(target.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD){
+			attacker.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
+		} else if(target instanceof EntityPlayer){
+			attacker.worldObj.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
+		}
+		return true;
 	}
 
 	private void setMode(ItemStack itemStack, int mode) {

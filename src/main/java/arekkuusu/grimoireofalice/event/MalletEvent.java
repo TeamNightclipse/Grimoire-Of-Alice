@@ -17,8 +17,7 @@ public class MalletEvent {
 			float size = e.getEntityData().getFloat("MalletResized");
 			GlStateManager.pushMatrix();
 			if(size > 0 && size != 1) {
-				GlStateManager.scale(size, size, size); //Doesn't work well with Mobs.
-				//GlStateManager.translate(0, 0, 0);
+				GlStateManager.scale(size, size, size);
 			}
 		}
 	}

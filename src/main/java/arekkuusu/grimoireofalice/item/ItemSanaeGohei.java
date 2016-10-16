@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.item;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -18,6 +19,11 @@ public class ItemSanaeGohei extends ItemMod {
 
 	public ItemSanaeGohei() {
 		super(LibItemName.SANAE_GOHEI);
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.EPIC;
 	}
 
 	@Override
