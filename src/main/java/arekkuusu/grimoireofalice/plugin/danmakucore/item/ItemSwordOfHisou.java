@@ -61,10 +61,10 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
 			list.add(TextFormatting.GRAY + "no matter the circumstances.");
+			list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
 		} else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
-		list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
 		super.addInformation(stack, player, list, p_77624_4_);
 	}
 

@@ -25,6 +25,7 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 		this.user = user;
 		setRotation(user.rotationYaw,0);
 		setHealth(20);
+		setNoGravity(true);
 	}
 
 	@Override

@@ -6,14 +6,19 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityFireBalloon;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
+import arekkuusu.grimoireofalice.item.ItemModSword;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.LibColor;
+import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -76,12 +81,13 @@ public class ItemLaevatein extends ItemModSword {
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
-					Vec3d look = playerIn.getLookVec();
-					Vec3d position = new Vec3d(playerIn.posX, playerIn.posY, playerIn.posZ);
-					Vec3d fireBallPos = new Vec3d(position.xCoord + look.xCoord * 5, position.yCoord + look.yCoord * 5, position.zCoord + look.zCoord * 5);
-					EntityFireBalloon fireball2 = new EntityFireBalloon(worldIn, playerIn, fireBallPos, look);
+					DanmakuBuilder danmaku = DanmakuBuilder.builder()
+							.setUser(playerIn)
+							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSizeX(2).setSizeY(2).setSizeZ(2))
+							.build();
 
-					worldIn.spawnEntityInWorld(fireball2);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, 1 , 10, 5);
+
 					playerIn.inventory.deleteStack(new ItemStack(Items.FIRE_CHARGE));
 					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EnumTextures.RED_NORMAL, 15);
 					worldIn.spawnEntityInWorld(circle);

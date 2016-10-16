@@ -18,85 +18,10 @@ import arekkuusu.grimoireofalice.block.BlockOnbashiraTop;
 import arekkuusu.grimoireofalice.block.BlockPaper;
 import arekkuusu.grimoireofalice.block.BlockRope;
 import arekkuusu.grimoireofalice.block.BlockShroom;
-import arekkuusu.grimoireofalice.entity.EntityAnimalShot;
-import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
-import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
-import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
-import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
-import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
-import arekkuusu.grimoireofalice.entity.EntityLeaf;
-import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
-import arekkuusu.grimoireofalice.entity.EntityNeedle;
-import arekkuusu.grimoireofalice.entity.EntityNote;
-import arekkuusu.grimoireofalice.entity.EntityStopWatch;
-import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
-import arekkuusu.grimoireofalice.entity.EntityWind;
+import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
-import arekkuusu.grimoireofalice.item.Item3rdEye;
-import arekkuusu.grimoireofalice.item.ItemAmenonuhoko;
-import arekkuusu.grimoireofalice.item.ItemBloodThirstyOrb;
-import arekkuusu.grimoireofalice.item.ItemBudahBoul;
-import arekkuusu.grimoireofalice.item.ItemCattailPlant;
-import arekkuusu.grimoireofalice.item.ItemCrestOfYggdrasill;
-import arekkuusu.grimoireofalice.item.ItemCursedDecoyDoll;
-import arekkuusu.grimoireofalice.item.ItemDeathScythe;
-import arekkuusu.grimoireofalice.item.ItemDragonJewel;
-import arekkuusu.grimoireofalice.item.ItemFakeMiracleMallet;
-import arekkuusu.grimoireofalice.item.ItemFireRobe;
-import arekkuusu.grimoireofalice.item.ItemGapFoldingUmbrella;
-import arekkuusu.grimoireofalice.item.ItemGhastlySendOffLantern;
-import arekkuusu.grimoireofalice.item.ItemGhostDipper;
-import arekkuusu.grimoireofalice.item.ItemGloriousNipponSteel;
-import arekkuusu.grimoireofalice.item.ItemGrimoireBook;
-import arekkuusu.grimoireofalice.item.ItemHihiirokane;
-import arekkuusu.grimoireofalice.item.ItemIbarakiBoxEmpty;
-import arekkuusu.grimoireofalice.item.ItemIchirinRing;
-import arekkuusu.grimoireofalice.item.ItemKappaHat;
-import arekkuusu.grimoireofalice.item.ItemLaevatein;
-import arekkuusu.grimoireofalice.item.ItemLeaf;
-import arekkuusu.grimoireofalice.item.ItemMapleLeafShield;
-import arekkuusu.grimoireofalice.item.ItemMikoStick;
-import arekkuusu.grimoireofalice.item.ItemMiracleMallet;
-import arekkuusu.grimoireofalice.item.ItemMochiHammer;
-import arekkuusu.grimoireofalice.item.ItemMod;
-import arekkuusu.grimoireofalice.item.ItemMomijisScimitarSword;
-import arekkuusu.grimoireofalice.item.ItemNazrinPendulum;
-import arekkuusu.grimoireofalice.item.ItemNazrinStick;
-import arekkuusu.grimoireofalice.item.ItemNeedle;
-import arekkuusu.grimoireofalice.item.ItemNimbleFabric;
-import arekkuusu.grimoireofalice.item.ItemNueTrident;
-import arekkuusu.grimoireofalice.item.ItemOnbashira;
-import arekkuusu.grimoireofalice.item.ItemPatchyBook;
-import arekkuusu.grimoireofalice.item.ItemPiano;
-import arekkuusu.grimoireofalice.item.ItemPopsicleStick;
-import arekkuusu.grimoireofalice.item.ItemPrimordialShield;
-import arekkuusu.grimoireofalice.item.ItemRodOfRemorse;
-import arekkuusu.grimoireofalice.item.ItemRumiaSword;
-import arekkuusu.grimoireofalice.item.ItemSacredToyosatomimi;
-import arekkuusu.grimoireofalice.item.ItemSarielWand;
-import arekkuusu.grimoireofalice.item.ItemShichiSeiken;
-import arekkuusu.grimoireofalice.item.ItemShimenawaRope;
-import arekkuusu.grimoireofalice.item.ItemShouLamp;
-import arekkuusu.grimoireofalice.item.ItemSkull;
-import arekkuusu.grimoireofalice.item.ItemStopWatch;
-import arekkuusu.grimoireofalice.item.ItemSubstituteJizo;
-import arekkuusu.grimoireofalice.item.ItemSuwakoHat;
-import arekkuusu.grimoireofalice.item.ItemSwallowCowrieShell;
-import arekkuusu.grimoireofalice.item.ItemSwordRoukanken;
-import arekkuusu.grimoireofalice.item.ItemSwordofKusanagi;
-import arekkuusu.grimoireofalice.item.ItemSyringe;
-import arekkuusu.grimoireofalice.item.ItemTenguCamera;
-import arekkuusu.grimoireofalice.item.ItemTenguFan;
-import arekkuusu.grimoireofalice.item.ItemTimeOrb;
-import arekkuusu.grimoireofalice.item.ItemTrumpet;
-import arekkuusu.grimoireofalice.item.ItemUFOs;
-import arekkuusu.grimoireofalice.item.ItemViolin;
-import arekkuusu.grimoireofalice.item.ItemWallPassingChisel;
-import arekkuusu.grimoireofalice.item.ItemWatermelonBlade;
-import arekkuusu.grimoireofalice.item.ItemWatermelonSword;
-import arekkuusu.grimoireofalice.item.ItemYoukaiBook;
+import arekkuusu.grimoireofalice.item.*;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraIchirin;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
@@ -104,6 +29,7 @@ import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
 import arekkuusu.grimoireofalice.item.auras.ItemWingsUtsuho;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
+import arekkuusu.grimoireofalice.plugin.danmakucore.item.*;
 import arekkuusu.grimoireofalice.potion.PotionElixir;
 import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
 import arekkuusu.grimoireofalice.item.food.ItemHeavelyPeach;
@@ -125,10 +51,6 @@ import arekkuusu.grimoireofalice.item.masks.ItemRaidenMask;
 import arekkuusu.grimoireofalice.item.masks.ItemUbaMask;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemEllyScythe;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemJeweledHourai;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSpellCardPouch;
-import arekkuusu.grimoireofalice.plugin.danmakucore.item.ItemSwordOfHisou;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -146,7 +68,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
@@ -184,7 +105,6 @@ public class CommonProxy {
 				new ItemViolin(),
 				new ItemPiano(),
 				new ItemTrumpet(),
-				new ItemShouLamp(),
 				new ItemPatchyBook(),
 				new ItemSkull(),
 				new ItemTenguFan(),
@@ -205,6 +125,8 @@ public class CommonProxy {
 				new ItemTenguCamera(LibItemName.AYA_CAMERA),
 				new ItemTenguCamera(LibItemName.HATATE_CAMERA),
 				new ItemStopWatch(),
+				new ItemHakureiGohei(),
+				new ItemSanaeGohei(),
 
 				//Food
 				new ItemShroomSlice(),
@@ -239,11 +161,12 @@ public class CommonProxy {
 				new ItemFireRobe(SOLID_PAPER,3),
 				new ItemWingsUtsuho(SOLID_PAPER,5),
 				new ItemKappaHat(SOLID_PAPER,3),
+				new ItemMarisaHat(SOLID_PAPER,3),
+				new ItemMikoCape(SOLID_PAPER,3),
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),
 				new ItemCrestOfYggdrasill(WET_NOODLE),
-				new ItemLaevatein(WET_NOODLE),
 				new ItemMikoStick(NOT_A_MELEE_WEAPON),
 				new ItemMochiHammer(GOLDYRON),
 				new ItemMomijisScimitarSword(GOLDYRON),
@@ -269,6 +192,8 @@ public class CommonProxy {
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
+					new ItemLaevatein(WET_NOODLE),
+					new ItemShouLamp(),
 					new ItemJeweledHourai(),
 					new ItemSpellCardPouch(),
 					new ItemEllyScythe(WET_NOODLE),
@@ -349,6 +274,8 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
 	}

@@ -12,6 +12,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.inventory.EntityEquipmentSlot;
 
 public class ModelToyosatomimiAura extends ModelBiped {
 
@@ -29,7 +30,11 @@ public class ModelToyosatomimiAura extends ModelBiped {
 	private final ModelRenderer earLeft;
 	private final ModelRenderer earRight;
 
-	public ModelToyosatomimiAura() {
+	private final EntityEquipmentSlot slot;
+
+	public ModelToyosatomimiAura(EntityEquipmentSlot slot) {
+		this.slot = slot;
+
 		textureWidth = 1024;
 		textureHeight = 512;
 
@@ -90,7 +95,19 @@ public class ModelToyosatomimiAura extends ModelBiped {
 		this.cape6.render(scale);
 		bipedHeadwear.render(scale);
 
-		aura.showModel = entity.isSneaking();
+		aura.showModel = slot == EntityEquipmentSlot.HEAD && entity.isSneaking();
+
+		boolean renderCape = slot == EntityEquipmentSlot.CHEST;
+		capeBase.showModel = renderCape;
+		cape1.showModel = renderCape;
+		cape2.showModel = renderCape;
+		cape3.showModel = renderCape;
+		cape4.showModel = renderCape;
+		cape5.showModel = renderCape;
+		cape6.showModel = renderCape;
+
+		bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
+		bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(this.head.offsetX, this.head.offsetY, this.head.offsetZ);

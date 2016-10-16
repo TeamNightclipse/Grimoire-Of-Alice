@@ -46,8 +46,9 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.DARK_RED + "\"Infinite knowledge\"");
-		list.add(TextFormatting.ITALIC + "Ten desires from ten men from ten mouths to two ears");
-		list.add(TextFormatting.ITALIC + "To hear it all is your fate, to listen it all isn't");
+		list.add(TextFormatting.ITALIC + "I can listen to 10 people at once,");
+		list.add(TextFormatting.ITALIC + "but unfortunately you are the 11th.");
+		list.add(TextFormatting.ITALIC + "Sucks to be you");
 	}
 	
 	@Override
@@ -73,7 +74,7 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@SideOnly(Side.CLIENT)
 	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelToyosatomimiAura();
+		if (model == null) model = new ModelToyosatomimiAura(Ui);
 		model.setModelAttributes(imodel);
 		return model;
 	}

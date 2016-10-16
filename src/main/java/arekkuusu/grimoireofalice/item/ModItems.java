@@ -133,6 +133,10 @@ public final class ModItems {
 	public static final Item utsuhoAura = new Item();
 	@ObjectHolder(LibItemName.KAPPA_HAT)
 	public static final Item kappaHat = new Item();
+	@ObjectHolder(LibItemName.MARISA_HAT)
+	public static final Item marisaHat = new Item();
+	@ObjectHolder(LibItemName.MIKO_CAPE)
+	public static final Item mikoCape = new Item();
 	//Weapons
 	@ObjectHolder(LibItemName.MOCHI_HAMMER)
 	public static final Item mochiHammer = new Item();
@@ -227,4 +231,8 @@ public final class ModItems {
 	public static final Item ayaCamera = new Item();
 	@ObjectHolder(LibItemName.HATATE_CAMERA)
 	public static final Item hatateCamera = new Item();
+	@ObjectHolder(LibItemName.HAKUREI_GOHEI)
+	public static final Item hakureiGohei = new Item();
+	@ObjectHolder(LibItemName.SANAE_GOHEI)
+	public static final Item sanaeGohei = new Item();
 }

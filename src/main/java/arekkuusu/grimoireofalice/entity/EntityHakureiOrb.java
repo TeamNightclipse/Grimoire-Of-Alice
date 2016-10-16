@@ -1,0 +1,134 @@
+package arekkuusu.grimoireofalice.entity;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+
+public class EntityHakureiOrb extends EntityThrowable {
+
+	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private boolean isMoving = false;
+
+	public EntityHakureiOrb(World world) {
+		super(world);
+	}
+
+	public EntityHakureiOrb(World world, double x, double y, double z) {
+		super(world, x, y, z);
+	}
+
+	public EntityHakureiOrb(World world, EntityLivingBase entity) {
+		super(world, entity);
+		posX = entity.posX;
+		posY = entity.posY + 4;
+		posZ = entity.posZ;
+		setSize(1F);
+		setPosition(posX, posY, posZ);
+	}
+
+	@Override
+	protected void entityInit() {
+		dataManager.register(SIZE, 0F);
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		EntityPlayer player = (EntityPlayer)getThrower();
+		if(player == null) {
+			if (!worldObj.isRemote) {
+				setDead();
+			}
+		} else {
+			if (player.isHandActive() && !isMoving) {
+				float size = getSize();
+				posX = player.posX;
+				posY = player.posY + 4;
+				posZ = player.posZ;
+				setPosition(posX, posY, posZ);
+				if (size < 4) {
+					setSize(size + 0.1F);
+				}
+			} else if(!isMoving) {
+				setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 0F);
+				isMoving = true;
+			} else {
+				motionY -= 0.05D;
+			}
+			if(ticksExisted > 200){
+				if(!worldObj.isRemote){
+					setDead();
+				}
+			}
+		}
+	}
+
+	@Override
+	protected void onImpact(RayTraceResult rayTraceResult) {
+		if(rayTraceResult.typeOfHit == RayTraceResult.Type.ENTITY) {
+			onImpactEntity(rayTraceResult);
+		} else if(rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
+			bounce(rayTraceResult);
+		}
+	}
+
+	private void bounce(RayTraceResult rayTraceResult){
+		EnumFacing facing = rayTraceResult.sideHit;
+		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN){
+			rotationYaw *= -1.0F;
+			rotationPitch *= -1.0F;
+			motionX *= 0.8F;
+			motionY *= -0.8F;
+			motionZ *= 0.8F;
+		} else {
+			Vec3d vec = rayTraceResult.hitVec;
+			rotationYaw *= -1.0F;
+			motionX *= -0.8F;
+			motionZ *= -0.8F;
+		}
+		setRotation(rotationYaw, rotationPitch);
+	}
+
+	private void onImpactEntity(RayTraceResult result) {
+		if(result.entityHit != null && result.entityHit != getThrower()) {
+			applyHitEffects(result.entityHit);
+			if(!worldObj.isRemote) setDead();
+		}
+	}
+
+	private void applyHitEffects(Entity entity) {
+		entity.attackEntityFrom(DamageSource.causeThornsDamage(this), getSize() * 2);
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		return super.getEntityBoundingBox().expandXyz(getSize() * 2);
+	}
+
+	@Override
+	protected float getGravityVelocity() {
+		return 0;
+	}
+
+	public float getTicksAlive(){
+		return ticksExisted;
+	}
+
+	private void setSize(float size) {
+		dataManager.set(SIZE, size);
+	}
+
+	public float getSize() {
+		return dataManager.get(SIZE);
+	}
+}

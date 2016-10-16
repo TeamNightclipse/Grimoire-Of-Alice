@@ -71,6 +71,8 @@ public class LibItemName {
 	public static final String FIRE_ROBE = "firerobe";
 	public static final String AURA_UTSUHO = "aurautsuho";
 	public static final String KAPPA_HAT = "kappahat";
+	public static final String MARISA_HAT = "marisahat";
+	public static final String MIKO_CAPE = "mikocape";
 	//Weapons
 	public static final String MOCHI_HAMMER = "mochihammer";
 	public static final String MOMIJIS_SCIMITAR_SWORD = "momijisscimitarsword";
@@ -119,4 +121,6 @@ public class LibItemName {
 	public static final String HOMING_AMULET = "homingamulet";
 	public static final String AYA_CAMERA = "ayacamera";
 	public static final String HATATE_CAMERA = "hatatecamera";
+	public static final String SANAE_GOHEI = "sanaegohei";
+	public static final String HAKUREI_GOHEI = "hakureigohei";
 }

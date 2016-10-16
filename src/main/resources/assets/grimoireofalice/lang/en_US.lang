@@ -73,6 +73,8 @@ item.auraichirin.name=Nyuudou Unzan
 item.suwakohat.name=Suwako's Hat
 item.aurautsuho.name=Utsuho Wings
 item.kappahat.name=Nitori's Hat
+item.marisahat.name=Marisa's Hat
+item.mikocape.name=Fancy cape
 
 item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
@@ -152,6 +154,8 @@ item.sendofflantern.name=Ghastly Send-Off Lantern
 item.decoydoll.name=Cursed Decoy Doll
 item.ayacamera.name=Aya's Camera
 item.hatatecamera.name=Hatate's Camera
+item.hakureigohei.name=Reimu's Sacred Gohei
+item.sanaegohei.name=Sanae's Miracle Gohei
 
 effect.elixir=Elixir
 

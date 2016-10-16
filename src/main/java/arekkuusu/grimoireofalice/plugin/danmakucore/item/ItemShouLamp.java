@@ -6,12 +6,17 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.EnumTextures;
+import arekkuusu.grimoireofalice.item.ItemMod;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.LibColor;
+import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -65,6 +70,15 @@ public class ItemShouLamp extends ItemMod {
 	
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+		if(!player.worldObj.isRemote && count % 5 == 0) {
+			DanmakuBuilder danmaku = DanmakuBuilder.builder()
+					.setUser(player)
+					.setMovementData(0.1D,1D,0.1D)
+					.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW))
+					.build();
+
+			DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
+		}
 		player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
     }
 	

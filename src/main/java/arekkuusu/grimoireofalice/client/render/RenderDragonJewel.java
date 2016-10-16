@@ -52,6 +52,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();
+		GlStateManager.enableRescaleNormal();
 		GlStateManager.popMatrix();
 	}
 

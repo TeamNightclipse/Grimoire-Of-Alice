@@ -137,7 +137,6 @@ public class EntityGrimoireSpell extends Entity {
 		++this.tickCount;
 		float pageFlipPrev = this.pageFlip;
 		float f = (this.flipT - this.pageFlip) * 0.4F;
-		float f3 = 0.2F;
 		f = MathHelper.clamp_float(f, -0.2F, 0.2F);
 		this.flipA += (f - this.flipA) * 0.9F;
 		this.pageFlip += this.flipA;

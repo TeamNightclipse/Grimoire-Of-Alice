@@ -71,6 +71,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.fireRobe, 0);
 		registerItem(ModItems.utsuhoAura, 0);
 		registerItem(ModItems.kappaHat, 0);
+		registerItem(ModItems.marisaHat, 0);
+		registerItem(ModItems.mikoCape, 0);
 
 		//Items
 		registerItem(ModItems.gloriousNipponSteel, 0);
@@ -93,7 +95,6 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.uFOGreen, 0);
 		registerItem(ModItems.uFORed, 0);
 		registerItem(ModItems.leaf, 0);
-		registerItem(ModItems.shouLamp, 0);
 		registerItem(ModItems.patchyBook, 0);
 		registerItem(ModItems.skull, 0);
 		registerItem(ModItems.windStick, 0);
@@ -113,6 +114,8 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.ayaCamera, 0);
 		registerItem(ModItems.hatateCamera, 0);
 		registerItem(ModItems.stopWatch, 0);
+		registerItem(ModItems.hakureiGohei, 0);
+		registerItem(ModItems.sanaeGohei, 0);
 
 		registerItem(ModItems.ghostDipper, 0);
 		registerItem(ModItems.thirdEye, 0);
@@ -134,7 +137,6 @@ public class ClientProxy extends CommonProxy{
 		//Weapons
 		registerItem(ModItems.amenonuhoko, 0);
 		registerItem(ModItems.crestOfYggdrasill, 0);
-		registerItem(ModItems.laevatein, 0);
 		registerItem(ModItems.mikoStick, 0);
 		registerItem(ModItems.mochiHammer, 0);
 		registerItem(ModItems.momijisScimitarSword, 0);
@@ -172,6 +174,8 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			registerItem(ModItems.shouLamp, 0);
+			registerItem(ModItems.laevatein, 0);
 			registerItem(ModItems.jeweledHourai, 0);
 			registerItem(ModItems.pouch, 0);
 			registerItem(ModItems.ellyScythe, 0);
@@ -194,6 +198,8 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityCursedDecoyDoll.class, RenderCursedDecoyDoll::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityHakureiOrb.class, RenderHakureiOrb::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
 	}
 	
 	private static void registerItem(Item item, int damage) {

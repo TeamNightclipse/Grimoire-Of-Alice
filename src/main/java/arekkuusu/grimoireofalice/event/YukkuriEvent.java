@@ -5,18 +5,23 @@ import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.potion.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
+
+import java.util.List;
 
 public class YukkuriEvent {
 
@@ -79,6 +84,33 @@ public class YukkuriEvent {
 						break;
 					}
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onItemDrop(PlayerDropsEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+		List<EntityItem> drop = event.getDrops();
+		for(EntityItem item : drop){
+			Item i = item.getEntityItem().getItem();
+			if(i == ModItems.hakureiGohei || i == ModItems.utsuhoAura){
+				if(!player.capabilities.isCreativeMode) {
+					player.capabilities.allowFlying = false;
+					player.capabilities.isFlying = false;
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onItemToss(ItemTossEvent event) {
+		EntityPlayer player = event.getPlayer();
+		Item item = event.getEntityItem().getEntityItem().getItem();
+		if (item == ModItems.hakureiGohei || item == ModItems.utsuhoAura) {
+			if (!player.capabilities.isCreativeMode) {
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
 			}
 		}
 	}

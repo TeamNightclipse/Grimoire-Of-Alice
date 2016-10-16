@@ -87,13 +87,17 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.lunasaViolin);
 		addItem(ModItems.lyricaPiano);
 		addItem(ModItems.merlinTrumpet);
-		addItem(ModItems.shouLamp);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.shouLamp);
+		}
 		addItem(ModItems.patchyBook);
 		addItem(ModItems.skull);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.pouch);
 		}
 		addItem(ModItems.windStick);
+		addItem(ModItems.hakureiGohei);
+		addItem(ModItems.sanaeGohei);
         addItem(ModItems.nazrinPendulum);
 		addItem(ModItems.ghostDipper);
 		addItem(ModItems.wallPassingchisel);
@@ -147,10 +151,14 @@ public class GOACreativeTab extends CreativeTabs {
         addItem(ModItems.suwakoHat);
 		addItem(ModItems.fireRobe);
 		addItem(ModItems.kappaHat);
+		addItem(ModItems.marisaHat);
+		addItem(ModItems.mikoCape);
 		
 		//Weapons
 		addItem(ModItems.amenonuhoko);
-		addItem(ModItems.laevatein);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.laevatein);
+		}
 		addItem(ModItems.mikoStick);
 		addItem(ModItems.mochiHammer);
 		addItem(ModItems.momijisScimitarSword);
