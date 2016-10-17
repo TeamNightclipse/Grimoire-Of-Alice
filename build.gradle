@@ -89,3 +89,8 @@ idea {
         inheritOutputDirs = true
     }
 }
+jar {
+    manifest {
+        attributes 'FMLAT': "grimoireofalice_at.cfg"
+    }
+}

@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 
 public class EntityWind extends EntityThrowable {
 
-    private float ticksInAir; //TODO: Use and AT to get access to this field
     private int timeUsed;
 
     public EntityWind(World worldIn) {
@@ -55,8 +54,6 @@ public class EntityWind extends EntityThrowable {
 				setDead();
 			}
 		}
-
-        ++this.ticksInAir;
     }
 
     @Override

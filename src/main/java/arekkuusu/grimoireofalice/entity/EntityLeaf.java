@@ -23,9 +23,7 @@ import net.minecraft.world.World;
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
 	
-	private static final DataParameter<Float> TIME = EntityDataManager.createKey(EntityGrimoireSpell.class, DataSerializers.FLOAT);
-	private int timeLive = 15;
-	private float ticksInAir; //TODO: Use and AT to get access to this field
+	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityGrimoireSpell.class, DataSerializers.VARINT);
 
 	public EntityLeaf(World worldIn) {
         super(worldIn);
@@ -52,8 +50,8 @@ public class EntityLeaf extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		++this.ticksInAir;
 		setTime(ticksInAir);
+		int timeLive = 15;
 		if(this.ticksInAir >= timeLive){
 			doEffects();
 		}
@@ -103,11 +101,11 @@ public class EntityLeaf extends EntityThrowable {
 		}
 	}
 	
-	public void setTime(float time) {
+	public void setTime(int time) {
 		dataManager.set(TIME, time);
 	}
 
-	public float getTime() {
+	public int getTime() {
 		return dataManager.get(TIME);
 	}
 

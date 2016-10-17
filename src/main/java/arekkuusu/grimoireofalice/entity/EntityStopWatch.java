@@ -25,7 +25,7 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
-	private HashMap<UUID,double[]> dataEntities = new HashMap<>();
+	private HashMap<UUID, double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -69,7 +69,7 @@ public class EntityStopWatch extends Entity {
 			stopEntity();
 		}
 		if(ticksExisted % 8 == 0) {
-			worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
+			worldObj.playSound(user, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
 					SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, SoundCategory.NEUTRAL, 1.0F, 1.0F + 0.8F);
 		}
 	}
@@ -98,9 +98,9 @@ public class EntityStopWatch extends Entity {
 				}
 			}
 			if (!dataEntities.containsKey(entity.getUniqueID())) {
-				double x = new Double(entity.motionX);
-				double y = new Double(entity.motionY);
-				double z = new Double(entity.motionZ);
+				double x = entity.motionX;
+				double y = entity.motionY;
+				double z = entity.motionZ;
 				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
 			}
 		}
@@ -154,7 +154,6 @@ public class EntityStopWatch extends Entity {
 						entity.motionX = motion[0];
 						entity.motionY = motion[1];
 						entity.motionZ = motion[2];
-						entity.setVelocity(entity.motionX,entity.motionY,entity.motionZ);
 					});
 				}
 				if (user.capabilities.isCreativeMode) {

@@ -23,8 +23,6 @@ import net.minecraft.world.World;
 //TODO: Replace with DanmakuCore form once that is here
 public class EntityNote extends EntityThrowable {
 
-	private float ticksInAir; //TODO: Use and AT to get access to this field
-
 	public EntityNote(World world){ super(world);}
 
 	public EntityNote(World worldIn, EntityLivingBase throwerIn) {
@@ -54,7 +52,6 @@ public class EntityNote extends EntityThrowable {
 		if(this.ticksInAir >= timeLive && !worldObj.isRemote){
 			setDead();
 		}
-		++this.ticksInAir;
 	}
 	
 	@Override

@@ -18,8 +18,6 @@ import net.minecraft.world.World;
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityAnimalShot extends EntityThrowable {
 
-	private int ticksInAir; //TODO: Use and AT to get access to this field
-
 	public EntityAnimalShot(World worldIn) {
         super(worldIn);
     }
@@ -36,7 +34,6 @@ public class EntityAnimalShot extends EntityThrowable {
 	public void onUpdate() {
 		super.onUpdate();
 		doEffects();
-		++ticksInAir;
 		if(ticksInAir == 10 || ticksInAir == 20 || ticksInAir == 30 || ticksInAir == 40){
 			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F); //These needs to be negative for some reason
 			setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
