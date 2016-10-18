@@ -84,12 +84,12 @@ public class EntityDragonJewel extends Entity {
 					setDead();
 					return;
 				}
-				if(!player.inventory.addItemStackToInventory(new ItemStack(ModItems.dragonJewel, 1))) {
-					host.dropItem(ModItems.dragonJewel, 1);
+				if(!player.inventory.addItemStackToInventory(new ItemStack(ModItems.DRAGON_JEWEL, 1))) {
+					host.dropItem(ModItems.DRAGON_JEWEL, 1);
 				}
 			}
 			else {
-				dropItem(ModItems.dragonJewel, 1);
+				dropItem(ModItems.DRAGON_JEWEL, 1);
 			}
 			setDead();
 		}

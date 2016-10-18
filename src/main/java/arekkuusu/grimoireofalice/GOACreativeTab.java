@@ -32,7 +32,7 @@ public class GOACreativeTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getIconItemStack() {
-		return new ItemStack(ModItems.grimoireBook);
+		return new ItemStack(ModItems.GRIMOIRE_BOOK);
 	}
 	
 	@Override
@@ -52,140 +52,140 @@ public class GOACreativeTab extends CreativeTabs {
 		this.list = list;
 
 		//Blocks
-		addBlock(ModBlocks.compactStone);
-		addBlock(ModBlocks.holyStone);
-		addBlock(ModBlocks.kyoumarubotan);
-		addBlock(ModBlocks.onbashira);
-		addBlock(ModBlocks.paperBlock);
-		addBlock(ModBlocks.ropeBlock);
-		addBlock(ModBlocks.sugarBlock);
-		addBlock(ModBlocks.hyperconcentratedMagic);
-		addBlock(ModBlocks.shroom);
-		addItem(ModItems.shroomSlice); //Goes here for being related to a Block
+		addBlock(ModBlocks.COMPACT_STONE);
+		addBlock(ModBlocks.HOLY_STONE);
+		addBlock(ModBlocks.KYOUMARUBOTAN);
+		addBlock(ModBlocks.ONBASHIRA);
+		addBlock(ModBlocks.PAPER_BLOCK);
+		addBlock(ModBlocks.ROPE_BLOCK);
+		addBlock(ModBlocks.SUGAR_BLOCK);
+		addBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC);
+		addBlock(ModBlocks.SHROOM);
+		addItem(ModItems.SHROOM_SLICE); //Goes here for being related to a Block
 
 		//Item
-		addItem(ModItems.thirdEye);
-		addItem(ModItems.gloriousNipponSteel);
-		addItem(ModItems.hihiirokane);
-		addItem(ModItems.shimenawaRope);
-		addItem(ModItems.timeOrb);
-		addItem(ModItems.uFOs);
-		addItem(ModItems.mask);
-		addItem(ModItems.grimoireBook);
-		addItem(ModItems.youkaiBook);
-		addItem(ModItems.volatileString);
-		addItem(ModItems.soldifiedPaper);
-		addItem(ModItems.impureRock);
-		addItem(ModItems.fullPower);
-		addItem(ModItems.star);
-		addItem(ModItems.cherry);
-		addItem(ModItems.faith);
-		addItem(ModItems.uFOBlue);
-		addItem(ModItems.uFOGreen);
-		addItem(ModItems.uFORed);
-		addItem(ModItems.leaf);
-		addItem(ModItems.lunasaViolin);
-		addItem(ModItems.lyricaPiano);
-		addItem(ModItems.merlinTrumpet);
+		addItem(ModItems.THIRD_EYE);
+		addItem(ModItems.GLORIOUS_NIPPON_STEEL);
+		addItem(ModItems.HIHIIROKANE);
+		addItem(ModItems.SHIMENAWA_ROPE);
+		addItem(ModItems.TIME_ORB);
+		addItem(ModItems.UFOS);
+		addItem(ModItems.MASK);
+		addItem(ModItems.GRIMOIRE_BOOK);
+		addItem(ModItems.YOUKAI_BOOK);
+		addItem(ModItems.VOLATILE_STRING);
+		addItem(ModItems.SOLDIFIED_PAPER);
+		addItem(ModItems.IMPURE_ROCK);
+		addItem(ModItems.FULL_POWER);
+		addItem(ModItems.STAR);
+		addItem(ModItems.CHERRY);
+		addItem(ModItems.FAITH);
+		addItem(ModItems.UFO_BLUE);
+		addItem(ModItems.UFO_GREEN);
+		addItem(ModItems.UFO_RED);
+		addItem(ModItems.LEAF);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.shouLamp);
+			addItem(ModItems.LUNASA_VIOLIN);
+			addItem(ModItems.LYRICA_PIANO);
+			addItem(ModItems.MERLIN_TRUMPET);
+			addItem(ModItems.SHOU_LAMP);
 		}
-		addItem(ModItems.patchyBook);
-		addItem(ModItems.skull);
+		addItem(ModItems.PATCHY_BOOK);
+		addItem(ModItems.SKULL);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.pouch);
+			addItem(ModItems.POUCH);
 		}
-		addItem(ModItems.windStick);
-		addItem(ModItems.hakureiGohei);
-		addItem(ModItems.sanaeGohei);
-        addItem(ModItems.nazrinPendulum);
-		addItem(ModItems.ghostDipper);
-		addItem(ModItems.wallPassingchisel);
-		addItem(ModItems.miracleMallet);
-		addItem(ModItems.rodRemorse);
+		addItem(ModItems.TENGU_FAN);
+		addItem(ModItems.HAKUREI_GOHEI);
+		addItem(ModItems.SANAE_GOHEI);
+        addItem(ModItems.NAZRIN_PENDULUM);
+		addItem(ModItems.GHOST_DIPPER);
+		addItem(ModItems.WALL_PASSING_CHISEL);
+		addItem(ModItems.MIRACLE_MALLET);
+		addItem(ModItems.ROD_REMORSE);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.jeweledHourai);
+			addItem(ModItems.JEWELED_HOURAI);
 		}
-		addItem(ModItems.budahBoul);
-		addItem(ModItems.dragonJewel);
-		addItem(ModItems.bloodOrb);
-		addItem(ModItems.foldingUmbrella);
-		addItem(ModItems.substituteJizo);
-		addItem(ModItems.nimbleFabric);
-		addItem(ModItems.fakeMiracleMallet);
-		addItem(ModItems.ghastlySendOffLantern);
-		addItem(ModItems.cursedDecoyDoll);
-		addItem(ModItems.ayaCamera);
-		addItem(ModItems.hatateCamera);
-		addItem(ModItems.stopWatch);
+		addItem(ModItems.BUDAH_BOUL);
+		addItem(ModItems.DRAGON_JEWEL);
+		addItem(ModItems.BLOOD_ORB);
+		addItem(ModItems.FOLDING_UMBRELLA);
+		addItem(ModItems.SUBSTITUTE_JIZO);
+		addItem(ModItems.NIMBLE_FABRIC);
+		addItem(ModItems.FAKE_MIRACLE_MALLET);
+		addItem(ModItems.GHASTLY_SEND_OFF_LANTERN);
+		addItem(ModItems.CURSED_DECOY_DOLL);
+		addItem(ModItems.AYA_CAMERA);
+		addItem(ModItems.HATATE_CAMERA);
+		addItem(ModItems.STOP_WATCH);
 		
 		//Food
-		addItem(ModItems.grilledLamprey);
-		addItem(ModItems.ibarakiBoxEmpty);
-		addItem(ModItems.ibarakiBoxFilled);
-		addItem(ModItems.kappasNostrum);
-		addItem(ModItems.heavenlyPeach);
-		addItem(ModItems.ibukiGourd);
-		addItem(ModItems.cowrieShell);
-		addItem(ModItems.orbElixir);
-		addItem(ModItems.houraiElixir);
+		addItem(ModItems.GRILLED_LAMPREY);
+		addItem(ModItems.IBARAKI_BOX_EMPTY);
+		addItem(ModItems.IBARAKI_BOX_FILLED);
+		addItem(ModItems.KAPPAS_NOSTRUM);
+		addItem(ModItems.HEAVENLY_PEACH);
+		addItem(ModItems.IBUKI_GOURD);
+		addItem(ModItems.COWRIE_SHELL);
+		addItem(ModItems.ORB_ELIXIR);
+		addItem(ModItems.HOURAI_ELIXIR);
 		
 		//Armor
-		addItem(ModItems.mapleLeafShield);
-		addItem(ModItems.foxMask);
-		addItem(ModItems.fukuNoKamiMask);
-		addItem(ModItems.hannyaMask);
-		addItem(ModItems.hyottokoMask);
-		addItem(ModItems.kokorosMasks);
-		addItem(ModItems.koomoteMask);
-		addItem(ModItems.maskOfHope);
-		addItem(ModItems.monkeyMask);
-		addItem(ModItems.raidenMask);
-		addItem(ModItems.ubaMask);
-		addItem(ModItems.byakurenAura);
-		addItem(ModItems.mokouAura);
-		addItem(ModItems.toyosatomimiAura);
-		addItem(ModItems.utsuhoAura);
-		addItem(ModItems.kanakoAura);
-		addItem(ModItems.ichirinAura);
-        addItem(ModItems.suwakoHat);
-		addItem(ModItems.fireRobe);
-		addItem(ModItems.kappaHat);
-		addItem(ModItems.marisaHat);
-		addItem(ModItems.mikoCape);
+		addItem(ModItems.MAPLE_LEAF_SHIELD);
+		addItem(ModItems.FOX_MASK);
+		addItem(ModItems.FUKU_NO_KAMI_MASK);
+		addItem(ModItems.HANNYA_MASK);
+		addItem(ModItems.HYOTTOKO_MASK);
+		addItem(ModItems.KOKOROS_MASKS);
+		addItem(ModItems.KOOMOTE_MASK);
+		addItem(ModItems.MASK_OF_HOPE);
+		addItem(ModItems.MONKEY_MASK);
+		addItem(ModItems.RAIDEN_MASK);
+		addItem(ModItems.UBA_MASK);
+		addItem(ModItems.BYAKUREN_AURA);
+		addItem(ModItems.MOKOU_AURA);
+		addItem(ModItems.TOYOSATOMIMI_AURA);
+		addItem(ModItems.UTSUHO_AURA);
+		addItem(ModItems.KANAKO_AURA);
+		addItem(ModItems.ICHIRIN_AURA);
+        addItem(ModItems.SUWAKO_HAT);
+		addItem(ModItems.FIRE_ROBE);
+		addItem(ModItems.KAPPA_HAT);
+		addItem(ModItems.MARISA_HAT);
+		addItem(ModItems.MIKO_CAPE);
 		
 		//Weapons
-		addItem(ModItems.amenonuhoko);
+		addItem(ModItems.AMENONUHOKO);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.laevatein);
+			addItem(ModItems.LAEVATEIN);
 		}
-		addItem(ModItems.mikoStick);
-		addItem(ModItems.mochiHammer);
-		addItem(ModItems.momijisScimitarSword);
-		addItem(ModItems.nazrinStick);
-		addItem(ModItems.nazrinStickB);
-		addItem(ModItems.nueTrident);
-		addItem(ModItems.swordOfKusanagi);
+		addItem(ModItems.MIKO_STICK);
+		addItem(ModItems.MOCHI_HAMMER);
+		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
+		addItem(ModItems.NAZRIN_STICK);
+		addItem(ModItems.NAZRIN_STICK_B);
+		addItem(ModItems.NUE_TRIDENT);
+		addItem(ModItems.SWORD_OF_KUSANAGI);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.ellyScythe);
+			addItem(ModItems.ELLY_SCYTHE);
 		}
-		addItem(ModItems.syringe);
-		addItem(ModItems.ichirinRing);
-		addItem(ModItems.kanakoOnbashira);
-		addItem(ModItems.shichiSeiken);
-		addItem(ModItems.cattailPlant);
-		addItem(ModItems.popsicleStick);
-		addItem(ModItems.rumiaSword);
-		addItem(ModItems.sarielWand);
-		addItem(ModItems.watermelonBlade);
-		addItem(ModItems.watermelonSword);
-		addItem(ModItems.sacredToyosatomimi);
-		addItem(ModItems.needle);
+		addItem(ModItems.SYRINGE);
+		addItem(ModItems.ICHIRIN_RING);
+		addItem(ModItems.KANAKO_ONBASHIRA);
+		addItem(ModItems.SHICHI_SEIKEN);
+		addItem(ModItems.CATTAIL_PLANT);
+		addItem(ModItems.POPSICLE_STICK);
+		addItem(ModItems.RUMIA_SWORD);
+		addItem(ModItems.SARIEL_WAND);
+		addItem(ModItems.WATERMELON_BLADE);
+		addItem(ModItems.WATERMELON_SWORD);
+		addItem(ModItems.SACRED_TOYOSATOMIMI);
+		addItem(ModItems.NEEDLE);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.hisou);
+			addItem(ModItems.HISOU);
 		}
-		addItem(ModItems.deathScythe);
-		addItem(ModItems.roukanken);
+		addItem(ModItems.DEATH_SCYTHE);
+		addItem(ModItems.ROUKANKEN);
 	}
 
 	@SideOnly(Side.CLIENT)

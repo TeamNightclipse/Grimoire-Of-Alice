@@ -27,7 +27,6 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor {
 		super(material, dmg, EntityEquipmentSlot.HEAD);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setNoRepair();
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}

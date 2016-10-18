@@ -45,9 +45,9 @@ public class BlockOnbashira extends BlockMod {
 
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		world.setBlockState(pos.up(1), ModBlocks.onbashiraMiddle.getDefaultState());
-		world.setBlockState(pos.up(2), ModBlocks.onbashiraMiddle.getDefaultState());
-		world.setBlockState(pos.up(3), ModBlocks.onbashiraTop.getDefaultState());
+		world.setBlockState(pos.up(1), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
+		world.setBlockState(pos.up(2), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
+		world.setBlockState(pos.up(3), ModBlocks.ONBASHIRA_TOP.getDefaultState());
 		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	}
 

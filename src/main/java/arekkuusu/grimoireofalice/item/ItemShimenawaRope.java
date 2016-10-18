@@ -62,7 +62,7 @@ public class ItemShimenawaRope extends ItemMod {
 			}
 			else {
 				world.createExplosion(null, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 3.0F, false);
-				world.setBlockState(pos.up(1), ModBlocks.holyKeyStone.getDefaultState());
+				world.setBlockState(pos.up(1), ModBlocks.HOLY_KEY_STONE.getDefaultState());
 				world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5, false));
 				world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5, false));
 				--stack.stackSize;

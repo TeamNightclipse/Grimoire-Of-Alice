@@ -33,8 +33,6 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
-
 public class BlockShroom extends BlockModBush {
 
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
@@ -78,7 +76,7 @@ public class BlockShroom extends BlockModBush {
         		|| block == Blocks.HARDENED_CLAY 
         		|| block == Blocks.STAINED_HARDENED_CLAY 
         		|| block == Blocks.STONE 
-        		|| block == ModBlocks.compactStone;
+        		|| block == ModBlocks.COMPACT_STONE;
 	}
 
 	@SideOnly(Side.CLIENT)

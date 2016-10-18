@@ -62,12 +62,12 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 					setDead();
 					return;
 				}
-				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.cursedDecoyDoll, 1))) {
-					user.dropItem(ModItems.cursedDecoyDoll, 1);
+				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.CURSED_DECOY_DOLL, 1))) {
+					user.dropItem(ModItems.CURSED_DECOY_DOLL, 1);
 				}
 			}
 			else {
-				dropItem(ModItems.cursedDecoyDoll, 1);
+				dropItem(ModItems.CURSED_DECOY_DOLL, 1);
 			}
 			setDead();
 		}

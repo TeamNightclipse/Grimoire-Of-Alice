@@ -6,24 +6,27 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.entity.EntityWind;
+import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.plugin.danmakucore.LibGOAShotData;
+import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.SubEntityWind;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
+import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -66,12 +69,19 @@ public class ItemTenguFan extends ItemMod {
 			if(timeUsed <= 5) {
 				return;
 			}
-			worldIn.playSound(null, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
-					itemRand.nextFloat() * 0.4F + 0.8F);
+			DanmakuHelper.playShotSound(entityLiving);
 			if(!worldIn.isRemote) {
-				EntityWind wind = new EntityWind(worldIn, player, timeUsed);
-				wind.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0.0F, speed, 1.0F);
-				worldIn.spawnEntityInWorld(wind);
+				EntityDanmaku danmaku = DanmakuBuilder.builder()
+						.setUser(entityLiving)
+						.setMovementData(speed)
+						.setShot(LibGOAShotData.WIND)
+						.build().asEntity();
+
+				worldIn.spawnEntityInWorld(danmaku);
+				SubEntity subEntity = danmaku.getSubEntity();
+				if(subEntity instanceof SubEntityWind.Wind) {
+					((SubEntityWind.Wind)subEntity).setTimeUsed(timeUsed);
+				}
 			}
 			stack.damageItem(1, entityLiving);
 		}

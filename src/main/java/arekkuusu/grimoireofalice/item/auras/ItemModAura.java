@@ -29,7 +29,6 @@ public class ItemModAura extends ItemArmor implements ISpecialArmor {
 		super(material, dmg, slot);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setNoRepair();
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}

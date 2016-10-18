@@ -45,7 +45,6 @@ public class ItemBudahBoul extends ItemTool {
 		super(4.0F, -2.8F, materialIn, Collections.emptySet());
 		setRegistryName(LibItemName.BUDAH_BOUL);
 		setUnlocalizedName(LibItemName.BUDAH_BOUL);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 
 		setHarvestLevel("pickaxe", toolMaterial.getHarvestLevel());

@@ -27,7 +27,7 @@ public class GuiHandler implements IGuiHandler{
 			case 2:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem = player.getHeldItem(hand);
-				if(heldItem == null || heldItem.getItem() != ModItems.pouch) return null;
+				if(heldItem == null || heldItem.getItem() != ModItems.POUCH) return null;
 				return new SpellCardContainer(player.inventory, heldItem);
 			default:
 				return null;
@@ -39,16 +39,16 @@ public class GuiHandler implements IGuiHandler{
 		switch(ID) {
 			case 0:
 				ItemStack heldItem = player.getHeldItemMainhand();
-				if(heldItem == null || heldItem.getItem() != ModItems.youkaiBook) heldItem = player.getHeldItemOffhand();
+				if(heldItem == null || heldItem.getItem() != ModItems.YOUKAI_BOOK) heldItem = player.getHeldItemOffhand();
 
-				if(heldItem == null || heldItem.getItem() != ModItems.youkaiBook) return null;
+				if(heldItem == null || heldItem.getItem() != ModItems.YOUKAI_BOOK) return null;
 				else return new GuiScreenBookYoukai(player, heldItem, true);
 			case 1:
 				return new GuiScreenGuide();
 			case 2:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand);
-				if(heldItem0 == null || heldItem0.getItem() != ModItems.pouch) return null;
+				if(heldItem0 == null || heldItem0.getItem() != ModItems.POUCH) return null;
 				return new GuiItemInventory(player.inventory, heldItem0);
 			default:
 				return null;

@@ -26,7 +26,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	@Override
 	public void doRender(EntityDragonJewel entity, double x, double y, double z, float entityYaw, float partialTicks) {
-		ItemStack stack = new ItemStack(ModItems.dragonJewel);
+		ItemStack stack = new ItemStack(ModItems.DRAGON_JEWEL);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);

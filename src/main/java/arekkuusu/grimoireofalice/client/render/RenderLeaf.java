@@ -32,7 +32,7 @@ public class RenderLeaf extends Render<EntityLeaf> {
 
 	@Override
     public void doRender(EntityLeaf circle, double x, double y, double z, float yaw, float pitch) {
-		ItemStack stack = new ItemStack(ModItems.leaf);
+		ItemStack stack = new ItemStack(ModItems.LEAF);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);

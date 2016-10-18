@@ -21,7 +21,6 @@ public class BlockModBush extends BlockBush {
 		setUnlocalizedName(id);
 		setDefaultState(defualtState());
 		setRegistryName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 

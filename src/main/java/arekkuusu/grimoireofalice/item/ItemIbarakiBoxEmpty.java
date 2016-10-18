@@ -78,7 +78,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 						playerIn.addStat(stateBase);
 					}
 					playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-					return new ActionResult<>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.ibarakiBoxFilled));
+					return new ActionResult<>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.IBARAKI_BOX_FILLED));
 				}
 				else {
 					return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);

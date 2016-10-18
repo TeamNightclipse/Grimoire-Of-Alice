@@ -55,7 +55,7 @@ public class ItemWatermelonSword extends ItemModSword {
 
 		if(attacker.hasCapability(itemHandlerCapability, null)) {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(itemHandlerCapability, null),
-					new ItemStack(ModItems.popsicleStick), false);
+					new ItemStack(ModItems.POPSICLE_STICK), false);
 			if(rest != null) {
 				attacker.dropItem(rest.getItem(), rest.stackSize);
 			}

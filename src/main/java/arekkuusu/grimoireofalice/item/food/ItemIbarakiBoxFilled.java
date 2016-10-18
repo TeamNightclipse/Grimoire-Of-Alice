@@ -51,7 +51,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood {
 		entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 		entityLiving.heal(100);
 		entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
-        return stack.stackSize <= 0 ? new ItemStack(ModItems.ibarakiBoxEmpty) : stack;
+        return stack.stackSize <= 0 ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
     }
 	
 	@Override

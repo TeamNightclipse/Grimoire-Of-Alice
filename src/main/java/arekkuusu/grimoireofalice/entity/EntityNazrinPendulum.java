@@ -113,12 +113,12 @@ public class EntityNazrinPendulum extends Entity {
 					setDead();
 					return;
 				}
-				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.nazrinPendulum, 1))) {
-					user.dropItem(ModItems.nazrinPendulum, 1);
+				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.NAZRIN_PENDULUM, 1))) {
+					user.dropItem(ModItems.NAZRIN_PENDULUM, 1);
 				}
 			}
 			else {
-				dropItem(ModItems.nazrinPendulum, 1);
+				dropItem(ModItems.NAZRIN_PENDULUM, 1);
 			}
             setDead();
 		}

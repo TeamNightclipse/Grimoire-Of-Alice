@@ -62,21 +62,21 @@ public class YukkuriEvent {
 	public void LivingHurtEvent(LivingHurtEvent event) {
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.getEntityLiving();
-			if(player.inventory.hasItemStack(new ItemStack(ModItems.ghastlySendOffLantern))) {
-				if(player.getCooldownTracker().hasCooldown(ModItems.ghastlySendOffLantern)) {
+			if(player.inventory.hasItemStack(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN))) {
+				if(player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
 					event.setCanceled(true);
 					return;
 				}
 			}
 
-			if(player.inventory.hasItemStack(new ItemStack(ModItems.substituteJizo))) {
+			if(player.inventory.hasItemStack(new ItemStack(ModItems.SUBSTITUTE_JIZO))) {
 
 				@SuppressWarnings("ConstantConditions") //Liar
 				IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
 				for(int i = 0; i < capability.getSlots(); i++) {
 					ItemStack stack = capability.getStackInSlot(i);
-					if(stack != null && stack.getItem() == ModItems.substituteJizo) {
+					if(stack != null && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
 						capability.extractItem(i, 1, false);
 						player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
 								SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.HOSTILE, 0.5F, player.worldObj.rand.nextFloat() * 0.1F + 0.9F);
@@ -94,7 +94,7 @@ public class YukkuriEvent {
 		List<EntityItem> drop = event.getDrops();
 		for(EntityItem item : drop){
 			Item i = item.getEntityItem().getItem();
-			if(i == ModItems.hakureiGohei || i == ModItems.utsuhoAura){
+			if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA){
 				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
@@ -107,7 +107,7 @@ public class YukkuriEvent {
 	public void onItemToss(ItemTossEvent event) {
 		EntityPlayer player = event.getPlayer();
 		Item item = event.getEntityItem().getEntityItem().getItem();
-		if (item == ModItems.hakureiGohei || item == ModItems.utsuhoAura) {
+		if (item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
 			if (!player.capabilities.isCreativeMode) {
 				player.capabilities.allowFlying = false;
 				player.capabilities.isFlying = false;

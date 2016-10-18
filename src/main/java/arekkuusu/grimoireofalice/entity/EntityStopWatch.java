@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.entity;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.EntityTameable;
@@ -46,7 +45,7 @@ public class EntityStopWatch extends Entity {
 				stopEntity();
 			} else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
-				if ((user.isHandActive() && stack != null && stack.getItem() == ModItems.stopWatch)) {
+				if ((user.isHandActive() && stack != null && stack.getItem() == ModItems.STOP_WATCH)) {
 					stopEntity();
 				}
 			}
@@ -160,11 +159,11 @@ public class EntityStopWatch extends Entity {
 					setDead();
 					return;
 				}
-				if (!user.inventory.addItemStackToInventory(new ItemStack(ModItems.stopWatch, 1))) {
-					user.dropItem(ModItems.stopWatch, 1);
+				if (!user.inventory.addItemStackToInventory(new ItemStack(ModItems.STOP_WATCH, 1))) {
+					user.dropItem(ModItems.STOP_WATCH, 1);
 				}
 			} else {
-				dropItem(ModItems.stopWatch, 1);
+				dropItem(ModItems.STOP_WATCH, 1);
 			}
 			setDead();
 		}

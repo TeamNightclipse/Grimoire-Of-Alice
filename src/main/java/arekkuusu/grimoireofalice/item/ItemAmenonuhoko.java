@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
-import java.util.UUID;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -20,14 +19,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -150,7 +147,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	private void replaceAirComact(World world, BlockPos pos) {
 		if(world.isAirBlock(pos)) {
-			world.setBlockState(pos, ModBlocks.compactStone.getDefaultState());
+			world.setBlockState(pos, ModBlocks.COMPACT_STONE.getDefaultState());
 		}
 	}
 

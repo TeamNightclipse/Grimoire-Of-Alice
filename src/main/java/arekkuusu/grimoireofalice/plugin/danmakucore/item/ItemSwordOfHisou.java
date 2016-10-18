@@ -22,19 +22,16 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public class ItemSwordOfHisou extends ItemSwordOwner {
 
@@ -134,7 +131,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		stack.damageItem(1, entityLiving);
 		if(state.getMaterial() == Material.LEAVES ) {
 			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5 , pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(
-					ModItems.heavenlyPeach));
+					ModItems.HEAVENLY_PEACH));
 			if (!worldIn.isRemote) {
 				entityLiving.worldObj.spawnEntityInWorld(entityItem);
 			}

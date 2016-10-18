@@ -26,81 +26,81 @@ public class VanillaCrafting {
                 .where('G').mapsTo("dustGlowstone")
                 .where('I').mapsTo(Items.GUNPOWDER)
                 .where('A').mapsTo(Items.FIREWORK_CHARGE)
-                .outputs(new ItemStack(ModItems.volatileString, 16)).build();
+                .outputs(new ItemStack(ModItems.VOLATILE_STRING, 16)).build();
 
         shaped().grid("STS", "TAT", "STS")
                 .where('S').mapsTo(Items.PAPER)
                 .where('A').mapsTo(Items.COAL)
                 .where('T').mapsTo("stickWood")
-                .outputs(new ItemStack(ModItems.soldifiedPaper, 4)).build();
+                .outputs(new ItemStack(ModItems.SOLDIFIED_PAPER, 4)).build();
 
         //Blocks
         shaped().grid("SSS", "SSS", "SSS")
                 .where('S').mapsTo(Items.SUGAR)
-                .outputs(ModBlocks.sugarBlock).build();
+                .outputs(ModBlocks.SUGAR_BLOCK).build();
 
         shaped().grid("ACA", "CSC", "ACA")
                 .where('S').mapsTo("logWood")
-                .where('A').mapsTo(ModItems.volatileString)
+                .where('A').mapsTo(ModItems.VOLATILE_STRING)
                 .where('C').mapsTo(Items.COAL)
-                .outputs(new ItemStack(ModBlocks.ropeBlock, 8)).build();
+                .outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
         shaped().grid("AAA", "ASA", "AAA")
                 .where('A').mapsTo(Items.PAPER)
-                .where('S').mapsTo(ModItems.soldifiedPaper)
-                .outputs(new ItemStack(ModBlocks.paperBlock, 8)).build();
+                .where('S').mapsTo(ModItems.SOLDIFIED_PAPER)
+                .outputs(new ItemStack(ModBlocks.PAPER_BLOCK, 8)).build();
 
         shaped().grid("AAA", "ASA", "AAA")
                 .where('A').mapsTo("stone")
-                .where('S').mapsTo(ModItems.volatileString)
-                .outputs(ModBlocks.compactStone).build();
+                .where('S').mapsTo(ModItems.VOLATILE_STRING)
+                .outputs(ModBlocks.COMPACT_STONE).build();
 
         shaped().grid("ANA", "ASA", "ANA")
-                .where('S').mapsTo(ModBlocks.compactStone)
+                .where('S').mapsTo(ModBlocks.COMPACT_STONE)
                 .where('N').mapsTo("logWood")
-                .where('A').mapsTo(ModItems.shimenawaRope)
-                .outputs(ModBlocks.compactStone).build();
+                .where('A').mapsTo(ModItems.SHIMENAWA_ROPE)
+                .outputs(ModBlocks.COMPACT_STONE).build();
 
 		for (int i = 0; i < 16; ++i) {
 			shapeless()
-					.add(new ItemStack(ModItems.shroomSlice, 1, i))
-					.add(ModItems.budahBoul)
-					.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.budahBoul), 1, i));
+					.add(new ItemStack(ModItems.SHROOM_SLICE, 1, i))
+					.add(ModItems.BUDAH_BOUL)
+					.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.BUDAH_BOUL), 1, i));
 		}
 
-        GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.gloriousNipponSteel), 0);
-        GameRegistry.addSmelting(ModItems.impureRock, new ItemStack(ModItems.hihiirokane), 0);
+        GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.GLORIOUS_NIPPON_STEEL), 0);
+        GameRegistry.addSmelting(ModItems.IMPURE_ROCK, new ItemStack(ModItems.HIHIIROKANE), 0);
     }
 
     public static void masks() {
         shapeless()
-                .add(ModItems.foxMask)
-                .add(ModItems.fukuNoKamiMask)
-                .add(ModItems.hannyaMask)
-                .add(ModItems.hyottokoMask)
-                .add(ModItems.koomoteMask)
-                .add(ModItems.maskOfHope)
-                .add(ModItems.monkeyMask)
-                .add(ModItems.raidenMask)
-                .add(ModItems.ubaMask)
-                .outputs(ModItems.kokorosMasks).build();
+                .add(ModItems.FOX_MASK)
+                .add(ModItems.FUKU_NO_KAMI_MASK)
+                .add(ModItems.HANNYA_MASK)
+                .add(ModItems.HYOTTOKO_MASK)
+                .add(ModItems.KOOMOTE_MASK)
+                .add(ModItems.MASK_OF_HOPE)
+                .add(ModItems.MONKEY_MASK)
+                .add(ModItems.RAIDEN_MASK)
+                .add(ModItems.UBA_MASK)
+                .outputs(ModItems.KOKOROS_MASKS).build();
 
         shaped().grid("SSS", "GAG", "SSS")
-                .where('S').mapsTo(ModItems.soldifiedPaper)
-                .where('G').mapsTo(ModItems.volatileString)
+                .where('S').mapsTo(ModItems.SOLDIFIED_PAPER)
+                .where('G').mapsTo(ModItems.VOLATILE_STRING)
                 .where('A').mapsTo(Items.CLAY_BALL)
-                .outputs(ModItems.mask).build();
+                .outputs(ModItems.MASK).build();
 
         if(ConfigHandler.maskRecipes){
-            mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.foxMask).build();
-            mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.fukuNoKamiMask).build();
-            mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.hannyaMask).build();
-            mask().where('R').mapsTo(Items.GHAST_TEAR).outputs(ModItems.hyottokoMask).build();
-            mask().where('R').mapsTo(Items.ROTTEN_FLESH).outputs(ModItems.koomoteMask).build();
-            mask().where('R').mapsTo(Items.FERMENTED_SPIDER_EYE).outputs(ModItems.maskOfHope).build();
-            mask().where('R').mapsTo(Items.MUSHROOM_STEW).outputs(ModItems.monkeyMask).build();
-            mask().where('R').mapsTo("slimeball").outputs(ModItems.raidenMask).build();
-            mask().where('R').mapsTo(Items.NETHER_STAR).outputs(ModItems.ubaMask).build();
+            mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.FOX_MASK).build();
+            mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.FUKU_NO_KAMI_MASK).build();
+            mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.HANNYA_MASK).build();
+            mask().where('R').mapsTo(Items.GHAST_TEAR).outputs(ModItems.HYOTTOKO_MASK).build();
+            mask().where('R').mapsTo(Items.ROTTEN_FLESH).outputs(ModItems.KOOMOTE_MASK).build();
+            mask().where('R').mapsTo(Items.FERMENTED_SPIDER_EYE).outputs(ModItems.MASK_OF_HOPE).build();
+            mask().where('R').mapsTo(Items.MUSHROOM_STEW).outputs(ModItems.MONKEY_MASK).build();
+            mask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
+            mask().where('R').mapsTo(Items.NETHER_STAR).outputs(ModItems.UBA_MASK).build();
         }
     }
 
@@ -114,8 +114,8 @@ public class VanillaCrafting {
 
     private static ShapedRecipe mask() {
         return new ShapedRecipe().grid("IAR", "SGS", " S ")
-                .where('S').mapsTo(ModItems.volatileString)
-                .where('G').mapsTo(ModItems.mask)
+                .where('S').mapsTo(ModItems.VOLATILE_STRING)
+                .where('G').mapsTo(ModItems.MASK)
                 .where('A').mapsTo(Items.NETHER_STAR)
                 .where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
     }

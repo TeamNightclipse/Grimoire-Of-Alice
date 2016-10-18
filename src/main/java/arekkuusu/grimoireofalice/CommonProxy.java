@@ -102,12 +102,8 @@ public class CommonProxy {
 				new ItemMod(LibItemName.UFO_BLUE),
 				new ItemMod(LibItemName.UFO_GREEN),
 				new ItemLeaf(),
-				new ItemViolin(),
-				new ItemPiano(),
-				new ItemTrumpet(),
 				new ItemPatchyBook(),
 				new ItemSkull(),
-				new ItemTenguFan(),
 				new ItemNazrinPendulum(),
 				new ItemGhostDipper(),
 				new ItemWallPassingChisel(),
@@ -192,6 +188,10 @@ public class CommonProxy {
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) { //FIXME: Always false
 			event.getRegistry().registerAll(
+					new ItemViolin(),
+					new ItemPiano(),
+					new ItemTrumpet(),
+					new ItemTenguFan(),
 					new ItemLaevatein(WET_NOODLE),
 					new ItemShouLamp(),
 					new ItemJeweledHourai(),
@@ -262,9 +262,7 @@ public class CommonProxy {
 		int modEntityID = 0;
 		EntityRegistry.registerModEntity(EntityLeaf.class, "Leaf", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityAnimalShot.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityNote.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityWind.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);

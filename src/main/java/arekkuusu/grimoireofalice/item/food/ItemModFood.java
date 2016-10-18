@@ -18,7 +18,6 @@ public class ItemModFood extends ItemFood {
 		super(healAmount, potionEffectProbability, isWolfFood);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		GameRegistry.register(this);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
 }
