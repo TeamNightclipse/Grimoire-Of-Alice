@@ -50,7 +50,7 @@ public class EntityWind extends EntityThrowable {
 
 		if(!worldObj.isRemote) {
 			int timeLive = 50;
-			if(this.ticksInAir >= timeLive){
+			if(ticksInAir >= timeLive){
 				setDead();
 			}
 		}

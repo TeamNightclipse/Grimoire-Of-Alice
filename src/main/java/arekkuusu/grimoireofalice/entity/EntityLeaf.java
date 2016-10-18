@@ -52,7 +52,7 @@ public class EntityLeaf extends EntityThrowable {
 		super.onUpdate();
 		setTime(ticksInAir);
 		int timeLive = 15;
-		if(this.ticksInAir >= timeLive){
+		if(ticksInAir >= timeLive){
 			doEffects();
 		}
 	}

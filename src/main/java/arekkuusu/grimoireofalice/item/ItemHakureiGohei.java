@@ -167,6 +167,7 @@ public class ItemHakureiGohei extends ItemMod {
 					}
 				}
 				playerIn.swingArm(EnumHand.MAIN_HAND);
+				playerIn.getCooldownTracker().setCooldown(this, 10);
 			}
 			stack.damageItem(1, playerIn);
 		}

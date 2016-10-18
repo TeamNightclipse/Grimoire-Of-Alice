@@ -173,7 +173,7 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.sugarBlock, 0);
 		registerBlock(ModBlocks.hyperconcentratedMagic, 0);
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) { //FIXME: Always false
 			registerItem(ModItems.shouLamp, 0);
 			registerItem(ModItems.laevatein, 0);
 			registerItem(ModItems.jeweledHourai, 0);

@@ -49,7 +49,7 @@ public class EntityNote extends EntityThrowable {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
 		}
 		int timeLive = 50;
-		if(this.ticksInAir >= timeLive && !worldObj.isRemote){
+		if(ticksInAir >= timeLive && !worldObj.isRemote){
 			setDead();
 		}
 	}

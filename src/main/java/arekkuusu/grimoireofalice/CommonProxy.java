@@ -190,7 +190,7 @@ public class CommonProxy {
 				new ItemSwordRoukanken(WET_NOODLE)
 		);
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) { //FIXME: Always false
 			event.getRegistry().registerAll(
 					new ItemLaevatein(WET_NOODLE),
 					new ItemShouLamp(),

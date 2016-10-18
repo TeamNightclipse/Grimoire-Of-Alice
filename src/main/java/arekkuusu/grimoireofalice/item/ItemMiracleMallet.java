@@ -47,17 +47,17 @@ public class ItemMiracleMallet extends ItemMod {
 			if (!playerIn.getEntityData().hasKey("MalletResized")) {
 				float size = playerIn.isSneaking() ? 0.5F : 1.5F;
 				playerIn.getEntityData().setFloat("MalletResized", size);
-				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox(); //Get Bounding Box
+
 				float eyeHeight = playerIn.eyeHeight;
 				eyeHeight += playerIn.isSneaking() ? -0.92F: 1.00F;
-				if(eyeHeight < 3.00F) eyeHeight += 1.00F;
-				axisAlignedBB.expand(0, playerIn.isSneaking() ? -2.00F: 2.00F, 0); //Expand bounding Box
 				playerIn.eyeHeight = eyeHeight;
+
+				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox(); //Get Bounding Box
+				axisAlignedBB.expandXyz(playerIn.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
 				playerIn.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			} else {
 				float size = playerIn.getEntityData().getFloat("MalletResized");
-				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox();
-				float eyeHeight = playerIn.getEyeHeight();
+				float eyeHeight = playerIn.eyeHeight;
 				if (playerIn.isSneaking()) {
 					size -= 0.5;
 					if (eyeHeight > 1.00F) {
@@ -66,14 +66,15 @@ public class ItemMiracleMallet extends ItemMod {
 					}
 				} else {
 					size += 0.5;
-					axisAlignedBB.expand(0, size, 0);
 					if(eyeHeight < 3.00F) eyeHeight += 1.00F;
 					playerIn.eyeHeight = eyeHeight;
 				}
 				if(size <= 0){size = 0.5F;}
 				if(size > 2){size = 2.0F;}
-				playerIn.setEntityBoundingBox(axisAlignedBB);
 				playerIn.getEntityData().setFloat("MalletResized", size);
+				AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox(); //Get Bounding Box
+				axisAlignedBB.expandXyz(playerIn.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
+				playerIn.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			}
 		}
 		playerIn.swingArm(hand);
@@ -85,19 +86,42 @@ public class ItemMiracleMallet extends ItemMod {
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if (!playerIn.getFoodStats().needFood() || playerIn.capabilities.isCreativeMode) {
-			if (!target.getEntityData().hasKey("MalletResized")) {
-				float mode = playerIn.isSneaking() ? 0.5F : 1.5F;
-				target.getEntityData().setFloat("MalletResized", mode);
-			} else {
-				float size = target.getEntityData().getFloat("MalletResized");
-				if (playerIn.isSneaking()) {
-					size -= 0.5F;
+			if (target instanceof EntityPlayer) {
+				EntityPlayer player = ((EntityPlayer)target);
+				if (!player.getEntityData().hasKey("MalletResized")) {
+					float size = playerIn.isSneaking() ? 0.5F : 1.5F;
+					player.getEntityData().setFloat("MalletResized", size);
+
+					float eyeHeight = player.eyeHeight;
+					eyeHeight += playerIn.isSneaking() ? player.isSneaking() ? -0.92F : -1.00F : player.isSneaking() ? 1.08F : 1.00F;
+					player.eyeHeight = eyeHeight;
+
+					AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
+					axisAlignedBB.expandXyz(playerIn.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
+					player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 				} else {
-					size += 0.5F;
+					float size = player.getEntityData().getFloat("MalletResized");
+					float eyeHeight = player.eyeHeight;
+					if (playerIn.isSneaking()) {
+						size -= 0.5F;
+						if (eyeHeight > 1.00F) {
+							eyeHeight -= player.isSneaking() ? -0.92F : -1.00F;
+							player.eyeHeight = eyeHeight;
+						}
+					} else {
+						size += 0.5F;
+						if (eyeHeight < 3.00F) {
+							eyeHeight += player.isSneaking() ? 1.08F : 1.00F;
+							player.eyeHeight = eyeHeight;
+						}
+					}
+					if (size <= 0) {size = 0.5F;}
+					if (size > 2) {size = 2.0F;}
+					player.getEntityData().setFloat("MalletResized", size);
+					AxisAlignedBB axisAlignedBB = playerIn.getEntityBoundingBox(); //Get Bounding Box
+					axisAlignedBB.expandXyz(playerIn.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
+					playerIn.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 				}
-				if(size <= 0){size = 0.5F;}
-				if(size > 2){size = 2.0F;}
-				target.getEntityData().setFloat("MalletResized", size);
 			}
 		}
 		playerIn.swingArm(hand);
