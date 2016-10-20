@@ -184,7 +184,9 @@ public class ItemHakureiGohei extends ItemMod {
 			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
 		} else if(target instanceof EntityPlayer){
 			attacker.worldObj.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
+			target.attackEntityFrom(DamageSource.magic, 5);
+		} else {
+			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 3);
 		}
 		return true;
 	}

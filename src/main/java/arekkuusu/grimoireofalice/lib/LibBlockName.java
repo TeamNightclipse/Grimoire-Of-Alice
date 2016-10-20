@@ -24,4 +24,5 @@ public class LibBlockName {
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
 
     public static final String CRAFTINGALTAR = "craftingaltar";
+	public static final String PILLARALTAR = "pillaraltar";
 }

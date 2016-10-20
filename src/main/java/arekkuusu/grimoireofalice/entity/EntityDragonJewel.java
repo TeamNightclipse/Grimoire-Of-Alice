@@ -53,13 +53,14 @@ public class EntityDragonJewel extends Entity {
 			}
 			getEntities();
 		}
+		worldObj.spawnParticle(EnumParticleTypes.BLOCK_DUST, posX + 0.5, posY, posZ + 0.5, 0, -1, 0);
 		if (ticksExisted % 50 == 0) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
 			for(int u = 0;u < 10; u++) {
-				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, -rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, -rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.CLOUD, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1, rand.nextDouble());
 			}
 		}
 	}

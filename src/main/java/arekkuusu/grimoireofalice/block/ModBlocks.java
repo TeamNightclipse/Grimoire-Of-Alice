@@ -38,6 +38,10 @@ public class ModBlocks {
 	public static final Block ROPE_BLOCK = new Block(Material.ROCK);
 	@ObjectHolder(LibBlockName.SHROOM)
 	public static final Block SHROOM = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.CRAFTINGALTAR)
+	public static final Block ALTAR = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.PILLARALTAR)
+	public static final Block PILLAR_ALTAR = new Block(Material.ROCK);
 
 	@ObjectHolder(LibBlockName.SUGARBLOCK)
 	public static final Block SUGAR_BLOCK = new Block(Material.ROCK);

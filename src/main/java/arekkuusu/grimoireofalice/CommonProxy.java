@@ -8,16 +8,9 @@
  */
 package arekkuusu.grimoireofalice;
 
-import arekkuusu.grimoireofalice.block.BlockHolyKeyStone;
-import arekkuusu.grimoireofalice.block.BlockHolyStone;
-import arekkuusu.grimoireofalice.block.BlockKyoumarubotan;
-import arekkuusu.grimoireofalice.block.BlockMod;
-import arekkuusu.grimoireofalice.block.BlockOnbashira;
-import arekkuusu.grimoireofalice.block.BlockOnbashiraMiddle;
-import arekkuusu.grimoireofalice.block.BlockOnbashiraTop;
-import arekkuusu.grimoireofalice.block.BlockPaper;
-import arekkuusu.grimoireofalice.block.BlockRope;
-import arekkuusu.grimoireofalice.block.BlockShroom;
+import arekkuusu.grimoireofalice.block.*;
+import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
@@ -186,7 +179,7 @@ public class CommonProxy {
 				new ItemSwordRoukanken(WET_NOODLE)
 		);
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) { //FIXME: Always false
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
 					new ItemViolin(),
 					new ItemPiano(),
@@ -214,6 +207,8 @@ public class CommonProxy {
 		Block paperBlock = new BlockPaper();
 		Block ropeBlock = new BlockRope();
 		Block shroom = new BlockShroom();
+		Block altar = new BlockCraftingAltar();
+		Block pillar = new BlockPillarAltar();
 
 		Block sugarBlock = new BlockMod(LibBlockName.SUGARBLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
 		sugarBlock.setHarvestLevel("axe", 1);
@@ -233,6 +228,10 @@ public class CommonProxy {
 		GameRegistry.register(new ItemCloth(shroom).setRegistryName(shroom.getRegistryName()));
 		GameRegistry.register(new ItemBlock(sugarBlock).setRegistryName(sugarBlock.getRegistryName()));
 		GameRegistry.register(new ItemBlock(hyperconcentratedMagic).setRegistryName(hyperconcentratedMagic.getRegistryName()));
+		GameRegistry.register(new ItemBlock(altar).setRegistryName(altar.getRegistryName()));
+		GameRegistry.register(new ItemBlock(pillar).setRegistryName(pillar.getRegistryName()));
+		GameRegistry.registerTileEntity(TileCraftingAltar.class,"Crafting_Altar");
+		GameRegistry.registerTileEntity(TilePillarAltar.class,"Pillar_Altar");
 
 		event.getRegistry().registerAll(
 				compactStone,
@@ -246,7 +245,9 @@ public class CommonProxy {
 				ropeBlock,
 				shroom,
 				sugarBlock,
-				hyperconcentratedMagic
+				hyperconcentratedMagic,
+				altar,
+				pillar
 		);
 	}
 

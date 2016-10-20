@@ -11,7 +11,11 @@ package arekkuusu.grimoireofalice.client;
 import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.client.render.*;
+import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
+import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.MalletEvent;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
@@ -23,6 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -167,8 +172,10 @@ public class ClientProxy extends CommonProxy{
 		registerBlockWithColorTypes(ModBlocks.SHROOM, 16);
 		registerBlock(ModBlocks.SUGAR_BLOCK, 0);
 		registerBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC, 0);
+		registerBlock(ModBlocks.ALTAR, 0);
+		registerBlock(ModBlocks.PILLAR_ALTAR, 0);
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) { //FIXME: Always false
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			registerItem(ModItems.LUNASA_VIOLIN, 0);
 			registerItem(ModItems.LYRICA_PIANO, 0);
 			registerItem(ModItems.MERLIN_TRUMPET, 0);
@@ -197,6 +204,9 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHakureiOrb.class, RenderHakureiOrb::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
+		//Tiles
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());
 	}
 	
 	private static void registerItem(Item item, int damage) {

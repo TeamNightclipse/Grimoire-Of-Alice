@@ -114,6 +114,8 @@ tile.onbashira.name=Onbashira
 tile.onbashiramiddle.name=Onbashira
 tile.onbashiratop.name=Onbashira
 tile.holystone.name=Holy Stone
+tile.craftingaltar.name=Crafting Altar
+tile.pillaraltar.name=Holy Pillar
 
 tile.shroom.white.name=White Shroom
 tile.shroom.orange.name=Orange Shroom

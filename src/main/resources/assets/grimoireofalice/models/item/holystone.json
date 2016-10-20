@@ -1,3 +1,6 @@
 {
-  "parent": "grimoireofalice:block/holystone"
+  "parent": "item/generated",
+    "textures": {
+        "layer0": "grimoireofalice:items/holystone"
+    }
 }
