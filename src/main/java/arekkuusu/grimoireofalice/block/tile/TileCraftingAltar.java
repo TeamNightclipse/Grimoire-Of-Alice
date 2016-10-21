@@ -4,12 +4,16 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.items.ItemHandlerHelper;
+
 import java.util.Random;
 
-public class TileCraftingAltar extends TileItemHandler {
+public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
+	//TODO: Should all of these be public?
 	public int tickCount;
 	public float pageFlip;
 	public float pageFlipPrev;
@@ -33,49 +37,32 @@ public class TileCraftingAltar extends TileItemHandler {
 			new BlockPos(-3, 0, -3)};
 
 	public boolean addItem(ItemStack stack) {
-		boolean did = false;
-		if (itemHandler.getStackInSlot(1) == null) {
-			did = true;
+		if (itemHandler.getStackInSlot(0) == null) {
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
 			itemHandler.setStackInSlot(1, stackToAdd);
-		}
-		if (did) {
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 
+		//TODO: This always returns true. Intentional?
 		return true;
 	}
 
 	public boolean removeItem(EntityPlayer player) {
-		boolean did = false;
 		if (itemHandler.getStackInSlot(0) != null) {
-			did = true;
 			ItemStack stackToTake = itemHandler.getStackInSlot(0);
 			itemHandler.setStackInSlot(0, null);
 
-			if (player != null && !player.capabilities.isCreativeMode)
-				if (!player.inventory.addItemStackToInventory(new ItemStack(stackToTake.getItem(), 1))) {
-					player.dropItem(stackToTake.getItem(), 1);
-				}
-		}
-		if (did) {
+			if(player != null && !player.capabilities.isCreativeMode) {
+				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(stackToTake.getItem(), 1));
+			}
+
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 
 		return true;
-	}
-
-	@Override
-	public void writePacketNBT(NBTTagCompound tagCompound) {
-		super.writePacketNBT(tagCompound);
-	}
-
-	@Override
-	public void readPacketNBT(NBTTagCompound tagCompound) {
-		super.readPacketNBT(tagCompound);
 	}
 
 	@Override
@@ -84,66 +71,64 @@ public class TileCraftingAltar extends TileItemHandler {
 	}
 
 	private void bookPart(){
-		this.bookSpreadPrev = this.bookSpread;
-		this.bookRotationPrev = this.bookRotation;
-		EntityPlayer entityplayer = this.worldObj.getClosestPlayer((double) ((float) this.pos.getX() + 0.5F), (double) ((float) this.pos.getY() + 0.5F), (double) ((float) this.pos.getZ() + 0.5F), 3.0D, false);
+		bookSpreadPrev = bookSpread;
+		bookRotationPrev = bookRotation;
+		EntityPlayer entityplayer = worldObj.getClosestPlayer((pos.getX() + 0.5F), (pos.getY() + 0.5F), (pos.getZ() + 0.5F), 3.0D, false);
 
 		if (entityplayer != null) {
-			double d0 = entityplayer.posX - (double) ((float) this.pos.getX() + 0.5F);
-			double d1 = entityplayer.posZ - (double) ((float) this.pos.getZ() + 0.5F);
-			this.tRot = (float) MathHelper.atan2(d1, d0);
-			this.bookSpread += 0.1F;
+			double d0 = entityplayer.posX - (pos.getX() + 0.5F);
+			double d1 = entityplayer.posZ - (pos.getZ() + 0.5F);
+			tRot = (float) MathHelper.atan2(d1, d0);
+			bookSpread += 0.1F;
 
-			if (this.bookSpread < 0.5F || rand.nextInt(40) == 0) {
-				float f1 = this.flipT;
+			if (bookSpread < 0.5F || rand.nextInt(40) == 0) {
+				float f1 = flipT;
 
 				while (true) {
-					this.flipT += (float) (rand.nextInt(4) - rand.nextInt(4));
+					flipT += rand.nextInt(4) - rand.nextInt(4);
 
-					if (f1 != this.flipT) {
+					if (f1 != flipT) {
 						break;
 					}
 				}
 			}
 		} else {
-			this.tRot += 0.02F;
-			this.bookSpread -= 0.1F;
+			tRot += 0.02F;
+			bookSpread -= 0.1F;
 		}
 
-		while (this.bookRotation >= (float) Math.PI) {
-			this.bookRotation -= ((float) Math.PI * 2F);
+		while (bookRotation >= Math.PI) {
+			bookRotation -= Math.PI * 2F;
 		}
 
-		while (this.bookRotation < -(float) Math.PI) {
-			this.bookRotation += ((float) Math.PI * 2F);
+		while (bookRotation < -Math.PI) {
+			bookRotation += Math.PI * 2F;
 		}
 
-		while (this.tRot >= (float) Math.PI) {
-			this.tRot -= ((float) Math.PI * 2F);
+		while (tRot >= Math.PI) {
+			tRot -= Math.PI * 2F;
 		}
 
-		while (this.tRot < -(float) Math.PI) {
-			this.tRot += ((float) Math.PI * 2F);
+		while (tRot < -Math.PI) {
+			tRot += Math.PI * 2F;
 		}
 
-		float f2;
-
-		for (f2 = this.tRot - this.bookRotation; f2 >= (float) Math.PI; f2 -= ((float) Math.PI * 2F)) {
-			;
+		float f2 = tRot - bookRotation;
+		while(f2 >= Math.PI) {
+			f2 -= Math.PI * 2F;
 		}
 
-		while (f2 < -(float) Math.PI) {
-			f2 += ((float) Math.PI * 2F);
+		while (f2 < -Math.PI) {
+			f2 += Math.PI * 2F;
 		}
 
-		this.bookRotation += f2 * 0.4F;
-		this.bookSpread = MathHelper.clamp_float(this.bookSpread, 0.0F, 1.0F);
-		++this.tickCount;
-		this.pageFlipPrev = this.pageFlip;
-		float f = (this.flipT - this.pageFlip) * 0.4F;
-		float f3 = 0.2F;
+		bookRotation += f2 * 0.4F;
+		bookSpread = MathHelper.clamp_float(bookSpread, 0.0F, 1.0F);
+		++tickCount;
+		pageFlipPrev = pageFlip;
+		float f = (flipT - pageFlip) * 0.4F;
 		f = MathHelper.clamp_float(f, -0.2F, 0.2F);
-		this.flipA += (f - this.flipA) * 0.9F;
-		this.pageFlip += this.flipA;
+		flipA += (f - flipA) * 0.9F;
+		pageFlip += flipA;
 	}
 }

@@ -7,7 +7,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -17,9 +16,9 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 
-public class TileItemHandler extends TileEntity implements ITickable {
+public class TileItemHandler extends TileEntity {
 
-	protected ItemHandler itemHandler = createItemHandler();
+	protected ItemStackHandlerTile itemHandler = createItemHandler();
 
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, @Nonnull IBlockState oldState, @Nonnull IBlockState newState) {
@@ -30,14 +29,14 @@ public class TileItemHandler extends TileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound par1nbtTagCompound) {
 		NBTTagCompound ret = super.writeToNBT(par1nbtTagCompound);
-		writePacketNBT(ret);
+		writeDataNBT(ret);
 		return ret;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
-		readPacketNBT(par1nbtTagCompound);
+		readDataNBT(par1nbtTagCompound);
 	}
 
 	@Nonnull
@@ -49,27 +48,27 @@ public class TileItemHandler extends TileEntity implements ITickable {
 	@Override
 	public final SPacketUpdateTileEntity getUpdatePacket() {
 		NBTTagCompound tag = new NBTTagCompound();
-		writePacketNBT(tag);
+		writeDataNBT(tag);
 		return new SPacketUpdateTileEntity(pos, -999, tag);
 	}
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
 		super.onDataPacket(net, packet);
-		readPacketNBT(packet.getNbtCompound());
+		readDataNBT(packet.getNbtCompound()); //FIXME: ClientSide method
 	}
 
-	public void readPacketNBT(NBTTagCompound tagCompound) {
+	public void readDataNBT(NBTTagCompound tagCompound) {
 		itemHandler = createItemHandler();
 		itemHandler.deserializeNBT(tagCompound);
 	}
 
-	public void writePacketNBT(NBTTagCompound tagCompound) {
+	public void writeDataNBT(NBTTagCompound tagCompound) {
 		tagCompound.merge(itemHandler.serializeNBT());
 	}
 
-	protected ItemHandler createItemHandler() {
-		return new ItemHandler(this, true);
+	protected ItemStackHandlerTile createItemHandler() {
+		return new ItemStackHandlerTile(this, true);
 	}
 
 	public IItemHandlerModifiable getItemHandler() {
@@ -89,12 +88,12 @@ public class TileItemHandler extends TileEntity implements ITickable {
 		return super.getCapability(capability, side);
 	}
 
-	protected static class ItemHandler extends ItemStackHandler {
+	protected static class ItemStackHandlerTile extends ItemStackHandler {
 
 		private boolean allow;
 		private final TileItemHandler tile;
 
-		ItemHandler(TileItemHandler tile, boolean allow) {
+		ItemStackHandlerTile(TileItemHandler tile, boolean allow) {
 			this.tile = tile;
 			this.allow = allow;
 		}
@@ -122,10 +121,5 @@ public class TileItemHandler extends TileEntity implements ITickable {
 		public void onContentsChanged(int slot) {
 			tile.markDirty();
 		}
-	}
-
-	@Override
-	public void update() {
-
 	}
 }

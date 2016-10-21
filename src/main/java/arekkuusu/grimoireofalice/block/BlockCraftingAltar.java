@@ -57,8 +57,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileCraftingAltar tile = (TileCraftingAltar) worldIn.getTileEntity(pos);
 		boolean ok = false;
-		if (tile != null){
-			if (playerIn.isSneaking())
+		if (tile != null && playerIn.isSneaking()) {
 			ok = tile.removeItem(playerIn);
 		}
 		return ok;
