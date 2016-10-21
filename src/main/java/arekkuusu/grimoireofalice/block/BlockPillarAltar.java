@@ -51,30 +51,6 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 		return ok;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		for (int i = -2; i <= 2; ++i) {
-			for (int j = -2; j <= 2; ++j) {
-				if (i > -2 && i < 2 && j == -1) {
-					j = 2;
-				}
-
-				if (rand.nextInt(16) == 0) {
-					for (int k = 0; k <= 1; ++k) {
-
-						if (!worldIn.isAirBlock(pos.add(i / 2, 0, j / 2))) {
-							break;
-						}
-
-						worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, pos.getX() + 0.5D, pos.getY() + 2.0D, pos.getZ() + 0.5D,
-								(i + rand.nextFloat()) - 0.5D, (k - rand.nextFloat() - 1.0F), (j + rand.nextFloat()) - 0.5D);
-					}
-				}
-			}
-		}
-	}
-
 	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {

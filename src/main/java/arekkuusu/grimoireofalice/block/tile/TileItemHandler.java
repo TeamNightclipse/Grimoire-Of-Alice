@@ -83,7 +83,7 @@ public class TileItemHandler extends TileEntity {
 	@Nonnull
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nonnull EnumFacing side) {
-		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler);
 		return super.getCapability(capability, side);
 	}

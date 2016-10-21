@@ -2,10 +2,13 @@ package arekkuusu.grimoireofalice.client.render.tile;
 
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBook;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,7 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCraftingAltar> {
-    /** The texture for the book above the enchantment table. */
     private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
     private final ModelBook modelBook = new ModelBook();
 
@@ -25,7 +27,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(f * 0.1F) * 0.01F, 0.0F);
 		float f1 = te.bookRotation - te.bookRotationPrev;
 
-		while(f1 >= Math.PI) {
+		while (f1 >= Math.PI) {
 			f1 -= Math.PI * 2F;
 		}
 
@@ -60,6 +62,17 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 
 		float f5 = te.bookSpreadPrev + (te.bookSpread - te.bookSpreadPrev) * partialTicks;
 		modelBook.render(null, f, f3, f4, f5, 0.0F, 0.0625F);
+		GlStateManager.popMatrix();
+
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x + 0.5F, y + 1.5, z + 0.5);
+		GlStateManager.scale(0.5, 0.5, 0.5);
+		GlStateManager.rotate(te.tickCount, 0F, 1F, 0F);
+		ItemStack stack = te.getItemHandler().getStackInSlot(0);
+		Minecraft mc = Minecraft.getMinecraft();
+		if(stack != null) {
+			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+		}
 		GlStateManager.popMatrix();
 	}
 }

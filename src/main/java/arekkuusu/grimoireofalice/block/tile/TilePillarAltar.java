@@ -14,7 +14,9 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 	public int tickCount;
 
 	public boolean addItem(@Nullable EntityPlayer player, ItemStack stack) {
+		boolean added = false;
 		if (itemHandler.getStackInSlot(0) == null) {
+			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
 			itemHandler.setStackInSlot(0, stackToAdd);
@@ -28,34 +30,28 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
-
-		return true;
+		return added;
 	}
 
 	public boolean removeItem(EntityPlayer player) {
+		boolean removed = false;
 		if (itemHandler.getStackInSlot(0) != null) {
+			removed = true;
 			ItemStack stackToTake = itemHandler.getStackInSlot(0);
 			itemHandler.setStackInSlot(0, null);
 
-			if(player != null && !player.capabilities.isCreativeMode) {
+			if (player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(stackToTake.getItem(), 1));
 			}
 
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
-
-		return true;
+		return removed;
 	}
 
-	@Override
-	public void writeDataNBT(NBTTagCompound tagCompound) {
-		super.writeDataNBT(tagCompound);
-	}
-
-	@Override
-	public void readDataNBT(NBTTagCompound tagCompound) {
-		super.readDataNBT(tagCompound);
+	public boolean hasItem(){
+		return itemHandler.getStackInSlot(0) != null;
 	}
 
 	@Override

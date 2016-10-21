@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.block.tile;
 
+import arekkuusu.grimoireofalice.block.ModBlocks;
+import arekkuusu.grimoireofalice.item.crafting.AltarRecipes;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,21 +11,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.items.ItemHandlerHelper;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
-	//TODO: Should all of these be public?
+	//Yes, these are used by the Renderer to render the book
 	public int tickCount;
 	public float pageFlip;
 	public float pageFlipPrev;
-	public float flipT;
-	public float flipA;
 	public float bookSpread;
 	public float bookSpreadPrev;
 	public float bookRotation;
 	public float bookRotationPrev;
-	public float tRot;
+	private float flipT;
+	private float flipA;
+	private float tRot;
 	private static final Random rand = new Random();
 
 	private static final BlockPos[] PILLAR_LOCATIONS = {
@@ -37,20 +40,23 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			new BlockPos(-3, 0, -3)};
 
 	public boolean addItem(ItemStack stack) {
+		boolean added = false;
 		if (itemHandler.getStackInSlot(0) == null) {
+			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
-			itemHandler.setStackInSlot(1, stackToAdd);
+			itemHandler.setStackInSlot(0, stackToAdd);
+
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
-
-		//TODO: This always returns true. Intentional?
-		return true;
+		return added;
 	}
 
 	public boolean removeItem(EntityPlayer player) {
+		boolean removed = false;
 		if (itemHandler.getStackInSlot(0) != null) {
+			removed = true;
 			ItemStack stackToTake = itemHandler.getStackInSlot(0);
 			itemHandler.setStackInSlot(0, null);
 
@@ -61,8 +67,34 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
+		return removed;
+	}
 
-		return true;
+	public boolean doCrafting() {
+		boolean crafted = false;
+		if (itemHandler.getStackInSlot(0) == null) {
+			ArrayList<TilePillarAltar> arrayAltar = new ArrayList<>();
+			ArrayList<ItemStack> arrayItem = new ArrayList<>();
+			for (BlockPos pos : PILLAR_LOCATIONS) {
+				pos = pos.add(getPos());
+				if ((getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR)) {
+					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				}
+			}
+			if (!arrayAltar.isEmpty() && arrayAltar.size() > 3) {
+				for (TilePillarAltar altar : arrayAltar) {
+					if(!altar.hasItem()) continue;
+					arrayItem.add(altar.getItemHandler().getStackInSlot(0));
+					altar.removeItem(null);
+				}
+				if(!arrayItem.isEmpty()) {
+					AltarRecipes altarRecipes = new AltarRecipes(arrayItem);
+					addItem(altarRecipes.getResult());
+					crafted = true;
+				}
+			}
+		}
+		return crafted;
 	}
 
 	@Override
