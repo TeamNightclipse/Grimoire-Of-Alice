@@ -33,7 +33,7 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 		return added;
 	}
 
-	public boolean removeItem(EntityPlayer player) {
+	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
 		if (itemHandler.getStackInSlot(0) != null) {
 			removed = true;
@@ -52,6 +52,10 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 
 	public boolean hasItem(){
 		return itemHandler.getStackInSlot(0) != null;
+	}
+
+	public ItemStack getItemStack(){
+		return itemHandler.getStackInSlot(0);
 	}
 
 	@Override

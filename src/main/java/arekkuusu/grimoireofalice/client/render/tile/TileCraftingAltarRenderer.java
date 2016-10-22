@@ -16,11 +16,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCraftingAltar> {
-    private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
-    private final ModelBook modelBook = new ModelBook();
+	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
+	private final ModelBook modelBook = new ModelBook();
 
 	@Override
-    public void renderTileEntityAt(TileCraftingAltar te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void renderTileEntityAt(TileCraftingAltar te, double x, double y, double z, float partialTicks, int destroyStage) {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5F, y + 1F, z + 0.5F);
 		float f = te.tickCount + partialTicks;
@@ -68,7 +68,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		GlStateManager.translate(x + 0.5F, y + 1.5, z + 0.5);
 		GlStateManager.scale(0.5, 0.5, 0.5);
 		GlStateManager.rotate(te.tickCount, 0F, 1F, 0F);
-		ItemStack stack = te.getItemHandler().getStackInSlot(0);
+		ItemStack stack = te.getItemStack();
 		Minecraft mc = Minecraft.getMinecraft();
 		if(stack != null) {
 			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);

@@ -21,6 +21,7 @@ import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
 import arekkuusu.grimoireofalice.item.auras.ItemWingsUtsuho;
+import arekkuusu.grimoireofalice.item.crafting.SpecialRecipes;
 import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.*;
 import arekkuusu.grimoireofalice.potion.PotionElixir;
@@ -282,5 +283,6 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent event) {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
+		SpecialRecipes.init();
 	}
 }

@@ -61,18 +61,18 @@ public class VanillaCrafting {
                 .where('A').mapsTo(ModItems.SHIMENAWA_ROPE)
                 .outputs(ModBlocks.COMPACT_STONE).build();
 
-		for (int i = 0; i < 16; ++i) {
+		//for (int i = 0; i < 16; ++i) {
 			shapeless()
-					.add(new ItemStack(ModItems.SHROOM_SLICE, 1, i))
+					.add(new ItemStack(ModItems.SHROOM_SLICE, 1, 0))
 					.add(ModItems.BUDAH_BOUL)
-					.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.BUDAH_BOUL), 1, i));
-		}
+					.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.BUDAH_BOUL), 1, 0));
+		//}
 
         GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.GLORIOUS_NIPPON_STEEL), 0);
         GameRegistry.addSmelting(ModItems.IMPURE_ROCK, new ItemStack(ModItems.HIHIIROKANE), 0);
     }
 
-    public static void masks() {
+    public static void masks() { //TODO: Move Mask Recipes to Altar
         shapeless()
                 .add(ModItems.FOX_MASK)
                 .add(ModItems.FUKU_NO_KAMI_MASK)
@@ -119,5 +119,4 @@ public class VanillaCrafting {
                 .where('A').mapsTo(Items.NETHER_STAR)
                 .where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
     }
-
 }

@@ -1,16 +1,16 @@
 package arekkuusu.grimoireofalice.block.tile;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.item.crafting.AltarRecipes;
+import arekkuusu.grimoireofalice.item.crafting.RecipeAltar;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.items.ItemHandlerHelper;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -30,18 +30,19 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	private static final Random rand = new Random();
 
 	private static final BlockPos[] PILLAR_LOCATIONS = {
-			new BlockPos(-4, 0, 0),
-			new BlockPos(-3, 0, 3),
-			new BlockPos(0, 0, 4),
-			new BlockPos(3, 0, 3),
-			new BlockPos(4, 0, 0),
-			new BlockPos(3, 0, -3),
 			new BlockPos(0, 0, -4),
-			new BlockPos(-3, 0, -3)};
+			new BlockPos(3, 0, -3),
+			new BlockPos(4, 0, 0),
+			new BlockPos(3, 0, 3),
+			new BlockPos(0, 0, 4),
+			new BlockPos(-3, 0, 3),
+			new BlockPos(-4, 0, 0),
+			new BlockPos(-3, 0, -3)
+	};
 
 	public boolean addItem(ItemStack stack) {
 		boolean added = false;
-		if (itemHandler.getStackInSlot(0) == null) {
+		if (getItemStack() == null) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
@@ -53,11 +54,11 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		return added;
 	}
 
-	public boolean removeItem(EntityPlayer player) {
+	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		if (itemHandler.getStackInSlot(0) != null) {
+		if (getItemStack() != null) {
 			removed = true;
-			ItemStack stackToTake = itemHandler.getStackInSlot(0);
+			ItemStack stackToTake = getItemStack();
 			itemHandler.setStackInSlot(0, null);
 
 			if(player != null && !player.capabilities.isCreativeMode) {
@@ -71,30 +72,36 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	public boolean doCrafting() {
-		boolean crafted = false;
-		if (itemHandler.getStackInSlot(0) == null) {
+		if (getItemStack() == null) {
 			ArrayList<TilePillarAltar> arrayAltar = new ArrayList<>();
 			ArrayList<ItemStack> arrayItem = new ArrayList<>();
 			for (BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
+				System.out.println(pos.getX() + " " + pos.getZ());
 				if ((getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR)) {
 					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
 				}
 			}
-			if (!arrayAltar.isEmpty() && arrayAltar.size() > 3) {
+			if (!arrayAltar.isEmpty() && arrayAltar.size() > 2) {
 				for (TilePillarAltar altar : arrayAltar) {
-					if(!altar.hasItem()) continue;
-					arrayItem.add(altar.getItemHandler().getStackInSlot(0));
-					altar.removeItem(null);
+					if (!altar.hasItem()) continue;
+					arrayItem.add(altar.getItemStack());
 				}
-				if(!arrayItem.isEmpty()) {
-					AltarRecipes altarRecipes = new AltarRecipes(arrayItem);
-					addItem(altarRecipes.getResult());
-					crafted = true;
+				if (!arrayItem.isEmpty()) {
+					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(arrayItem)).forEach(recipe -> {
+						for (TilePillarAltar altar : arrayAltar) {
+							altar.removeItem(null);
+						}
+						addItem(recipe.getResult());
+					});
 				}
 			}
 		}
-		return crafted;
+		return true;
+	}
+
+	public ItemStack getItemStack(){
+		return itemHandler.getStackInSlot(0);
 	}
 
 	@Override

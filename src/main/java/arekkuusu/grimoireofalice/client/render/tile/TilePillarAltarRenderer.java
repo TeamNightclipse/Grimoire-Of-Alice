@@ -15,7 +15,7 @@ public class TilePillarAltarRenderer extends TileEntitySpecialRenderer<TilePilla
 		GlStateManager.translate(x + 0.5F, y + 1.5, z + 0.5);
 		GlStateManager.scale(1.5, 1.5, 1.5);
 		GlStateManager.rotate(te.tickCount, 0F, 1F, 0F);
-		ItemStack stack = te.getItemHandler().getStackInSlot(0);
+		ItemStack stack = te.getItemStack();
 		Minecraft mc = Minecraft.getMinecraft();
 		if(stack != null) {
 			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
