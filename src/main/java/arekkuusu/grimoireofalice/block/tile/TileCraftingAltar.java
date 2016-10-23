@@ -2,12 +2,18 @@ package arekkuusu.grimoireofalice.block.tile;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.item.crafting.RecipeAltar;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
@@ -38,6 +44,17 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			new BlockPos(-3, 0, 3),
 			new BlockPos(-4, 0, 0),
 			new BlockPos(-3, 0, -3)
+	};
+
+	private static final BlockPos[] SECOND_PILLAR_LOCATIONS = {
+			new BlockPos(2, 3, 5),
+			new BlockPos(-2, 3, 5),
+			new BlockPos(5, 3, 2),
+			new BlockPos(5, 3, -2),
+			new BlockPos(2, 3, -5),
+			new BlockPos(-2, 3, -5),
+			new BlockPos(-5, 3, 2),
+			new BlockPos(-5, 3, -2)
 	};
 
 	public boolean addItem(ItemStack stack) {
@@ -77,8 +94,15 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			ArrayList<ItemStack> arrayItem = new ArrayList<>();
 			for (BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				System.out.println(pos.getX() + " " + pos.getZ());
-				if ((getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR)) {
+				Block block = getWorld().getBlockState(pos).getBlock();
+				if (block== ModBlocks.PILLAR_ALTAR) {
+					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				}
+			}
+			for(BlockPos pos : SECOND_PILLAR_LOCATIONS){
+				pos = pos.add(getPos());
+				Block block = getWorld().getBlockState(pos).getBlock();
+				if (block == ModBlocks.ONBASHIRA_TOP) {
 					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
 				}
 			}
@@ -88,16 +112,34 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 					arrayItem.add(altar.getItemStack());
 				}
 				if (!arrayItem.isEmpty()) {
-					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(arrayItem)).forEach(recipe -> {
+					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(arrayItem, worldObj)).forEach(recipe -> {
 						for (TilePillarAltar altar : arrayAltar) {
 							altar.removeItem(null);
 						}
 						addItem(recipe.getResult());
+						doEffect();
 					});
 				}
 			}
 		}
 		return true;
+	}
+
+	@SideOnly(Side.CLIENT)
+	private void doEffect() {
+		int posX = pos.getX();
+		int posY = pos.getY();
+		int posZ = pos.getZ();
+		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.NEUTRAL, 1.0F,
+				rand.nextFloat() * 0.1F + 0.8F);
+		for (int t = 0; t < 5; t++) {
+			for (int u = 0; u < 10; u++) {
+				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, -rand.nextDouble(), 0.2, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, -rand.nextDouble());
+				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, -rand.nextDouble(), 0.2, rand.nextDouble());
+			}
+		}
 	}
 
 	public ItemStack getItemStack(){

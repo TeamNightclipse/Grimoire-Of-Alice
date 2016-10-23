@@ -23,9 +23,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -52,7 +50,9 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Crafting Altar");
+		list.add(TextFormatting.GOLD + "Honored pillars");
+		list.add(TextFormatting.ITALIC + "Kinda heavy");
+		list.add(TextFormatting.ITALIC + "Crafting Altar");
 	}
 
 	@Override
@@ -130,6 +130,11 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
+	}
+
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
 	}
 
 	@Override

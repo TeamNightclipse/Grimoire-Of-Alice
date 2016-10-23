@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.block;
 import java.util.List;
 import java.util.Random;
 
+import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -48,6 +49,7 @@ public class BlockOnbashira extends BlockMod {
 		world.setBlockState(pos.up(1), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
 		world.setBlockState(pos.up(2), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
 		world.setBlockState(pos.up(3), ModBlocks.ONBASHIRA_TOP.getDefaultState());
+		world.setTileEntity(pos.up(3), new TilePillarAltar());
 		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	}
 

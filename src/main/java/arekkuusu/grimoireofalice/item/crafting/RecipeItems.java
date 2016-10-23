@@ -1,32 +1,54 @@
 package arekkuusu.grimoireofalice.item.crafting;
 
 import com.google.common.collect.ImmutableList;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RecipeItems {
+public class RecipeItems implements IRecipeItems {
 
 	private final ItemStack result;
-	private final ImmutableList<ItemStack> neededItems;
+	private final ImmutableList<Object> neededItems;
 
-	RecipeItems(ItemStack result, ItemStack... inputs) {
+	RecipeItems(ItemStack result, Object... inputs) {
 		this.result = result;
-		ImmutableList.Builder<ItemStack> inputsToSet = ImmutableList.builder();
-		for (ItemStack obj : inputs) {
+		ImmutableList.Builder<Object> inputsToSet = ImmutableList.builder();
+		for (Object obj : inputs) {
 			inputsToSet.add(obj);
 		}
 
 		this.neededItems = inputsToSet.build();
 	}
 
-	public boolean checkRecipe(ArrayList<ItemStack> usedItems) {
-		ArrayList<ItemStack> toCompare = new ArrayList<>(neededItems);
+	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
+		List<Object> toCompare = new ArrayList<>(neededItems);
 		if (toCompare.size() != usedItems.size()) return false;
-		for (int i = 0; i < usedItems.size(); i++) {
-			if (!areEqual(toCompare.get(i), usedItems.get(i))) return false;
+		for (ItemStack stack : usedItems) {
+			int index = -1;
+			for (int j = 0; j < toCompare.size(); j++) {
+				Object obj = toCompare.get(j);
+				if (obj instanceof Item
+						&& areEqual(stack, (Item)obj)) {
+					index = j;
+					break;
+				} else if (obj instanceof ItemStack
+						&& areEqual(stack, (ItemStack)obj)) {
+					index = j;
+					break;
+				}
+			}
+			if (index != -1) {
+				toCompare.remove(index);
+			} else return false;
 		}
-		return true;
+		return toCompare.isEmpty();
+	}
+
+	private boolean areEqual(ItemStack one, Item two){
+		return one.getItem() == two;
 	}
 
 	private boolean areEqual(ItemStack one, ItemStack two){
@@ -35,5 +57,9 @@ public class RecipeItems {
 
 	public ItemStack getResult() {
 		return result;
+	}
+
+	public ArrayList<Object> getNeededItems() {
+		return new ArrayList<>(neededItems);
 	}
 }

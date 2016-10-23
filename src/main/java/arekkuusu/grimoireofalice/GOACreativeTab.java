@@ -57,6 +57,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.KYOUMARUBOTAN);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.ALTAR);
+		addBlock(ModBlocks.PILLAR_ALTAR);
 		addBlock(ModBlocks.PAPER_BLOCK);
 		addBlock(ModBlocks.ROPE_BLOCK);
 		addBlock(ModBlocks.SUGAR_BLOCK);
