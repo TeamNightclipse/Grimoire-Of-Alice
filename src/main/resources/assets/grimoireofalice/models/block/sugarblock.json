@@ -1,7 +1,7 @@
 {
     "parent": "block/cube",
     "textures": {
-		"particles": "grimoireofalice:blocks/sugar0",
+		"particle": "grimoireofalice:blocks/sugar0",
 		"down": "grimoireofalice:blocks/sugar0",
         "up": "grimoireofalice:blocks/sugar1",
         "north": "grimoireofalice:blocks/sugar2",

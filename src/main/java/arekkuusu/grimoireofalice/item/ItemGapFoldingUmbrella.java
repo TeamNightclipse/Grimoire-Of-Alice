@@ -68,6 +68,7 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 	}
 
 	private boolean isSafe(World world, double x, double y, double z){
+		if(y < 0) return false;
 		BlockPos pos = new BlockPos(x, y, z);
 		Block block = world.getBlockState(pos).getBlock();
 		return block == Blocks.AIR || block == Blocks.DOUBLE_PLANT || block == Blocks.TALLGRASS;

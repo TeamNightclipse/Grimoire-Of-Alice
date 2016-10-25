@@ -46,7 +46,7 @@ public class ItemJeweledHourai extends ItemMod {
 			{Items.DIAMOND, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
 
 	private static final int[] COLORS = {
-			LibColor.COLOR_SATURATED_YELLOW,
+			LibColor.COLOR_SATURATED_GREEN,
 			LibColor.COLOR_SATURATED_YELLOW,
 			LibColor.COLOR_SATURATED_MAGENTA,
 			LibColor.COLOR_SATURATED_RED,
@@ -105,7 +105,7 @@ public class ItemJeweledHourai extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(!worldIn.isRemote) {
-			if(entityLiving.isSneaking()) {
+			if(!entityLiving.isSneaking()) {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 30){timeUsed = 30;}

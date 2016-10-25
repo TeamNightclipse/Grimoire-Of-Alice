@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.block.*;
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
+import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
@@ -131,7 +132,6 @@ public class CommonProxy {
 
 				//Armor
 				new ItemMapleLeafShield(),
-				new ItemPrimordialShield(),
 				new ItemFoxMask(SOLID_PAPER, 3),
 				new ItemRaidenMask(SOLID_PAPER, 3),
 				new ItemMonkeyMask(SOLID_PAPER, 3),
@@ -268,9 +268,9 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Beam", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); // Wont move properly
-		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true); //Set to 1, but might have to increase it...
+		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
@@ -278,6 +278,7 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
+		MinecraftForge.EVENT_BUS.register(new CapabilitiesEvent());
 	}
 	
 	public void init(FMLInitializationEvent event) {

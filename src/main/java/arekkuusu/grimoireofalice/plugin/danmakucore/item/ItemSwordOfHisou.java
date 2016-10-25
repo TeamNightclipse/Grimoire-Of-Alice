@@ -114,12 +114,14 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 							player.getCooldownTracker().setCooldown(this, count);
 						}
 					} else if (timeUsed >= 20  && player.isSneaking()) {
-						DanmakuBuilder danmaku = DanmakuBuilder.builder()
-								.setUser(player)
-								.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED))
-								.build();
+						for (int i = 0; i < 4; i++) {
+							DanmakuBuilder danmaku = DanmakuBuilder.builder()
+									.setUser(player)
+									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))
+									.build();
 
-						DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 5, 0.5D);
+							DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 5, 0.5D);
+						}
 					}
 				}
 			}

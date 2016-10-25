@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class EntityUnzanFist extends EntityThrowable {
+public class EntityUnzanFist extends EntityThrowable { //Why is this entity so bad??
 
 	private boolean isReturning = false;
 
@@ -32,7 +32,13 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	public EntityUnzanFist(World world, EntityLivingBase thrower) {
 		super(world, thrower);
-		setRotation(thrower.rotationYaw, thrower.rotationPitch);
+		Vec3d look = thrower.getLookVec();
+		float distance = 4F;
+		double dx = thrower.posX + (look.xCoord * distance);
+		double dy = thrower.posY + 1 + (look.yCoord * distance);
+		double dz = thrower.posZ + (look.zCoord * distance);
+		setPosition(dx, dy, dz);
+		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, 1.0F, 0);
 	}
 
 	@Override
@@ -104,7 +110,7 @@ public class EntityUnzanFist extends EntityThrowable {
 	private void onImpactBlock(RayTraceResult result) {
 		IBlockState base = worldObj.getBlockState(result.getBlockPos());
 		boolean canHitBlock = base.getBlock() != Blocks.TALLGRASS && base.getBlock() != Blocks.DOUBLE_PLANT;
-		if(canHitBlock) bounceBack();
+		if(canHitBlock && !worldObj.isRemote) setDead();
 	}
 
 	private void onImpactEntity(RayTraceResult result) {

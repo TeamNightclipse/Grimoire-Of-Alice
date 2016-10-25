@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
  */
 public class ModelKanakoAura extends ModelBiped {
 
-	//TODO: Name these
 	private final ModelRenderer rope;
 	private final ModelRenderer rope1;
 	private final ModelRenderer rope2;

@@ -3,7 +3,8 @@
     "textures": {
         "0": "grimoireofalice:models/block/onbashira_sidea",
         "1": "grimoireofalice:models/block/onbashira_sideb",
-        "2": "grimoireofalice:models/block/Forms_b"
+        "2": "grimoireofalice:models/block/Forms_b",
+		"particle": "grimoireofalice:blocks/onbashira"
     },
     "elements": [
         {

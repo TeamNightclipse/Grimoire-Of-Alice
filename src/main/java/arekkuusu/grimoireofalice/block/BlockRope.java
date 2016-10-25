@@ -13,7 +13,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 
 //Lots of code from BlockLog
-public class BlockRope extends BlockModPillar {
+public class BlockRope extends BlockModRope {
 
 	public BlockRope() {
 		super(LibBlockName.ROPEBLOCK, Material.WOOD);

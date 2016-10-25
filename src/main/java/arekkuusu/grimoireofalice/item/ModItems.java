@@ -111,8 +111,6 @@ public final class ModItems {
 	public static final Item MASK_OF_HOPE = new Item();
 	@ObjectHolder(LibItemName.KOKOROS_MASKS)
 	public static final Item KOKOROS_MASKS = new Item();
-	@ObjectHolder(LibItemName.PRIMORDIAL_SHIELD)
-	public static final Item PRIMORDIAL_SHIELD = new Item();
 	@ObjectHolder(LibItemName.MAPLE_LEAF_SHIELD)
 	public static final Item MAPLE_LEAF_SHIELD = new Item();
 	@ObjectHolder(LibItemName.AURA_BYAKUREN)

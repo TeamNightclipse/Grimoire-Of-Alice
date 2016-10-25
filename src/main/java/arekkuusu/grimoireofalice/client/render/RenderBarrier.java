@@ -21,7 +21,6 @@ public class RenderBarrier extends Render<EntityBarrier> {
 	@Override
 	public void doRender(EntityBarrier entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
-		GlStateManager.disableLighting();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x,y,z);
 		GlStateManager.scale(2,2,2);
@@ -31,19 +30,22 @@ public class RenderBarrier extends Render<EntityBarrier> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
+		GlStateManager.disableLighting();
 		GlStateManager.rotate(entity.getTicksAlive() * 4, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
+		GlStateManager.disableLighting();
 		GlStateManager.rotate(-entity.getTicksAlive() * 4, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 
-		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

@@ -12,7 +12,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelFlatTexture extends ModelBase {
+public class ModelFlatTexture extends ModelBase { //TODO: Change to Tabula model
 
 	private final ModelRenderer texture;
 

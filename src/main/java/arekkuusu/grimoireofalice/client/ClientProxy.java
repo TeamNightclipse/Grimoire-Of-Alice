@@ -54,7 +54,6 @@ public class ClientProxy extends CommonProxy{
 	@SubscribeEvent
 	public static void registerItemModels(ModelRegistryEvent event) {
 		//Armor
-		registerItem(ModItems.PRIMORDIAL_SHIELD, 0);
 		registerItem(ModItems.MAPLE_LEAF_SHIELD, 0);
 		registerItem(ModItems.FOX_MASK, 0);
 		registerItem(ModItems.FUKU_NO_KAMI_MASK, 0);

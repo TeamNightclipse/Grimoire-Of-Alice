@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderDragonJewel extends Render<EntityDragonJewel> {
+public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Doesn't render
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_0.png");
 	private final RenderItem renderItem;
@@ -55,7 +55,6 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.popMatrix();
 	}
-
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityDragonJewel entity) {

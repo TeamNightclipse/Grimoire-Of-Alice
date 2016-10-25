@@ -33,7 +33,7 @@ public class YukkuriEvent {
 		if(!world.isRemote && living instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)living;
 			if(player.getEntityData().getBoolean("Eternal")) {
-				world.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
+				player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
 						SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 
 				player.hurtResistantTime = 50;
@@ -84,33 +84,6 @@ public class YukkuriEvent {
 						break;
 					}
 				}
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onItemDrop(PlayerDropsEvent event) {
-		EntityPlayer player = event.getEntityPlayer();
-		List<EntityItem> drop = event.getDrops();
-		for(EntityItem item : drop){
-			Item i = item.getEntityItem().getItem();
-			if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA){
-				if(!player.capabilities.isCreativeMode) {
-					player.capabilities.allowFlying = false;
-					player.capabilities.isFlying = false;
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onItemToss(ItemTossEvent event) {
-		EntityPlayer player = event.getPlayer();
-		Item item = event.getEntityItem().getEntityItem().getItem();
-		if (item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
-			if (!player.capabilities.isCreativeMode) {
-				player.capabilities.allowFlying = false;
-				player.capabilities.isFlying = false;
 			}
 		}
 	}

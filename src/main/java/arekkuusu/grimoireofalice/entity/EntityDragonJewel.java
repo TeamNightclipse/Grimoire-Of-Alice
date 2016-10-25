@@ -72,7 +72,7 @@ public class EntityDragonJewel extends Entity {
 			list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
 				mob.setAttackTarget(null);
 				mob.setRevengeTarget(null);
-				mob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
+				mob.setHealth(mob.getHealth() / 2);
 			});
 		}
 	}

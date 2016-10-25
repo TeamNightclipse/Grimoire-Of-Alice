@@ -71,7 +71,7 @@ public class ItemTenguCamera extends ItemMod {
 	public List<EntityLivingBase> getEntities(EntityLivingBase player){
 		Vec3d vec = player.getLookVec();
 		return player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
-				player.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3),
+				player.getEntityBoundingBox().offset(vec.xCoord * 5, vec.yCoord * 5, vec.zCoord * 5).expandXyz(4),
 				entity -> entity != player);
 	}
 

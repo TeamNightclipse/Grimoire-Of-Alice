@@ -78,13 +78,6 @@ public class ItemIchirinRing extends ItemModSword {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
 			if (!worldIn.isRemote && isWearingUnzan(playerIn)) {
 				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
-				fist.setHeadingFromThrower(playerIn, entityLiving.rotationPitch, entityLiving.rotationYaw, 0.0F, 1.0F, 0);
-				Vec3d look = playerIn.getLookVec();
-				float distance = 3F;
-				double dx = playerIn.posX + (look.xCoord * distance);
-				double dy = playerIn.posY + playerIn.getEyeHeight() - 1;
-				double dz = playerIn.posZ + (look.zCoord * distance);
-				fist.setPosition(dx, dy, dz);
 				worldIn.spawnEntityInWorld(fist);
 				StatBase statBase = StatList.getObjectUseStats(this);
 				if (statBase != null) {

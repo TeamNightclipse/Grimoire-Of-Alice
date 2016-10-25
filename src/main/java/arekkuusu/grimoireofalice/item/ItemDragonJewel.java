@@ -57,16 +57,18 @@ public class ItemDragonJewel extends ItemMod {
 				jewel.setPosition(player.posX, player.posY + 2, player.posZ);
 				worldIn.spawnEntityInWorld(jewel);
 			}
-			--stack.stackSize;
+			if(!player.capabilities.isCreativeMode) {
+				--stack.stackSize;
+			}
 		}
 	}
 
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			EntityDragonJewel beam = new EntityDragonJewel(worldIn, playerIn);
-			beam.setPosition(pos.getX(), pos.getY() + 3, pos.getZ());
-			worldIn.spawnEntityInWorld(beam);
+			EntityDragonJewel dragonJewel = new EntityDragonJewel(worldIn, playerIn);
+			dragonJewel.setPosition(pos.getX(), pos.getY() + 3, pos.getZ());
+			worldIn.spawnEntityInWorld(dragonJewel);
 		}
 		if(!playerIn.capabilities.isCreativeMode) {
 			--stack.stackSize;

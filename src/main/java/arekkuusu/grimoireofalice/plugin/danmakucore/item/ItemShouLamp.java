@@ -73,8 +73,8 @@ public class ItemShouLamp extends ItemMod {
 		if(!player.worldObj.isRemote && count % 5 == 0) {
 			DanmakuBuilder danmaku = DanmakuBuilder.builder()
 					.setUser(player)
-					.setMovementData(0.1D,1D,0.1D)
-					.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW))
+					.setMovementData(0.5D,1.5D,0.1D)
+					.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(5))
 					.build();
 
 			DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);

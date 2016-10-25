@@ -3,7 +3,8 @@
     "textures": {
         "0": "grimoireofalice:models/block/Stones",
         "1": "grimoireofalice:models/block/Stones",
-        "2": "grimoireofalice:models/block/Paper"
+        "2": "grimoireofalice:models/block/Paper",
+		"particle": "grimoireofalice:blocks/holykeystone_side"
     },
     "elements": [
         {

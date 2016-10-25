@@ -54,22 +54,6 @@ public class ItemHakureiGohei extends ItemMod {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(entityIn instanceof EntityPlayer){
-			EntityPlayer player = (EntityPlayer)entityIn;
-			if(!player.capabilities.isCreativeMode){
-				if((isSelected || getMode(stack) == 0)) {
-					player.capabilities.allowFlying = true;
-					player.capabilities.isFlying = true;
-				} else {
-					player.capabilities.allowFlying = false;
-					player.capabilities.isFlying = false;
-				}
-			}
-		}
-	}
-
-	@Override
 	public boolean onDroppedByPlayer(ItemStack stack, EntityPlayer player) {
 		return false;
 	}

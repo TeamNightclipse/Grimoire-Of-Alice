@@ -31,16 +31,6 @@ public class ItemWingsUtsuho extends ItemModAura {
 	}
 
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(player.isSneaking()){
-			player.capabilities.allowFlying = true;
-		} else {
-			player.capabilities.allowFlying = false;
-			player.capabilities.isFlying = false;
-		}
-	}
-
-	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
 	}

@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
@@ -53,12 +54,19 @@ public class Item3rdEye extends ItemMod {
 	}
 	
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean isSelected) {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() == this) {
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
+			} else if(isSelected){
+				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().expandXyz(20.0D));
+				if(!list.isEmpty()) {
+					list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
+						mob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
+					});
+				}
 			}
 		}
 	}

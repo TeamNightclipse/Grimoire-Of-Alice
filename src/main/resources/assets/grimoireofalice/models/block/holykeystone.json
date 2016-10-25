@@ -4,7 +4,8 @@
         "0": "grimoireofalice:models/block/KeyStone",
         "1": "grimoireofalice:models/block/KeyStoneOne",
         "2": "grimoireofalice:models/block/KeyStoneTwo",
-        "3": "grimoireofalice:models/block/Paper"
+        "3": "grimoireofalice:models/block/Paper",
+		"particle": "grimoireofalice:blocks/holykeystone_side"
     },
     "elements": [
         {

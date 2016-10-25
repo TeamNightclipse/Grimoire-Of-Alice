@@ -133,11 +133,6 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
-	}
-
-	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		return worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.COMPACT_STONE;
 	}

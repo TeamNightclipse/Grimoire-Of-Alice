@@ -47,9 +47,7 @@ public class ItemAuraMokou extends ItemModAura {
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 15, 0));
-		if(player.isSneaking())
-			player.setFire(1);
+		player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 15, 0));
 	}
 	
 	@Override
