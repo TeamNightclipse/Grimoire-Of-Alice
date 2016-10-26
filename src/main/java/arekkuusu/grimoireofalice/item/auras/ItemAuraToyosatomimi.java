@@ -69,10 +69,8 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
 
-	@SuppressWarnings("NullableProblems") //Liar
 	@Override
 	@SideOnly(Side.CLIENT)
-	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		if (model == null) model = new ModelToyosatomimiAura(Ui);
 		model.setModelAttributes(imodel);

@@ -22,7 +22,7 @@ public class TileItemHandler extends TileEntity {
 
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, @Nonnull IBlockState oldState, @Nonnull IBlockState newState) {
-		return oldState.getBlock() != newState.getBlock();
+		return oldState.getBlock() != newState.getBlock(); //TODO: Can this cause bugs with BlockOnbashira?
 	}
 
 	@Nonnull
@@ -69,10 +69,6 @@ public class TileItemHandler extends TileEntity {
 
 	protected ItemStackHandlerTile createItemHandler() {
 		return new ItemStackHandlerTile(this, true);
-	}
-
-	public IItemHandlerModifiable getItemHandler() {
-		return itemHandler;
 	}
 
 	@Override

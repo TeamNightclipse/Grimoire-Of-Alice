@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.block.tile;
 
+import arekkuusu.grimoireofalice.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.item.crafting.RecipeAltar;
 import net.minecraft.block.Block;
@@ -20,10 +21,10 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
-	//Yes, these are used by the Renderer to render the book
 	public int tickCount;
 	public float pageFlip;
 	public float pageFlipPrev;
@@ -60,11 +61,11 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public boolean addItem(ItemStack stack) {
 		boolean added = false;
-		if (getItemStack() == null) {
+		if (hasItem()) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
-			itemHandler.setStackInSlot(0, stackToAdd);
+			itemHandler.insertItem(0, stackToAdd, false);
 
 			IBlockState state = getWorld().getBlockState(getPos());
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
@@ -74,10 +75,9 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		if (getItemStack() != null) {
+		ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
+		if (stackToTake != null) {
 			removed = true;
-			ItemStack stackToTake = getItemStack();
-			itemHandler.setStackInSlot(0, null);
 
 			if(player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);
@@ -90,7 +90,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	public boolean doCrafting() {
-		if (getItemStack() == null) {
+		if (hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
 			for (BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
@@ -100,16 +100,16 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			}
 			for(BlockPos pos : SECOND_PILLAR_LOCATIONS){
 				pos = pos.add(getPos());
-				if (getWorld().getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA_TOP) {
+				if (getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
 					altars.add((TilePillarAltar) getWorld().getTileEntity(pos));
 				}
 			}
 			if (!altars.isEmpty() && altars.size() > 2) {
-				List<ItemStack> recipeItems = new ArrayList<>();
-				for (TilePillarAltar altar : altars) {
-					if (!altar.hasItem()) continue;
-					recipeItems.add(altar.getItemStack());
-				}
+				List<ItemStack> recipeItems = altars.stream()
+						.filter(TilePillarAltar::hasItem)
+						.map(TilePillarAltar::getItemStack)
+						.collect(Collectors.toList());
+
 				if (!recipeItems.isEmpty()) {
 					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(recipeItems, worldObj)).forEach(recipe -> {
 						for (TilePillarAltar altar : altars) {
@@ -124,7 +124,6 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		return !hasItem();
 	}
 
-	@SideOnly(Side.CLIENT)
 	private void doEffect() {
 		int posX = pos.getX();
 		int posY = pos.getY();
@@ -141,16 +140,16 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		}
 	}
 
-	public ItemStack getItemStack(){
+	public ItemStack getItemStack() {
 		return itemHandler.getStackInSlot(0);
 	}
 
-	public boolean hasItem(){
-		return itemHandler.getStackInSlot(0) != null;
+	public boolean hasItem() {
+		return getItemStack() != null;
 	}
 
 	@Override
-	public void update(){
+	public void update() {
 		bookSpreadPrev = bookSpread;
 		bookRotationPrev = bookRotation;
 		EntityPlayer entityplayer = worldObj.getClosestPlayer((pos.getX() + 0.5F), (pos.getY() + 0.5F), (pos.getZ() + 0.5F), 3.0D, false);

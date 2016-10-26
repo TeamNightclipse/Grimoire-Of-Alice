@@ -2,6 +2,8 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -61,16 +63,15 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 			playerIn.setPosition(dx, dy, dz);
 		}
 		itemStackIn.damageItem(10, playerIn);
-		worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
-				SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-		playerIn.getCooldownTracker().setCooldown(this,10);
+		playerIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+		playerIn.getCooldownTracker().setCooldown(this, 10);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	private boolean isSafe(World world, double x, double y, double z){
 		if(y < 0) return false;
 		BlockPos pos = new BlockPos(x, y, z);
-		Block block = world.getBlockState(pos).getBlock();
-		return block == Blocks.AIR || block == Blocks.DOUBLE_PLANT || block == Blocks.TALLGRASS;
+		IBlockState state = world.getBlockState(pos);
+		return state.getBlock().isAir(state, world, pos) || !state.isSideSolid(world, pos, EnumFacing.UP);
 	}
 }

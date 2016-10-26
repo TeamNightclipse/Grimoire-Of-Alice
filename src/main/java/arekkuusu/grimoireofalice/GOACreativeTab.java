@@ -166,8 +166,10 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.MIKO_STICK);
 		addItem(ModItems.MOCHI_HAMMER);
 		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
-		addItem(ModItems.NAZRIN_STICK);
-		addItem(ModItems.NAZRIN_STICK_B);
+
+		list.add(ModItems.NAZRIN_STICK_A);
+		list.add(ModItems.NAZRIN_STICK_B);
+
 		addItem(ModItems.NUE_TRIDENT);
 		addItem(ModItems.SWORD_OF_KUSANAGI);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
@@ -202,5 +204,4 @@ public class GOACreativeTab extends CreativeTabs {
 		ItemStack stack = new ItemStack(block);
 		block.getSubBlocks(stack.getItem(), this, list);
 	}
-	
 }

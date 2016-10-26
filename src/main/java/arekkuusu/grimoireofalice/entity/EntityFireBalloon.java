@@ -26,6 +26,7 @@ public class EntityFireBalloon extends EntityFireball {
 		super(world, position.xCoord, position.yCoord, position.zCoord, acceleration.xCoord, acceleration.yCoord, acceleration.zCoord);
 		shootingEntity = shooter;
 	}
+
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if(!worldObj.isRemote) {

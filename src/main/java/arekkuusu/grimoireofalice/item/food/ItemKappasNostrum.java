@@ -57,9 +57,7 @@ public class ItemKappasNostrum extends ItemModFood {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer) {
 			stack.damageItem(1, entityLiving);
-			((EntityPlayer) entityLiving).getFoodStats().addStats(this, stack);
-			worldIn.playSound((EntityPlayer) entityLiving, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
-					SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.HOSTILE, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+			entityLiving.playSound(SoundEvents.ENTITY_WITCH_DRINK, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
 			this.onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
 		}
         return stack;

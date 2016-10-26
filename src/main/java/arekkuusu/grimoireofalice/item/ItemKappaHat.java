@@ -37,10 +37,8 @@ public class ItemKappaHat extends ItemModArmor {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(worldIn.isRaining()){
-			if(stack.isItemDamaged()){
-				stack.setItemDamage(stack.getItemDamage() - 1);
-			}
+		if(worldIn.isRaining() && stack.isItemDamaged()) {
+			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 	}
 

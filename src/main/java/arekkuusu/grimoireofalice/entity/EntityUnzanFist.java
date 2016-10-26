@@ -42,9 +42,7 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 	}
 
 	@Override
-	protected void entityInit() {
-
-	}
+	protected void entityInit() {}
 
 	@Override
 	public void onUpdate() {
@@ -73,19 +71,19 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		posX += motionX;
 		posY += motionY;
 		posZ += motionZ;
-		float res = 0.99F;
-		float grav = getGravityVelocity();
+		float motionMultiplier = 0.99F;
 		if (isInWater()) {
 			for (int i = 0; i < 4; i++) {
 				float f6 = 0.25F;
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX, motionY, motionZ);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE,
+						posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX, motionY, motionZ);
 			}
-			res *= 0.80808080F;
+			motionMultiplier *= 0.80808080F;
 		}
-		motionX *= res;
-		motionY *= res;
-		motionZ *= res;
-		motionY -= grav;
+		motionX *= motionMultiplier;
+		motionY *= motionMultiplier;
+		motionZ *= motionMultiplier;
+		motionY -= getGravityVelocity();
 		setPosition(posX, posY, posZ);
 		if(ticksExisted > 50){
 			if(!worldObj.isRemote){

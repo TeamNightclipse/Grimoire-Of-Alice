@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -20,12 +19,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Random;
 
 public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	public BlockPillarAltar() {
-		super(LibBlockName.PILLARALTAR, Material.ROCK);
+		super(LibBlockName.PILLAR_ALTAR, Material.ROCK);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("axe", 1);

@@ -10,19 +10,17 @@ package arekkuusu.grimoireofalice.lib;
 
 public class LibBlockName {
 
-	public static final String HOLYKEY = "holykeystone";
-	public static final String SUGARBLOCK = "sugarblock";
-	public static final String ROPEBLOCK = "ropeblock";
-	public static final String PAPERBLOCK = "paperblock";
+	public static final String HOLY_KEY = "holykeystone";
+	public static final String SUGAR_BLOCK = "sugarblock";
+	public static final String ROPE_BLOCK = "ropeblock";
+	public static final String PAPER_BLOCK = "paperblock";
 	public static final String ONBASHIRA = "onbashira";
-	public static final String ONBASHIRAMIDDLE = "onbashiramiddle";
-	public static final String ONBASHIRATOP = "onbashiratop";
-	public static final String HOLYSTONE = "holystone";
-	public static final String COMPACTSTONE = "compactstone";
-	public static final String HYPERMAGIC = "hyperconcentratedmagic";
+	public static final String HOLY_STONE = "holystone";
+	public static final String COMPACT_STONE = "compactstone";
+	public static final String HYPER_MAGIC = "hyperconcentratedmagic";
 	public static final String SHROOM = "shroom";
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
 
-    public static final String CRAFTINGALTAR = "craftingaltar";
-	public static final String PILLARALTAR = "pillaraltar";
+    public static final String CRAFTING_ALTAR = "craftingaltar";
+	public static final String PILLAR_ALTAR = "pillaraltar";
 }

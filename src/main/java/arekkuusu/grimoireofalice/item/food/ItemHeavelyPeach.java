@@ -47,8 +47,7 @@ public class ItemHeavelyPeach extends ItemModFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
-		world.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-				SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+		player.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, itemRand.nextFloat() * 0.1F + 0.9F);
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 160, 0));
 	}
 }

@@ -10,9 +10,7 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.entity.EntityFireBalloon;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ItemModSword;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
@@ -35,13 +33,19 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemLaevatein extends ItemModSword {
+
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemLaevatein(ToolMaterial material) {
 		super(material, LibItemName.LAEVATEIN);
@@ -75,21 +79,30 @@ public class ItemLaevatein extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.capabilities.isCreativeMode || playerIn.experienceLevel > 30) {
-			worldIn.playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 1.0F,
-					itemRand.nextFloat() * 0.1F + 0.8F);
+		boolean isCreative = playerIn.capabilities.isCreativeMode;
+
+		if(isCreative || playerIn.experienceLevel > 30) {
+			playerIn.playSound(SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
-				if(playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.FIRE_CHARGE))) {
+				ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
+				if(isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(playerIn)
-							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSizeX(2).setSizeY(2).setSizeZ(2))
+							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 							.build();
 
 					DanmakuCreationHelper.createRandomRingShot(danmaku, 1 , 10, 5);
 
-					playerIn.inventory.deleteStack(new ItemStack(Items.FIRE_CHARGE));
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EnumTextures.RED_NORMAL, 15);
+					if(!isCreative) {
+						//noinspection ConstantConditions
+						if(playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+							//noinspection ConstantConditions
+							playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
+						}
+					}
+
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
 					worldIn.spawnEntityInWorld(circle);
 					playerIn.getCooldownTracker().setCooldown(this, 10);
 				}
@@ -97,12 +110,23 @@ public class ItemLaevatein extends ItemModSword {
 		}
 		else {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));
-			worldIn.playSound(playerIn, playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D, SoundEvents.ENTITY_GHAST_SCREAM,
-					SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.1F + 0.8F);
+			playerIn.playSound(SoundEvents.ENTITY_GHAST_SCREAM, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 			playerIn.getCooldownTracker().setCooldown(this, 500);
 		}
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	}
+
+	private int getSlotFor(EntityPlayer player, ItemStack stack) {
+		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
+			if (player.inventory.mainInventory[i] != null
+					&& ItemStack.areItemStacksEqual(stack, player.inventory.mainInventory[i])
+					&& ItemStack.areItemStackTagsEqual(stack, player.inventory.mainInventory[i])) {
+				return i;
+			}
+		}
+
+		return -1;
 	}
 
 	@Override
@@ -125,14 +149,14 @@ public class ItemLaevatein extends ItemModSword {
 			}
 
 			if(success) {
-				world.playSound(player, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, SoundEvents.ENTITY_BLAZE_DEATH,
-						SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				player.playSound(SoundEvents.ENTITY_BLAZE_DEATH, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 			}
 			stack.damageItem(1, player);
-			return EnumActionResult.SUCCESS;
+			return success ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 		}
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.BLAZE_ROD;
 	}

@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.item.crafting;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public class RecipeItemsNether extends RecipeItems {
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
-		return world.provider.doesWaterVaporize() && super.checkRecipe(usedItems, world);
+		return world.provider.getDimensionType() == DimensionType.NETHER && super.checkRecipe(usedItems, world);
 	}
 }

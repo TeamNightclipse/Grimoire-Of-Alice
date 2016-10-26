@@ -40,10 +40,8 @@ public class ItemMikoCape extends ItemModArmor  {
 		list.add(TextFormatting.ITALIC + "Fancy cape!");
 	}
 
-	@SuppressWarnings("NullableProblems") //Liar
 	@Override
 	@SideOnly(Side.CLIENT)
-	@Nullable
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		if (model == null) model = new ModelToyosatomimiAura(Ui);
 		model.setModelAttributes(imodel);

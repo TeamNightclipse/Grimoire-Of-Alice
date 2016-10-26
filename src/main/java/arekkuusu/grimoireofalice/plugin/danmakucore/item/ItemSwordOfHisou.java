@@ -1,7 +1,6 @@
 package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -32,6 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ItemSwordOfHisou extends ItemSwordOwner {
 
@@ -105,11 +105,8 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					if (timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 						if (!list.isEmpty()) {
-							int count = 0;
-							for (EntityMob mob : list) {
-								count += mob.getHealth();
-							}
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, count);
+							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue();
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}

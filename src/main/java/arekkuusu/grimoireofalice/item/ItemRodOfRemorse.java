@@ -13,8 +13,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class ItemRodOfRemorse extends ItemMod {
 		super(LibItemName.ROD_REMORSE);
 		setMaxDamage(1);
 	}
+
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -43,26 +49,29 @@ public class ItemRodOfRemorse extends ItemMod {
 		list.add(TextFormatting.ITALIC + "The person in question will be beaten up until they repent");
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
 		if(itemStackIn.isItemDamaged()) {
 			if(player.capabilities.isCreativeMode){
 				itemStackIn.setItemDamage(0);
-				return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 			}
-			for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-				ItemStack item = player.inventory.mainInventory[i];
-				if (item != null && item.getItem() == Items.DYE && item.getItemDamage() == 0) {
-					if (item.stackSize > 1) {
-						player.inventory.mainInventory[i].stackSize--;
-					} else {
-						player.inventory.mainInventory[i] = null;
+
+			if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+				IItemHandler inventory = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
+				ItemStack dye = new ItemStack(Items.DYE, 1, 0);
+
+				for(int i = 0; i < inventory.getSlots(); i++) {
+					if(inventory.getStackInSlot(i) == dye) {
+						inventory.extractItem(i, 1, false);
+						itemStackIn.setItemDamage(0);
+						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 					}
-					itemStackIn.setItemDamage(0);
-					break;
 				}
 			}
 		}
+
 		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
@@ -92,7 +101,7 @@ public class ItemRodOfRemorse extends ItemMod {
 			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
 					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage")
 							.appendText(": "))
-					.appendText(String.valueOf((int)target.getHealth())));
+					.appendText(String.valueOf(target.getHealth())));
 		}
 		return true;
 	}

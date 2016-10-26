@@ -25,9 +25,9 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 		GlStateManager.disableLighting();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x,y + 1,z);
-		GlStateManager.scale(0.5,0.5,0.5);
-		GlStateManager.rotate(180,1.0F,0.0F,0.0F);
-		GlStateManager.rotate(entity.rotationYaw,0.0F,1.0F,0.0F);
+		GlStateManager.scale(0.5, 0.5, 0.5);
+		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.rotate(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();

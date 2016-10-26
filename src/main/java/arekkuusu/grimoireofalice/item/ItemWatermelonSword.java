@@ -27,7 +27,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 public class ItemWatermelonSword extends ItemModSword {
 
 	@CapabilityInject(IItemHandler.class)
-	private static Capability<IItemHandler> itemHandlerCapability;
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemWatermelonSword(ToolMaterial material) {
 		super(material, LibItemName.WATERMELON_SWORD);
@@ -53,16 +53,16 @@ public class ItemWatermelonSword extends ItemModSword {
         stack.damageItem(1, attacker);
         --stack.stackSize;
 
-		if(attacker.hasCapability(itemHandlerCapability, null)) {
-			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(itemHandlerCapability, null),
+		if(attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
 					new ItemStack(ModItems.POPSICLE_STICK), false);
 			if(rest != null) {
 				attacker.dropItem(rest.getItem(), rest.stackSize);
 			}
 		}
 
-		if(target.hasCapability(itemHandlerCapability, null)) {
-			ItemStack rest = ItemHandlerHelper.insertItemStacked(target.getCapability(itemHandlerCapability, null),
+		if(target.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+			ItemStack rest = ItemHandlerHelper.insertItemStacked(target.getCapability(ITEM_HANDLER_CAPABILITY, null),
 					new ItemStack(Items.MELON, itemRand.nextInt(3)), false);
 			if(rest != null) {
 				attacker.dropItem(rest.getItem(), rest.stackSize);

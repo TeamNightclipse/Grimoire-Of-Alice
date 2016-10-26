@@ -51,38 +51,38 @@ public class ItemSwordRoukanken extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer) {
+		if (entityIn instanceof EntityPlayer & isSelected) {
 			EntityPlayer player = (EntityPlayer) entityIn;
-			if (isSelected) {
-				Vec3d vec = player.getLookVec();
-				double xx, zz;
-				xx = player.motionX;
-				zz = player.motionZ;
-				if (Math.sqrt(xx * xx + zz * zz) > 3.0) {
-					List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
-							player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
-					for (Entity entity : list) {
-						if (!entity.canBeCollidedWith()) {
-							continue;
-						}
-						if (entity instanceof EntityLivingBase) {
-							EntityLivingBase living = (EntityLivingBase)entity;
-							if (player.canEntityBeSeen(living)) {
+			Vec3d vec = player.getLookVec();
+			if (Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ) > 3.0) {
+				List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
+						player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
+				for (Entity entity : list) {
+					if (!entity.canBeCollidedWith()) {
+						continue;
+					}
+					if (entity instanceof EntityLivingBase) {
+						EntityLivingBase living = (EntityLivingBase)entity;
+						if (player.canEntityBeSeen(living)) {
+							if(!worldIn.isRemote) {
 								if (living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 									living.attackEntityFrom(DamageSource.causeMobDamage(player), 16.0F);
 									player.onEnchantmentCritical(living);
 								} else {
 									living.attackEntityFrom(DamageSource.causeMobDamage(player), 8F);
 								}
-								for(int i = 0; i < 4; i++) {
-									worldIn.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, player.posX + 0.5, player.posY + 1, player.posZ + 0.5, vec.xCoord, vec.yCoord, vec.zCoord);
-									worldIn.playSound(null, player.posX + 0.5, player.posY + 1, player.posZ + 0.5, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.5F, 1F);
-								}
+							}
+
+							for(int i = 0; i < 4; i++) {
+								worldIn.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, player.posX, player.posY + 1, player.posZ, vec.xCoord,
+										vec.yCoord, vec.zCoord);
+								player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 0.5F, 1F);
 							}
 						}
-						stack.damageItem(1, player);
-						player.swingArm(EnumHand.MAIN_HAND);
 					}
+
+					stack.damageItem(1, player);
+					player.swingArm(EnumHand.MAIN_HAND);
 				}
 			}
 		}

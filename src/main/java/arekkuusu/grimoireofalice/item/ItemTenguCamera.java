@@ -77,12 +77,10 @@ public class ItemTenguCamera extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
+		if(entityLiving instanceof EntityPlayer && !worldIn.isRemote) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
 			getEntities(player).forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10));
-			if(!player.worldObj.isRemote) {
-				player.getCooldownTracker().setCooldown(this, 100);
-			}
+			player.getCooldownTracker().setCooldown(this, 100);
 		}
 	}
 

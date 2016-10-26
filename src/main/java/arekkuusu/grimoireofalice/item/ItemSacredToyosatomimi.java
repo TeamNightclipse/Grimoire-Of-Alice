@@ -54,9 +54,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		double speed = 1;
-		target.motionX = -Math.sin(Math.toRadians(attacker.rotationYaw)) * speed;
-		target.motionZ = Math.cos(Math.toRadians(attacker.rotationYaw)) * speed;
+		target.motionX = -Math.sin(Math.toRadians(attacker.rotationYaw));
+		target.motionZ = Math.cos(Math.toRadians(attacker.rotationYaw));
 		return true;
 	}
 
@@ -74,19 +73,14 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 			if(timeUsed > 50) {
 				return;
 			}
-			if(!stack.hasTagCompound()) return;
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
 				if(isOwner(stack, player)) {
 					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(timeUsed));
 					if(!list.isEmpty()) {
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
-						for (EntityMob mob : list) {
-							int x = (int)mob.posX;
-							int y = (int)mob.posY;
-							int z = (int)mob.posZ;
-							player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- " + mob.getName() + " : {" + x + ", " + y + ", " + z + "}"));
-						}
+						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- " + mob.getName() +
+								" : {" + mob.posX + ", " + mob.posY + ", " + mob.posZ + "}")));
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					} else {
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - No souls found - - - - - - -"));

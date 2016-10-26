@@ -10,7 +10,13 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ItemStackHolder;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @ObjectHolder(LibMod.MODID)
@@ -142,10 +148,17 @@ public final class ModItems {
 	public static final Item MOMIJIS_SCIMITAR_SWORD = new Item();
 	@ObjectHolder(LibItemName.LAEVATEIN)
 	public static final Item LAEVATEIN = new Item();
+
 	@ObjectHolder(LibItemName.NAZRIN_STICK)
-	public static final Item NAZRIN_STICK = new Item();
-	@ObjectHolder(LibItemName.NAZRIN_STICKB)
-	public static final Item NAZRIN_STICK_B = new Item();
+	public static final Item NAZRIN_STICK_ITEM = new Item();
+	@SuppressWarnings("ConstantConditions")
+	@ItemStackHolder(value = LibItemName.NAZRIN_STICK)
+	public static final ItemStack NAZRIN_STICK_A = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
+
+	@SuppressWarnings("ConstantConditions")
+	@ItemStackHolder(value = LibItemName.NAZRIN_STICK, meta = 1)
+	public static final ItemStack NAZRIN_STICK_B = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
+
 	@ObjectHolder(LibItemName.ELLY_SCYTHE)
 	public static final Item ELLY_SCYTHE = new Item();
 	@ObjectHolder(LibItemName.MIKO_STICK)

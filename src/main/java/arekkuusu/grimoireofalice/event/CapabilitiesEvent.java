@@ -17,9 +17,15 @@ import net.minecraftforge.items.IItemHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
+
 public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 
-	private final static ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
+	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
+	private final List<ItemStack> flyItems = ImmutableList.of(
+			new ItemStack(ModItems.HAKUREI_GOHEI),
+			new ItemStack(ModItems.UTSUHO_AURA)
+	);
 
 	//onItemDrop and onItemToss handle player dropping stuff on death and drag n' drop from inventory.
 	@SubscribeEvent
@@ -65,26 +71,30 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			//Flying
 			if (playersFlying.contains(player)) {
-				if (canFly(player)) {
+				if (canFlyAndMove(player)) {
 					player.capabilities.allowFlying = true;
 				} else {
 					if (!player.isSpectator() && !player.capabilities.isCreativeMode) {
 						player.capabilities.allowFlying = false;
 						player.capabilities.isFlying = false;
-						if(!player.worldObj.isRemote) player.sendPlayerAbilities();
+						if(!player.worldObj.isRemote) {
+							player.sendPlayerAbilities();
+						}
 					}
 					playersFlying.remove(player);
 				}
-			} else if (canFly(player)) {
+			} else if (canFlyAndMove(player)) {
 				playersFlying.add(player);
 				player.capabilities.allowFlying = true;
-				if(!player.worldObj.isRemote) player.sendPlayerAbilities();
+				if(!player.worldObj.isRemote) {
+					player.sendPlayerAbilities();
+				}
 			}
 		}
 	}
 
-	private boolean canFly(EntityPlayer player) {
-		if (player.inventory.hasItemStack(new ItemStack(ModItems.HAKUREI_GOHEI))) {
+	private boolean canFlyAndMove(EntityPlayer player) {
+		if(flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack))) {
 
 			@SuppressWarnings("ConstantConditions") //Liar
 					IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -92,22 +102,24 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 			for (int i = 0; i < capability.getSlots(); i++) {
 				ItemStack stack = capability.getStackInSlot(i);
 				if (stack != null && stack.getItem() == ModItems.HAKUREI_GOHEI) {
-					if (getMode(stack) == 0 && !player.isSneaking()) {
+
+					//TODO: This should NOT be here
+					if (getGoheiMode(stack) == 0 && !player.isSneaking()) {
 						Vec3d vec = player.getLookVec();
 						if (player.motionX < 0.5 && player.motionX > -0.5) player.motionX = 0.5 * vec.xCoord;
 						if (player.motionY < 0.5 && player.motionY > -0.5) player.motionY = 0.5 * vec.yCoord;
 						if (player.motionZ < 0.5 && player.motionZ > -0.5) player.motionZ = 0.5 * vec.zCoord;
 					}
-					return true;
+
+					break;
 				}
 			}
-		} else if (player.inventory.armorItemInSlot(2) != null
-				&& player.inventory.armorItemInSlot(2).getItem() == ModItems.UTSUHO_AURA) return true;
 
-		return false;
+			return true;
+		} else return player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_AURA;
 	}
 
-	private int getMode(ItemStack itemStack) {
+	private int getGoheiMode(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? 0 : nbt.getByte("GoheiMode");
 	}

@@ -14,6 +14,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.List;
 
@@ -33,9 +34,7 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-
-	}
+	protected void entityInit() {}
 
 	@Override
 	public void onUpdate() {
@@ -68,13 +67,11 @@ public class EntityDragonJewel extends Entity {
 	private void getEntities(){
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
-		if(!list.isEmpty()) {
-			list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
-				mob.setAttackTarget(null);
-				mob.setRevengeTarget(null);
-				mob.setHealth(mob.getHealth() / 2);
-			});
-		}
+		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
+			mob.setAttackTarget(null);
+			mob.setRevengeTarget(null);
+			mob.setHealth(mob.getHealth() / 2);
+		});
 	}
 
 	private void stopEntity() {
@@ -85,9 +82,7 @@ public class EntityDragonJewel extends Entity {
 					setDead();
 					return;
 				}
-				if(!player.inventory.addItemStackToInventory(new ItemStack(ModItems.DRAGON_JEWEL, 1))) {
-					host.dropItem(ModItems.DRAGON_JEWEL, 1);
-				}
+				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
 			}
 			else {
 				dropItem(ModItems.DRAGON_JEWEL, 1);
@@ -101,12 +96,8 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 }

@@ -77,8 +77,7 @@ public class ItemNazrinPendulum extends ItemMod {
 			pendulum.setPosition(pos.getX()+ 0.5, pos.getY() + 2, pos.getZ() + 0.5);
 			worldIn.spawnEntityInWorld(pendulum);
 		}
-		worldIn.playSound(null, new BlockPos(playerIn.posX + 0.5D, playerIn.posY + 0.5D, playerIn.posZ + 0.5D),
-				SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+		playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		--stack.stackSize;
 		return EnumActionResult.SUCCESS;
 	}

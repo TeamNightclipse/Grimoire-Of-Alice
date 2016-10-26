@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
@@ -70,32 +71,36 @@ public class ItemNazrinStick extends ItemModSword {
 	 * put the two Nazrin Items in the OFF_HAND and MAIN_HAND.*/
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		if(facing == EnumFacing.UP && !world.isRemote && isHoldingItemsBothHands(player)){
-			List<Block> blockLayer = new ArrayList<>(10);
-			for(int i = 1; i < 10; i++){
-				Block block = world.getBlockState(pos.down(i)).getBlock();
-				OreDictionary.getOreIDs(new ItemStack(block));
-				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-						.mapToObj(OreDictionary::getOreName)
-						.anyMatch(s -> s.startsWith("ore"));
+		if(facing == EnumFacing.UP && isHoldingItemsBothHands(player)){
+			if(!world.isRemote) {
+				List<Block> blockLayer = new ArrayList<>(10);
+				for(int i = 1; i < 10; i++){
+					Block block = world.getBlockState(pos.down(i)).getBlock();
+					OreDictionary.getOreIDs(new ItemStack(block));
+					boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+							.mapToObj(OreDictionary::getOreName)
+							.anyMatch(s -> s.startsWith("ore"));
 
-				if(isOre) {
-					blockLayer.add(block);
+					if(isOre) {
+						blockLayer.add(block);
+					}
 				}
-			}
-			player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
-			if(!blockLayer.isEmpty()) {
-				for(Block block : blockLayer){
-					player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You have found " + block.getLocalizedName() + "!"));
+				player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
+				if(!blockLayer.isEmpty()) {
+					blockLayer.forEach(block -> player.addChatComponentMessage(
+							new TextComponentString(TextFormatting.GOLD + "You have found " + block.getLocalizedName() + "!")));
 				}
+				else {
+					player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You didn't find anything."));
+				}
+				player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
+				stack.damageItem(1, player);
 			}
-			else {
-				player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You didn't find anything."));
-			}
-			player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
-			stack.damageItem(1, player);
+
+			return EnumActionResult.SUCCESS;
 		}
-		return EnumActionResult.SUCCESS;
+
+		return EnumActionResult.FAIL;
 	}
 
 	@Override
@@ -105,8 +110,9 @@ public class ItemNazrinStick extends ItemModSword {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL)) || playerIn.experienceLevel > 30)) {
-			playerIn.setActiveHand(EnumHand.MAIN_HAND);
+		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
+				|| playerIn.experienceLevel > 30)) {
+			playerIn.setActiveHand(hand);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
 		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
@@ -116,17 +122,20 @@ public class ItemNazrinStick extends ItemModSword {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(player.experienceLevel > 30 || !player.capabilities.isCreativeMode) {
-				stack.damageItem(1, player);
-			}
-			else {
-				player.inventory.deleteStack(new ItemStack(Items.COAL));
+
+			if(!player.capabilities.isCreativeMode) {
+				if(player.experienceLevel > 30) {
+					stack.damageItem(1, player);
+				}
+				else {
+					player.inventory.deleteStack(new ItemStack(Items.COAL));
+				}
 			}
 			if(!worldIn.isRemote){
-				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, 50);
+				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
 				worldIn.spawnEntityInWorld(circle);
 			}
-			player.getCooldownTracker().setCooldown(stack.getItem(), 50);
+			player.getCooldownTracker().setCooldown(this, 50);
 			worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ - 5.0, 2.5F, false);
 			worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ, 2.5F, false);
 			worldIn.createExplosion(player, player.posX - 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
@@ -137,11 +146,16 @@ public class ItemNazrinStick extends ItemModSword {
 			worldIn.createExplosion(player, player.posX + 5.0, player.posY, player.posZ + 5.0, 2.5F, false);
 		}
 	}
-	
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return super.getUnlocalizedName(stack) + "." + stack.getItemDamage();
+	}
+
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
-		return main != null && off != null && (main.getItem() instanceof ItemNazrinStick) && (off.getItem() instanceof ItemNazrinStick) && main.getItem() != off.getItem();
+		return main != null && off != null && (main.isItemEqualIgnoreDurability(off) && main.getItemDamage() != off.getItemDamage());
 	}
 	
 	@Override

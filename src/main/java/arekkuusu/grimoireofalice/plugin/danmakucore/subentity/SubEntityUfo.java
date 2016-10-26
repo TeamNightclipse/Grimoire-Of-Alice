@@ -9,6 +9,8 @@
 package arekkuusu.grimoireofalice.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.lib.LibSubEntityName;
+import net.katsstuff.danmakucore.data.Quat;
+import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
@@ -39,12 +41,8 @@ public class SubEntityUfo extends SubEntityType {
 		@Override
 		public void subEntityTick() {
 			super.subEntityTick();
-			if (danmaku.ticksExisted == 10 || danmaku.ticksExisted == 20 || danmaku.ticksExisted == 30 || danmaku.ticksExisted == 40) {
-				Vec3d vec = danmaku.getForward().rotatePitch(45F).rotateYaw(45F); //These needs to be negative for some reason
-				danmaku.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.1F, 0.0F);
-			}
-			if (danmaku.ticksExisted >= 50) {
-				danmaku.delete();
+			if (danmaku.ticksExisted % 10 == 0) {
+				danmaku.setAngle(danmaku.getAngle().rotate(Quat.eulerToQuat(45F, 45F, 0F)));
 			}
 		}
 
@@ -54,7 +52,6 @@ public class SubEntityUfo extends SubEntityType {
 			for (int j = 0; j < 8; ++j) {
 				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.danmaku.posX, this.danmaku.posY, this.danmaku.posZ, 0.0D, 0.5D, 0.0D);
 			}
-			raytrace.entityHit.attackEntityFrom(DamageSource.magic, 10);
 		}
 	}
 }

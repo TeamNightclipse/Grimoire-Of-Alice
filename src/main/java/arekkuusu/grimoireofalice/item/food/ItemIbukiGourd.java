@@ -42,12 +42,10 @@ public class ItemIbukiGourd extends ItemModFood {
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer) {
-			((EntityPlayer) entityLiving).getFoodStats().addStats(this, stack);
-			worldIn.playSound((EntityPlayer) entityLiving, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
-					SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.HOSTILE, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+			entityLiving.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
 			this.onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
 		}
-	return stack;
+		return stack;
 	}
 
 	@Override

@@ -11,10 +11,10 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ItemMod;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
@@ -70,7 +70,8 @@ public class ItemShouLamp extends ItemMod {
 	
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(!player.worldObj.isRemote && count % 5 == 0) {
+		if(count % 5 == 0) {
+			DanmakuHelper.playShotSound(player);
 			DanmakuBuilder danmaku = DanmakuBuilder.builder()
 					.setUser(player)
 					.setMovementData(0.5D,1.5D,0.1D)
@@ -93,7 +94,7 @@ public class ItemShouLamp extends ItemMod {
 			if (convert < 10F) {
 				player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 				if(!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.BLUE_STAR, 125);
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.BLUE_STAR, 125);
 					worldIn.spawnEntityInWorld(circle);
 				}
 			} else {
@@ -102,7 +103,7 @@ public class ItemShouLamp extends ItemMod {
 				for (EntityMob mob : list){
 					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 					if(!mob.worldObj.isRemote) {
-						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EnumTextures.GOLD_STAR_SMALL, 125);
+						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 125);
 						worldIn.spawnEntityInWorld(circle);
 					}
 				}

@@ -10,23 +10,19 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.entity.EntityLeaf;
 import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.plugin.danmakucore.LibGOAShotData;
+import arekkuusu.grimoireofalice.plugin.danmakucore.variant.GOADanmakuVariants;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatBase;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,19 +59,14 @@ public class ItemLeaf extends ItemMod {
 				--stack.stackSize;
 			}
 
-			worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F,
-					0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			DanmakuHelper.playShotSound(playerIn);
 
 			if (!worldIn.isRemote) {
-				EntityLeaf entityLeaf = new EntityLeaf(worldIn, playerIn);
+				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setVariant(GOADanmakuVariants.LEAF);
 				float anglePitch = playerIn.isSneaking() ? 45 : -45;
-				entityLeaf.setHeadingFromThrower(playerIn, anglePitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
-				worldIn.spawnEntityInWorld(entityLeaf);
+				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
 
-				StatBase statBase = StatList.getObjectUseStats(this);
-				if (statBase != null) {
-					playerIn.addStat(statBase);
-				}
+				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
 			}
 		}
 	}

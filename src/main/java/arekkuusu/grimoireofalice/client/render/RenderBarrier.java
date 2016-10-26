@@ -22,17 +22,19 @@ public class RenderBarrier extends Render<EntityBarrier> {
 	public void doRender(EntityBarrier entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
-		GlStateManager.translate(x,y,z);
-		GlStateManager.scale(2,2,2);
+		GlStateManager.translate(x, y, z);
+		GlStateManager.scale(2F, 2F, 2F);
 
-		GlStateManager.rotate(90 - entity.rotationYaw,0.0F,1.0F,0.0F);
-		GlStateManager.rotate(entity.rotationPitch + 90,0.0F,0.0F,1.0F);
+		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
+		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
 		GlStateManager.disableLighting();
-		GlStateManager.rotate(entity.getTicksAlive() * 4, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.ticksExisted * 4, 0.0F, 1.0F, 0.0F);
+
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+
 		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
@@ -40,8 +42,10 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
 		GlStateManager.disableLighting();
-		GlStateManager.rotate(-entity.getTicksAlive() * 4, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(-entity.ticksExisted * 4, 0.0F, 1.0F, 0.0F);
+
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+
 		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();

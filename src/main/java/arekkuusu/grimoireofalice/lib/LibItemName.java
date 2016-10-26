@@ -60,7 +60,6 @@ public class LibItemName {
 	public static final String KOOMOTE_MASK = "koomotemask";
 	public static final String MASKOF_HOPE = "maskofhope";
 	public static final String KOKOROS_MASKS = "kokorosmasks";
-	public static final String PRIMORDIAL_SHIELD = "primordialshield";
 	public static final String MAPLE_LEAF_SHIELD = "mapleleafshield";
 	public static final String AURA_BYAKUREN = "aurabyakuren";
 	public static final String AURA_MOKOU = "auramokou";
@@ -78,7 +77,6 @@ public class LibItemName {
 	public static final String MOMIJIS_SCIMITAR_SWORD = "momijisscimitarsword";
 	public static final String LAEVATEIN = "laevatein";
 	public static final String NAZRIN_STICK = "nazrinstick";
-	public static final String NAZRIN_STICKB = "nazrinstickb";
 	public static final String ELLY_SCYTHE = "ellyscythe";
 	public static final String MIKO_STICK = "mikostick";
 	public static final String CREST_OF_YGGDRASILL = "crestofyggdrasill";
@@ -118,7 +116,6 @@ public class LibItemName {
 	public static final String NIMBLE_FABRIC = "nimblefabric";
 	public static final String FAKE_MIRACLE_MALLET = "fakemiraclemallet";
 	public static final String DECOY_DOLL = "decoydoll";
-	public static final String HOMING_AMULET = "homingamulet";
 	public static final String AYA_CAMERA = "ayacamera";
 	public static final String HATATE_CAMERA = "hatatecamera";
 	public static final String SANAE_GOHEI = "sanaegohei";

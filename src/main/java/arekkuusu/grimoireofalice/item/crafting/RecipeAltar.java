@@ -9,27 +9,24 @@ public final class RecipeAltar {
 
 	public static final List<IRecipeItems> recipes = new ArrayList<>();
 
-	public static RecipeItems registerRecipe(ItemStack result, Object... inputs){
-		RecipeItems recipe = new RecipeItems(result, inputs);
+	public static IRecipeItems registerRecipe(IRecipeItems recipe) {
 		recipes.add(recipe);
 		return recipe;
 	}
 
-	public static RecipeItemsNether registerRecipeNether(ItemStack result, Object... inputs){
-		RecipeItemsNether recipe = new RecipeItemsNether(result, inputs);
-		recipes.add(recipe);
-		return recipe;
+	public static IRecipeItems registerRecipe(ItemStack result, Object... inputs){
+		return registerRecipe(new RecipeItems(result, inputs));
 	}
 
-	public static RecipeItemsMoonPhase registerRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs){
-		RecipeItemsMoonPhase recipe = new RecipeItemsMoonPhase(moonPhase, result, inputs);
-		recipes.add(recipe);
-		return recipe;
+	public static IRecipeItems registerRecipeNether(ItemStack result, Object... inputs){
+		return registerRecipe(new RecipeItemsNether(result, inputs));
 	}
 
-	public static RecipeItemsRain registerRecipeRain(ItemStack result, Object... inputs){
-		RecipeItemsRain recipe = new RecipeItemsRain(result, inputs);
-		recipes.add(recipe);
-		return recipe;
+	public static IRecipeItems registerRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs){
+		return registerRecipe(new RecipeItemsMoonPhase(moonPhase, result, inputs));
+	}
+
+	public static IRecipeItems registerRecipeRain(ItemStack result, Object... inputs){
+		return registerRecipe(new RecipeItemsRain(result, inputs));
 	}
 }

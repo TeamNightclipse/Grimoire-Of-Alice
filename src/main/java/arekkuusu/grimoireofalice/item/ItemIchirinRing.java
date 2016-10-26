@@ -79,13 +79,8 @@ public class ItemIchirinRing extends ItemModSword {
 			if (!worldIn.isRemote && isWearingUnzan(playerIn)) {
 				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
 				worldIn.spawnEntityInWorld(fist);
-				StatBase statBase = StatList.getObjectUseStats(this);
-				if (statBase != null) {
-					playerIn.addStat(statBase);
-				}
 			}
-			worldIn.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
-					SoundEvents.ENTITY_IRONGOLEM_HURT, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+			playerIn.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 			playerIn.getCooldownTracker().setCooldown(this, 10);
 		}
 	}

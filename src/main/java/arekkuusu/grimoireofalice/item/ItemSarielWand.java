@@ -55,14 +55,16 @@ public class ItemSarielWand extends ItemSwordOwner {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
 		if(!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 		if(isOwner(itemStackIn, player)){
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ - 5.0, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ + 5.0, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX, player.posY, player.posZ + 5.0, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX, player.posY, player.posZ - 5.0, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ - 5.0, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ, false));
-			worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ + 5.0, false));
+			if(!worldIn.isRemote) {
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ - 5.0, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ + 5.0, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX, player.posY, player.posZ + 5.0, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX, player.posY, player.posZ - 5.0, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ - 5.0, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ, false));
+				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX + 5.0, player.posY, player.posZ + 5.0, false));
+			}
 			itemStackIn.damageItem(10, player);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);

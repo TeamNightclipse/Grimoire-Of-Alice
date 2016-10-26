@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.List;
 
@@ -18,14 +19,14 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 
 	public EntityCursedDecoyDoll(World worldIn) {
 		super(worldIn);
+		setHealth(20);
+		setNoGravity(true);
 	}
 
 	public EntityCursedDecoyDoll(World worldIn, EntityPlayer user) {
 		super(worldIn);
 		this.user = user;
-		setRotation(user.rotationYaw,0);
-		setHealth(20);
-		setNoGravity(true);
+		setRotation(user.rotationYaw, 0);
 	}
 
 	@Override
@@ -41,12 +42,10 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 	private void getEntities(){
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
-		if(!list.isEmpty()) {
-			list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
-				mob.setAttackTarget(this);
-				mob.setRevengeTarget(this);
-			});
-		}
+		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
+			mob.setAttackTarget(this);
+			mob.setRevengeTarget(this);
+		});
 	}
 
 	@Override
@@ -62,9 +61,7 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 					setDead();
 					return;
 				}
-				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.CURSED_DECOY_DOLL, 1))) {
-					user.dropItem(ModItems.CURSED_DECOY_DOLL, 1);
-				}
+				ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.CURSED_DECOY_DOLL));
 			}
 			else {
 				dropItem(ModItems.CURSED_DECOY_DOLL, 1);

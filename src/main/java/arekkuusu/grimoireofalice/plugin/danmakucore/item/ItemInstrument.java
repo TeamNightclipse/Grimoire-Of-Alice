@@ -49,18 +49,12 @@ public class ItemInstrument extends ItemMod {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		if(player instanceof EntityPlayer){
-			EntityPlayer playerIn = (EntityPlayer)player;
 			if (!player.worldObj.isRemote) {
 				EntityDanmaku danmaku = DanmakuBuilder.builder()
 						.setUser(player)
 						.setMovementData(1.5D)
 						.setShot(LibGOAShotData.NOTE).build().asEntity();
 				player.worldObj.spawnEntityInWorld(danmaku);
-			}
-
-			StatBase statBase = StatList.getObjectUseStats(this);
-			if(statBase != null) {
-				playerIn.addStat(statBase);
 			}
 		}
 	}

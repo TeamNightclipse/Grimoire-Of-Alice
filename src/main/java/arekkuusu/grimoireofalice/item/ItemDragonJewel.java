@@ -48,31 +48,27 @@ public class ItemDragonJewel extends ItemMod {
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	private void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
+		if (!world.isRemote) {
+			EntityDragonJewel jewel = new EntityDragonJewel(world, player);
+			jewel.setPosition(player.posX, player.posY + 2, player.posZ);
+			world.spawnEntityInWorld(jewel);
+		}
+		if(!player.capabilities.isCreativeMode) {
+			--stack.stackSize;
+		}
+	}
+
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
-			if (!worldIn.isRemote) {
-				EntityDragonJewel jewel = new EntityDragonJewel(worldIn, player);
-				jewel.setPosition(player.posX, player.posY + 2, player.posZ);
-				worldIn.spawnEntityInWorld(jewel);
-			}
-			if(!player.capabilities.isCreativeMode) {
-				--stack.stackSize;
-			}
+			spawnJewel(stack, worldIn, (EntityPlayer)entityLiving);
 		}
 	}
 
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if(!worldIn.isRemote) {
-			EntityDragonJewel dragonJewel = new EntityDragonJewel(worldIn, playerIn);
-			dragonJewel.setPosition(pos.getX(), pos.getY() + 3, pos.getZ());
-			worldIn.spawnEntityInWorld(dragonJewel);
-		}
-		if(!playerIn.capabilities.isCreativeMode) {
-			--stack.stackSize;
-		}
+		spawnJewel(stack, worldIn, playerIn);
 		return EnumActionResult.SUCCESS;
 	}
 

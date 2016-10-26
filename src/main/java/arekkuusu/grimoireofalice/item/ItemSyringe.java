@@ -9,9 +9,6 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -46,16 +43,20 @@ public class ItemSyringe extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Eirin's Syringe");
 		list.add(TextFormatting.ITALIC + "\"Dont worry, it just hurts a lot\"");
 	}
+
+	private void doPotionEffect(EntityLivingBase target) {
+		if(!target.worldObj.isRemote) {
+			Potion potion = Potion.REGISTRY.getRandomObject(target.getRNG());
+			if(potion != null) {
+				target.addPotionEffect(new PotionEffect(potion, 1200, 0));
+			}
+		}
+	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (!worldIn.isRemote) {
-			Potion potion = getRandomPotion(playerIn.getRNG());
-			if(potion != null) {
-				playerIn.attackEntityFrom(DamageSource.generic, 3F);
-				playerIn.addPotionEffect(new PotionEffect(potion, 1200, 0));
-			}
-		}
+		doPotionEffect(playerIn);
+		playerIn.attackEntityFrom(DamageSource.generic, 3F);
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
@@ -63,18 +64,8 @@ public class ItemSyringe extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		stack.damageItem(1, user);
-		if(!target.worldObj.isRemote) {
-			Potion potion = getRandomPotion(target.getRNG());
-			if(potion != null) {
-				target.addPotionEffect(new PotionEffect(potion, 1200, 0));
-			}
-		}
+		doPotionEffect(target);
 		return true;
-	}
-
-	@Nullable
-	private Potion getRandomPotion(Random rand){
-		return Potion.REGISTRY.getRandomObject(rand);
 	}
 
 	@Override

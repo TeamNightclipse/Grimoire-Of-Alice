@@ -34,9 +34,7 @@ public class EntityBarrier extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-
-	}
+	protected void entityInit() {}
 
 	@Override
 	public void onUpdate() {
@@ -58,15 +56,8 @@ public class EntityBarrier extends Entity {
 				isStatic = true;
 			}
 
-			Entity entity = null;
-			List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox());
-			for (Entity entity1 : list) {
-				if (!entity1.canBeCollidedWith() || entity1 == player) {
-					continue;
-				}
-				entity = entity1;
-				break;
-			}
+			@SuppressWarnings("ConstantConditions") Entity entity = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+					entity1 -> entity1.canBeCollidedWith() || entity1 != player).get(0);
 
 			if (entity != null) {
 				onDetectEntity(entity);
@@ -80,10 +71,12 @@ public class EntityBarrier extends Entity {
 		}
 	}
 
-	private void onDetectEntity(@Nonnull Entity living) {
+	private void onDetectEntity(Entity living) {
 		if (type == 3) {
 			worldObj.createExplosion(living, living.posX, living.posY + 1, living.posZ, 2.5F, false);
-			if (!worldObj.isRemote) setDead();
+			if (!worldObj.isRemote) {
+				setDead();
+			}
 		} else if (type == 4){
 			Vec3d playerPos = getPositionVector();
 			Vec3d mobPos = living.getPositionVector();
@@ -107,18 +100,10 @@ public class EntityBarrier extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound nbtTagCompound) {
-
-	}
+	protected void readEntityFromNBT(NBTTagCompound nbtTagCompound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound nbtTagCompound) {
-
-	}
-
-	public float getTicksAlive(){
-		return ticksExisted;
-	}
+	protected void writeEntityToNBT(NBTTagCompound nbtTagCompound) {}
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {

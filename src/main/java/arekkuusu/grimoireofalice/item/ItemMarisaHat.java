@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ItemMarisaHat extends ItemModArmor  {
 
@@ -46,10 +47,7 @@ public class ItemMarisaHat extends ItemModArmor  {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		if(!player.isSneaking()) {
-			List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(5));
-			for (EntityItem item : list) {
-				item.onCollideWithPlayer(player);
-			}
+			world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(5)).forEach(i -> i.onCollideWithPlayer(player));
 		}
 	}
 

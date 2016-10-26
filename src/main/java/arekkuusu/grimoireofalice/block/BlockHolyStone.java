@@ -9,11 +9,14 @@
 package arekkuusu.grimoireofalice.block;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableMap;
 
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.SoundType;
@@ -42,13 +45,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockHolyStone extends BlockMod {
 	
 	private static final AxisAlignedBB SMALL = new AxisAlignedBB(0.1875F, 0.1875F, 0.1875F, 1F - 0.1875F, 1F - 0.1875F, 1F - 0.1875F);
+	private final Map<Item, Consumer<EntityPlayer>> effects = effectsMap();
 
 	public BlockHolyStone() {
-		super(LibBlockName.HOLYSTONE,Material.ROCK);
+		super(LibBlockName.HOLY_STONE,Material.ROCK);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("pickaxe", 1);
 		setResistance(15.0F);
+	}
+
+	private ImmutableMap<Item, Consumer<EntityPlayer>> effectsMap() {
+		ImmutableMap.Builder<Item, Consumer<EntityPlayer>> builder = ImmutableMap.builder();
+		builder.put(Items.GOLD_NUGGET, player -> player.addExperience(5));
+		builder.put(Items.GOLD_INGOT, player -> player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 2490, 0)));
+		builder.put(Items.IRON_INGOT, player -> player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 2490, 0)));
+		builder.put(Items.BLAZE_POWDER, player -> player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 2490, 0)));
+		builder.put(Items.SPECKLED_MELON, player -> player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 2490, 0)));
+		builder.put(Items.DIAMOND, player -> player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2490, 4)));
+		return builder.build();
 	}
 
 	@Override
@@ -104,9 +119,10 @@ public class BlockHolyStone extends BlockMod {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(!world.isRemote && heldItem != null) {
-			Optional<Consumer<EntityPlayer>> effect = getEffectForItem(heldItem.getItem());
+			Optional<Consumer<EntityPlayer>> effect = Optional.ofNullable(effects.get(heldItem.getItem()));
 			if(effect.isPresent()) {
 				--heldItem.stackSize;
 				effect.get().accept(player);
@@ -116,29 +132,6 @@ public class BlockHolyStone extends BlockMod {
 		}
 
 		return false;
-	}
-
-	private Optional<Consumer<EntityPlayer>> getEffectForItem(Item item) {
-		if(item == Items.GOLD_NUGGET) {
-			return Optional.of(player -> player.addExperience(5));
-		}
-		else if(item == Items.GOLD_INGOT) {
-			return Optional.of(player -> player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 2490, 0)));
-		}
-		else if(item == Items.IRON_INGOT) {
-			return Optional.of(player -> player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 2490, 0)));
-		}
-		else if(item == Items.BLAZE_POWDER) {
-			return Optional.of(player -> player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 2490, 0)));
-		}
-		else if(item == Items.SPECKLED_MELON) {
-			return Optional.of(player -> player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 2490, 0)));
-		}
-		else if(item == Items.DIAMOND) {
-			return Optional.of(player -> player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2490, 4)));
-		}
-
-		return Optional.empty();
 	}
 	
 	@SuppressWarnings("deprecation") //Internal, not deprecated

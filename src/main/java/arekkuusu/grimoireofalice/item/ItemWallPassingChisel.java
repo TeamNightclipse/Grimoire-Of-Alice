@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -41,11 +42,10 @@ public class ItemWallPassingChisel extends ItemMod {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
 			float y, float z) {
-		BlockPos suPos = getPos(world, pos, facing);
-		if(suPos != null && world.getBlockState(suPos.up()).getBlock() == Blocks.AIR) { //If BlockPos isn't null and the block above is Air -->
-			player.setPosition(suPos.getX() + 0.5, suPos.getY(), suPos.getZ() + 0.5); //Move player to center of block
-			world.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-					SoundEvents.ENTITY_ENDEREYE_LAUNCH, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+		BlockPos travel = travelBlockPos(world, pos, facing);
+		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
+			player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5); //Move player to center of block
+			player.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
@@ -58,22 +58,22 @@ public class ItemWallPassingChisel extends ItemMod {
 	 * @return Position for player
 	 */
 	@Nullable
-	private BlockPos getPos(World world, BlockPos pos, EnumFacing facing) {
+	private BlockPos travelBlockPos(World world, BlockPos pos, EnumFacing facing) {
 		facing = facing.getOpposite();
 		BlockPos triedPos = pos;
 
 		for(int i = 0; i < 50; i++) {
 			if(world.getBlockState(triedPos).getBlock() != Blocks.BEDROCK) {
-				if(world.getBlockState(triedPos).getBlock() == Blocks.AIR) {
+				if(isSafePos(world, triedPos)) {
 					//Logic to prevent player to suffocate or get in awkward positions
 					if(facing == EnumFacing.DOWN) {
-						if(world.getBlockState(triedPos.offset(facing)).getBlock() != Blocks.AIR) {
+						if(!isSafePos(world, triedPos.offset(facing))) {
 							return null;
 						}
 						triedPos = triedPos.offset(facing);
 					}
 					else if(facing != EnumFacing.UP) {
-						if(world.getBlockState(triedPos.down()).getBlock() == Blocks.AIR) {
+						if(isSafePos(world, triedPos.down())) {
 							triedPos = triedPos.down();
 						}
 					}
@@ -87,6 +87,11 @@ public class ItemWallPassingChisel extends ItemMod {
 		}
 
 		return null;
+	}
+
+	private boolean isSafePos(World world, BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		return state.getBlock().isAir(state, world, pos) || state.isSideSolid(world, pos, EnumFacing.UP);
 	}
 
 	@Override

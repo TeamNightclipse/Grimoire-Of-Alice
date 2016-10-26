@@ -25,7 +25,7 @@ public class GuiItemInventory extends GuiContainer {
 	}
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		String s = "§fSpell Card Pouch";
+		String s = "§fSpell Card Pouch"; //TODO: Localize
 		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 0, 4210752);
 	}
 

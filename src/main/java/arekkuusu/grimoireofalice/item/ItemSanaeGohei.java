@@ -32,22 +32,4 @@ public class ItemSanaeGohei extends ItemMod {
 		list.add(TextFormatting.GOLD + "Gohei from a descendant of the goddess Arahitogami");
 		list.add(TextFormatting.ITALIC + "Causes miracles to occur");
 	}
-
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
-
-	@Override
-	public void onUsingTick(ItemStack p_onUsingTick_1_, EntityLivingBase p_onUsingTick_2_, int p_onUsingTick_3_) {
-
-	}
-
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-		}
-	}
 }

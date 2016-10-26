@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.entity;
 
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,10 +20,10 @@ public class EntityMagicCircle extends Entity {
 
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> TEXTURE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> ANIMATION = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
 	private EntityLivingBase host;
 	private int last;
+	private int endTime = 0;
 
 	public EntityMagicCircle(World world){
 		super(world);
@@ -34,7 +33,7 @@ public class EntityMagicCircle extends Entity {
 		super(worldIn);
 		setSize(0.5F, 0.5F);
 		setTexture(texture.ordinal());
-		setEndTime(end);
+		endTime = end;
 		host = entityLiving;
 		posX = host.posX;
     	posY = host.posY + 0.1D;
@@ -46,27 +45,26 @@ public class EntityMagicCircle extends Entity {
     public void onUpdate() {
     	super.onUpdate();
 		if(host != null) {
-			if(host.isDead){
-				setDead();
-			}
-			if (host.isHandActive() && !worldObj.isRemote) {
+			if(!worldObj.isRemote && (host.isDead || host.isHandActive())) {
 				setDead();
 				return;
 			}
 
 			setAnimationCount(last);
 
-			if (getEndTime() < ticksExisted && getEndTime() >= 0) {
+			if (endTime < ticksExisted && endTime >= 0) {
 				if (!worldObj.isRemote) {
 					setDead();
 				}
 			}
+
 			if (getAnimationCount() < 5) {
-				setCircleSize(((float) getAnimationCount()) / 5.0F);
+				setCircleSize((getAnimationCount()) / 5.0F);
 			} else {
-				float end2 = (float) getEndTime();
-				setCircleSize((end2 - (float) getAnimationCount()) / end2);
+				float end2 = endTime;
+				setCircleSize((end2 - getAnimationCount()) / end2);
 			}
+
 			posX = host.posX;
 			posY = host.posY + 0.1D;
 			posZ = host.posZ;
@@ -74,10 +72,10 @@ public class EntityMagicCircle extends Entity {
 			rotationPitch = host.rotationPitch;
 			setPosition(posX, posY, posZ);
 
-			if (rotationYaw > 180F) rotationYaw -= 360F;
-			if (rotationYaw < -180F) rotationYaw += 360F;
-			if (rotationPitch > 180F) rotationPitch -= 360F;
-			if (rotationPitch < -180F) rotationPitch += 360F;
+			while (rotationYaw > 180F) rotationYaw -= 360F;
+			while (rotationYaw < -180F) rotationYaw += 360F;
+			while (rotationPitch > 180F) rotationPitch -= 360F;
+			while (rotationPitch < -180F) rotationPitch += 360F;
 
 			setRotation(rotationYaw, rotationPitch);
 
@@ -92,7 +90,6 @@ public class EntityMagicCircle extends Entity {
 	@Override
 	protected void entityInit() {
 		dataManager.register(SIZE, 0f);
-		dataManager.register(TIME, 0);
 		dataManager.register(TEXTURE, 0);
 		dataManager.register(ANIMATION, 0);
 	}
@@ -103,14 +100,6 @@ public class EntityMagicCircle extends Entity {
 
 	public float getCircleSize() {
 		return dataManager.get(SIZE);
-	}
-	
-	private void setEndTime(int time) {
-		dataManager.set(TIME, time);
-	}
-
-	public int getEndTime() {
-		return dataManager.get(TIME);
 	}
 
 	private void setAnimationCount(int time) {
@@ -130,13 +119,17 @@ public class EntityMagicCircle extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-		
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-		
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 
+	public enum EnumTextures {
+		RED_NORMAL,
+		PURPLE_CIRCLES,
+		BLUE_STAR,
+		GOLD_STAR_SMALL,
+		RED_PENTAGRAM,
+		EMPTY;
+	}
 }

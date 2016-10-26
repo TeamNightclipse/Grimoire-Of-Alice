@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import ibxm.Player;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -72,7 +73,6 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!stack.hasTagCompound()) return;
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(isOwner(stack, player)){
@@ -83,11 +83,10 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 				if (convert > 10F) return;
 				for(int t = 0; t < convert; t++){
 					for(int u = 0;u < 10; u++){
-						Random rand0 = player.getRNG();
-						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, rand0.nextDouble(), 0, rand0.nextDouble());
-						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, -rand0.nextDouble(), 0, -rand0.nextDouble());
-						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, rand0.nextDouble(), 0, -rand0.nextDouble());
-						player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, -rand0.nextDouble(), 0, rand0.nextDouble());
+						spawnSmoke(player, itemRand.nextDouble(), itemRand.nextDouble());
+						spawnSmoke(player, -itemRand.nextDouble(), -itemRand.nextDouble());
+						spawnSmoke(player, itemRand.nextDouble(), -itemRand.nextDouble());
+						spawnSmoke(player, -itemRand.nextDouble(), itemRand.nextDouble());
 					}
 				}
 				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
@@ -104,6 +103,10 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 				}
 			}
 		}
+	}
+
+	private void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
+		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 	
 	@Override

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -23,7 +22,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -35,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockHolyKeyStone extends BlockMod {
 	
 	public BlockHolyKeyStone() {
-		super(LibBlockName.HOLYKEY, Material.ROCK);
+		super(LibBlockName.HOLY_KEY, Material.ROCK);
 		setHardness(2.0F);
 		setHarvestLevel("pickaxe", 1);
 		setSoundType(SoundType.STONE);

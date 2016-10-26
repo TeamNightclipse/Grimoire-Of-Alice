@@ -53,7 +53,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemCloth;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -160,7 +159,6 @@ public class CommonProxy {
 				new ItemMochiHammer(GOLDYRON),
 				new ItemMomijisScimitarSword(GOLDYRON),
 				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICK),
-				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICKB),
 				new ItemNueTrident(WET_NOODLE),
 				new ItemSwordofKusanagi(GOLDYRON),
 				new ItemSyringe(NOT_A_MELEE_WEAPON),
@@ -177,6 +175,21 @@ public class CommonProxy {
 				new ItemNeedle(NOT_A_MELEE_WEAPON),
 				new ItemDeathScythe(WET_NOODLE),
 				new ItemSwordRoukanken(WET_NOODLE)
+		);
+
+		event.getRegistry().registerAll(
+				itemBlock(ModBlocks.HOLY_KEY_STONE),
+				itemBlock(ModBlocks.COMPACT_STONE),
+				itemBlock(ModBlocks.HOLY_STONE),
+				itemBlock(ModBlocks.KYOUMARUBOTAN),
+				itemBlock(ModBlocks.ONBASHIRA),
+				itemBlock(ModBlocks.PAPER_BLOCK),
+				itemBlock(ModBlocks.ROPE_BLOCK),
+				itemBlock(ModBlocks.SHROOM),
+				itemBlock(ModBlocks.SUGAR_BLOCK),
+				itemBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC),
+				itemBlock(ModBlocks.ALTAR),
+				itemBlock(ModBlocks.PILLAR_ALTAR)
 		);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
@@ -196,59 +209,36 @@ public class CommonProxy {
 		}
 	}
 
+	private static Item itemBlock(Block block) {
+		return new ItemBlock(block).setRegistryName(block.getRegistryName());
+	}
+
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		Block compactStone = new BlockMod(LibBlockName.COMPACTSTONE, Material.ROCK).setHardness(2.0F).setResistance(-1F);
-		Block holyKeyStone = new BlockHolyKeyStone();
-		Block holyStone = new BlockHolyStone();
-		Block kyoumarubotan = new BlockKyoumarubotan();
-		Block onbashira = new BlockOnbashira();
-		Block onbashiraMiddle = new BlockOnbashiraMiddle();
-		Block onbashiraTop = new BlockOnbashiraTop();
-		Block paperBlock = new BlockPaper();
-		Block ropeBlock = new BlockRope();
-		Block shroom = new BlockShroom();
-		Block altar = new BlockCraftingAltar();
-		Block pillar = new BlockPillarAltar();
 
-		Block sugarBlock = new BlockMod(LibBlockName.SUGARBLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
+		Block sugarBlock = new BlockMod(LibBlockName.SUGAR_BLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
 		sugarBlock.setHarvestLevel("axe", 1);
 
-		Block hyperconcentratedMagic = new BlockMod(LibBlockName.HYPERMAGIC, Material.IRON).setSound(SoundType.SNOW).setHardness(0.5F).setResistance(2.0F);
-		hyperconcentratedMagic.setHarvestLevel("pickaxe", 3);
+		Block hyperConcentratedMagic = new BlockMod(LibBlockName.HYPER_MAGIC, Material.IRON).setSound(SoundType.SNOW).setHardness(0.5F).setResistance(2.0F);
+		hyperConcentratedMagic.setHarvestLevel("pickaxe", 3);
 
-		GameRegistry.register(new ItemBlock(compactStone).setRegistryName(compactStone.getRegistryName()));
-		GameRegistry.register(new ItemBlock(holyKeyStone).setRegistryName(holyKeyStone.getRegistryName()));
-		GameRegistry.register(new ItemBlock(holyStone).setRegistryName(holyStone.getRegistryName()));
-		GameRegistry.register(new ItemBlock(kyoumarubotan).setRegistryName(kyoumarubotan.getRegistryName()));
-		GameRegistry.register(new ItemBlock(onbashira).setRegistryName(onbashira.getRegistryName()));
-		GameRegistry.register(new ItemBlock(onbashiraMiddle).setRegistryName(onbashiraMiddle.getRegistryName()));
-		GameRegistry.register(new ItemBlock(onbashiraTop).setRegistryName(onbashiraTop.getRegistryName()));
-		GameRegistry.register(new ItemBlock(paperBlock).setRegistryName(paperBlock.getRegistryName()));
-		GameRegistry.register(new ItemBlock(ropeBlock).setRegistryName(ropeBlock.getRegistryName()));
-		GameRegistry.register(new ItemCloth(shroom).setRegistryName(shroom.getRegistryName()));
-		GameRegistry.register(new ItemBlock(sugarBlock).setRegistryName(sugarBlock.getRegistryName()));
-		GameRegistry.register(new ItemBlock(hyperconcentratedMagic).setRegistryName(hyperconcentratedMagic.getRegistryName()));
-		GameRegistry.register(new ItemBlock(altar).setRegistryName(altar.getRegistryName()));
-		GameRegistry.register(new ItemBlock(pillar).setRegistryName(pillar.getRegistryName()));
+		//TODO: Move these somewhere else
 		GameRegistry.registerTileEntity(TileCraftingAltar.class,"Crafting_Altar");
 		GameRegistry.registerTileEntity(TilePillarAltar.class,"Pillar_Altar");
 
 		event.getRegistry().registerAll(
-				compactStone,
-				holyKeyStone,
-				holyStone,
-				kyoumarubotan,
-				onbashira,
-				onbashiraMiddle,
-				onbashiraTop,
-				paperBlock,
-				ropeBlock,
-				shroom,
+				new BlockMod(LibBlockName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F),
+				new BlockHolyKeyStone(),
+				new BlockHolyStone(),
+				new BlockKyoumarubotan(),
+				new BlockOnbashira(),
+				new BlockPaper(),
+				new BlockRope(),
+				new BlockShroom(),
 				sugarBlock,
-				hyperconcentratedMagic,
-				altar,
-				pillar
+				hyperConcentratedMagic,
+				new BlockCraftingAltar(),
+				new BlockPillarAltar()
 		);
 	}
 
@@ -262,14 +252,10 @@ public class CommonProxy {
 	@SuppressWarnings("UnusedAssignment")
 	public void preInit(FMLPreInitializationEvent event) {
 		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityAnimalShot.class, "Shot", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			EntityRegistry.registerModEntity(EntityLeaf.class, "Leaf", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		}
 		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);

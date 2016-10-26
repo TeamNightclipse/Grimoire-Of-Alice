@@ -24,6 +24,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,8 +35,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy{
 
 	@Override
@@ -139,8 +141,7 @@ public class ClientProxy extends CommonProxy{
 		registerItem(ModItems.MIKO_STICK, 0);
 		registerItem(ModItems.MOCHI_HAMMER, 0);
 		registerItem(ModItems.MOMIJIS_SCIMITAR_SWORD, 0);
-		registerItem(ModItems.NAZRIN_STICK, 0);
-		registerItem(ModItems.NAZRIN_STICK_B, 0);
+		registerItem(ModItems.NAZRIN_STICK_ITEM, 0);
 		registerItem(ModItems.NUE_TRIDENT, 0);
 		registerItem(ModItems.SWORD_OF_KUSANAGI, 0);
 		registerItem(ModItems.SYRINGE, 0);
@@ -164,8 +165,8 @@ public class ClientProxy extends CommonProxy{
 		registerBlock(ModBlocks.HOLY_STONE, 0);
 		registerBlock(ModBlocks.KYOUMARUBOTAN, 0);
 		registerBlock(ModBlocks.ONBASHIRA, 0);
-		registerBlock(ModBlocks.ONBASHIRA_MIDDLE, 0);
-		registerBlock(ModBlocks.ONBASHIRA_TOP, 0);
+		registerBlock(ModBlocks.ONBASHIRA, 1, "middle");
+		registerBlock(ModBlocks.ONBASHIRA, 2, "top");
 		registerBlock(ModBlocks.PAPER_BLOCK, 0);
 		registerBlock(ModBlocks.ROPE_BLOCK, 0);
 		registerBlockWithColorTypes(ModBlocks.SHROOM, 16);
@@ -194,9 +195,6 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
-		}
 		RenderingRegistry.registerEntityRenderingHandler(EntityDragonJewel.class, RenderDragonJewel::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityUnzanFist.class, RenderUnzanFist::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);
@@ -218,6 +216,14 @@ public class ClientProxy extends CommonProxy{
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+	}
+
+	private static void registerBlock(Block block, int meta, String name) {
+		Item iBlock = Item.getItemFromBlock(block);
+		ResourceLocation regName = block.getRegistryName();
+		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		ModelLoader.setCustomModelResourceLocation(iBlock, meta,
+				new ModelResourceLocation(new ResourceLocation(regName.getResourceDomain(), regName.getResourcePath() + "_" + name), "inventory"));
 	}
 
 	private static void registerItemWithTypes(Item item, int damage) {

@@ -13,13 +13,14 @@ import java.util.Random;
 
 import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.handler.EnumTextures;
 import arekkuusu.grimoireofalice.item.ItemModSword;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.data.AbstractVector3;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.helper.DanmakuHelper;
+import net.katsstuff.danmakucore.helper.TouhouHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
@@ -112,8 +113,7 @@ public class ItemEllyScythe extends ItemModSword {
 				}
 				durationSeconds *= 1.5F;
 
-				worldIn.playSound(player, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS,
-						0.6F, 1.0F / (2F * 0.4F + 1.0F));
+				DanmakuHelper.playShotSound(player);
 				if (!worldIn.isRemote) {
 					EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
 					scythe.setCritical(critical);
@@ -134,11 +134,12 @@ public class ItemEllyScythe extends ItemModSword {
 					}
 					player.inventory.mainInventory[player.inventory.currentItem] = stack;
 				}
-			} else if(!worldIn.isRemote){
+			} else if(!worldIn.isRemote) {
 				for(int i = 0; i < 25; i++) {
+					DanmakuHelper.playShotSound(player);
 					spawnGroundDanmaku(player);
 				}
-				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EnumTextures.RED_NORMAL, 50);
+				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
 				worldIn.spawnEntityInWorld(circle);
 				player.getCooldownTracker().setCooldown(this, 50);
 			}

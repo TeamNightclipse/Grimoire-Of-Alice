@@ -62,11 +62,9 @@ public class Item3rdEye extends ItemMod {
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
 			} else if(isSelected){
 				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().expandXyz(20.0D));
-				if(!list.isEmpty()) {
-					list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
-						mob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
-					});
-				}
+				list.stream()
+						.filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob)
+						.forEach(mob -> mob.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0)));
 			}
 		}
 	}

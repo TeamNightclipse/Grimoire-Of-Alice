@@ -21,4 +21,6 @@ public class GOADanmakuVariants {
 	public static final DanmakuVariant WIND = new DanmakuVariantDummy();
 	@ObjectHolder(LibDanmakuVariantName.UFO)
 	public static final DanmakuVariant UFO = new DanmakuVariantDummy();
+	@ObjectHolder(LibDanmakuVariantName.LEAF)
+	public static final DanmakuVariant LEAF = new DanmakuVariantDummy();
 }

@@ -103,14 +103,14 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(!armor.hasTagCompound()) return;
-			if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))){
-			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 0, 3));
+			if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))) {
+				player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 0, 4));
+				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
+				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 4));
+				player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 4));
+				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 4));
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 0, 3));
 		}
 	}
 	
@@ -131,6 +131,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		if(!itemStack.hasTagCompound()) return imodel;
+		//noinspection ConstantConditions
 		if((entityLiving).getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			if (model == null) model = new ModelKokorosMasks();
 			model.setModelAttributes(imodel);
@@ -142,7 +143,8 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		if(!stack.hasTagCompound()) return LibMod.MODID + ":textures/models/armor/maskofhope.png";
-		if(((EntityPlayer)entity).getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		//noinspection ConstantConditions
+		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			return LibMod.MODID + ":textures/models/armor/kokorosmasks_layer_1.png";
 		}
 		return "";

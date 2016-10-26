@@ -3,6 +3,8 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,13 +21,15 @@ public class ItemSwordOwner extends ItemModSword {
 		super(material, id);
 	}
 
+	public static final String OWNER_TAG = "GrimoireOwner";
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if(!stack.hasTagCompound()) {
 			stack.setTagCompound(new NBTTagCompound());
 		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
+		stack.getTagCompound().setUniqueId(OWNER_TAG, player.getUniqueID());
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -33,11 +37,9 @@ public class ItemSwordOwner extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
+			UUID ownerUuid = getOwnerUUID(stack);
+			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
+				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
 			}
 		}
 	}
@@ -52,14 +54,20 @@ public class ItemSwordOwner extends ItemModSword {
 			}
 			NBTTagCompound compound = stack.getTagCompound();
 			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
+			if(!compound.hasKey(OWNER_TAG)) {
+				compound.setUniqueId(OWNER_TAG, player.getUniqueID());
 			}
 		}
 	}
 
 	@SuppressWarnings("ConstantConditions")
+	@Nullable
+	public UUID getOwnerUUID(ItemStack stack) {
+		return stack.hasTagCompound() ? stack.getTagCompound().getUniqueId(OWNER_TAG) : null;
+	}
+
+	@SuppressWarnings("ConstantConditions")
 	public boolean isOwner(ItemStack stack, EntityPlayer player) {
-		return stack.hasTagCompound() && player.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"));
+		return stack.hasTagCompound() && player.getUniqueID().equals(getOwnerUUID(stack));
 	}
 }

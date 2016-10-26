@@ -23,10 +23,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemUFOs extends ItemMod {
+
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemUFOs() {
 		super(LibItemName.UFOS);
@@ -61,8 +68,8 @@ public class ItemUFOs extends ItemMod {
 		}
 	}
 	
-	private void itemsInRange(World world, EntityPlayer player, double bdouble) {
-		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(bdouble));
+	private void itemsInRange(World world, EntityPlayer player, double range) {
+		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(range));
 
 		for(EntityItem item : aList) {
 			if(!stackHasRoom(item.getEntityItem(), player)) {
@@ -77,40 +84,21 @@ public class ItemUFOs extends ItemMod {
 	}
 	
 	private void givePlayerItems(EntityItem item, EntityPlayer player) {
-        player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + 0.5D + player.worldObj.rand.nextGaussian() / 8, item.posY + 0.2D, item.posZ + 0.5D + player.worldObj.rand.nextGaussian() / 8, 0.9D, 0.9D, 0.0D);
+        player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + itemRand.nextGaussian() / 8,
+				item.posY + 0.2D, item.posZ + itemRand.nextGaussian() / 8, 0D, 0.9D, 0.0D);
 		Vec3d look = player.getLookVec();
 		double x = player.posX + look.xCoord * 0.2D;
         double y = player.posY - player.height / 2F;
         double z = player.posZ + look.zCoord * 0.2D;
         item.setPosition(x, y, z);
-        player.worldObj.playSound(player, new BlockPos(player.posX + 0.5D, player.posY + 0.5D,  + 0.5D), SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F,  0.5F * ((player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.7F + 1.8F));
+		player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.1F, 0.5F * ((itemRand.nextFloat() - itemRand.nextFloat()) * 0.7F + 1.8F));
 	}
 	
+	@SuppressWarnings("ConstantConditions")
 	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {
-		int free = item.stackSize;
-	    for (ItemStack stack : player.inventory.mainInventory) {
-	    	if (stack == null) {
-                continue;
-	    	}
-	    	if (stack.getItem() == item.getItem() && stack.getItemDamage() == item.getItemDamage()) {
-	    		if (stack.stackSize + free <= stack.getMaxStackSize()){
-	    			return true;
-	    		} else {
-	    			int count = stack.stackSize;
-	                while (count < stack.getMaxStackSize()) {
-	                	count++;
-	                    free--;
-	                    if (free == 0)
-	                    	return true;
-	                    }
-	                }
-	            }
-	        }
-	        for (int slot = 0; slot < player.inventory.mainInventory.length; slot++) {
-	        	if (player.inventory.mainInventory[slot] == null)
-	        		return true;
-	        	}
-	        return false;
+		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)
+				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true) == null;
+
 	}
 
 	@Override

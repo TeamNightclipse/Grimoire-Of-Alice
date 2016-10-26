@@ -15,16 +15,17 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 
 	public boolean addItem(@Nullable EntityPlayer player, ItemStack stack) {
 		boolean added = false;
-		if (itemHandler.getStackInSlot(0) == null) {
+		if (!hasItem()) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
-			itemHandler.setStackInSlot(0, stackToAdd);
+			itemHandler.insertItem(0, stackToAdd, false);
 
 			if (player == null || !player.capabilities.isCreativeMode) {
 				stack.stackSize--;
-				if (stack.stackSize == 0 && player != null)
+				if (stack.stackSize == 0 && player != null) {
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+				}
 			}
 
 			IBlockState state = getWorld().getBlockState(getPos());
@@ -35,10 +36,9 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		if (itemHandler.getStackInSlot(0) != null) {
+		if (hasItem()) {
 			removed = true;
-			ItemStack stackToTake = itemHandler.getStackInSlot(0);
-			itemHandler.setStackInSlot(0, null);
+			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
 
 			if (player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);

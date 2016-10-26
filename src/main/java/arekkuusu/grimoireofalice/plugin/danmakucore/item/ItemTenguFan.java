@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.SubEntityWind;
+import arekkuusu.grimoireofalice.plugin.danmakucore.variant.GOADanmakuVariants;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;

@@ -60,11 +60,13 @@ public class ItemGhostDipper extends ItemMod {
 		}
 	}
 
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		RayTraceResult raytraceresult = this.rayTrace(worldIn, playerIn, true);
 		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
 		if(ret != null) return ret;
-		if (raytraceresult == null) { //NOTE: Must not remove this piece of code, it prevents a NullPointerException in raytraceresult
+		//noinspection ConstantConditions
+		if (raytraceresult == null) {
 			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		} else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
@@ -91,7 +93,7 @@ public class ItemGhostDipper extends ItemMod {
 		Material material = iblockstate.getMaterial();
 		boolean canReplace = iblockstate.getBlock().isReplaceable(world, posUp);
 
-		if(!world.isAirBlock(posUp) && !canReplace) {
+		if(iblockstate.getBlock().isAir(iblockstate, world, pos) && !canReplace) {
 			return EnumActionResult.FAIL;
 		}
 		else {
@@ -110,9 +112,11 @@ public class ItemGhostDipper extends ItemMod {
 				stack.damageItem(1, player);
 				world.setBlockState(posUp, Blocks.WATER.getDefaultState(), 11);
 				player.setActiveHand(hand);
+				return EnumActionResult.SUCCESS;
 			}
 		}
-		return EnumActionResult.SUCCESS;
+
+		return EnumActionResult.FAIL;
 	}
 
 	private boolean absorb(World worldIn, BlockPos pos) {
@@ -120,10 +124,10 @@ public class ItemGhostDipper extends ItemMod {
 		queue.add(new Tuple<>(pos, 0));
 		int blocksChanged = 0;
 
-		while(!queue.isEmpty()) {
+		while(!queue.isEmpty()  && blocksChanged <= 64) {
 			Tuple<BlockPos, Integer> tuple = queue.poll();
 			BlockPos blockpos = tuple.getFirst();
-			int j = tuple.getSecond();
+			int depth = tuple.getSecond();
 
 			for(EnumFacing enumfacing : EnumFacing.values()) {
 				BlockPos offset = blockpos.offset(enumfacing);
@@ -132,14 +136,10 @@ public class ItemGhostDipper extends ItemMod {
 					worldIn.setBlockState(offset, Blocks.AIR.getDefaultState());
 					++blocksChanged;
 
-					if(j < 6) {
-						queue.add(new Tuple<>(offset, j + 1));
+					if(depth < 6) {
+						queue.add(new Tuple<>(offset, depth + 1));
 					}
 				}
-			}
-
-			if(blocksChanged > 64) {
-				break;
 			}
 		}
 

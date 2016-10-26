@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 public class EntityHakureiOrb extends EntityThrowable {
 
+	//TODO: Why not use minecraft size?
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private boolean isMoving = false;
 
@@ -44,7 +45,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		EntityPlayer player = (EntityPlayer)getThrower();
+		EntityLivingBase player = getThrower();
 		if(player == null) {
 			if (!worldObj.isRemote) {
 				setDead();
@@ -91,7 +92,6 @@ public class EntityHakureiOrb extends EntityThrowable {
 			motionY *= -0.8F;
 			motionZ *= 0.8F;
 		} else {
-			Vec3d vec = rayTraceResult.hitVec;
 			rotationYaw *= -1.0F;
 			motionX *= -0.8F;
 			motionZ *= -0.8F;

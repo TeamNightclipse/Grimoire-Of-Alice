@@ -24,6 +24,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class EntityNazrinPendulum extends Entity {
@@ -84,16 +85,13 @@ public class EntityNazrinPendulum extends Entity {
             }
         }
 
-        if(!blockLayer.isEmpty()) {
-            for(Block block : blockLayer){
-                Random rand = new Random();
-                if (rand.nextInt(8) == 4) {
-                    worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-                    worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-                    worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-                }
-            }
-        }
+        blockLayer.forEach(ignored -> {
+			if(rand.nextInt(8) == 4) {
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+			}
+        });
     }
 
     @Override
@@ -102,9 +100,7 @@ public class EntityNazrinPendulum extends Entity {
     }
 
     @Override
-    protected void entityInit() {
-
-    }
+    protected void entityInit() {}
 
     private void stopEntity() {
         if(!worldObj.isRemote) {
@@ -113,9 +109,7 @@ public class EntityNazrinPendulum extends Entity {
 					setDead();
 					return;
 				}
-				if(!user.inventory.addItemStackToInventory(new ItemStack(ModItems.NAZRIN_PENDULUM, 1))) {
-					user.dropItem(ModItems.NAZRIN_PENDULUM, 1);
-				}
+				ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.NAZRIN_PENDULUM));
 			}
 			else {
 				dropItem(ModItems.NAZRIN_PENDULUM, 1);
@@ -124,17 +118,9 @@ public class EntityNazrinPendulum extends Entity {
 		}
     }
 
-    public int getTicksAlive(){
-        return ticksExisted;
-    }
+	@Override
+    protected void readEntityFromNBT(NBTTagCompound compound) {}
 
     @Override
-    protected void readEntityFromNBT(NBTTagCompound compound) {
-
-    }
-
-    @Override
-    protected void writeEntityToNBT(NBTTagCompound compound) {
-
-    }
+    protected void writeEntityToNBT(NBTTagCompound compound) {}
 }

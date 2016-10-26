@@ -79,7 +79,8 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
 
 		//TODO: Replace with structure, structure is already in assets
@@ -94,47 +95,47 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 				if(!world.isRemote) {
 					//Layer1
-					replaceAirComact(world, pos.west());
-					replaceAirComact(world, pos.south());
-					replaceAirComact(world, pos);
-					replaceAirComact(world, pos.north());
-					replaceAirComact(world, pos.east());
-				}
+					replaceAirCompact(world, pos.west());
+					replaceAirCompact(world, pos.south());
+					replaceAirCompact(world, pos);
+					replaceAirCompact(world, pos.north());
+					replaceAirCompact(world, pos.east());
 
-				//Layer2/3/4
-				for(int i = 1; i <= 3; i++) {
+					//Layer2/3/4
+					for(int i = 1; i <= 3; i++) {
 
-					for(int j = -1; j <= 1; j++) {
-						for(int k = -1; k <= 1; k++) {
-							replaceAirComact(world, pos.add(j, i, k));
+						for(int j = -1; j <= 1; j++) {
+							for(int k = -1; k <= 1; k++) {
+								replaceAirCompact(world, pos.add(j, i, k));
+							}
 						}
+
+						replaceAirCompact(world, pos.add(-2, i, 0));
+						replaceAirCompact(world, pos.add(0, i, -2));
+						replaceAirCompact(world, pos.add(0, i, 2));
+						replaceAirCompact(world, pos.add(2, i, 0));
 					}
 
-					replaceAirComact(world, pos.add(-2, i, 0));
-					replaceAirComact(world, pos.add(0, i, -2));
-					replaceAirComact(world, pos.add(0, i, 2));
-					replaceAirComact(world, pos.add(2, i, 0));
+					//Layer3 Corner
+					replaceAirCompact(world, pos.add(-2, 2, -1));
+					replaceAirCompact(world, pos.add(-2, 2, 1));
+
+					replaceAirCompact(world, pos.add(-1, 2, -2));
+					replaceAirCompact(world, pos.add(-1, 2, 2));
+
+					replaceAirCompact(world, pos.add(1, 2, -2));
+					replaceAirCompact(world, pos.add(1, 2, 2));
+
+					replaceAirCompact(world, pos.add(2, 2, -1));
+					replaceAirCompact(world, pos.add(2, 2, 1));
+
+					//Layer5
+					replaceAirCompact(world, pos.add(-1, 4, 0));
+					replaceAirCompact(world, pos.add(0, 4, -1));
+					replaceAirCompact(world, pos.add(0, 4, 0));
+					replaceAirCompact(world, pos.add(0, 4, 1));
+					replaceAirCompact(world, pos.add(1, 4, 0));
 				}
-
-				//Layer3 Corner
-				replaceAirComact(world, pos.add(-2, 2, -1));
-				replaceAirComact(world, pos.add(-2, 2, 1));
-
-				replaceAirComact(world, pos.add(-1, 2, -2));
-				replaceAirComact(world, pos.add(-1, 2, 2));
-
-				replaceAirComact(world, pos.add(1, 2, -2));
-				replaceAirComact(world, pos.add(1, 2, 2));
-
-				replaceAirComact(world, pos.add(2, 2, -1));
-				replaceAirComact(world, pos.add(2, 2, 1));
-
-				//Layer5
-				replaceAirComact(world, pos.add(-1, 4, 0));
-				replaceAirComact(world, pos.add(0, 4, -1));
-				replaceAirComact(world, pos.add(0, 4, 0));
-				replaceAirComact(world, pos.add(0, 4, 1));
-				replaceAirComact(world, pos.add(1, 4, 0));
 
 				player.getCooldownTracker().setCooldown(this, 199);
 			}
@@ -145,7 +146,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 		}
 	}
 
-	private void replaceAirComact(World world, BlockPos pos) {
+	private void replaceAirCompact(World world, BlockPos pos) {
 		if(world.isAirBlock(pos)) {
 			world.setBlockState(pos, ModBlocks.COMPACT_STONE.getDefaultState());
 		}

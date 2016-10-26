@@ -45,68 +45,74 @@ public class ItemSpellCardPouch extends ItemMod {
 		setMaxStackSize(1);
 	}
 
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.UNCOMMON;
-    }
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.GOLD + "Holds Items for you");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.GOLD + "Holds Items for you");
+	}
 
-    @Nonnull
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound oldCapNbt) {
-        return new InvProvider();
-    }
+	@Nonnull
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound oldCapNbt) {
+		return new InvProvider();
+	}
 
 
-    private static class InvProvider implements ICapabilitySerializable<NBTBase> {
+	private static class InvProvider implements ICapabilitySerializable<NBTBase> {
 
-        private final IItemHandler inv = new ItemStackHandler(8) {
-            @Override
-            public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
-                return toInsert.getItem() == LibItems.SPELLCARD ? super.insertItem(slot, toInsert, simulate) : toInsert;
-            }
-        };
+		private final IItemHandler inv = new ItemStackHandler(8) {
 
-        @Override
-        public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-            return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
-        }
+			@Override
+			public ItemStack getStackInSlot(int slot) {
+				ItemStack inSlot = super.getStackInSlot(slot);
+				return inSlot == null ? new ItemStack(LibItems.SPELLCARD, 0) : inSlot;
+			}
 
-        @Nullable
-        @Override
-        public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-            if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
-            else return null;
-        }
+			@Override
+			public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
+				return toInsert.getItem() == LibItems.SPELLCARD ? super.insertItem(slot, toInsert, simulate) : toInsert;
+			}
+		};
 
-        @Override
-        public NBTBase serializeNBT() {
-            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(inv, null);
-        }
+		@Override
+		public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+			return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+		}
 
-        @Override
-        public void deserializeNBT(NBTBase nbt) {
-            CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(inv, null, nbt);
-        }
-    }
+		@Nullable
+		@Override
+		public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
+			else return null;
+		}
 
-    @Override
+		@Override
+		public NBTBase serializeNBT() {
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(inv, null);
+		}
+
+		@Override
+		public void deserializeNBT(NBTBase nbt) {
+			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(inv, null, nbt);
+		}
+	}
+
+	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 1;
 	}
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        if (!playerIn.isSneaking()) {
-            playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, worldIn, hand.ordinal(), -1, -1);
-        }
+		if(!playerIn.isSneaking()) {
+			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, worldIn, hand.ordinal(), -1, -1);
+		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-	
+
 }

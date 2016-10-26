@@ -73,10 +73,6 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 				//Modified so it accepts both Water and Lava, as both return the same Item
 				if((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
 					worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
-					StatBase stateBase = StatList.getObjectUseStats(this);
-					if(stateBase != null) {
-						playerIn.addStat(stateBase);
-					}
 					playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
 					return new ActionResult<>(EnumActionResult.SUCCESS, this.fillBucket(itemStackIn, playerIn, ModItems.IBARAKI_BOX_FILLED));
 				}

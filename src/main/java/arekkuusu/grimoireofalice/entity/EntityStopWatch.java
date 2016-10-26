@@ -17,6 +17,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.*;
 
@@ -59,10 +60,7 @@ public class EntityStopWatch extends Entity {
 
 			if (!worldObj.isRemote) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				if (!list.isEmpty()) {
-					list.forEach(this::setIgnoredPlayers);
-					list.forEach(this::inRange);
-				}
+				list.forEach(this::haltEntity);
 			}
 		} else {
 			stopEntity();
@@ -74,7 +72,7 @@ public class EntityStopWatch extends Entity {
 	}
 
 	//Gets the player other Watches have and adds them to a list of UUID.
-	private void setIgnoredPlayers(Entity entity){
+	private void addIgnoredPlayers(Entity entity){
 		if(entity instanceof EntityStopWatch){//If the entity is an instance of EntityStopWatch
 			UUID id = ((EntityStopWatch)entity).getPlayer().getUniqueID(); //Get the UUID of the player the Watch contains
 			if(!players.contains(id)) {// Check the player list does not contain the UUID
@@ -83,18 +81,20 @@ public class EntityStopWatch extends Entity {
 		}
 	}
 
-	private void inRange(Entity entity) {
+	private void haltEntity(Entity entity) {
 		if (entity instanceof EntityStopWatch
 				|| entity instanceof  EntityCameraSquare
 				|| entity instanceof EntityMagicCircle
 				|| entity instanceof EntityGrimoireSpell) {
 			return;
 		}
+
+		addIgnoredPlayers(entity);
+
 		if(!worldObj.isRemote) {
-			if (entity instanceof EntityPlayerMP) {
-				if (!players.isEmpty() && players.contains(entity.getUniqueID())) { //If the player is in the list, it wont be affected
-					return;
-				}
+			//If the player is in the list, it wont be affected
+			if (entity instanceof EntityPlayer && players.contains(entity.getUniqueID())) {
+				return;
 			}
 			if (!dataEntities.containsKey(entity.getUniqueID())) {
 				double x = entity.motionX;
@@ -103,6 +103,7 @@ public class EntityStopWatch extends Entity {
 				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
 			}
 		}
+
 		if (entity.ticksExisted >= 2) {
 			entity.setPosition(entity.prevPosX, entity.prevPosY, entity.prevPosZ);
 			entity.rotationYaw = entity.prevRotationYaw;
@@ -117,25 +118,29 @@ public class EntityStopWatch extends Entity {
 			entity.setAir(0);
 			entity.ticksExisted--;
 			entity.fallDistance = 0;
+
 			if(entity instanceof EntityThrowable){
 				++((EntityThrowable)entity).throwableShake;
 			} else if(entity instanceof EntityArrow){
 				++((EntityArrow)entity).arrowShake;
 			}
+
 			if (entity instanceof EntityLivingBase) {
 				EntityLivingBase living = (EntityLivingBase) entity;
 				living.rotationYawHead = living.prevRotationYawHead;
+
 				if (living instanceof EntityCreeper) {
 					EntityCreeper entityCreeper = (EntityCreeper) living;
 					entityCreeper.setCreeperState(-1);
-				} else if (living instanceof EntityGhast) {
+				}
+				else if (living instanceof EntityGhast) {
 					EntityGhast entityGhast = (EntityGhast) living;
 					entityGhast.setAttacking(false);
 				}
-				if (living instanceof EntityTameable) {
+				else if (living instanceof EntityTameable) {
 					living.motionY -= 0.000001D;
 				}
-				if (living instanceof EntityPlayerMP) {
+				else if (living instanceof EntityPlayerMP) {
 					EntityPlayerMP player = (EntityPlayerMP) living;
 					player.setPositionAndRotation(player.prevPosX, player.prevPosY, player.prevPosZ, player.rotationYaw, player.rotationPitch);
 				}
@@ -147,25 +152,22 @@ public class EntityStopWatch extends Entity {
 		if(!worldObj.isRemote) {
 			if (user != null) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				if (!list.isEmpty()) {
-					list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
-						double[] motion = dataEntities.get(entity.getUniqueID());
-						entity.motionX = motion[0];
-						entity.motionY = motion[1];
-						entity.motionZ = motion[2];
-					});
-				}
+				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
+					double[] motion = dataEntities.get(entity.getUniqueID());
+					entity.motionX = motion[0];
+					entity.motionY = motion[1];
+					entity.motionZ = motion[2];
+				});
 				if (user.capabilities.isCreativeMode) {
 					setDead();
-					return;
 				}
-				if (!user.inventory.addItemStackToInventory(new ItemStack(ModItems.STOP_WATCH, 1))) {
-					user.dropItem(ModItems.STOP_WATCH, 1);
+				else {
+					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
 			} else {
 				dropItem(ModItems.STOP_WATCH, 1);
+				setDead();
 			}
-			setDead();
 		}
 	}
 
@@ -173,14 +175,8 @@ public class EntityStopWatch extends Entity {
 		return user;
 	}
 
-	public int getTicksAlive(){
-		return ticksExisted;
-	}
-
 	@Override
-	protected void entityInit() {
-
-	}
+	protected void entityInit() {}
 
 	@Override
 	public boolean canBePushed() {
@@ -188,12 +184,8 @@ public class EntityStopWatch extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
-
-	}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
-
-	}
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 }

@@ -122,7 +122,6 @@ public class GuiScreenBookYoukai extends GuiScreen {
 			this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
 		}
 
-		int i = (this.width - 192) / 2;
 		this.updateButtons();
 	}
 

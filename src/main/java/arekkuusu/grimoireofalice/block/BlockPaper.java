@@ -16,7 +16,7 @@ import net.minecraft.block.state.IBlockState;
 public class BlockPaper extends BlockModPillar {
 
 	public BlockPaper() {
-		super(LibBlockName.PAPERBLOCK, Material.CARPET);
+		super(LibBlockName.PAPER_BLOCK, Material.CARPET);
 		setHardness(0.5F);
 		setSoundType(SoundType.CLOTH);
 		setHarvestLevel("shears", 1);

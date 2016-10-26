@@ -1,11 +1,3 @@
-/*
- * This class was created by <Katrix>. It's distributed as
- * part of the Grimoire Of Alice Mod. Get the Source Code in github:
- * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
- * Grimoire Of Alice is Open Source and distributed under the
- * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
- */
 package arekkuusu.grimoireofalice.plugin.danmakucore.form;
 
 import arekkuusu.grimoireofalice.item.ModItems;
@@ -24,12 +16,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class FormUfo extends FormGeneric {
+public class FormLeaf extends FormGeneric {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Barrier.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/leaf.png");
 
-	public FormUfo() {
-		super(LibFormName.UFO);
+	public FormLeaf() {
+		super(LibFormName.LEAF);
 	}
 
 	@Override
@@ -52,18 +44,19 @@ public class FormUfo extends FormGeneric {
 		float g = (color >> 8 & 255) / 255.0F;
 		float b = (color & 255) / 255.0F;
 
-		GlStateManager.enableRescaleNormal();
+		ItemStack stack = new ItemStack(ModItems.LEAF);
+		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
+		GlStateManager.enableRescaleNormal();
 		GlStateManager.rotate(-yaw - 180F, 0F, 1F, 0F);
 		GlStateManager.rotate(pitch - 90F, 1F, 0F, 0F);
 		GlStateManager.rotate(roll, 0F, 0F, 1F);
 		GlStateManager.scale(sizeX, sizeY, sizeZ);
+		GlStateManager.rotate(danmaku.ticksExisted * 32, 0.0F, 1.0F, 0.0F);
 
-		ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufos needs colors
-		Minecraft mc = Minecraft.getMinecraft();
-		if(stack != null) {
-			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
-		}
+		//TODO: color
+		renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+
 		GlStateManager.disableRescaleNormal();
 	}
 }

@@ -43,7 +43,11 @@ public class BlockShroom extends BlockModBush {
 		setLightLevel(0.5F);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
-		setDefaultState(blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
+	}
+
+	@Override
+	protected IBlockState defaultState() {
+		return super.defaultState().withProperty(COLOR, EnumDyeColor.WHITE);
 	}
 
 	@Override

@@ -21,4 +21,6 @@ public class GOAForms {
 	public static final Form WIND = new FormDummy();
 	@ObjectHolder(LibFormName.UFO)
 	public static final Form UFO = new FormDummy();
+	@ObjectHolder(LibFormName.LEAF)
+	public static final Form LEAF = new FormDummy();
 }

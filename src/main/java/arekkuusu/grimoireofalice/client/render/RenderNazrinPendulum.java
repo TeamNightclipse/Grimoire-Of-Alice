@@ -17,7 +17,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
@@ -36,7 +35,7 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 		GlStateManager.translate(x, y, z);
 		GlStateManager.scale(0.4, 0.4, 0.4);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(pendulum.getTicksAlive() * 8, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(pendulum.ticksExisted * 8, 0.0F, 1.0F, 0.0F);
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_COLOR);

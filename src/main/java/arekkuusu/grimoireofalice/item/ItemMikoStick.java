@@ -48,12 +48,13 @@ public class ItemMikoStick extends ItemModSword {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.experienceLevel < 30 && !playerIn.capabilities.isCreativeMode) {
 			playerIn.setFire(120);
+			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 		}
 		else {
 			playerIn.addExperienceLevel(-1);
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
+			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
-		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	@Override

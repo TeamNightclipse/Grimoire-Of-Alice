@@ -23,4 +23,6 @@ public class GOASubEntities {
 	public static final SubEntityType NOTE = new SubEntityTypeDummy();
 	@ObjectHolder(LibSubEntityName.UFO)
 	public static final SubEntityType UFO = new SubEntityTypeDummy();
+	@ObjectHolder(LibSubEntityName.LEAF)
+	public static final SubEntityType LEAF = new SubEntityTypeDummy();
 }

@@ -82,8 +82,8 @@ public class ItemJeweledHourai extends ItemMod {
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(!worldIn.isRemote) {
-			int jewels = getJewels(stack);
-			if(jewels < 5 && entityIn.ticksExisted % 100 == 0) {
+			short jewels = getJewels(stack);
+			if(jewels < 5 && entityIn.ticksExisted % 200 == 0) {
 				jewels += 1;
 				if (jewels < 0) {
 					jewels = 0;
@@ -108,13 +108,16 @@ public class ItemJeweledHourai extends ItemMod {
 			if(!entityLiving.isSneaking()) {
 				if (getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
-					if(timeUsed > 30){timeUsed = 30;}
+					if(timeUsed > 30) {
+						timeUsed = 30;
+					}
 					int color = COLORS[itemRand.nextInt(COLORS.length)];
+
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color)).build();
 					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
-					addJewels(stack, -1);
+					addJewels(stack, (short)-1);
 				}
 			} else {
 				if(getJewels(stack) == 5) {
@@ -125,7 +128,7 @@ public class ItemJeweledHourai extends ItemMod {
 						if(rest != null) {
 							entityLiving.dropItem(rest.getItem(), rest.stackSize);
 						}
-						addJewels(stack, -5);
+						addJewels(stack, (short)-5);
 					}
 				}
 			}
@@ -134,29 +137,29 @@ public class ItemJeweledHourai extends ItemMod {
 				SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 	}
 
-	private void addJewels(ItemStack itemStack, int charge) {
+	private void addJewels(ItemStack itemStack, short charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
-			nbt.setShort("Jewels", (short)charge);
+			nbt.setShort("Jewels", charge);
 		} else if(nbt.getShort("Jewels") >= 0) {
-			nbt.setShort("Jewels", (short) (nbt.getShort("Jewels") + charge));
+			nbt.setShort("Jewels", (short)(nbt.getShort("Jewels") + charge));
 		}
 	}
 
-	private void setJewels(ItemStack itemStack, int charge) {
+	private void setJewels(ItemStack itemStack, short charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
-			nbt.setShort("Jewels", (short)charge);
+			nbt.setShort("Jewels", charge);
 		} else if(nbt.getShort("Jewels") >= 0) {
-			nbt.setShort("Jewels", (short) (charge));
+			nbt.setShort("Jewels", charge);
 		}
 	}
 
-	private int getJewels(ItemStack itemStack) {
+	private short getJewels(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? 0 : nbt.getShort("Jewels");
 	}

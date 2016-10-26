@@ -72,13 +72,9 @@ public class ItemTimeOrb extends ItemMod{
 					player.inventory.mainInventory[player.inventory.currentItem] = itemstack2;
 				}
 
-				LogHelper.info("Test");
-				//Daytime test only works on the server
-				worldIn.playSound(null, new BlockPos(player.posX, player.posY, player.posZ), SoundEvents.ENTITY_FIREWORK_TWINKLE,
-						SoundCategory.HOSTILE, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				player.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 				if(!worldIn.isRemote) {
-					long moonTime = worldIn.getWorldTime() - 500;
-					worldIn.setWorldTime(moonTime);
+					worldIn.setWorldTime(worldIn.getWorldTime() - 500);
 				}
 			}
 		}

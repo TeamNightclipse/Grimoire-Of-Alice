@@ -22,12 +22,12 @@ public class EntityEllyScythe extends EntityThrow {
 		super(world, x, y, z);
 	}
 
-	public EntityEllyScythe(World world, EntityLivingBase thrower, ItemStack itemstack, float f) {
+	public EntityEllyScythe(World world, EntityLivingBase thrower, ItemStack itemstack, float velocity) {
 		super(world, thrower);
-		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, f, 0.0F);
+		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, velocity, 0.0F);
 		setPickupModeFromEntity(thrower);
 		setStack(itemstack);
-		strength = Math.min(1.5F, f);
+		strength = Math.min(1.5F, velocity);
 	}
 
 	@Override
@@ -81,7 +81,6 @@ public class EntityEllyScythe extends EntityThrow {
 		posZ += motionZ;
 
 		float res = 0.99F;
-		float grav = getGravityVelocity();
 		if (isInWater()) {
 			for (int i = 0; i < 4; i++) {
 				float f6 = 0.25F;
@@ -92,7 +91,7 @@ public class EntityEllyScythe extends EntityThrow {
 		motionX *= res;
 		motionY *= res;
 		motionZ *= res;
-		motionY -= grav;
+		motionY -= getGravityVelocity();
 		setPosition(posX, posY, posZ);
 	}
 
