@@ -76,7 +76,6 @@ public class ModelAura extends ModelBiped {
 	}
 
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		this.aura.render(0.05F);
 		bipedBody = this.chest;
 		bipedHead = this.ribbonBase;
 
@@ -85,6 +84,8 @@ public class ModelAura extends ModelBiped {
 		bipedBody.showModel = slot == EntityEquipmentSlot.CHEST;
 		aura.showModel = slot != EntityEquipmentSlot.HEAD || entity.isSneaking();
 		float size = bipedBody.showModel ? 0.025F : scale;
+
+		this.aura.render(0.05F);
 
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, size);
 	}

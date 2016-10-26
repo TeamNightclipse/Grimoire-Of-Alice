@@ -85,14 +85,6 @@ public class ModelToyosatomimiAura extends ModelBiped {
 	}
 
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		this.aura.render(0.05F);
-		this.capeBase.render(scale);
-		this.cape1.render(scale);
-		this.cape2.render(scale);
-		this.cape3.render(scale);
-		this.cape4.render(scale);
-		this.cape5.render(scale);
-		this.cape6.render(scale);
 		bipedHeadwear.render(scale);
 
 		aura.showModel = slot == EntityEquipmentSlot.HEAD && entity.isSneaking();
@@ -108,6 +100,15 @@ public class ModelToyosatomimiAura extends ModelBiped {
 
 		bipedHeadwear.showModel = slot == EntityEquipmentSlot.HEAD;
 		bipedHead.showModel = slot == EntityEquipmentSlot.HEAD;
+
+		this.aura.render(0.05F);
+		this.capeBase.render(scale);
+		this.cape1.render(scale);
+		this.cape2.render(scale);
+		this.cape3.render(scale);
+		this.cape4.render(scale);
+		this.cape5.render(scale);
+		this.cape6.render(scale);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(this.head.offsetX, this.head.offsetY, this.head.offsetZ);

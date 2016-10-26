@@ -42,6 +42,7 @@ public class BlockOnbashira extends BlockMod {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Honored pillars");
 		list.add(TextFormatting.ITALIC + "Kinda heavy");
+		list.add(TextFormatting.ITALIC + "Tier 2 Crafting Pillar");
 	}
 
 	@Override
@@ -49,8 +50,8 @@ public class BlockOnbashira extends BlockMod {
 		world.setBlockState(pos.up(1), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
 		world.setBlockState(pos.up(2), ModBlocks.ONBASHIRA_MIDDLE.getDefaultState());
 		world.setBlockState(pos.up(3), ModBlocks.ONBASHIRA_TOP.getDefaultState());
-		world.setTileEntity(pos.up(3), new TilePillarAltar());
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		//world.setTileEntity(pos.up(3), new TilePillarAltar());
+		return getDefaultState();
 	}
 
 	@Override

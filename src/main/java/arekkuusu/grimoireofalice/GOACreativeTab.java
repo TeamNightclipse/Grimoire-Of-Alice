@@ -63,7 +63,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.SUGAR_BLOCK);
 		addBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC);
 		addBlock(ModBlocks.SHROOM);
-		addItem(ModItems.SHROOM_SLICE); //Goes here for being related to a Block
+		addItem(ModItems.SHROOM_SLICE);
 
 		//Item
 		addItem(ModItems.THIRD_EYE);
@@ -85,7 +85,9 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.UFO_BLUE);
 		addItem(ModItems.UFO_GREEN);
 		addItem(ModItems.UFO_RED);
-		addItem(ModItems.LEAF);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.LEAF);
+		}
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.LUNASA_VIOLIN);
 			addItem(ModItems.LYRICA_PIANO);

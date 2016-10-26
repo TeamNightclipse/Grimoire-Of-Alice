@@ -13,10 +13,13 @@ import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.GOASubEntities;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.lib.data.LibForms;
 
+import static net.katsstuff.danmakucore.lib.LibColor.COLOR_SATURATED_CYAN;
+import static net.katsstuff.danmakucore.lib.LibColor.COLOR_SATURATED_GREEN;
 import static net.katsstuff.danmakucore.lib.LibColor.COLOR_VANILLA_RED;
 
 public class LibGOAShotData {
 
 	public static final ShotData WIND = new ShotData(GOAForms.WIND, COLOR_VANILLA_RED, 0.4F, 0.5F, 0, 50, GOASubEntities.WIND);
 	public static final ShotData NOTE = new ShotData(LibForms.CONTROL, COLOR_VANILLA_RED, 0.4F, 0.5F, 0, 50, GOASubEntities.NOTE);
+	public static final ShotData UFO = new ShotData(GOAForms.UFO, COLOR_SATURATED_CYAN, 0.4F, 0.5F, 0, 50, GOASubEntities.UFO);
 }

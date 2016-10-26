@@ -31,14 +31,14 @@ public class RenderLeaf extends Render<EntityLeaf> {
 	}
 
 	@Override
-    public void doRender(EntityLeaf circle, double x, double y, double z, float yaw, float pitch) {
+    public void doRender(EntityLeaf leaf, double x, double y, double z, float yaw, float pitch) {
 		ItemStack stack = new ItemStack(ModItems.LEAF);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.scale(1F, 1F, 1F);
-		GlStateManager.rotate(circle.getTime() * 32, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(leaf.ticksExisted * 32, 0.0F, 1.0F, 0.0F);
 		renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();

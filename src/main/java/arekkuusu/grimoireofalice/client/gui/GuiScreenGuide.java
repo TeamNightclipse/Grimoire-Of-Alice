@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
-public class GuiScreenGuide extends GuiScreen {
+public class GuiScreenGuide extends GuiScreen { //TODO: Change for a -> real <- Guide
     private static final ResourceLocation BOOK_GUI_TEXTURES[] = {new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide0.png"),
             new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide1.png"),
             new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide2.png"),

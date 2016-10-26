@@ -192,9 +192,11 @@ public class ClientProxy extends CommonProxy{
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			RenderingRegistry.registerEntityRenderingHandler(EntityLeaf.class, RenderLeaf::new);
+		}
 		RenderingRegistry.registerEntityRenderingHandler(EntityDragonJewel.class, RenderDragonJewel::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityUnzanFist.class, RenderUnzanFist::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);

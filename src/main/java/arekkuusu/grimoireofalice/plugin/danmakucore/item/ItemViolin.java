@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -19,7 +18,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemViolin extends ItemMod {
+public class ItemViolin extends ItemInstrument {
 
 	public ItemViolin() {
 		super(LibItemName.LUNASA_VIOLIN);

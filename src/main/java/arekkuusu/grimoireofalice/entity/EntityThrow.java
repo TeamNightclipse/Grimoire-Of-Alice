@@ -130,21 +130,19 @@ public abstract class EntityThrow extends EntityThrowable {
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
 		if (inGround || throwableShake <= 0) {
-			if(getThrower() != null)
-			if (canPickup(entityplayer)) {
-				if(!worldObj.isRemote) {
+			if (getThrower() != null)
+				if (canPickup(entityplayer)) {
 					if (entityplayer.capabilities.isCreativeMode) {
-						setDead();
+						if(!worldObj.isRemote) setDead();
 						return;
 					}
 					if (!entityplayer.inventory.addItemStackToInventory(stack)) {
 						entityplayer.dropItem(stack.getItem(), 1);
 					}
-					setDead();
+					if(!worldObj.isRemote) setDead();
+				} else {
+					bounceBack();
 				}
-			} else {
-				bounceBack();
-			}
 		}
 	}
 

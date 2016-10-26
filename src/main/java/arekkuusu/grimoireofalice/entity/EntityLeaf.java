@@ -8,22 +8,18 @@
  */
 package arekkuusu.grimoireofalice.entity;
 
+import arekkuusu.grimoireofalice.plugin.danmakucore.LibGOAShotData;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 //TODO: Replace with SubEntity and Form once DanmakuCore can be used
 public class EntityLeaf extends EntityThrowable {
-	
-	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityGrimoireSpell.class, DataSerializers.VARINT);
 
 	public EntityLeaf(World worldIn) {
         super(worldIn);
@@ -38,8 +34,7 @@ public class EntityLeaf extends EntityThrowable {
     }
     
     @Override
-	protected void entityInit() {
-    	dataManager.register(TIME, ticksInAir);
+	protected void entityInit(){
     }
 	
     /*
@@ -50,9 +45,8 @@ public class EntityLeaf extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		setTime(ticksInAir);
 		int timeLive = 15;
-		if(ticksInAir >= timeLive){
+		if(ticksExisted >= timeLive){
 			doEffects();
 		}
 	}
@@ -66,13 +60,7 @@ public class EntityLeaf extends EntityThrowable {
 
 		if(!worldObj.isRemote) {
 			if (result.entityHit != null) {
-				float i = 5F;
-
-				if (result.entityHit instanceof EntityPlayer) {
-					i = 3F;
-				}
-
-				result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), i);
+				result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 5F);
 			}
 			this.setDead();
 		}
@@ -92,21 +80,13 @@ public class EntityLeaf extends EntityThrowable {
 			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY, this.posZ, 0, 0, 0);
 		}
 		if(!worldObj.isRemote){
-			EntityAnimalShot entityAnimalShot = new EntityAnimalShot(worldObj, this.posX, this.posY, this.posZ);
-			//TODO: Make random movements
-			Vec3d vec = getVectorForRotation(-rotationPitch, -rotationYaw).rotatePitch(45F).rotateYaw(45F);
-			entityAnimalShot.setThrowableHeading(vec.xCoord, vec.yCoord, vec.zCoord, 0.3F, 0.0F);
-			this.worldObj.spawnEntityInWorld(entityAnimalShot);
+
+			EntityDanmaku danmaku = DanmakuBuilder.builder()
+					.setSource(this)
+					.setMovementData(0.1D)
+					.setShot(LibGOAShotData.UFO).build().asEntity();
+			worldObj.spawnEntityInWorld(danmaku);
 			this.setDead();
 		}
 	}
-	
-	public void setTime(int time) {
-		dataManager.set(TIME, time);
-	}
-
-	public int getTime() {
-		return dataManager.get(TIME);
-	}
-
 }

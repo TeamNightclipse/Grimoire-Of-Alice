@@ -47,7 +47,7 @@ public class BlockHolyKeyStone extends BlockMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Heavy object made of black granite");
-		list.add(TextFormatting.ITALIC + "Step on it to activate");
+		list.add(TextFormatting.ITALIC + "Step on it to get Potion Buff");
 	}
 
 	@Override

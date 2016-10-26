@@ -6,12 +6,16 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityLeaf;
+import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.plugin.danmakucore.LibGOAShotData;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;

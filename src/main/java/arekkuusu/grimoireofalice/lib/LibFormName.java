@@ -11,4 +11,5 @@ package arekkuusu.grimoireofalice.lib;
 public class LibFormName {
 
 	public static final String WIND = "wind";
+	public static final String UFO = "ufo";
 }

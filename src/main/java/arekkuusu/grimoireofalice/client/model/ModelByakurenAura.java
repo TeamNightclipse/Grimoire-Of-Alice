@@ -27,12 +27,13 @@ public class ModelByakurenAura extends ModelBiped {
 	}
 
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		this.aura.render(0.05F);
 		bipedHeadwear.showModel = false;
 		bipedBody.showModel = true;
 
 		bipedBody = this.neck;
 		aura.showModel = entity.isSneaking();
+
+		this.aura.render(0.05F);
 
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, 0.025F);
 	}

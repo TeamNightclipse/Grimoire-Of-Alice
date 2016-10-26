@@ -8,8 +8,10 @@
  */
 package arekkuusu.grimoireofalice.plugin.danmakucore;
 
+import arekkuusu.grimoireofalice.plugin.danmakucore.form.FormUfo;
 import arekkuusu.grimoireofalice.plugin.danmakucore.form.FormWind;
 import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.SubEntityNote;
+import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.SubEntityUfo;
 import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.SubEntityWind;
 import net.katsstuff.danmakucore.entity.danmaku.form.Form;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
@@ -23,7 +25,8 @@ public class Initializer {
 	@SubscribeEvent
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
-				new FormWind()
+				new FormWind(),
+				new FormUfo()
 		);
 	}
 
@@ -31,7 +34,8 @@ public class Initializer {
 	public static void registerSubEntities(RegistryEvent.Register<SubEntityType> event) {
 		event.getRegistry().registerAll(
 				new SubEntityWind(),
-				new SubEntityNote()
+				new SubEntityNote(),
+				new SubEntityUfo()
 		);
 	}
 }

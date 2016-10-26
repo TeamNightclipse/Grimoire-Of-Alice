@@ -18,6 +18,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TileCraftingAltar extends TileItemHandler implements ITickable {
@@ -79,7 +80,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			itemHandler.setStackInSlot(0, null);
 
 			if(player != null && !player.capabilities.isCreativeMode) {
-				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(stackToTake.getItem(), 1));
+				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);
 			}
 
 			IBlockState state = getWorld().getBlockState(getPos());
@@ -90,30 +91,28 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public boolean doCrafting() {
 		if (getItemStack() == null) {
-			ArrayList<TilePillarAltar> arrayAltar = new ArrayList<>();
-			ArrayList<ItemStack> arrayItem = new ArrayList<>();
+			List<TilePillarAltar> altars = new ArrayList<>();
 			for (BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				Block block = getWorld().getBlockState(pos).getBlock();
-				if (block== ModBlocks.PILLAR_ALTAR) {
-					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				if (getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
+					altars.add((TilePillarAltar) getWorld().getTileEntity(pos));
 				}
 			}
 			for(BlockPos pos : SECOND_PILLAR_LOCATIONS){
 				pos = pos.add(getPos());
-				Block block = getWorld().getBlockState(pos).getBlock();
-				if (block == ModBlocks.ONBASHIRA_TOP) {
-					arrayAltar.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				if (getWorld().getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA_TOP) {
+					altars.add((TilePillarAltar) getWorld().getTileEntity(pos));
 				}
 			}
-			if (!arrayAltar.isEmpty() && arrayAltar.size() > 2) {
-				for (TilePillarAltar altar : arrayAltar) {
+			if (!altars.isEmpty() && altars.size() > 2) {
+				List<ItemStack> recipeItems = new ArrayList<>();
+				for (TilePillarAltar altar : altars) {
 					if (!altar.hasItem()) continue;
-					arrayItem.add(altar.getItemStack());
+					recipeItems.add(altar.getItemStack());
 				}
-				if (!arrayItem.isEmpty()) {
-					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(arrayItem, worldObj)).forEach(recipe -> {
-						for (TilePillarAltar altar : arrayAltar) {
+				if (!recipeItems.isEmpty()) {
+					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(recipeItems, worldObj)).forEach(recipe -> {
+						for (TilePillarAltar altar : altars) {
 							altar.removeItem(null);
 						}
 						addItem(recipe.getResult());
@@ -122,7 +121,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 				}
 			}
 		}
-		return true;
+		return !hasItem();
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -146,12 +145,12 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		return itemHandler.getStackInSlot(0);
 	}
 
-	@Override
-	public void update() {
-		bookPart();
+	public boolean hasItem(){
+		return itemHandler.getStackInSlot(0) != null;
 	}
 
-	private void bookPart(){
+	@Override
+	public void update(){
 		bookSpreadPrev = bookSpread;
 		bookRotationPrev = bookRotation;
 		EntityPlayer entityplayer = worldObj.getClosestPlayer((pos.getX() + 0.5F), (pos.getY() + 0.5F), (pos.getZ() + 0.5F), 3.0D, false);
@@ -212,4 +211,5 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		flipA += (f - flipA) * 0.9F;
 		pageFlip += flipA;
 	}
+
 }

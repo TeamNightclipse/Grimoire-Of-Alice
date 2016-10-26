@@ -19,4 +19,6 @@ public class GOAForms {
 
 	@ObjectHolder(LibFormName.WIND)
 	public static final Form WIND = new FormDummy();
+	@ObjectHolder(LibFormName.UFO)
+	public static final Form UFO = new FormDummy();
 }

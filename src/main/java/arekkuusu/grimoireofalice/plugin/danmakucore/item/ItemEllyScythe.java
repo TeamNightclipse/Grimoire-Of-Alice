@@ -84,7 +84,6 @@ public class ItemEllyScythe extends ItemModSword {
 			}
 			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 64, 0));
 			user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 64, 3));
-			stack.damageItem(1, user);
 		}
 		return true;
 	}

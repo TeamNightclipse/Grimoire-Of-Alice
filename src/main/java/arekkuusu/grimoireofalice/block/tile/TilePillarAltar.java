@@ -41,7 +41,7 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 			itemHandler.setStackInSlot(0, null);
 
 			if (player != null && !player.capabilities.isCreativeMode) {
-				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(stackToTake.getItem(), 1));
+				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);
 			}
 
 			IBlockState state = getWorld().getBlockState(getPos());

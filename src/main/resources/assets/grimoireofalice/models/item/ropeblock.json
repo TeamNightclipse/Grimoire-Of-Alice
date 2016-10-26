@@ -1,3 +1,6 @@
 {
-    "parent": "grimoireofalice:block/ropeblock"
+    "parent": "item/generated",
+	"textures": {
+        "layer0": "grimoireofalice:items/ropeblock"
+    }
 }
