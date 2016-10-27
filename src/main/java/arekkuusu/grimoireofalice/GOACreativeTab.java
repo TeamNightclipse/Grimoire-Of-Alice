@@ -166,10 +166,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.MIKO_STICK);
 		addItem(ModItems.MOCHI_HAMMER);
 		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
-
 		addItem(ModItems.NAZRIN_STICK_ITEM);
-		list.add(new ItemStack(ModItems.NAZRIN_STICK_ITEM, 1, 1));
-
 		addItem(ModItems.NUE_TRIDENT);
 		addItem(ModItems.SWORD_OF_KUSANAGI);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {

@@ -13,14 +13,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
@@ -31,11 +36,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemNazrinStick extends ItemModSword {
+
+	public static final String TYPE = "type";
+
+	@SuppressWarnings("ConstantConditions")
+	@GameRegistry.ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
+	public static final ItemStack TYPEA = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
+
+	@SuppressWarnings("ConstantConditions")
+	@GameRegistry.ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
+	public static final ItemStack TYPEB = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	public ItemNazrinStick(ToolMaterial material, String id) {
 		super(material, id);
@@ -44,6 +60,13 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+		subItems.add(TYPEA);
+		subItems.add(TYPEB);
 	}
 
 	@Override
@@ -149,13 +172,18 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + "." + stack.getItemDamage();
+		return super.getUnlocalizedName(stack) + "." + getType(stack);
 	}
 
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
-		return main != null && off != null && main.isItemEqualIgnoreDurability(off) && main.getItemDamage() != off.getItemDamage();
+		return main != null && off != null && main.isItemEqualIgnoreDurability(off) && getType(main) != getType(off);
+	}
+
+	@SuppressWarnings("ConstantConditions")
+	public byte getType(ItemStack stack) {
+		return !stack.hasTagCompound() ? 0 : stack.getTagCompound().getByte(TYPE);
 	}
 
 	@Override
