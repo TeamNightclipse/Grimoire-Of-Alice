@@ -187,8 +187,6 @@ public class ClientProxy extends CommonProxy {
 		registerBlock(ModBlocks.HOLY_STONE, 0);
 		registerBlock(ModBlocks.KYOUMARUBOTAN, 0);
 		registerBlock(ModBlocks.ONBASHIRA, 0);
-		registerBlock(ModBlocks.ONBASHIRA, 1, "middle");
-		registerBlock(ModBlocks.ONBASHIRA, 2, "top");
 		registerBlock(ModBlocks.PAPER_BLOCK, 0);
 		registerBlock(ModBlocks.ROPE_BLOCK, 0);
 		registerBlockWithColorTypes(ModBlocks.SHROOM, 16);
@@ -238,14 +236,6 @@ public class ClientProxy extends CommonProxy {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
-	}
-
-	private static void registerBlock(Block block, int meta, String name) {
-		Item iBlock = Item.getItemFromBlock(block);
-		ResourceLocation regName = block.getRegistryName();
-		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
-		ModelLoader.setCustomModelResourceLocation(iBlock, meta,
-				new ModelResourceLocation(new ResourceLocation(regName.getResourceDomain(), regName.getResourcePath() + "_" + name), "inventory"));
 	}
 
 	private static void registerItemWithTypes(Item item, int damage) {

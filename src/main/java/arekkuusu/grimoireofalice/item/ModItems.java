@@ -145,17 +145,8 @@ public final class ModItems {
 	public static final Item MOMIJIS_SCIMITAR_SWORD = new Item();
 	@ObjectHolder(LibItemName.LAEVATEIN)
 	public static final Item LAEVATEIN = new Item();
-
 	@ObjectHolder(LibItemName.NAZRIN_STICK)
 	public static final Item NAZRIN_STICK_ITEM = new Item();
-	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibItemName.NAZRIN_STICK)
-	public static final ItemStack NAZRIN_STICK_A = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
-
-	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibItemName.NAZRIN_STICK, meta = 1)
-	public static final ItemStack NAZRIN_STICK_B = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
-
 	@ObjectHolder(LibItemName.ELLY_SCYTHE)
 	public static final Item ELLY_SCYTHE = new Item();
 	@ObjectHolder(LibItemName.MIKO_STICK)

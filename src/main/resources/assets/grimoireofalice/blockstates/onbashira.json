@@ -1,5 +1,7 @@
 {
   "variants": {
-	"normal": { "model": "grimoireofalice:onbashira" }
+	"part=lower": { "model": "grimoireofalice:onbashiralower" },
+	"part=middle": { "model": "grimoireofalice:onbashiramiddle" },
+	"part=top": { "model": "grimoireofalice:onbashiratop" }
   }
 }

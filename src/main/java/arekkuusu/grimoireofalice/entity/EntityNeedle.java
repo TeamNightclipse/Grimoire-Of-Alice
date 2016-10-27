@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.entity;
 
 import java.lang.reflect.Field;
 
+import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.SoundEvents;
@@ -54,6 +55,6 @@ public class EntityNeedle extends EntityArrow {
 
 	@Override
 	protected ItemStack getArrowStack() {
-		return null; //FIXME: This could cause a NPE
+		return new ItemStack(ModItems.NEEDLE);
 	}
 }

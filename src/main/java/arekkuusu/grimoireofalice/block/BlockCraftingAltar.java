@@ -113,12 +113,8 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(PROPERTYFACING, facing);
-		/*
-		//TODO: Can placer be null here?
-		EnumFacing enumfacing = (placer == null) ? EnumFacing.NORTH : EnumFacing.fromAngle(placer.rotationYaw);
+		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
-		*/
 	}
 
 	@SuppressWarnings("deprecation") //Internal

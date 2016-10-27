@@ -60,9 +60,7 @@ public class FormUfo extends FormGeneric {
 
 		ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufos needs colors
 		Minecraft mc = Minecraft.getMinecraft();
-		if(stack != null) {
-			mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
-		}
+		mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
 		GlStateManager.disableRescaleNormal();
 	}
 }

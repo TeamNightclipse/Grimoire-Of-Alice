@@ -15,10 +15,12 @@ import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
+import net.katsstuff.danmakucore.helper.LogHelper;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -51,6 +53,11 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("axe", 1);
 		setResistance(2000.0F);
+	}
+
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, PART);
 	}
 
 	@Override
@@ -182,11 +189,21 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 2.0F, false);
-
-		for(int i = 1; i < 4; i++) {
-			worldIn.setBlockToAir(pos.up(i));
-			worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + i, pos.getZ() + 0.5, 2.0F, false);
+		switch(state.getValue(PART)) {
+			case LOWER:
+				for(int i = 0; i < 4; i++) {
+					worldIn.setBlockToAir(pos.up(i));
+					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 + i, pos.getZ() + 0.5, 2.0F, false);
+				}
+				break;
+			case TOP:
+				for(int i = 0; i < 4; i++) {
+					worldIn.setBlockToAir(pos.down(i));
+					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 - i, pos.getZ() + 0.5, 2.0F, false);
+				}
+				break;
+			default:
+				break;
 		}
 	}
 
