@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.entity;
 
+import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -55,12 +57,11 @@ public class EntityBarrier extends Entity {
 				isStatic = true;
 			}
 
-			@SuppressWarnings("ConstantConditions")
-			Entity entity = worldObj
-					.getEntitiesInAABBexcluding(this, getEntityBoundingBox(), entity1 -> entity1.canBeCollidedWith() || entity1 != player).get(0);
+			List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+					entity1 -> entity1.canBeCollidedWith() || entity1 != player);
 
-			if(entity != null) {
-				onDetectEntity(entity);
+			if(!entities.isEmpty()) {
+				onDetectEntity(entities.get(0));
 			}
 
 			if(ticksExisted > 200) {
