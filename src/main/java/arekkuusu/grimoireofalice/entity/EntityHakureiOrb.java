@@ -2,7 +2,6 @@ package arekkuusu.grimoireofalice.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -11,7 +10,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class EntityHakureiOrb extends EntityThrowable {
@@ -47,29 +45,31 @@ public class EntityHakureiOrb extends EntityThrowable {
 		super.onUpdate();
 		EntityLivingBase player = getThrower();
 		if(player == null) {
-			if (!worldObj.isRemote) {
+			if(!worldObj.isRemote) {
 				setDead();
 			}
-		} else {
-			if (player.isHandActive() && !isMoving) {
+		}
+		else {
+			if(player.isHandActive() && !isMoving) {
 				float size = getSize();
 				posX = player.posX;
 				posY = player.posY + 4;
 				posZ = player.posZ;
 				setPosition(posX, posY, posZ);
-				if (size < 4) {
+				if(size < 4) {
 					setSize(size + 0.1F);
 				}
-			} else if(!isMoving) {
+			}
+			else if(!isMoving) {
 				setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 0F);
 				isMoving = true;
-			} else {
+			}
+			else {
 				motionY -= 0.05D;
 			}
-			if(ticksExisted > 200){
-				if(!worldObj.isRemote){
-					setDead();
-				}
+
+			if(ticksExisted > 200 && !worldObj.isRemote) {
+				setDead();
 			}
 		}
 	}
@@ -78,20 +78,22 @@ public class EntityHakureiOrb extends EntityThrowable {
 	protected void onImpact(RayTraceResult rayTraceResult) {
 		if(rayTraceResult.typeOfHit == RayTraceResult.Type.ENTITY) {
 			onImpactEntity(rayTraceResult);
-		} else if(rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
+		}
+		else if(rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
 			bounce(rayTraceResult);
 		}
 	}
 
-	private void bounce(RayTraceResult rayTraceResult){
+	private void bounce(RayTraceResult rayTraceResult) {
 		EnumFacing facing = rayTraceResult.sideHit;
-		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN){
+		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 			rotationYaw *= -1.0F;
 			rotationPitch *= -1.0F;
 			motionX *= 0.8F;
 			motionY *= -0.8F;
 			motionZ *= 0.8F;
-		} else {
+		}
+		else {
 			rotationYaw *= -1.0F;
 			motionX *= -0.8F;
 			motionZ *= -0.8F;
@@ -102,7 +104,9 @@ public class EntityHakureiOrb extends EntityThrowable {
 	private void onImpactEntity(RayTraceResult result) {
 		if(result.entityHit != null && result.entityHit != getThrower()) {
 			applyHitEffects(result.entityHit);
-			if(!worldObj.isRemote) setDead();
+			if(!worldObj.isRemote) {
+				setDead();
+			}
 		}
 	}
 
@@ -120,7 +124,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 		return 0;
 	}
 
-	public float getTicksAlive(){
+	public float getTicksAlive() {
 		return ticksExisted;
 	}
 

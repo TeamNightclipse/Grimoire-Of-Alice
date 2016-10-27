@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,8 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemSacredToyosatomimi extends ItemSwordOwner {
 
@@ -46,7 +46,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 			list.add(TextFormatting.GRAY + "Finds all souls around the player");
 			list.add(TextFormatting.GRAY + "and gathers the essence of life");
 			list.add(TextFormatting.GRAY + "in the form of an orb");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
@@ -68,21 +69,23 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote){
+		if(!worldIn.isRemote) {
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if(timeUsed > 50) {
-				return;
-			}
+			if(timeUsed > 50) return;
+
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
 				if(isOwner(stack, player)) {
 					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(timeUsed));
 					if(!list.isEmpty()) {
-						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
-						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- " + mob.getName() +
-								" : {" + mob.posX + ", " + mob.posY + ", " + mob.posZ + "}")));
-						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
-					} else {
+						player.addChatComponentMessage(
+								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
+						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(
+								TextFormatting.GOLD + "- " + mob.getName() + " : {" + mob.posX + ", " + mob.posY + ", " + mob.posZ + "}")));
+						player.addChatComponentMessage(
+								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
+					}
+					else {
 						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - No souls found - - - - - - -"));
 					}
 				}

@@ -1,24 +1,24 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemGapFoldingUmbrella extends ItemMod {
 
@@ -44,10 +44,11 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Magical umbrella that teleports players");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + "Right click to teleport up to 40 blocks");
 			list.add(TextFormatting.ITALIC + "to the direction you are looking");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
@@ -56,9 +57,9 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		Vec3d look = playerIn.getLookVec();
 		float distance = 40F;
-		double dx = playerIn.posX + (look.xCoord * distance);
-		double dy = playerIn.posY + 1 + (look.yCoord * distance);
-		double dz = playerIn.posZ + (look.zCoord * distance);
+		double dx = playerIn.posX + look.xCoord * distance;
+		double dy = playerIn.posY + 1 + look.yCoord * distance;
+		double dz = playerIn.posZ + look.zCoord * distance;
 		if(isSafe(worldIn, dx, dy, dz)) {
 			playerIn.setPosition(dx, dy, dz);
 		}
@@ -68,7 +69,7 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
-	private boolean isSafe(World world, double x, double y, double z){
+	private boolean isSafe(World world, double x, double y, double z) {
 		if(y < 0) return false;
 		BlockPos pos = new BlockPos(x, y, z);
 		IBlockState state = world.getBlockState(pos);

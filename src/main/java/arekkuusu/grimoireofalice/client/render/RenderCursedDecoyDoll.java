@@ -11,7 +11,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 
-	private static final ResourceLocation DOLL_TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/ModelCursedDecoyDoll-texturemap.png");
+	private static final ResourceLocation DOLL_TEXTURE = new ResourceLocation(LibMod.MODID,
+			"textures/models/entities/ModelCursedDecoyDoll-texturemap.png");
 	private static final ModelCursedDecoyDoll MODEL = new ModelCursedDecoyDoll();
 
 	public RenderCursedDecoyDoll(RenderManager renderManager) {
@@ -24,7 +25,7 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 		GlStateManager.enableBlend();
 		GlStateManager.disableLighting();
 		bindEntityTexture(entity);
-		GlStateManager.translate(x,y + 1,z);
+		GlStateManager.translate(x, y + 1, z);
 		GlStateManager.scale(0.5, 0.5, 0.5);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(entity.rotationYaw, 0.0F, 1.0F, 0.0F);

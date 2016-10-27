@@ -10,6 +10,9 @@ package arekkuusu.grimoireofalice.item.auras;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiAura;
+import arekkuusu.grimoireofalice.lib.LibItemName;
+import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,14 +24,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiAura;
-import arekkuusu.grimoireofalice.lib.LibItemName;
-import arekkuusu.grimoireofalice.lib.LibMod;
-
-import javax.annotation.Nullable;
 
 public class ItemAuraToyosatomimi extends ItemModAura {
-	
+
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
@@ -50,12 +48,12 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 		list.add(TextFormatting.ITALIC + "but unfortunately you are the 11th.");
 		list.add(TextFormatting.ITALIC + "Sucks to be you");
 	}
-	
+
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		
+
 	}
-	
+
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
@@ -72,11 +70,11 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelToyosatomimiAura(Ui);
+		if(model == null) model = new ModelToyosatomimiAura(Ui);
 		model.setModelAttributes(imodel);
 		return model;
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return LibMod.MODID + ":textures/models/armor/toyosatomimi_aura.png";

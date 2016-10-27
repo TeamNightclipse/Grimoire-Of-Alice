@@ -142,14 +142,16 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		switch(state.getValue(PART)) {
 			case TOP:
-				TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(pos);
+				TilePillarAltar tile = (TilePillarAltar)worldIn.getTileEntity(pos);
 				boolean ok = false;
-				if (tile != null)
-					if (playerIn.isSneaking()) {
+				if(tile != null) {
+					if(playerIn.isSneaking()) {
 						ok = tile.removeItem(playerIn);
-					} else if (heldItem != null) {
+					}
+					else if(heldItem != null) {
 						ok = tile.addItem(playerIn, heldItem);
 					}
+				}
 				return ok;
 			default:
 				return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
@@ -165,7 +167,8 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+			EntityLivingBase placer) {
 		world.setBlockState(pos.up(1), getDefaultState().withProperty(PART, Part.MIDDLE));
 		world.setBlockState(pos.up(2), getDefaultState().withProperty(PART, Part.MIDDLE));
 		world.setBlockState(pos.up(3), getDefaultState().withProperty(PART, Part.TOP));
@@ -197,7 +200,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
-	
+
 	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {

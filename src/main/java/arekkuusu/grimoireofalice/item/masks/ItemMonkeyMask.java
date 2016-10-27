@@ -55,25 +55,25 @@ public class ItemMonkeyMask extends ItemModMask {
 			player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 0, 2));
 		}
 	}
-	
+
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if (player instanceof EntityPlayer && (source.isProjectile() || source.isExplosion())) {
-			player.attackEntityFrom(DamageSource.generic, (float)damage*50);
+		if(player instanceof EntityPlayer && (source.isProjectile() || source.isExplosion())) {
+			player.attackEntityFrom(DamageSource.generic, (float)damage * 50);
 		}
 		return new ArmorProperties(1, 100, 100);
 	}
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		if(source.isProjectile() || source.isExplosion()){
+		if(source.isProjectile() || source.isExplosion()) {
 			stack.damageItem(damage * 10, entity);
 		}
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/monkeymask.png";
-    }
-	
+		return LibMod.MODID + ":textures/models/armor/monkeymask.png";
+	}
+
 }

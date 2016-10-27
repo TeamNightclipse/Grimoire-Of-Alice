@@ -26,7 +26,7 @@ public class ItemNueTrident extends ItemModSword {
 	public ItemNueTrident(ToolMaterial material) {
 		super(material, LibItemName.NUE_TRIDENT);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
@@ -38,7 +38,7 @@ public class ItemNueTrident extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Trident of sealed beast, Seed of Unknown Form");
 		list.add(TextFormatting.OBFUSCATED + "Fear the unknown, weak human!");
 	}
-	
+
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		stack.damageItem(1, user);

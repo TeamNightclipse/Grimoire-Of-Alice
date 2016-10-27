@@ -1,5 +1,9 @@
 package arekkuusu.grimoireofalice.block;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
@@ -16,9 +20,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
@@ -39,15 +40,18 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(pos);
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
+			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TilePillarAltar tile = (TilePillarAltar)worldIn.getTileEntity(pos);
 		boolean ok = false;
-		if (tile != null)
-			if (playerIn.isSneaking()) {
+		if(tile != null) {
+			if(playerIn.isSneaking()) {
 				ok = tile.removeItem(playerIn);
-			} else if (heldItem != null) {
+			}
+			else if(heldItem != null) {
 				ok = tile.addItem(playerIn, heldItem);
 			}
+		}
 		return ok;
 	}
 

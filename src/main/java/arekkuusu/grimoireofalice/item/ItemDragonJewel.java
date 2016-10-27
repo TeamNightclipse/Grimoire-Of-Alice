@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,14 +9,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemDragonJewel extends ItemMod {
 
@@ -49,7 +52,7 @@ public class ItemDragonJewel extends ItemMod {
 	}
 
 	private void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			EntityDragonJewel jewel = new EntityDragonJewel(world, player);
 			jewel.setPosition(player.posX, player.posY + 2, player.posZ);
 			world.spawnEntityInWorld(jewel);
@@ -61,13 +64,14 @@ public class ItemDragonJewel extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			spawnJewel(stack, worldIn, (EntityPlayer)entityLiving);
 		}
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		spawnJewel(stack, worldIn, playerIn);
 		return EnumActionResult.SUCCESS;
 	}

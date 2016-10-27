@@ -8,11 +8,10 @@
  */
 package arekkuusu.grimoireofalice.helper;
 
-import net.minecraftforge.fml.common.FMLLog;
-
 import org.apache.logging.log4j.Level;
 
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraftforge.fml.common.FMLLog;
 
 @SuppressWarnings("unused")
 public class LogHelper {

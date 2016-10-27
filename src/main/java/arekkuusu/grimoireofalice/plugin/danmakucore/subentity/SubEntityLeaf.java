@@ -33,7 +33,7 @@ public class SubEntityLeaf extends SubEntityType {
 			super.subEntityTick();
 
 			if(danmaku.isShotEndTime()) {
-				for (int j = 0; j < 8; ++j) {
+				for(int j = 0; j < 8; ++j) {
 					danmaku.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
 				}
 
@@ -45,7 +45,7 @@ public class SubEntityLeaf extends SubEntityType {
 		@Override
 		protected void impact(RayTraceResult raytrace) {
 			super.impact(raytrace);
-			for (int j = 0; j < 8; ++j) {
+			for(int j = 0; j < 8; ++j) {
 				danmaku.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0.0D, 0.0D, 0.0D);
 			}
 		}

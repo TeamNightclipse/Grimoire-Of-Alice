@@ -6,7 +6,8 @@ import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -21,7 +22,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Does
 
 	public RenderDragonJewel(RenderManager renderManager) {
 		super(renderManager);
-		this.renderItem = Minecraft.getMinecraft().getRenderItem();
+		renderItem = Minecraft.getMinecraft().getRenderItem();
 	}
 
 	@Override

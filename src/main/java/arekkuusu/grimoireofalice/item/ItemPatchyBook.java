@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.lib.LibGuiID;
+import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -22,11 +23,10 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemPatchyBook extends ItemMod {
-	
-	public ItemPatchyBook(){
+
+	public ItemPatchyBook() {
 		super(LibItemName.PATCHY_BOOK);
 	}
 
@@ -40,7 +40,7 @@ public class ItemPatchyBook extends ItemMod {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

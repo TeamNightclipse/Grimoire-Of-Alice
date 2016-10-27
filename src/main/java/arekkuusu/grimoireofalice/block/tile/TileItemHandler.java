@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.block.tile;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,10 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nonnull;
 
 public class TileItemHandler extends TileEntity {
 
@@ -79,9 +78,9 @@ public class TileItemHandler extends TileEntity {
 	@Nonnull
 	@Override
 	public <T> T getCapability(@Nonnull Capability<T> capability, @Nonnull EnumFacing side) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler);
-		return super.getCapability(capability, side);
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+				? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler)
+				: super.getCapability(capability, side);
 	}
 
 	protected static class ItemStackHandlerTile extends ItemStackHandler {
@@ -101,16 +100,14 @@ public class TileItemHandler extends TileEntity {
 
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-			if (allow) {
-				return super.insertItem(slot, stack, simulate);
-			} else return stack;
+			if(allow) return super.insertItem(slot, stack, simulate);
+			else return stack;
 		}
 
 		@Override
 		public ItemStack extractItem(int slot, int amount, boolean simulate) {
-			if (allow) {
-				return super.extractItem(slot, amount, simulate);
-			} else return null;
+			if(allow) return super.extractItem(slot, amount, simulate);
+			else return null;
 		}
 
 		@Override

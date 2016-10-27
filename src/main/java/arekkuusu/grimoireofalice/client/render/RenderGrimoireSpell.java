@@ -25,20 +25,20 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
 	private static final ModelBase MODEL = new ModelFlatTexture();
-	
+
 	public RenderGrimoireSpell(RenderManager renderManager) {
 		super(renderManager);
 	}
 
 	@Override
-    public void doRender(EntityGrimoireSpell circle, double x, double y, double z, float yaw, float pitch) {
+	public void doRender(EntityGrimoireSpell circle, double x, double y, double z, float yaw, float pitch) {
 
 		//TODO: Name variables here
 		GlStateManager.pushMatrix();
 		bindEntityTexture(circle);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.disableLighting();
-		float size = 6.0F - (circle.getTickCount() * 0.01F);
+		float size = 6.0F - circle.getTickCount() * 0.01F;
 		GlStateManager.scale(size, size, size);
 		GlStateManager.rotate(circle.getTickCount() * 16F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(circle, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
@@ -55,41 +55,41 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		while(f1 >= Math.PI) {
 			f1 -= Math.PI * 2F;
 		}
-		while (f1 < -Math.PI) {
+		while(f1 < -Math.PI) {
 			f1 += Math.PI * 2F;
 		}
 
 		float f2 = circle.getBookRotationPrev() + f1 * 5;
 		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
-		this.bindTexture(TEXTURE_BOOK);
+		bindTexture(TEXTURE_BOOK);
 		float f3 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
 		float f4 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
 		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
 		f4 = (f4 - MathHelper.truncateDoubleToInt(f4)) * 1.6F - 0.3F;
 
-		if (f3 < 0.0F) {
+		if(f3 < 0.0F) {
 			f3 = 0.0F;
 		}
 
-		if (f4 < 0.0F) {
+		if(f4 < 0.0F) {
 			f4 = 0.0F;
 		}
 
-		if (f3 > 1.0F) {
+		if(f3 > 1.0F) {
 			f3 = 1.0F;
 		}
 
-		if (f4 > 1.0F) {
+		if(f4 > 1.0F) {
 			f4 = 1.0F;
 		}
 
 		float f5 = circle.getBookSpreadPrev() + (circle.getBookSpread() - circle.getBookSpreadPrev()) * 5;
 		GlStateManager.enableCull();
-		this.modelBook.render(null, f, f3, f4, f5, 0.0F, 0.0625F);
+		modelBook.render(null, f, f3, f4, f5, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();
 	}
-	
+
 	@Override
 	protected ResourceLocation getEntityTexture(EntityGrimoireSpell circle) {
 		return CIRCLE_TEXTURE;

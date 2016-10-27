@@ -39,17 +39,18 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Heavenly jeweled spear");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + "Once used to raise the");
 			list.add(TextFormatting.ITALIC + "primordial land-mass,");
 			list.add(TextFormatting.ITALIC + "Onogoro-shima, from the sea");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
@@ -79,17 +80,15 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
-			float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX,
+			float hitY, float hitZ) {
 		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
 
 		//TODO: Replace with structure, structure is already in assets
 		if(isOwner(stack, player)) {
 			pos = pos.offset(facing);
 
-			if(!player.canPlayerEdit(new BlockPos(hitX, hitY, hitZ), facing, stack)) {
-				return EnumActionResult.PASS;
-			}
+			if(!player.canPlayerEdit(new BlockPos(hitX, hitY, hitZ), facing, stack)) return EnumActionResult.PASS;
 			else {
 				player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
@@ -141,9 +140,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 			}
 			return EnumActionResult.SUCCESS;
 		}
-		else {
-			return EnumActionResult.PASS;
-		}
+		else return EnumActionResult.PASS;
 	}
 
 	private void replaceAirCompact(World world, BlockPos pos) {

@@ -54,7 +54,9 @@ public class BlockRope extends BlockMod {
 		state.neighborChanged(worldIn, pos, Blocks.AIR);
 	}
 
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	@Override
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+			EntityLivingBase placer) {
 		IBlockState iblockstate = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
 		iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing()).withProperty(SHAPE, BlockStairs.EnumShape.STRAIGHT);
 		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F) ?
@@ -65,7 +67,7 @@ public class BlockRope extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState iblockstate = this.getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
+		IBlockState iblockstate = getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
 		iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(5 - (meta & 3)));
 		return iblockstate;
 	}
@@ -74,11 +76,11 @@ public class BlockRope extends BlockMod {
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 
-		if (state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
+		if(state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
 			i |= 4;
 		}
 
-		i = i | 5 - (state.getValue(FACING)).getIndex();
+		i = i | 5 - state.getValue(FACING).getIndex();
 		return i;
 	}
 
@@ -92,13 +94,12 @@ public class BlockRope extends BlockMod {
 		EnumFacing enumfacing = blockState.getValue(FACING);
 		IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumfacing));
 
-		if (isBlockRope(iblockstate) && blockState.getValue(HALF) == iblockstate.getValue(HALF)) {
+		if(isBlockRope(iblockstate) && blockState.getValue(HALF) == iblockstate.getValue(HALF)) {
 			EnumFacing enumfacing1 = iblockstate.getValue(FACING);
 
-			if (enumfacing1.getAxis() != (blockState.getValue(FACING)).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, enumfacing1.getOpposite())) {
-				if (enumfacing1 == enumfacing.rotateYCCW()) {
-					return BlockStairs.EnumShape.OUTER_LEFT;
-				}
+			if(enumfacing1.getAxis() != blockState.getValue(FACING).getAxis()
+					&& isDifferentRope(blockState, blockAccess, blockPos, enumfacing1.getOpposite())) {
+				if(enumfacing1 == enumfacing.rotateYCCW()) return BlockStairs.EnumShape.OUTER_LEFT;
 
 				return BlockStairs.EnumShape.OUTER_RIGHT;
 			}
@@ -106,13 +107,11 @@ public class BlockRope extends BlockMod {
 
 		IBlockState iblockstate1 = blockAccess.getBlockState(blockPos.offset(enumfacing.getOpposite()));
 
-		if (isBlockRope(iblockstate1) && blockState.getValue(HALF) == iblockstate1.getValue(HALF)) {
+		if(isBlockRope(iblockstate1) && blockState.getValue(HALF) == iblockstate1.getValue(HALF)) {
 			EnumFacing enumfacing2 = iblockstate1.getValue(FACING);
 
-			if (enumfacing2.getAxis() != (blockState.getValue(FACING)).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, enumfacing2)) {
-				if (enumfacing2 == enumfacing.rotateYCCW()) {
-					return BlockStairs.EnumShape.INNER_LEFT;
-				}
+			if(enumfacing2.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, enumfacing2)) {
+				if(enumfacing2 == enumfacing.rotateYCCW()) return BlockStairs.EnumShape.INNER_LEFT;
 
 				return BlockStairs.EnumShape.INNER_RIGHT;
 			}
@@ -123,7 +122,9 @@ public class BlockRope extends BlockMod {
 
 	private static boolean isDifferentRope(IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing facing) {
 		IBlockState otherState = blockAccess.getBlockState(pos.offset(facing));
-		return !isBlockRope(otherState) || otherState.getValue(FACING) != state.getValue(FACING) || otherState.getValue(HALF) != state.getValue(HALF);
+		return !isBlockRope(otherState)
+				|| (otherState.getValue(FACING) != state.getValue(FACING))
+				|| (otherState.getValue(HALF) != state.getValue(HALF));
 	}
 
 	public static boolean isBlockRope(IBlockState state) {
@@ -142,11 +143,11 @@ public class BlockRope extends BlockMod {
 		EnumFacing enumfacing = state.getValue(FACING);
 		BlockStairs.EnumShape shape = state.getValue(SHAPE);
 
-		switch (mirrorIn) {
+		switch(mirrorIn) {
 			case LEFT_RIGHT:
 
-				if (enumfacing.getAxis() == EnumFacing.Axis.Z) {
-					switch (shape) {
+				if(enumfacing.getAxis() == EnumFacing.Axis.Z) {
+					switch(shape) {
 						case OUTER_LEFT:
 							return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_RIGHT);
 						case OUTER_RIGHT:
@@ -163,8 +164,8 @@ public class BlockRope extends BlockMod {
 				break;
 			case FRONT_BACK:
 
-				if (enumfacing.getAxis() == EnumFacing.Axis.X) {
-					switch (shape) {
+				if(enumfacing.getAxis() == EnumFacing.Axis.X) {
+					switch(shape) {
 						case OUTER_LEFT:
 							return state.withRotation(Rotation.CLOCKWISE_180).withProperty(SHAPE, BlockStairs.EnumShape.OUTER_RIGHT);
 						case OUTER_RIGHT:
@@ -182,6 +183,7 @@ public class BlockRope extends BlockMod {
 		return super.withMirror(state, mirrorIn);
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, FACING, HALF, SHAPE);
 	}

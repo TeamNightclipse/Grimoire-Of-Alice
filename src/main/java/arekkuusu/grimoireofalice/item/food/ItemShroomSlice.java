@@ -56,11 +56,12 @@ public class ItemShroomSlice extends ItemModFood {
 		player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));
 
-		if (stack.getItemDamage() == 16) {
+		if(stack.getItemDamage() == 16) {
 			player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
 			player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2400, 1));
 			player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 2400, 0));
-		} else {
+		}
+		else {
 			super.onFoodEaten(stack, world, player);
 		}
 	}
@@ -73,7 +74,7 @@ public class ItemShroomSlice extends ItemModFood {
 
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> list) {
-		for (int i = 0; i < 17; i++){
+		for(int i = 0; i < 17; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}

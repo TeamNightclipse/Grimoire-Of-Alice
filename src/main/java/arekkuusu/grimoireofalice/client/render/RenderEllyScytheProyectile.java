@@ -27,7 +27,7 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	public RenderEllyScytheProyectile(RenderManager renderManager) {
 		super(renderManager);
-		this.renderItem = Minecraft.getMinecraft().getRenderItem();
+		renderItem = Minecraft.getMinecraft().getRenderItem();
 	}
 
 	@Override

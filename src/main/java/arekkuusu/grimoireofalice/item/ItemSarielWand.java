@@ -9,6 +9,8 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
+
+import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,7 +27,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemSarielWand extends ItemSwordOwner {
 
@@ -54,7 +55,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
 		if(!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-		if(isOwner(itemStackIn, player)){
+		if(isOwner(itemStackIn, player)) {
 			if(!worldIn.isRemote) {
 				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ - 5.0, false));
 				worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, player.posX - 5.0, player.posY, player.posZ, false));
@@ -71,7 +72,8 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		worldIn.setBlockState(pos.up(1), Blocks.SKULL.getDefaultState());
 		return EnumActionResult.SUCCESS;
 	}

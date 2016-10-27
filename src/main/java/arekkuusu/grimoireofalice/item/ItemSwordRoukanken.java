@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
@@ -10,15 +12,16 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemSwordRoukanken extends ItemModSword {
 
@@ -35,10 +38,11 @@ public class ItemSwordRoukanken extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Long-bladed katana said to be made by youkai");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + " \"The things that cannot be cut by my Roukanken,");
 			list.add(TextFormatting.ITALIC + " forged by youkai, are close to none!\"");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
@@ -51,24 +55,25 @@ public class ItemSwordRoukanken extends ItemModSword {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer & isSelected) {
-			EntityPlayer player = (EntityPlayer) entityIn;
+		if(entityIn instanceof EntityPlayer & isSelected) {
+			EntityPlayer player = (EntityPlayer)entityIn;
 			Vec3d vec = player.getLookVec();
-			if (Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ) > 3.0) {
+			if(Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ) > 3.0) {
 				List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
 						player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
-				for (Entity entity : list) {
-					if (!entity.canBeCollidedWith()) {
+				for(Entity entity : list) {
+					if(!entity.canBeCollidedWith()) {
 						continue;
 					}
-					if (entity instanceof EntityLivingBase) {
+					if(entity instanceof EntityLivingBase) {
 						EntityLivingBase living = (EntityLivingBase)entity;
-						if (player.canEntityBeSeen(living)) {
+						if(player.canEntityBeSeen(living)) {
 							if(!worldIn.isRemote) {
-								if (living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+								if(living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 									living.attackEntityFrom(DamageSource.causeMobDamage(player), 16.0F);
 									player.onEnchantmentCritical(living);
-								} else {
+								}
+								else {
 									living.attackEntityFrom(DamageSource.causeMobDamage(player), 8F);
 								}
 							}
@@ -90,16 +95,16 @@ public class ItemSwordRoukanken extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if(timeUsed > 30 ){
+			if(timeUsed > 30) {
 				timeUsed = 30;
 			}
 			double speed = timeUsed * 0.3;
 			player.motionX = -Math.sin(Math.toRadians(player.rotationYaw)) * speed;
 			player.motionZ = Math.cos(Math.toRadians(player.rotationYaw)) * speed;
-			if (!player.capabilities.isCreativeMode) {
+			if(!player.capabilities.isCreativeMode) {
 				player.addExhaustion(1.5F);
 			}
 			stack.damageItem(1, player);

@@ -1,8 +1,9 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityNeedle;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,14 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemNeedle extends ItemModSword {
 
@@ -53,30 +50,30 @@ public class ItemNeedle extends ItemModSword {
 			EntityPlayer entityplayer = (EntityPlayer)entityLiving;
 
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if (timeUsed < 3) return;
-			float convert = (timeUsed * 6) / 20F;
+			if(timeUsed < 3) return;
+			float convert = timeUsed * 6 / 20F;
 			convert = (convert * convert + convert * 2.0F) / 3F;
-			if (convert < 0.1F) return;
+			if(convert < 0.1F) return;
 
 			boolean isLoli = false;
-			if (convert > 1.5F) {
+			if(convert > 1.5F) {
 				convert = 1.5F;
 				isLoli = true;
 			}
 			convert *= 1.5F;
 
 			entityplayer.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			if (!worldIn.isRemote) {
+			if(!worldIn.isRemote) {
 				EntityNeedle entityNeedle = new EntityNeedle(worldIn, entityplayer);
 				entityNeedle.setIsCritical(isLoli);
 				entityNeedle.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 5.0F, convert, 1.0F);
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
+				if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
 					entityNeedle.setFire(100);
 				}
 				worldIn.spawnEntityInWorld(entityNeedle);
 			}
 
-			if (!entityplayer.capabilities.isCreativeMode) {
+			if(!entityplayer.capabilities.isCreativeMode) {
 				stack.damageItem(1, entityplayer);
 			}
 		}

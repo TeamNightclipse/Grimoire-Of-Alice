@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class EntityEllyScythe extends EntityThrow {
 
-	private static final double RETURN_STRENGTH	= 0.05D;
+	private static final double RETURN_STRENGTH = 0.05D;
 	private static final float MIN_FLOAT_STRENGTH = 0.4F;
 	private float strength;
 
@@ -35,25 +35,25 @@ public class EntityEllyScythe extends EntityThrow {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
 		if(thrower == null) {
-			if (!worldObj.isRemote) {
+			if(!worldObj.isRemote) {
 				setDead();
 			}
 		}
-		if (inGround) return;
+		if(inGround) return;
 
 		strength *= 0.994F;
-		if (strength < MIN_FLOAT_STRENGTH) {
-			if (getCritical()) {
+		if(strength < MIN_FLOAT_STRENGTH) {
+			if(getCritical()) {
 				setCritical(false);
 			}
 			strength = 0F;
 		}
 
-		if (!inGround) {
+		if(!inGround) {
 			rotationYaw += 20F * strength;
 		}
 
-		if (!inGround && getThrower() != null && strength > 0F) {
+		if(!inGround && getThrower() != null && strength > 0F) {
 			EntityLivingBase shootingEntity = getThrower();
 			double dx;
 			double dy;
@@ -72,7 +72,7 @@ public class EntityEllyScythe extends EntityThrow {
 			motionZ -= RETURN_STRENGTH * dz;
 		}
 
-		if (throwableShake > 0) {
+		if(throwableShake > 0) {
 			--throwableShake;
 		}
 
@@ -81,10 +81,11 @@ public class EntityEllyScythe extends EntityThrow {
 		posZ += motionZ;
 
 		float res = 0.99F;
-		if (isInWater()) {
-			for (int i = 0; i < 4; i++) {
+		if(isInWater()) {
+			for(int i = 0; i < 4; i++) {
 				float f6 = 0.25F;
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX, motionY, motionZ);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX,
+						motionY, motionZ);
 			}
 			res *= 0.80808080F;
 		}

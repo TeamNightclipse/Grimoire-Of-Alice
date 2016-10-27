@@ -13,10 +13,32 @@ import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.client.render.*;
+import arekkuusu.grimoireofalice.client.render.RenderBarrier;
+import arekkuusu.grimoireofalice.client.render.RenderCameraSquare;
+import arekkuusu.grimoireofalice.client.render.RenderCursedDecoyDoll;
+import arekkuusu.grimoireofalice.client.render.RenderDragonJewel;
+import arekkuusu.grimoireofalice.client.render.RenderEllyScytheProyectile;
+import arekkuusu.grimoireofalice.client.render.RenderGrimoireSpell;
+import arekkuusu.grimoireofalice.client.render.RenderHakureiOrb;
+import arekkuusu.grimoireofalice.client.render.RenderMagicCircle;
+import arekkuusu.grimoireofalice.client.render.RenderNazrinPendulum;
+import arekkuusu.grimoireofalice.client.render.RenderNeedle;
+import arekkuusu.grimoireofalice.client.render.RenderStopWatch;
+import arekkuusu.grimoireofalice.client.render.RenderUnzanFist;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
-import arekkuusu.grimoireofalice.entity.*;
+import arekkuusu.grimoireofalice.entity.EntityBarrier;
+import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
+import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
+import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
+import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
+import arekkuusu.grimoireofalice.entity.EntityHakureiOrb;
+import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
+import arekkuusu.grimoireofalice.entity.EntityNeedle;
+import arekkuusu.grimoireofalice.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.event.MalletEvent;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
@@ -38,7 +60,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
-public class ClientProxy extends CommonProxy{
+public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
@@ -46,7 +68,7 @@ public class ClientProxy extends CommonProxy{
 		initRenderers();
 		MinecraftForge.EVENT_BUS.register(new MalletEvent());
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
@@ -188,12 +210,12 @@ public class ClientProxy extends CommonProxy{
 			registerItem(ModItems.HISOU, 0);
 		}
 	}
-	
+
 	private void initRenderers() {
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityDragonJewel.class, RenderDragonJewel::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityUnzanFist.class, RenderUnzanFist::new);
@@ -207,7 +229,7 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());
 	}
-	
+
 	private static void registerItem(Item item, int damage) {
 		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
@@ -227,15 +249,15 @@ public class ClientProxy extends CommonProxy{
 	}
 
 	private static void registerItemWithTypes(Item item, int damage) {
-		for (int i = 0; i < damage; i++) {
+		for(int i = 0; i < damage; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroomslice_" + i, "inventory"));
 		}
 	}
 
-	private static void registerBlockWithColorTypes(Block block, int meta){
+	private static void registerBlockWithColorTypes(Block block, int meta) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
-		for (int i = 0; i < meta; i++) {
+		for(int i = 0; i < meta; i++) {
 			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
 		}
 	}

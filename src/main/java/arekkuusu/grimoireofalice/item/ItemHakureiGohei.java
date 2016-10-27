@@ -1,21 +1,26 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -25,8 +30,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemHakureiGohei extends ItemMod {
 
@@ -74,11 +77,9 @@ public class ItemHakureiGohei extends ItemMod {
 					worldIn.spawnEntityInWorld(orb);
 				}
 			}
-			else if(mode == 3 || mode == 4) {
+			else if((mode == 3 || mode == 4) && !worldIn.isRemote) {
 				EntityBarrier barrier = new EntityBarrier(worldIn, playerIn, mode);
-				if(!worldIn.isRemote) {
-					worldIn.spawnEntityInWorld(barrier);
-				}
+				worldIn.spawnEntityInWorld(barrier);
 			}
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
@@ -115,9 +116,9 @@ public class ItemHakureiGohei extends ItemMod {
 			}
 			if(entity != null && !player.worldObj.isRemote) {
 				float distance = 5F;
-				double dx = player.posX + (look.xCoord * distance);
-				double dy = player.posY + 2 + (look.yCoord * distance);
-				double dz = player.posZ + (look.zCoord * distance);
+				double dx = player.posX + look.xCoord * distance;
+				double dy = player.posY + 2 + look.yCoord * distance;
+				double dz = player.posZ + look.zCoord * distance;
 				if(isSafe(player.worldObj, dx, dy, dz)) {
 					entity.motionY = 0D;
 					entity.fallDistance = 0;
@@ -129,20 +130,21 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (playerIn.isSneaking()) {
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer playerIn = (EntityPlayer)entityLiving;
+			if(playerIn.isSneaking()) {
 				byte mode = (byte)MathHelper.clamp_int(getMode(stack) + 1, 0, 5);
 				setMode(stack, mode);
-			} else {
+			}
+			else {
 				byte mode = getMode(stack);
-				if (mode == 0) {
+				if(mode == 0) {
 					Vec3d look = playerIn.getLookVec();
 					float distance = 5F;
-					double dx = playerIn.posX + (look.xCoord * distance);
-					double dy = playerIn.posY + 1 + (look.yCoord * distance);
-					double dz = playerIn.posZ + (look.zCoord * distance);
-					if (isSafe(worldIn, dx, dy, dz)) {
+					double dx = playerIn.posX + look.xCoord * distance;
+					double dy = playerIn.posY + 1 + look.yCoord * distance;
+					double dz = playerIn.posZ + look.zCoord * distance;
+					if(isSafe(worldIn, dx, dy, dz)) {
 						playerIn.setPosition(dx, dy, dz);
 					}
 				}
@@ -190,7 +192,7 @@ public class ItemHakureiGohei extends ItemMod {
 		return nbt == null ? 0 : nbt.getByte("GoheiMode");
 	}
 
-	private boolean isSafe(World world, double x, double y, double z){
+	private boolean isSafe(World world, double x, double y, double z) {
 		if(y < 0) return false;
 		BlockPos pos = new BlockPos(x, y, z);
 		IBlockState state = world.getBlockState(pos);

@@ -1,20 +1,23 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemTenguCamera extends ItemMod {
 
@@ -22,8 +25,8 @@ public class ItemTenguCamera extends ItemMod {
 		super(id);
 		setMaxDamage(200);
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("takingPhoto"), (stack, world, entity) ->
-				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
+		addPropertyOverride(new ResourceLocation("takingPhoto"),
+				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -39,13 +42,13 @@ public class ItemTenguCamera extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isRemote){
+		if(!worldIn.isRemote) {
 			EntityCameraSquare camera = new EntityCameraSquare(worldIn, playerIn);
 			Vec3d look = playerIn.getLookVec();
 			float distance = 4F;
-			double dx = playerIn.posX + (look.xCoord * distance);
-			double dy = playerIn.posY + 2 + (look.yCoord * distance);
-			double dz = playerIn.posZ + (look.zCoord * distance);
+			double dx = playerIn.posX + look.xCoord * distance;
+			double dy = playerIn.posY + 2 + look.yCoord * distance;
+			double dz = playerIn.posZ + look.zCoord * distance;
 			camera.setPosition(dx, dy, dz);
 			worldIn.spawnEntityInWorld(camera);
 		}
@@ -68,11 +71,10 @@ public class ItemTenguCamera extends ItemMod {
 		}
 	}
 
-	public List<EntityLivingBase> getEntities(EntityLivingBase player){
+	public List<EntityLivingBase> getEntities(EntityLivingBase player) {
 		Vec3d vec = player.getLookVec();
 		return player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
-				player.getEntityBoundingBox().offset(vec.xCoord * 5, vec.yCoord * 5, vec.zCoord * 5).expandXyz(4),
-				entity -> entity != player);
+				player.getEntityBoundingBox().offset(vec.xCoord * 5, vec.yCoord * 5, vec.zCoord * 5).expandXyz(4), entity -> entity != player);
 	}
 
 	@Override

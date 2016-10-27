@@ -35,8 +35,8 @@ public class BlockModPillar extends BlockMod {
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis) {
 		IBlockState state = world.getBlockState(pos);
-		for (IProperty<?> prop : state.getProperties().keySet()) {
-			if (prop.getName().equals("axis")) {
+		for(IProperty<?> prop : state.getProperties().keySet()) {
+			if(prop.getName().equals("axis")) {
 				world.setBlockState(pos, state.cycleProperty(prop));
 				return true;
 			}
@@ -45,16 +45,16 @@ public class BlockModPillar extends BlockMod {
 	}
 
 	/**
-	 * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
-	 * blockstate.
+	 * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable,
+	 * returns the passed blockstate.
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		switch (rot) {
+		switch(rot) {
 			case COUNTERCLOCKWISE_90:
 			case CLOCKWISE_90:
-				switch (state.getValue(AXIS)) {
+				switch(state.getValue(AXIS)) {
 					case X:
 						return state.withProperty(AXIS, EnumFacing.Axis.Z);
 					case Z:
@@ -76,14 +76,14 @@ public class BlockModPillar extends BlockMod {
 		EnumFacing.Axis facing = EnumFacing.Axis.Y;
 		int i = meta & 12;
 
-		if (i == 4) {
+		if(i == 4) {
 			facing = EnumFacing.Axis.X;
 		}
-		else if (i == 8) {
+		else if(i == 8) {
 			facing = EnumFacing.Axis.Z;
 		}
 
-		return this.getDefaultState().withProperty(AXIS, facing);
+		return getDefaultState().withProperty(AXIS, facing);
 	}
 
 	/**
@@ -94,10 +94,10 @@ public class BlockModPillar extends BlockMod {
 		int i = 0;
 		EnumFacing.Axis facing = state.getValue(AXIS);
 
-		if (facing == EnumFacing.Axis.X) {
+		if(facing == EnumFacing.Axis.X) {
 			i |= 4;
 		}
-		else if (facing == EnumFacing.Axis.Z) {
+		else if(facing == EnumFacing.Axis.Z) {
 			i |= 8;
 		}
 
@@ -117,11 +117,12 @@ public class BlockModPillar extends BlockMod {
 	}
 
 	/**
-	 * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
-	 * IBlockstate
+	 * Called by ItemBlocks just before a block is actually set in the world, to allow for
+	 * adjustments to the IBlockstate
 	 */
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+			EntityLivingBase placer) {
 		return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, facing.getAxis());
 	}
 }

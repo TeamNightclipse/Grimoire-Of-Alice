@@ -18,8 +18,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -50,14 +48,14 @@ public class ItemUFOs extends ItemMod {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GRAY + "Gathers items around the player");
 		list.add(TextFormatting.ITALIC + "Does not work with point items");
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean selected) {
 		if(entity instanceof EntityPlayer) {
@@ -67,7 +65,7 @@ public class ItemUFOs extends ItemMod {
 			}
 		}
 	}
-	
+
 	private void itemsInRange(World world, EntityPlayer player, double range) {
 		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(range));
 
@@ -82,18 +80,18 @@ public class ItemUFOs extends ItemMod {
 			givePlayerItems(item, player);
 		}
 	}
-	
+
 	private void givePlayerItems(EntityItem item, EntityPlayer player) {
-        player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + itemRand.nextGaussian() / 8,
-				item.posY + 0.2D, item.posZ + itemRand.nextGaussian() / 8, 0D, 0.9D, 0.0D);
+		player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + itemRand.nextGaussian() / 8, item.posY + 0.2D,
+				item.posZ + itemRand.nextGaussian() / 8, 0D, 0.9D, 0.0D);
 		Vec3d look = player.getLookVec();
 		double x = player.posX + look.xCoord * 0.2D;
-        double y = player.posY - player.height / 2F;
-        double z = player.posZ + look.zCoord * 0.2D;
-        item.setPosition(x, y, z);
+		double y = player.posY - player.height / 2F;
+		double z = player.posZ + look.zCoord * 0.2D;
+		item.setPosition(x, y, z);
 		player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.1F, 0.5F * ((itemRand.nextFloat() - itemRand.nextFloat()) * 0.7F + 1.8F));
 	}
-	
+
 	@SuppressWarnings("ConstantConditions")
 	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {
 		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)

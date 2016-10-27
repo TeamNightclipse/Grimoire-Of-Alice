@@ -43,7 +43,7 @@ public class ItemYoukaiBook extends ItemMod {
 		list.add(TextFormatting.GOLD + "Completely normal book");
 		list.add(TextFormatting.ITALIC + "With the exception of containing unknown scriptures");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(worldIn.isRemote) {
@@ -51,16 +51,16 @@ public class ItemYoukaiBook extends ItemMod {
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-		
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BLOCK;
-    }
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
-    }
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {

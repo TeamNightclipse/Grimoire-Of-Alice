@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GOACreativeTab extends CreativeTabs {
 
 	private List<ItemStack> list;
-	
+
 	GOACreativeTab() {
 		super(LibMod.MODID);
 		setNoTitle();
@@ -34,7 +34,7 @@ public class GOACreativeTab extends CreativeTabs {
 	public ItemStack getIconItemStack() {
 		return new ItemStack(ModItems.GRIMOIRE_BOOK);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() {
@@ -45,7 +45,7 @@ public class GOACreativeTab extends CreativeTabs {
 	public boolean hasSearchBar() {
 		return false;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void displayAllRelevantItems(List<ItemStack> list) {
@@ -102,7 +102,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.TENGU_FAN);
 		addItem(ModItems.HAKUREI_GOHEI);
 		addItem(ModItems.SANAE_GOHEI);
-        addItem(ModItems.NAZRIN_PENDULUM);
+		addItem(ModItems.NAZRIN_PENDULUM);
 		addItem(ModItems.GHOST_DIPPER);
 		addItem(ModItems.WALL_PASSING_CHISEL);
 		addItem(ModItems.MIRACLE_MALLET);
@@ -122,7 +122,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.AYA_CAMERA);
 		addItem(ModItems.HATATE_CAMERA);
 		addItem(ModItems.STOP_WATCH);
-		
+
 		//Food
 		addItem(ModItems.GRILLED_LAMPREY);
 		addItem(ModItems.IBARAKI_BOX_EMPTY);
@@ -133,7 +133,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.COWRIE_SHELL);
 		addItem(ModItems.ORB_ELIXIR);
 		addItem(ModItems.HOURAI_ELIXIR);
-		
+
 		//Armor
 		addItem(ModItems.MAPLE_LEAF_SHIELD);
 		addItem(ModItems.FOX_MASK);
@@ -152,12 +152,12 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.UTSUHO_AURA);
 		addItem(ModItems.KANAKO_AURA);
 		addItem(ModItems.ICHIRIN_AURA);
-        addItem(ModItems.SUWAKO_HAT);
+		addItem(ModItems.SUWAKO_HAT);
 		addItem(ModItems.FIRE_ROBE);
 		addItem(ModItems.KAPPA_HAT);
 		addItem(ModItems.MARISA_HAT);
 		addItem(ModItems.MIKO_CAPE);
-		
+
 		//Weapons
 		addItem(ModItems.AMENONUHOKO);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {

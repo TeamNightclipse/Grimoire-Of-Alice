@@ -1,16 +1,16 @@
 package arekkuusu.grimoireofalice.item.crafting;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RecipeItems implements IRecipeItems {
 
@@ -21,12 +21,8 @@ public class RecipeItems implements IRecipeItems {
 		this.result = result;
 
 		List<Object> stackedList = Arrays.stream(inputs).map(obj -> {
-			if(obj instanceof Item) {
-				return new ItemStack((Item)obj);
-			}
-			else if(obj instanceof Block) {
-				return new ItemStack((Block)obj);
-			}
+			if(obj instanceof Item) return new ItemStack((Item)obj);
+			else if(obj instanceof Block) return new ItemStack((Block)obj);
 			else return obj;
 		}).collect(Collectors.toList());
 
@@ -36,13 +32,13 @@ public class RecipeItems implements IRecipeItems {
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
 		List<Object> toCompare = new ArrayList<>(neededItems);
-		if (toCompare.size() != usedItems.size()) return false;
+		if(toCompare.size() != usedItems.size()) return false;
 
-		for (ItemStack stack : usedItems) {
+		for(ItemStack stack : usedItems) {
 			int index = -1;
-			for (int j = 0; j < toCompare.size(); j++) {
+			for(int j = 0; j < toCompare.size(); j++) {
 				Object obj = toCompare.get(j);
-				if (obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack)obj)) {
+				if(obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack)obj)) {
 					index = j;
 					break;
 				}
@@ -50,9 +46,10 @@ public class RecipeItems implements IRecipeItems {
 
 				}
 			}
-			if (index != -1) {
+			if(index != -1) {
 				toCompare.remove(index);
-			} else return false;
+			}
+			else return false;
 		}
 		return toCompare.isEmpty();
 	}

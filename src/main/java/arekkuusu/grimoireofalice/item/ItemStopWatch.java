@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,15 +19,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
 public class ItemStopWatch extends ItemMod {
 
 	public ItemStopWatch() {
 		super(LibItemName.STOP_WATCH);
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("using"), (stack, world, entity) ->
-				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
+		addPropertyOverride(new ResourceLocation("using"),
+				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -54,20 +54,21 @@ public class ItemStopWatch extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(!worldIn.isRemote) {
 				EntityStopWatch watch = new EntityStopWatch(worldIn, player);
 				Vec3d look = player.getLookVec();
 				float distance = 1F;
-				double dx = player.posX + (look.xCoord);
+				double dx = player.posX + look.xCoord;
 				double dy = player.posY + player.getEyeHeight() - 1;
-				double dz = player.posZ + (look.zCoord * distance);
+				double dz = player.posZ + look.zCoord * distance;
 				watch.setPosition(dx, dy, dz);
 				worldIn.spawnEntityInWorld(watch);
 			}
-			if(!player.capabilities.isCreativeMode)
-			--stack.stackSize;
+			if(!player.capabilities.isCreativeMode) {
+				--stack.stackSize;
+			}
 		}
 	}
 

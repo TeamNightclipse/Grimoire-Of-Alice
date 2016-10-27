@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.item.food;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import net.minecraft.item.ItemFood;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModFood extends ItemFood {
 

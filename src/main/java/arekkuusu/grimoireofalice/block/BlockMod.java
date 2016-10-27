@@ -23,8 +23,8 @@ public class BlockMod extends Block {
 		setRegistryName(id);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
 	}
-	
-	public Block setSound(SoundType type){
+
+	public Block setSound(SoundType type) {
 		return super.setSoundType(type);
 	}
 

@@ -25,7 +25,8 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_2.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_3.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png"),
-			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_5.png")};
+			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_5.png")
+	};
 	private static final ModelBase MODEL = new ModelFlatTexture();
 
 	public RenderMagicCircle(RenderManager renderManager) {
@@ -33,7 +34,7 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 	}
 
 	@Override
-    public void doRender(EntityMagicCircle circle, double x, double y, double z, float partialTicks, float destroyStage) {
+	public void doRender(EntityMagicCircle circle, double x, double y, double z, float partialTicks, float destroyStage) {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(circle);
 		GlStateManager.translate(x, y, z);
@@ -47,7 +48,7 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
-	
+
 	@Override
 	protected ResourceLocation getEntityTexture(EntityMagicCircle circle) {
 		int numTexture = circle.getTexture();

@@ -43,12 +43,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHolyStone extends BlockMod {
-	
+
 	private static final AxisAlignedBB SMALL = new AxisAlignedBB(0.1875F, 0.1875F, 0.1875F, 1F - 0.1875F, 1F - 0.1875F, 1F - 0.1875F);
 	private final Map<Item, Consumer<EntityPlayer>> effects = effectsMap();
 
 	public BlockHolyStone() {
-		super(LibBlockName.HOLY_STONE,Material.ROCK);
+		super(LibBlockName.HOLY_STONE, Material.ROCK);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("pickaxe", 1);
@@ -92,9 +92,11 @@ public class BlockHolyStone extends BlockMod {
 			ifNear(world, pos);
 			world.scheduleUpdate(pos, this, 10); //Update more frequently if a player is around
 		}
-		else world.scheduleUpdate(pos, this, tickRate(world));
+		else {
+			world.scheduleUpdate(pos, this, tickRate(world));
+		}
 	}
-	
+
 	protected void addPlayerEffect(EntityPlayer player) {
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 50, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 50, 1));
@@ -111,13 +113,10 @@ public class BlockHolyStone extends BlockMod {
 	}
 
 	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
-		if(world.isRaining()) {
-			return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false));
-		}
-
-		return Optional.empty();
+		if(world.isRaining()) return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false));
+		else return Optional.empty();
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
@@ -133,28 +132,28 @@ public class BlockHolyStone extends BlockMod {
 
 		return false;
 	}
-	
+
 	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
-	
+
 	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-	
+		return false;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-	
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
+
 	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return SMALL;
 	}
 }

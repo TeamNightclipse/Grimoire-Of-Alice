@@ -25,15 +25,15 @@ public class GrimoireOfAlice {
 
 	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab();
 	public static boolean danmakuCoreInstalled;
-	
+
 	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
-	
+
 	@SidedProxy(serverSide = LibMod.PROXYCOMMON, clientSide = LibMod.PROXYCLIENT)
 	public static CommonProxy proxy;
 
 	@EventHandler
-	public void construct(FMLConstructionEvent event){
+	public void construct(FMLConstructionEvent event) {
 		danmakuCoreInstalled = Loader.isModLoaded("danmakucore");
 	}
 
@@ -49,9 +49,10 @@ public class GrimoireOfAlice {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		if(danmakuCoreInstalled){
+		if(danmakuCoreInstalled) {
 			LogHelper.info("is 42");
-		} else {
+		}
+		else {
 			LogHelper.info("is her");
 		}
 	}

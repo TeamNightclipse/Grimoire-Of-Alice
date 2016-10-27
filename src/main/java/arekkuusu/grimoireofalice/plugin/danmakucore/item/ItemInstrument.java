@@ -17,8 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatBase;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -31,8 +29,8 @@ public class ItemInstrument extends ItemMod {
 		super(id);
 		setMaxDamage(500);
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("playing"), (stack, world, entity) ->
-				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
+		addPropertyOverride(new ResourceLocation("playing"),
+				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -48,12 +46,13 @@ public class ItemInstrument extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(player instanceof EntityPlayer){
-			if (!player.worldObj.isRemote) {
+		if(player instanceof EntityPlayer) {
+			if(!player.worldObj.isRemote) {
 				EntityDanmaku danmaku = DanmakuBuilder.builder()
 						.setUser(player)
 						.setMovementData(1.5D)
-						.setShot(LibGOAShotData.NOTE).build().asEntity();
+						.setShot(LibGOAShotData.NOTE)
+						.build().asEntity();
 				player.worldObj.spawnEntityInWorld(danmaku);
 			}
 		}
@@ -62,7 +61,7 @@ public class ItemInstrument extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		EntityPlayer playerIn = (EntityPlayer)entityLiving;
-		if (!playerIn.capabilities.isCreativeMode) {
+		if(!playerIn.capabilities.isCreativeMode) {
 			int hurr = (getMaxItemUseDuration(stack) - timeLeft) / 2;
 			stack.damageItem(hurr, playerIn);
 			playerIn.getCooldownTracker().setCooldown(this, 50);

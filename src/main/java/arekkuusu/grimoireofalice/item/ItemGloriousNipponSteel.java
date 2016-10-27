@@ -24,7 +24,7 @@ public class ItemGloriousNipponSteel extends ItemMod {
 		super(LibItemName.GLORIOUS_NIPPON_STEEL);
 		setMaxStackSize(16);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;

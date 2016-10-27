@@ -23,7 +23,7 @@ public class ItemViolin extends ItemInstrument {
 	public ItemViolin() {
 		super(LibItemName.LUNASA_VIOLIN);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

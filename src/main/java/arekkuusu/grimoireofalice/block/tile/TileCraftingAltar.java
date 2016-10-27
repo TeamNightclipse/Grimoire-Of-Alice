@@ -1,9 +1,15 @@
 package arekkuusu.grimoireofalice.block.tile;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.item.crafting.RecipeAltar;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -13,15 +19,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
@@ -61,7 +59,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public boolean addItem(ItemStack stack) {
 		boolean added = false;
-		if (hasItem()) {
+		if(hasItem()) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
@@ -76,7 +74,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
 		ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
-		if (stackToTake != null) {
+		if(stackToTake != null) {
 			removed = true;
 
 			if(player != null && !player.capabilities.isCreativeMode) {
@@ -90,35 +88,33 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	public boolean doCrafting() {
-		if (hasItem()) {
+		if(hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
-			for (BlockPos pos : PILLAR_LOCATIONS) {
+			for(BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				if (getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
-					altars.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				if(getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
+					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
 				}
 			}
-			for(BlockPos pos : SECOND_PILLAR_LOCATIONS){
+			for(BlockPos pos : SECOND_PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				if (getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
-					altars.add((TilePillarAltar) getWorld().getTileEntity(pos));
+				if(getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
+					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
 				}
 			}
-			if (!altars.isEmpty() && altars.size() > 2) {
+			if(!altars.isEmpty() && altars.size() > 2) {
 				List<ItemStack> recipeItems = altars.stream()
 						.filter(TilePillarAltar::hasItem)
 						.map(TilePillarAltar::getItemStack)
 						.collect(Collectors.toList());
 
-				if (!recipeItems.isEmpty()) {
-					RecipeAltar.recipes.stream().filter(recipe -> recipe.checkRecipe(recipeItems, worldObj)).forEach(recipe -> {
-						for (TilePillarAltar altar : altars) {
-							altar.removeItem(null);
-						}
-						addItem(recipe.getResult());
-						doEffect();
-					});
-				}
+				RecipeAltar.getRecipes().stream().filter(recipe -> recipe.checkRecipe(recipeItems, worldObj)).forEach(recipe -> {
+					for(TilePillarAltar altar : altars) {
+						altar.removeItem(null);
+					}
+					addItem(recipe.getResult());
+					doEffect();
+				});
 			}
 		}
 		return !hasItem();
@@ -128,10 +124,9 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		int posX = pos.getX();
 		int posY = pos.getY();
 		int posZ = pos.getZ();
-		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.NEUTRAL, 1.0F,
-				rand.nextFloat() * 0.1F + 0.8F);
-		for (int t = 0; t < 5; t++) {
-			for (int u = 0; u < 10; u++) {
+		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.NEUTRAL, 1.0F, rand.nextFloat() * 0.1F + 0.8F);
+		for(int t = 0; t < 5; t++) {
+			for(int u = 0; u < 10; u++) {
 				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, rand.nextDouble());
 				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, -rand.nextDouble(), 0.2, -rand.nextDouble());
 				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, -rand.nextDouble());
@@ -152,43 +147,44 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	public void update() {
 		bookSpreadPrev = bookSpread;
 		bookRotationPrev = bookRotation;
-		EntityPlayer entityplayer = worldObj.getClosestPlayer((pos.getX() + 0.5F), (pos.getY() + 0.5F), (pos.getZ() + 0.5F), 3.0D, false);
+		EntityPlayer entityplayer = worldObj.getClosestPlayer(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, 3.0D, false);
 
-		if (entityplayer != null) {
+		if(entityplayer != null) {
 			double d0 = entityplayer.posX - (pos.getX() + 0.5F);
 			double d1 = entityplayer.posZ - (pos.getZ() + 0.5F);
-			tRot = (float) MathHelper.atan2(d1, d0);
+			tRot = (float)MathHelper.atan2(d1, d0);
 			bookSpread += 0.1F;
 
-			if (bookSpread < 0.5F || rand.nextInt(40) == 0) {
+			if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
 				float f1 = flipT;
 
-				while (true) {
+				while(true) {
 					flipT += rand.nextInt(4) - rand.nextInt(4);
 
-					if (f1 != flipT) {
+					if(f1 != flipT) {
 						break;
 					}
 				}
 			}
-		} else {
+		}
+		else {
 			tRot += 0.02F;
 			bookSpread -= 0.1F;
 		}
 
-		while (bookRotation >= Math.PI) {
+		while(bookRotation >= Math.PI) {
 			bookRotation -= Math.PI * 2F;
 		}
 
-		while (bookRotation < -Math.PI) {
+		while(bookRotation < -Math.PI) {
 			bookRotation += Math.PI * 2F;
 		}
 
-		while (tRot >= Math.PI) {
+		while(tRot >= Math.PI) {
 			tRot -= Math.PI * 2F;
 		}
 
-		while (tRot < -Math.PI) {
+		while(tRot < -Math.PI) {
 			tRot += Math.PI * 2F;
 		}
 
@@ -197,7 +193,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			f2 -= Math.PI * 2F;
 		}
 
-		while (f2 < -Math.PI) {
+		while(f2 < -Math.PI) {
 			f2 += Math.PI * 2F;
 		}
 

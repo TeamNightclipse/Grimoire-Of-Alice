@@ -55,25 +55,25 @@ public class ItemRaidenMask extends ItemModMask {
 			player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 0, 0));
 		}
 	}
-	
+
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if (player instanceof EntityPlayer && source.isFireDamage()) {
-			player.attackEntityFrom(DamageSource.generic, (float)damage*2);
+		if(player instanceof EntityPlayer && source.isFireDamage()) {
+			player.attackEntityFrom(DamageSource.generic, (float)damage * 2);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		if(source.isFireDamage()){
+		if(source.isFireDamage()) {
 			stack.damageItem(damage * 10, entity);
 		}
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/raidenMask.png";
-    }
-	
+		return LibMod.MODID + ":textures/models/armor/raidenMask.png";
+	}
+
 }

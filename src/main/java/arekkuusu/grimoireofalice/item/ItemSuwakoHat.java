@@ -57,6 +57,7 @@ public class ItemSuwakoHat extends ItemModArmor {
 		return model;
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.SLIME_BALL;
 	}

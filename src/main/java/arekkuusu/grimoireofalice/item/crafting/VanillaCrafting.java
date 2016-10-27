@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class VanillaCrafting {
 
-    public static void booksAndStrings() {
+	public static void booksAndStrings() {
 
 		//Items
 		shaped().grid("ISG", "SAS", "GSI")
@@ -65,8 +65,8 @@ public class VanillaCrafting {
 		GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.GLORIOUS_NIPPON_STEEL), 0);
 	}
 
-    public static void masks() {
-        if(ConfigHandler.maskRecipes){
+	public static void masks() {
+		if(ConfigHandler.maskRecipes) {
 			shapeless()
 					.add(ModItems.FOX_MASK)
 					.add(ModItems.FUKU_NO_KAMI_MASK)
@@ -79,31 +79,31 @@ public class VanillaCrafting {
 					.add(ModItems.UBA_MASK)
 					.outputs(ModItems.KOKOROS_MASKS).build();
 
-            mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.FOX_MASK).build();
-            mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.FUKU_NO_KAMI_MASK).build();
-            mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.HANNYA_MASK).build();
-            mask().where('R').mapsTo(Items.GHAST_TEAR).outputs(ModItems.HYOTTOKO_MASK).build();
-            mask().where('R').mapsTo(Items.ROTTEN_FLESH).outputs(ModItems.KOOMOTE_MASK).build();
-            mask().where('R').mapsTo(Items.FERMENTED_SPIDER_EYE).outputs(ModItems.MASK_OF_HOPE).build();
-            mask().where('R').mapsTo(Items.MUSHROOM_STEW).outputs(ModItems.MONKEY_MASK).build();
-            mask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
-            mask().where('R').mapsTo(Items.NETHER_STAR).outputs(ModItems.UBA_MASK).build();
-        }
-    }
+			mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.FOX_MASK).build();
+			mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.FUKU_NO_KAMI_MASK).build();
+			mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.HANNYA_MASK).build();
+			mask().where('R').mapsTo(Items.GHAST_TEAR).outputs(ModItems.HYOTTOKO_MASK).build();
+			mask().where('R').mapsTo(Items.ROTTEN_FLESH).outputs(ModItems.KOOMOTE_MASK).build();
+			mask().where('R').mapsTo(Items.FERMENTED_SPIDER_EYE).outputs(ModItems.MASK_OF_HOPE).build();
+			mask().where('R').mapsTo(Items.MUSHROOM_STEW).outputs(ModItems.MONKEY_MASK).build();
+			mask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
+			mask().where('R').mapsTo(Items.NETHER_STAR).outputs(ModItems.UBA_MASK).build();
+		}
+	}
 
-    private static ShapedRecipe shaped() {
-        return new ShapedRecipe();
-    }
+	private static ShapedRecipe shaped() {
+		return new ShapedRecipe();
+	}
 
-    private static ShapelessRecipe shapeless() {
-        return new ShapelessRecipe();
-    }
+	private static ShapelessRecipe shapeless() {
+		return new ShapelessRecipe();
+	}
 
-    private static ShapedRecipe mask() {
-        return new ShapedRecipe().grid("IAR", "SGS", " S ")
-                .where('S').mapsTo(ModItems.VOLATILE_STRING)
-                .where('G').mapsTo(ModItems.MASK)
-                .where('A').mapsTo(Items.NETHER_STAR)
-                .where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
-    }
+	private static ShapedRecipe mask() {
+		return new ShapedRecipe().grid("IAR", "SGS", " S ")
+				.where('S').mapsTo(ModItems.VOLATILE_STRING)
+				.where('G').mapsTo(ModItems.MASK)
+				.where('A').mapsTo(Items.NETHER_STAR)
+				.where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
+	}
 }

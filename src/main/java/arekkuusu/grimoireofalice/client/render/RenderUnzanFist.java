@@ -26,8 +26,8 @@ public class RenderUnzanFist extends Render<EntityUnzanFist> {
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		GlStateManager.scale(1.5, 1.5, 1.5);
-		GlStateManager.rotate(90 - entity.rotationYaw,0.0F,1.0F,0.0F);
-		GlStateManager.rotate(entity.rotationPitch + 90,0.0F,0.0F,1.0F);
+		GlStateManager.rotate(90 - entity.rotationYaw, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.rotationPitch + 90, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();

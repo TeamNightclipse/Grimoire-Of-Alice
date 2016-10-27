@@ -1,5 +1,9 @@
 package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.item.ModItems;
@@ -22,16 +26,16 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ItemSwordOfHisou extends ItemSwordOwner {
 
@@ -59,7 +63,8 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 			list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
 			list.add(TextFormatting.GRAY + "no matter the circumstances.");
 			list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
@@ -67,12 +72,12 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
-		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof  EntityPlayer) {
+		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase);
 
-				if (lookedAt.isPresent()) {
+				if(lookedAt.isPresent()) {
 					EntityLivingBase entity = (EntityLivingBase)lookedAt.get();
 					Vec3d look = player.getLookVec();
 
@@ -99,19 +104,20 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		if(!worldIn.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
-				if (isOwner(stack, player)) {
-					if (timeUsed < 20 && timeUsed > 5) {
+			if(entityLiving instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)entityLiving;
+				if(isOwner(stack, player)) {
+					if(timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
-						if (!list.isEmpty()) {
+						if(!list.isEmpty()) {
 							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue();
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}
-					} else if (timeUsed >= 20  && player.isSneaking()) {
-						for (int i = 0; i < 4; i++) {
+					}
+					else if(timeUsed >= 20 && player.isSneaking()) {
+						for(int i = 0; i < 4; i++) {
 							DanmakuBuilder danmaku = DanmakuBuilder.builder()
 									.setUser(player)
 									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))
@@ -128,10 +134,10 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
-		if(state.getMaterial() == Material.LEAVES ) {
-			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5 , pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(
-					ModItems.HEAVENLY_PEACH));
-			if (!worldIn.isRemote) {
+		if(state.getMaterial() == Material.LEAVES) {
+			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+					new ItemStack(ModItems.HEAVENLY_PEACH));
+			if(!worldIn.isRemote) {
 				entityLiving.worldObj.spawnEntityInWorld(entityItem);
 			}
 			return true;

@@ -22,7 +22,7 @@ public class ItemPiano extends ItemInstrument {
 	public ItemPiano() {
 		super(LibItemName.LYRICA_PIANO);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

@@ -28,7 +28,7 @@ public class ItemGrilledLamprey extends ItemModFood {
 		setCreativeTab(CreativeTabs.FOOD);
 		setAlwaysEdible();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -40,5 +40,5 @@ public class ItemGrilledLamprey extends ItemModFood {
 		super.onFoodEaten(stack, world, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 2400, 0));
 	}
-	
+
 }

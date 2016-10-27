@@ -1,10 +1,10 @@
 package arekkuusu.grimoireofalice.item.crafting;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class RecipeItemsNether extends RecipeItems {
 

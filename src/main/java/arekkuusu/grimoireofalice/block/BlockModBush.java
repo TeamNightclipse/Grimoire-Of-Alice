@@ -14,7 +14,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 
 public class BlockModBush extends BlockBush {
-	
+
 	public BlockModBush(String id, Material material) {
 		super(material);
 		setUnlocalizedName(id);

@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,15 +17,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
 public class ItemNimbleFabric extends ItemMod {
 
 	public ItemNimbleFabric() {
 		super(LibItemName.NIMBLE_FABRIC);
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("blocking"), (stack, world, entity) ->
-				entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
+		addPropertyOverride(new ResourceLocation("blocking"),
+				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ItemNimbleFabric extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
+			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(!player.capabilities.isCreativeMode) {
 				player.capabilities.disableDamage = false;
 				player.getCooldownTracker().setCooldown(this, 500);

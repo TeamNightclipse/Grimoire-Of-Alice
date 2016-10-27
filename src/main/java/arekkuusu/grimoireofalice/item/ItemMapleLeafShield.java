@@ -30,7 +30,7 @@ public class ItemMapleLeafShield extends ItemModShield {
 		super(LibItemName.MAPLE_LEAF_SHIELD);
 		setMaxDamage(250);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
@@ -44,7 +44,7 @@ public class ItemMapleLeafShield extends ItemModShield {
 		list.add(TextFormatting.GRAY + "maple leaf print on it");
 		list.add(TextFormatting.DARK_PURPLE + "Cures potion effects");
 	}
-	
+
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(stack.getItemDamage() == 0 && !worldIn.isRemote) {
@@ -54,15 +54,16 @@ public class ItemMapleLeafShield extends ItemModShield {
 		}
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.IRON_INGOT;
 	}
-	
+
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-        stack.damageItem(10, user);
-        return true;
-    }
+		stack.damageItem(10, user);
+		return true;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {

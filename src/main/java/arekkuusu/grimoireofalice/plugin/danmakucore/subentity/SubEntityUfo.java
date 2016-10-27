@@ -10,15 +10,12 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class SubEntityUfo extends SubEntityType {
@@ -41,7 +38,7 @@ public class SubEntityUfo extends SubEntityType {
 		@Override
 		public void subEntityTick() {
 			super.subEntityTick();
-			if (danmaku.ticksExisted % 10 == 0) {
+			if(danmaku.ticksExisted % 10 == 0) {
 				danmaku.setAngle(danmaku.getAngle().rotate(Quat.eulerToQuat(45F, 45F, 0F)));
 			}
 		}
@@ -49,8 +46,8 @@ public class SubEntityUfo extends SubEntityType {
 		@Override
 		protected void impact(RayTraceResult raytrace) {
 			super.impact(raytrace);
-			for (int j = 0; j < 8; ++j) {
-				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, this.danmaku.posX, this.danmaku.posY, this.danmaku.posZ, 0.0D, 0.5D, 0.0D);
+			for(int j = 0; j < 8; ++j) {
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, danmaku.posX, danmaku.posY, danmaku.posZ, 0.0D, 0.5D, 0.0D);
 			}
 		}
 	}

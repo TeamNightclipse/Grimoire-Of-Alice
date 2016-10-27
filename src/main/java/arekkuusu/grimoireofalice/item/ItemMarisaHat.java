@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.client.model.ModelMarisaHat;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -16,11 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.function.Consumer;
-
-public class ItemMarisaHat extends ItemModArmor  {
+public class ItemMarisaHat extends ItemModArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -54,7 +52,7 @@ public class ItemMarisaHat extends ItemModArmor  {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelMarisaHat();
+		if(model == null) model = new ModelMarisaHat();
 		model.setModelAttributes(imodel);
 		return model;
 	}

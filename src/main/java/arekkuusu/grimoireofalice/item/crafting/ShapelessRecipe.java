@@ -19,6 +19,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ShapelessRecipe {
+
 	private ItemStack out = null;
 	private final List<Object> ingredients = new ArrayList<>();
 

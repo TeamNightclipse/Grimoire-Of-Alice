@@ -9,14 +9,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class EntityUnzanFist extends EntityThrowable { //Why is this entity so bad??
 
@@ -34,9 +30,9 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		super(world, thrower);
 		Vec3d look = thrower.getLookVec();
 		float distance = 4F;
-		double dx = thrower.posX + (look.xCoord * distance);
-		double dy = thrower.posY + 1 + (look.yCoord * distance);
-		double dz = thrower.posZ + (look.zCoord * distance);
+		double dx = thrower.posX + look.xCoord * distance;
+		double dy = thrower.posY + 1 + look.yCoord * distance;
+		double dz = thrower.posZ + look.zCoord * distance;
 		setPosition(dx, dy, dz);
 		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, 1.0F, 0);
 	}
@@ -49,10 +45,11 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
 		if(thrower == null) {
-			if (!worldObj.isRemote) {
+			if(!worldObj.isRemote) {
 				setDead();
 			}
-		} else if (isReturning) {
+		}
+		else if(isReturning) {
 			double dx, dy, dz;
 			dx = posX - thrower.posX;
 			dy = posY - thrower.posY - thrower.getEyeHeight();
@@ -72,11 +69,11 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		posY += motionY;
 		posZ += motionZ;
 		float motionMultiplier = 0.99F;
-		if (isInWater()) {
-			for (int i = 0; i < 4; i++) {
+		if(isInWater()) {
+			for(int i = 0; i < 4; i++) {
 				float f6 = 0.25F;
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE,
-						posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX, motionY, motionZ);
+				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX,
+						motionY, motionZ);
 			}
 			motionMultiplier *= 0.80808080F;
 		}
@@ -85,18 +82,15 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		motionZ *= motionMultiplier;
 		motionY -= getGravityVelocity();
 		setPosition(posX, posY, posZ);
-		if(ticksExisted > 50){
-			if(!worldObj.isRemote){
-				setDead();
-			}
+		if(ticksExisted > 50 && !worldObj.isRemote) {
+			setDead();
 		}
 	}
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
-		worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
-				SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1.0F, rand.nextFloat() * 1.0F + 0.8F);
+		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 		if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
 			onImpactBlock(result);
 		}
@@ -108,14 +102,16 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 	private void onImpactBlock(RayTraceResult result) {
 		IBlockState base = worldObj.getBlockState(result.getBlockPos());
 		boolean canHitBlock = base.getBlock() != Blocks.TALLGRASS && base.getBlock() != Blocks.DOUBLE_PLANT;
-		if(canHitBlock && !worldObj.isRemote) setDead();
+		if(canHitBlock && !worldObj.isRemote) {
+			setDead();
+		}
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
 		bounceBack();
 		if(result.entityHit != null && result.entityHit != this) {
-			if(result.entityHit == this.getThrower()){
-				if (!worldObj.isRemote) {
+			if(result.entityHit == getThrower()) {
+				if(!worldObj.isRemote) {
 					setDead();
 				}
 				return;
@@ -126,23 +122,26 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(entityplayer != this.getThrower()){
+		if(entityplayer != getThrower()) {
 			bounceBack();
 			applyHitEffects(entityplayer);
-		} else {
-			if(!worldObj.isRemote) setDead();
+		}
+		else {
+			if(!worldObj.isRemote) {
+				setDead();
+			}
 		}
 	}
 
 	private void applyHitEffects(Entity entity) {
-		entity.attackEntityFrom(DamageSource.generic,5);
+		entity.attackEntityFrom(DamageSource.generic, 5);
 		double speed = 0.5;
-		entity.motionX = -Math.sin(Math.toRadians(this.rotationYaw)) * speed;
-		entity.motionZ = Math.cos(Math.toRadians(this.rotationYaw)) * speed;
+		entity.motionX = -Math.sin(Math.toRadians(rotationYaw)) * speed;
+		entity.motionZ = Math.cos(Math.toRadians(rotationYaw)) * speed;
 	}
 
 	private void bounceBack() {
-		this.isReturning = true;
+		isReturning = true;
 		motionX *= -0.1D;
 		motionY *= -0.1D;
 		motionZ *= -0.1D;
@@ -152,7 +151,7 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		int xyz = ticksExisted < 1.5 ? -1 : 3 ;
+		int xyz = ticksExisted < 1.5 ? -1 : 3;
 		return super.getEntityBoundingBox().expandXyz(xyz);
 	}
 

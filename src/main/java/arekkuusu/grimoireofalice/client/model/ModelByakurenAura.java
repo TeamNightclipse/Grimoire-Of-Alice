@@ -5,8 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 /**
- * ByakurenAura - Arekkuusu
- * Created using Tabula 5.1.0
+ * ByakurenAura - Arekkuusu Created using Tabula 5.1.0
  */
 public class ModelByakurenAura extends ModelBiped {
 
@@ -26,14 +25,15 @@ public class ModelByakurenAura extends ModelBiped {
 		neck.addBox(-16.0F, 0.0F, -8.0F, 32, 48, 16, 0.25F);
 	}
 
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		bipedHeadwear.showModel = false;
 		bipedBody.showModel = true;
 
-		bipedBody = this.neck;
+		bipedBody = neck;
 		aura.showModel = entity.isSneaking();
 
-		this.aura.render(0.05F);
+		aura.render(0.05F);
 
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, 0.025F);
 	}

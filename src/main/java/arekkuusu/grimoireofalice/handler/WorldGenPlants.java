@@ -33,8 +33,9 @@ public class WorldGenPlants {
 				BlockPos pos3 = new BlockPos(x, y, z);
 				List<IBlockState> states = ModBlocks.SHROOM.getBlockState().getValidStates();
 				int type = event.getRand().nextInt(states.size());
-				if(event.getWorld().isAirBlock(pos3) && ModBlocks.SHROOM.canPlaceBlockAt(event.getWorld(),pos3))
+				if(event.getWorld().isAirBlock(pos3) && ModBlocks.SHROOM.canPlaceBlockAt(event.getWorld(), pos3)) {
 					event.getWorld().setBlockState(pos3, states.get(type), 2);
+				}
 			}
 			int mush = ConfigHandler.mushroomSpawningRate;
 			for(int i = 0; i < mush; i++) {
@@ -43,8 +44,9 @@ public class WorldGenPlants {
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);
-				if(event.getWorld().isAirBlock(pos3) && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3))
+				if(event.getWorld().isAirBlock(pos3) && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3)) {
 					event.getWorld().setBlockState(pos3, ModBlocks.KYOUMARUBOTAN.getDefaultState(), 2);
+				}
 			}
 		}
 	}

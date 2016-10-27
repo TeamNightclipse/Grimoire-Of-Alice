@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import net.minecraft.item.ItemSword;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemModSword extends ItemSword {
 

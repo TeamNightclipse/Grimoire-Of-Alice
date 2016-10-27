@@ -20,7 +20,6 @@ import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
-import net.katsstuff.danmakucore.helper.TouhouHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
@@ -30,7 +29,6 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -38,8 +36,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -63,13 +59,14 @@ public class ItemEllyScythe extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "War ma fé, heman zo eun Anko drouk");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + "Oberour ar maro known as the grave");
 			list.add(TextFormatting.ITALIC + "yard watcher, they said that he");
 			list.add(TextFormatting.ITALIC + "protects the graveyard and the souls");
 			list.add(TextFormatting.ITALIC + "around it for some unknown reason and");
 			list.add(TextFormatting.ITALIC + "collects the lost souls on his land");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "Shift for details");
 		}
 	}
@@ -88,7 +85,7 @@ public class ItemEllyScythe extends ItemModSword {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
@@ -97,44 +94,45 @@ public class ItemEllyScythe extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityLiving;
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(player.isSneaking()) {
 				int duration = getMaxItemUseDuration(stack) - timeLeft;
 				float durationSeconds = duration / 20F;
 				//TODO: What does this do?
 				durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
-				if (durationSeconds < 0.1F) return;
+				if(durationSeconds < 0.1F) return;
 
 				boolean critical = false;
-				if (durationSeconds > 1.5F) {
+				if(durationSeconds > 1.5F) {
 					durationSeconds = 1.5F;
 					critical = true;
 				}
 				durationSeconds *= 1.5F;
 
 				DanmakuHelper.playShotSound(player);
-				if (!worldIn.isRemote) {
+				if(!worldIn.isRemote) {
 					EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
 					scythe.setCritical(critical);
-					if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
+					if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
 						scythe.setFire(100);
 					}
 					Vec3d look = player.getLookVec();
 					float distance = 1.5F;
-					double dx = player.posX + (look.xCoord * distance);
-					double dz = player.posZ + (look.zCoord * distance);
+					double dx = player.posX + look.xCoord * distance;
+					double dz = player.posZ + look.zCoord * distance;
 					scythe.setPosition(dx, player.posY + 1.5, dz);
 					worldIn.spawnEntityInWorld(scythe);
 				}
 
-				if (!player.capabilities.isCreativeMode) {
-					if (--stack.stackSize == 0) {
+				if(!player.capabilities.isCreativeMode) {
+					if(--stack.stackSize == 0) {
 						stack = null;
 					}
 					player.inventory.mainInventory[player.inventory.currentItem] = stack;
 				}
-			} else if(!worldIn.isRemote) {
+			}
+			else if(!worldIn.isRemote) {
 				for(int i = 0; i < 25; i++) {
 					DanmakuHelper.playShotSound(player);
 					spawnGroundDanmaku(player);
@@ -155,9 +153,7 @@ public class ItemEllyScythe extends ItemModSword {
 
 		RayTraceResult ray = player.worldObj.rayTraceBlocks(posSource.toVec3d(), posReach.toVec3d());
 
-		Vector3 spawnPos = ray != null ?
-				new Vector3(ray.hitVec) :
-				posReach;
+		Vector3 spawnPos = ray != null ? new Vector3(ray.hitVec) : posReach;
 
 		EntityDanmaku danmaku = DanmakuBuilder.builder()
 				.setUser(player)

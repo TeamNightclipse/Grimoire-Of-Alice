@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHolyKeyStone extends BlockMod {
-	
+
 	public BlockHolyKeyStone() {
 		super(LibBlockName.HOLY_KEY, Material.ROCK);
 		setHardness(2.0F);
@@ -40,7 +40,7 @@ public class BlockHolyKeyStone extends BlockMod {
 		setResistance(15.0F);
 		setLightLevel(0.5F);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -67,7 +67,9 @@ public class BlockHolyKeyStone extends BlockMod {
 			ifNear(world, pos, rand);
 			world.scheduleUpdate(pos, this, 10); //Update more frequently if a player is around
 		}
-		else world.scheduleUpdate(pos, this, tickRate(world));
+		else {
+			world.scheduleUpdate(pos, this, tickRate(world));
+		}
 	}
 
 	private void addPlayerEffect(EntityPlayer player) {
@@ -83,12 +85,14 @@ public class BlockHolyKeyStone extends BlockMod {
 				float d1 = pos.getX() + rand.nextFloat();
 				float d2 = pos.getY() + rand.nextFloat();
 				float d3 = pos.getZ() + rand.nextFloat();
+
 				if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) == 0)) d2 = pos.getY() + 1 + d0;
 				if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) d2 = pos.getY() - d0;
 				if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)) == 0)) d3 = pos.getZ() + 1 + d0;
 				if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) d3 = pos.getZ() - d0;
 				if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())) == 0)) d1 = pos.getX() + 1 + d0;
 				if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())) == 0)) d1 = pos.getX() - d0;
+
 				if(d1 < pos.getX() || d1 > pos.getX() + 1 || d2 < 0.0D || d2 > pos.getY() + 1 || d3 < pos.getZ() || d3 > pos.getZ() + 1) {
 					world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, d1, d2, d3, 0.0D, 0.0D, 0.0D, 0);
 				}
@@ -97,11 +101,8 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
-		if(world.isRaining()) {
-			return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 3, false));
-		}
-
-		return Optional.empty();
+		if(world.isRaining()) return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 3, false));
+		else return Optional.empty();
 	}
 
 	@Override
@@ -113,11 +114,11 @@ public class BlockHolyKeyStone extends BlockMod {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-	
+
 	@Override
 	public boolean canDropFromExplosion(Explosion explosionIn) {
-        return false;
-    }
+		return false;
+	}
 
 	@Override
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {

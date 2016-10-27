@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -67,9 +66,7 @@ public class ItemWallPassingChisel extends ItemMod {
 				if(isSafePos(world, triedPos)) {
 					//Logic to prevent player to suffocate or get in awkward positions
 					if(facing == EnumFacing.DOWN) {
-						if(!isSafePos(world, triedPos.offset(facing))) {
-							return null;
-						}
+						if(!isSafePos(world, triedPos.offset(facing))) return null;
 						triedPos = triedPos.offset(facing);
 					}
 					else if(facing != EnumFacing.UP) {

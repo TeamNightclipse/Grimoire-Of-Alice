@@ -23,7 +23,7 @@ public class ItemTrumpet extends ItemInstrument {
 	public ItemTrumpet() {
 		super(LibItemName.MERLIN_TRUMPET);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {

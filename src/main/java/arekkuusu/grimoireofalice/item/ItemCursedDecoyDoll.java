@@ -1,20 +1,23 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemCursedDecoyDoll extends ItemMod {
 
@@ -39,9 +42,9 @@ public class ItemCursedDecoyDoll extends ItemMod {
 			EntityCursedDecoyDoll doll = new EntityCursedDecoyDoll(world, player);
 			Vec3d look = player.getLookVec();
 			float distance = 2F;
-			double dx = player.posX + (look.xCoord * distance);
+			double dx = player.posX + look.xCoord * distance;
 			double dy = player.posY;
-			double dz = player.posZ + (look.zCoord * distance);
+			double dz = player.posZ + look.zCoord * distance;
 			doll.setPosition(dx, dy, dz);
 			world.spawnEntityInWorld(doll);
 		}

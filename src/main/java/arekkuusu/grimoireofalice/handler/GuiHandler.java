@@ -39,7 +39,9 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 			case 0:
 				ItemStack heldItem = player.getHeldItemMainhand();
-				if(heldItem == null || heldItem.getItem() != ModItems.YOUKAI_BOOK) heldItem = player.getHeldItemOffhand();
+				if(heldItem == null || heldItem.getItem() != ModItems.YOUKAI_BOOK) {
+					heldItem = player.getHeldItemOffhand();
+				}
 
 				if(heldItem == null || heldItem.getItem() != ModItems.YOUKAI_BOOK) return null;
 				else return new GuiScreenBookYoukai(player, heldItem, true);

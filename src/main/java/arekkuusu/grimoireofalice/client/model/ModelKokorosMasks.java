@@ -72,16 +72,16 @@ public class ModelKokorosMasks extends ModelBiped {
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
 		GlStateManager.pushMatrix();
 		GlStateManager.rotate(age * 5, 0.0F, 1.0F, 0.0F);
-		this.Mask1.render(scale);
-		this.Mask2.render(scale);
-		this.Mask3.render(scale);
-		this.Mask4.render(scale);
-		this.Mask5.render(scale);
-		this.Mask6.render(scale);
-		this.Mask7.render(scale);
-		this.Mask8.render(scale);
+		Mask1.render(scale);
+		Mask2.render(scale);
+		Mask3.render(scale);
+		Mask4.render(scale);
+		Mask5.render(scale);
+		Mask6.render(scale);
+		Mask7.render(scale);
+		Mask8.render(scale);
 		GlStateManager.popMatrix();
-		this.Mask9.render(scale);
+		Mask9.render(scale);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

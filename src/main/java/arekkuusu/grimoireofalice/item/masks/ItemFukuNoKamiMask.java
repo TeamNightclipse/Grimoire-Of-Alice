@@ -58,24 +58,24 @@ public class ItemFukuNoKamiMask extends ItemModMask {
 			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 0));
 		}
 	}
-	
+
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if (player instanceof EntityPlayer && source.equals(DamageSource.wither)) {
-			player.attackEntityFrom(DamageSource.generic, (float)damage*10);
+		if(player instanceof EntityPlayer && source.equals(DamageSource.wither)) {
+			player.attackEntityFrom(DamageSource.generic, (float)damage * 10);
 		}
 		return new ArmorProperties(1, 5, 10);
 	}
 
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		if(source.equals(DamageSource.wither)){
+		if(source.equals(DamageSource.wither)) {
 			stack.damageItem(damage * 10, entity);
 		}
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/fukunokamimask.png";
-    }
+		return LibMod.MODID + ":textures/models/armor/fukunokamimask.png";
+	}
 }

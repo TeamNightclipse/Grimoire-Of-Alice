@@ -42,36 +42,46 @@ public class ItemMiracleMallet extends ItemMod {
 	}
 
 	private void useMallet(EntityPlayer player, EnumHand hand) {
-		if (!player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
-			if (!player.getEntityData().hasKey("MalletResized")) {
+		if(!player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
+			if(!player.getEntityData().hasKey("MalletResized")) {
 				float size = player.isSneaking() ? 0.5F : 1.5F;
 				player.getEntityData().setFloat("MalletResized", size);
 
 				player.eyeHeight = player.eyeHeight + (player.isSneaking() ? -0.92F : 1.00F);
 
 				AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
-				axisAlignedBB.expandXyz(player.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
+				axisAlignedBB.expandXyz(player.isSneaking() ? -1.00F : 1.00F); //Expand bounding Box
 				player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
-			} else {
+			}
+			else {
 				float size = player.getEntityData().getFloat("MalletResized");
 				float eyeHeight = player.eyeHeight;
 
-				if (player.isSneaking()) {
+				if(player.isSneaking()) {
 					size -= 0.5;
-					if (eyeHeight > 1.00F) eyeHeight -= 0.92F;
-				} else {
+					if(eyeHeight > 1.00F) {
+						eyeHeight -= 0.92F;
+					}
+				}
+				else {
 					size += 0.5;
-					if(eyeHeight < 3.00F) eyeHeight += 1.00F;
+					if(eyeHeight < 3.00F) {
+						eyeHeight += 1.00F;
+					}
 				}
 
-				if(size <= 0){size = 0.5F;}
-				if(size > 2){size = 2.0F;}
+				if(size <= 0) {
+					size = 0.5F;
+				}
+				if(size > 2) {
+					size = 2.0F;
+				}
 
 				player.eyeHeight = eyeHeight;
 				player.getEntityData().setFloat("MalletResized", size);
 
 				AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
-				axisAlignedBB.expandXyz(player.isSneaking() ? -1.00F: 1.00F); //Expand bounding Box
+				axisAlignedBB.expandXyz(player.isSneaking() ? -1.00F : 1.00F); //Expand bounding Box
 				player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			}
 		}

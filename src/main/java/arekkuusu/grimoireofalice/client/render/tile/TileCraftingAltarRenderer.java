@@ -7,7 +7,6 @@ import net.minecraft.client.model.ModelBook;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -16,6 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCraftingAltar> {
+
 	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
 
@@ -27,16 +27,16 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(f * 0.1F) * 0.01F, 0.0F);
 		float f1 = te.bookRotation - te.bookRotationPrev;
 
-		while (f1 >= Math.PI) {
+		while(f1 >= Math.PI) {
 			f1 -= Math.PI * 2F;
 		}
 
-		while (f1 < -Math.PI) {
+		while(f1 < -Math.PI) {
 			f1 += Math.PI * 2F;
 		}
 
 		float f2 = te.bookRotationPrev + f1 * partialTicks;
-		GlStateManager.rotate(-f2 * (180F / (float) Math.PI), 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
 		bindTexture(TEXTURE_BOOK);
 		float f3 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.25F;
@@ -44,19 +44,19 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
 		f4 = (f4 - MathHelper.truncateDoubleToInt(f4)) * 1.6F - 0.3F;
 
-		if (f3 < 0.0F) {
+		if(f3 < 0.0F) {
 			f3 = 0.0F;
 		}
 
-		if (f4 < 0.0F) {
+		if(f4 < 0.0F) {
 			f4 = 0.0F;
 		}
 
-		if (f3 > 1.0F) {
+		if(f3 > 1.0F) {
 			f3 = 1.0F;
 		}
 
-		if (f4 > 1.0F) {
+		if(f4 > 1.0F) {
 			f4 = 1.0F;
 		}
 

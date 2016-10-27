@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,14 +20,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTimeOrb extends ItemMod{
+public class ItemTimeOrb extends ItemMod {
 
 	public ItemTimeOrb() {
 		super(LibItemName.TIME_ORB);
@@ -44,7 +41,7 @@ public class ItemTimeOrb extends ItemMod{
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -52,21 +49,21 @@ public class ItemTimeOrb extends ItemMod{
 		list.add(TextFormatting.ITALIC + "They are believed to slow");
 		list.add(TextFormatting.ITALIC + "the passing of the night");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-    }
-	
+	}
+
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer){
+		if(entityLiving instanceof EntityPlayer) {
 			if(!worldIn.isDaytime()) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
-				if (!player.capabilities.isCreativeMode) {
+				if(!player.capabilities.isCreativeMode) {
 					ItemStack itemstack2 = stack.copy();
-					if (--itemstack2.stackSize == 0) {
+					if(--itemstack2.stackSize == 0) {
 						itemstack2 = null;
 					}
 					player.inventory.mainInventory[player.inventory.currentItem] = itemstack2;
@@ -79,16 +76,16 @@ public class ItemTimeOrb extends ItemMod{
 			}
 		}
 	}
-	
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-        return EnumAction.BLOCK;
-    }
-	
+		return EnumAction.BLOCK;
+	}
+
 	@Override
 	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
-        return 42;
-    }
+		return 42;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {

@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockKyoumarubotan extends BlockModBush {
-	
+
 	public BlockKyoumarubotan() {
 		super(LibBlockName.KYOUMARUBOTAN, Material.ROCK);
 		setTickRandomly(true);
@@ -38,7 +38,7 @@ public class BlockKyoumarubotan extends BlockModBush {
 		setHardness(0.5F);
 		setSoundType(SoundType.METAL);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -60,16 +60,16 @@ public class BlockKyoumarubotan extends BlockModBush {
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		return canPlaceBlockAt(world, pos);
 	}
-	
+
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Items.GOLD_NUGGET;
 	}
-	
+
 	@Override
-	public int quantityDropped(Random p_149745_1_) {
-        return  4 + p_149745_1_.nextInt(5);
-    }
+	public int quantityDropped(Random rand) {
+		return 4 + rand.nextInt(5);
+	}
 
 	@Override
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
@@ -80,11 +80,11 @@ public class BlockKyoumarubotan extends BlockModBush {
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState soil = worldIn.getBlockState(pos.down());
 		Block block = soil.getBlock();
-        return super.canPlaceBlockAt(worldIn, pos)
-        		|| block == Blocks.HARDENED_CLAY 
-        		|| block == Blocks.STAINED_HARDENED_CLAY 
-        		|| block == Blocks.STONE 
-        		|| block == ModBlocks.COMPACT_STONE;
+		return super.canPlaceBlockAt(worldIn, pos)
+				|| block == Blocks.HARDENED_CLAY
+				|| block == Blocks.STAINED_HARDENED_CLAY
+				|| block == Blocks.STONE
+				|| block == ModBlocks.COMPACT_STONE;
 	}
 
 }

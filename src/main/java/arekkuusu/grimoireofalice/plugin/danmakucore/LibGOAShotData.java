@@ -8,14 +8,12 @@
  */
 package arekkuusu.grimoireofalice.plugin.danmakucore;
 
+import static net.katsstuff.danmakucore.lib.LibColor.*;
+
 import arekkuusu.grimoireofalice.plugin.danmakucore.form.GOAForms;
 import arekkuusu.grimoireofalice.plugin.danmakucore.subentity.GOASubEntities;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.lib.data.LibForms;
-
-import static net.katsstuff.danmakucore.lib.LibColor.COLOR_SATURATED_CYAN;
-import static net.katsstuff.danmakucore.lib.LibColor.COLOR_SATURATED_GREEN;
-import static net.katsstuff.danmakucore.lib.LibColor.COLOR_VANILLA_RED;
 
 public class LibGOAShotData {
 

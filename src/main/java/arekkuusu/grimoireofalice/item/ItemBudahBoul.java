@@ -27,19 +27,17 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBudahBoul extends ItemTool {
 
-	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(
-			Material.ROCK, Material.IRON, Material.IRON, Material.GLASS, Material.PISTON, Material.ANVIL, Material.CIRCUITS,
-			Material.WOOD, Material.GOURD, Material.PLANTS, Material.VINE,
-			Material.GRASS, Material.GROUND, Material.SAND, Material.SNOW, Material.CRAFTED_SNOW, Material.CLAY);
+	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.ROCK, Material.IRON, Material.IRON, Material.GLASS,
+			Material.PISTON, Material.ANVIL, Material.CIRCUITS, Material.WOOD, Material.GOURD, Material.PLANTS, Material.VINE, Material.GRASS,
+			Material.GROUND, Material.SAND, Material.SNOW, Material.CRAFTED_SNOW, Material.CLAY);
 
-	private static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(
-			Material.PLANTS, Material.VINE, Material.CORAL, Material.LEAVES, Material.GOURD);
+	private static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(Material.PLANTS, Material.VINE, Material.CORAL, Material.LEAVES,
+			Material.GOURD);
 
 	public ItemBudahBoul(ToolMaterial materialIn) {
 		super(4.0F, -2.8F, materialIn, Collections.emptySet());
@@ -84,20 +82,15 @@ public class ItemBudahBoul extends ItemTool {
 
 	@Override
 	public float getStrVsBlock(ItemStack stack, IBlockState state) {
-		if (state.getBlock() == Blocks.WEB) {
-			return 15.0f;
+		if(state.getBlock() == Blocks.WEB) return 15.0f;
+
+		for(String type : getToolClasses(stack)) {
+			if(state.getBlock().isToolEffective(type, state)) return efficiencyOnProperMaterial;
 		}
-		for (String type : getToolClasses(stack)) {
-			if (state.getBlock().isToolEffective(type, state))
-				return efficiencyOnProperMaterial;
-		}
-		if (EFFECTIVE_MATERIALS.contains(state.getMaterial())) {
-			return efficiencyOnProperMaterial;
-		}
-		if (SWORD_MATERIALS.contains(state.getMaterial())) {
-			return 1.5f;
-		}
-		return 1.0F;
+
+		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) return efficiencyOnProperMaterial;
+		else if(SWORD_MATERIALS.contains(state.getMaterial())) return 1.5f;
+		else return 1.0F;
 	}
 
 	@Override

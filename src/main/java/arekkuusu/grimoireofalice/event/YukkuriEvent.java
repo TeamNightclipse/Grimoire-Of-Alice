@@ -19,7 +19,7 @@ import net.minecraftforge.items.IItemHandler;
 public class YukkuriEvent {
 
 	@SubscribeEvent
-	public void LivingDeathEvent(LivingDeathEvent event) {
+	public void livingDeathEvent(LivingDeathEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
 		World world = living.worldObj;
 
@@ -31,7 +31,8 @@ public class YukkuriEvent {
 
 				player.hurtResistantTime = 50;
 
-				EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM, player.hurtResistantTime);
+				EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM,
+						player.hurtResistantTime);
 				world.spawnEntityInWorld(circle);
 
 				player.isDead = false;
@@ -52,7 +53,7 @@ public class YukkuriEvent {
 	}
 
 	@SubscribeEvent
-	public void LivingHurtEvent(LivingHurtEvent event) {
+	public void livingHurtEvent(LivingHurtEvent event) {
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.getEntityLiving();
 			if(player.inventory.hasItemStack(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN))) {

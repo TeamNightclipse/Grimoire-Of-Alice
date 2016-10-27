@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.entity;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -11,9 +13,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-import java.util.List;
-
-public class EntityCursedDecoyDoll extends EntityLiving{
+public class EntityCursedDecoyDoll extends EntityLiving {
 
 	private EntityPlayer user;
 
@@ -32,14 +32,14 @@ public class EntityCursedDecoyDoll extends EntityLiving{
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(ticksExisted > 500){
+		if(ticksExisted > 500) {
 			stopEntity();
 		}
 		getEntities();
 		motionY = motionX = motionZ = 0;
 	}
 
-	private void getEntities(){
+	private void getEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {

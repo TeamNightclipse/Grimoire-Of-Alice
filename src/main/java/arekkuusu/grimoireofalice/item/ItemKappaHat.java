@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.entity.Entity;
@@ -11,8 +13,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemKappaHat extends ItemModArmor {
 
@@ -44,11 +44,12 @@ public class ItemKappaHat extends ItemModArmor {
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.isInWater()) {
+		if(player.isInWater()) {
 			player.motionX *= 1.2;
 			player.motionY *= 1.2;
 			player.motionZ *= 1.2;
-		} else if(!player.isWet()){
+		}
+		else if(!player.isWet()) {
 			player.motionX *= 0.4;
 			player.motionZ *= 0.4;
 		}

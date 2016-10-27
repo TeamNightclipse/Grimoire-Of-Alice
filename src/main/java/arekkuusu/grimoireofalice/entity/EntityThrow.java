@@ -13,14 +13,12 @@ import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_ALL
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_CREATIVE;
 import static arekkuusu.grimoireofalice.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
-import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -83,8 +81,8 @@ public abstract class EntityThrow extends EntityThrowable {
 		super.onUpdate();
 		if(getCritical()) {
 			for(int i = 0; i < 2; i++) {
-				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX + (motionX * i) / 4D, posY + (motionY * i) / 4D,
-						posZ + (motionZ * i) / 4D, -motionX, -motionY + 0.2D, -motionZ);
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX + motionX * i / 4D, posY + motionY * i / 4D, posZ + motionZ * i / 4D,
+						-motionX, -motionY + 0.2D, -motionZ);
 			}
 		}
 	}
@@ -113,7 +111,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		setCritical(false);
 		throwableShake = getMaxShake();
 
-		if (tile != Blocks.AIR.getDefaultState()) {
+		if(tile != Blocks.AIR.getDefaultState()) {
 			tile.getBlock().onEntityCollidedWithBlock(worldObj, pos, tile, this);
 		}
 	}
@@ -129,42 +127,46 @@ public abstract class EntityThrow extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if (inGround || throwableShake <= 0) {
-			if (getThrower() != null)
-				if (canPickup(entityplayer)) {
-					if (entityplayer.capabilities.isCreativeMode) {
-						if(!worldObj.isRemote) setDead();
-						return;
+		if(inGround || throwableShake <= 0) {
+			if(getThrower() != null) if(canPickup(entityplayer)) {
+				if(entityplayer.capabilities.isCreativeMode) {
+					if(!worldObj.isRemote) {
+						setDead();
 					}
-					if (!entityplayer.inventory.addItemStackToInventory(stack)) {
-						entityplayer.dropItem(stack.getItem(), 1);
-					}
-					if(!worldObj.isRemote) setDead();
-				} else {
-					bounceBack();
+					return;
 				}
+				if(!entityplayer.inventory.addItemStackToInventory(stack)) {
+					entityplayer.dropItem(stack.getItem(), 1);
+				}
+				if(!worldObj.isRemote) {
+					setDead();
+				}
+			}
+			else {
+				bounceBack();
+			}
 		}
 	}
 
 	@Override
 	protected float getGravityVelocity() {
 		double speed = Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
-		if(speed < gravityThreshold()) {
-			return super.getGravityVelocity();
-		}
+		if(speed < gravityThreshold()) return super.getGravityVelocity();
 		else return 0F;
 	}
 
 	abstract double gravityThreshold();
 
 	protected void setPickupModeFromEntity(EntityLivingBase entityliving) {
-		if (entityliving instanceof EntityPlayer) {
-			if (((EntityPlayer) entityliving).capabilities.isCreativeMode) {
+		if(entityliving instanceof EntityPlayer) {
+			if(((EntityPlayer)entityliving).capabilities.isCreativeMode) {
 				canBePickedUp(PICKUP_CREATIVE);
-			} else {
+			}
+			else {
 				canBePickedUp(PICKUP_OWNER);
 			}
-		} else {
+		}
+		else {
 			canBePickedUp(NO_PICKUP);
 		}
 	}
@@ -178,11 +180,8 @@ public abstract class EntityThrow extends EntityThrowable {
 	}
 
 	private boolean canPickup(EntityPlayer entityplayer) {
-		if (canBePickedUp == PICKUP_ALL) {
-			return true;
-		} else if(canBePickedUp == PICKUP_CREATIVE) {
-			return entityplayer.capabilities.isCreativeMode;
-		}
+		if(canBePickedUp == PICKUP_ALL) return true;
+		else if(canBePickedUp == PICKUP_CREATIVE) return entityplayer.capabilities.isCreativeMode;
 		else return canBePickedUp == PICKUP_OWNER && entityplayer == getThrower();
 	}
 
@@ -194,7 +193,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		return canBePickedUp;
 	}
 
-	protected void canBePickedUp(PickupMode canI){
+	protected void canBePickedUp(PickupMode canI) {
 		canBePickedUp = canI;
 	}
 

@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item.food;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,14 +10,10 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemIbukiGourd extends ItemModFood {
 
@@ -43,7 +41,7 @@ public class ItemIbukiGourd extends ItemModFood {
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer) {
 			entityLiving.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-			this.onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
+			onFoodEaten(stack, worldIn, (EntityPlayer)entityLiving);
 		}
 		return stack;
 	}

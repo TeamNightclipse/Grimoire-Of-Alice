@@ -38,7 +38,8 @@ public class ItemMochiHammer extends ItemModSword {
 			list.add(TextFormatting.ITALIC + "\"The first strike is for Lord Daikoku~");
 			list.add(TextFormatting.ITALIC + "The Second strike is for Lord Daikoku~");
 			list.add(TextFormatting.ITALIC + "And for all of the 180 children...\"");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		list.add(TextFormatting.LIGHT_PURPLE + "Master of the Great Land");
@@ -52,6 +53,7 @@ public class ItemMochiHammer extends ItemModSword {
 		}
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Item.getItemFromBlock(Blocks.PLANKS);
 	}

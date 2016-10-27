@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.block;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
@@ -23,7 +25,9 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -31,8 +35,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider {
 
@@ -58,9 +60,9 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileCraftingAltar tile = (TileCraftingAltar) worldIn.getTileEntity(pos);
+		TileCraftingAltar tile = (TileCraftingAltar)worldIn.getTileEntity(pos);
 		boolean ok = false;
-		if (tile != null) {
+		if(tile != null) {
 			ok = playerIn.isSneaking() ? tile.removeItem(playerIn) : tile.doCrafting();
 		}
 		return ok;
@@ -69,21 +71,21 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		for (int i = -2; i <= 2; ++i) {
-			for (int j = -2; j <= 2; ++j) {
-				if (i > -2 && i < 2 && j == -1) {
+		for(int i = -2; i <= 2; ++i) {
+			for(int j = -2; j <= 2; ++j) {
+				if(i > -2 && i < 2 && j == -1) {
 					j = 2;
 				}
 
-				if (rand.nextInt(16) == 0) {
-					for (int k = 0; k <= 1; ++k) {
+				if(rand.nextInt(16) == 0) {
+					for(int k = 0; k <= 1; ++k) {
 
-						if (!worldIn.isAirBlock(pos.add(i / 2, 0, j / 2))) {
+						if(!worldIn.isAirBlock(pos.add(i / 2, 0, j / 2))) {
 							break;
 						}
 
 						worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, pos.getX() + 0.5D, pos.getY() + 2.0D, pos.getZ() + 0.5D,
-								(i + rand.nextFloat()) - 0.5D, (k - rand.nextFloat() - 1.0F), (j + rand.nextFloat()) - 0.5D);
+								i + rand.nextFloat() - 0.5D, k - rand.nextFloat() - 1.0F, j + rand.nextFloat() - 0.5D);
 					}
 				}
 			}
@@ -94,7 +96,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getHorizontal(meta);
-		return this.getDefaultState().withProperty(PROPERTYFACING, facing);
+		return getDefaultState().withProperty(PROPERTYFACING, facing);
 	}
 
 	@Override

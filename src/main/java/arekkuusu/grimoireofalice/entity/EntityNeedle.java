@@ -30,9 +30,9 @@ public class EntityNeedle extends EntityArrow {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D),
-				SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 0.4F + 0.8F);
-		if(getTicksInAir() >= 15 && !worldObj.isRemote){
+		worldObj.playSound(null, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F,
+				0.4F + 0.8F);
+		if(getTicksInAir() >= 15 && !worldObj.isRemote) {
 			setDead();
 		}
 	}

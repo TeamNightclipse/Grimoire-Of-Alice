@@ -8,10 +8,10 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireofalice.client.model.ModelNazrinPendulum;
+import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;

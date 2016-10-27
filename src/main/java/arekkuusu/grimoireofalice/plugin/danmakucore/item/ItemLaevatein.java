@@ -31,7 +31,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -40,7 +39,6 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemLaevatein extends ItemModSword {
 
@@ -92,7 +90,7 @@ public class ItemLaevatein extends ItemModSword {
 							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 							.build();
 
-					DanmakuCreationHelper.createRandomRingShot(danmaku, 1 , 10, 5);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
 
 					if(!isCreative) {
 						//noinspection ConstantConditions
@@ -118,9 +116,8 @@ public class ItemLaevatein extends ItemModSword {
 	}
 
 	private int getSlotFor(EntityPlayer player, ItemStack stack) {
-		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
-			if (player.inventory.mainInventory[i] != null
-					&& ItemStack.areItemStacksEqual(stack, player.inventory.mainInventory[i])
+		for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
+			if(player.inventory.mainInventory[i] != null && ItemStack.areItemStacksEqual(stack, player.inventory.mainInventory[i])
 					&& ItemStack.areItemStackTagsEqual(stack, player.inventory.mainInventory[i])) {
 				return i;
 			}
@@ -130,12 +127,11 @@ public class ItemLaevatein extends ItemModSword {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
+			float y, float z) {
 		BlockPos block = pos.offset(facing);
 
-		if(!player.canPlayerEdit(block, facing, stack)) {
-			return EnumActionResult.PASS;
-		}
+		if(!player.canPlayerEdit(block, facing, stack)) return EnumActionResult.PASS;
 		else {
 			boolean success = false;
 			for(int i = -1; i <= 1; i++) {

@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,10 +25,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
 public class ItemGrimoireBook extends ItemMod {
-	
+
 	public ItemGrimoireBook() {
 		super(LibItemName.GRIMOIRE_BOOK);
 		setMaxStackSize(1);
@@ -73,12 +73,12 @@ public class ItemGrimoireBook extends ItemMod {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.NONE;
-    }
+		return EnumAction.NONE;
+	}
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 10;
-    }
-	
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 10;
+	}
+
 }

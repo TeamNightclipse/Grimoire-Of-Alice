@@ -31,7 +31,7 @@ public class ItemSyringe extends ItemModSword {
 	public ItemSyringe(ToolMaterial material) {
 		super(material, LibItemName.SYRINGE);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
@@ -52,7 +52,7 @@ public class ItemSyringe extends ItemModSword {
 			}
 		}
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		doPotionEffect(playerIn);
@@ -60,7 +60,7 @@ public class ItemSyringe extends ItemModSword {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-	
+
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		stack.damageItem(1, user);

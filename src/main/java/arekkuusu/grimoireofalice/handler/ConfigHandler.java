@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ConfigHandler {
 
 	private static Configuration config;
-	
+
 	public static boolean maskRecipes;
 	public static boolean maskAltarRecipes;
 	public static boolean pointItemRecipes;
@@ -35,11 +35,11 @@ public class ConfigHandler {
 	private static void loadConfig() {
 
 		config.addCustomCategoryComment("Grimoire of Alice", "Don't change this if you don't know what you are doing");
-		config.addCustomCategoryComment("Crafting","Here simply change to true or false if players can get certain Items");
+		config.addCustomCategoryComment("Crafting", "Here simply change to true or false if players can get certain Items");
 		maskRecipes = config.get("Masks", "Vanilla Masks Recipes", false, "Can players get Kokoro's Masks from Vanilla Crafting table?").getBoolean();
 		maskAltarRecipes = config.get("Masks", "Altar Masks Recipes", true, "Can players get Kokoro's Masks from the Altar?").getBoolean();
 		pointItemRecipes = config.get("Points", "Point Item Recipes", true, "Can players get Point Items?").getBoolean();
-		config.addCustomCategoryComment("WorldGen","Here simply change the spawning rate of Mushrooms");
+		config.addCustomCategoryComment("WorldGen", "Here simply change the spawning rate of Mushrooms");
 		mushroomSpawningRate = config.get("Mushrooms", "Mushroom Spawning Rate", 10, "How many Spawn tries per chunks?").getInt();
 		kyoumarubotanSpawningRate = config.get("Kyoumatubotan", "Kyoumatubotan Spawning Rate", 10, "How many Spawn tries per chunks?").getInt();
 		if(config.hasChanged()) {

@@ -48,20 +48,20 @@ public class ItemLeaf extends ItemMod {
 	}
 
 	/*
-	 * After a player uses the item, it will spawn in the world 
+	 * After a player uses the item, it will spawn in the world
 	 * an EntityLeaf that will travel and fall slowly.
 	*/
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (!playerIn.capabilities.isCreativeMode) {
+			EntityPlayer playerIn = (EntityPlayer)entityLiving;
+			if(!playerIn.capabilities.isCreativeMode) {
 				--stack.stackSize;
 			}
 
 			DanmakuHelper.playShotSound(playerIn);
 
-			if (!worldIn.isRemote) {
+			if(!worldIn.isRemote) {
 				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setVariant(GOADanmakuVariants.LEAF);
 				float anglePitch = playerIn.isSneaking() ? 45 : -45;
 				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));

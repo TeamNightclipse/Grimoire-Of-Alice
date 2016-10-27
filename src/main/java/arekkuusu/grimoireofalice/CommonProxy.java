@@ -67,7 +67,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @Mod.EventBusSubscriber
 public class CommonProxy {
 
-	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[] {1,2,3,4}, 30, SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0);
+	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[] {1, 2, 3, 4}, 30,
+			SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0);
 	public static final Item.ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
 	public static final Item.ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
 	public static final Item.ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
@@ -216,15 +217,21 @@ public class CommonProxy {
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 
-		Block sugarBlock = new BlockMod(LibBlockName.SUGAR_BLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
+		Block sugarBlock = new BlockMod(LibBlockName.SUGAR_BLOCK, Material.CLAY)
+				.setSound(SoundType.SNOW)
+				.setHardness(0.2F)
+				.setResistance(5.0F);
 		sugarBlock.setHarvestLevel("axe", 1);
 
-		Block hyperConcentratedMagic = new BlockMod(LibBlockName.HYPER_MAGIC, Material.IRON).setSound(SoundType.SNOW).setHardness(0.5F).setResistance(2.0F);
+		Block hyperConcentratedMagic = new BlockMod(LibBlockName.HYPER_MAGIC, Material.IRON)
+				.setSound(SoundType.SNOW)
+				.setHardness(0.5F)
+				.setResistance(2.0F);
 		hyperConcentratedMagic.setHarvestLevel("pickaxe", 3);
 
 		//TODO: Move these somewhere else
-		GameRegistry.registerTileEntity(TileCraftingAltar.class,"Crafting_Altar");
-		GameRegistry.registerTileEntity(TilePillarAltar.class,"Pillar_Altar");
+		GameRegistry.registerTileEntity(TileCraftingAltar.class, "Crafting_Altar");
+		GameRegistry.registerTileEntity(TilePillarAltar.class, "Pillar_Altar");
 
 		event.getRegistry().registerAll(
 				new BlockMod(LibBlockName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F),
@@ -268,7 +275,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
 		MinecraftForge.EVENT_BUS.register(new CapabilitiesEvent());
 	}
-	
+
 	public void init(FMLInitializationEvent event) {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();

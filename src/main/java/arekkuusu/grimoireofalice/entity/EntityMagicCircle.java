@@ -25,7 +25,7 @@ public class EntityMagicCircle extends Entity {
 	private int last;
 	private int endTime = 0;
 
-	public EntityMagicCircle(World world){
+	public EntityMagicCircle(World world) {
 		super(world);
 	}
 
@@ -36,14 +36,14 @@ public class EntityMagicCircle extends Entity {
 		endTime = end;
 		host = entityLiving;
 		posX = host.posX;
-    	posY = host.posY + 0.1D;
-    	posZ = host.posZ;
-    	this.setPositionAndRotation(posX, posY, posZ, host.rotationYaw, host.rotationPitch);
+		posY = host.posY + 0.1D;
+		posZ = host.posZ;
+		setPositionAndRotation(posX, posY, posZ, host.rotationYaw, host.rotationPitch);
 	}
 
 	@Override
-    public void onUpdate() {
-    	super.onUpdate();
+	public void onUpdate() {
+		super.onUpdate();
 		if(host != null) {
 			if(!worldObj.isRemote && (host.isDead || host.isHandActive())) {
 				setDead();
@@ -52,15 +52,16 @@ public class EntityMagicCircle extends Entity {
 
 			setAnimationCount(last);
 
-			if (endTime < ticksExisted && endTime >= 0) {
-				if (!worldObj.isRemote) {
+			if(endTime < ticksExisted && endTime >= 0) {
+				if(!worldObj.isRemote) {
 					setDead();
 				}
 			}
 
-			if (getAnimationCount() < 5) {
-				setCircleSize((getAnimationCount()) / 5.0F);
-			} else {
+			if(getAnimationCount() < 5) {
+				setCircleSize(getAnimationCount() / 5.0F);
+			}
+			else {
 				float end2 = endTime;
 				setCircleSize((end2 - getAnimationCount()) / end2);
 			}
@@ -72,20 +73,29 @@ public class EntityMagicCircle extends Entity {
 			rotationPitch = host.rotationPitch;
 			setPosition(posX, posY, posZ);
 
-			while (rotationYaw > 180F) rotationYaw -= 360F;
-			while (rotationYaw < -180F) rotationYaw += 360F;
-			while (rotationPitch > 180F) rotationPitch -= 360F;
-			while (rotationPitch < -180F) rotationPitch += 360F;
+			while(rotationYaw > 180F) {
+				rotationYaw -= 360F;
+			}
+			while(rotationYaw < -180F) {
+				rotationYaw += 360F;
+			}
+			while(rotationPitch > 180F) {
+				rotationPitch -= 360F;
+			}
+			while(rotationPitch < -180F) {
+				rotationPitch += 360F;
+			}
 
 			setRotation(rotationYaw, rotationPitch);
 
-			if (ticksExisted > last) {
+			if(ticksExisted > last) {
 				last = ticksExisted;
 			}
-		} else if (!worldObj.isRemote) {
+		}
+		else if(!worldObj.isRemote) {
 			setDead();
 		}
-    }
+	}
 
 	@Override
 	protected void entityInit() {
@@ -105,7 +115,7 @@ public class EntityMagicCircle extends Entity {
 	private void setAnimationCount(int time) {
 		dataManager.set(ANIMATION, time);
 	}
-	
+
 	public int getAnimationCount() {
 		return dataManager.get(ANIMATION);
 	}
@@ -114,7 +124,7 @@ public class EntityMagicCircle extends Entity {
 		dataManager.set(TEXTURE, texture);
 	}
 
-	public int getTexture(){
+	public int getTexture() {
 		return dataManager.get(TEXTURE);
 	}
 

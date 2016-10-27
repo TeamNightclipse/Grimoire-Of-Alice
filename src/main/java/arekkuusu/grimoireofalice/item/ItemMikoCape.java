@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -14,10 +16,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
-public class ItemMikoCape extends ItemModArmor  {
+public class ItemMikoCape extends ItemModArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -43,7 +42,7 @@ public class ItemMikoCape extends ItemModArmor  {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelToyosatomimiAura(Ui);
+		if(model == null) model = new ModelToyosatomimiAura(Ui);
 		model.setModelAttributes(imodel);
 		return model;
 	}

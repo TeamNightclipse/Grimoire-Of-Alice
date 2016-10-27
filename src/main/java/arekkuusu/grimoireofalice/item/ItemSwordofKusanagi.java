@@ -9,10 +9,8 @@
 package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
-import java.util.Random;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
-import ibxm.Player;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -48,7 +46,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}
-	
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -58,7 +56,8 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 			list.add(TextFormatting.GRAY + "Discovered within the fourth tail of the eight-headed,");
 			list.add(TextFormatting.GRAY + "eight-tailed serpent Yamata-no-Orochi when it was slain ");
 			list.add(TextFormatting.GRAY + "by the Shinto god Susanoo-no-Mikoto.");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
@@ -69,20 +68,20 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-	
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(isOwner(stack, player)){
+			if(isOwner(stack, player)) {
 				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-				float convert = (timeUsed * 6) / 20F;
+				float convert = timeUsed * 6 / 20F;
 				convert = (convert * convert + convert * 2.0F) / 3F;
 				convert *= 1.5F;
-				if (convert > 10F) return;
-				for(int t = 0; t < convert; t++){
-					for(int u = 0;u < 10; u++){
+				if(convert > 10F) return;
+				for(int t = 0; t < convert; t++) {
+					for(int u = 0; u < 10; u++) {
 						spawnSmoke(player, itemRand.nextDouble(), itemRand.nextDouble());
 						spawnSmoke(player, -itemRand.nextDouble(), -itemRand.nextDouble());
 						spawnSmoke(player, itemRand.nextDouble(), -itemRand.nextDouble());
@@ -90,12 +89,12 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 					}
 				}
 				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
-				for (EntityMob mob : list){
+				for(EntityMob mob : list) {
 					mob.attackEntityFrom(DamageSource.magic, convert);
 					Vec3d playerPos = player.getPositionVector();
 					Vec3d mobPos = mob.getPositionVector();
 					double ratio = playerPos.distanceTo(mobPos) / 4;
-					double scaling = (1 - ratio);
+					double scaling = 1 - ratio;
 					Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
 					mob.motionX = -motion.xCoord * 2;
 					mob.motionY = .3F;
@@ -108,16 +107,16 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	private void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
 		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BLOCK;
-    }
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
-    }
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {

@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class Item3rdEye extends ItemMod {
-	
+
 	public Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
@@ -37,14 +37,14 @@ public class Item3rdEye extends ItemMod {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Satori's 3rdEye");
 		list.add(TextFormatting.ITALIC + "Shift right click to activate");
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
 		if(player.isSneaking()) {
@@ -52,7 +52,7 @@ public class Item3rdEye extends ItemMod {
 		}
 		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean isSelected) {
 		if(entity instanceof EntityPlayer) {
@@ -60,7 +60,8 @@ public class Item3rdEye extends ItemMod {
 			if(player.getCooldownTracker().hasCooldown(this) && stack.getItem() == this) {
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10, 0));
-			} else if(isSelected){
+			}
+			else if(isSelected) {
 				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().expandXyz(20.0D));
 				list.stream()
 						.filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob)

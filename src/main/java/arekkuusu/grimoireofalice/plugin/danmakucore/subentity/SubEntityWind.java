@@ -66,12 +66,12 @@ public class SubEntityWind extends SubEntityType {
 		@Override
 		protected void impactEntity(RayTraceResult result) {
 			if(!danmaku.worldObj.isRemote) {
-				if(result.entityHit instanceof EntityLiving){
-					result.entityHit.attackEntityFrom(DamageSource.magic, timeUsed / 2);
+				if(result.entityHit instanceof EntityLiving) {
+					result.entityHit.attackEntityFrom(DamageSource.magic, timeUsed / 2F);
 					Vec3d windPos = danmaku.getPositionVector();
 					Vec3d mobPos = result.entityHit.getPositionVector();
 					double ratio = windPos.distanceTo(mobPos) / 4;
-					double scaling = (1 - ratio);
+					double scaling = 1 - ratio;
 					Vec3d motion = windPos.subtract(mobPos).scale(scaling);
 					result.entityHit.motionX = -motion.xCoord * timeUsed / 2;
 					result.entityHit.motionY = danmaku.motionY;

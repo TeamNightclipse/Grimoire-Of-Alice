@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
@@ -54,15 +52,16 @@ public class ItemNazrinStick extends ItemModSword {
 		list.add(TextFormatting.GOLD + "Rare treasure from an old era");
 		list.add(TextFormatting.ITALIC + "By holding it you become the");
 		list.add(TextFormatting.ITALIC + "the Little Dowser General");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + "Use with Nazrin Sticks in both Hands");
-			if(!isHoldingItemsBothHands(player)){
+			if(!isHoldingItemsBothHands(player)) {
 				list.add(TextFormatting.DARK_RED + "Inactive");
 			}
 			else {
 				list.add(TextFormatting.DARK_AQUA + "Active");
 			}
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
@@ -70,11 +69,12 @@ public class ItemNazrinStick extends ItemModSword {
 	/* In short, I made the Item only work when you
 	 * put the two Nazrin Items in the OFF_HAND and MAIN_HAND.*/
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		if(facing == EnumFacing.UP && isHoldingItemsBothHands(player)){
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
+			float y, float z) {
+		if(facing == EnumFacing.UP && isHoldingItemsBothHands(player)) {
 			if(!world.isRemote) {
 				List<Block> blockLayer = new ArrayList<>(10);
-				for(int i = 1; i < 10; i++){
+				for(int i = 1; i < 10; i++) {
 					Block block = world.getBlockState(pos.down(i)).getBlock();
 					OreDictionary.getOreIDs(new ItemStack(block));
 					boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
@@ -106,8 +106,8 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 0));
-    }
-	
+	}
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
@@ -120,7 +120,7 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer){
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 
 			if(!player.capabilities.isCreativeMode) {
@@ -131,7 +131,7 @@ public class ItemNazrinStick extends ItemModSword {
 					player.inventory.deleteStack(new ItemStack(Items.COAL));
 				}
 			}
-			if(!worldIn.isRemote){
+			if(!worldIn.isRemote) {
 				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
 				worldIn.spawnEntityInWorld(circle);
 			}
@@ -155,18 +155,18 @@ public class ItemNazrinStick extends ItemModSword {
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {
 		ItemStack main = player.getHeldItemMainhand();
 		ItemStack off = player.getHeldItemOffhand();
-		return main != null && off != null && (main.isItemEqualIgnoreDurability(off) && main.getItemDamage() != off.getItemDamage());
+		return main != null && off != null && main.isItemEqualIgnoreDurability(off) && main.getItemDamage() != off.getItemDamage();
 	}
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.BLOCK;
-    }
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
-    }
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.BLOCK;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {

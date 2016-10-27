@@ -40,8 +40,9 @@ public class SubEntityNote extends SubEntityType {
 			super.subEntityTick();
 			//TODO: Get the correct note color
 			danmaku.worldObj.spawnParticle(EnumParticleTypes.NOTE, danmaku.posX + 0.5, danmaku.posY, danmaku.posZ + 0.5, 0.0D, 0.0D, 0.0D);
-			if (rand.nextInt(10) == 5) {
-				danmaku.worldObj.playSound(null, danmaku.posX, danmaku.posY, danmaku.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
+			if(rand.nextInt(10) == 5) {
+				danmaku.worldObj.playSound(null, danmaku.posX, danmaku.posY, danmaku.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F,
+						1F);
 			}
 		}
 	}

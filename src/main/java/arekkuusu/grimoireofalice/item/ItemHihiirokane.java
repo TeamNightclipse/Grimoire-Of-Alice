@@ -35,7 +35,7 @@ public class ItemHihiirokane extends ItemMod {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -44,5 +44,5 @@ public class ItemHihiirokane extends ItemMod {
 		list.add(TextFormatting.GRAY + "by strange physical properties used");
 		list.add(TextFormatting.GRAY + "to forge extraordinary legendary weapons");
 	}
-	
+
 }

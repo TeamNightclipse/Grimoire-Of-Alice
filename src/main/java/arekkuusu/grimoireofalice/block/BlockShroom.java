@@ -76,25 +76,27 @@ public class BlockShroom extends BlockModBush {
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState soil = worldIn.getBlockState(pos.down());
 		Block block = soil.getBlock();
-        return super.canPlaceBlockAt(worldIn, pos)
-        		|| block == Blocks.HARDENED_CLAY 
-        		|| block == Blocks.STAINED_HARDENED_CLAY 
-        		|| block == Blocks.STONE 
-        		|| block == ModBlocks.COMPACT_STONE;
+		return super.canPlaceBlockAt(worldIn, pos)
+				|| block == Blocks.HARDENED_CLAY
+				|| block == Blocks.STAINED_HARDENED_CLAY
+				|| block == Blocks.STONE
+				|| block == ModBlocks.COMPACT_STONE;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
-		if(rand.nextDouble() < 10 * 0.25F)
+		if(rand.nextDouble() < 10 * 0.25F) {
 			world.spawnParticle(EnumParticleTypes.SPELL, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0D, 1.0D, 0.0D);
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> stacks) {
-		for(int i = 0; i < 16; i++)
+		for(int i = 0; i < 16; i++) {
 			stacks.add(new ItemStack(item, 1, i));
+		}
 	}
 
 	@Override
@@ -115,7 +117,7 @@ public class BlockShroom extends BlockModBush {
 	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		if (meta >= EnumDyeColor.values().length) {
+		if(meta >= EnumDyeColor.values().length) {
 			meta = 0;
 		}
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));

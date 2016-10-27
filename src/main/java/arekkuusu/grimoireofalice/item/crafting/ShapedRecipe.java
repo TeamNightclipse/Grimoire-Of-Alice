@@ -115,9 +115,8 @@ public class ShapedRecipe {
 
 			//We iterate over all the chars and check if the exists
 			for(char rowChar : row.toCharArray()) {
-				if(!allowedCharacters.contains(rowChar)) {
+				if(!allowedCharacters.contains(rowChar))
 					throw new IllegalArgumentException("Found a row where not all characters were mapped: " + row);
-				}
 			}
 
 			objects.add(row);

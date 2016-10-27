@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.item.ItemMod;
+import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
@@ -34,7 +35,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import arekkuusu.grimoireofalice.lib.LibItemName;
 
 public class ItemShouLamp extends ItemMod {
 
@@ -47,60 +47,62 @@ public class ItemShouLamp extends ItemMod {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + "Brings about wealth");
-		if(GuiScreen.isShiftKeyDown()){
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + "Hold right click to use");
 			list.add(TextFormatting.YELLOW + "Long use periods give Luck to everyone around you");
 			list.add(TextFormatting.YELLOW + "Short use periods give Luck to only you");
 			list.add(TextFormatting.DARK_AQUA + "Hitting entities gives them Unluck");
-		} else {
+		}
+		else {
 			list.add(TextFormatting.ITALIC + "SHIFT for details");
 		}
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-	
+
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		if(count % 5 == 0) {
 			DanmakuHelper.playShotSound(player);
 			DanmakuBuilder danmaku = DanmakuBuilder.builder()
 					.setUser(player)
-					.setMovementData(0.5D,1.5D,0.1D)
+					.setMovementData(0.5D, 1.5D, 0.1D)
 					.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(5))
 					.build();
 
 			DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
 		}
 		player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
-    }
-	
+	}
+
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			float convert = (timeUsed * 6) / 20F;
+			float convert = timeUsed * 6 / 20F;
 			convert = (convert * convert + convert * 2.0F) / 3F;
 			convert *= 1.5F;
-			if (convert < 10F) {
+			if(convert < 10F) {
 				player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 				if(!worldIn.isRemote) {
 					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.BLUE_STAR, 125);
 					worldIn.spawnEntityInWorld(circle);
 				}
-			} else {
+			}
+			else {
 				player.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, player.posX, player.posY, player.posZ, 0, 0, 0);
 				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
-				for (EntityMob mob : list){
+				for(EntityMob mob : list) {
 					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 					if(!mob.worldObj.isRemote) {
 						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 125);
@@ -110,20 +112,20 @@ public class ItemShouLamp extends ItemMod {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		target.addPotionEffect(new PotionEffect(MobEffects.UNLUCK, 500, 5));
-        return false;
-    }
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.NONE;
-    }
+		return false;
+	}
 
 	@Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 72000;
-    }
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.NONE;
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 72000;
+	}
 }

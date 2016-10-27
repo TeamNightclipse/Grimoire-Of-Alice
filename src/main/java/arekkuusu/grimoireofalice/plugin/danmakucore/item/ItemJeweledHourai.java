@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
-import java.util.Random;
 
 import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -27,7 +26,11 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -42,8 +45,13 @@ public class ItemJeweledHourai extends ItemMod {
 
 	@CapabilityInject(IItemHandler.class)
 	private static Capability<IItemHandler> itemHandlerCapability;
-	private static final Item[] JEWELS =
-			{Items.DIAMOND, Items.EMERALD, Items.GOLDEN_APPLE, Items.GOLD_INGOT, Items.GOLD_NUGGET};
+	private static final Item[] JEWELS = {
+			Items.DIAMOND,
+			Items.EMERALD,
+			Items.GOLDEN_APPLE,
+			Items.GOLD_INGOT,
+			Items.GOLD_NUGGET
+	};
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -57,8 +65,8 @@ public class ItemJeweledHourai extends ItemMod {
 		super(LibItemName.JEWELED_HOURAI);
 		setNoRepair();
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("jewels"), (stack, world, entity) ->
-				entity != null && stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
+		addPropertyOverride(new ResourceLocation("jewels"),
+				(stack, world, entity) -> entity != null && stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
 	}
 
 	@Override
@@ -85,9 +93,10 @@ public class ItemJeweledHourai extends ItemMod {
 			short jewels = getJewels(stack);
 			if(jewels < 5 && entityIn.ticksExisted % 200 == 0) {
 				jewels += 1;
-				if (jewels < 0) {
+				if(jewels < 0) {
 					jewels = 0;
-				} else if (jewels > 5) {
+				}
+				else if(jewels > 5) {
 					jewels = 5;
 				}
 				setJewels(stack, jewels);
@@ -106,7 +115,7 @@ public class ItemJeweledHourai extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(!worldIn.isRemote) {
 			if(!entityLiving.isSneaking()) {
-				if (getJewels(stack) >= 1) {
+				if(getJewels(stack) >= 1) {
 					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 					if(timeUsed > 30) {
 						timeUsed = 30;
@@ -115,11 +124,13 @@ public class ItemJeweledHourai extends ItemMod {
 
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
 							.setUser(entityLiving)
-							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color)).build();
+							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color))
+							.build();
 					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
 					addJewels(stack, (short)-1);
 				}
-			} else {
+			}
+			else {
 				if(getJewels(stack) == 5) {
 					if(entityLiving.hasCapability(itemHandlerCapability, null)) {
 						int pos = itemRand.nextInt(JEWELS.length);
@@ -143,7 +154,8 @@ public class ItemJeweledHourai extends ItemMod {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 			nbt.setShort("Jewels", charge);
-		} else if(nbt.getShort("Jewels") >= 0) {
+		}
+		else if(nbt.getShort("Jewels") >= 0) {
 			nbt.setShort("Jewels", (short)(nbt.getShort("Jewels") + charge));
 		}
 	}
@@ -154,7 +166,8 @@ public class ItemJeweledHourai extends ItemMod {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 			nbt.setShort("Jewels", charge);
-		} else if(nbt.getShort("Jewels") >= 0) {
+		}
+		else if(nbt.getShort("Jewels") >= 0) {
 			nbt.setShort("Jewels", charge);
 		}
 	}

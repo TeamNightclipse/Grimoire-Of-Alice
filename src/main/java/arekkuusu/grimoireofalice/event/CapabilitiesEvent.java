@@ -1,5 +1,10 @@
 package arekkuusu.grimoireofalice.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,11 +19,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-
 public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
@@ -32,13 +32,15 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 	public void onItemDrop(PlayerDropsEvent event) {
 		EntityPlayer player = event.getEntityPlayer();
 		List<EntityItem> drop = event.getDrops();
-		for (EntityItem item : drop) {
+		for(EntityItem item : drop) {
 			Item i = item.getEntityItem().getItem();
-			if (i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA) {
-				if (!player.capabilities.isCreativeMode) {
+			if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA) {
+				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
-					if(!player.worldObj.isRemote) player.sendPlayerAbilities();
+					if(!player.worldObj.isRemote) {
+						player.sendPlayerAbilities();
+					}
 					playersFlying.remove(player);
 				}
 			}
@@ -49,11 +51,13 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 	public void onItemToss(ItemTossEvent event) {
 		EntityPlayer player = event.getPlayer();
 		Item item = event.getEntityItem().getEntityItem().getItem();
-		if (item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
-			if (!player.capabilities.isCreativeMode) {
+		if(item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
+			if(!player.capabilities.isCreativeMode) {
 				player.capabilities.allowFlying = false;
 				player.capabilities.isFlying = false;
-				if(!player.worldObj.isRemote) player.sendPlayerAbilities();
+				if(!player.worldObj.isRemote) {
+					player.sendPlayerAbilities();
+				}
 				playersFlying.remove(player);
 			}
 		}
@@ -67,23 +71,23 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 	* */
 	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+		if(event.getEntityLiving() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.getEntityLiving();
 			//Flying
-			if (playersFlying.contains(player)) {
-				if (canFlyAndMove(player)) {
+			if(playersFlying.contains(player)) {
+				if(canFlyAndMove(player)) {
 					player.capabilities.allowFlying = true;
-				} else {
-					if (!player.isSpectator() && !player.capabilities.isCreativeMode) {
-						player.capabilities.allowFlying = false;
-						player.capabilities.isFlying = false;
-						if(!player.worldObj.isRemote) {
-							player.sendPlayerAbilities();
-						}
-					}
-					playersFlying.remove(player);
 				}
-			} else if (canFlyAndMove(player)) {
+				else if(!player.isSpectator() && !player.capabilities.isCreativeMode) {
+					player.capabilities.allowFlying = false;
+					player.capabilities.isFlying = false;
+					if(!player.worldObj.isRemote) {
+						player.sendPlayerAbilities();
+					}
+				}
+				playersFlying.remove(player);
+			}
+			else if(canFlyAndMove(player)) {
 				playersFlying.add(player);
 				player.capabilities.allowFlying = true;
 				if(!player.worldObj.isRemote) {
@@ -97,18 +101,24 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 		if(flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack))) {
 
 			@SuppressWarnings("ConstantConditions") //Liar
-					IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-			for (int i = 0; i < capability.getSlots(); i++) {
+			for(int i = 0; i < capability.getSlots(); i++) {
 				ItemStack stack = capability.getStackInSlot(i);
-				if (stack != null && stack.getItem() == ModItems.HAKUREI_GOHEI) {
+				if(stack != null && stack.getItem() == ModItems.HAKUREI_GOHEI) {
 
 					//TODO: This should NOT be here
-					if (getGoheiMode(stack) == 0 && !player.isSneaking()) {
+					if(getGoheiMode(stack) == 0 && !player.isSneaking()) {
 						Vec3d vec = player.getLookVec();
-						if (player.motionX < 0.5 && player.motionX > -0.5) player.motionX = 0.5 * vec.xCoord;
-						if (player.motionY < 0.5 && player.motionY > -0.5) player.motionY = 0.5 * vec.yCoord;
-						if (player.motionZ < 0.5 && player.motionZ > -0.5) player.motionZ = 0.5 * vec.zCoord;
+						if(player.motionX < 0.5 && player.motionX > -0.5) {
+							player.motionX = 0.5 * vec.xCoord;
+						}
+						if(player.motionY < 0.5 && player.motionY > -0.5) {
+							player.motionY = 0.5 * vec.yCoord;
+						}
+						if(player.motionZ < 0.5 && player.motionZ > -0.5) {
+							player.motionZ = 0.5 * vec.zCoord;
+						}
 					}
 
 					break;
@@ -116,7 +126,8 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 			}
 
 			return true;
-		} else return player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_AURA;
+		}
+		else return player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_AURA;
 	}
 
 	private int getGoheiMode(ItemStack itemStack) {

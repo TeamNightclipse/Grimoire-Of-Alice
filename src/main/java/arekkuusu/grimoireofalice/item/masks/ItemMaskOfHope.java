@@ -60,10 +60,10 @@ public class ItemMaskOfHope extends ItemModMask {
 			player.addPotionEffect(new PotionEffect(MobEffects.POISON, 666, 4));
 		}
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return LibMod.MODID + ":textures/models/armor/maskofhope.png";
-    }
-	
+		return LibMod.MODID + ":textures/models/armor/maskofhope.png";
+	}
+
 }

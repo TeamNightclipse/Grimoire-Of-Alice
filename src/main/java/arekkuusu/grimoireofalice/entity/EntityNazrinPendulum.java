@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.block.Block;
@@ -29,46 +28,47 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class EntityNazrinPendulum extends Entity {
 
-    public EntityPlayer user;
+	public EntityPlayer user;
 	private boolean follow;
 
 	public EntityNazrinPendulum(World worldIn) {
 		super(worldIn);
 	}
 
-    public EntityNazrinPendulum(World worldIn, EntityPlayer player, boolean follow) {
-        super(worldIn);
-        this.user = player;
+	public EntityNazrinPendulum(World worldIn, EntityPlayer player, boolean follow) {
+		super(worldIn);
+		user = player;
 		this.follow = follow;
-    }
+	}
 
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-        if(user == null | isEntityInsideOpaqueBlock()) {
-            stopEntity();
-        } else {
-            if(ticksExisted > 10 && user.isSneaking()) {
-                stopEntity();
-            }
-            else if(user.hurtTime > 0) {
-                stopEntity();
-            }
-        }
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if(user == null | isEntityInsideOpaqueBlock()) {
+			stopEntity();
+		}
+		else {
+			if(ticksExisted > 10 && user.isSneaking()) {
+				stopEntity();
+			}
+			else if(user.hurtTime > 0) {
+				stopEntity();
+			}
+		}
 
-        if(user != null && follow) {
+		if(user != null && follow) {
 			Vec3d look = user.getLookVec();
 			float distance = 2F;
-			double dx = user.posX + (look.xCoord * distance);
+			double dx = user.posX + look.xCoord * distance;
 			double dy = user.posY + user.getEyeHeight() - 0.5;
-			double dz = user.posZ + (look.zCoord * distance);
+			double dz = user.posZ + look.zCoord * distance;
 			setPosition(dx, dy, dz);
 		}
 
-        List<Block> blockLayer = new ArrayList<>(20);
-        BlockPos pos = new BlockPos(posX, posY, posZ);
-        for(int i = 1; i < 20; i++){
-            Block block = worldObj.getBlockState(pos.down(i)).getBlock();
+		List<Block> blockLayer = new ArrayList<>(20);
+		BlockPos pos = new BlockPos(posX, posY, posZ);
+		for(int i = 1; i < 20; i++) {
+			Block block = worldObj.getBlockState(pos.down(i)).getBlock();
 			ItemStack stack = new ItemStack(block);
 
 			//noinspection ConstantConditions Liar
@@ -77,33 +77,33 @@ public class EntityNazrinPendulum extends Entity {
 			}
 
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-                    .mapToObj(OreDictionary::getOreName)
-                    .anyMatch(s -> s.startsWith("ore")) || block == Blocks.CHEST;
+					.mapToObj(OreDictionary::getOreName)
+					.anyMatch(s -> s.startsWith("ore")) || block == Blocks.CHEST;
 
-            if(isOre) {
-                blockLayer.add(block);
-            }
-        }
+			if(isOre) {
+				blockLayer.add(block);
+			}
+		}
 
-        blockLayer.forEach(ignored -> {
+		blockLayer.forEach(ignored -> {
 			if(rand.nextInt(8) == 4) {
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 			}
-        });
-    }
+		});
+	}
 
-    @Override
-    public boolean canBePushed() {
-        return false;
-    }
+	@Override
+	public boolean canBePushed() {
+		return false;
+	}
 
-    @Override
-    protected void entityInit() {}
+	@Override
+	protected void entityInit() {}
 
-    private void stopEntity() {
-        if(!worldObj.isRemote) {
+	private void stopEntity() {
+		if(!worldObj.isRemote) {
 			if(user != null) {
 				if(user.capabilities.isCreativeMode) {
 					setDead();
@@ -114,13 +114,13 @@ public class EntityNazrinPendulum extends Entity {
 			else {
 				dropItem(ModItems.NAZRIN_PENDULUM, 1);
 			}
-            setDead();
+			setDead();
 		}
-    }
+	}
 
 	@Override
-    protected void readEntityFromNBT(NBTTagCompound compound) {}
+	protected void readEntityFromNBT(NBTTagCompound compound) {}
 
-    @Override
-    protected void writeEntityToNBT(NBTTagCompound compound) {}
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound compound) {}
 }

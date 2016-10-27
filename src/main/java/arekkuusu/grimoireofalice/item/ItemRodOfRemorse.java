@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,8 +20,6 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
-
-import java.util.List;
 
 public class ItemRodOfRemorse extends ItemMod {
 
@@ -53,7 +53,7 @@ public class ItemRodOfRemorse extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
 		if(itemStackIn.isItemDamaged()) {
-			if(player.capabilities.isCreativeMode){
+			if(player.capabilities.isCreativeMode) {
 				itemStackIn.setItemDamage(0);
 				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 			}
@@ -77,15 +77,15 @@ public class ItemRodOfRemorse extends ItemMod {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (!stack.isItemDamaged()) {
+		if(!stack.isItemDamaged()) {
 			float perc = 0.75F;
-			if(target.getLastAttackerTime() % 50 == 0){
+			if(target.getLastAttackerTime() % 50 == 0) {
 				perc -= 0.10;
 			}
-			if(target.getAge() % 50 == 0){
+			if(target.getAge() % 50 == 0) {
 				perc -= 0.10;
 			}
-			if(target.getRevengeTimer() % 50 == 0){
+			if(target.getRevengeTimer() % 50 == 0) {
 				perc -= 0.10;
 			}
 			target.setHealth(target.getMaxHealth() * perc);
@@ -99,8 +99,7 @@ public class ItemRodOfRemorse extends ItemMod {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		if(!target.worldObj.isRemote) {
 			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
-					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage")
-							.appendText(": "))
+					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage").appendText(": "))
 					.appendText(String.valueOf(target.getHealth())));
 		}
 		return true;

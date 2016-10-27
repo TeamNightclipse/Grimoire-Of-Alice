@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -36,7 +35,7 @@ public class EntityGrimoireSpell extends Entity {
 	private float bookSpread;
 	private float bookRotation;
 
-	public EntityGrimoireSpell(World world){
+	public EntityGrimoireSpell(World world) {
 		super(world);
 	}
 
@@ -46,20 +45,20 @@ public class EntityGrimoireSpell extends Entity {
 		setEndTime(end);
 		host = entityLiving;
 		posX = host.posX;
-    	posY = host.posY + 0.1D;
-    	posZ = host.posZ;
-    	setPosition(posX, posY, posZ);
-		setRotation(host.rotationYaw,0);
+		posY = host.posY + 0.1D;
+		posZ = host.posZ;
+		setPosition(posX, posY, posZ);
+		setRotation(host.rotationYaw, 0);
 	}
 
 	@Override
-    public void onUpdate() {
-    	super.onUpdate();
+	public void onUpdate() {
+		super.onUpdate();
 		if(host != null) {
-			if(host.isDead){
+			if(host.isDead) {
 				setDead();
 			}
-			if (ticksExisted > getEndTime()  && !worldObj.isRemote) {
+			if(ticksExisted > getEndTime() && !worldObj.isRemote) {
 				setDead();
 				return;
 			}
@@ -70,76 +69,86 @@ public class EntityGrimoireSpell extends Entity {
 			rotationPitch = host.rotationPitch;
 			setPosition(posX, posY, posZ);
 
-			if (rotationYaw > 180F) rotationYaw -= 360F;
-			if (rotationYaw < -180F) rotationYaw += 360F;
-			if (rotationPitch > 180F) rotationPitch -= 360F;
-			if (rotationPitch < -180F) rotationPitch += 360F;
+			if(rotationYaw > 180F) {
+				rotationYaw -= 360F;
+			}
+			if(rotationYaw < -180F) {
+				rotationYaw += 360F;
+			}
+			if(rotationPitch > 180F) {
+				rotationPitch -= 360F;
+			}
+			if(rotationPitch < -180F) {
+				rotationPitch += 360F;
+			}
 
 			setRotation(rotationYaw, rotationPitch);
 
 			bookPart();
-		} else if (!worldObj.isRemote) {
+		}
+		else if(!worldObj.isRemote) {
 			setDead();
 		}
-    }
+	}
 
-    private void bookPart() {
-		float bookSpreadPrev = this.bookSpread;
-		float bookRotationPrev = this.bookRotation;
-		double d0 = host.posX - (double) ((float) this.posX + 0.5F);
-		double d1 = host.posZ - (double) ((float) this.posZ + 0.5F);
-		float tRot = (float) MathHelper.atan2(d1, d0);
-		this.bookSpread += 0.1F;
+	private void bookPart() {
+		float bookSpreadPrev = bookSpread;
+		float bookRotationPrev = bookRotation;
+		double d0 = host.posX - ((float)posX + 0.5F);
+		double d1 = host.posZ - ((float)posZ + 0.5F);
+		float tRot = (float)MathHelper.atan2(d1, d0);
+		bookSpread += 0.1F;
 
-		if (this.bookSpread < 0.5F || rand.nextInt(40) == 0) {
-			float f1 = this.flipT;
+		if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
+			float f1 = flipT;
 
-			while (true) {
-				this.flipT += (float) (rand.nextInt(4) - rand.nextInt(4));
+			while(true) {
+				flipT += rand.nextInt(4) - rand.nextInt(4);
 
-				if (f1 != this.flipT) {
+				if(f1 != flipT) {
 					break;
 				}
 			}
-		} else {
+		}
+		else {
 			tRot += 0.02F;
-			this.bookSpread -= 0.1F;
+			bookSpread -= 0.1F;
 		}
 
-		while (this.bookRotation >= (float) Math.PI) {
-			this.bookRotation -= ((float) Math.PI * 2F);
+		while(bookRotation >= (float)Math.PI) {
+			bookRotation -= (float)Math.PI * 2F;
 		}
 
-		while (this.bookRotation < -(float) Math.PI) {
-			this.bookRotation += ((float) Math.PI * 2F);
+		while(bookRotation < -(float)Math.PI) {
+			bookRotation += (float)Math.PI * 2F;
 		}
 
-		while (tRot >= (float) Math.PI) {
-			tRot -= ((float) Math.PI * 2F);
+		while(tRot >= (float)Math.PI) {
+			tRot -= (float)Math.PI * 2F;
 		}
 
-		while (tRot < -(float) Math.PI) {
-			tRot += ((float) Math.PI * 2F);
+		while(tRot < -(float)Math.PI) {
+			tRot += (float)Math.PI * 2F;
 		}
 
 		float f2;
 
-		for (f2 = tRot - this.bookRotation; f2 >= (float) Math.PI; f2 -= ((float) Math.PI * 2F)) {
+		for(f2 = tRot - bookRotation; f2 >= (float)Math.PI; f2 -= (float)Math.PI * 2F) {
 			;
 		}
 
-		while (f2 < -(float) Math.PI) {
-			f2 += ((float) Math.PI * 2F);
+		while(f2 < -(float)Math.PI) {
+			f2 += (float)Math.PI * 2F;
 		}
 
-		this.bookRotation += f2 * 0.4F;
-		this.bookSpread = MathHelper.clamp_float(this.bookSpread, 0.0F, 1.0F);
-		++this.tickCount;
-		float pageFlipPrev = this.pageFlip;
-		float f = (this.flipT - this.pageFlip) * 0.4F;
+		bookRotation += f2 * 0.4F;
+		bookSpread = MathHelper.clamp_float(bookSpread, 0.0F, 1.0F);
+		++tickCount;
+		float pageFlipPrev = pageFlip;
+		float f = (flipT - pageFlip) * 0.4F;
 		f = MathHelper.clamp_float(f, -0.2F, 0.2F);
-		this.flipA += (f - this.flipA) * 0.9F;
-		this.pageFlip += this.flipA;
+		flipA += (f - flipA) * 0.9F;
+		pageFlip += flipA;
 		setTickCount(tickCount);
 		setPageFlip(pageFlip);
 		setPageFlipPrev(pageFlipPrev);
@@ -197,7 +206,7 @@ public class EntityGrimoireSpell extends Entity {
 		return dataManager.get(END_TIME);
 	}
 
-	public int getTickCount(){
+	public int getTickCount() {
 		return dataManager.get(TIME);
 	}
 
@@ -227,12 +236,12 @@ public class EntityGrimoireSpell extends Entity {
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound compound) {
-		
+
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound compound) {
-		
+
 	}
 
 }

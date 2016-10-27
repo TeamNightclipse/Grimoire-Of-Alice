@@ -34,12 +34,12 @@ public class ItemWatermelonSword extends ItemModSword {
 		setMaxDamage(1);
 		setNoRepair();
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
@@ -50,8 +50,8 @@ public class ItemWatermelonSword extends ItemModSword {
 	@SuppressWarnings("ConstantConditions") //Liar
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        stack.damageItem(1, attacker);
-        --stack.stackSize;
+		stack.damageItem(1, attacker);
+		--stack.stackSize;
 
 		if(attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
@@ -72,8 +72,8 @@ public class ItemWatermelonSword extends ItemModSword {
 			attacker.dropItem(Items.MELON, itemRand.nextInt(3));
 		}
 
-        return true;
-    }
+		return true;
+	}
 
 	@Override
 	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
