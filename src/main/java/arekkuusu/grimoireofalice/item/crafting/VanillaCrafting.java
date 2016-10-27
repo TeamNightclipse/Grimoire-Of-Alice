@@ -66,7 +66,7 @@ public class VanillaCrafting {
 	}
 
 	public static void masks() {
-		if(ConfigHandler.maskRecipes) {
+		if(ConfigHandler.grimoireOfAlice.crafting.masks.vanillaMaskRecipes) {
 			shapeless()
 					.add(ModItems.FOX_MASK)
 					.add(ModItems.FUKU_NO_KAMI_MASK)

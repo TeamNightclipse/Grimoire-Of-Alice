@@ -43,7 +43,7 @@ public final class SpecialRecipes {
 		HIHIIROKANE = RecipeAltar.registerRecipe(new ItemStack(ModItems.HIHIIROKANE), Blocks.COAL_BLOCK, ModItems.IMPURE_ROCK, Blocks.COAL_BLOCK,
 				ModItems.IMPURE_ROCK, Blocks.COAL_BLOCK, ModItems.IMPURE_ROCK, Blocks.COAL_BLOCK, ModItems.IMPURE_ROCK);
 
-		if(ConfigHandler.maskAltarRecipes) {
+		if(ConfigHandler.grimoireOfAlice.crafting.masks.altarMaskRecipes) {
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD);
 
 			KOKOROS_MASKS = RecipeAltar.registerRecipe(new ItemStack(ModItems.KOKOROS_MASKS), potion, ModItems.MASK, ModItems.FOX_MASK,

@@ -8,52 +8,44 @@
  */
 package arekkuusu.grimoireofalice.handler;
 
-import java.io.File;
-
 import arekkuusu.grimoireofalice.lib.LibMod;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.Config.Comment;
 
+@Config(modid = LibMod.MODID)
 public class ConfigHandler {
 
-	private static Configuration config;
+	@Comment("Don't change this if you don't know what you are doing")
+	public static GrimoireOfAlice grimoireOfAlice = new GrimoireOfAlice();
 
-	public static boolean maskRecipes;
-	public static boolean maskAltarRecipes;
-	public static boolean pointItemRecipes;
-	public static int mushroomSpawningRate;
-	public static int kyoumarubotanSpawningRate;
+	public static class GrimoireOfAlice {
 
-	public static void setConfig(File configFile) {
-		config = new Configuration(configFile);
-		loadConfig();
-		MinecraftForge.EVENT_BUS.register(ChangeListener.class);
-	}
+		@Comment("Here simply change to true or false if players can get certain Items")
+		public Crafting crafting = new Crafting();
+		@Comment("Here simply change the spawning rate of worldgen features")
+		public WorldGen worldGen = new WorldGen();
 
-	private static void loadConfig() {
+		public static class Crafting {
 
-		config.addCustomCategoryComment("Grimoire of Alice", "Don't change this if you don't know what you are doing");
-		config.addCustomCategoryComment("Crafting", "Here simply change to true or false if players can get certain Items");
-		maskRecipes = config.get("Masks", "Vanilla Masks Recipes", false, "Can players get Kokoro's Masks from Vanilla Crafting table?").getBoolean();
-		maskAltarRecipes = config.get("Masks", "Altar Masks Recipes", true, "Can players get Kokoro's Masks from the Altar?").getBoolean();
-		pointItemRecipes = config.get("Points", "Point Item Recipes", true, "Can players get Point Items?").getBoolean();
-		config.addCustomCategoryComment("WorldGen", "Here simply change the spawning rate of Mushrooms");
-		mushroomSpawningRate = config.get("Mushrooms", "Mushroom Spawning Rate", 10, "How many Spawn tries per chunks?").getInt();
-		kyoumarubotanSpawningRate = config.get("Kyoumatubotan", "Kyoumatubotan Spawning Rate", 10, "How many Spawn tries per chunks?").getInt();
-		if(config.hasChanged()) {
-			config.save();
-		}
-	}
+			public Masks masks = new Masks();
+			@Comment("Can players get Point Items?")
+			public boolean pointsItemRecipes = true;
 
-	public static class ChangeListener {
+			public static class Masks {
 
-		@SubscribeEvent
-		public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
-			if(event.getModID().equalsIgnoreCase(LibMod.MODID)) {
-				loadConfig();
+				@Comment("Can players get Kokoro's Masks from Vanilla Crafting table?")
+				public boolean vanillaMaskRecipes = false;
+				@Comment("Can players get Kokoro's Masks from the Altar?")
+				public boolean altarMaskRecipes = true;
 			}
+		}
+
+		public static class WorldGen {
+
+			@Comment("How many Spawn tries per chunks?")
+			public int mushromSpawnRate = 10;
+			@Comment("How many Spawn tries per chunks?")
+			public int kyoumarubotanSpawnRate = 10;
 		}
 	}
 }

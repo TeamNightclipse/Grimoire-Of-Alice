@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice;
 
-import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraftforge.fml.common.Loader;
@@ -39,8 +38,6 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ConfigHandler.setConfig(event.getSuggestedConfigurationFile());
-
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
 	}
