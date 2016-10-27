@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,11 +31,31 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 	//onItemDrop and onItemToss handle player dropping stuff on death and drag n' drop from inventory.
 	@SubscribeEvent
 	public void onItemDrop(PlayerDropsEvent event) {
-		EntityPlayer player = event.getEntityPlayer();
-		List<EntityItem> drop = event.getDrops();
-		for(EntityItem item : drop) {
-			Item i = item.getEntityItem().getItem();
-			if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA) {
+		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
+			EntityPlayer player = event.getEntityPlayer();
+			List<EntityItem> drop = event.getDrops();
+			for(EntityItem item : drop) {
+				Item i = item.getEntityItem().getItem();
+				if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA) {
+					if(!player.capabilities.isCreativeMode) {
+						player.capabilities.allowFlying = false;
+						player.capabilities.isFlying = false;
+						if(!player.worldObj.isRemote) {
+							player.sendPlayerAbilities();
+						}
+						playersFlying.remove(player);
+					}
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onItemToss(ItemTossEvent event) {
+		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
+			EntityPlayer player = event.getPlayer();
+			Item item = event.getEntityItem().getEntityItem().getItem();
+			if(item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
 				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
@@ -47,22 +68,6 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 		}
 	}
 
-	@SubscribeEvent
-	public void onItemToss(ItemTossEvent event) {
-		EntityPlayer player = event.getPlayer();
-		Item item = event.getEntityItem().getEntityItem().getItem();
-		if(item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
-			if(!player.capabilities.isCreativeMode) {
-				player.capabilities.allowFlying = false;
-				player.capabilities.isFlying = false;
-				if(!player.worldObj.isRemote) {
-					player.sendPlayerAbilities();
-				}
-				playersFlying.remove(player);
-			}
-		}
-	}
-
 	/*Tested on:
 	* - Chests
 	* - Crafting Pillars
@@ -71,7 +76,7 @@ public class CapabilitiesEvent { //TODO: Test for crashes or bugs
 	* */
 	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
-		if(event.getEntityLiving() instanceof EntityPlayer) {
+		if(ConfigHandler.grimoireOfAlice.features.allowFly && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.getEntityLiving();
 			//Flying
 			if(playersFlying.contains(player)) {

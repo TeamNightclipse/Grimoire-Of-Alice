@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;

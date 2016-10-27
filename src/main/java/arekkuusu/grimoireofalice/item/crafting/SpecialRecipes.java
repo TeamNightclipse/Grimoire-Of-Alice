@@ -70,18 +70,27 @@ public final class SpecialRecipes {
 					potion, Items.BEETROOT_SOUP, new ItemStack(Items.DYE, 1, 9));
 		}
 		//RecipeItemsNether
-		THIRD_EYE = RecipeAltar.registerRecipeNether(new ItemStack(ModItems.THIRD_EYE), Items.ENDER_EYE, Items.ENDER_PEARL, Items.ENDER_PEARL,
-				Items.ENDER_PEARL, Items.ENDER_PEARL, Items.ENDER_PEARL);
+		if(ConfigHandler.grimoireOfAlice.crafting.thirdEye) {
+			THIRD_EYE = RecipeAltar.registerRecipeNether(new ItemStack(ModItems.THIRD_EYE), Items.ENDER_EYE, Items.ENDER_PEARL, Items.ENDER_PEARL,
+					Items.ENDER_PEARL, Items.ENDER_PEARL, Items.ENDER_PEARL);
+		}
 		//RecipeItemsMoonPhase
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			JEWELED_HOURAI = RecipeAltar.registerRecipeMoonPhase(4, new ItemStack(ModItems.JEWELED_HOURAI), Items.STICK, Items.STICK, Items.STICK,
-					Items.DIAMOND, Items.EMERALD, Items.GOLD_INGOT, Items.GOLD_NUGGET, Items.DIAMOND, Items.EMERALD, Items.GOLD_INGOT,
-					Items.GOLD_NUGGET);
+			if(ConfigHandler.grimoireOfAlice.crafting.danmakuCore.jeweledHourai) {
+				JEWELED_HOURAI = RecipeAltar.registerRecipeMoonPhase(4, new ItemStack(ModItems.JEWELED_HOURAI), Items.STICK, Items.STICK, Items.STICK,
+						Items.DIAMOND, Items.EMERALD, Items.GOLD_INGOT, Items.GOLD_NUGGET, Items.DIAMOND, Items.EMERALD, Items.GOLD_INGOT,
+						Items.GOLD_NUGGET);
+			}
 		}
 		//RecipeItemsRain
-		HOLYSTONE = RecipeAltar.registerRecipeRain(new ItemStack(ModBlocks.HOLY_STONE), ModBlocks.ROPE_BLOCK);
-		ONBASHIRA = RecipeAltar.registerRecipeRain(new ItemStack(ModBlocks.ONBASHIRA), ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE,
-				ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR,
-				ModBlocks.HOLY_STONE);
+		if(ConfigHandler.grimoireOfAlice.crafting.holyStone) {
+			HOLYSTONE = RecipeAltar.registerRecipeRain(new ItemStack(ModBlocks.HOLY_STONE), ModBlocks.ROPE_BLOCK);
+		}
+
+		if((ConfigHandler.grimoireOfAlice.crafting.onbashira)) {
+			ONBASHIRA = RecipeAltar.registerRecipeRain(new ItemStack(ModBlocks.ONBASHIRA), ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE,
+					ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR,
+					ModBlocks.HOLY_STONE);
+		}
 	}
 }

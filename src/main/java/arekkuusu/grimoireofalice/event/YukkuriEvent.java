@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.event;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.potion.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,33 +21,35 @@ public class YukkuriEvent {
 
 	@SubscribeEvent
 	public void livingDeathEvent(LivingDeathEvent event) {
-		EntityLivingBase living = event.getEntityLiving();
-		World world = living.worldObj;
+		if(ConfigHandler.grimoireOfAlice.features.allowRevive) {
+			EntityLivingBase living = event.getEntityLiving();
+			World world = living.worldObj;
 
-		if(!world.isRemote && living instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)living;
-			if(player.getEntityData().getBoolean("Eternal")) {
-				player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-						SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			if(!world.isRemote && living instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer)living;
+				if(player.getEntityData().getBoolean("Eternal")) {
+					player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
+							SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 
-				player.hurtResistantTime = 50;
+					player.hurtResistantTime = 50;
 
-				EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM,
-						player.hurtResistantTime);
-				world.spawnEntityInWorld(circle);
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM,
+							player.hurtResistantTime);
+					world.spawnEntityInWorld(circle);
 
-				player.isDead = false;
-				player.setHealth(player.getMaxHealth());
-				event.setCanceled(true);
-			}
-			else {
-				@SuppressWarnings("ConstantConditions")
-				boolean potion = player.isPotionActive(ModPotions.ELIXIR);
-				if(potion) {
-					player.hurtResistantTime = 100;
 					player.isDead = false;
 					player.setHealth(player.getMaxHealth());
 					event.setCanceled(true);
+				}
+				else {
+					@SuppressWarnings("ConstantConditions")
+					boolean potion = player.isPotionActive(ModPotions.ELIXIR);
+					if(potion) {
+						player.hurtResistantTime = 100;
+						player.isDead = false;
+						player.setHealth(player.getMaxHealth());
+						event.setCanceled(true);
+					}
 				}
 			}
 		}
