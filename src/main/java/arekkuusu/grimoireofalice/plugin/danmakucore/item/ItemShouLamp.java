@@ -19,6 +19,7 @@ import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -51,15 +52,15 @@ public class ItemShouLamp extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Brings about wealth");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + "Hold right click to use");
-			list.add(TextFormatting.YELLOW + "Long use periods give Luck to everyone around you");
-			list.add(TextFormatting.YELLOW + "Short use periods give Luck to only you");
-			list.add(TextFormatting.DARK_AQUA + "Hitting entities gives them Unluck");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
+			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_others.name"));
+			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_player.name"));
+			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.shou_lamp_badbuff.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
 		}
 	}
 

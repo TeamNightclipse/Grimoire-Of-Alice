@@ -14,10 +14,12 @@ import java.util.Random;
 import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -43,6 +45,7 @@ public class BlockShroom extends BlockModBush {
 		setLightLevel(0.5F);
 		setHardness(0.0F);
 		setSoundType(SoundType.PLANT);
+		setDefaultState(blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
 	}
 
 	@Override
@@ -53,8 +56,8 @@ public class BlockShroom extends BlockModBush {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "\"Smells and tastes good\"");
-		list.add(TextFormatting.ITALIC + "Craft into tasty snack");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shroom_block_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shroom_block_tasty.name"));
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.client.model.ModelKanakoAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,9 +40,9 @@ public class ItemAuraKanako extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "Represents the figure of an entwined snake");
-		list.add(TextFormatting.ITALIC + "Its true power is unknown, the legend says");
-		list.add(TextFormatting.ITALIC + "it possesses a power unimaginable to humans");
+		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.aura_kanako_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_kanako_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_kanako_description_bottom.name"));
 	}
 
 	@Override

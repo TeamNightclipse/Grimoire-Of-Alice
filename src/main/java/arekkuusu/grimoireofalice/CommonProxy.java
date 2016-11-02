@@ -14,7 +14,6 @@ import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
-import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
@@ -187,7 +186,7 @@ public class CommonProxy {
 				itemBlock(ModBlocks.ONBASHIRA),
 				itemBlock(ModBlocks.PAPER_BLOCK),
 				itemBlock(ModBlocks.ROPE_BLOCK),
-				itemBlock(ModBlocks.SHROOM),
+				itemBlockColor(ModBlocks.SHROOM),
 				itemBlock(ModBlocks.SUGAR_BLOCK),
 				itemBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC),
 				itemBlock(ModBlocks.ALTAR),
@@ -213,6 +212,9 @@ public class CommonProxy {
 
 	private static Item itemBlock(Block block) {
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
+	}
+	private static Item itemBlockColor(Block block) {
+		return new ItemBlockColors(block).setRegistryName(block.getRegistryName());
 	}
 
 	@SubscribeEvent

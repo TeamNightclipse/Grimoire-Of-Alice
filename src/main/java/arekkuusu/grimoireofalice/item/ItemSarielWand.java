@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,8 +48,8 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_PURPLE + "Immense Knowledge, Angel of Death, Commaner of God...");
-		list.add(TextFormatting.ITALIC + "Legendary wand from a fallen Angel");
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.sariel_wand_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_description.name"));
 		super.addInformation(stack, player, list, p_77624_4_);
 	}
 

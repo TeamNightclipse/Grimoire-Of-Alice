@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -36,8 +37,8 @@ public class ItemKappasNostrum extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Powerful healing ointment said to be created");
-		list.add(TextFormatting.DARK_AQUA + "by cutting off the arm of a kappa");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.kappas_nostrum_header.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.kappas_nostrum_description.name"));
 	}
 
 	@Override

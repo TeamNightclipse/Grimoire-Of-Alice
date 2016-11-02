@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -40,8 +41,8 @@ public class ItemMikoStick extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Property of Toyosatomimi no Miko");
-		list.add(TextFormatting.ITALIC + "Better than a bucket of water");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.miko_stick_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miko_stick_header.name"));
 	}
 
 	@Override

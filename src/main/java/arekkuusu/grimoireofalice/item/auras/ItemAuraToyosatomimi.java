@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,10 +44,10 @@ public class ItemAuraToyosatomimi extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "\"Infinite knowledge\"");
-		list.add(TextFormatting.ITALIC + "I can listen to 10 people at once,");
-		list.add(TextFormatting.ITALIC + "but unfortunately you are the 11th.");
-		list.add(TextFormatting.ITALIC + "Sucks to be you");
+		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.aura_toyosatomimi_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_toyosatomimi_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_toyosatomimi_description_mid.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_toyosatomimi_description_bottom.name"));
 	}
 
 	@Override

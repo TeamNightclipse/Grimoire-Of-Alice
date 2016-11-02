@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -31,8 +32,8 @@ public class ItemMiracleMallet extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Ancient inchling artifact, passed down through the generations,");
-		list.add(TextFormatting.GOLD + "said to be able to grant any wish the user wishes.");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.miracle_mallet_header.name"));
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.miracle_mallet_description.name"));
 	}
 
 	@Override

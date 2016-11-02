@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -35,8 +36,8 @@ public class ItemNueTrident extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Trident of sealed beast, Seed of Unknown Form");
-		list.add(TextFormatting.OBFUSCATED + "Fear the unknown, weak human!");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.nue_trident_header.name"));
+		list.add(TextFormatting.OBFUSCATED + I18n.format("grimoire.tooltip.nue_trident_description.name"));
 	}
 
 	@Override

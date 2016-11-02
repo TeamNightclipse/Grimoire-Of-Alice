@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -46,8 +47,8 @@ public class ItemShroomSlice extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Psilocybin mushroom");
-		list.add(TextFormatting.ITALIC + "Shrooms~ze!");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shroom_slice_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shroom_slice_description.name"));
 	}
 
 	@Override

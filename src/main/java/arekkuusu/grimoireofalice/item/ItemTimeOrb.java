@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -45,9 +46,9 @@ public class ItemTimeOrb extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Exclusive to Imperishable Night");
-		list.add(TextFormatting.ITALIC + "They are believed to slow");
-		list.add(TextFormatting.ITALIC + "the passing of the night");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.time_orb_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.time_orb_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.time_orb_description_bottom.name"));
 	}
 
 	@Override

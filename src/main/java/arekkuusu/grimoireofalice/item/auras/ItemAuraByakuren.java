@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.client.model.ModelByakurenAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,8 +46,8 @@ public class ItemAuraByakuren extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "\"The Sealed Great Magician\"");
-		list.add(TextFormatting.ITALIC + "These powers are demonic in nature");
+		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.aura_byakuren_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_byakuren_description.name"));
 	}
 
 	@Override

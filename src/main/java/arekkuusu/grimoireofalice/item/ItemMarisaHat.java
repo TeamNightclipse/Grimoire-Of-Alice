@@ -6,6 +6,7 @@ import arekkuusu.grimoireofalice.client.model.ModelMarisaHat;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -38,8 +39,8 @@ public class ItemMarisaHat extends ItemModArmor {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "\"daze~!\"");
-		list.add(TextFormatting.ITALIC + "Pickup items 5 blocks away");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.marisa_hat_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.marisa_hat_description.name"));
 	}
 
 	@Override

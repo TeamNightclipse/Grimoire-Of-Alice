@@ -16,6 +16,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,8 +43,8 @@ public class BlockKyoumarubotan extends BlockModBush {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Mythical tree peony");
-		list.add(TextFormatting.ITALIC + "Hematite in the shape of a flower");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.kyoumarubotan_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kyoumarubotan_description.name"));
 	}
 
 	@Override

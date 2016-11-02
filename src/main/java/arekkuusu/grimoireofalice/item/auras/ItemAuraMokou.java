@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.client.model.ModelAura;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,8 +40,8 @@ public class ItemAuraMokou extends ItemModAura {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + "\"~na no kashira?\"");
-		list.add(TextFormatting.ITALIC + "Manipulate fire as if it was water");
+		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.aura_mokou_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_mokou_description.name"));
 	}
 
 	@Override

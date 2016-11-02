@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -27,8 +28,8 @@ public class ItemCattailPlant extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Nitori's Cattail Plant");
-		list.add(TextFormatting.ITALIC + "She used big machinery just to pick it up...");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.cattail_plant_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.cattail_plant_description.name"));
 	}
 
 }

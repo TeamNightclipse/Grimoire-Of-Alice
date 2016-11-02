@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -41,9 +42,9 @@ public class ItemStopWatch extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Sakuya stop watch");
-		list.add(TextFormatting.ITALIC + "Right click to activate");
-		list.add(TextFormatting.ITALIC + "Shift + left click to dismiss");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.stop_watch_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.stop_watch_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.stop_watch_description_bottom.name"));
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.util.UUID;
 import com.google.common.collect.Multimap;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
@@ -41,8 +42,8 @@ public class ItemOnbashira extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Leg of an Ent sealed with magic.");
-		list.add(TextFormatting.DARK_AQUA + "Its massive density make it almost impossible to wield");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.onbashira_header.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.onbashira_description.name"));
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -49,12 +50,12 @@ public class ItemNazrinPendulum extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Magical pendulum that searches for ores underground");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.nazrin_pendulum_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.YELLOW + "Right click to activate, Shift to dismiss");
+			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.nazrin_pendulum_description.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_shift.name"));
 		}
 	}
 

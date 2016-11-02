@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -26,8 +27,8 @@ public class ItemIbukiGourd extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "This unique gourd generates sake");
-		list.add(TextFormatting.GOLD + "with a single drop of water");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.ibuki_gourd_header.name"));
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.ibuki_gourd_description.name"));
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,14 +42,14 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Divine sword from Toyosatomimi");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.GRAY + "Finds all souls around the player");
-			list.add(TextFormatting.GRAY + "and gathers the essence of life");
-			list.add(TextFormatting.GRAY + "in the form of an orb");
+			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"));
+			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name"));
+			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name"));
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -37,13 +38,13 @@ public class ItemSwordRoukanken extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Long-bladed katana said to be made by youkai");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.roukanken_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + " \"The things that cannot be cut by my Roukanken,");
-			list.add(TextFormatting.ITALIC + " forged by youkai, are close to none!\"");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_description_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_shift.name"));
 		}
 	}
 

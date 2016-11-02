@@ -53,7 +53,6 @@ public class ItemUFOs extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GRAY + "Gathers items around the player");
-		list.add(TextFormatting.ITALIC + "Does not work with point items");
 	}
 
 	@Override

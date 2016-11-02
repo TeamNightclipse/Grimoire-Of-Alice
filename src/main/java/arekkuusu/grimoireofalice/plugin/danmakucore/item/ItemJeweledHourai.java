@@ -16,6 +16,7 @@ import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -83,8 +84,8 @@ public class ItemJeweledHourai extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "A jeweled branch from the mythical island of Hōrai");
-		list.add(TextFormatting.DARK_AQUA + "\"Mirage—the Vision of the Intangible\"");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.jeweled_hourai_header.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.jeweled_hourai_description.name"));
 	}
 
 	@Override

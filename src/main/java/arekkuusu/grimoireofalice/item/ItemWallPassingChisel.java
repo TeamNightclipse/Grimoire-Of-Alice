@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -34,8 +35,8 @@ public class ItemWallPassingChisel extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Wall passing chisel");
-		list.add(TextFormatting.ITALIC + "It works as a fancy hair pin");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.wall_passing_chisel_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.wall_passing_chisel_description.name"));
 	}
 
 	@Override

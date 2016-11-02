@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -57,13 +58,13 @@ public class ItemGhostDipper extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Fearsome ladle known to sink monstrous ships");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.ghost_dipper_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.YELLOW + "Right click water to clear");
-			list.add(TextFormatting.YELLOW + "Right click on land to place water");
+			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.ghost_dipper_description_top.name"));
+			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.ghost_dipper_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_shift.name"));
 		}
 	}
 

@@ -32,7 +32,7 @@ public class GOACreativeTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getIconItemStack() {
-		return new ItemStack(ModItems.GRIMOIRE_BOOK);
+		return new ItemStack(ModItems.MIRACLE_MALLET);
 	}
 
 	@Override

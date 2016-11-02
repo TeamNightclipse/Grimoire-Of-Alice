@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,10 +44,9 @@ public class ItemCrestOfYggdrasill extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Contains time itself");
-		list.add(TextFormatting.GRAY + "Once used by a great God to");
-		list.add(TextFormatting.GRAY + "manipulate space and time");
-		list.add(TextFormatting.RED + "[WARNING] EXPLOSIVE [WARNING]");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.crest_of_yggdrasill_header.name"));
+		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.crest_of_yggdrasill_description_top.name"));
+		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.crest_of_yggdrasill_description_bottom.name"));
 	}
 
 	@Override

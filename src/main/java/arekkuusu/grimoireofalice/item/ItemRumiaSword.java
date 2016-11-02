@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -38,8 +39,8 @@ public class ItemRumiaSword extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Extremely Big");
-		list.add(TextFormatting.ITALIC + "And you can hold it");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.rumia_sword_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rumia_sword_description.name"));
 	}
 
 	@Override

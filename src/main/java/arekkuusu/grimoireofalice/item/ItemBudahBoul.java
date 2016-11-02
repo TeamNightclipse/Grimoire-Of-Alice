@@ -18,6 +18,7 @@ import arekkuusu.grimoireofalice.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -65,9 +66,9 @@ public class ItemBudahBoul extends ItemTool {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Stone begging bowl of the Buddha Gautama Shakyamuni");
-		list.add(TextFormatting.DARK_AQUA + "\"An entire life to reach enlightenment");
-		list.add(TextFormatting.DARK_AQUA + "and a thousand more to create this boul\"");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.budah_boul_header.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.budah_boul_description_top.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.budah_boul_description_bottom.name"));
 	}
 
 	@Override

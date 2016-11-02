@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -72,20 +73,20 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Rare treasure from an old era");
-		list.add(TextFormatting.ITALIC + "By holding it you become the");
-		list.add(TextFormatting.ITALIC + "the Little Dowser General");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_bottom.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + "Use with Nazrin Sticks in both Hands");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_use.name"));
 			if(!isHoldingItemsBothHands(player)) {
-				list.add(TextFormatting.DARK_RED + "Inactive");
+				list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.nazrin_stick_inactive.name"));
 			}
 			else {
-				list.add(TextFormatting.DARK_AQUA + "Active");
+				list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.nazrin_stick_active.name"));
 			}
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_shift.name"));
 		}
 	}
 

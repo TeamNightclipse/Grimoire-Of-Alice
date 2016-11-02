@@ -16,6 +16,7 @@ import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -58,14 +59,14 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Sword of Scarlet Perceptions");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hisou_sword_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.GRAY + "It has the ability to identifying one's spirit,");
-			list.add(TextFormatting.GRAY + "no matter the circumstances.");
-			list.add(TextFormatting.ITALIC + "It takes the form of a golden Chinese jian.");
+			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.hisou_sword_description_top.name"));
+			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.hisou_sword_description_mid.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_shift.name"));
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
 	}

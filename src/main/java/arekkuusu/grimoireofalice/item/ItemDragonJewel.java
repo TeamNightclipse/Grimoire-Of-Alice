@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -40,9 +41,9 @@ public class ItemDragonJewel extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Five-colored jewel from a Dragon's neck");
-		list.add(TextFormatting.ITALIC + "\"Whoever possesses this jewel,");
-		list.add(TextFormatting.ITALIC + "Will have whatever he desires\"");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.dragon_jewel_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.dragon_jewel_description_top.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.dragon_jewel_description_bottom.name"));
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,14 +43,14 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Made from the fur of a mystical rat that could live in fire");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.fire_robe_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.DARK_AQUA + "Completely fire proof, the user is protected from hell itself");
-			list.add(TextFormatting.DARK_AQUA + "Stronger than any man-made armor, demonic by nature");
-			list.add(TextFormatting.DARK_PURPLE + "Can be nullified by purification barriers");
+			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.fire_robe_description_top.name"));
+			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.fire_robe_description_mid.name"));
+			list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.fire_robe_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "SHIFT for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_shift.name"));
 		}
 	}
 

@@ -117,22 +117,22 @@ tile.holystone.name=Holy Stone
 tile.craftingaltar.name=Crafting Altar
 tile.pillaraltar.name=Holy Pillar
 
-tile.shroom.white.name=White Shroom
-tile.shroom.orange.name=Orange Shroom
-tile.shroom.magenta.name=Magenta Shroom
-tile.shroom.lightBlue.name=Light Blue Shroom
-tile.shroom.yellow.name=Yellow Shroom
-tile.shroom.lime.name=Lime Shroom
-tile.shroom.pink.name=Pink Shroom
-tile.shroom.gray.name=Gray Shroom
-tile.shroom.silver.name=Silver Shroom
-tile.shroom.cyan.name=Cyan Shroom
-tile.shroom.purple.name=Purple Shroom
-tile.shroom.blue.name=Blue Shroom
-tile.shroom.brown.name=Brown Shroom
-tile.shroom.green.name=Green Shroom
-tile.shroom.red.name=Red Shroom
-tile.shroom.black.name=Black Shroom
+tile.shroom_0.name=White Shroom
+tile.shroom_1.name=Orange Shroom
+tile.shroom_2.name=Magenta Shroom
+tile.shroom_3.name=Light Blue Shroom
+tile.shroom_4.name=Yellow Shroom
+tile.shroom_5.name=Lime Shroom
+tile.shroom_6.name=Pink Shroom
+tile.shroom_7.name=Gray Shroom
+tile.shroom_8.name=Silver Shroom
+tile.shroom_9.name=Cyan Shroom
+tile.shroom_10.name=Purple Shroom
+tile.shroom_11.name=Blue Shroom
+tile.shroom_12.name=Brown Shroom
+tile.shroom_13.name=Green Shroom
+tile.shroom_14.name=Red Shroom
+tile.shroom_15.name=Black Shroom
 
 tile.kyoumarubotan.name=Kyoumarubotan
 
@@ -165,3 +165,317 @@ item.rodofremorse.entityHealthUsage=Health
 
 itemGroup.grimoireofalice=Grimoire of Alice
 
+//Tooltips
+
+grimoire.tooltip.crafting_altar_header.name=Crafting Altar
+grimoire.tooltip.crafting_altar_description.name=Differs slightly from a Crafting Table
+
+grimoire.tooltip.holy_key_stone_header.name=Heavy object made of black granite
+grimoire.tooltip.holy_key_stone_use.name=Step on it to get Potion Buff
+
+grimoire.tooltip.holy_stone_header.name=Magical stone with its own weak gravity field
+grimoire.tooltip.holy_stone_gifts.name=Accepts gifts as items
+
+grimoire.tooltip.kyoumarubotan_header.name=Mythical tree peony
+grimoire.tooltip.kyoumarubotan_description.name=Hematite in the shape of a flower
+
+grimoire.tooltip.shroom_block_header.name="Smells and tastes good"
+grimoire.tooltip.shroom_block_tasty.name=Craft into tasty snack
+
+grimoire.tooltip.onbashira_block_header.name=Honored pillars
+grimoire.tooltip.onbashira_heavy.name=Kinda heavy
+grimoire.tooltip.onbashira_altar_tier.name=Tier 2 Crafting Pillar
+
+grimoire.tooltip.pillar_altar_header.name=Honored pillars
+grimoire.tooltip.pillar_altar_heavy.name=Kinda heavy
+grimoire.tooltip.pillar_altar_tier.name=Tier 1 Crafting Pillar
+
+grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
+grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
+
+grimoire.tooltip.aura_ichirin_header.name=Cloud Spirit Nyuudou
+grimoire.tooltip.aura_byakuren_description.name=Grants the user a powerful Nyuudou
+
+grimoire.tooltip.aura_kanako_header.name=Represents the figure of an entwined snake
+grimoire.tooltip.aura_kanako_description_top.name=Its true power is unknown, the legend says
+grimoire.tooltip.aura_kanako_description_bottom.name=it possesses a power unimaginable to humans
+
+grimoire.tooltip.aura_mokou_header.name="~na no kashira?"
+grimoire.tooltip.aura_mokou_description.name=Phoenix of fire
+
+grimoire.tooltip.aura_toyosatomimi_header.name="Infinite knowledge"
+grimoire.tooltip.aura_toyosatomimi_description_top.name=I can listen to 10 people at once,
+grimoire.tooltip.aura_toyosatomimi_description_mid.name=but unfortunately you are the 11th.
+grimoire.tooltip.aura_toyosatomimi_description_bottom.name=Sucks to be you
+
+grimoire.tooltip.aura_utsuho_header.name="Manipulation of Nuclear Fusion"
+grimoire.tooltip.aura_utsuho_description.name=Hell raven with Yatagarasu
+
+grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
+
+grimoire.tooltip.heavenly_peach_header.name=Peach from the skies
+grimoire.tooltip.heavenly_peach_description.name=Someone had to fly very high to reach it
+
+grimoire.tooltip.hourai_elixir_header.name=Anyone who drinks this forbidden elixir will cease to age, never become ill, and will never be able to die. One will be as frail and vulnerable as before, but every injury shall cease; critical injuries will be healed in a matter of days. Complete destruction results in complete restoration.
+grimoire.tooltip.hourai_elixir_shift.name=SHIFT for details
+
+grimoire.tooltip.ibaraki_box_header.name=In exchange for curing illnesses, the personality of the
+grimoire.tooltip.ibaraki_box_description.name=one who drinks from will temporarily become like an Oni's
+grimoire.tooltip.ibaraki_box_use.name=Use like bucket
+
+grimoire.tooltip.ibuki_gourd_header.name=This unique gourd generates sake
+grimoire.tooltip.ibuki_gourd_description.name=with a single drop of water
+
+grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created
+grimoire.tooltip.kappas_nostrum_description.name=by cutting off the arm of a kappa
+
+grimoire.tooltip.shroom_slice_header.name=Psilocybin mushroom
+grimoire.tooltip.shroom_slice_description.name=May induce hallucinations
+
+grimoire.tooltip.orb_elixir_header.name=Removes the impurity of death
+grimoire.tooltip.orb_elixir_description_top.name=and allows the user to experience
+grimoire.tooltip.orb_elixir_description_bottom.name=the immediate future
+
+grimoire.tooltip.third_eye_header.name=Satori's 3rdEye
+grimoire.tooltip.third_eye_activate.name=Shift right click to activate
+
+grimoire.tooltip.amenonuhoko_header.name=Heavenly jeweled spear
+grimoire.tooltip.amenonuhoko_description_top.name=Once used to raise the
+grimoire.tooltip.amenonuhoko_description_mid.name=primordial land-mass,
+grimoire.tooltip.amenonuhoko_description_bottom.name=Onogoro-shima, from the sea
+grimoire.tooltip.amenonuhoko_shift.name=SHIFT for details
+
+grimoire.tooltip.blood_thirsty_orb_description.name=Feed it blood in exchange for certain death
+
+grimoire.tooltip.budah_boul_header.name=Stone begging bowl of the Buddha Gautama Shakyamuni
+grimoire.tooltip.budah_boul_description_top.name="An entire life to reach enlightenment
+grimoire.tooltip.budah_boul_description_bottom.name=and a thousand more to create this boul"
+
+grimoire.tooltip.cattail_plant_header.name=Nitori's Cattail Plant
+grimoire.tooltip.cattail_plant_description.name=She used big machinery just to pick it up...
+
+grimoire.tooltip.crest_of_yggdrasill_header.name=Contains time itself
+grimoire.tooltip.crest_of_yggdrasill_description_top.name=Once used by a great God to
+grimoire.tooltip.crest_of_yggdrasill_description_bottom.name=manipulate space and time
+
+grimoire.tooltip.decoy_doll_header.name=Doll that takes damage for the player
+
+grimoire.tooltip.death_scythe_header.name=Scythe from a Shinigami
+grimoire.tooltip.death_scythe_description.name=Makes undead chill around you
+
+grimoire.tooltip.dragon_jewel_header.name=Five-colored jewel from a Dragon's neck
+grimoire.tooltip.dragon_jewel_description_top.name="Whoever possesses this jewel,
+grimoire.tooltip.dragon_jewel_description_bottom.name=Will have whatever he desires"
+
+grimoire.tooltip.fake_miracle_mallet_header.name=Swipe the space in front of the player, dealing damage
+
+grimoire.tooltip.fire_robe_header.name=Made from the fur of a mystical rat that could live in fire
+grimoire.tooltip.fire_robe_description_top.name=Completely fire proof, the user is protected from hell itself
+grimoire.tooltip.fire_robe_description_mid.name=Stronger than any man-made armor, demonic by nature
+grimoire.tooltip.fire_robe_description_bottom.name=Can be nullified by purification barriers
+grimoire.tooltip.fire_robe_description_shift.name=SHIFT for details
+
+grimoire.tooltip.folding_umbrella_header_header.name=Magical umbrella that teleports players
+grimoire.tooltip.folding_umbrella_header_top.name=Right click to teleport up to 40 blocks
+grimoire.tooltip.folding_umbrella_header_bottom.name=to the direction you are looking
+grimoire.tooltip.folding_umbrella_header_shift.name=SHIFT for details
+
+grimoire.tooltip.send_off_lantern_header.name=Allows the player to negate all damage
+grimoire.tooltip.send_off_lantern_description.name=for a short period of time
+
+grimoire.tooltip.ghost_dipper_header.name=Fearsome ladle known to sink monstrous ships
+grimoire.tooltip.ghost_dipper_description_top.name=Right click water to clear
+grimoire.tooltip.ghost_dipper_description_bottom.name=Right click on land to place water
+grimoire.tooltip.ghost_dipper_shift.name=SHIFT for details
+
+grimoire.tooltip.glorious_nippon_steel_header.name=Round and precious steel
+
+grimoire.tooltip.grimoire_book_header.name=Spellbook of the ultimate magic
+grimoire.tooltip.grimoire_book_description.name="A grimoire that shines wonderfully with all seven colours of light"
+
+grimoire.tooltip.hakurei_gohei_header.name=Gohei from a powerful Shrine Maiden
+grimoire.tooltip.hakurei_gohei_mode_header.name=§7Gohei Mode:
+grimoire.tooltip.hakurei_gohei_mode_passive.name=§fPassive
+grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name=§bAura manipulation
+grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name=§dHakurei Yin-Yang Orbs
+grimoire.tooltip.hakurei_gohei_mode_exploding_barrier.name=§eExploding Barrier
+grimoire.tooltip.hakurei_gohei_mode_motion_barrier.name=§6Motion Barrier
+grimoire.tooltip.hakurei_gohei_mode_offensive.name=§4Offensive
+
+grimoire.tooltip.hihiirokane_header.name="Crimson ore"
+grimoire.tooltip.hihiirokane_description_top.name=Red-colored mythic metal possessed
+grimoire.tooltip.hihiirokane_description_mid.name=by strange physical properties used
+grimoire.tooltip.hihiirokane_description_bottom.name=to forge extraordinary legendary weapons
+
+grimoire.tooltip.ichirin_ring_header.name=Nyuudou bender
+grimoire.tooltip.ichirin_use.name=Use with Rings in both Hands
+grimoire.tooltip.ichirin_inactive.name=Inactive
+grimoire.tooltip.ichirin_active.name=Active
+grimoire.tooltip.ichirin_shift.name=SHIFT for details
+
+grimoire.tooltip.kappa_hat_header.name=A kappa hat
+grimoire.tooltip.kappa_hat_description.name="Do not drop the water"
+
+grimoire.tooltip.marisa_hat_header.name="daze~!"
+grimoire.tooltip.marisa_hat_description.name=Pickup items 5 blocks away
+
+grimoire.tooltip.miko_cape_header.name=Fancy cape!
+
+grimoire.tooltip.miko_stick_header.name=Property of Toyosatomimi no Miko
+grimoire.tooltip.miko_stick_header.name=Better than a bucket of water
+
+grimoire.tooltip.miracle_mallet_header.name=Ancient inchling artifact, passed down through the generations,
+grimoire.tooltip.miracle_mallet_description.name=said to be able to grant any wish the user wishes
+
+grimoire.tooltip.mochi_hammer_header.name=Ooguninushi no Mikoto
+grimoire.tooltip.mochi_hammer_description_top.name="The first strike is for Lord Daikoku~
+grimoire.tooltip.mochi_hammer_description_mid.name=The Second strike is for Lord Daikoku~
+grimoire.tooltip.mochi_hammer_description_bottom.name=And for all of the 180 children..."
+grimoire.tooltip.mochi_hammer_shift.name=SHIFT for details
+grimoire.tooltip.mochi_hammer_description.name=Master of the Great Land
+
+grimoire.tooltip.momijis_scimitar_sword_header.name=Awooooo~!!
+grimoire.tooltip.momijis_scimitar_sword_description.name=Very sharp and heavy
+
+grimoire.tooltip.nazrin_pendulum_header.name=Magical pendulum that searches for ores underground
+grimoire.tooltip.nazrin_pendulum_description.name=Right click to activate, Shift to dismiss
+grimoire.tooltip.nazrin_pendulum_shift.name=SHIFT for details
+
+grimoire.tooltip.nazrin_stick_header.name=Rare treasure from an old era
+grimoire.tooltip.nazrin_stick_description_top.name=By holding it you become the
+grimoire.tooltip.nazrin_stick_description_bottom.name=the Little Dowser General
+grimoire.tooltip.nazrin_stick_use.name=Use with Nazrin Sticks in both Hands
+grimoire.tooltip.nazrin_stick_inactive.name=Inactive
+grimoire.tooltip.nazrin_stick_active.name=Active
+grimoire.tooltip.nazrin_stick_shift.name=SHIFT for details
+
+grimoire.tooltip.needle_header.name=Shinmyoumaru owned this needle
+grimoire.tooltip.needle_description.name=Consider yourself lucky
+
+grimoire.tooltip.nimble_fabric_header.name=Become invincible for a short amount of time,
+grimoire.tooltip.nimble_fabric_description.name=during which you can't move or shoot
+
+grimoire.tooltip.nue_trident_header.name=Trident of sealed beast, Seed of Unknown Form
+grimoire.tooltip.nue_trident_description.name=Fear the unknown, weak human!
+
+grimoire.tooltip.onbashira_header.name=Leg of an Ent sealed with magic.
+grimoire.tooltip.onbashira_description.name=Its massive density make it almost impossible to wield
+
+grimoire.tooltip.patchy_book_header.name=Author: Patchouli Knowledge
+
+grimoire.tooltip.popsicle_stick_header.name=Its used...
+grimoire.tooltip.popsicle_stick_description.name=Craft with Melon Block and Ice to get a Sword
+
+grimoire.tooltip.rod_of_remorse_header.name=The worse the sin, the heavier the rod becomes
+grimoire.tooltip.rod_of_remorse_description.name=The person in question will be beaten up until they repent
+
+grimoire.tooltip.rumia_sword_header.name=Extremely Big
+grimoire.tooltip.rumia_sword_description.name=And you can hold it
+
+grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=Divine sword from Toyosatomimi
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name=Finds all souls around the player
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name=and gathers the essence of life
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name=in the form of an orb
+grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=SHIFT for details
+
+grimoire.tooltip.sanae_gohei_header.name=Gohei from a descendant of the goddess Arahitogami
+grimoire.tooltip.sanae_gohei_description.name=Causes miracles to occur
+
+grimoire.tooltip.sariel_wand_header.name=Immense Knowledge, Angel of Death, Commaner of God...
+grimoire.tooltip.sariel_wand_description.name=Legendary wand from a fallen Angel
+
+grimoire.tooltip.shichi_seiken_header.name=Gold inlay of clouds and seven stars with the shape of Orsa Mayor
+
+grimoire.tooltip.shimenawa_rope_header.name=Tenshi's little gift
+grimoire.tooltip.shimenawa_rope_description_top.name=A little piece of Heaven,
+grimoire.tooltip.shimenawa_rope_description_bottom.name=Might cause an incident
+
+grimoire.tooltip.skull_header.name=Human Skull
+grimoire.tooltip.skull_description.name=Stolen from a grave
+
+grimoire.tooltip.stop_watch_header.name=Sakuya stop watch
+grimoire.tooltip.stop_watch_description_top.name=Right click to activate
+grimoire.tooltip.stop_watch_description_bottom.name=Shift + left click to dismiss
+
+grimoire.tooltip.substitute_jizo_header.name=Allows the user to survive one hit
+grimoire.tooltip.substitute_jizo_description.name=Cant be dropped
+
+grimoire.tooltip.cowrie_shell_header.name=Cowry shell born of swallows
+grimoire.tooltip.cowrie_shell_description.name="Better than rotten flesh"
+
+grimoire.tooltip.sword_of_kusanagi_header.name=Divine sword forged with Hihi'irokane, a mythic metal
+grimoire.tooltip.sword_of_kusanagi_description_top.name=Discovered within the fourth tail of the eight-headed,
+grimoire.tooltip.sword_of_kusanagi_description.mid.name=eight-tailed serpent Yamata-no-Orochi when it was slain
+grimoire.tooltip.sword_of_kusanagi_description_bottom.name=by the Shinto god Susanoo-no-Mikoto.
+grimoire.tooltip.sword_of_kusanagi_shift.name=SHIFT for details
+
+grimoire.tooltip.roukanken_header.name=Long-bladed katana said to be made by youkai
+grimoire.tooltip.roukanken_description_top.name="The things that cannot be cut by my Roukanken,
+grimoire.tooltip.roukanken_description_bottom.name=forged by youkai, are close to none!"
+grimoire.tooltip.roukanken_shift.name=SHIFT for details
+
+grimoire.tooltip.syringe_header.name=Eirin's Syringe
+grimoire.tooltip.syringe_description.name="Dont worry, it just hurts a lot"
+
+grimoire.tooltip.tengu_camera_header.name=Swipe the space in front of the player by taking photos
+
+grimoire.tooltip.time_orb_header.name=Exclusive to Imperishable Night
+grimoire.tooltip.time_orb_description_top.name=They are believed to slow
+grimoire.tooltip.time_orb_description_bottom.name=the passing of the night
+
+grimoire.tooltip.ufos_header.name=Gathers items around the player
+
+grimoire.tooltip.wall_passing_chisel_header.name=Wall passing chisel
+grimoire.tooltip.wall_passing_chisel_description.name=It works as a fancy hair pin
+
+grimoire.tooltip.watermelon_blade_header.name=Yes, this exists
+
+grimoire.tooltip.watermelon_sword_header.name=Eat cold with salt, lots
+grimoire.tooltip.watermelon_sword_description.name=as salty as life...
+
+grimoire.tooltip.youkai_book_header.name=Completely normal book
+grimoire.tooltip.youkai_book_description.name=With the exception of containing unknown scriptures
+
+grimoire.tooltip.elly_scythe_header.name=War ma fé, heman zo eun Anko drouk
+grimoire.tooltip.elly_scythe_description_top.name=Oberour ar maro known as the grave
+grimoire.tooltip.elly_scythe_description_middle_top.name=yard watcher, they said that he
+grimoire.tooltip.elly_scythe_description_middle_mid.name=protects the graveyard and the souls
+grimoire.tooltip.elly_scythe_description_middle_bottom.name=around it for some unknown reason and
+grimoire.tooltip.elly_scythe_description_bottom.name=collects the lost souls on his land
+grimoire.tooltip.elly_scythe_shift.name=SHIFT for details
+
+grimoire.tooltip.jeweled_hourai_header.name=A jeweled branch from the mythical island of Hōrai
+grimoire.tooltip.jeweled_hourai_description.name="Mirage—the Vision of the Intangible"
+
+grimoire.tooltip.laevatein_header.name=Magic staff gambantein, Lævateinn of fire and chaos
+
+grimoire.tooltip.leaf_header.name=Mamisou's Leaf from Ten Desires
+grimoire.tooltip.leaf_description.name=Right click to shoot
+
+grimoire.tooltip.piano_header.name=Poltergeists posses this piano
+grimoire.tooltip.piano_use.name=Hold right click to use
+
+grimoire.tooltip.shou_lamp_header.name=Brings about wealth
+grimoire.tooltip.shou_lamp_use.name=Hold right click to use
+grimoire.tooltip.shou_lamp_goodbuff_others.name=Long use periods give Luck to everyone around you
+grimoire.tooltip.shou_lamp_goodbuff_player.name=Short use periods give Luck to only you
+grimoire.tooltip.shou_lamp_badbuff.name=Hitting entities gives them Unluck
+grimoire.tooltip.shou_lamp_shift.name=SHIFT for details
+
+grimoire.tooltip.spell_card_pouch_header.name=Holds Items for you
+
+grimoire.tooltip.hisou_sword_header.name=Sword of Scarlet Perceptions
+grimoire.tooltip.hisou_sword_description_top.name=It has the ability to identifying one's spirit,
+grimoire.tooltip.hisou_sword_description_mid.name=no matter the circumstances.
+grimoire.tooltip.hisou_sword_description_bottom.name=It takes the form of a golden Chinese jian.
+grimoire.tooltip.hisou_sword_shift.name=SHIFT for details
+
+grimoire.tooltip.tengu_fan_header.name=Fan to manipulate winds
+grimoire.tooltip.tengu_fan_description_top.name=Hold right click to charge
+grimoire.tooltip.tengu_fan_description_bottom.name=and release
+
+grimoire.tooltip.trumpet_header.name=Poltergeists posses this trumpet
+grimoire.tooltip.trumpet_use.name=Hold right click to use
+
+grimoire.tooltip.violin_header.name=Poltergeists posses this violin
+grimoire.tooltip.violin_use.name=Hold right click to use

@@ -10,6 +10,7 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -34,9 +35,9 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Honored pillars");
-		list.add(TextFormatting.ITALIC + "Kinda heavy");
-		list.add(TextFormatting.ITALIC + "Tier 1 Crafting Pillar");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.pillar_altar_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.pillar_altar_heavy.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.pillar_altar_tier.name"));
 	}
 
 	@Override

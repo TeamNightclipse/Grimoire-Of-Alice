@@ -23,6 +23,7 @@ import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -58,16 +59,16 @@ public class ItemEllyScythe extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "War ma fé, heman zo eun Anko drouk");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.elly_scythe_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + "Oberour ar maro known as the grave");
-			list.add(TextFormatting.ITALIC + "yard watcher, they said that he");
-			list.add(TextFormatting.ITALIC + "protects the graveyard and the souls");
-			list.add(TextFormatting.ITALIC + "around it for some unknown reason and");
-			list.add(TextFormatting.ITALIC + "collects the lost souls on his land");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_mid.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_bottom.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + "Shift for details");
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_shift.name"));
 		}
 	}
 

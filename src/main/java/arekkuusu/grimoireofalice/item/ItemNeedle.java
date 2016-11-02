@@ -4,6 +4,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityNeedle;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,8 +35,8 @@ public class ItemNeedle extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Shinmyoumaru owned this needle");
-		list.add(TextFormatting.UNDERLINE + "Consider yourself lucky");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.needle_header.name"));
+		list.add(TextFormatting.UNDERLINE + I18n.format("grimoire.tooltip.needle_description.name"));
 	}
 
 	@Override

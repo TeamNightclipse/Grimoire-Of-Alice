@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -40,9 +41,9 @@ public class ItemShimenawaRope extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Tenshi's little gift");
-		list.add(TextFormatting.GRAY + "A little piece of Heaven,");
-		list.add(TextFormatting.RED + "Might cause an incident");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shimenawa_rope_header.name"));
+		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.shimenawa_rope_description_top.name"));
+		list.add(TextFormatting.RED + I18n.format("grimoire.tooltip.shimenawa_rope_description_bottom.name"));
 	}
 
 	@Override

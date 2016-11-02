@@ -6,6 +6,7 @@ import arekkuusu.grimoireofalice.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,12 +35,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemHakureiGohei extends ItemMod {
 
 	private static final String[] MODES = {
-			"§fPassive",
-			"§bAura manipulation",
-			"§dHakurei Yin-Yang Orbs",
-			"§eExploding Barrier",
-			"§6Motion Barrier",
-			"§4Offensive"
+			"passive",
+			"aura_manipulation",
+			"hakurei_yin_yang_orbs",
+			"exploding_barrier",
+			"motion_barrier",
+			"offensive"
 	};
 
 	public ItemHakureiGohei() {
@@ -54,8 +55,9 @@ public class ItemHakureiGohei extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Gohei from a powerful Shrine Maiden");
-		list.add("§7Gohei Mode: " + MODES[getMode(stack)]);
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
+		list.add(I18n.format("grimoire.tooltip.hakurei_gohei_mode_header.name") + " "
+				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + MODES[getMode(stack)] + ".name"));
 	}
 
 	@Override
@@ -134,7 +136,7 @@ public class ItemHakureiGohei extends ItemMod {
 			EntityPlayer playerIn = (EntityPlayer)entityLiving;
 			if(playerIn.isSneaking()) {
 				byte mode = (byte)MathHelper.clamp_int(getMode(stack) + 1, 0, 5);
-				setMode(stack, mode);
+				setMode(stack, getMode(stack) != 5 ? mode : 0);
 			}
 			else {
 				byte mode = getMode(stack);
@@ -183,7 +185,6 @@ public class ItemHakureiGohei extends ItemMod {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}
-
 		nbt.setByte("GoheiMode", mode);
 	}
 

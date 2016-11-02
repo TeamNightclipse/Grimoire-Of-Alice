@@ -18,6 +18,7 @@ import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibGuiID;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.lib.data.LibItems;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -53,7 +54,7 @@ public class ItemSpellCardPouch extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Holds Items for you");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.spell_card_pouch_header.name"));
 	}
 
 	@Nonnull

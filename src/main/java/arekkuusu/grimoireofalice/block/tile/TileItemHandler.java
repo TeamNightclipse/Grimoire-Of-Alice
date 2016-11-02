@@ -53,8 +53,7 @@ public class TileItemHandler extends TileEntity {
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-		super.onDataPacket(net, packet);
-		readDataNBT(packet.getNbtCompound()); //FIXME: ClientSide method
+		readDataNBT(packet.getNbtCompound()); //FIXME: Still a Client side Method... isnt it supposed to be readFromNBT(nbt)?
 	}
 
 	public void readDataNBT(NBTTagCompound tagCompound) {

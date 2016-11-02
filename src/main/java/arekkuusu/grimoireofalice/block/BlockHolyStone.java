@@ -22,6 +22,7 @@ import arekkuusu.grimoireofalice.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -69,8 +70,8 @@ public class BlockHolyStone extends BlockMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Magical stone with its own weak gravity field");
-		list.add(TextFormatting.ITALIC + "Accepts gifts as items");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.holy_stone_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_gifts.name"));
 	}
 
 	@Override
