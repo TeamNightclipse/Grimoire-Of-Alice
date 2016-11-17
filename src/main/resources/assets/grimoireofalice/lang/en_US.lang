@@ -23,27 +23,28 @@ item.jeweledhourai.name=Jeweled Branch of Hōrai
 item.budahboul.name=Budah's Boul
 item.firerobe.name=Fire Rat Robe
 item.dragonjewel.name=Jewel from a Dragon's neck
-item.cowrieshell.name=Swallow Cowrie Shell
+item.cowrieshell.name=Swallow's Cowrie Shell
 item.foldingumbrella.name=Gap folding umbrella
 item.stopwatch.name=Stop Watch
+item.mortarnpestle.name=Mortar N' Pestle
 
-item.shroomslice.white.name=White Shroom Slice
-item.shroomslice.orange.name= Orange Shroom Slice
-item.shroomslice.magenta.name=Magenta Shroom Slice
-item.shroomslice.lightBlue.name=Light Blue Shroom Slice
-item.shroomslice.yellow.name=Yellow Shroom Slice
-item.shroomslice.lime.name=Lime Shroom Slice
-item.shroomslice.pink.name=Pink Shroom Slice
-item.shroomslice.gray.name=Gray Shroom Slice
-item.shroomslice.silver.name=Silver Shroom Slice
-item.shroomslice.cyan.name=Cyan Shroom Slice
-item.shroomslice.purple.name=Purple Shroom Slice
-item.shroomslice.blue.name=Blue Shroom Slice
-item.shroomslice.brown.name=Brown Shroom Slice
-item.shroomslice.green.name=Green Shroom Slice
-item.shroomslice.red.name=Red Shroom Slice
-item.shroomslice.black.name=Black Shroom Slice
-item.shroomslice.soup.name=Shroom Soup
+item.shroompowder.white.name=White Shroom Powder
+item.shroompowder.orange.name= Orange Shroom Powder
+item.shroompowder.magenta.name=Magenta Shroom Powder
+item.shroompowder.lightBlue.name=Light Blue Shroom Powder
+item.shroompowder.yellow.name=Yellow Shroom Powder
+item.shroompowder.lime.name=Lime Shroom Powder
+item.shroompowder.pink.name=Pink Shroom Powder
+item.shroompowder.gray.name=Gray Shroom Powder
+item.shroompowder.silver.name=Silver Shroom Powder
+item.shroompowder.cyan.name=Cyan Shroom Powder
+item.shroompowder.purple.name=Purple Shroom Powder
+item.shroompowder.blue.name=Blue Shroom Powder
+item.shroompowder.brown.name=Brown Shroom Powder
+item.shroompowder.green.name=Green Shroom Powder
+item.shroompowder.red.name=Red Shroom Powder
+item.shroompowder.black.name=Black Shroom Powder
+item.shroompowder.soup.name=Shroom Soup
 item.grilledlamprey.name=Grilled Lamprey
 item.ibarakiboxfilled.name=Ibaraki Box
 item.kappasnostrum.name=Kappas Nostrum
@@ -79,8 +80,8 @@ item.mikocape.name=Fancy cape
 item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
 item.laevatein.name=Laevatein
-item.nazrinstick.0.name=Nazrin's Stick
-item.nazrinstick.1.name=Nazrin's Other Stick
+item.nazrinstick.0.name=Nazrin's Dowsing Rod
+item.nazrinstick.1.name=Nazrin's Other Dowsing Rod
 item.ellyscythe.name=Scythe of the Useless Gatekeeper
 item.mikostick.name=Toyosatomimi's Stick
 item.crestofyggdrasill.name=Crest Of Yggdrasill
@@ -116,6 +117,7 @@ tile.onbashiratop.name=Onbashira
 tile.holystone.name=Holy Stone
 tile.craftingaltar.name=Crafting Altar
 tile.pillaraltar.name=Holy Pillar
+tile.impurestone.name=Impure Stone
 
 tile.shroom_0.name=White Shroom
 tile.shroom_1.name=Orange Shroom
@@ -162,6 +164,10 @@ item.sanaegohei.name=Sanae's Miracle Gohei
 effect.elixir=Elixir
 
 item.rodofremorse.entityHealthUsage=Health
+
+grimoire.gui.pouch.name=§fSpell Card Pouch
+grimoire.gui.youkaibook_header.name=Grimoire of
+grimoire.gui.youkaibook_description.name=This book must be sealed to prevent someone else from reading the scriptures
 
 itemGroup.grimoireofalice=Grimoire of Alice
 
@@ -229,8 +235,8 @@ grimoire.tooltip.ibuki_gourd_description.name=with a single drop of water
 grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created
 grimoire.tooltip.kappas_nostrum_description.name=by cutting off the arm of a kappa
 
-grimoire.tooltip.shroom_slice_header.name=Psilocybin mushroom
-grimoire.tooltip.shroom_slice_description.name=May induce hallucinations
+grimoire.tooltip.shroom_dust_header.name=Psilocybin mushroom
+grimoire.tooltip.shroom_dust_description.name=May induce hallucinations
 
 grimoire.tooltip.orb_elixir_header.name=Removes the impurity of death
 grimoire.tooltip.orb_elixir_description_top.name=and allows the user to experience

@@ -37,24 +37,22 @@ public class EntityDragonJewel extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(!worldObj.isRemote) {
-			if(host == null) {
+		if (!worldObj.isRemote) {
+			if (host == null) {
 				setDead();
-			}
-			else {
-				if(ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
+			} else {
+				if (ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
 					stopEntity();
 				}
 			}
-			if(ticksExisted > 500) {
+			if (ticksExisted > 500) {
 				stopEntity();
 			}
-			getEntities();
 		}
-		worldObj.spawnParticle(EnumParticleTypes.BLOCK_DUST, posX + 0.5, posY, posZ + 0.5, 0, -1, 0);
-		if(ticksExisted % 50 == 0) {
+		getEntities();
+		if (ticksExisted % 50 == 0) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
-			for(int u = 0; u < 10; u++) {
+			for (int u = 0; u < 10; u++) {
 				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1,
 						rand.nextDouble());
 				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1,
@@ -70,24 +68,30 @@ public class EntityDragonJewel extends Entity {
 	private void getEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
-		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
+		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob).forEach(mob -> {
 			mob.setAttackTarget(null);
 			mob.setRevengeTarget(null);
-			mob.setHealth(mob.getHealth() / 2);
+			if(mob.worldObj.isRemote) {
+				for (int i = 0; i < 2; ++i)
+					mob.worldObj.spawnParticle(EnumParticleTypes.PORTAL
+							, mob.posX + (rand.nextDouble() - 0.5D) * (double) mob.width, mob.posY + rand.nextDouble() * (double) mob.height - 0.25D, mob.posZ
+									+ (rand.nextDouble() - 0.5D) * (double) mob.width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
+							, (rand.nextDouble() - 0.5D) * 2.0D);
+			}
+			if (mob.getHealth() > 1) mob.setHealth(1);
 		});
 	}
 
 	private void stopEntity() {
-		if(!worldObj.isRemote) {
-			if(host != null && host instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)host;
-				if(player.capabilities.isCreativeMode) {
+		if (!worldObj.isRemote) {
+			if (host != null && host instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) host;
+				if (player.capabilities.isCreativeMode) {
 					setDead();
 					return;
 				}
 				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
-			}
-			else {
+			} else {
 				dropItem(ModItems.DRAGON_JEWEL, 1);
 			}
 			setDead();

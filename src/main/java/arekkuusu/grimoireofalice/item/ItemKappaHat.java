@@ -58,6 +58,6 @@ public class ItemKappaHat extends ItemModArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return LibMod.MODID + ":textures/models/armor/firerobe.png";
+		return LibMod.MODID + ":textures/models/armor/kappahat.png";
 	}
 }

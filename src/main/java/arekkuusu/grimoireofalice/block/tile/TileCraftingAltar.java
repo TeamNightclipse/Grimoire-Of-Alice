@@ -59,7 +59,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public boolean addItem(ItemStack stack) {
 		boolean added = false;
-		if(hasItem()) {
+		if(!hasItem()) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
@@ -88,7 +88,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	public boolean doCrafting() {
-		if(hasItem()) {
+		if(!hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
 			for(BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
@@ -117,7 +117,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 				});
 			}
 		}
-		return !hasItem();
+		return hasItem();
 	}
 
 	private void doEffect() {
@@ -206,5 +206,4 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		flipA += (f - flipA) * 0.9F;
 		pageFlip += flipA;
 	}
-
 }

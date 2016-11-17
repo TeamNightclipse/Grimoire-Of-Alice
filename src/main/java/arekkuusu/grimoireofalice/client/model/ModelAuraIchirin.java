@@ -13,10 +13,10 @@ import net.minecraft.entity.Entity;
 public class ModelAuraIchirin extends ModelBiped {
 
 	private final float size;
-	//private final ModelRenderer leftArm;
-	//private final ModelRenderer rightArm;
-	//private final ModelRenderer hat;
 	//private final ModelRenderer chest;
+	//private final ModelRenderer leftArm;
+	//private final ModelRenderer hat;
+	//private final ModelRenderer rightArm;
 	//private final ModelRenderer rightArmSuper;
 	//private final ModelRenderer leftArmSuper;
 	private final ModelRenderer jewel;
@@ -49,13 +49,13 @@ public class ModelAuraIchirin extends ModelBiped {
 		square6 = new ModelRenderer(this, 204, 130);
 		square6.setRotationPoint(0.0F, -30.0F, 7.0F);
 		square6.addBox(33.0F, -36.0F, -9.0F, 12, 12, 12, 0.0F);
-		//this.chest = new ModelRenderer(this, 172, 359);
-		//this.chest.setRotationPoint(0.0F, 0.0F, 0.0F);
-		//this.chest.addBox(-4.0F, 0.0F, -2.0F, 8, 6, 4, 0.25F);
-		//this.leftArm = new ModelRenderer(this, 227, 359);
-		//this.leftArm.setRotationPoint(5.0F, 2.0F, -0.0F);
-		//this.leftArm.addBox(-1.5F, -2.0F, -2.5F, 5, 12, 5, 0.25F);
-		//this.setRotateAngle(leftArm, 0.0F, 0.0F, -0.10000736613927509F);
+		//this.rightArm = new ModelRenderer(this, 172, 359);
+		//this.rightArm.setRotationPoint(0.0F, 0.0F, 0.0F);
+		//this.rightArm.addBox(-4.0F, 0.0F, -2.0F, 8, 6, 4, 0.25F);
+		//this.chest = new ModelRenderer(this, 227, 359);
+		//this.chest.setRotationPoint(5.0F, 2.0F, -0.0F);
+		//this.chest.addBox(-1.5F, -2.0F, -2.5F, 5, 12, 5, 0.25F);
+		//this.setRotateAngle(chest, 0.0F, 0.0F, -0.10000736613927509F);
 		jewel = new ModelRenderer(this, 137, 359);
 		jewel.setRotationPoint(0.0F, 0.0F, 0.0F);
 		jewel.addBox(-1.0F, 1.5F, -4.0F, 2, 2, 2, 0.25F);
@@ -108,17 +108,17 @@ public class ModelAuraIchirin extends ModelBiped {
 		square5 = new ModelRenderer(this, 181, 25);
 		square5.setRotationPoint(0.0F, -30.0F, 7.0F);
 		square5.addBox(23.0F, -33.0F, -3.0F, 16, 16, 16, 0.0F);
-		//this.rightArm = new ModelRenderer(this, 200, 359);
-		//this.rightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-		//this.rightArm.addBox(-3.5F, -2.0F, -2.5F, 5, 12, 5, 0.25F);
-		//this.setRotateAngle(rightArm, 0.0F, 0.0F, 0.10000736613927509F);
-		//chest.addChild(rightArmSuper);
-		//chest.addChild(leftArmSuper);
-		//chest.addChild(frontLegs);
-		//chest.addChild(backLegs);
-		//chest.addChild(rightLegs);
-		//chest.addChild(leftLegs);
-		//chest.addChild(jewel);
+		//this.leftArm = new ModelRenderer(this, 200, 359);
+		//this.leftArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
+		//this.leftArm.addBox(-3.5F, -2.0F, -2.5F, 5, 12, 5, 0.25F);
+		//this.setRotateAngle(leftArm, 0.0F, 0.0F, 0.10000736613927509F);
+		//rightArm.addChild(rightArmSuper);
+		//rightArm.addChild(leftArmSuper);
+		//rightArm.addChild(frontLegs);
+		//rightArm.addChild(backLegs);
+		//rightArm.addChild(rightLegs);
+		//rightArm.addChild(leftLegs);
+		//rightArm.addChild(jewel);
 	}
 
 	@Override
@@ -154,8 +154,8 @@ public class ModelAuraIchirin extends ModelBiped {
 
 		//bipedHead = this.hat;
 		bipedBody = jewel;
-		//bipedRightArm = this.rightArm;
-		//bipedLeftArm = this.leftArm;
+		//bipedRightArm = this.leftArm;
+		//bipedLeftArm = this.chest;
 
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}

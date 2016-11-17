@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemGrilledLamprey extends ItemModFood {
 
 	public ItemGrilledLamprey() {
-		super(6, 2F, true, LibItemName.GRILLED_LAMPREY);
+		super(20, 2F, true, LibItemName.GRILLED_LAMPREY);
 		setCreativeTab(CreativeTabs.FOOD);
 		setAlwaysEdible();
 	}

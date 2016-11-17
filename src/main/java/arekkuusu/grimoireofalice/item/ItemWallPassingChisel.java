@@ -89,7 +89,7 @@ public class ItemWallPassingChisel extends ItemMod {
 
 	private boolean isSafePos(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock().isAir(state, world, pos) || state.isSideSolid(world, pos, EnumFacing.UP);
+		return state.getBlock().isAir(state, world, pos);// || state.isSideSolid(world, pos, EnumFacing.UP);
 	}
 
 	@Override

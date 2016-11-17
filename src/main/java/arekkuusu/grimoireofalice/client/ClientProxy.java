@@ -46,7 +46,6 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -102,7 +101,7 @@ public class ClientProxy extends CommonProxy {
 		registerItem(ModItems.MIKO_CAPE, 0);
 
 		//Items
-		registerItem(ModItems.GLORIOUS_NIPPON_STEEL, 0);
+		registerItem(ModItems.TAMAHAGANE_STEEL, 0);
 		registerItem(ModItems.HIHIIROKANE, 0);
 		registerItem(ModItems.SHIMENAWA_ROPE, 0);
 		registerItem(ModItems.TIME_ORB, 0);
@@ -142,12 +141,13 @@ public class ClientProxy extends CommonProxy {
 		registerItem(ModItems.STOP_WATCH, 0);
 		registerItem(ModItems.HAKUREI_GOHEI, 0);
 		registerItem(ModItems.SANAE_GOHEI, 0);
+		registerItem(ModItems.MORTAR_AND_PESTLE, 0);
 
 		registerItem(ModItems.GHOST_DIPPER, 0);
 		registerItem(ModItems.THIRD_EYE, 0);
 
 		//Food
-		registerItemWithTypes(ModItems.SHROOM_SLICE, 17);
+		registerItemWithTypes(ModItems.SHROOM_POWDER, 17);
 		registerItem(ModItems.GRILLED_LAMPREY, 0);
 		registerItem(ModItems.IBARAKI_BOX_FILLED, 0);
 		registerItem(ModItems.KAPPAS_NOSTRUM, 0);
@@ -194,6 +194,7 @@ public class ClientProxy extends CommonProxy {
 		registerBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC, 0);
 		registerBlock(ModBlocks.ALTAR, 0);
 		registerBlock(ModBlocks.PILLAR_ALTAR, 0);
+		registerBlock(ModBlocks.IMPURE_STONE, 0);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			registerItem(ModItems.LUNASA_VIOLIN, 0);
@@ -240,7 +241,7 @@ public class ClientProxy extends CommonProxy {
 
 	private static void registerItemWithTypes(Item item, int damage) {
 		for(int i = 0; i < damage; i++) {
-			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroomslice_" + i, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroompowder_" + i, "inventory"));
 		}
 	}
 

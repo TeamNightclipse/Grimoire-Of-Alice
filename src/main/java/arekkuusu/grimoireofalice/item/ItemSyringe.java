@@ -31,6 +31,7 @@ public class ItemSyringe extends ItemModSword {
 
 	public ItemSyringe(ToolMaterial material) {
 		super(material, LibItemName.SYRINGE);
+		setMaxDamage(1);
 	}
 
 	@Override
@@ -56,6 +57,7 @@ public class ItemSyringe extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		itemStackIn.damageItem(1, playerIn);
 		doPotionEffect(playerIn);
 		playerIn.attackEntityFrom(DamageSource.generic, 3F);
 		playerIn.setActiveHand(hand);

@@ -14,7 +14,7 @@ public class LibItemName {
 	public static final String GRIMOIRE_BOOK = "grimoirebook";
 	public static final String VOLATILE_STRING = "volatilestring";
 	public static final String SOLDIFIED_PAPER = "soldifiedpaper";
-	public static final String GLORIOUS_NIPPON_STEEL = "gloriousnipponsteel";
+	public static final String TAMAHAGANE_STEEL = "gloriousnipponsteel";
 	public static final String SHIMENAWA_ROPE = "shimenawarope";
 	public static final String YOUKAI_BOOK = "youkaibook";
 	public static final String MASK = "mask";
@@ -39,8 +39,9 @@ public class LibItemName {
 	public static final String COWRIE_SHELL = "cowrieshell";
 	public static final String FOLDING_UMBRELLA = "foldingumbrella";
 	public static final String STOP_WATCH = "stopwatch";
+	public static final String MORTAR_AND_PESTLE = "mortarnpestle";
 	//Food
-	public static final String SHROOM_SLICE = "shroomslice";
+	public static final String SHROOM_POWDER = "shroompowder";
 	public static final String GRILLED_LAMPREY = "grilledlamprey";
 	public static final String IBARAKI_BOX_FILLED = "ibarakiboxfilled";
 	public static final String IBARAKI_BOX_EMPTY = "ibarakiboxempty";

@@ -10,7 +10,7 @@ import net.minecraft.entity.Entity;
 public class ModelUnzanFist extends ModelBase {
 
 	//TODO: Name these
-	private final ModelRenderer shape1;
+	private final ModelRenderer fist;
 	private final ModelRenderer shape2;
 	private final ModelRenderer shape2_1;
 	private final ModelRenderer shape2_2;
@@ -25,9 +25,9 @@ public class ModelUnzanFist extends ModelBase {
 		shape2_2 = new ModelRenderer(this, 90, 35);
 		shape2_2.setRotationPoint(0.0F, 0.0F, 0.0F);
 		shape2_2.addBox(-3.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
-		shape1 = new ModelRenderer(this, 0, 0);
-		shape1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape1.addBox(-10.0F, -8.0F, -10.0F, 20, 18, 20, 0.0F);
+		fist = new ModelRenderer(this, 0, 0);
+		fist.setRotationPoint(0.0F, 0.0F, 0.0F);
+		fist.addBox(-10.0F, -8.0F, -10.0F, 20, 18, 20, 0.0F);
 		shape2_5 = new ModelRenderer(this, 81, 0);
 		shape2_5.setRotationPoint(0.0F, 0.0F, 0.0F);
 		shape2_5.addBox(-10.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
@@ -51,7 +51,7 @@ public class ModelUnzanFist extends ModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		shape2_2.render(f5);
-		shape1.render(f5);
+		fist.render(f5);
 		shape2_5.render(f5);
 		shape2.render(f5);
 		shape2_4.render(f5);

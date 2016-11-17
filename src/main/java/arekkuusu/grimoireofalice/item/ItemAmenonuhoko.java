@@ -45,7 +45,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip-amenonuhoko_header.name"));
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.amenonuhoko_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_top.name"));
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_mid.name"));
@@ -85,7 +85,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 			float hitY, float hitZ) {
 		if(!stack.hasTagCompound()) return EnumActionResult.FAIL;
 
-		//TODO: Replace with structure, structure is already in assets
+		//TODO: Replace with structure, structure is already in assets, How?
 		if(isOwner(stack, player)) {
 			pos = pos.offset(facing);
 

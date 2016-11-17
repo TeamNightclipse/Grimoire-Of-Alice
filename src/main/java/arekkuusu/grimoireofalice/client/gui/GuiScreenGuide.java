@@ -84,35 +84,11 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Change for a -> real <- 
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		ResourceLocation TEXTURE;
 		switch(currPage) {
-			case 2:
-				TEXTURE = BOOK_GUI_TEXTURES[1];
-				break;
-			case 4:
-				TEXTURE = BOOK_GUI_TEXTURES[2];
-				break;
-			case 6:
-				TEXTURE = BOOK_GUI_TEXTURES[3];
-				break;
-			case 8:
-				TEXTURE = BOOK_GUI_TEXTURES[4];
-				break;
-			case 10:
-				TEXTURE = BOOK_GUI_TEXTURES[5];
-				break;
-			case 12:
-				TEXTURE = BOOK_GUI_TEXTURES[6];
-				break;
-			case 14:
-				TEXTURE = BOOK_GUI_TEXTURES[7];
-				break;
-			case 16:
-				TEXTURE = BOOK_GUI_TEXTURES[8];
-				break;
-			case 18:
-				TEXTURE = BOOK_GUI_TEXTURES[9];
+			case 0:
+				TEXTURE = BOOK_GUI_TEXTURES[0];
 				break;
 			default:
-				TEXTURE = BOOK_GUI_TEXTURES[0];
+				TEXTURE = BOOK_GUI_TEXTURES[5];
 		}
 		mc.getTextureManager().bindTexture(TEXTURE);
 		int i = (width - 192) / 2;

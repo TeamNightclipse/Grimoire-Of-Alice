@@ -2,9 +2,11 @@ package arekkuusu.grimoireofalice.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,6 +25,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
+
+	@SideOnly(Side.CLIENT)
+	private ModelBiped model;
 
 	public ItemFireRobe(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.FIRE_ROBE, EntityEquipmentSlot.CHEST);
@@ -78,7 +83,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 		else {
 			target.setFire(10);
 		}
-		return false; //TODO: Why false here?
+		return true;
 	}
 
 	private boolean isActive(EntityLivingBase target) {
@@ -101,6 +106,13 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
 		return 5;
+	}
+
+	@Override
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+		if(model == null) model = new ModelFireRobe();
+		model.setModelAttributes(_default);
+		return model;
 	}
 
 	@Override

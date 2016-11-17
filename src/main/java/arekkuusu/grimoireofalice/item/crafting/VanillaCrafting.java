@@ -13,36 +13,36 @@ import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class VanillaCrafting {
 
 	public static void booksAndStrings() {
 
 		//Items
-		shaped().grid("ISG", "SAS", "GSI")
-				.where('S').mapsTo(Items.STRING)
-				.where('G').mapsTo("dustGlowstone")
-				.where('I').mapsTo(Items.GUNPOWDER)
-				.where('A').mapsTo(Items.SLIME_BALL)
-				.outputs(new ItemStack(ModItems.VOLATILE_STRING, 16)).build();
+		shapeless()
+				.add(Items.STRING)
+				.add(Items.STRING)
+				.add(Items.GUNPOWDER)
+				.outputs(new ItemStack(ModItems.VOLATILE_STRING, 1)).build();
 
-		shaped().grid("STS", "TAT", "STS")
+		shaped().grid("SSS", "SAS", "SSS")
 				.where('S').mapsTo(Items.PAPER)
-				.where('A').mapsTo(Items.COAL)
-				.where('T').mapsTo("stickWood")
-				.outputs(new ItemStack(ModItems.SOLDIFIED_PAPER, 4)).build();
+				.where('A').mapsTo(Items.CLAY_BALL)
+				.outputs(new ItemStack(ModItems.SOLDIFIED_PAPER, 1)).build();
 
 		//Blocks
 		shaped().grid("SSS", "SSS", "SSS")
 				.where('S').mapsTo(Items.SUGAR)
 				.outputs(ModBlocks.SUGAR_BLOCK).build();
 
-		shaped().grid("ACA", "CSC", "ACA")
+		shaped().grid("AEA", "ESE", "AEA")
 				.where('S').mapsTo("logWood")
+				.where('E').mapsTo(Items.CLAY_BALL)
 				.where('A').mapsTo(ModItems.VOLATILE_STRING)
-				.where('C').mapsTo(Items.COAL)
 				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
 		shaped().grid("AAA", "ASA", "AAA")
@@ -55,16 +55,89 @@ public class VanillaCrafting {
 				.where('S').mapsTo(ModItems.VOLATILE_STRING)
 				.outputs(ModBlocks.COMPACT_STONE).build();
 
-		shapeless()
-				.add(new ItemStack(ModItems.SHROOM_SLICE, 1, 0))
-				.add(ModItems.BUDAH_BOUL)
-				.outputs(new ItemStack(Items.DYE.setContainerItem(ModItems.BUDAH_BOUL), 1, 0));
+		shaped().grid("LLL", "LGL")
+				.where('G').mapsTo(ModBlocks.COMPACT_STONE)
+				.where('L').mapsTo("plankWood")
+				.outputs(ModBlocks.PILLAR_ALTAR).build();
 
-		GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.GLORIOUS_NIPPON_STEEL), 0);
+		if (ConfigHandler.grimoireOfAlice.crafting.cattailPlant) {
+			shaped().grid("AE ", " AS", " SA")
+					.where('A').mapsTo(Blocks.VINE)
+					.where('E').mapsTo(Items.SLIME_BALL)
+					.where('S').mapsTo(Items.STICK)
+					.outputs(ModItems.CATTAIL_PLANT).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.ghastlySendOffLantern) {
+			shaped().grid("EAE", "ASA", "EAE")
+					.where('A').mapsTo(Blocks.GLASS_PANE)
+					.where('E').mapsTo(ModItems.SOLDIFIED_PAPER)
+					.where('S').mapsTo(Blocks.TORCH)
+					.outputs(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN, 4)).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.patchyBook) {
+			shapeless()
+					.add(Items.WRITABLE_BOOK)
+					.add(Items.STICK)
+					.add(Items.FEATHER)
+					.outputs(ModItems.PATCHY_BOOK);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.food.grilledLamprey) {
+			shapeless()
+					.add(Items.COOKED_FISH)
+					.add(Items.COOKED_FISH)
+					.add(Items.COOKED_FISH)
+					.add(Items.COOKED_FISH)
+					.add(Items.COOKED_FISH)
+					.add(Items.STICK)
+					.outputs(ModItems.GRILLED_LAMPREY).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.syringe) {
+			shapeless()
+					.add(Items.GLASS_BOTTLE)
+					.add(ModItems.SHROOM_POWDER)
+					.outputs(ModItems.SYRINGE).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.ufo) {
+			shaped().grid("GGG", "GIG", "BBB")
+					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
+					.where('B').mapsTo(Items.CLAY_BALL)
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.GREEN.getMetadata()))
+					.outputs(ModItems.UFO_GREEN).build();
+
+			shaped().grid("GGG", "GIG", "BBB")
+					.where('I')
+					.mapsTo(Items.PRISMARINE_CRYSTALS)
+					.where('B').mapsTo(Items.CLAY_BALL)
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.RED.getMetadata()))
+					.outputs(ModItems.UFO_RED).build();
+
+			shaped().grid("GGG", "GIG", "BBB")
+					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
+					.where('B').mapsTo(Items.CLAY_BALL)
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.BLUE.getMetadata()))
+					.outputs(ModItems.UFO_BLUE).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.food.shroomPowder) {
+			for (int i = 0; i < 16; i++)
+				shapeless()
+						.add(new ItemStack(ModBlocks.SHROOM, 1, i))
+						.add(new ItemStack(ModItems.MORTAR_AND_PESTLE, 1, OreDictionary.WILDCARD_VALUE))
+						.outputs(new ItemStack(ModItems.SHROOM_POWDER, 1, 15 - i)).build();
+		}
+
+		GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.TAMAHAGANE_STEEL), 0);
+
+		GameRegistry.addSmelting(ModBlocks.IMPURE_STONE, new ItemStack(ModItems.IMPURE_ROCK), 1);
 	}
 
 	public static void masks() {
-		if(ConfigHandler.grimoireOfAlice.crafting.masks.vanillaMaskRecipes) {
+		if (ConfigHandler.grimoireOfAlice.crafting.masks.vanillaMaskRecipes) {
 			shapeless()
 					.add(ModItems.FOX_MASK)
 					.add(ModItems.FUKU_NO_KAMI_MASK)

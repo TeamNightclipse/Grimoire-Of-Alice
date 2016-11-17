@@ -146,7 +146,7 @@ public class ItemLaevatein extends ItemModSword {
 			}
 
 			if(success) {
-				player.playSound(SoundEvents.ENTITY_BLAZE_DEATH, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+				player.playSound(SoundEvents.ENTITY_BLAZE_DEATH, 0.5F, itemRand.nextFloat() * 0.4F + 0.8F);
 			}
 			stack.damageItem(1, player);
 			return success ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;

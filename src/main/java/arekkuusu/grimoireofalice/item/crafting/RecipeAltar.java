@@ -28,11 +28,19 @@ public final class RecipeAltar {
 		return registerRecipe(new RecipeItemsNether(result, inputs));
 	}
 
+	public static IRecipeItems registerRecipeEnd(ItemStack result, Object... inputs) {
+		return registerRecipe(new RecipeItemsEnd(result, inputs));
+	}
+
 	public static IRecipeItems registerRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
 		return registerRecipe(new RecipeItemsMoonPhase(moonPhase, result, inputs));
 	}
 
 	public static IRecipeItems registerRecipeRain(ItemStack result, Object... inputs) {
 		return registerRecipe(new RecipeItemsRain(result, inputs));
+	}
+
+	public static IRecipeItems registerRecipeThunder(ItemStack result, Object... inputs) {
+		return registerRecipe(new RecipeItemsThunder(result, inputs));
 	}
 }

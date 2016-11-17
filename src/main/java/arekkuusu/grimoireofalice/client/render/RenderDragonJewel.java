@@ -43,7 +43,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Does
 		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
-		float size = 6.0F;
+		float size = 2.0F;
 		GlStateManager.scale(size, size, size);
 		float angle = 90;
 		GlStateManager.rotate(180F - renderManager.playerViewY + angle, 0.0F, 1.0F, 0.0F);

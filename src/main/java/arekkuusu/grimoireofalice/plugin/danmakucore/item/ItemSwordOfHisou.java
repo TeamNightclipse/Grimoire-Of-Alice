@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibItemName;
@@ -135,6 +136,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
+		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach)
 		if(state.getMaterial() == Material.LEAVES) {
 			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 					new ItemStack(ModItems.HEAVENLY_PEACH));

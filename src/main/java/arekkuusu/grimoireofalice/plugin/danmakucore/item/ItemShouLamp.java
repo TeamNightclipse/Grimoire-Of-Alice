@@ -55,9 +55,9 @@ public class ItemShouLamp extends ItemMod {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
-			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_others.name"));
-			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_player.name"));
-			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.shou_lamp_badbuff.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_others.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_player.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_badbuff.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));

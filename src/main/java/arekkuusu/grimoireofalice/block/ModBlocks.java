@@ -38,6 +38,8 @@ public class ModBlocks {
 	public static final Block ALTAR = new Block(Material.ROCK);
 	@ObjectHolder(LibBlockName.PILLAR_ALTAR)
 	public static final Block PILLAR_ALTAR = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.IMPURE_STONE)
+	public static final Block IMPURE_STONE = new Block(Material.ROCK);
 
 	@ObjectHolder(LibBlockName.SUGAR_BLOCK)
 	public static final Block SUGAR_BLOCK = new Block(Material.ROCK);

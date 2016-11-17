@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class CapabilitiesEvent { //TODO: Test for crashes or bugs
+public class CapabilitiesEvent {
 
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
 	private final List<ItemStack> flyItems = ImmutableList.of(

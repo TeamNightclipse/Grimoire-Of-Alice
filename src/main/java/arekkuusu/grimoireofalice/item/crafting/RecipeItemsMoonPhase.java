@@ -16,6 +16,7 @@ public class RecipeItemsMoonPhase extends RecipeItems {
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
+		System.out.println(world.provider.getMoonPhase(world.getWorldTime()));
 		return !world.isDaytime() && moonPhase == world.provider.getMoonPhase(world.getWorldTime()) && super.checkRecipe(usedItems, world);
 	}
 }

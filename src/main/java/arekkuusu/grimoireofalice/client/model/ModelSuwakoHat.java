@@ -9,51 +9,50 @@ import net.minecraft.entity.Entity;
  */
 public class ModelSuwakoHat extends ModelBiped {
 
-	//TODO: Name these
-	private final ModelRenderer shape15;
-	private final ModelRenderer shape15_1;
-	private final ModelRenderer shape15_2;
-	private final ModelRenderer shape15_3;
-	private final ModelRenderer shape15_4;
-	private final ModelRenderer shape15_5;
-	private final ModelRenderer shape15_6;
+	private final ModelRenderer hat;
+	private final ModelRenderer base;
+	private final ModelRenderer side0;
+	private final ModelRenderer side1;
+	private final ModelRenderer side2;
+	private final ModelRenderer side3;
+	private final ModelRenderer eyes;
 
 	public ModelSuwakoHat() {
 		textureWidth = 64;
 		textureHeight = 64;
-		shape15_6 = new ModelRenderer(this, 32, 32);
-		shape15_6.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_6.addBox(-4.0F, -11.0F, -7.0F, 8, 3, 0, 0.0F);
-		shape15 = new ModelRenderer(this, 0, 0);
-		shape15.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15.addBox(-4.0F, -13.0F, -4.0F, 8, 5, 8, 0.0F);
-		shape15_1 = new ModelRenderer(this, 19, 0);
-		shape15_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_1.addBox(-7.0F, -8.0F, -7.0F, 14, 0, 14, 0.0F);
-		shape15_4 = new ModelRenderer(this, 0, 32);
-		shape15_4.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_4.addBox(-7.0F, -8.0F, 6.0F, 14, 1, 1, 0.0F);
-		shape15_2 = new ModelRenderer(this, 0, 14);
-		shape15_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_2.addBox(-7.0F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
-		shape15_5 = new ModelRenderer(this, 0, 35);
-		shape15_5.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_5.addBox(6.0F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
-		shape15_3 = new ModelRenderer(this, 0, 32);
-		shape15_3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape15_3.addBox(-7.0F, -8.0F, -7.0F, 14, 1, 1, 0.0F);
-		shape15.addChild(shape15_4);
-		shape15.addChild(shape15_6);
-		shape15.addChild(shape15_2);
-		shape15.addChild(shape15_1);
-		shape15.addChild(shape15_5);
-		shape15.addChild(shape15_3);
+		eyes = new ModelRenderer(this, 32, 32);
+		eyes.setRotationPoint(0.0F, 0.0F, 0.0F);
+		eyes.addBox(-4.0F, -11.0F, -7.0F, 8, 3, 0, 0.0F);
+		hat = new ModelRenderer(this, 0, 0);
+		hat.setRotationPoint(0.0F, 0.0F, 0.0F);
+		hat.addBox(-4.0F, -13.0F, -4.0F, 8, 5, 8, 0.0F);
+		base = new ModelRenderer(this, 19, 0);
+		base.setRotationPoint(0.0F, 0.0F, 0.0F);
+		base.addBox(-7.0F, -8.0F, -7.0F, 14, 0, 14, 0.0F);
+		side2 = new ModelRenderer(this, 0, 32);
+		side2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		side2.addBox(-7.0F, -8.0F, 6.0F, 14, 1, 1, 0.0F);
+		side0 = new ModelRenderer(this, 0, 14);
+		side0.setRotationPoint(0.0F, 0.0F, 0.0F);
+		side0.addBox(-7.0F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
+		side3 = new ModelRenderer(this, 0, 35);
+		side3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		side3.addBox(6.0F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
+		side1 = new ModelRenderer(this, 0, 32);
+		side1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		side1.addBox(-7.0F, -8.0F, -7.0F, 14, 1, 1, 0.0F);
+		hat.addChild(side2);
+		hat.addChild(eyes);
+		hat.addChild(side0);
+		hat.addChild(base);
+		hat.addChild(side3);
+		hat.addChild(side1);
 	}
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		bipedHeadwear.showModel = false;
-		bipedHead = shape15;
+		bipedHead = hat;
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}
 

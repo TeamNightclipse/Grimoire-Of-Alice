@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
+import arekkuusu.grimoireofalice.handler.WorldGenOre;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
@@ -32,7 +33,7 @@ import arekkuusu.grimoireofalice.item.food.ItemHouraiElixir;
 import arekkuusu.grimoireofalice.item.food.ItemIbarakiBoxFilled;
 import arekkuusu.grimoireofalice.item.food.ItemIbukiGourd;
 import arekkuusu.grimoireofalice.item.food.ItemKappasNostrum;
-import arekkuusu.grimoireofalice.item.food.ItemShroomSlice;
+import arekkuusu.grimoireofalice.item.food.ItemShroomPowder;
 import arekkuusu.grimoireofalice.item.food.ItemUltramarineOrbElixir;
 import arekkuusu.grimoireofalice.item.masks.ItemFoxMask;
 import arekkuusu.grimoireofalice.item.masks.ItemFukuNoKamiMask;
@@ -63,6 +64,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -77,7 +79,7 @@ public class CommonProxy {
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(
 				new Item3rdEye(),
-				new ItemGloriousNipponSteel(),
+				new ItemTamahaganeSteel(),
 				new ItemHihiirokane(),
 				new ItemShimenawaRope(),
 				new ItemTimeOrb(),
@@ -101,7 +103,6 @@ public class CommonProxy {
 				new ItemNazrinPendulum(),
 				new ItemGhostDipper(),
 				new ItemWallPassingChisel(),
-				new ItemMiracleMallet(),
 				new ItemRodOfRemorse(),
 				new ItemBudahBoul(Item.ToolMaterial.DIAMOND),
 				new ItemDragonJewel(),
@@ -117,9 +118,10 @@ public class CommonProxy {
 				new ItemStopWatch(),
 				new ItemHakureiGohei(),
 				new ItemSanaeGohei(),
+				new ItemMortarPestle(),
 
 				//Food
-				new ItemShroomSlice(),
+				new ItemShroomPowder(),
 				new ItemGrilledLamprey(),
 				new ItemIbarakiBoxFilled(),
 				new ItemKappasNostrum(),
@@ -190,11 +192,13 @@ public class CommonProxy {
 				itemBlock(ModBlocks.SUGAR_BLOCK),
 				itemBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC),
 				itemBlock(ModBlocks.ALTAR),
-				itemBlock(ModBlocks.PILLAR_ALTAR)
+				itemBlock(ModBlocks.PILLAR_ALTAR),
+				itemBlock(ModBlocks.IMPURE_STONE)
 		);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
+					new ItemMiracleMallet(),
 					new ItemViolin(),
 					new ItemPiano(),
 					new ItemTrumpet(),
@@ -214,7 +218,7 @@ public class CommonProxy {
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 	private static Item itemBlockColor(Block block) {
-		return new ItemBlockColors(block).setRegistryName(block.getRegistryName());
+		return new ItemBlockShroom(block).setRegistryName(block.getRegistryName());
 	}
 
 	@SubscribeEvent
@@ -248,7 +252,8 @@ public class CommonProxy {
 				sugarBlock,
 				hyperConcentratedMagic,
 				new BlockCraftingAltar(),
-				new BlockPillarAltar()
+				new BlockPillarAltar(),
+				new BlockImpureRock()
 		);
 	}
 
@@ -257,6 +262,11 @@ public class CommonProxy {
 		event.getRegistry().registerAll(
 				new PotionElixir()
 		);
+	}
+
+	@SubscribeEvent
+	public static void registerOreGen(OreDictionary.OreRegisterEvent event){
+		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 	}
 
 	@SuppressWarnings("UnusedAssignment")

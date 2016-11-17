@@ -56,14 +56,6 @@ public class ItemCrestOfYggdrasill extends ItemModSword {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		//TODO: Apparently needs to be summoned on both sides?
-		worldIn.spawnEntityInWorld(new EntityLightningBolt(worldIn, playerIn.posX, playerIn.posY + 3, playerIn.posZ, true));
-		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-	}
-
-
-	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 4));
 		return true;

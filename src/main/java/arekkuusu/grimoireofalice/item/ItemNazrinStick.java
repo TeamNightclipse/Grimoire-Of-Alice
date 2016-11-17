@@ -29,10 +29,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -56,6 +53,8 @@ public class ItemNazrinStick extends ItemModSword {
 
 	public ItemNazrinStick(ToolMaterial material, String id) {
 		super(material, id);
+		addPropertyOverride(new ResourceLocation("stick"),
+				(stack, world, entity) -> stack.hasTagCompound() ? getType(stack) : 0F);
 	}
 
 	@Override
@@ -100,11 +99,10 @@ public class ItemNazrinStick extends ItemModSword {
 				List<Block> blockLayer = new ArrayList<>(10);
 				for(int i = 1; i < 10; i++) {
 					Block block = world.getBlockState(pos.down(i)).getBlock();
-					OreDictionary.getOreIDs(new ItemStack(block));
-					boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-							.mapToObj(OreDictionary::getOreName)
-							.anyMatch(s -> s.startsWith("ore"));
-
+					if(block == null) continue;
+						boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+								.mapToObj(OreDictionary::getOreName)
+								.anyMatch(s -> s.startsWith("ore"));
 					if(isOre) {
 						blockLayer.add(block);
 					}

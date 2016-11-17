@@ -12,30 +12,29 @@ import net.minecraft.entity.Entity;
  */
 public class ModelWind extends ModelBase {
 
-	//TODO: Name these
-	private final ModelRenderer shape1;
-	private final ModelRenderer shape1_1;
-	private final ModelRenderer shape1_2;
-	private final ModelRenderer shape1_3;
+	private final ModelRenderer north;
+	private final ModelRenderer east;
+	private final ModelRenderer south;
+	private final ModelRenderer west;
 
 	public ModelWind() {
 		textureWidth = 128;
 		textureHeight = 128;
-		shape1 = new ModelRenderer(this, 0, 0);
-		shape1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape1.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
-		shape1_2 = new ModelRenderer(this, 0, 46);
-		shape1_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape1_2.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
-		setRotateAngle(shape1_2, 0.0F, -1.5707963267948966F, 0.0F);
-		shape1_3 = new ModelRenderer(this, 0, 69);
-		shape1_3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape1_3.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
-		setRotateAngle(shape1_3, 0.0F, -2.356194490192345F, 0.0F);
-		shape1_1 = new ModelRenderer(this, 0, 23);
-		shape1_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape1_1.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
-		setRotateAngle(shape1_1, 0.0F, -0.7853981633974483F, 0.0F);
+		north = new ModelRenderer(this, 0, 0);
+		north.setRotationPoint(0.0F, 0.0F, 0.0F);
+		north.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
+		south = new ModelRenderer(this, 0, 46);
+		south.setRotationPoint(0.0F, 0.0F, 0.0F);
+		south.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
+		setRotateAngle(south, 0.0F, -1.5707963267948966F, 0.0F);
+		west = new ModelRenderer(this, 0, 69);
+		west.setRotationPoint(0.0F, 0.0F, 0.0F);
+		west.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
+		setRotateAngle(west, 0.0F, -2.356194490192345F, 0.0F);
+		east = new ModelRenderer(this, 0, 23);
+		east.setRotationPoint(0.0F, 0.0F, 0.0F);
+		east.addBox(-25.0F, -10.0F, 0.0F, 50, 20, 0, 0.0F);
+		setRotateAngle(east, 0.0F, -0.7853981633974483F, 0.0F);
 	}
 
 	@Override
@@ -44,10 +43,10 @@ public class ModelWind extends ModelBase {
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.color(f, f1, f2, 0.8F);
 
-		shape1.render(f5);
-		shape1_2.render(f5);
-		shape1_3.render(f5);
-		shape1_1.render(f5);
+		north.render(f5);
+		south.render(f5);
+		west.render(f5);
+		east.render(f5);
 
 		GlStateManager.disableBlend();
 	}

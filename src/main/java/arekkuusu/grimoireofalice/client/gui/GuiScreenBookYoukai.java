@@ -379,10 +379,10 @@ public class GuiScreenBookYoukai extends GuiScreen {
 			fontRendererObj.drawString(s1, i + 36 + (116 - k) / 2, 34, 0);
 			int l = fontRendererObj.getStringWidth(s);
 			fontRendererObj.drawString(s, i + 36 + (116 - l) / 2, 50, 0);
-			String s2 = I18n.format("Grimoire of ", editingPlayer.getName());
+			String s2 = I18n.format("grimoire.gui.youkaibook_header.name", editingPlayer.getName());
 			int i1 = fontRendererObj.getStringWidth(s2);
 			fontRendererObj.drawString(TextFormatting.DARK_RED + s2, i + 36 + (116 - i1) / 2, 60, 0);
-			String s3 = I18n.format("This book must be sealed to prevent someone else from reading the scriptures"); //TODO: Add to lang file
+			String s3 = I18n.format("grimoire.gui.youkaibook_description.name");
 			fontRendererObj.drawSplitString(s3, i + 36, 82, 116, 0);
 		}
 		else {

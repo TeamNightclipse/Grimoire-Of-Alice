@@ -1,7 +1,8 @@
 {
-    "variants": {
-        "axis=y": { "model": "grimoireofalice:paperblock" },
-        "axis=z": { "model": "grimoireofalice:paperblock", "x": 90 },
-        "axis=x": { "model": "grimoireofalice:paperblock", "x": 90, "y": 90 }
-    }
+  "variants": {
+    "facing=north": { "model": "grimoireofalice:paperblock" },
+    "facing=south": { "model": "grimoireofalice:paperblock", "y": 180 },
+    "facing=east":  { "model": "grimoireofalice:paperblock", "y": 90 },
+    "facing=west":  { "model": "grimoireofalice:paperblock", "y": 270 }
+  }
 }

@@ -20,6 +20,7 @@ public class LibBlockName {
 	public static final String HYPER_MAGIC = "hyperconcentratedmagic";
 	public static final String SHROOM = "shroom";
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
+	public static final String IMPURE_STONE = "impurestone";
 
 	public static final String CRAFTING_ALTAR = "craftingaltar";
 	public static final String PILLAR_ALTAR = "pillaraltar";

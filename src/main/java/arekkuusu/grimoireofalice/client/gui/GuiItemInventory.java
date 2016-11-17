@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.lib.LibMod;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.SpellCardContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -26,7 +27,7 @@ public class GuiItemInventory extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		String s = "§fSpell Card Pouch"; //TODO: Localize
+		String s = I18n.format("grimoire.gui.pouch.name");
 		fontRendererObj.drawString(s, xSize / 2 - fontRendererObj.getStringWidth(s) / 2, 0, 4210752);
 	}
 

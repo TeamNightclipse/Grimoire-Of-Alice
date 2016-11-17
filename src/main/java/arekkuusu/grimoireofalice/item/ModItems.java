@@ -10,10 +10,7 @@ package arekkuusu.grimoireofalice.item;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry.ItemStackHolder;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @ObjectHolder(LibMod.MODID)
@@ -26,8 +23,8 @@ public final class ModItems {
 	public static final Item VOLATILE_STRING = new Item();
 	@ObjectHolder(LibItemName.SOLDIFIED_PAPER)
 	public static final Item SOLDIFIED_PAPER = new Item();
-	@ObjectHolder(LibItemName.GLORIOUS_NIPPON_STEEL)
-	public static final Item GLORIOUS_NIPPON_STEEL = new Item();
+	@ObjectHolder(LibItemName.TAMAHAGANE_STEEL)
+	public static final Item TAMAHAGANE_STEEL = new Item();
 	@ObjectHolder(LibItemName.SHIMENAWA_ROPE)
 	public static final Item SHIMENAWA_ROPE = new Item();
 	@ObjectHolder(LibItemName.YOUKAI_BOOK)
@@ -74,9 +71,11 @@ public final class ModItems {
 	public static final Item DRAGON_JEWEL = new Item();
 	@ObjectHolder(LibItemName.STOP_WATCH)
 	public static final Item STOP_WATCH = new Item();
+	@ObjectHolder(LibItemName.MORTAR_AND_PESTLE)
+	public static final Item MORTAR_AND_PESTLE = new Item();
 	//Food
-	@ObjectHolder(LibItemName.SHROOM_SLICE)
-	public static final Item SHROOM_SLICE = new Item();
+	@ObjectHolder(LibItemName.SHROOM_POWDER)
+	public static final Item SHROOM_POWDER = new Item();
 	@ObjectHolder(LibItemName.GRILLED_LAMPREY)
 	public static final Item GRILLED_LAMPREY = new Item();
 	@ObjectHolder(LibItemName.IBARAKI_BOX_FILLED)

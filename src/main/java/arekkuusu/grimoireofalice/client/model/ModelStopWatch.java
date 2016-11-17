@@ -9,7 +9,7 @@ import net.minecraft.entity.Entity;
  */
 public class ModelStopWatch extends ModelBase {
 
-	//TODO: Name these
+	//TODO: Name these. edit: r u crazy?
 	private final ModelRenderer shape1;
 	private final ModelRenderer shape1_1;
 	private final ModelRenderer shape1_2;

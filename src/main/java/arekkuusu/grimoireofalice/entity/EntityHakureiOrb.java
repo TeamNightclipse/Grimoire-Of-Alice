@@ -12,6 +12,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class EntityHakureiOrb extends EntityThrowable {
 
 	//TODO: Why not use minecraft size?
@@ -115,11 +117,6 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	@Override
-	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().expandXyz(getSize() * 2);
-	}
-
-	@Override
 	protected float getGravityVelocity() {
 		return 0;
 	}
@@ -129,6 +126,15 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void setSize(float size) {
+		float f = width;
+		width = size;
+		height = size;
+		AxisAlignedBB axisalignedbb = getEntityBoundingBox();
+		setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) width, axisalignedbb.minY + (double) height, axisalignedbb.minZ + (double) width));
+
+		if (width > f && !firstUpdate && !worldObj.isRemote) {
+			moveEntity((double) (f - width), 0.0D, (double) (f - width));
+		}
 		dataManager.set(SIZE, size);
 	}
 

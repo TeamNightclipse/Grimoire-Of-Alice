@@ -58,7 +58,7 @@ public class FormUfo extends FormGeneric {
 		GlStateManager.rotate(roll, 0F, 0F, 1F);
 		GlStateManager.scale(sizeX, sizeY, sizeZ);
 
-		ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufos needs colors
+		ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufo models
 		Minecraft mc = Minecraft.getMinecraft();
 		mc.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
 		GlStateManager.disableRescaleNormal();

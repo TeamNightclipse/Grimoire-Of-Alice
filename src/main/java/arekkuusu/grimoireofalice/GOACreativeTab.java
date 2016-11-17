@@ -53,6 +53,7 @@ public class GOACreativeTab extends CreativeTabs {
 
 		//Blocks
 		addBlock(ModBlocks.COMPACT_STONE);
+		addBlock(ModBlocks.IMPURE_STONE);
 		addBlock(ModBlocks.HOLY_STONE);
 		addBlock(ModBlocks.KYOUMARUBOTAN);
 		addBlock(ModBlocks.ONBASHIRA);
@@ -63,11 +64,12 @@ public class GOACreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.SUGAR_BLOCK);
 		addBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC);
 		addBlock(ModBlocks.SHROOM);
-		addItem(ModItems.SHROOM_SLICE);
+		addItem(ModItems.SHROOM_POWDER);
+		addItem(ModItems.MORTAR_AND_PESTLE);
 
 		//Item
 		addItem(ModItems.THIRD_EYE);
-		addItem(ModItems.GLORIOUS_NIPPON_STEEL);
+		addItem(ModItems.TAMAHAGANE_STEEL);
 		addItem(ModItems.HIHIIROKANE);
 		addItem(ModItems.SHIMENAWA_ROPE);
 		addItem(ModItems.TIME_ORB);
@@ -105,7 +107,9 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.NAZRIN_PENDULUM);
 		addItem(ModItems.GHOST_DIPPER);
 		addItem(ModItems.WALL_PASSING_CHISEL);
-		addItem(ModItems.MIRACLE_MALLET);
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.MIRACLE_MALLET);
+		}
 		addItem(ModItems.ROD_REMORSE);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.JEWELED_HOURAI);
