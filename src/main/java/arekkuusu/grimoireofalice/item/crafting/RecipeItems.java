@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeItems implements IRecipeItems {
 
@@ -29,6 +30,10 @@ public class RecipeItems implements IRecipeItems {
 		neededItems = ImmutableList.copyOf(stackedList);
 	}
 
+	public ImmutableList<Object> getNeededItems() {
+		return neededItems;
+	}
+
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
 		List<Object> toCompare = new ArrayList<>(neededItems);
@@ -42,8 +47,9 @@ public class RecipeItems implements IRecipeItems {
 					index = j;
 					break;
 				}
-				else if(obj instanceof String) {
-
+				else if(obj instanceof String && OreDictionary.containsMatch(false, OreDictionary.getOres((String)obj), stack)) {
+					index = j;
+					break;
 				}
 			}
 			if(index != -1) {

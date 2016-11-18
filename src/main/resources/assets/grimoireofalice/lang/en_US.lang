@@ -200,7 +200,7 @@ grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
 grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
 
 grimoire.tooltip.aura_ichirin_header.name=Cloud Spirit Nyuudou
-grimoire.tooltip.aura_byakuren_description.name=Grants the user a powerful Nyuudou
+grimoire.tooltip.aura_ichirin_description.name=Grants the user a powerful Nyuudou
 
 grimoire.tooltip.aura_kanako_header.name=Represents the figure of an entwined snake
 grimoire.tooltip.aura_kanako_description_top.name=Its true power is unknown, the legend says
@@ -485,3 +485,5 @@ grimoire.tooltip.trumpet_use.name=Hold right click to use
 
 grimoire.tooltip.violin_header.name=Poltergeists posses this violin
 grimoire.tooltip.violin_use.name=Hold right click to use
+
+grimoire.jei.alter.title=Crafting Altar

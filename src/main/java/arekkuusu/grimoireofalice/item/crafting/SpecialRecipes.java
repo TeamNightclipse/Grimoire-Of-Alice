@@ -146,7 +146,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.bloodThirstyOrb) {
 			BLOOD_THIRSTY_ORB = RecipeAltar.registerRecipeNether(new ItemStack(ModItems.BLOOD_ORB)
-					, Items.ENDER_EYE, Blocks.NETHER_WART, Blocks.NETHER_WART, Blocks.NETHER_WART, Blocks.NETHER_WART);
+					, Items.ENDER_EYE, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.budahBoul) {
@@ -313,7 +313,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.skull) {
 			ORIN_SKULL = RecipeAltar.registerRecipeNether(new ItemStack(ModItems.SKULL)
-					, Blocks.SKULL);
+					, Items.SKULL);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.stopWatch) {
@@ -323,7 +323,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.substituteJizo) {
 			SUBSTITUTE_JIZO = RecipeAltar.registerRecipe(new ItemStack(ModItems.SUBSTITUTE_JIZO)
-					, Items.LEATHER, Items.LEATHER, Items.LEATHER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, new ItemStack(Blocks.SKULL, 1, 0));
+					, Items.LEATHER, Items.LEATHER, Items.LEATHER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, new ItemStack(Items.SKULL, 1, 0));
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.suwakoHat) {
@@ -365,7 +365,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.food.houraiElixir) {
 			HOURAI_ELIXIR = RecipeAltar.registerRecipeEnd(new ItemStack(ModItems.HOURAI_ELIXIR)
-					, Blocks.DRAGON_EGG, Items.NETHER_STAR, Blocks.FLOWER_POT, Items.CHORUS_FRUIT_POPPED, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS);
+					, Blocks.DRAGON_EGG, Items.NETHER_STAR, Items.FLOWER_POT, Items.CHORUS_FRUIT_POPPED, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.kappaNostrum) {
