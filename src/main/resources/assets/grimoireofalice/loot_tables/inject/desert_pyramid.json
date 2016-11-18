@@ -1,0 +1,25 @@
+{
+  "__comment": "This table is injected as its own pool into minecraft:chests/desert_pyramid",
+  "pools": [{
+    "name": "main",
+    "rolls": 1,
+    "entries": [
+      {
+        "type": "item",
+        "name": "grimoireofalice:staritem",
+        "weight": 35,
+        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 3 } }]
+      },
+      {
+        "type": "item",
+        "name": "grimoireofalice:timeorb",
+        "weight": 80,
+        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 2 } }]
+      },
+      {
+        "type": "empty",
+        "weight": 60
+      }
+    ]
+  }]
+}

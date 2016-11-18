@@ -216,7 +216,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.kappaHat) {
 			KAPPA_HAT = RecipeAltar.registerRecipeRain(new ItemStack(ModItems.KAPPA_HAT)
-					, new ItemStack(Blocks.WOOL, 1, EnumDyeColor.LIME.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.LIME.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.LIME.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.LIME.getMetadata()), Items.SLIME_BALL);
+					, new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), Items.SLIME_BALL);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.mapleLeafShield) {
@@ -226,7 +226,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.marisaHat) {
 			MARISA_HAT = RecipeAltar.registerRecipe(new ItemStack(ModItems.MARISA_HAT)
-					, new ItemStack(Blocks.WOOL, 1, EnumDyeColor.GRAY.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.GRAY.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.GRAY.getMetadata()), new ItemStack(Blocks.WOOL, 1, EnumDyeColor.WHITE.getMetadata()), Items.BOOK);
+					, new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), Items.BOOK);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.mikoCape) {

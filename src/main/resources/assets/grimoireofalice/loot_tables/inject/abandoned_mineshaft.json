@@ -1,0 +1,34 @@
+{
+  "__comment": "This table is injected as its own pool into minecraft:chests/abandoned_mineshaft",
+  "pools": [{
+    "name": "main",
+    "rolls": 1,
+    "entries": [
+      {
+        "type": "item",
+        "name": "grimoireofalice:shroompowder",
+        "weight": 15
+      },
+      {
+        "type": "item",
+        "name": "grimoireofalice:fullpoweritem",
+        "weight": 5
+      },
+	  {
+        "type": "item",
+        "name": "grimoireofalice:ufored",
+        "weight": 5
+      },
+	  {
+        "type": "item",
+        "name": "grimoireofalice:staritem",
+        "weight": 5,
+        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 2 } }]
+      },
+      {
+        "type": "empty",
+        "weight": 60
+      }
+    ]
+  }]
+}

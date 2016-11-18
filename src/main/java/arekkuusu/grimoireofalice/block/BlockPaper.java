@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 public class BlockPaper extends BlockModPillar {
 
 	public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.2D, 0.0D, 0.0D, 8.0D, 1.0D, 1.0D);
 
 	public BlockPaper() {
 		super(LibBlockName.PAPER_BLOCK, Material.CARPET);
@@ -74,6 +74,11 @@ public class BlockPaper extends BlockModPillar {
 	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isCollidable() {
 		return false;
 	}
 }

@@ -35,8 +35,6 @@ public class ConfigHandler {
 			public Masks masks = new Masks();
 			public DanmakuCore danmakuCore = new DanmakuCore();
 
-			@Comment("Can players get Point Items?")
-			public boolean pointsItemRecipes = true;
 			@Comment("Can players craft the third eye?")
 			public boolean thirdEye = true;
 			@Comment("Can players craft the amenonuhoko?")
@@ -137,6 +135,12 @@ public class ConfigHandler {
 			public boolean wallPassingChisel= true;
 			@Comment("Can players craft the youkai book?")
 			public boolean youkaiBook = true;
+			@Comment("Can players craft the watermelon blade?")
+			public boolean waterMelonBlade = true;
+			@Comment("Can players craft the watermelon sword?")
+			public boolean waterMelonSword = true;
+			@Comment("Can players craft the popsicle stick?")
+			public boolean popsicleStick = true;
 
 			@Comment("Can players craft holy stones?")
 			public boolean holyStone = true;
@@ -199,10 +203,14 @@ public class ConfigHandler {
 
 		public static class WorldGen {
 
+			@Comment("Can players get Point Items?")
+			public boolean pointItemsGen = true;
 			@Comment("How many Spawn tries per chunks?")
-			public int mushromSpawnRate = 50;
+			public int mushromSpawnRate = 10;
 			@Comment("How many Spawn tries per chunks?")
-			public int kyoumarubotanSpawnRate = 10;
+			public int kyoumarubotanSpawnRate = 5;
+			@Comment("How many Ore tries per chunks?")
+			public int impureStoneSpawnRate = 10;
 		}
 
 		public static class Features {

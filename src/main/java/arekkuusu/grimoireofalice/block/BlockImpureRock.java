@@ -6,9 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -29,7 +27,6 @@ public class BlockImpureRock extends BlockMod {
 
 	@Override
 	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
-		Random rand = world instanceof World ? ((World)world).rand : new Random();
-		return MathHelper.getRandomIntegerInRange(rand, 3, 7);
+		return 3 + fortune;
 	}
 }

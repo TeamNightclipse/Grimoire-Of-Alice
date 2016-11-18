@@ -60,6 +60,39 @@ public class VanillaCrafting {
 				.where('L').mapsTo("plankWood")
 				.outputs(ModBlocks.PILLAR_ALTAR).build();
 
+		shaped().grid("PBP", "WCW", "WDW")
+				.where('P').mapsTo(Items.PAPER)
+				.where('B').mapsTo(Items.BOOK)
+				.where('W').mapsTo("plankWood")
+				.where('D').mapsTo(ModBlocks.COMPACT_STONE)
+				.where('C').mapsTo(Blocks.CRAFTING_TABLE)
+				.outputs(ModBlocks.ALTAR).build();
+
+		shapeless()
+				.add(Items.STICK)
+				.add(Items.BOWL)
+				.outputs(ModItems.MORTAR_AND_PESTLE).build();
+
+		if (ConfigHandler.grimoireOfAlice.crafting.popsicleStick) {
+			shaped().grid("  S", "SS ", "SS ")
+					.where('S').mapsTo(Items.STICK)
+					.outputs(ModItems.POPSICLE_STICK).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.waterMelonBlade) {
+			shaped().grid("  M", " M ", "MS ")
+					.where('M').mapsTo(Items.MELON)
+					.where('S').mapsTo(Items.STICK)
+					.outputs(ModItems.WATERMELON_BLADE).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.waterMelonSword) {
+			shapeless()
+					.add(ModItems.POPSICLE_STICK)
+					.add(Blocks.MELON_BLOCK)
+					.outputs(ModItems.WATERMELON_SWORD).build();
+		}
+
 		if (ConfigHandler.grimoireOfAlice.crafting.cattailPlant) {
 			shaped().grid("AE ", " AS", " SA")
 					.where('A').mapsTo(Blocks.VINE)
@@ -102,24 +135,24 @@ public class VanillaCrafting {
 					.outputs(ModItems.SYRINGE).build();
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ufo) {
+		if (ConfigHandler.grimoireOfAlice.crafting.ufo) { //FIXME: Wrong glass block metas
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.GREEN.getMetadata()))
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 13))
 					.outputs(ModItems.UFO_GREEN).build();
 
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I')
 					.mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.RED.getMetadata()))
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 14))
 					.outputs(ModItems.UFO_RED).build();
 
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, EnumDyeColor.BLUE.getMetadata()))
+					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 11))
 					.outputs(ModItems.UFO_BLUE).build();
 		}
 

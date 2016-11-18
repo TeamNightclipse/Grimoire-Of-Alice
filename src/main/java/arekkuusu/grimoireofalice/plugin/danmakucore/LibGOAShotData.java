@@ -20,5 +20,5 @@ public class LibGOAShotData {
 	public static final ShotData WIND = new ShotData(GOAForms.WIND, COLOR_VANILLA_RED, 0.4F, 0.5F, 0, 50, GOASubEntities.WIND);
 	public static final ShotData NOTE = new ShotData(LibForms.CONTROL, COLOR_VANILLA_RED, 0.4F, 0.5F, 0, 50, GOASubEntities.NOTE);
 	public static final ShotData UFO = new ShotData(GOAForms.UFO, COLOR_SATURATED_CYAN, 0.4F, 0.5F, 0, 50, GOASubEntities.UFO);
-	public static final ShotData LEAF = new ShotData(GOAForms.LEAF, COLOR_SATURATED_GREEN, 0.4F, 0.3F, 0, 50, GOASubEntities.LEAF);
+	public static final ShotData LEAF = new ShotData(GOAForms.LEAF, COLOR_SATURATED_GREEN, 0.4F, 0.3F, 0, 10, GOASubEntities.LEAF);
 }

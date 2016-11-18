@@ -14,6 +14,8 @@ import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
 import arekkuusu.grimoireofalice.event.YukkuriEvent;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.handler.WorldGenLoot;
 import arekkuusu.grimoireofalice.handler.WorldGenOre;
 import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
@@ -285,6 +287,8 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
+		if(ConfigHandler.grimoireOfAlice.worldGen.pointItemsGen)
+			MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenLoot());
 		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
 		MinecraftForge.EVENT_BUS.register(new CapabilitiesEvent());
 	}

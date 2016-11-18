@@ -65,9 +65,9 @@ public class ItemLeaf extends ItemMod {
 			if(!worldIn.isRemote) {
 				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setVariant(GOADanmakuVariants.LEAF);
 				float anglePitch = playerIn.isSneaking() ? 45 : -45;
-				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F))); //FIXME: Null Pointer Exception
-
 				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
+
+				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
 			}
 		}
 	}
