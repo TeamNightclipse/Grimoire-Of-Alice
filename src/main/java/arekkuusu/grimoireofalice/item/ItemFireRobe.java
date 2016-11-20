@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
+import arekkuusu.grimoireofalice.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.gui.GuiScreen;
@@ -10,6 +11,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -108,11 +110,24 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 		return 5;
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-		if(model == null) model = new ModelFireRobe();
+		if (model == null) model = new ModelFireRobe();
 		model.setModelAttributes(_default);
 		return model;
+	}
+
+	@Override
+	public boolean hasCustomEntity(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public Entity createEntity(World world, Entity location, ItemStack itemstack) {
+		EntityItem item = new EntityItemFireProof(world, location.posX, location.posY, location.posZ, itemstack);
+		item.setPickupDelay(50);
+		return item;
 	}
 
 	@Override

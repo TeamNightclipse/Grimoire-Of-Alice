@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,16 +36,16 @@ public class ItemKoomoteMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Joy");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.koomote_mask_header.name"));
 
 		if(player.experienceLevel >= 110) {
-			list.add(TextFormatting.GOLD + " -Absorption");
+			list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.koomote_mask_good_buff.name"));
 		}
 		else {
-			list.add(TextFormatting.LIGHT_PURPLE + " -Hunger");
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.koomote_mask_bad_buff.name"));
 		}
 
-		list.add(TextFormatting.DARK_PURPLE + " *Vulnerable to Explosions");
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.koomote_mask_vulnerable.name"));
 	}
 
 	@Override

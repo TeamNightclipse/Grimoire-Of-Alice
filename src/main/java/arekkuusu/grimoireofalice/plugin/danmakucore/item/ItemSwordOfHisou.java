@@ -24,14 +24,12 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -119,7 +117,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 						}
 					}
 					else if(timeUsed >= 20 && player.isSneaking()) {
-						for(int i = 0; i < 4; i++) {
+						for(int i = 0; i < 10; i++) {
 							DanmakuBuilder danmaku = DanmakuBuilder.builder()
 									.setUser(player)
 									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))
@@ -131,6 +129,39 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 				}
 			}
 		}
+	}
+
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if(player.isSneaking()) {
+			for (int t = 0; t < 5; t++) {
+				for (int u = 0; u < 10; u++) {
+					spawnGround(player, itemRand.nextDouble(), itemRand.nextDouble());
+					spawnGround(player, -itemRand.nextDouble(), -itemRand.nextDouble());
+					spawnGround(player, itemRand.nextDouble(), -itemRand.nextDouble());
+					spawnGround(player, -itemRand.nextDouble(), itemRand.nextDouble());
+				}
+				worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 5F, 1F);
+			}
+			List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(10.0D));
+			for (EntityMob mob : list) {
+				mob.attackEntityFrom(DamageSource.drown, 1);
+				Vec3d playerPos = player.getPositionVector();
+				Vec3d mobPos = mob.getPositionVector();
+				double ratio = playerPos.distanceTo(mobPos) / 4;
+				double scaling = 1 - ratio;
+				Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
+				mob.motionX = -motion.xCoord * 2;
+				mob.motionY = .3F;
+				mob.motionZ = -motion.zCoord * 2;
+			}
+			return EnumActionResult.SUCCESS;
+		}
+		return EnumActionResult.FAIL;
+	}
+
+	private void spawnGround(EntityPlayer player, double xVelocity, double zVelocity) {
+		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 
 	@Override

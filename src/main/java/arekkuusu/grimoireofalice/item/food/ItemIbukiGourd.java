@@ -35,7 +35,7 @@ public class ItemIbukiGourd extends ItemModFood {
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 4800, 0));
-		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 4800, 0));
+		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 4800, 1));
 	}
 
 	@Override

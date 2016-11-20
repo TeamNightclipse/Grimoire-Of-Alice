@@ -47,12 +47,6 @@ public class ItemShimenawaRope extends ItemMod {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
-	}
-
-	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
 			float y, float z) {
 		if(facing != EnumFacing.UP) return EnumActionResult.PASS;

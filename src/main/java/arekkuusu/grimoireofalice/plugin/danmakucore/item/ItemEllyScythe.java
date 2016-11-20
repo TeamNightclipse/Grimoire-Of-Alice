@@ -35,6 +35,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
@@ -74,16 +75,7 @@ public class ItemEllyScythe extends ItemModSword {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		if(user instanceof EntityPlayer) {
-			if(target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 64, 0));
-			}
-			else {
-				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 64, 0));
-			}
-			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 64, 0));
-			user.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 64, 3));
-		}
+		target.attackEntityFrom(DamageSource.causeThornsDamage(user), 5);
 		return true;
 	}
 
@@ -115,9 +107,6 @@ public class ItemEllyScythe extends ItemModSword {
 				if(!worldIn.isRemote) {
 					EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
 					scythe.setCritical(critical);
-					if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
-						scythe.setFire(100);
-					}
 					Vec3d look = player.getLookVec();
 					float distance = 1.5F;
 					double dx = player.posX + look.xCoord * distance;
@@ -163,7 +152,6 @@ public class ItemEllyScythe extends ItemModSword {
 				.setPos(spawnPos)
 				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
 				.build().asEntity();
-
 		player.worldObj.spawnEntityInWorld(danmaku);
 	}
 

@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,14 +36,14 @@ public class ItemHyottokoMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Cheerful");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.hyottoko_mask_header.name"));
 
 		if(player.experienceLevel >= 70) {
-			list.add(TextFormatting.GOLD + " -Regeneration V");
+			list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hyottoko_mask_good_buff_one.name"));
 		}
 
-		list.add(TextFormatting.GOLD + " -Jump.");
-		list.add(TextFormatting.DARK_PURPLE + " *Vulnerable to Magic");
+		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hyottoko_mask_good_buff_two.name"));
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.hyottoko_mask_vulnerable.name"));
 	}
 
 	@Override

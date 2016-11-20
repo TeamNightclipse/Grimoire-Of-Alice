@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,17 +36,17 @@ public class ItemUbaMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Phatos");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.uba_mask_header.name"));
 
 		if(player.experienceLevel <= 90) {
-			list.add(TextFormatting.LIGHT_PURPLE + " -Dig Slowdown");
-			list.add(TextFormatting.LIGHT_PURPLE + " -Blindness");
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_one.name"));
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_two.name"));
 		}
 		else {
-			list.add(TextFormatting.LIGHT_PURPLE + " -Melancholy");
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_tree.name"));
 		}
 
-		list.add(TextFormatting.DARK_PURPLE + " *Vulnerable to Magic");
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.uba_mask_vulnerable.name"));
 	}
 
 	@Override

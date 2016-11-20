@@ -69,6 +69,8 @@ public class ConfigHandler {
 			public boolean hakureiGohei = true;
 			@Comment("Can players craft the ibaraki box?")
 			public boolean ibarakiBox = true;
+			@Comment("Can players craft the ichirin aura?")
+			public boolean ichirinAura = true;
 			@Comment("Can players craft the ichirin ring?")
 			public boolean ichirinRing = true;
 			@Comment("Can players craft the kappa hat?")
@@ -111,6 +113,8 @@ public class ConfigHandler {
 			public boolean sichiSeiken = true;
 			@Comment("Can players craft the shimenawa rope?")
 			public boolean shimenawaRope = true;
+			@Comment("Can players craft the kanako's onbashira?")
+			public boolean kanakoOnbashira= true;
 			@Comment("Can players craft the skull?")
 			public boolean skull= true;
 			@Comment("Can players craft the stop watch?")
@@ -121,7 +125,7 @@ public class ConfigHandler {
 			public boolean suwakoHat = true;
 			@Comment("Can players craft the swallow cowrie shell?")
 			public boolean swallowCowrieShell = true;
-			@Comment("Can players craft the sword of kusanagi?")
+			@Comment("Can players get the sword of kusanagi?")
 			public boolean swordOfKusanagi = true;
 			@Comment("Can players craft the roukanken?")
 			public boolean roukanken = true;

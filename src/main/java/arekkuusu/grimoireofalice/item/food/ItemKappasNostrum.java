@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -50,6 +51,7 @@ public class ItemKappasNostrum extends ItemModFood {
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 160, 0));
+		player.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,14 +36,14 @@ public class ItemMonkeyMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Awkwardness");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.monkey_mask_header.name"));
 
 		if(player.experienceLevel >= 60) {
-			list.add(TextFormatting.LIGHT_PURPLE + " -Invisibility");
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.monkey_mask_good_buff.name"));
 		}
 
-		list.add(TextFormatting.LIGHT_PURPLE + " -Slowness III");
-		list.add(TextFormatting.DARK_PURPLE + " *Invulnerable to Most Damage");
+		list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.monkey_mask_bad_buff.name"));
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.monkey_mask_vulnerable.name"));
 	}
 
 	@Override

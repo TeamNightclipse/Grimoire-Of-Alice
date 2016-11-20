@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,9 +36,9 @@ public class ItemHannyaMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List<String> p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(TextFormatting.DARK_AQUA + "Tsukumogami of Anger");
-		p_77624_3_.add(TextFormatting.GOLD + " -Strenght");
-		p_77624_3_.add(TextFormatting.DARK_PURPLE + " *Vulnerable to Magic");
+		p_77624_3_.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.hannya_mask_header.name"));
+		p_77624_3_.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hannya_mask_good_buff.name"));
+		p_77624_3_.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.hannya_mask_vulnerable.name"));
 	}
 
 	@Override

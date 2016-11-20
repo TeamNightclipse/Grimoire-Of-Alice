@@ -14,6 +14,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeItemsWrapper> {
 
@@ -57,12 +59,12 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 		outputSlot = guiHelper.createDrawable(furnace, 111, 30, 26, 26);
 	}
 
-
 	@Override
 	public String getUid() {
 		return LibJEI.ALTER_CATEGORY_UID;
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public String getTitle() {
 		return I18n.format("grimoire.jei.alter.title");

@@ -2,7 +2,11 @@ package arekkuusu.grimoireofalice.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -98,7 +102,17 @@ public class EntityEllyScythe extends EntityThrow {
 
 	@Override
 	void applyHitEffects(Entity entity) {
-		entity.attackEntityFrom(DamageSource.causeThornsDamage(this), 5);
+		if (getThrower() instanceof EntityPlayer && entity instanceof EntityLivingBase) {
+			EntityLivingBase target = (EntityLivingBase) entity;
+			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 64, 0));
+			}
+			else {
+				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE, 64, 0));
+			}
+			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 64, 0));
+			getThrower().addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 64, 3));
+		}
 	}
 
 	@Override

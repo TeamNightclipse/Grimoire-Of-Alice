@@ -49,9 +49,14 @@ public class ItemIbarakiBoxFilled extends ItemModFood {
 		if(entityLiving instanceof EntityPlayer && !((EntityPlayer)entityLiving).capabilities.isCreativeMode) {
 			--stack.stackSize;
 		}
-		entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
-		entityLiving.heal(100);
-		entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
+		if(entityLiving.getHealth() != entityLiving.getMaxHealth()) {
+			entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
+			entityLiving.heal(100);
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
+		}
+		else {
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
+		}
 		return stack.stackSize <= 0 ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
 	}
 

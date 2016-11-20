@@ -30,7 +30,7 @@ public class VanillaCrafting {
 				.outputs(new ItemStack(ModItems.VOLATILE_STRING, 1)).build();
 
 		shaped().grid("SSS", "SAS", "SSS")
-				.where('S').mapsTo(Items.PAPER)
+				.where('S').mapsTo("paper")
 				.where('A').mapsTo(Items.CLAY_BALL)
 				.outputs(new ItemStack(ModItems.SOLDIFIED_PAPER, 1)).build();
 
@@ -46,7 +46,7 @@ public class VanillaCrafting {
 				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
 		shaped().grid("AAA", "ASA", "AAA")
-				.where('A').mapsTo(Items.PAPER)
+				.where('A').mapsTo("paper")
 				.where('S').mapsTo(ModItems.SOLDIFIED_PAPER)
 				.outputs(new ItemStack(ModBlocks.PAPER_BLOCK, 8)).build();
 
@@ -61,7 +61,7 @@ public class VanillaCrafting {
 				.outputs(ModBlocks.PILLAR_ALTAR).build();
 
 		shaped().grid("PBP", "WCW", "WDW")
-				.where('P').mapsTo(Items.PAPER)
+				.where('P').mapsTo("paper")
 				.where('B').mapsTo(Items.BOOK)
 				.where('W').mapsTo("plankWood")
 				.where('D').mapsTo(ModBlocks.COMPACT_STONE)
@@ -75,14 +75,14 @@ public class VanillaCrafting {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.popsicleStick) {
 			shaped().grid("  S", "SS ", "SS ")
-					.where('S').mapsTo(Items.STICK)
+					.where('S').mapsTo("stickWood")
 					.outputs(ModItems.POPSICLE_STICK).build();
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.waterMelonBlade) {
 			shaped().grid("  M", " M ", "MS ")
 					.where('M').mapsTo(Items.MELON)
-					.where('S').mapsTo(Items.STICK)
+					.where('S').mapsTo("stickWood")
 					.outputs(ModItems.WATERMELON_BLADE).build();
 		}
 
@@ -97,7 +97,7 @@ public class VanillaCrafting {
 			shaped().grid("AE ", " AS", " SA")
 					.where('A').mapsTo(Blocks.VINE)
 					.where('E').mapsTo(Items.SLIME_BALL)
-					.where('S').mapsTo(Items.STICK)
+					.where('S').mapsTo("stickWood")
 					.outputs(ModItems.CATTAIL_PLANT).build();
 		}
 
@@ -112,7 +112,7 @@ public class VanillaCrafting {
 		if (ConfigHandler.grimoireOfAlice.crafting.patchyBook) {
 			shapeless()
 					.add(Items.WRITABLE_BOOK)
-					.add(Items.STICK)
+					.add("stickWood")
 					.add(Items.FEATHER)
 					.outputs(ModItems.PATCHY_BOOK);
 		}
@@ -124,8 +124,15 @@ public class VanillaCrafting {
 					.add(Items.COOKED_FISH)
 					.add(Items.COOKED_FISH)
 					.add(Items.COOKED_FISH)
-					.add(Items.STICK)
+					.add("stickWood")
 					.outputs(ModItems.GRILLED_LAMPREY).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.needle) {
+			shapeless()
+					.add(Items.IRON_INGOT)
+					.add(Items.FEATHER)
+					.outputs(ModItems.NEEDLE).build();
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.syringe) {
@@ -135,24 +142,24 @@ public class VanillaCrafting {
 					.outputs(ModItems.SYRINGE).build();
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ufo) { //FIXME: Wrong glass block metas
+		if (ConfigHandler.grimoireOfAlice.crafting.ufo) {
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 13))
+					.where('G').mapsTo("blockGlassGreen")
 					.outputs(ModItems.UFO_GREEN).build();
 
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I')
 					.mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 14))
+					.where('G').mapsTo("blockGlassRed")
 					.outputs(ModItems.UFO_RED).build();
 
 			shaped().grid("GGG", "GIG", "BBB")
 					.where('I').mapsTo(Items.PRISMARINE_CRYSTALS)
 					.where('B').mapsTo(Items.CLAY_BALL)
-					.where('G').mapsTo(new ItemStack(Blocks.GLASS, 1, 11))
+					.where('G').mapsTo("blockGlassBlue")
 					.outputs(ModItems.UFO_BLUE).build();
 		}
 

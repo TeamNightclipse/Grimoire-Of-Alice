@@ -136,11 +136,6 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.COMPACT_STONE;
-	}
-
-	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileCraftingAltar();
 	}

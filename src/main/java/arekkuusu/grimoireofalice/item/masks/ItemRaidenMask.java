@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,14 +36,14 @@ public class ItemRaidenMask extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Surprise");
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.raiden_mask_header.name"));
 
 		if(player.experienceLevel >= 50) {
-			list.add(TextFormatting.GOLD + " -Haste IV");
+			list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.raiden_mask_good_buff.name"));
 		}
 
-		list.add(TextFormatting.LIGHT_PURPLE + " -Weakness");
-		list.add(TextFormatting.DARK_PURPLE + " *Vulnerable to Fire");
+		list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.raiden_mask_bad_buff.name"));
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.raiden_mask_vulnerable.name"));
 	}
 
 	@Override
