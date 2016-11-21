@@ -125,8 +125,8 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	@Override
 	public Entity createEntity(World world, Entity location, ItemStack itemstack) {
-		EntityItem item = new EntityItemFireProof(world, location.posX, location.posY, location.posZ, itemstack);
-		item.setPickupDelay(50);
+		EntityItemFireProof item = new EntityItemFireProof(world, location.posX, location.posY, location.posZ, itemstack);
+		item.setDefaultPickupDelay();
 		return item;
 	}
 

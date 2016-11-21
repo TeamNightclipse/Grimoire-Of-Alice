@@ -1,11 +1,9 @@
 package arekkuusu.grimoireofalice.entity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import arekkuusu.grimoireofalice.item.ModItems;
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -28,7 +26,7 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
-	private HashMap<UUID, double[]> dataEntities = new HashMap<>();
+	private Map<UUID, double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -158,10 +156,16 @@ public class EntityStopWatch extends Entity {
 			if(user != null) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
 				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
-					double[] motion = dataEntities.get(entity.getUniqueID());
-					entity.motionX = motion[0];
-					entity.motionY = motion[1];
-					entity.motionZ = motion[2];
+					if(entity instanceof EntityDanmaku){
+						((EntityDanmaku)entity).resetMotion();
+						((EntityDanmaku)entity).updateMotion();
+					}
+					else {
+						double[] data = dataEntities.get(entity.getUniqueID());
+						entity.motionX = data[0];
+						entity.motionY= data[1];
+						entity.motionZ = data[2];
+					}
 				});
 				if(user.capabilities.isCreativeMode) {
 					setDead();

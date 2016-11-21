@@ -57,10 +57,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
@@ -74,6 +76,7 @@ public class ClientProxy extends CommonProxy {
 		NetworkRegistry.INSTANCE.registerGuiHandler(GrimoireOfAlice.instance, new GuiHandler());
 	}
 
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void registerItemModels(ModelRegistryEvent event) {
 		//Armor
@@ -210,6 +213,7 @@ public class ClientProxy extends CommonProxy {
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	private void initRenderers() {
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
@@ -221,7 +225,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCursedDecoyDoll.class, RenderCursedDecoyDoll::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
+		if(GrimoireOfAlice.danmakuCoreInstalled)
+			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHakureiOrb.class, RenderHakureiOrb::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
 		//Tiles
@@ -229,22 +234,26 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());
 	}
 
+	@SideOnly(Side.CLIENT)
 	private static void registerItem(Item item, int damage) {
 		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
+	@SideOnly(Side.CLIENT)
 	private static void registerBlock(Block block, int meta) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 
+	@SideOnly(Side.CLIENT)
 	private static void registerItemWithTypes(Item item, int damage) {
 		for(int i = 0; i < damage; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroompowder_" + i, "inventory"));
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	private static void registerBlockWithColorTypes(Block block, int meta) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");

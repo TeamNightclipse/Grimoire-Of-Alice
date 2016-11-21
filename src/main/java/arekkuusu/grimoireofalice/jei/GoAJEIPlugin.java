@@ -65,7 +65,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.FAKE_MIRACLE_MALLET), "grimoire.jei.descriptions.fake_miracle_mallet");
 
-		registry.addDescription(new ItemStack(ModItems.FIRE_ROBE), "grimoire.jei.descriptions.fire_robe");
+		registry.addDescription(new ItemStack(ModItems.FIRE_ROBE), "grimoire.jei.descriptions.fire_robe", LINE
+				, "grimoire.jei.descriptions.fire_robe_body");
 
 		registry.addDescription(new ItemStack(ModItems.FOLDING_UMBRELLA), "grimoire.jei.descriptions.gap_folding_umbrella");
 
@@ -94,7 +95,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.HANNYA_MASK), "grimoire.jei.descriptions.hannya_mask");
 
-		registry.addDescription(new ItemStack(ModItems.HATATE_CAMERA), "grimoire.jei.descriptions.hatate_camera");
+		registry.addDescription(new ItemStack(ModItems.HATATE_CAMERA), "grimoire.jei.descriptions.hatate_camera", LINE
+				, "grimoire.jei.descriptions.hatate_camera_body");
 
 		registry.addDescription(new ItemStack(ModItems.HEAVENLY_PEACH), "grimoire.jei.descriptions.heavenly_peach");
 
@@ -119,9 +121,11 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.IMPURE_ROCK), "grimoire.jei.descriptions.impure_rock");
 
-		registry.addDescription(new ItemStack(ModItems.JEWELED_HOURAI), "grimoire.jei.descriptions.jeweled_hourai");
+		registry.addDescription(new ItemStack(ModItems.JEWELED_HOURAI), "grimoire.jei.descriptions.jeweled_hourai", LINE
+				, "grimoire.jei.descriptions.jeweled_hourai_body");
 
-		registry.addDescription(new ItemStack(ModItems.KANAKO_AURA), "grimoire.jei.descriptions.kanako_aura");
+		registry.addDescription(new ItemStack(ModItems.KANAKO_AURA), "grimoire.jei.descriptions.kanako_aura", LINE
+				, "grimoire.jei.descriptions.kanako_aura_body");
 
 		registry.addDescription(new ItemStack(ModItems.KANAKO_ONBASHIRA), "grimoire.jei.descriptions.kanako_onbashira");
 
@@ -156,7 +160,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.MIKO_STICK), "grimoire.jei.descriptions.miko_stick");
 
-		registry.addDescription(new ItemStack(ModItems.MIRACLE_MALLET), "grimoire.jei.descriptions.miracle_mallet");
+		registry.addDescription(new ItemStack(ModItems.MIRACLE_MALLET), "grimoire.jei.descriptions.miracle_mallet", LINE
+				, "grimoire.jei.descriptions.miracle_mallet_body");
 
 		registry.addDescription(new ItemStack(ModItems.MOCHI_HAMMER), "grimoire.jei.descriptions.mochi_hammer");
 
@@ -191,15 +196,18 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.ROUKANKEN), "grimoire.jei.descriptions.roukanken");
 
-		registry.addDescription(new ItemStack(ModItems.RUMIA_SWORD), "grimoire.jei.descriptions.rumia_sword");
+		registry.addDescription(new ItemStack(ModItems.RUMIA_SWORD), "grimoire.jei.descriptions.rumia_sword", LINE
+				, "grimoire.jei.descriptions.rumia_sword_body");
 
 		registry.addDescription(new ItemStack(ModItems.SACRED_TOYOSATOMIMI), "grimoire.jei.descriptions.sacred_toyosatomimi_sword");
 
 		registry.addDescription(new ItemStack(ModItems.SANAE_GOHEI), "grimoire.jei.descriptions.sanae_gohei");
 
-		registry.addDescription(new ItemStack(ModItems.SARIEL_WAND), "grimoire.jei.descriptions.sariel_wand");
+		registry.addDescription(new ItemStack(ModItems.SARIEL_WAND), "grimoire.jei.descriptions.sariel_wand", LINE
+				, "grimoire.jei.descriptions.sariel_wand_body");
 
-		registry.addDescription(new ItemStack(ModItems.SHICHI_SEIKEN), "grimoire.jei.descriptions.shichi_seiken");
+		registry.addDescription(new ItemStack(ModItems.SHICHI_SEIKEN), "grimoire.jei.descriptions.shichi_seiken", LINE
+				, "grimoire.jei.descriptions.shichi_seiken_body");
 
 		registry.addDescription(new ItemStack(ModItems.SHIMENAWA_ROPE), "grimoire.jei.descriptions.shimenawa_rope");
 
@@ -217,9 +225,11 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.SUBSTITUTE_JIZO), "grimoire.jei.descriptions.substitute_jizo");
 
-		registry.addDescription(new ItemStack(ModItems.SUWAKO_HAT), "grimoire.jei.descriptions.suwako_hat");
+		registry.addDescription(new ItemStack(ModItems.SUWAKO_HAT), "grimoire.jei.descriptions.suwako_hat", LINE
+				, "grimoire.jei.descriptions.suwako_hat_body");
 
-		registry.addDescription(new ItemStack(ModItems.SWORD_OF_KUSANAGI), "grimoire.jei.descriptions.sword_of_kusanagi");
+		registry.addDescription(new ItemStack(ModItems.SWORD_OF_KUSANAGI), "grimoire.jei.descriptions.sword_of_kusanagi", LINE
+				, "grimoire.jei.descriptions.sword_of_kusanagi_body");
 
 		registry.addDescription(new ItemStack(ModItems.SYRINGE), "grimoire.jei.descriptions.syringe");
 
@@ -227,7 +237,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.TENGU_FAN), "grimoire.jei.descriptions.tengu_fan");
 
-		registry.addDescription(new ItemStack(ModItems.THIRD_EYE), "grimoire.jei.descriptions.third_eye");
+		registry.addDescription(new ItemStack(ModItems.THIRD_EYE), "grimoire.jei.descriptions.third_eye", LINE
+				, "grimoire.jei.descriptions.third_eye_body");
 
 		registry.addDescription(new ItemStack(ModItems.TIME_ORB), "grimoire.jei.descriptions.time_orb");
 
@@ -241,7 +252,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.UFO_RED), "grimoire.jei.descriptions.ufo_red");
 
-		registry.addDescription(new ItemStack(ModItems.UFOS), "grimoire.jei.descriptions.ufos");
+		registry.addDescription(new ItemStack(ModItems.UFOS), "grimoire.jei.descriptions.ufos", LINE
+				, "grimoire.jei.descriptions.ufos_body");
 
 		registry.addDescription(new ItemStack(ModItems.UTSUHO_AURA), "grimoire.jei.descriptions.utsuho_aura");
 

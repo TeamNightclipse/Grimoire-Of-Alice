@@ -125,8 +125,6 @@ public class ConfigHandler {
 			public boolean suwakoHat = true;
 			@Comment("Can players craft the swallow cowrie shell?")
 			public boolean swallowCowrieShell = true;
-			@Comment("Can players get the sword of kusanagi?")
-			public boolean swordOfKusanagi = true;
 			@Comment("Can players craft the roukanken?")
 			public boolean roukanken = true;
 			@Comment("Can players craft the syringe?")
@@ -207,7 +205,7 @@ public class ConfigHandler {
 
 		public static class WorldGen {
 
-			@Comment("Can players get Point Items?")
+			@Comment("Can players find Point Items?")
 			public boolean pointItemsGen = true;
 			@Comment("How many Spawn tries per chunks?")
 			public int mushromSpawnRate = 10;
@@ -219,6 +217,10 @@ public class ConfigHandler {
 
 		public static class Features {
 
+			@Comment("Can the ender dragon drop the sword of kusanagi?")
+			public boolean swordOfKusanagi = true;
+			@Comment("Allow shichi seiken drop gold?")
+			public boolean allowGoldDrop = true;
 			@Comment("Allow flying?")
 			public boolean allowFly = true;
 			@Comment("Allow items and potions that allows the player to revive")

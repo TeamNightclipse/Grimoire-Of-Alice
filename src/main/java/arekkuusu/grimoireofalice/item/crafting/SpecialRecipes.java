@@ -315,7 +315,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.sichiSeiken) {
-			SHICHI_SEIKEN = RecipeAltar.registerRecipeMoonPhase(8, new ItemStack(ModItems.SHICHI_SEIKEN)
+			SHICHI_SEIKEN = RecipeAltar.registerRecipeMoonPhase(7, new ItemStack(ModItems.SHICHI_SEIKEN)
 					, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.TAMAHAGANE_STEEL);
 		}
 

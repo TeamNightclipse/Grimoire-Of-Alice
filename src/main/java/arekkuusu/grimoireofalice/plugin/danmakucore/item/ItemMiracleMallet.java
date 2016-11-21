@@ -57,13 +57,9 @@ public class ItemMiracleMallet extends ItemMod {
 		if (!player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
 			if (!player.getEntityData().hasKey("MalletResized")) {
 				float size = player.isSneaking() ? 0.5F : 1.5F;
+
+				player.eyeHeight = player.eyeHeight + (player.isSneaking() ? -1.00F : 1.00F);
 				player.getEntityData().setFloat("MalletResized", size);
-
-				player.eyeHeight = player.eyeHeight + (player.isSneaking() ? -0.92F : 1.00F);
-
-				AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
-				axisAlignedBB = axisAlignedBB.expandXyz(player.isSneaking() ? -1.0F : 1.0F); //Expand bounding Box
-				player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			} else {
 				float size = player.getEntityData().getFloat("MalletResized");
 				float eyeHeight = player.eyeHeight;
@@ -71,7 +67,7 @@ public class ItemMiracleMallet extends ItemMod {
 				if (player.isSneaking()) {
 					size -= 0.5;
 					if (eyeHeight > 1.00F) {
-						eyeHeight -= 0.92F;
+						eyeHeight -= 1.00F;
 					}
 				} else {
 					size += 0.5;
@@ -89,10 +85,6 @@ public class ItemMiracleMallet extends ItemMod {
 
 				player.eyeHeight = eyeHeight;
 				player.getEntityData().setFloat("MalletResized", size);
-
-				AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
-				axisAlignedBB = axisAlignedBB.expandXyz(player.isSneaking() ? -0.5F : 0.5F); //Expand bounding Box
-				player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box (Which never happens)
 			}
 		}
 		player.swingArm(hand);
@@ -114,7 +106,7 @@ public class ItemMiracleMallet extends ItemMod {
 			if (lookedAt.isPresent()) { //FIXME: Never present
 				EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
 				ShotData data = danmaku.getShotData();
-				danmaku.setShotData(data.setSizeX(data.getSizeX() + 1).setSizeY(data.getSizeY() + 1).setSizeZ(data.getSizeZ() + 1));
+				danmaku.setShotData(data.scaleSize(data.getSizeX() + 1, data.getSizeY() + 1, data.getSizeZ() + 1));//data.setSizeX(data.getSizeX() + 1).setSizeY(data.getSizeY() + 1).setSizeZ(data.getSizeZ() + 1));
 			}
 		}
 		return super.onEntitySwing(entityLiving, stack);

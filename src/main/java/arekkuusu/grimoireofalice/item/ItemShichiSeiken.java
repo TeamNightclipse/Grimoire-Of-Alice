@@ -8,17 +8,27 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import java.util.Arrays;
 import java.util.List;
 
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.lib.LibItemName;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemShichiSeiken extends ItemModSword {
 
@@ -35,6 +45,24 @@ public class ItemShichiSeiken extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shichi_seiken_header.name"));
+	}
+
+	@Override
+	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+		stack.damageItem(1, entityLiving);
+		if (ConfigHandler.grimoireOfAlice.features.allowGoldDrop) {
+			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(state.getBlock())))
+					.mapToObj(OreDictionary::getOreName)
+					.anyMatch(s -> s.startsWith("ore"));
+			Item item = state.getBlock().getItemDropped(state, worldIn.rand, 0);
+			if (!worldIn.isRemote && item != null && isOre) {
+				for (int i = 0; i < worldIn.rand.nextInt(3); i++) {
+					EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item));
+					worldIn.spawnEntityInWorld(entityItem);
+				}
+			}
+		}
+		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
 	}
 
 	@Override

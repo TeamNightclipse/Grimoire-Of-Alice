@@ -92,7 +92,7 @@ public class YukkuriEvent {
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (entity instanceof EntityDragon && ConfigHandler.grimoireOfAlice.crafting.swordOfKusanagi) {
+		if (entity instanceof EntityDragon && ConfigHandler.grimoireOfAlice.features.swordOfKusanagi) {
 			World world = entity.getEntityWorld();
 			BlockPos pos = entity.getPosition();
 

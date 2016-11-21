@@ -161,6 +161,10 @@ item.hatatecamera.name=Hatate's Camera
 item.hakureigohei.name=Reimu's Sacred Gohei
 item.sanaegohei.name=Sanae's Miracle Gohei
 
+item.danmaku.danmakuvariant.grimoireofalice.leaf.name=Leaf Shot
+item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
+item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
+
 effect.elixir=Elixir
 
 item.rodofremorse.entityHealthUsage=Health
@@ -375,8 +379,8 @@ grimoire.tooltip.popsicle_stick_description.name=Craft with Melon Block and Ice 
 grimoire.tooltip.rod_of_remorse_header.name=The worse the sin, the heavier the rod becomes
 grimoire.tooltip.rod_of_remorse_description.name=The person in question will be beaten up until they repent
 
-grimoire.tooltip.rumia_sword_header.name=Extremely Big
-grimoire.tooltip.rumia_sword_description.name=And you can hold it
+grimoire.tooltip.rumia_sword_header.name=Fanon Rumia's sword
+grimoire.tooltip.rumia_sword_description.name=Sets enemies in fire
 
 grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=Divine sword from Toyosatomimi
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name=Finds all souls around the player
@@ -574,8 +578,8 @@ grimoire.jei.descriptions.faith=Found inside chests in Desert Pyramids and Jungl
 
 grimoire.jei.descriptions.fake_miracle_mallet=Hit multiple targets at once, it deals a good amount of damage
 
-grimoire.jei.descriptions.fire_robe=Must be crafted under a Waning Crescent at Night
-grimoire.jei.descriptions.fire_robe=Magical robe that, besides being invulnerable to fire, possesses an outstanding resistance to pointy objects
+grimoire.jei.descriptions.fire_robe=Must be crafted under a Waning Crescent Moon at Night
+grimoire.jei.descriptions.fire_robe_body=Magical robe that, besides being invulnerable to fire, possesses an outstanding resistance to pointy objects
 
 grimoire.jei.descriptions.gap_folding_umbrella=Magical umbrella that teleports the user 40 blocks to the direction its looking at
 
@@ -623,16 +627,18 @@ grimoire.jei.descriptions.ibaraki_box=Specially made shou box owned by Kasen Iba
 
 grimoire.jei.descriptions.ibuki_gourd=Gives the drinker strength and nausea
 
-grimoire.jei.descriptions.ichirin_aura=Grants the user an Unzan model like in the Touhou Fighting Games
+grimoire.jei.descriptions.ichirin_aura=Grants the user an Unzan like in the Touhou Fighting Games
 
 grimoire.jei.descriptions.ichirin_ring=Must be crafted under a Thunder weather
 grimoire.jei.descriptions.ichirin_ring_body=Used to control the Nyuudou Unzan, shoot fists by right clicking with rings in both hands
 
-grimoire.jei.descriptions.impure_rock=The heart of a rare rock, obtained by mining or smelting Impure Stone
+grimoire.jei.descriptions.impure_rock=Obtained by mining or smelting Impure Stone
 
 grimoire.jei.descriptions.jeweled_hourai=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it gives a random jewel from its branch
 
 grimoire.jei.descriptions.kanako_aura=Gives a Glowing effect when its raining in the world
+grimoire.jei.descriptions.kanako_aura_body=It has a secret use, not revealed yet
 
 grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 
@@ -647,7 +653,7 @@ grimoire.jei.descriptions.koomote_mask=One of the 9 masks owned by the youkai Ha
 grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction
 grimoire.jei.descriptions.laevatein_body=Using it will set fire to the ground, right clicking to the air will shoot a giant danmaku bullet
 
-grimoire.jei.descriptions.leaf=Makes a curtain of smoke when hits the ground, spawns an UFO after some time in air
+grimoire.jei.descriptions.leaf=Makes a curtain of smoke when hitting the ground, spawns an UFO after some time in air
 
 grimoire.jei.descriptions.lunasa_violin=Shoots notes in a slow rate that deal magic damage
 
@@ -668,6 +674,7 @@ grimoire.jei.descriptions.miko_cape=Just for the looks, it gives the player a co
 grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect
 
 grimoire.jei.descriptions.miracle_mallet=Legendary artifact owned by a tiny princess in a cup, whose powers are those of changing size at will
+grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to change size to danmaku
 
 grimoire.jei.descriptions.mochi_hammer=It is used to pound sweet mochi, but some people, might find it useful, as a lethal weapon...
 
@@ -698,84 +705,91 @@ grimoire.jei.descriptions.pouch=Best item for storing spell cards, it prevents m
 
 grimoire.jei.descriptions.raiden_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.rod_of_remorse=
+grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 0.25 plus other variables each hit
 
-grimoire.jei.descriptions.roukanken=
+grimoire.jei.descriptions.roukanken=Ghostly sword that charges towards the enemy
 
-grimoire.jei.descriptions.rumia_sword=
+grimoire.jei.descriptions.rumia_sword=Must be crafted in the Nether
+grimoire.jei.descriptions.rumia_sword_body=Gigant sword that puts in fire everything in sight
 
-grimoire.jei.descriptions.sacred_toyosatomimi_sword=
+grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and sends them to the chat with their respective coordinates, it also possesses a strong knockback
 
-grimoire.jei.descriptions.sanae_gohei=
+grimoire.jei.descriptions.sanae_gohei=This miracle gohei allows the user to cast various spells by using faith gathered by holding the gohei for long enough
 
-grimoire.jei.descriptions.sariel_wand=
+grimoire.jei.descriptions.sariel_wand=Must be crafted under a Thunder Weather
+grimoire.jei.descriptions.sariel_wand_body=Deals 9999 damage, can also cast lightning by right clicking
 
-grimoire.jei.descriptions.shichi_seiken=
+grimoire.jei.descriptions.shichi_seiken=Must be crafted under a Waxing Gibbous Moon at Night
+grimoire.jei.descriptions.shichi_seiken_body=Drops loot from mining ores, has a chance of dropping 0 to 4 Items
 
-grimoire.jei.descriptions.shimenawa_rope=
+grimoire.jei.descriptions.shimenawa_rope=Spawn a holy keystone when used in a Rainy Weather
 
-grimoire.jei.descriptions.shou_lamp=
+grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used, if the player holds it for a short time, it gives the player luck, if the player holds it for a long time, it gives luck to all around the player, and if the player hits someone with it, it makes the target unlucky
 
-grimoire.jei.descriptions.shroom_powder=
+grimoire.jei.descriptions.shroom_powder=Used to craft danmaku potions if the mod DanmakuCore is present
 
-grimoire.jei.descriptions.skull=
+grimoire.jei.descriptions.skull=Item that spawns a protective skull around the player
 
-grimoire.jei.descriptions.soldifier_paper=
+grimoire.jei.descriptions.soldifier_paper=Aka Compressed Paper, used in some recipes
 
 grimoire.jei.descriptions.star=Found inside chests in Abandoned mine shafts
 
-grimoire.jei.descriptions.stop_watch=
+grimoire.jei.descriptions.stop_watch=Mythical Clock said to stop time completely, it stops all entities from moving for some time, then it restores them with their previous velocities
 
-grimoire.jei.descriptions.substitute_jizo=
+grimoire.jei.descriptions.substitute_jizo=Protects the user from damage; instead of hurting the player, it breaks
 
-grimoire.jei.descriptions.suwako_hat=
+grimoire.jei.descriptions.suwako_hat=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions.suwako_hat_body=Has a Thorns X enchantment
 
 grimoire.jei.descriptions.sword_of_kusanagi=Dropped by the Ender Dragon on death
+grimoire.jei.descriptions.sword_of_kusanagi_body=Summons a mystical wind around the player that pushes mobs away
 
-grimoire.jei.descriptions.syringe=
+grimoire.jei.descriptions.syringe=Gives a Random potion effect, be it good or bad
 
-grimoire.jei.descriptions.tamahagane_steel=
+grimoire.jei.descriptions.tamahagane_steel=Used in crafting recipes
 
-grimoire.jei.descriptions.tengu_fan=
+grimoire.jei.descriptions.tengu_fan=Shoots a powerful wind that pushes mobs away and into the air
 
-grimoire.jei.descriptions.third_eye=Shows all nearby entities when the eye is open, and makes the user invisible when the eye is closed
+grimoire.jei.descriptions.third_eye=Must be crafted in the Nether
+grimoire.jei.descriptions.third_eye_body=Shows all nearby entities when the eye is open, and makes the user invisible when the eye is closed
 
 grimoire.jei.descriptions.time_orb=Found inside chests in Desert Pyramids
 
-grimoire.jei.descriptions.toyosatomimi_aura=
+grimoire.jei.descriptions.toyosatomimi_aura=Just for the looks, it gives a cool aura to the player
 
 grimoire.jei.descriptions.uba_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.ufo_blue=
+grimoire.jei.descriptions.ufo_blue=Found inside chests in Simple Dungeons
 
-grimoire.jei.descriptions.ufo_green=
+grimoire.jei.descriptions.ufo_green=Found inside chests in Simple Dungeons
 
-grimoire.jei.descriptions.ufo_red=
+grimoire.jei.descriptions.ufo_red=Found inside chests in Simple Dungeons
 
-grimoire.jei.descriptions.ufos=
+grimoire.jei.descriptions.ufos=Must be crafted in the End
+grimoire.jei.descriptions.ufos_body=Teleports all items to the player in a 10 block radius, it is also a way of moving items around without having them in your inventory
 
-grimoire.jei.descriptions.utsuho_aura=
+grimoire.jei.descriptions.utsuho_aura=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
 
-grimoire.jei.descriptions.volatile_string=
+grimoire.jei.descriptions.volatile_string=Used in recipes
 
-grimoire.jei.descriptions.wall_passing_chisel=
+grimoire.jei.descriptions.wall_passing_chisel=Trespass any wall by right clicking it with this item, it will teleport you, if possible, to the other side
 
-grimoire.jei.descriptions.watermelon_blade=
+grimoire.jei.descriptions.watermelon_blade=Edible, doesnt heal mush hunger, but if you got nothing to eat...
 
-grimoire.jei.descriptions.watermelon_sword=
+grimoire.jei.descriptions.watermelon_sword=Breaks on hitting an entity, giving melon to it
 
-grimoire.jei.descriptions.youkai_book=
+grimoire.jei.descriptions.youkai_book=A book written by Youkai
 
 grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30 in groups of 3 to 8
 
-grimoire.jei.descriptions.holy_stone=Gives players levitation when the weather is bad, it also accepts gifts:
-grimoire.jei.descriptions.holy_stone_gold_nugget= -Gold Nugget ->
+grimoire.jei.descriptions.holy_stone=Gives players levitation when the weather is Rainy, it also accepts gifts:
+grimoire.jei.descriptions.holy_stone_gold_nugget= -Gold Nugget -> XP
 grimoire.jei.descriptions.holy_stone_gold_ingot= -Gold Ingot -> Haste
 grimoire.jei.descriptions.holy_stone_iron_ingot= -Iron Ingot -> Resistance
 grimoire.jei.descriptions.holy_stone_blaze_powder= -Blaze Powder -> Fire Resistance
 grimoire.jei.descriptions.holy_stone_speckled_melon= -Speckled Melon -> Regeneration
 grimoire.jei.descriptions.holy_stone_diamond= -Diamond -> Absorption
 
-grimoire.jei.descriptions.onbashira=Its a good place to stand when fishing, its also used to craft tier 2 Items in the Crafting Altar
+grimoire.jei.descriptions.onbashira=Its a good place to stand when fishing, its also used to craft tier two Items in the Crafting Altar
 
 grimoire.jei.alter.title=Crafting Altar

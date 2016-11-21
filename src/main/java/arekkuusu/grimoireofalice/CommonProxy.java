@@ -117,7 +117,6 @@ public class CommonProxy {
 				new ItemCursedDecoyDoll(),
 				new ItemTenguCamera(LibItemName.AYA_CAMERA),
 				new ItemTenguCamera(LibItemName.HATATE_CAMERA),
-				new ItemStopWatch(),
 				new ItemHakureiGohei(),
 				new ItemSanaeGohei(),
 				new ItemMortarPestle(),
@@ -200,6 +199,7 @@ public class CommonProxy {
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
+					new ItemStopWatch(),
 					new ItemMiracleMallet(),
 					new ItemViolin(),
 					new ItemPiano(),
@@ -283,7 +283,8 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+		if(GrimoireOfAlice.danmakuCoreInstalled)
+			EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
