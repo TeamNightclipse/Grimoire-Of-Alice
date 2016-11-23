@@ -24,12 +24,16 @@ import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.DanmakuVariant.DanmakuVariantCoreGeneric;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class Initializer {
 
+	private static final String DANMAKU_CORE = "danmakucore";
+
 	@SubscribeEvent
+	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
 				new FormWind(),
@@ -39,6 +43,7 @@ public class Initializer {
 	}
 
 	@SubscribeEvent
+	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerSubEntities(RegistryEvent.Register<SubEntityType> event) {
 		event.getRegistry().registerAll(
 				new SubEntityWind(),
@@ -49,6 +54,7 @@ public class Initializer {
 	}
 
 	@SubscribeEvent
+	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
 		event.getRegistry().registerAll(
 				new DanmakuVariantCoreGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO,
