@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.lib.LibFormName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.entity.danmaku.form.IRenderForm;
 import net.katsstuff.danmakucore.impl.form.FormGeneric;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -29,34 +30,43 @@ public class FormLeaf extends FormGeneric {
 		return TEXTURE;
 	}
 
+	@SuppressWarnings("Convert2Lambda")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void renderForm(EntityDanmaku danmaku, double x, double y, double z, float entityYaw, float partialTicks, RenderManager rendermanager) {
-		float pitch = danmaku.rotationPitch;
-		float yaw = danmaku.rotationYaw;
-		float roll = danmaku.getRoll();
-		ShotData shotData = danmaku.getShotData();
-		float sizeX = shotData.getSizeX();
-		float sizeY = shotData.getSizeY();
-		float sizeZ = shotData.getSizeZ();
-		int color = shotData.getColor();
-		float r = (color >> 16 & 255) / 255.0F;
-		float g = (color >> 8 & 255) / 255.0F;
-		float b = (color & 255) / 255.0F;
+	protected IRenderForm createRenderer() {
+		return new IRenderForm() {
 
-		ItemStack stack = new ItemStack(ModItems.LEAF);
-		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+			@Override
+			@SideOnly(Side.CLIENT)
+			public void renderForm(EntityDanmaku danmaku, double x, double y, double z, float entityYaw, float partialTicks,
+					RenderManager rendermanager) {
+				float pitch = danmaku.rotationPitch;
+				float yaw = danmaku.rotationYaw;
+				float roll = danmaku.getRoll();
+				ShotData shotData = danmaku.getShotData();
+				float sizeX = shotData.getSizeX();
+				float sizeY = shotData.getSizeY();
+				float sizeZ = shotData.getSizeZ();
+				int color = shotData.getColor();
+				float r = (color >> 16 & 255) / 255.0F;
+				float g = (color >> 8 & 255) / 255.0F;
+				float b = (color & 255) / 255.0F;
 
-		GlStateManager.enableRescaleNormal();
-		GlStateManager.rotate(-yaw - 180F, 0F, 1F, 0F);
-		GlStateManager.rotate(pitch - 90F, 1F, 0F, 0F);
-		GlStateManager.rotate(roll, 0F, 0F, 1F);
-		GlStateManager.scale(sizeX, sizeY, sizeZ);
-		GlStateManager.rotate(danmaku.ticksExisted * 32, 0.0F, 1.0F, 0.0F);
+				ItemStack stack = new ItemStack(ModItems.LEAF);
+				RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
-		//TODO: color
-		renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+				GlStateManager.enableRescaleNormal();
+				GlStateManager.rotate(-yaw - 180F, 0F, 1F, 0F);
+				GlStateManager.rotate(pitch - 90F, 1F, 0F, 0F);
+				GlStateManager.rotate(roll, 0F, 0F, 1F);
+				GlStateManager.scale(sizeX, sizeY, sizeZ);
+				GlStateManager.rotate(danmaku.ticksExisted * 32, 0.0F, 1.0F, 0.0F);
 
-		GlStateManager.disableRescaleNormal();
+				//TODO: color
+				renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
+
+				GlStateManager.disableRescaleNormal();
+			}
+		};
 	}
 }
