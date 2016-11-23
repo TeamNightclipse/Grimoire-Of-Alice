@@ -1,5 +1,7 @@
 package arekkuusu.grimoireofalice.client.model;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.model.ModelBase;
@@ -37,6 +39,7 @@ public class ModelWind extends ModelBase {
 		setRotateAngle(east, 0.0F, -0.7853981633974483F, 0.0F);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		GlStateManager.enableBlend();

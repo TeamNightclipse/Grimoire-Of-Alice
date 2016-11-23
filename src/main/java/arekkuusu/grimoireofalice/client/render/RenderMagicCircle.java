@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
+import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
@@ -27,7 +27,7 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_4.png"),
 			new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_5.png")
 	};
-	private static final ModelBase MODEL = new ModelFlatTexture();
+	private static final ModelBase MODEL = new ModelFlat();
 
 	public RenderMagicCircle(RenderManager renderManager) {
 		super(renderManager);

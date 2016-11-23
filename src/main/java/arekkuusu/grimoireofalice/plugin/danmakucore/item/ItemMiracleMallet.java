@@ -100,13 +100,13 @@ public class ItemMiracleMallet extends ItemMod {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		if (!entityLiving.worldObj.isRemote && entityLiving instanceof EntityPlayer) {
+		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity instanceof EntityDanmaku);
+			Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku);
 			if (lookedAt.isPresent()) { //FIXME: Never present
 				EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
 				ShotData data = danmaku.getShotData();
-				danmaku.setShotData(data.scaleSize(data.getSizeX() + 1, data.getSizeY() + 1, data.getSizeZ() + 1));//data.setSizeX(data.getSizeX() + 1).setSizeY(data.getSizeY() + 1).setSizeZ(data.getSizeZ() + 1));
+				danmaku.setShotData(data.scaleSize(1.2F));
 			}
 		}
 		return super.onEntitySwing(entityLiving, stack);

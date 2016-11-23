@@ -11,18 +11,38 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.Random;
 
 public class YukkuriEvent {
+
+	@SubscribeEvent
+	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		EntityPlayer player = event.player;
+		if (player.getEntityData().hasKey("MalletResized")) {
+			float modifier = player.getEntityData().getFloat("MalletResized");
+
+			AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
+			double minX = axisAlignedBB.minX;
+			double minY = axisAlignedBB.minY;
+			double minZ = axisAlignedBB.minZ;
+			axisAlignedBB = new AxisAlignedBB(minX, minY, minZ
+					, modifier == 0.5 ? minX + 0.8 : minX + modifier * 0.8
+					, modifier == 0.5 ? minY + 0.5 : minY + modifier * 2
+					, modifier == 0.5 ? minZ + 0.8 : minZ + modifier * 0.8); //Expand bounding Box
+			player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box
+		}
+	}
 
 	@SubscribeEvent
 	public void livingDeathEvent(LivingDeathEvent event) {

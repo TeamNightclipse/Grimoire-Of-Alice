@@ -3,6 +3,8 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelUnzanFist - Arekkuusu Created using Tabula 5.1.0
@@ -48,6 +50,7 @@ public class ModelUnzanFist extends ModelBase {
 		shape2_3.addBox(-3.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		shape2_2.render(f5);

@@ -11,26 +11,28 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ModelFlatTexture extends ModelBase { //TODO: Change to Tabula model
+public class ModelFlat extends ModelBase {
 
-	private final ModelRenderer texture;
+	private final ModelRenderer flat;
 
-	public ModelFlatTexture() {
+	public ModelFlat() {
 		textureWidth = 32;
 		textureHeight = 32;
 
-		texture = new ModelRenderer(this, -32, 0);
-		texture.addBox(-16F, 0F, -16F, 32, 1, 32);
-		texture.setRotationPoint(0F, 0F, 0F);
-		texture.setTextureSize(32, 32);
-		texture.mirror = true;
-		setRotation(texture, 0F, 0F, 0F);
+		this.textureWidth = 32;
+		this.textureHeight = 32;
+		this.flat = new ModelRenderer(this, -32, 0);
+		this.flat.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.flat.addBox(-16.0F, 0.0F, -16.0F, 32, 0, 32, 0.0F);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		texture.render(f5);
+		this.flat.render(f5);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

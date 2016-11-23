@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
+import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
@@ -24,7 +24,7 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 	private static final ResourceLocation CIRCLE_TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_1.png");
 	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
-	private static final ModelBase MODEL = new ModelFlatTexture();
+	private static final ModelBase MODEL = new ModelFlat();
 
 	public RenderGrimoireSpell(RenderManager renderManager) {
 		super(renderManager);

@@ -38,6 +38,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems DRAGON_JEWEL;
 	public static IRecipeItems FAKE_MIRACLE_MALLET;
 	public static IRecipeItems FIRE_ROBE;
+	public static IRecipeItems KANAKO_SHIMENAWA;
 	public static IRecipeItems GAP_FOLDING_UMBRELLA;
 	public static IRecipeItems GHASTLY_SEND_OFF_LANTERN;
 	public static IRecipeItems GHOST_DIPPER;
@@ -180,6 +181,11 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.crafting.fakeMiracleMallet) {
 			FAKE_MIRACLE_MALLET = RecipeAltar.registerRecipe(new ItemStack(ModItems.FAKE_MIRACLE_MALLET)
 					, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.IMPURE_ROCK);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.kakanoShimenawa) {
+			KANAKO_SHIMENAWA = RecipeAltar.registerRecipeRain(new ItemStack(ModItems.KANAKO_AURA)
+					, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.fireRobe) {
@@ -378,7 +384,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.food.houraiElixir) {
 			HOURAI_ELIXIR = RecipeAltar.registerRecipeEnd(new ItemStack(ModItems.HOURAI_ELIXIR)
-					, Blocks.DRAGON_EGG, Items.NETHER_STAR, Items.FLOWER_POT, ModItems.ORB_ELIXIR, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS);
+					, Blocks.DRAGON_EGG, ModItems.ORB_ELIXIR, Items.FLOWER_POT, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.kappaNostrum) {

@@ -165,6 +165,10 @@ item.danmaku.danmakuvariant.grimoireofalice.leaf.name=Leaf Shot
 item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
 item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
 
+subentity.grimoireofalice.leaf=Gravity
+subentity.grimoireofalice.ufo=Random movement
+subentity.grimoireofalice.wind=Push mobs away
+
 effect.elixir=Elixir
 
 item.rodofremorse.entityHealthUsage=Health
@@ -637,8 +641,8 @@ grimoire.jei.descriptions.impure_rock=Obtained by mining or smelting Impure Ston
 grimoire.jei.descriptions.jeweled_hourai=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it gives a random jewel from its branch
 
-grimoire.jei.descriptions.kanako_aura=Gives a Glowing effect when its raining in the world
-grimoire.jei.descriptions.kanako_aura_body=It has a secret use, not revealed yet
+grimoire.jei.descriptions.kanako_aura=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions.kanako_aura_body=Gives a Glowing effect when its raining in the world. It has a secret use, not revealed yet
 
 grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 

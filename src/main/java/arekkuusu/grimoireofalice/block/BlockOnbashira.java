@@ -101,17 +101,6 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		switch(state.getValue(PART)) {
-			case MIDDLE:
-				return EnumBlockRenderType.INVISIBLE;
-			default:
-				return super.getRenderType(state);
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
 	public Material getMaterial(IBlockState state) {
 		switch(state.getValue(PART)) {
 			case MIDDLE:

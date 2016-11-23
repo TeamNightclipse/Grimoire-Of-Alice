@@ -39,6 +39,7 @@ public class SubEntityLeaf extends SubEntityType {
 
 				danmaku.setMovementData(GOADanmakuVariants.UFO.getMovementData().setConstant(0.1D));
 				danmaku.setShotData(LibGOAShotData.UFO);
+				danmaku.setShotData(danmaku.getShotData().setSize(2));
 			}
 		}
 

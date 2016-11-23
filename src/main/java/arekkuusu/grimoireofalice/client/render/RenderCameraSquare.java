@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
+import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderCameraSquare extends Render<EntityCameraSquare> {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/CameraSquare.png");
-	private static final ModelBase MODEL = new ModelFlatTexture();
+	private static final ModelBase MODEL = new ModelFlat();
 
 	public RenderCameraSquare(RenderManager renderManager) {
 		super(renderManager);

@@ -98,7 +98,8 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			}
 			for(BlockPos pos : SECOND_PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				if(getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
+				if(getWorld().getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA
+						&& getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
 					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
 				}
 			}

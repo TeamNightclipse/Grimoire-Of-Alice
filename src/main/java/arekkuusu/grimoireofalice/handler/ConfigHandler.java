@@ -37,6 +37,8 @@ public class ConfigHandler {
 
 			@Comment("Can players craft the third eye?")
 			public boolean thirdEye = true;
+			@Comment("Can players craft the kanako's shimenawa?")
+			public boolean kakanoShimenawa = true;
 			@Comment("Can players craft the amenonuhoko?")
 			public boolean amenonuhoko = true;
 			@Comment("Can players craft the blood thirsty orb?")

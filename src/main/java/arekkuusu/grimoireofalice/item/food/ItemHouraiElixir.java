@@ -62,10 +62,7 @@ public class ItemHouraiElixir extends ItemModFood {
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0));
 		if(!player.getEntityData().hasKey("Eternal")) {
 			player.getEntityData().setBoolean("Eternal", true);
-		}
-		else {
-			player.getEntityData().setBoolean("Eternal", false);
-		}
+		} //*Laughs maniacally*
 	}
 
 	@Override

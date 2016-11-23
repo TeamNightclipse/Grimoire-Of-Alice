@@ -63,16 +63,9 @@ public class ItemSpellCardPouch extends ItemMod {
 		return new InvProvider();
 	}
 
-
 	private static class InvProvider implements ICapabilitySerializable<NBTBase> {
 
 		private final IItemHandler inv = new ItemStackHandler(8) {
-
-			@Override
-			public ItemStack getStackInSlot(int slot) {
-				ItemStack inSlot = super.getStackInSlot(slot);
-				return inSlot == null ? new ItemStack(LibItems.SPELLCARD, 0) : inSlot;
-			}
 
 			@Override
 			public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {

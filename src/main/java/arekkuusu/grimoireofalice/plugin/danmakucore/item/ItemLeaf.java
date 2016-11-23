@@ -66,7 +66,7 @@ public class ItemLeaf extends ItemMod {
 				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setVariant(GOADanmakuVariants.LEAF);
 				float anglePitch = playerIn.isSneaking() ? 45 : -45;
 				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
-
+				danmaku.setShot(danmaku.shot.setSize(2));
 				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
 			}
 		}

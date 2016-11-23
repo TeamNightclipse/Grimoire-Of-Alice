@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.model.ModelFlatTexture;
+import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.model.ModelBase;
@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Orb.png");
-	private static final ModelBase MODEL = new ModelFlatTexture();
+	private static final ModelBase MODEL = new ModelFlat();
 
 	public RenderHakureiOrb(RenderManager render) {
 		super(render);
