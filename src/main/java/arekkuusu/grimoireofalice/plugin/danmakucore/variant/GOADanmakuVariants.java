@@ -12,15 +12,20 @@ import arekkuusu.grimoireofalice.lib.LibDanmakuVariantName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariantDummy;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
-@ObjectHolder(LibMod.MODID)
 public class GOADanmakuVariants {
 
-	@ObjectHolder(LibDanmakuVariantName.WIND)
-	public static final DanmakuVariant WIND = new DanmakuVariantDummy();
-	@ObjectHolder(LibDanmakuVariantName.UFO)
-	public static final DanmakuVariant UFO = new DanmakuVariantDummy();
-	@ObjectHolder(LibDanmakuVariantName.LEAF)
-	public static final DanmakuVariant LEAF = new DanmakuVariantDummy();
+	private static final IForgeRegistry<DanmakuVariant> REGISTRY = GameRegistry.findRegistry(DanmakuVariant.class);
+
+	public static final DanmakuVariant WIND = REGISTRY.getValue(resource(LibDanmakuVariantName.WIND));
+	public static final DanmakuVariant UFO = REGISTRY.getValue(resource(LibDanmakuVariantName.LEAF));
+	public static final DanmakuVariant LEAF = REGISTRY.getValue(resource(LibDanmakuVariantName.UFO));
+
+	private static ResourceLocation resource(String name) {
+		return new ResourceLocation(LibMod.MODID, name);
+	}
 }

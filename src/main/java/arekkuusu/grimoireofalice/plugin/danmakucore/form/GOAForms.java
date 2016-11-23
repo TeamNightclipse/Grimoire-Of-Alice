@@ -12,15 +12,20 @@ import arekkuusu.grimoireofalice.lib.LibFormName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.katsstuff.danmakucore.entity.danmaku.form.Form;
 import net.katsstuff.danmakucore.entity.danmaku.form.FormDummy;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
-@ObjectHolder(LibMod.MODID)
 public class GOAForms {
 
-	@ObjectHolder(LibFormName.WIND)
-	public static final Form WIND = new FormDummy();
-	@ObjectHolder(LibFormName.UFO)
-	public static final Form UFO = new FormDummy();
-	@ObjectHolder(LibFormName.LEAF)
-	public static final Form LEAF = new FormDummy();
+	private static final IForgeRegistry<Form> REGISTRY = GameRegistry.findRegistry(Form.class);
+
+	public static final Form WIND = REGISTRY.getValue(resource(LibFormName.WIND));
+	public static final Form UFO = REGISTRY.getValue(resource(LibFormName.UFO));
+	public static final Form LEAF = REGISTRY.getValue(resource(LibFormName.LEAF));
+
+	private static ResourceLocation resource(String name) {
+		return new ResourceLocation(LibMod.MODID, name);
+	}
 }

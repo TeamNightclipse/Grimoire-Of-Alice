@@ -11,18 +11,20 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.subentity;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import arekkuusu.grimoireofalice.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
-import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityTypeDummy;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
-@ObjectHolder(LibMod.MODID)
 public class GOASubEntities {
 
-	@ObjectHolder(LibSubEntityName.WIND)
-	public static final SubEntityType WIND = new SubEntityTypeDummy();
-	@ObjectHolder(LibSubEntityName.NOTE)
-	public static final SubEntityType NOTE = new SubEntityTypeDummy();
-	@ObjectHolder(LibSubEntityName.UFO)
-	public static final SubEntityType UFO = new SubEntityTypeDummy();
-	@ObjectHolder(LibSubEntityName.LEAF)
-	public static final SubEntityType LEAF = new SubEntityTypeDummy();
+	private static final IForgeRegistry<SubEntityType> REGISTRY = GameRegistry.findRegistry(SubEntityType.class);
+
+	public static final SubEntityType WIND = REGISTRY.getValue(resource(LibSubEntityName.WIND));
+	public static final SubEntityType NOTE = REGISTRY.getValue(resource(LibSubEntityName.NOTE));
+	public static final SubEntityType UFO = REGISTRY.getValue(resource(LibSubEntityName.UFO));
+	public static final SubEntityType LEAF = REGISTRY.getValue(resource(LibSubEntityName.LEAF));
+
+	private static ResourceLocation resource(String name) {
+		return new ResourceLocation(LibMod.MODID, name);
+	}
 }
