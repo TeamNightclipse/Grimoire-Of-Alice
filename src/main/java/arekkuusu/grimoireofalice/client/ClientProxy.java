@@ -123,12 +123,10 @@ public class ClientProxy extends CommonProxy {
 		registerItem(ModItems.UFO_BLUE, 0);
 		registerItem(ModItems.UFO_GREEN, 0);
 		registerItem(ModItems.UFO_RED, 0);
-		registerItem(ModItems.LEAF, 0);
 		registerItem(ModItems.PATCHY_BOOK, 0);
 		registerItem(ModItems.SKULL, 0);
 		registerItem(ModItems.NAZRIN_PENDULUM, 0);
 		registerItem(ModItems.WALL_PASSING_CHISEL, 0);
-		registerItem(ModItems.MIRACLE_MALLET, 0);
 		registerItem(ModItems.ROD_REMORSE, 0);
 		registerItem(ModItems.BUDAH_BOUL, 0);
 		registerItem(ModItems.DRAGON_JEWEL, 0);
@@ -141,7 +139,6 @@ public class ClientProxy extends CommonProxy {
 		registerItem(ModItems.CURSED_DECOY_DOLL, 0);
 		registerItem(ModItems.AYA_CAMERA, 0);
 		registerItem(ModItems.HATATE_CAMERA, 0);
-		registerItem(ModItems.STOP_WATCH, 0);
 		registerItem(ModItems.HAKUREI_GOHEI, 0);
 		registerItem(ModItems.SANAE_GOHEI, 0);
 		registerItem(ModItems.MORTAR_AND_PESTLE, 0);
@@ -200,6 +197,9 @@ public class ClientProxy extends CommonProxy {
 		registerBlock(ModBlocks.IMPURE_STONE, 0);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
+			registerItem(ModItems.LEAF, 0);
+			registerItem(ModItems.MIRACLE_MALLET, 0);
+			registerItem(ModItems.STOP_WATCH, 0);
 			registerItem(ModItems.LUNASA_VIOLIN, 0);
 			registerItem(ModItems.LYRICA_PIANO, 0);
 			registerItem(ModItems.MERLIN_TRUMPET, 0);

@@ -1,8 +1,9 @@
-package arekkuusu.grimoireofalice.item;
+package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 
 import java.util.List;
 
 import arekkuusu.grimoireofalice.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
