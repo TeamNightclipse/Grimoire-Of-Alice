@@ -24,6 +24,8 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 public class EntityStopWatch extends Entity {
 
+	public static final double RANGE = 32D;
+
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
 	private Map<UUID, double[]> dataEntities = new HashMap<>();
@@ -35,6 +37,7 @@ public class EntityStopWatch extends Entity {
 	public EntityStopWatch(World worldIn, EntityPlayer player) {
 		super(worldIn);
 		user = player;
+		players.add(user.getUniqueID());
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
 	}
@@ -45,11 +48,13 @@ public class EntityStopWatch extends Entity {
 		if(user != null) {
 			if(ticksExisted > 500 || user.isSneaking() && user.isSwingInProgress) {
 				stopEntity();
+				return;
 			}
 			else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
 				if(user.isHandActive() && stack != null && stack.getItem() == ModItems.STOP_WATCH) {
 					stopEntity();
+					return;
 				}
 			}
 
@@ -61,12 +66,13 @@ public class EntityStopWatch extends Entity {
 			setPosition(dx, dy, dz);
 
 			if(!worldObj.isRemote) {
-				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
 				list.forEach(this::haltEntity);
 			}
 		}
 		else {
 			stopEntity();
+			return;
 		}
 		if(ticksExisted % 8 == 0) {
 			worldObj.playSound(user, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D), SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF,
@@ -94,9 +100,19 @@ public class EntityStopWatch extends Entity {
 
 		addIgnoredPlayers(entity);
 
+		if(entity instanceof EntityLivingBase) {
+			return;
+		}
+
 		if(!worldObj.isRemote) {
-			//If the player is in the list, it wont be affected
-			if(entity instanceof EntityPlayer && players.contains(entity.getUniqueID())) return;
+
+			//We use the delay to never actually call update at all
+			if(entity instanceof EntityDanmaku) {
+				EntityDanmaku danmaku = (EntityDanmaku)entity;
+				danmaku.setShotData(danmaku.getShotData().setDelay(2));
+
+				return;
+			}
 
 			if(!dataEntities.containsKey(entity.getUniqueID())) {
 				double x = entity.motionX;
@@ -127,27 +143,6 @@ public class EntityStopWatch extends Entity {
 			else if(entity instanceof EntityArrow) {
 				++((EntityArrow)entity).arrowShake;
 			}
-
-			if(entity instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase)entity;
-				living.rotationYawHead = living.prevRotationYawHead;
-
-				if(living instanceof EntityCreeper) {
-					EntityCreeper entityCreeper = (EntityCreeper)living;
-					entityCreeper.setCreeperState(-1);
-				}
-				else if(living instanceof EntityGhast) {
-					EntityGhast entityGhast = (EntityGhast)living;
-					entityGhast.setAttacking(false);
-				}
-				else if(living instanceof EntityTameable) {
-					living.motionY -= 0.000001D;
-				}
-				else if(living instanceof EntityPlayerMP) {
-					EntityPlayerMP player = (EntityPlayerMP)living;
-					player.setPositionAndRotation(player.prevPosX, player.prevPosY, player.prevPosZ, player.rotationYaw, player.rotationPitch);
-				}
-			}
 		}
 	}
 
@@ -155,17 +150,12 @@ public class EntityStopWatch extends Entity {
 		if(!worldObj.isRemote) {
 			if(user != null) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID())).forEach(entity -> {
-					if(entity instanceof EntityDanmaku){
-						((EntityDanmaku)entity).resetMotion();
-						((EntityDanmaku)entity).updateMotion();
-					}
-					else {
-						double[] data = dataEntities.get(entity.getUniqueID());
-						entity.motionX = data[0];
-						entity.motionY= data[1];
-						entity.motionZ = data[2];
-					}
+				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
+
+					double[] data = dataEntities.get(entity.getUniqueID());
+					entity.motionX = data[0];
+					entity.motionY= data[1];
+					entity.motionZ = data[2];
 				});
 				if(user.capabilities.isCreativeMode) {
 					setDead();
@@ -183,6 +173,10 @@ public class EntityStopWatch extends Entity {
 
 	public EntityPlayer getPlayer() {
 		return user;
+	}
+
+	public List<UUID> getPlayers() {
+		return players;
 	}
 
 	@Override

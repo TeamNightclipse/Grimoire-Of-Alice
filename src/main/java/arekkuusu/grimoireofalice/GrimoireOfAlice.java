@@ -8,8 +8,10 @@
  */
 package arekkuusu.grimoireofalice;
 
+import arekkuusu.grimoireofalice.handler.StopWatchHandler;
 import arekkuusu.grimoireofalice.helper.LogHelper;
 import arekkuusu.grimoireofalice.lib.LibMod;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -40,6 +42,7 @@ public class GrimoireOfAlice {
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
+		MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
 	}
 
 
