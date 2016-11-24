@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = "after:danmakucore")
+@Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = LibMod.DEPENDENCIES)
 public class GrimoireOfAlice {
 
 	public static final GOACreativeTab CREATIVE_TAB = new GOACreativeTab();

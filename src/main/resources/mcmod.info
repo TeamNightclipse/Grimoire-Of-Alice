@@ -5,11 +5,11 @@
   "description": "Looks like Yukari left a gap open... Im going in!!",
   "version":"${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/grimoire-of-alice?gameCategorySlug=mc-mods&projectID=252716#c1",
   "updateUrl": "",
   "authorList": ["Arekkuusu", "Katrix"],
   "credits": "Loli is love, Loli is life",
-  "logoFile": "",
+  "logoFile": "assets/grimoireofalice/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }

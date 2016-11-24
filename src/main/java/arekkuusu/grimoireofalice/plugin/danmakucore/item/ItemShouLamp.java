@@ -20,24 +20,26 @@ import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemShouLamp extends ItemMod {
+
+	private final String TAG = "Jewels";
 
 	public ItemShouLamp() {
 		super(LibItemName.SHOU_LAMP);
@@ -55,12 +57,30 @@ public class ItemShouLamp extends ItemMod {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_others.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_goodbuff_player.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_badbuff.name"));
+			list.add("");
+			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.shou_lamp_jewels.name") + " " + getJewels(stack));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
+		}
+	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = ((EntityPlayer) entityIn);
+			if (isActive(player, stack)) {
+				DanmakuHelper.playShotSound(entityIn);
+				DanmakuBuilder danmaku = DanmakuBuilder.builder()
+						.setUser(player)
+						.setMovementData(0.5D, 1.5D, 0.1D)
+						.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
+						.build();
+
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
+				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
+				setJewels(stack, getJewels(stack) - 1);
+			}
 		}
 	}
 
@@ -72,61 +92,69 @@ public class ItemShouLamp extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(count % 5 == 0) {
-			DanmakuHelper.playShotSound(player);
-			DanmakuBuilder danmaku = DanmakuBuilder.builder()
-					.setUser(player)
-					.setMovementData(0.5D, 1.5D, 0.1D)
-					.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(5))
-					.build();
-
-			DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
+		if (getJewels(stack) < 500 && player instanceof EntityPlayer) {
+			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
+			player.worldObj.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, SoundCategory.PLAYERS, 0.1F, 1F);
+			setJewels(stack, getJewels(stack) + 1);
 		}
-		player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			float convert = timeUsed * 6 / 20F;
-			convert = (convert * convert + convert * 2.0F) / 3F;
-			convert *= 1.5F;
-			if(convert < 10F) {
-				player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
-				if(!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.BLUE_STAR, 125);
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if (player.isSneaking() && !isActive(player, stack)) {
+				if (!worldIn.isRemote) {
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 250);
 					worldIn.spawnEntityInWorld(circle);
 				}
-			}
-			else {
-				player.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, player.posX, player.posY, player.posZ, 0, 0, 0);
-				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
-				for(EntityMob mob : list) {
-					mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
-					if(!mob.worldObj.isRemote) {
-						EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 125);
-						worldIn.spawnEntityInWorld(circle);
+				player.getCooldownTracker().setCooldown(this, 500);
+
+				if (timeLeft < 200) {
+					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().expandXyz(4.0D));
+					for (EntityLivingBase mob : list) {
+						mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
+						if (!mob.worldObj.isRemote) {
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 125);
+							worldIn.spawnEntityInWorld(circle);
+						}
 					}
 				}
 			}
 		}
 	}
 
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		target.addPotionEffect(new PotionEffect(MobEffects.UNLUCK, 500, 5));
-		return false;
+	private boolean isActive(EntityPlayer player, ItemStack stack) {
+		NBTTagCompound nbt = stack.getTagCompound();
+		return player.getCooldownTracker().hasCooldown(this)
+				&& nbt != null
+				&& nbt.hasKey(TAG) && nbt.getInteger(TAG) > 0;
+	}
+
+	private void setJewels(ItemStack itemStack, int jewels) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		if (nbt == null) {
+			nbt = new NBTTagCompound();
+			itemStack.setTagCompound(nbt);
+			nbt.setInteger(TAG, jewels);
+		}
+		else if (jewels >= 0) {
+			nbt.setInteger(TAG, jewels);
+		}
+	}
+
+	private int getJewels(ItemStack itemStack) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		return nbt == null ? 0 : nbt.getInteger(TAG);
 	}
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.NONE;
+		return EnumAction.BLOCK;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
+		return 500;
 	}
 }

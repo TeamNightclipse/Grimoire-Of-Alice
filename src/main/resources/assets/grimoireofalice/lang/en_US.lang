@@ -469,10 +469,8 @@ grimoire.tooltip.piano_header.name=Poltergeists posses this piano
 grimoire.tooltip.piano_use.name=Hold right click to use
 
 grimoire.tooltip.shou_lamp_header.name=Brings about wealth
-grimoire.tooltip.shou_lamp_use.name=Hold right click to use
-grimoire.tooltip.shou_lamp_goodbuff_others.name=Long use periods give Luck to everyone around you
-grimoire.tooltip.shou_lamp_goodbuff_player.name=Short use periods give Luck to only you
-grimoire.tooltip.shou_lamp_badbuff.name=Hitting entities gives them Unluck
+grimoire.tooltip.shou_lamp_use.name=Hold and release for a second to shoot danmaku
+grimoire.tooltip.shou_lamp_jewels.name=Jewels:
 grimoire.tooltip.shou_lamp_shift.name=SHIFT for details
 
 grimoire.tooltip.spell_card_pouch_header.name=Holds Items for you
@@ -728,7 +726,7 @@ grimoire.jei.descriptions.shichi_seiken_body=Drops loot from mining ores, has a 
 
 grimoire.jei.descriptions.shimenawa_rope=Spawn a holy keystone when used in a Rainy Weather
 
-grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used, if the player holds it for a short time, it gives the player luck, if the player holds it for a long time, it gives luck to all around the player, and if the player hits someone with it, it makes the target unlucky
+grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used. Hold to charge Jewel power, shift right click to activate, it shoots as much danmaku as Jewel power it has; if the player holds it for a long enough, it gives luck to all living creatures around the player
 
 grimoire.jei.descriptions.shroom_powder=Used to craft danmaku potions if the mod DanmakuCore is present
 
