@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "grimoireofalice:items/ufos",
+		"layer1": "grimoireofalice:items/ufos"
+    }
+}
