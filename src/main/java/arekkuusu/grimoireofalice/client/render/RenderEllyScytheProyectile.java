@@ -8,9 +8,9 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.item.ModItems;
-import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
@@ -22,7 +22,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/ellyscythe.png");
 	private final RenderItem renderItem;
 
 	public RenderEllyScytheProyectile(RenderManager renderManager) {
@@ -48,6 +47,6 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityEllyScythe entity) {
-		return TEXTURE;
+		return ResourceLocations.ELLY_SCYTHE_TEXTURE;
 	}
 }

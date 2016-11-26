@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.item;
 
+import arekkuusu.grimoireofalice.item.crafting.SpecialRecipes;
+import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.item.Item;
@@ -233,4 +235,10 @@ public final class ModItems {
 	public static final Item HAKUREI_GOHEI = new Item();
 	@ObjectHolder(LibItemName.SANAE_GOHEI)
 	public static final Item SANAE_GOHEI = new Item();
+
+	public static void init() {
+		VanillaCrafting.booksAndStrings();
+		VanillaCrafting.masks();
+		SpecialRecipes.init();
+	}
 }

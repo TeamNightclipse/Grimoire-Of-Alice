@@ -94,7 +94,8 @@ public class ItemShouLamp extends ItemMod {
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		if (getJewels(stack) < 500 && player instanceof EntityPlayer) {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
-			player.worldObj.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, SoundCategory.PLAYERS, 0.1F, 1F);
+			if(count % 4 == 0)
+				player.worldObj.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, SoundCategory.PLAYERS, 0.1F, 1F);
 			setJewels(stack, getJewels(stack) + 1);
 		}
 	}
@@ -108,7 +109,7 @@ public class ItemShouLamp extends ItemMod {
 					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 250);
 					worldIn.spawnEntityInWorld(circle);
 				}
-				player.getCooldownTracker().setCooldown(this, 500);
+				player.getCooldownTracker().setCooldown(this, getJewels(stack) + 1);
 
 				if (timeLeft < 200) {
 					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().expandXyz(4.0D));

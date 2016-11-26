@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.client.render.tile;
 
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBook;
@@ -16,7 +17,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCraftingAltar> {
 
-	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
 
 	@Override
@@ -38,7 +38,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		float f2 = te.bookRotationPrev + f1 * partialTicks;
 		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
-		bindTexture(TEXTURE_BOOK);
+		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float f3 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.25F;
 		float f4 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.75F;
 		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;

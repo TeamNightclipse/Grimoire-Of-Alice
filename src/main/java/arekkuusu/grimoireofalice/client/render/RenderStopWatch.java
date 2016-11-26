@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelStopWatch;
 import arekkuusu.grimoireofalice.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -10,7 +11,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderStopWatch extends Render<EntityStopWatch> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/ModelStopWatch-texturemap.png");
 	private static final ModelStopWatch MODEL = new ModelStopWatch();
 
 	public RenderStopWatch(RenderManager renderManager) {
@@ -31,6 +31,6 @@ public class RenderStopWatch extends Render<EntityStopWatch> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityStopWatch entity) {
-		return TEXTURE;
+		return ResourceLocations.WATCH_TEXTURE;
 	}
 }

@@ -59,12 +59,9 @@ public class EntityEllyScythe extends EntityThrow {
 
 		if(!inGround && getThrower() != null && strength > 0F) {
 			EntityLivingBase shootingEntity = getThrower();
-			double dx;
-			double dy;
-			double dz;
-			dx = posX - shootingEntity.posX;
-			dy = posY - shootingEntity.posY - shootingEntity.getEyeHeight();
-			dz = posZ - shootingEntity.posZ;
+			double dx = posX - shootingEntity.posX;
+			double dy = posY - shootingEntity.posY - shootingEntity.getEyeHeight();
+			double dz = posZ - shootingEntity.posZ;
 
 			double d = Math.sqrt(dx * dx + dy * dy + dz * dz);
 			dx /= d;

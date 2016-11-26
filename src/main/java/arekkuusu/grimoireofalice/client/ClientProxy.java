@@ -8,49 +8,35 @@
  */
 package arekkuusu.grimoireofalice.client;
 
-import arekkuusu.grimoireofalice.CommonProxy;
 import arekkuusu.grimoireofalice.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.ISidedProxy;
 import arekkuusu.grimoireofalice.block.ModBlocks;
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.client.render.RenderBarrier;
-import arekkuusu.grimoireofalice.client.render.RenderCameraSquare;
-import arekkuusu.grimoireofalice.client.render.RenderCursedDecoyDoll;
-import arekkuusu.grimoireofalice.client.render.RenderDragonJewel;
-import arekkuusu.grimoireofalice.client.render.RenderEllyScytheProyectile;
-import arekkuusu.grimoireofalice.client.render.RenderGrimoireSpell;
-import arekkuusu.grimoireofalice.client.render.RenderHakureiOrb;
-import arekkuusu.grimoireofalice.client.render.RenderMagicCircle;
-import arekkuusu.grimoireofalice.client.render.RenderNazrinPendulum;
-import arekkuusu.grimoireofalice.client.render.RenderNeedle;
-import arekkuusu.grimoireofalice.client.render.RenderStopWatch;
-import arekkuusu.grimoireofalice.client.render.RenderUnzanFist;
+import arekkuusu.grimoireofalice.client.fx.ParticleFX;
+import arekkuusu.grimoireofalice.client.fx.RedMist;
+import arekkuusu.grimoireofalice.client.fx.ShinmyoumaruSpark;
+import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
-import arekkuusu.grimoireofalice.entity.EntityBarrier;
-import arekkuusu.grimoireofalice.entity.EntityCameraSquare;
-import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
-import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
-import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
-import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
-import arekkuusu.grimoireofalice.entity.EntityHakureiOrb;
-import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
-import arekkuusu.grimoireofalice.entity.EntityNeedle;
-import arekkuusu.grimoireofalice.entity.EntityStopWatch;
-import arekkuusu.grimoireofalice.entity.EntityUnzanFist;
+import arekkuusu.grimoireofalice.entity.*;
 import arekkuusu.grimoireofalice.event.MalletEvent;
+import arekkuusu.grimoireofalice.handler.TextureStitcher;
 import arekkuusu.grimoireofalice.handler.GuiHandler;
 import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -59,20 +45,22 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+
 @Mod.EventBusSubscriber(Side.CLIENT)
-public class ClientProxy extends CommonProxy {
+public class ClientProxy implements ISidedProxy {
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
-		super.preInit(event);
 		initRenderers();
+		MinecraftForge.EVENT_BUS.register(new TextureStitcher());
 		MinecraftForge.EVENT_BUS.register(new MalletEvent());
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void init(FMLInitializationEvent event) {
-		super.init(event);
 		NetworkRegistry.INSTANCE.registerGuiHandler(GrimoireOfAlice.instance, new GuiHandler());
 	}
 
@@ -229,6 +217,7 @@ public class ClientProxy extends CommonProxy {
 			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHakureiOrb.class, RenderHakureiOrb::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleLantern.class, RenderMiracleLantern::new);
 		//Tiles
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());
@@ -260,5 +249,38 @@ public class ClientProxy extends CommonProxy {
 		for(int i = 0; i < meta; i++) {
 			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void sparkleFX(ParticleFX particleFX, @Nullable Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
+		if (!doParticle()) return;
+		Particle particle;
+		switch (particleFX) {
+			case SHINMYOUMARU_SPARKLE:
+				particle = new ShinmyoumaruSpark(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				break;
+			case RED_MIST:
+				if (entity == null) return;
+				particle = new RedMist(Minecraft.getMinecraft().theWorld, entity, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				break;
+			default:
+				particle = new Particle(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+		}
+		Minecraft.getMinecraft().effectRenderer.addEffect(particle);
+	}
+
+	@SideOnly(Side.CLIENT)
+	private boolean doParticle() {
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER)
+			return false;
+
+		float chance = 1F;
+		if (Minecraft.getMinecraft().gameSettings.particleSetting == 1)
+			chance = 0.6F;
+		else if (Minecraft.getMinecraft().gameSettings.particleSetting == 2)
+			chance = 0.2F;
+
+		return chance == 1F || Math.random() < chance;
 	}
 }

@@ -38,7 +38,7 @@ public class ItemAuraIchirin extends ItemModAura {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.aura_ichirin_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_byakuren_description.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.aura_ichirin_description.name"));
 	}
 
 	@Override

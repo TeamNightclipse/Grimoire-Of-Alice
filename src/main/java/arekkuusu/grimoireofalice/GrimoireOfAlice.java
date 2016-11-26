@@ -8,8 +8,14 @@
  */
 package arekkuusu.grimoireofalice;
 
+import arekkuusu.grimoireofalice.entity.ModEntity;
+import arekkuusu.grimoireofalice.event.ModEvents;
+import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.handler.StopWatchHandler;
+import arekkuusu.grimoireofalice.handler.WorldGenLoot;
+import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.helper.LogHelper;
+import arekkuusu.grimoireofalice.item.ModItems;
 import arekkuusu.grimoireofalice.lib.LibMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -31,7 +37,7 @@ public class GrimoireOfAlice {
 	public static GrimoireOfAlice instance;
 
 	@SidedProxy(serverSide = LibMod.PROXYCOMMON, clientSide = LibMod.PROXYCLIENT)
-	public static CommonProxy proxy;
+	public static ISidedProxy proxy;
 
 	@EventHandler
 	public void construct(FMLConstructionEvent event) {
@@ -40,16 +46,21 @@ public class GrimoireOfAlice {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		ModEvents.preInit();
+		ModEntity.preInit();
+		MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
+		if (ConfigHandler.grimoireOfAlice.worldGen.pointItemsGen)
+			MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenLoot());
+		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		proxy.preInit(event);
 		LogHelper.info("Answer to the ultimate question of life the universe and everything");
-		MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
 	}
-
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		if(danmakuCoreInstalled) {
+		ModItems.init();
+		if (danmakuCoreInstalled) {
 			LogHelper.info("is 42");
 		}
 		else {

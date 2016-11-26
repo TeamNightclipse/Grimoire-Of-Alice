@@ -25,7 +25,7 @@ item.firerobe.name=Fire Rat Robe
 item.dragonjewel.name=Jewel from a Dragon's neck
 item.cowrieshell.name=Swallow's Cowrie Shell
 item.foldingumbrella.name=Gap folding umbrella
-item.stopwatch.name=Stop Watch
+item.stopwatch.name=Sakuya Stop Watch
 item.mortarnpestle.name=Mortar N' Pestle
 
 item.shroompowder.white.name=White Shroom Powder
@@ -407,7 +407,7 @@ grimoire.tooltip.shimenawa_rope_description_bottom.name=Might cause an incident
 grimoire.tooltip.skull_header.name=Human Skull
 grimoire.tooltip.skull_description.name=Stolen from a grave
 
-grimoire.tooltip.stop_watch_header.name=Sakuya stop watch
+grimoire.tooltip.stop_watch_header.name="Stop time"
 grimoire.tooltip.stop_watch_description_top.name=Right click to activate
 grimoire.tooltip.stop_watch_description_bottom.name=Shift + left click to dismiss
 

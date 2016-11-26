@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import arekkuusu.grimoireofalice.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.item.ItemSwordOwner;
@@ -75,7 +77,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
-				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase);
+				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase, 35);
 
 				if(lookedAt.isPresent()) {
 					EntityLivingBase entity = (EntityLivingBase)lookedAt.get();
@@ -99,25 +101,38 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	@Override
+	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+		if (count > 40 && count % 5 == 0) {
+			List<EntityMob> list = player.worldObj.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
+			if (!list.isEmpty()) {
+				for (EntityLivingBase entityMob : list) {
+					for (int i = 0; i < 7; i++)
+						GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, player, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+				}
+			}
+		}
+	}
+
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-		if(!worldIn.isRemote) {
-			if(entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entityLiving;
-				if(isOwner(stack, player)) {
-					if(timeUsed < 20 && timeUsed > 5) {
+		if (!worldIn.isRemote) {
+			if (entityLiving instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) entityLiving;
+				if (isOwner(stack, player)) {
+					if (timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
-						if(!list.isEmpty()) {
+						if (!list.isEmpty()) {
 							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue();
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}
 					}
-					else if(timeUsed >= 20 && player.isSneaking()) {
-						for(int i = 0; i < 10; i++) {
+					else if (timeUsed >= 20 && player.isSneaking()) {
+						for (int i = 0; i < 10; i++) {
 							DanmakuBuilder danmaku = DanmakuBuilder.builder()
 									.setUser(player)
 									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))

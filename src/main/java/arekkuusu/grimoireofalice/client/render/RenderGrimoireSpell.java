@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -21,8 +22,6 @@ import net.minecraft.util.math.MathHelper;
 
 public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 
-	private static final ResourceLocation CIRCLE_TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/MagicCircle_1.png");
-	private static final ResourceLocation TEXTURE_BOOK = new ResourceLocation(LibMod.MODID, "textures/models/entities/enchanting_table_book.png");
 	private final ModelBook modelBook = new ModelBook();
 	private static final ModelBase MODEL = new ModelFlat();
 
@@ -62,7 +61,7 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		float f2 = circle.getBookRotationPrev() + f1 * 5;
 		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
-		bindTexture(TEXTURE_BOOK);
+		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float f3 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
 		float f4 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
 		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
@@ -92,6 +91,6 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityGrimoireSpell circle) {
-		return CIRCLE_TEXTURE;
+		return ResourceLocations.GRIMOIRE_CIRCLE_TEXTURE;
 	}
 }

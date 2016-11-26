@@ -37,9 +37,9 @@ public class YukkuriEvent {
 			double minY = axisAlignedBB.minY;
 			double minZ = axisAlignedBB.minZ;
 			axisAlignedBB = new AxisAlignedBB(minX, minY, minZ
-					, modifier == 0.5 ? minX + 0.8 : minX + modifier * 0.8
-					, modifier == 0.5 ? minY + 0.5 : minY + modifier * 2
-					, modifier == 0.5 ? minZ + 0.8 : minZ + modifier * 0.8); //Expand bounding Box
+					, modifier == 0.5 ? minX + 0.5 : minX + modifier * 0.8
+					, modifier == 0.5 ? minY + 0.25 : minY + modifier * 2
+					, modifier == 0.5 ? minZ + 0.5 : minZ + modifier * 0.8); //Expand bounding Box
 			player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box
 		}
 	}
@@ -52,10 +52,7 @@ public class YukkuriEvent {
 
 			if (!world.isRemote && living instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) living;
-				if (player.getEntityData().getBoolean("Eternal")) {
-					player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-							SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.HOSTILE, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-
+				if (player.getEntityData().getBoolean("Eternal")) { //TODO: Add client side effects if the event is canceled?
 					player.hurtResistantTime = 50;
 
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM,

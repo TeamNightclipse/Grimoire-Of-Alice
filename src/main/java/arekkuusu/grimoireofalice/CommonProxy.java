@@ -11,13 +11,8 @@ package arekkuusu.grimoireofalice;
 import arekkuusu.grimoireofalice.block.*;
 import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.entity.*;
-import arekkuusu.grimoireofalice.event.CapabilitiesEvent;
-import arekkuusu.grimoireofalice.event.YukkuriEvent;
-import arekkuusu.grimoireofalice.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.handler.WorldGenLoot;
+import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.handler.WorldGenOre;
-import arekkuusu.grimoireofalice.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.item.*;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraByakuren;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraIchirin;
@@ -25,8 +20,6 @@ import arekkuusu.grimoireofalice.item.auras.ItemAuraKanako;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraMokou;
 import arekkuusu.grimoireofalice.item.auras.ItemAuraToyosatomimi;
 import arekkuusu.grimoireofalice.item.auras.ItemWingsUtsuho;
-import arekkuusu.grimoireofalice.item.crafting.SpecialRecipes;
-import arekkuusu.grimoireofalice.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.plugin.danmakucore.item.*;
 import arekkuusu.grimoireofalice.potion.PotionElixir;
 import arekkuusu.grimoireofalice.item.food.ItemGrilledLamprey;
@@ -52,27 +45,28 @@ import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Mod.EventBusSubscriber
-public class CommonProxy {
+import javax.annotation.Nullable;
 
-	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[] {1, 2, 3, 4}, 30,
-			SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0);
+@Mod.EventBusSubscriber
+public class CommonProxy implements ISidedProxy {
+
+	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[]{1, 2, 3, 4}, 30,
+			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
 	public static final Item.ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
 	public static final Item.ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
 	public static final Item.ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
@@ -149,12 +143,12 @@ public class CommonProxy {
 				new ItemAuraToyosatomimi(SOLID_PAPER, 3),
 				new ItemAuraKanako(SOLID_PAPER, 3),
 				new ItemAuraIchirin(SOLID_PAPER, 3),
-				new ItemSuwakoHat(SOLID_PAPER,3),
-				new ItemFireRobe(SOLID_PAPER,3),
-				new ItemWingsUtsuho(SOLID_PAPER,5),
-				new ItemKappaHat(SOLID_PAPER,3),
-				new ItemMarisaHat(SOLID_PAPER,3),
-				new ItemMikoCape(SOLID_PAPER,3),
+				new ItemSuwakoHat(SOLID_PAPER, 3),
+				new ItemFireRobe(SOLID_PAPER, 3),
+				new ItemWingsUtsuho(SOLID_PAPER, 5),
+				new ItemKappaHat(SOLID_PAPER, 3),
+				new ItemMarisaHat(SOLID_PAPER, 3),
+				new ItemMikoCape(SOLID_PAPER, 3),
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),
@@ -197,7 +191,7 @@ public class CommonProxy {
 				itemBlock(ModBlocks.IMPURE_STONE)
 		);
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
+		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
 					new ItemStopWatch(),
 					new ItemMiracleMallet(),
@@ -219,6 +213,7 @@ public class CommonProxy {
 	private static Item itemBlock(Block block) {
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
+
 	private static Item itemBlockColor(Block block) {
 		return new ItemBlockShroom(block).setRegistryName(block.getRegistryName());
 	}
@@ -267,36 +262,14 @@ public class CommonProxy {
 	}
 
 	@SubscribeEvent
-	public static void registerOreGen(OreDictionary.OreRegisterEvent event){
+	public static void registerOreGen(OreDictionary.OreRegisterEvent event) {
 		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 	}
 
-	@SuppressWarnings("UnusedAssignment")
-	public void preInit(FMLPreInitializationEvent event) {
-		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityNeedle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		if(GrimoireOfAlice.danmakuCoreInstalled)
-			EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
-		if(ConfigHandler.grimoireOfAlice.worldGen.pointItemsGen)
-			MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenLoot());
-		MinecraftForge.EVENT_BUS.register(new YukkuriEvent());
-		MinecraftForge.EVENT_BUS.register(new CapabilitiesEvent());
-	}
+	public void preInit(FMLPreInitializationEvent event) {}
 
-	public void init(FMLInitializationEvent event) {
-		VanillaCrafting.booksAndStrings();
-		VanillaCrafting.masks();
-		SpecialRecipes.init();
-	}
+	public void init(FMLInitializationEvent event) {}
+
+	@Override
+	public void sparkleFX(ParticleFX particleFX, @Nullable Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {}
 }

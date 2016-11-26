@@ -3,26 +3,22 @@ package arekkuusu.grimoireofalice.plugin.danmakucore.item;
 import java.util.List;
 import java.util.Optional;
 
+import arekkuusu.grimoireofalice.entity.EntityMiracleLantern;
 import arekkuusu.grimoireofalice.item.ItemMod;
 import arekkuusu.grimoireofalice.lib.LibItemName;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -87,8 +83,8 @@ public class ItemMiracleMallet extends ItemMod {
 				player.getEntityData().setFloat("MalletResized", size);
 			}
 		}
-		player.swingArm(hand);
 		player.getCooldownTracker().setCooldown(this, 50);
+		player.swingArm(hand);
 		player.setActiveHand(hand);
 	}
 
@@ -102,11 +98,22 @@ public class ItemMiracleMallet extends ItemMod {
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku);
-			if (lookedAt.isPresent()) { //FIXME: Never present
-				EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
-				ShotData data = danmaku.getShotData();
-				danmaku.setShotData(data.scaleSize(1.2F));
+			if (player.isSneaking()) {
+				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku, 35);
+				if (lookedAt.isPresent()) { //FIXME: Never present
+					EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
+					ShotData data = danmaku.getShotData();
+					danmaku.setShotData(data.scaleSize(1.2F));
+				}
+			}
+			else if (!player.worldObj.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
+				for (int i = 0; i < 4; i++) {
+					EntityThrowable lantern = new EntityMiracleLantern(player.worldObj, player);
+					player.worldObj.spawnEntityInWorld(lantern);
+					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
+							, 0F, 0.1F + 0.1F * itemRand.nextInt(3), 0F);
+				}
+				player.getCooldownTracker().setCooldown(this, 25);
 			}
 		}
 		return super.onEntitySwing(entityLiving, stack);

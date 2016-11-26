@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelCursedDecoyDoll;
 import arekkuusu.grimoireofalice.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -11,8 +12,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 
-	private static final ResourceLocation DOLL_TEXTURE = new ResourceLocation(LibMod.MODID,
-			"textures/models/entities/ModelCursedDecoyDoll-texturemap.png");
 	private static final ModelCursedDecoyDoll MODEL = new ModelCursedDecoyDoll();
 
 	public RenderCursedDecoyDoll(RenderManager renderManager) {
@@ -37,6 +36,6 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityCursedDecoyDoll entity) {
-		return DOLL_TEXTURE;
+		return ResourceLocations.DOLL_TEXTURE;
 	}
 }

@@ -138,7 +138,7 @@ public class VanillaCrafting {
 		if (ConfigHandler.grimoireOfAlice.crafting.syringe) {
 			shapeless()
 					.add(Items.GLASS_BOTTLE)
-					.add(ModItems.SHROOM_POWDER)
+					.add(new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE))
 					.outputs(ModItems.SYRINGE).build();
 		}
 

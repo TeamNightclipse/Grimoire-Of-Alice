@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireofalice.client.model.ModelNazrinPendulum;
@@ -21,7 +22,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/nazrinpendulum.png");
 	private static final ModelBase MODEL = new ModelNazrinPendulum();
 
 	public RenderNazrinPendulum(RenderManager renderManager) {
@@ -47,6 +47,6 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityNazrinPendulum entity) {
-		return TEXTURE;
+		return ResourceLocations.NAZRIN_TEXTURE;
 	}
 }

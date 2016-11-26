@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.lib.LibMod;
@@ -11,7 +12,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderBarrier extends Render<EntityBarrier> {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Barrier.png");
 	private static final ModelBase MODEL = new ModelFlat();
 
 	public RenderBarrier(RenderManager p_i46179_1_) {
@@ -55,6 +55,6 @@ public class RenderBarrier extends Render<EntityBarrier> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBarrier entityBarrier) {
-		return TEXTURE;
+		return ResourceLocations.BARRIER_TEXTURE;
 	}
 }

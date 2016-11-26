@@ -21,7 +21,6 @@ public class GOADanmakuVariants {
 
 	private static final IForgeRegistry<DanmakuVariant> REGISTRY = GameRegistry.findRegistry(DanmakuVariant.class);
 
-	public static final DanmakuVariant WIND = REGISTRY.getValue(resource(LibDanmakuVariantName.WIND));
 	public static final DanmakuVariant UFO = REGISTRY.getValue(resource(LibDanmakuVariantName.LEAF));
 	public static final DanmakuVariant LEAF = REGISTRY.getValue(resource(LibDanmakuVariantName.UFO));
 
