@@ -341,12 +341,12 @@ grimoire.tooltip.miko_stick_header.name=Better than a bucket of water
 grimoire.tooltip.miracle_mallet_header.name=Ancient inchling artifact, passed down through the generations,
 grimoire.tooltip.miracle_mallet_description.name=said to be able to grant any wish the user wishes
 
-grimoire.tooltip.mochi_hammer_header.name=Ooguninushi no Mikoto
+grimoire.tooltip.mochi_hammer_header.name=Ooguninushi no Mikoto, Master of the Great Land
 grimoire.tooltip.mochi_hammer_description_top.name="The first strike is for Lord Daikoku~
 grimoire.tooltip.mochi_hammer_description_mid.name=The Second strike is for Lord Daikoku~
 grimoire.tooltip.mochi_hammer_description_bottom.name=And for all of the 180 children..."
 grimoire.tooltip.mochi_hammer_shift.name=SHIFT for details
-grimoire.tooltip.mochi_hammer_description.name=Master of the Great Land
+grimoire.tooltip.mochi_hammer_description.name=Victims:
 
 grimoire.tooltip.momijis_scimitar_sword_header.name=Awooooo~!!
 grimoire.tooltip.momijis_scimitar_sword_description.name=Very sharp and heavy

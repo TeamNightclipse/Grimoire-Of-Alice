@@ -12,8 +12,7 @@ import arekkuusu.grimoireofalice.client.ResourceLocations;
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireofalice.client.model.ModelNazrinPendulum;
-import arekkuusu.grimoireofalice.entity.EntityNazrinPendulum;
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;

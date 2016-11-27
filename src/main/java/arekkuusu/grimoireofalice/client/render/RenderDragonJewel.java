@@ -2,9 +2,8 @@ package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFlat;
-import arekkuusu.grimoireofalice.entity.EntityDragonJewel;
-import arekkuusu.grimoireofalice.item.ModItems;
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
+import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;

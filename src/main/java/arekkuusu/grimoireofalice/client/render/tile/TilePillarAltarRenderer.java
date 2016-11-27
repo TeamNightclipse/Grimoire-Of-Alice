@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render.tile;
 
-import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
+import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;

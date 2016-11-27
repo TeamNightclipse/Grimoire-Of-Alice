@@ -9,8 +9,8 @@
 package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.entity.EntityEllyScythe;
-import arekkuusu.grimoireofalice.item.ModItems;
+import arekkuusu.grimoireofalice.common.entity.EntityEllyScythe;
+import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;

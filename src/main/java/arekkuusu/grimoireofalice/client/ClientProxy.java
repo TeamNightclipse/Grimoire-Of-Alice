@@ -8,23 +8,23 @@
  */
 package arekkuusu.grimoireofalice.client;
 
-import arekkuusu.grimoireofalice.GrimoireOfAlice;
-import arekkuusu.grimoireofalice.ISidedProxy;
-import arekkuusu.grimoireofalice.block.ModBlocks;
-import arekkuusu.grimoireofalice.block.tile.TileCraftingAltar;
-import arekkuusu.grimoireofalice.block.tile.TilePillarAltar;
+import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.ISidedProxy;
+import arekkuusu.grimoireofalice.common.block.ModBlocks;
+import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.client.fx.RedMist;
 import arekkuusu.grimoireofalice.client.fx.ShinmyoumaruSpark;
 import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
-import arekkuusu.grimoireofalice.entity.*;
-import arekkuusu.grimoireofalice.event.MalletEvent;
-import arekkuusu.grimoireofalice.handler.TextureStitcher;
-import arekkuusu.grimoireofalice.handler.GuiHandler;
-import arekkuusu.grimoireofalice.item.ModItems;
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.entity.*;
+import arekkuusu.grimoireofalice.common.event.MalletEvent;
+import arekkuusu.grimoireofalice.common.handler.TextureStitcher;
+import arekkuusu.grimoireofalice.common.handler.GuiHandler;
+import arekkuusu.grimoireofalice.common.item.ModItems;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;

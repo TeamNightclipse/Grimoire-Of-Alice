@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client;
 
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 
 public final class ResourceLocations {

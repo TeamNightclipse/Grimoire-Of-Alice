@@ -10,8 +10,7 @@ package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFlat;
-import arekkuusu.grimoireofalice.entity.EntityGrimoireSpell;
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.entity.EntityGrimoireSpell;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBook;
 import net.minecraft.client.renderer.GlStateManager;

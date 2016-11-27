@@ -18,7 +18,7 @@ import org.lwjgl.input.Keyboard;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonParseException;
 
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

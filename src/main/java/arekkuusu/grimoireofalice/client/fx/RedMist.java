@@ -3,15 +3,11 @@ package arekkuusu.grimoireofalice.client.fx;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 @SideOnly(Side.CLIENT)
 public class RedMist extends Particle {

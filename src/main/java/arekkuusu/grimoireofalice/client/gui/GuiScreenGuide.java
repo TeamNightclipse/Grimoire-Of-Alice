@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.client.gui;
 
 import org.lwjgl.input.Keyboard;
 
-import arekkuusu.grimoireofalice.lib.LibMod;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

@@ -2,7 +2,7 @@ package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelMiracleLantern;
-import arekkuusu.grimoireofalice.entity.EntityMiracleLantern;
+import arekkuusu.grimoireofalice.common.entity.EntityMiracleLantern;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
