@@ -31,6 +31,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,7 +42,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData {
 	public ItemMochiHammer(ToolMaterial material) {
 		super(material, LibItemName.MOCHI_HAMMER);
 		addPropertyOverride(new ResourceLocation("deaths"),
-				(stack, world, entity) -> entity != null && stack.hasTagCompound() ? (float) getData(stack) : 0F);
+				(stack, world, entity) -> entity != null && stack.hasTagCompound() ? MathHelper.clamp_float((float) getData(stack), 0.0F, 90F) : 0F);
 	}
 
 	@Override

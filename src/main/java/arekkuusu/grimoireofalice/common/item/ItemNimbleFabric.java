@@ -56,7 +56,7 @@ public class ItemNimbleFabric extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(count >= 100) player.stopActiveHand();
+		if(count >= 500) player.stopActiveHand();
 		player.motionY = player.motionX = player.motionZ = 0;
 	}
 
@@ -73,7 +73,7 @@ public class ItemNimbleFabric extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 100;
+		return 2000;
 	}
 
 	@Override

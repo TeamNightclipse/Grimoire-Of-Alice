@@ -154,15 +154,13 @@ public class EntityStopWatch extends Entity {
 
 					double[] data = dataEntities.get(entity.getUniqueID());
 					entity.motionX = data[0];
-					entity.motionY= data[1];
+					entity.motionY = data[1];
 					entity.motionZ = data[2];
 				});
-				if(user.capabilities.isCreativeMode) {
-					setDead();
-				}
-				else {
+				if (!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
+				setDead();
 			}
 			else {
 				dropItem(ModItems.STOP_WATCH, 1);

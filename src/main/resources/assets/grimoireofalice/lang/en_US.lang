@@ -336,7 +336,7 @@ grimoire.tooltip.marisa_hat_description.name=Pickup items 5 blocks away
 grimoire.tooltip.miko_cape_header.name=Fancy cape!
 
 grimoire.tooltip.miko_stick_header.name=Property of Toyosatomimi no Miko
-grimoire.tooltip.miko_stick_header.name=Better than a bucket of water
+grimoire.tooltip.miko_stick_description.name=Better than a bucket of water
 
 grimoire.tooltip.miracle_mallet_header.name=Ancient inchling artifact, passed down through the generations,
 grimoire.tooltip.miracle_mallet_description.name=said to be able to grant any wish the user wishes
@@ -676,7 +676,7 @@ grimoire.jei.descriptions.miko_cape=Just for the looks, it gives the player a co
 grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect
 
 grimoire.jei.descriptions.miracle_mallet=Legendary artifact owned by a tiny princess in a cup, whose powers are those of changing size at will
-grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to change size to danmaku
+grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to shoot lanterns or shift and swing to change size to danmaku
 
 grimoire.jei.descriptions.mochi_hammer=It is used to pound sweet mochi, but some people, might find it useful, as a lethal weapon...
 
