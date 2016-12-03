@@ -66,16 +66,18 @@ item.maskofhope.name=Mask Of Hope
 item.kokorosmasks.name=Kokoro's Masks
 item.primordialshield.name=Primordial Shield
 item.mapleleafshield.name=Maple Leaf Shield
-item.aurabyakuren.name=Pearl Necklace
-item.auramokou.name=Cute Ribbon
-item.auratoyosatomimi.name=Ear Mufs
-item.aurakanako.name=Holy Shimenawa Rope
-item.auraichirin.name=Nyuudou Unzan
+item.toyosatomimihat.name=Ear Mufs
+item.kanakoshimenawa.name=Holy Shimenawa Rope
+item.ichirinunzan.name=Nyuudou Unzan
 item.suwakohat.name=Suwako's Hat
-item.aurautsuho.name=Utsuho Wings
+item.utsuhowings.name=Utsuho Wings
 item.kappahat.name=Nitori's Hat
 item.marisahat.name=Marisa's Hat
-item.mikocape.name=Fancy cape
+item.mikocloak.name=Toyosatomimi's Cloak
+item.shinmyoumaruhat.name=Shinmyoumaru's Bowl
+
+item.aurabyakuren.name=Pearl Necklace
+item.auramokou.name=Cute Ribbon
 
 item.mochihammer.name=Mochi Hammer
 item.momijisscimitarsword.name=Momiji's Scimitar Sword
@@ -89,7 +91,7 @@ item.amenonuhoko.name=Amenonuhoko
 item.needle.name=Needle
 item.nuetrident.name=Nue Trident
 item.swordofkusanagi.name=Sword of Kusanagi
-item.syringe.name=Syringe
+item.syringe.name=Eirin's Syringe
 item.ichirinring.name=Ichirin's Ring
 item.kanakoonbashira.name=Kanako's Onbashira
 item.shichiseiken.name=Shi-chi Seiken
@@ -207,23 +209,23 @@ grimoire.tooltip.pillar_altar_tier.name=Tier 1 Crafting Pillar
 grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
 grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
 
-grimoire.tooltip.aura_ichirin_header.name=Cloud Spirit Nyuudou
-grimoire.tooltip.aura_ichirin_description.name=Grants the user a powerful Nyuudou
+grimoire.tooltip.ichirin_unzan_header.name=Cloud Spirit Nyuudou
+grimoire.tooltip.ichirin_unzan_description.name=Grants the user a powerful Nyuudou
 
-grimoire.tooltip.aura_kanako_header.name=Represents the figure of an entwined snake
-grimoire.tooltip.aura_kanako_description_top.name=Its true power is unknown, the legend says
-grimoire.tooltip.aura_kanako_description_bottom.name=it possesses a power unimaginable to humans
+grimoire.tooltip.kanako_shimenawa_header.name=Represents the figure of an entwined snake
+grimoire.tooltip.kanako_shimenawa_description_top.name=Its true power is unknown, the legend says
+grimoire.tooltip.kanako_shimenawa_description_bottom.name=it possesses a power unimaginable to humans
 
 grimoire.tooltip.aura_mokou_header.name="~na no kashira?"
 grimoire.tooltip.aura_mokou_description.name=Phoenix of fire
 
-grimoire.tooltip.aura_toyosatomimi_header.name="Infinite knowledge"
-grimoire.tooltip.aura_toyosatomimi_description_top.name=I can listen to 10 people at once,
-grimoire.tooltip.aura_toyosatomimi_description_mid.name=but unfortunately you are the 11th.
-grimoire.tooltip.aura_toyosatomimi_description_bottom.name=Sucks to be you
+grimoire.tooltip.toyosatomimi_hat_header.name="Infinite knowledge"
+grimoire.tooltip.toyosatomimi_hat_description_top.name=I can listen to 10 people at once,
+grimoire.tooltip.toyosatomimi_hat_description_mid.name=but unfortunately you are the 11th.
+grimoire.tooltip.toyosatomimi_hat_description_bottom.name=Sucks to be you
 
-grimoire.tooltip.aura_utsuho_header.name="Manipulation of Nuclear Fusion"
-grimoire.tooltip.aura_utsuho_description.name=Hell raven with Yatagarasu
+grimoire.tooltip.utsuho_wings_header.name=Hell raven with Yatagarasu
+grimoire.tooltip.utsuho_wings_description.name=Grants wings to the user that give creative flight for a short period of time
 
 grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
 
@@ -333,7 +335,7 @@ grimoire.tooltip.kappa_hat_description.name="Do not drop the water"
 grimoire.tooltip.marisa_hat_header.name="daze~!"
 grimoire.tooltip.marisa_hat_description.name=Pickup items 5 blocks away
 
-grimoire.tooltip.miko_cape_header.name=Fancy cape!
+grimoire.tooltip.miko_cloak_header.name=Fancy cape!
 
 grimoire.tooltip.miko_stick_header.name=Property of Toyosatomimi no Miko
 grimoire.tooltip.miko_stick_description.name=Better than a bucket of water
@@ -427,8 +429,7 @@ grimoire.tooltip.roukanken_description_top.name="The things that cannot be cut b
 grimoire.tooltip.roukanken_description_bottom.name=forged by youkai, are close to none!"
 grimoire.tooltip.roukanken_shift.name=SHIFT for details
 
-grimoire.tooltip.syringe_header.name=Eirin's Syringe
-grimoire.tooltip.syringe_description.name="Dont worry, it just hurts a lot"
+grimoire.tooltip.syringe_header.name="Its medicine time"
 
 grimoire.tooltip.tengu_camera_header.name=Swipe the space in front of the player by taking photos
 
@@ -556,6 +557,8 @@ grimoire.jei.descriptions_body.blood_orb=Teleports the player to the entity its 
 
 grimoire.jei.descriptions.byakuren_aura=Gives the player a fancy aura, just for the looks
 
+grimoire.jei.descriptions.toyosatomimi_aura=Gives the player a fancy aura, just for the looks
+
 grimoire.jei.descriptions.cattail_plant=Nitori™ Do not yukkuri shiteitte ne
 
 grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
@@ -629,7 +632,7 @@ grimoire.jei.descriptions.ibaraki_box=Specially made shou box owned by Kasen Iba
 
 grimoire.jei.descriptions.ibuki_gourd=Gives the drinker strength and nausea
 
-grimoire.jei.descriptions.ichirin_aura=Grants the user an Unzan like in the Touhou Fighting Games
+grimoire.jei.descriptions.ichirin_unzan=Grants the user an Unzan like in the Touhou Fighting Games
 
 grimoire.jei.descriptions.ichirin_ring=Must be crafted under a Thunder weather
 grimoire.jei.descriptions.ichirin_ring_body=Used to control the Nyuudou Unzan, shoot fists by right clicking with rings in both hands
@@ -639,8 +642,8 @@ grimoire.jei.descriptions.impure_rock=Obtained by mining or smelting Impure Ston
 grimoire.jei.descriptions.jeweled_hourai=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it gives a random jewel from its branch
 
-grimoire.jei.descriptions.kanako_aura=Must be crafted under a Rainy Weather
-grimoire.jei.descriptions.kanako_aura_body=Gives a Glowing effect when its raining in the world. It has a secret use, not revealed yet
+grimoire.jei.descriptions.kanako_shimenawa=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions.kanako_shimenawa_body=Gives a Glowing effect when its raining in the world. It has a secret use, not revealed yet
 
 grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 
@@ -671,7 +674,10 @@ grimoire.jei.descriptions.mask_of_hope=One of the 9 masks owned by the youkai Ha
 
 grimoire.jei.descriptions.merlin_trumpet=Shoots notes in a fast rate that deal magic damage
 
-grimoire.jei.descriptions.miko_cape=Just for the looks, it gives the player a cool aura
+grimoire.jei.descriptions.miko_cloak=Magical cloak from a saint of Buddhism
+grimoire.jei.descriptions.miko_cloak_body=It grants the user the ability of moving vast distances very quickly, aka: Shukuchi
+
+grimoire.jei.descriptions.miko_needle=Common item used by miko to fight youkai, its has the same properties as an arrow
 
 grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect
 
@@ -680,7 +686,7 @@ grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, us
 
 grimoire.jei.descriptions.mochi_hammer=It is used to pound sweet mochi, but some people, might find it useful, as a lethal weapon...
 
-grimoire.jei.descriptions.mokou_aura=Just for the looks, it gives the player a cool aura
+grimoire.jei.descriptions.mokou_wings=Just for the looks, it gives the player a cool aura
 
 grimoire.jei.descriptions.momijis_scimitar_sword=Sharp sword owned by the White Wolf Tengu Momiji Inubashiri
 
@@ -690,7 +696,7 @@ grimoire.jei.descriptions.mortal_n_pestle=Used to turn shroom into powder
 
 grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to find treasures buried underground, it can find any kind of ore, and chest hidden bellow the surface
 
-grimoire.jei.descriptions.needle=Common item used by miko to fight youkai, its has the same properties as an arrow
+grimoire.jei.descriptions.needle=Needle with strange magical properties, it was designed as a deadly weapon
 
 grimoire.jei.descriptions.nimble_fabric=Impossible piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
@@ -726,6 +732,8 @@ grimoire.jei.descriptions.shichi_seiken_body=Drops loot from mining ores, has a 
 
 grimoire.jei.descriptions.shimenawa_rope=Spawn a holy keystone when used in a Rainy Weather
 
+grimoire.jei.descriptions.shinmyoumaru_hat=Bowl from a tiny princess whose powers are of those of changing size with a mallet of strange origins
+
 grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used. Hold to charge Jewel power, shift right click to activate, it shoots as much danmaku as Jewel power it has; if the player holds it for a long enough, it gives luck to all living creatures around the player
 
 grimoire.jei.descriptions.shroom_powder=Used to craft danmaku potions if the mod DanmakuCore is present
@@ -757,7 +765,8 @@ grimoire.jei.descriptions.third_eye_body=Shows all nearby entities when the eye 
 
 grimoire.jei.descriptions.time_orb=Found inside chests in Desert Pyramids
 
-grimoire.jei.descriptions.toyosatomimi_aura=Just for the looks, it gives a cool aura to the player
+grimoire.jei.descriptions.toyosatomimi_hat=Gives the wearer a pair of ears
+grimoire.jei.descriptions.toyosatomimi_hat_body=This good piece of armor gives leaping boost to the wearer
 
 grimoire.jei.descriptions.uba_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
@@ -770,7 +779,7 @@ grimoire.jei.descriptions.ufo_red=Found inside chests in Simple Dungeons
 grimoire.jei.descriptions.ufos=Must be crafted in the End
 grimoire.jei.descriptions.ufos_body=Teleports all items to the player in a 10 block radius, it is also a way of moving items around without having them in your inventory
 
-grimoire.jei.descriptions.utsuho_aura=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
+grimoire.jei.descriptions.utsuho_wings=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
 
 grimoire.jei.descriptions.volatile_string=Used in recipes
 

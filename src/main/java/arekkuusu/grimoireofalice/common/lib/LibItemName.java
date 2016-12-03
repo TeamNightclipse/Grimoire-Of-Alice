@@ -40,6 +40,27 @@ public class LibItemName {
 	public static final String FOLDING_UMBRELLA = "foldingumbrella";
 	public static final String STOP_WATCH = "stopwatch";
 	public static final String MORTAR_AND_PESTLE = "mortarnpestle";
+	public static final String FULL_POWER = "fullpoweritem";
+	public static final String STAR = "staritem";
+	public static final String CHERRY = "cherryitem";
+	public static final String TIME_ORB = "timeorb";
+	public static final String FAITH = "faithitem";
+	public static final String UFO_RED = "ufored";
+	public static final String UFO_BLUE = "ufoblue";
+	public static final String UFO_GREEN = "ufogreen";
+	public static final String UFOS = "ufos";
+	public static final String POUCH = "spellcardpouch";
+	public static final String LEAF = "leafitem";
+	public static final String BLOOD_THIRSTY_ORB = "bloodthirstyorb";
+	public static final String SEND_OFF_LANTERN = "sendofflantern";
+	public static final String SUBSTITUTE_JIZO = "substitutejizo";
+	public static final String NIMBLE_FABRIC = "nimblefabric";
+	public static final String FAKE_MIRACLE_MALLET = "fakemiraclemallet";
+	public static final String DECOY_DOLL = "decoydoll";
+	public static final String AYA_CAMERA = "ayacamera";
+	public static final String HATATE_CAMERA = "hatatecamera";
+	public static final String SANAE_GOHEI = "sanaegohei";
+	public static final String HAKUREI_GOHEI = "hakureigohei";
 	//Food
 	public static final String SHROOM_POWDER = "shroompowder";
 	public static final String GRILLED_LAMPREY = "grilledlamprey";
@@ -62,17 +83,20 @@ public class LibItemName {
 	public static final String MASKOF_HOPE = "maskofhope";
 	public static final String KOKOROS_MASKS = "kokorosmasks";
 	public static final String MAPLE_LEAF_SHIELD = "mapleleafshield";
+	public static final String TOYOSATOMIMI_HAT = "toyosatomimihat";
+	public static final String KANAKO_SHIMENAWA = "kanakoshimenawa";
+	public static final String ICHIRIN_UNZAN = "ichirinunzan";
+	public static final String SUWAKO_HAT = "suwakohat";
+	public static final String FIRE_ROBE = "firerobe";
+	public static final String UTSUHO_WINGS = "utsuhowings";
+	public static final String KAPPA_HAT = "kappahat";
+	public static final String MARISA_HAT = "marisahat";
+	public static final String MIKO_CLOAK = "mikocloak";
+	public static final String SHINMYOUMARU_HAT = "shinmyoumaruhat";
+	//Auras
 	public static final String AURA_BYAKUREN = "aurabyakuren";
 	public static final String AURA_MOKOU = "auramokou";
 	public static final String AURA_TOYOSATOMIMI = "auratoyosatomimi";
-	public static final String AURA_KANAKO = "aurakanako";
-	public static final String AURA_ICHIRIN = "auraichirin";
-	public static final String SUWAKO_HAT = "suwakohat";
-	public static final String FIRE_ROBE = "firerobe";
-	public static final String AURA_UTSUHO = "aurautsuho";
-	public static final String KAPPA_HAT = "kappahat";
-	public static final String MARISA_HAT = "marisahat";
-	public static final String MIKO_CAPE = "mikocape";
 	//Weapons
 	public static final String MOCHI_HAMMER = "mochihammer";
 	public static final String MOMIJIS_SCIMITAR_SWORD = "momijisscimitarsword";
@@ -99,26 +123,4 @@ public class LibItemName {
 	public static final String HISOU = "hisou";
 	public static final String DEATH_SCYTHE = "deathscythe";
 	public static final String ROUKANKEN = "roukanken";
-	//THItems
-	public static final String FULL_POWER = "fullpoweritem";
-	public static final String STAR = "staritem";
-	public static final String CHERRY = "cherryitem";
-	public static final String TIME_ORB = "timeorb";
-	public static final String FAITH = "faithitem";
-	public static final String UFO_RED = "ufored";
-	public static final String UFO_BLUE = "ufoblue";
-	public static final String UFO_GREEN = "ufogreen";
-	public static final String UFOS = "ufos";
-	public static final String POUCH = "spellcardpouch";
-	public static final String LEAF = "leafitem";
-	public static final String BLOOD_THIRSTY_ORB = "bloodthirstyorb";
-	public static final String SEND_OFF_LANTERN = "sendofflantern";
-	public static final String SUBSTITUTE_JIZO = "substitutejizo";
-	public static final String NIMBLE_FABRIC = "nimblefabric";
-	public static final String FAKE_MIRACLE_MALLET = "fakemiraclemallet";
-	public static final String DECOY_DOLL = "decoydoll";
-	public static final String AYA_CAMERA = "ayacamera";
-	public static final String HATATE_CAMERA = "hatatecamera";
-	public static final String SANAE_GOHEI = "sanaegohei";
-	public static final String HAKUREI_GOHEI = "hakureigohei";
 }

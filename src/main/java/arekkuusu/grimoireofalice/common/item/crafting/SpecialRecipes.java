@@ -85,6 +85,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems ULTRAMARINE_ORB_ELIXIR;
 	public static IRecipeItems HOURAI_ELIXIR;
 	public static IRecipeItems KAPPA_NOSTRUM;
+	public static IRecipeItems SHINMYOUMARU_HAT;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -185,7 +186,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.kakanoShimenawa) {
-			KANAKO_SHIMENAWA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.KANAKO_AURA)
+			KANAKO_SHIMENAWA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.KANAKO_SHIMENAWA)
 					, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
 		}
 
@@ -220,7 +221,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.ichirinAura) {
-			ICHIRIN_AURA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ICHIRIN_AURA)
+			ICHIRIN_AURA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ICHIRIN_UNZAN)
 			, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK);
 		}
 
@@ -245,7 +246,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.mikoCape) {
-			MICO_CAPE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CAPE)
+			MICO_CAPE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CLOAK)
 					, Items.BANNER, "paper", "paper", "paper", "paper", "paper", "paper", new ItemStack(Items.DYE, 1, 13));
 		}
 
@@ -354,6 +355,11 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.crafting.swallowCowrieShell) {
 			SWALLOW_COWRIE_SHELL = GrimoireOfAliceAPI.registerRecipeMoonPhase(5, new ItemStack(ModItems.COWRIE_SHELL)
 					, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Items.MILK_BUCKET, Items.MILK_BUCKET);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.shinmyoumaruBowl) {
+			SHINMYOUMARU_HAT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SHINMYOUMARU_HAT)
+					, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.tenguCamera) {

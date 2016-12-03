@@ -52,6 +52,8 @@ public class EntityDragonJewel extends Entity {
 		getEntities();
 		if (ticksExisted % 50 == 0) {
 			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
+		}
+		if (ticksExisted % 10 == 0)
 			for (int u = 0; u < 10; u++) {
 				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1,
 						rand.nextDouble());
@@ -62,7 +64,6 @@ public class EntityDragonJewel extends Entity {
 				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1,
 						rand.nextDouble());
 			}
-		}
 	}
 
 	private void getEntities() {

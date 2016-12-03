@@ -1,51 +1,19 @@
-/**
- * This class was created by <ArekkuusuJerii>. It's distributed as
- * part of the Grimoire Of Alice Mod. Get the Source Code in github:
- * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
- * Grimore Of Alice is Open Source and distributed under the
- * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
- */
 package arekkuusu.grimoireofalice.common;
 
 import arekkuusu.grimoireofalice.common.block.*;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.handler.WorldGenOre;
 import arekkuusu.grimoireofalice.common.item.*;
-import arekkuusu.grimoireofalice.common.item.auras.ItemAuraByakuren;
-import arekkuusu.grimoireofalice.common.item.auras.ItemAuraIchirin;
-import arekkuusu.grimoireofalice.common.item.auras.ItemAuraKanako;
-import arekkuusu.grimoireofalice.common.item.auras.ItemAuraMokou;
-import arekkuusu.grimoireofalice.common.item.auras.ItemAuraToyosatomimi;
-import arekkuusu.grimoireofalice.common.item.auras.ItemWingsUtsuho;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.item.*;
-import arekkuusu.grimoireofalice.common.potion.PotionElixir;
-import arekkuusu.grimoireofalice.common.item.food.ItemGrilledLamprey;
-import arekkuusu.grimoireofalice.common.item.food.ItemHeavelyPeach;
-import arekkuusu.grimoireofalice.common.item.food.ItemHouraiElixir;
-import arekkuusu.grimoireofalice.common.item.food.ItemIbarakiBoxFilled;
-import arekkuusu.grimoireofalice.common.item.food.ItemIbukiGourd;
-import arekkuusu.grimoireofalice.common.item.food.ItemKappasNostrum;
-import arekkuusu.grimoireofalice.common.item.food.ItemShroomPowder;
-import arekkuusu.grimoireofalice.common.item.food.ItemUltramarineOrbElixir;
-import arekkuusu.grimoireofalice.common.item.masks.ItemFoxMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemFukuNoKamiMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemHannyaMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemHyottokoMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemKokorosMasks;
-import arekkuusu.grimoireofalice.common.item.masks.ItemKoomoteMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemMaskOfHope;
-import arekkuusu.grimoireofalice.common.item.masks.ItemMonkeyMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemRaidenMask;
-import arekkuusu.grimoireofalice.common.item.masks.ItemUbaMask;
+import arekkuusu.grimoireofalice.common.item.food.*;
+import arekkuusu.grimoireofalice.common.item.masks.*;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.item.*;
+import arekkuusu.grimoireofalice.common.potion.PotionElixir;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -54,16 +22,12 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nullable;
-
 @Mod.EventBusSubscriber
-public class CommonProxy implements ISidedProxy {
+public class CommonRegistration {
 
 	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[]{1, 2, 3, 4}, 30,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
@@ -138,34 +102,33 @@ public class CommonProxy implements ISidedProxy {
 				new ItemKoomoteMask(SOLID_PAPER, 3),
 				new ItemMaskOfHope(SOLID_PAPER, 3),
 				new ItemKokorosMasks(SOLID_PAPER, 3),
-				new ItemAuraByakuren(SOLID_PAPER, 3),
-				new ItemAuraMokou(SOLID_PAPER, 3),
-				new ItemAuraToyosatomimi(SOLID_PAPER, 3),
-				new ItemAuraKanako(SOLID_PAPER, 3),
-				new ItemAuraIchirin(SOLID_PAPER, 3),
+				new ItemToyosatomimiHat(SOLID_PAPER, 3),
+				new ItemKanakoShimenawa(SOLID_PAPER, 3),
+				new ItemIchirinUnzan(SOLID_PAPER, 3),
 				new ItemSuwakoHat(SOLID_PAPER, 3),
 				new ItemFireRobe(SOLID_PAPER, 3),
-				new ItemWingsUtsuho(SOLID_PAPER, 5),
+				new ItemUtsuhoWings(SOLID_PAPER, 5),
 				new ItemKappaHat(SOLID_PAPER, 3),
 				new ItemMarisaHat(SOLID_PAPER, 3),
-				new ItemMikoCape(SOLID_PAPER, 3),
+				new ItemToyosatomimiCloak(SOLID_PAPER, 3),
+				new ItemShinmyoumaruHat(SOLID_PAPER, 5),
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),
 				new ItemCrestOfYggdrasill(WET_NOODLE),
-				new ItemMikoStick(NOT_A_MELEE_WEAPON),
-				new ItemMochiHammer(GOLDYRON),
+				new ItemToyosatomimiStick(NOT_A_MELEE_WEAPON),
+				new ItemMochiHammer(WET_NOODLE),
 				new ItemMomijisScimitarSword(GOLDYRON),
 				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICK),
 				new ItemNueTrident(WET_NOODLE),
 				new ItemSwordofKusanagi(GOLDYRON),
 				new ItemSyringe(NOT_A_MELEE_WEAPON),
 				new ItemIchirinRing(NOT_A_MELEE_WEAPON),
-				new ItemOnbashira(WET_NOODLE),
+				new ItemOnbashira(GOLDYRON),
 				new ItemShichiSeiken(WET_NOODLE),
 				new ItemCattailPlant(WET_NOODLE),
 				new ItemPopsicleStick(WET_NOODLE),
-				new ItemRumiaSword(WET_NOODLE),
+				new ItemRumiaSword(GOLDYRON),
 				new ItemSarielWand(WET_NOODLE),
 				new ItemWatermelonBlade(WET_NOODLE),
 				new ItemWatermelonSword(GOLDYRON),
@@ -265,11 +228,4 @@ public class CommonProxy implements ISidedProxy {
 	public static void registerOreGen(OreDictionary.OreRegisterEvent event) {
 		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 	}
-
-	public void preInit(FMLPreInitializationEvent event) {}
-
-	public void init(FMLInitializationEvent event) {}
-
-	@Override
-	public void sparkleFX(ParticleFX particleFX, @Nullable Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {}
 }

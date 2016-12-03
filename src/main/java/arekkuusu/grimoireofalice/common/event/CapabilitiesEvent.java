@@ -25,7 +25,7 @@ public class CapabilitiesEvent {
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
 	private final List<ItemStack> flyItems = ImmutableList.of(
 			new ItemStack(ModItems.HAKUREI_GOHEI),
-			new ItemStack(ModItems.UTSUHO_AURA)
+			new ItemStack(ModItems.UTSUHO_WINGS)
 	);
 
 	//onItemDrop and onItemToss handle player dropping stuff on death and drag n' drop from inventory.
@@ -36,7 +36,7 @@ public class CapabilitiesEvent {
 			List<EntityItem> drop = event.getDrops();
 			for(EntityItem item : drop) {
 				Item i = item.getEntityItem().getItem();
-				if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_AURA) {
+				if(i == ModItems.HAKUREI_GOHEI || i == ModItems.UTSUHO_WINGS) {
 					if(!player.capabilities.isCreativeMode) {
 						player.capabilities.allowFlying = false;
 						player.capabilities.isFlying = false;
@@ -55,7 +55,7 @@ public class CapabilitiesEvent {
 		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
 			EntityPlayer player = event.getPlayer();
 			Item item = event.getEntityItem().getEntityItem().getItem();
-			if(item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_AURA) {
+			if(item == ModItems.HAKUREI_GOHEI || item == ModItems.UTSUHO_WINGS) {
 				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
@@ -132,7 +132,7 @@ public class CapabilitiesEvent {
 
 			return true;
 		}
-		else return player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_AURA;
+		else return player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_WINGS;
 	}
 
 	private int getGoheiMode(ItemStack itemStack) {

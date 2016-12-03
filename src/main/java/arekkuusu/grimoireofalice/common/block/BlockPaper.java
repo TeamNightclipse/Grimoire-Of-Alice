@@ -21,10 +21,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BlockPaper extends BlockModPillar {
 
 	public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.8D, 1.0D, 1.0D);
+	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.4D, 0.0D, 0.4D, 0.6D, 1.0D, 0.6D);
 
 	public BlockPaper() {
 		super(LibBlockName.PAPER_BLOCK, Material.CARPET);
@@ -63,6 +65,12 @@ public class BlockPaper extends BlockModPillar {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB;
+	}
+
+	@SuppressWarnings("deprecation") //Internal
+	@Nullable
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+		return NULL_AABB;
 	}
 
 	@SuppressWarnings("deprecation") //Internal

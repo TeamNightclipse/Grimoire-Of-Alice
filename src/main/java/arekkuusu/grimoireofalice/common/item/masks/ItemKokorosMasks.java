@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item.masks;
 import java.util.List;
 import java.util.UUID;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -147,7 +148,7 @@ public class ItemKokorosMasks extends ItemModMask {
 
 		//noinspection ConstantConditions
 		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner")))
-			return LibMod.MODID + ":textures/models/armor/kokorosmasks_layer_1.png";
+			return ResourceLocations.KOKOROS_MASKS.toString();
 		else return "";
 	}
 

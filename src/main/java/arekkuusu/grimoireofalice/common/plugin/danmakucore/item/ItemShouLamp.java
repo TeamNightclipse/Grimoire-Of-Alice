@@ -65,6 +65,11 @@ public class ItemShouLamp extends ItemMod {
 	}
 
 	@Override
+	public boolean hasEffect(ItemStack stack) {
+		return getJewels(stack) > 0;
+	}
+
+	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);

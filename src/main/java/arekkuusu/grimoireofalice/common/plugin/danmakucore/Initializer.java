@@ -55,10 +55,7 @@ public class Initializer {
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
 		event.getRegistry().registerAll(
 				new DanmakuVariantGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO,
-						new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(-0.02D))),
-				new DanmakuVariantGeneric(LibDanmakuVariantName.WIND, () -> LibGOAShotData.WIND, 0.4D),
-				new DanmakuVariantGeneric(LibDanmakuVariantName.LEAF, () -> LibGOAShotData.LEAF,
-						new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(-0.04D)))
+						new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(0)))
 		);
 	}
 }

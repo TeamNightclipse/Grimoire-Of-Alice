@@ -69,6 +69,13 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		TileCraftingAltar tile = (TileCraftingAltar) worldIn.getTileEntity(pos);
+		if (tile != null) tile.destroy();
+		worldIn.removeTileEntity(pos);
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		for(int i = -2; i <= 2; ++i) {

@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
-import arekkuusu.grimoireofalice.common.ISidedProxy;
+import arekkuusu.grimoireofalice.common.proxy.ISidedProxy;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
@@ -79,17 +79,16 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.MONKEY_MASK, 0);
 		registerItem(ModItems.RAIDEN_MASK, 0);
 		registerItem(ModItems.UBA_MASK, 0);
-		registerItem(ModItems.BYAKUREN_AURA, 0);
-		registerItem(ModItems.MOKOU_AURA, 0);
-		registerItem(ModItems.TOYOSATOMIMI_AURA, 0);
-		registerItem(ModItems.KANAKO_AURA, 0);
-		registerItem(ModItems.ICHIRIN_AURA, 0);
+		registerItem(ModItems.TOYOSATOMIMI_HAT, 0);
+		registerItem(ModItems.KANAKO_SHIMENAWA, 0);
+		registerItem(ModItems.ICHIRIN_UNZAN, 0);
 		registerItem(ModItems.SUWAKO_HAT, 0);
 		registerItem(ModItems.FIRE_ROBE, 0);
-		registerItem(ModItems.UTSUHO_AURA, 0);
+		registerItem(ModItems.UTSUHO_WINGS, 0);
 		registerItem(ModItems.KAPPA_HAT, 0);
 		registerItem(ModItems.MARISA_HAT, 0);
-		registerItem(ModItems.MIKO_CAPE, 0);
+		registerItem(ModItems.MIKO_CLOAK, 0);
+		registerItem(ModItems.SHINMYOUMARU_HAT, 0);
 
 		//Items
 		registerItem(ModItems.TAMAHAGANE_STEEL, 0);

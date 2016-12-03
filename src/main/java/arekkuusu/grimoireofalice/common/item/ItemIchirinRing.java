@@ -90,7 +90,7 @@ public class ItemIchirinRing extends ItemModSword {
 
 	private boolean isWearingUnzan(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-		return stack != null && stack.getItem() == ModItems.ICHIRIN_AURA;
+		return stack != null && stack.getItem() == ModItems.ICHIRIN_UNZAN;
 	}
 
 	@Override

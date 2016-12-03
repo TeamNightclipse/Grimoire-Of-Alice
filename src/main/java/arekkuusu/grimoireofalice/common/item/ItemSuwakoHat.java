@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelSuwakoHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -64,6 +65,6 @@ public class ItemSuwakoHat extends ItemModArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return LibMod.MODID + ":textures/models/armor/suwakohat.png";
+		return ResourceLocations.SUWAKO_HAT.toString();
 	}
 }

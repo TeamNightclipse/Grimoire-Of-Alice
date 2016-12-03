@@ -24,7 +24,6 @@ public class RenderMiracleLantern extends Render<EntityMiracleLantern> {
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(entityYaw, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(entity.ticksExisted * 8, 1.0F, 0.0F, 0.0F);
-
 		MODEL_MIRACLE_LANTERN.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		MODEL_MIRACLE_LANTERN.renderMore(0.0625F);
 		GlStateManager.enableLighting();

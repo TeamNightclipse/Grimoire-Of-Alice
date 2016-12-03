@@ -5,9 +5,9 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 /**
- * ModelKanakoAura - Arekkuusu Created using Tabula 5.1.0
+ * ModelKanakoShimenawa - Arekkuusu Created using Tabula 5.1.0
  */
-public class ModelKanakoAura extends ModelBiped {
+public class ModelKanakoShimenawa extends ModelBiped {
 
 	private final ModelRenderer rope;
 	private final ModelRenderer rope1;
@@ -51,7 +51,7 @@ public class ModelKanakoAura extends ModelBiped {
 	private final ModelRenderer paper4;
 	private final ModelRenderer chest;
 
-	public ModelKanakoAura() {
+	public ModelKanakoShimenawa() {
 		textureWidth = 64;
 		textureHeight = 64;
 		rope32 = new ModelRenderer(this, 0, 0);

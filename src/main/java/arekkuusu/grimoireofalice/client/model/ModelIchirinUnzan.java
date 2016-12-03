@@ -10,7 +10,7 @@ import net.minecraft.entity.Entity;
 /**
  * AuraIchirin - Arekkuusu Created using Tabula 5.1.0
  */
-public class ModelAuraIchirin extends ModelBiped {
+public class ModelIchirinUnzan extends ModelBiped {
 
 	private final float size;
 	//private final ModelRenderer chest;
@@ -36,7 +36,7 @@ public class ModelAuraIchirin extends ModelBiped {
 	private final ModelRenderer square9;
 	private final ModelRenderer square10;
 
-	public ModelAuraIchirin(float size) {
+	public ModelIchirinUnzan(float size) {
 		this.size = size;
 		textureWidth = 256;
 		textureHeight = 384;

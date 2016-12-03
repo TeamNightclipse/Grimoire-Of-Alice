@@ -9,11 +9,11 @@
 package arekkuusu.grimoireofalice.common.block;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
+import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -26,7 +26,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
@@ -44,6 +43,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	public static final PropertyEnum<Part> PART = PropertyEnum.create("part", Part.class);
+	public static final PropertyEnum<Model> MODEL = PropertyEnum.create("model", Model.class);
 	private static final AxisAlignedBB BB_TOP = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	public BlockOnbashira() {
@@ -56,12 +56,12 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, PART);
+		return new BlockStateContainer(this, PART, MODEL);
 	}
 
 	@Override
 	protected IBlockState defaultState() {
-		return super.defaultState().withProperty(PART, Part.LOWER);
+		return super.defaultState().withProperty(PART, Part.LOWER).withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -135,15 +135,15 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		switch(state.getValue(PART)) {
+		switch (state.getValue(PART)) {
 			case TOP:
-				TilePillarAltar tile = (TilePillarAltar)worldIn.getTileEntity(pos);
+				TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(pos);
 				boolean ok = false;
-				if(tile != null) {
-					if(playerIn.isSneaking()) {
+				if (tile != null) {
+					if (playerIn.isSneaking()) {
 						ok = tile.removeItem(playerIn);
 					}
-					else if(heldItem != null) {
+					else if (heldItem != null) {
 						ok = tile.addItem(playerIn, heldItem);
 					}
 				}
@@ -171,12 +171,17 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return null;
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
+		if (tile != null) {
+			tile.destroy();
+			worldIn.removeTileEntity(pos);
+		}
 	}
 
 	@Override
 	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+
 		switch(state.getValue(PART)) {
 			case LOWER:
 				for(int i = 0; i < 4; i++) {
@@ -248,6 +253,26 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 				default:
 					return LOWER;
 			}
+		}
+	}
+
+	public enum Model implements IStringSerializable {
+		NEW("new"),
+		OLD("old");
+
+		private final String name;
+
+		Model(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		public static Model fromModel(boolean model) {
+			return model ? NEW : OLD;
 		}
 	}
 }

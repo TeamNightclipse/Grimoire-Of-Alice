@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelMarisaHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -60,6 +61,6 @@ public class ItemMarisaHat extends ItemModArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return LibMod.MODID + ":textures/models/armor/marisahat.png";
+		return ResourceLocations.MARISA_HAT.toString();
 	}
 }

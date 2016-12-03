@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
+import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -21,7 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class TileCraftingAltar extends TileItemHandler implements ITickable {
+public class TileCraftingAltar extends TileItemHandler implements ITileItemHolder, ITickable {
 
 	public int tickCount;
 	public float pageFlip;
@@ -57,7 +59,8 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			new BlockPos(-5, 3, -2)
 	};
 
-	public boolean addItem(ItemStack stack) {
+	@Override
+	public boolean addItem(@Nullable EntityPlayer player, ItemStack stack) {
 		boolean added = false;
 		if(!hasItem()) {
 			added = true;
@@ -71,6 +74,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		return added;
 	}
 
+	@Override
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
 		ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
@@ -85,6 +89,17 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 		return removed;
+	}
+
+	@Override
+	public void destroy() {
+		if (!worldObj.isRemote) {
+			ItemStack output = itemHandler.extractItem(0, 1, false);
+			if (output != null) {
+				EntityItem outputItem = new EntityItem(worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
+				worldObj.spawnEntityInWorld(outputItem);
+			}
+		}
 	}
 
 	public boolean doCrafting() {
@@ -113,7 +128,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 					for(TilePillarAltar altar : altars) {
 						altar.removeItem(null);
 					}
-					addItem(recipe.getResult());
+					addItem(null, recipe.getResult());
 					doEffect();
 				});
 			}
@@ -122,17 +137,13 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	private void doEffect() {
-		int posX = pos.getX();
-		int posY = pos.getY();
-		int posZ = pos.getZ();
-		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.NEUTRAL, 1.0F, rand.nextFloat() * 0.1F + 0.8F);
-		for(int t = 0; t < 5; t++) {
-			for(int u = 0; u < 10; u++) {
-				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, -rand.nextDouble(), 0.2, -rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, rand.nextDouble(), 0.2, -rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.DRAGON_BREATH, posX, posY, posZ, -rand.nextDouble(), 0.2, rand.nextDouble());
-			}
+		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_FIREWORK_LARGE_BLAST, SoundCategory.BLOCKS, 1F, 0.5F);
+		for (int i = 0; i < 9; i++) {
+			double d0 = pos.getX() + rand.nextFloat();
+			double d1 = pos.getY() + 1 + rand.nextFloat();
+			double d2 = pos.getZ() + rand.nextFloat();
+
+			worldObj.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, d0, d1, d2, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
 		}
 	}
 
@@ -146,6 +157,15 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	@Override
 	public void update() {
+		if (tickCount % 2 == 0) {
+			double p0 = pos.getX() - 4.5D + rand.nextInt(10);
+			double p1 = pos.getY() + 0.5D + rand.nextInt(5);
+			double p2 = pos.getZ() - 4.5D + rand.nextInt(10);
+			double p3 = (0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F);
+
+			worldObj.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+		}
+
 		bookSpreadPrev = bookSpread;
 		bookRotationPrev = bookRotation;
 		EntityPlayer entityplayer = worldObj.getClosestPlayer(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, 3.0D, false);

@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item.masks;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.resources.I18n;
@@ -75,7 +76,7 @@ public class ItemKoomoteMask extends ItemModMask {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return LibMod.MODID + ":textures/models/armor/koomotemask.png";
+		return ResourceLocations.KOOMOTE_MASK.toString();
 	}
 
 }

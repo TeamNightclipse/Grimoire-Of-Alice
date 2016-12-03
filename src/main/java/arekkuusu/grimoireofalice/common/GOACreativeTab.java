@@ -150,17 +150,16 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.MONKEY_MASK);
 		addItem(ModItems.RAIDEN_MASK);
 		addItem(ModItems.UBA_MASK);
-		addItem(ModItems.BYAKUREN_AURA);
-		addItem(ModItems.MOKOU_AURA);
-		addItem(ModItems.TOYOSATOMIMI_AURA);
-		addItem(ModItems.UTSUHO_AURA);
-		addItem(ModItems.KANAKO_AURA);
-		addItem(ModItems.ICHIRIN_AURA);
+		addItem(ModItems.TOYOSATOMIMI_HAT);
+		addItem(ModItems.UTSUHO_WINGS);
+		addItem(ModItems.KANAKO_SHIMENAWA);
+		addItem(ModItems.ICHIRIN_UNZAN);
 		addItem(ModItems.SUWAKO_HAT);
 		addItem(ModItems.FIRE_ROBE);
 		addItem(ModItems.KAPPA_HAT);
 		addItem(ModItems.MARISA_HAT);
-		addItem(ModItems.MIKO_CAPE);
+		addItem(ModItems.MIKO_CLOAK);
+		addItem(ModItems.SHINMYOUMARU_HAT);
 
 		//Weapons
 		addItem(ModItems.AMENONUHOKO);

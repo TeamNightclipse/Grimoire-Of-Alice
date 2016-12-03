@@ -26,9 +26,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMikoStick extends ItemModSword {
+public class ItemToyosatomimiStick extends ItemModSword {
 
-	public ItemMikoStick(ToolMaterial material) {
+	public ItemToyosatomimiStick(ToolMaterial material) {
 		super(material, LibItemName.MIKO_STICK);
 		setNoRepair();
 	}
@@ -48,7 +48,6 @@ public class ItemMikoStick extends ItemModSword {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if(playerIn.experienceLevel < 30 && !playerIn.capabilities.isCreativeMode) {
-			playerIn.setFire(120);
 			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 		}
 		else {

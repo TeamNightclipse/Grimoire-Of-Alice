@@ -1,5 +1,6 @@
 {
   "variants": {
-	"normal": { "model": "grimoireofalice:pillaraltar" }
+	"model=new": { "model": "grimoireofalice:pillaraltar" },
+	"model=old": { "model": "grimoireofalice:pillaraltar_old" }
   }
 }

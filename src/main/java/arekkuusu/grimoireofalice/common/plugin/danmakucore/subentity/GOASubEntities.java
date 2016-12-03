@@ -21,8 +21,8 @@ public class GOASubEntities {
 
 	public static final SubEntityType WIND = REGISTRY.getValue(resource(LibSubEntityName.WIND));
 	public static final SubEntityType NOTE = REGISTRY.getValue(resource(LibSubEntityName.NOTE));
-	public static final SubEntityType UFO = REGISTRY.getValue(resource(LibSubEntityName.UFO));
 	public static final SubEntityType LEAF = REGISTRY.getValue(resource(LibSubEntityName.LEAF));
+	public static final SubEntityType UFO = REGISTRY.getValue(resource(LibSubEntityName.UFO));
 
 	private static ResourceLocation resource(String name) {
 		return new ResourceLocation(LibMod.MODID, name);

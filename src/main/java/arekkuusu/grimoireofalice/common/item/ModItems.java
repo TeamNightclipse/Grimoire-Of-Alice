@@ -117,28 +117,26 @@ public final class ModItems {
 	public static final Item KOKOROS_MASKS = new Item();
 	@ObjectHolder(LibItemName.MAPLE_LEAF_SHIELD)
 	public static final Item MAPLE_LEAF_SHIELD = new Item();
-	@ObjectHolder(LibItemName.AURA_BYAKUREN)
-	public static final Item BYAKUREN_AURA = new Item();
-	@ObjectHolder(LibItemName.AURA_MOKOU)
-	public static final Item MOKOU_AURA = new Item();
-	@ObjectHolder(LibItemName.AURA_TOYOSATOMIMI)
-	public static final Item TOYOSATOMIMI_AURA = new Item();
-	@ObjectHolder(LibItemName.AURA_KANAKO)
-	public static final Item KANAKO_AURA = new Item();
-	@ObjectHolder(LibItemName.AURA_ICHIRIN)
-	public static final Item ICHIRIN_AURA = new Item();
+	@ObjectHolder(LibItemName.TOYOSATOMIMI_HAT)
+	public static final Item TOYOSATOMIMI_HAT = new Item();
+	@ObjectHolder(LibItemName.KANAKO_SHIMENAWA)
+	public static final Item KANAKO_SHIMENAWA = new Item();
+	@ObjectHolder(LibItemName.ICHIRIN_UNZAN)
+	public static final Item ICHIRIN_UNZAN = new Item();
 	@ObjectHolder(LibItemName.SUWAKO_HAT)
 	public static final Item SUWAKO_HAT = new Item();
 	@ObjectHolder(LibItemName.FIRE_ROBE)
 	public static final Item FIRE_ROBE = new Item();
-	@ObjectHolder(LibItemName.AURA_UTSUHO)
-	public static final Item UTSUHO_AURA = new Item();
+	@ObjectHolder(LibItemName.UTSUHO_WINGS)
+	public static final Item UTSUHO_WINGS = new Item();
 	@ObjectHolder(LibItemName.KAPPA_HAT)
 	public static final Item KAPPA_HAT = new Item();
 	@ObjectHolder(LibItemName.MARISA_HAT)
 	public static final Item MARISA_HAT = new Item();
-	@ObjectHolder(LibItemName.MIKO_CAPE)
-	public static final Item MIKO_CAPE = new Item();
+	@ObjectHolder(LibItemName.MIKO_CLOAK)
+	public static final Item MIKO_CLOAK = new Item();
+	@ObjectHolder(LibItemName.SHINMYOUMARU_HAT)
+	public static final Item SHINMYOUMARU_HAT = new Item();
 	//Weapons
 	@ObjectHolder(LibItemName.MOCHI_HAMMER)
 	public static final Item MOCHI_HAMMER = new Item();

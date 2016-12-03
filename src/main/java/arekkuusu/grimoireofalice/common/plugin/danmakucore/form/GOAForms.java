@@ -20,8 +20,9 @@ public class GOAForms {
 	private static final IForgeRegistry<Form> REGISTRY = GameRegistry.findRegistry(Form.class);
 
 	public static final Form WIND = REGISTRY.getValue(resource(LibFormName.WIND));
-	public static final Form UFO = REGISTRY.getValue(resource(LibFormName.UFO));
+	public static final Form NOTE = REGISTRY.getValue(resource(LibFormName.NOTE));
 	public static final Form LEAF = REGISTRY.getValue(resource(LibFormName.LEAF));
+	public static final Form UFO = REGISTRY.getValue(resource(LibFormName.UFO));
 
 	private static ResourceLocation resource(String name) {
 		return new ResourceLocation(LibMod.MODID, name);

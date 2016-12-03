@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.variant.GOADanmakuVariants;
 import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
@@ -63,11 +64,11 @@ public class ItemLeaf extends ItemMod {
 			DanmakuHelper.playShotSound(playerIn);
 
 			if(!worldIn.isRemote) {
-				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setVariant(GOADanmakuVariants.LEAF);
-				float anglePitch = playerIn.isSneaking() ? 45 : -45;
+				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
+				float anglePitch = playerIn.rotationPitch + (playerIn.isSneaking() ? 45 : -45);
 				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
 				danmaku.setShot(danmaku.shot.setSize(2));
-				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
+				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(90F, anglePitch, 0F)));
 			}
 		}
 	}
@@ -81,5 +82,4 @@ public class ItemLeaf extends ItemMod {
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
 	}
-
 }

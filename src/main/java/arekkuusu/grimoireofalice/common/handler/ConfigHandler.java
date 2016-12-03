@@ -127,6 +127,8 @@ public class ConfigHandler {
 			public boolean suwakoHat = true;
 			@Comment("Can players craft the swallow cowrie shell?")
 			public boolean swallowCowrieShell = true;
+			@Comment("Can players craft the shinmyoumaru bowl?")
+			public boolean shinmyoumaruBowl = true;
 			@Comment("Can players craft the roukanken?")
 			public boolean roukanken = true;
 			@Comment("Can players craft the syringe?")
@@ -219,6 +221,8 @@ public class ConfigHandler {
 
 		public static class Features {
 
+			@Comment("Use vanilla block models for the onbashira and pillar?")
+			public boolean vanillaBlockModels = true;
 			@Comment("Can the ender dragon drop the sword of kusanagi?")
 			public boolean swordOfKusanagi = true;
 			@Comment("Allow shichi seiken drop gold?")

@@ -2,14 +2,10 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.entity.EntityNeedle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -47,37 +43,7 @@ public class ItemNeedle extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-
-			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if(timeUsed < 3) return;
-			float convert = timeUsed * 6 / 20F;
-			convert = (convert * convert + convert * 2.0F) / 3F;
-			if(convert < 0.1F) return;
-
-			boolean isLoli = false;
-			if(convert > 1.5F) {
-				convert = 1.5F;
-				isLoli = true;
-			}
-			convert *= 1.5F;
-
-			entityplayer.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			if(!worldIn.isRemote) {
-				EntityNeedle entityNeedle = new EntityNeedle(worldIn, entityplayer);
-				entityNeedle.setIsCritical(isLoli);
-				entityNeedle.setAim(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 5.0F, convert, 1.0F);
-				if(EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
-					entityNeedle.setFire(100);
-				}
-				worldIn.spawnEntityInWorld(entityNeedle);
-			}
-
-			if(!entityplayer.capabilities.isCreativeMode) {
-				stack.damageItem(1, entityplayer);
-			}
-		}
+		//TODO: Make Item work like in the Touhou Fighting Games
 	}
 
 	@Override

@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.common.handler.WorldGenPlants;
 import arekkuusu.grimoireofalice.common.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
+import arekkuusu.grimoireofalice.common.proxy.ISidedProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;

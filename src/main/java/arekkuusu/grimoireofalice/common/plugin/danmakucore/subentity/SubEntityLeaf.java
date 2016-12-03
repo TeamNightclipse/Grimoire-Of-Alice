@@ -1,8 +1,6 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.variant.GOADanmakuVariants;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
@@ -36,10 +34,7 @@ public class SubEntityLeaf extends SubEntityType {
 				for (int j = 0; j < 8; ++j) {
 					danmaku.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
 				}
-
-				danmaku.setMovementData(GOADanmakuVariants.UFO.getMovementData().setConstant(0.1D));
-				danmaku.setShotData(LibGOAShotData.UFO);
-				danmaku.setShotData(danmaku.getShotData().setSize(2));
+				danmaku.setDead();
 			}
 		}
 

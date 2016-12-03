@@ -1,7 +1,10 @@
 {
   "variants": {
-	"part=lower": { "model": "grimoireofalice:onbashiralower" },
-	"part=middle": { "model": "grimoireofalice:onbashiramiddle" },
-	"part=top": { "model": "grimoireofalice:onbashiratop" }
+	"model=new,part=lower": { "model": "grimoireofalice:onbashiralower" },
+	"model=new,part=middle": { "model": "grimoireofalice:onbashiramiddle" },
+	"model=new,part=top": { "model": "grimoireofalice:onbashiratop" },
+	"model=old,part=lower": { "model": "grimoireofalice:onbashiralower_old" },
+	"model=old,part=middle": { "model": "grimoireofalice:onbashiramiddle_old" },
+	"model=old,part=top": { "model": "grimoireofalice:onbashiratop_old" }
   }
 }
