@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
-import arekkuusu.grimoireofalice.common.proxy.ISidedProxy;
+import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
@@ -21,8 +21,8 @@ import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
 import arekkuusu.grimoireofalice.common.entity.*;
 import arekkuusu.grimoireofalice.common.event.MalletEvent;
-import arekkuusu.grimoireofalice.common.handler.TextureStitcher;
-import arekkuusu.grimoireofalice.common.handler.GuiHandler;
+import arekkuusu.grimoireofalice.common.core.handler.TextureStitcher;
+import arekkuusu.grimoireofalice.common.core.handler.GuiHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.block.Block;

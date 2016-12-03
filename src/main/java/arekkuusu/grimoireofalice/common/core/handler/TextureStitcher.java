@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.common.handler;
+package arekkuusu.grimoireofalice.common.core.handler;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import net.minecraftforge.client.event.TextureStitchEvent;

@@ -65,6 +65,6 @@ public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.AURA_ICHIRIN.toString();
+		return ResourceLocations.ICHIRIN_UNZAN.toString();
 	}
 }

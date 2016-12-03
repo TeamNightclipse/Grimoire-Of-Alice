@@ -6,7 +6,7 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.common.handler;
+package arekkuusu.grimoireofalice.common.core.handler;
 
 import arekkuusu.grimoireofalice.client.gui.GuiItemInventory;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenBookYoukai;

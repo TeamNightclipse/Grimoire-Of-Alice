@@ -23,7 +23,7 @@ public class RenderCameraSquare extends Render<EntityCameraSquare> {
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y - 0.4, z);
 		GlStateManager.disableLighting();
-		float size = 2.0F;
+		float size = entity.getSize();
 		GlStateManager.scale(size, size, size);
 		float angle = 90;
 		GlStateManager.rotate(180F - renderManager.playerViewY + angle, 0.0F, 1.0F, 0.0F);

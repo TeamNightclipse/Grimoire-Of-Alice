@@ -46,10 +46,11 @@ public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmo
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.worldObj.isRemote)
+		if (player.worldObj.isRemote) {
 			if ((player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.WATER)) {
 				player.moveRelative(0F, 1F, 0.085F);
 			}
+		}
 	}
 
 	@Override
@@ -76,6 +77,6 @@ public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmo
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.CLOACK_TOYOSATOMIMI.toString();
+		return ResourceLocations.TOYOSATOMIMI_CLOAK.toString();
 	}
 }

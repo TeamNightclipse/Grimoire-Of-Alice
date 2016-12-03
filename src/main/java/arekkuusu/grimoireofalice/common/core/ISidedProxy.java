@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.common.proxy;
+package arekkuusu.grimoireofalice.common.core;
 
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import net.minecraft.entity.Entity;

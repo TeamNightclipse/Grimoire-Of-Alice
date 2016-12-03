@@ -10,7 +10,7 @@ import net.minecraft.entity.Entity;
 public class ModelKappaHat extends ModelBiped {
 
 	private final ModelRenderer hat;
-	private final ModelRenderer hat0;
+	public ModelRenderer hat0;
 	private final ModelRenderer cherry0;
 	private final ModelRenderer cherry1;
 	private final ModelRenderer cherry2;
@@ -19,28 +19,28 @@ public class ModelKappaHat extends ModelBiped {
 	public ModelKappaHat() {
 		this.textureWidth = 32;
 		this.textureHeight = 32;
-		this.hat0 = new ModelRenderer(this, -5, 17);
-		this.hat0.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat0.addBox(-4.5F, -4.0F, -9.5F, 9, 0, 5, 0.0F);
-		this.cherry0 = new ModelRenderer(this, 0, 0);
-		this.cherry0.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.cherry0.addBox(-5.5F, -4.5F, 0.4F, 1, 1, 1, 0.0F);
-		this.cherry3 = new ModelRenderer(this, 0, 0);
-		this.cherry3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.cherry3.addBox(4.5F, -3.5F, -0.6F, 1, 1, 1, 0.0F);
 		this.hat = new ModelRenderer(this, 0, 0);
 		this.hat.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.hat.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F);
+		this.cherry3 = new ModelRenderer(this, 0, 0);
+		this.cherry3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.cherry3.addBox(4.5F, -3.5F, -0.6F, 1, 1, 1, 0.0F);
+		this.hat0 = new ModelRenderer(this, 0, 17);
+		this.hat0.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat0.addBox(-4.5F, -4.5F, -9.5F, 9, 1, 5, 0.0F);
 		this.cherry1 = new ModelRenderer(this, 0, 0);
 		this.cherry1.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.cherry1.addBox(-5.5F, -5.5F, -0.8F, 1, 1, 1, 0.0F);
+		this.cherry0 = new ModelRenderer(this, 0, 0);
+		this.cherry0.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.cherry0.addBox(-5.5F, -4.5F, 0.4F, 1, 1, 1, 0.0F);
 		this.cherry2 = new ModelRenderer(this, 0, 0);
 		this.cherry2.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.cherry2.addBox(4.5F, -4.5F, 0.5F, 1, 1, 1, 0.0F);
-		this.hat.addChild(this.hat0);
-		this.hat.addChild(this.cherry0);
 		this.hat.addChild(this.cherry3);
+		this.hat.addChild(this.hat0);
 		this.hat.addChild(this.cherry1);
+		this.hat.addChild(this.cherry0);
 		this.hat.addChild(this.cherry2);
 	}
 

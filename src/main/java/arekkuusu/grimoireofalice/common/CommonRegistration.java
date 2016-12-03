@@ -3,7 +3,7 @@ package arekkuusu.grimoireofalice.common;
 import arekkuusu.grimoireofalice.common.block.*;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.common.handler.WorldGenOre;
+import arekkuusu.grimoireofalice.common.core.handler.WorldGenOre;
 import arekkuusu.grimoireofalice.common.item.*;
 import arekkuusu.grimoireofalice.common.item.food.*;
 import arekkuusu.grimoireofalice.common.item.masks.*;

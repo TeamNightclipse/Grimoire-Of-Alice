@@ -6,15 +6,17 @@ import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -29,6 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
+	public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyEnum<Model> MODEL = PropertyEnum.create("model", Model.class);
 
 	public BlockPillarAltar() {
@@ -72,7 +75,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, MODEL);
+		return new BlockStateContainer(this, PROPERTYFACING, MODEL);
 	}
 
 	@Override
@@ -83,12 +86,21 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
+		EnumFacing facing = EnumFacing.getHorizontal(meta);
+		return getDefaultState().withProperty(PROPERTYFACING, facing).withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return 0;
+		EnumFacing facing = state.getValue(PROPERTYFACING);
+		return facing.getHorizontalIndex();
+	}
+
+	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+									 EntityLivingBase placer) {
+		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
+		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
 	}
 
 	@SuppressWarnings("deprecation") //Internal

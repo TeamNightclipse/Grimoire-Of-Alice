@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.Arrays;
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;

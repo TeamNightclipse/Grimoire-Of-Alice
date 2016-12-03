@@ -6,7 +6,7 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.common.proxy;
+package arekkuusu.grimoireofalice.common.core;
 
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import net.minecraft.entity.Entity;

@@ -9,11 +9,10 @@
 package arekkuusu.grimoireofalice.common.item.crafting;
 
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;

@@ -2,7 +2,7 @@ package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.minecraft.entity.Entity;

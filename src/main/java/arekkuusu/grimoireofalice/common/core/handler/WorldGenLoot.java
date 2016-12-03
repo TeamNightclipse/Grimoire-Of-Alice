@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.common.handler;
+package arekkuusu.grimoireofalice.common.core.handler;
 
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import com.google.common.collect.ImmutableList;

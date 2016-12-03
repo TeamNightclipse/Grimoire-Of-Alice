@@ -81,6 +81,6 @@ public class ItemToyosatomimiHat extends ItemModArmor  implements ISpecialArmor 
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.HAT_TOYOSATOMIMI.toString();
+		return ResourceLocations.TOYOSATOMIMI_HAT.toString();
 	}
 }

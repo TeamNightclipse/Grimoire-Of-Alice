@@ -76,6 +76,6 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.AURA_KANAKO.toString();
+		return ResourceLocations.KANAKO_SHIMENAWA.toString();
 	}
 }

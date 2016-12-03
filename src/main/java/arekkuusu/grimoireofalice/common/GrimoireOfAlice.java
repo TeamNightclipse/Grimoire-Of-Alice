@@ -8,16 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common;
 
+import arekkuusu.grimoireofalice.common.core.handler.*;
 import arekkuusu.grimoireofalice.common.entity.ModEntity;
 import arekkuusu.grimoireofalice.common.event.ModEvents;
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.handler.StopWatchHandler;
-import arekkuusu.grimoireofalice.common.handler.WorldGenLoot;
-import arekkuusu.grimoireofalice.common.handler.WorldGenPlants;
-import arekkuusu.grimoireofalice.common.helper.LogHelper;
+import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import arekkuusu.grimoireofalice.common.proxy.ISidedProxy;
+import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -49,6 +46,7 @@ public class GrimoireOfAlice {
 	public void preInit(FMLPreInitializationEvent event) {
 		ModEvents.preInit();
 		ModEntity.preInit();
+		ModSounds.preInit();
 		MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
 		if (ConfigHandler.grimoireOfAlice.worldGen.pointItemsGen)
 			MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenLoot());

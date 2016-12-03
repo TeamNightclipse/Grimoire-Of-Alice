@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 public class EntityHakureiOrb extends EntityThrowable {
 
-	//TODO: Why not use minecraft size?
+	//TODO: Why not use minecraft size? R: No getter
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private boolean isMoving = false;
 

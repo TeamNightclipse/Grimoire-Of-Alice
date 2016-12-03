@@ -9,26 +9,26 @@ import net.minecraft.entity.Entity;
  */
 public class ModelUtsuhoWings extends ModelBiped {
 
-	private final ModelRenderer wingLeft;
-	private final ModelRenderer wingRight;
 	private final ModelRenderer cape;
+	private final ModelRenderer wingRight;
+	private final ModelRenderer wingLeft;
 	private final ModelRenderer chest;
 
     public ModelUtsuhoWings() {
         this.textureWidth = 128;
         this.textureHeight = 64;
-        this.wingLeft = new ModelRenderer(this, 0, 0);
-        this.wingLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.wingLeft.addBox(-20.0F, 0.5F, 2.5F, 40, 19, 0, 0.0F);
-        this.setRotateAngle(wingLeft, 0.24434609527920614F, 0.0F, 0.0F);
+        this.cape = new ModelRenderer(this, 0, 0);
+        this.cape.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.cape.addBox(-20.0F, 0.5F, 2.5F, 40, 19, 0, 0.0F);
+        this.setRotateAngle(cape, 0.24434609527920614F, 0.0F, 0.0F);
         this.wingRight = new ModelRenderer(this, 0, 20);
         this.wingRight.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.wingRight.addBox(0.0F, -6.0F, 2.0F, 30, 21, 0, 0.0F);
+        this.wingRight.addBox(0.0F, -10.5F, 2.0F, 30, 21, 0, 0.0F);
         this.setRotateAngle(wingRight, 0.17453292519943295F, 0.0F, 0.12217304763960307F);
-        this.cape = new ModelRenderer(this, 0, 42);
-        this.cape.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.cape.addBox(-30.0F, -6.0F, 2.0F, 30, 21, 0, 0.0F);
-        this.setRotateAngle(cape, 0.17453292519943295F, 0.0F, -0.12217304763960307F);
+        this.wingLeft = new ModelRenderer(this, 0, 42);
+        this.wingLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.wingLeft.addBox(-30.0F, -10.5F, 2.0F, 30, 21, 0, 0.0F);
+        this.setRotateAngle(wingLeft, 0.17453292519943295F, 0.0F, -0.12217304763960307F);
 		this.chest = new ModelRenderer(this, 104, 0);
 		this.chest.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.chest.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, 0.25F);
@@ -36,9 +36,9 @@ public class ModelUtsuhoWings extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		wingLeft.render(scale);
-		wingRight.render(scale);
 		cape.render(scale);
+		wingRight.render(scale);
+		wingLeft.render(scale);
 		bipedBody = chest;
 
 		bipedRightArm.showModel = false;

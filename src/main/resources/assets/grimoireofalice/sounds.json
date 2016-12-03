@@ -1,0 +1,5 @@
+{
+	"cameraBeep": { "sounds":["grimoireofalice:cameraBeep"], "subtitle": "grimoire.subtitle.cameraBeep" },
+	"cameraShoot": { "sounds":["grimoireofalice:cameraShoot"], "subtitle": "grimoire.subtitle.cameraShoot" },
+	"cameraShutter": { "sounds":["grimoireofalice:cameraShutter"], "subtitle": "grimoire.subtitle.cameraShutter" }
+}

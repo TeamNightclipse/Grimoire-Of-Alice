@@ -4,7 +4,7 @@ import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.api.recipes.IRecipeItems;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
-import arekkuusu.grimoireofalice.common.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ItemNazrinStick;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.init.Blocks;
@@ -104,6 +104,8 @@ public final class SpecialRecipes {
 	public static IRecipeItems HOLYSTONE;
 	public static IRecipeItems ONBASHIRA;
 	public static IRecipeItems END_CRYSTAL;
+
+	private SpecialRecipes(){}
 
 	public static void init() {
 		//General
