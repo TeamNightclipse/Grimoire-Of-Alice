@@ -1,5 +1,7 @@
 {
 	"cameraBeep": { "sounds":["grimoireofalice:cameraBeep"], "subtitle": "grimoire.subtitle.cameraBeep" },
 	"cameraShoot": { "sounds":["grimoireofalice:cameraShoot"], "subtitle": "grimoire.subtitle.cameraShoot" },
-	"cameraShutter": { "sounds":["grimoireofalice:cameraShutter"], "subtitle": "grimoire.subtitle.cameraShutter" }
+	"cameraShutter": { "sounds":["grimoireofalice:cameraShutter"], "subtitle": "grimoire.subtitle.cameraShutter" },
+	"needleSweep": { "sounds":["grimoireofalice:needleSweep"], "subtitle": "grimoire.subtitle.needleSweep" },
+	"simpleBell": { "sounds":["grimoireofalice:simpleBell"], "subtitle": "grimoire.subtitle.simpleBell" }
 }

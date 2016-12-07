@@ -8,10 +8,6 @@
         "type": "item",
         "name": "grimoireofalice:mochihammer",
         "weight": 10
-      },
-      {
-        "type": "empty",
-        "weight": 90
       }
     ]
   }]

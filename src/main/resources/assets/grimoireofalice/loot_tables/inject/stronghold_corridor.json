@@ -7,16 +7,12 @@
       {
         "type": "item",
         "name": "grimoireofalice:orinskull",
-        "weight": 45
+        "weight": 15
       },
       {
         "type": "item",
         "name": "grimoireofalice:ibukigourd",
-        "weight": 50
-      },
-      {
-        "type": "empty",
-        "weight": 40
+        "weight": 15
       }
     ]
   }]

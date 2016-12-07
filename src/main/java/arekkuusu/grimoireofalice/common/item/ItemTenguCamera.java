@@ -67,6 +67,8 @@ public class ItemTenguCamera extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
+			if(!player.capabilities.isCreativeMode)
+				stack.damageItem(1, player);
 			worldIn.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
 			player.getCooldownTracker().setCooldown(this, 100);
 		}

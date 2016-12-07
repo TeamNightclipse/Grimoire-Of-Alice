@@ -61,8 +61,8 @@ public class FormUfo extends FormGeneric {
 
 				GlStateManager.enableRescaleNormal();
 
-				GlStateManager.rotate(-yaw - 180F, 0F, 1F, 0F);
-				GlStateManager.rotate(pitch - 90F, 1F, 0F, 0F);
+				GlStateManager.rotate(-yaw + 180F, 0F, 1F, 0F);
+				GlStateManager.rotate(pitch, 1F, 0F, 0F);
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
 

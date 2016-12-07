@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore;
 
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuVariantName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormLeaf;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormNote;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormUfo;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormWind;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.*;
@@ -35,7 +36,8 @@ public class Initializer {
 		event.getRegistry().registerAll(
 				new FormWind(),
 				new FormUfo(),
-				new FormLeaf()
+				new FormLeaf(),
+				new FormNote()
 		);
 	}
 
@@ -55,6 +57,8 @@ public class Initializer {
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
 		event.getRegistry().registerAll(
 				new DanmakuVariantGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO,
+				new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(0))),
+				new DanmakuVariantGeneric(LibDanmakuVariantName.NOTE, () -> LibGOAShotData.NOTE,
 						new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(0)))
 		);
 	}

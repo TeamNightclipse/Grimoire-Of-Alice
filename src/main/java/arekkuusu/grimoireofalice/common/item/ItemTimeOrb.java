@@ -80,16 +80,11 @@ public class ItemTimeOrb extends ItemMod {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
 		return 42;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 }

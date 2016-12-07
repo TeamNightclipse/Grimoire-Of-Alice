@@ -1,7 +1,6 @@
 package arekkuusu.grimoireofalice.common.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -15,8 +14,8 @@ import java.util.List;
 public class EntityCameraSquare extends Entity {
 
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityCameraSquare.class, DataSerializers.FLOAT);
-	private int maxSize;
 	private EntityPlayer player;
+	private int maxSize;
 
 	public EntityCameraSquare(World worldIn) {
 		super(worldIn);
@@ -67,7 +66,7 @@ public class EntityCameraSquare extends Entity {
 
 	private List<Entity> getEntities() {
 		return worldObj.getEntitiesWithinAABB(Entity.class,
-				getEntityBoundingBox().expandXyz(getSize() * 2), entity -> entity != player);
+				getEntityBoundingBox().expandXyz(getSize() * 1.5), entity -> entity != player);
 	}
 
 	private void setSize(float size) {

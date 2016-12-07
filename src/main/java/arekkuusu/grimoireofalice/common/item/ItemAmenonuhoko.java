@@ -151,11 +151,6 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 	}
 
 	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
-	}
-
-	@Override
 	public int getItemEnchantability() {
 		return 0;
 	}

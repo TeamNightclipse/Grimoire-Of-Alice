@@ -99,6 +99,8 @@ public class ConfigHandler {
 			public boolean nimbleFabric = true;
 			@Comment("Can players craft the nue trident?")
 			public boolean nueTrident = true;
+			@Comment("Can players craft the ibuki gourd?")
+			public boolean ibukiGourd = true;
 			@Comment("Can players craft the patchy book?")
 			public boolean patchyBook = true;
 			@Comment("Can players craft the rod of remorse?")
@@ -147,6 +149,10 @@ public class ConfigHandler {
 			public boolean waterMelonSword = true;
 			@Comment("Can players craft the popsicle stick?")
 			public boolean popsicleStick = true;
+			@Comment("Can players craft toyosatomimi hat?")
+			public boolean toyosatomimiHat = true;
+			@Comment("Can players craft utsuho wings?")
+			public boolean utsuhoWings = true;
 
 			@Comment("Can players craft holy stones?")
 			public boolean holyStone = true;
@@ -193,6 +199,7 @@ public class ConfigHandler {
 		}
 
 		public static class Food {
+
 			@Comment("Can players craft grilled lamprey?")
 			public boolean grilledLamprey = true;
 			@Comment("Can players get the heavely peach?")
@@ -205,6 +212,8 @@ public class ConfigHandler {
 			public boolean shroomPowder = true;
 			@Comment("Can players craft the ultramarine orb elixir?")
 			public boolean ultramarineOrbElixir = true;
+			@Comment("Can players craft the yuugi sake?")
+			public boolean yuugiSake = true;
 		}
 
 		public static class WorldGen {

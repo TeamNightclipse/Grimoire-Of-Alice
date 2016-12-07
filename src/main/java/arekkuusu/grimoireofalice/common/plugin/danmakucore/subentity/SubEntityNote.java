@@ -14,7 +14,6 @@ import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
@@ -38,9 +37,7 @@ public class SubEntityNote extends SubEntityType {
 		@Override
 		public void subEntityTick() {
 			super.subEntityTick();
-			//TODO: Replace with actual note models
-			danmaku.worldObj.spawnParticle(EnumParticleTypes.NOTE, danmaku.posX + 0.5, danmaku.posY, danmaku.posZ + 0.5, 0.0D, 0.0D, 0.0D);
-			if(rand.nextInt(10) == 5) {
+			if (rand.nextInt(10) == 5) {
 				danmaku.worldObj.playSound(null, danmaku.posX, danmaku.posY, danmaku.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F,
 						1F);
 			}

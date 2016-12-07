@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 import java.util.Optional;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleLantern;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -16,9 +17,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -98,6 +98,7 @@ public class ItemMiracleMallet extends ItemMod {
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
+			player.worldObj.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
 			if (player.isSneaking()) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku, 35);
 				if (lookedAt.isPresent()) { //FIXME: Never present
@@ -107,11 +108,16 @@ public class ItemMiracleMallet extends ItemMod {
 				}
 			}
 			else if (!player.worldObj.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
+				Vec3d vec = player.getLookVec();
+				List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3D), entity -> entity != player);
+				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
+
 				for (int i = 0; i < 4; i++) {
 					EntityThrowable lantern = new EntityMiracleLantern(player.worldObj, player);
 					player.worldObj.spawnEntityInWorld(lantern);
 					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
-							, 0F, 0.1F + 0.1F * itemRand.nextInt(3), 0F);
+							, 0F, 0.2F + 0.1F * itemRand.nextInt(3), 3F);
 				}
 				player.getCooldownTracker().setCooldown(this, 25);
 			}
@@ -123,11 +129,6 @@ public class ItemMiracleMallet extends ItemMod {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		useMallet(playerIn, hand);
 		return true;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

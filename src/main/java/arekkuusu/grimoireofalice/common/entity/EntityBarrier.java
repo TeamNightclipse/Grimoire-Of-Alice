@@ -4,7 +4,11 @@ import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -58,7 +62,7 @@ public class EntityBarrier extends Entity {
 			}
 
 			List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-					entity1 -> entity1.canBeCollidedWith() || entity1 != player);
+					entity1 -> entity1.canBeCollidedWith() && entity1 != player);
 
 			if(!entities.isEmpty()) {
 				onDetectEntity(entities.get(0));
@@ -74,8 +78,10 @@ public class EntityBarrier extends Entity {
 
 	private void onDetectEntity(Entity living) {
 		if(type == 3) {
-			worldObj.createExplosion(living, living.posX, living.posY + 1, living.posZ, 2.5F, false);
-			if(!worldObj.isRemote) {
+			worldObj.playSound(null, living.posX, living.posY + 1, living.posZ + 0.5, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, living.posX + 0.5, living.posY + 1, living.posZ + 0.5, 1.0D, 0.0D, 0.0D);
+			living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
+			if (!worldObj.isRemote) {
 				setDead();
 			}
 		}

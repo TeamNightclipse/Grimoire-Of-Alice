@@ -123,4 +123,5 @@ public class LibItemName {
 	public static final String HISOU = "hisou";
 	public static final String DEATH_SCYTHE = "deathscythe";
 	public static final String ROUKANKEN = "roukanken";
+	public static final String YUUGI_SAKE = "yuugisake";
 }

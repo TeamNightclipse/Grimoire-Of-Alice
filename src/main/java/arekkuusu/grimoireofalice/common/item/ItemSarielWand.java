@@ -41,6 +41,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
 	}
@@ -83,11 +84,6 @@ public class ItemSarielWand extends ItemSwordOwner {
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
 		player.attackEntityFrom(DamageSource.magic, 9999);
 		entity.attackEntityFrom(DamageSource.magic, 9999);
-		return false;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
 		return false;
 	}
 

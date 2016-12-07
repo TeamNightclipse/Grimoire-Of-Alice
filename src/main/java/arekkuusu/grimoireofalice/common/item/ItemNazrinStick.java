@@ -187,17 +187,12 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.NONE;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

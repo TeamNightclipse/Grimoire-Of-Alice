@@ -12,6 +12,8 @@ import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -24,6 +26,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class ItemInstrument extends ItemMod {
+
+	private static final int[] COLORS = {
+			LibColor.COLOR_SATURATED_GREEN,
+			LibColor.COLOR_SATURATED_YELLOW,
+			LibColor.COLOR_SATURATED_RED,
+			LibColor.COLOR_SATURATED_BLUE,
+			LibColor.COLOR_SATURATED_CYAN
+	};
 
 	public ItemInstrument(String id) {
 		super(id);
@@ -46,22 +56,24 @@ public class ItemInstrument extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(player instanceof EntityPlayer) {
-			if(!player.worldObj.isRemote) {
-				EntityDanmaku danmaku = DanmakuBuilder.builder()
+		if (player instanceof EntityPlayer && count % 2 == 0) {
+			if (!player.worldObj.isRemote) {
+				int color = COLORS[itemRand.nextInt(COLORS.length)];
+
+				DanmakuBuilder danmaku = DanmakuBuilder.builder()
 						.setUser(player)
-						.setMovementData(1.5D)
-						.setShot(LibGOAShotData.NOTE)
-						.build().asEntity();
-				player.worldObj.spawnEntityInWorld(danmaku);
+						.setMovementData(0.3D)
+						.setShot(LibGOAShotData.NOTE.setColor(color))
+						.build();
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 4F, 1D);
 			}
 		}
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		EntityPlayer playerIn = (EntityPlayer)entityLiving;
-		if(!playerIn.capabilities.isCreativeMode) {
+		EntityPlayer playerIn = (EntityPlayer) entityLiving;
+		if (!playerIn.capabilities.isCreativeMode) {
 			int hurr = (getMaxItemUseDuration(stack) - timeLeft) / 2;
 			stack.damageItem(hurr, playerIn);
 			playerIn.getCooldownTracker().setCooldown(this, 50);
@@ -76,11 +88,6 @@ public class ItemInstrument extends ItemMod {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 500;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

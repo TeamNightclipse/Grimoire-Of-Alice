@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client;
 
+import arekkuusu.grimoireofalice.client.fx.NeedleSwing;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
@@ -143,6 +144,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.COWRIE_SHELL, 0);
 		registerItem(ModItems.ORB_ELIXIR, 0);
 		registerItem(ModItems.HOURAI_ELIXIR, 0);
+		registerItem(ModItems.YUUGI_SAKE, 0);
 
 		//Weapons
 		registerItem(ModItems.AMENONUHOKO, 0);
@@ -262,6 +264,9 @@ public class ClientProxy implements ISidedProxy {
 			case RED_MIST:
 				if (entity == null) return;
 				particle = new RedMist(Minecraft.getMinecraft().theWorld, entity, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				break;
+			case NEEDLE_SWING:
+				particle = new NeedleSwing(Minecraft.getMinecraft().renderEngine, Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn);
 				break;
 			default:
 				particle = new Particle(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);

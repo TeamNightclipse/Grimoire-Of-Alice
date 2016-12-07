@@ -4,7 +4,10 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -37,6 +40,18 @@ public class ItemDeathScythe extends ItemModSword {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.death_scythe_header.name"));
 		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.death_scythe_description.name"));
+	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (!worldIn.isRemote) {
+			List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, entityIn.getEntityBoundingBox().expandXyz(10));
+			list.stream().filter(entityMob -> entityMob.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)
+					.forEach(entityMob -> {
+						entityMob.setAttackTarget(null);
+						entityMob.setRevengeTarget(null);
+					});
+		}
 	}
 
 	@Override
@@ -105,17 +120,12 @@ public class ItemDeathScythe extends ItemModSword {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.NONE;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 7000;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

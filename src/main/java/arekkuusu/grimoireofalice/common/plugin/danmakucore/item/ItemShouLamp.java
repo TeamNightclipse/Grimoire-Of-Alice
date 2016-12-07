@@ -155,7 +155,7 @@ public class ItemShouLamp extends ItemMod {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override

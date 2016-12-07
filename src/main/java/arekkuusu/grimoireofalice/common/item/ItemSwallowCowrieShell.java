@@ -81,11 +81,6 @@ public class ItemSwallowCowrieShell extends ItemMod {
 	}
 
 	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
-	}
-
-	@Override
 	public int getItemEnchantability() {
 		return 0;
 	}

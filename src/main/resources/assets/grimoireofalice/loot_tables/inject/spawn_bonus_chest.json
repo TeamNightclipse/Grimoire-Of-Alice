@@ -7,10 +7,6 @@
       {
         "type": "item",
         "name": "grimoireofalice:patchybook",
-        "weight": 80
-      },
-      {
-        "type": "empty",
         "weight": 10
       }
     ]

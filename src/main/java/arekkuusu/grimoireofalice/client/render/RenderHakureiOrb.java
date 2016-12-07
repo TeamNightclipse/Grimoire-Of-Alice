@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 
@@ -22,8 +23,8 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
-		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_COLOR);
 		float size = entity.getSize();
 		GlStateManager.scale(size, size, size);
 		float angle = 90;
@@ -33,7 +34,6 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 		GlStateManager.rotate(angle * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
-		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

@@ -32,13 +32,13 @@ public class ModelUtsuhoWings extends ModelBiped {
 		this.chest = new ModelRenderer(this, 104, 0);
 		this.chest.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.chest.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, 0.25F);
+		chest.addChild(cape);
+		chest.addChild(wingRight);
+		chest.addChild(wingLeft);
     }
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		cape.render(scale);
-		wingRight.render(scale);
-		wingLeft.render(scale);
 		bipedBody = chest;
 
 		bipedRightArm.showModel = false;

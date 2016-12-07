@@ -84,7 +84,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					Vec3d look = player.getLookVec();
 
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
-					entity.attackEntityFrom(DamageSource.lightningBolt, 2);
+					entity.attackEntityFrom(DamageSource.magic, 10);
 					entity.motionX -= look.xCoord * 0.5;
 					entity.motionY -= look.yCoord * 0.5;
 					entity.motionZ -= look.zCoord * 0.5;
@@ -125,7 +125,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					if (timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 						if (!list.isEmpty()) {
-							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue();
+							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue() * 2;
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
@@ -196,17 +196,12 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 100;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

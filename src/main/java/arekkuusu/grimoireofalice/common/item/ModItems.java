@@ -94,6 +94,8 @@ public final class ModItems {
 	public static final Item ORB_ELIXIR = new Item();
 	@ObjectHolder(LibItemName.HOURAI_ELIXIR)
 	public static final Item HOURAI_ELIXIR = new Item();
+	@ObjectHolder(LibItemName.YUUGI_SAKE)
+	public static final Item YUUGI_SAKE = new Item();
 	//Armor
 	@ObjectHolder(LibItemName.FOX_MASK)
 	public static final Item FOX_MASK = new Item();

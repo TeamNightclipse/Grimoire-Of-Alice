@@ -108,5 +108,4 @@ public class ItemSpellCardPouch extends ItemMod {
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-
 }

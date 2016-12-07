@@ -14,7 +14,6 @@ import net.minecraft.item.ItemShield;
 public class ItemModShield extends ItemShield {
 
 	public ItemModShield(String id) {
-		super();
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);

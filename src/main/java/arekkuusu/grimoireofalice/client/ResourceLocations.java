@@ -57,11 +57,14 @@ public final class ResourceLocations {
 	//Particle
 	public static final ResourceLocation SHINMYOUMARU_SPARKLE = getLocation("particle/Shinmyoumaru");
 	public static final ResourceLocation RED_MIST = getLocation("particle/RedMist");
+	public static final ResourceLocation NEEDLE_SWING = getLocation("textures/particle/NeedleSwing.png");
 
 	//Sounds
 	public static final ResourceLocation CAMERA_BEEP = getLocation("cameraBeep");
 	public static final ResourceLocation CAMERA_SHOOT = getLocation("cameraShoot");
 	public static final ResourceLocation CAMERA_SHUTTER = getLocation("cameraShutter");
+	public static final ResourceLocation NEEDLE_SWEEP = getLocation("needleSweep");
+	public static final ResourceLocation SIMPLE_BELL = getLocation("simpleBell");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);

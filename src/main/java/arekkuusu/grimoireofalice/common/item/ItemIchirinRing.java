@@ -95,7 +95,7 @@ public class ItemIchirinRing extends ItemModSword {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.NONE;
 	}
 
 	@Override

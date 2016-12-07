@@ -7,21 +7,17 @@
       {
         "type": "item",
         "name": "grimoireofalice:ufored",
-        "weight": 50
+        "weight": 25
 	  },
       {
         "type": "item",
         "name": "grimoireofalice:ufoblue",
-        "weight": 40
+        "weight": 20
       },
       {
         "type": "item",
         "name": "grimoireofalice:ufogreen",
-        "weight": 30
-      },
-      {
-        "type": "empty",
-        "weight": 13
+        "weight": 15
       }
     ]
   }]

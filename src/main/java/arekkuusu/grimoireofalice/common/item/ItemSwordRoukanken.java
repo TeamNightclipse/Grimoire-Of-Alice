@@ -88,7 +88,8 @@ public class ItemSwordRoukanken extends ItemModSword {
 					}
 
 					stack.damageItem(1, player);
-					player.swingArm(EnumHand.MAIN_HAND);
+					EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+					player.swingArm(hand);
 				}
 			}
 		}
@@ -120,11 +121,6 @@ public class ItemSwordRoukanken extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 7000;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

@@ -26,6 +26,7 @@ public class ItemHouraiElixir extends ItemModFood {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
 	}

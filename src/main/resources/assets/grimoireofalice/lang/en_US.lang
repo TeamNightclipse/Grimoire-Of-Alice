@@ -53,6 +53,7 @@ item.heavenlypeach.name=Heavenly Peach
 item.ibukigourd.name=Ibuki Gourd
 item.orbelixir.name=Ultramarine Orb Elixir
 item.houraielixir.name=Hourai Elixir
+item.yuugisake.name=Yuugi's Sake
 
 item.foxmask.name=Fox Mask
 item.raidenmask.name=Raiden Mask
@@ -166,10 +167,12 @@ item.sanaegohei.name=Sanae's Miracle Gohei
 item.danmaku.danmakuvariant.grimoireofalice.leaf.name=Leaf Shot
 item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
 item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
+item.danmaku.danmakuvariant.grimoireofalice.note.name=Note Shot
 
 subentity.grimoireofalice.leaf=Gravity
 subentity.grimoireofalice.ufo=Random movement
 subentity.grimoireofalice.wind=Push mobs away
+subentity.grimoireofalice.note=Slow movement
 
 effect.elixir=Elixir
 
@@ -225,7 +228,7 @@ grimoire.tooltip.toyosatomimi_hat_description_mid.name=but unfortunately you are
 grimoire.tooltip.toyosatomimi_hat_description_bottom.name=Sucks to be you
 
 grimoire.tooltip.utsuho_wings_header.name=Hell raven with Yatagarasu
-grimoire.tooltip.utsuho_wings_description.name=Grants wings to the user that give creative flight for a short period of time
+grimoire.tooltip.utsuho_wings_description.name=Grants wings to the user that give creative flight for an undefined period of time
 
 grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
 
@@ -451,12 +454,6 @@ grimoire.tooltip.youkai_book_header.name=Completely normal book
 grimoire.tooltip.youkai_book_description.name=With the exception of containing unknown scriptures
 
 grimoire.tooltip.elly_scythe_header.name=War ma fé, heman zo eun Anko drouk
-grimoire.tooltip.elly_scythe_description_top.name=Oberour ar maro known as the grave
-grimoire.tooltip.elly_scythe_description_middle_top.name=yard watcher, they said that he
-grimoire.tooltip.elly_scythe_description_middle_mid.name=protects the graveyard and the souls
-grimoire.tooltip.elly_scythe_description_middle_bottom.name=around it for some unknown reason and
-grimoire.tooltip.elly_scythe_description_bottom.name=collects the lost souls on his land
-grimoire.tooltip.elly_scythe_shift.name=SHIFT for details
 
 grimoire.tooltip.jeweled_hourai_header.name=A jeweled branch from the mythical island of Hōrai
 grimoire.tooltip.jeweled_hourai_description.name="Mirage—the Vision of the Intangible"
@@ -655,7 +652,7 @@ grimoire.jei.descriptions.kokoros_masks=By mixing all 9 masks in a single Item, 
 
 grimoire.jei.descriptions.koomote_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction
+grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction, it requires coal to work
 grimoire.jei.descriptions.laevatein_body=Using it will set fire to the ground, right clicking to the air will shoot a giant danmaku bullet
 
 grimoire.jei.descriptions.leaf=Makes a curtain of smoke when hitting the ground, spawns an UFO after some time in air
@@ -682,7 +679,7 @@ grimoire.jei.descriptions.miko_needle=Common item used by miko to fight youkai, 
 grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect
 
 grimoire.jei.descriptions.miracle_mallet=Legendary artifact owned by a tiny princess in a cup, whose powers are those of changing size at will
-grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to shoot lanterns or shift and swing to change size to danmaku
+grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to shoot lanterns and hit multiple targets or shift and swing to change size to danmaku looked at
 
 grimoire.jei.descriptions.mochi_hammer=It is used to pound sweet mochi, but some people, might find it useful, as a lethal weapon...
 
@@ -696,7 +693,8 @@ grimoire.jei.descriptions.mortal_n_pestle=Used to turn shroom into powder
 
 grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to find treasures buried underground, it can find any kind of ore, and chest hidden bellow the surface
 
-grimoire.jei.descriptions.needle=Needle with strange magical properties, it was designed as a deadly weapon
+grimoire.jei.descriptions.needle=It belongs to Shinmyoumaru Sukuna, an inchling living in the Shining Needle Castle
+grimoire.jei.descriptions_body.needle=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
 
 grimoire.jei.descriptions.nimble_fabric=Impossible piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
@@ -779,17 +777,21 @@ grimoire.jei.descriptions.ufo_red=Found inside chests in Simple Dungeons
 grimoire.jei.descriptions.ufos=Must be crafted in the End
 grimoire.jei.descriptions.ufos_body=Teleports all items to the player in a 10 block radius, it is also a way of moving items around without having them in your inventory
 
-grimoire.jei.descriptions.utsuho_wings=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
+grimoire.jei.descriptions.utsuho_wings=Must be crafted in the Nether
+grimoire.jei.descriptions.utsuho_wings_body=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
 
 grimoire.jei.descriptions.volatile_string=Used in recipes
 
 grimoire.jei.descriptions.wall_passing_chisel=Trespass any wall by right clicking it with this item, it will teleport you, if possible, to the other side
 
-grimoire.jei.descriptions.watermelon_blade=Edible, doesnt heal mush hunger, but if you got nothing to eat...
+grimoire.jei.descriptions.watermelon_blade=Edible, doesn't heal much hunger, but if you got nothing to eat...
 
 grimoire.jei.descriptions.watermelon_sword=Breaks on hitting an entity, giving melon to it
 
 grimoire.jei.descriptions.youkai_book=A book written by Youkai
+
+grimoire.jei.descriptions.yuugi_sake=Must be crafted in the End
+grimoire.jei.descriptions.yuugi_sake_body=Strong sake from hell, it grants great power to the drinker never getting drunk or feeling full
 
 grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30 in groups of 3 to 8
 

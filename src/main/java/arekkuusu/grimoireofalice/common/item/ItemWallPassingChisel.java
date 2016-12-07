@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.block.state.BlockStateBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +43,7 @@ public class ItemWallPassingChisel extends ItemMod {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
 			float y, float z) {
-		BlockPos travel = travelBlockPos(world, pos, facing);
+		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
 			player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5); //Move player to center of block
 			player.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -58,20 +59,21 @@ public class ItemWallPassingChisel extends ItemMod {
 	 * @return Position for player
 	 */
 	@Nullable
-	private BlockPos travelBlockPos(World world, BlockPos pos, EnumFacing facing) {
+	private BlockPos travelBlockPos(World world, EntityPlayer player, BlockPos pos, EnumFacing facing) {
 		facing = facing.getOpposite();
 		BlockPos triedPos = pos;
 
 		for(int i = 0; i < 50; i++) {
-			if(world.getBlockState(triedPos).getBlock() != Blocks.BEDROCK) {
+			IBlockState stateBase = world.getBlockState(triedPos);
+			if(stateBase.getBlock() != Blocks.BEDROCK && stateBase.getBlock().canEntityDestroy(stateBase, world, pos, player)) {
 				if(isSafePos(world, triedPos)) {
 					//Logic to prevent player to suffocate or get in awkward positions
-					if(facing == EnumFacing.DOWN) {
-						if(!isSafePos(world, triedPos.offset(facing))) return null;
+					if (facing == EnumFacing.DOWN) {
+						if (!isSafePos(world, triedPos.offset(facing))) return null;
 						triedPos = triedPos.offset(facing);
 					}
-					else if(facing != EnumFacing.UP) {
-						if(isSafePos(world, triedPos.down())) {
+					else if (facing != EnumFacing.UP) {
+						if (isSafePos(world, triedPos.down())) {
 							triedPos = triedPos.down();
 						}
 					}
@@ -90,11 +92,6 @@ public class ItemWallPassingChisel extends ItemMod {
 	private boolean isSafePos(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
 		return state.getBlock().isAir(state, world, pos);// || state.isSideSolid(world, pos, EnumFacing.UP);
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

@@ -98,17 +98,12 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 50;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

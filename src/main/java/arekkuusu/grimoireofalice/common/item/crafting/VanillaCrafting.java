@@ -89,6 +89,7 @@ public class VanillaCrafting {
 			shapeless()
 					.add(ModItems.POPSICLE_STICK)
 					.add(Blocks.MELON_BLOCK)
+					.add(Blocks.ICE)
 					.outputs(ModItems.WATERMELON_SWORD).build();
 		}
 
@@ -125,13 +126,6 @@ public class VanillaCrafting {
 					.add(Items.COOKED_FISH)
 					.add("stickWood")
 					.outputs(ModItems.GRILLED_LAMPREY).build();
-		}
-
-		if (ConfigHandler.grimoireOfAlice.crafting.needle) {
-			shapeless()
-					.add(Items.IRON_INGOT)
-					.add(Items.FEATHER)
-					.outputs(ModItems.NEEDLE).build();
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.syringe) {

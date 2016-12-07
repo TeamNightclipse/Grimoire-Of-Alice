@@ -23,8 +23,6 @@ public class ItemShinmyoumaruHat extends ItemModArmor implements ISpecialArmor {
 		super(materialIn, dmg, LibItemName.SHINMYOUMARU_HAT, EntityEquipmentSlot.HEAD);
 	}
 
-
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {

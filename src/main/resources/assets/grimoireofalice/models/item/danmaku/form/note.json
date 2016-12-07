@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "grimoireofalice:items/danmaku/note_center",
+		"layer1": "grimoireofalice:items/danmaku/note"
+    }
+}

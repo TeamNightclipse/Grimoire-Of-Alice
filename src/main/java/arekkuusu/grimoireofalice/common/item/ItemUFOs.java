@@ -97,9 +97,4 @@ public class ItemUFOs extends ItemMod {
 				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true) == null;
 
 	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
-	}
 }

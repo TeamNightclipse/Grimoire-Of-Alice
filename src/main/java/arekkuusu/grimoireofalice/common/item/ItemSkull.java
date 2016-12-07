@@ -37,5 +37,4 @@ public class ItemSkull extends ItemMod {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.skull_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.skull_description.name"));
 	}
-
 }

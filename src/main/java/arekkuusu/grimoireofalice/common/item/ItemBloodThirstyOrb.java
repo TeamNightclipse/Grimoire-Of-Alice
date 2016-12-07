@@ -36,6 +36,7 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
 	}
@@ -116,11 +117,6 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 500;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

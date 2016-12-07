@@ -11,24 +11,31 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-//TODO: Redo to make it work more like a shield
 public class ItemMapleLeafShield extends ItemModShield {
 
 	public ItemMapleLeafShield() {
 		super(LibItemName.MAPLE_LEAF_SHIELD);
+		setMaxStackSize(1);
 		setMaxDamage(250);
+		addPropertyOverride(new ResourceLocation("blocking"),
+				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1.0F : 0.0F);
+		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
 	}
 
 	@Override
@@ -60,14 +67,15 @@ public class ItemMapleLeafShield extends ItemModShield {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		stack.damageItem(10, user);
-		return true;
+	@SideOnly(Side.CLIENT)
+	public String getItemStackDisplayName(ItemStack stack) {
+		return (I18n.format(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
 	}
 
 	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
+		stack.damageItem(10, user);
+		return true;
 	}
 
 	@Override

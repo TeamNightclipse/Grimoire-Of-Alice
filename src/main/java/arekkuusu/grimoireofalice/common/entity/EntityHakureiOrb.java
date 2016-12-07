@@ -8,15 +8,11 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntityHakureiOrb extends EntityThrowable {
 
-	//TODO: Why not use minecraft size? R: No getter
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private boolean isMoving = false;
 
@@ -126,15 +122,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void setSize(float size) {
-		float f = width;
-		width = size;
-		height = size;
-		AxisAlignedBB axisalignedbb = getEntityBoundingBox();
-		setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) width, axisalignedbb.minY + (double) height, axisalignedbb.minZ + (double) width));
-
-		if (width > f && !firstUpdate && !worldObj.isRemote) {
-			moveEntity((double) (f - width), 0.0D, (double) (f - width));
-		}
+		super.setSize(size, size);
 		dataManager.set(SIZE, size);
 	}
 

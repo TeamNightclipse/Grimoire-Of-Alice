@@ -56,16 +56,6 @@ public class ItemEllyScythe extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.elly_scythe_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_mid.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_middle_bottom.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_description_bottom.name"));
-		}
-		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_shift.name"));
-		}
 	}
 
 	@Override
@@ -152,17 +142,12 @@ public class ItemEllyScythe extends ItemModSword {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack itemstack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

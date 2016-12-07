@@ -86,5 +86,4 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 			return emptyBuckets;
 		}
 	}
-
 }

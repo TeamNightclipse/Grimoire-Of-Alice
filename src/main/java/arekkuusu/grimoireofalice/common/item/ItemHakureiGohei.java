@@ -7,6 +7,7 @@ import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,13 +57,34 @@ public class ItemHakureiGohei extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
-		list.add(I18n.format("grimoire.tooltip.hakurei_gohei_mode_header.name") + " "
-				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + MODES[getMode(stack)] + ".name"));
 	}
 
 	@Override
 	public boolean onDroppedByPlayer(ItemStack stack, EntityPlayer player) {
 		return false;
+	}
+
+	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (entityIn instanceof EntityPlayer && isSelected && getMode(stack) == 0) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			if (!player.isSneaking()) {
+				Vec3d vec = player.getLookVec();
+				if (player.motionX < 0.5 && player.motionX > -0.5) {
+					player.motionX = 0.5 * vec.xCoord;
+				}
+				if (player.motionY < 0.5 && player.motionY > -0.5) {
+					player.motionY = 0.5 * vec.yCoord;
+				}
+				if (player.motionZ < 0.5 && player.motionZ > -0.5) {
+					player.motionZ = 0.5 * vec.zCoord;
+				}
+			}
+			else {
+				player.motionY = 0;
+				player.setAir(0);
+			}
+		}
 	}
 
 	@Override
@@ -190,7 +212,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	private byte getMode(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 0 : nbt.getByte("GoheiMode");
+		return nbt == null ? 5 : nbt.getByte("GoheiMode");
 	}
 
 	private boolean isSafe(World world, double x, double y, double z) {
@@ -201,18 +223,20 @@ public class ItemHakureiGohei extends ItemMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public String getItemStackDisplayName(ItemStack stack) {
+		return I18n.format("item.hakureigohei.name") + " : "
+				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + MODES[getMode(stack)] + ".name");
+	}
+
+	@Override
 	public EnumAction getItemUseAction(ItemStack itemstack) {
-		return EnumAction.BLOCK;
+		return EnumAction.BOW;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemstack) {
 		return 72000;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-		return false;
 	}
 
 	@Override

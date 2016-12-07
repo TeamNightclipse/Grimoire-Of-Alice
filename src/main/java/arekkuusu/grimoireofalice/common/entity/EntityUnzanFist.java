@@ -34,7 +34,9 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		double dy = thrower.posY + 1 + look.yCoord * distance;
 		double dz = thrower.posZ + look.zCoord * distance;
 		setPosition(dx, dy, dz);
-		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, 1.0F, 0);
+		this.rotationYaw = thrower.rotationYaw;
+		this.rotationPitch = thrower.rotationPitch;
+		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, 1.0F, 0F);
 	}
 
 	@Override
@@ -149,11 +151,11 @@ public class EntityUnzanFist extends EntityThrowable { //Why is this entity so b
 		prevRotationYaw += 180F;
 	}
 
-	@Override
-	public AxisAlignedBB getEntityBoundingBox() {
-		int xyz = ticksExisted < 1.5 ? -1 : 3;
-		return super.getEntityBoundingBox().expandXyz(xyz);
-	}
+	//@Override
+	//public AxisAlignedBB getEntityBoundingBox() {
+	//	int xyz = ticksExisted < 1.5 ? -1 : 3;
+	//	return super.getEntityBoundingBox().expandXyz(xyz);
+	//}
 
 	@Override
 	protected float getGravityVelocity() {

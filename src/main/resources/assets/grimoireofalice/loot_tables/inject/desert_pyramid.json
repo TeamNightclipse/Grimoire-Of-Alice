@@ -7,24 +7,20 @@
       {
         "type": "item",
         "name": "grimoireofalice:cherryitem",
-        "weight": 35,
+        "weight": 20,
         "functions": [{ "function": "set_count", "count": { "min": 1, "max": 3 } }]
       },
 	  {
         "type": "item",
         "name": "grimoireofalice:faithitem",
-        "weight": 25,
+        "weight": 15,
         "functions": [{ "function": "set_count", "count": { "min": 6, "max": 16 } }]
       },
       {
         "type": "item",
         "name": "grimoireofalice:timeorb",
-        "weight": 80,
+        "weight": 20,
         "functions": [{ "function": "set_count", "count": { "min": 1, "max": 2 } }]
-      },
-      {
-        "type": "empty",
-        "weight": 60
       }
     ]
   }]

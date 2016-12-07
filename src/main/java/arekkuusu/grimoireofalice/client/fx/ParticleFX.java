@@ -6,7 +6,8 @@ import java.util.Locale;
 
 public enum ParticleFX implements IStringSerializable {
 	SHINMYOUMARU_SPARKLE,
-	RED_MIST;
+	RED_MIST,
+	NEEDLE_SWING;
 
 	@Override
 	public String getName() {

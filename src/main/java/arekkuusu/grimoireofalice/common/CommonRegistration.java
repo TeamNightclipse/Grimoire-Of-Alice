@@ -89,6 +89,7 @@ public class CommonRegistration {
 				new ItemSwallowCowrieShell(),
 				new ItemUltramarineOrbElixir(),
 				new ItemHouraiElixir(),
+				new ItemYuugiSake(),
 
 				//Armor
 				new ItemMapleLeafShield(),

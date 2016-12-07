@@ -7,17 +7,13 @@
       {
         "type": "item",
         "name": "grimoireofalice:faithitem",
-        "weight": 25,
+        "weight": 15,
         "functions": [{ "function": "set_count", "count": { "min": 6, "max": 16 } }]
       },
       {
         "type": "item",
         "name": "grimoireofalice:cattailplant",
         "weight": 5
-      },
-      {
-        "type": "empty",
-        "weight": 70
       }
     ]
   }]

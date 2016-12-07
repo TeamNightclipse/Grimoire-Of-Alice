@@ -2,9 +2,11 @@ package arekkuusu.grimoireofalice.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 /**
  * ModelUnzanFist - Arekkuusu Created using Tabula 5.1.0
@@ -53,6 +55,9 @@ public class ModelUnzanFist extends ModelBase {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.90F);
 		shape2_2.render(f5);
 		fist.render(f5);
 		shape2_5.render(f5);
@@ -61,6 +66,7 @@ public class ModelUnzanFist extends ModelBase {
 		shape2_6.render(f5);
 		shape2_1.render(f5);
 		shape2_3.render(f5);
+		GlStateManager.disableBlend();
 	}
 
 	/**
