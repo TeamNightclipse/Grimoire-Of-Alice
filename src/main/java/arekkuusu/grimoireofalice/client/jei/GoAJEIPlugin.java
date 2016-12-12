@@ -47,8 +47,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE
 				, "grimoire.jei.descriptions_body.cowrie_shell");
 
-		registry.addDescription(new ItemStack(ModItems.CREST_OF_YGGDRASILL), "grimoire.jei.descriptions.crest_of_yggdrassil", LINE);
-
 		registry.addDescription(new ItemStack(ModItems.CURSED_DECOY_DOLL), "grimoire.jei.descriptions.cursed_decoy_doll");
 
 		registry.addDescription(new ItemStack(ModItems.DEATH_SCYTHE), "grimoire.jei.descriptions.death_scythe", LINE
@@ -132,7 +130,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.KAPPAS_NOSTRUM), "grimoire.jei.descriptions.kappa_nostrum", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.KOKOROS_MASKS), "grimoire.jei.descriptions.kokoros_masks", LINE);
+		registry.addDescription(new ItemStack(ModItems.KOKOROS_MASKS), "grimoire.jei.descriptions.kokoros_masks", LINE
+				, "grimoire.jei.descriptions.kokoros_masks_body");
 
 		registry.addDescription(new ItemStack(ModItems.KOOMOTE_MASK), "grimoire.jei.descriptions.koomote_mask", LINE);
 
@@ -173,7 +172,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.NAZRIN_PENDULUM), "grimoire.jei.descriptions.nazrin_pendulum", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.NEEDLE), "grimoire.jei.descriptions.needle", LINE
+		registry.addDescription(new ItemStack(ModItems.SHINMYOUMARU_NEEDLE), "grimoire.jei.descriptions.needle", LINE
 				, "grimoire.jei.descriptions_body.needle");
 
 		registry.addDescription(new ItemStack(ModItems.NIMBLE_FABRIC), "grimoire.jei.descriptions.nimble_fabric", LINE);
@@ -208,8 +207,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.SHICHI_SEIKEN), "grimoire.jei.descriptions.shichi_seiken", LINE
 				, "grimoire.jei.descriptions.shichi_seiken_body");
 
-		registry.addDescription(new ItemStack(ModItems.SHIMENAWA_ROPE), "grimoire.jei.descriptions.shimenawa_rope", LINE);
-
 		registry.addDescription(new ItemStack(ModItems.SHINMYOUMARU_HAT), "grimoire.jei.descriptions.shinmyoumaru_hat", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.SHOU_LAMP), "grimoire.jei.descriptions.shou_lamp");
@@ -217,8 +214,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE), "grimoire.jei.descriptions.shroom_powder", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.SKULL), "grimoire.jei.descriptions.skull");
-
-		registry.addDescription(new ItemStack(ModItems.SOLDIFIED_PAPER), "grimoire.jei.descriptions.soldifier_paper", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.STAR), "grimoire.jei.descriptions.star", LINE);
 
@@ -233,8 +228,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 				, "grimoire.jei.descriptions.sword_of_kusanagi_body");
 
 		registry.addDescription(new ItemStack(ModItems.SYRINGE), "grimoire.jei.descriptions.syringe", LINE);
-
-		registry.addDescription(new ItemStack(ModItems.TAMAHAGANE_STEEL), "grimoire.jei.descriptions.tamahagane_steel", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.TENGU_FAN), "grimoire.jei.descriptions.tengu_fan", LINE);
 
@@ -260,8 +253,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.UTSUHO_WINGS), "grimoire.jei.descriptions.utsuho_wings", LINE
 				,"grimoire.jei.descriptions.utsuho_wings_body");
 
-		registry.addDescription(new ItemStack(ModItems.VOLATILE_STRING), "grimoire.jei.descriptions.volatile_string", LINE);
-
 		registry.addDescription(new ItemStack(ModItems.WALL_PASSING_CHISEL), "grimoire.jei.descriptions.wall_passing_chisel", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.WATERMELON_BLADE), "grimoire.jei.descriptions.watermelon_blade", LINE);
@@ -284,5 +275,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 				, "grimoire.jei.descriptions.holy_stone_diamond");
 
 		registry.addDescription(new ItemStack(ModBlocks.ONBASHIRA), "grimoire.jei.descriptions.onbashira", LINE);
+
+		registry.addDescription(new ItemStack(ModBlocks.PILLAR_ALTAR), "grimoire.jei.descriptions.pillar", LINE);
+
+		registry.addDescription(new ItemStack(ModBlocks.ALTAR), "grimoire.jei.descriptions.altar", LINE);
 	}
 }

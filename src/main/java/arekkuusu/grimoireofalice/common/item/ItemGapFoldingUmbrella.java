@@ -64,7 +64,7 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 		if(isSafe(worldIn, dx, dy, dz)) {
 			playerIn.setPosition(dx, dy, dz);
 		}
-		itemStackIn.damageItem(10, playerIn);
+		itemStackIn.damageItem(1, playerIn);
 		playerIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		playerIn.getCooldownTracker().setCooldown(this, 10);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);

@@ -62,8 +62,11 @@ public class ItemRaidenMask extends ItemModMask {
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		if(player instanceof EntityPlayer && source.isFireDamage()) {
 			player.attackEntityFrom(DamageSource.generic, (float)damage * 2);
+			return new ArmorProperties(0, 0, 0);
 		}
-		return new ArmorProperties(1, 5, 10);
+		else {
+			return new ArmorProperties(4, 10, 50);
+		}
 	}
 
 	@Override
@@ -77,5 +80,4 @@ public class ItemRaidenMask extends ItemModMask {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLocations.RAIDEN_MASK.toString();
 	}
-
 }

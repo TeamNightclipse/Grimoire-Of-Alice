@@ -111,7 +111,7 @@ public class ItemMiracleMallet extends ItemMod {
 				Vec3d vec = player.getLookVec();
 				List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
 						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3D), entity -> entity != player);
-				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
+				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player).setDamageBypassesArmor(), 10F + itemRand.nextInt(10)));
 
 				for (int i = 0; i < 4; i++) {
 					EntityThrowable lantern = new EntityMiracleLantern(player.worldObj, player);

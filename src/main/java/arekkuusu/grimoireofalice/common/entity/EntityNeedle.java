@@ -55,6 +55,6 @@ public class EntityNeedle extends EntityArrow {
 
 	@Override
 	protected ItemStack getArrowStack() {
-		return new ItemStack(ModItems.NEEDLE);
+		return new ItemStack(ModItems.SHINMYOUMARU_NEEDLE);
 	}
 }

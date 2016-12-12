@@ -20,10 +20,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNeedle extends ItemModSword {
+public class ItemShinmyoumaruNeedle extends ItemModSword {
 
-	public ItemNeedle(ToolMaterial material) {
-		super(material, LibItemName.NEEDLE);
+	public ItemShinmyoumaruNeedle(ToolMaterial material) {
+		super(material, LibItemName.SHINMYOUMARU_NEEDLE);
 	}
 
 	@Override
@@ -35,7 +35,6 @@ public class ItemNeedle extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.needle_header.name"));
-		list.add(TextFormatting.UNDERLINE + I18n.format("grimoire.tooltip.needle_description.name"));
 	}
 
 	@Override
@@ -43,8 +42,7 @@ public class ItemNeedle extends ItemModSword {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
 			if (isSelected && player.getCooldownTracker().hasCooldown(this)) {
-				int i = (int) (player.getCooldownTracker().getCooldown(this, 0.0F) * 50F);
-				if (i < 50 && i % 2 == 0) {
+				if (player.ticksExisted % 2 == 0) {
 					EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 					player.swingArm(hand);
 

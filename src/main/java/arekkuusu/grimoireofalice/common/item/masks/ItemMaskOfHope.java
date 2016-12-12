@@ -15,14 +15,17 @@ import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -54,6 +57,11 @@ public class ItemMaskOfHope extends ItemModMask {
 	}
 
 	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		return new ArmorProperties(4, 10, 50);
+	}
+
+	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if(player.experienceLevel <= 120) {
 			player.addPotionEffect(new PotionEffect(MobEffects.WITHER, 666, 4));
@@ -67,5 +75,4 @@ public class ItemMaskOfHope extends ItemModMask {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLocations.MASK_OF_HOPE.toString();
 	}
-
 }

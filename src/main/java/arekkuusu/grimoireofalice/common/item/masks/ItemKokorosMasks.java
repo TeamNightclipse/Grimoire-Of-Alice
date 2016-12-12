@@ -8,8 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
@@ -103,14 +105,17 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(!armor.hasTagCompound()) return;
+		if (!armor.hasTagCompound()) return;
 
-		if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))) {
-			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 0, 4));
+		if (player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))) {
+			if (player.moveForward > 0) player.moveRelative(0F, 2F, 0.085F);
+			List<PotionEffect> badPotions = player.getActivePotionEffects().stream()
+					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
+			if (!badPotions.isEmpty()) {
+				badPotions.forEach(potionEffect -> player.removePotionEffect(potionEffect.getPotion()));
+			}
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 0, 4));
 			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
-			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 4));
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 4));
 			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 0, 3));
 		}
@@ -118,7 +123,7 @@ public class ItemKokorosMasks extends ItemModMask {
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
+		return new ArmorProperties(100, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
 	}
 
 	@Override
@@ -144,12 +149,12 @@ public class ItemKokorosMasks extends ItemModMask {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(!stack.hasTagCompound()) return "";
+		if(!stack.hasTagCompound()) return ResourceLocations.MASK_OF_HOPE.toString();
 
 		//noinspection ConstantConditions
-		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner")))
+		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			return ResourceLocations.KOKOROS_MASKS.toString();
-		else return "";
+		}
+		else return ResourceLocations.MASK_OF_HOPE.toString();
 	}
-
 }

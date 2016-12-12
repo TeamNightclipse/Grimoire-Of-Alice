@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
@@ -79,6 +80,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 		boolean removed = false;
 		ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
 		if(stackToTake != null) {
+			worldObj.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
 
 			if(player != null && !player.capabilities.isCreativeMode) {
@@ -137,7 +139,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 	}
 
 	private void doEffect() {
-		worldObj.playSound(null, getPos(), SoundEvents.ENTITY_FIREWORK_LARGE_BLAST, SoundCategory.BLOCKS, 1F, 0.5F);
+		worldObj.playSound(null, getPos(), GrimoireSoundEvents.CRAFTING_SPELL, SoundCategory.BLOCKS, 1F, 0.5F);
 		for (int i = 0; i < 9; i++) {
 			double d0 = pos.getX() + rand.nextFloat();
 			double d1 = pos.getY() + 1 + rand.nextFloat();

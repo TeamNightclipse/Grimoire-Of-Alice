@@ -129,7 +129,7 @@ public class YukkuriEvent {
 
 			EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.SWORD_OF_KUSANAGI));
 
-			if (new Random().nextInt(50) == 25) event.getDrops().add(item);
+			event.getDrops().add(item);
 		}
 	}
 }

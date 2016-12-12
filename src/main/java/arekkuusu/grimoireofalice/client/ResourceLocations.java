@@ -14,6 +14,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation GRIMOIRE_CIRCLE_TEXTURE = getLocation("textures/models/entities/MagicCircle_1.png");
 	public static final ResourceLocation GRIMOIRE_BOOK = getLocation("textures/models/entities/enchanting_table_book.png");
 	public static final ResourceLocation ORB_TEXTURE = getLocation("textures/models/entities/Orb.png");
+	public static final ResourceLocation NETHER_SOUL_TEXTURE = getLocation("textures/models/entities/Orb.png");
 
 	public static final ResourceLocation CIRCLE_TEXTURE[] = {
 			getLocation("textures/models/entities/MagicCircle_0.png"),
@@ -58,6 +59,8 @@ public final class ResourceLocations {
 	public static final ResourceLocation SHINMYOUMARU_SPARKLE = getLocation("particle/Shinmyoumaru");
 	public static final ResourceLocation RED_MIST = getLocation("particle/RedMist");
 	public static final ResourceLocation NEEDLE_SWING = getLocation("textures/particle/NeedleSwing.png");
+	public static final ResourceLocation RED_GAS = getLocation("particle/RedGas");
+	public static final ResourceLocation NETHER_FIRE = getLocation("particle/NetherFire");
 
 	//Sounds
 	public static final ResourceLocation CAMERA_BEEP = getLocation("cameraBeep");
@@ -65,6 +68,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation CAMERA_SHUTTER = getLocation("cameraShutter");
 	public static final ResourceLocation NEEDLE_SWEEP = getLocation("needleSweep");
 	public static final ResourceLocation SIMPLE_BELL = getLocation("simpleBell");
+	public static final ResourceLocation CRAFTING_SPELL = getLocation("chainLightning");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);

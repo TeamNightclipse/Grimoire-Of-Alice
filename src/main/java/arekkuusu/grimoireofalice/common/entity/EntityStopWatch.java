@@ -6,11 +6,7 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
@@ -18,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
@@ -28,7 +23,7 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
-	private Map<UUID, double[]> dataEntities = new HashMap<>();
+	//private Map<UUID, double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -58,13 +53,13 @@ public class EntityStopWatch extends Entity {
 				}
 			}
 
-			Vec3d look = user.getLookVec();
 			float distance = 1F;
-			double dx = user.posX + look.xCoord * distance;
+			double dx = user.posX + distance;
 			double dy = user.posY + user.getEyeHeight() - 1;
-			double dz = user.posZ + look.zCoord * distance;
+			double dz = user.posZ + distance;
 			setPosition(dx, dy, dz);
 
+			worldObj.setWorldTime(worldObj.getWorldTime() - 1);
 			if(!worldObj.isRemote) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
 				list.forEach(this::haltEntity);
@@ -114,12 +109,12 @@ public class EntityStopWatch extends Entity {
 				return;
 			}
 
-			if(!dataEntities.containsKey(entity.getUniqueID())) {
-				double x = entity.motionX;
-				double y = entity.motionY;
-				double z = entity.motionZ;
-				dataEntities.put(entity.getUniqueID(), new double[] {x, y, z});
-			}
+			//if(!dataEntities.containsKey(entity.getUniqueID())) {
+			//	double x = entity.motionX;
+			//	double y = entity.motionY;
+			//	double z = entity.motionZ;
+			//	dataEntities.put(entity.getUniqueID(), new double[] {x, y, z});
+			//}
 		}
 
 		if(entity.ticksExisted >= 2) {
@@ -149,14 +144,14 @@ public class EntityStopWatch extends Entity {
 	private void stopEntity() {
 		if(!worldObj.isRemote) {
 			if(user != null) {
-				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
+				//List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				//list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
 
-					double[] data = dataEntities.get(entity.getUniqueID());
-					entity.motionX = data[0];
-					entity.motionY = data[1];
-					entity.motionZ = data[2];
-				});
+				//	double[] data = dataEntities.get(entity.getUniqueID());
+				//	entity.motionX = data[0];
+				//	entity.motionY = data[1];
+				//	entity.motionZ = data[2];
+				//});
 				if (!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}

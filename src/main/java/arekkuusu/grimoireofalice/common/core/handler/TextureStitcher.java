@@ -13,5 +13,7 @@ public class TextureStitcher {
 	public void stitcherEventPre(TextureStitchEvent.Pre event) {
 		event.getMap().registerSprite(ResourceLocations.SHINMYOUMARU_SPARKLE);
 		event.getMap().registerSprite(ResourceLocations.RED_MIST);
+		event.getMap().registerSprite(ResourceLocations.RED_GAS);
+		event.getMap().registerSprite(ResourceLocations.NETHER_FIRE);
 	}
 }

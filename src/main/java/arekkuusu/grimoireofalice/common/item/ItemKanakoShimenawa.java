@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKanakoShimenawa;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -48,7 +49,15 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if(world.isRaining()) {
+		if (!player.isInWater() && !player.isSneaking() && player.motionY <= 0) {
+			if (world.getBlockState(player.getPosition().down()).getMaterial() == Material.WATER) {
+				player.posY += -player.motionY;
+				player.onGround = true;
+				//player.motionY = 0;
+				player.fallDistance = 0.0F;
+			}
+		}
+		if (world.isRaining()) {
 			player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 15, 0));
 		}
 	}

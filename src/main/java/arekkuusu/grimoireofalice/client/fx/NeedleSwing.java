@@ -54,10 +54,12 @@ public class NeedleSwing extends Particle {
 		}
 	}
 
+	@Override
 	public int getBrightnessForRender(float i) {
 		return 61680;
 	}
 
+	@Override
 	public void onUpdate() {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
@@ -69,6 +71,7 @@ public class NeedleSwing extends Particle {
 		}
 	}
 
+	@Override
 	public int getFXLayer() {
 		return 3;
 	}

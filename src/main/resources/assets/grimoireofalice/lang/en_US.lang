@@ -27,6 +27,9 @@ item.cowrieshell.name=Swallow's Cowrie Shell
 item.foldingumbrella.name=Gap folding umbrella
 item.stopwatch.name=Sakuya Stop Watch
 item.mortarnpestle.name=Mortar N' Pestle
+item.blackfeather.name=Black Feather
+item.shinkiwand.name=Shinki's Wand
+item.nethershard.name=Nether Shard
 
 item.shroompowder.white.name=White Shroom Powder
 item.shroompowder.orange.name= Orange Shroom Powder
@@ -44,7 +47,6 @@ item.shroompowder.brown.name=Brown Shroom Powder
 item.shroompowder.green.name=Green Shroom Powder
 item.shroompowder.red.name=Red Shroom Powder
 item.shroompowder.black.name=Black Shroom Powder
-item.shroompowder.soup.name=Shroom Soup
 item.grilledlamprey.name=Grilled Lamprey
 item.ibarakiboxfilled.name=Ibaraki Box of a Hundred Medicines
 item.kappasnostrum.name=Kappas Nostrum
@@ -89,7 +91,7 @@ item.ellyscythe.name=Scythe of the Useless Gatekeeper
 item.mikostick.name=Toyosatomimi's Stick
 item.crestofyggdrasill.name=Crest Of Yggdrasill
 item.amenonuhoko.name=Amenonuhoko
-item.needle.name=Needle
+item.needle.name=Shinmyoumaru's Needle
 item.nuetrident.name=Nue Trident
 item.swordofkusanagi.name=Sword of Kusanagi
 item.syringe.name=Eirin's Syringe
@@ -121,6 +123,7 @@ tile.holystone.name=Holy Stone
 tile.craftingaltar.name=Crafting Altar
 tile.pillaraltar.name=Holy Pillar
 tile.impurestone.name=Impure Stone
+tile.hihiirokaneblock.name=Hihi'irokane Block
 
 tile.shroom_0.name=White Shroom
 tile.shroom_1.name=Orange Shroom
@@ -147,9 +150,9 @@ item.cherryitem.name=Cherry Item
 item.timeorb.name=Time Orb
 item.faithitem.name=Faith Item
 item.ufos.name=UFOs
-item.ufored.name=UFOs
-item.ufoblue.name=UFOs
-item.ufogreen.name=UFOs
+item.ufored.name=Red UFO
+item.ufoblue.name=Blue UFO
+item.ufogreen.name=Green UFO
 item.thirdeye.name=3rdEye
 item.spellcardpouch.name=Spell Card Pouch
 item.leafitem.name=Leaf
@@ -186,8 +189,7 @@ itemGroup.grimoireofalice=Grimoire of Alice
 
 //Tooltips
 
-grimoire.tooltip.crafting_altar_header.name=Crafting Altar
-grimoire.tooltip.crafting_altar_description.name=Differs slightly from a Crafting Table
+grimoire.tooltip.crafting_altar_header.name=Differs slightly from a Crafting Table
 
 grimoire.tooltip.holy_key_stone_header.name=Heavy object made of black granite
 grimoire.tooltip.holy_key_stone_use.name=Step on it to get Potion Buff
@@ -201,13 +203,9 @@ grimoire.tooltip.kyoumarubotan_description.name=Hematite in the shape of a flowe
 grimoire.tooltip.shroom_block_header.name="Smells and tastes good"
 grimoire.tooltip.shroom_block_tasty.name=Tasty snack
 
-grimoire.tooltip.onbashira_block_header.name=Honored pillars
-grimoire.tooltip.onbashira_heavy.name=Kinda heavy
-grimoire.tooltip.onbashira_altar_tier.name=Tier 2 Crafting Pillar
+grimoire.tooltip.onbashira_block_header.name=Kinda heavy
 
-grimoire.tooltip.pillar_altar_header.name=Honored pillars
-grimoire.tooltip.pillar_altar_heavy.name=Kinda heavy
-grimoire.tooltip.pillar_altar_tier.name=Tier 1 Crafting Pillar
+grimoire.tooltip.pillar_altar_header.name=Kinda heavy
 
 grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
 grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
@@ -240,7 +238,6 @@ grimoire.tooltip.hourai_elixir_shift.name=SHIFT for details
 
 grimoire.tooltip.ibaraki_box_header.name=In exchange for curing illnesses, the personality of the
 grimoire.tooltip.ibaraki_box_description.name=one who drinks from will temporarily become like an Oni's
-grimoire.tooltip.ibaraki_box_use.name=Use like bucket
 
 grimoire.tooltip.ibuki_gourd_header.name=This unique gourd generates sake
 grimoire.tooltip.ibuki_gourd_description.name=with a single drop of water
@@ -272,10 +269,6 @@ grimoire.tooltip.budah_boul_description_bottom.name=and a thousand more to creat
 
 grimoire.tooltip.cattail_plant_header.name=Nitori's Cattail Plant
 grimoire.tooltip.cattail_plant_description.name=She used big machinery just to pick it up...
-
-grimoire.tooltip.crest_of_yggdrasill_header.name=Contains time itself
-grimoire.tooltip.crest_of_yggdrasill_description_top.name=Once used by a great God to
-grimoire.tooltip.crest_of_yggdrasill_description_bottom.name=manipulate space and time
 
 grimoire.tooltip.decoy_doll_header.name=Doll that takes damage for the player
 
@@ -368,8 +361,7 @@ grimoire.tooltip.nazrin_stick_inactive.name=Inactive
 grimoire.tooltip.nazrin_stick_active.name=Active
 grimoire.tooltip.nazrin_stick_shift.name=SHIFT for details
 
-grimoire.tooltip.needle_header.name=Shinmyoumaru owned this needle
-grimoire.tooltip.needle_description.name=Consider yourself lucky
+grimoire.tooltip.needle_header.name=Woosh!
 
 grimoire.tooltip.nimble_fabric_header.name=Become invincible for a short amount of time,
 grimoire.tooltip.nimble_fabric_description.name=during which you can't move or shoot
@@ -402,12 +394,18 @@ grimoire.tooltip.sanae_gohei_description.name=Causes miracles to occur
 
 grimoire.tooltip.sariel_wand_header.name=Immense Knowledge, Angel of Death, Commaner of God...
 grimoire.tooltip.sariel_wand_description.name=Legendary wand from a fallen Angel
+grimoire.tooltip.sariel_wand_mode.name=Skull:
+
+grimoire.tooltip.skull_0.name=Skeleton
+grimoire.tooltip.skull_1.name=Wither Skeleton
+grimoire.tooltip.skull_2.name=Zombie
+grimoire.tooltip.skull_3.name=Player
+grimoire.tooltip.skull_4.name=Creeper
 
 grimoire.tooltip.shichi_seiken_header.name=Gold inlay of clouds and seven stars with the shape of Orsa Mayor
 
 grimoire.tooltip.shimenawa_rope_header.name=Tenshi's little gift
-grimoire.tooltip.shimenawa_rope_description_top.name=A little piece of Heaven,
-grimoire.tooltip.shimenawa_rope_description_bottom.name=Might cause an incident
+grimoire.tooltip.shimenawa_rope_description.name=A little piece of Heaven
 
 grimoire.tooltip.skull_header.name=Human Skull
 grimoire.tooltip.skull_description.name=Stolen from a grave
@@ -563,8 +561,6 @@ grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
 grimoire.jei.descriptions.cowrie_shell=Must be crafted under a Waxing Gibbous Moon at Night
 grimoire.jei.descriptions_body.cowrie_shell=Gives the player a massive food amount, and saturation for a good amount of time
 
-grimoire.jei.descriptions.crest_of_yggdrassil=Blows up.
-
 grimoire.jei.descriptions.cursed_decoy_doll=Place it to decoy the enemies in a 20 block radius
 
 grimoire.jei.descriptions.death_scythe=Must be crafted in the Nether
@@ -637,10 +633,10 @@ grimoire.jei.descriptions.ichirin_ring_body=Used to control the Nyuudou Unzan, s
 grimoire.jei.descriptions.impure_rock=Obtained by mining or smelting Impure Stone
 
 grimoire.jei.descriptions.jeweled_hourai=Must be crafted under a Rainy Weather
-grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it gives a random jewel from its branch
+grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it releases all of its jewels in one shot
 
 grimoire.jei.descriptions.kanako_shimenawa=Must be crafted under a Rainy Weather
-grimoire.jei.descriptions.kanako_shimenawa_body=Gives a Glowing effect when its raining in the world. It has a secret use, not revealed yet
+grimoire.jei.descriptions.kanako_shimenawa_body=Gives a Glowing effect when its raining in the world. It gives creative flight and allows the player to walk on water
 
 grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 
@@ -649,30 +645,31 @@ grimoire.jei.descriptions.kappa_hat=Gives the player speed when wet, and slownes
 grimoire.jei.descriptions.kappa_nostrum=Drink from this jug to miraculously cure your injures
 
 grimoire.jei.descriptions.kokoros_masks=By mixing all 9 masks in a single Item, one unleashes a power equivalent... to a Hopeless Masquerade
+grimoire.jei.descriptions.kokoros_masks_body=Gives the player unleashed strength III, super speed, Resistance III, jump boost IV, and fire resistance; It possesses an outstanding resistance to any kind of attack, making the player almost invulnerable, and removes all kinds of negative potion effect from the wearer
 
 grimoire.jei.descriptions.koomote_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction, it requires coal to work
+grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction, it requires firecharge to work
 grimoire.jei.descriptions.laevatein_body=Using it will set fire to the ground, right clicking to the air will shoot a giant danmaku bullet
 
 grimoire.jei.descriptions.leaf=Makes a curtain of smoke when hitting the ground, spawns an UFO after some time in air
 
-grimoire.jei.descriptions.lunasa_violin=Shoots notes in a slow rate that deal magic damage
+grimoire.jei.descriptions.lunasa_violin=Shoots notes that deal magic damage
 
-grimoire.jei.descriptions.lyrica_piano=Shoots notes in a medium rate that deal magic damage
+grimoire.jei.descriptions.lyrica_piano=Shoots notes that deal magic damage
 
 grimoire.jei.descriptions.maple_leaf_shield=Works as a vanilla shield, it also clears all active potions when used
 
-grimoire.jei.descriptions.marisa_hat=Picks up items around the player, it gets real funny when you steal other people's stuff by accident
+grimoire.jei.descriptions.marisa_hat=Picks up items around the player
 
 grimoire.jei.descriptions.mask=Used in recipes to get kokoro's masks
 
 grimoire.jei.descriptions.mask_of_hope=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.merlin_trumpet=Shoots notes in a fast rate that deal magic damage
+grimoire.jei.descriptions.merlin_trumpet=Shoots notes that deal magic damage
 
 grimoire.jei.descriptions.miko_cloak=Magical cloak from a saint of Buddhism
-grimoire.jei.descriptions.miko_cloak_body=It grants the user the ability of moving vast distances very quickly, aka: Shukuchi
+grimoire.jei.descriptions.miko_cloak_body=It grants the user the ability of moving vast distances very quickly
 
 grimoire.jei.descriptions.miko_needle=Common item used by miko to fight youkai, its has the same properties as an arrow
 
@@ -682,8 +679,6 @@ grimoire.jei.descriptions.miracle_mallet=Legendary artifact owned by a tiny prin
 grimoire.jei.descriptions.miracle_mallet_body=Right click to change own size, use on a player to change his size, swing the item to shoot lanterns and hit multiple targets or shift and swing to change size to danmaku looked at
 
 grimoire.jei.descriptions.mochi_hammer=It is used to pound sweet mochi, but some people, might find it useful, as a lethal weapon...
-
-grimoire.jei.descriptions.mokou_wings=Just for the looks, it gives the player a cool aura
 
 grimoire.jei.descriptions.momijis_scimitar_sword=Sharp sword owned by the White Wolf Tengu Momiji Inubashiri
 
@@ -696,7 +691,7 @@ grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to 
 grimoire.jei.descriptions.needle=It belongs to Shinmyoumaru Sukuna, an inchling living in the Shining Needle Castle
 grimoire.jei.descriptions_body.needle=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
 
-grimoire.jei.descriptions.nimble_fabric=Impossible piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
+grimoire.jei.descriptions.nimble_fabric=Piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
 grimoire.jei.descriptions.nue_trident=Outer space item from an alien? It has some indecipherable scriptures in its handle
 grimoire.jei.descriptions.nue_trident_body=Gives Blindness and Nausea to the target
@@ -705,13 +700,13 @@ grimoire.jei.descriptions.orb_elixir=This medicine cures the worst of all diseas
 
 grimoire.jei.descriptions.patchy_book=Grimoire of Alice Guide, it contains some small info about the mod
 
-grimoire.jei.descriptions.popsicle_stick=Nothing special, just a stick, carry on, nothing to see here, ok bye, cya
+grimoire.jei.descriptions.popsicle_stick=Yum!
 
 grimoire.jei.descriptions.pouch=Best item for storing spell cards, it prevents messy inventories by carrying too many of them
 
 grimoire.jei.descriptions.raiden_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 0.25 plus other variables each hit
+grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 0.25 plus other variables
 
 grimoire.jei.descriptions.roukanken=Ghostly sword that charges towards the enemy
 
@@ -720,15 +715,13 @@ grimoire.jei.descriptions.rumia_sword_body=Gigant sword that puts in fire everyt
 
 grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and sends them to the chat with their respective coordinates, it also possesses a strong knockback
 
-grimoire.jei.descriptions.sanae_gohei=This miracle gohei allows the user to cast various spells by using faith gathered by holding the gohei for long enough
+grimoire.jei.descriptions.sanae_gohei=This miracle gohei allows the user to cast various spells by using faith gathered by holding the gohei for long enough [Not yet implemented]
 
-grimoire.jei.descriptions.sariel_wand=Must be crafted under a Thunder Weather
-grimoire.jei.descriptions.sariel_wand_body=Deals 9999 damage, can also cast lightning by right clicking
+grimoire.jei.descriptions.sariel_wand=Must be crafted in the Nether
+grimoire.jei.descriptions.sariel_wand_body=Stores Skulls from Players and some Mobs, they can be placed by using the Item on a block
 
 grimoire.jei.descriptions.shichi_seiken=Must be crafted under a Waxing Gibbous Moon at Night
 grimoire.jei.descriptions.shichi_seiken_body=Drops loot from mining ores, has a chance of dropping 0 to 4 Items
-
-grimoire.jei.descriptions.shimenawa_rope=Spawn a holy keystone when used in a Rainy Weather
 
 grimoire.jei.descriptions.shinmyoumaru_hat=Bowl from a tiny princess whose powers are of those of changing size with a mallet of strange origins
 
@@ -737,8 +730,6 @@ grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used. Hold to char
 grimoire.jei.descriptions.shroom_powder=Used to craft danmaku potions if the mod DanmakuCore is present
 
 grimoire.jei.descriptions.skull=Item that spawns a protective skull around the player
-
-grimoire.jei.descriptions.soldifier_paper=Aka Compressed Paper, used in some recipes
 
 grimoire.jei.descriptions.star=Found inside chests in Abandoned mine shafts
 
@@ -750,11 +741,9 @@ grimoire.jei.descriptions.suwako_hat=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions.suwako_hat_body=Has a Thorns X enchantment
 
 grimoire.jei.descriptions.sword_of_kusanagi=Dropped by the Ender Dragon on death
-grimoire.jei.descriptions.sword_of_kusanagi_body=Summons a mystical wind around the player that pushes mobs away
+grimoire.jei.descriptions.sword_of_kusanagi_body=Summons a mystical wind around the player that pushes mobs away, when swung, it summons a Soul that will attack any nearby Entity
 
 grimoire.jei.descriptions.syringe=Gives a Random potion effect, be it good or bad
-
-grimoire.jei.descriptions.tamahagane_steel=Used in crafting recipes
 
 grimoire.jei.descriptions.tengu_fan=Shoots a powerful wind that pushes mobs away and into the air
 
@@ -763,7 +752,7 @@ grimoire.jei.descriptions.third_eye_body=Shows all nearby entities when the eye 
 
 grimoire.jei.descriptions.time_orb=Found inside chests in Desert Pyramids
 
-grimoire.jei.descriptions.toyosatomimi_hat=Gives the wearer a pair of ears
+grimoire.jei.descriptions.toyosatomimi_hat=Gives the wearer leaping effect
 grimoire.jei.descriptions.toyosatomimi_hat_body=This good piece of armor gives leaping boost to the wearer
 
 grimoire.jei.descriptions.uba_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
@@ -778,9 +767,7 @@ grimoire.jei.descriptions.ufos=Must be crafted in the End
 grimoire.jei.descriptions.ufos_body=Teleports all items to the player in a 10 block radius, it is also a way of moving items around without having them in your inventory
 
 grimoire.jei.descriptions.utsuho_wings=Must be crafted in the Nether
-grimoire.jei.descriptions.utsuho_wings_body=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation
-
-grimoire.jei.descriptions.volatile_string=Used in recipes
+grimoire.jei.descriptions.utsuho_wings_body=Gives the player creative flight, belongs to Utsuho, a Hell Raven with the power of Nuclear manipulation. Removes the cool down of the Nuclear Control Rod when worn
 
 grimoire.jei.descriptions.wall_passing_chisel=Trespass any wall by right clicking it with this item, it will teleport you, if possible, to the other side
 
@@ -803,6 +790,10 @@ grimoire.jei.descriptions.holy_stone_blaze_powder= -Blaze Powder -> Fire Resista
 grimoire.jei.descriptions.holy_stone_speckled_melon= -Speckled Melon -> Regeneration
 grimoire.jei.descriptions.holy_stone_diamond= -Diamond -> Absorption
 
-grimoire.jei.descriptions.onbashira=Its a good place to stand when fishing, its also used to craft tier two Items in the Crafting Altar
+grimoire.jei.descriptions.onbashira=Its a good place to stand when fishing, its also used to craft Items in the Crafting Altar
+
+grimoire.jei.descriptions.pillar=Used to craft Items in the Crafting Altar
+
+grimoire.jei.descriptions.altar=Used to craft Items in Grimoire of Alice, there recipes require special conditions, such as Rain, or Specific Dimensions.
 
 grimoire.jei.alter.title=Crafting Altar

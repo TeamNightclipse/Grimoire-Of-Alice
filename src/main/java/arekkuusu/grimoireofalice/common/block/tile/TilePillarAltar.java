@@ -6,8 +6,10 @@ import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 public class TilePillarAltar extends TileItemHandler implements ITileItemHolder, ITickable {
@@ -18,6 +20,7 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 	public boolean addItem(@Nullable EntityPlayer player, ItemStack stack) {
 		boolean added = false;
 		if(!hasItem()) {
+			worldObj.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_ADD_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
@@ -40,6 +43,7 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
 		if(hasItem()) {
+			worldObj.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
 			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
 

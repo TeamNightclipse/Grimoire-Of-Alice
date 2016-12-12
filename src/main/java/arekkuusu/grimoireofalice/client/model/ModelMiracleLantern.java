@@ -38,7 +38,7 @@ public class ModelMiracleLantern extends ModelBase {
 	public void renderMore(float f5) {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.15F);
 		this.outside.render(f5);
 		GlStateManager.disableBlend();

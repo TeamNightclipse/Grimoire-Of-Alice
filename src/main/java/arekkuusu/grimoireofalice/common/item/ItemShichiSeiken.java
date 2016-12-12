@@ -49,7 +49,7 @@ public class ItemShichiSeiken extends ItemModSword {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
-		if (ConfigHandler.grimoireOfAlice.features.allowGoldDrop) {
+		if (ConfigHandler.grimoireOfAlice.features.allowGoodDrops) {
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(state.getBlock())))
 					.mapToObj(OreDictionary::getOreName)
 					.anyMatch(s -> s.startsWith("ore"));

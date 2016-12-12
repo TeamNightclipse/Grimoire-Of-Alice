@@ -46,6 +46,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	public ItemHakureiGohei() {
 		super(LibItemName.HAKUREI_GOHEI);
+		setMaxStackSize(1);
 	}
 
 	@Override
@@ -95,8 +96,8 @@ public class ItemHakureiGohei extends ItemMod {
 		if(!playerIn.isSneaking()) {
 			if(mode == 2) {
 				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
-				worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.HOSTILE, 1.0F,
-						itemRand.nextFloat() * 0.1F + 0.8F);
+				//worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.HOSTILE, 1.0F,
+				//		itemRand.nextFloat() * 0.1F + 0.8F);
 				if(!worldIn.isRemote) {
 					worldIn.spawnEntityInWorld(orb);
 				}

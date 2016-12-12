@@ -27,12 +27,9 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -46,13 +43,6 @@ public class ItemJeweledHourai extends ItemMod {
 
 	@CapabilityInject(IItemHandler.class)
 	private static Capability<IItemHandler> itemHandlerCapability;
-	private static final Item[] JEWELS = {
-			Items.DIAMOND,
-			Items.EMERALD,
-			Items.GOLDEN_APPLE,
-			Items.GOLD_INGOT,
-			Items.GOLD_NUGGET
-	};
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -90,14 +80,15 @@ public class ItemJeweledHourai extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(!worldIn.isRemote) {
+		if (!worldIn.isRemote && entityIn instanceof EntityPlayer) {
 			short jewels = getJewels(stack);
-			if(jewels < 5 && entityIn.ticksExisted % 200 == 0) {
+			int i = MathHelper.clamp_int(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
+			if (jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
 				jewels += 1;
-				if(jewels < 0) {
+				if (jewels < 0) {
 					jewels = 0;
 				}
-				else if(jewels > 5) {
+				else if (jewels > 5) {
 					jewels = 5;
 				}
 				setJewels(stack, jewels);
@@ -111,16 +102,22 @@ public class ItemJeweledHourai extends ItemMod {
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
+		return true;
+	}
+
 	@SuppressWarnings("ConstantConditions") //Liar
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(!worldIn.isRemote) {
-			if(!entityLiving.isSneaking()) {
-				if(getJewels(stack) >= 1) {
-					int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
-					if(timeUsed > 30) {
-						timeUsed = 30;
-					}
+			if (getJewels(stack) >= 1) {
+				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
+				if (timeUsed > 30) {
+					timeUsed = 30;
+				}
+				if (!entityLiving.isSneaking()) {
 					int color = COLORS[itemRand.nextInt(COLORS.length)];
 
 					DanmakuBuilder danmaku = DanmakuBuilder.builder()
@@ -128,20 +125,18 @@ public class ItemJeweledHourai extends ItemMod {
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color))
 							.build();
 					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
-					addJewels(stack, (short)-1);
+					addJewels(stack, (short) -1);
 				}
-			}
-			else {
-				if(getJewels(stack) == 5) {
-					if(entityLiving.hasCapability(itemHandlerCapability, null)) {
-						int pos = itemRand.nextInt(JEWELS.length);
-						ItemStack rest = ItemHandlerHelper.insertItemStacked(entityLiving.getCapability(itemHandlerCapability, null),
-								new ItemStack(JEWELS[pos]), false);
-						if(rest != null) {
-							entityLiving.dropItem(rest.getItem(), rest.stackSize);
-						}
-						addJewels(stack, (short)-5);
+				else {
+					for (int i = 0; i < getJewels(stack); i++) {
+						int color = COLORS[itemRand.nextInt(COLORS.length)];
+						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+								.setUser(entityLiving)
+								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i * 2))
+								.build();
+						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
 					}
+					setJewels(stack, (short) 0);
 				}
 			}
 		}

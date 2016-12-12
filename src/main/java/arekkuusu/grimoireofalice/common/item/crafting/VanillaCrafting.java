@@ -24,7 +24,6 @@ public class VanillaCrafting {
 		//Items
 		shapeless()
 				.add(Items.STRING)
-				.add(Items.STRING)
 				.add(Items.GUNPOWDER)
 				.outputs(new ItemStack(ModItems.VOLATILE_STRING, 1)).build();
 
@@ -44,20 +43,25 @@ public class VanillaCrafting {
 				.where('A').mapsTo(ModItems.VOLATILE_STRING)
 				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
-		shaped().grid("AAA", "ASA", "AAA")
+		shaped().grid(" S ", " A ", "AAA")
 				.where('A').mapsTo("paper")
 				.where('S').mapsTo(ModItems.SOLDIFIED_PAPER)
 				.outputs(new ItemStack(ModBlocks.PAPER_BLOCK, 8)).build();
 
 		shaped().grid("AAA", "ASA", "AAA")
 				.where('A').mapsTo("stone")
-				.where('S').mapsTo(ModItems.VOLATILE_STRING)
+				.where('S').mapsTo(new ItemStack(Blocks.DIRT, 1, 1))
 				.outputs(ModBlocks.COMPACT_STONE).build();
 
 		shaped().grid("LLL", "LGL")
 				.where('G').mapsTo(ModBlocks.COMPACT_STONE)
 				.where('L').mapsTo("plankWood")
 				.outputs(ModBlocks.PILLAR_ALTAR).build();
+
+		shaped().grid("FFF","FIF","FFF")
+				.where('F').mapsTo(Items.FEATHER)
+				.where('I').mapsTo(new ItemStack(Items.DYE, 1, 0))
+				.outputs(new ItemStack(ModItems.BLACK_FEATHER, 2)).build();
 
 		shaped().grid("PBP", "WCW", "WDW")
 				.where('P').mapsTo("paper")

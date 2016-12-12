@@ -39,6 +39,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
@@ -156,9 +157,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.onbashira_block_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.onbashira_heavy.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.onbashira_altar_tier.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.onbashira_block_header.name"));
 	}
 
 	@Override
@@ -174,7 +173,15 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
 		if (tile != null) {
-			tile.destroy();
+			if (!worldIn.isRemote) {
+				ItemStack output = tile.getItemStack();
+				if (output != null) {
+					EntityPlayer player = worldIn.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
+					if (player != null && !player.capabilities.isCreativeMode) {
+						ItemHandlerHelper.giveItemToPlayer(player, output);
+					}
+				}
+			}
 			worldIn.removeTileEntity(pos);
 		}
 	}

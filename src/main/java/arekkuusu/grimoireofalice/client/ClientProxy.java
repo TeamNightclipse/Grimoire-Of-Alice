@@ -8,15 +8,12 @@
  */
 package arekkuusu.grimoireofalice.client;
 
-import arekkuusu.grimoireofalice.client.fx.NeedleSwing;
+import arekkuusu.grimoireofalice.client.fx.*;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import arekkuusu.grimoireofalice.client.fx.RedMist;
-import arekkuusu.grimoireofalice.client.fx.ShinmyoumaruSpark;
 import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
@@ -130,12 +127,15 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.HAKUREI_GOHEI, 0);
 		registerItem(ModItems.SANAE_GOHEI, 0);
 		registerItem(ModItems.MORTAR_AND_PESTLE, 0);
+		registerItem(ModItems.BLACK_FEATHER, 0);
+		registerItem(ModItems.SHINKI_WAND, 0);
+		registerItem(ModItems.NETHER_SHARD, 0);
 
 		registerItem(ModItems.GHOST_DIPPER, 0);
 		registerItem(ModItems.THIRD_EYE, 0);
 
 		//Food
-		registerItemWithTypes(ModItems.SHROOM_POWDER, 17);
+		registerItemWithTypes(ModItems.SHROOM_POWDER, 16);
 		registerItem(ModItems.GRILLED_LAMPREY, 0);
 		registerItem(ModItems.IBARAKI_BOX_FILLED, 0);
 		registerItem(ModItems.KAPPAS_NOSTRUM, 0);
@@ -148,7 +148,6 @@ public class ClientProxy implements ISidedProxy {
 
 		//Weapons
 		registerItem(ModItems.AMENONUHOKO, 0);
-		registerItem(ModItems.CREST_OF_YGGDRASILL, 0);
 		registerItem(ModItems.MIKO_STICK, 0);
 		registerItem(ModItems.MOCHI_HAMMER, 0);
 		registerItem(ModItems.MOMIJIS_SCIMITAR_SWORD, 0);
@@ -166,7 +165,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.WATERMELON_BLADE, 0);
 		registerItem(ModItems.WATERMELON_SWORD, 0);
 		registerItem(ModItems.SACRED_TOYOSATOMIMI, 0);
-		registerItem(ModItems.NEEDLE, 0);
+		registerItem(ModItems.SHINMYOUMARU_NEEDLE, 0);
 		registerItem(ModItems.DEATH_SCYTHE, 0);
 		registerItem(ModItems.ROUKANKEN, 0);
 
@@ -184,6 +183,7 @@ public class ClientProxy implements ISidedProxy {
 		registerBlock(ModBlocks.ALTAR, 0);
 		registerBlock(ModBlocks.PILLAR_ALTAR, 0);
 		registerBlock(ModBlocks.IMPURE_STONE, 0);
+		registerBlock(ModBlocks.HIHIIROKANE_BLOCK, 0);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			registerItem(ModItems.LEAF, 0);
@@ -219,6 +219,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityHakureiOrb.class, RenderHakureiOrb::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleLantern.class, RenderMiracleLantern::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityNetherSoul.class, RenderNetherSoul::new);
 		//Tiles
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());
@@ -267,6 +268,12 @@ public class ClientProxy implements ISidedProxy {
 				break;
 			case NEEDLE_SWING:
 				particle = new NeedleSwing(Minecraft.getMinecraft().renderEngine, Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn);
+				break;
+			case RED_GAS:
+				particle = new RedGas(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				break;
+			case NETHER_FIRE:
+				particle = new NetherFire(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			default:
 				particle = new Particle(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);

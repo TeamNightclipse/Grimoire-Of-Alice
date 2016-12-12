@@ -13,6 +13,7 @@ public class ModSounds {
 		registerSound(ResourceLocations.CAMERA_SHUTTER);
 		registerSound(ResourceLocations.NEEDLE_SWEEP);
 		registerSound(ResourceLocations.SIMPLE_BELL);
+		registerSound(ResourceLocations.CRAFTING_SPELL);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {

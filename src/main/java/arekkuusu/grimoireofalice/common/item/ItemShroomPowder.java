@@ -6,7 +6,7 @@
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.common.item.food;
+package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
@@ -69,12 +69,12 @@ public class ItemShroomPowder extends ItemMod {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		int i = stack.getMetadata();
-		return super.getUnlocalizedName() + "." + (i != 16 ? EnumDyeColor.byDyeDamage(i).getUnlocalizedName() : "soup");
+		return super.getUnlocalizedName() + "." + EnumDyeColor.byDyeDamage(i).getUnlocalizedName();
 	}
 
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> list) {
-		for(int i = 0; i < 17; i++) {
+		for(int i = 0; i < 16; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}

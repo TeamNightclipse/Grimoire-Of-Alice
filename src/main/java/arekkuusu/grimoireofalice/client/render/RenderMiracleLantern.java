@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class RenderMiracleLantern extends Render<EntityMiracleLantern> {
 
@@ -19,14 +20,12 @@ public class RenderMiracleLantern extends Render<EntityMiracleLantern> {
 	@Override
 	public void doRender(EntityMiracleLantern entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
-		GlStateManager.disableLighting();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(entityYaw, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(entity.ticksExisted * 8, 1.0F, 0.0F, 0.0F);
 		MODEL_MIRACLE_LANTERN.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		MODEL_MIRACLE_LANTERN.renderMore(0.0625F);
-		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

@@ -8,11 +8,14 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
+import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.item.crafting.SpecialRecipes;
 import arekkuusu.grimoireofalice.common.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @ObjectHolder(LibMod.MODID)
@@ -75,6 +78,57 @@ public final class ModItems {
 	public static final Item STOP_WATCH = new Item();
 	@ObjectHolder(LibItemName.MORTAR_AND_PESTLE)
 	public static final Item MORTAR_AND_PESTLE = new Item();
+	@ObjectHolder(LibItemName.FULL_POWER)
+	public static final Item FULL_POWER = new Item();
+	@ObjectHolder(LibItemName.STAR)
+	public static final Item STAR = new Item();
+	@ObjectHolder(LibItemName.CHERRY)
+	public static final Item CHERRY = new Item();
+	@ObjectHolder(LibItemName.TIME_ORB)
+	public static final Item TIME_ORB = new Item();
+	@ObjectHolder(LibItemName.FAITH)
+	public static final Item FAITH = new Item();
+	@ObjectHolder(LibItemName.UFO_RED)
+	public static final Item UFO_RED = new Item();
+	@ObjectHolder(LibItemName.UFO_BLUE)
+	public static final Item UFO_BLUE = new Item();
+	@ObjectHolder(LibItemName.UFO_GREEN)
+	public static final Item UFO_GREEN = new Item();
+	@ObjectHolder(LibItemName.UFOS)
+	public static final Item UFOS = new Item();
+	@ObjectHolder(LibItemName.EYE)
+	public static final Item THIRD_EYE = new Item();
+	@ObjectHolder(LibItemName.LEAF)
+	public static final Item LEAF = new Item();
+	@ObjectHolder(LibItemName.BLOOD_THIRSTY_ORB)
+	public static final Item BLOOD_ORB = new Item();
+	@ObjectHolder(LibItemName.FOLDING_UMBRELLA)
+	public static final Item FOLDING_UMBRELLA = new Item();
+	@ObjectHolder(LibItemName.SUBSTITUTE_JIZO)
+	public static final Item SUBSTITUTE_JIZO = new Item();
+	@ObjectHolder(LibItemName.NIMBLE_FABRIC)
+	public static final Item NIMBLE_FABRIC = new Item();
+	@ObjectHolder(LibItemName.FAKE_MIRACLE_MALLET)
+	public static final Item FAKE_MIRACLE_MALLET = new Item();
+	@ObjectHolder(LibItemName.SEND_OFF_LANTERN)
+	public static final Item GHASTLY_SEND_OFF_LANTERN = new Item();
+	@ObjectHolder(LibItemName.DECOY_DOLL)
+	public static final Item CURSED_DECOY_DOLL = new Item();
+	@ObjectHolder(LibItemName.AYA_CAMERA)
+	public static final Item AYA_CAMERA = new Item();
+	@ObjectHolder(LibItemName.HATATE_CAMERA)
+	public static final Item HATATE_CAMERA = new Item();
+	@ObjectHolder(LibItemName.HAKUREI_GOHEI)
+	public static final Item HAKUREI_GOHEI = new Item();
+	@ObjectHolder(LibItemName.SANAE_GOHEI)
+	public static final Item SANAE_GOHEI = new Item();
+	@ObjectHolder(LibItemName.BLACK_FEATHER)
+	public static final Item BLACK_FEATHER = new Item();
+	@ObjectHolder(LibItemName.SHINKI_WAND)
+	public static final Item SHINKI_WAND = new Item();
+	@ObjectHolder(LibItemName.NETHER_SHARD)
+	public static final Item NETHER_SHARD = new Item();
+
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)
 	public static final Item SHROOM_POWDER = new Item();
@@ -152,12 +206,10 @@ public final class ModItems {
 	public static final Item ELLY_SCYTHE = new Item();
 	@ObjectHolder(LibItemName.MIKO_STICK)
 	public static final Item MIKO_STICK = new Item();
-	@ObjectHolder(LibItemName.CREST_OF_YGGDRASILL)
-	public static final Item CREST_OF_YGGDRASILL = new Item();
 	@ObjectHolder(LibItemName.AMENONUHOKO)
 	public static final Item AMENONUHOKO = new Item();
-	@ObjectHolder(LibItemName.NEEDLE)
-	public static final Item NEEDLE = new Item();
+	@ObjectHolder(LibItemName.SHINMYOUMARU_NEEDLE)
+	public static final Item SHINMYOUMARU_NEEDLE = new Item();
 	@ObjectHolder(LibItemName.NUE_TRIDENT)
 	public static final Item NUE_TRIDENT = new Item();
 	@ObjectHolder(LibItemName.SWORD_OF_KUSANAGI)
@@ -190,55 +242,18 @@ public final class ModItems {
 	public static final Item DEATH_SCYTHE = new Item();
 	@ObjectHolder(LibItemName.ROUKANKEN)
 	public static final Item ROUKANKEN = new Item();
-	//PointItem
-	@ObjectHolder(LibItemName.FULL_POWER)
-	public static final Item FULL_POWER = new Item();
-	@ObjectHolder(LibItemName.STAR)
-	public static final Item STAR = new Item();
-	@ObjectHolder(LibItemName.CHERRY)
-	public static final Item CHERRY = new Item();
-	@ObjectHolder(LibItemName.TIME_ORB)
-	public static final Item TIME_ORB = new Item();
-	@ObjectHolder(LibItemName.FAITH)
-	public static final Item FAITH = new Item();
-	@ObjectHolder(LibItemName.UFO_RED)
-	public static final Item UFO_RED = new Item();
-	@ObjectHolder(LibItemName.UFO_BLUE)
-	public static final Item UFO_BLUE = new Item();
-	@ObjectHolder(LibItemName.UFO_GREEN)
-	public static final Item UFO_GREEN = new Item();
-	@ObjectHolder(LibItemName.UFOS)
-	public static final Item UFOS = new Item();
-	@ObjectHolder(LibItemName.EYE)
-	public static final Item THIRD_EYE = new Item();
-	@ObjectHolder(LibItemName.LEAF)
-	public static final Item LEAF = new Item();
-	@ObjectHolder(LibItemName.BLOOD_THIRSTY_ORB)
-	public static final Item BLOOD_ORB = new Item();
-	@ObjectHolder(LibItemName.FOLDING_UMBRELLA)
-	public static final Item FOLDING_UMBRELLA = new Item();
-	@ObjectHolder(LibItemName.SUBSTITUTE_JIZO)
-	public static final Item SUBSTITUTE_JIZO = new Item();
-	@ObjectHolder(LibItemName.NIMBLE_FABRIC)
-	public static final Item NIMBLE_FABRIC = new Item();
-	@ObjectHolder(LibItemName.FAKE_MIRACLE_MALLET)
-	public static final Item FAKE_MIRACLE_MALLET = new Item();
-	@ObjectHolder(LibItemName.SEND_OFF_LANTERN)
-	public static final Item GHASTLY_SEND_OFF_LANTERN = new Item();
-	@ObjectHolder(LibItemName.DECOY_DOLL)
-	public static final Item CURSED_DECOY_DOLL = new Item();
-	@ObjectHolder(LibItemName.AYA_CAMERA)
-	public static final Item AYA_CAMERA = new Item();
-	@ObjectHolder(LibItemName.HATATE_CAMERA)
-	public static final Item HATATE_CAMERA = new Item();
-	@ObjectHolder(LibItemName.HAKUREI_GOHEI)
-	public static final Item HAKUREI_GOHEI = new Item();
-	@ObjectHolder(LibItemName.SANAE_GOHEI)
-	public static final Item SANAE_GOHEI = new Item();
 
 	public static void init() {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
 		SpecialRecipes.init();
+	}
+
+	public static void initFlyingItems() {
+		GrimoireOfAliceAPI.registerFlyItem(new ItemStack(ModItems.HAKUREI_GOHEI));
+		if (GrimoireOfAlice.danmakuCoreInstalled)
+			GrimoireOfAliceAPI.registerFlyItem(new ItemStack(ModItems.JEWELED_HOURAI));
+		GrimoireOfAliceAPI.registerFlyArmor(new ItemStack(ModItems.UTSUHO_WINGS));
+		GrimoireOfAliceAPI.registerFlyArmor(new ItemStack(ModItems.KANAKO_SHIMENAWA));
 	}
 }

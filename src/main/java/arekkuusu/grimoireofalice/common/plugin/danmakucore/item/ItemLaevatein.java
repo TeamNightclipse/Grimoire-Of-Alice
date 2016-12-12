@@ -81,17 +81,19 @@ public class ItemLaevatein extends ItemModSword {
 		boolean isCreative = playerIn.capabilities.isCreativeMode;
 
 		if(isCreative || playerIn.experienceLevel > 30) {
-			playerIn.playSound(SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+			playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 			itemStackIn.damageItem(10, playerIn);
 			if(!worldIn.isRemote) {
 				ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
 				if(isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
-					DanmakuBuilder danmaku = DanmakuBuilder.builder()
-							.setUser(playerIn)
-							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
-							.build();
+					for (int i = 0; i < 3; i++) {
+						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+								.setUser(playerIn)
+								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
+								.build();
 
-					DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
+					}
 
 					if(!isCreative) {
 						//noinspection ConstantConditions
@@ -103,7 +105,7 @@ public class ItemLaevatein extends ItemModSword {
 
 					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
 					worldIn.spawnEntityInWorld(circle);
-					playerIn.getCooldownTracker().setCooldown(this, 10);
+					playerIn.getCooldownTracker().setCooldown(this, 40);
 				}
 			}
 		}

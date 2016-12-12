@@ -71,8 +71,8 @@ public class ConfigHandler {
 			public boolean hakureiGohei = true;
 			@Comment("Can players craft the ibaraki box?")
 			public boolean ibarakiBox = true;
-			@Comment("Can players craft the ichirin aura?")
-			public boolean ichirinAura = true;
+			@Comment("Can players craft the ichirin unzan?")
+			public boolean ichirinUnzan = true;
 			@Comment("Can players craft the ichirin ring?")
 			public boolean ichirinRing = true;
 			@Comment("Can players craft the kappa hat?")
@@ -153,11 +153,17 @@ public class ConfigHandler {
 			public boolean toyosatomimiHat = true;
 			@Comment("Can players craft utsuho wings?")
 			public boolean utsuhoWings = true;
+			@Comment("Can players craft nether shard?")
+			public boolean netherShard = true;
 
 			@Comment("Can players craft holy stones?")
 			public boolean holyStone = true;
+			@Comment("Can players craft holy key stone?")
+			public boolean holyKeyStone = true;
 			@Comment("Can players craft onbashiras?")
 			public boolean onbashira = true;
+			@Comment("Can players craft hihiirokane blocks?")
+			public boolean hihiirokaneBlock = true;
 			@Comment("Can players craft end crystals?")
 			public boolean endCrystal = true;
 
@@ -220,12 +226,14 @@ public class ConfigHandler {
 
 			@Comment("Can players find Point Items?")
 			public boolean pointItemsGen = true;
-			@Comment("How many Spawn tries per chunks?")
-			public int mushromSpawnRate = 10;
-			@Comment("How many Spawn tries per chunks?")
-			public int kyoumarubotanSpawnRate = 5;
-			@Comment("How many Ore tries per chunks?")
-			public int impureStoneSpawnRate = 10;
+			@Comment("How many Spawn tries per chunk?")
+			public int mushromSpawnRate = 25;
+			@Comment("How many Spawn tries per chunk?")
+			public int kyoumarubotanSpawnRate = 1;
+			@Comment("How rare is the impure stone? (The greater the number the rarer the ore)")
+			public int impureStoneRarity = 1;
+			@Comment("How many Ore per chunk? (+ 0 to 5 more Blocks)")
+			public int impureStoneMinQuantity = 1;
 		}
 
 		public static class Features {
@@ -234,8 +242,8 @@ public class ConfigHandler {
 			public boolean vanillaBlockModels = true;
 			@Comment("Can the ender dragon drop the sword of kusanagi?")
 			public boolean swordOfKusanagi = true;
-			@Comment("Allow shichi seiken drop gold?")
-			public boolean allowGoldDrop = true;
+			@Comment("Allow shichi seiken drop goods?")
+			public boolean allowGoodDrops = true;
 			@Comment("Allow flying?")
 			public boolean allowFly = true;
 			@Comment("Allow items and potions that allows the player to revive")

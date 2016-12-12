@@ -24,6 +24,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = LibMod.MODID, name = LibMod.MODNAME, version = LibMod.MODVER, dependencies = LibMod.DEPENDENCIES)
 public class GrimoireOfAlice {
@@ -58,7 +59,9 @@ public class GrimoireOfAlice {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 		ModItems.init();
+		ModItems.initFlyingItems();
 		if (danmakuCoreInstalled) {
 			LogHelper.info("is 42");
 		}

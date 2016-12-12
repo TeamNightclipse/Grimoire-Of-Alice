@@ -10,9 +10,11 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +23,8 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -59,6 +63,40 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_shift.name"));
 		}
 		super.addInformation(stack, player, list, p_77624_4_);
+	}
+
+	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		if (!entityLiving.worldObj.isRemote) {
+			double range = 50.0D;
+			Vec3d look = entityLiving.getLookVec();
+			Vec3d vec3d = new Vec3d(entityLiving.posX, entityLiving.posY + entityLiving.getEyeHeight(), entityLiving.posZ);
+			Vec3d vec3d1 = new Vec3d(entityLiving.posX + look.xCoord * range, entityLiving.posY + look.yCoord * range, entityLiving.posZ + look.zCoord * range);
+			RayTraceResult traceResult = entityLiving.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
+			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
+
+			List<Entity> list = entityLiving.worldObj.getEntitiesInAABBexcluding(entityLiving
+					, entityLiving.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D)
+					, Entity::canBeCollidedWith);
+
+			Entity entity = null;
+			double d = 0.0D;
+			for (Entity entity1 : list) {
+				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
+				if (movingObjectPosition1 != null) {
+					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
+					if (d1 < d || d == 0.0D) {
+						entity = entity1;
+						d = d1;
+					}
+				}
+			}
+
+			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.worldObj, entityLiving, entity);
+			entityLiving.worldObj.spawnEntityInWorld(entityNetherSoul);
+			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
+		}
+		return true;
 	}
 
 	@Override

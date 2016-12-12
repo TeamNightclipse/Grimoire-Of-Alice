@@ -21,5 +21,6 @@ public class ModEntity {
 		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityMiracleLantern.class, "Lantern", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityNetherSoul.class, "Soul", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 	}
 }

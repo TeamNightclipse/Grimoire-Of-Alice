@@ -61,6 +61,7 @@ public class LibItemName {
 	public static final String HATATE_CAMERA = "hatatecamera";
 	public static final String SANAE_GOHEI = "sanaegohei";
 	public static final String HAKUREI_GOHEI = "hakureigohei";
+	public static final String NETHER_SHARD = "nethershard";
 	//Food
 	public static final String SHROOM_POWDER = "shroompowder";
 	public static final String GRILLED_LAMPREY = "grilledlamprey";
@@ -104,9 +105,8 @@ public class LibItemName {
 	public static final String NAZRIN_STICK = "nazrinstick";
 	public static final String ELLY_SCYTHE = "ellyscythe";
 	public static final String MIKO_STICK = "mikostick";
-	public static final String CREST_OF_YGGDRASILL = "crestofyggdrasill";
 	public static final String AMENONUHOKO = "amenonuhoko";
-	public static final String NEEDLE = "needle";
+	public static final String SHINMYOUMARU_NEEDLE = "shinmyoumaruneedle";
 	public static final String NUE_TRIDENT = "nuetrident";
 	public static final String SWORD_OF_KUSANAGI = "swordofkusanagi";
 	public static final String SYRINGE = "syringe";
@@ -124,4 +124,6 @@ public class LibItemName {
 	public static final String DEATH_SCYTHE = "deathscythe";
 	public static final String ROUKANKEN = "roukanken";
 	public static final String YUUGI_SAKE = "yuugisake";
+	public static final String BLACK_FEATHER = "blackfeather";
+	public static final String SHINKI_WAND = "shinkiwand";
 }

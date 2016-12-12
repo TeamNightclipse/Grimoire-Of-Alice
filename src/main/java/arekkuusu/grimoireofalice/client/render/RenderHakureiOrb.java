@@ -27,11 +27,10 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 		GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_COLOR);
 		float size = entity.getSize();
 		GlStateManager.scale(size, size, size);
-		float angle = 90;
-		GlStateManager.rotate(180F - renderManager.playerViewY + angle, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(270F - renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(180F - renderManager.playerViewX, 0.0F, 0.0F, 1.0F);
 		GlStateManager.rotate(entity.getTicksAlive() * 8, 1.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(angle * 5F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate(90 * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();

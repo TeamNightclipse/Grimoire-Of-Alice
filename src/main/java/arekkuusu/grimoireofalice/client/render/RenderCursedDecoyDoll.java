@@ -20,16 +20,12 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 	@Override
 	public void doRender(EntityCursedDecoyDoll entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
-		GlStateManager.enableBlend();
-		GlStateManager.disableLighting();
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y + 1, z);
 		GlStateManager.scale(0.5, 0.5, 0.5);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		GlStateManager.enableLighting();
-		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 

@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.common;
 import arekkuusu.grimoireofalice.common.block.*;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.common.core.handler.WorldGenOre;
 import arekkuusu.grimoireofalice.common.item.*;
 import arekkuusu.grimoireofalice.common.item.food.*;
 import arekkuusu.grimoireofalice.common.item.masks.*;
@@ -78,6 +77,9 @@ public class CommonRegistration {
 				new ItemHakureiGohei(),
 				new ItemSanaeGohei(),
 				new ItemMortarPestle(),
+				new ItemMod(LibItemName.BLACK_FEATHER),
+				new ItemShinkiWand(),
+				new ItemMod(LibItemName.NETHER_SHARD),
 
 				//Food
 				new ItemShroomPowder(),
@@ -116,7 +118,6 @@ public class CommonRegistration {
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),
-				new ItemCrestOfYggdrasill(WET_NOODLE),
 				new ItemToyosatomimiStick(NOT_A_MELEE_WEAPON),
 				new ItemMochiHammer(WET_NOODLE),
 				new ItemMomijisScimitarSword(GOLDYRON),
@@ -134,7 +135,7 @@ public class CommonRegistration {
 				new ItemWatermelonBlade(WET_NOODLE),
 				new ItemWatermelonSword(GOLDYRON),
 				new ItemSacredToyosatomimi(GOLDYRON),
-				new ItemNeedle(NOT_A_MELEE_WEAPON),
+				new ItemShinmyoumaruNeedle(NOT_A_MELEE_WEAPON),
 				new ItemDeathScythe(WET_NOODLE),
 				new ItemSwordRoukanken(WET_NOODLE)
 		);
@@ -152,7 +153,8 @@ public class CommonRegistration {
 				itemBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC),
 				itemBlock(ModBlocks.ALTAR),
 				itemBlock(ModBlocks.PILLAR_ALTAR),
-				itemBlock(ModBlocks.IMPURE_STONE)
+				itemBlock(ModBlocks.IMPURE_STONE),
+				itemBlock(ModBlocks.HIHIIROKANE_BLOCK)
 		);
 
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
@@ -214,7 +216,8 @@ public class CommonRegistration {
 				hyperConcentratedMagic,
 				new BlockCraftingAltar(),
 				new BlockPillarAltar(),
-				new BlockImpureRock()
+				new BlockImpureRock(),
+				new BlockHihiirokane()
 		);
 	}
 
@@ -223,10 +226,5 @@ public class CommonRegistration {
 		event.getRegistry().registerAll(
 				new PotionElixir()
 		);
-	}
-
-	@SubscribeEvent
-	public static void registerOreGen(OreDictionary.OreRegisterEvent event) {
-		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 	}
 }

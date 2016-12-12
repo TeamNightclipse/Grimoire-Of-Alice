@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.event;
 import java.util.ArrayList;
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import com.google.common.collect.ImmutableList;
 
@@ -24,13 +25,8 @@ import net.minecraftforge.items.IItemHandler;
 public class CapabilitiesEvent {
 
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
-	private final List<ItemStack> flyItems = ImmutableList.of(
-			new ItemStack(ModItems.HAKUREI_GOHEI)
-	);
-	private final List<ItemStack> flyArmor = ImmutableList.of(
-			new ItemStack(ModItems.UTSUHO_WINGS),
-			new ItemStack(ModItems.KANAKO_SHIMENAWA)
-	);
+	private final List<ItemStack> flyItems = GrimoireOfAliceAPI.getFlyItems();
+	private final List<ItemStack> flyArmor = GrimoireOfAliceAPI.getFlyArmor();
 
 	//onItemDrop and onItemToss handle player dropping stuff on death and drag n' drop from inventory.
 	@SubscribeEvent
@@ -113,7 +109,7 @@ public class CapabilitiesEvent {
 		return flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack)) || player.inventory.armorInventory[2] != null && (flyArmor.stream().anyMatch(stack -> stack.getItem() == player.inventory.armorInventory[2].getItem()));
 	}
 
-	private boolean isFlyItem(Item item){
-		return flyItems.stream().anyMatch(stack -> item == stack.getItem()) || flyArmor.stream().anyMatch(stack -> item == stack.getItem());
+	private boolean isFlyItem(Item item) {
+		return (!flyItems.isEmpty() && flyItems.stream().anyMatch(stack -> item == stack.getItem())) || (!flyArmor.isEmpty() && flyArmor.stream().anyMatch(stack -> item == stack.getItem()));
 	}
 }

@@ -54,14 +54,16 @@ public class GOACreativeTab extends CreativeTabs {
 		//Blocks
 		addBlock(ModBlocks.COMPACT_STONE);
 		addBlock(ModBlocks.IMPURE_STONE);
+		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
 		addBlock(ModBlocks.SUGAR_BLOCK);
 		addBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.PILLAR_ALTAR);
 		addBlock(ModBlocks.HOLY_STONE);
+		addBlock(ModBlocks.HOLY_KEY_STONE);
 		addBlock(ModBlocks.ALTAR);
-		addBlock(ModBlocks.PAPER_BLOCK);
 		addBlock(ModBlocks.ROPE_BLOCK);
+		addBlock(ModBlocks.PAPER_BLOCK);
 		addBlock(ModBlocks.KYOUMARUBOTAN);
 		addBlock(ModBlocks.SHROOM);
 		addItem(ModItems.SHROOM_POWDER);
@@ -74,6 +76,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.SOLDIFIED_PAPER);
 		addItem(ModItems.VOLATILE_STRING);
 		addItem(ModItems.SHIMENAWA_ROPE);
+		addItem(ModItems.BLACK_FEATHER);
+		addItem(ModItems.NETHER_SHARD);
 		addItem(ModItems.MASK);
 		addItem(ModItems.UFO_BLUE);
 		addItem(ModItems.UFO_GREEN);
@@ -228,11 +232,13 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.MOCHI_HAMMER);
 		// ** Shikieiki Yamaxanadu ** /
 		addItem(ModItems.ROD_REMORSE);
+		// ** Shinki ** /
+		addItem(ModItems.SHINKI_WAND);
 		// ** Shinmyoumaru Sukuna ** /
 		addItem(ModItems.SHINMYOUMARU_HAT);
 		if (GrimoireOfAlice.danmakuCoreInstalled)
 			addItem(ModItems.MIRACLE_MALLET);
-		addItem(ModItems.NEEDLE);
+		addItem(ModItems.SHINMYOUMARU_NEEDLE);
 		// ** Shou Toramaru ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
 			addItem(ModItems.SHOU_LAMP);
@@ -255,7 +261,6 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Utsuho Reiuji ** /
 		addItem(ModItems.UTSUHO_WINGS);
 		// ** Yatsuhashi Tsukumo ** /
-		System.out.println();
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN);
 		// ** Yukari Yakumo ** /
