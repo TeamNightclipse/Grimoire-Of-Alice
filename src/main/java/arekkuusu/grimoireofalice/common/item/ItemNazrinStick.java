@@ -72,7 +72,7 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_bottom.name"));
 		if(GuiScreen.isShiftKeyDown()) {
@@ -132,7 +132,7 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
+		if(playerIn.isSneaking() && isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
 				|| playerIn.experienceLevel > 30)) {
 			playerIn.setActiveHand(hand);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);

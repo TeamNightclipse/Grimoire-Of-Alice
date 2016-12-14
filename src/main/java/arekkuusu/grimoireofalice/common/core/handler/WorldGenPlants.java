@@ -24,7 +24,7 @@ public class WorldGenPlants {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.getType() == EventType.FLOWERS) {
-			int kyo = ConfigHandler.grimoireOfAlice.worldGen.kyoumarubotanSpawnRate;
+			int kyo = ConfigHandler.grimoireOfAlice.worldGen.mushromSpawnRate;
 			for(int i = 0; i < kyo; i++) {
 				int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
 				int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;
@@ -33,19 +33,20 @@ public class WorldGenPlants {
 				BlockPos pos3 = new BlockPos(x, y, z);
 				List<IBlockState> states = ModBlocks.SHROOM.getBlockState().getValidStates();
 				int type = event.getRand().nextInt(states.size());
-				if(event.getWorld().isAirBlock(pos3) && ModBlocks.SHROOM.canPlaceBlockAt(event.getWorld(), pos3)) {
+				if (event.getWorld().isAirBlock(pos3) && ModBlocks.SHROOM.canPlaceBlockAt(event.getWorld(), pos3)) {
 					event.getWorld().setBlockState(pos3, states.get(type), 2);
 				}
 			}
-			int mush = ConfigHandler.grimoireOfAlice.worldGen.mushromSpawnRate;
+			int mush = ConfigHandler.grimoireOfAlice.worldGen.kyoumarubotanSpawnRate;
 			for(int i = 0; i < mush; i++) {
 				int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
 				int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);
-				if(event.getWorld().isAirBlock(pos3) && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3)) {
+				if (event.getRand().nextBoolean() && event.getWorld().isAirBlock(pos3) && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3)) {
 					event.getWorld().setBlockState(pos3, ModBlocks.KYOUMARUBOTAN.getDefaultState(), 2);
+					break;
 				}
 			}
 		}

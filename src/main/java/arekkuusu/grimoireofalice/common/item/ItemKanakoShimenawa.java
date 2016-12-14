@@ -42,18 +42,18 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.kanako_shimenawa_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_bottom.name"));
 	}
 
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) { //TODO: Make player walk on water
 		if (!player.isInWater() && !player.isSneaking() && player.motionY <= 0) {
 			if (world.getBlockState(player.getPosition().down()).getMaterial() == Material.WATER) {
-				player.posY += -player.motionY;
+				//player.posY = player.getPosition().getY();
 				player.onGround = true;
-				//player.motionY = 0;
+				player.motionY = 0;
 				player.fallDistance = 0.0F;
 			}
 		}

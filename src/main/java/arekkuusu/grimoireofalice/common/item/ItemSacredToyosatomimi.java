@@ -42,11 +42,10 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"));
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name"));
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name"));

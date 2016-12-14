@@ -57,7 +57,7 @@ public class ItemHakureiGohei extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
 	}
 
 	@Override

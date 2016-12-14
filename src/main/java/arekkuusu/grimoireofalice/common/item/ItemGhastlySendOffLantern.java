@@ -37,8 +37,8 @@ public class ItemGhastlySendOffLantern extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.send_off_lantern_header.name"));
-		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.send_off_lantern_description.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_description.name"));
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 item.enchantedbook.name=Enchanted Book
 item.grimoirebook.name=Grimoire Book
-item.volatilestring.name=Volatile String
+item.paste.name=Paste
 item.soldifiedpaper.name=Soldified Paper
 item.gloriousnipponsteel.name=Tamahagane
 item.shimenawarope.name=Shimenawa Rope
@@ -30,6 +30,8 @@ item.mortarnpestle.name=Mortar N' Pestle
 item.blackfeather.name=Black Feather
 item.shinkiwand.name=Shinki's Wand
 item.nethershard.name=Nether Shard
+item.ironnuggetgoa.name=Iron Nugget
+item.hardenedleathergoa.name=Hardened Leather
 
 item.shroompowder.white.name=White Shroom Powder
 item.shroompowder.orange.name= Orange Shroom Powder
@@ -91,7 +93,7 @@ item.ellyscythe.name=Scythe of the Useless Gatekeeper
 item.mikostick.name=Toyosatomimi's Stick
 item.crestofyggdrasill.name=Crest Of Yggdrasill
 item.amenonuhoko.name=Amenonuhoko
-item.needle.name=Shinmyoumaru's Needle
+item.shinmyoumaruneedle.name=Shinmyoumaru's Needle
 item.nuetrident.name=Nue Trident
 item.swordofkusanagi.name=Sword of Kusanagi
 item.syringe.name=Eirin's Syringe
@@ -267,8 +269,9 @@ grimoire.tooltip.budah_boul_header.name=Stone begging bowl of the Buddha Gautama
 grimoire.tooltip.budah_boul_description_top.name="An entire life to reach enlightenment
 grimoire.tooltip.budah_boul_description_bottom.name=and a thousand more to create this boul"
 
-grimoire.tooltip.cattail_plant_header.name=Nitori's Cattail Plant
-grimoire.tooltip.cattail_plant_description.name=She used big machinery just to pick it up...
+grimoire.tooltip.cattail_plant_header.name=She used big machinery just to pick it up...
+
+grimoire.tooltip.suwako_hat_header.name="Hoppu hoppu"
 
 grimoire.tooltip.decoy_doll_header.name=Doll that takes damage for the player
 
@@ -295,9 +298,17 @@ grimoire.tooltip.folding_umbrella_header_shift.name=SHIFT for details
 grimoire.tooltip.send_off_lantern_header.name=Allows the player to negate all damage
 grimoire.tooltip.send_off_lantern_description.name=for a short period of time
 
+grimoire.tooltip.maple_leaf_shield_header.name=Round shield with a red maple leaf print on it
+grimoire.tooltip.maple_leaf_shield_effect.name=Cures potion effects
+
+grimoire.tooltip.ufos_header.name=Gathers Items around the player
+grimoire.tooltip.ufos_status.name=Status:
+grimoire.tooltip.ufos_on.name= ON
+grimoire.tooltip.ufos_off.name= OFF
+
 grimoire.tooltip.ghost_dipper_header.name=Fearsome ladle known to sink monstrous ships
-grimoire.tooltip.ghost_dipper_description_top.name=Right click water to clear
-grimoire.tooltip.ghost_dipper_description_bottom.name=Right click on land to place water
+grimoire.tooltip.ghost_dipper_description_top.name=- Right click water to clear
+grimoire.tooltip.ghost_dipper_description_bottom.name=- Right click on land to place water
 grimoire.tooltip.ghost_dipper_shift.name=SHIFT for details
 
 grimoire.tooltip.glorious_nippon_steel_header.name=Round and precious steel
@@ -325,8 +336,7 @@ grimoire.tooltip.ichirin_inactive.name=Inactive
 grimoire.tooltip.ichirin_active.name=Active
 grimoire.tooltip.ichirin_shift.name=SHIFT for details
 
-grimoire.tooltip.kappa_hat_header.name=A kappa hat
-grimoire.tooltip.kappa_hat_description.name="Do not drop the water"
+grimoire.tooltip.kappa_hat_header.name="River Castle"
 
 grimoire.tooltip.marisa_hat_header.name="daze~!"
 grimoire.tooltip.marisa_hat_description.name=Pickup items 5 blocks away
@@ -611,7 +621,7 @@ grimoire.jei.descriptions.hatate_camera_body=Hurts mobs close to the photo taken
 
 grimoire.jei.descriptions.heavenly_peach=Obtained by breaking leaves with a Hisou Sword
 
-grimoire.jei.descriptions.hihiirokane=Obtained from Coal Blocks and Impure Rock on a Crafting Altar
+grimoire.jei.descriptions.hihiirokane=Obtained from Impure Rocks and Coal on a Crafting Altar
 
 grimoire.jei.descriptions.hisou=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions.hisou_body=Charge the weapon with surrounding spirit energy and use it against the enemy. Swing the sword to hit entities in the distance, right click the ground to cause an earth quake, or hold right click to shoot a beam of danmaku
@@ -729,7 +739,7 @@ grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used. Hold to char
 
 grimoire.jei.descriptions.shroom_powder=Used to craft danmaku potions if the mod DanmakuCore is present
 
-grimoire.jei.descriptions.skull=Item that spawns a protective skull around the player
+grimoire.jei.descriptions.skull=Item that spawns a protective skull around the player (Not yet implemented)
 
 grimoire.jei.descriptions.star=Found inside chests in Abandoned mine shafts
 
@@ -780,7 +790,7 @@ grimoire.jei.descriptions.youkai_book=A book written by Youkai
 grimoire.jei.descriptions.yuugi_sake=Must be crafted in the End
 grimoire.jei.descriptions.yuugi_sake_body=Strong sake from hell, it grants great power to the drinker never getting drunk or feeling full
 
-grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30 in groups of 3 to 8
+grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30
 
 grimoire.jei.descriptions.holy_stone=Gives players levitation when the weather is Rainy, it also accepts gifts:
 grimoire.jei.descriptions.holy_stone_gold_nugget= -Gold Nugget -> XP

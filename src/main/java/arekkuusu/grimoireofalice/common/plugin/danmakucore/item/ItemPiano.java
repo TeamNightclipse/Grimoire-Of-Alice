@@ -27,7 +27,7 @@ public class ItemPiano extends ItemInstrument {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.piano_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_use.name"));
 	}
 }

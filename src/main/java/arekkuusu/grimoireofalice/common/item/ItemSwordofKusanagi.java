@@ -53,11 +53,11 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.sword_of_kusanagi_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_top.name"));
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sword_of_kusanagi_description.mid.name"));
-			list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_bottom.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description.mid.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_bottom.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_shift.name"));

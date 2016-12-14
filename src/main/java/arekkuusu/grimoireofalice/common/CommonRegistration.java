@@ -23,7 +23,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 
 @Mod.EventBusSubscriber
 public class CommonRegistration {
@@ -46,7 +45,7 @@ public class CommonRegistration {
 				new ItemMod(LibItemName.MASK),
 				new ItemGrimoireBook(),
 				new ItemYoukaiBook(),
-				new ItemMod(LibItemName.VOLATILE_STRING),
+				new ItemMod(LibItemName.PASTE),
 				new ItemMod(LibItemName.SOLDIFIED_PAPER),
 				new ItemMod(LibItemName.IMPURE_ROCK),
 				new ItemIbarakiBoxEmpty(),
@@ -80,6 +79,8 @@ public class CommonRegistration {
 				new ItemMod(LibItemName.BLACK_FEATHER),
 				new ItemShinkiWand(),
 				new ItemMod(LibItemName.NETHER_SHARD),
+				new ItemMod(LibItemName.IRON_NUGGET),
+				new ItemMod(LibItemName.HARDENED_LEATHER),
 
 				//Food
 				new ItemShroomPowder(),

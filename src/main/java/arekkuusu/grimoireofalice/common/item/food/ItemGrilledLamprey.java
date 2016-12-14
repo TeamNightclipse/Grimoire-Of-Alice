@@ -26,7 +26,6 @@ public class ItemGrilledLamprey extends ItemModFood {
 
 	public ItemGrilledLamprey() {
 		super(20, 2F, true, LibItemName.GRILLED_LAMPREY);
-		setCreativeTab(CreativeTabs.FOOD);
 		setAlwaysEdible();
 	}
 

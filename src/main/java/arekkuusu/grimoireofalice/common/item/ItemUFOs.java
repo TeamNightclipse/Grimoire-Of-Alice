@@ -11,12 +11,17 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -52,14 +57,23 @@ public class ItemUFOs extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GRAY + "Gathers items around the player");
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ufos_header.name"));
+		list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.ufos_status.name")
+				+ TextFormatting.RESET
+				+ TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ufos_" + (isActive(stack) ? "on" : "off") + ".name"));
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		setActive(itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean selected) {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			if(selected) {
+			if(selected && isActive(stack)) {
 				itemsInRange(world, player, 10);
 			}
 		}
@@ -95,6 +109,21 @@ public class ItemUFOs extends ItemMod {
 	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {
 		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)
 				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true) == null;
+	}
 
+	private void setActive(ItemStack stack) {
+		NBTTagCompound nbt = stack.getTagCompound();
+		if(nbt == null) {
+			nbt = new NBTTagCompound();
+			stack.setTagCompound(nbt);
+			nbt.setBoolean("Active", true);
+		}
+		else {
+			nbt.setBoolean("Active", !nbt.getBoolean("Active"));
+		}
+	}
+
+	private boolean isActive(ItemStack stack){
+		return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("Active");
 	}
 }

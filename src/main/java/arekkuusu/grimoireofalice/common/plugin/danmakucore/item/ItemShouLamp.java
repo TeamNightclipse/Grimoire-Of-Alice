@@ -53,7 +53,7 @@ public class ItemShouLamp extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
 			list.add("");
@@ -74,7 +74,6 @@ public class ItemShouLamp extends ItemMod {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
 			if (isActive(player, stack)) {
-				DanmakuHelper.playShotSound(entityIn);
 				DanmakuBuilder danmaku = DanmakuBuilder.builder()
 						.setUser(player)
 						.setMovementData(0.5D, 1.5D, 0.1D)

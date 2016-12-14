@@ -74,10 +74,12 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.IMPURE_ROCK);
 		addItem(ModItems.TAMAHAGANE_STEEL);
 		addItem(ModItems.SOLDIFIED_PAPER);
-		addItem(ModItems.VOLATILE_STRING);
+		addItem(ModItems.PASTE);
 		addItem(ModItems.SHIMENAWA_ROPE);
 		addItem(ModItems.BLACK_FEATHER);
 		addItem(ModItems.NETHER_SHARD);
+		addItem(ModItems.HARDENED_LEATHER);
+		addItem(ModItems.IRON_NUGGET);
 		addItem(ModItems.MASK);
 		addItem(ModItems.UFO_BLUE);
 		addItem(ModItems.UFO_GREEN);

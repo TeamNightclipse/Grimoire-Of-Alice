@@ -20,12 +20,15 @@ public class WorldGenOre implements IWorldGenerator {
 		if (world.provider.getDimension() == 0) {
 			int veinSize = ConfigHandler.grimoireOfAlice.worldGen.impureStoneMinQuantity + random.nextInt(5);
 			int heightRange = 30;
-			if (0 == random.nextInt(ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity)) {
-				WorldGenMinable gen = new WorldGenMinable(ModBlocks.IMPURE_STONE.getDefaultState(), veinSize, BlockMatcher.forBlock(Blocks.STONE));
-				int xRand = chunkX * 16 + random.nextInt(16);
-				int yRand = random.nextInt(heightRange);
-				int zRand = chunkZ * 16 + random.nextInt(16);
-				gen.generate(world, random, new BlockPos(xRand, yRand, zRand));
+			for (int i = 0; i < ConfigHandler.grimoireOfAlice.worldGen.impureStoneSpawnRate; i++) {
+				if (0 == random.nextInt(ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity)) {
+					WorldGenMinable gen = new WorldGenMinable(ModBlocks.IMPURE_STONE.getDefaultState(), veinSize, BlockMatcher.forBlock(Blocks.STONE));
+					int xRand = chunkX * 16 + random.nextInt(16);
+					int yRand = random.nextInt(heightRange);
+					int zRand = chunkZ * 16 + random.nextInt(16);
+					gen.generate(world, random, new BlockPos(xRand, yRand, zRand));
+					break;
+				}
 			}
 		}
 	}

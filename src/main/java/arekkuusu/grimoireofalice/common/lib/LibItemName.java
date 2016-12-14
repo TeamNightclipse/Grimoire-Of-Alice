@@ -12,7 +12,7 @@ public class LibItemName {
 
 	//Item
 	public static final String GRIMOIRE_BOOK = "grimoirebook";
-	public static final String VOLATILE_STRING = "volatilestring";
+	public static final String PASTE = "paste";
 	public static final String SOLDIFIED_PAPER = "soldifiedpaper";
 	public static final String TAMAHAGANE_STEEL = "gloriousnipponsteel";
 	public static final String SHIMENAWA_ROPE = "shimenawarope";
@@ -62,6 +62,8 @@ public class LibItemName {
 	public static final String SANAE_GOHEI = "sanaegohei";
 	public static final String HAKUREI_GOHEI = "hakureigohei";
 	public static final String NETHER_SHARD = "nethershard";
+	public static final String IRON_NUGGET = "ironnuggetgoa";
+	public static final String HARDENED_LEATHER = "hardenedleathergoa";
 	//Food
 	public static final String SHROOM_POWDER = "shroompowder";
 	public static final String GRILLED_LAMPREY = "grilledlamprey";

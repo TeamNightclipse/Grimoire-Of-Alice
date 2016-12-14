@@ -61,6 +61,7 @@ public class GrimoireOfAlice {
 		proxy.init(event);
 		GameRegistry.registerWorldGenerator(new WorldGenOre(), 0);
 		ModItems.init();
+		ModItems.initOreDictionary();
 		ModItems.initFlyingItems();
 		if (danmakuCoreInstalled) {
 			LogHelper.info("is 42");

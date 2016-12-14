@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -49,11 +50,10 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.fire_robe_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.fire_robe_description_top.name"));
-			list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.fire_robe_description_mid.name"));
-			list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.fire_robe_description_bottom.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_top.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_mid.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_shift.name"));
@@ -131,7 +131,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return LibMod.MODID + ":textures/models/armor/firerobe.png";
+		return ResourceLocations.FIRE_ROBE.toString();
 	}
 
 	@Override

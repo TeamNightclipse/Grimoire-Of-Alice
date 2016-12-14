@@ -47,6 +47,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation RAIDEN_MASK = getLocation("textures/models/armor/raidenMask.png");
 	public static final ResourceLocation UBA_MASK = getLocation("textures/models/armor/ubamask.png");
 	public static final ResourceLocation ICHIRIN_UNZAN = getLocation("textures/models/armor/ichirin_aura.png");
+	public static final ResourceLocation FIRE_ROBE = getLocation("textures/models/armor/firerobe.png");
 	public static final ResourceLocation KANAKO_SHIMENAWA = getLocation("textures/models/armor/kanako_aura.png");
 	public static final ResourceLocation TOYOSATOMIMI_HAT = getLocation("textures/models/armor/toyosatomimi_hat.png");
 	public static final ResourceLocation TOYOSATOMIMI_CLOAK = getLocation("textures/models/armor/toyosatomimi_cloack.png");

@@ -50,9 +50,9 @@ public class ItemNazrinPendulum extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.nazrin_pendulum_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.YELLOW + I18n.format("grimoire.tooltip.nazrin_pendulum_description.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_description.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_shift.name"));

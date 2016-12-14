@@ -21,6 +21,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -38,8 +39,14 @@ public class ItemLeaf extends ItemMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.leaf_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.leaf_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.leaf_description.name"));
 	}
 
@@ -68,7 +75,7 @@ public class ItemLeaf extends ItemMod {
 				float anglePitch = playerIn.rotationPitch + (playerIn.isSneaking() ? 45 : -45);
 				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
 				danmaku.setShot(danmaku.shot.setSize(2));
-				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(90F, anglePitch, 0F)));
+				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
 			}
 		}
 	}

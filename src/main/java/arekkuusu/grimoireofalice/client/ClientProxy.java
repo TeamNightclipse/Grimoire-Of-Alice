@@ -97,7 +97,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.MASK, 0);
 		registerItem(ModItems.GRIMOIRE_BOOK, 0);
 		registerItem(ModItems.YOUKAI_BOOK, 0);
-		registerItem(ModItems.VOLATILE_STRING, 0);
+		registerItem(ModItems.PASTE, 0);
 		registerItem(ModItems.SOLDIFIED_PAPER, 0);
 		registerItem(ModItems.IMPURE_ROCK, 0);
 		registerItem(ModItems.IBARAKI_BOX_EMPTY, 0);
@@ -130,6 +130,8 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.BLACK_FEATHER, 0);
 		registerItem(ModItems.SHINKI_WAND, 0);
 		registerItem(ModItems.NETHER_SHARD, 0);
+		registerItem(ModItems.IRON_NUGGET, 0);
+		registerItem(ModItems.HARDENED_LEATHER, 0);
 
 		registerItem(ModItems.GHOST_DIPPER, 0);
 		registerItem(ModItems.THIRD_EYE, 0);

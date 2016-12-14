@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
@@ -23,7 +24,7 @@ public class EntityStopWatch extends Entity {
 
 	private EntityPlayer user;
 	private ArrayList<UUID> players = new ArrayList<>();
-	//private Map<UUID, double[]> dataEntities = new HashMap<>();
+	private Map<UUID, double[]> dataEntities = new HashMap<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -40,27 +41,28 @@ public class EntityStopWatch extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(user != null) {
-			if(ticksExisted > 500 || user.isSneaking() && user.isSwingInProgress) {
+		if (user != null) {
+			if (ticksExisted > 500 || user.isSneaking() && user.isSwingInProgress) {
 				stopEntity();
 				return;
 			}
 			else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
-				if(user.isHandActive() && stack != null && stack.getItem() == ModItems.STOP_WATCH) {
+				if (user.isHandActive() && stack != null && stack.getItem() == ModItems.STOP_WATCH) {
 					stopEntity();
 					return;
 				}
 			}
 
+			Vec3d look = user.getLookVec();
 			float distance = 1F;
-			double dx = user.posX + distance;
+			double dx = user.posX + look.xCoord + distance;
 			double dy = user.posY + user.getEyeHeight() - 1;
-			double dz = user.posZ + distance;
+			double dz = user.posZ + look.zCoord + distance;
 			setPosition(dx, dy, dz);
 
 			worldObj.setWorldTime(worldObj.getWorldTime() - 1);
-			if(!worldObj.isRemote) {
+			if (!worldObj.isRemote) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
 				list.forEach(this::haltEntity);
 			}
@@ -69,7 +71,7 @@ public class EntityStopWatch extends Entity {
 			stopEntity();
 			return;
 		}
-		if(ticksExisted % 8 == 0) {
+		if (ticksExisted % 8 == 0) {
 			worldObj.playSound(user, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D), SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF,
 					SoundCategory.NEUTRAL, 1.0F, 1.0F + 0.8F);
 		}
@@ -77,16 +79,16 @@ public class EntityStopWatch extends Entity {
 
 	//Gets the player other Watches have and adds them to a list of UUID.
 	private void addIgnoredPlayers(Entity entity) {
-		if(entity instanceof EntityStopWatch) {//If the entity is an instance of EntityStopWatch
-			UUID id = ((EntityStopWatch)entity).getPlayer().getUniqueID(); //Get the UUID of the player the Watch contains
-			if(!players.contains(id)) {// Check the player list does not contain the UUID
+		if (entity instanceof EntityStopWatch) {//If the entity is an instance of EntityStopWatch
+			UUID id = ((EntityStopWatch) entity).getPlayer().getUniqueID(); //Get the UUID of the player the Watch contains
+			if (!players.contains(id)) {// Check the player list does not contain the UUID
 				players.add(id);//Add the UUID
 			}
 		}
 	}
 
 	private void haltEntity(Entity entity) {
-		if(entity instanceof EntityStopWatch
+		if (entity instanceof EntityStopWatch
 				|| entity instanceof EntityCameraSquare
 				|| entity instanceof EntityMagicCircle
 				|| entity instanceof EntityGrimoireSpell) {
@@ -95,35 +97,35 @@ public class EntityStopWatch extends Entity {
 
 		addIgnoredPlayers(entity);
 
-		if(entity instanceof EntityLivingBase) {
+		if (entity instanceof EntityLivingBase) {
 			return;
 		}
 
-		if(!worldObj.isRemote) {
+		if (!worldObj.isRemote) {
 
 			//We use the delay to never actually call update at all
-			if(entity instanceof EntityDanmaku) {
-				EntityDanmaku danmaku = (EntityDanmaku)entity;
+			if (entity instanceof EntityDanmaku) {
+				EntityDanmaku danmaku = (EntityDanmaku) entity;
 				danmaku.setShotData(danmaku.getShotData().setDelay(2));
 
 				return;
 			}
 
-			//if(!dataEntities.containsKey(entity.getUniqueID())) {
-			//	double x = entity.motionX;
-			//	double y = entity.motionY;
-			//	double z = entity.motionZ;
-			//	dataEntities.put(entity.getUniqueID(), new double[] {x, y, z});
-			//}
+			if (!dataEntities.containsKey(entity.getUniqueID())) {
+				double x = entity.motionX;
+				double y = entity.motionY;
+				double z = entity.motionZ;
+				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
+			}
 		}
 
-		if(entity.ticksExisted >= 2) {
+		if (entity.ticksExisted >= 2) {
 			entity.setPosition(entity.prevPosX, entity.prevPosY, entity.prevPosZ);
 			entity.rotationYaw = entity.prevRotationYaw;
 			entity.rotationPitch = entity.prevRotationPitch;
 			entity.motionX = 0;
 
-			if(!entity.onGround) {
+			if (!entity.onGround) {
 				entity.motionY = 0;
 			}
 			entity.motionZ = 0;
@@ -132,26 +134,26 @@ public class EntityStopWatch extends Entity {
 			entity.ticksExisted--;
 			entity.fallDistance = 0;
 
-			if(entity instanceof EntityThrowable) {
-				++((EntityThrowable)entity).throwableShake;
+			if (entity instanceof EntityThrowable) {
+				++((EntityThrowable) entity).throwableShake;
 			}
-			else if(entity instanceof EntityArrow) {
-				++((EntityArrow)entity).arrowShake;
+			else if (entity instanceof EntityArrow) {
+				++((EntityArrow) entity).arrowShake;
 			}
 		}
 	}
 
 	private void stopEntity() {
-		if(!worldObj.isRemote) {
-			if(user != null) {
-				//List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				//list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
+		if (!worldObj.isRemote) {
+			if (user != null) {
+				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
 
-				//	double[] data = dataEntities.get(entity.getUniqueID());
-				//	entity.motionX = data[0];
-				//	entity.motionY = data[1];
-				//	entity.motionZ = data[2];
-				//});
+					double[] data = dataEntities.get(entity.getUniqueID());
+					entity.motionX = data[0];
+					entity.motionY = data[1];
+					entity.motionZ = data[2];
+				});
 				if (!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
@@ -173,7 +175,8 @@ public class EntityStopWatch extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {}
+	protected void entityInit() {
+	}
 
 	@Override
 	public boolean canBePushed() {
@@ -181,8 +184,10 @@ public class EntityStopWatch extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {}
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {}
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+	}
 }

@@ -27,7 +27,7 @@ public class ItemTrumpet extends ItemInstrument {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Poltergeists posses this trumpet");
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Poltergeists posses this trumpet");
 		list.add(TextFormatting.ITALIC + "Hold right click to use");
 	}
 

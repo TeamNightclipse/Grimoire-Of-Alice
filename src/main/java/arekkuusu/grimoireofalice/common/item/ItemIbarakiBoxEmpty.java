@@ -19,6 +19,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -37,6 +38,11 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 		super(LibItemName.IBARAKI_BOX_EMPTY);
 		setMaxStackSize(1);
 		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
 	}
 
 	@Override

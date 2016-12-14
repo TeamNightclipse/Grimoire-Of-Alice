@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.item.crafting.SpecialRecipes;
 import arekkuusu.grimoireofalice.common.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -17,6 +18,7 @@ import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.oredict.OreDictionary;
 
 @ObjectHolder(LibMod.MODID)
 public final class ModItems {
@@ -24,8 +26,8 @@ public final class ModItems {
 	//Item
 	@ObjectHolder(LibItemName.GRIMOIRE_BOOK)
 	public static final Item GRIMOIRE_BOOK = new Item();
-	@ObjectHolder(LibItemName.VOLATILE_STRING)
-	public static final Item VOLATILE_STRING = new Item();
+	@ObjectHolder(LibItemName.PASTE)
+	public static final Item PASTE = new Item();
 	@ObjectHolder(LibItemName.SOLDIFIED_PAPER)
 	public static final Item SOLDIFIED_PAPER = new Item();
 	@ObjectHolder(LibItemName.TAMAHAGANE_STEEL)
@@ -128,6 +130,10 @@ public final class ModItems {
 	public static final Item SHINKI_WAND = new Item();
 	@ObjectHolder(LibItemName.NETHER_SHARD)
 	public static final Item NETHER_SHARD = new Item();
+	@ObjectHolder(LibItemName.IRON_NUGGET)
+	public static final Item IRON_NUGGET = new Item();
+	@ObjectHolder(LibItemName.HARDENED_LEATHER)
+	public static final Item HARDENED_LEATHER = new Item();
 
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)
@@ -247,6 +253,11 @@ public final class ModItems {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
 		SpecialRecipes.init();
+	}
+
+	public static void initOreDictionary() {
+		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.IRON_NUGGET));
+		OreDictionary.registerOre("oreImputeStone", new ItemStack(ModBlocks.IMPURE_STONE));
 	}
 
 	public static void initFlyingItems() {

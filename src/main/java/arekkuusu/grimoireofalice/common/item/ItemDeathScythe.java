@@ -38,8 +38,8 @@ public class ItemDeathScythe extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.death_scythe_header.name"));
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.death_scythe_description.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_description.name"));
 	}
 
 	@Override

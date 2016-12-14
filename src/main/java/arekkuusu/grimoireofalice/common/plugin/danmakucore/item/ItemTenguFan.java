@@ -48,7 +48,7 @@ public class ItemTenguFan extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.tengu_fan_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.tengu_fan_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.tengu_fan_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.tengu_fan_description_bottom.name"));
 	}

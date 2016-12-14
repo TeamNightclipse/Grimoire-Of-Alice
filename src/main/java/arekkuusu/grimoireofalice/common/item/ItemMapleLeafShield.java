@@ -46,10 +46,8 @@ public class ItemMapleLeafShield extends ItemModShield {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + "Momiji goes awoooo~");
-		list.add(TextFormatting.GRAY + "Round shield with a red");
-		list.add(TextFormatting.GRAY + "maple leaf print on it");
-		list.add(TextFormatting.DARK_PURPLE + "Cures potion effects");
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.maple_leaf_shield_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.maple_leaf_shield_effect.name"));
 	}
 
 	@Override

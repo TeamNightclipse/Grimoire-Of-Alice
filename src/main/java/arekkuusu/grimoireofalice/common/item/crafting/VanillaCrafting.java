@@ -23,9 +23,11 @@ public class VanillaCrafting {
 
 		//Items
 		shapeless()
+				.add(ModItems.SOLDIFIED_PAPER)
 				.add(Items.STRING)
-				.add(Items.GUNPOWDER)
-				.outputs(new ItemStack(ModItems.VOLATILE_STRING, 1)).build();
+				.add(Items.WATER_BUCKET)
+				.add(Items.CLAY_BALL)
+				.outputs(new ItemStack(ModItems.PASTE, 2)).build();
 
 		shaped().grid("SSS", "SAS", "SSS")
 				.where('S').mapsTo("paper")
@@ -40,7 +42,7 @@ public class VanillaCrafting {
 		shaped().grid("AEA", "ESE", "AEA")
 				.where('S').mapsTo("logWood")
 				.where('E').mapsTo(Items.CLAY_BALL)
-				.where('A').mapsTo(ModItems.VOLATILE_STRING)
+				.where('A').mapsTo(ModItems.PASTE)
 				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
 		shaped().grid(" S ", " A ", "AAA")
@@ -70,6 +72,21 @@ public class VanillaCrafting {
 				.where('D').mapsTo(ModBlocks.COMPACT_STONE)
 				.where('C').mapsTo(Blocks.CRAFTING_TABLE)
 				.outputs(ModBlocks.ALTAR).build();
+
+		shaped().grid("N N","PLP","N N")
+				.where('N').mapsTo("nuggetIron")
+				.where('P').mapsTo(Items.PAPER)
+				.where('L').mapsTo(Items.LEATHER)
+				.outputs(ModItems.HARDENED_LEATHER).build();
+
+		shapeless()
+				.add(Items.IRON_INGOT)
+				.add(Items.STICK)
+				.outputs(new ItemStack(ModItems.IRON_NUGGET, 9)).build();
+
+		shaped().grid("NNN","NNN","NNN")
+				.where('N').mapsTo(ModItems.IRON_NUGGET)
+				.outputs(Items.IRON_INGOT).build();
 
 		shapeless()
 				.add(Items.STICK)
@@ -209,7 +226,7 @@ public class VanillaCrafting {
 
 	private static ShapedRecipe mask() {
 		return new ShapedRecipe().grid("IAR", "SGS", " S ")
-				.where('S').mapsTo(ModItems.VOLATILE_STRING)
+				.where('S').mapsTo(ModItems.PASTE)
 				.where('G').mapsTo(ModItems.MASK)
 				.where('A').mapsTo(Items.NETHER_STAR)
 				.where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));

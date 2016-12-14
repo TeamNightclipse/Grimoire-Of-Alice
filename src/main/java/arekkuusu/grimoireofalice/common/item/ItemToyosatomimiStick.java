@@ -30,6 +30,7 @@ public class ItemToyosatomimiStick extends ItemModSword {
 
 	public ItemToyosatomimiStick(ToolMaterial material) {
 		super(material, LibItemName.MIKO_STICK);
+		setMaxDamage(10);
 		setNoRepair();
 	}
 
@@ -41,25 +42,25 @@ public class ItemToyosatomimiStick extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.miko_stick_header.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miko_stick_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miko_stick_description.name"));
 	}
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.experienceLevel < 30 && !playerIn.capabilities.isCreativeMode) {
-			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-		}
-		else {
+		if (playerIn.experienceLevel > 30 && !playerIn.capabilities.isCreativeMode) {
 			playerIn.addExperienceLevel(-1);
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
+			itemStackIn.damageItem(1, playerIn);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
+		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		target.extinguish();
+		stack.damageItem(1, user);
 		return true;
 	}
 

@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.client.model.ModelSuwakoHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,9 +15,12 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemSuwakoHat extends ItemModArmor {
 
@@ -25,6 +29,12 @@ public class ItemSuwakoHat extends ItemModArmor {
 
 	public ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.SUWAKO_HAT, EntityEquipmentSlot.HEAD);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.suwako_hat_header.name"));
 	}
 
 	@Override

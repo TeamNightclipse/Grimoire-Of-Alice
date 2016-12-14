@@ -74,8 +74,8 @@ public class ItemJeweledHourai extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.jeweled_hourai_header.name"));
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.jeweled_hourai_description.name"));
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.jeweled_hourai_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.jeweled_hourai_description.name"));
 	}
 
 	@Override
@@ -134,7 +134,7 @@ public class ItemJeweledHourai extends ItemMod {
 								.setUser(entityLiving)
 								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i * 2))
 								.build();
-						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 4F, 1D);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 2F + i * 0.5F, 1D);
 					}
 					setJewels(stack, (short) 0);
 				}

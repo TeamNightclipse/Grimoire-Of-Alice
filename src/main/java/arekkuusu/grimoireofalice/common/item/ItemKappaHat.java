@@ -42,8 +42,7 @@ public class ItemKappaHat extends ItemModArmor  implements ISpecialArmor {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.kappa_hat_header.name"));
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.kappa_hat_description.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kappa_hat_header.name"));
 	}
 
 	@Override
