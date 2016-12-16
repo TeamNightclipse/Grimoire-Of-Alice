@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.common.item.crafting;
 
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
@@ -183,12 +191,12 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.deathScythe) {
 			DEATH_SCYTHE = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.DEATH_SCYTHE)
-					, new ItemStack(Items.SKULL, 1, 1), ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, Blocks.SOUL_SAND, Blocks.SOUL_SAND, "stickWood", "stickWood");
+					, Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood", ModItems.HIHIIROKANE, new ItemStack(Items.SKULL, 1, 1), Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.dragonJewel) {
 			DRAGON_JEWEL = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_JEWEL)
-					, Blocks.DRAGON_EGG, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold");
+					, Blocks.DRAGON_EGG, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.fakeMiracleMallet) {
@@ -316,7 +324,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.roukanken) {
-			ROUKANKEN = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.ROUKANKEN)
+			ROUKANKEN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ROUKANKEN)
 					, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, "stickWood", Blocks.RED_FLOWER);
 		}
 
@@ -409,13 +417,14 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.food.ultramarineOrbElixir) {
 			ItemStack stack = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
+			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_REGENERATION);
 			ULTRAMARINE_ORB_ELIXIR = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.ORB_ELIXIR)
-					, Items.GLASS_BOTTLE, ModItems.TIME_ORB, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);
+					, potion, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.houraiElixir) {
 			HOURAI_ELIXIR = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.HOURAI_ELIXIR)
-					, Blocks.DRAGON_EGG, ModItems.ORB_ELIXIR, Items.FLOWER_POT, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS);
+					, Blocks.DRAGON_EGG, Items.FLOWER_POT, ModItems.ORB_ELIXIR, ModItems.MORTAR_AND_PESTLE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.kappaNostrum) {
@@ -472,12 +481,12 @@ public final class SpecialRecipes {
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.violin) {
 				VIOLIN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.LUNASA_VIOLIN)
-						, "plankWood", "plankWood", "plankWood", "plankWood", Items.STRING, Items.STRING, "stickWood");
+						, "plankWood", "plankWood", "plankWood", Items.STRING, Items.STRING, "stickWood");
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.spellCardPuch) {
 				SPELL_CARD_POUCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.POUCH)
-						, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER, Items.LEATHER, Blocks.CHEST);
+						, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Blocks.CHEST);
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.swordOfHisou) {

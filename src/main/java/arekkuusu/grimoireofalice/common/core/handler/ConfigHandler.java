@@ -231,11 +231,11 @@ public class ConfigHandler {
 			@Comment("How many Spawn tries per chunk?")
 			public int kyoumarubotanSpawnRate = 5;
 			@Comment("How rare is the impure stone? (The greater the number the rarer the ore)")
-			public int impureStoneRarity = 1;
+			public int impureStoneRarity = 0;
 			@Comment("How many Ore tries per chunk?")
-			public int impureStoneSpawnRate = 8;
-			@Comment("How many Ore per chunk? (+ 0 to 5 more Blocks)")
-			public int impureStoneMinQuantity = 1;
+			public int impureStoneSpawnRate = 1;
+			@Comment("How many Ore per chunk?")
+			public int impureStoneModQuantity = 1;
 		}
 
 		public static class Features {

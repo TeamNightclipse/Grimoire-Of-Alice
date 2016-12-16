@@ -61,9 +61,9 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.DARK_AQUA + "Tsukumogami of Emotions");
-		list.add(TextFormatting.GOLD + "Feel the power of 66 masks");
-		list.add(TextFormatting.GOLD + "being worn at the same time");
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Tsukumogami of Emotions");
+		list.add(TextFormatting.ITALIC + "Feel the power of 66 masks");
+		list.add(TextFormatting.ITALIC + "being worn at the same time");
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
 			if(ownerUuid != null) {

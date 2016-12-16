@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -69,7 +77,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation CAMERA_SHUTTER = getLocation("cameraShutter");
 	public static final ResourceLocation NEEDLE_SWEEP = getLocation("needleSweep");
 	public static final ResourceLocation SIMPLE_BELL = getLocation("simpleBell");
-	public static final ResourceLocation CRAFTING_SPELL = getLocation("chainLightning");
+	public static final ResourceLocation CRAFTING_SPELL = getLocation("craftingSpell");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);

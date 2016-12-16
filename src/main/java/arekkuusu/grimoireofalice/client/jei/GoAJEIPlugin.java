@@ -173,14 +173,15 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.NAZRIN_PENDULUM), "grimoire.jei.descriptions.nazrin_pendulum", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.SHINMYOUMARU_NEEDLE), "grimoire.jei.descriptions.needle", LINE
-				, "grimoire.jei.descriptions_body.needle");
+				, "grimoire.jei.descriptions.needle_body");
 
 		registry.addDescription(new ItemStack(ModItems.NIMBLE_FABRIC), "grimoire.jei.descriptions.nimble_fabric", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.NUE_TRIDENT), "grimoire.jei.descriptions.nue_trident", LINE
 				, "grimoire.jei.descriptions.nue_trident_body");
 
-		registry.addDescription(new ItemStack(ModItems.ORB_ELIXIR), "grimoire.jei.descriptions.orb_elixir", LINE);
+		registry.addDescription(new ItemStack(ModItems.ORB_ELIXIR), "grimoire.jei.descriptions.orb_elixir", LINE
+				, "grimoire.jei.descriptions.orb_elixir_body");
 
 		registry.addDescription(new ItemStack(ModItems.PATCHY_BOOK), "grimoire.jei.descriptions.patchy_book", LINE);
 

@@ -360,6 +360,7 @@ grimoire.tooltip.momijis_scimitar_sword_header.name=Awooooo~!!
 grimoire.tooltip.momijis_scimitar_sword_description.name=Very sharp and heavy
 
 grimoire.tooltip.nazrin_pendulum_header.name=Magical pendulum that searches for ores underground
+grimoire.tooltip.nazrin_pendulum_ore.name=Ore:
 grimoire.tooltip.nazrin_pendulum_description.name=Right click to activate, Shift to dismiss
 grimoire.tooltip.nazrin_pendulum_shift.name=SHIFT for details
 
@@ -699,14 +700,15 @@ grimoire.jei.descriptions.mortal_n_pestle=Used to turn shroom into powder
 grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to find treasures buried underground, it can find any kind of ore, and chest hidden bellow the surface
 
 grimoire.jei.descriptions.needle=It belongs to Shinmyoumaru Sukuna, an inchling living in the Shining Needle Castle
-grimoire.jei.descriptions_body.needle=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
+grimoire.jei.descriptions.needle_body=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
 
 grimoire.jei.descriptions.nimble_fabric=Piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
 grimoire.jei.descriptions.nue_trident=Outer space item from an alien? It has some indecipherable scriptures in its handle
 grimoire.jei.descriptions.nue_trident_body=Gives Blindness and Nausea to the target
 
-grimoire.jei.descriptions.orb_elixir=This medicine cures the worst of all diseases, death, for a short period of time
+grimoire.jei.descriptions.orb_elixir=Must be crafted in the End
+grimoire.jei.descriptions.orb_elixir_body=This medicine cures the worst of all diseases, death, for a short period of time
 
 grimoire.jei.descriptions.patchy_book=Grimoire of Alice Guide, it contains some small info about the mod
 

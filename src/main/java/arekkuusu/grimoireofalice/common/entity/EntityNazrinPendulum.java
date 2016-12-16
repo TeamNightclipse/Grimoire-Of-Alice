@@ -19,6 +19,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -26,8 +29,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nullable;
+
 public class EntityNazrinPendulum extends Entity {
 
+	private static final DataParameter<String> ORE = EntityDataManager.createKey(EntityNazrinPendulum.class, DataSerializers.STRING);
 	public EntityPlayer user;
 	private boolean follow;
 
@@ -35,28 +41,29 @@ public class EntityNazrinPendulum extends Entity {
 		super(worldIn);
 	}
 
-	public EntityNazrinPendulum(World worldIn, EntityPlayer player, boolean follow) {
+	public EntityNazrinPendulum(World worldIn, EntityPlayer player, String ore, boolean follow) {
 		super(worldIn);
 		user = player;
 		this.follow = follow;
+		setOre(ore);
 	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(user == null | isEntityInsideOpaqueBlock()) {
+		if (user == null | isEntityInsideOpaqueBlock()) {
 			stopEntity();
 		}
 		else {
-			if(ticksExisted > 10 && user.isSneaking()) {
+			if (ticksExisted > 10 && user.isSneaking()) {
 				stopEntity();
 			}
-			else if(user.hurtTime > 0) {
+			else if (user.hurtTime > 0) {
 				stopEntity();
 			}
 		}
 
-		if(user != null && follow) {
+		if (user != null && follow) {
 			Vec3d look = user.getLookVec();
 			float distance = 2F;
 			double dx = user.posX + look.xCoord * distance;
@@ -67,26 +74,25 @@ public class EntityNazrinPendulum extends Entity {
 
 		List<Block> blockLayer = new ArrayList<>(20);
 		BlockPos pos = new BlockPos(posX, posY, posZ);
-		for(int i = 1; i < 20; i++) {
+		for (int i = 1; i < 20; i++) {
 			Block block = worldObj.getBlockState(pos.down(i)).getBlock();
 			ItemStack stack = new ItemStack(block);
 
 			//noinspection ConstantConditions Liar
-			if(stack.getItem() == null) {
+			if (stack.getItem() == null) {
 				continue;
 			}
-
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
 					.mapToObj(OreDictionary::getOreName)
-					.anyMatch(s -> s.startsWith("ore")) || block == Blocks.CHEST;
+					.anyMatch(s -> !getOre().isEmpty() ? s.equals(getOre()) : s.startsWith("ore")) || block == Blocks.CHEST;
 
-			if(isOre) {
+			if (isOre) {
 				blockLayer.add(block);
 			}
 		}
 
 		blockLayer.forEach(ignored -> {
-			if(rand.nextInt(8) == 4) {
+			if (rand.nextInt(8) == 4) {
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
@@ -100,12 +106,14 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {}
+	protected void entityInit() {
+		dataManager.register(ORE, "");
+	}
 
 	private void stopEntity() {
-		if(!worldObj.isRemote) {
-			if(user != null) {
-				if(user.capabilities.isCreativeMode) {
+		if (!worldObj.isRemote) {
+			if (user != null) {
+				if (user.capabilities.isCreativeMode) {
 					setDead();
 					return;
 				}
@@ -116,6 +124,14 @@ public class EntityNazrinPendulum extends Entity {
 			}
 			setDead();
 		}
+	}
+
+	private void setOre(String ore) {
+		dataManager.set(ORE, ore);
+	}
+
+	private String getOre() {
+		return dataManager.get(ORE);
 	}
 
 	@Override

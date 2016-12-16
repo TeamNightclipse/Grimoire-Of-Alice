@@ -4,5 +4,5 @@
 	"cameraShutter": { "sounds":["grimoireofalice:cameraShutter"], "subtitle": "grimoire.subtitle.cameraShutter" },
 	"needleSweep": { "sounds":["grimoireofalice:needleSweep"], "subtitle": "grimoire.subtitle.needleSweep" },
 	"simpleBell": { "sounds":["grimoireofalice:simpleBell"], "subtitle": "grimoire.subtitle.simpleBell" },
-	"chainLightning": { "sounds":["grimoireofalice:chainLightning"], "subtitle": "grimoire.subtitle.chainLightning" }
+	"craftingSpell": { "sounds":["grimoireofalice:craftingSpell"], "subtitle": "grimoire.subtitle.craftingSpell" }
 }

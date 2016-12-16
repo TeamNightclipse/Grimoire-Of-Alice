@@ -13,7 +13,7 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent CAMERA_SHUTTER = getRegisteredSound("cameraShutter");
 	public static final SoundEvent NEEDLE_SWEEP = getRegisteredSound("needleSweep");
 	public static final SoundEvent SIMPLE_BELL = getRegisteredSound("simpleBell");
-	public static final SoundEvent CRAFTING_SPELL = getRegisteredSound("chainLightning");
+	public static final SoundEvent CRAFTING_SPELL = getRegisteredSound("craftingSpell");
 
 	private static SoundEvent getRegisteredSound(String name) {
 		return SoundEvent.REGISTRY.getObject(new ResourceLocation(LibMod.MODID, name));

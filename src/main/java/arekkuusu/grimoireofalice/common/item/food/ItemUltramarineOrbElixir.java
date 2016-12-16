@@ -1,3 +1,11 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.common.item.food;
 
 import java.util.List;
@@ -54,6 +62,7 @@ public class ItemUltramarineOrbElixir extends ItemModFood {
 			EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 1000);
 			world.spawnEntityInWorld(circle);
 		}
+		player.getCooldownTracker().setCooldown(this, 50);
 	}
 
 	@Override
