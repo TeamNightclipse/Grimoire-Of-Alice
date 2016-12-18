@@ -16,13 +16,11 @@ import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 public class ItemInstrument extends ItemMod {
@@ -57,6 +55,7 @@ public class ItemInstrument extends ItemMod {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		if (player instanceof EntityPlayer && count % 2 == 0) {
+			player.worldObj.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
 			if (!player.worldObj.isRemote) {
 				int color = COLORS[itemRand.nextInt(COLORS.length)];
 

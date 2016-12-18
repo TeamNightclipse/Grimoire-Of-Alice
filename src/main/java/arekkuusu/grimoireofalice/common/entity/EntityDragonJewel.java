@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.entity;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -48,10 +49,9 @@ public class EntityDragonJewel extends Entity {
 		if (!worldObj.isRemote) {
 			if (host == null) {
 				setDead();
-			} else {
-				if (ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
-					stopEntity();
-				}
+			}
+			else if (ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
+				stopEntity();
 			}
 			if (ticksExisted > 500) {
 				stopEntity();
@@ -59,19 +59,16 @@ public class EntityDragonJewel extends Entity {
 		}
 		getEntities();
 		if (ticksExisted % 50 == 0) {
-			worldObj.playSound(null, posX, posY, posZ, SoundEvents.AMBIENT_CAVE, SoundCategory.NEUTRAL, 0.5F, 1F);
+			worldObj.playSound(null, posX, posY, posZ, GrimoireSoundEvents.HORN, SoundCategory.NEUTRAL, 0.5F, 1F);
 		}
-		if (ticksExisted % 10 == 0)
-			for (int u = 0; u < 10; u++) {
-				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1,
-						rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1,
-						-rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, rand.nextDouble(), -0.1,
-						-rand.nextDouble());
-				worldObj.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, posX + 0.5, posY, posZ + 0.5, -rand.nextDouble(), -0.1,
-						rand.nextDouble());
+		if (ticksExisted % 10 == 0) {
+			for (int i = 0; i < 2; ++i) {
+				worldObj.spawnParticle(EnumParticleTypes.PORTAL
+						, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height - 0.25D, posZ
+								+ (rand.nextDouble() - 0.5D) * (double) width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
+						, (rand.nextDouble() - 0.5D) * 2.0D);
 			}
+		}
 	}
 
 	private void getEntities() {
@@ -81,11 +78,12 @@ public class EntityDragonJewel extends Entity {
 			mob.setAttackTarget(null);
 			mob.setRevengeTarget(null);
 			if(mob.worldObj.isRemote) {
-				for (int i = 0; i < 2; ++i)
+				for (int i = 0; i < 2; ++i) {
 					mob.worldObj.spawnParticle(EnumParticleTypes.PORTAL
 							, mob.posX + (rand.nextDouble() - 0.5D) * (double) mob.width, mob.posY + rand.nextDouble() * (double) mob.height - 0.25D, mob.posZ
 									+ (rand.nextDouble() - 0.5D) * (double) mob.width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
 							, (rand.nextDouble() - 0.5D) * 2.0D);
+				}
 			}
 			if (mob.getHealth() > 1) mob.setHealth(1);
 		});
@@ -105,6 +103,12 @@ public class EntityDragonJewel extends Entity {
 			}
 			setDead();
 		}
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
+		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.2, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.5, alignedBB.minZ + 0.5);
 	}
 
 	public int getTicksAlive() {

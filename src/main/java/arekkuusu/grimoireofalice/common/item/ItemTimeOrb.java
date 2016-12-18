@@ -26,6 +26,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+
 public class ItemTimeOrb extends ItemMod {
 
 	public ItemTimeOrb() {
@@ -53,38 +55,26 @@ public class ItemTimeOrb extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
+		if(!worldIn.isDaytime()) {
+			if(!playerIn.capabilities.isCreativeMode) {
+				--itemStackIn.stackSize;
+			}
+
+			playerIn.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+			if(!worldIn.isRemote) {
+				worldIn.setWorldTime(worldIn.getWorldTime() - 500);
+			}
+		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			if(!worldIn.isDaytime()) {
-				EntityPlayer player = (EntityPlayer)entityLiving;
-				if(!player.capabilities.isCreativeMode) {
-					ItemStack itemstack2 = stack.copy();
-					if(--itemstack2.stackSize == 0) {
-						itemstack2 = null;
-					}
-					player.inventory.mainInventory[player.inventory.currentItem] = itemstack2;
-				}
-
-				player.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-				if(!worldIn.isRemote) {
-					worldIn.setWorldTime(worldIn.getWorldTime() - 500);
-				}
-			}
-		}
-	}
-
-	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-		return EnumAction.BOW;
+		return EnumAction.NONE;
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
-		return 42;
+		return 30;
 	}
 }

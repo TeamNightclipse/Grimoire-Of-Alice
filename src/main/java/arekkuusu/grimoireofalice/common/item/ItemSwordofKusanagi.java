@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
@@ -67,6 +68,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		if (!entityLiving.worldObj.isRemote) {
 			double range = 50.0D;
 			Vec3d look = entityLiving.getLookVec();
@@ -143,6 +145,11 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 
 	private void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
 		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
+	}
+
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		return true;
 	}
 
 	@Override

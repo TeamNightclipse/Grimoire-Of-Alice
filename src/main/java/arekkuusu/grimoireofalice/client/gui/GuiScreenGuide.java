@@ -20,7 +20,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GuiScreenGuide extends GuiScreen { //TODO: Change for a -> real <- Guide
+public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for people to read, or remove completely, no need for a guide
 
 	private static final ResourceLocation BOOK_GUI_TEXTURES[] = {
 			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide0.png"),

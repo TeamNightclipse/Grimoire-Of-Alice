@@ -65,7 +65,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 					if (!worldIn.isRemote) {
 						List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
 								player.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(4D), entity -> entity != player);
-						list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(player), 2));
+						list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 					}
 				}
 			}

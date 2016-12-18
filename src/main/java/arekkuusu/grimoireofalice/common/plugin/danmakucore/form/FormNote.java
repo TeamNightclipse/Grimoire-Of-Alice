@@ -13,12 +13,13 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 public class FormNote extends FormGeneric {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Note.png");
 	@SideOnly(Side.CLIENT)
-	private ModelBase MODEL = new ModelNote();
+	private ModelNote MODEL = new ModelNote();
 
 	public FormNote() {
 		super(LibFormName.NOTE);
@@ -57,7 +58,11 @@ public class FormNote extends FormGeneric {
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
 
+				MODEL.renderInsideForm(0.0625F);
+
+				GlStateManager.pushMatrix();
 				MODEL.render(danmaku, r, g, b, 0.0F, 0.0F, 0.0625F);
+				GlStateManager.popMatrix();
 
 				GlStateManager.disableRescaleNormal();
 			}

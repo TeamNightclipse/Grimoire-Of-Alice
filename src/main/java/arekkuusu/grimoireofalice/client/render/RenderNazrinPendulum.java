@@ -32,7 +32,7 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(pendulum);
 		GlStateManager.translate(x, y, z);
-		GlStateManager.scale(0.4, 0.4, 0.4);
+		GlStateManager.scale(0.3, 0.3, 0.3);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(pendulum.ticksExisted * 8, 0.0F, 1.0F, 0.0F);
 		GlStateManager.disableLighting();

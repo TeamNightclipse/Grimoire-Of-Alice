@@ -4,5 +4,12 @@
 	"cameraShutter": { "sounds":["grimoireofalice:cameraShutter"], "subtitle": "grimoire.subtitle.cameraShutter" },
 	"needleSweep": { "sounds":["grimoireofalice:needleSweep"], "subtitle": "grimoire.subtitle.needleSweep" },
 	"simpleBell": { "sounds":["grimoireofalice:simpleBell"], "subtitle": "grimoire.subtitle.simpleBell" },
-	"craftingSpell": { "sounds":["grimoireofalice:craftingSpell"], "subtitle": "grimoire.subtitle.craftingSpell" }
+	"craftingSpell": { "sounds":["grimoireofalice:craftingSpell"], "subtitle": "grimoire.subtitle.craftingSpell" },
+	"orinNyaa": { "sounds":["grimoireofalice:orinNyaa"], "subtitle": "grimoire.subtitle.orinNyaa" },
+	"powerUp": { "sounds":["grimoireofalice:powerUp"], "subtitle": "grimoire.subtitle.powerUp" },
+	"attackLong": { "sounds":["grimoireofalice:attackLong"], "subtitle": "grimoire.subtitle.attackLong" },
+	"horn": { "sounds":["grimoireofalice:horn"], "subtitle": "grimoire.subtitle.horn" },
+	"warp": { "sounds":["grimoireofalice:warp"], "subtitle": "grimoire.subtitle.warp" },
+	"ufoIddle": { "sounds":["grimoireofalice:ufoIddle"], "subtitle": "grimoire.subtitle.ufoIddle" },
+	"ufoSpawn": { "sounds":["grimoireofalice:ufoSpawn"], "subtitle": "grimoire.subtitle.ufoSpawn" }
 }

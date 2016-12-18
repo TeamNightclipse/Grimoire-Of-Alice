@@ -21,7 +21,7 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 	public void doRender(EntityCursedDecoyDoll entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
-		GlStateManager.translate(x, y + 1, z);
+		GlStateManager.translate(x, y + 0.7, z);
 		GlStateManager.scale(0.5, 0.5, 0.5);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(entity.rotationYaw, 0.0F, 1.0F, 0.0F);

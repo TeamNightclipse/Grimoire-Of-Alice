@@ -14,6 +14,13 @@ public class ModSounds {
 		registerSound(ResourceLocations.NEEDLE_SWEEP);
 		registerSound(ResourceLocations.SIMPLE_BELL);
 		registerSound(ResourceLocations.CRAFTING_SPELL);
+		registerSound(ResourceLocations.ORIN_NYAA);
+		registerSound(ResourceLocations.POWER_UP);
+		registerSound(ResourceLocations.ATTTACK_LONG);
+		registerSound(ResourceLocations.HORN);
+		registerSound(ResourceLocations.WARP);
+		registerSound(ResourceLocations.UFO_IDDLE);
+		registerSound(ResourceLocations.UFO_SPAWN);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {

@@ -15,6 +15,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -75,6 +76,12 @@ public class EntityCameraSquare extends Entity {
 	private List<Entity> getEntities() {
 		return worldObj.getEntitiesWithinAABB(Entity.class,
 				getEntityBoundingBox().expandXyz(getSize() * 1.5), entity -> entity != player);
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
+		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.5, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY, alignedBB.minZ + 0.5);
 	}
 
 	private void setSize(float size) {

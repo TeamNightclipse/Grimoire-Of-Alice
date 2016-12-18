@@ -6,14 +6,17 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class RecipeItemsEnd extends RecipeItems {
+public class RecipeItemsDimension extends RecipeItems {
 
-	public RecipeItemsEnd(ItemStack result, Object... inputs) {
+	private final int dimId;
+
+	public RecipeItemsDimension(int dimId, ItemStack result, Object... inputs) {
 		super(result, inputs);
+		this.dimId = dimId;
 	}
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
-		return world.provider.getDimensionType() == DimensionType.THE_END && super.checkRecipe(usedItems, world);
+		return world.provider.getDimensionType().getId() == dimId && super.checkRecipe(usedItems, world);
 	}
 }

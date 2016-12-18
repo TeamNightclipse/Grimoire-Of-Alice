@@ -64,7 +64,7 @@ public class FormUfo extends FormGeneric {
 				GlStateManager.rotate(-yaw + 180F, 0F, 1F, 0F);
 				GlStateManager.rotate(pitch, 1F, 0F, 0F);
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
-				GlStateManager.scale(sizeX, sizeY, sizeZ);
+				GlStateManager.scale(sizeX * 2, sizeY * 2, sizeZ * 2);
 
 				ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufo models
 				Minecraft mc = Minecraft.getMinecraft();

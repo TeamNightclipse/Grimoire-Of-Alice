@@ -99,7 +99,7 @@ public class ItemMiracleMallet extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.worldObj.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
-			if (player.isSneaking()) {
+			if (player.isSneaking() && !player.worldObj.isRemote) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku, 35);
 				if (lookedAt.isPresent()) { //FIXME: Never present
 					EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
@@ -127,7 +127,9 @@ public class ItemMiracleMallet extends ItemMod {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-		useMallet(playerIn, hand);
+		if (target instanceof EntityPlayer) {
+			useMallet((EntityPlayer) target, hand);
+		}
 		return true;
 	}
 

@@ -13,43 +13,42 @@ import org.lwjgl.opengl.GL11;
  */
 public class ModelUnzanFist extends ModelBase {
 
-	//TODO: Name these
 	private final ModelRenderer fist;
-	private final ModelRenderer shape2;
-	private final ModelRenderer shape2_1;
-	private final ModelRenderer shape2_2;
-	private final ModelRenderer shape2_3;
-	private final ModelRenderer shape2_4;
-	private final ModelRenderer shape2_5;
-	private final ModelRenderer shape2_6;
+	private final ModelRenderer finger1;
+	private final ModelRenderer finger2;
+	private final ModelRenderer finger3;
+	private final ModelRenderer finger4;
+	private final ModelRenderer finger5;
+	private final ModelRenderer finger6;
+	private final ModelRenderer finger7;
 
 	public ModelUnzanFist() {
 		textureWidth = 128;
 		textureHeight = 64;
-		shape2_2 = new ModelRenderer(this, 90, 35);
-		shape2_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_2.addBox(-3.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
+		finger3 = new ModelRenderer(this, 90, 35);
+		finger3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger3.addBox(-3.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
 		fist = new ModelRenderer(this, 0, 0);
 		fist.setRotationPoint(0.0F, 0.0F, 0.0F);
 		fist.addBox(-10.0F, -8.0F, -10.0F, 20, 18, 20, 0.0F);
-		shape2_5 = new ModelRenderer(this, 81, 0);
-		shape2_5.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_5.addBox(-10.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
-		shape2 = new ModelRenderer(this, 90, 35);
-		shape2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2.addBox(4.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
-		shape2_4 = new ModelRenderer(this, 90, 35);
-		shape2_4.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_4.addBox(-10.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
-		shape2_6 = new ModelRenderer(this, 0, 40);
-		shape2_6.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_6.addBox(-11.0F, 4.0F, -8.0F, 6, 6, 18, 0.0F);
-		shape2_1 = new ModelRenderer(this, 81, 0);
-		shape2_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_1.addBox(4.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
-		shape2_3 = new ModelRenderer(this, 81, 0);
-		shape2_3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		shape2_3.addBox(-3.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
+		finger6 = new ModelRenderer(this, 81, 0);
+		finger6.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger6.addBox(-10.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
+		finger1 = new ModelRenderer(this, 90, 35);
+		finger1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger1.addBox(4.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
+		finger5 = new ModelRenderer(this, 90, 35);
+		finger5.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger5.addBox(-10.0F, -10.0F, -11.0F, 6, 22, 6, 0.0F);
+		finger7 = new ModelRenderer(this, 0, 40);
+		finger7.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger7.addBox(-11.0F, 4.0F, -8.0F, 6, 6, 18, 0.0F);
+		finger2 = new ModelRenderer(this, 81, 0);
+		finger2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger2.addBox(4.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
+		finger4 = new ModelRenderer(this, 81, 0);
+		finger4.setRotationPoint(0.0F, 0.0F, 0.0F);
+		finger4.addBox(-3.0F, 10.0F, -11.0F, 6, 2, 17, 0.0F);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -58,14 +57,14 @@ public class ModelUnzanFist extends ModelBase {
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.90F);
-		shape2_2.render(f5);
+		finger3.render(f5);
 		fist.render(f5);
-		shape2_5.render(f5);
-		shape2.render(f5);
-		shape2_4.render(f5);
-		shape2_6.render(f5);
-		shape2_1.render(f5);
-		shape2_3.render(f5);
+		finger6.render(f5);
+		finger1.render(f5);
+		finger5.render(f5);
+		finger7.render(f5);
+		finger2.render(f5);
+		finger4.render(f5);
 		GlStateManager.disableBlend();
 	}
 

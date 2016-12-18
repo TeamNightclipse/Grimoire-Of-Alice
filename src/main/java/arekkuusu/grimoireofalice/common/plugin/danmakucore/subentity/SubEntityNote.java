@@ -25,22 +25,6 @@ public class SubEntityNote extends SubEntityType {
 
 	@Override
 	public SubEntity instantiate(World world, EntityDanmaku entityDanmaku) {
-		return new SubEntityNote.Note(world, entityDanmaku);
-	}
-
-	public static class Note extends SubEntityTypeDefault.SubEntityDefault {
-
-		public Note(World world, EntityDanmaku danmaku) {
-			super(world, danmaku);
-		}
-
-		@Override
-		public void subEntityTick() {
-			super.subEntityTick();
-			if (rand.nextInt(10) == 5) {
-				danmaku.worldObj.playSound(null, danmaku.posX, danmaku.posY, danmaku.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F,
-						1F);
-			}
-		}
+		return new SubEntityTypeDefault.SubEntityDefault(world, entityDanmaku);
 	}
 }

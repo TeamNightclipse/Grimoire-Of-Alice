@@ -114,7 +114,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 
 	@Override
 	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return 5;
+		return damageReduceAmount;
 	}
 
 	@SideOnly(Side.CLIENT)

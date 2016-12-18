@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Doesn't render
+public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	private final RenderItem renderItem;
 	private static final ModelBase MODEL = new ModelFlat();
@@ -29,7 +29,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Does
 		ItemStack stack = new ItemStack(ModItems.DRAGON_JEWEL);
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);
+		GlStateManager.translate(x, y, z);
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.scale(2F, 2F, 2F);
 		GlStateManager.rotate(entity.getTicksAlive() * 32, 0.0F, 1.0F, 0.0F);
@@ -39,7 +39,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> { //FIXME: Does
 
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
-		GlStateManager.translate(x + 0.5D, y - 0.8D, z + 0.5D);
+		GlStateManager.translate(x, y, z);
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		float size = 2.0F;

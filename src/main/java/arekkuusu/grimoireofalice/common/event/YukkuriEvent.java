@@ -11,6 +11,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -23,8 +24,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-
-import java.util.Random;
 
 public class YukkuriEvent {
 
@@ -40,7 +39,7 @@ public class YukkuriEvent {
 			double minZ = axisAlignedBB.minZ;
 			axisAlignedBB = new AxisAlignedBB(minX, minY, minZ
 					, modifier == 0.5 ? minX + 0.5 : minX + modifier * 0.8
-					, modifier == 0.5 ? minY + 0.25 : minY + modifier * 2
+					, modifier == 0.5 ? minY + 0.9 : minY + (modifier - 0.1) * 2
 					, modifier == 0.5 ? minZ + 0.5 : minZ + modifier * 0.8); //Expand bounding Box
 			player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box
 		}
@@ -66,10 +65,10 @@ public class YukkuriEvent {
 
 			if (!world.isRemote && victim instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) victim;
-				if (player.getEntityData().getBoolean("Eternal")) { //TODO: Add client side effects if the event is canceled?
+				if (player.getEntityData().getBoolean("Eternal")) {
 					player.hurtResistantTime = 50;
 
-					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_PENTAGRAM,
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
 							player.hurtResistantTime);
 					world.spawnEntityInWorld(circle);
 
@@ -94,11 +93,9 @@ public class YukkuriEvent {
 	public void livingHurtEvent(LivingHurtEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if (player.inventory.hasItemStack(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN))) {
-				if (player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
-					event.setCanceled(true);
-					return;
-				}
+			if (player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
+				event.setCanceled(true);
+				return;
 			}
 
 			if (player.inventory.hasItemStack(new ItemStack(ModItems.SUBSTITUTE_JIZO))) {
@@ -116,6 +113,12 @@ public class YukkuriEvent {
 						break;
 					}
 				}
+			}
+
+			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+			if(stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
+				if (event.getSource().isProjectile())
+					event.setCanceled(true);
 			}
 		}
 	}

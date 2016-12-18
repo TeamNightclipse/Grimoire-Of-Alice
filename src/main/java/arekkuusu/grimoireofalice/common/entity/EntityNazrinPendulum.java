@@ -23,6 +23,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -124,6 +125,12 @@ public class EntityNazrinPendulum extends Entity {
 			}
 			setDead();
 		}
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
+		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.4, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.5, alignedBB.minZ + 0.5);
 	}
 
 	private void setOre(String ore) {

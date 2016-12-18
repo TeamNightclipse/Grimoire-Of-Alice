@@ -33,8 +33,8 @@ public class ItemIbukiGourd extends ItemModFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.ibuki_gourd_header.name"));
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.ibuki_gourd_description.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibuki_gourd_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibuki_gourd_description.name"));
 	}
 
 	@Override

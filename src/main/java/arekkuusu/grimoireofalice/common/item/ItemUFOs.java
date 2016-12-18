@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -19,10 +20,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -65,6 +63,7 @@ public class ItemUFOs extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		playerIn.playSound(GrimoireSoundEvents.UFO_SPAWN, 1F, 1F);
 		setActive(itemStackIn);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
@@ -74,6 +73,8 @@ public class ItemUFOs extends ItemMod {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(selected && isActive(stack)) {
+				if(player.ticksExisted % 14 == 0)
+					player.playSound(GrimoireSoundEvents.UFO_IDDLE, 0.2F, 1F);
 				itemsInRange(world, player, 10);
 			}
 		}
@@ -95,14 +96,11 @@ public class ItemUFOs extends ItemMod {
 	}
 
 	private void givePlayerItems(EntityItem item, EntityPlayer player) {
-		player.worldObj.spawnParticle(EnumParticleTypes.SPELL_MOB, item.posX + itemRand.nextGaussian() / 8, item.posY + 0.2D,
-				item.posZ + itemRand.nextGaussian() / 8, 0D, 0.9D, 0.0D);
 		Vec3d look = player.getLookVec();
 		double x = player.posX + look.xCoord * 0.2D;
-		double y = player.posY - player.height / 2F;
+		double y = player.posY + player.height / 2F;
 		double z = player.posZ + look.zCoord * 0.2D;
 		item.setPosition(x, y, z);
-		player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.1F, 0.5F * ((itemRand.nextFloat() - itemRand.nextFloat()) * 0.7F + 1.8F));
 	}
 
 	@SuppressWarnings("ConstantConditions")

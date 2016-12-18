@@ -8,33 +8,38 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class EntityCursedDecoyDoll extends EntityLiving {
+import javax.annotation.Nullable;
+
+public class EntityCursedDecoyDoll extends EntityLivingBase {
 
 	private EntityPlayer user;
 
 	public EntityCursedDecoyDoll(World worldIn) {
 		super(worldIn);
-		setHealth(20);
-		setNoGravity(true);
 	}
 
 	public EntityCursedDecoyDoll(World worldIn, EntityPlayer user) {
 		super(worldIn);
 		this.user = user;
 		setRotation(user.rotationYaw, 0);
+		setHealth(20);
+		setNoGravity(true);
 	}
 
 	@Override
@@ -45,6 +50,11 @@ public class EntityCursedDecoyDoll extends EntityLiving {
 		}
 		getEntities();
 		motionY = motionX = motionZ = 0;
+	}
+
+	@Override
+	public EnumHandSide getPrimaryHand() {
+		return EnumHandSide.RIGHT;
 	}
 
 	private void getEntities() {
@@ -61,6 +71,20 @@ public class EntityCursedDecoyDoll extends EntityLiving {
 		super.onDeath(cause);
 		setDead();
 	}
+
+	@Override
+	public Iterable<ItemStack> getArmorInventoryList() {
+		return new ArrayList<>();
+	}
+
+	@Nullable
+	@Override
+	public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn) {
+		return null;
+	}
+
+	@Override
+	public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nullable ItemStack stack) {}
 
 	private void stopEntity() {
 		if(!worldObj.isRemote) {
@@ -80,6 +104,7 @@ public class EntityCursedDecoyDoll extends EntityLiving {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().contract(0.7);
+		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
+		return new AxisAlignedBB(alignedBB.minX, alignedBB.minY, alignedBB.minZ, alignedBB.minX + 0.5, alignedBB.minY + 0.8, alignedBB.minZ + 0.5);
 	}
 }

@@ -210,7 +210,6 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNazrinPendulum.class, RenderNazrinPendulum::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityNeedle.class, RenderNeedle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityDragonJewel.class, RenderDragonJewel::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityUnzanFist.class, RenderUnzanFist::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEllyScythe.class, RenderEllyScytheProyectile::new);

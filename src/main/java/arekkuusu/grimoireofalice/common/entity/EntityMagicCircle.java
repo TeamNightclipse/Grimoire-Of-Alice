@@ -139,7 +139,7 @@ public class EntityMagicCircle extends Entity {
 		PURPLE_CIRCLES,
 		BLUE_STAR,
 		GOLD_STAR_SMALL,
-		RED_PENTAGRAM,
+		BLUE_NORMAL,
 		EMPTY;
 	}
 }

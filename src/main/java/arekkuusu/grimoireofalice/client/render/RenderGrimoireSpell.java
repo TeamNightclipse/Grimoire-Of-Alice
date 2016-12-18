@@ -31,7 +31,6 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 	@Override
 	public void doRender(EntityGrimoireSpell circle, double x, double y, double z, float yaw, float pitch) {
 
-		//TODO: Name variables here
 		GlStateManager.pushMatrix();
 		bindEntityTexture(circle);
 		GlStateManager.translate(x, y, z);
@@ -45,46 +44,46 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5F, y + 0.75F, z + 0.5F);
-		float f = circle.getTickCount() + 5;
-		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(f * 0.1F) * 0.01F, 0.0F);
+		float ticks = circle.getTickCount() + 5;
+		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(ticks * 0.1F) * 0.01F, 0.0F);
 
-		float f1 = circle.getBookRotation() - circle.getBookRotationPrev();
+		float bookRotation = circle.getBookRotation() - circle.getBookRotationPrev();
 
-		while(f1 >= Math.PI) {
-			f1 -= Math.PI * 2F;
+		while(bookRotation >= Math.PI) {
+			bookRotation -= Math.PI * 2F;
 		}
-		while(f1 < -Math.PI) {
-			f1 += Math.PI * 2F;
+		while(bookRotation < -Math.PI) {
+			bookRotation += Math.PI * 2F;
 		}
 
-		float f2 = circle.getBookRotationPrev() + f1 * 5;
-		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
+		float rotateAngle = circle.getBookRotationPrev() + bookRotation * 5;
+		GlStateManager.rotate(-rotateAngle * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
 		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
-		float f3 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
-		float f4 = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
-		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
-		f4 = (f4 - MathHelper.truncateDoubleToInt(f4)) * 1.6F - 0.3F;
+		float pageFlipLow = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
+		float pageFlipHigh = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
+		pageFlipLow = (pageFlipLow - MathHelper.truncateDoubleToInt(pageFlipLow)) * 1.6F - 0.3F;
+		pageFlipHigh = (pageFlipHigh - MathHelper.truncateDoubleToInt(pageFlipHigh)) * 1.6F - 0.3F;
 
-		if(f3 < 0.0F) {
-			f3 = 0.0F;
+		if(pageFlipLow < 0.0F) {
+			pageFlipLow = 0.0F;
 		}
 
-		if(f4 < 0.0F) {
-			f4 = 0.0F;
+		if(pageFlipHigh < 0.0F) {
+			pageFlipHigh = 0.0F;
 		}
 
-		if(f3 > 1.0F) {
-			f3 = 1.0F;
+		if(pageFlipLow > 1.0F) {
+			pageFlipLow = 1.0F;
 		}
 
-		if(f4 > 1.0F) {
-			f4 = 1.0F;
+		if(pageFlipHigh > 1.0F) {
+			pageFlipHigh = 1.0F;
 		}
 
-		float f5 = circle.getBookSpreadPrev() + (circle.getBookSpread() - circle.getBookSpreadPrev()) * 5;
+		float pageSpread = circle.getBookSpreadPrev() + (circle.getBookSpread() - circle.getBookSpreadPrev()) * 5;
 		GlStateManager.enableCull();
-		modelBook.render(null, f, f3, f4, f5, 0.0F, 0.0625F);
+		modelBook.render(null, ticks, pageFlipLow, pageFlipHigh, pageSpread, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();
 	}
 

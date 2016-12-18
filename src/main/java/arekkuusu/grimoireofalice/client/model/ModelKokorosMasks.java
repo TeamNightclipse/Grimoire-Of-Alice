@@ -70,6 +70,17 @@ public class ModelKokorosMasks extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float headYaw, float headPitch, float scale) {
+		float maxUpAndDown = 0.05F;
+		float speed = 2;
+		float angle = 0;
+
+		float toDegrees = (float) Math.PI / 180F;
+		angle += speed * age;
+		if (angle > 360) angle -= 360;
+
+		GlStateManager.pushMatrix();
+		GlStateManager.scale(0.7F, 0.7F, 0.7F);
+		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
 		GlStateManager.pushMatrix();
 		GlStateManager.rotate(age * 5, 0.0F, 1.0F, 0.0F);
 		Mask1.render(scale);
@@ -82,6 +93,7 @@ public class ModelKokorosMasks extends ModelBiped {
 		Mask8.render(scale);
 		GlStateManager.popMatrix();
 		Mask9.render(scale);
+		GlStateManager.popMatrix();
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

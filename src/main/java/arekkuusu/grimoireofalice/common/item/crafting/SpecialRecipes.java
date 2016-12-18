@@ -20,6 +20,7 @@ import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.oredict.OreDictionary;
 
 public final class SpecialRecipes {
@@ -165,7 +166,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.thirdEye) {
-			THIRD_EYE = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.THIRD_EYE)
+			THIRD_EYE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.THIRD_EYE)
 					, Blocks.OBSIDIAN, Items.ENDER_EYE, Items.ENDER_EYE, Items.ENDER_PEARL, Items.ENDER_PEARL);
 		}
 
@@ -175,7 +176,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.bloodThirstyOrb) {
-			BLOOD_THIRSTY_ORB = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.BLOOD_ORB)
+			BLOOD_THIRSTY_ORB = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.BLOOD_ORB)
 					, Items.ENDER_EYE, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART);
 		}
 
@@ -190,7 +191,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.deathScythe) {
-			DEATH_SCYTHE = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.DEATH_SCYTHE)
+			DEATH_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.DEATH_SCYTHE)
 					, Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood", ModItems.HIHIIROKANE, new ItemStack(Items.SKULL, 1, 1), Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood");
 		}
 
@@ -329,7 +330,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.rumiaSword) {
-			RUMIA_SWORD = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.RUMIA_SWORD)
+			RUMIA_SWORD = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.RUMIA_SWORD)
 					, ModBlocks.HIHIIROKANE_BLOCK, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD);
 		}
 
@@ -364,7 +365,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.skull) {
-			ORIN_SKULL = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.SKULL)
+			ORIN_SKULL = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.SKULL)
 					, new ItemStack(Items.SKULL, 1, 1));
 		}
 
@@ -401,7 +402,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.ufo) {
-			UFOS = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.UFOS)
+			UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
 					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED);
 		}
 
@@ -418,12 +419,12 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.food.ultramarineOrbElixir) {
 			ItemStack stack = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_REGENERATION);
-			ULTRAMARINE_ORB_ELIXIR = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.ORB_ELIXIR)
+			ULTRAMARINE_ORB_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.ORB_ELIXIR)
 					, potion, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.houraiElixir) {
-			HOURAI_ELIXIR = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(ModItems.HOURAI_ELIXIR)
+			HOURAI_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.HOURAI_ELIXIR)
 					, Blocks.DRAGON_EGG, Items.FLOWER_POT, ModItems.ORB_ELIXIR, ModItems.MORTAR_AND_PESTLE);
 		}
 
@@ -433,7 +434,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.yuugiSake) {
-			YUUGI_SAKE = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.YUUGI_SAKE)
+			YUUGI_SAKE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.YUUGI_SAKE)
 					, ModItems.IBUKI_GOURD, Items.FLOWER_POT, Items.WHEAT, Items.WHEAT, Items.WHEAT, Items.WHEAT, Items.GHAST_TEAR, Items.FERMENTED_SPIDER_EYE);
 		}
 
@@ -443,7 +444,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.utsuhoWings) {
-			UTSUHO_WINGS = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.UTSUHO_WINGS)
+			UTSUHO_WINGS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.UTSUHO_WINGS)
 					, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, Items.ELYTRA, ModBlocks.HIHIIROKANE_BLOCK, Blocks.COAL_BLOCK, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER);
 		}
 
@@ -455,12 +456,12 @@ public final class SpecialRecipes {
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.ellyScythe) {
-				ELLY_SCYTHE = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.ELLY_SCYTHE)
+				ELLY_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.ELLY_SCYTHE)
 						, new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.laevatein) {
-				LEVATEIN = GrimoireOfAliceAPI.registerRecipeNether(new ItemStack(ModItems.LAEVATEIN)
+				LEVATEIN = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.LAEVATEIN)
 						, Blocks.MAGMA, Blocks.MAGMA, Blocks.MAGMA, Blocks.MAGMA, Blocks.COAL_BLOCK, Blocks.COAL_BLOCK, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 			}
 
@@ -531,7 +532,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.endCrystal) {
-			END_CRYSTAL = GrimoireOfAliceAPI.registerRecipeEnd(new ItemStack(Items.END_CRYSTAL)
+			END_CRYSTAL = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(),new ItemStack(Items.END_CRYSTAL)
 					, "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", Items.ENDER_EYE, Items.GHAST_TEAR);
 		}
 	}

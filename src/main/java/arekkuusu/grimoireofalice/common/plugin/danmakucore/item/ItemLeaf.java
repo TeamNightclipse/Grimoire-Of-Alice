@@ -26,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,14 +69,18 @@ public class ItemLeaf extends ItemMod {
 				--stack.stackSize;
 			}
 
-			DanmakuHelper.playShotSound(playerIn);
-
-			if(!worldIn.isRemote) {
-				DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
-				float anglePitch = playerIn.rotationPitch + (playerIn.isSneaking() ? 45 : -45);
-				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
-				danmaku.setShot(danmaku.shot.setSize(2));
-				danmaku.setAngle(danmaku.angle.rotate(Quat.eulerToQuat(0F, anglePitch, 0F)));
+			if(playerIn.isSneaking()) {
+				for (int j = 0; j < 8; ++j) {
+					worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, playerIn.posX, playerIn.posY, playerIn.posZ, 0.0D, 0.0D, 0.0D);
+				}
+			} else {
+				DanmakuHelper.playShotSound(playerIn);
+				if (!worldIn.isRemote) {
+					DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
+					float anglePitch = playerIn.rotationPitch + (playerIn.isSneaking() ? 45 : -45);
+					worldIn.spawnEntityInWorld(danmaku.build().asEntity());
+					danmaku.setShot(danmaku.shot.setSize(2));
+				}
 			}
 		}
 	}

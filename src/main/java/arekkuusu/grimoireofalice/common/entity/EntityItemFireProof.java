@@ -28,6 +28,12 @@ public class EntityItemFireProof extends EntityItem {
 	}
 
 	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		extinguish();
+	}
+
+	@Override
 	public boolean isEntityInvulnerable(DamageSource source) {
 		return source != DamageSource.outOfWorld && !source.isCreativePlayer();
 	}

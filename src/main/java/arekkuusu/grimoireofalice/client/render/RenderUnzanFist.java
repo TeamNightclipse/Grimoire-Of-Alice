@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 
 public class RenderUnzanFist extends Render<EntityUnzanFist> {
 
@@ -24,8 +23,8 @@ public class RenderUnzanFist extends Render<EntityUnzanFist> {
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.scale(1.5, 1.5, 1.5);
-		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
-		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
+		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 0F, 1F);
+		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 1F, 0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();
 	}

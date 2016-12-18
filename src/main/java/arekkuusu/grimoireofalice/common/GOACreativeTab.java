@@ -95,33 +95,33 @@ public class GOACreativeTab extends CreativeTabs {
 
 		//Items - By Character
 		// ** Patchouli Knowledge ** /
-		addItem(ModItems.PATCHY_BOOK);
+		addItem(ModItems.PATCHY_BOOK); //Kinda Useless
 		// **Alice Margatroid ** /
-		addItem(ModItems.GRIMOIRE_BOOK);
+		addItem(ModItems.GRIMOIRE_BOOK); //Useless
 		// ** Kosuzu Motoori ** /
-		addItem(ModItems.YOUKAI_BOOK);
+		addItem(ModItems.YOUKAI_BOOK); //Mega Useless
 		// **Aya Shameimaru ** /
-		addItem(ModItems.TENGU_FAN);
-		addItem(ModItems.AYA_CAMERA);
+		addItem(ModItems.TENGU_FAN); //Done
+		addItem(ModItems.AYA_CAMERA); //Done
 		// ** Hatate Himekaidou ** /
-		addItem(ModItems.HATATE_CAMERA);
+		addItem(ModItems.HATATE_CAMERA); //Done
 		// ** Benben Tsukumo ** /
 		// ** Chen ** /
 		// ** Chiyuri Kitashirakawa ** /
 		// ** Cirno ** /
-		addItem(ModItems.POPSICLE_STICK);
-		addItem(ModItems.WATERMELON_BLADE);
-		addItem(ModItems.WATERMELON_SWORD);
+		addItem(ModItems.POPSICLE_STICK); //Done
+		addItem(ModItems.WATERMELON_BLADE); //Done
+		addItem(ModItems.WATERMELON_SWORD); //Done
 		// ** Clownpiece ** /
 		// ** Daiyousei ** /
 		// ** Doremy Sweet ** /
 		// ** Elly ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.ELLY_SCYTHE);
+			addItem(ModItems.ELLY_SCYTHE); //Done
 		}
 		//** Flandre Scarlet ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.LAEVATEIN);
+			addItem(ModItems.LAEVATEIN); //TODO: Make it spawn a fiery sword when swung
 		}
 		// ** Fujiwara no Mokou ** /
 		// ** Hata no Kokoro ** /
@@ -140,131 +140,131 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Hina Kagiyama ** /
 		// ** Hong Meiling ** /
 		// ** Ichirin Kumoi ** /
-		addItem(ModItems.ICHIRIN_UNZAN);
-		addItem(ModItems.ICHIRIN_RING);
+		addItem(ModItems.ICHIRIN_UNZAN); //Done
+		addItem(ModItems.ICHIRIN_RING); //TODO: Make rings have a fist model when held
 		// ** Iku Nagae ** /
 		// ** Junko ** /
 		// ** Kaguya Houraisan ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.JEWELED_HOURAI);
+			addItem(ModItems.JEWELED_HOURAI); //Done
 		addItem(ModItems.BUDAH_BOUL);
 		addItem(ModItems.DRAGON_JEWEL);
-		addItem(ModItems.FIRE_ROBE);
-		addItem(ModItems.COWRIE_SHELL);
+		addItem(ModItems.FIRE_ROBE); //Done
+		addItem(ModItems.COWRIE_SHELL); //Done
 		// ** Kanako Yasaka ** /
-		addItem(ModItems.KANAKO_SHIMENAWA);
-		addItem(ModItems.KANAKO_ONBASHIRA);
+		addItem(ModItems.KANAKO_SHIMENAWA); //Done
+		addItem(ModItems.KANAKO_ONBASHIRA); //Done
 		// ** Kasen Ibara ** /
-		addItem(ModItems.IBARAKI_BOX_EMPTY);
-		addItem(ModItems.IBARAKI_BOX_FILLED);
-		addItem(ModItems.KAPPAS_NOSTRUM);
+		addItem(ModItems.IBARAKI_BOX_EMPTY); //Done
+		addItem(ModItems.IBARAKI_BOX_FILLED); //Done
+		addItem(ModItems.KAPPAS_NOSTRUM); //Done
 		// ** Eirin Yagokoro ** /
-		addItem(ModItems.HOURAI_ELIXIR);
-		addItem(ModItems.SYRINGE);
-		addItem(ModItems.ORB_ELIXIR);
+		addItem(ModItems.HOURAI_ELIXIR); //Done
+		addItem(ModItems.SYRINGE); //Done
+		addItem(ModItems.ORB_ELIXIR); //Done
 		// ** Keine Kamishirasawa ** /
 		// ** Kogasa Tatara ** /
 		// ** Koishi Komeiji -  Satori Komeiji ** /
-		addItem(ModItems.THIRD_EYE);
+		addItem(ModItems.THIRD_EYE); //Done
 		// ** Komachi Onozuka ** /
-		addItem(ModItems.DEATH_SCYTHE);
+		addItem(ModItems.DEATH_SCYTHE); //Done
 		// ** Kyouko Kasodani ** /
 		// ** Lunasa Prismriver - Merlin Prismriver - Lyrica Prismriver ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.LUNASA_VIOLIN);
-			addItem(ModItems.LYRICA_PIANO);
-			addItem(ModItems.MERLIN_TRUMPET);
+			addItem(ModItems.LUNASA_VIOLIN); //Done
+			addItem(ModItems.LYRICA_PIANO); //Done
+			addItem(ModItems.MERLIN_TRUMPET); //Done
 		}
 		// ** Mamizou Futatsuiwa ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.LEAF);
+			addItem(ModItems.LEAF); //Done
 		// ** Marisa Kirisame ** /
-		addItem(ModItems.MARISA_HAT);
+		addItem(ModItems.MARISA_HAT); //Done
 		// ** Minamitsu Murasa ** /
-		addItem(ModItems.GHOST_DIPPER);
+		addItem(ModItems.GHOST_DIPPER); //Done
 		// ** Momiji Inubashiri ** /
-		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
-		addItem(ModItems.MAPLE_LEAF_SHIELD);
+		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD); //Done
+		addItem(ModItems.MAPLE_LEAF_SHIELD); //TODO: Fix json model
 		// ** Mononobe no Futo ** /
 		// ** Mokou ** /
 		// ** Mystia Lorelei ** /
-		addItem(ModItems.GRILLED_LAMPREY);
+		addItem(ModItems.GRILLED_LAMPREY); //Done
 		// ** Nue Houjuu ** /
-		addItem(ModItems.NUE_TRIDENT);
+		addItem(ModItems.NUE_TRIDENT); //Done
 		addItem(ModItems.UFOS);
 		// ** Nazrin ** /
-		addItem(ModItems.NAZRIN_PENDULUM);
-		addItem(ModItems.NAZRIN_STICK_ITEM);
+		addItem(ModItems.NAZRIN_PENDULUM); //Done
+		addItem(ModItems.NAZRIN_STICK_ITEM); //Done
 		// ** Nitori Kawashiro ** /
-		addItem(ModItems.CATTAIL_PLANT);
-		addItem(ModItems.KAPPA_HAT);
+		addItem(ModItems.CATTAIL_PLANT); //Done
+		addItem(ModItems.KAPPA_HAT); //Done
 		// ** Suwako Moriya ** /
-		addItem(ModItems.SUWAKO_HAT);
+		addItem(ModItems.SUWAKO_HAT); //Done
 		// ** Raiko Horikawa ** /
 		// ** Ran Yakumo ** /
 		// ** Reimu Hakurei ** /
-		addItem(ModItems.HAKUREI_GOHEI);
+		addItem(ModItems.HAKUREI_GOHEI); //TODO: Make it spawn a protective aura around the player for "Aura Manipulation"
 		// ** Sanae Kochiya ** /
-		addItem(ModItems.SANAE_GOHEI);
+		addItem(ModItems.SANAE_GOHEI); //TODO: Make it cause miracles somehow
 		// ** Seija Kijin ** /
-		addItem(ModItems.BLOOD_ORB);
-		addItem(ModItems.FOLDING_UMBRELLA);
-		addItem(ModItems.SUBSTITUTE_JIZO);
-		addItem(ModItems.NIMBLE_FABRIC);
-		addItem(ModItems.FAKE_MIRACLE_MALLET);
-		addItem(ModItems.GHASTLY_SEND_OFF_LANTERN);
-		addItem(ModItems.CURSED_DECOY_DOLL);
+		addItem(ModItems.BLOOD_ORB); //Done
+		addItem(ModItems.FOLDING_UMBRELLA); //Done
+		addItem(ModItems.SUBSTITUTE_JIZO); //Done
+		addItem(ModItems.NIMBLE_FABRIC); //Done
+		addItem(ModItems.FAKE_MIRACLE_MALLET); //Done
+		addItem(ModItems.GHASTLY_SEND_OFF_LANTERN); //Done
+		addItem(ModItems.CURSED_DECOY_DOLL); //Done
 		// ** Reisen ** /
 		// ** Reisen Udongein Inaba ** /
 		// ** Remilia Scarlet ** /
 		// ** Sakuya Izayoi ** /
-		addItem(ModItems.STOP_WATCH);
+		addItem(ModItems.STOP_WATCH); //TODO: Watch for bugs
 		// ** Rin Kaenbyou ** /
-		addItem(ModItems.SKULL);
+		addItem(ModItems.SKULL); //TODO: Make it spawn homing skulls that only attack mobs that target the player
 		// ** Sariel ** /
-		addItem(ModItems.SARIEL_WAND);
+		addItem(ModItems.SARIEL_WAND); //Done
 		// ** Rinnosuke Morichika ** /
-		addItem(ModItems.AMENONUHOKO);
-		addItem(ModItems.SWORD_OF_KUSANAGI);
+		addItem(ModItems.AMENONUHOKO); //Done
+		addItem(ModItems.SWORD_OF_KUSANAGI); //Done
 		// ** Rumia **/
-		addItem(ModItems.RUMIA_SWORD);
+		addItem(ModItems.RUMIA_SWORD); //Done
 		// ** Seiga Kaku ** /
-		addItem(ModItems.WALL_PASSING_CHISEL);
+		addItem(ModItems.WALL_PASSING_CHISEL); //Done
 		// ** Seiran ** /
-		addItem(ModItems.MOCHI_HAMMER);
+		addItem(ModItems.MOCHI_HAMMER); //Done
 		// ** Shikieiki Yamaxanadu ** /
-		addItem(ModItems.ROD_REMORSE);
+		addItem(ModItems.ROD_REMORSE); //Done
 		// ** Shinki ** /
-		addItem(ModItems.SHINKI_WAND);
+		addItem(ModItems.SHINKI_WAND); //TODO: Come up with something to do with it
 		// ** Shinmyoumaru Sukuna ** /
-		addItem(ModItems.SHINMYOUMARU_HAT);
+		addItem(ModItems.SHINMYOUMARU_HAT); //Done
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.MIRACLE_MALLET);
-		addItem(ModItems.SHINMYOUMARU_NEEDLE);
+			addItem(ModItems.MIRACLE_MALLET); //TODO: Add all the stuffs!
+		addItem(ModItems.SHINMYOUMARU_NEEDLE); //TODO: Shoot "Fishing Rod"
 		// ** Shou Toramaru ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.SHOU_LAMP);
+			addItem(ModItems.SHOU_LAMP); //Done
 		// ** Suika Ibuki ** /
-		addItem(ModItems.IBUKI_GOURD);
+		addItem(ModItems.IBUKI_GOURD); //Done
 		// ** Yuugi Hoshiguma ** /
-		addItem(ModItems.YUUGI_SAKE);
+		addItem(ModItems.YUUGI_SAKE); //Done
 		// ** Sumireko Usami ** /
 		// ** Tenshi Hinanawi ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.HISOU);
-		addItem(ModItems.HEAVENLY_PEACH);
+			addItem(ModItems.HISOU); //Done
+		addItem(ModItems.HEAVENLY_PEACH); //Done
 		// ** Toyosatomimi no Miko ** /
-		addItem(ModItems.MIKO_CLOAK);
-		addItem(ModItems.SACRED_TOYOSATOMIMI);
-		addItem(ModItems.SHICHI_SEIKEN);
-		addItem(ModItems.MIKO_STICK);
-		addItem(ModItems.TOYOSATOMIMI_HAT);
+		addItem(ModItems.MIKO_CLOAK); //Done
+		addItem(ModItems.SACRED_TOYOSATOMIMI); //Done
+		addItem(ModItems.SHICHI_SEIKEN); //Done
+		addItem(ModItems.MIKO_STICK); //Done
+		addItem(ModItems.TOYOSATOMIMI_HAT); //Done
 		// ** Unzan ** /
 		// ** Utsuho Reiuji ** /
-		addItem(ModItems.UTSUHO_WINGS);
+		addItem(ModItems.UTSUHO_WINGS); //Done
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
-		addItem(ModItems.ROUKANKEN);
+		addItem(ModItems.ROUKANKEN); //Done
 		// ** Yukari Yakumo ** /
 		// ** Yuuka Kazami ** /
 		// ** Yuyuko Saigyouji ** /

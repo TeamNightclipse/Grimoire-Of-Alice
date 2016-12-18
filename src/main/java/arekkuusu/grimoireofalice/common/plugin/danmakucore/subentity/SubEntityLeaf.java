@@ -40,18 +40,10 @@ public class SubEntityLeaf extends SubEntityType {
 				if(!world.isRemote) {
 					DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setShot(LibGOAShotData.UFO).setSource(this.danmaku);
 					world.spawnEntityInWorld(danmaku.build().asEntity());
-					danmaku.setShot(danmaku.shot.setSize(6));
+					danmaku.setShot(danmaku.shot.setSize(12));
 				}
 				danmaku.setDead();
 			}
-		}
-
-		@Override
-		protected void impact(RayTraceResult raytrace) {
-			for (int j = 0; j < 8; ++j) {
-				danmaku.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0.0D, 0.0D, 0.0D);
-			}
-			super.impact(raytrace);
 		}
 	}
 }

@@ -49,12 +49,12 @@ public class ItemTenguCamera extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (!worldIn.isRemote) {
-			int size = itemStackIn.getItem() == ModItems.AYA_CAMERA ? 3
-					: itemStackIn.getItem() == ModItems.HATATE_CAMERA ? 2 : 0;
+			int size = itemStackIn.getItem() == ModItems.AYA_CAMERA ? 5
+					: itemStackIn.getItem() == ModItems.HATATE_CAMERA ? 4 : 0;
 
 			EntityCameraSquare camera = new EntityCameraSquare(worldIn, playerIn, size);
 			Vec3d look = playerIn.getLookVec();
-			double distance = size + 2D;
+			double distance = size + 4D;
 			double dx = playerIn.posX + look.xCoord * distance;
 			double dy = playerIn.posY + 2 + look.yCoord * distance;
 			double dz = playerIn.posZ + look.zCoord * distance;

@@ -16,6 +16,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
@@ -37,8 +38,8 @@ public class EntityHakureiOrb extends EntityThrowable {
 		posX = entity.posX;
 		posY = entity.posY + 4;
 		posZ = entity.posZ;
-		setSize(1F);
 		setPosition(posX, posY, posZ);
+		setSize(1F);
 	}
 
 	@Override
@@ -121,6 +122,16 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		return super.getEntityBoundingBox().expandXyz(getSize());
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBox(Entity entityIn) {
+		return this.getEntityBoundingBox();
+	}
+
+	@Override
 	protected float getGravityVelocity() {
 		return 0;
 	}
@@ -130,7 +141,12 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void setSize(float size) {
-		super.setSize(size, size);
+		if (width != this.width || height != this.height) {
+			this.width = size;
+			this.height = size;
+			AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
+			this.setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) this.width, axisalignedbb.minY + (double) this.height, axisalignedbb.minZ + (double) this.width));
+		}
 		dataManager.set(SIZE, size);
 	}
 

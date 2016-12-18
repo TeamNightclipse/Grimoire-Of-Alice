@@ -34,7 +34,6 @@ public final class ResourceLocations {
 	};
 
 	public static final ResourceLocation NAZRIN_TEXTURE = getLocation("textures/models/entities/nazrinpendulum.png");
-	public static final ResourceLocation NEEDLE_TEXTURE = getLocation("textures/models/entities/needle.png");
 	public static final ResourceLocation WATCH_TEXTURE = getLocation("textures/models/entities/StopWatch.png");
 	public static final ResourceLocation UNZAN_FIST_TEXTURE = getLocation("textures/models/entities/UnzanFist.png");
 	public static final ResourceLocation MIRACLE_LANTERN = getLocation("textures/models/entities/MiracleLantern.png");
@@ -78,6 +77,13 @@ public final class ResourceLocations {
 	public static final ResourceLocation NEEDLE_SWEEP = getLocation("needleSweep");
 	public static final ResourceLocation SIMPLE_BELL = getLocation("simpleBell");
 	public static final ResourceLocation CRAFTING_SPELL = getLocation("craftingSpell");
+	public static final ResourceLocation ORIN_NYAA = getLocation("orinNyaa");
+	public static final ResourceLocation POWER_UP = getLocation("powerUp");
+	public static final ResourceLocation ATTTACK_LONG = getLocation("attackLong");
+	public static final ResourceLocation HORN = getLocation("horn");
+	public static final ResourceLocation WARP = getLocation("warp");
+	public static final ResourceLocation UFO_IDDLE = getLocation("ufoIddle");
+	public static final ResourceLocation UFO_SPAWN = getLocation("ufoSpawn");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);

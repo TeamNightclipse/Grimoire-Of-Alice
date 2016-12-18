@@ -195,6 +195,11 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	}
 
 	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		return true;
+	}
+
+	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BOW;
 	}

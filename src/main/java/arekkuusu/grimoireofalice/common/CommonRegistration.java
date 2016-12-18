@@ -27,11 +27,21 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @Mod.EventBusSubscriber
 public class CommonRegistration {
 
-	public static final ItemArmor.ArmorMaterial SOLID_PAPER = EnumHelper.addArmorMaterial("solidPaper", "No", 1000, new int[]{1, 2, 3, 4}, 30,
+	public static final ItemArmor.ArmorMaterial WEAK_PAPER = EnumHelper.addArmorMaterial("weakPaper", "No", 500, new int[]{2,2,2,2}, 30,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
+	public static final ItemArmor.ArmorMaterial MASK = EnumHelper.addArmorMaterial("mask", "No", 1000, new int[]{1,2,3,4}, 0,
+			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2);
+	public static final ItemArmor.ArmorMaterial KOKORO_MASK = EnumHelper.addArmorMaterial("kororoMask", "No", 5000, new int[]{25,25,25,25}, 0,
+			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 20);
+	public static final ItemArmor.ArmorMaterial KANAKO_SHIMENAWA = EnumHelper.addArmorMaterial("kanakoShimenawa", "No", 5000, new int[]{15,15,15,15}, 50,
+			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 15);
+	public static final ItemArmor.ArmorMaterial FIRE_ROBE = EnumHelper.addArmorMaterial("fireRobe", "No", 1000, new int[]{6,6,6,6}, 50,
+			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 25);
+
 	public static final Item.ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
 	public static final Item.ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
 	public static final Item.ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
+	public static final Item.ToolMaterial BUDAH_BOUL = EnumHelper.addToolMaterial("budahBoul", 4, 1561, 20.0F, 3.0F, 30);
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -62,7 +72,7 @@ public class CommonRegistration {
 				new ItemGhostDipper(),
 				new ItemWallPassingChisel(),
 				new ItemRodOfRemorse(),
-				new ItemBudahBoul(Item.ToolMaterial.DIAMOND),
+				new ItemBudahBoul(BUDAH_BOUL),
 				new ItemDragonJewel(),
 				new ItemBloodThirstyOrb(),
 				new ItemGapFoldingUmbrella(),
@@ -96,26 +106,26 @@ public class CommonRegistration {
 
 				//Armor
 				new ItemMapleLeafShield(),
-				new ItemFoxMask(SOLID_PAPER, 3),
-				new ItemRaidenMask(SOLID_PAPER, 3),
-				new ItemMonkeyMask(SOLID_PAPER, 3),
-				new ItemHyottokoMask(SOLID_PAPER, 3),
-				new ItemFukuNoKamiMask(SOLID_PAPER, 3),
-				new ItemUbaMask(SOLID_PAPER, 3),
-				new ItemHannyaMask(SOLID_PAPER, 3),
-				new ItemKoomoteMask(SOLID_PAPER, 3),
-				new ItemMaskOfHope(SOLID_PAPER, 3),
-				new ItemKokorosMasks(SOLID_PAPER, 3),
-				new ItemToyosatomimiHat(SOLID_PAPER, 3),
-				new ItemKanakoShimenawa(SOLID_PAPER, 3),
-				new ItemIchirinUnzan(SOLID_PAPER, 3),
-				new ItemSuwakoHat(SOLID_PAPER, 3),
-				new ItemFireRobe(SOLID_PAPER, 3),
-				new ItemUtsuhoWings(SOLID_PAPER, 5),
-				new ItemKappaHat(SOLID_PAPER, 3),
-				new ItemMarisaHat(SOLID_PAPER, 3),
-				new ItemToyosatomimiCloak(SOLID_PAPER, 3),
-				new ItemShinmyoumaruHat(SOLID_PAPER, 5),
+				new ItemFoxMask(MASK, 3),
+				new ItemRaidenMask(MASK, 3),
+				new ItemMonkeyMask(MASK, 3),
+				new ItemHyottokoMask(MASK, 3),
+				new ItemFukuNoKamiMask(MASK, 3),
+				new ItemUbaMask(MASK, 3),
+				new ItemHannyaMask(MASK, 3),
+				new ItemKoomoteMask(MASK, 3),
+				new ItemMaskOfHope(MASK, 3),
+				new ItemKokorosMasks(KOKORO_MASK, 3),
+				new ItemToyosatomimiHat(WEAK_PAPER, 3),
+				new ItemKanakoShimenawa(KANAKO_SHIMENAWA, 3),
+				new ItemIchirinUnzan(WEAK_PAPER, 3),
+				new ItemSuwakoHat(WEAK_PAPER, 3),
+				new ItemFireRobe(FIRE_ROBE, 3),
+				new ItemUtsuhoWings(WEAK_PAPER, 5),
+				new ItemKappaHat(WEAK_PAPER, 3),
+				new ItemMarisaHat(WEAK_PAPER, 3),
+				new ItemToyosatomimiCloak(WEAK_PAPER, 3),
+				new ItemShinmyoumaruHat(WEAK_PAPER, 5),
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),
@@ -136,7 +146,7 @@ public class CommonRegistration {
 				new ItemWatermelonBlade(WET_NOODLE),
 				new ItemWatermelonSword(GOLDYRON),
 				new ItemSacredToyosatomimi(GOLDYRON),
-				new ItemShinmyoumaruNeedle(NOT_A_MELEE_WEAPON),
+				new ItemShinmyoumaruNeedle(GOLDYRON),
 				new ItemDeathScythe(WET_NOODLE),
 				new ItemSwordRoukanken(WET_NOODLE)
 		);
@@ -200,7 +210,6 @@ public class CommonRegistration {
 				.setResistance(2.0F);
 		hyperConcentratedMagic.setHarvestLevel("pickaxe", 3);
 
-		//TODO: Move these somewhere else
 		GameRegistry.registerTileEntity(TileCraftingAltar.class, "Crafting_Altar");
 		GameRegistry.registerTileEntity(TilePillarAltar.class, "Pillar_Altar");
 

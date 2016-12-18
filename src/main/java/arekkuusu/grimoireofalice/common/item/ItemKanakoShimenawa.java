@@ -48,23 +48,15 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 	}
 
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) { //TODO: Make player walk on water
-		if (!player.isInWater() && !player.isSneaking() && player.motionY <= 0) {
-			if (world.getBlockState(player.getPosition().down()).getMaterial() == Material.WATER) {
-				//player.posY = player.getPosition().getY();
-				player.onGround = true;
-				player.motionY = 0;
-				player.fallDistance = 0.0F;
-			}
-		}
-		if (world.isRaining()) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+		if (player.isWet()) {
 			player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 15, 0));
 		}
 	}
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
+		return new ArmorProperties(5, 50, 50);
 	}
 
 	@Override

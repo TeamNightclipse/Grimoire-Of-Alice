@@ -13,16 +13,16 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -55,6 +55,36 @@ public class ItemDragonJewel extends ItemMod {
 	}
 
 	@Override
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (entityIn instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityIn;
+			if (isSelected && player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
+				Vec3d vec = player.getLookVec();
+				double d0 = player.posX;
+				double d1 = player.posY + player.getEyeHeight();
+				double d2 = player.posZ;
+
+				worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.PLAYERS, 1F, 1F);
+				for (int i = 0; i < 8; ++i) {
+					double d3 = d0 + itemRand.nextGaussian() / 2.0D;
+					double d4 = d1 + itemRand.nextGaussian() / 2.0D;
+					double d5 = d2 + itemRand.nextGaussian() / 2.0D;
+
+					for (int j = 0; j < 6; ++j) {
+						worldIn.spawnParticle(EnumParticleTypes.DRAGON_BREATH, d3, d4, d5, vec.xCoord * 0.07999999821186066D * (double) j, vec.yCoord * 0.6000000238418579D, vec.zCoord * 0.07999999821186066D * (double) j);
+					}
+				}
+
+				if (!worldIn.isRemote) {
+					List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+							player.getEntityBoundingBox().offset(vec.xCoord * 3, 0, vec.zCoord * 3).expandXyz(4D), entity -> entity != player);
+					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
+				}
+			}
+		}
+	}
+
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
@@ -73,8 +103,13 @@ public class ItemDragonJewel extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			spawnJewel(stack, worldIn, (EntityPlayer)entityLiving);
+		if (entityLiving instanceof EntityPlayer) {
+			if (!entityLiving.isSneaking()) {
+				spawnJewel(stack, worldIn, (EntityPlayer) entityLiving);
+			}
+			else {
+				((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 30);
+			}
 		}
 	}
 
@@ -92,7 +127,7 @@ public class ItemDragonJewel extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
+		return 100;
 	}
 
 	@Override

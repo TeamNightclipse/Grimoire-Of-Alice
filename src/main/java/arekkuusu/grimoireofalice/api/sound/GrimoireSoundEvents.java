@@ -14,6 +14,13 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent NEEDLE_SWEEP = getRegisteredSound("needleSweep");
 	public static final SoundEvent SIMPLE_BELL = getRegisteredSound("simpleBell");
 	public static final SoundEvent CRAFTING_SPELL = getRegisteredSound("craftingSpell");
+	public static final SoundEvent ORIN_NYAA = getRegisteredSound("orinNyaa");
+	public static final SoundEvent POWER_UP = getRegisteredSound("powerUp");
+	public static final SoundEvent ATTTACK_LONG = getRegisteredSound("attackLong");
+	public static final SoundEvent HORN = getRegisteredSound("horn");
+	public static final SoundEvent WARP = getRegisteredSound("warp");
+	public static final SoundEvent UFO_IDDLE = getRegisteredSound("ufoIddle");
+	public static final SoundEvent UFO_SPAWN = getRegisteredSound("ufoSpawn");
 
 	private static SoundEvent getRegisteredSound(String name) {
 		return SoundEvent.REGISTRY.getObject(new ResourceLocation(LibMod.MODID, name));

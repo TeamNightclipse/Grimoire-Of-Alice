@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -104,8 +105,8 @@ public class ItemHakureiGohei extends ItemMod {
 		if(!playerIn.isSneaking()) {
 			if(mode == 2) {
 				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
-				//worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.HOSTILE, 1.0F,
-				//		itemRand.nextFloat() * 0.1F + 0.8F);
+				worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.POWER_UP, SoundCategory.HOSTILE, 0.1F,
+						itemRand.nextFloat() * 0.1F + 0.8F);
 				if(!worldIn.isRemote) {
 					worldIn.spawnEntityInWorld(orb);
 				}

@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
@@ -73,7 +74,7 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 			playerIn.setPosition(dx, dy, dz);
 		}
 		itemStackIn.damageItem(1, playerIn);
-		playerIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+		playerIn.playSound(GrimoireSoundEvents.WARP, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		playerIn.getCooldownTracker().setCooldown(this, 10);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
