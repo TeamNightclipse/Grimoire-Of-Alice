@@ -44,9 +44,9 @@ public class FormNote extends FormGeneric {
 				float yaw = danmaku.rotationYaw;
 				float roll = danmaku.getRoll();
 				ShotData shotData = danmaku.getShotData();
-				float sizeX = shotData.getSizeX();
-				float sizeY = shotData.getSizeY();
-				float sizeZ = shotData.getSizeZ();
+				float sizeX = shotData.getSizeX() * 2.5F;
+				float sizeY = shotData.getSizeY() * 2.5F;
+				float sizeZ = shotData.getSizeZ() * 2.5F;
 				int color = shotData.getColor();
 				float r = (color >> 16 & 255) / 255.0F;
 				float g = (color >> 8 & 255) / 255.0F;
@@ -56,6 +56,7 @@ public class FormNote extends FormGeneric {
 				GlStateManager.rotate(-yaw - 180F, 0F, 1F, 0F);
 				GlStateManager.rotate(pitch - 180F, 1F, 0F, 0F);
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
+				GlStateManager.translate(0.0F, -0.2F, 0.0F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
 
 				MODEL.renderInsideForm(0.0625F);

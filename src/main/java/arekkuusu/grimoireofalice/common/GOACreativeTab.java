@@ -262,6 +262,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Unzan ** /
 		// ** Utsuho Reiuji ** /
 		addItem(ModItems.UTSUHO_WINGS); //Done
+		addItem(ModItems.NUCLEAR_ROD);
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN); //Done

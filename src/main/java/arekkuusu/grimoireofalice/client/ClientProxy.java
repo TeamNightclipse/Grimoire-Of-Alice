@@ -201,6 +201,7 @@ public class ClientProxy implements ISidedProxy {
 			registerItem(ModItems.POUCH, 0);
 			registerItem(ModItems.ELLY_SCYTHE, 0);
 			registerItem(ModItems.HISOU, 0);
+			registerItem(ModItems.NUCLEAR_ROD, 0);
 		}
 	}
 

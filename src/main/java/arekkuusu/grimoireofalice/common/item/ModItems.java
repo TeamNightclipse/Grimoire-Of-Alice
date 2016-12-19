@@ -248,6 +248,8 @@ public final class ModItems {
 	public static final Item DEATH_SCYTHE = new Item();
 	@ObjectHolder(LibItemName.ROUKANKEN)
 	public static final Item ROUKANKEN = new Item();
+	@ObjectHolder(LibItemName.NUCLEAR_ROD)
+	public static final Item NUCLEAR_ROD = new Item();
 
 	public static void init() {
 		VanillaCrafting.booksAndStrings();

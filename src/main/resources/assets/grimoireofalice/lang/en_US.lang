@@ -111,6 +111,7 @@ item.sacredswordoftoyosatomimi.name=Sacred Sword of Toyosatomimi
 item.hisou.name=Sword of Hisou
 item.deathscythe.name=Death Scythe
 item.roukanken.name=Roukanken
+item.nuclearrod.name=Nuclear Control Rod
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper
@@ -229,6 +230,8 @@ grimoire.tooltip.toyosatomimi_hat_description_bottom.name=Sucks to be you
 
 grimoire.tooltip.utsuho_wings_header.name=Hell raven with Yatagarasu
 grimoire.tooltip.utsuho_wings_description.name=Grants wings to the user that give creative flight for an undefined period of time
+
+grimoire.tooltip.nuclear_rod_header.name=Control Rod of the ultimate energy, Nuclear Fusion
 
 grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
 

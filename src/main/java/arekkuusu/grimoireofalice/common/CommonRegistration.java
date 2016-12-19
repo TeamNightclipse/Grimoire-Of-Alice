@@ -182,7 +182,8 @@ public class CommonRegistration {
 					new ItemSpellCardPouch(),
 					new ItemEllyScythe(WET_NOODLE),
 					new ItemSwordOfHisou(GOLDYRON),
-					new ItemLeaf()
+					new ItemLeaf(),
+					new ItemNuclearRod()
 			);
 		}
 	}

@@ -51,9 +51,9 @@ public class FormUfo extends FormGeneric {
 				float yaw = danmaku.rotationYaw;
 				float roll = danmaku.getRoll();
 				ShotData shotData = danmaku.getShotData();
-				float sizeX = shotData.getSizeX();
-				float sizeY = shotData.getSizeY();
-				float sizeZ = shotData.getSizeZ();
+				float sizeX = shotData.getSizeX() * 3;
+				float sizeY = shotData.getSizeY() * 3;
+				float sizeZ = shotData.getSizeZ() * 3;
 				int color = shotData.getColor();
 				float r = (color >> 16 & 255) / 255.0F;
 				float g = (color >> 8 & 255) / 255.0F;
@@ -64,7 +64,7 @@ public class FormUfo extends FormGeneric {
 				GlStateManager.rotate(-yaw + 180F, 0F, 1F, 0F);
 				GlStateManager.rotate(pitch, 1F, 0F, 0F);
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
-				GlStateManager.scale(sizeX * 2, sizeY * 2, sizeZ * 2);
+				GlStateManager.scale(sizeX, sizeY, sizeZ);
 
 				ItemStack stack = new ItemStack(ModItems.UFOS); //TODO: Ufo models
 				Minecraft mc = Minecraft.getMinecraft();
