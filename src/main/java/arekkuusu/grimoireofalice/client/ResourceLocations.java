@@ -59,6 +59,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation TOYOSATOMIMI_HAT = getLocation("textures/models/armor/toyosatomimi_hat.png");
 	public static final ResourceLocation TOYOSATOMIMI_CLOAK = getLocation("textures/models/armor/toyosatomimi_cloack.png");
 	public static final ResourceLocation UTSUHO_WINGS = getLocation("textures/models/armor/utsuho_wings.png");
+	public static final ResourceLocation NUCLEAR_BOOTS = getLocation("textures/models/armor/nuclearboots.png");
 
 	public static final ResourceLocation AURA_MOKOU = getLocation("textures/models/armor/mokou_aura.png");
 	public static final ResourceLocation AURA_BYAKUREN = getLocation("textures/models/armor/byakuren_aura.png");
@@ -84,6 +85,8 @@ public final class ResourceLocations {
 	public static final ResourceLocation WARP = getLocation("warp");
 	public static final ResourceLocation UFO_IDDLE = getLocation("ufoIddle");
 	public static final ResourceLocation UFO_SPAWN = getLocation("ufoSpawn");
+	public static final ResourceLocation CAUTION = getLocation("caution");
+	public static final ResourceLocation WAVE = getLocation("wave");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);

@@ -21,6 +21,8 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent WARP = getRegisteredSound("warp");
 	public static final SoundEvent UFO_IDDLE = getRegisteredSound("ufoIddle");
 	public static final SoundEvent UFO_SPAWN = getRegisteredSound("ufoSpawn");
+	public static final SoundEvent CAUTION = getRegisteredSound("caution");
+	public static final SoundEvent WAVE = getRegisteredSound("wave");
 
 	private static SoundEvent getRegisteredSound(String name) {
 		return SoundEvent.REGISTRY.getObject(new ResourceLocation(LibMod.MODID, name));

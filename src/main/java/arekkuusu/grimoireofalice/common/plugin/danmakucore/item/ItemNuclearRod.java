@@ -1,22 +1,29 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,14 +58,26 @@ public class ItemNuclearRod extends ItemMod {
 	}
 
 	@Override
+	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 0));
+		if(count % 50 == 0){
+			player.playSound(GrimoireSoundEvents.CAUTION, 0.2F, 0F);
+		}
+	}
+
+	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+		if (entityLiving instanceof EntityPlayer) {
+			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 10);
+		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-		if(timeUsed <= 5) return;
-		DanmakuHelper.playShotSound(entityLiving);
-		if(!worldIn.isRemote) {
+		if (timeUsed < 40) return;
+		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
+		if (!worldIn.isRemote) {
 			EntityDanmaku danmaku = DanmakuBuilder.builder()
 					.setUser(entityLiving)
-					.setShot(LibShotData.SHOT_CIRCLE.setColor(LibColor.COLOR_SATURATED_RED).setSize(10F))
+					.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+					.setMovementData(1F)
 					.build().asEntity();
 			worldIn.spawnEntityInWorld(danmaku);
 		}
@@ -71,6 +90,6 @@ public class ItemNuclearRod extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 100;
+		return 500;
 	}
 }

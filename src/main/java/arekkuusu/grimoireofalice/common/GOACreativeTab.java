@@ -27,6 +27,7 @@ public class GOACreativeTab extends CreativeTabs {
 	GOACreativeTab() {
 		super(LibMod.MODID);
 		setNoTitle();
+		setBackgroundImageName("item_search.png");
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class GOACreativeTab extends CreativeTabs {
 
 	@Override
 	public boolean hasSearchBar() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -262,6 +263,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Unzan ** /
 		// ** Utsuho Reiuji ** /
 		addItem(ModItems.UTSUHO_WINGS); //Done
+		addItem(ModItems.NUCLEAR_BOOTS);
 		addItem(ModItems.NUCLEAR_ROD);
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /

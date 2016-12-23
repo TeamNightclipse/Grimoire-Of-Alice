@@ -129,4 +129,5 @@ public class LibItemName {
 	public static final String BLACK_FEATHER = "blackfeather";
 	public static final String SHINKI_WAND = "shinkiwand";
 	public static final String NUCLEAR_ROD = "nuclearrod";
+	public static final String NUCLEAR_BOOTS = "nuclearboots";
 }

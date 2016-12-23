@@ -87,6 +87,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.MARISA_HAT, 0);
 		registerItem(ModItems.MIKO_CLOAK, 0);
 		registerItem(ModItems.SHINMYOUMARU_HAT, 0);
+		registerItem(ModItems.NUCLEAR_BOOTS, 0);
 
 		//Items
 		registerItem(ModItems.TAMAHAGANE_STEEL, 0);

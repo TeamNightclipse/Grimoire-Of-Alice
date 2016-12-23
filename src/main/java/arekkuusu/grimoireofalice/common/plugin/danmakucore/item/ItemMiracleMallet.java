@@ -100,11 +100,12 @@ public class ItemMiracleMallet extends ItemMod {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.worldObj.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
 			if (player.isSneaking() && !player.worldObj.isRemote) {
-				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityDanmaku, 35);
-				if (lookedAt.isPresent()) { //FIXME: Never present
-					EntityDanmaku danmaku = (EntityDanmaku) lookedAt.get();
+				Vec3d vec = player.getLookVec();
+				List<EntityDanmaku> list = player.worldObj.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox().offset(vec.xCoord * 10, vec.yCoord * 10, vec.zCoord * 10).expandXyz(10));
+				for (EntityDanmaku danmaku : list) {
 					ShotData data = danmaku.getShotData();
-					danmaku.setShotData(data.scaleSize(1.2F));
+					if (data.getSizeX() < 5 && data.getSizeY() < 5 && data.getSizeZ() < 5)
+						danmaku.setShotData(data.scaleSize(1.2F));
 				}
 			}
 			else if (!player.worldObj.isRemote && !player.getCooldownTracker().hasCooldown(this)) {

@@ -250,6 +250,8 @@ public final class ModItems {
 	public static final Item ROUKANKEN = new Item();
 	@ObjectHolder(LibItemName.NUCLEAR_ROD)
 	public static final Item NUCLEAR_ROD = new Item();
+	@ObjectHolder(LibItemName.NUCLEAR_BOOTS)
+	public static final Item NUCLEAR_BOOTS = new Item();
 
 	public static void init() {
 		VanillaCrafting.booksAndStrings();
@@ -259,7 +261,7 @@ public final class ModItems {
 
 	public static void initOreDictionary() {
 		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.IRON_NUGGET));
-		OreDictionary.registerOre("oreImputeStone", new ItemStack(ModBlocks.IMPURE_STONE));
+		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.IMPURE_STONE));
 	}
 
 	public static void initFlyingItems() {

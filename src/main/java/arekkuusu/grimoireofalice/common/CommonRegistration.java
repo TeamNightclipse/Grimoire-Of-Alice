@@ -126,6 +126,7 @@ public class CommonRegistration {
 				new ItemMarisaHat(WEAK_PAPER, 3),
 				new ItemToyosatomimiCloak(WEAK_PAPER, 3),
 				new ItemShinmyoumaruHat(WEAK_PAPER, 5),
+				new ItemNuclearBoots(WEAK_PAPER, 5),
 
 				//Weapons
 				new ItemAmenonuhoko(WET_NOODLE),

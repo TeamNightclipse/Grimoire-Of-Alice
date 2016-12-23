@@ -13,7 +13,7 @@ item.lunasaviolin.name=Lunasa's Violin
 item.lyricapiano.name=Lyrica's Piano
 item.merlintrumpet.name=Merlin's Trumpet
 item.shoulamp.name=Bishamonten's Pagoda
-item.orinskull.name=Orin's Skull
+item.orinskull.name=Skull
 item.nazrinpendulum.name=Nazrin Pendulum
 item.ghostdipper.name=Ship Ghost's Dipper
 item.wallpassingchisel.name=Seiga's Hairpin
@@ -80,6 +80,7 @@ item.kappahat.name=Nitori's Hat
 item.marisahat.name=Marisa's Hat
 item.mikocloak.name=Toyosatomimi's Cloak
 item.shinmyoumaruhat.name=Shinmyoumaru's Bowl
+item.nuclearboots.name=Nuclear Boots
 
 item.aurabyakuren.name=Pearl Necklace
 item.auramokou.name=Cute Ribbon
@@ -253,6 +254,10 @@ grimoire.tooltip.kappas_nostrum_description.name=by cutting off the arm of a kap
 grimoire.tooltip.shroom_dust_header.name=Psilocybin mushroom
 grimoire.tooltip.shroom_dust_description.name=May induce hallucinations
 
+grimoire.tooltip.nuclear_boots_header.name="Manipulation of Nuclear Energy"
+grimoire.tooltip.nuclear_boots_description_top.name=Left leg "The leg of decomposition"
+grimoire.tooltip.nuclear_boots_description_bottom.name=Right leg "The leg of fusion"
+
 grimoire.tooltip.orb_elixir_header.name=Removes the impurity of death
 grimoire.tooltip.orb_elixir_description_top.name=and allows the user to experience
 grimoire.tooltip.orb_elixir_description_bottom.name=the immediate future
@@ -421,8 +426,7 @@ grimoire.tooltip.shichi_seiken_header.name=Gold inlay of clouds and seven stars 
 grimoire.tooltip.shimenawa_rope_header.name=Tenshi's little gift
 grimoire.tooltip.shimenawa_rope_description.name=A little piece of Heaven
 
-grimoire.tooltip.skull_header.name=Human Skull
-grimoire.tooltip.skull_description.name=Stolen from a grave
+grimoire.tooltip.skull_header.name=Stolen from a grave
 
 grimoire.tooltip.stop_watch_header.name="Stop time"
 grimoire.tooltip.stop_watch_description_top.name=Right click to activate
@@ -650,7 +654,7 @@ grimoire.jei.descriptions.jeweled_hourai=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions.jeweled_hourai_body=Shoot a group of colored danmaku by holding and releasing, if the player is shifting, it releases all of its jewels in one shot
 
 grimoire.jei.descriptions.kanako_shimenawa=Must be crafted under a Rainy Weather
-grimoire.jei.descriptions.kanako_shimenawa_body=Gives a Glowing effect when its raining in the world. It gives creative flight and allows the player to walk on water
+grimoire.jei.descriptions.kanako_shimenawa_body=Gives a Glowing effect when its raining in the world. It gives creative flight and makes the player completely invulnerable to any throwable entity
 
 grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 

@@ -17,6 +17,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -90,6 +91,18 @@ public class YukkuriEvent {
 	}
 
 	@SubscribeEvent
+	public void livingAttacked(LivingAttackEvent event){
+		if (event.getEntityLiving() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+			if (stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
+				if (event.getSource().isProjectile() || event.getSource().isExplosion())
+					event.setCanceled(true);
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public void livingHurtEvent(LivingHurtEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
@@ -117,7 +130,7 @@ public class YukkuriEvent {
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 			if(stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
-				if (event.getSource().isProjectile())
+				if (event.getSource().isProjectile() || event.getSource().isExplosion())
 					event.setCanceled(true);
 			}
 		}

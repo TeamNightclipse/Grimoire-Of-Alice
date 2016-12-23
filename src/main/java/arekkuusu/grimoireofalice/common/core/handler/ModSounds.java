@@ -21,6 +21,8 @@ public class ModSounds {
 		registerSound(ResourceLocations.WARP);
 		registerSound(ResourceLocations.UFO_IDDLE);
 		registerSound(ResourceLocations.UFO_SPAWN);
+		registerSound(ResourceLocations.CAUTION);
+		registerSound(ResourceLocations.WAVE);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {
