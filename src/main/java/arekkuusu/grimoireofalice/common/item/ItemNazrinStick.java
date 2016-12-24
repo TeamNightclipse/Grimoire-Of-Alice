@@ -116,7 +116,6 @@ public class ItemNazrinStick extends ItemModSword {
 					player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "You didn't find anything."));
 				}
 				player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - -"));
-				stack.damageItem(1, player);
 			}
 
 			return EnumActionResult.SUCCESS;

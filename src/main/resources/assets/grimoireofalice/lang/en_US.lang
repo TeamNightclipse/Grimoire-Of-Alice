@@ -181,7 +181,8 @@ subentity.grimoireofalice.ufo=Random movement
 subentity.grimoireofalice.wind=Push mobs away
 subentity.grimoireofalice.note=Slow movement
 
-effect.elixir=Elixir
+effect.grimoireofalice.elixir=Elixir
+effect.grimoireofalice.radiation_poisoning=Radiation Poisoning
 
 item.rodofremorse.entityHealthUsage=Health
 
@@ -307,7 +308,7 @@ grimoire.tooltip.send_off_lantern_header.name=Allows the player to negate all da
 grimoire.tooltip.send_off_lantern_description.name=for a short period of time
 
 grimoire.tooltip.maple_leaf_shield_header.name=Round shield with a red maple leaf print on it
-grimoire.tooltip.maple_leaf_shield_effect.name=Cures potion effects
+grimoire.tooltip.maple_leaf_shield_effect.name="Awoo intensifies"
 
 grimoire.tooltip.ufos_header.name=Gathers Items around the player
 grimoire.tooltip.ufos_status.name=Status:
@@ -400,7 +401,7 @@ grimoire.tooltip.rod_of_remorse_header.name=The worse the sin, the heavier the r
 grimoire.tooltip.rod_of_remorse_description.name=The person in question will be beaten up until they repent
 
 grimoire.tooltip.rumia_sword_header.name=Fanon Rumia's sword
-grimoire.tooltip.rumia_sword_description.name=Sets enemies in fire
+grimoire.tooltip.rumia_sword_description.name=Sets enemies on fire
 
 grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=Divine sword from Toyosatomimi
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name=Finds all souls around the player
@@ -676,7 +677,7 @@ grimoire.jei.descriptions.lunasa_violin=Shoots notes that deal magic damage
 
 grimoire.jei.descriptions.lyrica_piano=Shoots notes that deal magic damage
 
-grimoire.jei.descriptions.maple_leaf_shield=Works as a vanilla shield, it also clears all active potions when used
+grimoire.jei.descriptions.maple_leaf_shield=Works as a vanilla shield, it also gives Speed when used
 
 grimoire.jei.descriptions.marisa_hat=Picks up items around the player
 
@@ -706,13 +707,16 @@ grimoire.jei.descriptions.mortal_n_pestle=Used to turn shroom into powder
 
 grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to find treasures buried underground, it can find any kind of ore, and chest hidden bellow the surface
 
-grimoire.jei.descriptions.needle=It belongs to Shinmyoumaru Sukuna, an inchling living in the Shining Needle Castle
-grimoire.jei.descriptions.needle_body=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
-
 grimoire.jei.descriptions.nimble_fabric=Piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
 grimoire.jei.descriptions.nue_trident=Outer space item from an alien? It has some indecipherable scriptures in its handle
 grimoire.jei.descriptions.nue_trident_body=Gives Blindness and Nausea to the target
+
+grimoire.jei.descriptions.nuclear_boots=Must be crafted in the Nether
+grimoire.jei.descriptions.nuclear_boots_body=Grants the user protection against Nuclear Radiation
+
+grimoire.jei.descriptions.nuclear_rod=Rod used to manipulate Nuclear Energy and convert it to danmaku
+grimoire.jei.descriptions.nuclear_rod_body=It gives radiation poisoning
 
 grimoire.jei.descriptions.orb_elixir=Must be crafted in the End
 grimoire.jei.descriptions.orb_elixir_body=This medicine cures the worst of all diseases, death, for a short period of time
@@ -730,7 +734,7 @@ grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 0.25
 grimoire.jei.descriptions.roukanken=Ghostly sword that charges towards the enemy
 
 grimoire.jei.descriptions.rumia_sword=Must be crafted in the Nether
-grimoire.jei.descriptions.rumia_sword_body=Gigant sword that puts in fire everything in sight
+grimoire.jei.descriptions.rumia_sword_body=Gigant sword that puts on fire everything in sight
 
 grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and sends them to the chat with their respective coordinates, it also possesses a strong knockback
 
@@ -743,6 +747,9 @@ grimoire.jei.descriptions.shichi_seiken=Must be crafted under a Waxing Gibbous M
 grimoire.jei.descriptions.shichi_seiken_body=Drops loot from mining ores, has a chance of dropping 0 to 4 Items
 
 grimoire.jei.descriptions.shinmyoumaru_hat=Bowl from a tiny princess whose powers are of those of changing size with a mallet of strange origins
+
+grimoire.jei.descriptions.shinmyoumaru_needle=It belongs to Shinmyoumaru Sukuna, an inchling living in the Shining Needle Castle
+grimoire.jei.descriptions.shinmyoumaru_needle_body=Hold right click with this item to charge inchling power, then release to ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA ORA
 
 grimoire.jei.descriptions.shou_lamp=Shoots laser danmaku when used. Hold to charge Jewel power, shift right click to activate, it shoots as much danmaku as Jewel power it has; if the player holds it for a long enough, it gives luck to all living creatures around the player
 

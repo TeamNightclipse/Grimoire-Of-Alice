@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
@@ -64,7 +65,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_top.name"));
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_mid.name"));
-			list.add(TextFormatting.WHITE + I18n.format("grimoire.tooltip.hisou_sword_description_bottom.name"));
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_bottom.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_shift.name"));
@@ -74,6 +75,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
+		entityLivingBase.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, 1F);
 		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
@@ -88,7 +90,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					entity.motionX -= look.xCoord * 0.5;
 					entity.motionY -= look.yCoord * 0.5;
 					entity.motionZ -= look.zCoord * 0.5;
-					itemStackIn.damageItem(1, player);
 				}
 			}
 		}
@@ -118,6 +119,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if (!worldIn.isRemote) {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;

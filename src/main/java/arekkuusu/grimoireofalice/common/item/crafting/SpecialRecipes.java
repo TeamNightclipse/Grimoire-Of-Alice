@@ -98,6 +98,8 @@ public final class SpecialRecipes {
 	public static IRecipeItems TOYOSATOMIMI_HAT;
 	public static IRecipeItems UTSUHO_WINGS;
 	public static IRecipeItems NETHER_SHARD;
+	public static IRecipeItems NUCLEAR_ROD;
+	public static IRecipeItems NUCLEAR_BOOTS;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -283,7 +285,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.momijisScimitarSword) {
 			MOMIJIS_SCIMITAR_SWORD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MOMIJIS_SCIMITAR_SWORD)
-					, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
+					, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.narzinStick) {
@@ -444,8 +446,13 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.utsuhoWings) {
-			UTSUHO_WINGS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.UTSUHO_WINGS)
+			UTSUHO_WINGS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.UTSUHO_WINGS)
 					, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, Items.ELYTRA, ModBlocks.HIHIIROKANE_BLOCK, Blocks.COAL_BLOCK, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER);
+		}
+
+		if(ConfigHandler.grimoireOfAlice.crafting.nuclearBoots){
+			NUCLEAR_BOOTS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.NUCLEAR_BOOTS)
+					, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER_BOOTS, ModItems.HIHIIROKANE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.netherShard) {
@@ -455,6 +462,11 @@ public final class SpecialRecipes {
 
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
+			if(ConfigHandler.grimoireOfAlice.crafting.danmakuCore.nuclearRod){
+				NUCLEAR_ROD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NUCLEAR_ROD)
+						, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
+			}
+
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.ellyScythe) {
 				ELLY_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.ELLY_SCYTHE)
 						, new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
@@ -462,7 +474,7 @@ public final class SpecialRecipes {
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.laevatein) {
 				LEVATEIN = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.LAEVATEIN)
-						, Blocks.MAGMA, Blocks.MAGMA, Blocks.MAGMA, Blocks.MAGMA, Blocks.COAL_BLOCK, Blocks.COAL_BLOCK, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
+						, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_POWDER, Items.BLAZE_POWDER, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.miracleMallet) {

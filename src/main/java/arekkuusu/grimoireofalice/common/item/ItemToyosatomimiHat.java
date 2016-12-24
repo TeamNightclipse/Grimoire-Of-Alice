@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemToyosatomimiHat extends ItemModArmor  implements ISpecialArmor {
+public class ItemToyosatomimiHat extends ItemModArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -57,19 +57,6 @@ public class ItemToyosatomimiHat extends ItemModArmor  implements ISpecialArmor 
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 10));
 	}
-
-	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
-	}
-
-	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return damageReduceAmount;
-	}
-
-	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
 
 	@Override
 	@SideOnly(Side.CLIENT)

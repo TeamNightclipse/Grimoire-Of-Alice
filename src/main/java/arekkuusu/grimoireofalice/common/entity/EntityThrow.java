@@ -27,6 +27,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 public abstract class EntityThrow extends EntityThrowable {
 
@@ -135,9 +136,7 @@ public abstract class EntityThrow extends EntityThrowable {
 					}
 					return;
 				}
-				if(!entityplayer.inventory.addItemStackToInventory(stack)) {
-					entityplayer.dropItem(stack.getItem(), 1);
-				}
+				ItemHandlerHelper.giveItemToPlayer(entityplayer, stack);
 				if(!worldObj.isRemote) {
 					setDead();
 				}

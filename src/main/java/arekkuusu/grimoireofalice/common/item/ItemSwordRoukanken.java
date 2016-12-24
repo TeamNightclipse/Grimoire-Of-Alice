@@ -117,7 +117,6 @@ public class ItemSwordRoukanken extends ItemModSword {
 			if(!player.capabilities.isCreativeMode) {
 				player.addExhaustion(1.5F);
 			}
-			stack.damageItem(1, player);
 		}
 	}
 

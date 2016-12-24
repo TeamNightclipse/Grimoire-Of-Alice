@@ -106,7 +106,16 @@ public class CapabilitiesEvent {
 	}
 
 	private boolean canFlyAndMove(EntityPlayer player) {
-		return flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack)) || player.inventory.armorInventory[2] != null && (flyArmor.stream().anyMatch(stack -> stack.getItem() == player.inventory.armorInventory[2].getItem()));
+		return flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack)) || flyArmor.stream().anyMatch(stack -> {
+			{
+				for (ItemStack item : player.inventory.armorInventory) {
+					if (item != null && item.getItem() == stack.getItem()) {
+						return true;
+					}
+				}
+			}
+			return false;
+		});
 	}
 
 	private boolean isFlyItem(Item item) {

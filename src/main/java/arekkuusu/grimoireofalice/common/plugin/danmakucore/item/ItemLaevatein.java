@@ -80,34 +80,33 @@ public class ItemLaevatein extends ItemModSword {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		boolean isCreative = playerIn.capabilities.isCreativeMode;
 
-		if(isCreative || playerIn.experienceLevel > 30) {
-			playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-			itemStackIn.damageItem(10, playerIn);
-			if(!worldIn.isRemote) {
-				ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
-				if(isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
-					for (int i = 0; i < 3; i++) {
-						DanmakuBuilder danmaku = DanmakuBuilder.builder()
-								.setUser(playerIn)
-								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
-								.build();
+		playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+		ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
+		if (isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
+			if (!worldIn.isRemote) {
 
-						DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
-					}
+				for (int i = 0; i < 3; i++) {
+					DanmakuBuilder danmaku = DanmakuBuilder.builder()
+							.setUser(playerIn)
+							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
+							.build();
 
-					if(!isCreative) {
-						//noinspection ConstantConditions
-						if(playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-							//noinspection ConstantConditions
-							playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
-						}
-					}
-
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
-					worldIn.spawnEntityInWorld(circle);
-					playerIn.getCooldownTracker().setCooldown(this, 40);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
 				}
 			}
+
+			if (!isCreative) {
+				//noinspection ConstantConditions
+				if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+					//noinspection ConstantConditions
+					playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
+				}
+			}
+
+			EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
+			worldIn.spawnEntityInWorld(circle);
+			itemStackIn.damageItem(10, playerIn);
+			playerIn.getCooldownTracker().setCooldown(this, 40);
 		}
 		else {
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));

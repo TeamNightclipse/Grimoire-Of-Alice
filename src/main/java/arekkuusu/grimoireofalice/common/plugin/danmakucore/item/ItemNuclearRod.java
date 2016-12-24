@@ -10,7 +10,9 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
+import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.lib.LibColor;
@@ -58,11 +60,27 @@ public class ItemNuclearRod extends ItemMod {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 0));
-		if(count % 50 == 0){
-			player.playSound(GrimoireSoundEvents.CAUTION, 0.2F, 0F);
+	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
+		List<EntityLivingBase> list = livingBase.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5));
+		for (EntityLivingBase living : list) {
+			if (living instanceof EntityPlayer) {
+				if(!hasBoots((EntityPlayer) living)) {
+					//noinspection ConstantConditions
+					living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 50));
+				}
+			}
+			else {
+				//noinspection ConstantConditions
+				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 50));
+			}
 		}
+		if (count % 50 == 0) {
+			livingBase.playSound(GrimoireSoundEvents.CAUTION, 0.2F, 0F);
+		}
+	}
+
+	private boolean hasBoots(EntityPlayer player) {
+		return player.inventory.armorInventory[0] != null && player.inventory.armorInventory[0].getItem() == ModItems.NUCLEAR_BOOTS;
 	}
 
 	@Override

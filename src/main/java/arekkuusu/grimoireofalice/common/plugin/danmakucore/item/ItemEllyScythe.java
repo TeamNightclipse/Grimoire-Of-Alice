@@ -61,6 +61,7 @@ public class ItemEllyScythe extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		target.attackEntityFrom(DamageSource.causeThornsDamage(user), 5);
+		stack.damageItem(1, user);
 		return true;
 	}
 
@@ -77,7 +78,6 @@ public class ItemEllyScythe extends ItemModSword {
 			if(player.isSneaking()) {
 				int duration = getMaxItemUseDuration(stack) - timeLeft;
 				float durationSeconds = duration / 20F;
-				//TODO: What does this do?
 				durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
 				if(durationSeconds < 0.1F) return;
 

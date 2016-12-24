@@ -10,15 +10,14 @@ import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.item.*;
 import arekkuusu.grimoireofalice.common.potion.PotionElixir;
+import arekkuusu.grimoireofalice.common.potion.PotionRadiationPoisoning;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.potion.Potion;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -26,22 +25,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonRegistration {
-
-	public static final ItemArmor.ArmorMaterial WEAK_PAPER = EnumHelper.addArmorMaterial("weakPaper", "No", 500, new int[]{2,2,2,2}, 30,
-			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
-	public static final ItemArmor.ArmorMaterial MASK = EnumHelper.addArmorMaterial("mask", "No", 1000, new int[]{1,2,3,4}, 0,
-			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2);
-	public static final ItemArmor.ArmorMaterial KOKORO_MASK = EnumHelper.addArmorMaterial("kororoMask", "No", 5000, new int[]{25,25,25,25}, 0,
-			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 20);
-	public static final ItemArmor.ArmorMaterial KANAKO_SHIMENAWA = EnumHelper.addArmorMaterial("kanakoShimenawa", "No", 5000, new int[]{15,15,15,15}, 50,
-			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 15);
-	public static final ItemArmor.ArmorMaterial FIRE_ROBE = EnumHelper.addArmorMaterial("fireRobe", "No", 1000, new int[]{6,6,6,6}, 50,
-			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 25);
-
-	public static final Item.ToolMaterial GOLDYRON = EnumHelper.addToolMaterial("goldyron", 3, 1000, 15.0F, 3F, 30);
-	public static final Item.ToolMaterial WET_NOODLE = EnumHelper.addToolMaterial("wetNoodle", 3, 1000, 15.0F, 0F, 30);
-	public static final Item.ToolMaterial NOT_A_MELEE_WEAPON = EnumHelper.addToolMaterial("weakMaterial", 3, 10, 15.0F, -2F, 30);
-	public static final Item.ToolMaterial BUDAH_BOUL = EnumHelper.addToolMaterial("budahBoul", 4, 1561, 20.0F, 3.0F, 30);
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -72,7 +55,7 @@ public class CommonRegistration {
 				new ItemGhostDipper(),
 				new ItemWallPassingChisel(),
 				new ItemRodOfRemorse(),
-				new ItemBudahBoul(BUDAH_BOUL),
+				new ItemBudahBoul(ModMaterials.BUDAH_BOUL),
 				new ItemDragonJewel(),
 				new ItemBloodThirstyOrb(),
 				new ItemGapFoldingUmbrella(),
@@ -106,50 +89,50 @@ public class CommonRegistration {
 
 				//Armor
 				new ItemMapleLeafShield(),
-				new ItemFoxMask(MASK, 3),
-				new ItemRaidenMask(MASK, 3),
-				new ItemMonkeyMask(MASK, 3),
-				new ItemHyottokoMask(MASK, 3),
-				new ItemFukuNoKamiMask(MASK, 3),
-				new ItemUbaMask(MASK, 3),
-				new ItemHannyaMask(MASK, 3),
-				new ItemKoomoteMask(MASK, 3),
-				new ItemMaskOfHope(MASK, 3),
-				new ItemKokorosMasks(KOKORO_MASK, 3),
-				new ItemToyosatomimiHat(WEAK_PAPER, 3),
-				new ItemKanakoShimenawa(KANAKO_SHIMENAWA, 3),
-				new ItemIchirinUnzan(WEAK_PAPER, 3),
-				new ItemSuwakoHat(WEAK_PAPER, 3),
-				new ItemFireRobe(FIRE_ROBE, 3),
-				new ItemUtsuhoWings(WEAK_PAPER, 5),
-				new ItemKappaHat(WEAK_PAPER, 3),
-				new ItemMarisaHat(WEAK_PAPER, 3),
-				new ItemToyosatomimiCloak(WEAK_PAPER, 3),
-				new ItemShinmyoumaruHat(WEAK_PAPER, 5),
-				new ItemNuclearBoots(WEAK_PAPER, 5),
+				new ItemFoxMask(ModMaterials.MASK, 3),
+				new ItemRaidenMask(ModMaterials.MASK, 3),
+				new ItemMonkeyMask(ModMaterials.MASK, 3),
+				new ItemHyottokoMask(ModMaterials.MASK, 3),
+				new ItemFukuNoKamiMask(ModMaterials.MASK, 3),
+				new ItemUbaMask(ModMaterials.MASK, 3),
+				new ItemHannyaMask(ModMaterials.MASK, 3),
+				new ItemKoomoteMask(ModMaterials.MASK, 3),
+				new ItemMaskOfHope(ModMaterials.MASK, 3),
+				new ItemKokorosMasks(ModMaterials.STRONG_HIHIIROKANE, 3),
+				new ItemToyosatomimiHat(ModMaterials.WEAK_PAPER, 3),
+				new ItemKanakoShimenawa(ModMaterials.ENSHRINED_SHIMENAWA, 3),
+				new ItemIchirinUnzan(ItemArmor.ArmorMaterial.DIAMOND, 3),
+				new ItemSuwakoHat(ModMaterials.STRONG_LEATHER, 3),
+				new ItemFireRobe(ModMaterials.FIRE_LEATHER, 3),
+				new ItemUtsuhoWings(ModMaterials.FIRE_LEATHER, 5),
+				new ItemKappaHat(ModMaterials.WEAK_PAPER, 3),
+				new ItemMarisaHat(ModMaterials.STRONG_LEATHER, 3),
+				new ItemToyosatomimiCloak(ModMaterials.WEAK_PAPER, 3),
+				new ItemShinmyoumaruHat(ModMaterials.STRONG_LEATHER, 5),
+				new ItemNuclearBoots(ModMaterials.WEAK_PAPER, 5),
 
 				//Weapons
-				new ItemAmenonuhoko(WET_NOODLE),
-				new ItemToyosatomimiStick(NOT_A_MELEE_WEAPON),
-				new ItemMochiHammer(WET_NOODLE),
-				new ItemMomijisScimitarSword(GOLDYRON),
-				new ItemNazrinStick(WET_NOODLE, LibItemName.NAZRIN_STICK),
-				new ItemNueTrident(WET_NOODLE),
-				new ItemSwordofKusanagi(GOLDYRON),
-				new ItemSyringe(NOT_A_MELEE_WEAPON),
-				new ItemIchirinRing(NOT_A_MELEE_WEAPON),
-				new ItemOnbashira(GOLDYRON),
-				new ItemShichiSeiken(WET_NOODLE),
-				new ItemCattailPlant(WET_NOODLE),
-				new ItemPopsicleStick(WET_NOODLE),
-				new ItemRumiaSword(GOLDYRON),
-				new ItemSarielWand(WET_NOODLE),
-				new ItemWatermelonBlade(WET_NOODLE),
-				new ItemWatermelonSword(GOLDYRON),
-				new ItemSacredToyosatomimi(GOLDYRON),
-				new ItemShinmyoumaruNeedle(GOLDYRON),
-				new ItemDeathScythe(WET_NOODLE),
-				new ItemSwordRoukanken(WET_NOODLE)
+				new ItemAmenonuhoko(Item.ToolMaterial.DIAMOND),
+				new ItemToyosatomimiStick(ModMaterials.WEAK_MATERIAL),
+				new ItemMochiHammer(ModMaterials.STRONG_STONE),
+				new ItemMomijisScimitarSword(ModMaterials.STRONG_IRON),
+				new ItemNazrinStick(Item.ToolMaterial.STONE, LibItemName.NAZRIN_STICK),
+				new ItemNueTrident(Item.ToolMaterial.DIAMOND),
+				new ItemSwordofKusanagi(ModMaterials.STRONG_GOLD),
+				new ItemSyringe(ModMaterials.WEAK_MATERIAL),
+				new ItemIchirinRing(ModMaterials.WEAK_MATERIAL),
+				new ItemOnbashira(Item.ToolMaterial.STONE),
+				new ItemShichiSeiken(ModMaterials.NOODLE),
+				new ItemCattailPlant(Item.ToolMaterial.WOOD),
+				new ItemPopsicleStick(Item.ToolMaterial.WOOD),
+				new ItemRumiaSword(ModMaterials.STRONG_GOLD),
+				new ItemSarielWand(ModMaterials.NOODLE),
+				new ItemWatermelonBlade(Item.ToolMaterial.STONE),
+				new ItemWatermelonSword(Item.ToolMaterial.DIAMOND),
+				new ItemSacredToyosatomimi(ModMaterials.STRONG_GOLD),
+				new ItemShinmyoumaruNeedle(Item.ToolMaterial.IRON),
+				new ItemDeathScythe(Item.ToolMaterial.DIAMOND),
+				new ItemSwordRoukanken(ModMaterials.STRONG_IRON)
 		);
 
 		event.getRegistry().registerAll(
@@ -177,12 +160,12 @@ public class CommonRegistration {
 					new ItemPiano(),
 					new ItemTrumpet(),
 					new ItemTenguFan(),
-					new ItemLaevatein(WET_NOODLE),
+					new ItemLaevatein(ModMaterials.NOODLE),
 					new ItemShouLamp(),
 					new ItemJeweledHourai(),
 					new ItemSpellCardPouch(),
-					new ItemEllyScythe(WET_NOODLE),
-					new ItemSwordOfHisou(GOLDYRON),
+					new ItemEllyScythe(ModMaterials.NOODLE),
+					new ItemSwordOfHisou(ModMaterials.STRONG_GOLD),
 					new ItemLeaf(),
 					new ItemNuclearRod()
 			);
@@ -236,7 +219,8 @@ public class CommonRegistration {
 	@SubscribeEvent
 	public static void registerPotions(RegistryEvent.Register<Potion> event) {
 		event.getRegistry().registerAll(
-				new PotionElixir()
+				new PotionElixir(),
+				new PotionRadiationPoisoning()
 		);
 	}
 }

@@ -166,6 +166,8 @@ public class ConfigHandler {
 			public boolean hihiirokaneBlock = true;
 			@Comment("Can players craft end crystals?")
 			public boolean endCrystal = true;
+			@Comment("Can player craft nuclear boots?")
+			public boolean nuclearBoots = true;
 
 			public static class Masks {
 
@@ -201,6 +203,8 @@ public class ConfigHandler {
 				public boolean violin = true;
 				@Comment("Can players craft the piano?")
 				public boolean piano = true;
+				@Comment("Can players craft the nuclear rod?")
+				public boolean nuclearRod = true;
 			}
 		}
 

@@ -38,6 +38,7 @@ public class EntityEllyScythe extends EntityThrow {
 		super(world, thrower);
 		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, velocity, 0.0F);
 		setPickupModeFromEntity(thrower);
+		++itemstack.stackSize;
 		setStack(itemstack);
 		strength = Math.min(1.5F, velocity);
 	}

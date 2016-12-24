@@ -22,7 +22,7 @@ import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShinmyoumaruHat extends ItemModArmor implements ISpecialArmor {
+public class ItemShinmyoumaruHat extends ItemModArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -43,17 +43,4 @@ public class ItemShinmyoumaruHat extends ItemModArmor implements ISpecialArmor {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLocations.SHINMYOUMARU_HAT.toString();
 	}
-
-	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(4, 5, 5);
-	}
-
-	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return 2;
-	}
-
-	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
 }

@@ -36,7 +36,6 @@ public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmo
 
 	public ItemToyosatomimiCloak(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.MIKO_CLOAK, EntityEquipmentSlot.CHEST);
-		setMaxDamage(200);
 		setNoRepair();
 		setMaxStackSize(1);
 	}

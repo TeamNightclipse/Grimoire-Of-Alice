@@ -10,4 +10,6 @@ public class ModPotions {
 
 	@ObjectHolder(LibPotionName.ELIXIRPOTION)
 	public static final Potion ELIXIR = null;
+	@ObjectHolder(LibPotionName.RADIATION_POISONING)
+	public static final Potion RADIATION_POISONING = null;
 }

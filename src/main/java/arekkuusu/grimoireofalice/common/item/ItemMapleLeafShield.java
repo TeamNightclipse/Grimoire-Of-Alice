@@ -53,7 +53,6 @@ public class ItemMapleLeafShield extends ItemModShield {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(stack.getItemDamage() == 0 && !worldIn.isRemote) {
-			entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, 0));
 			stack.damageItem(1, entityLiving);
 		}

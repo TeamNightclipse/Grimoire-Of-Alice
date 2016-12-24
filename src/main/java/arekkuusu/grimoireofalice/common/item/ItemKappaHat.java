@@ -30,14 +30,13 @@ import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemKappaHat extends ItemModArmor  implements ISpecialArmor {
+public class ItemKappaHat extends ItemModArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemKappaHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.KAPPA_HAT, EntityEquipmentSlot.HEAD);
-		setMaxDamage(200);
 		setNoRepair();
 		setMaxStackSize(1);
 	}
@@ -70,20 +69,6 @@ public class ItemKappaHat extends ItemModArmor  implements ISpecialArmor {
 				player.motionZ *= 0.4;
 			}
 		}
-	}
-
-	@Override
-	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
-	}
-
-	@Override
-	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
-		return damageReduceAmount;
-	}
-
-	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 	}
 
 	@Override
