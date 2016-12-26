@@ -223,6 +223,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarrier.class, RenderBarrier::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleLantern.class, RenderMiracleLantern::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNetherSoul.class, RenderNetherSoul::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityFierySword.class, RenderFierySword::new);
 		//Tiles
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePillarAltar.class, new TilePillarAltarRenderer());

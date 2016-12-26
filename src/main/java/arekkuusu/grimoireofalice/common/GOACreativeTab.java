@@ -122,7 +122,7 @@ public class GOACreativeTab extends CreativeTabs {
 		}
 		//** Flandre Scarlet ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			addItem(ModItems.LAEVATEIN); //TODO: Make it spawn a fiery sword when swung
+			addItem(ModItems.LAEVATEIN);
 		}
 		// ** Fujiwara no Mokou ** /
 		// ** Hata no Kokoro ** /
@@ -142,7 +142,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Hong Meiling ** /
 		// ** Ichirin Kumoi ** /
 		addItem(ModItems.ICHIRIN_UNZAN); //Done
-		addItem(ModItems.ICHIRIN_RING); //TODO: Make rings have a fist model when held
+		addItem(ModItems.ICHIRIN_RING); //TODO: Make fists only render when holding Rings
 		// ** Iku Nagae ** /
 		// ** Junko ** /
 		// ** Kaguya Houraisan ** /
@@ -185,7 +185,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.GHOST_DIPPER); //Done
 		// ** Momiji Inubashiri ** /
 		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD); //Done
-		addItem(ModItems.MAPLE_LEAF_SHIELD); //TODO: Fix json model
+		addItem(ModItems.MAPLE_LEAF_SHIELD); //Done
 		// ** Mononobe no Futo ** /
 		// ** Mokou ** /
 		// ** Mystia Lorelei ** /
@@ -263,8 +263,8 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Unzan ** /
 		// ** Utsuho Reiuji ** /
 		addItem(ModItems.UTSUHO_WINGS); //Done
-		addItem(ModItems.NUCLEAR_BOOTS);
-		addItem(ModItems.NUCLEAR_ROD);
+		addItem(ModItems.NUCLEAR_BOOTS); //Done
+		addItem(ModItems.NUCLEAR_ROD); //Done
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN); //Done

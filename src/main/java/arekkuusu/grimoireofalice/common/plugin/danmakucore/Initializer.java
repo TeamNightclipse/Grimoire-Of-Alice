@@ -9,10 +9,7 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore;
 
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuVariantName;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormLeaf;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormNote;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormUfo;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormWind;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.*;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.*;
 import net.katsstuff.danmakucore.data.MovementData;
 import net.katsstuff.danmakucore.data.Vector3;
@@ -37,7 +34,8 @@ public class Initializer {
 				new FormWind(),
 				new FormUfo(),
 				new FormLeaf(),
-				new FormNote()
+				new FormNote(),
+				new FormSunBullet()
 		);
 	}
 
@@ -48,7 +46,8 @@ public class Initializer {
 				new SubEntityWind(),
 				new SubEntityNote(),
 				new SubEntityUfo(),
-				new SubEntityLeaf()
+				new SubEntityLeaf(),
+				new SubEntitySunBullet()
 		);
 	}
 

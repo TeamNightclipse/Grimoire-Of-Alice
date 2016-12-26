@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.common.entity;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -17,10 +16,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class EntityUnzanFist extends EntityThrowable {
 
@@ -35,7 +35,7 @@ public class EntityUnzanFist extends EntityThrowable {
 	public EntityUnzanFist(World world, EntityLivingBase thrower) {
 		super(world, thrower);
 		Vec3d look = thrower.getLookVec();
-		float distance = 4F;
+		float distance = 5F;
 		double dx = thrower.posX + look.xCoord * distance;
 		double dy = thrower.posY + 1 + look.yCoord * distance;
 		double dz = thrower.posZ + look.zCoord * distance;
@@ -43,38 +43,18 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	@Override
-	protected void entityInit() {}
-
-	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		EntityLivingBase thrower = getThrower();
-		if(thrower == null) {
-			if(!worldObj.isRemote) {
-				setDead();
-			}
-		}
-		float motionMultiplier = 0.99F;
-		if(isInWater()) {
-			for(int i = 0; i < 4; i++) {
-				float f6 = 0.25F;
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX,
-						motionY, motionZ);
-			}
-			motionMultiplier *= 0.80808080F;
-		}
-		motionX *= motionMultiplier;
-		motionY *= motionMultiplier;
-		motionZ *= motionMultiplier;
-		if(ticksExisted > 50 && !worldObj.isRemote) {
-			setDead();
+		if (ticksExisted > 100) {
+			if (!worldObj.isRemote) setDead();
 		}
 	}
 
 	@Override
+	protected void entityInit() {}
+
+	@Override
 	protected void onImpact(RayTraceResult result) {
-		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
-		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 		if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
 			onImpactBlock(result);
 		}
@@ -84,11 +64,10 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactBlock(RayTraceResult result) {
-		explosion();
 		IBlockState base = worldObj.getBlockState(result.getBlockPos());
 		boolean canHitBlock = base.getBlock() != Blocks.TALLGRASS && base.getBlock() != Blocks.DOUBLE_PLANT;
-		if(canHitBlock && !worldObj.isRemote) {
-			setDead();
+		if (canHitBlock) {
+			explode();
 		}
 	}
 
@@ -100,14 +79,14 @@ public class EntityUnzanFist extends EntityThrowable {
 				}
 				return;
 			}
-			applyHitEffects(result.entityHit);
+			explode();
 		}
 	}
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
 		if(entityplayer != getThrower()) {
-			applyHitEffects(entityplayer);
+			explode();
 		}
 		else {
 			if(!worldObj.isRemote) {
@@ -116,17 +95,16 @@ public class EntityUnzanFist extends EntityThrowable {
 		}
 	}
 
-	private void applyHitEffects(Entity entity) {
-		explosion();
-		entity.attackEntityFrom(DamageSource.generic, 5);
-		double speed = 0.5;
-		entity.motionX = -Math.sin(Math.toRadians(rotationYaw)) * speed;
-		entity.motionZ = Math.cos(Math.toRadians(rotationYaw)) * speed;
-	}
-
-	private void explosion(){
+	private void explode() {
 		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
+		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != getThrower());
+		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(getThrower()), 2F));
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		return super.getEntityBoundingBox().expandXyz(2);
 	}
 
 	@Override

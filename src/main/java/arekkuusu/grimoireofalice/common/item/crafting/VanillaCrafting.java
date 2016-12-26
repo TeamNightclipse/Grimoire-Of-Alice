@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item.crafting;
 
+import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -183,6 +184,12 @@ public class VanillaCrafting {
 						.add(new ItemStack(ModBlocks.SHROOM, 1, i))
 						.add(new ItemStack(ModItems.MORTAR_AND_PESTLE, 1, OreDictionary.WILDCARD_VALUE))
 						.outputs(new ItemStack(ModItems.SHROOM_POWDER, 1, 15 - i)).build();
+		}
+
+		if(GrimoireOfAlice.danmakuCoreInstalled){
+			shapeless()
+					.add("treeLeaves")
+					.outputs(ModItems.LEAF).build();
 		}
 
 		GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.TAMAHAGANE_STEEL), 0);

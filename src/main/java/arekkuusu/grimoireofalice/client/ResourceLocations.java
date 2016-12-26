@@ -37,6 +37,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation WATCH_TEXTURE = getLocation("textures/models/entities/StopWatch.png");
 	public static final ResourceLocation UNZAN_FIST_TEXTURE = getLocation("textures/models/entities/UnzanFist.png");
 	public static final ResourceLocation MIRACLE_LANTERN = getLocation("textures/models/entities/MiracleLantern.png");
+	public static final ResourceLocation FIERY_SWORD_TEXTURE = getLocation("textures/models/entities/FierySword.png");
 
 	//Armor
 	public static final ResourceLocation SUWAKO_HAT = getLocation("textures/models/armor/suwakohat.png");

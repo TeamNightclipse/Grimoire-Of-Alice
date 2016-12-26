@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class RenderUnzanFist extends Render<EntityUnzanFist> {
 
@@ -20,12 +21,16 @@ public class RenderUnzanFist extends Render<EntityUnzanFist> {
 	@Override
 	public void doRender(EntityUnzanFist entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
-		GlStateManager.scale(1.5, 1.5, 1.5);
-		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 0F, 1F);
-		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 1F, 0F);
+		GlStateManager.scale(3, 3, 3);
+		GlStateManager.rotate(entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks - 180, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks, 1.0F, 0.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 

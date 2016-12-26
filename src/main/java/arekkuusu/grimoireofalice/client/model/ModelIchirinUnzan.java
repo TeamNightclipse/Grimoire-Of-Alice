@@ -34,6 +34,9 @@ public class ModelIchirinUnzan extends ModelBiped {
 	private final ModelRenderer square9;
 	private final ModelRenderer square10;
 
+	private final ModelRenderer fistLeft;
+	private final ModelRenderer fistRight;
+
 	public ModelIchirinUnzan(float size) {
 		this.size = size;
 		textureWidth = 256;
@@ -74,6 +77,15 @@ public class ModelIchirinUnzan extends ModelBiped {
 		square5 = new ModelRenderer(this, 181, 25);
 		square5.setRotationPoint(0.0F, -30.0F, 7.0F);
 		square5.addBox(23.0F, -33.0F, -3.0F, 16, 16, 16, 0.0F);
+
+		fistLeft = new ModelRenderer(this, 0, 0);
+		fistLeft.setRotationPoint(5.0F, 2.0F, -0.0F);
+		fistLeft.addBox(9.0F, 0.0F, -7.0F, 10, 10, 10, 0.25F);
+		setRotateAngle(fistLeft, 0.3490658503988659F, 0.0F, -0.10000736613927509F);
+		fistRight = new ModelRenderer(this, 0, 21);
+		fistRight.setRotationPoint(-5.0F, 2.0F, 0.0F);
+		fistRight.addBox(-19.0F, 0.0F, -7.0F, 10, 10, 10, 0.25F);
+		setRotateAngle(fistRight, 0.3490658503988659F, 0.0F, 0.10000736613927509F);
 	}
 
 	@Override
@@ -114,12 +126,67 @@ public class ModelIchirinUnzan extends ModelBiped {
 		GlStateManager.popMatrix();
 
 		bipedHeadwear.showModel = false;
-		bipedRightArm.showModel = false;
-		bipedLeftArm.showModel = false;
+
+		bipedRightArm = fistRight;
+		bipedLeftArm = fistLeft;
 
 		bipedBody = jewel;
 
-		super.render(entity, limbSwing, limbSwingAmount, age, netHeadYaw, headPitch, scale);
+		this.setRotationAngles(limbSwing, limbSwingAmount, age, netHeadYaw, headPitch, scale, entity);
+		GlStateManager.pushMatrix();
+
+		if (this.isChild) {
+			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
+			this.bipedHead.render(scale);
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+			this.bipedBody.render(scale);
+
+			renderFists(scale);
+
+			this.bipedRightLeg.render(scale);
+			this.bipedLeftLeg.render(scale);
+			this.bipedHeadwear.render(scale);
+		}
+		else {
+			if (entity.isSneaking()) {
+				GlStateManager.translate(0.0F, 0.2F, 0.0F);
+			}
+
+			this.bipedHead.render(scale);
+			this.bipedBody.render(scale);
+
+			renderFists(scale);
+
+			this.bipedRightLeg.render(scale);
+			this.bipedLeftLeg.render(scale);
+			this.bipedHeadwear.render(scale);
+		}
+
+		GlStateManager.popMatrix();
+	}
+
+	private void renderFists(float scale){
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(this.bipedRightArm.offsetX, this.bipedRightArm.offsetY, this.bipedRightArm.offsetZ);
+		GlStateManager.translate(this.bipedRightArm.rotationPointX * scale, this.bipedRightArm.rotationPointY * scale, this.bipedRightArm.rotationPointZ * scale);
+		GlStateManager.scale(1.5D, 1.5D, 1.5D);
+		GlStateManager.translate(-this.bipedRightArm.offsetX, -this.bipedRightArm.offsetY, -this.bipedRightArm.offsetZ);
+		GlStateManager.translate(-this.bipedRightArm.rotationPointX * scale, -this.bipedRightArm.rotationPointY * scale, -this.bipedRightArm.rotationPointZ * scale);
+		this.bipedRightArm.render(scale);
+		GlStateManager.popMatrix();
+
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(this.bipedLeftArm.offsetX, this.bipedLeftArm.offsetY, this.bipedLeftArm.offsetZ);
+		GlStateManager.translate(this.bipedLeftArm.rotationPointX * scale, this.bipedLeftArm.rotationPointY * scale, this.bipedLeftArm.rotationPointZ * scale);
+		GlStateManager.scale(1.5D, 1.5D, 1.5D);
+		GlStateManager.translate(-this.bipedLeftArm.offsetX, -this.bipedLeftArm.offsetY, -this.bipedLeftArm.offsetZ);
+		GlStateManager.translate(-this.bipedLeftArm.rotationPointX * scale, -this.bipedLeftArm.rotationPointY * scale, -this.bipedLeftArm.rotationPointZ * scale);
+		this.bipedLeftArm.render(scale);
+		GlStateManager.popMatrix();
 	}
 
 	/**

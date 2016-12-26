@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -70,56 +71,54 @@ public class ItemLaevatein extends ItemModSword {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		target.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 128, 0));
-		stack.damageItem(1, user);
-		return true;
-	}
-
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		boolean isCreative = playerIn.capabilities.isCreativeMode;
 
-		playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 		ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
-		if (isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
-			if (!worldIn.isRemote) {
+		if (playerIn.isSneaking()) {
+			if (isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
+				playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+				if (!worldIn.isRemote) {
+					for (int i = 0; i < 3; i++) {
+						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+								.setUser(playerIn)
+								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
+								.build();
 
-				for (int i = 0; i < 3; i++) {
-					DanmakuBuilder danmaku = DanmakuBuilder.builder()
-							.setUser(playerIn)
-							.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
-							.build();
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
+					}
 
-					DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
+					worldIn.spawnEntityInWorld(circle);
 				}
-			}
 
-			if (!isCreative) {
-				//noinspection ConstantConditions
-				if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+				if (!isCreative) {
 					//noinspection ConstantConditions
-					playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
+					if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+						//noinspection ConstantConditions
+						playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
+					}
 				}
+				itemStackIn.damageItem(10, playerIn);
+				playerIn.getCooldownTracker().setCooldown(this, 40);
 			}
-
-			EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
-			worldIn.spawnEntityInWorld(circle);
-			itemStackIn.damageItem(10, playerIn);
-			playerIn.getCooldownTracker().setCooldown(this, 40);
 		}
 		else {
-			playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 256, 0));
-			playerIn.playSound(SoundEvents.ENTITY_GHAST_SCREAM, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-			playerIn.getCooldownTracker().setCooldown(this, 500);
+			playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+			if (!worldIn.isRemote) {
+				EntityFierySword fierySword = new EntityFierySword(worldIn, playerIn);
+				worldIn.spawnEntityInWorld(fierySword);
+			}
+			itemStackIn.damageItem(1, playerIn);
+			playerIn.getCooldownTracker().setCooldown(this, 100);
 		}
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	private int getSlotFor(EntityPlayer player, ItemStack stack) {
-		for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
-			if(player.inventory.mainInventory[i] != null && ItemStack.areItemStacksEqual(stack, player.inventory.mainInventory[i])
+		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
+			if (player.inventory.mainInventory[i] != null && stack.getItem() == player.inventory.mainInventory[i].getItem()
 					&& ItemStack.areItemStackTagsEqual(stack, player.inventory.mainInventory[i])) {
 				return i;
 			}
@@ -152,6 +151,13 @@ public class ItemLaevatein extends ItemModSword {
 			stack.damageItem(1, player);
 			return success ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
 		}
+	}
+
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
+		target.setFire(3 + itemRand.nextInt(3));
+		stack.damageItem(1, user);
+		return true;
 	}
 
 	@Override

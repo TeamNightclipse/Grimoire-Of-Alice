@@ -78,15 +78,17 @@ public class ItemIchirinRing extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer)entityLiving;
-			if(!worldIn.isRemote && isWearingUnzan(playerIn)) {
-				EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
-				worldIn.spawnEntityInWorld(fist);
-				fist.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0F, 2F, 0F);
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer playerIn = (EntityPlayer) entityLiving;
+			if (isWearingUnzan(playerIn)) {
+				if (!worldIn.isRemote) {
+					EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
+					worldIn.spawnEntityInWorld(fist);
+					fist.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0F, 2F, 0F);
+				}
+				playerIn.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+				playerIn.getCooldownTracker().setCooldown(this, 10);
 			}
-			playerIn.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			playerIn.getCooldownTracker().setCooldown(this, 10);
 		}
 	}
 

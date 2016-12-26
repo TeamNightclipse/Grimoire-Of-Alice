@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
@@ -66,12 +67,12 @@ public class ItemNuclearRod extends ItemMod {
 			if (living instanceof EntityPlayer) {
 				if(!hasBoots((EntityPlayer) living)) {
 					//noinspection ConstantConditions
-					living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 50));
+					living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 				}
 			}
 			else {
 				//noinspection ConstantConditions
-				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 50));
+				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
 		}
 		if (count % 50 == 0) {
@@ -94,7 +95,7 @@ public class ItemNuclearRod extends ItemMod {
 		if (!worldIn.isRemote) {
 			EntityDanmaku danmaku = DanmakuBuilder.builder()
 					.setUser(entityLiving)
-					.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+					.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 					.setMovementData(1F)
 					.build().asEntity();
 			worldIn.spawnEntityInWorld(danmaku);

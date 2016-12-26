@@ -36,7 +36,7 @@ public class EntityBarrier extends Entity {
 		this.player = player;
 		this.type = type;
 		Vec3d look = player.getLookVec();
-		float distance = 2F;
+		float distance = 4F;
 		double dx = player.posX + look.xCoord * distance;
 		double dy = player.posY + 1 + look.yCoord * distance;
 		double dz = player.posZ + look.zCoord * distance;
@@ -58,7 +58,7 @@ public class EntityBarrier extends Entity {
 		else {
 			if(player.isHandActive() && !isStatic) {
 				Vec3d look = player.getLookVec();
-				float distance = 2F;
+				float distance = 4F;
 				double dx = player.posX + look.xCoord * distance;
 				double dy = player.posY + 1 + look.yCoord * distance;
 				double dz = player.posZ + look.zCoord * distance;
@@ -70,7 +70,7 @@ public class EntityBarrier extends Entity {
 			}
 
 			List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-					entity1 -> entity1.canBeCollidedWith() && entity1 != player);
+					entity1 -> entity1 != null && entity1.canBeCollidedWith() && entity1 != player);
 
 			if(!entities.isEmpty()) {
 				onDetectEntity(entities.get(0));
@@ -86,10 +86,8 @@ public class EntityBarrier extends Entity {
 
 	private void onDetectEntity(Entity living) {
 		if(type == 3) {
-			worldObj.playSound(null, living.posX, living.posY + 1, living.posZ + 0.5, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
-			for (int i = 0; i < 7; i++) {
-				worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, living.posX + 0.5, living.posY + 1, living.posZ + 0.5, 0.0D, 0.1D, 0.0D);
-			}
+			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
+			playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 			living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
 			if (!worldObj.isRemote) {
 				setDead();
@@ -125,6 +123,7 @@ public class EntityBarrier extends Entity {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().expand(2, 2, 0);
+		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
+		return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 2, alignedBB.minY + 2, alignedBB.minZ + 2);
 	}
 }
