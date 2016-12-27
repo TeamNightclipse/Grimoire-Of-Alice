@@ -86,7 +86,12 @@ public class ItemDragonJewel extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
+		if (!playerIn.isSneaking()) {
+			spawnJewel(itemStackIn, worldIn, playerIn);
+		}
+		else {
+			playerIn.getCooldownTracker().setCooldown(this, 30);
+		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
@@ -98,18 +103,6 @@ public class ItemDragonJewel extends ItemMod {
 		}
 		if(!player.capabilities.isCreativeMode) {
 			--stack.stackSize;
-		}
-	}
-
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			if (!entityLiving.isSneaking()) {
-				spawnJewel(stack, worldIn, (EntityPlayer) entityLiving);
-			}
-			else {
-				((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 30);
-			}
 		}
 	}
 

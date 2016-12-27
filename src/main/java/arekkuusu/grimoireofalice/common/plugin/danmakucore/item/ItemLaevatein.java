@@ -110,7 +110,7 @@ public class ItemLaevatein extends ItemModSword {
 				worldIn.spawnEntityInWorld(fierySword);
 			}
 			itemStackIn.damageItem(1, playerIn);
-			playerIn.getCooldownTracker().setCooldown(this, 100);
+			playerIn.getCooldownTracker().setCooldown(this, 30);
 		}
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);

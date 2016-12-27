@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 
 	@SideOnly(Side.CLIENT)
-	private ModelBiped model;
+	private ModelIchirinUnzan model;
 
 	public ItemIchirinUnzan(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.ICHIRIN_UNZAN, EntityEquipmentSlot.CHEST);
@@ -55,11 +55,23 @@ public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
 
+	private boolean isHoldingRight(EntityLivingBase player) {
+		ItemStack main = player.getHeldItemMainhand();
+		return main != null && main.getItem() == ModItems.ICHIRIN_RING;
+	}
+
+	private boolean isHoldingLeft(EntityLivingBase player) {
+		ItemStack off = player.getHeldItemOffhand();
+		return off != null && off.getItem() == ModItems.ICHIRIN_RING;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelIchirinUnzan(0.05F);
+		if (model == null) model = new ModelIchirinUnzan(0.05F);
 		model.setModelAttributes(imodel);
+		model.setRenderRight(isHoldingRight(entityLiving));
+		model.setRenderLeft(isHoldingLeft(entityLiving));
 		return model;
 	}
 

@@ -81,8 +81,8 @@ public class ConfigHandler {
 			public boolean mapleLeafShield = true;
 			@Comment("Can players craft the marisa hat?")
 			public boolean marisaHat = true;
-			@Comment("Can players craft the miko cape?")
-			public boolean mikoCape = true;
+			@Comment("Can players craft the miko cloak?")
+			public boolean mikoCloak = true;
 			@Comment("Can players craft the miko stick?")
 			public boolean mikoStick = true;
 			@Comment("Can players craft the mochi hammer?")
@@ -230,16 +230,16 @@ public class ConfigHandler {
 
 			@Comment("Can players find Point Items?")
 			public boolean pointItemsGen = true;
-			@Comment("How many Spawn tries per chunk?")
-			public int mushromSpawnRate = 25;
-			@Comment("How many Spawn tries per chunk?")
+			@Comment("How many shroom spawn tries per chunk?")
+			public int shroomSpawnRate = 25;
+			@Comment("How many kyoumarubotan spawn tries per chunk?")
 			public int kyoumarubotanSpawnRate = 5;
 			@Comment("How rare is the impure stone? (The greater the number the rarer the ore)")
 			public int impureStoneRarity = 0;
-			@Comment("How many Ore tries per chunk?")
+			@Comment("How many impure stone spawn tries per chunk?")
 			public int impureStoneSpawnRate = 1;
-			@Comment("How many Ore per chunk?")
-			public int impureStoneModQuantity = 1;
+			@Comment("How many impure stone per chunk?")
+			public int impureStoneQuantity = 1;
 		}
 
 		public static class Features {
@@ -250,9 +250,9 @@ public class ConfigHandler {
 			public boolean swordOfKusanagi = true;
 			@Comment("Allow shichi seiken drop goods?")
 			public boolean allowGoodDrops = true;
-			@Comment("Allow flying?")
+			@Comment("Allow flying Items?")
 			public boolean allowFly = true;
-			@Comment("Allow items and potions that allows the player to revive")
+			@Comment("Allow items and potions that allow the player to revive")
 			public boolean allowRevive = true;
 		}
 	}

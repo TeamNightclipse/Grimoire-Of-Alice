@@ -608,8 +608,8 @@ grimoire.jei.descriptions.full_power=Found inside chests in Abandoned mine shaft
 
 grimoire.jei.descriptions.ghastly_send_off_lantern=Ghastly lantern that makes players invulnerable, its effect last for as long as the item is in cool down
 
-grimoire.jei.descriptions.ghost_dipper=Bottomless dipper which holds water like a sea
-grimoire.jei.descriptions_body.ghost_dipper=Like a sponge, it clears big quantities of water, and like a bucket, it can place water infinitely
+grimoire.jei.descriptions.ghost_dipper=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions_body.ghost_dipper=Bottomless dipper which holds water like a sea. Like a sponge, it clears big quantities of water, and like a bucket, it can place water infinitely
 
 grimoire.jei.descriptions.grilled_lamprey=Obtained by placing fish on stick, probably it has a lot of vitamin A
 
@@ -668,8 +668,8 @@ grimoire.jei.descriptions.kokoros_masks_body=Gives the player unleashed strength
 
 grimoire.jei.descriptions.koomote_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 
-grimoire.jei.descriptions.laevatein=Damage twig from a demon who wields the vicious power of destruction, it requires firecharge to work
-grimoire.jei.descriptions.laevatein_body=Using it will set fire to the ground, right clicking to the air will shoot a giant danmaku bullet
+grimoire.jei.descriptions.laevatein=Must be crafted in the Nether
+grimoire.jei.descriptions.laevatein_body=Damage twig from a demon who wields the vicious power of destruction, it requires firecharge to shoot danmaku. Using it will set fire to the ground, right clicking spawn a fiery sword, if shifting will shoot a giant danmaku bullet
 
 grimoire.jei.descriptions.leaf=Makes a curtain of smoke when hitting the ground, spawns an UFO after some time in air
 

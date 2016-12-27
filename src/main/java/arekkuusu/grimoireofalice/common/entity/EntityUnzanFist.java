@@ -45,9 +45,6 @@ public class EntityUnzanFist extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (ticksExisted > 100) {
-			if (!worldObj.isRemote) setDead();
-		}
 	}
 
 	@Override
@@ -100,6 +97,7 @@ public class EntityUnzanFist extends EntityThrowable {
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != getThrower());
 		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(getThrower()), 2F));
+		if(!worldObj.isRemote) setDead();
 	}
 
 	@Override

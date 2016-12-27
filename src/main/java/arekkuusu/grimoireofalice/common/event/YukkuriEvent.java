@@ -12,6 +12,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -98,14 +99,28 @@ public class YukkuriEvent {
 			if (stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
 				if (event.getSource().isProjectile() || event.getSource().isExplosion())
 					event.setCanceled(true);
+				return;
+			}
+			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
+				event.setCanceled(true);
 			}
 		}
+	}
+
+	private boolean isUsingItem(EntityLivingBase base, Item item){
+		ItemStack stack = base.getHeldItemMainhand();
+		if(stack == null) stack = base.getHeldItemOffhand();
+		return stack != null && stack.getItem() == item && base.isHandActive();
 	}
 
 	@SubscribeEvent
 	public void livingHurtEvent(LivingHurtEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
+				event.setCanceled(true);
+				return;
+			}
 			if (player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
 				event.setCanceled(true);
 				return;
@@ -120,10 +135,9 @@ public class YukkuriEvent {
 					ItemStack stack = capability.getStackInSlot(i);
 					if (stack != null && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
 						capability.extractItem(i, 1, false);
-						player.worldObj.playSound(null, new BlockPos(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D),
-								SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.HOSTILE, 0.5F, player.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+						player.playSound(SoundEvents.BLOCK_GRASS_BREAK, 0.5F, player.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 						event.setCanceled(true);
-						break;
+						return;
 					}
 				}
 			}

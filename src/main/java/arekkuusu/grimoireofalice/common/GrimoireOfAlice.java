@@ -53,7 +53,12 @@ public class GrimoireOfAlice {
 			MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenLoot());
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		proxy.preInit(event);
-		LogHelper.info("Answer to the ultimate question of life the universe and everything");
+		if (danmakuCoreInstalled) {
+			LogHelper.info("Deep Voice, do you have an answer? Doesn't matter, we must know");
+		}
+		else {
+			LogHelper.info("Oh Deep Voice, we want the Answer to the ultimate question of life the universe and everything");
+		}
 	}
 
 	@EventHandler
@@ -64,10 +69,12 @@ public class GrimoireOfAlice {
 		ModItems.initOreDictionary();
 		ModItems.initFlyingItems();
 		if (danmakuCoreInstalled) {
-			LogHelper.info("is 42");
+			LogHelper.info("Alright...");
+			LogHelper.info("The answer to the ultimate question, of life, the universe and everything, is...");
+			LogHelper.info(42);
 		}
 		else {
-			LogHelper.info("is her");
+			LogHelper.info("Hm, I'd like to think about this, return to this place in exactly seven and a half million years");
 		}
 	}
 }

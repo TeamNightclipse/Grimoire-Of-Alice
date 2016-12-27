@@ -63,7 +63,7 @@ public class ItemUFOs extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.playSound(GrimoireSoundEvents.UFO_SPAWN, 1F, 1F);
+		playerIn.playSound(GrimoireSoundEvents.UFO_SPAWN, 0.1F, 1F);
 		setActive(itemStackIn);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
@@ -74,7 +74,7 @@ public class ItemUFOs extends ItemMod {
 			EntityPlayer player = (EntityPlayer)entity;
 			if(selected && isActive(stack)) {
 				if(player.ticksExisted % 14 == 0)
-					player.playSound(GrimoireSoundEvents.UFO_IDDLE, 0.2F, 1F);
+					player.playSound(GrimoireSoundEvents.UFO_IDDLE, 0.1F, 1F);
 				itemsInRange(world, player, 10);
 			}
 		}

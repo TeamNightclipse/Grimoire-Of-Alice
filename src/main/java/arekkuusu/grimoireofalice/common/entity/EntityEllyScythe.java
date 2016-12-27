@@ -38,8 +38,7 @@ public class EntityEllyScythe extends EntityThrow {
 		super(world, thrower);
 		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, velocity, 0.0F);
 		setPickupModeFromEntity(thrower);
-		++itemstack.stackSize;
-		setStack(itemstack);
+		setStack(itemstack.copy());
 		strength = Math.min(1.5F, velocity);
 	}
 
@@ -118,6 +117,7 @@ public class EntityEllyScythe extends EntityThrow {
 			}
 			target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 64, 0));
 			getThrower().addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 64, 3));
+			getStack().damageItem(1, getThrower());
 		}
 	}
 

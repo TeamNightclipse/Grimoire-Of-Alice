@@ -101,10 +101,7 @@ public class ItemEllyScythe extends ItemModSword {
 				}
 
 				if(!player.capabilities.isCreativeMode) {
-					if(--stack.stackSize == 0) {
-						stack = null;
-					}
-					player.inventory.mainInventory[player.inventory.currentItem] = stack;
+					player.inventory.mainInventory[player.inventory.currentItem] = null;
 				}
 			}
 			else if(!worldIn.isRemote) {

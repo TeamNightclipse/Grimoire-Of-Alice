@@ -18,7 +18,7 @@ public class WorldGenOre implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider.getDimension() == 0) {
-			int veinSize = 1 + ConfigHandler.grimoireOfAlice.worldGen.impureStoneModQuantity <= 0 ? 0 : random.nextInt(ConfigHandler.grimoireOfAlice.worldGen.impureStoneModQuantity);
+			int veinSize = 1 + ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity <= 0 ? 0 : random.nextInt(ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity);
 			int rarity = ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity <= 0 ? 0 : ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity;
 			int heightRange = 30;
 			for (int i = 0; i < ConfigHandler.grimoireOfAlice.worldGen.impureStoneSpawnRate; i++) {

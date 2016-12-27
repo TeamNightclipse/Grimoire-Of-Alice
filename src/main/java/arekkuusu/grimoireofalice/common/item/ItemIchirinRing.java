@@ -22,6 +22,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
@@ -90,6 +91,17 @@ public class ItemIchirinRing extends ItemModSword {
 				playerIn.getCooldownTracker().setCooldown(this, 10);
 			}
 		}
+	}
+
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if(attacker instanceof EntityPlayer && !isWearingUnzan((EntityPlayer) attacker)) {
+			stack.damageItem(1, attacker);
+		} else {
+			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
+			attacker.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+		}
+		return true;
 	}
 
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {

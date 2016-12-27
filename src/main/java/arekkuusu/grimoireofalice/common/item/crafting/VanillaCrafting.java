@@ -21,7 +21,6 @@ import net.minecraftforge.oredict.OreDictionary;
 public class VanillaCrafting {
 
 	public static void booksAndStrings() {
-
 		//Items
 		shapeless()
 				.add(ModItems.SOLDIFIED_PAPER)
@@ -235,7 +234,7 @@ public class VanillaCrafting {
 		return new ShapedRecipe().grid("IAR", "SGS", " S ")
 				.where('S').mapsTo(ModItems.PASTE)
 				.where('G').mapsTo(ModItems.MASK)
-				.where('A').mapsTo(Items.NETHER_STAR)
+				.where('A').mapsTo(ModItems.NETHER_SHARD)
 				.where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
 	}
 }

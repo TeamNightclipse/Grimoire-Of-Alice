@@ -1,12 +1,11 @@
 package arekkuusu.grimoireofalice.api;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import arekkuusu.grimoireofalice.api.recipes.*;
 import com.google.common.collect.ImmutableList;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class GrimoireOfAliceAPI {
 

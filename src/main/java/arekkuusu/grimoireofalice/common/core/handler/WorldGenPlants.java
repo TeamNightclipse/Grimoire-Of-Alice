@@ -24,7 +24,7 @@ public class WorldGenPlants {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.getType() == EventType.FLOWERS) {
-			int kyo = ConfigHandler.grimoireOfAlice.worldGen.mushromSpawnRate;
+			int kyo = ConfigHandler.grimoireOfAlice.worldGen.shroomSpawnRate;
 			for(int i = 0; i < kyo; i++) {
 				int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
 				int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;

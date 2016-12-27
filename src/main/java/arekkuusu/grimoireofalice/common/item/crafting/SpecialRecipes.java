@@ -60,7 +60,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems KAPPA_HAT;
 	public static IRecipeItems MAPLE_LEAF_SHIELD;
 	public static IRecipeItems MARISA_HAT;
-	public static IRecipeItems MICO_CAPE;
+	public static IRecipeItems MICO_CLOAK;
 	public static IRecipeItems MIKO_STICK;
 	public static IRecipeItems MOCHI_HAMMER;
 	public static IRecipeItems MOMIJIS_SCIMITAR_SWORD;
@@ -268,9 +268,9 @@ public final class SpecialRecipes {
 					, new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), Items.BOOK, new ItemStack(Blocks.WOOL, 1, 0), new ItemStack(Blocks.WOOL, 1, 0), new ItemStack(Blocks.WOOL, 1, 0));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.mikoCape) {
-			MICO_CAPE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CLOAK)
-					, new ItemStack(Items.BANNER, 1, 13), "paper", ModItems.HARDENED_LEATHER, "paper", "paper", ModItems.HARDENED_LEATHER, "paper", new ItemStack(Items.DYE, 1, 13));
+		if (ConfigHandler.grimoireOfAlice.crafting.mikoCloak) {
+			MICO_CLOAK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CLOAK)
+					, new ItemStack(Blocks.WOOL, 1, 2), "paper", ModItems.HARDENED_LEATHER, "paper", "paper", ModItems.HARDENED_LEATHER, "paper", new ItemStack(Items.DYE, 1, 13));
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.mikoStick) {
@@ -492,7 +492,7 @@ public final class SpecialRecipes {
 						, Items.IRON_INGOT, Items.IRON_INGOT, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.violin) {
+			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.violin) { //FIXME: Cannot craft with oreDic blocks bug
 				VIOLIN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.LUNASA_VIOLIN)
 						, "plankWood", "plankWood", "plankWood", Items.STRING, Items.STRING, "stickWood");
 			}

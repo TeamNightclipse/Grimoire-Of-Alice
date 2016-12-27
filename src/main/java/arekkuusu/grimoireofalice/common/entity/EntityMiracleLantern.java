@@ -12,7 +12,9 @@ import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -55,6 +57,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if (result.entityHit != null) result.entityHit.attackEntityFrom(DamageSource.magic, 5F);
+		playSound(SoundEvents.BLOCK_ANVIL_PLACE, 0.1F, 0.1F);
 		if (!worldObj.isRemote) setDead();
 	}
 }

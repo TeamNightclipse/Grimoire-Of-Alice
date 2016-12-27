@@ -142,7 +142,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Hong Meiling ** /
 		// ** Ichirin Kumoi ** /
 		addItem(ModItems.ICHIRIN_UNZAN); //Done
-		addItem(ModItems.ICHIRIN_RING); //TODO: Make fists only render when holding Rings
+		addItem(ModItems.ICHIRIN_RING); //Done
 		// ** Iku Nagae ** /
 		// ** Junko ** /
 		// ** Kaguya Houraisan ** /
@@ -204,7 +204,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Raiko Horikawa ** /
 		// ** Ran Yakumo ** /
 		// ** Reimu Hakurei ** /
-		addItem(ModItems.HAKUREI_GOHEI); //TODO: Make it spawn a protective aura around the player for "Aura Manipulation"
+		addItem(ModItems.HAKUREI_GOHEI); //Done
 		// ** Sanae Kochiya ** /
 		addItem(ModItems.SANAE_GOHEI); //TODO: Make it cause miracles somehow
 		// ** Seija Kijin ** /
@@ -219,7 +219,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Reisen Udongein Inaba ** /
 		// ** Remilia Scarlet ** /
 		// ** Sakuya Izayoi ** /
-		addItem(ModItems.STOP_WATCH); //TODO: Watch for bugs
+		addItem(ModItems.STOP_WATCH); //TODO: Throwable entities get buggy the first 5 seconds under the time stop effect.
 		// ** Rin Kaenbyou ** /
 		addItem(ModItems.SKULL); //TODO: Make it spawn homing skulls that only attack mobs that target the player
 		// ** Sariel ** /
@@ -241,7 +241,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.SHINMYOUMARU_HAT); //Done
 		if (GrimoireOfAlice.danmakuCoreInstalled)
 			addItem(ModItems.MIRACLE_MALLET); //TODO: Add all the stuffs!
-		addItem(ModItems.SHINMYOUMARU_NEEDLE); //TODO: Shoot "Fishing Rod"
+		addItem(ModItems.SHINMYOUMARU_NEEDLE); //TODO: Shoot "Fishing Rod", Phantom Needle
 		// ** Shou Toramaru ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)
 			addItem(ModItems.SHOU_LAMP); //Done

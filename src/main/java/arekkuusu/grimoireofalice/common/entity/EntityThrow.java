@@ -136,8 +136,8 @@ public abstract class EntityThrow extends EntityThrowable {
 					}
 					return;
 				}
-				ItemHandlerHelper.giveItemToPlayer(entityplayer, stack);
 				if(!worldObj.isRemote) {
+					ItemHandlerHelper.giveItemToPlayer(entityplayer, stack);
 					setDead();
 				}
 			}

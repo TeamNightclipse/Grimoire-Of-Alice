@@ -20,6 +20,9 @@ import net.minecraft.entity.Entity;
  */
 public class ModelIchirinUnzan extends ModelBiped {
 
+	private boolean renderRight;
+	private boolean renderLeft;
+
 	private final float size;
 	private final ModelRenderer jewel;
 	private final ModelRenderer head;
@@ -170,23 +173,51 @@ public class ModelIchirinUnzan extends ModelBiped {
 	}
 
 	private void renderFists(float scale){
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(this.bipedRightArm.offsetX, this.bipedRightArm.offsetY, this.bipedRightArm.offsetZ);
-		GlStateManager.translate(this.bipedRightArm.rotationPointX * scale, this.bipedRightArm.rotationPointY * scale, this.bipedRightArm.rotationPointZ * scale);
-		GlStateManager.scale(1.5D, 1.5D, 1.5D);
-		GlStateManager.translate(-this.bipedRightArm.offsetX, -this.bipedRightArm.offsetY, -this.bipedRightArm.offsetZ);
-		GlStateManager.translate(-this.bipedRightArm.rotationPointX * scale, -this.bipedRightArm.rotationPointY * scale, -this.bipedRightArm.rotationPointZ * scale);
-		this.bipedRightArm.render(scale);
-		GlStateManager.popMatrix();
+		if(renderRight) {
+			GlStateManager.pushMatrix();
+			GlStateManager.enableBlend();
+			GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
+			GlStateManager.translate(this.bipedRightArm.offsetX, this.bipedRightArm.offsetY, this.bipedRightArm.offsetZ);
+			GlStateManager.translate(this.bipedRightArm.rotationPointX * scale, this.bipedRightArm.rotationPointY * scale, this.bipedRightArm.rotationPointZ * scale);
+			GlStateManager.scale(1.5D, 1.5D, 1.5D);
+			GlStateManager.translate(-this.bipedRightArm.offsetX, -this.bipedRightArm.offsetY, -this.bipedRightArm.offsetZ);
+			GlStateManager.translate(-this.bipedRightArm.rotationPointX * scale, -this.bipedRightArm.rotationPointY * scale, -this.bipedRightArm.rotationPointZ * scale);
+			this.bipedRightArm.render(scale);
+			GlStateManager.disableBlend();
+			GlStateManager.popMatrix();
+		}
 
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(this.bipedLeftArm.offsetX, this.bipedLeftArm.offsetY, this.bipedLeftArm.offsetZ);
-		GlStateManager.translate(this.bipedLeftArm.rotationPointX * scale, this.bipedLeftArm.rotationPointY * scale, this.bipedLeftArm.rotationPointZ * scale);
-		GlStateManager.scale(1.5D, 1.5D, 1.5D);
-		GlStateManager.translate(-this.bipedLeftArm.offsetX, -this.bipedLeftArm.offsetY, -this.bipedLeftArm.offsetZ);
-		GlStateManager.translate(-this.bipedLeftArm.rotationPointX * scale, -this.bipedLeftArm.rotationPointY * scale, -this.bipedLeftArm.rotationPointZ * scale);
-		this.bipedLeftArm.render(scale);
-		GlStateManager.popMatrix();
+		if(renderLeft) {
+			GlStateManager.pushMatrix();
+			GlStateManager.enableBlend();
+			GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
+			GlStateManager.translate(this.bipedLeftArm.offsetX, this.bipedLeftArm.offsetY, this.bipedLeftArm.offsetZ);
+			GlStateManager.translate(this.bipedLeftArm.rotationPointX * scale, this.bipedLeftArm.rotationPointY * scale, this.bipedLeftArm.rotationPointZ * scale);
+			GlStateManager.scale(1.5D, 1.5D, 1.5D);
+			GlStateManager.translate(-this.bipedLeftArm.offsetX, -this.bipedLeftArm.offsetY, -this.bipedLeftArm.offsetZ);
+			GlStateManager.translate(-this.bipedLeftArm.rotationPointX * scale, -this.bipedLeftArm.rotationPointY * scale, -this.bipedLeftArm.rotationPointZ * scale);
+			this.bipedLeftArm.render(scale);
+			GlStateManager.disableBlend();
+			GlStateManager.popMatrix();
+		}
+	}
+
+	public boolean isRenderRight() {
+		return renderRight;
+	}
+
+	public void setRenderRight(boolean renderRight) {
+		this.renderRight = renderRight;
+	}
+
+	public boolean isRenderLeft() {
+		return renderLeft;
+	}
+
+	public void setRenderLeft(boolean renderLeft) {
+		this.renderLeft = renderLeft;
 	}
 
 	/**

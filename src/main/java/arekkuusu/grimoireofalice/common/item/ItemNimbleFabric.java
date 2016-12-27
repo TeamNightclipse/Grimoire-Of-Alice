@@ -55,33 +55,27 @@ public class ItemNimbleFabric extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!playerIn.capabilities.isCreativeMode) {
-			playerIn.capabilities.disableDamage = true;
-		}
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(count > 500) player.stopActiveHand();
+		if(count == 1) player.stopActiveHand();
 		player.motionY = player.motionX = player.motionZ = 0;
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(!player.capabilities.isCreativeMode) {
-				player.capabilities.disableDamage = false;
-				player.getCooldownTracker().setCooldown(this, 500);
-			}
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			player.getCooldownTracker().setCooldown(this, 500);
 		}
 	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 501;
+		return 50;
 	}
 
 	@Override
