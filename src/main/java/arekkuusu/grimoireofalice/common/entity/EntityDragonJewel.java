@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -85,7 +86,7 @@ public class EntityDragonJewel extends Entity {
 							, (rand.nextDouble() - 0.5D) * 2.0D);
 				}
 			}
-			if (mob.getHealth() > 1) mob.setHealth(1);
+			if (mob.getHealth() > 1) mob.attackEntityFrom(DamageSource.dragonBreath.setDamageAllowedInCreativeMode(), 1);
 		});
 	}
 

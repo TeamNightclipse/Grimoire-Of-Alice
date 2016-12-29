@@ -61,10 +61,10 @@ public class ItemInstrument extends ItemMod {
 
 				DanmakuBuilder danmaku = DanmakuBuilder.builder()
 						.setUser(player)
-						.setMovementData(0.3D)
+						.setMovementData(getVelocity())
 						.setShot(LibGOAShotData.NOTE.setColor(color))
 						.build();
-				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 4F, 1D);
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, getSize(), getDistance());
 			}
 		}
 	}
@@ -77,6 +77,18 @@ public class ItemInstrument extends ItemMod {
 			stack.damageItem(hurr, playerIn);
 			playerIn.getCooldownTracker().setCooldown(this, 50);
 		}
+	}
+
+	public double getVelocity() {
+		return 0.1D;
+	}
+
+	public float getSize() {
+		return 1F;
+	}
+
+	public double getDistance() {
+		return 1D;
 	}
 
 	@Override

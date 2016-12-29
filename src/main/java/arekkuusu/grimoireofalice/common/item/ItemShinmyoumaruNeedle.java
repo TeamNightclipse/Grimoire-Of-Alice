@@ -21,6 +21,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -46,10 +47,19 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 	}
 
 	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		if(playerIn.isSneaking()) {
+
+		}
+		playerIn.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	}
+
+	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
-			if (isSelected && player.getCooldownTracker().hasCooldown(this)) {
+			if (isSelected && player.getCooldownTracker().hasCooldown(this) && !wasShifting(stack)) {
 				if (player.ticksExisted % 2 == 0) {
 					EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 					player.swingArm(hand);
@@ -73,29 +83,33 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (playerIn.isSneaking()) {
-			//TODO: Add Rod of Range
-		} else {
-			playerIn.setActiveHand(hand);
-		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
-
-	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityLiving);
-			if (!player.isSneaking()) {
-				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-				player.getCooldownTracker().setCooldown(this, timeUsed);
-			}
+			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+			if(timeUsed > 50) timeUsed = 50;
+			setShifting(stack, player.isSneaking());
+			player.getCooldownTracker().setCooldown(this, timeUsed);
 		}
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		return true;
+	}
+
+	private void setShifting(ItemStack itemStack, boolean does) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		if (nbt == null) {
+			nbt = new NBTTagCompound();
+			itemStack.setTagCompound(nbt);
+		}
+		nbt.setBoolean("NeedleMode", does);
+	}
+
+	private boolean wasShifting(ItemStack itemStack) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		return nbt != null && nbt.getBoolean("NeedleMode");
 	}
 
 	@Override
@@ -105,7 +119,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 50;
+		return 500;
 	}
 
 	@Override

@@ -66,7 +66,7 @@ public class ConfigHandler {
 			@Comment("Can players craft the ghost dipper?")
 			public boolean ghostDipper = true;
 			@Comment("Can players craft the grimoire book?")
-			public boolean grimoireBook = true;
+			public boolean grimoireBook = false;
 			@Comment("Can players craft the hakurei gohei?")
 			public boolean hakureiGohei = true;
 			@Comment("Can players craft the ibaraki box?")
@@ -142,7 +142,7 @@ public class ConfigHandler {
 			@Comment("Can players craft the wall passing chisel?")
 			public boolean wallPassingChisel= true;
 			@Comment("Can players craft the youkai book?")
-			public boolean youkaiBook = true;
+			public boolean youkaiBook = false;
 			@Comment("Can players craft the watermelon blade?")
 			public boolean waterMelonBlade = true;
 			@Comment("Can players craft the watermelon sword?")

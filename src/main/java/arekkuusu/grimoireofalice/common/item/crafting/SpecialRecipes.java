@@ -368,7 +368,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.skull) {
 			ORIN_SKULL = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.SKULL)
-					, new ItemStack(Items.SKULL, 1, 1));
+					, new ItemStack(Items.SKULL, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.stopWatch) {

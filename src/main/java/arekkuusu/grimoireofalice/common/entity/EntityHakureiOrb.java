@@ -36,7 +36,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	public EntityHakureiOrb(World world, EntityLivingBase entity) {
 		super(world, entity);
 		posX = entity.posX;
-		posY = entity.posY + 4;
+		posY = entity.posY + 6;
 		posZ = entity.posZ;
 		setPosition(posX, posY, posZ);
 		setSize(1F);

@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -92,8 +93,7 @@ public class ItemHakureiGohei extends ItemMod {
 		if (!playerIn.isSneaking()) {
 			if (mode == YING_YANG_ORB) {
 				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
-				worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.POWER_UP, SoundCategory.HOSTILE, 0.1F,
-						itemRand.nextFloat() * 0.1F + 0.8F);
+				playerIn.playSound(GrimoireSoundEvents.POWER_UP, 0.1F, itemRand.nextFloat() * 0.1F + 0.8F);
 				if (!worldIn.isRemote) {
 					worldIn.spawnEntityInWorld(orb);
 				}
@@ -130,6 +130,8 @@ public class ItemHakureiGohei extends ItemMod {
 			if (playerIn.isSneaking()) {
 				byte mode = (byte) MathHelper.clamp_int(getMode(stack) + 1, 0, 5);
 				setMode(stack, getMode(stack) != 5 ? mode : 0);
+				if(worldIn.isRemote)
+					GrimoireOfAlice.proxy.displayRecordText("grimoire.tooltip.hakurei_gohei_mode_" + fromType(getMode(stack)).toString() + ".name", TextFormatting.BOLD);
 			}
 			else {
 				if (fromType(getMode(stack)) == PASSIVE) {
@@ -206,7 +208,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemstack) {
-		return 72000;
+		return 500;
 	}
 
 	@Override

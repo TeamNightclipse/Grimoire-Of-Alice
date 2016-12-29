@@ -30,4 +30,19 @@ public class ItemPiano extends ItemInstrument {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_use.name"));
 	}
+
+	@Override
+	public double getVelocity() {
+		return 0.8D;
+	}
+
+	@Override
+	public float getSize() {
+		return 2F;
+	}
+
+	@Override
+	public double getDistance() {
+		return 2D;
+	}
 }

@@ -20,6 +20,6 @@ public class LibMod {
 	//Dependency
 	public static final String PROXYCLIENT = "arekkuusu.grimoireofalice.client.ClientProxy";
 	//Client Required
-	public static final String PROXYCOMMON = "arekkuusu.grimoireofalice.common.proxy.ServerProxy";
+	public static final String PROXYCOMMON = "arekkuusu.grimoireofalice.common.core.ServerProxy";
 
 }

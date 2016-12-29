@@ -80,8 +80,7 @@ public class EntityStopWatch extends Entity {
 			return;
 		}
 		if (ticksExisted % 8 == 0) {
-			worldObj.playSound(user, new BlockPos(posX + 0.5D, posY + 0.5D, posZ + 0.5D), SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF,
-					SoundCategory.NEUTRAL, 1.0F, 1.0F + 0.8F);
+			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 1.0F, 1.0F + 0.8F);
 		}
 	}
 

@@ -32,6 +32,21 @@ public class ItemViolin extends ItemInstrument {
 	}
 
 	@Override
+	public double getVelocity() {
+		return 0.5D;
+	}
+
+	@Override
+	public float getSize() {
+		return 1F;
+	}
+
+	@Override
+	public double getDistance() {
+		return 1D;
+	}
+
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.STRING;
 	}

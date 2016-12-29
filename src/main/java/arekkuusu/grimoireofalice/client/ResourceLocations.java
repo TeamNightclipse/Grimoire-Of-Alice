@@ -16,13 +16,13 @@ public final class ResourceLocations {
 	//Entity
 	public static final ResourceLocation BARRIER_TEXTURE = getLocation("textures/models/entities/Barrier.png");
 	public static final ResourceLocation CAMERA_SQUARE_TEXTURE = getLocation("textures/models/entities/CameraSquare.png");
-	public static final ResourceLocation DOLL_TEXTURE = getLocation("textures/models/entities/ModelCursedDecoyDoll-texturemap.png");
+	public static final ResourceLocation DOLL_TEXTURE = getLocation("textures/models/entities/CursedDecoyDoll.png");
 	public static final ResourceLocation DRAGON_JEWEL_TEXTURE = getLocation("textures/models/entities/MagicCircle_0.png");
-	public static final ResourceLocation ELLY_SCYTHE_TEXTURE = getLocation("textures/models/entities/ellyscythe.png");
+	public static final ResourceLocation ELLY_SCYTHE_TEXTURE = getLocation("textures/models/entities/Leaf.png");
 	public static final ResourceLocation GRIMOIRE_CIRCLE_TEXTURE = getLocation("textures/models/entities/MagicCircle_1.png");
-	public static final ResourceLocation GRIMOIRE_BOOK = getLocation("textures/models/entities/enchanting_table_book.png");
+	public static final ResourceLocation GRIMOIRE_BOOK = getLocation("textures/models/entities/MagicBook.png");
 	public static final ResourceLocation ORB_TEXTURE = getLocation("textures/models/entities/Orb.png");
-	public static final ResourceLocation NETHER_SOUL_TEXTURE = getLocation("textures/models/entities/Orb.png");
+	public static final ResourceLocation NETHER_SOUL_TEXTURE = getLocation("textures/models/entities/Leaf.png");
 
 	public static final ResourceLocation CIRCLE_TEXTURE[] = {
 			getLocation("textures/models/entities/MagicCircle_0.png"),
@@ -33,7 +33,7 @@ public final class ResourceLocations {
 			getLocation("textures/models/entities/MagicCircle_5.png")
 	};
 
-	public static final ResourceLocation NAZRIN_TEXTURE = getLocation("textures/models/entities/nazrinpendulum.png");
+	public static final ResourceLocation NAZRIN_TEXTURE = getLocation("textures/models/entities/NazrinPendulum.png");
 	public static final ResourceLocation WATCH_TEXTURE = getLocation("textures/models/entities/StopWatch.png");
 	public static final ResourceLocation UNZAN_FIST_TEXTURE = getLocation("textures/models/entities/UnzanFist.png");
 	public static final ResourceLocation MIRACLE_LANTERN = getLocation("textures/models/entities/MiracleLantern.png");

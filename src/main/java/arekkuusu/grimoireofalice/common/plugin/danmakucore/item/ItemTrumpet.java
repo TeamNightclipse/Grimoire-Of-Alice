@@ -32,6 +32,21 @@ public class ItemTrumpet extends ItemInstrument {
 	}
 
 	@Override
+	public double getVelocity() {
+		return 1D;
+	}
+
+	@Override
+	public float getSize() {
+		return 0.5F;
+	}
+
+	@Override
+	public double getDistance() {
+		return 0.4D;
+	}
+
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.GOLD_INGOT;
 	}

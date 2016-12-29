@@ -586,7 +586,7 @@ grimoire.jei.descriptions.death_scythe=Must be crafted in the Nether
 grimoire.jei.descriptions_body.death_scythe=Pulls mobs towards you, Pushes mobs away from you when shifting
 
 grimoire.jei.descriptions.dragon_jewel=Must be crafted under a New Moon at Night
-grimoire.jei.descriptions_body.dragon_jewel=It drops all mobs' health to 1hp in a 20 block radius
+grimoire.jei.descriptions_body.dragon_jewel=It hurts all mobs until they hit 1hp in a 20 block radius
 
 grimoire.jei.descriptions.elly_scythe=Must be crafted in the Nether
 grimoire.jei.descriptions_body.elly_scythe=Throw a deadly Scythe that curses the target and heals the user. It also summons danmaku from the ground

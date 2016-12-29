@@ -25,7 +25,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class FormWind extends FormGeneric {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Wind.png");
-	@SideOnly(Side.CLIENT)
 	private ModelBase modelWind = new ModelWind();
 
 	public FormWind() {
