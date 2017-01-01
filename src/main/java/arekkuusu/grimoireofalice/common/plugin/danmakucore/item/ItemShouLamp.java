@@ -109,7 +109,7 @@ public class ItemShouLamp extends ItemMod {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (player.isSneaking() && !isActive(player, stack)) {
 				if (!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, 250);
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, getJewels(stack));
 					worldIn.spawnEntityInWorld(circle);
 				}
 				player.getCooldownTracker().setCooldown(this, getJewels(stack) + 1);

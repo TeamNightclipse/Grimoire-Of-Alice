@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
@@ -20,24 +21,21 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static arekkuusu.grimoireofalice.common.item.ItemHakureiGohei.Mode.*;
+import static arekkuusu.grimoireofalice.api.items.GoheiMode.*;
 
 public class ItemHakureiGohei extends ItemMod {
 
@@ -64,7 +62,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer && isSelected && Mode.fromType(getMode(stack)) == PASSIVE) {
+		if (entityIn instanceof EntityPlayer && GoheiMode.fromType(getMode(stack)) == PASSIVE) {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			if (!player.isSneaking()) {
 				Vec3d vec = player.getLookVec();
@@ -89,7 +87,7 @@ public class ItemHakureiGohei extends ItemMod {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 
-		Mode mode = fromType(getMode(itemStackIn));
+		GoheiMode mode = GoheiMode.fromType(getMode(itemStackIn));
 		if (!playerIn.isSneaking()) {
 			if (mode == YING_YANG_ORB) {
 				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
@@ -108,7 +106,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int ticks) {
-		if (fromType(getMode(stack)) == AURA_MANIPULATION) {
+		if (GoheiMode.fromType(getMode(stack)) == AURA_MANIPULATION) {
 			List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
 			for(EntityLivingBase mob : list) {
 				Vec3d playerPos = playerIn.getPositionVector();
@@ -205,7 +203,7 @@ public class ItemHakureiGohei extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
 		return I18n.format("item.hakureigohei.name") + " : "
-				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + fromType(getMode(stack)).toString() + ".name");
+				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + GoheiMode.fromType(getMode(stack)).toString() + ".name");
 	}
 
 	@Override
@@ -221,48 +219,5 @@ public class ItemHakureiGohei extends ItemMod {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	public enum Mode {
-		PASSIVE("passive", (byte) 0),
-		AURA_MANIPULATION("aura_manipulation", (byte) 1),
-		YING_YANG_ORB("hakurei_yin_yang_orbs", (byte) 2),
-		BARRIER_EXPLODE("exploding_barrier", (byte) 3),
-		BARRIER_MOTION("motion_barrier", (byte) 4),
-		OFFENSIVE("offensive", (byte) 5);
-
-		private final String name;
-		private final byte type;
-
-		Mode(String name, byte type) {
-			this.name = name;
-			this.type = type;
-		}
-
-		public static Mode fromType(byte type) {
-			switch (type) {
-				case 0:
-					return PASSIVE;
-				case 1:
-					return AURA_MANIPULATION;
-				case 2:
-					return YING_YANG_ORB;
-				case 3:
-					return BARRIER_EXPLODE;
-				case 4:
-					return BARRIER_MOTION;
-				default:
-					return OFFENSIVE;
-			}
-		}
-
-		public byte getType() {
-			return type;
-		}
-
-		@Override
-		public String toString() {
-			return name;
-		}
 	}
 }

@@ -1,8 +1,10 @@
 package arekkuusu.grimoireofalice.common.event;
 
+import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.item.ItemHakureiGohei;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.minecraft.entity.Entity;
@@ -14,10 +16,14 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -28,6 +34,9 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class YukkuriEvent {
+
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -76,6 +85,7 @@ public class YukkuriEvent {
 
 					player.isDead = false;
 					player.setHealth(player.getMaxHealth());
+					player.getFoodStats().addStats(100, 100);
 					event.setCanceled(true);
 				} else {
 					@SuppressWarnings("ConstantConditions")
@@ -103,14 +113,12 @@ public class YukkuriEvent {
 			}
 			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
 				event.setCanceled(true);
+				return;
+			}
+			if(event.getSource() == DamageSource.fall && isGoheiMode(player, GoheiMode.PASSIVE)) {
+				event.setCanceled(true);
 			}
 		}
-	}
-
-	private boolean isUsingItem(EntityLivingBase base, Item item){
-		ItemStack stack = base.getHeldItemMainhand();
-		if(stack == null) stack = base.getHeldItemOffhand();
-		return stack != null && stack.getItem() == item && base.isHandActive();
 	}
 
 	@SubscribeEvent
@@ -118,6 +126,10 @@ public class YukkuriEvent {
 		if (event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
+				event.setCanceled(true);
+				return;
+			}
+			if(event.getSource() == DamageSource.fall && isGoheiMode(player, GoheiMode.PASSIVE)) {
 				event.setCanceled(true);
 				return;
 			}
@@ -161,5 +173,35 @@ public class YukkuriEvent {
 
 			event.getDrops().add(item);
 		}
+	}
+
+	private boolean isUsingItem(EntityLivingBase base, Item item) {
+		ItemStack stack = base.getHeldItemMainhand();
+		if (stack == null) stack = base.getHeldItemOffhand();
+		return stack != null && stack.getItem() == item && base.isHandActive();
+	}
+
+	@SuppressWarnings("ConstantConditions")
+	private boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
+		ItemStack stack = new ItemStack(ModItems.HAKUREI_GOHEI);
+		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null) && player.inventory.hasItemStack(stack)
+				&& getValidMode(player, stack, mode);
+	}
+
+	private boolean getValidMode(EntityPlayer player, ItemStack stack, GoheiMode mode) {
+		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
+			ItemStack itemStack = player.inventory.mainInventory[i];
+			if (itemStack != null && stack.getItem() == itemStack.getItem()
+					&& GoheiMode.fromType(getGoheiMode(itemStack)) == mode) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private byte getGoheiMode(ItemStack itemStack) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		return nbt == null ? 5 : nbt.getByte("GoheiMode");
 	}
 }

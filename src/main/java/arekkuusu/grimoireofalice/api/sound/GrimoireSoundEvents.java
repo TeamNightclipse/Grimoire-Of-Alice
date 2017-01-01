@@ -25,6 +25,6 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent WAVE = getRegisteredSound("wave");
 
 	private static SoundEvent getRegisteredSound(String name) {
-		return SoundEvent.REGISTRY.getObject(new ResourceLocation(LibMod.MODID, name));
+		return SoundEvent.REGISTRY.getObject(new ResourceLocation("grimoireofalice", name));
 	}
 }

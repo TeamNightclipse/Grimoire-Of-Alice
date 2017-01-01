@@ -131,7 +131,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 			template.addBlocksToWorld(world, pos.add(-2, -2, -2), new BoulderTemplate(), new PlacementSettings(), 2);
 		}
 
-		player.getCooldownTracker().setCooldown(this, 100);
+		player.getCooldownTracker().setCooldown(this, 50);
 	}
 
 	@Override
