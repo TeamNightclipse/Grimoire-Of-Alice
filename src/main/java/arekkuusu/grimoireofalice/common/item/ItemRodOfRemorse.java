@@ -17,9 +17,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -34,7 +36,10 @@ public class ItemRodOfRemorse extends ItemMod {
 
 	public ItemRodOfRemorse() {
 		super(LibItemName.ROD_REMORSE);
+		setMaxStackSize(1);
 		setMaxDamage(1);
+		addPropertyOverride(new ResourceLocation("used"),
+				(stack, world, entity) -> getUsed(stack) ? 1F : 0F);
 	}
 
 	@CapabilityInject(IItemHandler.class)
@@ -61,9 +66,9 @@ public class ItemRodOfRemorse extends ItemMod {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if(itemStackIn.isItemDamaged()) {
+		if(getUsed(itemStackIn)) {
 			if(player.capabilities.isCreativeMode) {
-				itemStackIn.setItemDamage(0);
+				setUsed(itemStackIn, false);
 				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 			}
 
@@ -72,9 +77,9 @@ public class ItemRodOfRemorse extends ItemMod {
 				ItemStack dye = new ItemStack(Items.DYE, 1, 0);
 
 				for(int i = 0; i < inventory.getSlots(); i++) {
-					if(inventory.getStackInSlot(i) == dye) {
+					if(dye.isItemEqual(inventory.getStackInSlot(i))) {
 						inventory.extractItem(i, 1, false);
-						itemStackIn.setItemDamage(0);
+						setUsed(itemStackIn, false);
 						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 					}
 				}
@@ -86,20 +91,10 @@ public class ItemRodOfRemorse extends ItemMod {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if(!stack.isItemDamaged()) {
+		if (!getUsed(stack) && target.getHealth() > 1) {
 			float perc = 0.75F;
-			if(target.getLastAttackerTime() % 50 == 0) {
-				perc -= 0.10;
-			}
-			if(target.getAge() % 50 == 0) {
-				perc -= 0.10;
-			}
-			if(target.getRevengeTimer() % 50 == 0) {
-				perc -= 0.10;
-			}
-			target.setHealth(target.getMaxHealth() * perc);
-			stack.setItemDamage(1);
-			return true;
+			target.setHealth((int) (target.getHealth() * perc));
+			setUsed(stack, true);
 		}
 		return false;
 	}
@@ -113,6 +108,21 @@ public class ItemRodOfRemorse extends ItemMod {
 		}
 		return true;
 	}
+
+	private void setUsed(ItemStack itemStack, boolean used) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		if (nbt == null) {
+			nbt = new NBTTagCompound();
+			itemStack.setTagCompound(nbt);
+		}
+		nbt.setBoolean("IsUsed", used);
+	}
+
+	private boolean getUsed(ItemStack itemStack) {
+		NBTTagCompound nbt = itemStack.getTagCompound();
+		return nbt != null && nbt.getBoolean("IsUsed");
+	}
+
 
 	@Override
 	public int getItemEnchantability() {

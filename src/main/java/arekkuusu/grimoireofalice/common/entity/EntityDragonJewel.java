@@ -51,7 +51,7 @@ public class EntityDragonJewel extends Entity {
 			if (host == null) {
 				setDead();
 			}
-			else if (ticksExisted > 10 && (host.isSneaking() || host.isHandActive())) {
+			else if (ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress || host.isHandActive())) {
 				stopEntity();
 			}
 			if (ticksExisted > 500) {

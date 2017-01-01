@@ -89,6 +89,9 @@ public final class ResourceLocations {
 	public static final ResourceLocation CAUTION = getLocation("caution");
 	public static final ResourceLocation WAVE = getLocation("wave");
 
+	//Structures
+	public static final ResourceLocation STRUCTURE_BOULDER = getLocation("boulder");
+
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation(LibMod.MODID, name);
 	}

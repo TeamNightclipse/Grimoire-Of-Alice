@@ -75,7 +75,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
-		entityLivingBase.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, 1F);
 		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
@@ -158,7 +157,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					spawnGround(player, itemRand.nextDouble(), -itemRand.nextDouble());
 					spawnGround(player, -itemRand.nextDouble(), itemRand.nextDouble());
 				}
-				worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 5F, 1F);
+				worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 5F, 1F);
 			}
 			List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(10.0D));
 			for (EntityMob mob : list) {

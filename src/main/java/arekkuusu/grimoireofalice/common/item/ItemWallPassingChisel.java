@@ -55,7 +55,7 @@ public class ItemWallPassingChisel extends ItemMod {
 		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
 			player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5); //Move player to center of block
-			player.playSound(GrimoireSoundEvents.WARP, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+			player.playSound(GrimoireSoundEvents.WARP, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;

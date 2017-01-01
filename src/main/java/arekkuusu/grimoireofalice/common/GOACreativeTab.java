@@ -240,7 +240,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Shinmyoumaru Sukuna ** /
 		addItem(ModItems.SHINMYOUMARU_HAT); //Done
 		if (GrimoireOfAlice.danmakuCoreInstalled)
-			addItem(ModItems.MIRACLE_MALLET); //TODO: Add all the stuffs!
+			addItem(ModItems.MIRACLE_MALLET); //Done
 		addItem(ModItems.SHINMYOUMARU_NEEDLE); //TODO: Shoot "Fishing Rod"
 		// ** Shou Toramaru ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled)

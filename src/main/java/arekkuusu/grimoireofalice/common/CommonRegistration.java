@@ -140,10 +140,10 @@ public class CommonRegistration {
 				itemBlock(ModBlocks.COMPACT_STONE),
 				itemBlock(ModBlocks.HOLY_STONE),
 				itemBlock(ModBlocks.KYOUMARUBOTAN),
-				itemBlock(ModBlocks.ONBASHIRA),
+				itemBlockOnbashira(ModBlocks.ONBASHIRA),
 				itemBlock(ModBlocks.PAPER_BLOCK),
 				itemBlock(ModBlocks.ROPE_BLOCK),
-				itemBlockColor(ModBlocks.SHROOM),
+				itemBlockShroom(ModBlocks.SHROOM),
 				itemBlock(ModBlocks.SUGAR_BLOCK),
 				itemBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC),
 				itemBlock(ModBlocks.ALTAR),
@@ -176,8 +176,12 @@ public class CommonRegistration {
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 
-	private static Item itemBlockColor(Block block) {
+	private static Item itemBlockShroom(Block block) {
 		return new ItemBlockShroom(block).setRegistryName(block.getRegistryName());
+	}
+
+	private static Item itemBlockOnbashira(Block block) {
+		return new ItemBlockOnbashira(block).setRegistryName(block.getRegistryName());
 	}
 
 	@SubscribeEvent

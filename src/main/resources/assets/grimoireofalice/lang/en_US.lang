@@ -249,8 +249,8 @@ grimoire.tooltip.ibaraki_box_description.name=one who drinks from will temporari
 grimoire.tooltip.ibuki_gourd_header.name=This unique gourd generates sake
 grimoire.tooltip.ibuki_gourd_description.name=with a single drop of water
 
-grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created
-grimoire.tooltip.kappas_nostrum_description.name=by cutting off the arm of a kappa
+grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created by cutting off the arm of a kappa
+grimoire.tooltip.kappas_nostrum_description.name=It gives regeneration and clears all active potion effects
 
 grimoire.tooltip.shroom_dust_header.name=Psilocybin mushroom
 grimoire.tooltip.shroom_dust_description.name=May induce hallucinations

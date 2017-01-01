@@ -80,8 +80,8 @@ public class ItemHakureiGohei extends ItemMod {
 			}
 			else {
 				player.motionY = 0;
-				player.setAir(0);
 			}
+			player.setAir(0);
 		}
 	}
 
@@ -109,8 +109,8 @@ public class ItemHakureiGohei extends ItemMod {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int ticks) {
 		if (fromType(getMode(stack)) == AURA_MANIPULATION) {
-			List<EntityMob> list = playerIn.worldObj.getEntitiesWithinAABB(EntityMob.class, playerIn.getEntityBoundingBox().expandXyz(4.0D));
-			for(EntityMob mob : list) {
+			List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
+			for(EntityLivingBase mob : list) {
 				Vec3d playerPos = playerIn.getPositionVector();
 				Vec3d mobPos = mob.getPositionVector();
 				double ratio = playerPos.distanceTo(mobPos) / 4;
@@ -119,6 +119,13 @@ public class ItemHakureiGohei extends ItemMod {
 				mob.motionX = -motion.xCoord * 1.2;
 				mob.motionY = -motion.yCoord * 1.2;
 				mob.motionZ = -motion.zCoord * 1.2;
+
+				if(mob.worldObj.isRemote && ticks % 4 == 0) {
+					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC
+							, mob.posX + (itemRand.nextDouble() - 0.5D) * (double) mob.width, mob.posY + itemRand.nextDouble() * (double) mob.height - 0.25D, mob.posZ
+									+ (itemRand.nextDouble() - 0.5D) * (double) mob.width, (itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat()
+							, (itemRand.nextFloat() - 0.5D) * 0.2);
+				}
 			}
 		}
 	}

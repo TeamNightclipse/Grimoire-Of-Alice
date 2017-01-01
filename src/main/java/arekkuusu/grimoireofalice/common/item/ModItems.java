@@ -265,7 +265,6 @@ public final class ModItems {
 	}
 
 	public static void initFlyingItems() {
-		GrimoireOfAliceAPI.registerFlyItem(new ItemStack(ModItems.HAKUREI_GOHEI));
 		if (GrimoireOfAlice.danmakuCoreInstalled)
 			GrimoireOfAliceAPI.registerFlyItem(new ItemStack(ModItems.JEWELED_HOURAI));
 		GrimoireOfAliceAPI.registerFlyArmor(new ItemStack(ModItems.UTSUHO_WINGS));

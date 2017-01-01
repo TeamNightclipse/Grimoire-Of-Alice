@@ -89,7 +89,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 						player.addChatComponentMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(
-								TextFormatting.GOLD + "- " + mob.getName() + " : {" + mob.posX + ", " + mob.posY + ", " + mob.posZ + "}")));
+								TextFormatting.GOLD + "- " + mob.getName() + " : {" + (int)mob.posX + ", " + (int)mob.posY + ", " + (int)mob.posZ + "}")));
 						player.addChatComponentMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}

@@ -50,16 +50,16 @@ public class ItemKappasNostrum extends ItemModFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
-		player.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 160, 0));
 		player.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 	}
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-		if(entityLiving instanceof EntityPlayer) {
+		if (entityLiving instanceof EntityPlayer) {
 			stack.damageItem(1, entityLiving);
 			entityLiving.playSound(SoundEvents.ENTITY_WITCH_DRINK, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-			onFoodEaten(stack, worldIn, (EntityPlayer)entityLiving);
+			onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 160, 0));
 		}
 		return stack;
 	}

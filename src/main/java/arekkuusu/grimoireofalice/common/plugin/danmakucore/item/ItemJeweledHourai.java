@@ -57,7 +57,7 @@ public class ItemJeweledHourai extends ItemMod {
 		setNoRepair();
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("jewels"),
-				(stack, world, entity) -> entity != null && stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
+				(stack, world, entity) -> stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
 	}
 
 	@Override

@@ -67,6 +67,7 @@ public class ItemSwallowCowrieShell extends ItemMod {
 			EntityPlayer entityplayer = (EntityPlayer) entityLiving;
 			entityplayer.getFoodStats().addStats(100, 100);
 			worldIn.playSound(entityplayer, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
+			//noinspection ConstantConditions
 			entityplayer.addStat(StatList.getObjectUseStats(this));
 		}
 		return stack;
@@ -85,7 +86,7 @@ public class ItemSwallowCowrieShell extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
-		return 64;
+		return 32;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -158,6 +159,18 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.onbashira_block_header.name"));
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+		boolean flag1 = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
+		boolean flag2 = false;
+		for (int i = 1; i < 4; i++) {
+			pos = pos.up();
+			Block block = worldIn.getBlockState(pos).getBlock();
+			flag2 = block.isReplaceable(worldIn, pos);
+		}
+		return flag1 && flag2;
 	}
 
 	@Override

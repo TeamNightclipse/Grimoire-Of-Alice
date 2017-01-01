@@ -77,49 +77,56 @@ public class ItemGhostDipper extends ItemMod {
 		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		else {
-			BlockPos blockpos = raytraceresult.getBlockPos();
-			if(absorb(worldIn, blockpos)) {
-				worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				if(itemStackIn.isItemDamaged()) {
-					itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+			if(!playerIn.isSneaking()) {
+				BlockPos blockpos = raytraceresult.getBlockPos();
+				if (absorb(worldIn, blockpos)) {
+					worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					if (itemStackIn.isItemDamaged()) {
+						itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+					}
+					playerIn.setActiveHand(hand);
+					return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 				}
-				playerIn.setActiveHand(hand);
-				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+			} else {
+				BlockPos pos = raytraceresult.getBlockPos();
+				boolean replaceable = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
+				BlockPos posUp = replaceable && raytraceresult.sideHit == EnumFacing.UP ? pos : pos.offset(raytraceresult.sideHit);
+
+				if (!playerIn.canPlayerEdit(posUp, raytraceresult.sideHit, itemStackIn)) {
+					return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+				}
+
+				IBlockState iblockstate = worldIn.getBlockState(posUp);
+				Material material = iblockstate.getMaterial();
+				boolean isSolid = material.isSolid();
+				boolean canReplace = iblockstate.getBlock().isReplaceable(worldIn, posUp);
+
+				if(!worldIn.isAirBlock(posUp) && isSolid && !canReplace) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+				else {
+					if(worldIn.provider.doesWaterVaporize()) {
+						worldIn.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
+								2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+						for(int k = 0; k < 8; ++k) {
+							worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(), posUp.getY() + itemRand.nextDouble(),
+									posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+						}
+						return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+					}
+					else {
+						if (!worldIn.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
+							worldIn.destroyBlock(posUp, true);
+						}
+
+						worldIn.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						worldIn.setBlockState(posUp, Blocks.FLOWING_WATER.getDefaultState(), 11);
+						itemStackIn.damageItem(1, playerIn);
+						playerIn.setActiveHand(hand);
+						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+					}
+				}
 			}
 		}
 		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-	}
-
-	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
-			float y, float z) {
-		BlockPos posUp = pos.up();
-		IBlockState iblockstate = world.getBlockState(posUp);
-		Material material = iblockstate.getMaterial();
-		boolean canReplace = iblockstate.getBlock().isReplaceable(world, posUp);
-
-		if(iblockstate.getBlock().isAir(iblockstate, world, pos) && !canReplace) return EnumActionResult.FAIL;
-		else {
-			if(world.provider.doesWaterVaporize()) {
-				world.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
-						2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
-				for(int k = 0; k < 8; ++k) {
-					world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(), posUp.getY() + itemRand.nextDouble(),
-							posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
-				}
-				return EnumActionResult.FAIL;
-			}
-			else if(!world.isRemote && canReplace && !material.isLiquid()) {
-				world.destroyBlock(posUp, true);
-				world.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				stack.damageItem(1, player);
-				world.setBlockState(posUp, Blocks.WATER.getDefaultState(), 11);
-				player.setActiveHand(hand);
-				return EnumActionResult.SUCCESS;
-			}
-		}
-
-		return EnumActionResult.FAIL;
 	}
 
 	private boolean absorb(World worldIn, BlockPos pos) {
