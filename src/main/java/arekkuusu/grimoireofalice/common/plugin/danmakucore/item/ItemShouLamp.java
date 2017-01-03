@@ -16,6 +16,7 @@ import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
+import net.katsstuff.danmakucore.helper.ItemNBTHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
@@ -36,9 +37,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShouLamp extends ItemMod {
+public class ItemShouLamp extends ItemJeweled {
 
-	private final String TAG = "Jewels";
+	private static final String TAG = "Jewels";
 
 	public ItemShouLamp() {
 		super(LibItemName.SHOU_LAMP);
@@ -82,7 +83,7 @@ public class ItemShouLamp extends ItemMod {
 
 				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
-				setJewels(stack, getJewels(stack) - 1);
+				addJewels(stack, (short)-1);
 			}
 		}
 	}
@@ -99,7 +100,7 @@ public class ItemShouLamp extends ItemMod {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
 			if(count % 4 == 0)
 				player.worldObj.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, SoundCategory.PLAYERS, 0.1F, 1F);
-			setJewels(stack, getJewels(stack) + 1);
+			addJewels(stack, (short)1);
 		}
 	}
 
@@ -108,18 +109,21 @@ public class ItemShouLamp extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (player.isSneaking() && !isActive(player, stack)) {
+				short jewels = getJewels(stack);
 				if (!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, getJewels(stack));
+					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, jewels);
 					worldIn.spawnEntityInWorld(circle);
 				}
-				player.getCooldownTracker().setCooldown(this, getJewels(stack) + 1);
+				player.getCooldownTracker().setCooldown(this, jewels + 1);
 
 				if (timeLeft < 200) {
-					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().expandXyz(4.0D));
+					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class,
+							player.getEntityBoundingBox().expandXyz(4.0D));
 					for (EntityLivingBase mob : list) {
 						mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 						if (!mob.worldObj.isRemote) {
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, getJewels(stack) * 2);
+							EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL,
+									jewels * 2);
 							worldIn.spawnEntityInWorld(circle);
 						}
 					}
@@ -129,27 +133,7 @@ public class ItemShouLamp extends ItemMod {
 	}
 
 	private boolean isActive(EntityPlayer player, ItemStack stack) {
-		NBTTagCompound nbt = stack.getTagCompound();
-		return player.getCooldownTracker().hasCooldown(this)
-				&& nbt != null
-				&& nbt.hasKey(TAG) && nbt.getInteger(TAG) > 0;
-	}
-
-	private void setJewels(ItemStack itemStack, int jewels) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
-			nbt = new NBTTagCompound();
-			itemStack.setTagCompound(nbt);
-			nbt.setInteger(TAG, jewels);
-		}
-		else if (jewels >= 0) {
-			nbt.setInteger(TAG, jewels);
-		}
-	}
-
-	private int getJewels(ItemStack itemStack) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 0 : nbt.getInteger(TAG);
+		return player.getCooldownTracker().hasCooldown(this) && ItemNBTHelper.getInt(stack, TAG, 0) > 0;
 	}
 
 	@Override

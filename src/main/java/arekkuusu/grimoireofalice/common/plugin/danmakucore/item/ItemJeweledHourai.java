@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.helper.ItemNBTHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
@@ -39,7 +40,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class ItemJeweledHourai extends ItemMod {
+public class ItemJeweledHourai extends ItemJeweled {
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -53,8 +54,6 @@ public class ItemJeweledHourai extends ItemMod {
 		super(LibItemName.JEWELED_HOURAI);
 		setNoRepair();
 		setMaxStackSize(1);
-		addPropertyOverride(new ResourceLocation("jewels"),
-				(stack, world, entity) -> stack.hasTagCompound() ? (float)getJewels(stack) : 0F);
 	}
 
 	@Override
@@ -139,35 +138,6 @@ public class ItemJeweledHourai extends ItemMod {
 		}
 		worldIn.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
 				SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	}
-
-	private void addJewels(ItemStack itemStack, short charge) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null) {
-			nbt = new NBTTagCompound();
-			itemStack.setTagCompound(nbt);
-			nbt.setShort("Jewels", charge);
-		}
-		else if(nbt.getShort("Jewels") >= 0) {
-			nbt.setShort("Jewels", (short)(nbt.getShort("Jewels") + charge));
-		}
-	}
-
-	private void setJewels(ItemStack itemStack, short charge) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null) {
-			nbt = new NBTTagCompound();
-			itemStack.setTagCompound(nbt);
-			nbt.setShort("Jewels", charge);
-		}
-		else if(nbt.getShort("Jewels") >= 0) {
-			nbt.setShort("Jewels", charge);
-		}
-	}
-
-	private short getJewels(ItemStack itemStack) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 0 : nbt.getShort("Jewels");
 	}
 
 	@Override
