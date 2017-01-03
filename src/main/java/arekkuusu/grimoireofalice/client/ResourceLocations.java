@@ -72,23 +72,6 @@ public final class ResourceLocations {
 	public static final ResourceLocation RED_GAS = getLocation("particle/RedGas");
 	public static final ResourceLocation NETHER_FIRE = getLocation("particle/NetherFire");
 
-	//Sounds
-	public static final ResourceLocation CAMERA_BEEP = getLocation("cameraBeep");
-	public static final ResourceLocation CAMERA_SHOOT = getLocation("cameraShoot");
-	public static final ResourceLocation CAMERA_SHUTTER = getLocation("cameraShutter");
-	public static final ResourceLocation NEEDLE_SWEEP = getLocation("needleSweep");
-	public static final ResourceLocation SIMPLE_BELL = getLocation("simpleBell");
-	public static final ResourceLocation CRAFTING_SPELL = getLocation("craftingSpell");
-	public static final ResourceLocation ORIN_NYAA = getLocation("orinNyaa");
-	public static final ResourceLocation POWER_UP = getLocation("powerUp");
-	public static final ResourceLocation ATTTACK_LONG = getLocation("attackLong");
-	public static final ResourceLocation HORN = getLocation("horn");
-	public static final ResourceLocation WARP = getLocation("warp");
-	public static final ResourceLocation UFO_IDDLE = getLocation("ufoIddle");
-	public static final ResourceLocation UFO_SPAWN = getLocation("ufoSpawn");
-	public static final ResourceLocation CAUTION = getLocation("caution");
-	public static final ResourceLocation WAVE = getLocation("wave");
-
 	//Structures
 	public static final ResourceLocation STRUCTURE_BOULDER = getLocation("boulder");
 

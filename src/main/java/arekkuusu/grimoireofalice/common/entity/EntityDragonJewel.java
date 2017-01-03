@@ -16,7 +16,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -51,28 +50,25 @@ public class EntityDragonJewel extends Entity {
 			if (host == null) {
 				setDead();
 			}
-			else if (ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress || host.isHandActive())) {
-				stopEntity();
-			}
-			if (ticksExisted > 500) {
+			else if(ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress || host.isHandActive()) || ticksExisted > 500) {
 				stopEntity();
 			}
 		}
-		getEntities();
+		attackEntities();
 		if (ticksExisted % 50 == 0) {
 			worldObj.playSound(null, posX, posY, posZ, GrimoireSoundEvents.HORN, SoundCategory.NEUTRAL, 0.5F, 1F);
 		}
 		if (ticksExisted % 10 == 0) {
 			for (int i = 0; i < 2; ++i) {
 				worldObj.spawnParticle(EnumParticleTypes.PORTAL
-						, posX + (rand.nextDouble() - 0.5D) * (double) width, posY + rand.nextDouble() * (double) height - 0.25D, posZ
-								+ (rand.nextDouble() - 0.5D) * (double) width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
+						, posX + (rand.nextDouble() - 0.5D) * width, posY + rand.nextDouble() * height - 0.25D,
+						posZ + (rand.nextDouble() - 0.5D) * width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
 						, (rand.nextDouble() - 0.5D) * 2.0D);
 			}
 		}
 	}
 
-	private void getEntities() {
+	private void attackEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob).forEach(mob -> {
@@ -94,11 +90,9 @@ public class EntityDragonJewel extends Entity {
 		if (!worldObj.isRemote) {
 			if (host != null && host instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) host;
-				if (player.capabilities.isCreativeMode) {
-					setDead();
-					return;
+				if(!player.capabilities.isCreativeMode) {
+					ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
 				}
-				ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
 			} else {
 				dropItem(ModItems.DRAGON_JEWEL, 1);
 			}

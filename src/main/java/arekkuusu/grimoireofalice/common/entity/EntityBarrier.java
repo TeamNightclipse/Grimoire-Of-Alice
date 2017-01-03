@@ -25,6 +25,7 @@ public class EntityBarrier extends Entity {
 
 	private EntityPlayer player;
 	private boolean isStatic = false;
+	//TODO: Change to Enum
 	private byte type;
 
 	public EntityBarrier(World world) {
@@ -76,10 +77,8 @@ public class EntityBarrier extends Entity {
 				onDetectEntity(entities.get(0));
 			}
 
-			if(ticksExisted > 200) {
-				if(!worldObj.isRemote) {
-					setDead();
-				}
+			if(ticksExisted > 200 && !worldObj.isRemote) {
+				setDead();
 			}
 		}
 	}

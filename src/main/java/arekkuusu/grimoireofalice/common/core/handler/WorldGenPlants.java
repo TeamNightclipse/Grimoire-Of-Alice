@@ -44,7 +44,7 @@ public class WorldGenPlants {
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);
-				if (event.getRand().nextBoolean() && event.getWorld().isAirBlock(pos3) && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3)) {
+				if (event.getRand().nextBoolean() && ModBlocks.KYOUMARUBOTAN.canPlaceBlockAt(event.getWorld(), pos3)) {
 					event.getWorld().setBlockState(pos3, ModBlocks.KYOUMARUBOTAN.getDefaultState(), 2);
 					break;
 				}

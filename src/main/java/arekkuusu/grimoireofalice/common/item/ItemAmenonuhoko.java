@@ -93,33 +93,33 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		RayTraceResult raytraceresult = traceResult(worldIn, playerIn, false);
-		if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK)
+		RayTraceResult raytraceresult = traceResult(worldIn, playerIn);
+		if(raytraceresult == null || raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		}
 		else {
 			createBoulder(playerIn, worldIn, raytraceresult.getBlockPos());
+			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Nullable
-	private RayTraceResult traceResult(World worldIn, EntityPlayer playerIn, boolean useLiquids) {
-		float f = playerIn.rotationPitch;
-		float f1 = playerIn.rotationYaw;
-		double d0 = playerIn.posX;
-		double d1 = playerIn.posY + (double) playerIn.getEyeHeight();
-		double d2 = playerIn.posZ;
-		Vec3d vec3d = new Vec3d(d0, d1, d2);
-		float f2 = MathHelper.cos(-f1 * 0.017453292F - (float) Math.PI);
-		float f3 = MathHelper.sin(-f1 * 0.017453292F - (float) Math.PI);
-		float f4 = -MathHelper.cos(-f * 0.017453292F);
-		float f5 = MathHelper.sin(-f * 0.017453292F);
-		float f6 = f3 * f4;
-		float f7 = f2 * f4;
-		double d3 = 15D;
-		Vec3d vec3d1 = vec3d.addVector((double) f6 * d3, (double) f5 * d3, (double) f7 * d3);
-		return worldIn.rayTraceBlocks(vec3d, vec3d1, useLiquids, !useLiquids, false);
+	private RayTraceResult traceResult(World worldIn, EntityPlayer playerIn) {
+		float pitch = playerIn.rotationPitch;
+		float yaw = playerIn.rotationYaw;
+		double x = playerIn.posX;
+		double y = playerIn.posY + (double) playerIn.getEyeHeight();
+		double z = playerIn.posZ;
+		Vec3d pos = new Vec3d(x, y, z);
+		float f2 = MathHelper.cos(-yaw * 0.017453292F - (float) Math.PI);
+		float f3 = MathHelper.sin(-yaw * 0.017453292F - (float) Math.PI);
+		float f4 = -MathHelper.cos(-pitch * 0.017453292F);
+		float yDir = MathHelper.sin(-pitch * 0.017453292F);
+		float xDir = f3 * f4;
+		float zDir = f2 * f4;
+		double length = 15D;
+		Vec3d vec3d1 = pos.addVector(xDir * length, yDir * length, zDir * length);
+		return worldIn.rayTraceBlocks(pos, vec3d1, false, true, false);
 	}
 
 	private void createBoulder(EntityPlayer player, World world, BlockPos pos) {

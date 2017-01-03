@@ -48,7 +48,7 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 		if(ticksExisted > 500) {
 			stopEntity();
 		}
-		getEntities();
+		stealAgroAround();
 		motionY = motionX = motionZ = 0;
 	}
 
@@ -57,7 +57,7 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 		return EnumHandSide.RIGHT;
 	}
 
-	private void getEntities() {
+	private void stealAgroAround() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
@@ -89,11 +89,9 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 	private void stopEntity() {
 		if(!worldObj.isRemote) {
 			if(user != null) {
-				if(user.capabilities.isCreativeMode) {
-					setDead();
-					return;
+				if(!user.capabilities.isCreativeMode) {
+					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.CURSED_DECOY_DOLL));
 				}
-				ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.CURSED_DECOY_DOLL));
 			}
 			else {
 				dropItem(ModItems.CURSED_DECOY_DOLL, 1);
