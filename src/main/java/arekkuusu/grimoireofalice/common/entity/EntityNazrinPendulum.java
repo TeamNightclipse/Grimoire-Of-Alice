@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
 
 public class EntityNazrinPendulum extends Entity {
 
-	private static final DataParameter<String> ORE = EntityDataManager.createKey(EntityNazrinPendulum.class, DataSerializers.STRING);
+	private String ore = "";
+
 	public EntityPlayer user;
 	private boolean follow;
 
@@ -46,59 +47,62 @@ public class EntityNazrinPendulum extends Entity {
 		super(worldIn);
 		user = player;
 		this.follow = follow;
-		setOre(ore);
+		this.ore = ore;
 	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (user == null | isEntityInsideOpaqueBlock()) {
-			stopEntity();
-		}
-		else {
-			if (ticksExisted > 10 && user.isSneaking()) {
+
+		if(!worldObj.isRemote) {
+			if (user == null || isEntityInsideOpaqueBlock()) {
 				stopEntity();
 			}
-			else if (user.hurtTime > 0) {
-				stopEntity();
+			else {
+				if (ticksExisted > 10 && user.isSneaking()) {
+					stopEntity();
+				}
+				else if (user.hurtTime > 0) {
+					stopEntity();
+				}
 			}
+
+			if (user != null && follow) {
+				Vec3d look = user.getLookVec();
+				float distance = 2F;
+				double dx = user.posX + look.xCoord * distance;
+				double dy = user.posY + user.getEyeHeight() - 0.5;
+				double dz = user.posZ + look.zCoord * distance;
+				setPosition(dx, dy, dz);
+			}
+
+			List<Block> blockLayer = new ArrayList<>(20);
+			BlockPos pos = new BlockPos(posX, posY, posZ);
+			for (int i = 1; i < 20; i++) {
+				Block block = worldObj.getBlockState(pos.down(i)).getBlock();
+				ItemStack stack = new ItemStack(block);
+
+				//noinspection ConstantConditions Liar
+				if (stack.getItem() == null) {
+					continue;
+				}
+				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+						.mapToObj(OreDictionary::getOreName)
+						.anyMatch(s -> !ore.isEmpty() ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
+
+				if (isOre) {
+					blockLayer.add(block);
+				}
+			}
+
+			blockLayer.forEach(ignored -> {
+				if (rand.nextInt(8) == 4) {
+					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+				}
+			});
 		}
-
-		if (user != null && follow) {
-			Vec3d look = user.getLookVec();
-			float distance = 2F;
-			double dx = user.posX + look.xCoord * distance;
-			double dy = user.posY + user.getEyeHeight() - 0.5;
-			double dz = user.posZ + look.zCoord * distance;
-			setPosition(dx, dy, dz);
-		}
-
-		List<Block> blockLayer = new ArrayList<>(20);
-		BlockPos pos = new BlockPos(posX, posY, posZ);
-		for (int i = 1; i < 20; i++) {
-			Block block = worldObj.getBlockState(pos.down(i)).getBlock();
-			ItemStack stack = new ItemStack(block);
-
-			//noinspection ConstantConditions Liar
-			if (stack.getItem() == null) {
-				continue;
-			}
-			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-					.mapToObj(OreDictionary::getOreName)
-					.anyMatch(s -> !getOre().isEmpty() ? s.equals(getOre()) : s.startsWith("ore")) || block == Blocks.CHEST;
-
-			if (isOre) {
-				blockLayer.add(block);
-			}
-		}
-
-		blockLayer.forEach(ignored -> {
-			if (rand.nextInt(8) == 4) {
-				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-			}
-		});
 	}
 
 	@Override
@@ -107,9 +111,7 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {
-		dataManager.register(ORE, "");
-	}
+	protected void entityInit() {}
 
 	private void stopEntity() {
 		if (!worldObj.isRemote) {
@@ -131,14 +133,6 @@ public class EntityNazrinPendulum extends Entity {
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
 		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.4, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.5, alignedBB.minZ + 0.5);
-	}
-
-	private void setOre(String ore) {
-		dataManager.set(ORE, ore);
-	}
-
-	private String getOre() {
-		return dataManager.get(ORE);
 	}
 
 	@Override
