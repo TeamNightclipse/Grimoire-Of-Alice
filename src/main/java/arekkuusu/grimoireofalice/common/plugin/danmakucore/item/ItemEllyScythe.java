@@ -17,7 +17,7 @@ import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.AbstractVector3;
 import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
@@ -126,7 +126,7 @@ public class ItemEllyScythe extends ItemModSword {
 
 		Vector3 spawnPos = ray != null ? new Vector3(ray.hitVec) : posReach;
 
-		EntityDanmaku danmaku = DanmakuBuilder.builder()
+		EntityDanmaku danmaku = DanmakuTemplate.builder()
 				.setUser(player)
 				.setAngle(Vector3.Up())
 				.setMovementData(0.2D)

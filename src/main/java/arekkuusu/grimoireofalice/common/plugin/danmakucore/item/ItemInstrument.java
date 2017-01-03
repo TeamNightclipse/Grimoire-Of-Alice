@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.entity.EntityLivingBase;
@@ -58,7 +58,7 @@ public class ItemInstrument extends ItemMod {
 			if (!player.worldObj.isRemote) {
 				int color = COLORS[itemRand.nextInt(COLORS.length)];
 
-				DanmakuBuilder danmaku = DanmakuBuilder.builder()
+				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(player)
 						.setMovementData(getVelocity())
 						.setShot(LibGOAShotData.NOTE.setColor(color))

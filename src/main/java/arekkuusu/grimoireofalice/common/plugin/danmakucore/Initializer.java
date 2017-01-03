@@ -16,7 +16,7 @@ import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
 import net.katsstuff.danmakucore.entity.danmaku.form.Form;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
-import net.katsstuff.danmakucore.impl.DanmakuVariant.DanmakuVariantGeneric;
+import net.katsstuff.danmakucore.impl.danmakuvariant.DanmakuVariantGeneric;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Optional;

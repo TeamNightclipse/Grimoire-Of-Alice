@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
@@ -107,7 +107,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 				if (!entityLiving.isSneaking()) {
 					int color = COLORS[itemRand.nextInt(COLORS.length)];
 
-					DanmakuBuilder danmaku = DanmakuBuilder.builder()
+					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color))
 							.build();
@@ -117,7 +117,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 				else {
 					for (int i = 0; i < jewels; i++) {
 						int color = COLORS[itemRand.nextInt(COLORS.length)];
-						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)
 								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i * 2))
 								.build();

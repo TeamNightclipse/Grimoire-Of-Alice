@@ -12,7 +12,7 @@ import arekkuusu.grimoireofalice.common.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
@@ -133,7 +133,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					}
 					else if (timeUsed >= 20 && player.isSneaking()) {
 						for (int i = 0; i < 10; i++) {
-							DanmakuBuilder danmaku = DanmakuBuilder.builder()
+							DanmakuTemplate danmaku = DanmakuTemplate.builder()
 									.setUser(player)
 									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))
 									.build();

@@ -14,7 +14,7 @@ import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityWind;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
@@ -70,7 +70,7 @@ public class ItemTenguFan extends ItemMod {
 			if(timeUsed <= 5) return;
 			DanmakuHelper.playShotSound(entityLiving);
 			if(!worldIn.isRemote) {
-				EntityDanmaku danmaku = DanmakuBuilder.builder()
+				EntityDanmaku danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setMovementData(speed)
 						.setShot(LibGOAShotData.WIND)

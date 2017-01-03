@@ -14,7 +14,7 @@ import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
@@ -80,7 +80,7 @@ public class ItemLaevatein extends ItemModSword {
 				playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 				if (!worldIn.isRemote) {
 					for (int i = 0; i < 3; i++) {
-						DanmakuBuilder danmaku = DanmakuBuilder.builder()
+						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(playerIn)
 								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 								.build();

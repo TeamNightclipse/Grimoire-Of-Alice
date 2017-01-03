@@ -14,7 +14,7 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.client.resources.I18n;
@@ -89,7 +89,7 @@ public class ItemNuclearRod extends ItemMod {
 		if (timeUsed < 40) return;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if (!worldIn.isRemote) {
-			EntityDanmaku danmaku = DanmakuBuilder.builder()
+			EntityDanmaku danmaku = DanmakuTemplate.builder()
 					.setUser(entityLiving)
 					.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 					.setMovementData(1F)

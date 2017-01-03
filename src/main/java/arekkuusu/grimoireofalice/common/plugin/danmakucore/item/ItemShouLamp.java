@@ -12,7 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.helper.ItemNBTHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
@@ -72,7 +72,7 @@ public class ItemShouLamp extends ItemJeweled {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
 			if (isActive(player, stack)) {
-				DanmakuBuilder danmaku = DanmakuBuilder.builder()
+				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(player)
 						.setMovementData(0.5D, 1.5D, 0.1D)
 						.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))

@@ -13,7 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
+import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -74,7 +74,7 @@ public class ItemLeaf extends ItemMod {
 			} else {
 				DanmakuHelper.playShotSound(playerIn);
 				if (!worldIn.isRemote) {
-					DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
+					DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
 					worldIn.spawnEntityInWorld(danmaku.build().asEntity());
 					danmaku.setShot(danmaku.shot.setSize(2));
 				}
