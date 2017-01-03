@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
+import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
-import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

@@ -13,8 +13,6 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.variant.GOADanmakuVariants;
-import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.minecraft.client.resources.I18n;

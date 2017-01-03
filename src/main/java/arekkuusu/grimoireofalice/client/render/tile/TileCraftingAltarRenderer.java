@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render.tile;
 
-import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBook;
 import net.minecraft.client.renderer.GlStateManager;

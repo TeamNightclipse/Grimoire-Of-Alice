@@ -2,8 +2,8 @@ package arekkuusu.grimoireofalice.common.core.handler;
 
 import arekkuusu.grimoireofalice.api.ResourceLocationsAPI;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModSounds {
 

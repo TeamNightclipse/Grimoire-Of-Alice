@@ -13,11 +13,11 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.mojang.authlib.GameProfile;
+
+import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.*;
@@ -25,7 +25,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerProfileCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;

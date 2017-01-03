@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -35,8 +34,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
 
 public class ItemNazrinPendulum extends ItemMod {
 

@@ -1,7 +1,8 @@
 package arekkuusu.grimoireofalice.common.core.handler;
 
-import arekkuusu.grimoireofalice.common.lib.LibMod;
 import com.google.common.collect.ImmutableList;
+
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.LootCondition;

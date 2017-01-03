@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuBuilder;
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.entity.EntityLivingBase;

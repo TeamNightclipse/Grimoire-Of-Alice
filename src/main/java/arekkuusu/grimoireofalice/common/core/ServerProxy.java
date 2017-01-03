@@ -8,17 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common.core;
 
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import com.sun.istack.internal.NotNull;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class ServerProxy implements ISidedProxy {
 

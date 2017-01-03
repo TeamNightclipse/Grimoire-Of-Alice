@@ -12,7 +12,6 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

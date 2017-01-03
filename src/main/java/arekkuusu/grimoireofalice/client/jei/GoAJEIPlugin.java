@@ -1,8 +1,8 @@
 package arekkuusu.grimoireofalice.client.jei;
 
+import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.common.lib.LibJEI;
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IModRegistry;

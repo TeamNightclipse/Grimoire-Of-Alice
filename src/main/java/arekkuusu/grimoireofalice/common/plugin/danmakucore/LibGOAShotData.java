@@ -13,7 +13,6 @@ import static net.katsstuff.danmakucore.lib.LibColor.*;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.GOAForms;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.GOASubEntities;
 import net.katsstuff.danmakucore.data.ShotData;
-import net.katsstuff.danmakucore.lib.data.LibForms;
 
 public class LibGOAShotData {
 

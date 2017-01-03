@@ -14,7 +14,6 @@ import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;

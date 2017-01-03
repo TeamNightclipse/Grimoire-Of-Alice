@@ -9,12 +9,12 @@
 package arekkuusu.grimoireofalice.common;
 
 import arekkuusu.grimoireofalice.common.core.handler.*;
+import arekkuusu.grimoireofalice.common.core.ISidedProxy;
+import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.entity.ModEntity;
 import arekkuusu.grimoireofalice.common.event.ModEvents;
-import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;

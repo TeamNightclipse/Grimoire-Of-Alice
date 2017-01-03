@@ -13,7 +13,6 @@ import java.util.List;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKanakoShimenawa;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;

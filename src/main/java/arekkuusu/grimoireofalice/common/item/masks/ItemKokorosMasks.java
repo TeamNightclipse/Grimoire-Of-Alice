@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
