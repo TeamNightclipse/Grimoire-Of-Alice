@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.common.event;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
@@ -25,8 +26,6 @@ import net.minecraftforge.items.IItemHandler;
 public class CapabilitiesEvent {
 
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
-	private final List<ItemStack> flyItems = GrimoireOfAliceAPI.getFlyItems();
-	private final List<ItemStack> flyArmor = GrimoireOfAliceAPI.getFlyArmor();
 
 	//onItemDrop and onItemToss handle player dropping stuff on death and drag n' drop from inventory.
 	@SubscribeEvent
@@ -83,12 +82,11 @@ public class CapabilitiesEvent {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			//Flying
 			if (playersFlying.contains(player)) {
-				if (canFlyAndMove(player)) {
+				if (canFly(player)) {
 					player.capabilities.allowFlying = true;
 					if (!player.worldObj.isRemote) {
 						player.sendPlayerAbilities();
 					}
-					return;
 				}
 				else if (!player.isSpectator() && !player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
@@ -96,29 +94,26 @@ public class CapabilitiesEvent {
 					if (!player.worldObj.isRemote) {
 						player.sendPlayerAbilities();
 					}
+					playersFlying.remove(player);
 				}
-				playersFlying.remove(player);
 			}
-			else if (canFlyAndMove(player)) {
+			else if (canFly(player)) {
 				playersFlying.add(player);
 			}
 		}
 	}
 
-	private boolean canFlyAndMove(EntityPlayer player) {
-		return flyItems.stream().anyMatch(stack -> player.inventory.hasItemStack(stack)) || flyArmor.stream().anyMatch(stack -> {
-			{
-				for (ItemStack item : player.inventory.armorInventory) {
-					if (item != null && item.getItem() == stack.getItem()) {
-						return true;
-					}
-				}
-			}
-			return false;
-		});
+	private boolean canFly(EntityPlayer player) {
+		return GrimoireOfAliceAPI.getFlyItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
+				|| GrimoireOfAliceAPI.getFlyArmor().stream().anyMatch(
+						stack -> Arrays.stream(player.inventory.armorInventory).anyMatch(stack::isItemEqual));
 	}
 
 	private boolean isFlyItem(Item item) {
-		return (!flyItems.isEmpty() && flyItems.stream().anyMatch(stack -> item == stack.getItem())) || (!flyArmor.isEmpty() && flyArmor.stream().anyMatch(stack -> item == stack.getItem()));
+		List<ItemStack> flyItems = GrimoireOfAliceAPI.getFlyItems();
+		List<ItemStack> flyArmor = GrimoireOfAliceAPI.getFlyArmor();
+
+		return (!flyItems.isEmpty() && flyItems.stream().anyMatch(stack -> item == stack.getItem())) ||
+				(!flyArmor.isEmpty() && flyArmor.stream().anyMatch(stack -> item == stack.getItem()));
 	}
 }
