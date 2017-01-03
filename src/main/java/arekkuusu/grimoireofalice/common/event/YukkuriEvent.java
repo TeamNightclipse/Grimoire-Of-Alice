@@ -184,15 +184,13 @@ public class YukkuriEvent {
 	@SuppressWarnings("ConstantConditions")
 	private boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
 		ItemStack stack = new ItemStack(ModItems.HAKUREI_GOHEI);
-		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null) && player.inventory.hasItemStack(stack)
-				&& getValidMode(player, stack, mode);
+		return player.inventory.hasItemStack(stack) && getValidMode(player, stack, mode);
 	}
 
 	private boolean getValidMode(EntityPlayer player, ItemStack stack, GoheiMode mode) {
 		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
 			ItemStack itemStack = player.inventory.mainInventory[i];
-			if (itemStack != null && stack.getItem() == itemStack.getItem()
-					&& GoheiMode.fromType(getGoheiMode(itemStack)) == mode) {
+			if (itemStack != null && stack.getItem() == itemStack.getItem() && getGoheiMode(itemStack) == mode) {
 				return true;
 			}
 		}
@@ -200,8 +198,8 @@ public class YukkuriEvent {
 		return false;
 	}
 
-	private byte getGoheiMode(ItemStack itemStack) {
+	private GoheiMode getGoheiMode(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 5 : nbt.getByte("GoheiMode");
+		return nbt == null ? GoheiMode.OFFENSIVE : GoheiMode.fromType(nbt.getByte("GoheiMode"));
 	}
 }
