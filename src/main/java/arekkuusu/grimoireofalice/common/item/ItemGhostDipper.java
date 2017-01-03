@@ -73,12 +73,14 @@ public class ItemGhostDipper extends ItemMod {
 		RayTraceResult raytraceresult = rayTrace(worldIn, playerIn, true);
 		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
 		if(ret != null) return ret;
+
 		//noinspection ConstantConditions
 		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		else {
 			if(!playerIn.isSneaking()) {
 				BlockPos blockpos = raytraceresult.getBlockPos();
+
 				if (absorb(worldIn, blockpos)) {
 					worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 					if (itemStackIn.isItemDamaged()) {
@@ -92,40 +94,39 @@ public class ItemGhostDipper extends ItemMod {
 				boolean replaceable = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
 				BlockPos posUp = replaceable && raytraceresult.sideHit == EnumFacing.UP ? pos : pos.offset(raytraceresult.sideHit);
 
-				if (!playerIn.canPlayerEdit(posUp, raytraceresult.sideHit, itemStackIn)) {
-					return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-				}
+				if(playerIn.canPlayerEdit(posUp, raytraceresult.sideHit, itemStackIn)) {
 
-				IBlockState iblockstate = worldIn.getBlockState(posUp);
-				Material material = iblockstate.getMaterial();
-				boolean isSolid = material.isSolid();
-				boolean canReplace = iblockstate.getBlock().isReplaceable(worldIn, posUp);
+					IBlockState iblockstate = worldIn.getBlockState(posUp);
+					Material material = iblockstate.getMaterial();
+					boolean isSolid = material.isSolid();
+					boolean canReplace = iblockstate.getBlock().isReplaceable(worldIn, posUp);
 
-				if(!worldIn.isAirBlock(posUp) && isSolid && !canReplace) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-				else {
-					if(worldIn.provider.doesWaterVaporize()) {
-						worldIn.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
-								2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-						for(int k = 0; k < 8; ++k) {
-							worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(), posUp.getY() + itemRand.nextDouble(),
-									posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+					if(worldIn.isAirBlock(posUp) || !isSolid || canReplace) {
+						if(worldIn.provider.doesWaterVaporize()) {
+							worldIn.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
+									2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+
+							for(int k = 0; k < 8; ++k) {
+								worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(),
+										posUp.getY() + itemRand.nextDouble(), posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
+							}
 						}
-						return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-					}
-					else {
-						if (!worldIn.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
-							worldIn.destroyBlock(posUp, true);
-						}
+						else {
+							if(!worldIn.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
+								worldIn.destroyBlock(posUp, true);
+							}
 
-						worldIn.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						worldIn.setBlockState(posUp, Blocks.FLOWING_WATER.getDefaultState(), 11);
-						itemStackIn.damageItem(1, playerIn);
-						playerIn.setActiveHand(hand);
-						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+							worldIn.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+							worldIn.setBlockState(posUp, Blocks.FLOWING_WATER.getDefaultState(), 11);
+							itemStackIn.damageItem(1, playerIn);
+							playerIn.setActiveHand(hand);
+							return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+						}
 					}
 				}
 			}
 		}
+
 		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 	}
 
