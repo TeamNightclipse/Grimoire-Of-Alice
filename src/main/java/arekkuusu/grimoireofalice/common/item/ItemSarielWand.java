@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.block.Block;
@@ -23,6 +25,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerProfileCache;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.ActionResult;
@@ -33,14 +37,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSarielWand extends ItemSwordOwner {
 
-	private final String SKULL_TYPE = "SkullType";
-	private final String PLAYER_UUID = "PlayerUUID";
-	private final String PLAYER_NAME = "PlayerName";
+	private static final String SKULL_TYPE = "SkullType";
+	private static final String PLAYER_UUID = "PlayerUUID";
 
 	public ItemSarielWand(ToolMaterial material) {
 		super(material, LibItemName.SARIEL_WAND);
@@ -165,6 +169,8 @@ public class ItemSarielWand extends ItemSwordOwner {
 			stack.setTagCompound(nbt);
 		}
 		nbt.setInteger(SKULL_TYPE, type);
+		nbt.removeTag(PLAYER_UUID + "Most");
+		nbt.removeTag(PLAYER_UUID + "Least");
 	}
 
 	private void setProfile(ItemStack stack, EntityPlayer player) {
@@ -174,25 +180,39 @@ public class ItemSarielWand extends ItemSwordOwner {
 			stack.setTagCompound(nbt);
 		}
 		nbt.setInteger(SKULL_TYPE, 3);
-		nbt.setString(PLAYER_NAME, player.getGameProfile().getName());
-		nbt.setString(PLAYER_UUID, player.getGameProfile().getId().toString());
+		nbt.setUniqueId(PLAYER_UUID, player.getUniqueID());
 	}
 
+	@Nullable
 	private GameProfile getProfile(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
-		return nbt == null ? null : new GameProfile(UUID.fromString(nbt.getString(PLAYER_UUID)), nbt.getString(PLAYER_NAME));
+		if(nbt != null) {
+			UUID uuid = nbt.getUniqueId(PLAYER_UUID);
+			return uuid == null ? null : getCache().getProfileByUUID(uuid);
+		}
+		else return null;
 	}
 
-	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	private String getName(ItemStack stack) {
 		int type = getType(stack);
 		switch (type) {
 			case 3:
 				NBTTagCompound nbt = stack.getTagCompound();
-				return nbt != null && nbt.hasKey(PLAYER_NAME)
-						? nbt.getString(PLAYER_NAME)
-						: I18n.format("grimoire.tooltip.skull_3.name");
+
+				if(nbt != null) {
+					UUID uuid = nbt.getUniqueId(PLAYER_UUID);
+
+					if(uuid != null) {
+						GameProfile profile = getCache().getProfileByUUID(uuid);
+
+						if(profile != null) {
+							return profile.getName();
+						}
+					}
+				}
+
+				return I18n.format("grimoire.tooltip.skull_3.name");
 			default:
 				return I18n.format("grimoire.tooltip.skull_" + type + ".name");
 		}
@@ -211,5 +231,9 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	private PlayerProfileCache getCache() {
+		return FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerProfileCache();
 	}
 }
