@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.common.core.handler;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.api.ResourceLocationsAPI;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.util.SoundEvent;
@@ -8,21 +8,21 @@ import net.minecraft.util.SoundEvent;
 public class ModSounds {
 
 	public static void preInit() {
-		registerSound(ResourceLocations.CAMERA_BEEP);
-		registerSound(ResourceLocations.CAMERA_SHOOT);
-		registerSound(ResourceLocations.CAMERA_SHUTTER);
-		registerSound(ResourceLocations.NEEDLE_SWEEP);
-		registerSound(ResourceLocations.SIMPLE_BELL);
-		registerSound(ResourceLocations.CRAFTING_SPELL);
-		registerSound(ResourceLocations.ORIN_NYAA);
-		registerSound(ResourceLocations.POWER_UP);
-		registerSound(ResourceLocations.ATTTACK_LONG);
-		registerSound(ResourceLocations.HORN);
-		registerSound(ResourceLocations.WARP);
-		registerSound(ResourceLocations.UFO_IDDLE);
-		registerSound(ResourceLocations.UFO_SPAWN);
-		registerSound(ResourceLocations.CAUTION);
-		registerSound(ResourceLocations.WAVE);
+		registerSound(ResourceLocationsAPI.CAMERA_BEEP);
+		registerSound(ResourceLocationsAPI.CAMERA_SHOOT);
+		registerSound(ResourceLocationsAPI.CAMERA_SHUTTER);
+		registerSound(ResourceLocationsAPI.NEEDLE_SWEEP);
+		registerSound(ResourceLocationsAPI.SIMPLE_BELL);
+		registerSound(ResourceLocationsAPI.CRAFTING_SPELL);
+		registerSound(ResourceLocationsAPI.ORIN_NYAA);
+		registerSound(ResourceLocationsAPI.POWER_UP);
+		registerSound(ResourceLocationsAPI.ATTTACK_LONG);
+		registerSound(ResourceLocationsAPI.HORN);
+		registerSound(ResourceLocationsAPI.WARP);
+		registerSound(ResourceLocationsAPI.UFO_IDDLE);
+		registerSound(ResourceLocationsAPI.UFO_SPAWN);
+		registerSound(ResourceLocationsAPI.CAUTION);
+		registerSound(ResourceLocationsAPI.WAVE);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {
