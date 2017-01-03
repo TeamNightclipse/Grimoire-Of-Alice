@@ -84,13 +84,10 @@ public class ItemUFOs extends ItemMod {
 		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(10D));
 
 		for(EntityItem item : aList) {
-			if(!stackHasRoom(item.getEntityItem(), player)) {
+			if(!hasRoomForStack(item.getEntityItem(), player) && player.getDistanceSqToEntity(item) < 1.5D * 1.5D) {
 				continue;
 			}
 			item.setPickupDelay(0);
-			if(player.getDistanceToEntity(item) < 1.5D) {
-				continue;
-			}
 			givePlayerItems(item, player);
 		}
 	}
@@ -104,7 +101,7 @@ public class ItemUFOs extends ItemMod {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private boolean stackHasRoom(ItemStack item, EntityPlayer player) {
+	private boolean hasRoomForStack(ItemStack item, EntityPlayer player) {
 		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)
 				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true) == null;
 	}
