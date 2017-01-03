@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.common.core.handler;
+package arekkuusu.grimoireofalice.client.handler;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -6,9 +6,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class TextureStitcher {
 
-	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void stitcherEventPre(TextureStitchEvent.Pre event) {
 		event.getMap().registerSprite(ResourceLocations.SHINMYOUMARU_SPARKLE);

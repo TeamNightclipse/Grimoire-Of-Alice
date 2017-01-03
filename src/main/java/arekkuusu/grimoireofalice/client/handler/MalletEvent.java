@@ -1,4 +1,4 @@
-package arekkuusu.grimoireofalice.common.event;
+package arekkuusu.grimoireofalice.client.handler;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,9 +7,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class MalletEvent {
 
-	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderLiving(RenderLivingEvent.Pre event) {
 		EntityLivingBase e = event.getEntity();
@@ -22,7 +22,6 @@ public class MalletEvent {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderLivingFinished(RenderLivingEvent.Post event) {
 		EntityLivingBase e = event.getEntity();
