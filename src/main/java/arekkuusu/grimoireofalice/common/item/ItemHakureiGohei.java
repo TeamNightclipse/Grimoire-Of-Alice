@@ -30,6 +30,9 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -62,7 +65,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer && GoheiMode.fromType(getMode(stack)) == PASSIVE) {
+		if (entityIn instanceof EntityPlayer && getMode(stack) == PASSIVE) {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			if (!player.isSneaking()) {
 				Vec3d vec = player.getLookVec();
@@ -87,7 +90,7 @@ public class ItemHakureiGohei extends ItemMod {
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		playerIn.setActiveHand(hand);
 
-		GoheiMode mode = GoheiMode.fromType(getMode(itemStackIn));
+		GoheiMode mode = getMode(itemStackIn);
 		if (!playerIn.isSneaking()) {
 			if (mode == YING_YANG_ORB) {
 				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
@@ -106,8 +109,9 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int ticks) {
-		if (GoheiMode.fromType(getMode(stack)) == AURA_MANIPULATION) {
-			List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
+		if (getMode(stack) == AURA_MANIPULATION) {
+			List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+					playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
 			for(EntityLivingBase mob : list) {
 				Vec3d playerPos = playerIn.getPositionVector();
 				Vec3d mobPos = mob.getPositionVector();
@@ -119,10 +123,9 @@ public class ItemHakureiGohei extends ItemMod {
 				mob.motionZ = -motion.zCoord * 1.2;
 
 				if(mob.worldObj.isRemote && ticks % 4 == 0) {
-					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC
-							, mob.posX + (itemRand.nextDouble() - 0.5D) * (double) mob.width, mob.posY + itemRand.nextDouble() * (double) mob.height - 0.25D, mob.posZ
-									+ (itemRand.nextDouble() - 0.5D) * (double) mob.width, (itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat()
-							, (itemRand.nextFloat() - 0.5D) * 0.2);
+					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
+							mob.posY + itemRand.nextDouble() * mob.height - 0.25D, mob.posZ + (itemRand.nextDouble() - 0.5D) * mob.width,
+							(itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat(), (itemRand.nextFloat() - 0.5D) * 0.2);
 				}
 			}
 		}
@@ -133,13 +136,18 @@ public class ItemHakureiGohei extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
 			if (playerIn.isSneaking()) {
-				byte mode = (byte) MathHelper.clamp_int(getMode(stack) + 1, 0, 5);
-				setMode(stack, getMode(stack) != 5 ? mode : 0);
-				if(worldIn.isRemote)
-					GrimoireOfAlice.proxy.displayRecordText("grimoire.tooltip.hakurei_gohei_mode_" + fromType(getMode(stack)).toString() + ".name", TextFormatting.BOLD);
+				byte type = (byte) MathHelper.clamp_int(getType(stack) + 1, 0, 5);
+				setType(stack, getType(stack) != 5 ? type : 0);
+				if(worldIn.isRemote) {
+					String modeName = getMode(stack).toString() + ".name";
+					ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName);
+					text.setStyle(new Style().setBold(true));
+
+					GrimoireOfAlice.proxy.displayRecordText(text);
+				}
 			}
 			else {
-				if (fromType(getMode(stack)) == PASSIVE) {
+				if (getMode(stack) == PASSIVE) {
 					Vec3d look = playerIn.getLookVec();
 					float distance = 5F;
 					double dx = playerIn.posX + look.xCoord * distance;
@@ -158,7 +166,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (fromType(getMode(stack)) == OFFENSIVE) {
+		if (getMode(stack) == OFFENSIVE) {
 			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 				attacker.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
 				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
@@ -178,7 +186,7 @@ public class ItemHakureiGohei extends ItemMod {
 		return true;
 	}
 
-	private void setMode(ItemStack itemStack, byte mode) {
+	private void setType(ItemStack itemStack, byte mode) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt == null) {
 			nbt = new NBTTagCompound();
@@ -187,9 +195,13 @@ public class ItemHakureiGohei extends ItemMod {
 		nbt.setByte("GoheiMode", mode);
 	}
 
-	private byte getMode(ItemStack itemStack) {
+	private byte getType(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? 5 : nbt.getByte("GoheiMode");
+	}
+
+	private GoheiMode getMode(ItemStack stack) {
+		return GoheiMode.fromType(getType(stack));
 	}
 
 	private boolean isSafe(World world, double x, double y, double z) {
@@ -203,7 +215,7 @@ public class ItemHakureiGohei extends ItemMod {
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
 		return I18n.format("item.hakureigohei.name") + " : "
-				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + GoheiMode.fromType(getMode(stack)).toString() + ".name");
+				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + getMode(stack).toString() + ".name");
 	}
 
 	@Override

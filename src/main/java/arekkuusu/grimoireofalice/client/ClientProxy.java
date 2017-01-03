@@ -23,15 +23,13 @@ import arekkuusu.grimoireofalice.client.handler.TextureStitcher;
 import arekkuusu.grimoireofalice.common.core.handler.GuiHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import com.sun.istack.internal.NotNull;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -289,12 +287,8 @@ public class ClientProxy implements ISidedProxy {
 	}
 
 	@Override
-	public void displayRecordText(@NotNull String i18Format, TextFormatting... color) {
-		String format = "";
-		for (TextFormatting i : color) {
-			format += i + "";
-		}
-		Minecraft.getMinecraft().ingameGUI.setRecordPlaying(format + I18n.format(i18Format), false);
+	public void displayRecordText(ITextComponent text) {
+		Minecraft.getMinecraft().ingameGUI.setRecordPlaying(text.getFormattedText(), false);
 	}
 
 	@SideOnly(Side.CLIENT)

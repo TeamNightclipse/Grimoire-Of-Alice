@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.core;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import com.sun.istack.internal.NotNull;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -34,6 +35,6 @@ public class ServerProxy implements ISidedProxy {
 	}
 
 	@Override
-	public void displayRecordText(@NotNull String i18Format, TextFormatting... color) {
+	public void displayRecordText(ITextComponent text) {
 	}
 }
