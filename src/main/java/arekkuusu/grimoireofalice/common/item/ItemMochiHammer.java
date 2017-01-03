@@ -63,11 +63,11 @@ public class ItemMochiHammer extends ItemModSword implements IItemData {
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> modifiers = super.getAttributeModifiers(slot, stack);
-		multiplyModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, 0.2);
+		multiplyModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER);
 		return modifiers;
 	}
 
-	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier) {
+	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id) {
 		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getAttributeUnlocalizedName());
 		Optional<AttributeModifier> modifierOptional = modifiers.stream()
 				.filter(attributeModifier -> attributeModifier.getID().equals(id))
@@ -76,7 +76,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData {
 		if(modifierOptional.isPresent()) {
 			AttributeModifier modifier = modifierOptional.get();
 			modifiers.remove(modifier);
-			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation()));
+			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * 0.2, modifier.getOperation()));
 		}
 	}
 

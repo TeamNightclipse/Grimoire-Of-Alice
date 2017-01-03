@@ -69,143 +69,143 @@ public class ClientProxy implements ISidedProxy {
 	@SubscribeEvent
 	public static void registerItemModels(ModelRegistryEvent event) {
 		//Armor
-		registerItem(ModItems.MAPLE_LEAF_SHIELD, 0);
-		registerItem(ModItems.FOX_MASK, 0);
-		registerItem(ModItems.FUKU_NO_KAMI_MASK, 0);
-		registerItem(ModItems.HANNYA_MASK, 0);
-		registerItem(ModItems.HYOTTOKO_MASK, 0);
-		registerItem(ModItems.KOKOROS_MASKS, 0);
-		registerItem(ModItems.KOOMOTE_MASK, 0);
-		registerItem(ModItems.MASK_OF_HOPE, 0);
-		registerItem(ModItems.MONKEY_MASK, 0);
-		registerItem(ModItems.RAIDEN_MASK, 0);
-		registerItem(ModItems.UBA_MASK, 0);
-		registerItem(ModItems.TOYOSATOMIMI_HAT, 0);
-		registerItem(ModItems.KANAKO_SHIMENAWA, 0);
-		registerItem(ModItems.ICHIRIN_UNZAN, 0);
-		registerItem(ModItems.SUWAKO_HAT, 0);
-		registerItem(ModItems.FIRE_ROBE, 0);
-		registerItem(ModItems.UTSUHO_WINGS, 0);
-		registerItem(ModItems.KAPPA_HAT, 0);
-		registerItem(ModItems.MARISA_HAT, 0);
-		registerItem(ModItems.MIKO_CLOAK, 0);
-		registerItem(ModItems.SHINMYOUMARU_HAT, 0);
-		registerItem(ModItems.NUCLEAR_BOOTS, 0);
+		registerItem(ModItems.MAPLE_LEAF_SHIELD);
+		registerItem(ModItems.FOX_MASK);
+		registerItem(ModItems.FUKU_NO_KAMI_MASK);
+		registerItem(ModItems.HANNYA_MASK);
+		registerItem(ModItems.HYOTTOKO_MASK);
+		registerItem(ModItems.KOKOROS_MASKS);
+		registerItem(ModItems.KOOMOTE_MASK);
+		registerItem(ModItems.MASK_OF_HOPE);
+		registerItem(ModItems.MONKEY_MASK);
+		registerItem(ModItems.RAIDEN_MASK);
+		registerItem(ModItems.UBA_MASK);
+		registerItem(ModItems.TOYOSATOMIMI_HAT);
+		registerItem(ModItems.KANAKO_SHIMENAWA);
+		registerItem(ModItems.ICHIRIN_UNZAN);
+		registerItem(ModItems.SUWAKO_HAT);
+		registerItem(ModItems.FIRE_ROBE);
+		registerItem(ModItems.UTSUHO_WINGS);
+		registerItem(ModItems.KAPPA_HAT);
+		registerItem(ModItems.MARISA_HAT);
+		registerItem(ModItems.MIKO_CLOAK);
+		registerItem(ModItems.SHINMYOUMARU_HAT);
+		registerItem(ModItems.NUCLEAR_BOOTS);
 
 		//Items
-		registerItem(ModItems.TAMAHAGANE_STEEL, 0);
-		registerItem(ModItems.HIHIIROKANE, 0);
-		registerItem(ModItems.SHIMENAWA_ROPE, 0);
-		registerItem(ModItems.TIME_ORB, 0);
-		registerItem(ModItems.UFOS, 0);
-		registerItem(ModItems.MASK, 0);
-		registerItem(ModItems.GRIMOIRE_BOOK, 0);
-		registerItem(ModItems.YOUKAI_BOOK, 0);
-		registerItem(ModItems.PASTE, 0);
-		registerItem(ModItems.SOLDIFIED_PAPER, 0);
-		registerItem(ModItems.IMPURE_ROCK, 0);
-		registerItem(ModItems.IBARAKI_BOX_EMPTY, 0);
-		registerItem(ModItems.FULL_POWER, 0);
-		registerItem(ModItems.STAR, 0);
-		registerItem(ModItems.CHERRY, 0);
-		registerItem(ModItems.FAITH, 0);
-		registerItem(ModItems.UFO_BLUE, 0);
-		registerItem(ModItems.UFO_GREEN, 0);
-		registerItem(ModItems.UFO_RED, 0);
-		registerItem(ModItems.PATCHY_BOOK, 0);
-		registerItem(ModItems.SKULL, 0);
-		registerItem(ModItems.NAZRIN_PENDULUM, 0);
-		registerItem(ModItems.WALL_PASSING_CHISEL, 0);
-		registerItem(ModItems.ROD_REMORSE, 0);
-		registerItem(ModItems.BUDAH_BOUL, 0);
-		registerItem(ModItems.DRAGON_JEWEL, 0);
-		registerItem(ModItems.BLOOD_ORB, 0);
-		registerItem(ModItems.FOLDING_UMBRELLA, 0);
-		registerItem(ModItems.SUBSTITUTE_JIZO, 0);
-		registerItem(ModItems.NIMBLE_FABRIC, 0);
-		registerItem(ModItems.FAKE_MIRACLE_MALLET, 0);
-		registerItem(ModItems.GHASTLY_SEND_OFF_LANTERN, 0);
-		registerItem(ModItems.CURSED_DECOY_DOLL, 0);
-		registerItem(ModItems.AYA_CAMERA, 0);
-		registerItem(ModItems.HATATE_CAMERA, 0);
-		registerItem(ModItems.HAKUREI_GOHEI, 0);
-		registerItem(ModItems.SANAE_GOHEI, 0);
-		registerItem(ModItems.MORTAR_AND_PESTLE, 0);
-		registerItem(ModItems.BLACK_FEATHER, 0);
-		registerItem(ModItems.SHINKI_WAND, 0);
-		registerItem(ModItems.NETHER_SHARD, 0);
-		registerItem(ModItems.IRON_NUGGET, 0);
-		registerItem(ModItems.HARDENED_LEATHER, 0);
+		registerItem(ModItems.TAMAHAGANE_STEEL);
+		registerItem(ModItems.HIHIIROKANE);
+		registerItem(ModItems.SHIMENAWA_ROPE);
+		registerItem(ModItems.TIME_ORB);
+		registerItem(ModItems.UFOS);
+		registerItem(ModItems.MASK);
+		registerItem(ModItems.GRIMOIRE_BOOK);
+		registerItem(ModItems.YOUKAI_BOOK);
+		registerItem(ModItems.PASTE);
+		registerItem(ModItems.SOLDIFIED_PAPER);
+		registerItem(ModItems.IMPURE_ROCK);
+		registerItem(ModItems.IBARAKI_BOX_EMPTY);
+		registerItem(ModItems.FULL_POWER);
+		registerItem(ModItems.STAR);
+		registerItem(ModItems.CHERRY);
+		registerItem(ModItems.FAITH);
+		registerItem(ModItems.UFO_BLUE);
+		registerItem(ModItems.UFO_GREEN);
+		registerItem(ModItems.UFO_RED);
+		registerItem(ModItems.PATCHY_BOOK);
+		registerItem(ModItems.SKULL);
+		registerItem(ModItems.NAZRIN_PENDULUM);
+		registerItem(ModItems.WALL_PASSING_CHISEL);
+		registerItem(ModItems.ROD_REMORSE);
+		registerItem(ModItems.BUDAH_BOUL);
+		registerItem(ModItems.DRAGON_JEWEL);
+		registerItem(ModItems.BLOOD_ORB);
+		registerItem(ModItems.FOLDING_UMBRELLA);
+		registerItem(ModItems.SUBSTITUTE_JIZO);
+		registerItem(ModItems.NIMBLE_FABRIC);
+		registerItem(ModItems.FAKE_MIRACLE_MALLET);
+		registerItem(ModItems.GHASTLY_SEND_OFF_LANTERN);
+		registerItem(ModItems.CURSED_DECOY_DOLL);
+		registerItem(ModItems.AYA_CAMERA);
+		registerItem(ModItems.HATATE_CAMERA);
+		registerItem(ModItems.HAKUREI_GOHEI);
+		registerItem(ModItems.SANAE_GOHEI);
+		registerItem(ModItems.MORTAR_AND_PESTLE);
+		registerItem(ModItems.BLACK_FEATHER);
+		registerItem(ModItems.SHINKI_WAND);
+		registerItem(ModItems.NETHER_SHARD);
+		registerItem(ModItems.IRON_NUGGET);
+		registerItem(ModItems.HARDENED_LEATHER);
 
-		registerItem(ModItems.GHOST_DIPPER, 0);
-		registerItem(ModItems.THIRD_EYE, 0);
+		registerItem(ModItems.GHOST_DIPPER);
+		registerItem(ModItems.THIRD_EYE);
 
 		//Food
-		registerItemWithTypes(ModItems.SHROOM_POWDER, 16);
-		registerItem(ModItems.GRILLED_LAMPREY, 0);
-		registerItem(ModItems.IBARAKI_BOX_FILLED, 0);
-		registerItem(ModItems.KAPPAS_NOSTRUM, 0);
-		registerItem(ModItems.HEAVENLY_PEACH, 0);
-		registerItem(ModItems.IBUKI_GOURD, 0);
-		registerItem(ModItems.COWRIE_SHELL, 0);
-		registerItem(ModItems.ORB_ELIXIR, 0);
-		registerItem(ModItems.HOURAI_ELIXIR, 0);
-		registerItem(ModItems.YUUGI_SAKE, 0);
+		registerItemWithTypes(ModItems.SHROOM_POWDER);
+		registerItem(ModItems.GRILLED_LAMPREY);
+		registerItem(ModItems.IBARAKI_BOX_FILLED);
+		registerItem(ModItems.KAPPAS_NOSTRUM);
+		registerItem(ModItems.HEAVENLY_PEACH);
+		registerItem(ModItems.IBUKI_GOURD);
+		registerItem(ModItems.COWRIE_SHELL);
+		registerItem(ModItems.ORB_ELIXIR);
+		registerItem(ModItems.HOURAI_ELIXIR);
+		registerItem(ModItems.YUUGI_SAKE);
 
 		//Weapons
-		registerItem(ModItems.AMENONUHOKO, 0);
-		registerItem(ModItems.MIKO_STICK, 0);
-		registerItem(ModItems.MOCHI_HAMMER, 0);
-		registerItem(ModItems.MOMIJIS_SCIMITAR_SWORD, 0);
-		registerItem(ModItems.NAZRIN_STICK_ITEM, 0);
-		registerItem(ModItems.NUE_TRIDENT, 0);
-		registerItem(ModItems.SWORD_OF_KUSANAGI, 0);
-		registerItem(ModItems.SYRINGE, 0);
-		registerItem(ModItems.ICHIRIN_RING, 0);
-		registerItem(ModItems.KANAKO_ONBASHIRA, 0);
-		registerItem(ModItems.SHICHI_SEIKEN, 0);
-		registerItem(ModItems.CATTAIL_PLANT, 0);
-		registerItem(ModItems.POPSICLE_STICK, 0);
-		registerItem(ModItems.RUMIA_SWORD, 0);
-		registerItem(ModItems.SARIEL_WAND, 0);
-		registerItem(ModItems.WATERMELON_BLADE, 0);
-		registerItem(ModItems.WATERMELON_SWORD, 0);
-		registerItem(ModItems.SACRED_TOYOSATOMIMI, 0);
-		registerItem(ModItems.SHINMYOUMARU_NEEDLE, 0);
-		registerItem(ModItems.DEATH_SCYTHE, 0);
-		registerItem(ModItems.ROUKANKEN, 0);
+		registerItem(ModItems.AMENONUHOKO);
+		registerItem(ModItems.MIKO_STICK);
+		registerItem(ModItems.MOCHI_HAMMER);
+		registerItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
+		registerItem(ModItems.NAZRIN_STICK_ITEM);
+		registerItem(ModItems.NUE_TRIDENT);
+		registerItem(ModItems.SWORD_OF_KUSANAGI);
+		registerItem(ModItems.SYRINGE);
+		registerItem(ModItems.ICHIRIN_RING);
+		registerItem(ModItems.KANAKO_ONBASHIRA);
+		registerItem(ModItems.SHICHI_SEIKEN);
+		registerItem(ModItems.CATTAIL_PLANT);
+		registerItem(ModItems.POPSICLE_STICK);
+		registerItem(ModItems.RUMIA_SWORD);
+		registerItem(ModItems.SARIEL_WAND);
+		registerItem(ModItems.WATERMELON_BLADE);
+		registerItem(ModItems.WATERMELON_SWORD);
+		registerItem(ModItems.SACRED_TOYOSATOMIMI);
+		registerItem(ModItems.SHINMYOUMARU_NEEDLE);
+		registerItem(ModItems.DEATH_SCYTHE);
+		registerItem(ModItems.ROUKANKEN);
 
 		//Blocks
-		registerBlock(ModBlocks.COMPACT_STONE, 0);
-		registerBlock(ModBlocks.HOLY_KEY_STONE, 0);
-		registerBlock(ModBlocks.HOLY_STONE, 0);
-		registerBlock(ModBlocks.KYOUMARUBOTAN, 0);
-		registerBlock(ModBlocks.ONBASHIRA, 0);
-		registerBlock(ModBlocks.PAPER_BLOCK, 0);
-		registerBlock(ModBlocks.ROPE_BLOCK, 0);
-		registerBlockWithColorTypes(ModBlocks.SHROOM, 16);
-		registerBlock(ModBlocks.SUGAR_BLOCK, 0);
-		registerBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC, 0);
-		registerBlock(ModBlocks.ALTAR, 0);
-		registerBlock(ModBlocks.PILLAR_ALTAR, 0);
-		registerBlock(ModBlocks.IMPURE_STONE, 0);
-		registerBlock(ModBlocks.HIHIIROKANE_BLOCK, 0);
+		registerBlock(ModBlocks.COMPACT_STONE);
+		registerBlock(ModBlocks.HOLY_KEY_STONE);
+		registerBlock(ModBlocks.HOLY_STONE);
+		registerBlock(ModBlocks.KYOUMARUBOTAN);
+		registerBlock(ModBlocks.ONBASHIRA);
+		registerBlock(ModBlocks.PAPER_BLOCK);
+		registerBlock(ModBlocks.ROPE_BLOCK);
+		registerShroom(ModBlocks.SHROOM);
+		registerBlock(ModBlocks.SUGAR_BLOCK);
+		registerBlock(ModBlocks.HYPER_CONCENTRATED_MAGIC);
+		registerBlock(ModBlocks.ALTAR);
+		registerBlock(ModBlocks.PILLAR_ALTAR);
+		registerBlock(ModBlocks.IMPURE_STONE);
+		registerBlock(ModBlocks.HIHIIROKANE_BLOCK);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			registerItem(ModItems.LEAF, 0);
-			registerItem(ModItems.MIRACLE_MALLET, 0);
-			registerItem(ModItems.STOP_WATCH, 0);
-			registerItem(ModItems.LUNASA_VIOLIN, 0);
-			registerItem(ModItems.LYRICA_PIANO, 0);
-			registerItem(ModItems.MERLIN_TRUMPET, 0);
-			registerItem(ModItems.TENGU_FAN, 0);
-			registerItem(ModItems.SHOU_LAMP, 0);
-			registerItem(ModItems.LAEVATEIN, 0);
-			registerItem(ModItems.JEWELED_HOURAI, 0);
-			registerItem(ModItems.POUCH, 0);
-			registerItem(ModItems.ELLY_SCYTHE, 0);
-			registerItem(ModItems.HISOU, 0);
-			registerItem(ModItems.NUCLEAR_ROD, 0);
+			registerItem(ModItems.LEAF);
+			registerItem(ModItems.MIRACLE_MALLET);
+			registerItem(ModItems.STOP_WATCH);
+			registerItem(ModItems.LUNASA_VIOLIN);
+			registerItem(ModItems.LYRICA_PIANO);
+			registerItem(ModItems.MERLIN_TRUMPET);
+			registerItem(ModItems.TENGU_FAN);
+			registerItem(ModItems.SHOU_LAMP);
+			registerItem(ModItems.LAEVATEIN);
+			registerItem(ModItems.JEWELED_HOURAI);
+			registerItem(ModItems.POUCH);
+			registerItem(ModItems.ELLY_SCYTHE);
+			registerItem(ModItems.HISOU);
+			registerItem(ModItems.NUCLEAR_ROD);
 		}
 	}
 
@@ -233,29 +233,29 @@ public class ClientProxy implements ISidedProxy {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private static void registerItem(Item item, int damage) {
-		ModelLoader.setCustomModelResourceLocation(item, damage, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+	private static void registerItem(Item item) {
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
 	@SideOnly(Side.CLIENT)
-	private static void registerBlock(Block block, int meta) {
+	private static void registerBlock(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
-		ModelLoader.setCustomModelResourceLocation(iBlock, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(iBlock, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 
 	@SideOnly(Side.CLIENT)
-	private static void registerItemWithTypes(Item item, int damage) {
-		for(int i = 0; i < damage; i++) {
+	private static void registerItemWithTypes(Item item) {
+		for(int i = 0; i < 16; i++) {
 			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroompowder_" + i, "inventory"));
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
-	private static void registerBlockWithColorTypes(Block block, int meta) {
+	private static void registerShroom(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
 		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
-		for(int i = 0; i < meta; i++) {
+		for(int i = 0; i < 16; i++) {
 			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
 		}
 	}

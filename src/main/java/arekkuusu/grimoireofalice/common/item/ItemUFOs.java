@@ -75,13 +75,13 @@ public class ItemUFOs extends ItemMod {
 			if(selected && isActive(stack)) {
 				if(player.ticksExisted % 14 == 0)
 					player.playSound(GrimoireSoundEvents.UFO_IDDLE, 0.1F, 1F);
-				itemsInRange(world, player, 10);
+				itemsInRange(world, player);
 			}
 		}
 	}
 
-	private void itemsInRange(World world, EntityPlayer player, double range) {
-		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(range));
+	private void itemsInRange(World world, EntityPlayer player) {
+		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(10D));
 
 		for(EntityItem item : aList) {
 			if(!stackHasRoom(item.getEntityItem(), player)) {
