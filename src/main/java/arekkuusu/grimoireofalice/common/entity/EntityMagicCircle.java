@@ -44,56 +44,58 @@ public class EntityMagicCircle extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(host != null) {
-			if(!worldObj.isRemote && (host.isDead || host.isHandActive())) {
-				setDead();
-				return;
-			}
-
-			setAnimationCount(last);
-
-			if(endTime < ticksExisted && endTime >= 0) {
-				if(!worldObj.isRemote) {
+		if(!worldObj.isRemote) {
+			if(host != null) {
+				if(host.isDead || host.isHandActive()) {
 					setDead();
+					return;
+				}
+
+				setAnimationCount(last);
+
+				if(endTime < ticksExisted && endTime >= 0) {
+					if(!worldObj.isRemote) {
+						setDead();
+					}
+				}
+
+				if(getAnimationCount() < 5) {
+					setCircleSize(getAnimationCount() / 5.0F);
+				}
+				else {
+					float end2 = endTime;
+					setCircleSize((end2 - getAnimationCount()) / end2);
+				}
+
+				posX = host.posX;
+				posY = host.posY + 0.1D;
+				posZ = host.posZ;
+				rotationYaw = host.rotationYawHead;
+				rotationPitch = host.rotationPitch;
+				setPosition(posX, posY, posZ);
+
+				while(rotationYaw > 180F) {
+					rotationYaw -= 360F;
+				}
+				while(rotationYaw < -180F) {
+					rotationYaw += 360F;
+				}
+				while(rotationPitch > 180F) {
+					rotationPitch -= 360F;
+				}
+				while(rotationPitch < -180F) {
+					rotationPitch += 360F;
+				}
+
+				setRotation(rotationYaw, rotationPitch);
+
+				if(ticksExisted > last) {
+					last = ticksExisted;
 				}
 			}
-
-			if(getAnimationCount() < 5) {
-				setCircleSize(getAnimationCount() / 5.0F);
-			}
 			else {
-				float end2 = endTime;
-				setCircleSize((end2 - getAnimationCount()) / end2);
+				setDead();
 			}
-
-			posX = host.posX;
-			posY = host.posY + 0.1D;
-			posZ = host.posZ;
-			rotationYaw = host.rotationYawHead;
-			rotationPitch = host.rotationPitch;
-			setPosition(posX, posY, posZ);
-
-			while(rotationYaw > 180F) {
-				rotationYaw -= 360F;
-			}
-			while(rotationYaw < -180F) {
-				rotationYaw += 360F;
-			}
-			while(rotationPitch > 180F) {
-				rotationPitch -= 360F;
-			}
-			while(rotationPitch < -180F) {
-				rotationPitch += 360F;
-			}
-
-			setRotation(rotationYaw, rotationPitch);
-
-			if(ticksExisted > last) {
-				last = ticksExisted;
-			}
-		}
-		else if(!worldObj.isRemote) {
-			setDead();
 		}
 	}
 

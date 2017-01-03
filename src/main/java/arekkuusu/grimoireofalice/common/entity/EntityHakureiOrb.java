@@ -50,33 +50,33 @@ public class EntityHakureiOrb extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		EntityLivingBase player = getThrower();
-		if(player == null) {
-			if(!worldObj.isRemote) {
+		if(!worldObj.isRemote) {
+			EntityLivingBase player = getThrower();
+			if(player == null) {
 				setDead();
-			}
-		}
-		else {
-			if(player.isHandActive() && !isMoving) {
-				float size = getSize();
-				posX = player.posX;
-				posY = player.posY + 4;
-				posZ = player.posZ;
-				setPosition(posX, posY, posZ);
-				if(size < 4) {
-					setSize(size + 0.1F);
-				}
-			}
-			else if(!isMoving) {
-				setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 0F);
-				isMoving = true;
 			}
 			else {
-				motionY -= 0.05D;
-			}
+				if(player.isHandActive() && !isMoving) {
+					float size = getSize();
+					posX = player.posX;
+					posY = player.posY + 4;
+					posZ = player.posZ;
+					setPosition(posX, posY, posZ);
+					if(size < 4) {
+						setSize(size + 0.1F);
+					}
+				}
+				else if(!isMoving) {
+					setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 0F);
+					isMoving = true;
+				}
+				else {
+					motionY -= 0.05D;
+				}
 
-			if(ticksExisted > 200 && !worldObj.isRemote) {
-				setDead();
+				if(ticksExisted > 200) {
+					setDead();
+				}
 			}
 		}
 	}
