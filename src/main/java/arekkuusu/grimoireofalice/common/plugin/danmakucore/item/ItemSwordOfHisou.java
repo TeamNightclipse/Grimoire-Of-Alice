@@ -126,7 +126,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					if (timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 						if (!list.isEmpty()) {
-							int count = list.stream().collect(Collectors.summingDouble(EntityLivingBase::getHealth)).intValue() * 2;
+							int count = (int)(list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);

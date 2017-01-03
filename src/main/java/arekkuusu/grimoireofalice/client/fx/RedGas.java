@@ -19,11 +19,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RedGas extends Particle {
 
-	public RedGas(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+	public RedGas(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 		motionY *= 0.20000000298023224D;
 
-		if (xSpeedIn == 0.0D && zSpeedIn == 0.0D) {
+		if (xSpeed == 0.0D && zSpeed == 0.0D) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}

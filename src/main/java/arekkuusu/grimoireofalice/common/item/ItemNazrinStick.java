@@ -34,21 +34,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ItemStackHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemNazrinStick extends ItemModSword {
 
-	public static final String TYPE = "type";
+	private static final String TYPE = "type";
 
 	@SuppressWarnings("ConstantConditions")
-	@GameRegistry.ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
+	@ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
 	public static final ItemStack TYPEA = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	@SuppressWarnings("ConstantConditions")
-	@GameRegistry.ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
+	@ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
 	public static final ItemStack TYPEB = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	public ItemNazrinStick(ToolMaterial material, String id) {
@@ -99,7 +99,6 @@ public class ItemNazrinStick extends ItemModSword {
 				List<Block> blockLayer = new ArrayList<>(10);
 				for(int i = 1; i < 10; i++) {
 					Block block = world.getBlockState(pos.down(i)).getBlock();
-					if(block == null) continue;
 						boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
 								.mapToObj(OreDictionary::getOreName)
 								.anyMatch(s -> s.startsWith("ore"));
@@ -131,7 +130,8 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(playerIn.isSneaking() && isHoldingItemsBothHands(playerIn) && (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
+		if(playerIn.isSneaking() && isHoldingItemsBothHands(playerIn)
+				&& (playerIn.capabilities.isCreativeMode || playerIn.inventory.hasItemStack(new ItemStack(Items.COAL))
 				|| playerIn.experienceLevel > 30)) {
 			playerIn.setActiveHand(hand);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);

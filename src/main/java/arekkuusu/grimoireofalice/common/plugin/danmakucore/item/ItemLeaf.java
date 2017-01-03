@@ -77,7 +77,6 @@ public class ItemLeaf extends ItemMod {
 				DanmakuHelper.playShotSound(playerIn);
 				if (!worldIn.isRemote) {
 					DanmakuBuilder.Builder danmaku = DanmakuBuilder.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
-					float anglePitch = playerIn.rotationPitch + (playerIn.isSneaking() ? 45 : -45);
 					worldIn.spawnEntityInWorld(danmaku.build().asEntity());
 					danmaku.setShot(danmaku.shot.setSize(2));
 				}

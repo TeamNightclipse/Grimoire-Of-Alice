@@ -163,7 +163,6 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		boolean flag1 = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
 		for (int i = 1; i < 4; i++) {
 			pos = pos.up();
 			Block block = worldIn.getBlockState(pos).getBlock();
@@ -171,7 +170,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 				return false;
 			}
 		}
-		return flag1;
+		return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
 	}
 
 	@Override

@@ -60,18 +60,19 @@ public class ItemDragonJewel extends ItemMod {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			if (isSelected && player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
 				Vec3d vec = player.getLookVec();
-				double d0 = player.posX;
-				double d1 = player.posY + player.getEyeHeight();
-				double d2 = player.posZ;
+				double x = player.posX;
+				double y = player.posY + player.getEyeHeight();
+				double z = player.posZ;
 
 				worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.PLAYERS, 1F, 1F);
 				for (int i = 0; i < 8; ++i) {
-					double d3 = d0 + itemRand.nextGaussian() / 2.0D;
-					double d4 = d1 + itemRand.nextGaussian() / 2.0D;
-					double d5 = d2 + itemRand.nextGaussian() / 2.0D;
+					double randX = x + itemRand.nextGaussian() / 2.0D;
+					double randY = y + itemRand.nextGaussian() / 2.0D;
+					double randZ = z + itemRand.nextGaussian() / 2.0D;
 
 					for (int j = 0; j < 6; ++j) {
-						worldIn.spawnParticle(EnumParticleTypes.DRAGON_BREATH, d3, d4, d5, vec.xCoord * 0.07999999821186066D * (double) j, vec.yCoord * 0.6000000238418579D, vec.zCoord * 0.07999999821186066D * (double) j);
+						worldIn.spawnParticle(EnumParticleTypes.DRAGON_BREATH, randX, randY, randZ, vec.xCoord * 0.08D * j, vec.yCoord * 0.6D,
+								vec.zCoord * 0.08D * j);
 					}
 				}
 

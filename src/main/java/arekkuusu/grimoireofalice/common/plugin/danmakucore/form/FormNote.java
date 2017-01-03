@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL11;
 public class FormNote extends FormGeneric {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MODID, "textures/models/entities/Note.png");
-	private ModelNote MODEL = new ModelNote();
+	private static final ModelNote MODEL = new ModelNote();
 
 	public FormNote() {
 		super(LibFormName.NOTE);

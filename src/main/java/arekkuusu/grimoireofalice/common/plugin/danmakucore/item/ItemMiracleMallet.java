@@ -101,7 +101,8 @@ public class ItemMiracleMallet extends ItemMod {
 			player.worldObj.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
 			if (player.isSneaking() && !player.worldObj.isRemote) {
 				Vec3d vec = player.getLookVec();
-				List<EntityDanmaku> list = player.worldObj.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox().offset(vec.xCoord * 10, vec.yCoord * 10, vec.zCoord * 10).expandXyz(10));
+				List<EntityDanmaku> list = player.worldObj.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox()
+						.offset(vec.xCoord * 10, vec.yCoord * 10, vec.zCoord * 10).expandXyz(10));
 				for (EntityDanmaku danmaku : list) {
 					ShotData data = danmaku.getShotData();
 					if (data.getSizeX() < 5 && data.getSizeY() < 5 && data.getSizeZ() < 5)

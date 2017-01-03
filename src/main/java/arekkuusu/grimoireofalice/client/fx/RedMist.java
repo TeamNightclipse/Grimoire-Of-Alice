@@ -23,8 +23,8 @@ public class RedMist extends Particle {
 	private static final double RETURN_STRENGTH = 0.01D;
 	private final Entity entity;
 
-	public RedMist(World worldIn, Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+	public RedMist(World worldIn, Entity entity, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		super(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
 		this.entity = entity;
 
 		particleScale = 16F + rand.nextInt(4);

@@ -66,12 +66,10 @@ public class ItemNuclearRod extends ItemMod {
 		for (EntityLivingBase living : list) {
 			if (living instanceof EntityPlayer) {
 				if(!hasBoots((EntityPlayer) living)) {
-					//noinspection ConstantConditions
 					living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 				}
 			}
 			else {
-				//noinspection ConstantConditions
 				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
 		}

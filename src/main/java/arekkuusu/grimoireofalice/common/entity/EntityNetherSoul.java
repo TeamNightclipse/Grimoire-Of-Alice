@@ -74,7 +74,8 @@ public class EntityNetherSoul extends EntityThrowable {
 			moveEntity(motionX, motionY, motionZ);
 		}
 		else {
-			List<Entity> list = worldObj.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().expandXyz(30), entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
+			List<Entity> list = worldObj.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().expandXyz(30),
+					entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
 			if (!list.isEmpty()) {
 				float closest = 30;
 				for (Entity entity : list) {

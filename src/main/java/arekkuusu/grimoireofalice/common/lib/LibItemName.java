@@ -96,10 +96,6 @@ public class LibItemName {
 	public static final String MARISA_HAT = "marisahat";
 	public static final String MIKO_CLOAK = "mikocloak";
 	public static final String SHINMYOUMARU_HAT = "shinmyoumaruhat";
-	//Auras
-	public static final String AURA_BYAKUREN = "aurabyakuren";
-	public static final String AURA_MOKOU = "auramokou";
-	public static final String AURA_TOYOSATOMIMI = "auratoyosatomimi";
 	//Weapons
 	public static final String MOCHI_HAMMER = "mochihammer";
 	public static final String MOMIJIS_SCIMITAR_SWORD = "momijisscimitarsword";

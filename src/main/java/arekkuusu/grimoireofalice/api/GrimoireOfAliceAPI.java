@@ -19,8 +19,13 @@ public final class GrimoireOfAliceAPI {
 		return ImmutableList.copyOf(recipes);
 	}
 
-	public static List<ItemStack> getFlyItems() { return flyItems;}
-	public static List<ItemStack> getFlyArmor() { return flyArmor;}
+	public static List<ItemStack> getFlyItems() {
+		return flyItems;
+	}
+
+	public static List<ItemStack> getFlyArmor() {
+		return flyArmor;
+	}
 
 	/**
 	 * Adds an IRecipeItems to the ArrayList.

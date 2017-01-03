@@ -67,7 +67,7 @@ public class ItemSwordRoukanken extends ItemModSword {
 		if(entityIn instanceof EntityPlayer & isSelected) {
 			EntityPlayer player = (EntityPlayer)entityIn;
 			Vec3d vec = player.getLookVec();
-			if(Math.sqrt(player.motionX * player.motionX + player.motionZ * player.motionZ) > 3.0) {
+			if(player.motionX * player.motionX + player.motionZ * player.motionZ > 3D * 3D) {
 				List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
 						player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
 				for(Entity entity : list) {

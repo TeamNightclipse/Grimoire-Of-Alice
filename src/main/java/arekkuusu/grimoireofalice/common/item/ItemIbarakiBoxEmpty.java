@@ -64,9 +64,9 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 		else {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 
-			if(!worldIn.isBlockModifiable(playerIn, blockpos) || !playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit),
-					raytraceresult.sideHit, itemStackIn)) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
-			else { //No needed to try place content as its always empty
+			//No needed to try place content as its always empty
+			if(worldIn.isBlockModifiable(playerIn, blockpos)
+					&& playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
 				IBlockState iblockstate = worldIn.getBlockState(blockpos);
 				Material material = iblockstate.getMaterial();
 				//Modified so it accepts both Water and Lava, as both return the same Item
@@ -75,8 +75,9 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 					playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
 					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(itemStackIn, playerIn, ModItems.IBARAKI_BOX_FILLED));
 				}
-				else return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 			}
+
+			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 		}
 	}
 

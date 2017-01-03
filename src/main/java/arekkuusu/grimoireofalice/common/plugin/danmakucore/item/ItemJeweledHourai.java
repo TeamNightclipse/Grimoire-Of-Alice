@@ -41,9 +41,6 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 public class ItemJeweledHourai extends ItemMod {
 
-	@CapabilityInject(IItemHandler.class)
-	private static Capability<IItemHandler> itemHandlerCapability;
-
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
 			LibColor.COLOR_SATURATED_YELLOW,
@@ -108,11 +105,11 @@ public class ItemJeweledHourai extends ItemMod {
 		return true;
 	}
 
-	@SuppressWarnings("ConstantConditions") //Liar
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if(!worldIn.isRemote) {
-			if (getJewels(stack) >= 1) {
+			short jewels = getJewels(stack);
+			if (jewels >= 1) {
 				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 				if (timeUsed > 30) {
 					timeUsed = 30;
@@ -128,7 +125,7 @@ public class ItemJeweledHourai extends ItemMod {
 					addJewels(stack, (short) -1);
 				}
 				else {
-					for (int i = 0; i < getJewels(stack); i++) {
+					for (int i = 0; i < jewels; i++) {
 						int color = COLORS[itemRand.nextInt(COLORS.length)];
 						DanmakuBuilder danmaku = DanmakuBuilder.builder()
 								.setUser(entityLiving)

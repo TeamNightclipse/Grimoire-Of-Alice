@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 public class ModPotions {
 
 	@ObjectHolder(LibPotionName.ELIXIRPOTION)
-	public static final Potion ELIXIR = null;
+	public static final Potion ELIXIR = new PotionElixir();
 	@ObjectHolder(LibPotionName.RADIATION_POISONING)
-	public static final Potion RADIATION_POISONING = null;
+	public static final Potion RADIATION_POISONING = new PotionRadiationPoisoning();
 }

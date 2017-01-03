@@ -93,7 +93,7 @@ public class ItemRodOfRemorse extends ItemMod {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!getUsed(stack) && target.getHealth() > 1) {
 			float perc = 0.75F;
-			target.setHealth((int) (target.getHealth() * perc));
+			target.setHealth(target.getHealth() * perc);
 			setUsed(stack, true);
 		}
 		return false;

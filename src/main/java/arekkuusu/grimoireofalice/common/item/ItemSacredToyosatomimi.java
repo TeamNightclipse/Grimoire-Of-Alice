@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -63,8 +64,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		target.motionX = -Math.sin(Math.toRadians(attacker.rotationYaw));
-		target.motionZ = Math.cos(Math.toRadians(attacker.rotationYaw));
+		target.motionX = -MathHelper.sin((float)Math.toRadians(attacker.rotationYaw));
+		target.motionZ = MathHelper.cos((float)Math.toRadians(attacker.rotationYaw));
 		return true;
 	}
 

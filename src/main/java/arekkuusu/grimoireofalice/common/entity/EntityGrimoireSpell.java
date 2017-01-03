@@ -94,20 +94,16 @@ public class EntityGrimoireSpell extends Entity {
 	private void bookPart() {
 		float bookSpreadPrev = bookSpread;
 		float bookRotationPrev = bookRotation;
-		double d0 = host.posX - ((float)posX + 0.5F);
-		double d1 = host.posZ - ((float)posZ + 0.5F);
+		double d0 = host.posX - (posX + 0.5F);
+		double d1 = host.posZ - (posZ + 0.5F);
 		float tRot = (float)MathHelper.atan2(d1, d0);
 		bookSpread += 0.1F;
 
 		if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
 			float f1 = flipT;
 
-			while(true) {
+			while(f1 != flipT) {
 				flipT += rand.nextInt(4) - rand.nextInt(4);
-
-				if(f1 != flipT) {
-					break;
-				}
 			}
 		}
 		else {
@@ -131,10 +127,9 @@ public class EntityGrimoireSpell extends Entity {
 			tRot += (float)Math.PI * 2F;
 		}
 
-		float f2;
-
-		for(f2 = tRot - bookRotation; f2 >= (float)Math.PI; f2 -= (float)Math.PI * 2F) {
-			;
+		float f2 = tRot - bookRotation;
+		while(f2 >= (float)Math.PI) {
+			f2 -= (float)Math.PI * 2F;
 		}
 
 		while(f2 < -(float)Math.PI) {

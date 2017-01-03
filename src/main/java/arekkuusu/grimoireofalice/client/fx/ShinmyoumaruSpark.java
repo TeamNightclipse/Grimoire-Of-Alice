@@ -20,10 +20,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ShinmyoumaruSpark extends Particle {
 
 
-	public ShinmyoumaruSpark(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+	public ShinmyoumaruSpark(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 
-		if (xSpeedIn == 0.0D && zSpeedIn == 0.0D) {
+		if (xSpeed == 0.0D && zSpeed == 0.0D) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}

@@ -28,25 +28,17 @@ public class SpellCardContainer extends Container {
 		IItemHandler pouchInv = pouchStack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		stack = pouchStack;
 
-		addSlotToContainer(new SlotItemHandler(pouchInv, 0, 10, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 1, 30, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 2, 50, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 3, 70, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 4, 90, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 5, 110, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 6, 130, 30));
-		addSlotToContainer(new SlotItemHandler(pouchInv, 7, 150, 30));
+		for(int i = 0; i < 8; i++) {
+			addSlotToContainer(new SlotItemHandler(pouchInv, i, 10 + i * 20, 30));
+		}
 
-		int i;
-		int j;
-
-		for(i = 0; i < 3; ++i) {
-			for(j = 0; j < 9; ++j) {
+		for(int i = 0; i < 3; ++i) {
+			for(int j = 0; j < 9; ++j) {
 				addSlotToContainer(new Slot(playerInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
-		for(i = 0; i < 9; ++i) {
+		for(int i = 0; i < 9; ++i) {
 			if(playerInv.getStackInSlot(i) == pouchStack) {
 				addSlotToContainer(new SlotLocked(playerInv, i, 8 + i * 18, 142));
 			}

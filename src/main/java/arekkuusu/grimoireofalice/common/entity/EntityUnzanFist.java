@@ -69,14 +69,13 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-		if(result.entityHit != null && result.entityHit != this) {
+		if(!worldObj.isRemote && result.entityHit != null && result.entityHit != this) {
 			if(result.entityHit == getThrower()) {
-				if(!worldObj.isRemote) {
-					setDead();
-				}
-				return;
+				setDead();
 			}
-			explode();
+			else {
+				explode();
+			}
 		}
 	}
 
@@ -93,10 +92,12 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void explode() {
+		EntityLivingBase thrower = getThrower();
+
 		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
-		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != getThrower());
-		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(getThrower()), 2F));
+		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
+		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(thrower), 2F));
 		if(!worldObj.isRemote) setDead();
 	}
 

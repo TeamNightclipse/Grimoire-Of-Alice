@@ -38,6 +38,7 @@ public class SubEntitySunBullet extends SubEntityType {
 
 		@Override
 		protected void impactBlock(RayTraceResult raytrace) {
+			//TODO: Change MovementData too here?
 			EnumFacing facing = raytrace.sideHit;
 			if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 				danmaku.rotationYaw *= -1.0F;

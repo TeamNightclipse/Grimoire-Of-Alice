@@ -42,14 +42,13 @@ public class EntityEllyScythe extends EntityThrow {
 		strength = Math.min(1.5F, velocity);
 	}
 
+	//FIXME: Why checking inGround three times here? Why doing the movement manually here when it's already being done in a parent class?
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
-		if(thrower == null) {
-			if(!worldObj.isRemote) {
-				setDead();
-			}
+		if(!worldObj.isRemote && thrower == null) {
+			setDead();
 		}
 		if(inGround) return;
 

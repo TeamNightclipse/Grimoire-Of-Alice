@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiItemInventory extends GuiContainer {
 
-	private static final ResourceLocation iconLocation = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
+	private static final ResourceLocation ICON_LOCATION = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
 
 	public GuiItemInventory(InventoryPlayer playerInv, ItemStack flowerBagInv) {
 		super(new SpellCardContainer(playerInv, flowerBagInv));
@@ -34,7 +34,7 @@ public class GuiItemInventory extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(iconLocation);
+		mc.getTextureManager().bindTexture(ICON_LOCATION);
 		int k = (width - xSize) / 2;
 		int l = (height - ySize) / 2;
 		this.drawTexturedModalRect(k, l, 0, 0, xSize, ySize);

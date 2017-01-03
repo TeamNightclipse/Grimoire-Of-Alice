@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
@@ -81,10 +82,10 @@ public class ItemNazrinPendulum extends ItemMod {
 			if (timeLeft < 40) {
 				if (playerIn.getHeldItemOffhand() != null) {
 					ItemStack itemStack = playerIn.getHeldItemOffhand();
-					List<String> list = Arrays.stream(OreDictionary.getOreIDs(itemStack))
-							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore")).collect(Collectors.toList());
+					Optional<String> ore = Arrays.stream(OreDictionary.getOreIDs(itemStack))
+							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore")).findFirst();
 
-					if (!list.isEmpty()) setOre(stack, list.get(0));
+					ore.ifPresent(s -> setOre(stack, s));
 				}
 				else {
 					setOre(stack, "");

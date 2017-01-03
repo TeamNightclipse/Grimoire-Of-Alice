@@ -70,6 +70,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
 		if (!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+
 		if (isOwner(itemStackIn, player)) {
 			player.setActiveHand(hand);
 		}
@@ -85,7 +86,8 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+			float hitX, float hitY, float hitZ) {
 		if (facing != EnumFacing.DOWN) {
 			Block block = worldIn.getBlockState(pos).getBlock();
 			if (block.isReplaceable(worldIn, pos)) {
@@ -104,7 +106,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 					int i = 0;
 
 					if (facing == EnumFacing.UP) {
-						i = MathHelper.floor_double((double) (playerIn.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
+						i = MathHelper.floor_double((playerIn.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
 					}
 
 					TileEntity tileentity = worldIn.getTileEntity(pos);
@@ -128,6 +130,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 				return EnumActionResult.SUCCESS;
 			}
 		}
+
 		return EnumActionResult.FAIL;
 	}
 

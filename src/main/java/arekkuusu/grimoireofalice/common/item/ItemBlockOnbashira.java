@@ -28,7 +28,9 @@ public class ItemBlockOnbashira extends ItemBlock {
 			pos = pos.offset(facing);
 		}
 
-		if (stack.stackSize != 0 && playerIn.canPlayerEdit(pos, facing, stack) && worldIn.canBlockBePlaced(this.block, pos, false, facing, (Entity) null, stack) && this.block.canPlaceBlockAt(worldIn, pos)) {
+		//TODO: Is the extra canPlaceBlockAt check needed here, and if so, is there a better and easier way to do it?
+		if (stack.stackSize != 0 && playerIn.canPlayerEdit(pos, facing, stack)
+				&& worldIn.canBlockBePlaced(this.block, pos, false, facing, null, stack) && this.block.canPlaceBlockAt(worldIn, pos)) {
 			int i = this.getMetadata(stack.getMetadata());
 			IBlockState iblockstate1 = this.block.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, i, playerIn);
 

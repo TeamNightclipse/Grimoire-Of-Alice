@@ -21,8 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class NetherFire extends Particle {
 
-	public NetherFire(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+	public NetherFire(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 		particleScale = 4;
 		particleMaxAge = 10;
 
@@ -32,7 +32,8 @@ public class NetherFire extends Particle {
 	}
 
 	@Override
-	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
+	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ,
+			float rotationXY, float rotationXZ) {
 		particleScale *= 0.9;
 		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 	}

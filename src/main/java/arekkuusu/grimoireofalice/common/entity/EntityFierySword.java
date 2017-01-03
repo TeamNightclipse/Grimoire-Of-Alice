@@ -47,6 +47,7 @@ public class EntityFierySword extends Entity {
 			if(!worldObj.isRemote) {
 				Vec3d vec = getLookVec();
 
+				//FIXME: This will only ever expand in one direction. Error?
 				List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
 						getEntityBoundingBox().offset(vec.xCoord * 3, vec.yCoord * 3, vec.zCoord * 3).expandXyz(2), input -> input != player);
 				list.forEach(this::burn);
