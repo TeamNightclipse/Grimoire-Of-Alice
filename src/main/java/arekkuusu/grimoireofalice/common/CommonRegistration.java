@@ -64,8 +64,6 @@ public class CommonRegistration {
 				new ItemFakeMiracleMallet(),
 				new ItemGhastlySendOffLantern(),
 				new ItemCursedDecoyDoll(),
-				new ItemTenguCamera(LibItemName.AYA_CAMERA),
-				new ItemTenguCamera(LibItemName.HATATE_CAMERA),
 				new ItemHakureiGohei(),
 				new ItemSanaeGohei(),
 				new ItemMortarPestle(),
@@ -167,7 +165,9 @@ public class CommonRegistration {
 					new ItemEllyScythe(ModMaterials.NOODLE),
 					new ItemSwordOfHisou(ModMaterials.STRONG_GOLD),
 					new ItemLeaf(),
-					new ItemNuclearRod()
+					new ItemNuclearRod(),
+					new ItemTenguCamera(LibItemName.AYA_CAMERA),
+					new ItemTenguCamera(LibItemName.HATATE_CAMERA)
 			);
 		}
 	}

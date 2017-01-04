@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -68,7 +69,13 @@ public class EntityCameraSquare extends Entity {
 
 	private void finish() {
 		if (!worldObj.isRemote) {
-			getEntities().forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10));
+			getEntities().forEach(entity -> {
+				if (entity instanceof EntityDanmaku) {
+					((EntityDanmaku) entity).delete();
+				} else {
+					entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10);
+				}
+			});
 			setDead();
 		}
 	}
