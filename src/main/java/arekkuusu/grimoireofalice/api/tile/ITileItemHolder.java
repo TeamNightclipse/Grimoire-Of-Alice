@@ -11,8 +11,30 @@ package arekkuusu.grimoireofalice.api.tile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nullable;
+
+/**
+ * Interface for TileEntities that can hold Items
+ */
 public interface ITileItemHolder {
-	boolean addItem(EntityPlayer player, ItemStack stack);
-	boolean removeItem(EntityPlayer player);
+
+	/**
+	 * Ads an ItemStack to the TileEntity
+	 * @param player The player adding the ItemStack
+	 * @param stack The ItemStack added
+	 * @return
+	 */
+	boolean addItem(@Nullable EntityPlayer player, ItemStack stack);
+
+	/**
+	 * Removes an Item from the TileEntity
+	 * @param player The Player removing the ItemStack
+	 * @return If it was removed
+	 */
+	boolean removeItem(@Nullable EntityPlayer player);
+
+	/**
+	 * Destroys the TileEntity
+	 */
 	void destroy();
 }
