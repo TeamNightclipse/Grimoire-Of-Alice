@@ -34,8 +34,7 @@ public class Initializer {
 				new FormWind(),
 				new FormUfo(),
 				new FormLeaf(),
-				new FormNote(),
-				new FormSunBullet()
+				new FormNote()
 		);
 	}
 

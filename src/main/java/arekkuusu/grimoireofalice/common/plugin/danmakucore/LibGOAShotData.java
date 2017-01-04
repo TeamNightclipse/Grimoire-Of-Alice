@@ -13,6 +13,7 @@ import static net.katsstuff.danmakucore.lib.LibColor.*;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.GOAForms;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.GOASubEntities;
 import net.katsstuff.danmakucore.data.ShotData;
+import net.katsstuff.danmakucore.lib.data.LibForms;
 
 public class LibGOAShotData {
 
@@ -20,5 +21,5 @@ public class LibGOAShotData {
 	public static final ShotData NOTE = new ShotData(GOAForms.NOTE, COLOR_VANILLA_RED, 0.8F, 0.5F, 0, 50, GOASubEntities.NOTE);
 	public static final ShotData UFO = new ShotData(GOAForms.UFO, COLOR_SATURATED_CYAN, 1.0F, 0.5F, 0, 50, GOASubEntities.UFO);
 	public static final ShotData LEAF = new ShotData(GOAForms.LEAF, COLOR_SATURATED_GREEN, 0.4F, 0.3F, 0, 10, GOASubEntities.LEAF);
-	public static final ShotData SUN = new ShotData(GOAForms.SUN, COLOR_SATURATED_RED, 4F, 0.3F, 0, 200, GOASubEntities.SUN);
+	public static final ShotData SUN = new ShotData(LibForms.SPHERE, COLOR_SATURATED_RED, 10F, 0.3F, 0, 200, GOASubEntities.SUN);
 }
