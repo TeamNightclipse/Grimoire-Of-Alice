@@ -20,11 +20,6 @@
             "rotation": [ 0, 180, 5 ],
             "translation": [ 0, 0, 0 ],
             "scale": [ 1.25, 1.25, 1.25 ]
-        },
-        "gui": {
-            "rotation": [ 15, -25, -5 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
         }
     },
     "textures": {
