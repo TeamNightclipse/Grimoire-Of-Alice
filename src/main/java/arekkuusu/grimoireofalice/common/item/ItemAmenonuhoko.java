@@ -87,34 +87,19 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		RayTraceResult raytraceresult = traceResult(worldIn, playerIn);
-		if(raytraceresult == null || raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
+		double range = 15.0D;
+		Vec3d look = player.getLookVec();
+		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
+		RayTraceResult raytraceresult = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
+		if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK)
 			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		}
 		else {
-			createBoulder(playerIn, worldIn, raytraceresult.getBlockPos());
-			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+			createBoulder(player, worldIn, raytraceresult.getBlockPos());
 		}
-	}
-
-	@Nullable
-	private RayTraceResult traceResult(World worldIn, EntityPlayer playerIn) {
-		float pitch = playerIn.rotationPitch;
-		float yaw = playerIn.rotationYaw;
-		double x = playerIn.posX;
-		double y = playerIn.posY + (double) playerIn.getEyeHeight();
-		double z = playerIn.posZ;
-		Vec3d pos = new Vec3d(x, y, z);
-		float f2 = MathHelper.cos(-yaw * 0.017453292F - (float) Math.PI);
-		float f3 = MathHelper.sin(-yaw * 0.017453292F - (float) Math.PI);
-		float f4 = -MathHelper.cos(-pitch * 0.017453292F);
-		float yDir = MathHelper.sin(-pitch * 0.017453292F);
-		float xDir = f3 * f4;
-		float zDir = f2 * f4;
-		double length = 15D;
-		Vec3d vec3d1 = pos.addVector(xDir * length, yDir * length, zDir * length);
-		return worldIn.rayTraceBlocks(pos, vec3d1, false, true, false);
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	private void createBoulder(EntityPlayer player, World world, BlockPos pos) {
