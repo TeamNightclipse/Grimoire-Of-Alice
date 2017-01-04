@@ -100,6 +100,12 @@ public final class SpecialRecipes {
 	public static IRecipeItems NETHER_SHARD;
 	public static IRecipeItems NUCLEAR_ROD;
 	public static IRecipeItems NUCLEAR_BOOTS;
+	public static IRecipeItems SEND_OFF_LANTERN;
+	public static IRecipeItems UFO_BLUE;
+	public static IRecipeItems UFO_RED;
+	public static IRecipeItems UFO_GREEN;
+	public static IRecipeItems PATCHY_BOOK;
+	public static IRecipeItems SYRINGE;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -126,13 +132,36 @@ public final class SpecialRecipes {
 
 	public static void init() {
 		//General
-		MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MASK)
-				, ModItems.PASTE, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.mask) {
+			MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MASK)
+					, ModItems.PASTE, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
+		}
 
-		HIHIIROKANE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HIHIIROKANE)
-				, Items.COAL, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK, Items.COAL, ModItems.IMPURE_ROCK, Items.COAL, Items.COAL, ModItems.IMPURE_ROCK);
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.hihiirokane) {
+			HIHIIROKANE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HIHIIROKANE)
+					, ModItems.IMPURE_ROCK, Blocks.COAL_BLOCK);
+		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.masks.altarMaskRecipes) {
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.patchyBook) {
+			PATCHY_BOOK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.PATCHY_BOOK)
+					, Items.WRITABLE_BOOK, "stickWood", Items.FEATHER);
+		}
+
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.syringe) {
+			SYRINGE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SYRINGE)
+					, Items.GLASS_BOTTLE, new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE));
+		}
+
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.simpleUfo) {
+			UFO_GREEN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.UFO_GREEN)
+					, Blocks.SLIME_BLOCK, ModItems.PASTE, ModItems.PASTE, "blockGlassGreen", "blockGlassGreen", "blockGlassGreen", "blockGlassGreen", "blockGlassGreen");
+			UFO_RED = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.UFO_RED)
+					, Blocks.SLIME_BLOCK, ModItems.PASTE, ModItems.PASTE, "blockGlassRed", "blockGlassRed", "blockGlassRed", "blockGlassRed", "blockGlassRed");
+			UFO_BLUE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.UFO_BLUE)
+					, Blocks.SLIME_BLOCK, ModItems.PASTE, ModItems.PASTE, "blockGlassBlue", "blockGlassBlue", "blockGlassBlue", "blockGlassBlue", "blockGlassBlue");
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.masks.kokoroMask) {
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD);
 
 			KOKOROS_MASKS = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.KOKOROS_MASKS), potion, ModItems.MASK, Items.NETHER_STAR, ModItems.FOX_MASK,
@@ -167,383 +196,383 @@ public final class SpecialRecipes {
 					ModItems.HARDENED_LEATHER, potion, Items.BEETROOT_SOUP, new ItemStack(Items.DYE, 1, 9));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.thirdEye) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.thirdEye) {
 			THIRD_EYE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.THIRD_EYE)
 					, Blocks.OBSIDIAN, Items.ENDER_EYE, Items.ENDER_EYE, Items.ENDER_PEARL, Items.ENDER_PEARL);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.amenonuhoko) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.amenonuhoko) {
 			AMENONUHOKO = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.AMENONUHOKO)
 					, Items.END_CRYSTAL, Items.END_CRYSTAL, Items.END_CRYSTAL, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModBlocks.COMPACT_STONE, Items.NETHER_STAR, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.bloodThirstyOrb) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.bloodThirstyOrb) {
 			BLOOD_THIRSTY_ORB = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.BLOOD_ORB)
 					, Items.ENDER_EYE, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART, Items.NETHER_WART);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.budahBoul) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.budahBoul) {
 			BUDAH_BOUL = GrimoireOfAliceAPI.registerRecipeMoonPhase(5, new ItemStack(ModItems.BUDAH_BOUL)
 					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE, Blocks.CLAY, Blocks.STONE, Items.NETHER_STAR);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.cursedDecoyDoll) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.cursedDecoyDoll) {
 			CURSED_DECOY_DOLL = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.CURSED_DECOY_DOLL)
 					, Items.BEEF, Items.BEEF, Items.BEEF, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Blocks.PUMPKIN);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.deathScythe) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.deathScythe) {
 			DEATH_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.DEATH_SCYTHE)
 					, Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood", ModItems.HIHIIROKANE, new ItemStack(Items.SKULL, 1, 1), Blocks.SOUL_SAND, ModItems.HIHIIROKANE, "stickWood");
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.dragonJewel) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonJewel) {
 			DRAGON_JEWEL = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_JEWEL)
 					, Blocks.DRAGON_EGG, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.fakeMiracleMallet) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.fakeMiracleMallet) {
 			FAKE_MIRACLE_MALLET = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.FAKE_MIRACLE_MALLET)
 					, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.IMPURE_ROCK);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.kakanoShimenawa) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.kakanoShimenawa) {
 			KANAKO_SHIMENAWA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.KANAKO_SHIMENAWA)
 					, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, Items.NETHER_STAR, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.fireRobe) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.fireRobe) {
 			FIRE_ROBE = GrimoireOfAliceAPI.registerRecipeMoonPhase(3, new ItemStack(ModItems.FIRE_ROBE)
 					, Items.CHAINMAIL_CHESTPLATE, Items.LEATHER_CHESTPLATE, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_POWDER, Items.BLAZE_POWDER, Items.RABBIT_HIDE, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.gapFoldingUmbrella) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.gapFoldingUmbrella) {
 			GAP_FOLDING_UMBRELLA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.FOLDING_UMBRELLA)
 					, ModItems.PASTE, new ItemStack(Blocks.WOOL, 1, 10), ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, "stickWood");
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ghostDipper) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ghostDipper) {
 			GHOST_DIPPER = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.GHOST_DIPPER)
 					, "stickWood", "stickWood", Items.BOWL, Items.BOWL, Items.WATER_BUCKET, Items.WATER_BUCKET, Items.BUCKET, Items.BUCKET);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.grimoireBook) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.grimoireBook) {
 			ItemStack item = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
 			GRIMOIRE_BOOK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.GRIMOIRE_BOOK)
 					, Items.WRITABLE_BOOK, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, item, item, item, item, item, item);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.hakureiGohei) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.hakureiGohei) {
 			HAKUREI_GOHEI = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HAKUREI_GOHEI)
 					, "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ibarakiBox) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ibarakiBox) {
 			IBARAKI_BOX_EMPTY = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.IBARAKI_BOX_EMPTY)
 					, "plankWood", "plankWood", "plankWood", "plankWood", "plankWood", "plankWood", "plankWood", Items.GLASS_BOTTLE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ichirinUnzan) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ichirinUnzan) {
 			ICHIRIN_AURA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ICHIRIN_UNZAN)
 					, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ichirinRing) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ichirinRing) {
 			ICHIRIN_RING = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModItems.ICHIRIN_RING)
 					, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.kappaHat) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.kappaHat) {
 			KAPPA_HAT = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.KAPPA_HAT)
 					, new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), new ItemStack(Blocks.WOOL, 1, 5), Items.SLIME_BALL, Blocks.WATERLILY, Blocks.WATERLILY, Blocks.WATERLILY);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.mapleLeafShield) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.mapleLeafShield) {
 			MAPLE_LEAF_SHIELD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MAPLE_LEAF_SHIELD)
 					, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, "treeLeaves", "treeLeaves", "treeLeaves", "treeLeaves");
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.marisaHat) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.marisaHat) {
 			MARISA_HAT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MARISA_HAT)
 					, new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), new ItemStack(Blocks.WOOL, 1, 7), Items.BOOK, new ItemStack(Blocks.WOOL, 1, 0), new ItemStack(Blocks.WOOL, 1, 0), new ItemStack(Blocks.WOOL, 1, 0));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.mikoCloak) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.mikoCloak) {
 			MICO_CLOAK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CLOAK)
 					, new ItemStack(Blocks.WOOL, 1, 2), "paper", ModItems.HARDENED_LEATHER, "paper", "paper", ModItems.HARDENED_LEATHER, "paper", new ItemStack(Items.DYE, 1, 13));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.mikoStick) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.mikoStick) {
 			MIKO_STICK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_STICK)
 					, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.HEALING), "stickWood");
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.mochiHammer) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.mochiHammer) {
 			MOCHI_HAMMER = GrimoireOfAliceAPI.registerRecipeMoonPhase(6, new ItemStack(ModItems.MOCHI_HAMMER)
 					, "logWood", "logWood", "logWood", Items.RABBIT_HIDE, Items.RABBIT_HIDE, "stickWood", "stickWood", Items.SLIME_BALL);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.momijisScimitarSword) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.momijisScimitarSword) {
 			MOMIJIS_SCIMITAR_SWORD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MOMIJIS_SCIMITAR_SWORD)
 					, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, ModItems.TAMAHAGANE_STEEL, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.narzinStick) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.narzinStick) {
 			NAZRIN_STICK_ONE = GrimoireOfAliceAPI.registerRecipe(ItemNazrinStick.TYPEA
 					, Items.COMPASS, Items.EMERALD, new ItemStack(Items.COAL, 1, 0), new ItemStack(Items.COAL, 1, 0), new ItemStack(Items.COAL, 1, 0), new ItemStack(Items.COAL, 1, 0));
 			NAZRIN_STICK_TWO = GrimoireOfAliceAPI.registerRecipe(ItemNazrinStick.TYPEB
 					, Items.COMPASS, Items.EMERALD, new ItemStack(Items.COAL, 1, 1), new ItemStack(Items.COAL, 1, 1), new ItemStack(Items.COAL, 1, 1), new ItemStack(Items.COAL, 1, 1));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.needle) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.needle) {
 			NEEDLE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SHINMYOUMARU_NEEDLE)
 					, ModItems.TAMAHAGANE_STEEL, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.FEATHER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.nazrinPendulum) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.nazrinPendulum) {
 			NAZRIN_PENDULUM = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NAZRIN_PENDULUM)
 					, "blockGlassCyan", "blockGlassCyan", "blockGlassCyan", "blockGlassCyan", "blockGlassCyan", "blockGlassCyan", Items.END_CRYSTAL, Blocks.DAYLIGHT_DETECTOR);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.nimbleFabric) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.nimbleFabric) {
 			ItemStack item = new ItemStack(Blocks.CARPET, 1, OreDictionary.WILDCARD_VALUE);
 			NIMBLE_FABRIC = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NIMBLE_FABRIC)
 					, Items.LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER, item, item, item);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.nueTrident) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.nueTrident) {
 			NUE_TRIDENT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NUE_TRIDENT)
 					, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Items.BLAZE_ROD);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ibukiGourd) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ibukiGourd) {
 			IBUKI_GOURD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.IBUKI_GOURD)
 					, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Items.FERMENTED_SPIDER_EYE, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.rodOfRemorse) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.rodOfRemorse) {
 			ROD_OF_REMORSE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ROD_REMORSE)
 					, "logWood", Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, new ItemStack(Items.DYE, 1, 0));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.roukanken) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.roukanken) {
 			ROUKANKEN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ROUKANKEN)
 					, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, "stickWood", Blocks.RED_FLOWER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.rumiaSword) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.rumiaSword) {
 			RUMIA_SWORD = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.RUMIA_SWORD)
 					, ModBlocks.HIHIIROKANE_BLOCK, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.sacredToyosatomimiSword) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.sacredToyosatomimiSword) {
 			SACRED_TOYOSATOMIMI_SWORD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SACRED_TOYOSATOMIMI)
 					, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.TAMAHAGANE_STEEL);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.sanaeGohei) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.sanaeGohei) {
 			SANAE_GOHEI = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SANAE_GOHEI)
 					, "paper", "paper", "paper", "paper", "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.sarielWand) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.sarielWand) {
 			SARIEL_WAND = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModItems.SARIEL_WAND)
 					, Items.NETHER_STAR, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.shimenawaRope) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.shimenawaRope) {
 			SHIMENAWA_ROPE = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.SHIMENAWA_ROPE)
 					, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.sichiSeiken) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.sichiSeiken) {
 			SHICHI_SEIKEN = GrimoireOfAliceAPI.registerRecipeMoonPhase(7, new ItemStack(ModItems.SHICHI_SEIKEN)
 					, Items.IRON_INGOT, Items.GOLD_INGOT, ModItems.TAMAHAGANE_STEEL);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.kanakoOnbashira) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.kanakoOnbashira) {
 			KANAKO_ONBASHIRA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.KANAKO_ONBASHIRA)
 					, "logWood", "logWood", "logWood", "logWood", "stickWood", ModItems.SHIMENAWA_ROPE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.skull) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.skull) {
 			ORIN_SKULL = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.SKULL)
 					, new ItemStack(Items.SKULL, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.stopWatch) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.stopWatch) {
 			STOP_WATCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.STOP_WATCH)
 					, Items.CLOCK, Items.REDSTONE, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.TIME_ORB, ModItems.TIME_ORB);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.substituteJizo) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.substituteJizo) {
 			SUBSTITUTE_JIZO = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SUBSTITUTE_JIZO)
 					, Items.LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.suwakoHat) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.suwakoHat) {
 			SUWAKO_HAT = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.SUWAKO_HAT)
 					, Items.ENDER_EYE, Items.ENDER_EYE, Blocks.WATERLILY, Items.LEATHER_HELMET);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.swallowCowrieShell) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.swallowCowrieShell) {
 			SWALLOW_COWRIE_SHELL = GrimoireOfAliceAPI.registerRecipeMoonPhase(5, new ItemStack(ModItems.COWRIE_SHELL)
 					, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Items.MILK_BUCKET, Items.MILK_BUCKET);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.shinmyoumaruBowl) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.shinmyoumaruBowl) {
 			SHINMYOUMARU_HAT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SHINMYOUMARU_HAT)
 					, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.tenguCamera) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.tenguCamera) {
 			AYA_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.AYA_CAMERA)
 					, "blockGlassColorless", Blocks.LEVER, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
 			HATATE_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HATATE_CAMERA)
 					, "blockGlassColorless", Blocks.STONE_BUTTON, Items.REDSTONE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.ufo) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
 			UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
 					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.wallPassingChisel) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.wallPassingChisel) {
 			WALL_PASSING_CHISEL = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.WALL_PASSING_CHISEL)
 					, Items.ENDER_EYE, "stickWood", "stickWood", Items.NAME_TAG);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.youkaiBook) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.youkaiBook) {
 			YOUKAI_BOOK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.YOUKAI_BOOK)
 					, Items.BOOK, Items.FEATHER, Items.RABBIT_FOOT);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.food.ultramarineOrbElixir) {
+		if (ConfigHandler.grimoireOfAlice.food.altar.ultramarineOrbElixir) {
 			ItemStack stack = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_REGENERATION);
 			ULTRAMARINE_ORB_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.ORB_ELIXIR)
 					, potion, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.food.houraiElixir) {
+		if (ConfigHandler.grimoireOfAlice.food.altar.houraiElixir) {
 			HOURAI_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.HOURAI_ELIXIR)
 					, Blocks.DRAGON_EGG, Items.FLOWER_POT, ModItems.ORB_ELIXIR, ModItems.MORTAR_AND_PESTLE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.food.kappaNostrum) {
+		if (ConfigHandler.grimoireOfAlice.food.altar.kappaNostrum) {
 			KAPPA_NOSTRUM = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.KAPPAS_NOSTRUM)
 					, Items.ROTTEN_FLESH, Items.ROTTEN_FLESH, Items.ROTTEN_FLESH, Items.ROTTEN_FLESH, Items.ROTTEN_FLESH, Items.ROTTEN_FLESH, Items.GHAST_TEAR, new ItemStack(Items.FLOWER_POT));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.food.yuugiSake) {
+		if (ConfigHandler.grimoireOfAlice.food.altar.yuugiSake) {
 			YUUGI_SAKE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.YUUGI_SAKE)
 					, ModItems.IBUKI_GOURD, Items.FLOWER_POT, Items.WHEAT, Items.WHEAT, Items.WHEAT, Items.WHEAT, Items.GHAST_TEAR, Items.FERMENTED_SPIDER_EYE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.toyosatomimiHat) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.toyosatomimiHat) {
 			TOYOSATOMIMI_HAT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.TOYOSATOMIMI_HAT)
 					, Items.LEATHER_HELMET, Items.RABBIT_FOOT, new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.utsuhoWings) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.utsuhoWings) {
 			UTSUHO_WINGS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.UTSUHO_WINGS)
 					, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, Items.ELYTRA, ModBlocks.HIHIIROKANE_BLOCK, Blocks.COAL_BLOCK, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER);
 		}
 
-		if(ConfigHandler.grimoireOfAlice.crafting.nuclearBoots){
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.nuclearBoots){
 			NUCLEAR_BOOTS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(), new ItemStack(ModItems.NUCLEAR_BOOTS)
 					, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER_BOOTS, ModItems.HIHIIROKANE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.netherShard) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.netherShard) {
 			NETHER_SHARD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NETHER_SHARD)
 					, Items.DIAMOND, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ);
 		}
 
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			if(ConfigHandler.grimoireOfAlice.crafting.danmakuCore.nuclearRod){
+			if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.nuclearRod){
 				NUCLEAR_ROD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NUCLEAR_ROD)
 						, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.ellyScythe) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.ellyScythe) {
 				ELLY_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.ELLY_SCYTHE)
 						, new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.laevatein) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.laevatein) {
 				LEVATEIN = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.LAEVATEIN)
 						, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_POWDER, Items.BLAZE_POWDER, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.miracleMallet) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.miracleMallet) {
 				MIRACLE_MALLET = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIRACLE_MALLET)
 						, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Items.GOLD_NUGGET, Blocks.GOLD_BLOCK, Items.GOLD_NUGGET, Items.GOLD_NUGGET, Blocks.SLIME_BLOCK, Items.GOLD_NUGGET, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.LEAD, Items.NETHER_STAR);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.trumpet) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.trumpet) {
 				TRUMPET = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MERLIN_TRUMPET)
 						, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.piano) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.piano) {
 				PIANO = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.LYRICA_PIANO)
 						, Items.IRON_INGOT, Items.IRON_INGOT, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.violin) { //FIXME: Cannot craft with oreDic blocks bug
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.violin) { //FIXME: Cannot craft with oreDic blocks bug
 				VIOLIN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.LUNASA_VIOLIN)
 						, "plankWood", "plankWood", "plankWood", Items.STRING, Items.STRING, "stickWood");
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.spellCardPuch) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.spellCardPuch) {
 				SPELL_CARD_POUCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.POUCH)
 						, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Blocks.CHEST);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.swordOfHisou) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.swordOfHisou) {
 				SWORD_OF_HISOU = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.HISOU)
 						, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, Items.GOLDEN_SWORD, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.tenguFan) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.tenguFan) {
 				TENGU_FAN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.TENGU_FAN)
 						, "stickWood", "stickWood", "stickWood", "stickWood", "stickWood", "stickWood", "treeLeaves", "treeLeaves");
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.shouLamp) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.shouLamp) {
 				SHOU_LAMP = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SHOU_LAMP)
 						, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.GLOWSTONE, Blocks.GLOWSTONE, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.danmakuCore.jeweledHourai) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {
 				JEWELED_HOURAI = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.JEWELED_HOURAI)
 						, Blocks.GOLD_BLOCK, "treeSapling", Blocks.GOLD_BLOCK, Items.DIAMOND, Items.DIAMOND, Items.DIAMOND, Items.NETHER_STAR, Items.DIAMOND, Items.EMERALD, Items.EMERALD, Items.EMERALD, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.EMERALD, Items.PRISMARINE_CRYSTALS);
 			}
 		}
 		//Blocks
-		if (ConfigHandler.grimoireOfAlice.crafting.holyStone) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.holyStone) {
 			HOLYSTONE = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModBlocks.HOLY_STONE)
 					, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, "stone");
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.holyKeyStone) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.holyKeyStone) {
 			HOLYKEYSTONE = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModBlocks.HOLY_KEY_STONE)
 					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.onbashira) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.onbashira) {
 			ONBASHIRA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModBlocks.ONBASHIRA)
 					, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.hihiirokaneBlock) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.hihiirokaneBlock) {
 			HIHIIROKANE_BLOCK = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModBlocks.HIHIIROKANE_BLOCK)
 					, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.endCrystal) {
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.endCrystal) {
 			END_CRYSTAL = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(),new ItemStack(Items.END_CRYSTAL)
 					, "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", Items.ENDER_EYE, Items.GHAST_TEAR);
 		}
