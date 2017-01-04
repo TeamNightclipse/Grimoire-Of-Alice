@@ -180,7 +180,7 @@ public class ModelIchirinUnzan extends ModelBiped {
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
 			GlStateManager.translate(this.bipedRightArm.offsetX, this.bipedRightArm.offsetY, this.bipedRightArm.offsetZ);
 			GlStateManager.translate(this.bipedRightArm.rotationPointX * scale, this.bipedRightArm.rotationPointY * scale, this.bipedRightArm.rotationPointZ * scale);
-			GlStateManager.scale(1.5D, 1.5D, 1.5D);
+			GlStateManager.scale(2.5D, 2.5D, 2.5D);
 			GlStateManager.translate(-this.bipedRightArm.offsetX, -this.bipedRightArm.offsetY, -this.bipedRightArm.offsetZ);
 			GlStateManager.translate(-this.bipedRightArm.rotationPointX * scale, -this.bipedRightArm.rotationPointY * scale, -this.bipedRightArm.rotationPointZ * scale);
 			this.bipedRightArm.render(scale);
@@ -195,7 +195,7 @@ public class ModelIchirinUnzan extends ModelBiped {
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
 			GlStateManager.translate(this.bipedLeftArm.offsetX, this.bipedLeftArm.offsetY, this.bipedLeftArm.offsetZ);
 			GlStateManager.translate(this.bipedLeftArm.rotationPointX * scale, this.bipedLeftArm.rotationPointY * scale, this.bipedLeftArm.rotationPointZ * scale);
-			GlStateManager.scale(1.5D, 1.5D, 1.5D);
+			GlStateManager.scale(2.5D, 2.5D, 2.5D);
 			GlStateManager.translate(-this.bipedLeftArm.offsetX, -this.bipedLeftArm.offsetY, -this.bipedLeftArm.offsetZ);
 			GlStateManager.translate(-this.bipedLeftArm.rotationPointX * scale, -this.bipedLeftArm.rotationPointY * scale, -this.bipedLeftArm.rotationPointZ * scale);
 			this.bipedLeftArm.render(scale);
