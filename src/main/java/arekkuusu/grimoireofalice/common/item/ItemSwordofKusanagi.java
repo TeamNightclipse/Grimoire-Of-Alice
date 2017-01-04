@@ -67,7 +67,10 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+		if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).getCooldownTracker().hasCooldown(this)) {
+			return false;
+		}
+		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 		if (!entityLiving.worldObj.isRemote) {
 			double range = 50.0D;
 			Vec3d look = entityLiving.getLookVec();
@@ -96,6 +99,9 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.worldObj, entityLiving, entity);
 			entityLiving.worldObj.spawnEntityInWorld(entityNetherSoul);
 			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
+		}
+		if (entityLiving instanceof EntityPlayer) {
+			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
 		}
 		return true;
 	}

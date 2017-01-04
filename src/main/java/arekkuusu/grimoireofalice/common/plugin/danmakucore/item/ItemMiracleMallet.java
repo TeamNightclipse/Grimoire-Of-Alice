@@ -118,7 +118,7 @@ public class ItemMiracleMallet extends ItemMod {
 					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
 							, 0F, 0.2F + 0.1F * itemRand.nextInt(3), 3F);
 				}
-				player.getCooldownTracker().setCooldown(this, 25);
+				player.getCooldownTracker().setCooldown(this, 15);
 			}
 		}
 		return super.onEntitySwing(entityLiving, stack);

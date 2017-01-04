@@ -52,7 +52,7 @@ public class ItemFakeMiracleMallet extends ItemMod {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		if(entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).getCooldownTracker().hasCooldown(this)) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			Vec3d vec = player.getLookVec();
 			if (!player.worldObj.isRemote) {
@@ -60,6 +60,7 @@ public class ItemFakeMiracleMallet extends ItemMod {
 						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
 				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
 			}
+			player.getCooldownTracker().setCooldown(this, 10);
 		}
 		entityLiving.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		return super.onEntitySwing(entityLiving, stack);

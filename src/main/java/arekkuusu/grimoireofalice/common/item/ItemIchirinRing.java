@@ -99,7 +99,7 @@ public class ItemIchirinRing extends ItemModSword {
 			stack.damageItem(1, attacker);
 		} else {
 			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
-			attacker.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+			attacker.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
 		return true;
 	}

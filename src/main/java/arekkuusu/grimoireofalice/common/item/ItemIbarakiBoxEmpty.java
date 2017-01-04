@@ -64,7 +64,6 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 		else {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 
-			//No needed to try place content as its always empty
 			if(worldIn.isBlockModifiable(playerIn, blockpos)
 					&& playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
 				IBlockState iblockstate = worldIn.getBlockState(blockpos);
@@ -76,7 +75,6 @@ public class ItemIbarakiBoxEmpty extends ItemMod {
 					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(itemStackIn, playerIn, ModItems.IBARAKI_BOX_FILLED));
 				}
 			}
-
 			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
 		}
 	}

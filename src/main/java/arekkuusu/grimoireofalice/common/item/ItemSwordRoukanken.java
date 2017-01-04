@@ -105,7 +105,7 @@ public class ItemSwordRoukanken extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).onGround) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 			if(timeUsed > 30) {

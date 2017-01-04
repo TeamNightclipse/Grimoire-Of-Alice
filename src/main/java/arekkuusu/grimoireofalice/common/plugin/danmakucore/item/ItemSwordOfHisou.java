@@ -106,8 +106,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 			List<EntityMob> list = player.worldObj.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
 			if (!list.isEmpty()) {
 				for (EntityLivingBase entityMob : list) {
-					for (int i = 0; i < 7; i++)
-						GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, player, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, player, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
 				}
 			}
 		}

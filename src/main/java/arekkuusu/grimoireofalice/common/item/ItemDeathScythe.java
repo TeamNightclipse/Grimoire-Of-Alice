@@ -99,7 +99,7 @@ public class ItemDeathScythe extends ItemModSword {
 			}
 
 			if(entity != null && !player.worldObj.isRemote) {
-				double back = 0.4;
+				double back = 0.3;
 				if(player.isSneaking()) {
 					entity.motionX += look.xCoord * back;
 					entity.motionY += look.yCoord * back;

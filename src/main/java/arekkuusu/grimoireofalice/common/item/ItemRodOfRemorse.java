@@ -90,6 +90,11 @@ public class ItemRodOfRemorse extends ItemMod {
 	}
 
 	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		return false;
+	}
+
+	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (!getUsed(stack) && target.getHealth() > 1) {
 			float perc = 0.75F;
