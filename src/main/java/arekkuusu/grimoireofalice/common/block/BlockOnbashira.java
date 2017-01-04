@@ -128,7 +128,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		switch(Part.fromIndex(meta)) {
 			case TOP:
-				return new TilePillarAltar();
+				return new TilePillarAltar().setRenderHeight(1F);
 			default:
 				return null;
 		}

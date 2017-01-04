@@ -16,6 +16,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.items.ItemHandlerHelper;
@@ -82,6 +83,17 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 
 	public ItemStack getItemStack() {
 		return itemHandler.getStackInSlot(0);
+	}
+
+	public float getRenderHeight() {
+		float height = getTileData().getFloat("RenderHeight");
+		return height == 0 ? 1.4F : height;
+	}
+
+	public TilePillarAltar setRenderHeight(float renderHeight) {
+		NBTTagCompound tag = getTileData();
+		tag.setFloat("RenderHeight", renderHeight);
+		return this;
 	}
 
 	@Override

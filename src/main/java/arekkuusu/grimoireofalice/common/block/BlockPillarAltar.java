@@ -123,7 +123,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TilePillarAltar();
+		return new TilePillarAltar().setRenderHeight(1.4F);
 	}
 
 	public enum Model implements IStringSerializable {
