@@ -206,13 +206,13 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 			case LOWER:
 				for(int i = 0; i < 4; i++) {
 					worldIn.setBlockToAir(pos.up(i));
-					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 + i, pos.getZ() + 0.5, 2.0F, false);
+					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 + i, pos.getZ() + 0.5, 1.0F, false);
 				}
 				break;
 			case TOP:
 				for(int i = 0; i < 4; i++) {
 					worldIn.setBlockToAir(pos.down(i));
-					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 - i, pos.getZ() + 0.5, 2.0F, false);
+					worldIn.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5 - i, pos.getZ() + 0.5, 1.0F, false);
 				}
 				break;
 			default:
