@@ -82,7 +82,9 @@ public class EntityDragonJewel extends Entity {
 							, (rand.nextDouble() - 0.5D) * 2.0D);
 				}
 			}
-			if (mob.getHealth() > 1) mob.attackEntityFrom(DamageSource.dragonBreath, 1);
+			if (mob.getHealth() > 1) {
+				mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(4));
+			}
 		});
 	}
 
