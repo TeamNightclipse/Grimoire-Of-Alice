@@ -149,7 +149,7 @@ public class YukkuriEvent {
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 			if(stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
-				if (event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
+				if ((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
 					event.setCanceled(true);
 			}
 		}
