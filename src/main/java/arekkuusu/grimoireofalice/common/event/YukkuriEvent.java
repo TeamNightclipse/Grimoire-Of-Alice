@@ -20,8 +20,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -32,9 +30,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class YukkuriEvent {
-
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -105,7 +100,7 @@ public class YukkuriEvent {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 			if (stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
-				if (event.getSource().isProjectile() || event.getSource().isExplosion())
+				if ((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
 					event.setCanceled(true);
 				return;
 			}
@@ -154,7 +149,7 @@ public class YukkuriEvent {
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 			if(stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
-				if (event.getSource().isProjectile() || event.getSource().isExplosion())
+				if (event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
 					event.setCanceled(true);
 			}
 		}

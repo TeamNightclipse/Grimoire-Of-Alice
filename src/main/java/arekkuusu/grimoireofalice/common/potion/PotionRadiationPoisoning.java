@@ -29,6 +29,11 @@ public class PotionRadiationPoisoning extends Potion {
 	}
 
 	@Override
+	public boolean isReady(int duration, int amplifier) {
+		return duration % 4 == 0;
+	}
+
+	@Override
 	public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {
 		return -4.0D * (double) (amplifier + 1);
 	}
