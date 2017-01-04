@@ -18,21 +18,14 @@ public class WorldGenOre implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if (world.provider.getDimension() == 0) {
-			int veinSize = 1 + ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity <= 0 ?
-					0 : random.nextInt(ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity);
-			int rarity = ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity <= 0 ?
-					0 : ConfigHandler.grimoireOfAlice.worldGen.impureStoneRarity;
+			int veinSize = ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity < 0 ? 0 : ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity;
 			int heightRange = 30;
 			for (int i = 0; i < ConfigHandler.grimoireOfAlice.worldGen.impureStoneSpawnRate; i++) {
-				if (rarity == 0 || 0 == random.nextInt(rarity)) {
-					WorldGenMinable gen = new WorldGenMinable(ModBlocks.IMPURE_STONE.getDefaultState(), veinSize,
-							BlockMatcher.forBlock(Blocks.STONE));
-					int xRand = chunkX * 16 + random.nextInt(16);
-					int yRand = random.nextInt(heightRange);
-					int zRand = chunkZ * 16 + random.nextInt(16);
-					gen.generate(world, random, new BlockPos(xRand, yRand, zRand));
-					break;
-				}
+				WorldGenMinable gen = new WorldGenMinable(ModBlocks.IMPURE_STONE.getDefaultState(), veinSize, BlockMatcher.forBlock(Blocks.STONE));
+				int xRand = chunkX * 16 + random.nextInt(16);
+				int yRand = random.nextInt(heightRange);
+				int zRand = chunkZ * 16 + random.nextInt(16);
+				gen.generate(world, random, new BlockPos(xRand, yRand, zRand));
 			}
 		}
 	}
