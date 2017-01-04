@@ -11,10 +11,12 @@ package arekkuusu.grimoireofalice.common.entity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -41,29 +43,25 @@ public class EntityEllyScythe extends EntityThrow {
 		strength = Math.min(1.5F, velocity);
 	}
 
-	//FIXME: Why checking inGround three times here? Why doing the movement manually here when it's already being done in a parent class?
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
-		if(!worldObj.isRemote && thrower == null) {
-			setDead();
+		if (thrower == null || ticksExisted > 500) {
+			stop();
 		}
-		if(inGround) return;
 
 		strength *= 0.994F;
-		if(strength < MIN_FLOAT_STRENGTH) {
-			if(getCritical()) {
+		if (strength < MIN_FLOAT_STRENGTH) {
+			if (getCritical()) {
 				setCritical(false);
 			}
 			strength = 0F;
 		}
 
-		if(!inGround) {
-			rotationYaw += 20F * strength;
-		}
+		rotationYaw += 20F * strength;
 
-		if(!inGround && getThrower() != null && strength > 0F) {
+		if (getThrower() != null && strength > 0F) {
 			EntityLivingBase shootingEntity = getThrower();
 			double dx = posX - shootingEntity.posX;
 			double dy = posY - shootingEntity.posY - shootingEntity.getEyeHeight();
@@ -78,29 +76,18 @@ public class EntityEllyScythe extends EntityThrow {
 			motionY -= RETURN_STRENGTH * dy;
 			motionZ -= RETURN_STRENGTH * dz;
 		}
+	}
 
-		if(throwableShake > 0) {
-			--throwableShake;
-		}
-
-		posX += motionX;
-		posY += motionY;
-		posZ += motionZ;
-
-		float res = 0.99F;
-		if(isInWater()) {
-			for(int i = 0; i < 4; i++) {
-				float f6 = 0.25F;
-				worldObj.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX - motionX * f6, posY - motionY * f6, posZ - motionZ * f6, motionX,
-						motionY, motionZ);
+	private void stop() {
+		if(!worldObj.isRemote) {
+			ItemStack stack = getStack();
+			if (stack.getItemDamage() != stack.getMaxDamage()) {
+				EntityItem entityitem = new EntityItem(worldObj, posX, posY, posZ, stack);
+				entityitem.setDefaultPickupDelay();
+				worldObj.spawnEntityInWorld(entityitem);
 			}
-			res *= 0.80808080F;
+			setDead();
 		}
-		motionX *= res;
-		motionY *= res;
-		motionZ *= res;
-		motionY -= getGravityVelocity();
-		setPosition(posX, posY, posZ);
 	}
 
 	@Override

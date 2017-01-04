@@ -13,6 +13,7 @@ import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PIC
 import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PICKUP_CREATIVE;
 import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
+import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -70,7 +71,7 @@ public abstract class EntityThrow extends EntityThrowable {
 	}
 
 	public ItemStack getStack() {
-		return stack;
+		return stack == null ? new ItemStack(ModItems.ELLY_SCYTHE) : stack;
 	}
 
 	public void setStack(ItemStack stack) {
