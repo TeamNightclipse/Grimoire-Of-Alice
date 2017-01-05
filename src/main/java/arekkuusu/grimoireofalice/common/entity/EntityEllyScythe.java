@@ -47,7 +47,7 @@ public class EntityEllyScythe extends EntityThrow {
 	public void onUpdate() {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
-		if (thrower == null || ticksExisted > 500) {
+		if (thrower == null || strength <= 0 || ticksExisted > 250) {
 			stop();
 		}
 
