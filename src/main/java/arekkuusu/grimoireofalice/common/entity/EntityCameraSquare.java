@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.entity;
 
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -82,7 +83,7 @@ public class EntityCameraSquare extends Entity {
 
 	private List<Entity> getEntities() {
 		return worldObj.getEntitiesWithinAABB(Entity.class,
-				getEntityBoundingBox().expandXyz(getSize() * 1.5), entity -> entity != player);
+				getEntityBoundingBox().expandXyz(getSize() * 1.5), entity -> entity != player && !(entity instanceof EntityHanging));
 	}
 
 	@Override
