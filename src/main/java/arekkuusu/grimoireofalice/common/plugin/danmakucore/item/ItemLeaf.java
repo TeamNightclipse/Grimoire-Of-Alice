@@ -51,35 +51,23 @@ public class ItemLeaf extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
+		if(!playerIn.capabilities.isCreativeMode) {
+			--itemStackIn.stackSize;
+		}
 
-	/*
-	 * After a player uses the item, it will spawn in the world
-	 * an EntityLeaf that will travel and fall slowly.
-	*/
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer)entityLiving;
-			if(!playerIn.capabilities.isCreativeMode) {
-				--stack.stackSize;
+		if(playerIn.isSneaking()) {
+			for (int j = 0; j < 8; ++j) {
+				worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, playerIn.posX, playerIn.posY, playerIn.posZ, 0.0D, 0.0D, 0.0D);
 			}
-
-			if(playerIn.isSneaking()) {
-				for (int j = 0; j < 8; ++j) {
-					worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, playerIn.posX, playerIn.posY, playerIn.posZ, 0.0D, 0.0D, 0.0D);
-				}
-			} else {
-				DanmakuHelper.playShotSound(playerIn);
-				if (!worldIn.isRemote) {
-					DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
-					worldIn.spawnEntityInWorld(danmaku.build().asEntity());
-					danmaku.setShot(danmaku.shot.setSize(2));
-				}
+		} else {
+			DanmakuHelper.playShotSound(playerIn);
+			if (!worldIn.isRemote) {
+				DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
+				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
+				danmaku.setShot(danmaku.shot.setSize(2));
 			}
 		}
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override
