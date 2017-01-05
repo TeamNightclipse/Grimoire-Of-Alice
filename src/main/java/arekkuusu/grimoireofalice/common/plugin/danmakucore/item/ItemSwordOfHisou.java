@@ -157,17 +157,20 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 				}
 				worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 5F, 1F);
 			}
-			List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(10.0D));
-			for (EntityMob mob : list) {
-				mob.attackEntityFrom(DamageSource.drown, 1);
-				Vec3d playerPos = player.getPositionVector();
-				Vec3d mobPos = mob.getPositionVector();
-				double ratio = playerPos.distanceTo(mobPos) / 4;
-				double scaling = 1 - ratio;
-				Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-				mob.motionX = -motion.xCoord * 2;
-				mob.motionY = .3F;
-				mob.motionZ = -motion.zCoord * 2;
+
+			if(!worldIn.isRemote) {
+				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(10.0D));
+				for (EntityMob mob : list) {
+					mob.attackEntityFrom(DamageSource.drown, 1);
+					Vec3d playerPos = player.getPositionVector();
+					Vec3d mobPos = mob.getPositionVector();
+					double ratio = playerPos.distanceTo(mobPos) / 4;
+					double scaling = 1 - ratio;
+					Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
+					mob.motionX = -motion.xCoord * 2;
+					mob.motionY = .3F;
+					mob.motionZ = -motion.zCoord * 2;
+				}
 			}
 			return EnumActionResult.SUCCESS;
 		}

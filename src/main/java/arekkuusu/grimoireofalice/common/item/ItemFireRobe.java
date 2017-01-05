@@ -68,7 +68,9 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	}
 
 	private void extinguishEffect(EntityLivingBase target, World world) {
-		target.extinguish();
+		if(!world.isRemote) {
+			target.extinguish();
+		}
 		for(int k = 0; k < 8; ++k) {
 			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX - 0.5 + itemRand.nextDouble(), target.posY - 1 + itemRand.nextDouble() * 2,
 					target.posZ - 0.5 + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);

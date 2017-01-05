@@ -122,7 +122,7 @@ public class ItemHakureiGohei extends ItemMod {
 				mob.motionY = -motion.yCoord * 1.2;
 				mob.motionZ = -motion.zCoord * 1.2;
 
-				if(mob.worldObj.isRemote && ticks % 4 == 0) {
+				if(ticks % 4 == 0) {
 					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
 							mob.posY + itemRand.nextDouble() * mob.height - 0.25D, mob.posZ + (itemRand.nextDouble() - 0.5D) * mob.width,
 							(itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat(), (itemRand.nextFloat() - 0.5D) * 0.2);
@@ -169,15 +169,21 @@ public class ItemHakureiGohei extends ItemMod {
 		if (getMode(stack) == OFFENSIVE) {
 			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 				attacker.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
+				if(!target.worldObj.isRemote) {
+					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
+				}
 			}
 			else if (target.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) {
 				attacker.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
+				if(!target.worldObj.isRemote) {
+					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
+				}
 			}
 			else if (target instanceof EntityPlayer) {
 				attacker.worldObj.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				target.attackEntityFrom(DamageSource.magic, 5);
+				if(!target.worldObj.isRemote) {
+					target.attackEntityFrom(DamageSource.magic, 5);
+				}
 			}
 			else {
 				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 3);

@@ -131,17 +131,19 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 						spawnSmoke(player, -itemRand.nextDouble(), itemRand.nextDouble());
 					}
 				}
-				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
-				for(EntityMob mob : list) {
-					mob.attackEntityFrom(DamageSource.magic, convert);
-					Vec3d playerPos = player.getPositionVector();
-					Vec3d mobPos = mob.getPositionVector();
-					double ratio = playerPos.distanceTo(mobPos) / 4;
-					double scaling = 1 - ratio;
-					Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-					mob.motionX = -motion.xCoord * 2;
-					mob.motionY = .3F;
-					mob.motionZ = -motion.zCoord * 2;
+				if(!worldIn.isRemote) {
+					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
+					for(EntityMob mob : list) {
+						mob.attackEntityFrom(DamageSource.magic, convert);
+						Vec3d playerPos = player.getPositionVector();
+						Vec3d mobPos = mob.getPositionVector();
+						double ratio = playerPos.distanceTo(mobPos) / 4;
+						double scaling = 1 - ratio;
+						Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
+						mob.motionX = -motion.xCoord * 2;
+						mob.motionY = .3F;
+						mob.motionZ = -motion.zCoord * 2;
+					}
 				}
 			}
 			worldIn.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERDRAGON_SHOOT, SoundCategory.PLAYERS, 1F, 1F);

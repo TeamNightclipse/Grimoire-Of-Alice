@@ -86,8 +86,9 @@ public class EntityBarrier extends Entity {
 		if(type == 3) {
 			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 			playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
-			living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
+
 			if (!worldObj.isRemote) {
+				living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
 				setDead();
 			}
 		}

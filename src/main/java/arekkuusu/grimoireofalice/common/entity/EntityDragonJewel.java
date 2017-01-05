@@ -72,18 +72,21 @@ public class EntityDragonJewel extends Entity {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob).forEach(mob -> {
-			mob.setAttackTarget(null);
-			mob.setRevengeTarget(null);
-			if(mob.worldObj.isRemote) {
-				for (int i = 0; i < 2; ++i) {
-					mob.worldObj.spawnParticle(EnumParticleTypes.PORTAL
-							, mob.posX + (rand.nextDouble() - 0.5D) * (double) mob.width, mob.posY + rand.nextDouble() * (double) mob.height - 0.25D, mob.posZ
-									+ (rand.nextDouble() - 0.5D) * (double) mob.width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
-							, (rand.nextDouble() - 0.5D) * 2.0D);
+			if(!worldObj.isRemote) {
+				mob.setAttackTarget(null);
+				mob.setRevengeTarget(null);
+
+				if (mob.getHealth() > 1) {
+					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(4));
 				}
 			}
-			if (mob.getHealth() > 1) {
-				mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(4));
+
+			for (int i = 0; i < 2; ++i) {
+				mob.worldObj.spawnParticle(EnumParticleTypes.PORTAL,
+						mob.posX + (rand.nextDouble() - 0.5D) * mob.width,
+						mob.posY + rand.nextDouble() * mob.height - 0.25D,
+						mob.posZ + (rand.nextDouble() - 0.5D) * mob.width,
+						(rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D);
 			}
 		});
 	}

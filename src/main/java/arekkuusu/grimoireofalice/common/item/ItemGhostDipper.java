@@ -144,11 +144,15 @@ public class ItemGhostDipper extends ItemMod {
 				BlockPos offset = blockpos.offset(enumfacing);
 
 				if(worldIn.getBlockState(offset).getMaterial() == Material.WATER) {
-					worldIn.setBlockState(offset, Blocks.AIR.getDefaultState());
 					++blocksChanged;
 
-					if(depth < 6) {
-						queue.add(new Tuple<>(offset, depth + 1));
+					//The client is for the most part concerned with if any blocks were changed. If we reach this far that is true. No need to do more.
+					if(!worldIn.isRemote) {
+						worldIn.setBlockState(offset, Blocks.AIR.getDefaultState());
+
+						if(depth < 6) {
+							queue.add(new Tuple<>(offset, depth + 1));
+						}
 					}
 				}
 			}
