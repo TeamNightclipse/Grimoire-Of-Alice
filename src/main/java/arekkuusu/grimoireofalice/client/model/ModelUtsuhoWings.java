@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * ModelUtsuhoWings - Arekkuusu Created using Tabula 5.1.0
@@ -49,9 +50,18 @@ public class ModelUtsuhoWings extends ModelBiped {
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		bipedBody = chest;
 
+		flapWings(entity, ageInTicks);
+
 		bipedRightArm.showModel = false;
 		bipedLeftArm.showModel = false;
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+	}
+
+	private void flapWings(Entity entity, float tick) {
+		if(!entity.onGround) {
+			wingRight.rotateAngleY = 0.1F - (float) (MathHelper.cos(tick * 0.1F) * Math.PI * 0.0425);
+			wingLeft.rotateAngleY = -wingRight.rotateAngleY;
+		}
 	}
 
     /**
