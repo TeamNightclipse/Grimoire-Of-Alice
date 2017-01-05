@@ -77,7 +77,6 @@ public final class SpecialRecipes {
 	public static IRecipeItems SANAE_GOHEI;
 	public static IRecipeItems SARIEL_WAND;
 	public static IRecipeItems SHICHI_SEIKEN;
-	public static IRecipeItems SHIMENAWA_ROPE;
 	public static IRecipeItems KANAKO_ONBASHIRA;
 	public static IRecipeItems ORIN_SKULL;
 	public static IRecipeItems STOP_WATCH;
@@ -100,7 +99,6 @@ public final class SpecialRecipes {
 	public static IRecipeItems NETHER_SHARD;
 	public static IRecipeItems NUCLEAR_ROD;
 	public static IRecipeItems NUCLEAR_BOOTS;
-	public static IRecipeItems SEND_OFF_LANTERN;
 	public static IRecipeItems UFO_BLUE;
 	public static IRecipeItems UFO_RED;
 	public static IRecipeItems UFO_GREEN;
@@ -123,7 +121,6 @@ public final class SpecialRecipes {
 	//Bocks
 	public static IRecipeItems HOLYSTONE;
 	public static IRecipeItems HOLYKEYSTONE;
-	public static IRecipeItems HIHIIROKANE_BLOCK;
 	public static IRecipeItems ONBASHIRA;
 	public static IRecipeItems END_CRYSTAL;
 
@@ -380,11 +377,6 @@ public final class SpecialRecipes {
 					, Items.NETHER_STAR, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.altar.shimenawaRope) {
-			SHIMENAWA_ROPE = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.SHIMENAWA_ROPE)
-					, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
-		}
-
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.sichiSeiken) {
 			SHICHI_SEIKEN = GrimoireOfAliceAPI.registerRecipeMoonPhase(7, new ItemStack(ModItems.SHICHI_SEIKEN)
 					, Items.IRON_INGOT, Items.GOLD_INGOT, ModItems.TAMAHAGANE_STEEL);
@@ -434,7 +426,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
 			UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
-					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED);
+					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED, Blocks.LEVER, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.wallPassingChisel) {
@@ -554,22 +546,17 @@ public final class SpecialRecipes {
 		//Blocks
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.holyStone) {
 			HOLYSTONE = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModBlocks.HOLY_STONE)
-					, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, "stone");
+					, ModBlocks.COMPACT_STONE, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK , "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.holyKeyStone) {
 			HOLYKEYSTONE = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModBlocks.HOLY_KEY_STONE)
-					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING);
+					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.onbashira) {
 			ONBASHIRA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModBlocks.ONBASHIRA)
-					, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.HOLY_STONE);
-		}
-
-		if (ConfigHandler.grimoireOfAlice.crafting.altar.hihiirokaneBlock) {
-			HIHIIROKANE_BLOCK = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModBlocks.HIHIIROKANE_BLOCK)
-					, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
+					, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.endCrystal) {

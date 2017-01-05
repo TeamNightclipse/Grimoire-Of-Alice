@@ -108,7 +108,20 @@ public class VanillaCrafting {
 					.outputs(ModItems.HIHIIROKANE).build();
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.popsicleStick) {
+		if (ConfigHandler.grimoireOfAlice.crafting.hihiirokaneBlock) {
+			shaped().grid("HHH","HHH","HHH")
+					.where('H').mapsTo(ModItems.HIHIIROKANE)
+					.outputs(ModBlocks.HIHIIROKANE_BLOCK).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.shimenawaRope) {
+			shaped().grid("RRR","PPP")
+					.where('R').mapsTo(ModBlocks.ROPE_BLOCK)
+					.where('P').mapsTo(ModBlocks.PAPER_BLOCK)
+					.outputs(ModItems.SHIMENAWA_ROPE).build();
+		}
+
+			if (ConfigHandler.grimoireOfAlice.crafting.popsicleStick) {
 			shaped().grid("  S", "SS ", "SS ")
 					.where('S').mapsTo("stickWood")
 					.outputs(ModItems.POPSICLE_STICK).build();

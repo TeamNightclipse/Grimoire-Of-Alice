@@ -39,6 +39,10 @@ public class ConfigHandler {
 			public boolean mask = true;
 			@Comment("Can players craft the hihiirokane?")
 			public boolean hihiirokane = false;
+			@Comment("Can players craft hihiirokane blocks?")
+			public boolean hihiirokaneBlock = true;
+			@Comment("Can players craft the shimenawa rope?")
+			public boolean shimenawaRope = true;
 			@Comment("Can players craft the watermelon blade?")
 			public boolean waterMelonBlade = true;
 			@Comment("Can players craft the watermelon sword?")
@@ -146,8 +150,6 @@ public class ConfigHandler {
 				public boolean sarielWand = false;
 				@Comment("Can players craft the sichi seiken?")
 				public boolean sichiSeiken = true;
-				@Comment("Can players craft the shimenawa rope?")
-				public boolean shimenawaRope = true;
 				@Comment("Can players craft the kanako's onbashira?")
 				public boolean kanakoOnbashira = true;
 				@Comment("Can players craft the skull?")
@@ -185,8 +187,6 @@ public class ConfigHandler {
 				public boolean holyKeyStone = true;
 				@Comment("Can players craft onbashiras?")
 				public boolean onbashira = true;
-				@Comment("Can players craft hihiirokane blocks?")
-				public boolean hihiirokaneBlock = true;
 				@Comment("Can players craft end crystals?")
 				public boolean endCrystal = true;
 				@Comment("Can player craft nuclear boots?")
