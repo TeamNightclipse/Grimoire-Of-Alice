@@ -91,7 +91,7 @@ public class ItemNazrinPendulum extends ItemMod {
 			}
 
 			if (!worldIn.isRemote) {
-				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, getOre(stack), !playerIn.isSneaking());
+				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, stack, getOre(stack), !playerIn.isSneaking());
 				Vec3d look = playerIn.getLookVec();
 				float distance = 2F;
 				double dx = playerIn.posX + look.xCoord * distance;
@@ -110,7 +110,7 @@ public class ItemNazrinPendulum extends ItemMod {
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, getOre(stack), false);
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, stack, getOre(stack), false);
 			pendulum.setPosition(pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5);
 			worldIn.spawnEntityInWorld(pendulum);
 		}
