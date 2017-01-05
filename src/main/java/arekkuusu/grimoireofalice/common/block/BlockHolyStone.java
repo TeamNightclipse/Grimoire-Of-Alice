@@ -90,7 +90,7 @@ public class BlockHolyStone extends BlockMod {
 		if(optPlayer.isPresent()) {
 			EntityPlayer player = optPlayer.get();
 			addPlayerEffect(player);
-			ifNear(world, pos);
+			spawnParticles(world, pos);
 			world.scheduleUpdate(pos, this, 10); //Update more frequently if a player is around
 		}
 		else {
@@ -98,19 +98,24 @@ public class BlockHolyStone extends BlockMod {
 		}
 	}
 
-	protected void addPlayerEffect(EntityPlayer player) {
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
+		super.randomDisplayTick(stateIn, world, pos, rand);
+		getPlayerInRange(world, pos).ifPresent(ignored -> spawnParticles(world, pos));
+	}
+
+	private void addPlayerEffect(EntityPlayer player) {
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 50, 1));
 		player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 50, 1));
 	}
 
-	protected void ifNear(World world, BlockPos pos) {
-		if(world.isRemote) {
-			float randX = pos.getX() + world.rand.nextFloat();
-			float randY = pos.getY() + world.rand.nextFloat();
-			float randZ = pos.getZ() + world.rand.nextFloat();
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
-			world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
-		}
+	private void spawnParticles(World world, BlockPos pos) {
+		float randX = pos.getX() + world.rand.nextFloat();
+		float randY = pos.getY() + world.rand.nextFloat();
+		float randZ = pos.getZ() + world.rand.nextFloat();
+		world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
 	}
 
 	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {

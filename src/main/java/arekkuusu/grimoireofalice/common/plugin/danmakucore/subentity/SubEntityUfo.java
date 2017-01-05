@@ -17,6 +17,7 @@ import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 public class SubEntityUfo extends SubEntityType {
 
@@ -47,8 +48,9 @@ public class SubEntityUfo extends SubEntityType {
 		@Override
 		protected void impact(RayTraceResult raytrace) {
 			super.impact(raytrace);
-			for(int j = 0; j < 8; ++j) {
-				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, danmaku.posX, danmaku.posY, danmaku.posZ, 0.0D, 0.5D, 0.0D);
+			if(world instanceof WorldServer && !world.isRemote) {
+				//FIXME: Bubbles only work underwater. Bug?
+				((WorldServer)world).spawnParticle(EnumParticleTypes.WATER_BUBBLE, danmaku.posX, danmaku.posY, danmaku.posZ, 8, 0D, 0D, 0D, 0.5D);
 			}
 		}
 	}
