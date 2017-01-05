@@ -19,6 +19,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -29,6 +32,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class EntityNazrinPendulum extends Entity {
 
+	private static final DataParameter<Integer> COUNT = EntityDataManager.createKey(EntityNazrinPendulum.class, DataSerializers.VARINT);
+	private ItemStack stack;
 	private String ore = "";
 
 	public EntityPlayer user;
@@ -38,9 +43,10 @@ public class EntityNazrinPendulum extends Entity {
 		super(worldIn);
 	}
 
-	public EntityNazrinPendulum(World worldIn, EntityPlayer player, String ore, boolean follow) {
+	public EntityNazrinPendulum(World worldIn, EntityPlayer player, ItemStack stack, String ore, boolean follow) {
 		super(worldIn);
 		user = player;
+		this.stack = stack.copy();
 		this.follow = follow;
 		this.ore = ore;
 	}
@@ -48,55 +54,55 @@ public class EntityNazrinPendulum extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-
-		if(!worldObj.isRemote) {
-			if (user == null || isEntityInsideOpaqueBlock()) {
-				stopEntity();
-			}
-			else {
-				if (ticksExisted > 10 && user.isSneaking()) {
+		if(getCount() == 0) {
+			if (!worldObj.isRemote) {
+				if (user == null || isEntityInsideOpaqueBlock()) {
 					stopEntity();
+				} else {
+					if (ticksExisted > 10 && user.isSneaking()) {
+						stopEntity();
+					} else if (user.hurtTime > 0) {
+						stopEntity();
+					}
 				}
-				else if (user.hurtTime > 0) {
-					stopEntity();
+
+				if (user != null && follow) {
+					Vec3d look = user.getLookVec();
+					float distance = 2F;
+					double dx = user.posX + look.xCoord * distance;
+					double dy = user.posY + user.getEyeHeight() - 0.5;
+					double dz = user.posZ + look.zCoord * distance;
+					setPosition(dx, dy, dz);
 				}
+
+				List<Block> blockLayer = new ArrayList<>(20);
+				BlockPos pos = new BlockPos(posX, posY, posZ);
+				for (int i = 1; i < 20; i++) {
+					Block block = worldObj.getBlockState(pos.down(i)).getBlock();
+					ItemStack stack = new ItemStack(block);
+
+					//noinspection ConstantConditions Liar
+					if (stack.getItem() == null) {
+						continue;
+					}
+					boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+							.mapToObj(OreDictionary::getOreName)
+							.anyMatch(s -> !ore.isEmpty() ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
+
+					if (isOre) {
+						blockLayer.add(block);
+					}
+				}
+
+				blockLayer.forEach(ignored -> setCount(getCount() + 1));
 			}
-
-			if (user != null && follow) {
-				Vec3d look = user.getLookVec();
-				float distance = 2F;
-				double dx = user.posX + look.xCoord * distance;
-				double dy = user.posY + user.getEyeHeight() - 0.5;
-				double dz = user.posZ + look.zCoord * distance;
-				setPosition(dx, dy, dz);
+		} else {
+			setCount(getCount() - 1);
+			if (rand.nextInt(8) == 4) {
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
+				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
 			}
-
-			List<Block> blockLayer = new ArrayList<>(20);
-			BlockPos pos = new BlockPos(posX, posY, posZ);
-			for (int i = 1; i < 20; i++) {
-				Block block = worldObj.getBlockState(pos.down(i)).getBlock();
-				ItemStack stack = new ItemStack(block);
-
-				//noinspection ConstantConditions Liar
-				if (stack.getItem() == null) {
-					continue;
-				}
-				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-						.mapToObj(OreDictionary::getOreName)
-						.anyMatch(s -> !ore.isEmpty() ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
-
-				if (isOre) {
-					blockLayer.add(block);
-				}
-			}
-
-			blockLayer.forEach(ignored -> {
-				if (rand.nextInt(8) == 4) {
-					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-					worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 0.0D, 1.0D, 0.0D);
-				}
-			});
 		}
 	}
 
@@ -106,7 +112,9 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {}
+	protected void entityInit() {
+		dataManager.register(COUNT, 0);
+	}
 
 	private void stopEntity() {
 		if (!worldObj.isRemote) {
@@ -115,7 +123,7 @@ public class EntityNazrinPendulum extends Entity {
 					setDead();
 					return;
 				}
-				ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.NAZRIN_PENDULUM));
+				ItemHandlerHelper.giveItemToPlayer(user, stack);
 			}
 			else {
 				dropItem(ModItems.NAZRIN_PENDULUM, 1);
@@ -127,7 +135,15 @@ public class EntityNazrinPendulum extends Entity {
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.4, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.5, alignedBB.minZ + 0.5);
+		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.2, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.2, alignedBB.minZ + 0.5);
+	}
+
+	private void setCount(int time) {
+		dataManager.set(COUNT, time);
+	}
+
+	public int getCount() {
+		return dataManager.get(COUNT);
 	}
 
 	@Override
