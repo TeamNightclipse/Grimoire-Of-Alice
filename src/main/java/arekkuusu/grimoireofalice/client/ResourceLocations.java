@@ -16,7 +16,7 @@ public final class ResourceLocations {
 	//Entity
 	public static final ResourceLocation BARRIER_TEXTURE = getLocation("textures/models/entities/Barrier.png");
 	public static final ResourceLocation CAMERA_SQUARE_TEXTURE = getLocation("textures/models/entities/CameraSquare.png");
-	public static final ResourceLocation DOLL_TEXTURE = getLocation("textures/models/entities/CursedDecoyDoll.png");
+	public static final ResourceLocation DOLL_TEXTURE = getLocation("textures/models/entities/Doll.png");
 	public static final ResourceLocation DRAGON_JEWEL_TEXTURE = getLocation("textures/models/entities/MagicCircle_0.png");
 	public static final ResourceLocation ELLY_SCYTHE_TEXTURE = getLocation("textures/models/entities/Leaf.png");
 	public static final ResourceLocation GRIMOIRE_CIRCLE_TEXTURE = getLocation("textures/models/entities/MagicCircle_1.png");
