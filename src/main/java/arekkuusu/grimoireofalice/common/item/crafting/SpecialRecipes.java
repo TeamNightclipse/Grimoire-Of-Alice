@@ -513,7 +513,7 @@ public final class SpecialRecipes {
 						, Items.IRON_INGOT, Items.IRON_INGOT, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL);
 			}
 
-			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.violin) { //FIXME: Cannot craft with oreDic blocks bug
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.violin) {
 				VIOLIN = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.LUNASA_VIOLIN)
 						, "plankWood", "plankWood", "plankWood", Items.STRING, Items.STRING, "stickWood");
 			}

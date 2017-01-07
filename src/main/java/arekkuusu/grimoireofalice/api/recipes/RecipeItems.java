@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
+import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
+
 public class RecipeItems implements IRecipeItems {
 
 	private final ItemStack result;
@@ -47,7 +49,7 @@ public class RecipeItems implements IRecipeItems {
 					index = j;
 					break;
 				}
-				else if(obj instanceof String && OreDictionary.containsMatch(false, OreDictionary.getOres((String)obj), stack)) {
+				else if(obj instanceof String && containsMatch(OreDictionary.getOres((String)obj), stack)) {
 					index = j;
 					break;
 				}
@@ -58,6 +60,20 @@ public class RecipeItems implements IRecipeItems {
 			else return false;
 		}
 		return toCompare.isEmpty();
+	}
+
+	private static boolean containsMatch(List<ItemStack> inputs, ItemStack target) {
+		for (ItemStack input : inputs) {
+			if (itemMatches(target, input)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static boolean itemMatches(ItemStack target, ItemStack input) {
+		return input != null && target != null && target.getItem() == input.getItem() && (target.getItemDamage() == input.getItemDamage()
+				|| input.getItemDamage() == WILDCARD_VALUE);
 	}
 
 	@Override
