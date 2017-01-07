@@ -48,7 +48,6 @@ public class GrimoireOfAlice {
 		ModEvents.preInit();
 		ModEntity.preInit();
 		ModSounds.preInit();
-		MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		proxy.preInit(event);
 		if (danmakuCoreInstalled) {
