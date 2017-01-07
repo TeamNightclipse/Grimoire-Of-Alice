@@ -1,13 +1,12 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/village_blacksmith",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:village_blacksmith",
     "rolls": 1,
     "entries": [
       {
         "type": "item",
         "name": "grimoireofalice:mochihammer",
-        "weight": 10
+        "weight": 4
       }
     ]
   }]

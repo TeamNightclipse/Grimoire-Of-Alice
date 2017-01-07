@@ -1,18 +1,17 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/stronghold_corridor",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:stronghold_corridor",
     "rolls": 1,
     "entries": [
       {
         "type": "item",
         "name": "grimoireofalice:orinskull",
-        "weight": 15
+        "weight": 4
       },
       {
         "type": "item",
         "name": "grimoireofalice:ibukigourd",
-        "weight": 15
+        "weight": 5
       }
     ]
   }]
