@@ -256,8 +256,8 @@ public class ConfigHandler {
 
 		public static class WorldGen {
 
-			@Comment("Can players find Point Items?")
-			public boolean pointItemsGen = true;
+			@Comment("Can players find Loot in Chests?")
+			public boolean lootGen = true;
 			@Comment("How many shroom spawn tries per chunk?")
 			public int shroomSpawnRate = 25;
 			@Comment("How many kyoumarubotan spawn tries per chunk?")

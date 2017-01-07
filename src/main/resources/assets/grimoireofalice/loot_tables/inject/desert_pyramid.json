@@ -1,26 +1,25 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/desert_pyramid",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:desert_pyramid",
     "rolls": 1,
     "entries": [
       {
         "type": "item",
         "name": "grimoireofalice:cherryitem",
-        "weight": 20,
-        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 3 } }]
+        "weight": 3,
+        "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 3 } }]
       },
 	  {
         "type": "item",
         "name": "grimoireofalice:faithitem",
-        "weight": 15,
-        "functions": [{ "function": "set_count", "count": { "min": 6, "max": 16 } }]
+        "weight": 4,
+        "functions": [{ "function": "minecraft:set_count", "count": { "min": 6, "max": 16 } }]
       },
       {
         "type": "item",
         "name": "grimoireofalice:timeorb",
-        "weight": 20,
-        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 2 } }]
+        "weight": 7,
+        "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }]
       }
     ]
   }]

@@ -27,11 +27,20 @@ public class WorldGenLoot {
 	@SubscribeEvent
 	public void onLoot(LootTableLoadEvent event) {
 		String prefix = "minecraft:chests/";
-		String namu = event.getName().toString();
+		String lootName = event.getName().toString();
 
-		if (namu.startsWith(prefix)) {
-			String file = namu.substring(namu.indexOf(prefix) + prefix.length());
-			event.getTable().addPool(getInjectPool(file));
+		if (lootName.startsWith(prefix)) {
+			String file = lootName.substring(lootName.indexOf(prefix) + prefix.length());
+			switch (file) {
+				case "abandoned_mineshaft":
+				case "desert_pyramid":
+				case "jungle_temple":
+				case "simple_dungeon":
+				case "spawn_bonus_chest":
+				case "stronghold_corridor":
+				case "village_blacksmith": event.getTable().addPool(getInjectPool(file)); break;
+				default: break;
+			}
 		}
 	}
 

@@ -1,19 +1,18 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/jungle_temple",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:jungle_temple",
     "rolls": 1,
     "entries": [
       {
         "type": "item",
         "name": "grimoireofalice:faithitem",
         "weight": 15,
-        "functions": [{ "function": "set_count", "count": { "min": 6, "max": 16 } }]
+        "functions": [{ "function": "minecraft:set_count", "count": { "min": 6, "max": 16 } }]
       },
       {
         "type": "item",
         "name": "grimoireofalice:cattailplant",
-        "weight": 5
+        "weight": 1
       }
     ]
   }]

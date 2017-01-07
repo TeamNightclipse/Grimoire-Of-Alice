@@ -1,7 +1,6 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/spawn_bonus_chest",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:spawn_bonus_chest",
     "rolls": 1,
     "entries": [
       {

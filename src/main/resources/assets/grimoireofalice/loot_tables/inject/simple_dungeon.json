@@ -1,23 +1,22 @@
 {
-  "__comment": "This table is injected as its own pool into minecraft:chests/simple_dungeon",
   "pools": [{
-    "name": "main",
+    "name": "grimoireofalice:simple_dungeon",
     "rolls": 1,
     "entries": [
       {
         "type": "item",
         "name": "grimoireofalice:ufored",
-        "weight": 25
+        "weight": 4
 	  },
       {
         "type": "item",
         "name": "grimoireofalice:ufoblue",
-        "weight": 20
+        "weight": 5
       },
       {
         "type": "item",
         "name": "grimoireofalice:ufogreen",
-        "weight": 15
+        "weight": 6
       }
     ]
   }]
