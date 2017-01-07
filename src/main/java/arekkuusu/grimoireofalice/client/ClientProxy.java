@@ -95,7 +95,6 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.HIHIIROKANE);
 		registerItem(ModItems.SHIMENAWA_ROPE);
 		registerItem(ModItems.TIME_ORB);
-		registerItem(ModItems.UFOS);
 		registerItem(ModItems.MASK);
 		registerItem(ModItems.GRIMOIRE_BOOK);
 		registerItem(ModItems.YOUKAI_BOOK);
@@ -110,6 +109,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.UFO_BLUE);
 		registerItem(ModItems.UFO_GREEN);
 		registerItem(ModItems.UFO_RED);
+		registerItem(ModItems.UFOS);
 		registerItem(ModItems.PATCHY_BOOK);
 		registerItem(ModItems.SKULL);
 		registerItem(ModItems.NAZRIN_PENDULUM);
@@ -124,8 +124,6 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.FAKE_MIRACLE_MALLET);
 		registerItem(ModItems.GHASTLY_SEND_OFF_LANTERN);
 		registerItem(ModItems.CURSED_DECOY_DOLL);
-		registerItem(ModItems.AYA_CAMERA);
-		registerItem(ModItems.HATATE_CAMERA);
 		registerItem(ModItems.HAKUREI_GOHEI);
 		registerItem(ModItems.SANAE_GOHEI);
 		registerItem(ModItems.MORTAR_AND_PESTLE);
@@ -204,6 +202,8 @@ public class ClientProxy implements ISidedProxy {
 			registerItem(ModItems.ELLY_SCYTHE);
 			registerItem(ModItems.HISOU);
 			registerItem(ModItems.NUCLEAR_ROD);
+			registerItem(ModItems.AYA_CAMERA);
+			registerItem(ModItems.HATATE_CAMERA);
 		}
 	}
 

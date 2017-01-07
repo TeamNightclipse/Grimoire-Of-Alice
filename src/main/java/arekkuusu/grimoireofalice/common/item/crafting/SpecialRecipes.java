@@ -417,18 +417,6 @@ public final class SpecialRecipes {
 					, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, Items.BRICK, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER);
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.altar.tenguCamera) {
-			AYA_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.AYA_CAMERA)
-					, "blockGlassColorless", Blocks.LEVER, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
-			HATATE_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HATATE_CAMERA)
-					, "blockGlassColorless", Blocks.STONE_BUTTON, Items.REDSTONE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
-		}
-
-		if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
-			UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
-					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED, Blocks.LEVER, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE);
-		}
-
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.wallPassingChisel) {
 			WALL_PASSING_CHISEL = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.WALL_PASSING_CHISEL)
 					, Items.ENDER_EYE, "stickWood", "stickWood", Items.NAME_TAG);
@@ -483,6 +471,19 @@ public final class SpecialRecipes {
 
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
+
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.tenguCamera) {
+				AYA_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.AYA_CAMERA)
+						, "blockGlassColorless", Blocks.LEVER, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
+				HATATE_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HATATE_CAMERA)
+						, "blockGlassColorless", Blocks.STONE_BUTTON, Items.REDSTONE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
+			}
+
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
+				UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
+						, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED, Blocks.LEVER, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE);
+			}
+
 			if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.nuclearRod){
 				NUCLEAR_ROD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NUCLEAR_ROD)
 						, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
