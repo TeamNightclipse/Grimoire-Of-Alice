@@ -128,7 +128,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
 				}
 			}
-			if(!altars.isEmpty() && altars.size() > 2) {
+			if(!altars.isEmpty() && altars.size() >= 2) {
 				List<ItemStack> recipeItems = altars.stream()
 						.filter(TilePillarAltar::hasItem)
 						.map(TilePillarAltar::getItemStack)
