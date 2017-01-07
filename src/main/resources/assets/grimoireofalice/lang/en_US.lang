@@ -658,7 +658,8 @@ grimoire.jei.descriptions_body.jeweled_hourai=Shoot a group of colored danmaku b
 grimoire.jei.descriptions.kanako_shimenawa=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions_body.kanako_shimenawa=Gives a Glowing effect when its raining in the world. It gives creative flight and makes the player completely invulnerable to any throwable entity
 
-grimoire.jei.descriptions.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
+grimoire.jei.descriptions.kanako_onbashira=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions_body.kanako_onbashira=Deals lots of damage, the only downside is that its slower than an axe
 
 grimoire.jei.descriptions.kappa_hat=Gives the player speed when wet, and slowness when dry
 
@@ -693,7 +694,7 @@ grimoire.jei.descriptions_body.miko_cloak=It grants the user the ability of movi
 
 grimoire.jei.descriptions.miko_needle=Common item used by miko to fight youkai, its has the same properties as an arrow
 
-grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect
+grimoire.jei.descriptions.miko_stick=Extinguish fire by hitting it with the stick, when used it gives a healing effect and consumes 1 xp level
 
 grimoire.jei.descriptions.miracle_mallet=Legendary artifact owned by a tiny princess in a cup, whose powers are those of changing size at will
 grimoire.jei.descriptions_body.miracle_mallet=Right click to change own size, use on a player to change his size, swing the item to shoot lanterns and hit multiple targets or shift and swing to change size to danmaku looked at
@@ -805,20 +806,22 @@ grimoire.jei.descriptions.watermelon_sword=Breaks on hitting an entity, giving m
 
 grimoire.jei.descriptions.youkai_book=A book written by Youkai
 
-grimoire.jei.descriptions.yuugi_sake=Must be crafted in the End
+grimoire.jei.descriptions.yuugi_sake=Must be crafted in the Nether
 grimoire.jei.descriptions_body.yuugi_sake=Strong sake from hell, it grants great power to the drinker never getting drunk or feeling full
 
 grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30
 
-grimoire.jei.descriptions.holy_stone=Gives players levitation when the weather is Rainy, it also accepts gifts:
-grimoire.jei.descriptions.holy_stone_gold_nugget= -Gold Nugget -> XP
-grimoire.jei.descriptions.holy_stone_gold_ingot= -Gold Ingot -> Haste
-grimoire.jei.descriptions.holy_stone_iron_ingot= -Iron Ingot -> Resistance
-grimoire.jei.descriptions.holy_stone_blaze_powder= -Blaze Powder -> Fire Resistance
-grimoire.jei.descriptions.holy_stone_speckled_melon= -Speckled Melon -> Regeneration
-grimoire.jei.descriptions.holy_stone_diamond= -Diamond -> Absorption
+grimoire.jei.descriptions.holy_stone=Must be crafter under a Rainy Weather
+grimoire.jei.descriptions_body.holy_stone=Gives players levitation when its raining, it also accepts gifts:
+grimoire.jei.descriptions.holy_stone_gold_nugget= 1 Gold Nugget -> XP
+grimoire.jei.descriptions.holy_stone_gold_ingot= 1 Gold Ingot -> Haste
+grimoire.jei.descriptions.holy_stone_iron_ingot= 1 Iron Ingot -> Resistance
+grimoire.jei.descriptions.holy_stone_blaze_powder= 1 Blaze Powder -> Fire Resistance
+grimoire.jei.descriptions.holy_stone_speckled_melon= 1 Speckled Melon -> Regeneration
+grimoire.jei.descriptions.holy_stone_diamond= 1 Diamond -> Absorption
 
-grimoire.jei.descriptions.onbashira=Its a good place to stand when fishing, its also used to craft Items in the Crafting Altar
+grimoire.jei.descriptions.onbashira=Must be crafted under a Rainy Weather
+grimoire.jei.descriptions_body.onbashira=Its a good place to stand when fishing, its also used to craft Items in the Crafting Altar
 
 grimoire.jei.descriptions.pillar=Used to craft Items in the Crafting Altar
 

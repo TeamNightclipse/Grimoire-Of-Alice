@@ -125,7 +125,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.KANAKO_SHIMENAWA), "grimoire.jei.descriptions.kanako_shimenawa", LINE
 				, "grimoire.jei.descriptions_body.kanako_shimenawa");
 
-		registry.addDescription(new ItemStack(ModItems.KANAKO_ONBASHIRA), "grimoire.jei.descriptions.kanako_onbashira", LINE);
+		registry.addDescription(new ItemStack(ModItems.KANAKO_ONBASHIRA), "grimoire.jei.descriptions.kanako_onbashira", LINE
+				, "grimoire.jei.descriptions_body.kanako_onbashira");
 
 		registry.addDescription(new ItemStack(ModItems.KAPPA_HAT), "grimoire.jei.descriptions.kappa_hat", LINE);
 
@@ -276,6 +277,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModBlocks.IMPURE_STONE), "grimoire.jei.descriptions.impure_stone", LINE);
 
 		registry.addDescription(new ItemStack(ModBlocks.HOLY_STONE), "grimoire.jei.descriptions.holy_stone", LINE
+				, "grimoire.jei.descriptions_body.holy_stone"
 				, "grimoire.jei.descriptions.holy_stone_gold_nugget"
 				, "grimoire.jei.descriptions.holy_stone_gold_ingot"
 				, "grimoire.jei.descriptions.holy_stone_iron_ingot"
@@ -283,7 +285,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 				, "grimoire.jei.descriptions.holy_stone_speckled_melon"
 				, "grimoire.jei.descriptions.holy_stone_diamond");
 
-		registry.addDescription(new ItemStack(ModBlocks.ONBASHIRA), "grimoire.jei.descriptions.onbashira", LINE);
+		registry.addDescription(new ItemStack(ModBlocks.ONBASHIRA), "grimoire.jei.descriptions.onbashira", LINE
+				, "grimoire.jei.descriptions_body.onbashira");
 
 		registry.addDescription(new ItemStack(ModBlocks.PILLAR_ALTAR), "grimoire.jei.descriptions.pillar", LINE);
 
