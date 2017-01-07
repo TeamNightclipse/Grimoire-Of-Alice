@@ -48,7 +48,7 @@ public class ItemToyosatomimiStick extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (playerIn.experienceLevel > 30 && !playerIn.capabilities.isCreativeMode) {
+		if (playerIn.experienceLevel > 0 && !playerIn.capabilities.isCreativeMode) {
 			playerIn.addExperienceLevel(-1);
 			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 			itemStackIn.damageItem(1, playerIn);

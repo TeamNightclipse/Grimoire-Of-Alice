@@ -35,7 +35,7 @@ public class ItemWatermelonBlade extends ItemModSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.watermelon_blade_header.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.watermelon_blade_header.name"));
 	}
 
 	@Override

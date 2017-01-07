@@ -88,11 +88,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 			setShifting(stack, player.isSneaking());
 			player.getCooldownTracker().setCooldown(this, timeUsed);
 		}
-	}
-
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		return true;
+		stack.damageItem(1, entityLiving);
 	}
 
 	private void setShifting(ItemStack itemStack, boolean does) {
