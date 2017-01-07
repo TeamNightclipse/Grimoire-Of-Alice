@@ -95,8 +95,8 @@ public class EntityNazrinPendulum extends Entity {
 				}
 			}
 			blockLayer.forEach(ignored -> {
-				if (rand.nextInt(8) == 4 && worldObj instanceof WorldServer) {
-					((WorldServer)worldObj).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 3, 0D, 0D, 0D, 1D);
+				if (rand.nextInt(8) == 2 && worldObj instanceof WorldServer) {
+					((WorldServer)worldObj).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
 				}
 			});
 		}
