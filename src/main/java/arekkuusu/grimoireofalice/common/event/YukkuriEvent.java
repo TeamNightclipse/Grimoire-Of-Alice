@@ -63,35 +63,6 @@ public class YukkuriEvent {
 				item.setData(heldItem, (item.getData(heldItem) + 1));
 			}
 		}
-		if (ConfigHandler.grimoireOfAlice.features.allowRevive) {
-			EntityLivingBase victim = event.getEntityLiving();
-			World world = victim.worldObj;
-
-			if (!world.isRemote && victim instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) victim;
-				if (player.getEntityData().getBoolean("Eternal")) {
-					player.hurtResistantTime = 50;
-
-					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
-							player.hurtResistantTime);
-					world.spawnEntityInWorld(circle);
-
-					player.isDead = false;
-					player.setHealth(player.getMaxHealth());
-					player.getFoodStats().addStats(100, 100);
-					event.setCanceled(true);
-				} else {
-					@SuppressWarnings("ConstantConditions")
-					boolean potion = player.isPotionActive(ModPotions.ELIXIR);
-					if (potion) {
-						player.hurtResistantTime = 100;
-						player.isDead = false;
-						player.setHealth(player.getMaxHealth());
-						event.setCanceled(true);
-					}
-				}
-			}
-		}
 	}
 
 	@SubscribeEvent
