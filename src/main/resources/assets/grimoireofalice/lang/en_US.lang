@@ -185,6 +185,7 @@ effect.grimoireofalice.elixir=Elixir
 effect.grimoireofalice.radiation_poisoning=Radiation Poisoning
 
 item.rodofremorse.entityHealthUsage=Health
+item.toyosatomimi.empty=- - - - - - - No souls found - - - - - - -
 
 grimoire.gui.pouch.name=§fSpell Card Pouch
 grimoire.gui.youkaibook_header.name=Grimoire of

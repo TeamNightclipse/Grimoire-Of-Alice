@@ -24,6 +24,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -95,7 +96,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}
 					else {
-						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + "- - - - - - - No souls found - - - - - - -"));
+						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + ""
+								+ new TextComponentTranslation("item.toyosatomimi.empty").getFormattedText()));
 					}
 				}
 				player.getCooldownTracker().setCooldown(this, timeLeft);
