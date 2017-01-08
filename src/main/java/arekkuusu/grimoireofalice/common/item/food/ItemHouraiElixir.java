@@ -10,9 +10,11 @@ package arekkuusu.grimoireofalice.common.item.food;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.core.capability.IHouraiCapability;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -20,15 +22,23 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHouraiElixir extends ItemModFood {
 
+	@CapabilityInject(IHouraiCapability.class)
+	private static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
+
 	public ItemHouraiElixir() {
 		super(50, 0, false, LibItemName.HOURAI_ELIXIR);
+		setMaxDamage(2);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}
@@ -69,9 +79,49 @@ public class ItemHouraiElixir extends ItemModFood {
 		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0));
-		if(!player.getEntityData().hasKey("Eternal")) {
-			player.getEntityData().setBoolean("Eternal", true);
-		} //*Laughs maniacally*
+		if(!world.isRemote)
+			setPlayerElixir(player);
+	}
+
+	@Override
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+		if (entityLiving instanceof EntityPlayer) {
+			stack.damageItem(1, entityLiving);
+			onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
+		}
+		return stack;
+	}
+
+	@SuppressWarnings("ConstantConditions")
+	private void setPlayerElixir(EntityPlayer player) {
+		if (player.hasCapability(HOURAI_CAPABILITY, null)) {
+			IHouraiCapability capability = player.getCapability(HOURAI_CAPABILITY, null);
+			byte maxLevel = capability.getMaxHouraiLevel();
+			byte level = capability.getHouraiLevel();
+			switch (level) {
+				case 0:
+					player.addChatComponentMessage(
+							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
+									+ new TextComponentTranslation("item.hourai.level_0").getFormattedText()));
+					break;
+				case 1:
+					player.addChatComponentMessage(
+							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
+									+ new TextComponentTranslation("item.hourai.level_1").getFormattedText()));
+					break;
+				case 2:
+					player.addChatComponentMessage(
+							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
+									+ new TextComponentTranslation("item.hourai.level_2").getFormattedText()));
+					break;
+				default:
+					player.addChatComponentMessage(
+							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
+									+ new TextComponentTranslation("item.hourai.level_3").getFormattedText()));
+					break;
+			}
+			if (level < maxLevel) capability.setHouraiLevel(player, (byte) (level + 1));
+		}
 	}
 
 	@Override

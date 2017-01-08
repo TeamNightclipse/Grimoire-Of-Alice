@@ -186,6 +186,10 @@ effect.grimoireofalice.radiation_poisoning=Radiation Poisoning
 
 item.rodofremorse.entityHealthUsage=Health
 item.toyosatomimi.empty=- - - - - - - No souls found - - - - - - -
+item.hourai.level_0=Your body feels numb, you have become incapable of growing up or aging.
+item.hourai.level_1=The air feels lighter, you are now incapable of becoming ill.
+item.hourai.level_2=Your soul screams in horror, you are now completely immortal to the truest sense.
+item.hourai.level_3=You already are immortal!
 
 grimoire.gui.pouch.name=§fSpell Card Pouch
 grimoire.gui.youkaibook_header.name=Grimoire of
