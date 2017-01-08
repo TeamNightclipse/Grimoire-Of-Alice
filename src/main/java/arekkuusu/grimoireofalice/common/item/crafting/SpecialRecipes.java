@@ -501,7 +501,7 @@ public final class SpecialRecipes {
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.miracleMallet) {
 				MIRACLE_MALLET = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIRACLE_MALLET)
-						, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Items.GOLD_NUGGET, Blocks.GOLD_BLOCK, Items.GOLD_NUGGET, Items.GOLD_NUGGET, Blocks.SLIME_BLOCK, Items.GOLD_NUGGET, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.LEAD, Items.NETHER_STAR);
+						, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Items.GOLD_NUGGET, Items.LEAD, Items.GOLD_NUGGET, Items.GOLD_NUGGET, Blocks.SLIME_BLOCK, Items.GOLD_NUGGET, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.MELON_SEEDS, Items.NETHER_STAR, Items.MELON_SEEDS);
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.trumpet) {
