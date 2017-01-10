@@ -77,7 +77,7 @@ public class EntityDragonJewel extends Entity {
 				mob.setRevengeTarget(null);
 
 				if (mob.getHealth() > 1) {
-					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(4));
+					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(6));
 				}
 			}
 

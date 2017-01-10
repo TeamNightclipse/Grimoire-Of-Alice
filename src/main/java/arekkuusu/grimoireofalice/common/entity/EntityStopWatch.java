@@ -95,6 +95,7 @@ public class EntityStopWatch extends Entity {
 	private void haltEntity(Entity entity) {
 		if (entity instanceof EntityStopWatch
 				|| entity instanceof EntityCameraSquare
+				|| entity instanceof EntityBarrier
 				|| entity instanceof EntityMagicCircle
 				|| entity instanceof EntityGrimoireSpell) {
 			return;
