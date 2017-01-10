@@ -223,6 +223,11 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 		return false;
 	}
 
+	@Override
+	public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
+		return false;
+	}
+
 	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
