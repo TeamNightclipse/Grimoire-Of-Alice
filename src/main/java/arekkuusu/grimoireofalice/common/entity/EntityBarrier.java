@@ -24,8 +24,7 @@ public class EntityBarrier extends Entity {
 
 	private EntityPlayer player;
 	private boolean isStatic = false;
-	//TODO: Change to Enum
-	private byte type;
+	private Barrier type;
 
 	public EntityBarrier(World world) {
 		super(world);
@@ -34,7 +33,7 @@ public class EntityBarrier extends Entity {
 	public EntityBarrier(World world, EntityPlayer player, byte type) {
 		super(world);
 		this.player = player;
-		this.type = type;
+		this.type = Barrier.fromType(type);
 		Vec3d look = player.getLookVec();
 		float distance = 4F;
 		double dx = player.posX + look.xCoord * distance;
@@ -70,7 +69,7 @@ public class EntityBarrier extends Entity {
 			}
 
 			List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-					entity1 -> entity1 != null && entity1.canBeCollidedWith() && entity1 != player);
+					entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && entity1 != player);
 
 			if(!entities.isEmpty()) {
 				onDetectEntity(entities.get(0));
@@ -83,8 +82,8 @@ public class EntityBarrier extends Entity {
 	}
 
 	private void onDetectEntity(Entity living) {
-		if(type == 3) {
-			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
+		if(type == Barrier.EXPLODE) {
+			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 			playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 
 			if (!worldObj.isRemote) {
@@ -92,7 +91,7 @@ public class EntityBarrier extends Entity {
 				setDead();
 			}
 		}
-		else if(type == 4) {
+		else if(type == Barrier.MOTION) {
 			Vec3d playerPos = getPositionVector();
 			Vec3d mobPos = living.getPositionVector();
 			double ratio = playerPos.distanceTo(mobPos) / 4;
@@ -124,5 +123,23 @@ public class EntityBarrier extends Entity {
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
 		return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 2, alignedBB.minY + 2, alignedBB.minZ + 2);
+	}
+
+	public enum Barrier {
+
+		EXPLODE,
+		MOTION,
+		NOTHING;
+
+		public static Barrier fromType(byte type) {
+			switch (type) {
+				case 3:
+					return EXPLODE;
+				case 4:
+					return MOTION;
+				default:
+					return NOTHING;
+			}
+		}
 	}
 }
