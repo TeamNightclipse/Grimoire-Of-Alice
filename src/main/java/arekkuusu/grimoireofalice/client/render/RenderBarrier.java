@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class RenderBarrier extends Render<EntityBarrier> {
@@ -23,24 +24,20 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.90F);
+
+		float colorRev = 3.141593F * 5.6125F / 180F;
+		float color = entity.ticksExisted * colorRev;
+
+		GlStateManager.color(MathHelper.sin(color), MathHelper.cos(color), MathHelper.sin(color), 0.90F);
+
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.scale(2F, 2F, 2F);
 		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
 		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
-		//First
-		GlStateManager.pushMatrix();
 		GlStateManager.rotate(entity.ticksExisted * 4, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		GlStateManager.popMatrix();
-		//End of First
-		//Second
-		GlStateManager.pushMatrix();
-		GlStateManager.rotate(-entity.ticksExisted * 4, 0.0F, 1.0F, 0.0F);
-		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-		GlStateManager.popMatrix();
-		//End of Second
+
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
