@@ -124,7 +124,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 		@Nullable
 		@Override
 		public Template.BlockInfo processBlock(World worldIn, BlockPos pos, Template.BlockInfo blockInfoIn) {
-			if(worldIn.isAirBlock(pos) || worldIn.getBlockState(pos).getMaterial() == Material.WATER) {
+			if(worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) || worldIn.getBlockState(pos).getMaterial() == Material.WATER) {
 				return blockInfoIn;
 			} else return null;
 		}
