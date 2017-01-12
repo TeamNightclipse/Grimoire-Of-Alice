@@ -67,7 +67,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 					}
 				}
 				else if(!isMoving) {
-					setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 0F);
+					setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 1F, 1F);
 					isMoving = true;
 				}
 				else {
