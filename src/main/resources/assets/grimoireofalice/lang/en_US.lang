@@ -181,8 +181,8 @@ subentity.grimoireofalice.ufo=Random movement
 subentity.grimoireofalice.wind=Push mobs away
 subentity.grimoireofalice.note=Slow movement
 
-effect.grimoireofalice.elixir=Elixir
-effect.grimoireofalice.radiation_poisoning=Radiation Poisoning
+effect.grimoireofalice.elixir_potion=Elixir
+effect.grimoireofalice.radiation_poisoning_potion=Radiation Poisoning
 
 item.rodofremorse.entityHealthUsage=Health
 item.toyosatomimi.empty=- - - - - - - No souls found - - - - - - -
@@ -242,7 +242,7 @@ grimoire.tooltip.nuclear_rod_header.name=Control Rod of the ultimate energy, Nuc
 
 grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
 
-grimoire.tooltip.heavenly_peach_header.name=Peach from the skies
+grimoire.tooltip.heavenly_peach_header.name=Fruit from the skies
 grimoire.tooltip.heavenly_peach_description.name=Someone had to fly very high to reach it
 
 grimoire.tooltip.hourai_elixir_header.name=Anyone who drinks this forbidden elixir will cease to age, never become ill, and will never be able to die. One will be as frail and vulnerable as before, but every injury shall cease; critical injuries will be healed in a matter of days. Complete destruction results in complete restoration.
@@ -583,7 +583,7 @@ grimoire.jei.descriptions.cattail_plant=Nitori™ Do not yukkuri shiteitte ne
 grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
 
 grimoire.jei.descriptions.cowrie_shell=Must be crafted under a Waxing Gibbous Moon at Night
-grimoire.jei.descriptions_body.cowrie_shell=Gives the player a massive food amount, and saturation for a good amount of time
+grimoire.jei.descriptions_body.cowrie_shell=Gives the player a massive food amount, and saturation
 
 grimoire.jei.descriptions.cursed_decoy_doll=Cursed doll that works as a decoy for mobs
 grimoire.jei.descriptions_body.cursed_decoy_doll=They will forget the player in question and attack the doll instead
@@ -767,7 +767,7 @@ grimoire.jei.descriptions.skull=Item that spawns a protective skull around the p
 
 grimoire.jei.descriptions.star=Found inside chests in Abandoned mine shafts
 
-grimoire.jei.descriptions.stop_watch=Mythical Clock said to stop time completely, it stops all entities from moving for some time, then it restores them with their previous velocities
+grimoire.jei.descriptions.stop_watch=Mythical Clock said to stop time completely, it stops all entities from moving for some time, then restores them with their previous velocities
 
 grimoire.jei.descriptions.substitute_jizo=Protects the user from damage; instead of hurting the player, it breaks
 
