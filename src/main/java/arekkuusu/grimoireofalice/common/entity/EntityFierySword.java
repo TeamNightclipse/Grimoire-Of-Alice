@@ -45,10 +45,8 @@ public class EntityFierySword extends Entity {
 				stop();
 			}
 			if(!worldObj.isRemote) {
-				Vec3d vec = getLookVec();
-
 				List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
-						getEntityBoundingBox().offset(vec.xCoord * 3, vec.yCoord * 3, vec.zCoord * 3).expandXyz(2), input -> input != player);
+						getEntityBoundingBox(), input -> input != player);
 				list.forEach(this::burn);
 			}
 			setPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ);
@@ -84,8 +82,10 @@ public class EntityFierySword extends Entity {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
+		Vec3d vec = getLookVec();
+
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.4, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY + 0.5, alignedBB.minZ + 0.5);
+		return new AxisAlignedBB(alignedBB.minX - 0.9, alignedBB.minY - 1.4, alignedBB.minZ - 0.9, alignedBB.minX + 1.5, alignedBB.minY + 1.5, alignedBB.minZ + 1.5).offset(vec.xCoord * 3, vec.yCoord * 3, vec.zCoord * 3);
 	}
 
 	@Override

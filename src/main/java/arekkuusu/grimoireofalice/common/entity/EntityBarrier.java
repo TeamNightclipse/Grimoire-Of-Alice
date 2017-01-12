@@ -120,9 +120,26 @@ public class EntityBarrier extends Entity {
 	protected void writeEntityToNBT(NBTTagCompound nbtTagCompound) {}
 
 	@Override
+	public Vec3d getLookVec() {
+		return this.getLook(1.0F);
+	}
+
+	@Override
+	public Vec3d getLook(float partialTicks) {
+		if (partialTicks == 1.0F) {
+			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
+		} else {
+			float f = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partialTicks;
+			float f1 = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * partialTicks;
+			return this.getVectorForRotation(f, f1);
+		}
+	}
+
+	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 2, alignedBB.minY + 2, alignedBB.minZ + 2);
+		Vec3d vec = getLookVec();
+		return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 1.6, alignedBB.minY + 1.6, alignedBB.minZ + 1.6).offset(vec.xCoord, vec.yCoord, vec.zCoord);
 	}
 
 	public enum Barrier {
