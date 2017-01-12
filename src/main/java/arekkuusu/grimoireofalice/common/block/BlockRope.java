@@ -22,6 +22,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -32,6 +33,8 @@ public class BlockRope extends BlockMod {
 	private static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
 	private static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
+	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
+	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
 	public BlockRope() {
 		super(LibBlockName.ROPE_BLOCK, Material.WOOD);
@@ -88,6 +91,21 @@ public class BlockRope extends BlockMod {
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		return state.withProperty(SHAPE, getRopeShape(state, worldIn, pos));
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if (isBlockRope(state)) {
+			if (state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
+				return TOP_AABB;
+			}
+			else if (state.getValue(HALF) == BlockStairs.EnumHalf.BOTTOM) {
+				return BOTTOM_AABB;
+			}
+		}
+
+		return super.getBoundingBox(state, source, pos);
 	}
 
 	private static BlockStairs.EnumShape getRopeShape(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
