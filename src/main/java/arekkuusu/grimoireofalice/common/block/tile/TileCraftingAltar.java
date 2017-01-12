@@ -30,9 +30,10 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class TileCraftingAltar extends TileItemHandler implements ITileItemHolder, ITickable {
+public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	public int tickCount;
 	public float pageFlip;
@@ -76,9 +77,6 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
 			itemHandler.insertItem(0, stackToAdd, false);
-
-			IBlockState state = getWorld().getBlockState(getPos());
-			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 		return added;
 	}
@@ -86,17 +84,14 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 	@Override
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
-		if(stackToTake != null) {
+		if (hasItem()) {
 			worldObj.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
 
-			if(player != null && !player.capabilities.isCreativeMode) {
+			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
+			if (player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);
 			}
-
-			IBlockState state = getWorld().getBlockState(getPos());
-			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 		return removed;
 	}
@@ -113,19 +108,19 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 	}
 
 	public boolean doCrafting() {
-		if(!hasItem()) {
+		if(!worldObj.isRemote && !hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
 			for(BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				if(getWorld().getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
-					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
+				if(worldObj.getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
+					altars.add((TilePillarAltar)worldObj.getTileEntity(pos));
 				}
 			}
 			for(BlockPos pos : SECOND_PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
-				if(getWorld().getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA
-						&& getWorld().getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
-					altars.add((TilePillarAltar)getWorld().getTileEntity(pos));
+				if(worldObj.getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA
+						&& worldObj.getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
+					altars.add((TilePillarAltar)worldObj.getTileEntity(pos));
 				}
 			}
 			if(!altars.isEmpty() && altars.size() >= 2) {
@@ -139,7 +134,8 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 						altar.removeItem(null);
 					}
 					addItem(null, recipe.getResult());
-					doEffect();
+					if(worldObj instanceof WorldServer)
+						doEffect();
 				});
 			}
 		}
@@ -153,16 +149,17 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 			double d1 = pos.getY() + 1 + rand.nextFloat();
 			double d2 = pos.getZ() + rand.nextFloat();
 
-			worldObj.spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, d0, d1, d2, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+			((WorldServer) worldObj).spawnParticle(EnumParticleTypes.FIREWORKS_SPARK, d0, d1, d2, 9, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, 0.1D);
 		}
 	}
 
-	public ItemStack getItemStack() {
-		return itemHandler.getStackInSlot(0);
+	@Override
+	public boolean hasItem() {
+		return itemHandler.getItemSimulate(0) != null;
 	}
 
-	public boolean hasItem() {
-		return getItemStack() != null;
+	public ItemStack getItemStack() {
+		return itemHandler.getItemSimulate(0);
 	}
 
 	@Override
@@ -189,12 +186,8 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 			if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
 				float f1 = flipT;
 
-				while(true) {
+				while(f1 == flipT) {
 					flipT += rand.nextInt(4) - rand.nextInt(4);
-
-					if(f1 != flipT) {
-						break;
-					}
 				}
 			}
 		}
@@ -236,5 +229,10 @@ public class TileCraftingAltar extends TileItemHandler implements ITileItemHolde
 		f = MathHelper.clamp_float(f, -0.2F, 0.2F);
 		flipA += (f - flipA) * 0.9F;
 		pageFlip += flipA;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return 1;
 	}
 }

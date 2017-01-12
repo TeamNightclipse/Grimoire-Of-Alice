@@ -22,7 +22,7 @@ public interface ITileItemHolder {
 	 * Ads an ItemStack to the TileEntity
 	 * @param player The player adding the ItemStack
 	 * @param stack The ItemStack added
-	 * @return
+	 * @return If it was added
 	 */
 	boolean addItem(@Nullable EntityPlayer player, ItemStack stack);
 
@@ -32,6 +32,11 @@ public interface ITileItemHolder {
 	 * @return If it was removed
 	 */
 	boolean removeItem(@Nullable EntityPlayer player);
+
+	/**
+	 * @return If it has an Item
+	 */
+	boolean hasItem();
 
 	/**
 	 * Destroys the TileEntity

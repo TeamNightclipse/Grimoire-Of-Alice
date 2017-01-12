@@ -65,7 +65,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 			if(playerIn.isSneaking()) {
 				ok = tile.removeItem(playerIn);
 			}
-			else if(heldItem != null) {
+			else if(heldItem != null && heldItem.stackSize > 0) {
 				ok = tile.addItem(playerIn, heldItem);
 			}
 		}

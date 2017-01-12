@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.block.tile;
 
 import javax.annotation.Nonnull;
 
+import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,7 +24,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileItemHandler extends TileEntity {
+public abstract class TileItemHandler extends TileEntity implements ITileItemHolder {
 
 	protected ItemStackHandlerTile itemHandler = createItemHandler();
 
@@ -61,6 +62,7 @@ public class TileItemHandler extends TileEntity {
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
+		super.onDataPacket(net, packet);
 		readDataNBT(packet.getNbtCompound()); //FIXME: Still a Client side Method... isnt it supposed to be readFromNBT(nbt)?
 	}
 
@@ -90,12 +92,15 @@ public class TileItemHandler extends TileEntity {
 				: super.getCapability(capability, side);
 	}
 
-	protected static class ItemStackHandlerTile extends ItemStackHandler {
+	public abstract int getSizeInventory();
 
-		private boolean allow;
+	public static class ItemStackHandlerTile extends ItemStackHandler {
+
 		private final TileItemHandler tile;
+		private boolean allow;
 
 		ItemStackHandlerTile(TileItemHandler tile, boolean allow) {
+			super(tile.getSizeInventory());
 			this.tile = tile;
 			this.allow = allow;
 		}
@@ -107,19 +112,27 @@ public class TileItemHandler extends TileEntity {
 
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-			if(allow) return super.insertItem(slot, stack, simulate);
+			if (allow) return super.insertItem(slot, stack, simulate);
 			else return stack;
 		}
 
 		@Override
 		public ItemStack extractItem(int slot, int amount, boolean simulate) {
-			if(allow) return super.extractItem(slot, amount, simulate);
+			if (allow) return super.extractItem(slot, amount, simulate);
 			else return null;
+		}
+
+		public ItemStack getItemSimulate(int slot) {
+			if (allow) {
+				return super.extractItem(slot, 1, true);
+			} else return null;
 		}
 
 		@Override
 		public void onContentsChanged(int slot) {
 			tile.markDirty();
+			IBlockState state = tile.worldObj.getBlockState(tile.getPos());
+			tile.worldObj.notifyBlockUpdate(tile.getPos(), state, state, 8);
 		}
 	}
 }

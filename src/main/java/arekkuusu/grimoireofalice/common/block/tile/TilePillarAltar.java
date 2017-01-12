@@ -21,7 +21,7 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class TilePillarAltar extends TileItemHandler implements ITileItemHolder, ITickable {
+public class TilePillarAltar extends TileItemHandler implements ITickable {
 
 	public int tickCount;
 
@@ -33,7 +33,9 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 			added = true;
 			ItemStack stackToAdd = stack.copy();
 			stackToAdd.stackSize = 1;
-			itemHandler.insertItem(0, stackToAdd, false);
+			if(!worldObj.isRemote) {
+				itemHandler.insertItem(0, stackToAdd, false);
+			}
 
 			if(player == null || !player.capabilities.isCreativeMode) {
 				stack.stackSize--;
@@ -41,9 +43,6 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
 				}
 			}
-
-			IBlockState state = getWorld().getBlockState(getPos());
-			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 		return added;
 	}
@@ -51,17 +50,14 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 	@Override
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		if(hasItem()) {
+		if (hasItem()) {
 			worldObj.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
-			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
 
-			if(player != null && !player.capabilities.isCreativeMode) {
+			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
+			if (player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, stackToTake);
 			}
-
-			IBlockState state = getWorld().getBlockState(getPos());
-			getWorld().notifyBlockUpdate(getPos(), state, state, 8);
 		}
 		return removed;
 	}
@@ -77,12 +73,13 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 		}
 	}
 
+	@Override
 	public boolean hasItem() {
 		return itemHandler.getStackInSlot(0) != null;
 	}
 
 	public ItemStack getItemStack() {
-		return itemHandler.getStackInSlot(0);
+		return itemHandler.getItemSimulate(0);
 	}
 
 	public float getRenderHeight() {
@@ -99,5 +96,10 @@ public class TilePillarAltar extends TileItemHandler implements ITileItemHolder,
 	@Override
 	public void update() {
 		tickCount++;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return 1;
 	}
 }
