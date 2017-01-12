@@ -19,6 +19,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.*;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 import java.util.List;
 
@@ -52,11 +53,13 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
-			onImpactBlock(result);
-		}
-		else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
-			onImpactEntity(result);
+		if (!worldObj.isRemote) {
+			if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
+				onImpactBlock(result);
+			}
+			else if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
+				onImpactEntity(result);
+			}
 		}
 	}
 
@@ -69,7 +72,7 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-		if(!worldObj.isRemote && result.entityHit != null && result.entityHit != this) {
+		if(result.entityHit != null && result.entityHit != this) {
 			if(result.entityHit == getThrower()) {
 				setDead();
 			}
@@ -81,28 +84,27 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(entityplayer != getThrower()) {
-			explode();
-		}
-		else {
-			if(!worldObj.isRemote) {
+		if(!worldObj.isRemote) {
+			if (entityplayer != getThrower()) {
+				explode();
+			} else {
 				setDead();
 			}
 		}
 	}
 
 	private void explode() {
-		worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
-
-		if(!worldObj.isRemote) {
-			EntityLivingBase thrower = getThrower();
-
-			List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
-			list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(thrower), 2F));
-
-			setDead();
+		if(worldObj instanceof WorldServer) {
+			((WorldServer) worldObj).spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, 3, motionX, motionY, motionZ, 0.1);
 		}
+
+		EntityLivingBase thrower = getThrower();
+
+		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
+		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(thrower), 6F));
+
+		setDead();
 	}
 
 	@Override
