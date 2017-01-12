@@ -240,7 +240,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.fireRobe) {
 			FIRE_ROBE = GrimoireOfAliceAPI.registerRecipeMoonPhase(3, new ItemStack(ModItems.FIRE_ROBE)
-					, Items.CHAINMAIL_CHESTPLATE, Items.LEATHER_CHESTPLATE, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_POWDER, Items.BLAZE_POWDER, Items.RABBIT_HIDE, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER);
+					, Items.CHAINMAIL_CHESTPLATE, Items.LEATHER_CHESTPLATE, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.RABBIT_HIDE, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, Items.RABBIT_HIDE, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.gapFoldingUmbrella) {
@@ -392,11 +392,6 @@ public final class SpecialRecipes {
 					, new ItemStack(Items.SKULL, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
-		if (ConfigHandler.grimoireOfAlice.crafting.altar.stopWatch) {
-			STOP_WATCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.STOP_WATCH)
-					, Items.CLOCK, Items.REDSTONE, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.TIME_ORB, ModItems.TIME_ORB);
-		}
-
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.substituteJizo) {
 			SUBSTITUTE_JIZO = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SUBSTITUTE_JIZO)
 					, Items.LEATHER, ModItems.HARDENED_LEATHER, Items.LEATHER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
@@ -409,7 +404,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.swallowCowrieShell) {
 			SWALLOW_COWRIE_SHELL = GrimoireOfAliceAPI.registerRecipeMoonPhase(5, new ItemStack(ModItems.COWRIE_SHELL)
-					, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Items.MILK_BUCKET, Items.MILK_BUCKET);
+					, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Items.EGG, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.shinmyoumaruBowl) {
@@ -420,6 +415,11 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.wallPassingChisel) {
 			WALL_PASSING_CHISEL = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.WALL_PASSING_CHISEL)
 					, Items.ENDER_EYE, "stickWood", "stickWood", Items.NAME_TAG);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
+			UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
+					, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED, Blocks.LEVER, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.youkaiBook) {
@@ -472,16 +472,16 @@ public final class SpecialRecipes {
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 
-			if (ConfigHandler.grimoireOfAlice.crafting.altar.tenguCamera) {
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.stopWatch) {
+				STOP_WATCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.STOP_WATCH)
+						, Items.CLOCK, Items.REDSTONE, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.TIME_ORB, ModItems.TIME_ORB, ModItems.TIME_ORB, ModItems.TIME_ORB, ModItems.TIME_ORB, ModItems.TIME_ORB, ModItems.TIME_ORB);
+			}
+
+			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.tenguCamera) {
 				AYA_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.AYA_CAMERA)
 						, "blockGlassColorless", Blocks.LEVER, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
 				HATATE_CAMERA = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HATATE_CAMERA)
 						, "blockGlassColorless", Blocks.STONE_BUTTON, Items.REDSTONE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, Blocks.REDSTONE_LAMP);
-			}
-
-			if (ConfigHandler.grimoireOfAlice.crafting.altar.ufo) {
-				UFOS = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.UFOS)
-						, ModItems.UFO_BLUE, ModItems.UFO_GREEN, ModItems.UFO_RED, Blocks.LEVER, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE, Items.REDSTONE);
 			}
 
 			if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.nuclearRod){

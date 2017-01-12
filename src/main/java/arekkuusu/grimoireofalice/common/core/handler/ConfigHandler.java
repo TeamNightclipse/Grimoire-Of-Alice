@@ -166,8 +166,6 @@ public class ConfigHandler {
 				public boolean shinmyoumaruBowl = true;
 				@Comment("Can players craft the roukanken?")
 				public boolean roukanken = true;
-				@Comment("Can players craft the tengu camera?")
-				public boolean tenguCamera = true;
 				@Comment("Can players craft the simpleUfo?")
 				public boolean ufo = true;
 				@Comment("Can players craft the wall passing chisel?")
@@ -226,6 +224,8 @@ public class ConfigHandler {
 					public boolean piano = true;
 					@Comment("Can players craft the nuclear rod?")
 					public boolean nuclearRod = true;
+					@Comment("Can players craft the tengu camera?")
+					public boolean tenguCamera = true;
 				}
 			}
 		}

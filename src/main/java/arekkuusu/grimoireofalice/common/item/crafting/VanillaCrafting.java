@@ -77,6 +77,10 @@ public class VanillaCrafting {
 				.outputs(Items.IRON_INGOT).build();
 
 		shapeless()
+				.add(ModBlocks.SUGAR_BLOCK)
+				.outputs(new ItemStack(Items.SUGAR, 9)).build();
+
+		shapeless()
 				.add(Items.IRON_INGOT)
 				.add(Items.STICK)
 				.outputs(new ItemStack(ModItems.IRON_NUGGET, 9)).build();
@@ -218,7 +222,7 @@ public class VanillaCrafting {
 					.outputs(ModItems.LEAF).build();
 		}
 
-		GameRegistry.addSmelting(Blocks.QUARTZ_BLOCK, new ItemStack(ModItems.TAMAHAGANE_STEEL), 0);
+		GameRegistry.addSmelting(Items.QUARTZ, new ItemStack(ModItems.TAMAHAGANE_STEEL), 1);
 
 		GameRegistry.addSmelting(ModBlocks.IMPURE_STONE, new ItemStack(ModItems.IMPURE_ROCK), 1);
 	}
