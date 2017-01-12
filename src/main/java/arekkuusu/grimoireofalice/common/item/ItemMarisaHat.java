@@ -19,8 +19,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -34,7 +36,6 @@ public class ItemMarisaHat extends ItemModArmor {
 
 	public ItemMarisaHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.MARISA_HAT, EntityEquipmentSlot.HEAD);
-		setNoRepair();
 		setMaxStackSize(1);
 	}
 
@@ -55,6 +56,11 @@ public class ItemMarisaHat extends ItemModArmor {
 		if(!player.isSneaking()) {
 			world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(5)).forEach(i -> i.onCollideWithPlayer(player));
 		}
+	}
+
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Item.getItemFromBlock(Blocks.WOOL);
 	}
 
 	@Override

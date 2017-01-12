@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -52,7 +53,9 @@ public class ItemWallPassingChisel extends ItemMod {
 			float y, float z) {
 		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
-			player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5); //Move player to center of block
+			if(player instanceof EntityPlayerMP) {
+				((EntityPlayerMP) player).setPositionAndUpdate(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
+			}
 			player.playSound(GrimoireSoundEvents.WARP, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}

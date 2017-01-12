@@ -66,15 +66,16 @@ public class ItemInstrument extends ItemMod {
 				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, getSize(), getDistance());
 			}
 		}
+		if(count % 10 == 0) {
+			stack.damageItem(1, player);
+		}
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		EntityPlayer playerIn = (EntityPlayer) entityLiving;
 		if (!playerIn.capabilities.isCreativeMode) {
-			int hurr = (getMaxItemUseDuration(stack) - timeLeft) / 2;
-			stack.damageItem(hurr, playerIn);
-			playerIn.getCooldownTracker().setCooldown(this, 50);
+			playerIn.getCooldownTracker().setCooldown(this, 15);
 		}
 	}
 

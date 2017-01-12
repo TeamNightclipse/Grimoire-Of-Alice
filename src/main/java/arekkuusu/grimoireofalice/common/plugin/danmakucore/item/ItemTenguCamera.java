@@ -31,7 +31,7 @@ public class ItemTenguCamera extends ItemMod {
 
 	public ItemTenguCamera(String id) {
 		super(id);
-		setMaxDamage(200);
+		setMaxDamage(180);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("takingPhoto"),
 				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);

@@ -56,7 +56,7 @@ public class ItemSyringe extends ItemModSword {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		itemStackIn.damageItem(1, playerIn);
+		itemStackIn.damageItem(2, playerIn);
 		doPotionEffect(playerIn);
 		playerIn.attackEntityFrom(DamageSource.generic, 3F);
 		playerIn.setActiveHand(hand);
@@ -65,7 +65,7 @@ public class ItemSyringe extends ItemModSword {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
-		stack.damageItem(1, user);
+		stack.damageItem(2, user);
 		doPotionEffect(target);
 		return true;
 	}

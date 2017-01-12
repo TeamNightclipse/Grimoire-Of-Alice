@@ -22,6 +22,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -44,6 +45,7 @@ public class ItemHakureiGohei extends ItemMod {
 
 	public ItemHakureiGohei() {
 		super(LibItemName.HAKUREI_GOHEI);
+		setMaxDamage(120);
 		setMaxStackSize(1);
 	}
 
@@ -154,13 +156,16 @@ public class ItemHakureiGohei extends ItemMod {
 					double dy = playerIn.posY + 1 + look.yCoord * distance;
 					double dz = playerIn.posZ + look.zCoord * distance;
 					if (isSafe(worldIn, dx, dy, dz)) {
-						playerIn.setPosition(dx, dy, dz);
+						if(playerIn instanceof EntityPlayerMP) {
+							((EntityPlayerMP) playerIn).setPositionAndUpdate(dx, dy, dz);
+						}
+						stack.damageItem(1, playerIn);
 					}
 				}
-				playerIn.swingArm(EnumHand.MAIN_HAND);
+				EnumHand hand = playerIn.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+				playerIn.swingArm(hand);
 				playerIn.getCooldownTracker().setCooldown(this, 10);
 			}
-			stack.damageItem(1, playerIn);
 		}
 	}
 
@@ -188,6 +193,9 @@ public class ItemHakureiGohei extends ItemMod {
 			else {
 				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 3);
 			}
+		}
+		else {
+			stack.damageItem(1, attacker);
 		}
 		return true;
 	}

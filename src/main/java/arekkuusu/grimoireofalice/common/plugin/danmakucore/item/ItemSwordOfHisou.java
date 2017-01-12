@@ -148,6 +148,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(player.isSneaking()) {
+			worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_WITHER_SHOOT, SoundCategory.BLOCKS, 1F, 1F);
 			for (int t = 0; t < 5; t++) {
 				for (int u = 0; u < 10; u++) {
 					spawnGround(player, itemRand.nextDouble(), itemRand.nextDouble());
@@ -155,7 +156,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					spawnGround(player, itemRand.nextDouble(), -itemRand.nextDouble());
 					spawnGround(player, -itemRand.nextDouble(), itemRand.nextDouble());
 				}
-				worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 5F, 1F);
 			}
 
 			if(!worldIn.isRemote) {
@@ -178,20 +178,22 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	}
 
 	private void spawnGround(EntityPlayer player, double xVelocity, double zVelocity) {
-		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
+		player.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-		stack.damageItem(1, entityLiving);
-		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach)
-		if(state.getMaterial() == Material.LEAVES) {
-			EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-					new ItemStack(ModItems.HEAVENLY_PEACH));
-			if(!worldIn.isRemote) {
-				entityLiving.worldObj.spawnEntityInWorld(entityItem);
+		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean()) {
+			if (pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
+				stack.damageItem(1, entityLiving);
+				if (!worldIn.isRemote) {
+					EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+							new ItemStack(ModItems.HEAVENLY_PEACH));
+
+					entityLiving.worldObj.spawnEntityInWorld(entityItem);
+				}
+				return true;
 			}
-			return true;
 		}
 		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
 	}

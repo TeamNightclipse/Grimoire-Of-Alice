@@ -97,7 +97,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote) {
+		if (!worldIn.isRemote) {
 			short jewels = getJewels(stack);
 			if (jewels >= 1) {
 				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
@@ -109,6 +109,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(entityLiving)
+							.setMovementData(0.8D)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color))
 							.build();
 					DanmakuCreationHelper.createWideShot(danmaku, timeUsed, timeUsed * 3, 0F, 0.1D);
@@ -119,6 +120,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 						int color = COLORS[itemRand.nextInt(COLORS.length)];
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)
+								.setMovementData(0.8D)
 								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i * 2))
 								.build();
 						float mod = i * 0.75F;

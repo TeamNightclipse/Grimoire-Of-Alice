@@ -64,14 +64,4 @@ public class ItemTimeOrb extends ItemMod {
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-		return EnumAction.NONE;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
-		return 30;
-	}
 }

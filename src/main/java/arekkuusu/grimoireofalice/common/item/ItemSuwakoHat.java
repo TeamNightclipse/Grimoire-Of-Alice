@@ -63,8 +63,8 @@ public class ItemSuwakoHat extends ItemModArmor {
 	}
 
 	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-		return false;
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+		return repair.getItem() == Items.SLIME_BALL;
 	}
 
 	@Override
@@ -73,11 +73,6 @@ public class ItemSuwakoHat extends ItemModArmor {
 		if(model == null) model = new ModelSuwakoHat();
 		model.setModelAttributes(imodel);
 		return model;
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == Items.SLIME_BALL;
 	}
 
 	@Override

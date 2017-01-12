@@ -50,34 +50,11 @@ public class ItemGhastlySendOffLantern extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
-
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			player.getCooldownTracker().setCooldown(this, 50);
-			if(!player.capabilities.isCreativeMode) {
-				--stack.stackSize;
-			}
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
+		player.getCooldownTracker().setCooldown(this, 50);
+		if(!player.capabilities.isCreativeMode) {
+			--itemStackIn.stackSize;
 		}
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 25;
-	}
-
-	@Override
-	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-		return false;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BOW;
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 }

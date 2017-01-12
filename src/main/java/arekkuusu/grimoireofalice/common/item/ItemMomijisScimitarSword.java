@@ -8,17 +8,22 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,15 +41,27 @@ public class ItemMomijisScimitarSword extends ItemModSword {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
-		super.onUpdate(stack, world, entity, itemSlot, isSelected);
-		if(entity instanceof EntityPlayer && isSelected) {
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 0, 0));
+	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+		Multimap<String, AttributeModifier> modifiers = super.getAttributeModifiers(slot, stack);
+		multiplyModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, 1);
+		return modifiers;
+	}
+
+	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier) {
+		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getAttributeUnlocalizedName());
+		Optional<AttributeModifier> modifierOptional = modifiers.stream()
+				.filter(attributeModifier -> attributeModifier.getID().equals(id))
+				.findFirst();
+
+		if(modifierOptional.isPresent()) {
+			AttributeModifier modifier = modifierOptional.get();
+			modifiers.remove(modifier);
+			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation()));
 		}
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == ModItems.HIHIIROKANE;
+		return repair.getItem() == Items.IRON_INGOT;
 	}
 }

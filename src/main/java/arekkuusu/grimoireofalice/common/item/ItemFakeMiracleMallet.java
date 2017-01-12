@@ -29,6 +29,7 @@ public class ItemFakeMiracleMallet extends ItemMod {
 	public ItemFakeMiracleMallet() {
 		super(LibItemName.FAKE_MIRACLE_MALLET);
 		setMaxStackSize(1);
+		setMaxDamage(100);
 		setNoRepair();
 		addPropertyOverride(new ResourceLocation("swinging"), (stack, world, entity) -> entity != null && entity.isSwingInProgress ? 1F : 0F);
 	}
@@ -58,7 +59,10 @@ public class ItemFakeMiracleMallet extends ItemMod {
 			if (!player.worldObj.isRemote) {
 				List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
 						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
-				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
+				if(!list.isEmpty()) {
+					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
+					stack.damageItem(1, player);
+				}
 			}
 			player.getCooldownTracker().setCooldown(this, 10);
 		}

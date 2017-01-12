@@ -64,7 +64,6 @@ public class ItemCursedDecoyDoll extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		spawnDoll(itemStackIn, worldIn, playerIn);
-		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 

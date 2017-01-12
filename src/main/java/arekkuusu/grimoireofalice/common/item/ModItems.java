@@ -126,8 +126,6 @@ public final class ModItems {
 	public static final Item SANAE_GOHEI = new Item();
 	@ObjectHolder(LibItemName.BLACK_FEATHER)
 	public static final Item BLACK_FEATHER = new Item();
-	@ObjectHolder(LibItemName.SHINKI_WAND)
-	public static final Item SHINKI_WAND = new Item();
 	@ObjectHolder(LibItemName.NETHER_SHARD)
 	public static final Item NETHER_SHARD = new Item();
 	@ObjectHolder(LibItemName.IRON_NUGGET)

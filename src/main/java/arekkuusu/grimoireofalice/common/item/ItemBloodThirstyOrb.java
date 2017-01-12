@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -35,6 +36,7 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	public ItemBloodThirstyOrb() {
 		super(LibItemName.BLOOD_THIRSTY_ORB);
 		setMaxStackSize(1);
+		setMaxDamage(5);
 		setNoRepair();
 	}
 
@@ -63,16 +65,15 @@ public class ItemBloodThirstyOrb extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) { //Recycled code...
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(player.isSneaking()) {
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if (player.isSneaking()) {
 				moveToClosestPlayer(worldIn, player);
 			}
 			else {
 				moveToMob(player);
 			}
-			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			player.getCooldownTracker().setCooldown(this, timeUsed);
+			stack.damageItem(1, player);
 			player.attackEntityFrom(DamageSource.generic, 1);
 		}
 	}
@@ -80,7 +81,9 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	private void moveToClosestPlayer(World worldIn, EntityPlayer player) {
 		EntityPlayer closest = worldIn.getClosestPlayerToEntity(player, 30D);
 		if(closest != null) {
-			player.setPosition(closest.posX, closest.posY, closest.posZ);
+			if(player instanceof EntityPlayerMP) {
+				((EntityPlayerMP) player).setPositionAndUpdate(closest.posX, closest.posY, closest.posZ);
+			}
 			player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
 	}

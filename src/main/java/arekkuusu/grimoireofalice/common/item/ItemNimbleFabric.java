@@ -31,6 +31,7 @@ public class ItemNimbleFabric extends ItemMod {
 	public ItemNimbleFabric() {
 		super(LibItemName.NIMBLE_FABRIC);
 		setMaxStackSize(1);
+		setMaxDamage(10);
 		addPropertyOverride(new ResourceLocation("blocking"),
 				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
 	}
@@ -55,6 +56,7 @@ public class ItemNimbleFabric extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		itemStackIn.damageItem(1, playerIn);
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

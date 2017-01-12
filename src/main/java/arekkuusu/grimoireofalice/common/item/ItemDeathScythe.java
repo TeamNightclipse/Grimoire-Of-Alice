@@ -99,17 +99,18 @@ public class ItemDeathScythe extends ItemModSword {
 			}
 
 			if(entity != null && !player.worldObj.isRemote) {
-				double back = 0.3;
+				double back = 0.6D;
 				if(player.isSneaking()) {
 					entity.motionX += look.xCoord * back;
 					entity.motionY += look.yCoord * back;
 					entity.motionZ += look.zCoord * back;
 				}
-				else {
+				else if(entity.getDistanceToEntity(player) > 2) {
 					entity.motionX -= look.xCoord * back;
 					entity.motionY -= look.yCoord * back;
 					entity.motionZ -= look.zCoord * back;
 				}
+				stack.damageItem(1, player);
 			}
 		}
 	}
@@ -119,10 +120,8 @@ public class ItemDeathScythe extends ItemModSword {
 		if(!worldIn.isRemote) {
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
-				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-				player.getCooldownTracker().setCooldown(this, timeUsed);
+				player.getCooldownTracker().setCooldown(this, 10);
 			}
-			stack.damageItem(1, entityLiving);
 		}
 	}
 
