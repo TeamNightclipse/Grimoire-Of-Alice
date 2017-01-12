@@ -20,6 +20,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 	@Override
 	public void renderTileEntityAt(TileCraftingAltar te, double x, double y, double z, float partialTicks, int destroyStage) {
 		GlStateManager.pushMatrix();
+		GlStateManager.enableCull();
 		GlStateManager.translate(x + 0.5F, y + 1F, z + 0.5F);
 		float f = te.tickCount + partialTicks;
 		GlStateManager.translate(0.0F, 0.1F + MathHelper.sin(f * 0.1F) * 0.01F, 0.0F);
@@ -60,6 +61,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 
 		float f5 = te.bookSpreadPrev + (te.bookSpread - te.bookSpreadPrev) * partialTicks;
 		modelBook.render(null, f, f3, f4, f5, 0.0F, 0.0625F);
+		GlStateManager.disableCull();
 		GlStateManager.popMatrix();
 
 		GlStateManager.pushMatrix();

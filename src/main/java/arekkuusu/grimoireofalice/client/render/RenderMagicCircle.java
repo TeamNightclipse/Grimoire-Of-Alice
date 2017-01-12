@@ -30,14 +30,12 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(circle);
 		GlStateManager.translate(x, y, z);
-		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		float size = circle.getCircleSize() * 6.0F;
 		GlStateManager.scale(size, size, size);
 		GlStateManager.rotate(circle.getAnimationCount() * 5F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(circle, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
-		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 
