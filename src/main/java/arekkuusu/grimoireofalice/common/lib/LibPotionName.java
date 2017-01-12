@@ -10,6 +10,6 @@ package arekkuusu.grimoireofalice.common.lib;
 
 public class LibPotionName {
 
-	public static final String ELIXIRPOTION = "elixirpotion";
-	public static final String RADIATION_POISONING = "radiationpoisoningpotion";
+	public static final String ELIXIRPOTION = "elixir_potion";
+	public static final String RADIATION_POISONING = "radiation_poisoning_potion";
 }
