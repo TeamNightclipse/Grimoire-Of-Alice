@@ -236,7 +236,6 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Shikieiki Yamaxanadu ** /
 		addItem(ModItems.ROD_REMORSE); //Done
 		// ** Shinki ** /
-		addItem(ModItems.SHINKI_WAND); //TODO: Come up with something to do with it
 		// ** Shinmyoumaru Sukuna ** /
 		addItem(ModItems.SHINMYOUMARU_HAT); //Done
 		if (GrimoireOfAlice.danmakuCoreInstalled)

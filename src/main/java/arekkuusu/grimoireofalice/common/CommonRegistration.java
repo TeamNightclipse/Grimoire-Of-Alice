@@ -68,7 +68,6 @@ public class CommonRegistration {
 				new ItemSanaeGohei(),
 				new ItemMortarPestle(),
 				new ItemMod(LibItemName.BLACK_FEATHER),
-				new ItemShinkiWand(),
 				new ItemMod(LibItemName.NETHER_SHARD),
 				new ItemMod(LibItemName.IRON_NUGGET),
 				new ItemMod(LibItemName.HARDENED_LEATHER),

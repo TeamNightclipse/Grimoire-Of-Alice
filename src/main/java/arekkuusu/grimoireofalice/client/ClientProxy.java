@@ -128,7 +128,6 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.SANAE_GOHEI);
 		registerItem(ModItems.MORTAR_AND_PESTLE);
 		registerItem(ModItems.BLACK_FEATHER);
-		registerItem(ModItems.SHINKI_WAND);
 		registerItem(ModItems.NETHER_SHARD);
 		registerItem(ModItems.IRON_NUGGET);
 		registerItem(ModItems.HARDENED_LEATHER);
@@ -287,6 +286,7 @@ public class ClientProxy implements ISidedProxy {
 		Minecraft.getMinecraft().effectRenderer.addEffect(particle);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void displayRecordText(ITextComponent text) {
 		Minecraft.getMinecraft().ingameGUI.setRecordPlaying(text.getFormattedText(), false);

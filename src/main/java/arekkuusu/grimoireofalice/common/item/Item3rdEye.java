@@ -32,6 +32,8 @@ public class Item3rdEye extends ItemMod {
 	public Item3rdEye() {
 		super(LibItemName.EYE);
 		setMaxStackSize(1);
+		setMaxDamage(10);
+		setNoRepair();
 	}
 
 	@Override
@@ -49,7 +51,8 @@ public class Item3rdEye extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World world, EntityPlayer player, EnumHand hand) {
 		if(player.isSneaking()) {
-			player.getCooldownTracker().setCooldown(this, 300);
+			stack.damageItem(1, player);
+			player.getCooldownTracker().setCooldown(this, 500);
 		}
 		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
