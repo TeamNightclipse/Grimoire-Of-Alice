@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.entity;
 
 import java.util.*;
 
+import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
@@ -47,8 +48,8 @@ public class EntityStopWatch extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (user != null) {
-			if (ticksExisted > 500 || user.isSneaking() && user.isSwingInProgress) {
+		if (ConfigHandler.grimoireOfAlice.features.timeStopEffect && user != null && !user.isDead) {
+			if (ticksExisted > 500 || (user.isSneaking() && user.isSwingInProgress)) {
 				stopEntity();
 				return;
 			}

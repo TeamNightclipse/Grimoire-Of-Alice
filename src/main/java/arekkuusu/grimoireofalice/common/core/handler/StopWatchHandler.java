@@ -14,7 +14,7 @@ public class StopWatchHandler {
 	@SubscribeEvent
 	public void onTick(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
-		if(!living.worldObj.isRemote) {
+		if(ConfigHandler.grimoireOfAlice.features.timeStopEffect && !living.worldObj.isRemote) {
 			List<EntityStopWatch> clocks = living.worldObj.getEntitiesWithinAABB(EntityStopWatch.class,
 					living.getEntityBoundingBox().expandXyz(EntityStopWatch.RANGE));
 

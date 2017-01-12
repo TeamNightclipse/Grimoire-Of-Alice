@@ -280,6 +280,8 @@ public class ConfigHandler {
 			public boolean allowFly = true;
 			@Comment("Allow items and potions that allow the player to revive")
 			public boolean allowRevive = true;
+			@Comment("Allow time stop effect of sakuya's stop watch")
+			public boolean timeStopEffect = true;
 		}
 	}
 }
