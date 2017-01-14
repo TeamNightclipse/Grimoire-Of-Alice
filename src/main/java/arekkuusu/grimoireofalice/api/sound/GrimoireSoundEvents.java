@@ -19,6 +19,7 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent ATTTACK_LONG = getRegisteredSound(ResourceLocationsAPI.ATTTACK_LONG);
 	public static final SoundEvent HORN = getRegisteredSound(ResourceLocationsAPI.HORN);
 	public static final SoundEvent WARP = getRegisteredSound(ResourceLocationsAPI.WARP);
+	public static final SoundEvent WIND = getRegisteredSound(ResourceLocationsAPI.WIND);
 	public static final SoundEvent UFO_IDDLE = getRegisteredSound(ResourceLocationsAPI.UFO_IDDLE);
 	public static final SoundEvent UFO_SPAWN = getRegisteredSound(ResourceLocationsAPI.UFO_SPAWN);
 	public static final SoundEvent CAUTION = getRegisteredSound(ResourceLocationsAPI.CAUTION);
