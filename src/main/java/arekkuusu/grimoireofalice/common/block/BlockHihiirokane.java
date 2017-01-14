@@ -24,8 +24,11 @@ import java.util.Random;
 public class BlockHihiirokane extends BlockMod {
 
 	public BlockHihiirokane() {
-		super(LibBlockName.HIHIIROKANE_BLOCK, Material.ROCK);
+		super(LibBlockName.HIHIIROKANE_BLOCK, Material.IRON);
+		setHarvestLevel("pickaxe", 2);
 		setSound(SoundType.METAL);
+		setResistance(100F);
+		setHardness(10F);
 	}
 
 	@Override

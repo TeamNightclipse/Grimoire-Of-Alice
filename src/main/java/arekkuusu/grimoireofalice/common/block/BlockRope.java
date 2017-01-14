@@ -38,10 +38,10 @@ public class BlockRope extends BlockMod {
 
 	public BlockRope() {
 		super(LibBlockName.ROPE_BLOCK, Material.WOOD);
-		setHardness(0.5F);
 		setSoundType(SoundType.LADDER);
 		setHarvestLevel("axe", 1);
 		setResistance(5.0F);
+		setHardness(0.5F);
 	}
 
 	@Override

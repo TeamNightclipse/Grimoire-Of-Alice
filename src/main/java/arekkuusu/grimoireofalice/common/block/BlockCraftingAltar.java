@@ -44,10 +44,10 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 
 	public BlockCraftingAltar() {
 		super(LibBlockName.CRAFTING_ALTAR, Material.ROCK);
-		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("axe", 1);
 		setResistance(2000.0F);
+		setHardness(2.0F);
 	}
 
 	@Override

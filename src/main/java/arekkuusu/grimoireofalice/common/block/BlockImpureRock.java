@@ -23,8 +23,9 @@ public class BlockImpureRock extends BlockMod {
 
 	public BlockImpureRock() {
 		super(LibBlockName.IMPURE_STONE, Material.ROCK);
+		setHarvestLevel("pickaxe", 2);
+		setResistance(10);
 		setHardness(5F);
-		setHarvestLevel("pickaxe", 3);
 	}
 
 	@Nullable
