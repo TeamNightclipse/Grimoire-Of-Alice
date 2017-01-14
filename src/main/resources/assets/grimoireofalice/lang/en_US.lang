@@ -331,13 +331,14 @@ grimoire.tooltip.grimoire_book_header.name=Spellbook of the ultimate magic
 grimoire.tooltip.grimoire_book_description.name="A grimoire that shines wonderfully with all seven colours of light"
 
 grimoire.tooltip.hakurei_gohei_header.name=Gohei from a powerful Shrine Maiden
-grimoire.tooltip.hakurei_gohei_mode_header.name=§7Gohei Mode:
-grimoire.tooltip.hakurei_gohei_mode_passive.name=§fPassive
-grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name=§bAura manipulation
-grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name=§dHakurei Yin-Yang Orbs
-grimoire.tooltip.hakurei_gohei_mode_exploding_barrier.name=§eExploding Barrier
-grimoire.tooltip.hakurei_gohei_mode_motion_barrier.name=§6Motion Barrier
-grimoire.tooltip.hakurei_gohei_mode_offensive.name=§4Offensive
+//Gohei Modes
+grimoire.tooltip.hakurei_gohei_mode_header.name=Gohei Mode :
+grimoire.tooltip.hakurei_gohei_mode_passive.name= §fPassive
+grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name= §bAura manipulation
+grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name= §dHakurei Yin-Yang Orbs
+grimoire.tooltip.hakurei_gohei_mode_exploding_barrier.name= §eExploding Barrier
+grimoire.tooltip.hakurei_gohei_mode_motion_barrier.name= §6Motion Barrier
+grimoire.tooltip.hakurei_gohei_mode_offensive.name= §4Offensive
 
 grimoire.tooltip.hihiirokane_header.name="Crimson ore"
 grimoire.tooltip.hihiirokane_description_top.name=Red-colored mythic metal possessed

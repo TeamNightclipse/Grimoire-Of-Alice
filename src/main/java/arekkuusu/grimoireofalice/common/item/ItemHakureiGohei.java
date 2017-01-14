@@ -41,10 +41,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static arekkuusu.grimoireofalice.api.items.GoheiMode.*;
 
-public class ItemHakureiGohei extends ItemMod {
+public class ItemHakureiGohei extends ItemGohei {
 
 	public ItemHakureiGohei() {
-		super(LibItemName.HAKUREI_GOHEI);
+		super(LibItemName.HAKUREI_GOHEI, (byte)5);
 		setMaxDamage(120);
 		setMaxStackSize(1);
 	}
@@ -140,9 +140,10 @@ public class ItemHakureiGohei extends ItemMod {
 			if (playerIn.isSneaking()) {
 				byte type = (byte) MathHelper.clamp_int(getType(stack) + 1, 0, 5);
 				setType(stack, getType(stack) != 5 ? type : 0);
-				if(worldIn.isRemote) {
+				if (worldIn.isRemote) {
 					String modeName = getMode(stack).toString() + ".name";
-					ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName);
+					ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_header.name");
+					text.appendSibling(new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName));
 					text.setStyle(new Style().setBold(true));
 
 					GrimoireOfAlice.proxy.displayRecordText(text);
@@ -156,7 +157,7 @@ public class ItemHakureiGohei extends ItemMod {
 					double dy = playerIn.posY + 1 + look.yCoord * distance;
 					double dz = playerIn.posZ + look.zCoord * distance;
 					if (isSafe(worldIn, dx, dy, dz)) {
-						if(playerIn instanceof EntityPlayerMP) {
+						if (playerIn instanceof EntityPlayerMP) {
 							((EntityPlayerMP) playerIn).setPositionAndUpdate(dx, dy, dz);
 						}
 						stack.damageItem(1, playerIn);
@@ -200,24 +201,6 @@ public class ItemHakureiGohei extends ItemMod {
 		return true;
 	}
 
-	private void setType(ItemStack itemStack, byte mode) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
-			nbt = new NBTTagCompound();
-			itemStack.setTagCompound(nbt);
-		}
-		nbt.setByte("GoheiMode", mode);
-	}
-
-	private byte getType(ItemStack itemStack) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 5 : nbt.getByte("GoheiMode");
-	}
-
-	private GoheiMode getMode(ItemStack stack) {
-		return GoheiMode.fromType(getType(stack));
-	}
-
 	private boolean isSafe(World world, double x, double y, double z) {
 		if (y < 0) return false;
 		BlockPos pos = new BlockPos(x, y, z);
@@ -228,8 +211,12 @@ public class ItemHakureiGohei extends ItemMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
-		return I18n.format("item.hakureigohei.name") + " : "
+		return I18n.format("item.hakureigohei.name") + " :"
 				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + getMode(stack).toString() + ".name");
+	}
+
+	private GoheiMode getMode(ItemStack stack) {
+		return GoheiMode.fromType(getType(stack));
 	}
 
 	@Override
