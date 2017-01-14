@@ -68,8 +68,9 @@ public class EntityStopWatch extends Entity {
 			double dz = user.posZ + look.zCoord + distance;
 			setPosition(dx, dy, dz);
 
-			worldObj.setWorldTime(worldObj.getWorldTime() - 1);
 			if (!worldObj.isRemote) {
+				worldObj.setWorldTime(worldObj.getWorldTime() - 1);
+
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
 				list.forEach(this::haltEntity);
 			}
