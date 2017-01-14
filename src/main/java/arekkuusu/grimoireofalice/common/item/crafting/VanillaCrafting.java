@@ -32,9 +32,10 @@ public class VanillaCrafting {
 				.where('S').mapsTo(Items.SUGAR)
 				.outputs(ModBlocks.SUGAR_BLOCK).build();
 
-		shaped().grid("AEA", "ESE", "AEA")
-				.where('S').mapsTo("logWood")
-				.where('E').mapsTo(Items.CLAY_BALL)
+		shaped().grid("ASA", "IWI", "ASA")
+				.where('W').mapsTo("logWood")
+				.where('I').mapsTo("nuggetIron")
+				.where('S').mapsTo(Items.STICK)
 				.where('A').mapsTo(ModItems.PASTE)
 				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
 
@@ -82,7 +83,6 @@ public class VanillaCrafting {
 
 		shapeless()
 				.add(Items.IRON_INGOT)
-				.add(Items.STICK)
 				.outputs(new ItemStack(ModItems.IRON_NUGGET, 9)).build();
 
 		shapeless()
