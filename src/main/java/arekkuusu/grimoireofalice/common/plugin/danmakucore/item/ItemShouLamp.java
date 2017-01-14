@@ -96,7 +96,7 @@ public class ItemShouLamp extends ItemJeweled {
 		if (getJewels(stack) < 500 && player instanceof EntityPlayer) {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
 			if(count % 4 == 0)
-				player.worldObj.playSound(null, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, SoundCategory.PLAYERS, 0.1F, 1F);
+				player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, 0.1F, 1F);
 			addJewels(stack, (short)1);
 		}
 	}
@@ -135,7 +135,7 @@ public class ItemShouLamp extends ItemJeweled {
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BOW;
+		return EnumAction.NONE;
 	}
 
 	@Override

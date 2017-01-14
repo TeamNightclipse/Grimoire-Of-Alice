@@ -37,6 +37,7 @@ public class ItemMarisaHat extends ItemModArmor {
 	public ItemMarisaHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.MARISA_HAT, EntityEquipmentSlot.HEAD);
 		setMaxStackSize(1);
+		setNoRepair();
 	}
 
 	@Override
