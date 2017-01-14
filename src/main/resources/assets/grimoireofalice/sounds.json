@@ -13,5 +13,6 @@
 	"ufoIddle": { "sounds":["grimoireofalice:ufoIddle"], "subtitle": "grimoire.subtitle.ufoIddle" },
 	"ufoSpawn": { "sounds":["grimoireofalice:ufoSpawn"], "subtitle": "grimoire.subtitle.ufoSpawn" },
 	"caution": { "sounds":["grimoireofalice:caution"], "subtitle": "grimoire.subtitle.caution" },
-	"wave": { "sounds":["grimoireofalice:wave"], "subtitle": "grimoire.subtitle.wave" }
+	"wave": { "sounds":["grimoireofalice:wave"], "subtitle": "grimoire.subtitle.wave" },
+	"wind": { "sounds":["grimoireofalice:wind"], "subtitle": "grimoire.subtitle.wind" }
 }

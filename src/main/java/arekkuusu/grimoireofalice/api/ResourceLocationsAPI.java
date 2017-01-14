@@ -20,6 +20,7 @@ public class ResourceLocationsAPI {
 	public static final ResourceLocation UFO_SPAWN = getLocation("ufoSpawn");
 	public static final ResourceLocation CAUTION = getLocation("caution");
 	public static final ResourceLocation WAVE = getLocation("wave");
+	public static final ResourceLocation WIND = getLocation("wind");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation("grimoireofalice", name);
