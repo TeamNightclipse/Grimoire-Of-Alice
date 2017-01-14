@@ -415,8 +415,19 @@ grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name=and gather
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name=in the form of an orb
 grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=SHIFT for details
 
-grimoire.tooltip.sanae_gohei_header.name=Gohei from a descendant of the goddess Arahitogami
-grimoire.tooltip.sanae_gohei_description.name=Causes miracles to occur
+grimoire.tooltip.sanae_gohei_header.name=Causes miracles to occur
+grimoire.tooltip.sanae_gohei_charge.name=Accumulated Faith:
+grimoire.tooltip.sanae_gohei_shift.name=SHIFT for details
+//Gohei Modes
+grimoire.tooltip.sanae_gohei_mode_header.name=Gohei Mode :
+grimoire.tooltip.sanae_gohei_mode_clear.name= §9Miracle of Clear Skies
+grimoire.tooltip.sanae_gohei_mode_rain.name= §bMiracle of Endless Rain
+grimoire.tooltip.sanae_gohei_mode_thunder.name= §1Miracle of Thundering Storms
+grimoire.tooltip.sanae_gohei_mode_moses.name= §3Moses Miracle
+grimoire.tooltip.sanae_gohei_mode_wind.name= Miracle Wind
+grimoire.tooltip.sanae_gohei_mode_potions.name= §5Miracle of Pasteur
+grimoire.tooltip.sanae_gohei_mode_crops.name= §2Miracle of Fertile Land
+grimoire.tooltip.sanae_gohei_mode_time.name= §7Miracle of Time Shift
 
 grimoire.tooltip.sariel_wand_header.name=Immense Knowledge, Angel of Death, Commaner of God...
 grimoire.tooltip.sariel_wand_description.name=Legendary wand from a fallen Angel
@@ -739,7 +750,7 @@ grimoire.jei.descriptions.raiden_mask=One of the 9 masks owned by the youkai Hat
 
 grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 1/4
 
-grimoire.jei.descriptions.roukanken=Ghostly sword that slices thought a bunch of entities at once
+grimoire.jei.descriptions.roukanken=Ghostly sword that slices through a bunch of entities at once
 grimoire.jei.descriptions_body.roukanken=One must charge the weapon and release to charge towards the enemy
 
 grimoire.jei.descriptions.rumia_sword=Must be crafted in the Nether
@@ -747,7 +758,16 @@ grimoire.jei.descriptions_body.rumia_sword=Gigant sword that puts on fire everyt
 
 grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and sends them to the chat with their respective coordinates, it also possesses a strong knockback
 
-grimoire.jei.descriptions.sanae_gohei=This miracle gohei allows the user to cast various spells by using faith gathered by holding the gohei for long enough [Not yet implemented]
+grimoire.jei.descriptions.sanae_gohei=Gohei from a descendant of the goddess Arahitogami
+grimoire.jei.descriptions_body.sanae_gohei=It exchanges Faith for the following Miracles:
+grimoire.jei.descriptions_body.sanae_gohei_clear= 1 Faith -> Clear all Weather.
+grimoire.jei.descriptions_body.sanae_gohei_potions= 3 Faith -> Apply all Potions in the Player's Inventory.
+grimoire.jei.descriptions_body.sanae_gohei_rain= 4 Faith -> Add Rain Weather.
+grimoire.jei.descriptions_body.sanae_gohei_thunder= 5 Faith -> Add Thunder and Rain Weather.
+grimoire.jei.descriptions_body.sanae_gohei_wind= 1 Faith -> Push mobs with a Strong current of Air
+grimoire.jei.descriptions_body.sanae_gohei_crops= 8 Faith -> Bonemeal random blocks in a 16 * 16 area.
+grimoire.jei.descriptions_body.sanae_gohei_time= 15 Faith -> Switch Day to Night and vice versa.
+grimoire.jei.descriptions_body.sanae_gohei_moses= 30 Faith -> Open the Sea in Half.
 
 grimoire.jei.descriptions.sariel_wand=Must be crafted in the Nether
 grimoire.jei.descriptions_body.sariel_wand=Stores Skulls from Players and some Mobs, they can be placed by using the Item on a block

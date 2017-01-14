@@ -206,7 +206,16 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.SACRED_TOYOSATOMIMI), "grimoire.jei.descriptions.sacred_toyosatomimi_sword", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.SANAE_GOHEI), "grimoire.jei.descriptions.sanae_gohei", LINE);
+		registry.addDescription(new ItemStack(ModItems.SANAE_GOHEI), "grimoire.jei.descriptions.sanae_gohei", LINE
+				,"grimoire.jei.descriptions_body.sanae_gohei"
+				,"grimoire.jei.descriptions_body.sanae_gohei_clear"
+				,"grimoire.jei.descriptions_body.sanae_gohei_rain"
+				,"grimoire.jei.descriptions_body.sanae_gohei_thunder"
+				,"grimoire.jei.descriptions_body.sanae_gohei_moses"
+				,"grimoire.jei.descriptions_body.sanae_gohei_wind"
+				,"grimoire.jei.descriptions_body.sanae_gohei_potions"
+				,"grimoire.jei.descriptions_body.sanae_gohei_crops"
+				,"grimoire.jei.descriptions_body.sanae_gohei_time");
 
 		registry.addDescription(new ItemStack(ModItems.SARIEL_WAND), "grimoire.jei.descriptions.sariel_wand", LINE
 				, "grimoire.jei.descriptions_body.sariel_wand");
