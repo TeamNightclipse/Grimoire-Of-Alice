@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -145,15 +146,23 @@ public class YukkuriEvent {
 		return stack != null && stack.getItem() == item && base.isHandActive();
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	private boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
 		ItemStack stack = new ItemStack(ModItems.HAKUREI_GOHEI);
-		return player.inventory.hasItemStack(stack) && getValidMode(player, stack, mode);
+		return hasItemStack(player.inventory.mainInventory, stack) && getValidMode(player.inventory.mainInventory, stack, mode);
 	}
 
-	private boolean getValidMode(EntityPlayer player, ItemStack stack, GoheiMode mode) {
-		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
-			ItemStack itemStack = player.inventory.mainInventory[i];
+	private boolean hasItemStack(ItemStack[] stacks, ItemStack itemStackIn) {
+		for (ItemStack itemStack : stacks) {
+			if (itemStack != null && itemStack.isItemEqualIgnoreDurability(itemStackIn)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private boolean getValidMode(ItemStack[] stacks, ItemStack stack, GoheiMode mode) {
+		for (ItemStack itemStack : stacks) {
 			if (itemStack != null && stack.getItem() == itemStack.getItem() && getGoheiMode(itemStack) == mode) {
 				return true;
 			}
