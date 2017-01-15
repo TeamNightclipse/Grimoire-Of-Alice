@@ -188,20 +188,29 @@ public class ItemSanaeGohei extends ItemGohei {
 					//charge -= 10;
 				}
 				else if(mode == WIND && WIND.canUse(charge, playerIn)) {
-					playerIn.playSound(GrimoireSoundEvents.WIND, 5F, 5F);
+					playerIn.playSound(GrimoireSoundEvents.WIND, 1F, 5F);
 					if (!worldIn.isRemote) {
 						Vec3d vec = playerIn.getLookVec();
 						List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
 								entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, vec.yCoord * 2, vec.zCoord * 2).expandXyz(3D), entity -> entity != playerIn);
 						if (!list.isEmpty()) {
 							list.forEach(entity -> {
+								if(entity.worldObj instanceof WorldServer) {
+									((WorldServer) entity.worldObj).spawnParticle(EnumParticleTypes.CLOUD, entity.posX, entity.posY, entity.posZ, 5, 0, 0, 0, 0.1D);
+								}
 								entity.motionX = -MathHelper.sin((float) Math.toRadians(playerIn.rotationYaw)) * 4;
 								entity.motionY = -MathHelper.sin((float) Math.toRadians(playerIn.rotationPitch)) * 4;
 								entity.motionZ = MathHelper.cos((float) Math.toRadians(playerIn.rotationYaw)) * 4;
 							});
 						}
 					}
-					charge -= 5;
+					charge -= 1;
+				}
+				else if(mode == HEAL && HEAL.canUse(charge, playerIn)) {
+					float health = playerIn.getMaxHealth() - playerIn.getHealth();
+					playerIn.heal(health * itemRand.nextFloat());
+
+					charge -= 2;
 				}
 				else if (mode == POTIONS && POTIONS.canUse(charge, playerIn)) {
 					Optional<List<PotionEffect>> effects = getPotionEffectsInInventory(playerIn);
@@ -226,7 +235,6 @@ public class ItemSanaeGohei extends ItemGohei {
 				} else used = false;
 
 				if (used) {
-					playerIn.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.1F, 1F);
 					EnumHand hand = playerIn.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 					playerIn.swingArm(hand);
 
@@ -337,7 +345,8 @@ public class ItemSanaeGohei extends ItemGohei {
 	public enum Miracles {
 
 		CLEAR(  "clear",  (i, player) -> i >= 1 && player instanceof EntityPlayerMP),
-		WIND(   "wind",   (i, player) -> i >= 1),
+		WIND(   "wind",   (i, player) -> i >= 1 && !player.isInWater()),
+		HEAL(   "heal",   (i, player) -> i >= 2 && player.shouldHeal()),
 		POTIONS("potions",(i, player) -> i >= 3),
 		RAIN(   "rain",   (i, player) -> i >= 4 && player instanceof EntityPlayerMP),
 		THUNDER("thunder",(i, player) -> i >= 5 && player instanceof EntityPlayerMP),
@@ -370,8 +379,10 @@ public class ItemSanaeGohei extends ItemGohei {
 				case 4:
 					return WIND;
 				case 5:
-					return POTIONS;
+					return HEAL;
 				case 6:
+					return POTIONS;
+				case 7:
 					return CROPS;
 				default:
 					return TIME;
