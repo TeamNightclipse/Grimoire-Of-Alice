@@ -1,7 +1,7 @@
 item.enchantedbook.name=Enchanted Book
 item.grimoirebook.name=Grimoire Book
 item.paste.name=Paste
-item.soldifiedpaper.name=Soldified Paper
+item.soldifiedpaper.name=Hardened Paper
 item.gloriousnipponsteel.name=Tamahagane
 item.shimenawarope.name=Shimenawa Rope
 item.youkaibook.name=Youkai Book
@@ -168,8 +168,8 @@ item.sendofflantern.name=Ghastly Send-Off Lantern
 item.decoydoll.name=Cursed Decoy Doll
 item.ayacamera.name=Aya's Camera
 item.hatatecamera.name=Hatate's Camera
-item.hakureigohei.name=Reimu's Sacred Gohei
-item.sanaegohei.name=Sanae's Miracle Gohei
+item.hakureigohei.name=Hakurei Maiden's Gohei
+item.sanaegohei.name=Wind Maiden's Gohei
 
 item.danmaku.danmakuvariant.grimoireofalice.leaf.name=Leaf Shot
 item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
@@ -332,7 +332,7 @@ grimoire.tooltip.grimoire_book_description.name="A grimoire that shines wonderfu
 
 grimoire.tooltip.hakurei_gohei_header.name=Gohei from a powerful Shrine Maiden
 //Gohei Modes
-grimoire.tooltip.hakurei_gohei_mode_header.name=Gohei Mode :
+grimoire.tooltip.hakurei_gohei_mode_header.name=§o§fGohei Mode :
 grimoire.tooltip.hakurei_gohei_mode_passive.name= §fPassive
 grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name= §bAura manipulation
 grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name= §dHakurei Yin-Yang Orbs
@@ -419,15 +419,16 @@ grimoire.tooltip.sanae_gohei_header.name=Causes miracles to occur
 grimoire.tooltip.sanae_gohei_charge.name=Accumulated Faith:
 grimoire.tooltip.sanae_gohei_shift.name=SHIFT for details
 //Gohei Modes
-grimoire.tooltip.sanae_gohei_mode_header.name=Gohei Mode :
-grimoire.tooltip.sanae_gohei_mode_clear.name= §9Miracle of Clear Skies
+grimoire.tooltip.sanae_gohei_mode_header.name=§fGohei Mode :
+grimoire.tooltip.sanae_gohei_mode_clear.name= §bMiracle of Clear Skies
 grimoire.tooltip.sanae_gohei_mode_rain.name= §bMiracle of Endless Rain
-grimoire.tooltip.sanae_gohei_mode_thunder.name= §1Miracle of Thundering Storms
-grimoire.tooltip.sanae_gohei_mode_moses.name= §3Moses Miracle
-grimoire.tooltip.sanae_gohei_mode_wind.name= Miracle Wind
-grimoire.tooltip.sanae_gohei_mode_potions.name= §5Miracle of Pasteur
-grimoire.tooltip.sanae_gohei_mode_crops.name= §2Miracle of Fertile Land
-grimoire.tooltip.sanae_gohei_mode_time.name= §7Miracle of Time Shift
+grimoire.tooltip.sanae_gohei_mode_thunder.name= §bMiracle of Thundering Storms
+grimoire.tooltip.sanae_gohei_mode_moses.name= §bMoses Miracle
+grimoire.tooltip.sanae_gohei_mode_wind.name= §bMiracle Wind
+grimoire.tooltip.sanae_gohei_mode_heal.name= §bMiracle of Rejuvenation
+grimoire.tooltip.sanae_gohei_mode_potions.name= §bMiracle of the Brewery
+grimoire.tooltip.sanae_gohei_mode_crops.name= §bMiracle of Green Lands
+grimoire.tooltip.sanae_gohei_mode_time.name= §bMiracle of Time Shift
 
 grimoire.tooltip.sariel_wand_header.name=Immense Knowledge, Angel of Death, Commaner of God...
 grimoire.tooltip.sariel_wand_description.name=Legendary wand from a fallen Angel
@@ -760,14 +761,15 @@ grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and se
 
 grimoire.jei.descriptions.sanae_gohei=Gohei from a descendant of the goddess Arahitogami
 grimoire.jei.descriptions_body.sanae_gohei=It exchanges Faith for the following Miracles:
-grimoire.jei.descriptions_body.sanae_gohei_clear= 1 Faith -> Clear all Weather.
-grimoire.jei.descriptions_body.sanae_gohei_potions= 3 Faith -> Apply all Potions in the Player's Inventory.
-grimoire.jei.descriptions_body.sanae_gohei_rain= 4 Faith -> Add Rain Weather.
-grimoire.jei.descriptions_body.sanae_gohei_thunder= 5 Faith -> Add Thunder and Rain Weather.
-grimoire.jei.descriptions_body.sanae_gohei_wind= 1 Faith -> Push mobs with a Strong current of Air
-grimoire.jei.descriptions_body.sanae_gohei_crops= 8 Faith -> Bonemeal random blocks in a 16 * 16 area.
-grimoire.jei.descriptions_body.sanae_gohei_time= 15 Faith -> Switch Day to Night and vice versa.
-grimoire.jei.descriptions_body.sanae_gohei_moses= 30 Faith -> Open the Sea in Half.
+grimoire.jei.descriptions_body.sanae_gohei_clear=Miracle of Clear Skies : 1 Faith -> Clear all Weather.
+grimoire.jei.descriptions_body.sanae_gohei_rain=Miracle of Endless Rain : 4 Faith -> Add Rain Weather.
+grimoire.jei.descriptions_body.sanae_gohei_thunder=Miracle of Thundering Storms : 5 Faith -> Add Thunder and Rain Weather.
+grimoire.jei.descriptions_body.sanae_gohei_wind=Miracle Wind : 1 Faith -> Push mobs with a Strong current of Air.
+grimoire.jei.descriptions_body.sanae_gohei_moses=Moses Miracle : 30 Faith -> Open the Sea in Half.
+grimoire.jei.descriptions_body.sanae_gohei_heal=Miracle of Rejuvenation : 2 Faith -> Heal some damage to the player.
+grimoire.jei.descriptions_body.sanae_gohei_potions=Miracle of the Brewery : 3 Faith -> Apply all Potions in the Player's Inventory.
+grimoire.jei.descriptions_body.sanae_gohei_crops=Miracle of Green Lands : 8 Faith -> Bonemeal random blocks in a 16 * 16 area.
+grimoire.jei.descriptions_body.sanae_gohei_time=Miracle of Time Shift : 15 Faith -> Switch Day to Night and vice versa.
 
 grimoire.jei.descriptions.sariel_wand=Must be crafted in the Nether
 grimoire.jei.descriptions_body.sariel_wand=Stores Skulls from Players and some Mobs, they can be placed by using the Item on a block

@@ -211,8 +211,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 				,"grimoire.jei.descriptions_body.sanae_gohei_clear"
 				,"grimoire.jei.descriptions_body.sanae_gohei_rain"
 				,"grimoire.jei.descriptions_body.sanae_gohei_thunder"
-				,"grimoire.jei.descriptions_body.sanae_gohei_moses"
 				,"grimoire.jei.descriptions_body.sanae_gohei_wind"
+				,"grimoire.jei.descriptions_body.sanae_gohei_moses"
+				,"grimoire.jei.descriptions_body.sanae_gohei_heal"
 				,"grimoire.jei.descriptions_body.sanae_gohei_potions"
 				,"grimoire.jei.descriptions_body.sanae_gohei_crops"
 				,"grimoire.jei.descriptions_body.sanae_gohei_time");
