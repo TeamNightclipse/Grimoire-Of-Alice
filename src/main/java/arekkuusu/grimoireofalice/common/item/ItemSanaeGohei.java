@@ -101,17 +101,18 @@ public class ItemSanaeGohei extends ItemGohei {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
-		if (count % 40 == 0 && livingBase instanceof EntityPlayer) {
+		if (count % 35 == 0 && livingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) livingBase;
-			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
 
-			if (hasFaith(player) && !player.worldObj.isRemote && consumeFaith(player)) {
-				addCharge(stack, 5);
-			}
-			else if (player.getFoodStats().getFoodLevel() >= 2) {
-				int food = player.getFoodStats().getFoodLevel();
-				player.getFoodStats().setFoodLevel(food - 2);
-				addCharge(stack, 1);
+			if(!player.worldObj.isRemote && getCharge(stack) < 30) {
+				if (hasFaith(player) && consumeFaith(player)) {
+					addCharge(stack, 5);
+				}
+				else if (!player.capabilities.isCreativeMode && player.getFoodStats().getFoodLevel() > 7) {
+					int food = player.getFoodStats().getFoodLevel();
+					player.getFoodStats().setFoodLevel(food - 2);
+					addCharge(stack, 1);
+				}
 			}
 		}
 	}
