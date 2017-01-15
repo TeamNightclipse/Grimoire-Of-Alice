@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
@@ -32,6 +30,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 

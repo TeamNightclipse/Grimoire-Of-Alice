@@ -8,9 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
-import java.util.List;
-import java.util.Random;
-
 import arekkuusu.grimoireofalice.common.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
@@ -38,6 +35,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class ItemEllyScythe extends ItemModSword {
 

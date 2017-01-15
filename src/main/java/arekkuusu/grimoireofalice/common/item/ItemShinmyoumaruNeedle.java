@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
@@ -28,6 +26,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemShinmyoumaruNeedle extends ItemModSword {
 

@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelUtsuhoWings;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -25,6 +23,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor {
 

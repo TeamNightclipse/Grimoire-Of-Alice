@@ -8,10 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.state.IBlockState;
@@ -29,6 +25,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemWallPassingChisel extends ItemMod {
 
