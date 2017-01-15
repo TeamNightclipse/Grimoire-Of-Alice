@@ -90,14 +90,24 @@ public class ItemHakureiGohei extends ItemGohei {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
+		if (playerIn.isSneaking()) {
+			increaseType(itemStackIn);
+			if (worldIn.isRemote) {
+				String modeName = getMode(itemStackIn).toString() + ".name";
+				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_header.name");
+				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName));
 
-		GoheiMode mode = getMode(itemStackIn);
-		if (!playerIn.isSneaking()) {
+				GrimoireOfAlice.proxy.displayRecordText(text);
+			}
+		}
+		else {
+			playerIn.setActiveHand(hand);
+
+			GoheiMode mode = getMode(itemStackIn);
 			if (mode == YING_YANG_ORB) {
-				EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
 				playerIn.playSound(GrimoireSoundEvents.POWER_UP, 0.1F, itemRand.nextFloat() * 0.1F + 0.8F);
 				if (!worldIn.isRemote) {
+					EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
 					worldIn.spawnEntityInWorld(orb);
 				}
 			}
@@ -138,16 +148,7 @@ public class ItemHakureiGohei extends ItemGohei {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
 			if (playerIn.isSneaking()) {
-				byte type = (byte) MathHelper.clamp_int(getType(stack) + 1, 0, 5);
-				setType(stack, getType(stack) != 5 ? type : 0);
-				if (worldIn.isRemote) {
-					String modeName = getMode(stack).toString() + ".name";
-					ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_header.name");
-					text.appendSibling(new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName));
-					text.setStyle(new Style().setBold(true));
 
-					GrimoireOfAlice.proxy.displayRecordText(text);
-				}
 			}
 			else {
 				if (getMode(stack) == PASSIVE) {

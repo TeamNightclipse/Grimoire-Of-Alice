@@ -82,13 +82,11 @@ public class ItemSanaeGohei extends ItemGohei {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		if (playerIn.isSneaking()) {
-			byte type = (byte) MathHelper.clamp_int(getType(stack) + 1, 0, 6);
-			setType(stack, getType(stack) != 6 ? type : 0);
+			increaseType(stack);
 			if (worldIn.isRemote) {
 				String modeName = getMode(stack).toString() + ".name";
 				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_header.name");
 				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_" + modeName));
-				text.setStyle(new Style().setBold(true));
 
 				GrimoireOfAlice.proxy.displayRecordText(text);
 			}

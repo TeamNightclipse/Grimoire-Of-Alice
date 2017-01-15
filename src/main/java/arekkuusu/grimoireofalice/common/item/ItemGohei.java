@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.MathHelper;
 
 public class ItemGohei extends ItemMod {
 
@@ -10,6 +11,11 @@ public class ItemGohei extends ItemMod {
 	public ItemGohei(String id, byte modes) {
 		super(id);
 		this.modes = modes;
+	}
+
+	public void increaseType(ItemStack itemStack) {
+		byte type = (byte) MathHelper.clamp_int(getType(itemStack) + 1, 0, modes);
+		setType(itemStack, getType(itemStack) != modes ? type : 0);
 	}
 
 	public void setType(ItemStack itemStack, byte mode) {
