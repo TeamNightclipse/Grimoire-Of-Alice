@@ -203,7 +203,7 @@ public class ModelIchirinUnzan extends ModelBiped {
 		}
 	}
 
-	public boolean isRenderRight() {
+	public boolean renderRight() {
 		return renderRight;
 	}
 
@@ -211,7 +211,7 @@ public class ModelIchirinUnzan extends ModelBiped {
 		this.renderRight = renderRight;
 	}
 
-	public boolean isRenderLeft() {
+	public boolean renderLeft() {
 		return renderLeft;
 	}
 
