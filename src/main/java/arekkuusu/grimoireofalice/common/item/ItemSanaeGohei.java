@@ -186,7 +186,7 @@ public class ItemSanaeGohei extends ItemGohei {
 					//charge -= 10;
 				}
 				else if(mode == WIND && WIND.canUse(charge, playerIn)) {
-					playerIn.playSound(GrimoireSoundEvents.WIND, 1F, 5F);
+					playerIn.playSound(GrimoireSoundEvents.WIND, 1F, 1F);
 					if (!worldIn.isRemote) {
 						Vec3d vec = playerIn.getLookVec();
 						List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
@@ -229,6 +229,8 @@ public class ItemSanaeGohei extends ItemGohei {
 					long time = worldIn.isDaytime() ? 14000 : 0;
 					worldserver.setWorldTime(time);
 
+					playerIn.getCooldownTracker().setCooldown(this, 5);
+
 					charge -= 10;
 				} else used = false;
 
@@ -244,8 +246,8 @@ public class ItemSanaeGohei extends ItemGohei {
 	}
 
 	private void applyBonemealRandomPos(EntityPlayer player, World world) {
-		BlockPos posI = new BlockPos(player.posX - 8, player.posY - 8, player.posZ - 8);
-		BlockPos posF = new BlockPos(player.posX + 8, player.posY + 8, player.posZ + 8);
+		BlockPos posI = new BlockPos(player.posX - 4 + itemRand.nextInt(4), player.posY - 4 + itemRand.nextInt(4), player.posZ - 4 + itemRand.nextInt(4));
+		BlockPos posF = new BlockPos(player.posX + 4 + itemRand.nextInt(4), player.posY + 4 + itemRand.nextInt(4), player.posZ + 4 + itemRand.nextInt(4));
 
 		BlockPos.getAllInBox(posI, posF).forEach(pos -> {
 			if (itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player)) {
