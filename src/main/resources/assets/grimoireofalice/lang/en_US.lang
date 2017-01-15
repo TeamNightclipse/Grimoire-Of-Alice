@@ -768,7 +768,7 @@ grimoire.jei.descriptions_body.sanae_gohei_wind=Miracle Wind : 1 Faith -> Push m
 grimoire.jei.descriptions_body.sanae_gohei_moses=Moses Miracle : 30 Faith -> Open the Sea in Half.
 grimoire.jei.descriptions_body.sanae_gohei_heal=Miracle of Rejuvenation : 2 Faith -> Heal some damage to the player.
 grimoire.jei.descriptions_body.sanae_gohei_potions=Miracle of the Brewery : 3 Faith -> Apply all Potions in the Player's Inventory.
-grimoire.jei.descriptions_body.sanae_gohei_crops=Miracle of Green Lands : 8 Faith -> Bonemeal random blocks in a 16 * 16 area.
+grimoire.jei.descriptions_body.sanae_gohei_crops=Miracle of Green Lands : 8 Faith -> Bonemeal random blocks in an area.
 grimoire.jei.descriptions_body.sanae_gohei_time=Miracle of Time Shift : 15 Faith -> Switch Day to Night and vice versa.
 
 grimoire.jei.descriptions.sariel_wand=Must be crafted in the Nether
