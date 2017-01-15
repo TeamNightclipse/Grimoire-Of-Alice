@@ -13,12 +13,12 @@ public class ItemGohei extends ItemMod {
 		this.modes = modes;
 	}
 
-	public void increaseType(ItemStack itemStack) {
+	protected void increaseType(ItemStack itemStack) {
 		byte type = (byte) MathHelper.clamp_int(getType(itemStack) + 1, 0, modes);
 		setType(itemStack, getType(itemStack) != modes ? type : 0);
 	}
 
-	public void setType(ItemStack itemStack, byte mode) {
+	protected void setType(ItemStack itemStack, byte mode) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt == null) {
 			nbt = new NBTTagCompound();
@@ -27,7 +27,7 @@ public class ItemGohei extends ItemMod {
 		nbt.setByte("GoheiMode", mode);
 	}
 
-	public byte getType(ItemStack itemStack) {
+	protected byte getType(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? modes : nbt.getByte("GoheiMode");
 	}
