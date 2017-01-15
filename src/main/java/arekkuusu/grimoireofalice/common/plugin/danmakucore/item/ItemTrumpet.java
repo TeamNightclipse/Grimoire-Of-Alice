@@ -22,6 +22,7 @@ public class ItemTrumpet extends ItemInstrument {
 
 	public ItemTrumpet() {
 		super(LibItemName.MERLIN_TRUMPET);
+		setMaxDamage(100);
 	}
 
 	@Override

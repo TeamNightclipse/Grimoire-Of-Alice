@@ -34,7 +34,6 @@ public class ItemInstrument extends ItemMod {
 
 	public ItemInstrument(String id) {
 		super(id);
-		setMaxDamage(500);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("playing"),
 				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);

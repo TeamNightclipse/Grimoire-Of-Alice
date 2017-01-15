@@ -22,6 +22,7 @@ public class ItemPiano extends ItemInstrument {
 
 	public ItemPiano() {
 		super(LibItemName.LYRICA_PIANO);
+		setMaxDamage(150);
 	}
 
 	@Override

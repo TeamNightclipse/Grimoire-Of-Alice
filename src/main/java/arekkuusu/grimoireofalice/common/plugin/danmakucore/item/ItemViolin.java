@@ -22,6 +22,7 @@ public class ItemViolin extends ItemInstrument {
 
 	public ItemViolin() {
 		super(LibItemName.LUNASA_VIOLIN);
+		setMaxDamage(50);
 	}
 
 	@Override
