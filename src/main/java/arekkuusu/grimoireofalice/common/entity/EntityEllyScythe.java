@@ -41,6 +41,7 @@ public class EntityEllyScythe extends EntityThrow {
 		setPickupModeFromEntity(thrower);
 		setStack(itemstack.copy());
 		strength = Math.min(1.5F, velocity);
+		throwableShake = 20;
 	}
 
 	@Override
