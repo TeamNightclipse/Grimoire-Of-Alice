@@ -247,27 +247,23 @@ public class ItemSanaeGohei extends ItemGohei {
 	}
 
 	private void applyBonemealRandomPos(EntityPlayer player, World world) {
-		for (int i = 0; i < 150; i++) {
-			Vec3d vec = new Vec3d(player.posX - 8 + itemRand.nextInt(16), player.posY + 16, player.posZ - 8 + itemRand.nextInt(16));
-			Vec3d vecReach = new Vec3d(vec.xCoord, vec.yCoord - 32, vec.zCoord);
-			RayTraceResult ray = player.worldObj.rayTraceBlocks(vec, vecReach);
+		BlockPos posI = new BlockPos(player.posX - 8, player.posY - 8, player.posZ - 8);
+		BlockPos posF = new BlockPos(player.posX + 8, player.posY + 8, player.posZ + 8);
 
-			if (ray != null) {
-				if (ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, ray.getBlockPos(), player)) {
-					BlockPos pos = ray.getBlockPos();
-					IBlockState state = world.getBlockState(pos);
-					for (int j = 0; j < 15; ++j) {
-						double d0 = itemRand.nextGaussian() * 0.02D;
-						double d1 = itemRand.nextGaussian() * 0.02D;
-						double d2 = itemRand.nextGaussian() * 0.02D;
-						world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, pos.getX() + itemRand.nextFloat(), pos.getY() + itemRand.nextFloat() * state.getBoundingBox(world, pos).maxY, pos.getZ() + itemRand.nextFloat(), d0, d1, d2);
-					}
-					if (!world.isRemote) {
-						world.playEvent(2005, pos, 0);
-					}
+		BlockPos.getAllInBox(posI, posF).forEach(pos -> {
+			if (itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player)) {
+				IBlockState state = world.getBlockState(pos);
+				for (int j = 0; j < 15; ++j) {
+					double d0 = itemRand.nextGaussian() * 0.02D;
+					double d1 = itemRand.nextGaussian() * 0.02D;
+					double d2 = itemRand.nextGaussian() * 0.02D;
+					world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, pos.getX() + itemRand.nextFloat(), pos.getY() + itemRand.nextFloat() * state.getBoundingBox(world, pos).maxY, pos.getZ() + itemRand.nextFloat(), d0, d1, d2);
+				}
+				if (!world.isRemote) {
+					world.playEvent(2005, pos, 0);
 				}
 			}
-		}
+		});
 	}
 
 	private Optional<List<PotionEffect>> getPotionEffectsInInventory(EntityPlayer player) {
