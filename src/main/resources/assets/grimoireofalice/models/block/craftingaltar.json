@@ -39,13 +39,15 @@
         "2": "grimoireofalice:models/block/Table_top",
         "3": "grimoireofalice:models/block/Table_three",
         "4": "grimoireofalice:models/block/Table_book",
-        "5": "grimoireofalice:models/block/Table_two"
+        "5": "grimoireofalice:models/block/Table_two",
+        "6": "grimoireofalice:models/block/Potion",
+        "7": "grimoireofalice:models/block/glass"
     },
     "elements": [
         {
             "name": "Leg1",
-            "from": [ 0.0, 0.0, 0.0 ], 
-            "to": [ 2.0, 12.0, 2.0 ], 
+            "from": [ 0.0, -0.1, 0.0 ], 
+            "to": [ 2.0, 11.9, 2.0 ], 
             "faces": {
                 "north": { "texture": "#0", "uv": [ 0.0, 0.0, 2.5, 8.5 ] },
                 "east": { "texture": "#0", "uv": [ 2.5, 0.0, 5.0, 8.5 ] },
@@ -57,8 +59,8 @@
         },
         {
             "name": "Leg2",
-            "from": [ 14.0, 0.0, 0.0 ], 
-            "to": [ 16.0, 12.0, 2.0 ], 
+            "from": [ 14.0, -0.1, 0.0 ], 
+            "to": [ 16.0, 11.9, 2.0 ], 
             "faces": {
                 "north": { "texture": "#0", "uv": [ 13.5, 0.0, 16.0, 8.5 ] },
                 "east": { "texture": "#0", "uv": [ 11.0, 0.0, 13.5, 8.5 ] },
@@ -70,8 +72,8 @@
         },
         {
             "name": "Leg3",
-            "from": [ 14.0, 0.0, 14.0 ], 
-            "to": [ 16.0, 12.0, 16.0 ], 
+            "from": [ 14.0, -0.1, 14.0 ], 
+            "to": [ 16.0, 11.9, 16.0 ], 
             "faces": {
                 "north": { "texture": "#0", "uv": [ 5.5, 6.5, 7.5, 15.0 ] },
                 "east": { "texture": "#0", "uv": [ 8.5, 6.5, 10.5, 15.0 ] },
@@ -83,8 +85,8 @@
         },
         {
             "name": "Leg4",
-            "from": [ 0.0, 0.0, 14.0 ], 
-            "to": [ 2.0, 12.0, 16.0 ], 
+            "from": [ 0.0, -0.1, 14.0 ], 
+            "to": [ 2.0, 11.9, 16.0 ], 
             "faces": {
                 "north": { "texture": "#0", "uv": [ 8.5, 6.5, 10.5, 15.0 ] },
                 "east": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 8.5 ] },
@@ -246,8 +248,8 @@
         },
         {
             "name": "Paper2",
-            "from": [ 3.0, 12.1, 9.0 ], 
-            "to": [ 7.0, 12.1, 15.0 ], 
+            "from": [ 5.0, 12.1, 3.0 ], 
+            "to": [ 9.0, 12.1, 9.0 ], 
             "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": 22.5 },
             "faces": {
                 "north": { "texture": "#-1", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
@@ -284,6 +286,32 @@
                 "west": { "texture": "#4", "uv": [ 1.0, 4.0, 5.0, 5.0 ] },
                 "up": { "texture": "#0", "uv": [ 3.0, 0.0, 5.0, 6.0 ] },
                 "down": { "texture": "#0", "uv": [ 0.0, 0.0, 2.0, 4.0 ] }
+            }
+        },
+        {
+            "name": "Liquid",
+            "from": [ 8.5, 13.0, 2.5 ], 
+            "to": [ 9.5, 14.0, 3.5 ], 
+            "faces": {
+                "north": { "texture": "#6", "uv": [ 5.0, 9.5, 11.0, 16.0 ] },
+                "east": { "texture": "#6", "uv": [ 7.0, 9.5, 13.0, 16.0 ] },
+                "south": { "texture": "#6", "uv": [ 2.0, 9.5, 8.0, 16.0 ] },
+                "west": { "texture": "#6", "uv": [ 8.0, 9.5, 14.0, 16.0 ] },
+                "up": { "texture": "#6", "uv": [ 6.0, 6.0, 9.5, 9.5 ] },
+                "down": { "texture": "#6", "uv": [ 5.0, 8.0, 8.0, 11.0 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 7.5, 12.0, 1.5 ], 
+            "to": [ 10.5, 15.0, 4.5 ], 
+            "faces": {
+                "north": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "cullface": "up" },
+                "down": { "texture": "#7", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
             }
         }
     ]
