@@ -11,6 +11,7 @@ import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
@@ -101,12 +102,27 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if (count > 40 && count % 5 == 0) {
-			List<EntityMob> list = player.worldObj.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
+	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
+		if (count > 260 && count % 5 == 0) {
+			List<EntityMob> list = livingBase.worldObj.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().expandXyz(20));
 			if (!list.isEmpty()) {
 				for (EntityLivingBase entityMob : list) {
-					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, player, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, livingBase, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+				}
+			}
+		}
+		if (count < 260 && count > 220 && count % 2 == 0) {
+			livingBase.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
+			World world = livingBase.worldObj;
+			if (!world.isRemote && livingBase instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) livingBase;
+				if (isOwner(stack, player)) {
+					DanmakuTemplate danmaku = DanmakuTemplate.builder()
+							.setUser(player)
+							.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED))
+							.build();
+
+					DanmakuCreationHelper.createRandomRingShot(danmaku, 10 + itemRand.nextInt(5), 5, 0.5D);
 				}
 			}
 		}
@@ -128,16 +144,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							worldIn.spawnEntityInWorld(circle);
 							player.getCooldownTracker().setCooldown(this, count);
-						}
-					}
-					else if (timeUsed >= 20 && player.isSneaking()) {
-						for (int i = 0; i < 10; i++) {
-							DanmakuTemplate danmaku = DanmakuTemplate.builder()
-									.setUser(player)
-									.setShot(LibShotData.SHOT_MEDIUM.setColor(LibColor.COLOR_SATURATED_RED).setDelay(i * 3))
-									.build();
-
-							DanmakuCreationHelper.createRandomRingShot(danmaku, 25 + itemRand.nextInt(5), 5, 0.5D);
 						}
 					}
 				}
@@ -210,7 +216,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 100;
+		return 300;
 	}
 
 	@Override
