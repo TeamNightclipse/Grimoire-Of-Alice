@@ -86,7 +86,7 @@ public class ItemNuclearRod extends ItemMod {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 10);
 		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-		if (timeUsed < 40) return;
+		if (timeUsed < 20) return;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if (!worldIn.isRemote) {
 			EntityDanmaku danmaku = DanmakuTemplate.builder()

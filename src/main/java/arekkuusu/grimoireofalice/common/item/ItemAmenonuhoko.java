@@ -91,7 +91,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 		double range = 15.0D;
 		Vec3d look = player.getLookVec();
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
+		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + player.getEyeHeight() + look.yCoord * range, player.posZ + look.zCoord * range);
 		RayTraceResult raytraceresult = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
 		if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 		else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK)
