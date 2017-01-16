@@ -49,9 +49,11 @@ public class VanillaCrafting {
 				.where('S').mapsTo(new ItemStack(Blocks.DIRT, 1, 1))
 				.outputs(ModBlocks.COMPACT_STONE).build();
 
-		shaped().grid("LLL", "LGL")
+		shaped().grid("RLR", "PGP")
 				.where('G').mapsTo(ModBlocks.COMPACT_STONE)
-				.where('L').mapsTo("plankWood")
+				.where('L').mapsTo("logWood")
+				.where('R').mapsTo(ModBlocks.ROPE_BLOCK)
+				.where('P').mapsTo(ModBlocks.PAPER_BLOCK)
 				.outputs(ModBlocks.PILLAR_ALTAR).build();
 
 		shaped().grid("FFF","FIF","FFF")
