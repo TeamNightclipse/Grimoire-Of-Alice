@@ -13,6 +13,10 @@
         "type": "item",
         "name": "grimoireofalice:cattailplant",
         "weight": 1
+      },
+      {
+        "type": "empty",
+        "weight": 45
       }
     ]
   }]

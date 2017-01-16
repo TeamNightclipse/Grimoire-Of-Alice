@@ -17,6 +17,10 @@
         "type": "item",
         "name": "grimoireofalice:ufogreen",
         "weight": 6
+      },
+      {
+        "type": "empty",
+        "weight": 34
       }
     ]
   }]

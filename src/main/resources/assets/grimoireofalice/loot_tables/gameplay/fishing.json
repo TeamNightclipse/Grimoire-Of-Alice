@@ -1,0 +1,18 @@
+{
+  "pools": [{
+	"name": "grimoireofalice:fishing",
+    "rolls": 1,
+    "entries": [
+      {
+        "type": "item",
+        "name": "grimoireofalice:cowrieshell",
+        "weight": 1
+		"quality": 2
+      },
+      {
+        "type": "empty",
+        "weight": 25
+      }
+    ]
+  }]
+}

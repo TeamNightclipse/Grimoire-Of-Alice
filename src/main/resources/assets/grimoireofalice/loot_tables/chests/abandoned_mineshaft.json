@@ -23,6 +23,10 @@
         "name": "grimoireofalice:staritem",
         "weight": 5,
         "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }]
+      },
+      {
+        "type": "empty",
+        "weight": 35
       }
     ]
   }]

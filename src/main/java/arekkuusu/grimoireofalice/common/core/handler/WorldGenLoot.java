@@ -14,10 +14,10 @@ import java.util.List;
 public class WorldGenLoot {
 
 	private static final List<String> TABLES = ImmutableList.of(
-			"inject/abandoned_mineshaft", "inject/desert_pyramid",
-			"inject/jungle_temple", "inject/simple_dungeon",
-			"inject/spawn_bonus_chest", "inject/stronghold_corridor",
-			"inject/village_blacksmith"
+			"chests/abandoned_mineshaft", "chests/desert_pyramid",
+			"chests/jungle_temple", "chests/simple_dungeon",
+			"chests/spawn_bonus_chest", "chests/stronghold_corridor",
+			"chests/village_blacksmith" , "gameplay/fishing"
 	);
 
 	public WorldGenLoot() {
@@ -26,11 +26,13 @@ public class WorldGenLoot {
 
 	@SubscribeEvent
 	public void onLoot(LootTableLoadEvent event) {
-		String prefix = "minecraft:chests/";
+		String chestLoot = "minecraft:chests/";
+		String fishingLoot = "minecraft:gameplay/";
+
 		String lootName = event.getName().toString();
 
-		if (lootName.startsWith(prefix)) {
-			String file = lootName.substring(lootName.indexOf(prefix) + prefix.length());
+		if (lootName.startsWith(chestLoot)) {
+			String file = lootName.substring(lootName.indexOf(chestLoot) + chestLoot.length());
 			switch (file) {
 				case "abandoned_mineshaft":
 				case "desert_pyramid":
@@ -38,8 +40,15 @@ public class WorldGenLoot {
 				case "simple_dungeon":
 				case "spawn_bonus_chest":
 				case "stronghold_corridor":
-				case "village_blacksmith": event.getTable().addPool(getInjectPool(file)); break;
+				case "village_blacksmith": event.getTable().addPool(getInjectPool("chests/" + file)); break;
 				default: break;
+			}
+		}
+		else if(lootName.startsWith(fishingLoot)) {
+			String file = lootName.substring(lootName.indexOf(fishingLoot) + fishingLoot.length());
+			switch (file) {
+				case "fishing": event.getTable().addPool(getInjectPool("gameplay/" + file));
+					default: break;
 			}
 		}
 	}
@@ -49,6 +58,6 @@ public class WorldGenLoot {
 	}
 
 	private LootEntryTable getInjectEntry(String name, int weight) {
-		return new LootEntryTable(new ResourceLocation(LibMod.MODID, "inject/" + name), weight, 0, new LootCondition[0], "grimoireofalice_entry");
+		return new LootEntryTable(new ResourceLocation(LibMod.MODID, name), weight, 0, new LootCondition[0], "grimoireofalice_entry");
 	}
 }
