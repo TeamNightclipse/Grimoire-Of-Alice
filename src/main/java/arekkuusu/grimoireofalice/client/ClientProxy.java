@@ -131,6 +131,8 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.NETHER_SHARD);
 		registerItem(ModItems.IRON_NUGGET);
 		registerItem(ModItems.HARDENED_LEATHER);
+		registerItem(ModItems.SWALLOW_EGG);
+		registerItem(ModItems.COWRIE_SHELL);
 
 		registerItem(ModItems.GHOST_DIPPER);
 		registerItem(ModItems.THIRD_EYE);
@@ -142,7 +144,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.KAPPAS_NOSTRUM);
 		registerItem(ModItems.HEAVENLY_PEACH);
 		registerItem(ModItems.IBUKI_GOURD);
-		registerItem(ModItems.COWRIE_SHELL);
+		registerItem(ModItems.SWALLOW_COWRIE_SHELL);
 		registerItem(ModItems.ORB_ELIXIR);
 		registerItem(ModItems.HOURAI_ELIXIR);
 		registerItem(ModItems.YUUGI_SAKE);

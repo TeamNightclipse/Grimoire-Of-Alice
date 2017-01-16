@@ -44,7 +44,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.CHERRY), "grimoire.jei.descriptions.cherry", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE
+		registry.addDescription(new ItemStack(ModItems.SWALLOW_COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE
 				, "grimoire.jei.descriptions_body.cowrie_shell");
 
 		registry.addDescription(new ItemStack(ModItems.CURSED_DECOY_DOLL), "grimoire.jei.descriptions.cursed_decoy_doll", LINE

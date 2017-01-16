@@ -132,6 +132,10 @@ public final class ModItems {
 	public static final Item IRON_NUGGET = new Item();
 	@ObjectHolder(LibItemName.HARDENED_LEATHER)
 	public static final Item HARDENED_LEATHER = new Item();
+	@ObjectHolder(LibItemName.SWALLOW_EGG)
+	public static final Item SWALLOW_EGG = new Item();
+	@ObjectHolder(LibItemName.COWRIE_SHELL)
+	public static final Item COWRIE_SHELL = new Item();
 
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)
@@ -146,8 +150,8 @@ public final class ModItems {
 	public static final Item HEAVENLY_PEACH = new Item();
 	@ObjectHolder(LibItemName.IBUKI_GOURD)
 	public static final Item IBUKI_GOURD = new Item();
-	@ObjectHolder(LibItemName.COWRIE_SHELL)
-	public static final Item COWRIE_SHELL = new Item();
+	@ObjectHolder(LibItemName.SWALLOW_COWRIE_SHELL)
+	public static final Item SWALLOW_COWRIE_SHELL = new Item();
 	@ObjectHolder(LibItemName.ORB_ELIXIR)
 	public static final Item ORB_ELIXIR = new Item();
 	@ObjectHolder(LibItemName.HOURAI_ELIXIR)

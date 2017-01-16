@@ -20,10 +20,10 @@ item.wallpassingchisel.name=Seiga's Hairpin
 item.miraclemallet.name=Miracle Mallet
 item.rodofremorse.name=Rod of Remorse
 item.jeweledhourai.name=Jeweled Branch of Hōrai
-item.budahboul.name=Budah's Boul
+item.budahboul.name=Buddha's Boul
 item.firerobe.name=Fire Rat Robe
 item.dragonjewel.name=Jewel from a Dragon's neck
-item.cowrieshell.name=Swallow's Cowrie Shell
+item.swallowcowrieshell.name=Swallow's Cowrie Shell
 item.foldingumbrella.name=Gap folding umbrella
 item.stopwatch.name=Sakuya Stop Watch
 item.mortarnpestle.name=Mortar N' Pestle
@@ -32,6 +32,8 @@ item.shinkiwand.name=Shinki's Wand
 item.nethershard.name=Nether Shard
 item.ironnuggetgoa.name=Iron Nugget
 item.hardenedleathergoa.name=Hardened Leather
+item.swallowegg.name=Swallow Egg
+item.cowrieshell.name=Cowrie Shell
 
 item.shroompowder.white.name=White Shroom Powder
 item.shroompowder.orange.name= Orange Shroom Powder
@@ -573,7 +575,7 @@ grimoire.tooltip.uba_mask_vulnerable.name= *Vulnerable to Magic
 
 //JEI
 grimoire.jei.descriptions.budah_boul=Must be crafted under a Waxing Crescent Moon at Night
-grimoire.jei.descriptions_body.budah_boul=Works as a all-in-one tool that lasts forever. Even though its a legendary relic from budah himself, you cannot break bedrock with it
+grimoire.jei.descriptions_body.budah_boul=Works as a all-in-one tool that lasts forever. Even though its a legendary relic from buddha himself, you cannot break bedrock with it
 
 grimoire.jei.descriptions.nazrin_stick=Special rod designed to detect treasure buried underground
 grimoire.jei.descriptions_body.nazrin_stick=It has a range of 10 blocks, and can find any kind of ore
@@ -853,6 +855,6 @@ grimoire.jei.descriptions_body.onbashira=Its a good place to stand when fishing,
 
 grimoire.jei.descriptions.pillar=Used to craft Items in the Crafting Altar
 
-grimoire.jei.descriptions.altar=Used to craft Items in Grimoire of Alice, there recipes require special conditions, such as Rain, or Specific Dimensions.
+grimoire.jei.descriptions.altar=Used to craft Items in Grimoire of Alice; They require special conditions, such as Rain, or Specific Dimensions.
 
-grimoire.jei.alter.title=Crafting Altar
+grimoire.jei.altar.title=Crafting Altar

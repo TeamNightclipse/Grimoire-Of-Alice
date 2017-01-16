@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemSwallowCowrieShell extends ItemMod {
 
 	public ItemSwallowCowrieShell() {
-		super(LibItemName.COWRIE_SHELL);
+		super(LibItemName.SWALLOW_COWRIE_SHELL);
 		setMaxStackSize(1);
 	}
 

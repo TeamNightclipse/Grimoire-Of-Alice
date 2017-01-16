@@ -78,6 +78,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.PASTE);
 		addItem(ModItems.SHIMENAWA_ROPE);
 		addItem(ModItems.BLACK_FEATHER);
+		addItem(ModItems.COWRIE_SHELL);
+		addItem(ModItems.SWALLOW_EGG);
 		addItem(ModItems.NETHER_SHARD);
 		addItem(ModItems.HARDENED_LEATHER);
 		addItem(ModItems.IRON_NUGGET);
@@ -151,7 +153,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.BUDAH_BOUL);
 		addItem(ModItems.DRAGON_JEWEL);
 		addItem(ModItems.FIRE_ROBE); //Done
-		addItem(ModItems.COWRIE_SHELL); //Done
+		addItem(ModItems.SWALLOW_COWRIE_SHELL); //Done
 		// ** Kanako Yasaka ** /
 		addItem(ModItems.KANAKO_SHIMENAWA); //Done
 		addItem(ModItems.KANAKO_ONBASHIRA); //Done

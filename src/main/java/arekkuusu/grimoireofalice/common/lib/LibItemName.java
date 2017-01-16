@@ -36,7 +36,7 @@ public class LibItemName {
 	public static final String JEWELED_HOURAI = "jeweledhourai";
 	public static final String BUDAH_BOUL = "budahboul";
 	public static final String DRAGON_JEWEL = "dragonjewel";
-	public static final String COWRIE_SHELL = "cowrieshell";
+	public static final String SWALLOW_COWRIE_SHELL = "swallowcowrieshell";
 	public static final String FOLDING_UMBRELLA = "foldingumbrella";
 	public static final String STOP_WATCH = "stopwatch";
 	public static final String MORTAR_AND_PESTLE = "mortarnpestle";
@@ -126,4 +126,6 @@ public class LibItemName {
 	public static final String SHINKI_WAND = "shinkiwand";
 	public static final String NUCLEAR_ROD = "nuclearrod";
 	public static final String NUCLEAR_BOOTS = "nuclearboots";
+	public static final String SWALLOW_EGG = "swallowegg";
+	public static final String COWRIE_SHELL = "cowrieshell";
 }

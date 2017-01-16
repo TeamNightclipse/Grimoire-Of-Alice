@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
@@ -135,6 +136,14 @@ public class YukkuriEvent {
 			BlockPos pos = entity.getPosition();
 
 			EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.SWORD_OF_KUSANAGI));
+
+			event.getDrops().add(item);
+		}
+		else if (entity instanceof EntityChicken && event.getEntity().getEntityWorld().rand.nextInt(200) == 1) {
+			World world = entity.getEntityWorld();
+			BlockPos pos = entity.getPosition();
+
+			EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.SWALLOW_EGG));
 
 			event.getDrops().add(item);
 		}

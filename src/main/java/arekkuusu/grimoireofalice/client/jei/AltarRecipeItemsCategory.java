@@ -67,7 +67,7 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 	@SideOnly(Side.CLIENT)
 	@Override
 	public String getTitle() {
-		return I18n.format("grimoire.jei.alter.title");
+		return I18n.format("grimoire.jei.altar.title");
 	}
 
 	@Override
