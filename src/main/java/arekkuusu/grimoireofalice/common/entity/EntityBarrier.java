@@ -19,6 +19,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 public class EntityBarrier extends Entity {
 
@@ -68,11 +69,13 @@ public class EntityBarrier extends Entity {
 				isStatic = true;
 			}
 
-			List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-					entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && entity1 != player);
+			if(!worldObj.isRemote) {
+				List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+						entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && entity1 != player);
 
-			if(!entities.isEmpty()) {
-				onDetectEntity(entities.get(0));
+				if (!entities.isEmpty()) {
+					onDetectEntity(entities.get(0));
+				}
 			}
 
 			if(ticksExisted > 200 && !worldObj.isRemote) {
@@ -83,13 +86,13 @@ public class EntityBarrier extends Entity {
 
 	private void onDetectEntity(Entity living) {
 		if(type == Barrier.EXPLODE) {
-			worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX + 0.5, posY + 0.5, posZ + 0.5, motionX, motionY, motionZ);
+			if (worldObj instanceof WorldServer) {
+				((WorldServer) worldObj).spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX + 0.5, posY + 0.5, posZ + 0.5, 1, motionX, motionY, motionZ, 0.1D);
+			}
 			playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 
-			if (!worldObj.isRemote) {
-				living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
-				setDead();
-			}
+			living.attackEntityFrom(DamageSource.causeExplosionDamage(player), 5);
+			setDead();
 		}
 		else if(type == Barrier.MOTION) {
 			Vec3d playerPos = getPositionVector();
