@@ -27,19 +27,19 @@ public class HouraiEvents {
 	@CapabilityInject(IHouraiCapability.class)
 	public static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
 
-	@SubscribeEvent
-	public void onLogin(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
-		if (HouraiProvider.get(event.player) != null) {
-			HouraiProvider.get(event.player).dataChanged(event.player);
-		}
-	}
+	//@SubscribeEvent
+	//public void onLogin(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
+	//	if (HouraiProvider.get(event.player) != null) {
+	//		HouraiProvider.get(event.player).dataChanged(event.player);
+	//	}
+	//}
 
-	@SubscribeEvent
-	public void onPlayerChangedDimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent event) {
-		if (HouraiProvider.get(event.player) != null) {
-			HouraiProvider.get(event.player).dataChanged(event.player);
-		}
-	}
+	//@SubscribeEvent
+	//public void onPlayerChangedDimension(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent event) {
+	//	if (HouraiProvider.get(event.player) != null) {
+	//		HouraiProvider.get(event.player).dataChanged(event.player);
+	//	}
+	//}
 
 	@SubscribeEvent
 	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
