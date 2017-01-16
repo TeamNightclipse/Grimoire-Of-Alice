@@ -511,9 +511,7 @@ grimoire.tooltip.shou_lamp_shift.name=SHIFT for details
 grimoire.tooltip.spell_card_pouch_header.name=Holds Items for you
 
 grimoire.tooltip.hisou_sword_header.name=Sword of Scarlet Perceptions
-grimoire.tooltip.hisou_sword_description_top.name=It has the ability to identifying one's spirit,
-grimoire.tooltip.hisou_sword_description_mid.name=no matter the circumstances.
-grimoire.tooltip.hisou_sword_description_bottom.name=It takes the form of a golden Chinese jian.
+grimoire.tooltip.hisou_sword_description_top.name=It takes the form of a golden Chinese jian.
 grimoire.tooltip.hisou_sword_shift.name=SHIFT for details
 
 grimoire.tooltip.tengu_fan_header.name=Fan to manipulate winds

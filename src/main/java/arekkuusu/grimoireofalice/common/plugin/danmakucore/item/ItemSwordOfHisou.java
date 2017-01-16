@@ -64,8 +64,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_mid.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_bottom.name"));
 		}
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_shift.name"));
