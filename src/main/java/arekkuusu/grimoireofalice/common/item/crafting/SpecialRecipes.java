@@ -552,7 +552,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.holyKeyStone) {
 			HOLYKEYSTONE = GrimoireOfAliceAPI.registerRecipeThunder(new ItemStack(ModBlocks.HOLY_KEY_STONE)
-					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, Items.STRING);
+					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.onbashira) {
