@@ -73,6 +73,7 @@ public class ItemBudahBoul extends ItemTool {
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+		worldIn.notifyBlockUpdate(pos, state, state, 8);
 		return true;
 	}
 
@@ -83,7 +84,7 @@ public class ItemBudahBoul extends ItemTool {
 
 	@Override
 	public float getStrVsBlock(ItemStack stack, IBlockState state) {
-		if(state.getBlock() == Blocks.WEB) return 15.0f;
+		if(state.getBlock() == Blocks.WEB) return 20.0f;
 
 		for(String type : getToolClasses(stack)) {
 			if(state.getBlock().isToolEffective(type, state)) return efficiencyOnProperMaterial;
@@ -92,10 +93,5 @@ public class ItemBudahBoul extends ItemTool {
 		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) return efficiencyOnProperMaterial;
 		else if(SWORD_MATERIALS.contains(state.getMaterial())) return 1.5f;
 		else return 1.0F;
-	}
-
-	@Override
-	public int getItemEnchantability() {
-		return 0;
 	}
 }

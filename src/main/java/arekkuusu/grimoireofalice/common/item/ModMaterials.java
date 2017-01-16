@@ -29,5 +29,5 @@ public final class ModMaterials {
 	public static final Item.ToolMaterial STRONG_IRON = EnumHelper.addToolMaterial("STRONG_IRON", 2, 450, 6.0F, 2.0F, 14);
 	public static final Item.ToolMaterial STRONG_STONE = EnumHelper.addToolMaterial("STRONG_STONE", 2, 250, 3.0F, 1.5F, 14);
 	public static final Item.ToolMaterial NOODLE = EnumHelper.addToolMaterial("NOODLE", 3, 251, 15.0F, 0F, 30);
-	public static final Item.ToolMaterial BUDAH_BOUL = EnumHelper.addToolMaterial("BUDAH_BOUL", 4, 1561, 20.0F, 3.0F, 30);
+	public static final Item.ToolMaterial BUDAH_BOUL = EnumHelper.addToolMaterial("BUDAH_BOUL", 4, 1561, 80.0F, 3.0F, 100);
 }
