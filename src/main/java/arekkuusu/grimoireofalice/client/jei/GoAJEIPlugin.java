@@ -44,8 +44,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.CHERRY), "grimoire.jei.descriptions.cherry", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.SWALLOW_COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE
-				, "grimoire.jei.descriptions_body.cowrie_shell");
+		registry.addDescription(new ItemStack(ModItems.COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.CURSED_DECOY_DOLL), "grimoire.jei.descriptions.cursed_decoy_doll", LINE
 				, "grimoire.jei.descriptions_body.cursed_decoy_doll");
@@ -243,6 +242,11 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.SUWAKO_HAT), "grimoire.jei.descriptions.suwako_hat", LINE
 				, "grimoire.jei.descriptions_body.suwako_hat");
+
+		registry.addDescription(new ItemStack(ModItems.SWALLOW_COWRIE_SHELL), "grimoire.jei.descriptions.swallow_cowrie_shell", LINE
+				, "grimoire.jei.descriptions_body.swallow_cowrie_shell");
+
+		registry.addDescription(new ItemStack(ModItems.SWALLOW_EGG), "grimoire.jei.descriptions.swallow_egg", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.SWORD_OF_KUSANAGI), "grimoire.jei.descriptions.sword_of_kusanagi", LINE
 				, "grimoire.jei.descriptions_body.sword_of_kusanagi");

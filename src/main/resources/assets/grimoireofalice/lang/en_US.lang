@@ -595,8 +595,7 @@ grimoire.jei.descriptions.cattail_plant=Nitori™ Do not yukkuri shiteitte ne
 
 grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
 
-grimoire.jei.descriptions.cowrie_shell=Must be crafted under a Waxing Gibbous Moon at Night
-grimoire.jei.descriptions_body.cowrie_shell=Gives the player a massive food amount, and saturation
+grimoire.jei.descriptions.cowrie_shell=Obtained by fishing, its a treasure, so use your Ol' Reliable
 
 grimoire.jei.descriptions.cursed_decoy_doll=Cursed doll that works as a decoy for mobs
 grimoire.jei.descriptions_body.cursed_decoy_doll=They will forget the player in question and attack the doll instead
@@ -796,6 +795,11 @@ grimoire.jei.descriptions.substitute_jizo=Protects the user from damage; instead
 
 grimoire.jei.descriptions.suwako_hat=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions_body.suwako_hat=Has a Thorns X enchantment
+
+grimoire.jei.descriptions.swallow_cowrie_shell=Must be crafted under a Waxing Gibbous Moon at Night
+grimoire.jei.descriptions_body.swallow_cowrie_shell=Gives the player a massive food amount, and saturation
+
+grimoire.jei.descriptions.swallow_egg=Dropped by chickens on death, it has a >1% of probability
 
 grimoire.jei.descriptions.sword_of_kusanagi=Dropped by the Ender Dragon on death
 grimoire.jei.descriptions_body.sword_of_kusanagi=Summons a mystical wind around the player that pushes mobs away, when swung, it summons a Soul that will attack any nearby Entity
