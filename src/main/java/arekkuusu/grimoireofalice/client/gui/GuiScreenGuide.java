@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.client.gui;
 
+import arekkuusu.grimoireofalice.client.ResourceLocations;
+import com.google.common.collect.ImmutableList;
 import org.lwjgl.input.Keyboard;
 
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -20,22 +22,35 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for people to read, or remove completely, no need for a guide
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-	private static final ResourceLocation BOOK_GUI_TEXTURES[] = {
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide0.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide1.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide2.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide3.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide4.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide5.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide6.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide7.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide8.png"),
-			new ResourceLocation(LibMod.MODID, "textures/gui/guide/Guide9.png")
-	};
+public class GuiScreenGuide extends GuiScreen {
 
-	private static final int bookTotalPages = 19;
+	private final ImmutableList<List<String>> TEXTS = ImmutableList.of(
+			Collections.emptyList(),
+			getText("grimoire.gui.book_1"),
+			getText("grimoire.gui.book_2"),
+			getText("grimoire.gui.book_3"),
+			getText("grimoire.gui.book_4"),
+			getText("grimoire.gui.book_5"),
+			getText("grimoire.gui.book_6"),
+			getText("grimoire.gui.book_7"),
+			getText("grimoire.gui.book_8"),
+			getText("grimoire.gui.book_9")
+	);
+
+	private List<String> getText(String text) {
+		List<String> lines = new ArrayList<>();
+		String formatted = I18n.format(text);
+
+		Collections.addAll(lines, formatted.split("\\|"));
+
+		return lines;
+	}
+
+	private static final int bookTotalPages = 10;
 	private int currPage = 0;
 	private GuiButton buttonDone;
 	private NextPageButton buttonNextPage;
@@ -46,13 +61,12 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for peopl
 		buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
 
-		buttonDone = new GuiButton(0, width / 2 + 2, 196, 98, 20, I18n.format("gui.done"));
+		buttonDone = new GuiButton(0, width / 2 + 2, 256, 98, 20, I18n.format("gui.done"));
 
 		buttonList.add(buttonDone);
-		int i = (width - 192) / 2;
-		buttonList.add(buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 156, true)));
-		buttonList.add(buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 156, false)));
-
+		int i = (width - 180) / 2;
+		buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 256, true));
+		buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 256, false));
 	}
 
 	@Override
@@ -63,7 +77,7 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for peopl
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton parButton) { //For some reason this goes 2 4 6 8 10 12 16 18...
+	protected void actionPerformed(GuiButton parButton) {
 		if(parButton == buttonDone) {
 			mc.displayGuiScreen(null);
 		}
@@ -82,23 +96,20 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for peopl
 	@Override
 	public void drawScreen(int parWidth, int parHeight, float p_73863_3_) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		ResourceLocation TEXTURE;
-		switch(currPage) {
-			case 0:
-				TEXTURE = BOOK_GUI_TEXTURES[0];
-				break;
-			default:
-				TEXTURE = BOOK_GUI_TEXTURES[5];
+		mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[currPage]);
+		drawTexturedModalRect((width - 250) / 2, 56, 0, 0, 256, 192);
+
+		List<String> get = TEXTS.get(currPage);
+		for (int i = 0; i < get.size(); i++) {
+			String s = get.get(i);
+			fontRendererObj.drawString(s, (width - 245) / 2, 70 + i * 12, 0);
 		}
-		mc.getTextureManager().bindTexture(TEXTURE);
-		int i = (width - 192) / 2;
-		this.drawTexturedModalRect(i, 2, 0, 0, 192, 192);
+
 		super.drawScreen(parWidth, parHeight, p_73863_3_);
 	}
 
 	@Override
 	protected void mouseClickMove(int parMouseX, int parMouseY, int parLastButtonClicked, long parTimeSinceMouseClick) {
-
 	}
 
 	@Override
@@ -108,17 +119,17 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for peopl
 
 	@Override
 	public boolean doesGuiPauseGame() {
-		return true;
+		return false;
 	}
 
 	@SideOnly(Side.CLIENT)
-	static class NextPageButton extends GuiButton {
+	private static class NextPageButton extends GuiButton {
 
 		private final boolean isForward;
 
-		public NextPageButton(int p_i46316_1_, int p_i46316_2_, int p_i46316_3_, boolean p_i46316_4_) {
-			super(p_i46316_1_, p_i46316_2_, p_i46316_3_, 23, 13, "");
-			isForward = p_i46316_4_;
+		public NextPageButton(int buttonId, int widthIn, int heightIn, boolean isForward) {
+			super(buttonId, widthIn, heightIn, 23, 13, "");
+			this.isForward = isForward;
 		}
 
 		@Override
@@ -126,7 +137,7 @@ public class GuiScreenGuide extends GuiScreen { //TODO: Add some stuff for peopl
 			if(visible) {
 				boolean flag = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-				mc.getTextureManager().bindTexture(BOOK_GUI_TEXTURES[0]);
+				mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[0]);
 				int i = 0;
 				int j = 192;
 

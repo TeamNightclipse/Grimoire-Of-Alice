@@ -72,8 +72,20 @@ public final class ResourceLocations {
 	public static final ResourceLocation RED_GAS = getLocation("particle/RedGas");
 	public static final ResourceLocation NETHER_FIRE = getLocation("particle/NetherFire");
 
-	//Potions
+	//GUI
 	public static final ResourceLocation POTION_TEXTURES = getLocation("textures/gui/potions.png");
+	public static final ResourceLocation BOOK_GUI_TEXTURES[] = {
+			getLocation("textures/gui/guide/Guide0.png"),
+			getLocation("textures/gui/guide/Guide1.png"),
+			getLocation("textures/gui/guide/Guide2.png"),
+			getLocation("textures/gui/guide/Guide3.png"),
+			getLocation("textures/gui/guide/Guide4.png"),
+			getLocation("textures/gui/guide/Guide5.png"),
+			getLocation("textures/gui/guide/Guide6.png"),
+			getLocation("textures/gui/guide/Guide7.png"),
+			getLocation("textures/gui/guide/Guide8.png"),
+			getLocation("textures/gui/guide/Guide9.png")
+	};
 
 	//Structures
 	public static final ResourceLocation STRUCTURE_BOULDER = getLocation("boulder");
