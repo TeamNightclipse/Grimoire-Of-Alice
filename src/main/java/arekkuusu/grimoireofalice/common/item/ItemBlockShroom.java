@@ -40,11 +40,11 @@ public class ItemBlockShroom extends ItemBlock {
 		if(entityLiving instanceof EntityPlayer && !((EntityPlayer)entityLiving).capabilities.isCreativeMode) {
 			--stack.stackSize;
 		}
-		entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
-		entityLiving.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
-		entityLiving.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));
 
-		if(stack.getItemDamage() % 3 == 0) {
+		if(!(stack.getItemDamage() % 3 == 0)) {
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
+			entityLiving.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 2400, 1));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 2400, 0));

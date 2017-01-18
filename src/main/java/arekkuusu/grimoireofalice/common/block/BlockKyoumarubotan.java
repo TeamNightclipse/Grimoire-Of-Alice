@@ -69,7 +69,7 @@ public class BlockKyoumarubotan extends BlockModBush {
 
 	@Override
 	public int quantityDropped(Random rand) {
-		return 4 + rand.nextInt(5);
+		return 3 + rand.nextInt(5);
 	}
 
 	@Override
