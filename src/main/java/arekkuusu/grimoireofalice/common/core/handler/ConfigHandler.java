@@ -94,6 +94,8 @@ public class ConfigHandler {
 				public boolean deathScythe = true;
 				@Comment("Can players craft the dragon jewel?")
 				public boolean dragonJewel = true;
+				@Comment("Can players craft the dragon stone?")
+				public boolean dragonStone = true;
 				@Comment("Can players craft the fake miracle mallet?")
 				public boolean fakeMiracleMallet = true;
 				@Comment("Can players craft the fire robe?")
@@ -153,7 +155,7 @@ public class ConfigHandler {
 				@Comment("Can players craft the kanako's onbashira?")
 				public boolean kanakoOnbashira = true;
 				@Comment("Can players craft the skull?")
-				public boolean skull = true;
+				public boolean skull = false;
 				@Comment("Can players craft the stop watch?")
 				public boolean stopWatch = true;
 				@Comment("Can players craft the substitute jizo?")
@@ -276,6 +278,8 @@ public class ConfigHandler {
 			public boolean swordOfKusanagi = true;
 			@Comment("Allow shichi seiken drop goods?")
 			public boolean allowGoodDrops = true;
+			@Comment("Dragon Scale rarity?")
+			public int dragonScaleRarity = 5;
 			@Comment("Allow flying Items?")
 			public boolean allowFly = true;
 			@Comment("Allow items and potions that allow the player to revive")

@@ -104,6 +104,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems UFO_GREEN;
 	public static IRecipeItems PATCHY_BOOK;
 	public static IRecipeItems SYRINGE;
+	public static IRecipeItems DRAGON_STONE;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -225,7 +226,12 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonJewel) {
 			DRAGON_JEWEL = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_JEWEL)
-					, Blocks.DRAGON_EGG, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
+					, ModItems.DRAGON_STONE, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonStone) {
+			DRAGON_STONE = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_STONE)
+					, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.fakeMiracleMallet) {
@@ -541,7 +547,7 @@ public final class SpecialRecipes {
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {
 				JEWELED_HOURAI = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.JEWELED_HOURAI)
-						, Blocks.GOLD_BLOCK, "treeSapling", Blocks.GOLD_BLOCK, Items.DIAMOND, Items.DIAMOND, Items.DIAMOND, Items.NETHER_STAR, Items.DIAMOND, Items.EMERALD, Items.EMERALD, Items.EMERALD, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.PRISMARINE_CRYSTALS, Items.EMERALD, Items.PRISMARINE_CRYSTALS);
+						, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, Items.QUARTZ, Items.QUARTZ, Items.DIAMOND, Items.QUARTZ, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
 			}
 		}
 		//Blocks
