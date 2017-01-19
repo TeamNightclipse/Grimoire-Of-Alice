@@ -126,6 +126,14 @@ public class YukkuriEvent {
 					event.setCanceled(true);
 			}
 		}
+		else {
+			int rarity = ConfigHandler.grimoireOfAlice.features.dragonScaleRarity;
+
+			if (event.getEntityLiving() instanceof EntityDragon && event.getSource().isProjectile()
+					&& rarity > 0 && event.getEntityLiving().worldObj.rand.nextInt(rarity) == 0) {
+				event.getEntityLiving().dropItem(ModItems.DRAGON_SCALE, 1);
+			}
+		}
 	}
 
 	@SubscribeEvent
