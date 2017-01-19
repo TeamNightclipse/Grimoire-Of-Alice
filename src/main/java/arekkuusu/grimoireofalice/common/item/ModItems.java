@@ -136,6 +136,10 @@ public final class ModItems {
 	public static final Item SWALLOW_EGG = new Item();
 	@ObjectHolder(LibItemName.COWRIE_SHELL)
 	public static final Item COWRIE_SHELL = new Item();
+	@ObjectHolder(LibItemName.DRAGON_SCALE)
+	public static final Item DRAGON_SCALE = new Item();
+	@ObjectHolder(LibItemName.DRAGON_STONE)
+	public static final Item DRAGON_STONE = new Item();
 
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)

@@ -73,6 +73,8 @@ public class CommonRegistration {
 				new ItemMod(LibItemName.HARDENED_LEATHER),
 				new ItemMod(LibItemName.SWALLOW_EGG),
 				new ItemMod(LibItemName.COWRIE_SHELL),
+				new ItemMod(LibItemName.DRAGON_SCALE),
+				new ItemMod(LibItemName.DRAGON_STONE),
 
 				//Food
 				new ItemShroomPowder(),

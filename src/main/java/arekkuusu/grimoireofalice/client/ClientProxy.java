@@ -133,6 +133,8 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.HARDENED_LEATHER);
 		registerItem(ModItems.SWALLOW_EGG);
 		registerItem(ModItems.COWRIE_SHELL);
+		registerItem(ModItems.DRAGON_SCALE);
+		registerItem(ModItems.DRAGON_STONE);
 
 		registerItem(ModItems.GHOST_DIPPER);
 		registerItem(ModItems.THIRD_EYE);

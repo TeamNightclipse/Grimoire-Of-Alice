@@ -34,6 +34,8 @@ item.ironnuggetgoa.name=Iron Nugget
 item.hardenedleathergoa.name=Hardened Leather
 item.swallowegg.name=Swallow Egg
 item.cowrieshell.name=Cowrie Shell
+item.dragonscale.name=Dragon Scale
+item.dragonstone.name=Dragon Weather Stone
 
 item.shroompowder.white.name=White Shroom Powder
 item.shroompowder.orange.name= Orange Shroom Powder
@@ -617,6 +619,10 @@ grimoire.jei.descriptions_body.death_scythe=Pulls mobs towards you, Pushes mobs 
 
 grimoire.jei.descriptions.dragon_jewel=Must be crafted under a New Moon at Night
 grimoire.jei.descriptions_body.dragon_jewel=It hurts all mobs until they hit 1hp in a 20 block radius, it has a change of dealing fatal damage
+
+grimoire.jei.descriptions.dragon_scale=Obtained by attacking the Ender Dragon with a ranged weapon
+
+grimoire.jei.descriptions.dragon_stone=Weather Stone with a dragon inside
 
 grimoire.jei.descriptions.elly_scythe=Must be crafted in the Nether
 grimoire.jei.descriptions_body.elly_scythe=Throw a deadly Scythe that curses the target and heals the user. It also summons danmaku from the ground

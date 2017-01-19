@@ -128,4 +128,6 @@ public class LibItemName {
 	public static final String NUCLEAR_BOOTS = "nuclearboots";
 	public static final String SWALLOW_EGG = "swallowegg";
 	public static final String COWRIE_SHELL = "cowrieshell";
+	public static final String DRAGON_SCALE = "dragonscale";
+	public static final String DRAGON_STONE = "dragonstone";
 }

@@ -55,6 +55,10 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.DRAGON_JEWEL), "grimoire.jei.descriptions.dragon_jewel", LINE
 				, "grimoire.jei.descriptions_body.dragon_jewel");
 
+		registry.addDescription(new ItemStack(ModItems.DRAGON_SCALE), "grimoire.jei.descriptions.dragon_scale", LINE);
+
+		registry.addDescription(new ItemStack(ModItems.DRAGON_STONE), "grimoire.jei.descriptions.dragon_stone", LINE);
+
 		registry.addDescription(new ItemStack(ModItems.ELLY_SCYTHE), "grimoire.jei.descriptions.elly_scythe", LINE
 				, "grimoire.jei.descriptions_body.elly_scythe");
 
