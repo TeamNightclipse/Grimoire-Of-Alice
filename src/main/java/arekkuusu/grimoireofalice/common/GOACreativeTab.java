@@ -80,6 +80,8 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.BLACK_FEATHER);
 		addItem(ModItems.COWRIE_SHELL);
 		addItem(ModItems.SWALLOW_EGG);
+		addItem(ModItems.DRAGON_SCALE);
+		addItem(ModItems.DRAGON_STONE);
 		addItem(ModItems.NETHER_SHARD);
 		addItem(ModItems.HARDENED_LEATHER);
 		addItem(ModItems.IRON_NUGGET);

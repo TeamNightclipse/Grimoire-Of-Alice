@@ -105,9 +105,9 @@ public class ItemSanaeGohei extends ItemGohei {
 				if (hasFaith(player) && consumeFaith(player)) {
 					addCharge(stack, 5);
 				}
-				else if (!player.capabilities.isCreativeMode && player.getFoodStats().getFoodLevel() > 7) {
+				else if (!player.capabilities.isCreativeMode && player.getFoodStats().getFoodLevel() > 10) {
 					int food = player.getFoodStats().getFoodLevel();
-					player.getFoodStats().setFoodLevel(food - 2);
+					player.getFoodStats().setFoodLevel(food - 5);
 					addCharge(stack, 1);
 				}
 			}

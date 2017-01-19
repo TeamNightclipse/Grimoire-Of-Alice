@@ -67,6 +67,9 @@ public class GuiScreenGuide extends GuiScreen {
 		int i = (width - 180) / 2;
 		buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 256, true));
 		buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 256, false));
+		buttonDone.visible = false;
+		buttonPreviousPage.visible = false;
+		buttonNextPage.visible = true;
 	}
 
 	@Override

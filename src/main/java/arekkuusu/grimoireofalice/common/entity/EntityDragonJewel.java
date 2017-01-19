@@ -50,7 +50,7 @@ public class EntityDragonJewel extends Entity {
 			if (host == null) {
 				setDead();
 			}
-			else if(ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress || host.isHandActive()) || ticksExisted > 500) {
+			else if((ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress)) || ticksExisted > 500) {
 				stopEntity();
 			}
 		}
@@ -77,7 +77,7 @@ public class EntityDragonJewel extends Entity {
 				mob.setRevengeTarget(null);
 
 				if (mob.getHealth() > 1) {
-					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(6));
+					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(25));
 				}
 			}
 
