@@ -4,31 +4,39 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 
-public class ItemGohei extends ItemMod {
+public class ItemGohei<E extends Enum<E>> extends ItemMod {
 
-	private final byte modes;
+	private E[] modes;
 
-	public ItemGohei(String id, byte modes) {
+	public ItemGohei(String id, E[] modes) {
 		super(id);
 		this.modes = modes;
 	}
 
 	protected void increaseType(ItemStack itemStack) {
-		byte type = (byte) MathHelper.clamp_int(getType(itemStack) + 1, 0, modes);
-		setType(itemStack, getType(itemStack) != modes ? type : 0);
+		int nextIndex = getType(itemStack).ordinal() + 1;
+		E next;
+		if(nextIndex >= modes.length) {
+			next = modes[0];
+		}
+		else {
+			next = modes[nextIndex];
+		}
+
+		setType(itemStack, next);
 	}
 
-	protected void setType(ItemStack itemStack, byte mode) {
+	protected void setType(ItemStack itemStack, E mode) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}
-		nbt.setByte("GoheiMode", mode);
+		nbt.setByte("GoheiMode", (byte)mode.ordinal());
 	}
 
-	protected byte getType(ItemStack itemStack) {
+	protected E getType(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? modes : nbt.getByte("GoheiMode");
+		return nbt == null ? modes[0] : modes[nbt.getByte("GoheiMode")];
 	}
 }
