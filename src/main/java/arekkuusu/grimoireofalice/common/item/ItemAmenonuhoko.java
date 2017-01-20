@@ -88,18 +88,19 @@ public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		double range = 15.0D;
-		Vec3d look = player.getLookVec();
-		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + player.getEyeHeight() + look.yCoord * range, player.posZ + look.zCoord * range);
-		RayTraceResult raytraceresult = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-		if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		else if (raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK)
-			return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		else {
-			createBoulder(player, worldIn, raytraceresult.getBlockPos());
+		if (isOwner(itemStackIn, player)) {
+			double range = 15.0D;
+			Vec3d look = player.getLookVec();
+			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+			Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + player.getEyeHeight() + look.yCoord * range, player.posZ + look.zCoord * range);
+			RayTraceResult raytraceresult = player.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, false);
+			if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+			else if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK) {
+				createBoulder(player, worldIn, raytraceresult.getBlockPos());
+				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+			}
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
 	}
 
 	private void createBoulder(EntityPlayer player, World world, BlockPos pos) {

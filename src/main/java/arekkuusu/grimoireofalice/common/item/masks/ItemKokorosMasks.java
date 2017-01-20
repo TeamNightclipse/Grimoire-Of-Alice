@@ -37,6 +37,8 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
+	private static final String OWNER_TAG = "GrimoireOwner";
+
 	public ItemKokorosMasks(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.KOKOROS_MASKS);
 	}
@@ -47,7 +49,7 @@ public class ItemKokorosMasks extends ItemModMask {
 		if(!stack.hasTagCompound()) {
 			stack.setTagCompound(new NBTTagCompound());
 		}
-		stack.getTagCompound().setUniqueId("GrimoireOwner", player.getUniqueID());
+		stack.getTagCompound().setUniqueId(OWNER_TAG, player.getUniqueID());
 	}
 
 	@Override
@@ -63,7 +65,7 @@ public class ItemKokorosMasks extends ItemModMask {
 		list.add(TextFormatting.ITALIC + "Feel the power of 66 masks");
 		list.add(TextFormatting.ITALIC + "being worn at the same time");
 		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId("GrimoireOwner");
+			UUID ownerUuid = stack.getTagCompound().getUniqueId(OWNER_TAG);
 			if(ownerUuid != null) {
 				if(UsernameCache.containsUUID(ownerUuid)) {
 					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
@@ -84,18 +86,8 @@ public class ItemKokorosMasks extends ItemModMask {
 			}
 			NBTTagCompound compound = stack.getTagCompound();
 			//noinspection ConstantConditions
-			if(!compound.hasKey("GrimoireOwner")) {
-				compound.setUniqueId("GrimoireOwner", player.getUniqueID());
-			}
-
-			if(!world.isRemote) {
-				ItemStack[] inventory = player.inventory.mainInventory;
-				for(int i = 0; i < inventory.length; i++) {
-					if(inventory[i] != null && inventory[i].getItem() == this && i != slot) {
-						player.dropItem(inventory[i], true);
-						inventory[i] = null;
-					}
-				}
+			if(!compound.hasUniqueId(OWNER_TAG)) {
+				compound.setUniqueId(OWNER_TAG, player.getUniqueID());
 			}
 		}
 	}
@@ -105,7 +97,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 		if (!armor.hasTagCompound()) return;
 
-		if (player.getUniqueID().equals(armor.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if (player.getUniqueID().equals(armor.getTagCompound().getUniqueId(OWNER_TAG))) {
 			if (player.moveForward > 0) player.moveRelative(0F, 2F, 0.085F);
 			List<PotionEffect> badPotions = player.getActivePotionEffects().stream()
 					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());

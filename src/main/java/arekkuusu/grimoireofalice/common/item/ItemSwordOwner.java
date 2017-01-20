@@ -62,7 +62,7 @@ public class ItemSwordOwner extends ItemModSword {
 			}
 			NBTTagCompound compound = stack.getTagCompound();
 			//noinspection ConstantConditions
-			if(!compound.hasKey(OWNER_TAG)) {
+			if(!compound.hasUniqueId(OWNER_TAG)) {
 				compound.setUniqueId(OWNER_TAG, player.getUniqueID());
 			}
 		}
