@@ -40,7 +40,7 @@
         "3": "grimoireofalice:models/block/Table_three",
         "4": "grimoireofalice:models/block/Table_book",
         "5": "grimoireofalice:models/block/Table_two",
-        "6": "grimoireofalice:models/block/Potion",
+        "6": "grimoireofalice:models/block/potion",
         "7": "grimoireofalice:models/block/glass"
     },
     "elements": [
@@ -293,12 +293,12 @@
             "from": [ 8.5, 13.0, 2.5 ], 
             "to": [ 9.5, 14.0, 3.5 ], 
             "faces": {
-                "north": { "texture": "#6", "uv": [ 5.0, 9.5, 11.0, 16.0 ] },
-                "east": { "texture": "#6", "uv": [ 7.0, 9.5, 13.0, 16.0 ] },
-                "south": { "texture": "#6", "uv": [ 2.0, 9.5, 8.0, 16.0 ] },
-                "west": { "texture": "#6", "uv": [ 8.0, 9.5, 14.0, 16.0 ] },
-                "up": { "texture": "#6", "uv": [ 6.0, 6.0, 9.5, 9.5 ] },
-                "down": { "texture": "#6", "uv": [ 5.0, 8.0, 8.0, 11.0 ] }
+                "north": { "texture": "#6", "uv": [ 5.0, 4.5, 11.0, 11.0 ] },
+                "east": { "texture": "#6", "uv": [ 6.0, 5.5, 12.0, 12.0 ] },
+                "south": { "texture": "#6", "uv": [ 5.0, 5.5, 11.0, 12.0 ] },
+                "west": { "texture": "#6", "uv": [ 5.0, 4.5, 11.0, 11.0 ] },
+                "up": { "texture": "#6", "uv": [ 5.0, 5.0, 11.5, 11.5 ] },
+                "down": { "texture": "#6", "uv": [ 5.0, 5.0, 11.0, 11.0 ] }
             }
         },
         {
