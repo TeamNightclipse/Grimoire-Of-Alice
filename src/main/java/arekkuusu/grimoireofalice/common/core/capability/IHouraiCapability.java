@@ -8,12 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.core.capability;
 
-import arekkuusu.grimoireofalice.common.core.net.MessageHouraiUpdate;
-import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.nbt.NBTTagCompound;
-
 public interface IHouraiCapability {
 
 	/**
@@ -27,37 +21,4 @@ public interface IHouraiCapability {
 
 	byte getMaxHouraiLevel();
 
-	/**
-	 * Sets a Hourai level to a player
-	 *
-	 * @param player Player
-	 * @param level Amount
-	 */
-	default void setHouraiLevel(EntityPlayer player, byte level) {
-		setHouraiLevel(level);
-		dataChanged(player);
-	}
-
-	NBTTagCompound saveNBTData();
-
-	void loadNBTData(NBTTagCompound compound);
-
-	/**
-	 * Called when a player joins a world
-	 *
-	 * @param player Player
-	 */
-	default void entitySpawned(EntityPlayer player) {
-		dataChanged(player);
-	}
-
-	/**
-	 * For use with Players
-	 *
-	 * @param player Player
-	 */
-	default void dataChanged(EntityPlayer player) {
-		if (player instanceof EntityPlayerMP)
-			PacketHandler.sendTo((EntityPlayerMP)player, new MessageHouraiUpdate(saveNBTData(), player));
-	}
 }

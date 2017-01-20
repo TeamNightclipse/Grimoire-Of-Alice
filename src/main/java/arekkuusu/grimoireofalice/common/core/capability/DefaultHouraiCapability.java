@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.core.capability;
 
-import net.minecraft.nbt.NBTTagCompound;
-
 public class DefaultHouraiCapability implements IHouraiCapability {
 
 	private byte maxLevel = 3;
@@ -34,15 +32,5 @@ public class DefaultHouraiCapability implements IHouraiCapability {
 		if (level > maxLevel) {
 			this.level = maxLevel;
 		}
-	}
-
-	@Override
-	public NBTTagCompound saveNBTData() {
-		return (NBTTagCompound) HouraiCapabilityStorage.cap.writeNBT(HouraiProvider.HOURAI_CAPABILITY, this, null);
-	}
-
-	@Override
-	public void loadNBTData(NBTTagCompound compound) {
-		HouraiCapabilityStorage.cap.readNBT(HouraiProvider.HOURAI_CAPABILITY, this, null, compound);
 	}
 }

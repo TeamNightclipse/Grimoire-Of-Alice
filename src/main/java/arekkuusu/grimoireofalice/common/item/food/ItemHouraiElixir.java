@@ -120,7 +120,7 @@ public class ItemHouraiElixir extends ItemModFood {
 									+ new TextComponentTranslation("item.hourai.level_3").getFormattedText()));
 					break;
 			}
-			if (level < maxLevel) capability.setHouraiLevel(player, (byte) (level + 1));
+			if (level < maxLevel) capability.setHouraiLevel((byte) (level + 1));
 		}
 	}
 

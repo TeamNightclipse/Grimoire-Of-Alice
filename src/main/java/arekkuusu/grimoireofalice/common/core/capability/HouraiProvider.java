@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.core.capability;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -36,17 +35,14 @@ public class HouraiProvider implements ICapabilitySerializable<NBTTagCompound> {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	public static IHouraiCapability get(EntityPlayer player) {
-		return player != null && player.hasCapability(HOURAI_CAPABILITY, null) ? player.getCapability(HOURAI_CAPABILITY, null) : null;
-	}
-
 	@Override
 	public NBTTagCompound serializeNBT() {
-		return houraiCapability.saveNBTData();
+		return (NBTTagCompound)HOURAI_CAPABILITY.writeNBT(houraiCapability, null);
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void deserializeNBT(NBTTagCompound nbt) {
-		houraiCapability.loadNBTData(nbt);
+		HOURAI_CAPABILITY.readNBT(houraiCapability, null, nbt);
 	}
 }

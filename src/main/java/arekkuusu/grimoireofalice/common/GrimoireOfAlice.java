@@ -12,7 +12,6 @@ import arekkuusu.grimoireofalice.common.core.capability.CapabilityHourai;
 import arekkuusu.grimoireofalice.common.core.handler.*;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
-import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
 import arekkuusu.grimoireofalice.common.entity.ModEntity;
 import arekkuusu.grimoireofalice.common.event.ModEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -52,7 +51,6 @@ public class GrimoireOfAlice {
 		ModSounds.preInit();
 		CapabilityHourai.init();
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
-		PacketHandler.init();
 		proxy.preInit(event);
 		if (danmakuCoreInstalled) {
 			LogHelper.info("Deep Voice, do you have an answer? Doesn't matter, we must know");
