@@ -12,13 +12,11 @@ import arekkuusu.grimoireofalice.client.ResourceLocations;
 import com.google.common.collect.ImmutableList;
 import org.lwjgl.input.Keyboard;
 
-import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -28,7 +26,7 @@ import java.util.List;
 
 public class GuiScreenGuide extends GuiScreen {
 
-	private final ImmutableList<List<String>> TEXTS = ImmutableList.of(
+	private static final ImmutableList<List<String>> TEXTS = ImmutableList.of(
 			Collections.emptyList(),
 			getText("grimoire.gui.book_1"),
 			getText("grimoire.gui.book_2"),
@@ -41,7 +39,7 @@ public class GuiScreenGuide extends GuiScreen {
 			getText("grimoire.gui.book_9")
 	);
 
-	private List<String> getText(String text) {
+	private static List<String> getText(String text) {
 		List<String> lines = new ArrayList<>();
 		String formatted = I18n.format(text);
 
@@ -50,7 +48,7 @@ public class GuiScreenGuide extends GuiScreen {
 		return lines;
 	}
 
-	private static final int bookTotalPages = 10;
+	private static final int BOOK_TOTAL_PAGES = 10;
 	private int currPage = 0;
 	private GuiButton buttonDone;
 	private NextPageButton buttonNextPage;
@@ -62,11 +60,12 @@ public class GuiScreenGuide extends GuiScreen {
 		Keyboard.enableRepeatEvents(true);
 
 		buttonDone = new GuiButton(0, width / 2 + 2, 256, 98, 20, I18n.format("gui.done"));
-
 		buttonList.add(buttonDone);
+
 		int i = (width - 180) / 2;
 		buttonNextPage = this.addButton(new NextPageButton(1, i + 120, 256, true));
 		buttonPreviousPage = this.addButton(new NextPageButton(2, i + 38, 256, false));
+
 		buttonDone.visible = false;
 		buttonPreviousPage.visible = false;
 		buttonNextPage.visible = true;
@@ -74,8 +73,8 @@ public class GuiScreenGuide extends GuiScreen {
 
 	@Override
 	public void updateScreen() {
-		buttonDone.visible = currPage == bookTotalPages - 1;
-		buttonNextPage.visible = currPage < bookTotalPages - 1;
+		buttonDone.visible = currPage == BOOK_TOTAL_PAGES - 1;
+		buttonNextPage.visible = currPage < BOOK_TOTAL_PAGES - 1;
 		buttonPreviousPage.visible = currPage > 0;
 	}
 
@@ -85,7 +84,7 @@ public class GuiScreenGuide extends GuiScreen {
 			mc.displayGuiScreen(null);
 		}
 		else if(parButton == buttonNextPage) {
-			if(currPage < bookTotalPages - 1) {
+			if(currPage < BOOK_TOTAL_PAGES - 1) {
 				++currPage;
 			}
 		}
@@ -109,10 +108,6 @@ public class GuiScreenGuide extends GuiScreen {
 		}
 
 		super.drawScreen(parWidth, parHeight, p_73863_3_);
-	}
-
-	@Override
-	protected void mouseClickMove(int parMouseX, int parMouseY, int parLastButtonClicked, long parTimeSinceMouseClick) {
 	}
 
 	@Override
