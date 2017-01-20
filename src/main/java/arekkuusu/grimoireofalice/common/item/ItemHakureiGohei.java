@@ -81,7 +81,7 @@ public class ItemHakureiGohei extends ItemGohei {
 			else {
 				player.motionY = 0;
 			}
-			player.setAir(0);
+			player.fallDistance = 0.0F;
 		}
 	}
 
@@ -130,7 +130,7 @@ public class ItemHakureiGohei extends ItemGohei {
 				mob.motionX = -motion.xCoord * 1.2;
 				mob.motionY = -motion.yCoord * 1.2;
 				mob.motionZ = -motion.zCoord * 1.2;
-
+				mob.fallDistance = 0.0F;
 				if(ticks % 4 == 0) {
 					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
 							mob.posY + itemRand.nextDouble() * mob.height - 0.25D, mob.posZ + (itemRand.nextDouble() - 0.5D) * mob.width,
@@ -142,29 +142,24 @@ public class ItemHakureiGohei extends ItemGohei {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if (entityLiving instanceof EntityPlayer && !entityLiving.isSneaking()) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (playerIn.isSneaking()) {
-
-			}
-			else {
-				if (getMode(stack) == PASSIVE) {
-					Vec3d look = playerIn.getLookVec();
-					float distance = 5F;
-					double dx = playerIn.posX + look.xCoord * distance;
-					double dy = playerIn.posY + 1 + look.yCoord * distance;
-					double dz = playerIn.posZ + look.zCoord * distance;
-					if (isSafe(worldIn, dx, dy, dz)) {
-						if (playerIn instanceof EntityPlayerMP) {
-							((EntityPlayerMP) playerIn).setPositionAndUpdate(dx, dy, dz);
-						}
-						stack.damageItem(1, playerIn);
+			if (getMode(stack) == PASSIVE) {
+				Vec3d look = playerIn.getLookVec();
+				float distance = 5F;
+				double dx = playerIn.posX + look.xCoord * distance;
+				double dy = playerIn.posY + 1 + look.yCoord * distance;
+				double dz = playerIn.posZ + look.zCoord * distance;
+				if (isSafe(worldIn, dx, dy, dz)) {
+					if (playerIn instanceof EntityPlayerMP) {
+						((EntityPlayerMP) playerIn).setPositionAndUpdate(dx, dy, dz);
 					}
+					stack.damageItem(1, playerIn);
 				}
-				EnumHand hand = playerIn.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
-				playerIn.swingArm(hand);
-				playerIn.getCooldownTracker().setCooldown(this, 10);
 			}
+			EnumHand hand = playerIn.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+			playerIn.swingArm(hand);
+			playerIn.getCooldownTracker().setCooldown(this, 10);
 		}
 	}
 
