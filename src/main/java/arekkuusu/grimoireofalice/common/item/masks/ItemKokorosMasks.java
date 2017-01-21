@@ -8,12 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
+import arekkuusu.grimoireofalice.client.model.ModelMask;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -31,6 +28,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ItemKokorosMasks extends ItemModMask {
 
@@ -101,9 +102,8 @@ public class ItemKokorosMasks extends ItemModMask {
 			if (player.moveForward > 0) player.moveRelative(0F, 2F, 0.085F);
 			List<PotionEffect> badPotions = player.getActivePotionEffects().stream()
 					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
-			if (!badPotions.isEmpty()) {
-				badPotions.forEach(potionEffect -> player.removePotionEffect(potionEffect.getPotion()));
-			}
+			badPotions.forEach(potionEffect -> player.removePotionEffect(potionEffect.getPotion()));
+
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 3));
 			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 0, 4));
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 4));
@@ -127,14 +127,17 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(!itemStack.hasTagCompound()) return imodel;
 		//noinspection ConstantConditions
-		if(entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			if(model == null) model = new ModelKokorosMasks();
 			model.setModelAttributes(imodel);
 			return model;
 		}
-		return imodel;
+		else {
+			if(model == null) model = new ModelMask();
+			model.setModelAttributes(imodel);
+			return model;
+		}
 	}
 
 	@Override

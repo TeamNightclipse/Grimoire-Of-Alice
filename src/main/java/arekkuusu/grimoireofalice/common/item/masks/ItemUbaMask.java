@@ -11,7 +11,9 @@ package arekkuusu.grimoireofalice.common.item.masks;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.client.model.ModelMask;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,6 +30,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemUbaMask extends ItemModMask {
+
+	@SideOnly(Side.CLIENT)
+	private ModelBiped model;
 
 	public ItemUbaMask(ArmorMaterial material, int dmg) {
 		super(material, dmg, LibItemName.UBA_MASK);
@@ -81,5 +86,13 @@ public class ItemUbaMask extends ItemModMask {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLocations.UBA_MASK.toString();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
+		if (model == null) model = new ModelMask();
+		model.setModelAttributes(imodel);
+		return model;
 	}
 }
