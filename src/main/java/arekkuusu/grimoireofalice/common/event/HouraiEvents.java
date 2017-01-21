@@ -9,6 +9,7 @@ import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -17,6 +18,9 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HouraiEvents {
 
@@ -68,9 +72,9 @@ public class HouraiEvents {
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.player.hasCapability(HOURAI_CAPABILITY, null) && event.player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() > 1) {
-			event.player.getActivePotionEffects().stream()
-					.filter(potionEffect -> potionEffect.getPotion().isBadEffect())
-					.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
+			List<PotionEffect> badPotions = event.player.getActivePotionEffects().stream()
+					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
+			badPotions.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
 		}
 	}
 
