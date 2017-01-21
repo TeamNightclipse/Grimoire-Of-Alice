@@ -432,6 +432,7 @@ grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name=in the for
 grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=SHIFT for details
 
 grimoire.tooltip.sanae_gohei_header.name=Causes miracles to occur
+grimoire.tooltip.sanae_gohei_use.name=Hold right click to charge with food or faith items
 grimoire.tooltip.sanae_gohei_charge.name=Accumulated Faith:
 grimoire.tooltip.sanae_gohei_shift.name=SHIFT for details
 //Gohei Modes

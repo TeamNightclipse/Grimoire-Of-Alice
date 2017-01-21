@@ -38,12 +38,6 @@ public class ItemToyosatomimiHat extends ItemModArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_description_top.name"));
