@@ -129,12 +129,12 @@ public class ItemKokorosMasks extends ItemModMask {
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		//noinspection ConstantConditions
 		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
-			if(model == null) model = new ModelKokorosMasks();
+			if(model == null || model instanceof ModelMask) model = new ModelKokorosMasks();
 			model.setModelAttributes(imodel);
 			return model;
 		}
 		else {
-			if(model == null) model = new ModelMask();
+			if(model == null || model instanceof ModelKokorosMasks) model = new ModelMask();
 			model.setModelAttributes(imodel);
 			return model;
 		}
