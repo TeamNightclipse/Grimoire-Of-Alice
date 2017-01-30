@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.entity;
 import java.util.*;
 
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.handler.StopWatchHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
@@ -43,6 +44,7 @@ public class EntityStopWatch extends Entity {
 		players.add(user.getUniqueID());
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
+		StopWatchHandler.addClock(this);
 	}
 
 	@Override
@@ -153,6 +155,7 @@ public class EntityStopWatch extends Entity {
 
 	private void stopEntity() {
 		if (!worldObj.isRemote) {
+			StopWatchHandler.removeClock(this);
 			if (user != null) {
 				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
 				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
