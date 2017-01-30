@@ -47,6 +47,6 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityEllyScythe entity) {
-		return ResourceLocations.ELLY_SCYTHE_TEXTURE;
+		return ResourceLocations.WHITE;
 	}
 }
