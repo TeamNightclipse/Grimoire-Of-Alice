@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import java.util.*;
-
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.core.handler.StopWatchHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -25,6 +23,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
+
+import java.util.*;
 
 public class EntityStopWatch extends Entity {
 

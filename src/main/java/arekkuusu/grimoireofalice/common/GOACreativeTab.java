@@ -154,8 +154,9 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Iku Nagae ** /
 		// ** Junko ** /
 		// ** Kaguya Houraisan ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled)
+		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.JEWELED_HOURAI);
+		}
 		addItem(ModItems.BUDAH_BOUL);
 		addItem(ModItems.DRAGON_JEWEL);
 		addItem(ModItems.FIRE_ROBE);

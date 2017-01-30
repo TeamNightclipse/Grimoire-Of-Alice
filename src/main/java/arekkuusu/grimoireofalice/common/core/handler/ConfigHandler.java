@@ -286,6 +286,8 @@ public class ConfigHandler {
 			public boolean allowRevive = true;
 			@Comment("Allow time stop effect of sakuya's stop watch")
 			public boolean timeStopEffect = true;
+			@Comment("Allow time stop render effect")
+			public boolean timeStopRenderEffect = true;
 		}
 	}
 }
