@@ -25,6 +25,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -87,6 +88,10 @@ public class ItemNuclearRod extends ItemMod {
 		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		if (timeUsed < 20) return;
+		Vec3d vec3 = entityLiving.getLookVec();
+		entityLiving.motionX -= vec3.xCoord;
+		entityLiving.motionY -= vec3.yCoord;
+		entityLiving.motionZ -= vec3.zCoord;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if (!worldIn.isRemote) {
 			EntityDanmaku danmaku = DanmakuTemplate.builder()
@@ -105,6 +110,6 @@ public class ItemNuclearRod extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 500;
+		return 50;
 	}
 }

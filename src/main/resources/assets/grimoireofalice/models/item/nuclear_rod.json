@@ -12,7 +12,7 @@
             "scale":[ 0.25, 0.25, 0.25 ]
         },
         "fixed": {
-            "rotation": [ 0, 0, 0 ],
+            "rotation": [ 0, 90, 0 ],
             "translation": [ 0, 0, 0],
             "scale":[ 0.5, 0.5, 0.5 ]
         },
@@ -28,18 +28,17 @@
         },
         "firstperson_righthand": {
             "rotation": [ 0, -180, 25 ],
-            "translation": [ 1, 1, 2.13 ],
+            "translation": [ 0, 3.2, 2.13 ],
             "scale": [ 1.20, 1.20, 1.20 ]
         },
         "firstperson_lefthand": {
             "rotation": [ 0, -180, -25 ],
-            "translation": [ 1, 1, 2.13 ],
+            "translation": [ 0, 3.2, 2.13 ],
             "scale": [ 1.20, 1.20, 1.20 ]
         }
     },
     "textures": {
-        "0": "grimoireofalice:items/rod",
-        "1": "grimoireofalice:items/sun"
+        "0": "grimoireofalice:items/rod"
     },
     "elements": [
         {
@@ -66,19 +65,6 @@
                 "west": { "texture": "#0", "uv": [ 4.0, 6.0, 8.0, 10.0 ] },
                 "up": { "texture": "#0", "uv": [ 4.0, 9.0, 8.0, 12.0 ] },
                 "down": { "texture": "#0", "uv": [ 4.0, 6.0, 8.0, 9.0 ] }
-            }
-        },
-        {
-            "name": "Cube",
-            "from": [ 4.0, 4.0, 22.0 ], 
-            "to": [ 12.0, 12.0, 30.0 ], 
-            "faces": {
-                "north": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "south": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "down": { "texture": "#1", "uv": [ 0.0, 0.0, 8.0, 8.0 ] }
             }
         }
     ]
