@@ -83,13 +83,14 @@ public class EntityCameraSquare extends Entity {
 
 	private List<Entity> getEntities() {
 		return worldObj.getEntitiesWithinAABB(Entity.class,
-				getEntityBoundingBox().expandXyz(getSize() * 1.5), entity -> entity != player && !(entity instanceof EntityHanging));
+				getEntityBoundingBox(), entity -> entity != player && !(entity instanceof EntityHanging));
 	}
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX + 0.1, alignedBB.minY - 0.5, alignedBB.minZ + 0.1, alignedBB.minX + 0.5, alignedBB.minY, alignedBB.minZ + 0.5);
+		double size = getSize() * 0.8D;
+		return new AxisAlignedBB(alignedBB.minX + 0.1D - size, alignedBB.minY - 0.5D - size, alignedBB.minZ + 0.1D - size, alignedBB.minX + 0.5D + size, alignedBB.minY + size, alignedBB.minZ + 0.5D + size);
 	}
 
 	private void setSize(float size) {
