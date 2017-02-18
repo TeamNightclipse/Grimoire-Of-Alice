@@ -35,13 +35,18 @@ public class EntityBarrier extends Entity {
 		super(world);
 		this.player = player;
 		this.type = Barrier.fromType(type);
+		setPositionAndAngles(player);
+		setNoGravity(true);
+	}
+
+	public void setPositionAndAngles(EntityPlayer player) {
 		Vec3d look = player.getLookVec();
 		float distance = 4F;
 		double dx = player.posX + look.xCoord * distance;
 		double dy = player.posY + 1 + look.yCoord * distance;
 		double dz = player.posZ + look.zCoord * distance;
 		setPosition(dx, dy, dz);
-		setNoGravity(true);
+		setRotation(player.rotationYaw, player.rotationPitch);
 	}
 
 	@Override
@@ -57,13 +62,7 @@ public class EntityBarrier extends Entity {
 		}
 		else {
 			if(player.isHandActive() && !isStatic) {
-				Vec3d look = player.getLookVec();
-				float distance = 4F;
-				double dx = player.posX + look.xCoord * distance;
-				double dy = player.posY + 1 + look.yCoord * distance;
-				double dz = player.posZ + look.zCoord * distance;
-				setPosition(dx, dy, dz);
-				setRotation(player.rotationYaw, player.rotationPitch);
+				setPositionAndAngles(player);
 			}
 			else if(!isStatic) {
 				isStatic = true;

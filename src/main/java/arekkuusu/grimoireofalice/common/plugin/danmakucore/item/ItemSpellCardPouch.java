@@ -8,11 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibGuiID;
@@ -38,6 +33,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemSpellCardPouch extends ItemMod {
 

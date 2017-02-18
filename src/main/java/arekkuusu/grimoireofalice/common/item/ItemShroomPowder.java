@@ -54,10 +54,10 @@ public class ItemShroomPowder extends ItemMod {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		if (target instanceof EntitySheep) {
 			EntitySheep entitysheep = (EntitySheep) target;
-			EnumDyeColor i = EnumDyeColor.byMetadata(15 - stack.getItemDamage());
+			EnumDyeColor dyeColor = EnumDyeColor.byDyeDamage(stack.getMetadata());
 
-			if (!entitysheep.getSheared() && entitysheep.getFleeceColor() != i) {
-				entitysheep.setFleeceColor(i);
+			if (!entitysheep.getSheared() && entitysheep.getFleeceColor() != dyeColor) {
+				entitysheep.setFleeceColor(dyeColor);
 				--stack.stackSize;
 			}
 			return true;

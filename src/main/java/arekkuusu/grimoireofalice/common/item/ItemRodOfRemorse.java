@@ -31,6 +31,7 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemRodOfRemorse extends ItemMod {
 
@@ -74,10 +75,9 @@ public class ItemRodOfRemorse extends ItemMod {
 
 			if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 				IItemHandler inventory = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
-				ItemStack dye = new ItemStack(Items.DYE, 1, 0);
 
 				for(int i = 0; i < inventory.getSlots(); i++) {
-					if(dye.isItemEqual(inventory.getStackInSlot(i))) {
+					if(isDyeBlack(inventory.getStackInSlot(i))) {
 						inventory.extractItem(i, 1, false);
 						setUsed(itemStackIn, false);
 						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
@@ -87,6 +87,15 @@ public class ItemRodOfRemorse extends ItemMod {
 		}
 
 		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+	}
+
+	private boolean isDyeBlack(ItemStack stack) {
+		for (int oreId : OreDictionary.getOreIDs(stack)) {
+			if(OreDictionary.getOreName(oreId).equals("dyeBlack")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

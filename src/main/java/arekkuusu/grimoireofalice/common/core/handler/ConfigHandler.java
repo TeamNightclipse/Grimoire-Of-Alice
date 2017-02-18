@@ -43,6 +43,8 @@ public class ConfigHandler {
 			public boolean hihiirokaneBlock = true;
 			@Comment("Can players craft the shimenawa rope?")
 			public boolean shimenawaRope = true;
+			@Comment("Can players craft the hakurouken?")
+			public boolean hakurouken = true;
 			@Comment("Can players craft the watermelon blade?")
 			public boolean waterMelonBlade = true;
 			@Comment("Can players craft the watermelon sword?")
@@ -61,6 +63,8 @@ public class ConfigHandler {
 			public boolean simpleUfo = true;
 			@Comment("Can players get Kokoro's Masks?")
 			public boolean kokoroMask = false;
+			@Comment("Can players craft the spiritual strike talisman?")
+			public boolean talisman = true;
 
 			public static class Altar {
 
@@ -140,6 +144,8 @@ public class ConfigHandler {
 				public boolean nueTrident = true;
 				@Comment("Can players craft the ibuki gourd?")
 				public boolean ibukiGourd = true;
+				@Comment("Can players craft the icicle sword?")
+				public boolean icicleSword = true;
 				@Comment("Can players craft the rod of remorse?")
 				public boolean rodOfRemorse = true;
 				@Comment("Can players craft the rumia sword?")
@@ -174,12 +180,18 @@ public class ConfigHandler {
 				public boolean wallPassingChisel = true;
 				@Comment("Can players craft the youkai book?")
 				public boolean youkaiBook = false;
-				@Comment("Can players craft toyosatomimi hat?")
+				@Comment("Can players craft the toyosatomimi hat?")
 				public boolean toyosatomimiHat = true;
-				@Comment("Can players craft utsuho wings?")
+				@Comment("Can players craft the utsuho wings?")
 				public boolean utsuhoWings = true;
-				@Comment("Can players craft nether shard?")
+				@Comment("Can players craft the nether shard?")
 				public boolean netherShard = true;
+				@Comment("Can players craft the gap?")
+				public boolean gap = true;
+				@Comment("Can players craft the murasa ghost anchor?")
+				public boolean ghostAnchor = true;
+				@Comment("Can players craft the charm of healing?")
+				public boolean healingCharm = true;
 
 				@Comment("Can players craft holy stones?")
 				public boolean holyStone = true;
@@ -288,6 +300,8 @@ public class ConfigHandler {
 			public boolean timeStopEffect = true;
 			@Comment("Allow time stop render effect")
 			public boolean timeStopRenderEffect = true;
+			@Comment("Max range between Gaps")
+			public int gapRange = 100;
 		}
 	}
 }

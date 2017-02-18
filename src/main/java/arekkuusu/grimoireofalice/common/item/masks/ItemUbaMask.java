@@ -67,8 +67,8 @@ public class ItemUbaMask extends ItemModMask {
 
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if(player instanceof EntityPlayer && source.isExplosion()) {
-			player.attackEntityFrom(DamageSource.generic, (float)damage * 2);
+		if(source.isExplosion()) {
+			player.attackEntityFrom(DamageSource.generic, (float)damage * 10);
 			return new ArmorProperties(0, 0, 0);
 		}
 		else {

@@ -58,7 +58,7 @@ public class VanillaCrafting {
 
 		shaped().grid("FFF","FIF","FFF")
 				.where('F').mapsTo(Items.FEATHER)
-				.where('I').mapsTo(new ItemStack(Items.DYE, 1, 0))
+				.where('I').mapsTo("dyeBlack")
 				.outputs(new ItemStack(ModItems.BLACK_FEATHER, 2)).build();
 
 		shaped().grid("PBP", "WCW", "WDW")
@@ -138,6 +138,20 @@ public class VanillaCrafting {
 					.where('M').mapsTo(Items.MELON)
 					.where('S').mapsTo("stickWood")
 					.outputs(ModItems.WATERMELON_BLADE).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.hakurouken) {
+			shaped().grid(" I ", "S  ")
+					.where('S').mapsTo(Items.STICK)
+					.where('I').mapsTo(Items.IRON_INGOT)
+					.outputs(ModItems.HAKUROUKEN).build();
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.talisman) {
+			shaped().grid("G  "," P ","  G")
+					.where('G').mapsTo(Items.GLOWSTONE_DUST)
+					.where('P').mapsTo(ModItems.SOLDIFIED_PAPER)
+					.outputs(ModItems.SPIRITUAL_STRIKE_TALISMAN).build();
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.waterMelonSword) {

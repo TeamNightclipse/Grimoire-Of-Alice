@@ -20,6 +20,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * ModelWind - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelWind extends ModelBase {
 
 	private final ModelRenderer north;

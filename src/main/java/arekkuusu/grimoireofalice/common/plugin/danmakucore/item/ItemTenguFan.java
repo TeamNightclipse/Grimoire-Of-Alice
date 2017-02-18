@@ -76,6 +76,7 @@ public class ItemTenguFan extends ItemMod {
 						.setShot(LibGOAShotData.WIND)
 						.build().asEntity();
 
+				danmaku.getShotData().setSize(5);
 				worldIn.spawnEntityInWorld(danmaku);
 				SubEntity subEntity = danmaku.getSubEntity();
 				if(subEntity instanceof SubEntityWind.Wind) {

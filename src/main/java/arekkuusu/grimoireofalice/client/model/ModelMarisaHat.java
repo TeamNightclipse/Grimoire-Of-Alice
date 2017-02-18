@@ -10,93 +10,115 @@ package arekkuusu.grimoireofalice.client.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ModelMarisaHat extends ModelBiped {
 
-	private final ModelRenderer hatBase;
-	private final ModelRenderer hat0;
-	private final ModelRenderer hat1;
-	private final ModelRenderer hat2;
-	private final ModelRenderer hat3;
-	private final ModelRenderer hat4;
-	private final ModelRenderer hat5;
-	private final ModelRenderer hat6;
-	private final ModelRenderer hat7;
-	private final ModelRenderer hat8;
-	private final ModelRenderer ribbonMiddle;
-	private final ModelRenderer ribbonRight;
-	private final ModelRenderer ribbonLeft;
+	private final ModelRenderer hat;
+	private final ModelRenderer ribbon_base;
+	private final ModelRenderer hat_0;
+	private final ModelRenderer hat_1;
+	private final ModelRenderer hat_2;
+	private final ModelRenderer hat_top;
+	private final ModelRenderer hat_west;
+	private final ModelRenderer hat_east;
+	private final ModelRenderer hat_north;
+	private final ModelRenderer hat_south;
+	private final ModelRenderer ribbon_golden;
+	private final ModelRenderer ribbon_white_right;
+	private final ModelRenderer ribbon_white_left;
 
 	public ModelMarisaHat() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
-		this.hat6 = new ModelRenderer(this, 34, 0);
-		this.hat6.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat6.addBox(-7.5F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
-		this.ribbonRight = new ModelRenderer(this, 0, 4);
-		this.ribbonRight.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.ribbonRight.addBox(-5.3F, -12.3F, -5.4F, 4, 3, 1, 0.0F);
-		this.setRotateAngle(ribbonRight, 0.0F, 0.0F, 0.091106186954104F);
-		this.hatBase = new ModelRenderer(this, 0, 16);
-		this.hatBase.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hatBase.addBox(-7.0F, -9.0F, -7.0F, 14, 1, 14, 0.0F);
-		this.hat0 = new ModelRenderer(this, 0, 31);
-		this.hat0.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat0.addBox(-5.0F, -10.0F, -4.5F, 10, 1, 10, 0.0F);
-		this.setRotateAngle(hat0, 0.0F, 0.05759586531581287F, 0.0F);
-		this.hat1 = new ModelRenderer(this, 0, 42);
-		this.hat1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat1.addBox(-4.0F, -12.0F, -4.0F, 8, 3, 8, 0.0F);
-		this.setRotateAngle(hat1, -0.091106186954104F, 0.0F, 0.0F);
-		this.ribbonLeft = new ModelRenderer(this, 0, 4);
-		this.ribbonLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.ribbonLeft.addBox(1.3F, -12.3F, -5.4F, 4, 3, 1, 0.0F);
-		this.setRotateAngle(ribbonLeft, 0.0F, 0.0F, -0.091106186954104F);
-		this.hat5 = new ModelRenderer(this, 34, 33);
-		this.hat5.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat5.addBox(6.5F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
-		this.hat3 = new ModelRenderer(this, 21, 58);
-		this.hat3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat3.addBox(-1.5F, -15.0F, -2.4F, 4, 2, 4, 0.0F);
-		this.setRotateAngle(hat3, -0.18203784098300857F, -0.08552113334772216F, 0.0F);
-		this.hat2 = new ModelRenderer(this, 0, 52);
-		this.hat2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat2.addBox(-3.0F, -14.0F, -3.0F, 6, 2, 6, 0.0F);
-		this.setRotateAngle(hat2, -0.136659280431156F, 0.06981317007977318F, 0.0F);
-		this.hat8 = new ModelRenderer(this, 34, 52);
-		this.hat8.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat8.addBox(-7.0F, -8.0F, 6.5F, 14, 1, 1, 0.0F);
-		this.hat4 = new ModelRenderer(this, 0, 61);
-		this.hat4.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat4.addBox(-0.5F, -16.0F, -1.3F, 2, 1, 2, 0.0F);
-		this.setRotateAngle(hat4, -0.22759093446006054F, -0.12217304763960307F, 0.0F);
-		this.hat7 = new ModelRenderer(this, 34, 49);
-		this.hat7.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.hat7.addBox(-7.0F, -8.0F, -7.5F, 14, 1, 1, 0.0F);
-		this.ribbonMiddle = new ModelRenderer(this, 0, 0);
-		this.ribbonMiddle.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.ribbonMiddle.addBox(-1.0F, -10.0F, -5.5F, 2, 1, 1, 0.0F);
-		this.hatBase.addChild(this.hat6);
-		this.hatBase.addChild(this.ribbonRight);
-		this.hatBase.addChild(this.hat0);
-		this.hatBase.addChild(this.hat1);
-		this.hatBase.addChild(this.ribbonLeft);
-		this.hatBase.addChild(this.hat5);
-		this.hatBase.addChild(this.hat3);
-		this.hatBase.addChild(this.hat2);
-		this.hatBase.addChild(this.hat8);
-		this.hatBase.addChild(this.hat4);
-		this.hatBase.addChild(this.hat7);
-		this.hatBase.addChild(this.ribbonMiddle);
+		this.hat_0 = new ModelRenderer(this, 0, 42);
+		this.hat_0.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_0.addBox(-4.0F, -12.0F, -4.0F, 8, 3, 8, 0.0F);
+		this.setRotateAngle(hat_0, -0.091106186954104F, 0.0F, 0.0F);
+		this.hat_west = new ModelRenderer(this, 34, 33);
+		this.hat_west.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_west.addBox(6.5F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
+		this.hat = new ModelRenderer(this, 0, 16);
+		this.hat.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat.addBox(-7.0F, -9.0F, -7.0F, 14, 1, 14, 0.0F);
+		this.hat_east = new ModelRenderer(this, 34, 0);
+		this.hat_east.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_east.addBox(-7.5F, -8.0F, -7.0F, 1, 1, 14, 0.0F);
+		this.hat_top = new ModelRenderer(this, 0, 61);
+		this.hat_top.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_top.addBox(-0.5F, -15.9F, -1.3F, 2, 1, 2, 0.0F);
+		this.setRotateAngle(hat_top, -0.22759093446006054F, -0.12217304763960307F, 0.0F);
+		this.hat_south = new ModelRenderer(this, 34, 52);
+		this.hat_south.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_south.addBox(-7.0F, -8.0F, 6.5F, 14, 1, 1, 0.0F);
+		this.ribbon_golden = new ModelRenderer(this, 0, 0);
+		this.ribbon_golden.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.ribbon_golden.addBox(-1.0F, -10.0F, -5.5F, 2, 1, 1, 0.0F);
+		this.ribbon_base = new ModelRenderer(this, 0, 31);
+		this.ribbon_base.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.ribbon_base.addBox(-5.0F, -10.0F, -4.5F, 10, 1, 10, 0.0F);
+		this.setRotateAngle(ribbon_base, 0.0F, 0.05759586531581287F, 0.0F);
+		this.hat_1 = new ModelRenderer(this, 0, 52);
+		this.hat_1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_1.addBox(-3.0F, -13.8F, -3.0F, 6, 2, 6, 0.0F);
+		this.setRotateAngle(hat_1, -0.136659280431156F, 0.06981317007977318F, 0.0F);
+		this.ribbon_white_right = new ModelRenderer(this, 0, 4);
+		this.ribbon_white_right.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.ribbon_white_right.addBox(-5.3F, -12.3F, -5.4F, 4, 3, 1, 0.0F);
+		this.setRotateAngle(ribbon_white_right, 0.0F, 0.0F, 0.091106186954104F);
+		this.hat_2 = new ModelRenderer(this, 21, 58);
+		this.hat_2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_2.addBox(-1.5F, -15.0F, -2.4F, 4, 2, 4, 0.0F);
+		this.setRotateAngle(hat_2, -0.18203784098300857F, -0.08552113334772216F, 0.0F);
+		this.ribbon_white_left = new ModelRenderer(this, 0, 4);
+		this.ribbon_white_left.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.ribbon_white_left.addBox(1.3F, -12.3F, -5.4F, 4, 3, 1, 0.0F);
+		this.setRotateAngle(ribbon_white_left, 0.0F, 0.0F, -0.091106186954104F);
+		this.hat_north = new ModelRenderer(this, 34, 49);
+		this.hat_north.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.hat_north.addBox(-7.0F, -8.0F, -7.5F, 14, 1, 1, 0.0F);
+		this.hat.addChild(this.hat_0);
+		this.hat.addChild(this.hat_west);
+		this.hat.addChild(this.hat_east);
+		this.hat.addChild(this.hat_top);
+		this.hat.addChild(this.hat_south);
+		this.hat.addChild(this.ribbon_golden);
+		this.hat.addChild(this.ribbon_base);
+		this.hat.addChild(this.hat_1);
+		this.hat.addChild(this.ribbon_white_right);
+		this.hat.addChild(this.hat_2);
+		this.hat.addChild(this.ribbon_white_left);
+		this.hat.addChild(this.hat_north);
 	}
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		bipedHeadwear.showModel = false;
-		bipedHead = hatBase;
+		bipedHead = hat;
+		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale * 1.25F, entity);
+		GlStateManager.pushMatrix();
 
-		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+		if (this.isChild) {
+			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
+			this.bipedHead.render(scale * 1.25F);
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+		}
+		else {
+			GlStateManager.translate(0, 0.25, 0);
+			if (entity.isSneaking()) {
+				GlStateManager.translate(0.0F, 0.25F, 0.0F);
+			}
+			this.bipedHead.render(scale * 1.25F);
+		}
+
+		GlStateManager.popMatrix();
 	}
 
 	/**

@@ -56,7 +56,6 @@ public class ItemNimbleFabric extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		itemStackIn.damageItem(1, playerIn);
 		playerIn.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
@@ -72,6 +71,7 @@ public class ItemNimbleFabric extends ItemMod {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.getCooldownTracker().setCooldown(this, 500);
+			stack.damageItem(1, entityLiving);
 		}
 	}
 

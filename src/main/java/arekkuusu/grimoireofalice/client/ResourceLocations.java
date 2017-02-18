@@ -10,6 +10,8 @@ package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public final class ResourceLocations {
 
@@ -38,6 +40,10 @@ public final class ResourceLocations {
 	public static final ResourceLocation UNZAN_FIST_TEXTURE = getLocation("textures/models/entities/UnzanFist.png");
 	public static final ResourceLocation MIRACLE_LANTERN = getLocation("textures/models/entities/MiracleLantern.png");
 	public static final ResourceLocation FIERY_SWORD_TEXTURE = getLocation("textures/models/entities/FierySword.png");
+	public static final ResourceLocation MIRACLE_CIRCLE = getLocation("textures/models/entities/MiracleCircle.png");
+	public static final ResourceLocation TALISMAN = getLocation("textures/models/entities/Talisman.png");
+	public static final ResourceLocation GAP = getLocation("textures/models/entities/Gap.png");
+	public static final ResourceLocation GAP_COLOR = getLocation("textures/models/entities/GapColor.png");
 
 	//Armor
 	public static final ResourceLocation SUWAKO_HAT = getLocation("textures/models/armor/suwakohat.png");
@@ -61,6 +67,8 @@ public final class ResourceLocations {
 	public static final ResourceLocation TOYOSATOMIMI_CLOAK = getLocation("textures/models/armor/toyosatomimi_cloack.png");
 	public static final ResourceLocation UTSUHO_WINGS = getLocation("textures/models/armor/utsuho_wings.png");
 	public static final ResourceLocation NUCLEAR_BOOTS = getLocation("textures/models/armor/nuclearboots.png");
+	public static final ResourceLocation KOISHI_EYE = getLocation("textures/models/armor/koishiEye.png");
+	public static final ResourceLocation SATORI_EYE = getLocation("textures/models/armor/satoriEye.png");
 
 	public static final ResourceLocation AURA_MOKOU = getLocation("textures/models/armor/mokou_aura.png");
 	public static final ResourceLocation AURA_BYAKUREN = getLocation("textures/models/armor/byakuren_aura.png");

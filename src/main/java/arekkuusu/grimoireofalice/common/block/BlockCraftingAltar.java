@@ -40,7 +40,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider {
 
-	public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	private static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
 
 	public BlockCraftingAltar() {

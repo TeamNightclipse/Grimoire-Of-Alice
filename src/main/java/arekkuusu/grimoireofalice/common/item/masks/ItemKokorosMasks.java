@@ -130,14 +130,12 @@ public class ItemKokorosMasks extends ItemModMask {
 		//noinspection ConstantConditions
 		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			if(model == null || model instanceof ModelMask) model = new ModelKokorosMasks();
-			model.setModelAttributes(imodel);
-			return model;
 		}
-		else {
-			if(model == null || model instanceof ModelKokorosMasks) model = new ModelMask();
-			model.setModelAttributes(imodel);
-			return model;
+		else if(model == null || model instanceof ModelKokorosMasks) {
+			model = new ModelMask();
 		}
+		model.setModelAttributes(imodel);
+		return model;
 	}
 
 	@Override

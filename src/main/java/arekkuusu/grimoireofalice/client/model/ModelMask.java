@@ -7,10 +7,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * SuwakoHat - Arekkuusu Created using Tabula 5.1.0
+ * ModelMask - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelMask extends ModelBiped {
 
 	private final ModelRenderer mask;

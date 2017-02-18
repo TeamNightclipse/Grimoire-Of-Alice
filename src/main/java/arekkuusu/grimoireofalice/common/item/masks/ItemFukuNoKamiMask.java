@@ -67,7 +67,7 @@ public class ItemFukuNoKamiMask extends ItemModMask {
 
 	@Override
 	public ISpecialArmor.ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if(player instanceof EntityPlayer && source.equals(DamageSource.wither)) {
+		if(source.equals(DamageSource.wither)) {
 			player.attackEntityFrom(DamageSource.generic, (float)damage * 10);
 			return new ArmorProperties(0, 0, 0);
 		}

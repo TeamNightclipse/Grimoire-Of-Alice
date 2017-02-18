@@ -81,7 +81,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.COWRIE_SHELL);
 		addItem(ModItems.SWALLOW_EGG);
 		addItem(ModItems.DRAGON_SCALE);
-		addItem(ModItems.DRAGON_STONE);
+		addBlock(ModBlocks.DRAGON_STONE);
 		addItem(ModItems.NETHER_SHARD);
 		addItem(ModItems.HARDENED_LEATHER);
 		addItem(ModItems.IRON_NUGGET);
@@ -118,6 +118,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Chen ** /
 		// ** Chiyuri Kitashirakawa ** /
 		// ** Cirno ** /
+		addItem(ModItems.ICICLE_SWORD);
 		addItem(ModItems.POPSICLE_STICK);
 		addItem(ModItems.WATERMELON_BLADE);
 		addItem(ModItems.WATERMELON_SWORD);
@@ -193,6 +194,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.MARISA_HAT);
 		// ** Minamitsu Murasa ** /
 		addItem(ModItems.GHOST_DIPPER);
+		addItem(ModItems.GHOST_ANCHOR);
 		// ** Momiji Inubashiri ** /
 		addItem(ModItems.MOMIJIS_SCIMITAR_SWORD);
 		addItem(ModItems.MAPLE_LEAF_SHIELD);
@@ -215,8 +217,10 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Ran Yakumo ** /
 		// ** Reimu Hakurei ** /
 		addItem(ModItems.HAKUREI_GOHEI);
+		addItem(ModItems.SPIRITUAL_STRIKE_TALISMAN);
 		// ** Sanae Kochiya ** /
 		addItem(ModItems.SANAE_GOHEI);
+		addItem(ModItems.CHARM_OF_HEALING);
 		// ** Seija Kijin ** /
 		addItem(ModItems.BLOOD_ORB);
 		addItem(ModItems.FOLDING_UMBRELLA);
@@ -284,7 +288,9 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN);
+		addItem(ModItems.HAKUROUKEN);
 		// ** Yukari Yakumo ** /
+		addItem(ModItems.GAP);
 		// ** Yuuka Kazami ** /
 		// ** Yuyuko Saigyouji ** /
 	}

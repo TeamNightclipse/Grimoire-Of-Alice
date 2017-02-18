@@ -11,16 +11,20 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelPlayer - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelNuclearBoots extends ModelBiped {
 
-	public ModelRenderer bootRight;
-	public ModelRenderer bootLeft;
-	public ModelRenderer atomRing0;
-	public ModelRenderer atomRing1;
+	private final ModelRenderer bootRight;
+	private final ModelRenderer bootLeft;
+	private final ModelRenderer atomRing0;
+	private final ModelRenderer atomRing1;
 
 	public ModelNuclearBoots() {
 		this.textureWidth = 48;

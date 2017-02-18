@@ -65,7 +65,7 @@ public class ItemSwallowCowrieShell extends ItemMod {
 		entityLiving.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 4800, 0));
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer entityplayer = (EntityPlayer) entityLiving;
-			entityplayer.getFoodStats().addStats(100, 100);
+			entityplayer.getFoodStats().addStats(100, 10);
 			worldIn.playSound(entityplayer, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
 			//noinspection ConstantConditions
 			entityplayer.addStat(StatList.getObjectUseStats(this));

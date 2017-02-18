@@ -20,10 +20,12 @@ import org.lwjgl.opengl.GL11;
  * ModelMiracleLantern - Arekkuusu
  * Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelMiracleLantern extends ModelBase {
 
-	public ModelRenderer inside;
-	public ModelRenderer outside;
+	private final ModelRenderer inside;
+	private final ModelRenderer outside;
 
 	public ModelMiracleLantern() {
 		this.textureWidth = 32;

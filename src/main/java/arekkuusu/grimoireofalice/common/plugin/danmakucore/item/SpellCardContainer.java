@@ -86,12 +86,6 @@ public class SpellCardContainer extends Container {
 				}
 			}
 			else {
-				// int i = itemstack.getItemDamage();
-				//if(i < 8) {
-				//  Slot slot1 = inventorySlots.get(i);
-				// if(slot1.isItemValid(itemstack) && !mergeItemStack(itemstack1, i, i + 1, true))
-				//   return null;
-				//}
 				if(!mergeItemStack(itemstack1, 0, 8, false)) return null;
 				slot.onSlotChange(itemstack1, itemstack);
 			}

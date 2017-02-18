@@ -54,7 +54,13 @@ public class EntityCameraSquare extends Entity {
 				}
 				if (!worldObj.isRemote) {
 					for (Entity entity : getEntities()) {
-						entity.motionY = entity.motionX = entity.motionZ = 0;
+						if (entity instanceof EntityDanmaku) {
+							EntityDanmaku danmaku = (EntityDanmaku) entity;
+							danmaku.setShotData(danmaku.getShotData().setDelay(2));
+						}
+						else {
+							entity.motionY = entity.motionX = entity.motionZ = 0;
+						}
 					}
 				}
 			}

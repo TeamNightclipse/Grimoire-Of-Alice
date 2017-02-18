@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@SideOnly(Side.CLIENT)
 public class GuiScreenGuide extends GuiScreen {
 
 	private static final ImmutableList<List<String>> TEXTS = ImmutableList.of(

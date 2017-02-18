@@ -20,6 +20,8 @@ import org.lwjgl.opengl.GL11;
  * ModelNote - Arekkuusu
  * Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelNote extends ModelBase {
 
 	private final ModelRenderer noteSmall;

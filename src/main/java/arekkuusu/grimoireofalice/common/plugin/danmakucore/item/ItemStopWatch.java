@@ -55,10 +55,10 @@ public class ItemStopWatch extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			if(!worldIn.isRemote) {
-				EntityStopWatch watch = new EntityStopWatch(worldIn, player);
+		if (entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			EntityStopWatch watch = new EntityStopWatch(worldIn, player);
+			if (!worldIn.isRemote) {
 				Vec3d look = player.getLookVec();
 				float distance = 1F;
 				double dx = player.posX + look.xCoord;
@@ -67,7 +67,7 @@ public class ItemStopWatch extends ItemMod {
 				watch.setPosition(dx, dy, dz);
 				worldIn.spawnEntityInWorld(watch);
 			}
-			if(!player.capabilities.isCreativeMode) {
+			if (!player.capabilities.isCreativeMode) {
 				--stack.stackSize;
 			}
 		}

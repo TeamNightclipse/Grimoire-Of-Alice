@@ -66,7 +66,7 @@ public class ItemSwordRoukanken extends ItemModSword {
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(entityIn instanceof EntityPlayer & isSelected) {
 			EntityPlayer player = (EntityPlayer)entityIn;
-			Vec3d vec = player.getLookVec();
+
 			if(player.motionX * player.motionX + player.motionZ * player.motionZ > 3D * 3D) {
 				List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
 						player.getEntityBoundingBox().addCoord(player.motionX, player.motionY, player.motionZ).expand(1.0D, 1.0D, 1.0D));
@@ -87,6 +87,7 @@ public class ItemSwordRoukanken extends ItemModSword {
 								}
 							}
 
+							Vec3d vec = player.getLookVec();
 							for(int i = 0; i < 4; i++) {
 								worldIn.spawnParticle(EnumParticleTypes.SWEEP_ATTACK, player.posX, player.posY + 1, player.posZ, vec.xCoord,
 										vec.yCoord, vec.zCoord);

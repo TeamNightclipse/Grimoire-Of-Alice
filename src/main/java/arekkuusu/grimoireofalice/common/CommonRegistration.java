@@ -29,7 +29,6 @@ public class CommonRegistration {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(
-				new Item3rdEye(),
 				new ItemTamahaganeSteel(),
 				new ItemHihiirokane(),
 				new ItemShimenawaRope(),
@@ -74,7 +73,9 @@ public class CommonRegistration {
 				new ItemMod(LibItemName.SWALLOW_EGG),
 				new ItemMod(LibItemName.COWRIE_SHELL),
 				new ItemMod(LibItemName.DRAGON_SCALE),
-				new ItemMod(LibItemName.DRAGON_STONE),
+				new ItemCharmofHealing(),
+				new ItemSpiritualStrikeTalisman(),
+				new ItemGap(),
 
 				//Food
 				new ItemShroomPowder(),
@@ -111,6 +112,7 @@ public class CommonRegistration {
 				new ItemToyosatomimiCloak(ModMaterials.WEAK_PAPER, 3),
 				new ItemShinmyoumaruHat(ModMaterials.STRONG_LEATHER, 5),
 				new ItemNuclearBoots(ModMaterials.WEAK_PAPER, 5),
+				new ItemThirdEye(ItemArmor.ArmorMaterial.CHAIN, 4),
 
 				//Weapons
 				new ItemAmenonuhoko(Item.ToolMaterial.DIAMOND),
@@ -133,7 +135,9 @@ public class CommonRegistration {
 				new ItemSacredToyosatomimi(ModMaterials.STRONG_GOLD),
 				new ItemShinmyoumaruNeedle(Item.ToolMaterial.IRON),
 				new ItemDeathScythe(Item.ToolMaterial.DIAMOND),
-				new ItemSwordRoukanken(ModMaterials.STRONG_IRON)
+				new ItemSwordRoukanken(ModMaterials.STRONG_IRON),
+				new ItemIcicleSword(ModMaterials.STRONG_GOLD),
+				new ItemGhostAnchor(ModMaterials.STRONG_IRON)
 		);
 
 		event.getRegistry().registerAll(
@@ -150,7 +154,8 @@ public class CommonRegistration {
 				itemBlock(ModBlocks.ALTAR),
 				itemBlock(ModBlocks.PILLAR_ALTAR),
 				itemBlock(ModBlocks.IMPURE_STONE),
-				itemBlock(ModBlocks.HIHIIROKANE_BLOCK)
+				itemBlock(ModBlocks.HIHIIROKANE_BLOCK),
+				itemBlock(ModBlocks.DRAGON_STONE)
 		);
 
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
@@ -170,7 +175,8 @@ public class CommonRegistration {
 					new ItemLeaf(),
 					new ItemNuclearRod(),
 					new ItemTenguCamera(LibItemName.AYA_CAMERA),
-					new ItemTenguCamera(LibItemName.HATATE_CAMERA)
+					new ItemTenguCamera(LibItemName.HATATE_CAMERA),
+					new ItemHakuroukenSword(Item.ToolMaterial.WOOD)
 			);
 		}
 	}
@@ -219,7 +225,8 @@ public class CommonRegistration {
 				new BlockCraftingAltar(),
 				new BlockPillarAltar(),
 				new BlockImpureRock(),
-				new BlockHihiirokane()
+				new BlockHihiirokane(),
+				new BlockDragonStone()
 		);
 	}
 

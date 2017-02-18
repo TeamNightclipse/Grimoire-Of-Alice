@@ -8,14 +8,15 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelMarisaHat;
+import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.lib.LibGuiID;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,13 +25,30 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
-public class ItemMarisaHat extends ItemModArmor {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
+public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor {
+
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
@@ -50,6 +68,94 @@ public class ItemMarisaHat extends ItemModArmor {
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.marisa_hat_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.marisa_hat_description.name"));
+	}
+
+	@Nonnull
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound oldCapNbt) {
+		return new InvProvider();
+	}
+
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		return new ArmorProperties(0,1,5);
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		return 3;
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+		stack.damageItem(damage, entity);
+		if (stack.getItemDamage() == 0) {
+			IItemHandler handler = stack.getCapability(ITEM_HANDLER_CAPABILITY, null);
+			for (int i = 0; i < handler.getSlots(); i++) {
+				if (!entity.worldObj.isRemote) {
+					EntityItem item = new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, handler.extractItem(i, 64, false));
+					entity.worldObj.spawnEntityInWorld(item);
+				}
+			}
+			entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, null);
+		}
+	}
+
+	private static class InvProvider implements ICapabilitySerializable<NBTBase> {
+
+		@CapabilityInject(IItemHandler.class)
+		private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
+
+		private final IItemHandler inv = new ItemStackHandler(3) {
+
+			@Override
+			public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
+				return toInsert.hasCapability(ITEM_HANDLER_CAPABILITY, null) ? toInsert : super.insertItem(slot, toInsert, simulate);
+			}
+		};
+
+		@Override
+		public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+			return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+		}
+
+		@Nullable
+		@Override
+		public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
+			else return null;
+		}
+
+		@Override
+		public NBTBase serializeNBT() {
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(inv, null);
+		}
+
+		@Override
+		public void deserializeNBT(NBTBase nbt) {
+			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(inv, null, nbt);
+		}
+	}
+
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 1;
+	}
+
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		if (!playerIn.isSneaking()) {
+			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(itemStackIn);
+			ItemStack itemstack = playerIn.getItemStackFromSlot(entityequipmentslot);
+
+			if (itemstack == null) {
+				playerIn.setItemStackToSlot(entityequipmentslot, itemStackIn.copy());
+				itemStackIn.stackSize = 0;
+			}
+		}
+		else {
+			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.HAT, worldIn, hand.ordinal(), -1, -1);
+		}
+		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
 
 	@Override

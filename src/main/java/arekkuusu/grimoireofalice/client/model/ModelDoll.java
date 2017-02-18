@@ -10,6 +10,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * ModelDoll - Arekkuusu
  * Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelDoll extends ModelBase {
 
     public ModelRenderer head;

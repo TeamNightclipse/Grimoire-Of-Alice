@@ -17,6 +17,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * ModelPlayer - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelToyosatomimiCloack extends ModelBiped {
 
 	public ModelRenderer capeBase;

@@ -11,21 +11,25 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelPlayer - Either Mojang or a mod author
  * Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelShinmyoumaruHat extends ModelBiped {
 
-    public ModelRenderer hatBase;
-    public ModelRenderer hatBase0;
-    public ModelRenderer hatBase1;
-    public ModelRenderer hatBase2;
-    public ModelRenderer hatBase3;
-    public ModelRenderer hatBottom;
-    public ModelRenderer hatMid;
-    public ModelRenderer hatTop;
+	private final ModelRenderer hatBase;
+	private final ModelRenderer hatBase0;
+	private final ModelRenderer hatBase1;
+	private final ModelRenderer hatBase2;
+	private final ModelRenderer hatBase3;
+	private final ModelRenderer hatBottom;
+	private final ModelRenderer hatMid;
+	private final ModelRenderer hatTop;
 
     public ModelShinmyoumaruHat() {
         this.textureWidth = 64;

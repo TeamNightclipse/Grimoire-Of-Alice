@@ -46,4 +46,6 @@ public class ModBlocks {
 	public static final Block SUGAR_BLOCK = new Block(Material.ROCK);
 	@ObjectHolder(LibBlockName.HYPER_MAGIC)
 	public static final Block HYPER_CONCENTRATED_MAGIC = new Block(Material.ROCK);
+	@ObjectHolder(LibBlockName.DRAGON_STONE)
+	public static final Block DRAGON_STONE = new Block(Material.ROCK);
 }

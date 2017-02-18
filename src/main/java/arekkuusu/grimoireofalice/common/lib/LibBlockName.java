@@ -22,6 +22,7 @@ public class LibBlockName {
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
 	public static final String IMPURE_STONE = "impurestone";
 	public static final String HIHIIROKANE_BLOCK = "hihiirokaneblock";
+	public static final String DRAGON_STONE = "dragonstone";
 
 	public static final String CRAFTING_ALTAR = "craftingaltar";
 	public static final String PILLAR_ALTAR = "pillaraltar";

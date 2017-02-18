@@ -13,4 +13,5 @@ public class LibGuiID {
 	public static final int YOUKAI_BOOK = 0;
 	public static final int GUIDE = 1;
 	public static final int POUCH_BAG = 2;
+	public static final int HAT = 3;
 }

@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
@@ -19,6 +21,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
+@SideOnly(Side.CLIENT)
 public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 
 	private static final ModelBase MODEL = new ModelNazrinPendulum();

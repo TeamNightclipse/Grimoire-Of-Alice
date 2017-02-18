@@ -51,7 +51,7 @@ public class EntityStopWatch extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if (ConfigHandler.grimoireOfAlice.features.timeStopEffect && user != null && !user.isDead) {
-			if (ticksExisted > 500 || (user.isSneaking() && user.isSwingInProgress)) {
+			if (ticksExisted > 1000 || (user.isSneaking() && user.isSwingInProgress) || user.getFoodStats().getFoodLevel() <= 6) {
 				stopEntity();
 				return;
 			}
@@ -83,6 +83,7 @@ public class EntityStopWatch extends Entity {
 		}
 		if (ticksExisted % 8 == 0) {
 			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 1.0F, 1.0F + 0.8F);
+			user.getFoodStats().addExhaustion(4);
 		}
 	}
 

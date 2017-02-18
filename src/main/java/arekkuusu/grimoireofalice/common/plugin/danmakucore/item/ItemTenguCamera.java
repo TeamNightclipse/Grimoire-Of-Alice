@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -70,7 +71,13 @@ public class ItemTenguCamera extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		player.motionY = player.motionX = player.motionZ = 0;
+		player.motionX = 0;
+		player.motionY = 0;
+		player.motionZ = 0;
+		if(player instanceof EntityPlayerMP) {
+			EntityPlayerMP playerMP = (EntityPlayerMP) player;
+			playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.posY, playerMP.prevPosZ);
+		}
 	}
 
 	@Override

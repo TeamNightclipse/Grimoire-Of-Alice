@@ -29,6 +29,7 @@ public class ItemWatermelonBlade extends ItemModSword {
 
 	public ItemWatermelonBlade(ToolMaterial material) {
 		super(material, LibItemName.WATERMELON_BLADE);
+		setMaxDamage(14);
 		setNoRepair();
 	}
 

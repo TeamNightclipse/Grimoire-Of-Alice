@@ -6,7 +6,7 @@
     "overrides": [
         {
             "predicate": {
-                "cooldown": 0.01
+                "status": 1.0
             },
             "model": "grimoireofalice:item/thirdeye0"
         }

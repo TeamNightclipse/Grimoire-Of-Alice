@@ -11,14 +11,18 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelKappaHat - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelKappaHat extends ModelBiped {
 
 	private final ModelRenderer hat;
-	public ModelRenderer hat0;
+	private final ModelRenderer hat0;
 	private final ModelRenderer cherry0;
 	private final ModelRenderer cherry1;
 	private final ModelRenderer cherry2;

@@ -22,6 +22,7 @@ public class PotionRadiationPoisoning extends PotionMod {
 		if (entityLivingBaseIn instanceof EntityPlayer) {
 			((EntityPlayer) entityLivingBaseIn).addExhaustion(0.025F * (float) (p_76394_2_ + 1));
 		}
+		entityLivingBaseIn.setFire(100);
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -35,7 +36,7 @@ public class HouraiEvents {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onDeath(LivingDeathEvent event) {
 		if (ConfigHandler.grimoireOfAlice.features.allowRevive) {
 			EntityLivingBase victim = event.getEntityLiving();
@@ -45,15 +46,14 @@ public class HouraiEvents {
 				EntityPlayer player = (EntityPlayer) victim;
 				if (player.hasCapability(HOURAI_CAPABILITY, null) && player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() == 3) {
 					player.hurtResistantTime = 50;
-
-					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
-							player.hurtResistantTime);
-					world.spawnEntityInWorld(circle);
-
 					player.isDead = false;
 					player.setHealth(player.getMaxHealth());
 					player.getFoodStats().addStats(100, 100);
 					event.setCanceled(true);
+
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
+							player.hurtResistantTime);
+					world.spawnEntityInWorld(circle);
 				} else {
 					@SuppressWarnings("ConstantConditions")
 					boolean potion = player.isPotionActive(ModPotions.ELIXIR);

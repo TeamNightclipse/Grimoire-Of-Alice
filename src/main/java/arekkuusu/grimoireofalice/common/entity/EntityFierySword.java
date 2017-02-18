@@ -73,7 +73,8 @@ public class EntityFierySword extends Entity {
 	public Vec3d getLook(float partialTicks) {
 		if (partialTicks == 1.0F) {
 			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
-		} else {
+		}
+		else {
 			float f = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partialTicks;
 			float f1 = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * partialTicks;
 			return this.getVectorForRotation(f, f1);
@@ -85,7 +86,7 @@ public class EntityFierySword extends Entity {
 		Vec3d vec = getLookVec();
 
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX - 0.9, alignedBB.minY - 1.4, alignedBB.minZ - 0.9, alignedBB.minX + 1.5, alignedBB.minY + 1.5, alignedBB.minZ + 1.5).offset(vec.xCoord * 3, vec.yCoord * 3, vec.zCoord * 3);
+		return new AxisAlignedBB(alignedBB.minX - 1.9, alignedBB.minY - 2.4, alignedBB.minZ - 1.9, alignedBB.minX + 2.5, alignedBB.minY + 2.5, alignedBB.minZ + 2.5).offset(vec.xCoord * 5, vec.yCoord * 5, vec.zCoord * 5);
 	}
 
 	@Override

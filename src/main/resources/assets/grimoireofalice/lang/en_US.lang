@@ -35,7 +35,9 @@ item.hardenedleathergoa.name=Hardened Leather
 item.swallowegg.name=Swallow Egg
 item.cowrieshell.name=Cowrie Shell
 item.dragonscale.name=Dragon Scale
-item.dragonstone.name=Dragon Weather Stone
+item.charmofhealing.name=Charm of Healing
+item.spiritualstriketalisman.name=Spiritual Strike Talisman
+item.gap.name=Gap
 
 item.shroompowder.white.name=White Shroom Powder
 item.shroompowder.orange.name= Orange Shroom Powder
@@ -117,6 +119,9 @@ item.hisou.name=Sword of Hisou
 item.deathscythe.name=Death Scythe
 item.roukanken.name=Roukanken
 item.nuclearrod.name=Nuclear Control Rod
+item.iciclesword.name=Icicle Sword
+item.hakurouken.name=Hakurouken
+item.ghostanchor.name=Ghost Anchor
 
 tile.ropeblock.name=Enchanted Rope
 tile.paperblock.name=Enchanted Paper
@@ -132,6 +137,7 @@ tile.craftingaltar.name=Crafting Altar
 tile.pillaraltar.name=Holy Pillar
 tile.impurestone.name=Impure Stone
 tile.hihiirokaneblock.name=Hihi'irokane Block
+tile.dragonstone.name=Dragon Weather Stone
 
 tile.shroom_0.name=White Shroom
 tile.shroom_1.name=Orange Shroom
@@ -200,6 +206,7 @@ item.hourai.level_3=You already are immortal!
 grimoire.gui.pouch.name=§fSpell Card Pouch
 grimoire.gui.youkaibook_header.name=Grimoire of
 grimoire.gui.youkaibook_description.name=This book must be sealed to prevent someone else from reading the scriptures
+grimoire.gui.hat.name=§fMarisa Hat
 
 itemGroup.grimoireofalice=Grimoire of Alice
 
@@ -270,6 +277,8 @@ grimoire.tooltip.ibaraki_box_description.name=one who drinks from will temporari
 grimoire.tooltip.ibuki_gourd_header.name=This unique gourd generates sake
 grimoire.tooltip.ibuki_gourd_description.name=with a single drop of water
 
+grimoire.tooltip.icicle_sword_header.name=Perfect Freeze!
+
 grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created by cutting off the arm of a kappa
 grimoire.tooltip.kappas_nostrum_description.name=It gives regeneration and clears all active potion effects
 
@@ -286,6 +295,10 @@ grimoire.tooltip.orb_elixir_description_bottom.name=the immediate future
 
 grimoire.tooltip.third_eye_header.name=Satori's 3rdEye
 grimoire.tooltip.third_eye_activate.name=Shift right click to activate
+grimoire.tooltip.third_eye_status.name=Status:
+grimoire.tooltip.third_eye_open.name= Open
+grimoire.tooltip.third_eye_closed.name= Closed
+grimoire.tooltip.third_eye_shift.name=SHIFT for details
 
 grimoire.tooltip.amenonuhoko_header.name=Heavenly jeweled spear
 grimoire.tooltip.amenonuhoko_description_top.name=Once used to raise the
@@ -355,6 +368,8 @@ grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name= §dHakurei Yin-Y
 grimoire.tooltip.hakurei_gohei_mode_exploding_barrier.name= §eExploding Barrier
 grimoire.tooltip.hakurei_gohei_mode_motion_barrier.name= §6Motion Barrier
 grimoire.tooltip.hakurei_gohei_mode_offensive.name= §4Offensive
+
+grimoire.tooltip.hakurouken_sword_header.name=Deflect danmaku
 
 grimoire.tooltip.hihiirokane_header.name="Crimson ore"
 grimoire.tooltip.hihiirokane_description_top.name=Red-colored mythic metal possessed
@@ -573,7 +588,7 @@ grimoire.tooltip.mask_of_hope_vulnerable.name= *Vulnerable to Wither
 grimoire.tooltip.monkey_mask_header.name=Tsukumogami of Awkwardness
 grimoire.tooltip.monkey_mask_good_buff.name= -Invisibility
 grimoire.tooltip.monkey_mask_bad_buff.name= -Slowness III
-grimoire.tooltip.monkey_mask_vulnerable.name= *Invulnerable to Most Damage
+grimoire.tooltip.monkey_mask_vulnerable.name= *Vulnerable to Explosions
 
 grimoire.tooltip.raiden_mask_header.name=Tsukumogami of Surprise
 grimoire.tooltip.raiden_mask_good_buff.name= -Haste IV

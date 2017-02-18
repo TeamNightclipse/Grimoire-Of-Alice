@@ -11,16 +11,20 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelPlayer - Either Mojang or a mod author
  * Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelFireRobe extends ModelBiped {
 
-	public ModelRenderer leftArm;
-	public ModelRenderer rightArm;
-	public ModelRenderer chest;
+	private final ModelRenderer leftArm;
+	private final ModelRenderer rightArm;
+	private final ModelRenderer chest;
 
 	public ModelFireRobe() {
 		this.textureWidth = 64;

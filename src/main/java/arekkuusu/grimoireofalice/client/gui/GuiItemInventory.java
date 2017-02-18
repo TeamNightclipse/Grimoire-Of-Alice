@@ -16,13 +16,16 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiItemInventory extends GuiContainer {
 
 	private static final ResourceLocation ICON_LOCATION = new ResourceLocation(LibMod.MODID.toLowerCase(), "textures/gui/Pouch.png");
 
-	public GuiItemInventory(InventoryPlayer playerInv, ItemStack flowerBagInv) {
-		super(new SpellCardContainer(playerInv, flowerBagInv));
+	public GuiItemInventory(InventoryPlayer playerInv, ItemStack stack) {
+		super(new SpellCardContainer(playerInv, stack));
 	}
 
 	@Override

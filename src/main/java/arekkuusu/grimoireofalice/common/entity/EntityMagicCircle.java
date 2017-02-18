@@ -45,12 +45,7 @@ public class EntityMagicCircle extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if(!worldObj.isRemote) {
-			if(host != null) {
-				if(host.isDead || host.isHandActive()) {
-					setDead();
-					return;
-				}
-
+			if(host != null && host.isDead && !host.isHandActive()) {
 				setAnimationCount(last);
 
 				if(endTime < ticksExisted && endTime >= 0) {
@@ -67,11 +62,11 @@ public class EntityMagicCircle extends Entity {
 					setCircleSize((end2 - getAnimationCount()) / end2);
 				}
 
+				rotationYaw = host.rotationYawHead;
+				rotationPitch = host.rotationPitch;
 				posX = host.posX;
 				posY = host.posY + 0.1D;
 				posZ = host.posZ;
-				rotationYaw = host.rotationYawHead;
-				rotationPitch = host.rotationPitch;
 				setPosition(posX, posY, posZ);
 
 				while(rotationYaw > 180F) {
@@ -101,7 +96,7 @@ public class EntityMagicCircle extends Entity {
 
 	@Override
 	protected void entityInit() {
-		dataManager.register(SIZE, 0f);
+		dataManager.register(SIZE, 0F);
 		dataManager.register(TEXTURE, 0);
 		dataManager.register(ANIMATION, 0);
 	}

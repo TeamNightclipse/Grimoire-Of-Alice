@@ -11,10 +11,14 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelKanakoShimenawa - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelKanakoShimenawa extends ModelBiped {
 
 	private final ModelRenderer rope;

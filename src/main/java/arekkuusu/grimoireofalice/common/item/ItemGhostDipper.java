@@ -160,7 +160,7 @@ public class ItemGhostDipper extends ItemMod {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 7000;
+		return 2000;
 	}
 
 	@Override

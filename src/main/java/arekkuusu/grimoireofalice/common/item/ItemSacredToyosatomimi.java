@@ -13,6 +13,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -86,12 +88,12 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
 				if(isOwner(stack, player)) {
-					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(timeUsed));
+					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().expandXyz(timeUsed), livingBase -> livingBase != player);
 					if(!list.isEmpty()) {
 						player.addChatComponentMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(
-								TextFormatting.GOLD + "- " + mob.getName() + " : {" + (int)mob.posX + ", " + (int)mob.posY + ", " + (int)mob.posZ + "}")));
+								getColorForEntity(mob) + "- " + mob.getName() + TextFormatting.RESET + TextFormatting.ITALIC + " : {" + (int)mob.posX + ", " + (int)mob.posY + ", " + (int)mob.posZ + "}")));
 						player.addChatComponentMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}
@@ -104,6 +106,20 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner {
 				stack.damageItem(1, player);
 			}
 		}
+	}
+
+	private TextFormatting getColorForEntity(EntityLivingBase livingBase) {
+		if (livingBase instanceof EntityMob) {
+			return TextFormatting.DARK_RED;
+		}
+		else if (livingBase instanceof EntityAnimal) {
+			return TextFormatting.GOLD;
+		}
+		else if (livingBase instanceof EntityWaterMob) {
+			return TextFormatting.DARK_AQUA;
+		}
+
+		return TextFormatting.DARK_GRAY;
 	}
 
 	@Override

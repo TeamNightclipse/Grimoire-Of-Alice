@@ -15,10 +15,10 @@ public class ModEntity {
 
 	public static void preInit() {
 		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
 		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
@@ -27,6 +27,10 @@ public class ModEntity {
 		EntityRegistry.registerModEntity(EntityMiracleLantern.class, "Lantern", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntityNetherSoul.class, "Soul", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityFierySword.class, "FierySword", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityIceBlock.class, "IceBlock", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityMiracleCircle.class, "MiraleCircle", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(EntitySpiritualStrikeTalisman.class, "Talisman", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
+		EntityRegistry.registerModEntity(EntityGap.class, "Gap", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 			EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);

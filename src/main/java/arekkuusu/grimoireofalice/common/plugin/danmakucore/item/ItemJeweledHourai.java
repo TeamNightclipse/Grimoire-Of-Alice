@@ -112,7 +112,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 							.setMovementData(0.8D)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color))
 							.build();
-					DanmakuCreationHelper.createWideShot(danmaku, timeUsed, timeUsed * 3, 0F, 0.1D);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					addJewels(stack, (short) -1);
 				}
 				else {
@@ -121,10 +121,9 @@ public class ItemJeweledHourai extends ItemJeweled {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)
 								.setMovementData(0.8D)
-								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i * 2))
+								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDelay(i))
 								.build();
-						float mod = i * 0.75F;
-						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, 2F + mod, 1D + mod);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					}
 					setJewels(stack, (short) 0);
 				}

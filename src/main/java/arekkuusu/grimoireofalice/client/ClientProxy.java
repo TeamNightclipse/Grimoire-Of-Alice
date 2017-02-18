@@ -134,7 +134,9 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.SWALLOW_EGG);
 		registerItem(ModItems.COWRIE_SHELL);
 		registerItem(ModItems.DRAGON_SCALE);
-		registerItem(ModItems.DRAGON_STONE);
+		registerItem(ModItems.CHARM_OF_HEALING);
+		registerItem(ModItems.SPIRITUAL_STRIKE_TALISMAN);
+		registerItem(ModItems.GAP);
 
 		registerItem(ModItems.GHOST_DIPPER);
 		registerItem(ModItems.THIRD_EYE);
@@ -173,6 +175,9 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.SHINMYOUMARU_NEEDLE);
 		registerItem(ModItems.DEATH_SCYTHE);
 		registerItem(ModItems.ROUKANKEN);
+		registerItem(ModItems.ICICLE_SWORD);
+		registerItem(ModItems.HAKUROUKEN);
+		registerItem(ModItems.GHOST_ANCHOR);
 
 		//Blocks
 		registerBlock(ModBlocks.COMPACT_STONE);
@@ -189,6 +194,7 @@ public class ClientProxy implements ISidedProxy {
 		registerBlock(ModBlocks.PILLAR_ALTAR);
 		registerBlock(ModBlocks.IMPURE_STONE);
 		registerBlock(ModBlocks.HIHIIROKANE_BLOCK);
+		registerBlock(ModBlocks.DRAGON_STONE);
 
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			registerItem(ModItems.LEAF);
@@ -225,6 +231,10 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleLantern.class, RenderMiracleLantern::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityNetherSoul.class, RenderNetherSoul::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityFierySword.class, RenderFierySword::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityIceBlock.class, RenderIceBlock::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleCircle.class, RenderMiracleCircle::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritualStrikeTalisman.class, RenderSpiritualStrikeTalisman::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGap.class, RenderGap::new);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 			RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);			

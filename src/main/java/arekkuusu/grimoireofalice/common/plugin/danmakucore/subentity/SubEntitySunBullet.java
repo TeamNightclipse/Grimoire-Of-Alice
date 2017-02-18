@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
+import net.katsstuff.danmakucore.data.MovementData;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;

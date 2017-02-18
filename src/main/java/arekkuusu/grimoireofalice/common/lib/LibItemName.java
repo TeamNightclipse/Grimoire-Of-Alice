@@ -129,5 +129,10 @@ public class LibItemName {
 	public static final String SWALLOW_EGG = "swallowegg";
 	public static final String COWRIE_SHELL = "cowrieshell";
 	public static final String DRAGON_SCALE = "dragonscale";
-	public static final String DRAGON_STONE = "dragonstone";
+	public static final String ICICLE_SWORD = "iciclesword";
+	public static final String HAKUROUKEN = "hakurouken";
+	public static final String CHARM_OF_HEALING = "charmofhealing";
+	public static final String GHOST_ANCHOR = "ghostanchor";
+	public static final String SPIRITUAL_STRIKE_TALISMAN = "spiritualstriketalisman";
+	public static final String GAP = "gap";
 }

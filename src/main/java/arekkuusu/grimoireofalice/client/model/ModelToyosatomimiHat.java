@@ -11,13 +11,17 @@ package arekkuusu.grimoireofalice.client.model;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * ModelToyosatomimiHat - Arekkuusu Created using Tabula 5.1.0
  */
+
+@SideOnly(Side.CLIENT)
 public class ModelToyosatomimiHat extends ModelBiped {
 
-	public ModelRenderer hat;
+	private final ModelRenderer hat;
 
 	public ModelToyosatomimiHat() {
 		this.textureWidth = 32;

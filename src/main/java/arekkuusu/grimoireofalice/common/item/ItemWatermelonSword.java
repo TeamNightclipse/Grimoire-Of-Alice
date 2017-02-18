@@ -32,7 +32,7 @@ public class ItemWatermelonSword extends ItemModSword {
 
 	public ItemWatermelonSword(ToolMaterial material) {
 		super(material, LibItemName.WATERMELON_SWORD);
-		setMaxDamage(1);
+		setMaxDamage(4);
 		setNoRepair();
 	}
 
@@ -52,9 +52,8 @@ public class ItemWatermelonSword extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		stack.damageItem(1, attacker);
-		--stack.stackSize;
 
-		if(attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+		if(stack.getItemDamage() <= 0 && attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
 					new ItemStack(ModItems.POPSICLE_STICK), false);
 			if(rest != null) {

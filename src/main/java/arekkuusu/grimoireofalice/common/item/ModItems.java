@@ -138,8 +138,12 @@ public final class ModItems {
 	public static final Item COWRIE_SHELL = new Item();
 	@ObjectHolder(LibItemName.DRAGON_SCALE)
 	public static final Item DRAGON_SCALE = new Item();
-	@ObjectHolder(LibItemName.DRAGON_STONE)
-	public static final Item DRAGON_STONE = new Item();
+	@ObjectHolder(LibItemName.CHARM_OF_HEALING)
+	public static final Item CHARM_OF_HEALING = new Item();
+	@ObjectHolder(LibItemName.SPIRITUAL_STRIKE_TALISMAN)
+	public static final Item SPIRITUAL_STRIKE_TALISMAN = new Item();
+	@ObjectHolder(LibItemName.GAP)
+	public static final Item GAP = new Item();
 
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)
@@ -258,6 +262,12 @@ public final class ModItems {
 	public static final Item NUCLEAR_ROD = new Item();
 	@ObjectHolder(LibItemName.NUCLEAR_BOOTS)
 	public static final Item NUCLEAR_BOOTS = new Item();
+	@ObjectHolder(LibItemName.ICICLE_SWORD)
+	public static final Item ICICLE_SWORD = new Item();
+	@ObjectHolder(LibItemName.HAKUROUKEN)
+	public static final Item HAKUROUKEN = new Item();
+	@ObjectHolder(LibItemName.GHOST_ANCHOR)
+	public static final Item GHOST_ANCHOR = new Item();
 
 	public static void init() {
 		VanillaCrafting.booksAndStrings();
@@ -268,6 +278,23 @@ public final class ModItems {
 	public static void initOreDictionary() {
 		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.IRON_NUGGET));
 		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.IMPURE_STONE));
+
+		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.SHROOM_POWDER, 1, 0));
+		OreDictionary.registerOre("dyeRed", new ItemStack(ModItems.SHROOM_POWDER, 1, 1));
+		OreDictionary.registerOre("dyeGreen", new ItemStack(ModItems.SHROOM_POWDER, 1, 2));
+		OreDictionary.registerOre("dyeBrown", new ItemStack(ModItems.SHROOM_POWDER, 1, 3));
+		OreDictionary.registerOre("dyeBlue", new ItemStack(ModItems.SHROOM_POWDER, 1, 4));
+		OreDictionary.registerOre("dyePurple", new ItemStack(ModItems.SHROOM_POWDER, 1, 5));
+		OreDictionary.registerOre("dyeCyan", new ItemStack(ModItems.SHROOM_POWDER, 1, 6));
+		OreDictionary.registerOre("dyeLightGray", new ItemStack(ModItems.SHROOM_POWDER, 1, 7));
+		OreDictionary.registerOre("dyeGray", new ItemStack(ModItems.SHROOM_POWDER, 1, 8));
+		OreDictionary.registerOre("dyePink", new ItemStack(ModItems.SHROOM_POWDER, 1, 9));
+		OreDictionary.registerOre("dyeLime", new ItemStack(ModItems.SHROOM_POWDER, 1, 10));
+		OreDictionary.registerOre("dyeYellow", new ItemStack(ModItems.SHROOM_POWDER, 1, 11));
+		OreDictionary.registerOre("dyeLightBlue", new ItemStack(ModItems.SHROOM_POWDER, 1, 12));
+		OreDictionary.registerOre("dyeMagenta", new ItemStack(ModItems.SHROOM_POWDER, 1, 13));
+		OreDictionary.registerOre("dyeOrange", new ItemStack(ModItems.SHROOM_POWDER, 1, 14));
+		OreDictionary.registerOre("dyeWhite", new ItemStack(ModItems.SHROOM_POWDER, 1, 15));
 	}
 
 	public static void initFlyingItems() {

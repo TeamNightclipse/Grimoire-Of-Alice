@@ -105,6 +105,10 @@ public final class SpecialRecipes {
 	public static IRecipeItems PATCHY_BOOK;
 	public static IRecipeItems SYRINGE;
 	public static IRecipeItems DRAGON_STONE;
+	public static IRecipeItems ICICLE_SWORD;
+	public static IRecipeItems GAP;
+	public static IRecipeItems GHOST_ANCHOR;
+	public static IRecipeItems HEALING_CHARM;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -119,7 +123,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems TRUMPET;
 	public static IRecipeItems VIOLIN;
 
-	//Bocks
+	//Blocks
 	public static IRecipeItems HOLYSTONE;
 	public static IRecipeItems HOLYKEYSTONE;
 	public static IRecipeItems ONBASHIRA;
@@ -167,31 +171,31 @@ public final class SpecialRecipes {
 					ModItems.MONKEY_MASK, ModItems.RAIDEN_MASK, ModItems.UBA_MASK);
 
 			FOX_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.FOX_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.SUGAR, new ItemStack(Items.DYE, 1, 0));
+					ModItems.HARDENED_LEATHER, potion, Items.SUGAR, "dyeBlack");
 
 			FUKU_NO_KAMI_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.FUKU_NO_KAMI_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.BLAZE_POWDER, new ItemStack(Items.DYE, 1, 14));
+					ModItems.HARDENED_LEATHER, potion, Items.BLAZE_POWDER, "dyeOrange");
 
 			HANNYA_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HANNYA_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.POISONOUS_POTATO, new ItemStack(Items.DYE, 1, 1));
+					ModItems.HARDENED_LEATHER, potion, Items.POISONOUS_POTATO, "dyeRed");
 
 			HYOTTOKO_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HYOTTOKO_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.GHAST_TEAR, new ItemStack(Items.DYE, 1, 9));
+					ModItems.HARDENED_LEATHER, potion, Items.GHAST_TEAR, "dyePink");
 
 			KOOMOTE_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.KOOMOTE_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.ROTTEN_FLESH, new ItemStack(Items.DYE, 1, 0));
+					ModItems.HARDENED_LEATHER, potion, Items.ROTTEN_FLESH, "dyeBlack");
 
 			MASK_OF_HOPE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MASK_OF_HOPE), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.FERMENTED_SPIDER_EYE, new ItemStack(Items.DYE, 1, 8));
+					ModItems.HARDENED_LEATHER, potion, Items.FERMENTED_SPIDER_EYE, "dyeGray");
 
 			MONKEY_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MONKEY_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.MUSHROOM_STEW, new ItemStack(Items.DYE, 1, 7));
+					ModItems.HARDENED_LEATHER, potion, Items.MUSHROOM_STEW, "dyeLightGray");
 
 			RAIDEN_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.RAIDEN_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.SLIME_BALL, new ItemStack(Items.DYE, 1, 9));
+					ModItems.HARDENED_LEATHER, potion, Items.SLIME_BALL, "dyePink");
 
 			UBA_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.UBA_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
-					ModItems.HARDENED_LEATHER, potion, Items.BEETROOT_SOUP, new ItemStack(Items.DYE, 1, 9));
+					ModItems.HARDENED_LEATHER, potion, Items.BEETROOT_SOUP, "dyePink");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.thirdEye) {
@@ -226,11 +230,11 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonJewel) {
 			DRAGON_JEWEL = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_JEWEL)
-					, ModItems.DRAGON_STONE, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
+					, ModBlocks.DRAGON_STONE, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonStone) {
-			DRAGON_STONE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.DRAGON_STONE)
+			DRAGON_STONE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModBlocks.DRAGON_STONE)
 					, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE);
 		}
 
@@ -302,7 +306,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.mikoCloak) {
 			MICO_CLOAK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.MIKO_CLOAK)
-					, new ItemStack(Blocks.WOOL, 1, 2), "paper", ModItems.HARDENED_LEATHER, "paper", "paper", ModItems.HARDENED_LEATHER, "paper", new ItemStack(Items.DYE, 1, 13));
+					, new ItemStack(Blocks.WOOL, 1, 2), "paper", ModItems.HARDENED_LEATHER, "paper", "paper", ModItems.HARDENED_LEATHER, "paper", "dyeMagenta");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.mikoStick) {
@@ -353,9 +357,14 @@ public final class SpecialRecipes {
 					, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, ModItems.HARDENED_LEATHER, Items.FERMENTED_SPIDER_EYE, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER, ModItems.SOLDIFIED_PAPER);
 		}
 
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.icicleSword) {
+			ICICLE_SWORD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ICICLE_SWORD)
+					, Items.STICK, Items.STICK, Blocks.PACKED_ICE, Blocks.ICE, Blocks.ICE, Blocks.PACKED_ICE, Blocks.ICE, Blocks.PACKED_ICE);
+		}
+
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.rodOfRemorse) {
 			ROD_OF_REMORSE = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.ROD_REMORSE)
-					, "logWood", Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, new ItemStack(Items.DYE, 1, 0));
+					, "logWood", Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, "dyeBlack");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.roukanken) {
@@ -456,8 +465,9 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.toyosatomimiHat) {
+			String dye = "dyeMagenta";
 			TOYOSATOMIMI_HAT = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.TOYOSATOMIMI_HAT)
-					, Items.LEATHER_HELMET, Items.RABBIT_FOOT, new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13), new ItemStack(Items.DYE, 1, 13));
+					, Items.LEATHER_HELMET, Items.RABBIT_FOOT, dye, dye, dye, dye, dye, dye);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.utsuhoWings) {
@@ -473,6 +483,22 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.netherShard) {
 			NETHER_SHARD = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.NETHER_SHARD)
 					, Items.DIAMOND, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ, Items.QUARTZ);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.gap) {
+			GAP = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.GAP)
+					, Blocks.REDSTONE_BLOCK, Items.CHORUS_FRUIT, Blocks.REDSTONE_BLOCK, Blocks.REDSTONE_BLOCK, Blocks.REDSTONE_BLOCK);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.ghostAnchor) {
+			GHOST_ANCHOR = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.GHOST_ANCHOR)
+					, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.HIHIIROKANE, Items.IRON_INGOT, Items.IRON_INGOT);
+		}
+
+		if (ConfigHandler.grimoireOfAlice.crafting.altar.healingCharm) {
+			String dye = "dyeLightBlue";
+			HEALING_CHARM = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.CHARM_OF_HEALING)
+					, dye, dye, dye, dye, dye, dye, dye, Items.GHAST_TEAR);
 		}
 
 		//DanmakuCore
@@ -496,8 +522,9 @@ public final class SpecialRecipes {
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.ellyScythe) {
+				String dye = "dyeRed";
 				ELLY_SCYTHE = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.NETHER.getId(),new ItemStack(ModItems.ELLY_SCYTHE)
-						, new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), new ItemStack(Items.DYE, 1, 1), ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
+						, dye, dye, dye, dye, dye, dye, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.laevatein) {

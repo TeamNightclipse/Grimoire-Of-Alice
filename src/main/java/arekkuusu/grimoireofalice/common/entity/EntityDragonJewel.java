@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,13 +72,14 @@ public class EntityDragonJewel extends Entity {
 	private void attackEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
-		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob).forEach(mob -> {
+		list.stream().filter(mob -> mob instanceof EntityLivingBase).map(mob -> (EntityLivingBase) mob).forEach(mob -> {
 			if(!worldObj.isRemote) {
-				mob.setAttackTarget(null);
-				mob.setRevengeTarget(null);
+				if (mob instanceof EntityMob || mob.getAITarget() == host) {
+					mob.setRevengeTarget(null);
 
-				if (mob.getHealth() > 1) {
-					mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(25));
+					if (mob.getHealth() > 1) {
+						mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(25));
+					}
 				}
 			}
 
