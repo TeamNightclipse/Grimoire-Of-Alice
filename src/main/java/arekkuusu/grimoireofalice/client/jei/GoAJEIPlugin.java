@@ -42,6 +42,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.CATTAIL_PLANT), "grimoire.jei.descriptions.cattail_plant", LINE);
 
+		registry.addDescription(new ItemStack(ModItems.CHARM_OF_HEALING), "grimoire.jei.descriptions.charm_of_healing", LINE,
+				"grimoire.jei.descriptions_body.charm_of_healing");
+
 		registry.addDescription(new ItemStack(ModItems.CHERRY), "grimoire.jei.descriptions.cherry", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.COWRIE_SHELL), "grimoire.jei.descriptions.cowrie_shell", LINE);
@@ -77,7 +80,14 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.FULL_POWER), "grimoire.jei.descriptions.full_power", LINE);
 
+		registry.addDescription(new ItemStack(ModItems.GAP), "grimoire.jei.descriptions.gap", LINE,
+				"grimoire.jei.descriptions_body.gap",
+				"grimoire.jei.descriptions_color.gap");
+
 		registry.addDescription(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN), "grimoire.jei.descriptions.ghastly_send_off_lantern", LINE);
+
+		registry.addDescription(new ItemStack(ModItems.GHOST_ANCHOR), "grimoire.jei.descriptions.ghost_anchor", LINE
+				, "grimoire.jei.descriptions_body.ghost_anchor");
 
 		registry.addDescription(new ItemStack(ModItems.GHOST_DIPPER), "grimoire.jei.descriptions.ghost_dipper", LINE
 				, "grimoire.jei.descriptions_body.ghost_dipper");
@@ -114,6 +124,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.IBARAKI_BOX_EMPTY), "grimoire.jei.descriptions.ibaraki_box", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.IBUKI_GOURD), "grimoire.jei.descriptions.ibuki_gourd", LINE);
+
+		registry.addDescription(new ItemStack(ModItems.ICICLE_SWORD), "grimoire.jei.descriptions.icicle_sword", LINE,
+				"grimoire.jei.descriptions_body.icicle_sword");
 
 		registry.addDescription(new ItemStack(ModItems.ICHIRIN_UNZAN), "grimoire.jei.descriptions.ichirin_unzan", LINE);
 

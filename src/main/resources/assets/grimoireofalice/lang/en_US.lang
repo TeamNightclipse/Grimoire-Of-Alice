@@ -629,6 +629,9 @@ grimoire.jei.descriptions.toyosatomimi_aura=Gives the player a fancy aura, just 
 
 grimoire.jei.descriptions.cattail_plant=Nitori™ Do not yukkuri shiteitte ne
 
+grimoire.jei.descriptions.charm_of_healing=Heals the player passively and actively
+grimoire.jei.descriptions_body.charm_of_healing=Hold right click and release with this item to cure your injuries
+
 grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
 
 grimoire.jei.descriptions.cowrie_shell=Obtained by fishing, its a treasure, so use your Ol' Reliable
@@ -656,6 +659,10 @@ grimoire.jei.descriptions.fake_miracle_mallet=Hit multiple targets at once, it d
 grimoire.jei.descriptions.fire_robe=Must be crafted under a Waning Crescent Moon at Night
 grimoire.jei.descriptions_body.fire_robe=Magical robe that, besides being invulnerable to fire, possesses an outstanding resistance to pointy objects
 
+grimoire.jei.descriptions.gap=Gap of time and space
+grimoire.jei.descriptions_body.gap=Teleport entities from one gap to another, if colored it finds the nearest gap with matching color, if not, it finds the nearest gap.
+grimoire.jei.descriptions_color.gap=Use a dye to color the gap, and use white dye to clear the color. Right Click + Shift to remove it.
+
 grimoire.jei.descriptions.gap_folding_umbrella=Magical umbrella that teleports the user 40 blocks to the direction its looking at
 
 grimoire.jei.descriptions.fox_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
@@ -665,6 +672,9 @@ grimoire.jei.descriptions.fuku_no_kami_mask=One of the 9 masks owned by the youk
 grimoire.jei.descriptions.full_power=Found inside chests in Abandoned mine shafts
 
 grimoire.jei.descriptions.ghastly_send_off_lantern=Ghastly lantern that makes players invulnerable, its effect last for as long as the item is in cool down
+
+grimoire.jei.descriptions.ghost_anchor=Anchor of a lost ghost in the sea
+grimoire.jei.descriptions_body.ghost_anchor=This anchor charges against your enemies and ends them in a big explosion
 
 grimoire.jei.descriptions.ghost_dipper=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions_body.ghost_dipper=Bottomless dipper which holds water like a sea. Like a sponge, it clears big quantities of water, and like a bucket, it can place water infinitely
@@ -701,6 +711,9 @@ grimoire.jei.descriptions.hyottoko_mask=One of the 9 masks owned by the youkai H
 grimoire.jei.descriptions.ibaraki_box=Specially made shou box owned by Kasen Ibaraki that has the ability to grant Superhuman Strength, cure all illnesses or heal any injuries to the person who drinks from it
 
 grimoire.jei.descriptions.ibuki_gourd=Gives the drinker strength and nausea
+
+grimoire.jei.descriptions.icicle_sword=Freeze entities with perfect freeze!
+grimoire.jei.descriptions_body.icicle_sword=The frozen entity gets ice damage overtime
 
 grimoire.jei.descriptions.ichirin_unzan=Grants the user an Unzan like in the Touhou Fighting Games
 
@@ -889,7 +902,7 @@ grimoire.jei.descriptions_body.yuugi_sake=Strong sake from hell, it grants great
 
 grimoire.jei.descriptions.impure_stone=Generates between the layer 0 and 30
 
-grimoire.jei.descriptions.holy_stone=Must be crafter under a Rainy Weather
+grimoire.jei.descriptions.holy_stone=Must be crafted under a Rainy Weather
 grimoire.jei.descriptions_body.holy_stone=Gives players levitation when its raining, it also accepts gifts:
 grimoire.jei.descriptions.holy_stone_gold_nugget= 1 Gold Nugget -> XP
 grimoire.jei.descriptions.holy_stone_gold_ingot= 1 Gold Ingot -> Haste
