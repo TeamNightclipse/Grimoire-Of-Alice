@@ -86,8 +86,8 @@ public class EntityGap extends Entity {
 				}
 			}
 			if (portalCooldown == 0) {
-				Optional<EntityLivingBase> optional = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox()
-						, entity -> entity instanceof EntityLivingBase).stream().map(entity -> ((EntityLivingBase) entity)).findFirst();
+				Optional<EntityLivingBase> optional = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+						entity -> entity instanceof EntityLivingBase).stream().map(entity -> ((EntityLivingBase) entity)).findFirst();
 				if (optional.isPresent()) {
 					teleport(optional.get());
 				}
@@ -113,8 +113,8 @@ public class EntityGap extends Entity {
 	private void teleport(EntityLivingBase base) {
 		Vec3d vec3d = getLookVec();
 
-		List<EntityGap> list = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(ConfigHandler.grimoireOfAlice.features.gapRange)
-				, entity -> entity instanceof EntityGap).stream().map(entity -> (EntityGap) entity).collect(Collectors.toList());
+		List<EntityGap> list = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(ConfigHandler.grimoireOfAlice.features.gapRange),
+				entity -> entity instanceof EntityGap).stream().map(entity -> (EntityGap) entity).collect(Collectors.toList());
 
 		EntityGap gap = null;
 		if(teleportByColor) {
@@ -184,12 +184,15 @@ public class EntityGap extends Entity {
 				setColor(enumdyecolor);
 				--stack.stackSize;
 			}
+			player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
 		}
-		else if (!worldObj.isRemote) {
-			dropItem(ModItems.GAP, 1);
-			setDead();
+		else if (player.isSneaking()) {
+			if(!worldObj.isRemote) {
+				dropItem(ModItems.GAP, 1);
+				setDead();
+			}
+			player.playSound(SoundEvents.ENTITY_ITEMFRAME_BREAK, 1F, 1F);
 		}
-		player.playSound(SoundEvents.ENTITY_ITEMFRAME_BREAK, 1F, 1F);
 		return true;
 	}
 
