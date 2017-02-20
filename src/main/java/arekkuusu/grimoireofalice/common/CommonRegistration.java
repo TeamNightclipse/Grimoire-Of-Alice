@@ -76,6 +76,7 @@ public class CommonRegistration {
 				new ItemCharmofHealing(),
 				new ItemSpiritualStrikeTalisman(),
 				new ItemGap(),
+				new ItemKinkakuJiCeiling(),
 
 				//Food
 				new ItemShroomPowder(),
@@ -177,6 +178,7 @@ public class CommonRegistration {
 					new ItemTenguCamera(LibItemName.AYA_CAMERA),
 					new ItemTenguCamera(LibItemName.HATATE_CAMERA),
 					new ItemHakuroukenSword(Item.ToolMaterial.WOOD)
+					new ItemRedStoneofAja()
 			);
 		}
 	}

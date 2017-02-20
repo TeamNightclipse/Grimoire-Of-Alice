@@ -31,6 +31,7 @@ public class ModEntity {
 		EntityRegistry.registerModEntity(EntityMiracleCircle.class, "MiraleCircle", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(EntitySpiritualStrikeTalisman.class, "Talisman", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
 		EntityRegistry.registerModEntity(EntityGap.class, "Gap", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
+		EntityRegistry.registerModEntity(EntityKinkakuJiCeiling.class, "Ceiling", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
 			EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);

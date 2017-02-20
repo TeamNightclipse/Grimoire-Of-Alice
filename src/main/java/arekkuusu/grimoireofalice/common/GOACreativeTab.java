@@ -162,6 +162,10 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.DRAGON_JEWEL);
 		addItem(ModItems.FIRE_ROBE);
 		addItem(ModItems.SWALLOW_COWRIE_SHELL);
+		addItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI);
+		if (GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.RED_STONE_OF_AJA);
+		}
 		// ** Kanako Yasaka ** /
 		addItem(ModItems.KANAKO_SHIMENAWA);
 		addItem(ModItems.KANAKO_ONBASHIRA);

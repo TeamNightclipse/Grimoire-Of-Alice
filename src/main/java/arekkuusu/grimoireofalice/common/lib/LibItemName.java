@@ -135,4 +135,6 @@ public class LibItemName {
 	public static final String GHOST_ANCHOR = "ghostanchor";
 	public static final String SPIRITUAL_STRIKE_TALISMAN = "spiritualstriketalisman";
 	public static final String GAP = "gap";
+	public static final String SEAMLESS_CEILING_KINKAKU_JI = "seamlessceilingofkinkakuji";
+	public static final String RED_STONE_OF_AJA = "redstoneofaja";
 }

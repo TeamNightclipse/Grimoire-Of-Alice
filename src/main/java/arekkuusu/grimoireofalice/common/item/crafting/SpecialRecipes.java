@@ -109,6 +109,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems GAP;
 	public static IRecipeItems GHOST_ANCHOR;
 	public static IRecipeItems HEALING_CHARM;
+	public static IRecipeItems SEAMLESS_CEILING_KINKAKU_JI;
 
 	//DanmakuCore
 	public static IRecipeItems ELLY_SCYTHE;
@@ -122,6 +123,7 @@ public final class SpecialRecipes {
 	public static IRecipeItems TENGU_FAN;
 	public static IRecipeItems TRUMPET;
 	public static IRecipeItems VIOLIN;
+	public static IRecipeItems RED_STONE_OF_AYA;
 
 	//Blocks
 	public static IRecipeItems HOLYSTONE;
@@ -499,6 +501,16 @@ public final class SpecialRecipes {
 			String dye = "dyeLightBlue";
 			HEALING_CHARM = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.CHARM_OF_HEALING)
 					, dye, dye, dye, dye, dye, dye, dye, Items.GHAST_TEAR);
+		}
+
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.kinkakuCeiling) {
+			SEAMLESS_CEILING_KINKAKU_JI = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.SEAMLESS_CEILING_KINKAKU_JI)
+					, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.ANVIL, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT);
+		}
+
+		if(ConfigHandler.grimoireOfAlice.crafting.altar.redstoneAja) {
+			RED_STONE_OF_AYA = GrimoireOfAliceAPI.registerRecipeMoonPhase(1, new ItemStack(ModItems.RED_STONE_OF_AJA)
+			,Items.GOLD_INGOT, Items.EMERALD, ModItems.NETHER_SHARD, "blockGlassColorless", ModItems.NETHER_SHARD, Items.EMERALD,Items.GOLD_INGOT, ModItems.NETHER_SHARD);
 		}
 
 		//DanmakuCore

@@ -192,6 +192,10 @@ public class ConfigHandler {
 				public boolean ghostAnchor = true;
 				@Comment("Can players craft the charm of healing?")
 				public boolean healingCharm = true;
+				@Comment("Can players craft the Seamless Ceiling of Kinkaku-ji?")
+				public boolean kinkakuCeiling = true;
+				@Comment("Can players craft the Red Stone of Aja?")
+				public boolean redstoneAja = true;
 
 				@Comment("Can players craft holy stones?")
 				public boolean holyStone = true;

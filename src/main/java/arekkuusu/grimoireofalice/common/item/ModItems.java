@@ -144,6 +144,10 @@ public final class ModItems {
 	public static final Item SPIRITUAL_STRIKE_TALISMAN = new Item();
 	@ObjectHolder(LibItemName.GAP)
 	public static final Item GAP = new Item();
+	@ObjectHolder(LibItemName.RED_STONE_OF_AJA)
+	public static final Item RED_STONE_OF_AJA = new Item();
+	@ObjectHolder(LibItemName.SEAMLESS_CEILING_KINKAKU_JI)
+	public static final Item SEAMLESS_CEILING_KINKAKU_JI = new Item();
 
 	//Food
 	@ObjectHolder(LibItemName.SHROOM_POWDER)

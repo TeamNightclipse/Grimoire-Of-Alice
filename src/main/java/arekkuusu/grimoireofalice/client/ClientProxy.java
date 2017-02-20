@@ -137,6 +137,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.CHARM_OF_HEALING);
 		registerItem(ModItems.SPIRITUAL_STRIKE_TALISMAN);
 		registerItem(ModItems.GAP);
+		registerItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI);
 
 		registerItem(ModItems.GHOST_DIPPER);
 		registerItem(ModItems.THIRD_EYE);
@@ -213,6 +214,7 @@ public class ClientProxy implements ISidedProxy {
 			registerItem(ModItems.NUCLEAR_ROD);
 			registerItem(ModItems.AYA_CAMERA);
 			registerItem(ModItems.HATATE_CAMERA);
+			registerItem(ModItems.RED_STONE_OF_AJA);
 		}
 	}
 
@@ -235,6 +237,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMiracleCircle.class, RenderMiracleCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritualStrikeTalisman.class, RenderSpiritualStrikeTalisman::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGap.class, RenderGap::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityKinkakuJiCeiling.class, RenderKinkakuJiCeiling::new);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 			RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);			

@@ -199,6 +199,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.RAIDEN_MASK), "grimoire.jei.descriptions.raiden_mask", LINE);
 
+		registry.addDescription(new ItemStack(ModItems.RED_STONE_OF_AJA), "grimoire.jei.descriptions.red_stone_of_aja", LINE,
+				"grimoire.jei.descriptions_body.red_stone_of_aja");
+
 		registry.addDescription(new ItemStack(ModItems.ROD_REMORSE), "grimoire.jei.descriptions.rod_of_remorse", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.ROUKANKEN), "grimoire.jei.descriptions.roukanken", LINE
@@ -223,6 +226,9 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.SARIEL_WAND), "grimoire.jei.descriptions.sariel_wand", LINE
 				, "grimoire.jei.descriptions_body.sariel_wand");
+
+		registry.addDescription(new ItemStack(ModItems.SEAMLESS_CEILING_KINKAKU_JI), "grimoire.jei.descriptions.seamless_ceiling_of_kinkaku_ji", LINE
+				, "grimoire.jei.descriptions_body.seamless_ceiling_of_kinkaku_ji");
 
 		registry.addDescription(new ItemStack(ModItems.SHICHI_SEIKEN), "grimoire.jei.descriptions.shichi_seiken", LINE
 				, "grimoire.jei.descriptions_body.shichi_seiken");

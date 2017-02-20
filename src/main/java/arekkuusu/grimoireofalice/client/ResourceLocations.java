@@ -44,6 +44,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation TALISMAN = getLocation("textures/models/entities/Talisman.png");
 	public static final ResourceLocation GAP = getLocation("textures/models/entities/Gap.png");
 	public static final ResourceLocation GAP_COLOR = getLocation("textures/models/entities/GapColor.png");
+	public static final ResourceLocation KINKAKU_JI_CEILING = getLocation("textures/models/entities/KinkakuJiCeiling.png");
 
 	//Armor
 	public static final ResourceLocation SUWAKO_HAT = getLocation("textures/models/armor/suwakohat.png");
