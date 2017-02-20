@@ -177,7 +177,7 @@ public class CommonRegistration {
 					new ItemNuclearRod(),
 					new ItemTenguCamera(LibItemName.AYA_CAMERA),
 					new ItemTenguCamera(LibItemName.HATATE_CAMERA),
-					new ItemHakuroukenSword(Item.ToolMaterial.WOOD)
+					new ItemHakuroukenSword(Item.ToolMaterial.WOOD),
 					new ItemRedStoneofAja()
 			);
 		}
