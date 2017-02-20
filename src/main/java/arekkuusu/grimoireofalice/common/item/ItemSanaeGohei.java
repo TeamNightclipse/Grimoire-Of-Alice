@@ -12,17 +12,17 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import com.google.common.collect.Lists;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemDye;
@@ -33,7 +33,6 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -47,10 +46,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import java.util.function.BiPredicate;
 
 import static arekkuusu.grimoireofalice.common.item.ItemSanaeGohei.Miracles.*;
@@ -105,6 +102,17 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 	}
 
 	@Override
+	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
+		for (int i = 0; i < 2; ++i) {
+			player.worldObj.spawnParticle(EnumParticleTypes.REDSTONE,
+					player.posX + (itemRand.nextDouble() - 0.5D) * player.width,
+					player.posY + itemRand.nextDouble() * player.height - 0.25D,
+					player.posZ + (itemRand.nextDouble() - 0.5D) * player.width,
+					(itemRand.nextDouble() - 0.5D) * 2.0D, -itemRand.nextDouble(), (itemRand.nextDouble() - 0.5D) * 2.0D);
+		}
+	}
+
+	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		World worldIn = entityLiving.worldObj;
 		if (entityLiving instanceof EntityPlayer && !worldIn.isRemote) {
@@ -155,15 +163,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 							charge -= 1;
 						}
 						break;
-					case MOSES:
-						if (MOSES.canUse(charge, playerIn)) {
-							double x = playerIn.posX;
-							double y = playerIn.posY;
-							double z = playerIn.posZ;
-
-							doMosesEffect(worldIn, playerIn, x, y + 2, z);
-
-							charge -= 10;
+					case TESTIFICATE:
+						if (TESTIFICATE.canUse(charge, playerIn)) {
+							if(convertNearZombies(playerIn, worldIn)) {
+								charge -= 15;
+							}
 						}
 						break;
 					case WIND:
@@ -190,6 +194,9 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 						if (HEAL.canUse(charge, playerIn)) {
 							float health = playerIn.getMaxHealth() - playerIn.getHealth();
 							playerIn.heal(health * itemRand.nextFloat());
+							if(worldIn instanceof WorldServer) {
+								((WorldServer) worldIn).spawnParticle(EnumParticleTypes.HEART, playerIn.posX, playerIn.posY + 2, playerIn.posZ, 20, 0D, 0D, 0D, 0D);
+							}
 
 							charge -= 2;
 						}
@@ -205,8 +212,8 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 							}
 						}
 						break;
-					case CROPS:
-						if (CROPS.canUse(charge, playerIn)) {
+					case SOIL:
+						if (SOIL.canUse(charge, playerIn)) {
 							applyBonemealRandomPos(playerIn, worldIn);
 
 							charge -= 6;
@@ -239,56 +246,41 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 		}
 	}
 
-	@Nullable
-	private Vec3d createVec(Vec3d original, EntityPlayer playerIn, double distance) {
-		float f2 = MathHelper.cos(-playerIn.rotationYaw * 0.017453292F - (float) Math.PI);
-		float f3 = MathHelper.sin(-playerIn.rotationYaw * 0.017453292F - (float) Math.PI);
-		float f4 = -MathHelper.cos(-playerIn.rotationPitch * 0.017453292F);
-		float f5 = MathHelper.sin(-playerIn.rotationPitch * 0.017453292F);
-		float f6 = f3 * f4;
-		float f7 = f2 * f4;
-		return original.addVector((double) f6 * distance, (double) f5 * distance, (double) f7 * distance);
+	private boolean convertNearZombies(EntityPlayer player, World world) {
+		List<EntityZombie> list = world.getEntitiesWithinAABB(EntityZombie.class, player.getEntityBoundingBox().expandXyz(10));
+		list.forEach(zombie -> {
+			convertToVillager(zombie, world);
+		});
+		return !list.isEmpty();
 	}
 
-	private void doMosesEffect(World world, EntityPlayer playerIn, double x, double y, double z){
-		Vec3d start = new Vec3d(x, y, z);
-		Vec3d end = createVec(start, playerIn, 20);
-		RayTraceResult trace;
-		for (int j = 0; j < 20; j++) {
-			trace = playerIn.worldObj.rayTraceBlocks(start, end, true, false, false);
-			if (trace == null || trace.typeOfHit != RayTraceResult.Type.BLOCK) {
-				continue;
-			}
-			absorbWater(world, trace.getBlockPos());
+	private void convertToVillager(EntityZombie zombie, World world) {
+		EntityVillager entityvillager = new EntityVillager(world);
+		entityvillager.copyLocationAndAnglesFrom(zombie);
+		entityvillager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(entityvillager)), null);
+		entityvillager.setLookingForHome();
+
+		if (zombie.isChild()) {
+			entityvillager.setGrowingAge(-24000);
 		}
-	}
 
-	private void absorbWater(World worldIn, BlockPos pos) {
-		Queue<Tuple<BlockPos, Integer>> queue = Lists.newLinkedList();
-		queue.add(new Tuple<>(pos, 0));
-		int blocksChanged = 0;
-
-		while(!queue.isEmpty() && blocksChanged <= 64) {
-			Tuple<BlockPos, Integer> tuple = queue.poll();
-			BlockPos blockpos = tuple.getFirst();
-			int depth = tuple.getSecond();
-
-			for(EnumFacing enumfacing : EnumFacing.values()) {
-				BlockPos offset = blockpos.offset(enumfacing);
-
-				if(worldIn.getBlockState(offset).getMaterial() == Material.WATER) {
-					++blocksChanged;
-
-					if(!worldIn.isRemote) {
-						worldIn.setBlockState(offset, Blocks.AIR.getDefaultState());
-
-						if(depth < 6) {
-							queue.add(new Tuple<>(offset, depth + 1));
-						}
-					}
-				}
-			}
+		world.removeEntity(zombie);
+		entityvillager.setNoAI(zombie.isAIDisabled());
+		if (zombie.getVillagerTypeForge() != null) {
+			entityvillager.setProfession(zombie.getVillagerTypeForge());
 		}
+		else {
+			entityvillager.setProfession(0);
+		}
+
+		if (zombie.hasCustomName()) {
+			entityvillager.setCustomNameTag(zombie.getCustomNameTag());
+			entityvillager.setAlwaysRenderNameTag(zombie.getAlwaysRenderNameTag());
+		}
+
+		world.spawnEntityInWorld(entityvillager);
+		entityvillager.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
+		world.playEvent(null, 1027, new BlockPos((int) zombie.posX, (int) zombie.posY, (int) zombie.posZ), 0);
 	}
 
 	private void applyBonemealRandomPos(EntityPlayer player, World world) {
@@ -376,9 +368,9 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 		POTIONS("potions",(i, player) -> i >= 3),
 		RAIN(   "rain",   (i, player) -> i >= 4),
 		THUNDER("thunder",(i, player) -> i >= 5),
-		CROPS(  "crops",  (i, player) -> i >= 8),
+		SOIL(  "soil",  (i, player) -> i >= 8),
 		TIME(   "time",   (i, player) -> i >= 15),
-		MOSES(  "moses",  (i, player) -> i >= 10);
+		TESTIFICATE(  "testificate",  (i, player) -> i >= 15);
 
 		private final BiPredicate<Integer, EntityPlayer> condition;
 		private final String name;
