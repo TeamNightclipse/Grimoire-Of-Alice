@@ -37,7 +37,7 @@ public class ItemHouraiElixir extends ItemModFood {
 	private static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
 
 	public ItemHouraiElixir() {
-		super(50, 0, false, LibItemName.HOURAI_ELIXIR);
+		super(15, 0, false, LibItemName.HOURAI_ELIXIR);
 		setMaxDamage(2);
 		setMaxStackSize(1);
 		setAlwaysEdible();
