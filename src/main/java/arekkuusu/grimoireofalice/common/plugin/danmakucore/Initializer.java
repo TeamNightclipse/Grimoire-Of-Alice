@@ -21,6 +21,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class Initializer {
@@ -29,6 +31,7 @@ public class Initializer {
 
 	@SubscribeEvent
 	@Optional.Method(modid = DANMAKU_CORE)
+	@SideOnly(Side.CLIENT)
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
 				new FormWind(),
