@@ -45,7 +45,7 @@ public class EntityMagicCircle extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if(!worldObj.isRemote) {
-			if(host != null && host.isDead && !host.isHandActive()) {
+			if(host != null && !host.isDead && !host.isHandActive()) {
 				setAnimationCount(last);
 
 				if(endTime < ticksExisted && endTime >= 0) {
