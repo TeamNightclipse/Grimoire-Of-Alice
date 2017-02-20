@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -55,7 +56,8 @@ public class ItemWallPassingChisel extends ItemMod {
 			if(player instanceof EntityPlayerMP) {
 				((EntityPlayerMP) player).setPositionAndUpdate(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
 			}
-			player.playSound(GrimoireSoundEvents.WARP, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
+			world.playSound(player, travel.getX(), travel.getY(), travel.getZ(), GrimoireSoundEvents.WARP,
+					SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
