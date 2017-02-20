@@ -77,7 +77,8 @@ public class ItemRodOfRemorse extends ItemMod {
 				IItemHandler inventory = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 
 				for(int i = 0; i < inventory.getSlots(); i++) {
-					if(isDyeBlack(inventory.getStackInSlot(i))) {
+					ItemStack stack = inventory.getStackInSlot(i);
+					if(stack != null && isDyeBlack(stack)) {
 						inventory.extractItem(i, 1, false);
 						setUsed(itemStackIn, false);
 						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
