@@ -19,10 +19,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -77,28 +74,28 @@ public class ItemGapFoldingUmbrella extends ItemMod {
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (!worldIn.isRemote) {
-				Optional<BlockPos> posLookedAt = getBlockPosLookedAt(playerIn);
-				BlockPos pos;
-				if (posLookedAt.isPresent() && !playerIn.isSneaking()) {
-					pos = posLookedAt.get();
-				} else {
-					Vec3d look = playerIn.getLookVec();
-					double range = 40.0D;
-					double dx = playerIn.posX + look.xCoord * range;
-					double dy = playerIn.posY + 1 + look.yCoord * range;
-					double dz = playerIn.posZ + look.zCoord * range;
-					pos = new BlockPos(dx, dy, dz);
-				}
 
-				if (isSafe(worldIn, pos)) {
-					if (playerIn instanceof EntityPlayerMP) {
-						((EntityPlayerMP) playerIn).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-					}
-					stack.damageItem(1, playerIn);
-				}
+			Optional<BlockPos> posLookedAt = getBlockPosLookedAt(playerIn);
+			BlockPos pos;
+			if (posLookedAt.isPresent() && !playerIn.isSneaking()) {
+				pos = posLookedAt.get();
+			} else {
+				Vec3d look = playerIn.getLookVec();
+				double range = 40.0D;
+				double dx = playerIn.posX + look.xCoord * range;
+				double dy = playerIn.posY + 1 + look.yCoord * range;
+				double dz = playerIn.posZ + look.zCoord * range;
+				pos = new BlockPos(dx, dy, dz);
 			}
-			playerIn.playSound(GrimoireSoundEvents.WARP, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
+
+			if (isSafe(worldIn, pos)) {
+				if (!worldIn.isRemote && playerIn instanceof EntityPlayerMP) {
+					((EntityPlayerMP) playerIn).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+				}
+				stack.damageItem(1, playerIn);
+			}
+			worldIn.playSound(playerIn, pos.getX(), pos.getY(), pos.getZ(), GrimoireSoundEvents.WARP,
+					SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 			playerIn.getCooldownTracker().setCooldown(this, 30);
 		}
 	}
