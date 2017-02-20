@@ -7,6 +7,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -24,6 +25,11 @@ public class ItemHakuroukenSword extends ItemModSword {
 
 	public ItemHakuroukenSword(ToolMaterial material) {
 		super(material, LibItemName.HAKUROUKEN);
+	}
+
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
 	}
 
 	@Override

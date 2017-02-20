@@ -10,14 +10,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * ModelKoishiEye - Either Mojang or a mod author
+ * ModelSatoriEye - Either Mojang or a mod author
  * Created using Tabula 5.1.0
  */
 
 @SideOnly(Side.CLIENT)
-public class ModelSatoriEye extends ModelBiped {
+public class ModelSatoriEye extends ModelBiped { //TODO: Add a different model
 
-    private ModelRenderer eye;
+    private final ModelRenderer eye;
 	private final ModelRenderer right_0;
 	private final ModelRenderer left_0;
 	private final ModelRenderer shape31;
@@ -46,11 +46,9 @@ public class ModelSatoriEye extends ModelBiped {
 	private final ModelRenderer left_8;
 	private final ModelRenderer left_9;
 
-	private int yoffset;
-
     public ModelSatoriEye() {
-        this.textureWidth = 64;
-        this.textureHeight = 1024;
+		this.textureWidth = 64;
+		this.textureHeight = 16;
         this.right_5 = new ModelRenderer(this, 0, 14);
         this.right_5.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.right_5.addBox(-9.0F, 8.2F, -0.5F, 6, 1, 1, 0.0F);
@@ -191,14 +189,6 @@ public class ModelSatoriEye extends ModelBiped {
 
     @Override
     public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float netHeadYaw, float headPitch, float scale) {
-		/*if(entity.ticksExisted % 10 == 0) {
-			if (yoffset > 1984) {
-				yoffset = 0;
-			}
-			eye.setTextureOffset(0, yoffset);
-			yoffset += 16;
-		}*/
-
 		this.setRotationAngles(limbSwing, limbSwingAmount, age, netHeadYaw, headPitch, scale, entity);
 
 		GlStateManager.pushMatrix();

@@ -111,7 +111,7 @@ public class ItemThirdEye extends ItemModArmor {
 		else {
 			playerIn.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1F, 1F);
 			setClosed(itemStackIn, !isClosed(itemStackIn));
-			itemStackIn.damageItem(10, playerIn);
+			itemStackIn.damageItem(1, playerIn);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

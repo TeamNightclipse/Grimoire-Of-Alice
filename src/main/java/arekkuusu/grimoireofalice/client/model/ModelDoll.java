@@ -14,25 +14,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelDoll extends ModelBase {
 
-    public ModelRenderer head;
-    public ModelRenderer body;
-    public ModelRenderer ribbon0_bottom;
-    public ModelRenderer ribbon1_top;
-    public ModelRenderer ribbon0_top;
-    public ModelRenderer ribbon1_middle;
-    public ModelRenderer ribbon1_bottom;
-    public ModelRenderer head_top;
-    public ModelRenderer head_bottom;
-    public ModelRenderer neckRight_top;
-    public ModelRenderer neckLeft_top;
-    public ModelRenderer neckRight_bottom;
-    public ModelRenderer neckLeft_bottom;
-    public ModelRenderer feetRight;
-    public ModelRenderer feetLeft;
-    public ModelRenderer bodyRight;
-    public ModelRenderer bodyLeft;
-    public ModelRenderer handRight;
-    public ModelRenderer handLeft;
+    private final ModelRenderer head;
+	private final ModelRenderer body;
+	private final ModelRenderer ribbon0_bottom;
+	private final ModelRenderer ribbon1_top;
+	private final ModelRenderer ribbon0_top;
+	private final ModelRenderer ribbon1_middle;
+	private final ModelRenderer ribbon1_bottom;
+	private final ModelRenderer head_top;
+	private final ModelRenderer head_bottom;
+	private final ModelRenderer neckRight_top;
+	private final ModelRenderer neckLeft_top;
+	private final ModelRenderer neckRight_bottom;
+	private final ModelRenderer neckLeft_bottom;
+	private final ModelRenderer feetRight;
+	private final ModelRenderer feetLeft;
+	private final ModelRenderer bodyRight;
+	private final ModelRenderer bodyLeft;
+	private final ModelRenderer handRight;
+	private final ModelRenderer handLeft;
 
     public ModelDoll() {
         this.textureWidth = 32;
@@ -108,7 +108,6 @@ public class ModelDoll extends ModelBase {
         this.head.addChild(this.head_top);
     }
 
-	@SideOnly(Side.CLIENT)
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
         this.head.render(f5);

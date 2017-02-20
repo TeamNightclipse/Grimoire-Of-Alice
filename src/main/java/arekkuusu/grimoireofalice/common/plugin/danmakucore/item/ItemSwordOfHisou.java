@@ -152,7 +152,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(player.isSneaking()) {
-			worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_WITHER_SHOOT, SoundCategory.BLOCKS, 1F, 1F);
+			worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1F, 1F);
 			for (int t = 0; t < 5; t++) {
 				for (int u = 0; u < 10; u++) {
 					spawnGround(player, itemRand.nextDouble(), itemRand.nextDouble());
