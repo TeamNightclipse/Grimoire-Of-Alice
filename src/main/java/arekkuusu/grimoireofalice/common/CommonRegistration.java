@@ -114,6 +114,7 @@ public class CommonRegistration {
 				new ItemShinmyoumaruHat(ModMaterials.STRONG_LEATHER, 5),
 				new ItemNuclearBoots(ModMaterials.WEAK_PAPER, 5),
 				new ItemThirdEye(ItemArmor.ArmorMaterial.CHAIN, 4),
+				new ItemTenshiHat(ItemArmor.ArmorMaterial.LEATHER, 2),
 
 				//Weapons
 				new ItemAmenonuhoko(Item.ToolMaterial.DIAMOND),

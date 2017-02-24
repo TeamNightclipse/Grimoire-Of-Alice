@@ -9,7 +9,10 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore;
 
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuVariantName;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.*;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormLeaf;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormNote;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormUfo;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormWind;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.*;
 import net.katsstuff.danmakucore.data.MovementData;
 import net.katsstuff.danmakucore.data.Vector3;
@@ -21,8 +24,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class Initializer {
@@ -31,7 +32,6 @@ public class Initializer {
 
 	@SubscribeEvent
 	@Optional.Method(modid = DANMAKU_CORE)
-	@SideOnly(Side.CLIENT)
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
 				new FormWind(),

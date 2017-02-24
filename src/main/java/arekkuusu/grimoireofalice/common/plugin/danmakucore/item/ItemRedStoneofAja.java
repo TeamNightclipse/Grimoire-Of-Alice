@@ -56,7 +56,7 @@ public class ItemRedStoneofAja extends ItemMod {
 				EntityDanmaku danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setShot(LibShotData.SHOT_LASER_SHORT)
-						.setMovementData(8D)
+						.setMovementData(5D)
 						.build().asEntity();
 
 				worldIn.spawnEntityInWorld(danmaku);

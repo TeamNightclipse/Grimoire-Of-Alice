@@ -65,6 +65,8 @@ public class ConfigHandler {
 			public boolean kokoroMask = false;
 			@Comment("Can players craft the spiritual strike talisman?")
 			public boolean talisman = true;
+			@Comment("Can players craft the tenshi hat?")
+			public boolean tenshiHat = true;
 
 			public static class Altar {
 

@@ -241,7 +241,7 @@ public class GOACreativeTab extends CreativeTabs {
 			addItem(ModItems.STOP_WATCH); //FIXME: Throwable entities get buggy the first 5 seconds under the time stop effect.
 		}
 		// ** Rin Kaenbyou ** /
-		addItem(ModItems.SKULL); //TODO: Make it spawn homing skulls that only attack mobs that target the player
+		addItem(ModItems.SKULL);
 		// ** Sariel ** /
 		addItem(ModItems.SARIEL_WAND);
 		// ** Rinnosuke Morichika ** /
@@ -261,7 +261,7 @@ public class GOACreativeTab extends CreativeTabs {
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.MIRACLE_MALLET);
 		}
-		addItem(ModItems.SHINMYOUMARU_NEEDLE); //TODO: Shoot "Fishing Rod"
+		addItem(ModItems.SHINMYOUMARU_NEEDLE);
 		// ** Shou Toramaru ** /
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.SHOU_LAMP);
@@ -275,6 +275,7 @@ public class GOACreativeTab extends CreativeTabs {
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.HISOU);
 		}
+		addItem(ModItems.TENSHI_HAT);
 		addItem(ModItems.HEAVENLY_PEACH);
 		// ** Toyosatomimi no Miko ** /
 		addItem(ModItems.MIKO_CLOAK);

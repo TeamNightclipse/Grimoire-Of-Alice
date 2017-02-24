@@ -75,7 +75,7 @@ public class EntityMiracleCircle extends Entity {
 					if (hasFaith(user) && consumeFaith(user)) {
 						charge += 5;
 					}
-					else if (!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 10) {
+					else if (!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 8) {
 						int food = user.getFoodStats().getFoodLevel();
 						user.getFoodStats().setFoodLevel(food - 5);
 						charge += 1;

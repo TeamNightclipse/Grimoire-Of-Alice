@@ -70,6 +70,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation NUCLEAR_BOOTS = getLocation("textures/models/armor/nuclearboots.png");
 	public static final ResourceLocation KOISHI_EYE = getLocation("textures/models/armor/koishiEye.png");
 	public static final ResourceLocation SATORI_EYE = getLocation("textures/models/armor/satoriEye.png");
+	public static final ResourceLocation TENSHI_HAT = getLocation("textures/models/armor/tenshihat.png");
 
 	public static final ResourceLocation AURA_MOKOU = getLocation("textures/models/armor/mokou_aura.png");
 	public static final ResourceLocation AURA_BYAKUREN = getLocation("textures/models/armor/byakuren_aura.png");

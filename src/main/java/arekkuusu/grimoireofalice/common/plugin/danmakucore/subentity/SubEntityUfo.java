@@ -44,14 +44,5 @@ public class SubEntityUfo extends SubEntityType {
 				danmaku.setAngle(danmaku.getAngle().rotate(Quat.eulerToQuat(angle, angle, 0F)));
 			}
 		}
-
-		@Override
-		protected void impact(RayTraceResult raytrace) {
-			super.impact(raytrace);
-			if(world instanceof WorldServer && !world.isRemote) {
-				//FIXME: Bubbles only work underwater. Bug?
-				((WorldServer)world).spawnParticle(EnumParticleTypes.WATER_BUBBLE, danmaku.posX, danmaku.posY, danmaku.posZ, 8, 0D, 0D, 0D, 0.5D);
-			}
-		}
 	}
 }

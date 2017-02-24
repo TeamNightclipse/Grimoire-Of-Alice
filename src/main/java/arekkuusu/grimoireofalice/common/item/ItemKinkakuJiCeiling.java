@@ -65,11 +65,19 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 				}
 			}
 
+			EntityKinkakuJiCeiling ceiling;
 			if(entity != null) {
-				EntityKinkakuJiCeiling ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, entity);
-				playerIn.worldObj.spawnEntityInWorld(ceiling);
-				--itemStackIn.stackSize;
+				ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, entity);
 			}
+			else {
+				float distance = 5F;
+				double dx = playerIn.posX + look.xCoord * distance;
+				double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
+				double dz = playerIn.posZ + look.zCoord * distance;
+				ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, playerIn, dx, dy, dz);
+			}
+			playerIn.worldObj.spawnEntityInWorld(ceiling);
+			--itemStackIn.stackSize;
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}

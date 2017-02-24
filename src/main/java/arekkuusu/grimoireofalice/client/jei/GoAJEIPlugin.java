@@ -180,7 +180,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.MIRACLE_MALLET), "grimoire.jei.descriptions.miracle_mallet", LINE
 				, "grimoire.jei.descriptions_body.miracle_mallet");
 
-		registry.addDescription(new ItemStack(ModItems.MOCHI_HAMMER), "grimoire.jei.descriptions.mochi_hammer", LINE);
+		registry.addDescription(new ItemStack(ModItems.MOCHI_HAMMER), "grimoire.jei.descriptions.mochi_hammer", LINE
+				, "grimoire.jei.descriptions_body.mochi_hammer");
 
 		registry.addDescription(new ItemStack(ModItems.MOMIJIS_SCIMITAR_SWORD), "grimoire.jei.descriptions.momijis_scimitar_sword", LINE);
 
@@ -188,7 +189,8 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		registry.addDescription(new ItemStack(ModItems.MORTAR_AND_PESTLE), "grimoire.jei.descriptions.mortal_n_pestle", LINE);
 
-		registry.addDescription(new ItemStack(ModItems.NAZRIN_PENDULUM), "grimoire.jei.descriptions.nazrin_pendulum", LINE);
+		registry.addDescription(new ItemStack(ModItems.NAZRIN_PENDULUM), "grimoire.jei.descriptions.nazrin_pendulum", LINE
+				, "grimoire.jei.descriptions_body.nazrin_pendulum");
 
 		registry.addDescription(new ItemStack(ModItems.NIMBLE_FABRIC), "grimoire.jei.descriptions.nimble_fabric", LINE);
 

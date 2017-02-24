@@ -317,7 +317,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.mochiHammer) {
-			MOCHI_HAMMER = GrimoireOfAliceAPI.registerRecipeMoonPhase(6, new ItemStack(ModItems.MOCHI_HAMMER)
+			MOCHI_HAMMER = GrimoireOfAliceAPI.registerRecipeMoonPhase(1, new ItemStack(ModItems.MOCHI_HAMMER)
 					, "logWood", "logWood", "logWood", Items.RABBIT_HIDE, Items.RABBIT_HIDE, "stickWood", "stickWood", Items.SLIME_BALL);
 		}
 
@@ -395,7 +395,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.sichiSeiken) {
-			SHICHI_SEIKEN = GrimoireOfAliceAPI.registerRecipeMoonPhase(7, new ItemStack(ModItems.SHICHI_SEIKEN)
+			SHICHI_SEIKEN = GrimoireOfAliceAPI.registerRecipeMoonPhase(6, new ItemStack(ModItems.SHICHI_SEIKEN)
 					, Items.IRON_INGOT, Items.GOLD_INGOT, ModItems.TAMAHAGANE_STEEL);
 		}
 
@@ -420,7 +420,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.swallowCowrieShell) {
-			SWALLOW_COWRIE_SHELL = GrimoireOfAliceAPI.registerRecipeMoonPhase(5, new ItemStack(ModItems.SWALLOW_COWRIE_SHELL)
+			SWALLOW_COWRIE_SHELL = GrimoireOfAliceAPI.registerRecipeMoonPhase(7, new ItemStack(ModItems.SWALLOW_COWRIE_SHELL)
 					, ModItems.COWRIE_SHELL, ModItems.SWALLOW_EGG, ModItems.COWRIE_SHELL, ModItems.SWALLOW_EGG, ModItems.SWALLOW_EGG, ModItems.COWRIE_SHELL, ModItems.SWALLOW_EGG, ModItems.COWRIE_SHELL, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK, Blocks.BONE_BLOCK);
 		}
 
@@ -509,7 +509,7 @@ public final class SpecialRecipes {
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.redstoneAja) {
-			RED_STONE_OF_AYA = GrimoireOfAliceAPI.registerRecipeMoonPhase(1, new ItemStack(ModItems.RED_STONE_OF_AJA)
+			RED_STONE_OF_AYA = GrimoireOfAliceAPI.registerRecipeMoonPhase(0, new ItemStack(ModItems.RED_STONE_OF_AJA)
 			,Items.GOLD_INGOT, Items.EMERALD, ModItems.NETHER_SHARD, "blockGlassColorless", ModItems.NETHER_SHARD, Items.EMERALD,Items.GOLD_INGOT, ModItems.NETHER_SHARD);
 		}
 
@@ -585,7 +585,7 @@ public final class SpecialRecipes {
 			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {
-				JEWELED_HOURAI = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.JEWELED_HOURAI)
+				JEWELED_HOURAI = GrimoireOfAliceAPI.registerRecipeMoonPhase(3, new ItemStack(ModItems.JEWELED_HOURAI)
 						, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, Items.QUARTZ, Items.QUARTZ, Items.DIAMOND, Items.QUARTZ, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
 			}
 		}

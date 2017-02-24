@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.entity;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -10,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -28,6 +30,12 @@ public class EntityKinkakuJiCeiling extends Entity {
 		super(worldIn);
 		setPosition(entity.posX, entity.posY + 5, entity.posZ);
 		rotationYaw = entity.rotationYaw % 360.0F;
+	}
+
+	public EntityKinkakuJiCeiling(World worldIn, EntityLivingBase livingBase, double x, double y, double z) {
+		super(worldIn);
+		setPosition(x, y, z);
+		rotationYaw = livingBase.rotationYaw % 360.0F;
 	}
 
 	@Override

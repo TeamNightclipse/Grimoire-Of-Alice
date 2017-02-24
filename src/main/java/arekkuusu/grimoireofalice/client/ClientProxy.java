@@ -89,6 +89,8 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.MIKO_CLOAK);
 		registerItem(ModItems.SHINMYOUMARU_HAT);
 		registerItem(ModItems.NUCLEAR_BOOTS);
+		registerItem(ModItems.THIRD_EYE);
+		registerItem(ModItems.TENSHI_HAT);
 
 		//Items
 		registerItem(ModItems.TAMAHAGANE_STEEL);
@@ -138,9 +140,7 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.SPIRITUAL_STRIKE_TALISMAN);
 		registerItem(ModItems.GAP);
 		registerItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI);
-
 		registerItem(ModItems.GHOST_DIPPER);
-		registerItem(ModItems.THIRD_EYE);
 
 		//Food
 		registerItemWithTypes(ModItems.SHROOM_POWDER);

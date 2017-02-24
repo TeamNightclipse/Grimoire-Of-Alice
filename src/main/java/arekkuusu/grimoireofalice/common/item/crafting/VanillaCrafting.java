@@ -147,6 +147,14 @@ public class VanillaCrafting {
 					.outputs(ModItems.HAKUROUKEN).build();
 		}
 
+		if (ConfigHandler.grimoireOfAlice.crafting.tenshiHat) {
+			shaped().grid("F F","CHC")
+					.where('F').mapsTo(ModItems.HEAVENLY_PEACH)
+					.where('H').mapsTo(Items.LEATHER_HELMET)
+					.where('C').mapsTo(new ItemStack(Blocks.CARPET, 1, 15))
+					.outputs(ModItems.TENSHI_HAT).build();
+		}
+
 		if (ConfigHandler.grimoireOfAlice.crafting.talisman) {
 			shaped().grid("G  "," P ","  G")
 					.where('G').mapsTo(Items.GLOWSTONE_DUST)

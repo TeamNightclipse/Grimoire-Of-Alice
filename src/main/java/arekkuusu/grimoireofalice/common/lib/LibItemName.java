@@ -96,6 +96,8 @@ public class LibItemName {
 	public static final String MARISA_HAT = "marisahat";
 	public static final String MIKO_CLOAK = "mikocloak";
 	public static final String SHINMYOUMARU_HAT = "shinmyoumaruhat";
+	public static final String TENSHI_HAT = "tenshihat";
+
 	//Weapons
 	public static final String MOCHI_HAMMER = "mochihammer";
 	public static final String MOMIJIS_SCIMITAR_SWORD = "momijisscimitarsword";

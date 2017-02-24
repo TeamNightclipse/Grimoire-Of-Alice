@@ -213,6 +213,8 @@ public final class ModItems {
 	public static final Item MIKO_CLOAK = new Item();
 	@ObjectHolder(LibItemName.SHINMYOUMARU_HAT)
 	public static final Item SHINMYOUMARU_HAT = new Item();
+	@ObjectHolder(LibItemName.TENSHI_HAT)
+	public static final Item TENSHI_HAT = new Item();
 	//Weapons
 	@ObjectHolder(LibItemName.MOCHI_HAMMER)
 	public static final Item MOCHI_HAMMER = new Item();
