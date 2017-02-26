@@ -33,7 +33,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class EntityNazrinPendulum extends Entity {
 
-	private static final DataParameter<Integer> COUNT = EntityDataManager.createKey(EntityNazrinPendulum.class, DataSerializers.VARINT);
 	private ItemStack stack;
 	private String ore = "";
 
@@ -109,7 +108,6 @@ public class EntityNazrinPendulum extends Entity {
 
 	@Override
 	protected void entityInit() {
-		dataManager.register(COUNT, 0);
 	}
 
 	private void stopEntity() {

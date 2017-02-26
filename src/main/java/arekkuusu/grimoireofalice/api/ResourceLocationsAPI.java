@@ -21,6 +21,8 @@ public class ResourceLocationsAPI {
 	public static final ResourceLocation CAUTION = getLocation("caution");
 	public static final ResourceLocation WAVE = getLocation("wave");
 	public static final ResourceLocation WIND = getLocation("wind");
+	public static final ResourceLocation PAGE_TURN = getLocation("pageTurn");
+	public static final ResourceLocation WING_FLAP = getLocation("wingFlap");
 
 	private static ResourceLocation getLocation(String name){
 		return new ResourceLocation("grimoireofalice", name);

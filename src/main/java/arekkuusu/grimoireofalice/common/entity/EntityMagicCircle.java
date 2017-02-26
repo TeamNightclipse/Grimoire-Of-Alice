@@ -20,7 +20,7 @@ public class EntityMagicCircle extends Entity {
 
 	private static final DataParameter<Float> SIZE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> TEXTURE = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> ANIMATION = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> ANIMATION = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private EntityLivingBase host;
 	private int last;
 	private int endTime = 0;
@@ -98,7 +98,7 @@ public class EntityMagicCircle extends Entity {
 	protected void entityInit() {
 		dataManager.register(SIZE, 0F);
 		dataManager.register(TEXTURE, 0);
-		dataManager.register(ANIMATION, 0);
+		dataManager.register(ANIMATION, 0F);
 	}
 
 	private void setCircleSize(float size) {
@@ -109,11 +109,11 @@ public class EntityMagicCircle extends Entity {
 		return dataManager.get(SIZE);
 	}
 
-	private void setAnimationCount(int time) {
+	private void setAnimationCount(float time) {
 		dataManager.set(ANIMATION, time);
 	}
 
-	public int getAnimationCount() {
+	public float getAnimationCount() {
 		return dataManager.get(ANIMATION);
 	}
 

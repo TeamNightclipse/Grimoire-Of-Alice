@@ -17,7 +17,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 	public void register(IModRegistry registry) {
 		registry.addRecipeCategories(new AltarRecipeItemsCategory(registry.getJeiHelpers().getGuiHelper()));
 		registry.addRecipeHandlers(new AltarRecipeItemsHandler(registry.getJeiHelpers().getStackHelper()));
-		registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.ALTAR), LibJEI.ALTER_CATEGORY_UID);
+		registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.ALTAR), LibJEI.ALTAR_CATEGORY_UID);
 		registry.addRecipes(GrimoireOfAliceAPI.getRecipes());
 
 		addDescriptions(registry);

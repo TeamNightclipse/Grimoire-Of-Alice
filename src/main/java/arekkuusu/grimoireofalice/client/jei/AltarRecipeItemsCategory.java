@@ -61,7 +61,7 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 
 	@Override
 	public String getUid() {
-		return LibJEI.ALTER_CATEGORY_UID;
+		return LibJEI.ALTAR_CATEGORY_UID;
 	}
 
 	@SideOnly(Side.CLIENT)

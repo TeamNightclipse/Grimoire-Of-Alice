@@ -8,23 +8,23 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
-import arekkuusu.grimoireofalice.common.lib.LibGuiID;
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.entity.EntityYoukaiBook;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemYoukaiBook extends ItemMod {
 
@@ -47,19 +47,14 @@ public class ItemYoukaiBook extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(worldIn.isRemote) {
-			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.YOUKAI_BOOK, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+		if(!worldIn.isRemote) {
+			EntityYoukaiBook book = new EntityYoukaiBook(worldIn);
+			book.setPosition(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
+			worldIn.spawnEntityInWorld(book);
+		}
+		if (!playerIn.capabilities.isCreativeMode) {
+			--itemStackIn.stackSize;
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-		return EnumAction.BOW;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
 	}
 }

@@ -19,8 +19,8 @@ import net.minecraft.world.World;
 
 public class EntityGrimoireSpell extends Entity {
 
-	private static final DataParameter<Integer> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> END_TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private static final DataParameter<Float> END_TIME = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private static final DataParameter<Float> BOOK_PAGE_FLIP = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private static final DataParameter<Float> BOOK_PAGE_FLIP_PREV = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 	private static final DataParameter<Float> BOOK_SPREAD = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
@@ -155,8 +155,8 @@ public class EntityGrimoireSpell extends Entity {
 
 	@Override
 	protected void entityInit() {
-		dataManager.register(TIME, 0);
-		dataManager.register(END_TIME, 0);
+		dataManager.register(TIME, 0F);
+		dataManager.register(END_TIME, 0F);
 		dataManager.register(BOOK_PAGE_FLIP, 0F);
 		dataManager.register(BOOK_PAGE_FLIP_PREV, 0F);
 		dataManager.register(BOOK_ROTATION, 0F);
@@ -165,11 +165,11 @@ public class EntityGrimoireSpell extends Entity {
 		dataManager.register(BOOK_SPREAD_PREV, 0F);
 	}
 
-	private void setEndTime(int time) {
+	private void setEndTime(float time) {
 		dataManager.set(END_TIME, time);
 	}
 
-	private void setTickCount(int tick) {
+	private void setTickCount(float tick) {
 		dataManager.set(TIME, tick);
 	}
 
@@ -197,11 +197,11 @@ public class EntityGrimoireSpell extends Entity {
 		dataManager.set(BOOK_ROTATION_PREV, bookRotationPrev);
 	}
 
-	private int getEndTime() {
+	private float getEndTime() {
 		return dataManager.get(END_TIME);
 	}
 
-	public int getTickCount() {
+	public float getTickCount() {
 		return dataManager.get(TIME);
 	}
 

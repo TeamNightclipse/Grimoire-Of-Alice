@@ -23,6 +23,8 @@ public class ModSounds {
 		registerSound(ResourceLocationsAPI.UFO_SPAWN);
 		registerSound(ResourceLocationsAPI.CAUTION);
 		registerSound(ResourceLocationsAPI.WAVE);
+		registerSound(ResourceLocationsAPI.PAGE_TURN);
+		registerSound(ResourceLocationsAPI.WING_FLAP);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {

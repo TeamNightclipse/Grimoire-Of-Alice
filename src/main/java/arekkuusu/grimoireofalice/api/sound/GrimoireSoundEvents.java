@@ -24,6 +24,8 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent UFO_SPAWN = getRegisteredSound(ResourceLocationsAPI.UFO_SPAWN);
 	public static final SoundEvent CAUTION = getRegisteredSound(ResourceLocationsAPI.CAUTION);
 	public static final SoundEvent WAVE = getRegisteredSound(ResourceLocationsAPI.WAVE);
+	public static final SoundEvent PAGE_TURN = getRegisteredSound(ResourceLocationsAPI.PAGE_TURN);
+	public static final SoundEvent WING_FLAP = getRegisteredSound(ResourceLocationsAPI.WING_FLAP);
 
 	private static SoundEvent getRegisteredSound(ResourceLocation name) {
 		return SoundEvent.REGISTRY.getObject(name);

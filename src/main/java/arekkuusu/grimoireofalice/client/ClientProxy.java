@@ -238,6 +238,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpiritualStrikeTalisman.class, RenderSpiritualStrikeTalisman::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGap.class, RenderGap::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityKinkakuJiCeiling.class, RenderKinkakuJiCeiling::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityYoukaiBook.class, RenderYoukaiBook::new);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
 			RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);			

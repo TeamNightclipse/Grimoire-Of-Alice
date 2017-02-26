@@ -29,6 +29,8 @@ public class ConfigHandler {
 		public WorldGen worldGen = new WorldGen();
 		@Comment("Here you can turn certain features or abilities on and off")
 		public Features features = new Features();
+		@Comment("Here you can turn mob spawning on and off")
+		public Spawning spawning = new Spawning();
 
 		public static class Crafting {
 
@@ -304,10 +306,18 @@ public class ConfigHandler {
 			public boolean allowRevive = true;
 			@Comment("Allow time stop effect of sakuya's stop watch")
 			public boolean timeStopEffect = true;
-			@Comment("Allow time stop render effect")
+			@Comment("Allow time stop render effect //Not yet implemented")
 			public boolean timeStopRenderEffect = true;
 			@Comment("Max range between Gaps")
 			public int gapRange = 100;
+		}
+
+		public static class Spawning {
+
+			@Comment("Set this to false to prevent books from spawning naturally")
+			public boolean bookSpawning = true;
+			@Comment("Put here all biome types where the book can spawn and the spawn weight (Use BIOME:weight, where BIOME is the Biome type, and weight is the spawning weight)")
+			public String[] bookBiomeTypes = new String[]{"MAGICAL:25", "SPOOKY:20", "MOUNTAIN:20", "PLAINS:20", "FOREST:20", "SNOWY:20"};
 		}
 	}
 }

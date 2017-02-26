@@ -21,12 +21,12 @@ public class AltarRecipeItemsHandler implements IRecipeHandler<RecipeItems> {
 
 	@Override
 	public String getRecipeCategoryUid() {
-		return LibJEI.ALTER_CATEGORY_UID;
+		return LibJEI.ALTAR_CATEGORY_UID;
 	}
 
 	@Override
 	public String getRecipeCategoryUid(RecipeItems recipe) {
-		return LibJEI.ALTER_CATEGORY_UID;
+		return LibJEI.ALTAR_CATEGORY_UID;
 	}
 
 	@Override
