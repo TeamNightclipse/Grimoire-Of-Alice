@@ -12,7 +12,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.items.IItemHandler;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class EntityMiracleCircle extends Entity {
@@ -123,48 +122,6 @@ public class EntityMiracleCircle extends Entity {
 			}
 		}
 		return false;
-	}
-
-	@Nonnull
-	private Vec3d getRotationVectorFromAngle(float yaw, float pitch) {
-		Vec3d vec3 = getVecFromAngle(yaw, pitch);
-		return getRotationVector(vec3.xCoord, vec3.yCoord, vec3.zCoord);
-	}
-
-	private Vec3d getRotationVector(double vectorX, double vectorY, double vectorZ) {
-		float disXZ = (float) Math.sqrt(vectorX * vectorX + vectorZ * vectorZ);
-		float angleYaw = (float) Math.atan2(-vectorX, vectorZ);
-		float anglePitch = (float) Math.atan2(-vectorY, disXZ);
-		float baseYaw = angleYaw;
-		float basePitch = anglePitch;
-		double X1, X2, Z1, Z2, vecX, vecY, vecZ;
-		float anglePitch_rad;
-		Vec3d lookAt = new Vec3d(vectorX, vectorY, vectorZ);
-		lookAt.rotateYaw((float) Math.PI * 2);
-
-		angleYaw = turnAngle / 180.0F * (float) Math.PI;
-		anglePitch = 0;
-		anglePitch_rad = (float) (anglePitch / 180.0D * Math.PI);
-
-		X1 = Math.sin(angleYaw) * Math.cos(baseYaw);
-		Z1 = Math.sin(angleYaw) * Math.sin(baseYaw);
-		X2 = Math.cos(angleYaw) * Math.sin(anglePitch_rad) * Math.sin(basePitch) * Math.sin(baseYaw);
-		Z2 = Math.cos(angleYaw) * Math.sin(anglePitch_rad) * Math.sin(basePitch) * Math.cos(baseYaw);
-
-		vecY = -Math.cos(angleYaw) * Math.sin(basePitch - anglePitch_rad);
-		vecX = Math.cos(angleYaw) * Math.cos(anglePitch_rad) * lookAt.xCoord + X1 - X2;
-		vecZ = Math.cos(angleYaw) * Math.cos(anglePitch_rad) * lookAt.zCoord + Z1 + Z2;
-
-		return new Vec3d(vecX, vecY, vecZ);
-	}
-
-	private Vec3d getVecFromAngle(float yaw, float pitch) {
-		double yaw_rad = (double) yaw / 180.0D * Math.PI;
-		double pitch_rad = (double) pitch / 180.0D * Math.PI;
-		double vectorX = -Math.sin(yaw_rad) * Math.cos(pitch_rad);
-		double vectorY = -Math.sin(pitch_rad);
-		double vectorZ = Math.cos(yaw_rad) * Math.cos(pitch_rad);
-		return new Vec3d(vectorX, vectorY, vectorZ);
 	}
 
 	@Override
