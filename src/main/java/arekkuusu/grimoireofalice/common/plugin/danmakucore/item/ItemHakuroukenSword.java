@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -60,6 +61,7 @@ public class ItemHakuroukenSword extends ItemModSword {
 		danmaku.rotationYaw = entityLiving.rotationYaw;
 		danmaku.rotationPitch = entityLiving.rotationPitch;
 		Vec3d vec3d = entityLiving.getLookVec();
+		danmaku.setAngle(new Vector3(vec3d));
 		danmaku.motionX *= vec3d.xCoord;
 		danmaku.motionY *= -vec3d.yCoord;
 		danmaku.motionZ *= vec3d.zCoord;
