@@ -11,12 +11,14 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.nio.FloatBuffer;
 
 @SideOnly(Side.CLIENT)
+//Code taken from Sheep rendering
 public class RenderGap extends Render<EntityGap> {
 
 	private static final ModelBase MODEL = new ModelFlat();
@@ -44,7 +46,7 @@ public class RenderGap extends Render<EntityGap> {
 		angle += speed * entity.ticksExisted;
 		if (angle > 360) angle -= 360;
 
-		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
+		GlStateManager.translate(0, maxUpAndDown * MathHelper.sin(angle * toDegrees), 0);
 		GlStateManager.rotate(entity.rotationYaw + 90, 0F, 1F, 0F);
 		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 

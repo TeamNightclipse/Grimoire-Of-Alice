@@ -13,6 +13,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -81,9 +82,9 @@ public class ItemGhostAnchor extends ItemModSword {
 				return;
 			}
 			double speed = 6;
-			player.motionX = -Math.sin(Math.toRadians(player.rotationYaw)) * speed;
-			player.motionY = -Math.sin(Math.toRadians(player.rotationPitch)) * speed;
-			player.motionZ = Math.cos(Math.toRadians(player.rotationYaw)) * speed;
+			player.motionX = -MathHelper.sin((float)Math.toRadians(player.rotationYaw)) * speed;
+			player.motionY = -MathHelper.sin((float)Math.toRadians(player.rotationPitch)) * speed;
+			player.motionZ = MathHelper.cos((float)Math.toRadians(player.rotationYaw)) * speed;
 			if(!player.capabilities.isCreativeMode) {
 				player.addExhaustion(1.5F);
 			}

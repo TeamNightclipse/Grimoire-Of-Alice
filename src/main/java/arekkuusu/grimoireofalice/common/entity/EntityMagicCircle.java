@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityMagicCircle extends Entity {
@@ -69,18 +70,8 @@ public class EntityMagicCircle extends Entity {
 				posZ = host.posZ;
 				setPosition(posX, posY, posZ);
 
-				while(rotationYaw > 180F) {
-					rotationYaw -= 360F;
-				}
-				while(rotationYaw < -180F) {
-					rotationYaw += 360F;
-				}
-				while(rotationPitch > 180F) {
-					rotationPitch -= 360F;
-				}
-				while(rotationPitch < -180F) {
-					rotationPitch += 360F;
-				}
+				rotationYaw = MathHelper.wrapDegrees(rotationYaw);
+				rotationPitch = MathHelper.wrapDegrees(rotationPitch);
 
 				setRotation(rotationYaw, rotationPitch);
 
