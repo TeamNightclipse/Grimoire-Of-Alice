@@ -6,11 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -26,10 +23,14 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EntityGap extends Entity {
 
@@ -55,7 +56,7 @@ public class EntityGap extends Entity {
 	public EntityGap(World worldIn, EntityPlayer player,@Nullable ItemStack stack) {
 		super(worldIn);
 		setPositionAndAngles(player);
-		setOririnUUID(getOriginUUID());
+		setOriginUUID(getOriginUUID());
 		this.player = player;
 		this.stack = stack;
 	}
@@ -88,9 +89,7 @@ public class EntityGap extends Entity {
 			if (portalCooldown == 0) {
 				Optional<EntityLivingBase> optional = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
 						entity -> entity instanceof EntityLivingBase).stream().map(entity -> ((EntityLivingBase) entity)).findFirst();
-				if (optional.isPresent()) {
-					teleport(optional.get());
-				}
+				optional.ifPresent(this::teleport);
 			}
 			if(portalCooldown > 0) {
 				--portalCooldown;
@@ -103,7 +102,7 @@ public class EntityGap extends Entity {
 		if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			IItemHandler handler = playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null);
 			for (int i = 0; i < handler.getSlots(); i++) {
-				if (handler.getStackInSlot(i) == toRemove) {
+				if (handler.getStackInSlot(i).isItemEqual(toRemove)) {
 					handler.extractItem(i, 1, false);
 				}
 			}
@@ -139,46 +138,33 @@ public class EntityGap extends Entity {
 
 	@Nullable
 	private EntityGap getClosestGapColorMatch(List<EntityGap> gaps) {
-		float closest = ConfigHandler.grimoireOfAlice.features.gapRange;
-		float min = 5;
-		EntityGap match = null;
-		for (EntityGap gap: gaps) {
-			float distance = gap.getDistanceToEntity(this);
-			if (distance < closest && distance > min && gap.getColor().getDyeDamage() == getColor().getDyeDamage()) {
-				closest = distance;
-				match = gap;
-			}
-		}
-		return match;
+		return sortGaps(gaps.stream().filter(g -> g.getColor() == getColor())).findFirst().orElse(null);
 	}
 
 	@Nullable
 	private EntityGap getClosestGap(List<EntityGap> gaps) {
-		float closest = ConfigHandler.grimoireOfAlice.features.gapRange;
+		return sortGaps(gaps.stream()).findFirst().orElse(null);
+	}
+
+	private Stream<EntityGap> sortGaps(Stream<EntityGap> gaps) {
+		float maxClose = ConfigHandler.grimoireOfAlice.features.gapRange;
 		float min = 5;
-		EntityGap match = null;
-		for (EntityGap gap: gaps) {
-			float distance = gap.getDistanceToEntity(this);
-			if (distance < closest && distance > min) {
-				closest = distance;
-				match = gap;
-			}
-		}
-		return match;
+		ToDoubleFunction<EntityGap> toDouble = g -> g.getDistanceSqToEntity(this);
+
+		return gaps.filter(g -> {
+			double dist = g.getDistanceSqToEntity(this);
+			return dist > min * min && dist < maxClose * maxClose;
+		}).sorted(Comparator.comparingDouble(toDouble));
 	}
 
 	@Nullable
 	private EntityGap getGapByUUID(List<EntityGap> gaps, UUID uuid) {
-		for (EntityGap gap : gaps) {
-			if (gap.getOriginUUID() == uuid) {
-				return gap;
-			}
-		}
-		return null;
+		return gaps.stream().filter(gap -> gap.getOriginUUID() == uuid).findFirst().orElse(null);
 	}
 
 	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
 		if (stack != null && isItemDye(stack)) {
+			//TODO: Use other part of ore name to get the actual color
 			EnumDyeColor enumdyecolor = EnumDyeColor.byDyeDamage(stack.getMetadata());
 			if(enumdyecolor != getColor()) {
 				setColor(enumdyecolor);
@@ -214,18 +200,6 @@ public class EntityGap extends Entity {
 	@Override
 	public Vec3d getLookVec() {
 		return this.getLook(1.0F);
-	}
-
-	@Override
-	public Vec3d getLook(float partialTicks) {
-		if (partialTicks == 1.0F) {
-			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
-		}
-		else {
-			float f = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partialTicks;
-			float f1 = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * partialTicks;
-			return this.getVectorForRotation(f, f1);
-		}
 	}
 
 	@Override
