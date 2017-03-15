@@ -30,9 +30,12 @@ import net.minecraft.world.World;
 //Much taken from BlockStairs
 public class BlockRope extends BlockMod {
 
-	private static final PropertyDirection FACING = BlockHorizontal.FACING;
-	private static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
-	private static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyDirection FACING = BlockHorizontal.FACING;
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
 	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
 	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
