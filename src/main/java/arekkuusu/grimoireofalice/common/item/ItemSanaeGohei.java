@@ -16,12 +16,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -42,10 +39,13 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiPredicate;
@@ -56,6 +56,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
+	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, null, new String[] {"convertToVillager", "func_82232_p"});
+
+	static {
+		CONVERT_ZOMBIE.setAccessible(true);
+	}
 
 	public ItemSanaeGohei() {
 		super(LibItemName.SANAE_GOHEI, Miracles.values());
@@ -248,39 +253,17 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	private boolean convertNearZombies(EntityPlayer player, World world) {
 		List<EntityZombie> list = world.getEntitiesWithinAABB(EntityZombie.class, player.getEntityBoundingBox().expandXyz(10));
-		list.forEach(zombie -> {
-			convertToVillager(zombie, world);
-		});
+		list.forEach(this::convertToVillager);
 		return !list.isEmpty();
 	}
 
-	private void convertToVillager(EntityZombie zombie, World world) {
-		EntityVillager entityvillager = new EntityVillager(world);
-		entityvillager.copyLocationAndAnglesFrom(zombie);
-		entityvillager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(entityvillager)), null);
-		entityvillager.setLookingForHome();
-
-		if (zombie.isChild()) {
-			entityvillager.setGrowingAge(-24000);
+	private void convertToVillager(EntityZombie zombie) {
+		try {
+			CONVERT_ZOMBIE.invoke(zombie);
 		}
-
-		world.removeEntity(zombie);
-		entityvillager.setNoAI(zombie.isAIDisabled());
-		if (zombie.getVillagerTypeForge() != null) {
-			entityvillager.setProfession(zombie.getVillagerTypeForge());
+		catch(IllegalAccessException | InvocationTargetException e) {
+			e.printStackTrace();
 		}
-		else {
-			entityvillager.setProfession(0);
-		}
-
-		if (zombie.hasCustomName()) {
-			entityvillager.setCustomNameTag(zombie.getCustomNameTag());
-			entityvillager.setAlwaysRenderNameTag(zombie.getAlwaysRenderNameTag());
-		}
-
-		world.spawnEntityInWorld(entityvillager);
-		entityvillager.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
-		world.playEvent(null, 1027, new BlockPos((int) zombie.posX, (int) zombie.posY, (int) zombie.posZ), 0);
 	}
 
 	private void applyBonemealRandomPos(EntityPlayer player, World world) {
