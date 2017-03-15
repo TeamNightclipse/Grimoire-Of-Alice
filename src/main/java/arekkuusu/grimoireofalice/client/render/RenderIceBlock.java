@@ -21,6 +21,22 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 		super(renderManager);
 	}
 
+	private static final int p[][] = {
+			{0, 1, 2, 3},
+			{3, 2, 5, 4},
+			{2, 1, 6, 5},
+			{1, 0, 7, 6},
+			{0, 3, 4, 7},
+			{4, 5, 6, 7}
+	};
+
+	private static final int t[][] = {
+			{0, 1},
+			{1, 1},
+			{1, 0},
+			{0, 0}
+	};
+
 	@Override
 	public void doRender(EntityIceBlock box, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
@@ -40,21 +56,11 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 		float py[] = {height, height, height, height, 0.0F, 0.0F, 0.0F, 0.0F};
 		float pz[] = {width, width, -width, -width, -width, -width, width, width};
 
-		int p[][] = {
-				{0, 1, 2, 3},
-				{3, 2, 5, 4},
-				{2, 1, 6, 5},
-				{1, 0, 7, 6},
-				{0, 3, 4, 7},
-				{4, 5, 6, 7}
-		};
 		for (int i = 0; i < 6; i++) {
 			vex.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-
-			tessellator.getBuffer().pos(px[p[i][0]], py[p[i][0]], pz[p[i][0]]).tex(0, 1).endVertex();
-			tessellator.getBuffer().pos(px[p[i][1]], py[p[i][1]], pz[p[i][1]]).tex(1, 1).endVertex();
-			tessellator.getBuffer().pos(px[p[i][2]], py[p[i][2]], pz[p[i][2]]).tex(1, 0).endVertex();
-			tessellator.getBuffer().pos(px[p[i][3]], py[p[i][3]], pz[p[i][3]]).tex(0, 0).endVertex();
+			for(int j = 0; j < 4; j++) {
+				tessellator.getBuffer().pos(px[p[i][j]], py[p[i][j]], pz[p[i][j]]).tex(t[i][0], t[i][1]).endVertex();
+			}
 			tessellator.draw();
 		}
 
