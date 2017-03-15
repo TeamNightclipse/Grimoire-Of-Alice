@@ -316,8 +316,6 @@ public class ConfigHandler {
 
 			@Comment("Set this to false to prevent books from spawning naturally")
 			public boolean bookSpawning = true;
-			@Comment("Put here all biome types where the book can spawn and the spawn weight (Use BIOME:weight, where BIOME is the Biome type, and weight is the spawning weight)")
-			public String[] bookBiomeTypes = new String[]{"MAGICAL:25", "SPOOKY:20", "MOUNTAIN:20", "PLAINS:20", "FOREST:20", "SNOWY:20"};
 		}
 	}
 }
