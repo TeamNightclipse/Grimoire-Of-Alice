@@ -71,15 +71,15 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 			return false;
 		}
 		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
-		if (!entityLiving.worldObj.isRemote) {
+		if (!entityLiving.world.isRemote) {
 			double range = 50.0D;
 			Vec3d look = entityLiving.getLookVec();
 			Vec3d vec3d = new Vec3d(entityLiving.posX, entityLiving.posY + entityLiving.getEyeHeight(), entityLiving.posZ);
 			Vec3d vec3d1 = new Vec3d(entityLiving.posX + look.xCoord * range, entityLiving.posY + look.yCoord * range, entityLiving.posZ + look.zCoord * range);
-			RayTraceResult traceResult = entityLiving.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
+			RayTraceResult traceResult = entityLiving.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
 
-			List<Entity> list = entityLiving.worldObj.getEntitiesInAABBexcluding(entityLiving
+			List<Entity> list = entityLiving.world.getEntitiesInAABBexcluding(entityLiving
 					, entityLiving.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D)
 					, Entity::canBeCollidedWith);
 
@@ -96,8 +96,8 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 				}
 			}
 
-			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.worldObj, entityLiving, entity);
-			entityLiving.worldObj.spawnEntityInWorld(entityNetherSoul);
+			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, entity);
+			entityLiving.world.spawnEntityInWorld(entityNetherSoul);
 			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
 		}
 		if (entityLiving instanceof EntityPlayer) {
@@ -151,7 +151,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner {
 	}
 
 	private void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
-		player.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
+		player.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 
 	@Override

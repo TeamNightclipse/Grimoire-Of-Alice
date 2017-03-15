@@ -65,8 +65,8 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float pageFlipLow = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;
 		float pageFlipHigh = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.75F;
-		pageFlipLow = (pageFlipLow - MathHelper.truncateDoubleToInt(pageFlipLow)) * 1.6F - 0.3F;
-		pageFlipHigh = (pageFlipHigh - MathHelper.truncateDoubleToInt(pageFlipHigh)) * 1.6F - 0.3F;
+		pageFlipLow = (pageFlipLow - MathHelper.fastFloor(pageFlipLow)) * 1.6F - 0.3F;
+		pageFlipHigh = (pageFlipHigh - MathHelper.fastFloor(pageFlipHigh)) * 1.6F - 0.3F;
 
 		if(pageFlipLow < 0.0F) {
 			pageFlipLow = 0.0F;

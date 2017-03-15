@@ -47,7 +47,7 @@ public class EntityDragonJewel extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (host == null) {
 				setDead();
 			}
@@ -57,11 +57,11 @@ public class EntityDragonJewel extends Entity {
 		}
 		attackEntities();
 		if (ticksExisted % 50 == 0) {
-			worldObj.playSound(null, posX, posY, posZ, GrimoireSoundEvents.HORN, SoundCategory.NEUTRAL, 0.5F, 1F);
+			world.playSound(null, posX, posY, posZ, GrimoireSoundEvents.HORN, SoundCategory.NEUTRAL, 0.5F, 1F);
 		}
 		if (ticksExisted % 10 == 0) {
 			for (int i = 0; i < 2; ++i) {
-				worldObj.spawnParticle(EnumParticleTypes.PORTAL
+				world.spawnParticle(EnumParticleTypes.PORTAL
 						, posX + (rand.nextDouble() - 0.5D) * width, posY + rand.nextDouble() * height - 0.25D,
 						posZ + (rand.nextDouble() - 0.5D) * width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
 						, (rand.nextDouble() - 0.5D) * 2.0D);
@@ -71,9 +71,9 @@ public class EntityDragonJewel extends Entity {
 
 	private void attackEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
-		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityLivingBase).map(mob -> (EntityLivingBase) mob).forEach(mob -> {
-			if(!worldObj.isRemote) {
+			if(!world.isRemote) {
 				if (mob instanceof EntityMob || mob.getAITarget() == host) {
 					mob.setRevengeTarget(null);
 
@@ -84,7 +84,7 @@ public class EntityDragonJewel extends Entity {
 			}
 
 			for (int i = 0; i < 2; ++i) {
-				mob.worldObj.spawnParticle(EnumParticleTypes.PORTAL,
+				mob.world.spawnParticle(EnumParticleTypes.PORTAL,
 						mob.posX + (rand.nextDouble() - 0.5D) * mob.width,
 						mob.posY + rand.nextDouble() * mob.height - 0.25D,
 						mob.posZ + (rand.nextDouble() - 0.5D) * mob.width,
@@ -94,7 +94,7 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (host != null && host instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) host;
 				if(!player.capabilities.isCreativeMode) {

@@ -46,7 +46,7 @@ public class SubEntityWind extends SubEntityType {
 		@Override
 		public void subEntityTick() {
 			super.subEntityTick();
-			World world = danmaku.worldObj;
+			World world = danmaku.world;
 
 			if(!world.isRemote) {
 				if(danmaku.isInWater() || danmaku.isInLava()) {
@@ -65,7 +65,7 @@ public class SubEntityWind extends SubEntityType {
 
 		@Override
 		protected void impactEntity(RayTraceResult result) {
-			if(!danmaku.worldObj.isRemote) {
+			if(!danmaku.world.isRemote) {
 				if(result.entityHit instanceof EntityLiving) {
 					result.entityHit.attackEntityFrom(DamageSource.magic, timeUsed / 2F);
 					Vec3d windPos = danmaku.getPositionVector();

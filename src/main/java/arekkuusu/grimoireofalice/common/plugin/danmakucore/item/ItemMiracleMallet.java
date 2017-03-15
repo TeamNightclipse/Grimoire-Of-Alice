@@ -95,10 +95,10 @@ public class ItemMiracleMallet extends ItemMod {
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			player.worldObj.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
-			if (player.isSneaking() && !player.worldObj.isRemote) {
+			player.world.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
+			if (player.isSneaking() && !player.world.isRemote) {
 				Vec3d vec = player.getLookVec();
-				List<EntityDanmaku> list = player.worldObj.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox()
+				List<EntityDanmaku> list = player.world.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox()
 						.offset(vec.xCoord * 10, vec.yCoord * 10, vec.zCoord * 10).expandXyz(10));
 				for (EntityDanmaku danmaku : list) {
 					ShotData data = danmaku.getShotData();
@@ -106,15 +106,15 @@ public class ItemMiracleMallet extends ItemMod {
 						danmaku.setShotData(data.scaleSize(1.2F));
 				}
 			}
-			else if (!player.worldObj.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
+			else if (!player.world.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
 				Vec3d vec = player.getLookVec();
-				List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3D), entity -> entity != player);
 				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10F + itemRand.nextInt(10)));
 
 				for (int i = 0; i < 4; i++) {
-					EntityThrowable lantern = new EntityMiracleLantern(player.worldObj, player);
-					player.worldObj.spawnEntityInWorld(lantern);
+					EntityThrowable lantern = new EntityMiracleLantern(player.world, player);
+					player.world.spawnEntityInWorld(lantern);
 					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
 							, 0F, 0.2F + 0.1F * itemRand.nextInt(3), 3F);
 				}

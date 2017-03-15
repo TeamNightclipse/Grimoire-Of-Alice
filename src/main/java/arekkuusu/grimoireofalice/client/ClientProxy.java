@@ -283,23 +283,23 @@ public class ClientProxy implements ISidedProxy {
 		Particle particle;
 		switch (particleFX) {
 			case SHINMYOUMARU_SPARKLE:
-				particle = new ShinmyoumaruSpark(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				particle = new ShinmyoumaruSpark(Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			case RED_MIST:
 				if (entity == null) return;
-				particle = new RedMist(Minecraft.getMinecraft().theWorld, entity, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				particle = new RedMist(Minecraft.getMinecraft().world, entity, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			case NEEDLE_SWING:
-				particle = new NeedleSwing(Minecraft.getMinecraft().renderEngine, Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn);
+				particle = new NeedleSwing(Minecraft.getMinecraft().renderEngine, Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn);
 				break;
 			case RED_GAS:
-				particle = new RedGas(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				particle = new RedGas(Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			case NETHER_FIRE:
-				particle = new NetherFire(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				particle = new NetherFire(Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			default:
-				particle = new Particle(Minecraft.getMinecraft().theWorld, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
+				particle = new Particle(Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 		}
 		Minecraft.getMinecraft().effectRenderer.addEffect(particle);
 	}

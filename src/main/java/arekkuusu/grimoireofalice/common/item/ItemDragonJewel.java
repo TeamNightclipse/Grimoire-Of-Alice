@@ -77,7 +77,7 @@ public class ItemDragonJewel extends ItemMod {
 				}
 
 				if (!worldIn.isRemote) {
-					List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 							player.getEntityBoundingBox().offset(vec.xCoord * 3, 0, vec.zCoord * 3).expandXyz(4D), entity -> entity != player);
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 				}

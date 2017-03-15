@@ -41,9 +41,9 @@ public class EntityKinkakuJiCeiling extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (!onGround && motionY < 0) {
-				worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.fallingBlock, 50));
+				world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.fallingBlock, 50));
 			}
 			if (ticksExisted > 2000) {
 				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
@@ -53,10 +53,10 @@ public class EntityKinkakuJiCeiling extends Entity {
 
 		Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
 		Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-		RayTraceResult raytraceresult = this.worldObj.rayTraceBlocks(vec3d, vec3d1);
+		RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d, vec3d1);
 
 		onGround = raytraceresult != null && raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK
-				&& worldObj.getBlockState(raytraceresult.getBlockPos()).getMaterial() != Material.PLANTS;
+				&& world.getBlockState(raytraceresult.getBlockPos()).getMaterial() != Material.PLANTS;
 
 		if (!onGround) {
 			motionY -= 0.025;
@@ -75,7 +75,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
-		if(!worldObj.isRemote && !isDead) {
+		if(!world.isRemote && !isDead) {
 			dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
 			setDead();
 		}

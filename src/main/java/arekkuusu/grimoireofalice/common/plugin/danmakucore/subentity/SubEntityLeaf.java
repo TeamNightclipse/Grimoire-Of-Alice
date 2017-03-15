@@ -34,7 +34,7 @@ public class SubEntityLeaf extends SubEntityType {
 
 			if (danmaku.isShotEndTime()) {
 					for (int j = 0; j < 8; ++j) {
-						danmaku.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
+						danmaku.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
 					}
 				if(!world.isRemote) {
 					DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setShot(LibGOAShotData.UFO).setSource(this.danmaku);

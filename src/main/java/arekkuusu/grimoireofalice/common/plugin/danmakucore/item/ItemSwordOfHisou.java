@@ -73,7 +73,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
-		if(!entityLivingBase.worldObj.isRemote && entityLivingBase instanceof EntityPlayer) {
+		if(!entityLivingBase.world.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase, 35);
@@ -102,7 +102,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
 		if (count > 260 && count % 5 == 0) {
-			List<EntityMob> list = livingBase.worldObj.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().expandXyz(20));
+			List<EntityMob> list = livingBase.world.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().expandXyz(20));
 			if (!list.isEmpty()) {
 				for (EntityLivingBase entityMob : list) {
 					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, livingBase, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
@@ -111,7 +111,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		}
 		if (count < 260 && count > 220 && count % 2 == 0) {
 			livingBase.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-			World world = livingBase.worldObj;
+			World world = livingBase.world;
 			if (!world.isRemote && livingBase instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) livingBase;
 				if (isOwner(stack, player)) {
@@ -182,7 +182,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	}
 
 	private void spawnGround(EntityPlayer player, double xVelocity, double zVelocity) {
-		player.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
+		player.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 
 	@Override
@@ -191,10 +191,10 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 			if (pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
 				stack.damageItem(1, entityLiving);
 				if (!worldIn.isRemote) {
-					EntityItem entityItem = new EntityItem(entityLiving.worldObj, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+					EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 							new ItemStack(ModItems.HEAVENLY_PEACH));
 
-					entityLiving.worldObj.spawnEntityInWorld(entityItem);
+					entityLiving.world.spawnEntityInWorld(entityItem);
 				}
 				return true;
 			}

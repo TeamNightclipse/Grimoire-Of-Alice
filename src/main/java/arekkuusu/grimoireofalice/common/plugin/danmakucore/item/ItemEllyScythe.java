@@ -122,7 +122,7 @@ public class ItemEllyScythe extends ItemModSword {
 		Vector3 posSource = new Vector3(player).offset(angle, random.nextDouble() * 16);
 		Vector3 posReach = posSource.offset(Vector3.Down(), 16);
 
-		RayTraceResult ray = player.worldObj.rayTraceBlocks(posSource.toVec3d(), posReach.toVec3d());
+		RayTraceResult ray = player.world.rayTraceBlocks(posSource.toVec3d(), posReach.toVec3d());
 
 		Vector3 spawnPos = ray != null ? new Vector3(ray.hitVec) : posReach;
 
@@ -133,7 +133,7 @@ public class ItemEllyScythe extends ItemModSword {
 				.setPos(spawnPos)
 				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
 				.build().asEntity();
-		player.worldObj.spawnEntityInWorld(danmaku);
+		player.world.spawnEntityInWorld(danmaku);
 	}
 
 	@Override

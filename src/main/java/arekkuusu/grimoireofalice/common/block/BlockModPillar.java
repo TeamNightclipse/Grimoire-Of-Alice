@@ -111,7 +111,7 @@ public class BlockModPillar extends BlockMod {
 
 	@Nullable
 	@Override
-	protected ItemStack createStackedBlock(IBlockState state) {
+	protected ItemStack getSilkTouchDrop(IBlockState state) {
 		Item itemBlock = Item.getItemFromBlock(this);
 		return itemBlock == null ? null : new ItemStack(itemBlock);
 	}

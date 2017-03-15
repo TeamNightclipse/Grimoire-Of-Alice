@@ -88,7 +88,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		if(target instanceof EntityPlayer) {
-			extinguishEffect(target, target.worldObj);
+			extinguishEffect(target, target.world);
 		}
 		else {
 			target.setFire(10);

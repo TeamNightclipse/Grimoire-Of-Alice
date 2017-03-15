@@ -40,8 +40,8 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float f3 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.25F;
 		float f4 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.75F;
-		f3 = (f3 - MathHelper.truncateDoubleToInt(f3)) * 1.6F - 0.3F;
-		f4 = (f4 - MathHelper.truncateDoubleToInt(f4)) * 1.6F - 0.3F;
+		f3 = (f3 - MathHelper.fastFloor(f3)) * 1.6F - 0.3F;
+		f4 = (f4 - MathHelper.fastFloor(f4)) * 1.6F - 0.3F;
 
 		if(f3 < 0.0F) {
 			f3 = 0.0F;

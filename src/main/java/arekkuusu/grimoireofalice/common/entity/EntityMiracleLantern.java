@@ -57,6 +57,6 @@ public class EntityMiracleLantern extends EntityThrowable {
 	protected void onImpact(RayTraceResult result) {
 		if (result.entityHit != null) result.entityHit.attackEntityFrom(DamageSource.magic, 5F);
 		playSound(SoundEvents.BLOCK_ANVIL_PLACE, 0.1F, 0.1F);
-		if (!worldObj.isRemote) setDead();
+		if (!world.isRemote) setDead();
 	}
 }

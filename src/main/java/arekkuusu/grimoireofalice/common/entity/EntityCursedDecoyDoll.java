@@ -59,7 +59,7 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 
 	private void stealAgroAround() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
-		List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
 			mob.setAttackTarget(this);
 			mob.setRevengeTarget(this);
@@ -87,7 +87,7 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 	public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nullable ItemStack stack) {}
 
 	private void stopEntity() {
-		if(!worldObj.isRemote) {
+		if(!world.isRemote) {
 			if(user != null) {
 				if(!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.CURSED_DECOY_DOLL));

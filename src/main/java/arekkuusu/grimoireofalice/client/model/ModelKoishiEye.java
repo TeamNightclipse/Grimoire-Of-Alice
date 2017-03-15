@@ -232,7 +232,7 @@ public class ModelKoishiEye extends ModelBiped {
 		if (this.swingProgress > 0.0F) {
 			EnumHandSide enumhandside = this.getMainHand(entityIn);
 			float f1 = this.swingProgress;
-			this.eye.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(f1) * ((float) Math.PI * 2F)) * 0.2F;
+			this.eye.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
 
 			if (enumhandside == EnumHandSide.LEFT) {
 				this.eye.rotateAngleY *= -1.0F;

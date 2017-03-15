@@ -69,7 +69,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (!worldIn.isRemote && entityIn instanceof EntityPlayer) {
 			short jewels = getJewels(stack);
-			int i = MathHelper.clamp_int(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
+			int i = MathHelper.clamp(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
 			if (jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
 				jewels += 1;
 				if (jewels < 0) {

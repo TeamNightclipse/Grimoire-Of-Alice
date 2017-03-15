@@ -38,7 +38,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData {
 	public ItemMochiHammer(ToolMaterial material) {
 		super(material, LibItemName.MOCHI_HAMMER);
 		addPropertyOverride(new ResourceLocation("deaths"),
-				(stack, world, entity) -> stack.hasTagCompound() ? MathHelper.clamp_float((float) getData(stack), 0.0F, 90F) : 0F);
+				(stack, world, entity) -> stack.hasTagCompound() ? MathHelper.clamp((float) getData(stack), 0.0F, 90F) : 0F);
 	}
 
 	@Override

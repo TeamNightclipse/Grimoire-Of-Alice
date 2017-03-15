@@ -111,7 +111,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			motionY *= 0.6000000238418579D;
 		}
 
-		if(worldObj.canSeeSky(getPosition())) {
+		if(world.canSeeSky(getPosition())) {
 			setFire(2);
 		}
 	}
@@ -122,23 +122,23 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 		BlockPos blockpos = new BlockPos(this).down();
 
 		if (getIsBookLaying()) {
-			if (worldObj.getBlockState(blockpos).getMaterial() == Material.WOOD) {
+			if (world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
 				if (rand.nextInt(200) == 0) {
 					rotationYawHead = (float) rand.nextInt(360);
 				}
 
-				if (this.worldObj.getNearestPlayerNotCreative(this, 4.0D) != null) {
+				if (this.world.getNearestPlayerNotCreative(this, 4.0D) != null) {
 					setIsBookLaying(false);
-					worldObj.playEvent(null, 1025, blockpos, 0);
+					world.playEvent(null, 1025, blockpos, 0);
 				}
 			}
 			else {
 				setIsBookLaying(false);
-				worldObj.playEvent(null, 1025, blockpos, 0);
+				world.playEvent(null, 1025, blockpos, 0);
 			}
 		}
 		else {
-			if (spawnPosition != null && (!worldObj.isAirBlock(spawnPosition) || spawnPosition.getY() < 1)) {
+			if (spawnPosition != null && (!world.isAirBlock(spawnPosition) || spawnPosition.getY() < 1)) {
 				spawnPosition = null;
 			}
 
@@ -157,7 +157,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			moveForward = 0.5F;
 			rotationYaw += f1;
 
-			if (rand.nextInt(100) == 0 && worldObj.getBlockState(blockpos).getMaterial() == Material.WOOD) {
+			if (rand.nextInt(100) == 0 && world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
 				setIsBookLaying(true);
 			}
 		}
@@ -187,7 +187,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			return false;
 		}
 		else {
-			if (!worldObj.isRemote && getIsBookLaying()) {
+			if (!world.isRemote && getIsBookLaying()) {
 				setIsBookLaying(false);
 			}
 
@@ -216,7 +216,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	public boolean getCanSpawnHere() {
 		BlockPos blockpos = new BlockPos(posX, getEntityBoundingBox().minY, posZ);
 
-		if (worldObj.canSeeSky(blockpos) || worldObj.getLightFromNeighbors(blockpos) < rand.nextInt(4)) {
+		if (world.canSeeSky(blockpos) || world.getLightFromNeighbors(blockpos) < rand.nextInt(4)) {
 			return false;
 		}
 
@@ -225,7 +225,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 		int bookCout = 0;
 
 		for (BlockPos pos : BlockPos.getAllInBox(posI, posF)) {
-			if (worldObj.getBlockState(pos).getBlock() == Blocks.BOOKSHELF) {
+			if (world.getBlockState(pos).getBlock() == Blocks.BOOKSHELF) {
 				bookCout++;
 			}
 		}

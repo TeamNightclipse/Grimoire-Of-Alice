@@ -119,7 +119,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int ticks) {
 		if (getType(stack) == AURA_MANIPULATION) {
-			List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+			List<EntityLivingBase> list = playerIn.world.getEntitiesWithinAABB(EntityLivingBase.class,
 					playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
 			for(EntityLivingBase mob : list) {
 				Vec3d playerPos = playerIn.getPositionVector();
@@ -132,7 +132,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 				mob.motionZ = -motion.zCoord * 1.2;
 				mob.fallDistance = 0.0F;
 				if(ticks % 4 == 0) {
-					mob.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
+					mob.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
 							mob.posY + itemRand.nextDouble() * mob.height - 0.25D, mob.posZ + (itemRand.nextDouble() - 0.5D) * mob.width,
 							(itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat(), (itemRand.nextFloat() - 0.5D) * 0.2);
 				}
@@ -167,20 +167,20 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (getType(stack) == OFFENSIVE) {
 			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-				attacker.worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.worldObj.isRemote) {
+				attacker.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+				if(!target.world.isRemote) {
 					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
 				}
 			}
 			else if (target.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) {
-				attacker.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.worldObj.isRemote) {
+				attacker.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+				if(!target.world.isRemote) {
 					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
 				}
 			}
 			else if (target instanceof EntityPlayer) {
-				attacker.worldObj.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.worldObj.isRemote) {
+				attacker.world.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+				if(!target.world.isRemote) {
 					target.attackEntityFrom(DamageSource.magic, 5);
 				}
 			}

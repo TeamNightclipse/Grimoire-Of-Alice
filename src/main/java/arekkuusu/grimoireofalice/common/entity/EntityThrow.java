@@ -83,7 +83,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		super.onUpdate();
 		if(getCritical()) {
 			for(int i = 0; i < 2; i++) {
-				worldObj.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX + motionX * i / 4D, posY + motionY * i / 4D, posZ + motionZ * i / 4D,
+				world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX + motionX * i / 4D, posY + motionY * i / 4D, posZ + motionZ * i / 4D,
 						-motionX, -motionY + 0.2D, -motionZ);
 			}
 		}
@@ -101,7 +101,7 @@ public abstract class EntityThrow extends EntityThrowable {
 
 	protected void onImpactBlock(RayTraceResult result) {
 		BlockPos pos = result.getBlockPos();
-		IBlockState tile = worldObj.getBlockState(pos);
+		IBlockState tile = world.getBlockState(pos);
 		motionX = result.hitVec.xCoord - posX;
 		motionY = result.hitVec.yCoord - posY;
 		motionZ = result.hitVec.zCoord - posZ;
@@ -114,7 +114,7 @@ public abstract class EntityThrow extends EntityThrowable {
 		throwableShake = getMaxShake();
 
 		if(tile != Blocks.AIR.getDefaultState()) {
-			tile.getBlock().onEntityCollidedWithBlock(worldObj, pos, tile, this);
+			tile.getBlock().onEntityCollidedWithBlock(world, pos, tile, this);
 		}
 	}
 
@@ -129,7 +129,7 @@ public abstract class EntityThrow extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(!worldObj.isRemote && (inGround || throwableShake <= 0)) {
+		if(!world.isRemote && (inGround || throwableShake <= 0)) {
 			if(getThrower() != null) {
 				if(canPickup(entityplayer)) {
 					if(!entityplayer.capabilities.isCreativeMode) {

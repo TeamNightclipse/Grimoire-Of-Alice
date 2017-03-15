@@ -46,7 +46,7 @@ public class ItemSyringe extends ItemModSword {
 	}
 
 	private void doPotionEffect(EntityLivingBase target) {
-		if(!target.worldObj.isRemote) {
+		if(!target.world.isRemote) {
 			if(target.getActivePotionEffects().size() < 5) {
 				Potion potion = Potion.REGISTRY.getRandomObject(target.getRNG());
 				if (potion != null) {

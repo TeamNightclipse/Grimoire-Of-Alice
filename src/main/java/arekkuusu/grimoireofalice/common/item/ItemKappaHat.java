@@ -58,7 +58,7 @@ public class ItemKappaHat extends ItemModArmor {
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.worldObj.isRemote && !player.capabilities.isFlying && player.moveForward > 0F) {
+		if (player.world.isRemote && !player.capabilities.isFlying && player.moveForward > 0F) {
 			if (player.isInWater() || player.isInsideOfMaterial(Material.WATER)) {
 				player.moveRelative(0F, 1F, 0.085F);
 			} else if (!player.isWet()) {

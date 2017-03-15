@@ -103,7 +103,7 @@ public class GuiScreenGuide extends GuiScreen {
 		mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[currPage]);
 		drawTexturedModalRect((width - 250) / 2, 56, 0, 0, 256, 192);
 
-		List<String> get = TEXTS.get(MathHelper.clamp_int(currPage, 0, 9));
+		List<String> get = TEXTS.get(MathHelper.clamp(currPage, 0, 9));
 		for (int i = 0; i < get.size(); i++) {
 			String s = get.get(i);
 			fontRendererObj.drawString(s, (width - 245) / 2, 70 + i * 12, 0);

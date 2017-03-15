@@ -117,7 +117,7 @@ public class ItemShouLamp extends ItemJeweled {
 							player.getEntityBoundingBox().expandXyz(4.0D));
 					for (EntityLivingBase mob : list) {
 						mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
-						if (!mob.worldObj.isRemote) {
+						if (!mob.world.isRemote) {
 							EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL,
 									jewels * 2);
 							worldIn.spawnEntityInWorld(circle);

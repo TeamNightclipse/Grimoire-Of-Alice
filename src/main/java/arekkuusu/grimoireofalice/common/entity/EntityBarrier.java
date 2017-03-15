@@ -56,7 +56,7 @@ public class EntityBarrier extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if(player == null) {
-			if(!worldObj.isRemote) {
+			if(!world.isRemote) {
 				setDead();
 			}
 		}
@@ -68,8 +68,8 @@ public class EntityBarrier extends Entity {
 				isStatic = true;
 			}
 
-			if(!worldObj.isRemote) {
-				List<Entity> entities = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+			if(!world.isRemote) {
+				List<Entity> entities = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
 						entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && entity1 != player);
 
 				if (!entities.isEmpty()) {
@@ -77,7 +77,7 @@ public class EntityBarrier extends Entity {
 				}
 			}
 
-			if(ticksExisted > 200 && !worldObj.isRemote) {
+			if(ticksExisted > 200 && !world.isRemote) {
 				setDead();
 			}
 		}
@@ -85,8 +85,8 @@ public class EntityBarrier extends Entity {
 
 	private void onDetectEntity(Entity living) {
 		if(type == Barrier.EXPLODE) {
-			if (worldObj instanceof WorldServer) {
-				((WorldServer) worldObj).spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX + 0.5, posY + 0.5, posZ + 0.5, 1, motionX, motionY, motionZ, 0.1D);
+			if (world instanceof WorldServer) {
+				((WorldServer) world).spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, posX + 0.5, posY + 0.5, posZ + 0.5, 1, motionX, motionY, motionZ, 0.1D);
 			}
 			playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
 

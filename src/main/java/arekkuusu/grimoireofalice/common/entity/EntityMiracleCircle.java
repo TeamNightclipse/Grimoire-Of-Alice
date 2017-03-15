@@ -45,7 +45,7 @@ public class EntityMiracleCircle extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if((user == null || user.isDead || !user.isHandActive()) && !worldObj.isRemote) {
+		if((user == null || user.isDead || !user.isHandActive()) && !world.isRemote) {
 			if(stack != null && user != null) {
 				user.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.2F, 0.1F);
 				if(getCharge() < 30) {
@@ -70,7 +70,7 @@ public class EntityMiracleCircle extends Entity {
 			posZ = user.posZ + vec3.zCoord * 2;
 			setPosition(posX, posY, posZ);
 
-			if(!worldObj.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
+			if(!world.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
 				if(getCharge() < 30) {
 					if (hasFaith(user) && consumeFaith(user)) {
 						charge += 5;
@@ -81,8 +81,8 @@ public class EntityMiracleCircle extends Entity {
 						charge += 1;
 					}
 				}
-				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(worldObj, user, null);
-				worldObj.spawnEntityInWorld(miracleCircle);
+				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, null);
+				world.spawnEntityInWorld(miracleCircle);
 				++circles;
 			}
 		}

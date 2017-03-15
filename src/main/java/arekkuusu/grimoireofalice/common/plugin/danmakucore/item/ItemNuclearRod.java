@@ -61,7 +61,7 @@ public class ItemNuclearRod extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
-		List<EntityLivingBase> list = livingBase.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5), entity -> entity != livingBase);
+		List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5), entity -> entity != livingBase);
 		for (EntityLivingBase living : list) {
 			if (living instanceof EntityPlayer) {
 				if(!hasBoots((EntityPlayer) living)) {

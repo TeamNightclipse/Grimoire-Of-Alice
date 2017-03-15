@@ -40,7 +40,7 @@ public class HouraiEvents {
 	public void onDeath(LivingDeathEvent event) {
 		if (ConfigHandler.grimoireOfAlice.features.allowRevive) {
 			EntityLivingBase victim = event.getEntityLiving();
-			World world = victim.worldObj;
+			World world = victim.world;
 
 			if (!world.isRemote && victim instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) victim;

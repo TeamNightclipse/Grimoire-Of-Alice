@@ -131,8 +131,8 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 		@Override
 		public void onContentsChanged(int slot) {
 			tile.markDirty();
-			IBlockState state = tile.worldObj.getBlockState(tile.getPos());
-			tile.worldObj.notifyBlockUpdate(tile.getPos(), state, state, 8);
+			IBlockState state = tile.world.getBlockState(tile.getPos());
+			tile.world.notifyBlockUpdate(tile.getPos(), state, state, 8);
 		}
 	}
 }

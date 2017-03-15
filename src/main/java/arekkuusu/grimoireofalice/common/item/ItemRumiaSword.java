@@ -51,7 +51,7 @@ public class ItemRumiaSword extends ItemModSword {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			Vec3d vec = player.getLookVec();
-			List<EntityLivingBase> list = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 					entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
 			list.forEach(entity -> entity.setFire(50));
 		}

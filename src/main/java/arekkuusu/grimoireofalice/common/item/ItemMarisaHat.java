@@ -92,9 +92,9 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor {
 		if (stack.getItemDamage() == 0) {
 			IItemHandler handler = stack.getCapability(ITEM_HANDLER_CAPABILITY, null);
 			for (int i = 0; i < handler.getSlots(); i++) {
-				if (!entity.worldObj.isRemote) {
-					EntityItem item = new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, handler.extractItem(i, 64, false));
-					entity.worldObj.spawnEntityInWorld(item);
+				if (!entity.world.isRemote) {
+					EntityItem item = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, handler.extractItem(i, 64, false));
+					entity.world.spawnEntityInWorld(item);
 				}
 			}
 			entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, null);

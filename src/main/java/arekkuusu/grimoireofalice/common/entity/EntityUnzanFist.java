@@ -53,7 +53,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
 				onImpactBlock(result);
 			}
@@ -64,7 +64,7 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactBlock(RayTraceResult result) {
-		IBlockState base = worldObj.getBlockState(result.getBlockPos());
+		IBlockState base = world.getBlockState(result.getBlockPos());
 		boolean canHitBlock = base.getBlock() != Blocks.TALLGRASS && base.getBlock() != Blocks.DOUBLE_PLANT;
 		if (canHitBlock) {
 			explode();
@@ -84,7 +84,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(!worldObj.isRemote) {
+		if(!world.isRemote) {
 			if (entityplayer != getThrower()) {
 				explode();
 			} else {
@@ -95,13 +95,13 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	private void explode() {
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);
-		if(worldObj instanceof WorldServer) {
-			((WorldServer) worldObj).spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, 3, motionX, motionY, motionZ, 0.1);
+		if(world instanceof WorldServer) {
+			((WorldServer) world).spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, posX + 0.5, posY + 0.5, posZ + 0.5, 3, motionX, motionY, motionZ, 0.1);
 		}
 
 		EntityLivingBase thrower = getThrower();
 
-		List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
+		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
 		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(thrower), 6F));
 
 		setDead();

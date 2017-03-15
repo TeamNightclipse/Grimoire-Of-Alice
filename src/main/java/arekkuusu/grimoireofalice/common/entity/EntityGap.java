@@ -73,7 +73,7 @@ public class EntityGap extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if(player != null) {
 				if(player.isHandActive() && !player.isDead) {
 					setPositionAndAngles(player);
@@ -86,7 +86,7 @@ public class EntityGap extends Entity {
 				}
 			}
 			if (portalCooldown == 0) {
-				Optional<EntityLivingBase> optional = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
+				Optional<EntityLivingBase> optional = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
 						entity -> entity instanceof EntityLivingBase).stream().map(entity -> ((EntityLivingBase) entity)).findFirst();
 				if (optional.isPresent()) {
 					teleport(optional.get());
@@ -113,7 +113,7 @@ public class EntityGap extends Entity {
 	private void teleport(EntityLivingBase base) {
 		Vec3d vec3d = getLookVec();
 
-		List<EntityGap> list = worldObj.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(ConfigHandler.grimoireOfAlice.features.gapRange),
+		List<EntityGap> list = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(ConfigHandler.grimoireOfAlice.features.gapRange),
 				entity -> entity instanceof EntityGap).stream().map(entity -> (EntityGap) entity).collect(Collectors.toList());
 
 		EntityGap gap = null;
@@ -187,7 +187,7 @@ public class EntityGap extends Entity {
 			player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
 		}
 		else if (player.isSneaking()) {
-			if(!worldObj.isRemote) {
+			if(!world.isRemote) {
 				dropItem(ModItems.GAP, 1);
 				setDead();
 			}

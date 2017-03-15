@@ -80,12 +80,12 @@ public class EntityEllyScythe extends EntityThrow {
 	}
 
 	private void stop() {
-		if(!worldObj.isRemote) {
+		if(!world.isRemote) {
 			ItemStack stack = getStack();
 			if (stack.getItemDamage() != stack.getMaxDamage()) {
-				EntityItem entityitem = new EntityItem(worldObj, posX, posY, posZ, stack);
+				EntityItem entityitem = new EntityItem(world, posX, posY, posZ, stack);
 				entityitem.setDefaultPickupDelay();
-				worldObj.spawnEntityInWorld(entityitem);
+				world.spawnEntityInWorld(entityitem);
 			}
 			setDead();
 		}

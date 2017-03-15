@@ -45,10 +45,10 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 			Vec3d look = playerIn.getLookVec();
 			Vec3d vec3d = new Vec3d(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
 			Vec3d vec3d1 = new Vec3d(playerIn.posX + look.xCoord * range, playerIn.posY + look.yCoord * range, playerIn.posZ + look.zCoord * range);
-			RayTraceResult traceResult = playerIn.worldObj.rayTraceBlocks(vec3d, vec3d1, false, true, true);
+			RayTraceResult traceResult = playerIn.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
 
-			List<Entity> list = playerIn.worldObj.getEntitiesInAABBexcluding(playerIn
+			List<Entity> list = playerIn.world.getEntitiesInAABBexcluding(playerIn
 					, playerIn.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D)
 					, Entity::canBeCollidedWith);
 
@@ -67,16 +67,16 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 
 			EntityKinkakuJiCeiling ceiling;
 			if(entity != null) {
-				ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, entity);
+				ceiling = new EntityKinkakuJiCeiling(playerIn.world, entity);
 			}
 			else {
 				float distance = 5F;
 				double dx = playerIn.posX + look.xCoord * distance;
 				double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
 				double dz = playerIn.posZ + look.zCoord * distance;
-				ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, playerIn, dx, dy, dz);
+				ceiling = new EntityKinkakuJiCeiling(playerIn.world, playerIn, dx, dy, dz);
 			}
-			playerIn.worldObj.spawnEntityInWorld(ceiling);
+			playerIn.world.spawnEntityInWorld(ceiling);
 			--itemStackIn.stackSize;
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
@@ -84,9 +84,9 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-		if(!playerIn.worldObj.isRemote) {
-			EntityKinkakuJiCeiling ceiling = new EntityKinkakuJiCeiling(playerIn.worldObj, target);
-			playerIn.worldObj.spawnEntityInWorld(ceiling);
+		if(!playerIn.world.isRemote) {
+			EntityKinkakuJiCeiling ceiling = new EntityKinkakuJiCeiling(playerIn.world, target);
+			playerIn.world.spawnEntityInWorld(ceiling);
 		}
 		return true;
 	}

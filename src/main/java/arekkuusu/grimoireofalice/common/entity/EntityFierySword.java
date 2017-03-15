@@ -44,8 +44,8 @@ public class EntityFierySword extends Entity {
 			if(ticksExisted > 20){
 				stop();
 			}
-			if(!worldObj.isRemote) {
-				List<EntityLivingBase> list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+			if(!world.isRemote) {
+				List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class,
 						getEntityBoundingBox(), input -> input != player);
 				list.forEach(this::burn);
 			}
@@ -59,7 +59,7 @@ public class EntityFierySword extends Entity {
 	}
 
 	private void stop(){ //Hammertime!
-		if(!worldObj.isRemote){
+		if(!world.isRemote){
 			setDead();
 		}
 	}

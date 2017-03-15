@@ -54,7 +54,7 @@ public class YukkuriEvent {
 	@SubscribeEvent
 	public void livingDeathEvent(LivingDeathEvent event) {
 		Entity attacker = event.getSource().getEntity();
-		if (attacker != null && !attacker.worldObj.isRemote && attacker instanceof EntityPlayer) {
+		if (attacker != null && !attacker.world.isRemote && attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker;
 			ItemStack heldItem = player.getHeldItemMainhand();
 			if (heldItem == null || heldItem.getItem() != ModItems.MOCHI_HAMMER) {
@@ -113,7 +113,7 @@ public class YukkuriEvent {
 					ItemStack stack = capability.getStackInSlot(i);
 					if (stack != null && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
 						capability.extractItem(i, 1, false);
-						player.playSound(SoundEvents.BLOCK_GRASS_BREAK, 0.5F, player.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+						player.playSound(SoundEvents.BLOCK_GRASS_BREAK, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
 						event.setCanceled(true);
 						return;
 					}
@@ -130,7 +130,7 @@ public class YukkuriEvent {
 			int rarity = ConfigHandler.grimoireOfAlice.features.dragonScaleRarity;
 
 			if (event.getEntityLiving() instanceof EntityDragon && event.getSource().isProjectile()
-					&& rarity > 0 && event.getEntityLiving().worldObj.rand.nextInt(rarity) == 0) {
+					&& rarity > 0 && event.getEntityLiving().world.rand.nextInt(rarity) == 0) {
 				event.getEntityLiving().dropItem(ModItems.DRAGON_SCALE, 1);
 			}
 		}

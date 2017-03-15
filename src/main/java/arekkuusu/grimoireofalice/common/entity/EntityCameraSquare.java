@@ -42,7 +42,7 @@ public class EntityCameraSquare extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if (player == null || player.isDead) {
-			if (!worldObj.isRemote) {
+			if (!world.isRemote) {
 				setDead();
 			}
 		}
@@ -52,7 +52,7 @@ public class EntityCameraSquare extends Entity {
 				if (size < maxSize) {
 					setSize(size + 0.1F);
 				}
-				if (!worldObj.isRemote) {
+				if (!world.isRemote) {
 					for (Entity entity : getEntities()) {
 						if (entity instanceof EntityDanmaku) {
 							EntityDanmaku danmaku = (EntityDanmaku) entity;
@@ -68,14 +68,14 @@ public class EntityCameraSquare extends Entity {
 				finish();
 			}
 
-			if (ticksExisted > 200 && !worldObj.isRemote) {
+			if (ticksExisted > 200 && !world.isRemote) {
 				finish();
 			}
 		}
 	}
 
 	private void finish() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			getEntities().forEach(entity -> {
 				if (entity instanceof EntityDanmaku) {
 					((EntityDanmaku) entity).delete();
@@ -88,7 +88,7 @@ public class EntityCameraSquare extends Entity {
 	}
 
 	private List<Entity> getEntities() {
-		return worldObj.getEntitiesWithinAABB(Entity.class,
+		return world.getEntitiesWithinAABB(Entity.class,
 				getEntityBoundingBox(), entity -> entity != player && !(entity instanceof EntityHanging));
 	}
 

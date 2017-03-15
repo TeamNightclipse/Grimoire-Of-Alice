@@ -35,9 +35,9 @@ public class ItemIcicleSword extends ItemModSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		stack.damageItem(1, attacker);
-		if (!attacker.worldObj.isRemote) {
-			EntityIceBlock iceBlock = new EntityIceBlock(attacker.worldObj, target, target.width, target.height);
-			attacker.worldObj.spawnEntityInWorld(iceBlock);
+		if (!attacker.world.isRemote) {
+			EntityIceBlock iceBlock = new EntityIceBlock(attacker.world, target, target.width, target.height);
+			attacker.world.spawnEntityInWorld(iceBlock);
 		}
 		return true;
 	}

@@ -50,7 +50,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(!worldObj.isRemote) {
+		if(!world.isRemote) {
 			EntityLivingBase player = getThrower();
 			if(player == null) {
 				setDead();
@@ -111,7 +111,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	private void onImpactEntity(RayTraceResult result) {
 		if(result.entityHit != null && result.entityHit != getThrower()) {
 			applyHitEffects(result.entityHit);
-			if(!worldObj.isRemote) {
+			if(!world.isRemote) {
 				setDead();
 			}
 		}

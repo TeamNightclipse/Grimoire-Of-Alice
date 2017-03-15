@@ -54,7 +54,7 @@ public class EntityGrimoireSpell extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(!worldObj.isRemote) {
+		if(!world.isRemote) {
 			if(host != null) {
 				if(host.isDead || ticksExisted > getEndTime()) {
 					setDead();
@@ -137,11 +137,11 @@ public class EntityGrimoireSpell extends Entity {
 		}
 
 		bookRotation += f2 * 0.4F;
-		bookSpread = MathHelper.clamp_float(bookSpread, 0.0F, 1.0F);
+		bookSpread = MathHelper.clamp(bookSpread, 0.0F, 1.0F);
 		++tickCount;
 		float pageFlipPrev = pageFlip;
 		float f = (flipT - pageFlip) * 0.4F;
-		f = MathHelper.clamp_float(f, -0.2F, 0.2F);
+		f = MathHelper.clamp(f, -0.2F, 0.2F);
 		flipA += (f - flipA) * 0.9F;
 		pageFlip += flipA;
 		setTickCount(tickCount);

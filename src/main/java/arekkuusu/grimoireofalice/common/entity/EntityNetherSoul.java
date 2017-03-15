@@ -74,7 +74,7 @@ public class EntityNetherSoul extends EntityThrowable {
 			moveEntity(motionX, motionY, motionZ);
 		}
 		else {
-			List<Entity> list = worldObj.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().expandXyz(30),
+			List<Entity> list = world.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().expandXyz(30),
 					entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
 			if (!list.isEmpty()) {
 				float closest = 30;
@@ -89,9 +89,9 @@ public class EntityNetherSoul extends EntityThrowable {
 			else if (getThrower() != null) {
 				Vec3d vec3d = getThrower().getLookVec();
 				setThrowableHeading(vec3d.xCoord, vec3d.yCoord, vec3d.zCoord, 0.5F, 0);
-			} else if(!worldObj.isRemote) setDead();
+			} else if(!world.isRemote) setDead();
 		}
-		if (ticksExisted >= 200 && !worldObj.isRemote) {
+		if (ticksExisted >= 200 && !world.isRemote) {
 			setDead();
 		}
 	}
@@ -100,7 +100,7 @@ public class EntityNetherSoul extends EntityThrowable {
 	protected void onImpact(RayTraceResult result) {
 		if (result.entityHit != null) {
 			result.entityHit.attackEntityFrom(DamageSource.generic.setDamageBypassesArmor(), 10);
-			if (!worldObj.isRemote) setDead();
+			if (!world.isRemote) setDead();
 		}
 	}
 

@@ -70,10 +70,10 @@ public class EntityStopWatch extends Entity {
 			double dz = user.posZ + look.zCoord + distance;
 			setPosition(dx, dy, dz);
 
-			if (!worldObj.isRemote) {
-				worldObj.setWorldTime(worldObj.getWorldTime() - 1);
+			if (!world.isRemote) {
+				world.setWorldTime(world.getWorldTime() - 1);
 
-				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
+				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
 				list.forEach(this::haltEntity);
 			}
 		}
@@ -112,7 +112,7 @@ public class EntityStopWatch extends Entity {
 			return;
 		}
 
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 
 			//We use the delay to never actually call update at all
 			if (entity instanceof EntityDanmaku) {
@@ -155,10 +155,10 @@ public class EntityStopWatch extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			StopWatchHandler.removeClock(this);
 			if (user != null) {
-				List<Entity> list = worldObj.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
+				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
 				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
 
 					double[] data = dataEntities.get(entity.getUniqueID());

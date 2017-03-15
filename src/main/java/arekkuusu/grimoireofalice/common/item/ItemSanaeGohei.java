@@ -104,7 +104,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
 		for (int i = 0; i < 2; ++i) {
-			player.worldObj.spawnParticle(EnumParticleTypes.REDSTONE,
+			player.world.spawnParticle(EnumParticleTypes.REDSTONE,
 					player.posX + (itemRand.nextDouble() - 0.5D) * player.width,
 					player.posY + itemRand.nextDouble() * player.height - 0.25D,
 					player.posZ + (itemRand.nextDouble() - 0.5D) * player.width,
@@ -114,14 +114,14 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		World worldIn = entityLiving.worldObj;
+		World worldIn = entityLiving.world;
 		if (entityLiving instanceof EntityPlayer && !worldIn.isRemote) {
 			EntityPlayer playerIn = (EntityPlayer) entityLiving;
 			if (!playerIn.isSneaking() && !playerIn.getCooldownTracker().hasCooldown(this)) {
 				Miracles mode = getType(stack);
 				final int oldCharge = getCharge(stack);
 				int charge = oldCharge;
-				WorldInfo worldInfo = playerIn.worldObj.getWorldInfo();
+				WorldInfo worldInfo = playerIn.world.getWorldInfo();
 
 				switch (mode) {
 					case RAIN:
@@ -174,12 +174,12 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 						if (WIND.canUse(charge, playerIn)) {
 							worldIn.playSound(null, playerIn.getPosition(), GrimoireSoundEvents.WIND, SoundCategory.PLAYERS, 1F, 1F);
 							Vec3d vec = playerIn.getLookVec();
-							List<EntityLivingBase> list = playerIn.worldObj.getEntitiesWithinAABB(EntityLivingBase.class,
+							List<EntityLivingBase> list = playerIn.world.getEntitiesWithinAABB(EntityLivingBase.class,
 									entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, vec.yCoord * 2, vec.zCoord * 2)
 											.expandXyz(3D), entity -> entity != playerIn);
 							list.forEach(entity -> {
-								if (entity.worldObj instanceof WorldServer) {
-									((WorldServer) entity.worldObj).spawnParticle(EnumParticleTypes.CLOUD, entity.posX
+								if (entity.world instanceof WorldServer) {
+									((WorldServer) entity.world).spawnParticle(EnumParticleTypes.CLOUD, entity.posX
 											, entity.posY, entity.posZ, 5, 0, 0, 0, 0.1D);
 								}
 								entity.motionX = -MathHelper.sin((float) Math.toRadians(playerIn.rotationYaw)) * 4;

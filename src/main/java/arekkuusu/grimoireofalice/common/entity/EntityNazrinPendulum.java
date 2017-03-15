@@ -54,7 +54,7 @@ public class EntityNazrinPendulum extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if(user == null || isEntityInsideOpaqueBlock()) {
 				stopEntity();
 			}
@@ -79,7 +79,7 @@ public class EntityNazrinPendulum extends Entity {
 			List<Block> blockLayer = new ArrayList<>(20);
 			BlockPos pos = new BlockPos(posX, posY, posZ);
 			for(int i = 1; i < 20; i++) {
-				Block block = worldObj.getBlockState(pos.down(i)).getBlock();
+				Block block = world.getBlockState(pos.down(i)).getBlock();
 				ItemStack stack = new ItemStack(block);
 
 				//noinspection ConstantConditions Liar
@@ -94,8 +94,8 @@ public class EntityNazrinPendulum extends Entity {
 				}
 			}
 			blockLayer.forEach(ignored -> {
-				if (rand.nextInt(8) == 2 && worldObj instanceof WorldServer) {
-					((WorldServer)worldObj).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
+				if (rand.nextInt(8) == 2 && world instanceof WorldServer) {
+					((WorldServer)world).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
 				}
 			});
 		}
@@ -111,7 +111,7 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!worldObj.isRemote) {
+		if (!world.isRemote) {
 			if (user != null) {
 				if (user.capabilities.isCreativeMode) {
 					setDead();

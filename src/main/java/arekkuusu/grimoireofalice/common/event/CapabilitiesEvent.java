@@ -31,7 +31,7 @@ public class CapabilitiesEvent {
 					if(!player.capabilities.isCreativeMode) {
 						player.capabilities.allowFlying = false;
 						player.capabilities.isFlying = false;
-						if(!player.worldObj.isRemote) {
+						if(!player.world.isRemote) {
 							player.sendPlayerAbilities();
 						}
 						playersFlying.remove(player);
@@ -50,7 +50,7 @@ public class CapabilitiesEvent {
 				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
-					if(!player.worldObj.isRemote) {
+					if(!player.world.isRemote) {
 						player.sendPlayerAbilities();
 					}
 					playersFlying.remove(player);
@@ -76,14 +76,14 @@ public class CapabilitiesEvent {
 			if (playersFlying.contains(player)) {
 				if (canFly(player)) {
 					player.capabilities.allowFlying = true;
-					if (!player.worldObj.isRemote) {
+					if (!player.world.isRemote) {
 						player.sendPlayerAbilities();
 					}
 				}
 				else if (!player.isSpectator() && !player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
-					if (!player.worldObj.isRemote) {
+					if (!player.world.isRemote) {
 						player.sendPlayerAbilities();
 					}
 					playersFlying.remove(player);

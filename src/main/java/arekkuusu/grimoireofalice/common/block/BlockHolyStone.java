@@ -138,7 +138,7 @@ public class BlockHolyStone extends BlockMod {
 			if (effect.isPresent()) {
 				--heldItem.stackSize;
 				effect.get().accept(player);
-				player.worldObj.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
+				player.world.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
 				return true;
 			}
 		}
