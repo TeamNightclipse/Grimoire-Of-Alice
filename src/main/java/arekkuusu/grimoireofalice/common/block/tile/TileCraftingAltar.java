@@ -8,19 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.block.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
-import net.minecraft.block.state.IBlockState;
+import arekkuusu.grimoireofalice.common.event.AchievementEvents;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -32,6 +24,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.ItemHandlerHelper;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
@@ -85,7 +83,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
 		if (hasItem()) {
-			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
+            world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
 
 			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
@@ -102,12 +100,12 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			ItemStack output = itemHandler.extractItem(0, 1, false);
 			if (output != null) {
 				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-				world.spawnEntityInWorld(outputItem);
+                world.spawnEntityInWorld(outputItem);
 			}
 		}
 	}
 
-	public boolean doCrafting() {
+	public boolean doCrafting(@Nullable final EntityPlayer player) {
 		if(!world.isRemote && !hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
 			for(BlockPos pos : PILLAR_LOCATIONS) {
@@ -133,8 +131,10 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 					for(TilePillarAltar altar : altars) {
 						altar.removeItem(null);
 					}
-					addItem(null, recipe.getResult());
-					if(world instanceof WorldServer)
+					ItemStack result = recipe.getResult();
+					addItem(null, result);
+                    AchievementEvents.onAltarCraft(player, result.getItem());
+                    if(world instanceof WorldServer)
 						doEffect();
 				});
 			}
@@ -143,7 +143,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	private void doEffect() {
-		world.playSound(null, getPos(), GrimoireSoundEvents.CRAFTING_SPELL, SoundCategory.BLOCKS, 1F, 0.5F);
+        world.playSound(null, getPos(), GrimoireSoundEvents.CRAFTING_SPELL, SoundCategory.BLOCKS, 1F, 0.5F);
 		for (int i = 0; i < 9; i++) {
 			double d0 = pos.getX() + rand.nextFloat();
 			double d1 = pos.getY() + 1 + rand.nextFloat();
@@ -170,7 +170,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			double p2 = pos.getZ() - 4.5D + rand.nextInt(10);
 			double p3 = (0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F);
 
-			world.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+            world.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
 		}
 
 		bookSpreadPrev = bookSpread;

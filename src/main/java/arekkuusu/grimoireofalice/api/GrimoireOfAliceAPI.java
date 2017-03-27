@@ -2,20 +2,35 @@ package arekkuusu.grimoireofalice.api;
 
 import arekkuusu.grimoireofalice.api.recipes.*;
 import com.google.common.collect.ImmutableList;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class GrimoireOfAliceAPI {
 
-	private static final List<IRecipeItems> recipes = new ArrayList<>();
+    private static final Map<Item, Achievement> achievementAltarMap = new HashMap<>();
+    private static final List<Achievement> achievementList = new ArrayList<>();
+
+    private static final List<IRecipeItems> recipes = new ArrayList<>();
 
 	//Don't touch them or I will honk you, strange person in the internet!
 	private static final List<ItemStack> flyItems = new ArrayList<>();
 	private static final List<ItemStack> flyArmor = new ArrayList<>();
 
-	public static List<IRecipeItems> getRecipes() {
+    public static Map<Item, Achievement> getAchievementAltarMap() {
+        return achievementAltarMap;
+    }
+
+    public static List<Achievement> getAchievementList() {
+        return achievementList;
+    }
+
+    public static List<IRecipeItems> getRecipes() {
 		return ImmutableList.copyOf(recipes);
 	}
 
@@ -26,6 +41,14 @@ public final class GrimoireOfAliceAPI {
 	public static List<ItemStack> getFlyArmor() {
 		return flyArmor;
 	}
+
+	public static void registerAltarAchievement(Item item, Achievement achievement) {
+        achievementAltarMap.put(item, achievement.registerStat());
+    }
+
+    public static void registerAchievement(Achievement achievement) {
+        achievementList.add(achievement.registerStat());
+    }
 
 	/**
 	 * Adds an IRecipeItems to the ArrayList.

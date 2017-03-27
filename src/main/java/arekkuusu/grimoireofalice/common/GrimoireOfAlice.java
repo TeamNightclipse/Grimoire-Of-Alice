@@ -13,6 +13,7 @@ import arekkuusu.grimoireofalice.common.core.handler.*;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.entity.ModEntity;
+import arekkuusu.grimoireofalice.common.event.AchievementEvents;
 import arekkuusu.grimoireofalice.common.event.ModEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -67,6 +68,7 @@ public class GrimoireOfAlice {
 		ModItems.init();
 		ModItems.initOreDictionary();
 		ModItems.initFlyingItems();
+        AchievementEvents.init();
 		if (danmakuCoreInstalled) {
 			LogHelper.info("Alright...");
 			LogHelper.info("The answer to the ultimate question, of life, the universe and everything, is...");
