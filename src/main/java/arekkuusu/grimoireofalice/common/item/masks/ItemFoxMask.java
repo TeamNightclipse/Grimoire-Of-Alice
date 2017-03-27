@@ -57,7 +57,7 @@ public class ItemFoxMask extends ItemModMask {
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 0));
 		}
 		else {
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 4));
+			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 0, 1));
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 0, 0));
 		}
 	}
@@ -69,7 +69,7 @@ public class ItemFoxMask extends ItemModMask {
 			return new ArmorProperties(0, 0, 0);
 		}
 		else {
-			return new ArmorProperties(4, 10, 50);
+			return new ArmorProperties(4, 10, 4);
 		}
 	}
 

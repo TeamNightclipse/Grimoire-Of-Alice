@@ -8,59 +8,61 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import static net.minecraftforge.common.BiomeDictionary.Type;
-
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
-
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import java.util.Map;
+
+import static net.minecraftforge.common.BiomeDictionary.Type;
+
 public class ModEntity {
 
-	public static void preInit() {
-		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "Pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityMagicCircle.class, "Spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityDragonJewel.class, "Jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
-		EntityRegistry.registerModEntity(EntityUnzanFist.class, "Fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityEllyScythe.class, "Scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "Doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityHakureiOrb.class, "Orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityBarrier.class, "Barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityMiracleLantern.class, "Lantern", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityNetherSoul.class, "Soul", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityFierySword.class, "FierySword", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityIceBlock.class, "IceBlock", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityMiracleCircle.class, "MiraleCircle", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntitySpiritualStrikeTalisman.class, "Talisman", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
-		EntityRegistry.registerModEntity(EntityGap.class, "Gap", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
-		EntityRegistry.registerModEntity(EntityKinkakuJiCeiling.class, "Ceiling", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityYoukaiBook.class, "Youkai", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
-			EntityRegistry.registerModEntity(EntityCameraSquare.class, "Camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
-			EntityRegistry.registerModEntity(EntityStopWatch.class, "Watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
-		}
+    public static void preInit() {
+        int modEntityID = 0;
+        EntityRegistry.registerModEntity(EntityNazrinPendulum.class, "pendulum", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityGrimoireSpell.class, "spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityMagicCircle.class, "spell", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityDragonJewel.class, "jewel", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
+        EntityRegistry.registerModEntity(EntityUnzanFist.class, "fist", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityEllyScythe.class, "scythe", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityCursedDecoyDoll.class, "doll", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityHakureiOrb.class, "orb", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityBarrier.class, "barrier", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityMiracleLantern.class, "lantern", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityNetherSoul.class, "soul", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityFierySword.class, "fiery_sword", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityIceBlock.class, "ice_block", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityMiracleCircle.class, "mirale_circle", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntitySpiritualStrikeTalisman.class, "talisman", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
+        EntityRegistry.registerModEntity(EntityGap.class, "gap", ++modEntityID, GrimoireOfAlice.instance, 64, 10, false);
+        EntityRegistry.registerModEntity(EntityKinkakuJiCeiling.class, "ceiling", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityYoukaiBook.class, "youkai", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        if (GrimoireOfAlice.danmakuCoreInstalled) {
+            EntityRegistry.registerModEntity(EntityCameraSquare.class, "camera", ++modEntityID, GrimoireOfAlice.instance, 64, 10, true);
+            EntityRegistry.registerModEntity(EntityStopWatch.class, "watch", ++modEntityID, GrimoireOfAlice.instance, 64, 1, true);
+        }
 
-		//Natural spawns
-		if (ConfigHandler.grimoireOfAlice.spawning.bookSpawning) {
-			ImmutableMap.Builder<Type, Integer> builder = ImmutableMap.builder();
-			builder.put(Type.MAGICAL, 25);
-			builder.put(Type.SPOOKY, 20);
-			builder.put(Type.MOUNTAIN, 20);
-			builder.put(Type.PLAINS, 20);
-			builder.put(Type.FOREST, 20);
-			builder.put(Type.SNOWY, 20);
+        //Natural spawns
+        if (ConfigHandler.grimoireOfAlice.spawning.bookSpawning) {
+            ImmutableMap.Builder<Type, Integer> builder = ImmutableMap.builder();
+            builder.put(Type.MAGICAL, 25);
+            builder.put(Type.SPOOKY, 20);
+            builder.put(Type.MOUNTAIN, 20);
+            builder.put(Type.PLAINS, 20);
+            builder.put(Type.FOREST, 20);
+            builder.put(Type.SNOWY, 20);
 
-			for(Map.Entry<Type, Integer> entry : builder.build().entrySet()) {
-				EntityRegistry.addSpawn(EntityYoukaiBook.class, entry.getValue(), 1, 4, EnumCreatureType.AMBIENT, BiomeDictionary.getBiomesForType(entry.getKey()));
-			}
-		}
-	}
-
+            for (Map.Entry<Type, Integer> entry : builder.build().entrySet()) {
+                EntityRegistry.addSpawn(EntityYoukaiBook.class, entry.getValue(),
+                        ConfigHandler.grimoireOfAlice.spawning.minBooks,
+                        ConfigHandler.grimoireOfAlice.spawning.maxBooks,
+                        EnumCreatureType.AMBIENT,
+                        BiomeDictionary.getBiomesForType(entry.getKey()));
+            }
+        }
+    }
 }

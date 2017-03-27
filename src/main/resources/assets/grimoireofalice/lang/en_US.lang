@@ -81,7 +81,7 @@ item.primordialshield.name=Primordial Shield
 item.mapleleafshield.name=Maple Leaf Shield
 item.toyosatomimihat.name=Ear Mufs
 item.kanakoshimenawa.name=Holy Shimenawa Rope
-item.ichirinunzan.name=Nyuudou Unzan
+item.ichirinunzan.name=Cloud Spirit Nyuudou
 item.suwakohat.name=Suwako's Hat
 item.utsuhowings.name=Utsuho Wings
 item.kappahat.name=Nitori's Hat
@@ -189,6 +189,26 @@ item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
 item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
 item.danmaku.danmakuvariant.grimoireofalice.note.name=Note Shot
 
+entity.grimoireofalice.pendulum.name=Pendulum
+entity.grimoireofalice.spell.name=Spell
+entity.grimoireofalice.jewel.name=Jewel from a Dragon's neck
+entity.grimoireofalice.fist.name=Fist
+entity.grimoireofalice.scythe.name=Scythe
+entity.grimoireofalice.doll.name=Doll
+entity.grimoireofalice.orb.name=Orb
+entity.grimoireofalice.barrier.name=Barrier
+entity.grimoireofalice.lantern.name=Lantern
+entity.grimoireofalice.soul.name=Soul
+entity.grimoireofalice.fiery_sword.name=Fiery Sword
+entity.grimoireofalice.ice_block.name=Ice Block
+entity.grimoireofalice.mirale_circle.name=Miracle Circle
+entity.grimoireofalice.talisman.name=Talisman
+entity.grimoireofalice.gap.name=Gap
+entity.grimoireofalice.ceiling.name=Seamless Ceiling Kinkaku Ji
+entity.grimoireofalice.youkai.name=Youkai Book
+entity.grimoireofalice.camera.name=Camera frame
+entity.grimoireofalice.watch.name=Watch
+
 subentity.grimoireofalice.leaf=Gravity
 subentity.grimoireofalice.ufo=Random movement
 subentity.grimoireofalice.wind=Push mobs away
@@ -228,7 +248,7 @@ grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you
 grimoire.tooltip.crafting_altar_header.name=Differs slightly from a Crafting Table
 
 grimoire.tooltip.holy_key_stone_header.name=Heavy object made of black granite
-grimoire.tooltip.holy_key_stone_use.name=Step on it to get Potion Buff
+grimoire.tooltip.holy_key_stone_use.name=Step on it
 
 grimoire.tooltip.holy_stone_header.name=Magical stone with its own weak gravity field
 grimoire.tooltip.holy_stone_gifts.name=Accepts gifts as items
@@ -246,8 +266,8 @@ grimoire.tooltip.pillar_altar_header.name=Kinda heavy
 grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
 grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
 
-grimoire.tooltip.ichirin_unzan_header.name=Cloud Spirit Nyuudou
-grimoire.tooltip.ichirin_unzan_description.name=Grants the user a powerful Nyuudou
+grimoire.tooltip.ichirin_unzan_header.name=Grants the user a powerful stand
+grimoire.tooltip.ichirin_unzan_description.name=Use rings to control the figure
 
 grimoire.tooltip.kanako_shimenawa_header.name=Represents the figure of an entwined snake
 grimoire.tooltip.kanako_shimenawa_description_top.name=Its true power is unknown, the legend says
@@ -271,7 +291,7 @@ grimoire.tooltip.grilled_lamprey_header.name=Alternative to grilled chicken
 grimoire.tooltip.heavenly_peach_header.name=Fruit from the skies
 grimoire.tooltip.heavenly_peach_description.name=Someone had to fly very high to reach it
 
-grimoire.tooltip.hourai_elixir_header.name=Anyone who drinks this forbidden elixir will cease to age, never become ill, and will never be able to die. One will be as frail and vulnerable as before, but every injury shall cease; critical injuries will be healed in a matter of days. Complete destruction results in complete restoration.
+grimoire.tooltip.hourai_elixir_header.name=Anyone who drinks this forbidden elixir will cease to age, never become ill, and will never be able to die. One will be as frail and vulnerable as before, but every injury shall cease, critical injuries will be healed in a matter of days and complete destruction results in complete restoration.
 grimoire.tooltip.hourai_elixir_shift.name=SHIFT for details
 
 grimoire.tooltip.ibaraki_box_header.name=In exchange for curing illnesses, the personality of the
@@ -345,7 +365,7 @@ grimoire.tooltip.send_off_lantern_header.name=Allows the player to negate all da
 grimoire.tooltip.send_off_lantern_description.name=for a short period of time
 
 grimoire.tooltip.maple_leaf_shield_header.name=Round shield with a red maple leaf print on it
-grimoire.tooltip.maple_leaf_shield_effect.name="Awoo intensifies"
+grimoire.tooltip.maple_leaf_shield_effect.name="Gives a speed boost when used"
 
 grimoire.tooltip.ufos_header.name=Gathers Items around the player
 grimoire.tooltip.ufos_status.name=Status:
@@ -387,7 +407,7 @@ grimoire.tooltip.ichirin_shift.name=SHIFT for details
 
 grimoire.tooltip.kappa_hat_header.name="River Castle"
 
-grimoire.tooltip.marisa_hat_header.name="daze~!"
+grimoire.tooltip.marisa_hat_header.name="A witch hat"
 grimoire.tooltip.marisa_hat_description.name=Pickup items 5 blocks away
 
 grimoire.tooltip.miko_cloak_header.name=Fancy cape!
@@ -405,8 +425,8 @@ grimoire.tooltip.mochi_hammer_description_bottom.name=And for all of the 180 chi
 grimoire.tooltip.mochi_hammer_shift.name=SHIFT for details
 grimoire.tooltip.mochi_hammer_description.name=Victims:
 
-grimoire.tooltip.momijis_scimitar_sword_header.name=Awooooo~!!
-grimoire.tooltip.momijis_scimitar_sword_description.name=Very sharp and heavy
+grimoire.tooltip.momijis_scimitar_sword_header.name=Very sharp and heavy
+grimoire.tooltip.momijis_scimitar_sword_description.name=It was forged with a rare metal
 
 grimoire.tooltip.nazrin_pendulum_header.name=Magical pendulum that searches for ores underground
 grimoire.tooltip.nazrin_pendulum_ore.name=Ore:
@@ -429,7 +449,7 @@ grimoire.tooltip.nimble_fabric_description.name=during which you can't move or s
 grimoire.tooltip.nue_trident_header.name=Trident of sealed beast, Seed of Unknown Form
 grimoire.tooltip.nue_trident_description.name=Fear the unknown, weak human!
 
-grimoire.tooltip.onbashira_header.name=Leg of an Ent sealed with magic.
+grimoire.tooltip.onbashira_header.name=Leg of an Ent
 grimoire.tooltip.onbashira_description.name=Its massive density make it almost impossible to wield
 
 grimoire.tooltip.patchy_book_header.name=Author: Patchouli Knowledge
@@ -440,7 +460,7 @@ grimoire.tooltip.popsicle_stick_description.name=Craft with Melon Block and Ice 
 grimoire.tooltip.rod_of_remorse_header.name=The worse the sin, the heavier the rod becomes
 grimoire.tooltip.rod_of_remorse_description.name=The person in question will be beaten up until they repent
 
-grimoire.tooltip.rumia_sword_header.name=Fanon Rumia's sword
+grimoire.tooltip.rumia_sword_header.name=Fanon
 grimoire.tooltip.rumia_sword_description.name=Sets enemies on fire
 
 grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=Divine sword from Toyosatomimi
@@ -564,50 +584,50 @@ grimoire.tooltip.violin_header.name=Poltergeists posses this violin
 grimoire.tooltip.violin_use.name=Hold right click to use
 
 grimoire.tooltip.fox_mask_header.name=Tsukumogami of Determination
-grimoire.tooltip.fox_mask_good_buff_one.name= -Speed
-grimoire.tooltip.fox_mask_good_buff_two.name= -Resistance
+grimoire.tooltip.fox_mask_good_buff_one.name= + Speed
+grimoire.tooltip.fox_mask_good_buff_two.name= + Resistance
 grimoire.tooltip.fox_mask_vulnerable.name= *Vulnerable to Magic
 
 grimoire.tooltip.fuku_no_kami_mask_header.name=Tsukumogami of Humor
-grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= -Fire Resistance
-grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= -Night Vision
-grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= -Confusion
+grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= + Fire Resistance
+grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= + Night Vision
+grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= - Confusion
 grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *Vulnerable to Wither Effect
 
 grimoire.tooltip.hannya_mask_header.name=Tsukumogami of Anger
-grimoire.tooltip.hannya_mask_good_buff.name= -Strenght
+grimoire.tooltip.hannya_mask_good_buff.name= + Strenght
 grimoire.tooltip.hannya_mask_vulnerable.name= *Vulnerable to Magic
 
 grimoire.tooltip.hyottoko_mask_header.name=Tsukumogami of Cheerful
-grimoire.tooltip.hyottoko_mask_good_buff_one.name= -Regeneration V
-grimoire.tooltip.hyottoko_mask_good_buff_two.name= -Jump
+grimoire.tooltip.hyottoko_mask_good_buff_one.name= + Regeneration V
+grimoire.tooltip.hyottoko_mask_good_buff_two.name= + Jump
 grimoire.tooltip.hyottoko_mask_vulnerable.name= *Vulnerable to Magic
 
 grimoire.tooltip.koomote_mask_header.name=Tsukumogami of Joy
-grimoire.tooltip.koomote_mask_good_buff.name= -Absorption
-grimoire.tooltip.koomote_mask_bad_buff.name= -Hunger
+grimoire.tooltip.koomote_mask_good_buff.name= + Absorption
+grimoire.tooltip.koomote_mask_bad_buff.name= - Hunger
 grimoire.tooltip.koomote_mask_vulnerable.name= *Vulnerable to Explosions
 
 grimoire.tooltip.mask_of_hope_header.name=Tsukumogami of Jizo Statue
 grimoire.tooltip.mask_of_hope_description.name=Return to Kokoro if found... or not...
-grimoire.tooltip.mask_of_hope_good_buff.name= -Wither
-grimoire.tooltip.mask_of_hope_bad_buff.name= -Poison
+grimoire.tooltip.mask_of_hope_good_buff.name= - Wither
+grimoire.tooltip.mask_of_hope_bad_buff.name= - Poison
 grimoire.tooltip.mask_of_hope_vulnerable.name= *Vulnerable to Wither
 
 grimoire.tooltip.monkey_mask_header.name=Tsukumogami of Awkwardness
-grimoire.tooltip.monkey_mask_good_buff.name= -Invisibility
-grimoire.tooltip.monkey_mask_bad_buff.name= -Slowness III
+grimoire.tooltip.monkey_mask_good_buff.name= - Invisibility
+grimoire.tooltip.monkey_mask_bad_buff.name= - Slowness III
 grimoire.tooltip.monkey_mask_vulnerable.name= *Vulnerable to Explosions
 
 grimoire.tooltip.raiden_mask_header.name=Tsukumogami of Surprise
-grimoire.tooltip.raiden_mask_good_buff.name= -Haste IV
-grimoire.tooltip.raiden_mask_bad_buff.name= -Weakness
+grimoire.tooltip.raiden_mask_good_buff.name= + Haste IV
+grimoire.tooltip.raiden_mask_bad_buff.name= - Weakness
 grimoire.tooltip.raiden_mask_vulnerable.name= *Vulnerable to Fire
 
 grimoire.tooltip.uba_mask_header.name=Tsukumogami of Phatos
-grimoire.tooltip.uba_mask_bad_buff_one.name= -Dig Slowdown
-grimoire.tooltip.uba_mask_bad_buff_two.name= -Blindness
-grimoire.tooltip.uba_mask_bad_buff_tree.name= -Melancholy
+grimoire.tooltip.uba_mask_bad_buff_one.name= - Dig Slowdown
+grimoire.tooltip.uba_mask_bad_buff_two.name= - Blindness
+grimoire.tooltip.uba_mask_bad_buff_tree.name= - Melancholy
 grimoire.tooltip.uba_mask_vulnerable.name= *Vulnerable to Magic
 
 //JEI
@@ -676,7 +696,7 @@ grimoire.jei.descriptions.full_power=Found inside chests in Abandoned mine shaft
 
 grimoire.jei.descriptions.ghastly_send_off_lantern=Ghastly lantern that makes players invulnerable, its effect last for as long as the item is in cool down
 
-grimoire.jei.descriptions.ghost_anchor=Anchor of a lost ghost in the sea
+grimoire.jei.descriptions.ghost_anchor=Anchor of a lost ghost of the sea
 grimoire.jei.descriptions_body.ghost_anchor=This anchor charges against your enemies and ends them in a big explosion
 
 grimoire.jei.descriptions.ghost_dipper=Must be crafted under a Rainy Weather
@@ -782,7 +802,7 @@ grimoire.jei.descriptions.monkey_mask=One of the 9 masks owned by the youkai Hat
 grimoire.jei.descriptions.mortal_n_pestle=Used to turn shroom into powder
 
 grimoire.jei.descriptions.nazrin_pendulum=Extremely rare Item, used by Nazin to find treasures buried underground, it can find any kind of ore, and chest hidden bellow the surface
-grimoire.jei.descriptions_body.nazrin_pendulum=Hold right click and release with a block in the right hand to set the ore, and to clear the ore hold right click and release with an empty right hand
+grimoire.jei.descriptions_body.nazrin_pendulum=Hold right click and release with a block on the left hand to set the ore, and to clear the ore hold right click and release with an empty left hand
 
 grimoire.jei.descriptions.nimble_fabric=Piece of cloth that protects the user from ANY kind of attack, but makes the player completely useless while doing so
 
@@ -809,7 +829,8 @@ grimoire.jei.descriptions.raiden_mask=One of the 9 masks owned by the youkai Hat
 grimoire.jei.descriptions.red_stone_of_aja=Must be crafted under a Full Moon at night
 grimoire.jei.descriptions_body.red_stone_of_aja=Shoot a high velocity laser very far away. The more xp the less the item gets damaged
 
-grimoire.jei.descriptions.rod_of_remorse=Rod that reduces a mob's health by 1/4
+grimoire.jei.descriptions.rod_of_remorse=I shalt lecture the sins of the world
+grimoire.jei.descriptions_body.rod_of_remorse=Rod that reduces a mob's health by 1/4, sinners fall repent of the enormous weight of their sins
 
 grimoire.jei.descriptions.roukanken=Ghostly sword that slices through a bunch of entities at once
 grimoire.jei.descriptions_body.roukanken=One must charge the weapon and release to charge towards the enemy
@@ -838,7 +859,7 @@ grimoire.jei.descriptions.seamless_ceiling_of_kinkaku_ji=Must be crafted under a
 grimoire.jei.descriptions_body.seamless_ceiling_of_kinkaku_ji=Crush your enemies under a massive ceiling of pure gold. Right click the entity to drop it
 
 grimoire.jei.descriptions.shichi_seiken=Must be crafted under a First Quarter Moon at Night
-grimoire.jei.descriptions_body.shichi_seiken=Drops loot from mining ores, has a chance of dropping 0 to 4 Items
+grimoire.jei.descriptions_body.shichi_seiken=Has a chance of dropping 0 to 4 Items when mining an ore
 
 grimoire.jei.descriptions.shinmyoumaru_hat=Bowl from a tiny princess whose powers are of those of changing size with a mallet of strange origins
 

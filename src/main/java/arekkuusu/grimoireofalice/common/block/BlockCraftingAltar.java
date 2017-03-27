@@ -63,7 +63,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 		TileCraftingAltar tile = (TileCraftingAltar)worldIn.getTileEntity(pos);
 		boolean ok = false;
 		if(tile != null) {
-			ok = playerIn.isSneaking() ? tile.removeItem(playerIn) : tile.doCrafting();
+			ok = playerIn.isSneaking() ? tile.removeItem(playerIn) : tile.doCrafting(playerIn);
 		}
 		return ok;
 	}

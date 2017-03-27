@@ -14,7 +14,7 @@ public final class ModMaterials {
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
 	public static final ItemArmor.ArmorMaterial STRONG_LEATHER = EnumHelper.addArmorMaterial("STRONG_LEATHER", "No", 47, new int[]{3, 4, 3, 2}, 30,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
-	public static final ItemArmor.ArmorMaterial MASK = EnumHelper.addArmorMaterial("MASK", "No", 141, new int[]{7, 6, 5, 4}, 0,
+	public static final ItemArmor.ArmorMaterial MASK = EnumHelper.addArmorMaterial("MASK", "No", 141, new int[]{4, 3, 3, 4}, 0,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 2);
 	public static final ItemArmor.ArmorMaterial STRONG_HIHIIROKANE = EnumHelper.addArmorMaterial("STRONG_HIHIIROKANE", "No", 453, new int[]{25, 30, 26, 23}, 0,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 25);

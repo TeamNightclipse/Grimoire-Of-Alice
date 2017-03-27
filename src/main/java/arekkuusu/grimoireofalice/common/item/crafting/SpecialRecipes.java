@@ -262,7 +262,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.ghostDipper) {
 			GHOST_DIPPER = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModItems.GHOST_DIPPER)
-					, "stickWood", "stickWood", Items.BOWL, Items.BOWL, Items.WATER_BUCKET, Items.WATER_BUCKET, Items.BUCKET, Items.BUCKET);
+					, "stickWood", "stickWood", Items.BOWL, Items.BOWL, new ItemStack(Blocks.SPONGE, 1, 1), new ItemStack(Blocks.SPONGE, 1, 1), Blocks.SPONGE, Blocks.SPONGE);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.grimoireBook) {
@@ -445,7 +445,7 @@ public final class SpecialRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.altar.ultramarineOrbElixir) {
-			ItemStack stack = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
+			ItemStack stack = new ItemStack(ModBlocks.SHROOM, 1, 14);
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_REGENERATION);
 			ULTRAMARINE_ORB_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.ORB_ELIXIR)
 					, potion, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);

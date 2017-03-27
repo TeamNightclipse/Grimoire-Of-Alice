@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelIchirinUnzan;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -25,6 +23,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 
@@ -42,7 +42,7 @@ public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_unzan_description.name"));
 	}
 
-	@Override
+    @Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(0, damageReduceAmount / 25D, armor.getMaxDamage() + 1 - armor.getItemDamage());
 	}
@@ -53,7 +53,9 @@ public class ItemIchirinUnzan extends ItemModArmor  implements ISpecialArmor {
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+        stack.damageItem(damage, entity);
+    }
 
 	private boolean isHoldingRight(EntityLivingBase player) {
 		ItemStack main = player.getHeldItemMainhand();

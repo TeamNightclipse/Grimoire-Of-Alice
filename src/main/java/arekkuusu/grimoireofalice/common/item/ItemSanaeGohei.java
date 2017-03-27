@@ -56,7 +56,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
-	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, null, new String[] {"convertToVillager", "func_82232_p"});
+	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, null, new String[]{"convertToVillager", "func_82232_p"});
 
 	static {
 		CONVERT_ZOMBIE.setAccessible(true);
@@ -170,7 +170,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 						break;
 					case TESTIFICATE:
 						if (TESTIFICATE.canUse(charge, playerIn)) {
-							if(convertNearZombies(playerIn, worldIn)) {
+							if (convertNearZombies(playerIn, worldIn)) {
 								charge -= 15;
 							}
 						}
@@ -199,7 +199,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 						if (HEAL.canUse(charge, playerIn)) {
 							float health = playerIn.getMaxHealth() - playerIn.getHealth();
 							playerIn.heal(health * itemRand.nextFloat());
-							if(worldIn instanceof WorldServer) {
+							if (worldIn instanceof WorldServer) {
 								((WorldServer) worldIn).spawnParticle(EnumParticleTypes.HEART, playerIn.posX, playerIn.posY + 2, playerIn.posZ, 20, 0D, 0D, 0D, 0D);
 							}
 
@@ -246,7 +246,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(entityLiving instanceof EntityPlayer) {
+		if (entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 25);
 		}
 	}
@@ -260,8 +260,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 	private void convertToVillager(EntityZombie zombie) {
 		try {
 			CONVERT_ZOMBIE.invoke(zombie);
-		}
-		catch(IllegalAccessException | InvocationTargetException e) {
+		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
@@ -345,15 +344,15 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 
 	public enum Miracles {
 
-		CLEAR(  "clear",  (i, player) -> i >= 1),
-		WIND(   "wind",   (i, player) -> i >= 1 && !player.isInWater()),
-		HEAL(   "heal",   (i, player) -> i >= 2 && player.shouldHeal()),
-		POTIONS("potions",(i, player) -> i >= 3),
-		RAIN(   "rain",   (i, player) -> i >= 4),
-		THUNDER("thunder",(i, player) -> i >= 5),
-		SOIL(  "soil",  (i, player) -> i >= 8),
-		TIME(   "time",   (i, player) -> i >= 15),
-		TESTIFICATE(  "testificate",  (i, player) -> i >= 15);
+		CLEAR("clear", (i, player) -> i >= 1),
+		WIND("wind", (i, player) -> i >= 1 && !player.isInWater()),
+		HEAL("heal", (i, player) -> i >= 2 && player.shouldHeal()),
+		POTIONS("potions", (i, player) -> i >= 3),
+		RAIN("rain", (i, player) -> i >= 4),
+		THUNDER("thunder", (i, player) -> i >= 5),
+		SOIL("soil", (i, player) -> i >= 8),
+		TIME("time", (i, player) -> i >= 15),
+		TESTIFICATE("testificate", (i, player) -> i >= 15);
 
 		private final BiPredicate<Integer, EntityPlayer> condition;
 		private final String name;

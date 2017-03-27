@@ -45,7 +45,7 @@ public class ItemSkull extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.ORIN_NYAA, SoundCategory.PLAYERS, 1F, 1F);
+		worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.ORIN_NYAA, SoundCategory.PLAYERS, 0.5F, 1F);
 		if (!playerIn.capabilities.isCreativeMode) {
 			--itemStackIn.stackSize;
 		}

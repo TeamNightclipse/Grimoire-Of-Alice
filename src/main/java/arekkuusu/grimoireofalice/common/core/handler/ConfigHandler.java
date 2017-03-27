@@ -316,6 +316,10 @@ public class ConfigHandler {
 
 			@Comment("Set this to false to prevent books from spawning naturally")
 			public boolean bookSpawning = true;
+            @Comment("Minimum books that can spawn in one place")
+            public int minBooks = 1;
+            @Comment("Maximum books that can spawn in one place")
+            public int maxBooks = 4;
 		}
 	}
 }

@@ -76,7 +76,9 @@ public class EntityKinkakuJiCeiling extends Entity {
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
 		if(!world.isRemote && !isDead) {
-			dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
+            if(!player.capabilities.isCreativeMode) {
+                dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
+            }
 			setDead();
 		}
 		return true;

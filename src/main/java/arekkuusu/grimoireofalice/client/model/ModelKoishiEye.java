@@ -4,7 +4,6 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -203,6 +202,7 @@ public class ModelKoishiEye extends ModelBiped {
 		if (angle > 360) angle -= 360;
 
 		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
+		GlStateManager.scale(0.8F, 0.8F, 0.8F);
 
 		if (this.isChild) {
 			GlStateManager.scale(0.75F, 0.75F, 0.75F);

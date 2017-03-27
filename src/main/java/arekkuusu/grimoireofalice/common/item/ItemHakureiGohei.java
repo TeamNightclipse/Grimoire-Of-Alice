@@ -18,12 +18,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -165,34 +165,32 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (getType(stack) == OFFENSIVE) {
-			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
-				attacker.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.world.isRemote) {
-					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
-				}
-			}
-			else if (target.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD) {
-				attacker.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.world.isRemote) {
-					target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
-				}
-			}
-			else if (target instanceof EntityPlayer) {
-				attacker.world.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
-				if(!target.world.isRemote) {
-					target.attackEntityFrom(DamageSource.magic, 5);
-				}
-			}
-			else {
-				target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 3);
-			}
-		}
-		else {
-			stack.damageItem(1, attacker);
-		}
-		return true;
-	}
+        if (getType(stack) == OFFENSIVE) {
+            switch (target.getCreatureAttribute()) {
+                case UNDEAD:
+                    attacker.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+                    if (!target.world.isRemote) {
+                        target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 20);
+                    }
+                    break;
+                case ARTHROPOD:
+                    attacker.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+                    if (!target.world.isRemote) {
+                        target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 10);
+                    }
+                    break;
+                default:
+                    attacker.world.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
+                    if (!target.world.isRemote) {
+                        target.attackEntityFrom(DamageSource.magic, 5);
+                    }
+            }
+        }
+        else {
+            stack.damageItem(1, attacker);
+        }
+        return true;
+    }
 
 	private boolean isSafe(World world, double x, double y, double z) {
 		if (y < 0) return false;
@@ -208,7 +206,13 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + getType(stack).toString() + ".name");
 	}
 
-	@Override
+    @Override
+    protected GoheiMode getType(ItemStack itemStack) {
+        NBTTagCompound nbt = itemStack.getTagCompound();
+        return nbt == null ? GoheiMode.OFFENSIVE : GoheiMode.fromType(nbt.getByte("GoheiMode"));
+    }
+
+    @Override
 	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.BOW;
 	}

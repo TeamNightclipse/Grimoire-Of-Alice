@@ -77,7 +77,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
 	}
 
 	public boolean getIsBookLaying() {
@@ -111,8 +111,11 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			motionY *= 0.6000000238418579D;
 		}
 
-		if(world.canSeeSky(getPosition())) {
-			setFire(2);
+		if(world.isDaytime() && !world.isRemote) {
+			float f = this.getBrightness(1.0F);
+			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(getPosition())) {
+				setFire(2);
+			}
 		}
 	}
 
@@ -193,11 +196,6 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 
 			return super.attackEntityFrom(source, amount);
 		}
-	}
-
-	@Override
-	protected void dealFireDamage(int amount) {
-		super.dealFireDamage(amount * 2);
 	}
 
 	@Override

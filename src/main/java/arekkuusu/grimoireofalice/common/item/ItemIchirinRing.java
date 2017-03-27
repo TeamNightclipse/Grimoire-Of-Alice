@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.gui.GuiScreen;
@@ -25,10 +23,13 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemIchirinRing extends ItemModSword {
 
@@ -55,7 +56,7 @@ public class ItemIchirinRing extends ItemModSword {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_ring_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_use.name"));
-			if(!isHoldingItemsBothHands(player)) {
+			if(!isWearingUnzan(player)) {
 				list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.ichirin_inactive.name"));
 			}
 			else {
@@ -67,9 +68,9 @@ public class ItemIchirinRing extends ItemModSword {
 		}
 	}
 
-	@Override
+    @Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(isHoldingItemsBothHands(playerIn)) {
+		if(isHoldingRing(hand, playerIn)) {
 			playerIn.setActiveHand(hand);
 			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 		}
@@ -92,7 +93,7 @@ public class ItemIchirinRing extends ItemModSword {
 		}
 	}
 
-	@Override
+    @Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if(attacker instanceof EntityPlayer && !isWearingUnzan((EntityPlayer) attacker)) {
 			stack.damageItem(1, attacker);
@@ -100,13 +101,14 @@ public class ItemIchirinRing extends ItemModSword {
 			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
 			attacker.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
+        target.motionX = -MathHelper.sin((float)Math.toRadians(attacker.rotationYaw));
+        target.motionZ = MathHelper.cos((float)Math.toRadians(attacker.rotationYaw));
 		return true;
 	}
 
-	private boolean isHoldingItemsBothHands(EntityPlayer player) {
-		ItemStack main = player.getHeldItemMainhand();
-		ItemStack off = player.getHeldItemOffhand();
-		return main != null && off != null && main.getItem() == off.getItem();
+	private boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
+		ItemStack main = player.getHeldItem(hand);
+		return main != null && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	private boolean isWearingUnzan(EntityPlayer player) {

@@ -28,9 +28,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTenguCamera extends ItemMod {
+public class ItemCamera extends ItemMod {
 
-	public ItemTenguCamera(String id) {
+	public ItemCamera(String id) {
 		super(id);
 		setMaxDamage(180);
 		setMaxStackSize(1);
@@ -51,23 +51,22 @@ public class ItemTenguCamera extends ItemMod {
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (!worldIn.isRemote) {
-			int size = itemStackIn.getItem() == ModItems.AYA_CAMERA ? 5
-					: itemStackIn.getItem() == ModItems.HATATE_CAMERA ? 4 : 0;
+        if (!worldIn.isRemote) {
+            int size = getSize();
 
-			EntityCameraSquare camera = new EntityCameraSquare(worldIn, playerIn, size);
-			Vec3d look = playerIn.getLookVec();
-			double distance = size + 4D;
-			double dx = playerIn.posX + look.xCoord * distance;
-			double dy = playerIn.posY + 2 + look.yCoord * distance;
-			double dz = playerIn.posZ + look.zCoord * distance;
-			camera.setPosition(dx, dy, dz);
-			worldIn.spawnEntityInWorld(camera);
-		}
-		worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-	}
+            EntityCameraSquare camera = new EntityCameraSquare(worldIn, playerIn, size);
+            Vec3d look = playerIn.getLookVec();
+            double distance = size + 4D;
+            double dx = playerIn.posX + look.xCoord * distance;
+            double dy = playerIn.posY + 2 + look.yCoord * distance;
+            double dz = playerIn.posZ + look.zCoord * distance;
+            camera.setPosition(dx, dy, dz);
+            worldIn.spawnEntityInWorld(camera);
+        }
+        worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
+        playerIn.setActiveHand(hand);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+    }
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
@@ -90,6 +89,10 @@ public class ItemTenguCamera extends ItemMod {
 			player.getCooldownTracker().setCooldown(this, 100);
 		}
 	}
+
+	public int getSize() {
+        return 0;
+    }
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {

@@ -35,6 +35,17 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(pendulum);
 		GlStateManager.translate(x, y, z);
+
+		float maxUpAndDown = 0.05F;
+		float speed = 2;
+		float angle = 0;
+
+		float toDegrees = (float) Math.PI / 180F;
+		angle += speed * pendulum.ticksExisted;
+		if (angle > 360) angle -= 360;
+
+		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
+
 		GlStateManager.scale(0.15, 0.15, 0.15);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(pendulum.ticksExisted * 8, 0.0F, 1.0F, 0.0F);

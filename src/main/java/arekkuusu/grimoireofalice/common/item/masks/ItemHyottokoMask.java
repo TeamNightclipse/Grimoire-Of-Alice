@@ -69,7 +69,7 @@ public class ItemHyottokoMask extends ItemModMask {
 			return new ArmorProperties(0, 0, 0);
 		}
 		else {
-			return new ArmorProperties(4, 10, 50);
+			return new ArmorProperties(4, 10, 4);
 		}
 	}
 

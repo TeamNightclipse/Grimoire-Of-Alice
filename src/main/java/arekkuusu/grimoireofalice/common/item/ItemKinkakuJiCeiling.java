@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
@@ -74,6 +76,9 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 				double dx = playerIn.posX + look.xCoord * distance;
 				double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
 				double dz = playerIn.posZ + look.zCoord * distance;
+                if(!isSafe(worldIn, new BlockPos(dx, dy, dz))) {
+                    return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+                }
 				ceiling = new EntityKinkakuJiCeiling(playerIn.world, playerIn, dx, dy, dz);
 			}
 			playerIn.world.spawnEntityInWorld(ceiling);
@@ -81,6 +86,11 @@ public class ItemKinkakuJiCeiling extends ItemMod {
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
 	}
+
+	private boolean isSafe(World world, BlockPos pos) {
+        IBlockState state = world.getBlockState(pos);
+        return state.getBlock().isAir(state, world, pos);
+    }
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {

@@ -15,9 +15,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -109,6 +111,9 @@ public class ItemRodOfRemorse extends ItemMod {
 		if (!getUsed(stack) && target.getHealth() > 1) {
 			float perc = 0.75F;
 			target.setHealth(target.getHealth() * perc);
+			if(target.getLastDamageSource() != null) {
+				target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 4));
+			}
 			setUsed(stack, true);
 		}
 		return false;

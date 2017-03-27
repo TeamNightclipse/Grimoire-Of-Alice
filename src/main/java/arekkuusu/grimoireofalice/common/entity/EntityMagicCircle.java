@@ -70,8 +70,8 @@ public class EntityMagicCircle extends Entity {
 				posZ = host.posZ;
 				setPosition(posX, posY, posZ);
 
-				rotationYaw = MathHelper.wrapDegrees(rotationYaw);
-				rotationPitch = MathHelper.wrapDegrees(rotationPitch);
+                rotationYaw = MathHelper.wrapDegrees(rotationYaw);
+                rotationPitch = MathHelper.wrapDegrees(rotationPitch);
 
 				setRotation(rotationYaw, rotationPitch);
 

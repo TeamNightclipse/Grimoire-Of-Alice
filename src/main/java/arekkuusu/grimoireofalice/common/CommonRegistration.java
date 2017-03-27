@@ -104,7 +104,7 @@ public class CommonRegistration {
 				new ItemKokorosMasks(ModMaterials.STRONG_HIHIIROKANE, 3),
 				new ItemToyosatomimiHat(ModMaterials.WEAK_PAPER, 3),
 				new ItemKanakoShimenawa(ModMaterials.ENSHRINED_SHIMENAWA, 3),
-				new ItemIchirinUnzan(ItemArmor.ArmorMaterial.DIAMOND, 3),
+				new ItemIchirinUnzan(ItemArmor.ArmorMaterial.CHAIN, 3),
 				new ItemSuwakoHat(ModMaterials.STRONG_LEATHER, 3),
 				new ItemFireRobe(ModMaterials.FIRE_LEATHER, 3),
 				new ItemUtsuhoWings(ModMaterials.FIRE_LEATHER, 5),
@@ -176,8 +176,8 @@ public class CommonRegistration {
 					new ItemSwordOfHisou(ModMaterials.STRONG_GOLD),
 					new ItemLeaf(),
 					new ItemNuclearRod(),
-					new ItemTenguCamera(LibItemName.AYA_CAMERA),
-					new ItemTenguCamera(LibItemName.HATATE_CAMERA),
+					new ItemAyaCamera(),
+					new ItemHatateCamera(),
 					new ItemHakuroukenSword(Item.ToolMaterial.WOOD),
 					new ItemRedStoneofAja()
 			);

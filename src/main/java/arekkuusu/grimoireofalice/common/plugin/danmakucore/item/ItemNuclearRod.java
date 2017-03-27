@@ -16,6 +16,7 @@ import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -88,18 +89,28 @@ public class ItemNuclearRod extends ItemMod {
 		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		if (timeUsed < 20) return;
-		Vec3d vec3 = entityLiving.getLookVec();
-		entityLiving.motionX -= vec3.xCoord;
-		entityLiving.motionY -= vec3.yCoord;
-		entityLiving.motionZ -= vec3.zCoord;
+
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if (!worldIn.isRemote) {
-			EntityDanmaku danmaku = DanmakuTemplate.builder()
-					.setUser(entityLiving)
-					.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
-					.setMovementData(1F)
-					.build().asEntity();
-			worldIn.spawnEntityInWorld(danmaku);
+			if (entityLiving.isSneaking()) {
+				DanmakuTemplate danmaku = DanmakuTemplate.builder()
+						.setUser(entityLiving)
+						.setMovementData(0.5F)
+						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+						.build();
+				DanmakuCreationHelper.createCircleShot(danmaku, 5, entityLiving.rotationPitch, 1);
+			} else {
+				EntityDanmaku danmaku = DanmakuTemplate.builder()
+						.setUser(entityLiving)
+						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+						.setMovementData(1F)
+						.build().asEntity();
+				worldIn.spawnEntityInWorld(danmaku);
+                Vec3d vec3 = entityLiving.getLookVec();
+                entityLiving.motionX -= vec3.xCoord;
+                entityLiving.motionY -= vec3.yCoord;
+                entityLiving.motionZ -= vec3.zCoord;
+			}
 		}
 	}
 

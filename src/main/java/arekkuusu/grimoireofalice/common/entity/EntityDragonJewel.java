@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
@@ -25,6 +23,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
+
+import java.util.List;
 
 public class EntityDragonJewel extends Entity {
 

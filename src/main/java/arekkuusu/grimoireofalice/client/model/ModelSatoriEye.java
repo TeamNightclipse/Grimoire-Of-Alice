@@ -202,6 +202,7 @@ public class ModelSatoriEye extends ModelBiped { //TODO: Add a different model
 		if (angle > 360) angle -= 360;
 
 		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
+		GlStateManager.scale(0.8F, 0.8F, 0.8F);
 
 		if (this.isChild) {
 			GlStateManager.scale(0.75F, 0.75F, 0.75F);

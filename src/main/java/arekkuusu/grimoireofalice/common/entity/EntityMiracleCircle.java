@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -16,126 +17,157 @@ import javax.annotation.Nullable;
 
 public class EntityMiracleCircle extends Entity {
 
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
+    @CapabilityInject(IItemHandler.class)
+    private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
-	private EntityPlayer user;
-	private ItemStack stack;
-	private int charge;
+    private EntityPlayer user;
+    private ItemStack stack;
+    private int charge;
 
-	private int circles;
-	public float turnAngle;
+    private int circles;
+    public float turnAngle;
 
-	public EntityMiracleCircle(World worldIn) {
-		super(worldIn);
-	}
+    public EntityMiracleCircle(World worldIn) {
+        super(worldIn);
+    }
 
-	public EntityMiracleCircle(World worldIn, EntityPlayer user, @Nullable ItemStack stack) {
-		super(worldIn);
-		Vec3d vec3 = user.getLookVec();
-		posX = user.posX + vec3.xCoord * 2;
-		posY = user.posY + vec3.yCoord + user.getEyeHeight();
-		posZ = user.posZ + vec3.zCoord * 2;
-		setPosition(posX, posY, posZ);
-		this.user = user;
-		this.stack = stack;
-	}
+    public EntityMiracleCircle(World worldIn, EntityPlayer user, @Nullable ItemStack stack) {
+        super(worldIn);
+        Vec3d vec3 = user.getLookVec();
+        posX = user.posX + vec3.xCoord * 2;
+        posY = user.posY + vec3.yCoord + user.getEyeHeight();
+        posZ = user.posZ + vec3.zCoord * 2;
+        setPosition(posX, posY, posZ);
+        this.user = user;
+        this.stack = stack;
+    }
 
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		if((user == null || user.isDead || !user.isHandActive()) && !world.isRemote) {
-			if(stack != null && user != null) {
-				user.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.2F, 0.1F);
-				if(getCharge() < 30) {
-					addCharge(charge);
-				}
-			}
-			setDead();
-		}
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if ((user == null || user.isDead || !user.isHandActive()) && !world.isRemote) {
+            if (stack != null && user != null) {
+                user.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.2F, 0.1F);
+                if (getCharge() < 30) {
+                    addCharge(charge);
+                }
+            }
+            setDead();
+        }
 
-		if(ticksExisted > 30) {
-			turnAngle += 1.2F;
-		}
+        if (ticksExisted > 30) {
+            turnAngle += 1.2F;
+        }
 
-		if(user != null) {
-			Vec3d vec3 = getRotationVectorFromAngle(user.rotationYaw, user.rotationPitch);
+        if (user != null) {
+            Vec3d vec3 = getRotationVectorFromAngle(user.rotationYaw, user.rotationPitch);
 
-			rotationYaw = user.rotationYaw;
-			rotationPitch = user.rotationPitch;
+            rotationYaw = user.rotationYaw;
+            rotationPitch = user.rotationPitch;
 
-			posX = user.posX + vec3.xCoord * 2;
-			posY = user.posY + vec3.yCoord + (double) user.getEyeHeight();
-			posZ = user.posZ + vec3.zCoord * 2;
-			setPosition(posX, posY, posZ);
+            posX = user.posX + vec3.xCoord * 2;
+            posY = user.posY + vec3.yCoord + user.getEyeHeight();
+            posZ = user.posZ + vec3.zCoord * 2;
+            setPosition(posX, posY, posZ);
 
-			if(!world.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
-				if(getCharge() < 30) {
-					if (hasFaith(user) && consumeFaith(user)) {
-						charge += 5;
-					}
-					else if (!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 8) {
-						int food = user.getFoodStats().getFoodLevel();
-						user.getFoodStats().setFoodLevel(food - 5);
-						charge += 1;
-					}
-				}
-				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, null);
-				world.spawnEntityInWorld(miracleCircle);
-				++circles;
-			}
-		}
-	}
+            if (!world.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
+                if (getCharge() < 30) {
+                    if (hasFaith(user) && consumeFaith(user)) {
+                        charge += 5;
+                    } else if (!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 8) {
+                        int food = user.getFoodStats().getFoodLevel();
+                        user.getFoodStats().setFoodLevel(food - 5);
+                        charge += 1;
+                    }
+                }
+                EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, null);
+                world.spawnEntityInWorld(miracleCircle);
+                ++circles;
+            }
+        }
+    }
 
-	private void addCharge(int charge) {
-		NBTTagCompound nbt = stack.getTagCompound();
-		if (nbt == null) {
-			nbt = new NBTTagCompound();
-			stack.setTagCompound(nbt);
-		}
-		nbt.setInteger("GoheiCharge", Math.min(30, getCharge() + charge));
-	}
+    private Vec3d getRotationVectorFromAngle(float yaw, float pitch) {
+        float yaw_rad = (yaw / 180.0F) * (float) Math.PI;
+        float pitch_rad = (pitch / 180.0F) * (float) Math.PI;
+        double vectorX = -MathHelper.sin(yaw_rad) * MathHelper.cos(pitch_rad);
+        double vectorY = -MathHelper.sin(pitch_rad);
+        double vectorZ = MathHelper.cos(yaw_rad) * MathHelper.cos(pitch_rad);
 
-	private int getCharge() {
-		NBTTagCompound nbt = stack.getTagCompound();
-		return nbt == null ? 0 : nbt.getInteger("GoheiCharge");
-	}
+        return getRotationVector(vectorX, vectorY, vectorZ);
+    }
 
-	private boolean hasFaith(EntityPlayer player) {
-		//noinspection ConstantConditions
-		return player.inventory.hasItemStack(new ItemStack(ModItems.FAITH));
-	}
+    private Vec3d getRotationVector(double vectorX, double vectorY, double vectorZ) {
+        float disXZ = MathHelper.sqrt(vectorX * vectorX + vectorZ * vectorZ);
+        float angleYaw = (float) MathHelper.atan2(-vectorX, vectorZ);
+        float anglePitch = (float) MathHelper.atan2(-vectorY, disXZ);
+        float baseYaw = angleYaw;
 
-	@SuppressWarnings("ConstantConditions")
-	private boolean consumeFaith(EntityPlayer player) {
-		if (player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-			IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
+        Vec3d lookAt = new Vec3d(vectorX, vectorY, vectorZ);
+        lookAt.rotateYaw((float) Math.PI * 2);
 
-			for (int i = 0; i < capability.getSlots(); ++i) {
-				ItemStack stack = capability.getStackInSlot(i);
-				if (stack != null && stack.getItem() == ModItems.FAITH && stack.stackSize > 0) {
-					if (!player.capabilities.isCreativeMode) {
-						capability.extractItem(i, 1, false);
-					}
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+        angleYaw = turnAngle / 180.0F * (float) Math.PI;
 
-	@Override
-	protected void entityInit() {
+        double X1 = MathHelper.sin(angleYaw) * MathHelper.cos(baseYaw);
+        double Z1 = MathHelper.sin(angleYaw) * MathHelper.sin(baseYaw);
 
-	}
+        angleYaw = MathHelper.cos(angleYaw);
+        double vecY = -angleYaw * MathHelper.sin(anglePitch);
+        double vecX = angleYaw * lookAt.xCoord + X1;
+        double vecZ = angleYaw * lookAt.zCoord + Z1;
 
-	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
+        return new Vec3d(vecX, vecY, vecZ);
+    }
 
-	}
+    private void addCharge(int charge) {
+        NBTTagCompound nbt = stack.getTagCompound();
+        if (nbt == null) {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        nbt.setInteger("GoheiCharge", Math.min(30, getCharge() + charge));
+    }
 
-	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
+    private int getCharge() {
+        NBTTagCompound nbt = stack.getTagCompound();
+        return nbt == null ? 0 : nbt.getInteger("GoheiCharge");
+    }
 
-	}
+    private boolean hasFaith(EntityPlayer player) {
+        //noinspection ConstantConditions
+        return player.inventory.hasItemStack(new ItemStack(ModItems.FAITH));
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private boolean consumeFaith(EntityPlayer player) {
+        if (player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+            IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
+
+            for (int i = 0; i < capability.getSlots(); ++i) {
+                ItemStack stack = capability.getStackInSlot(i);
+                if (stack != null && stack.getItem() == ModItems.FAITH && stack.stackSize > 0) {
+                    if (!player.capabilities.isCreativeMode) {
+                        capability.extractItem(i, 1, false);
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    protected void entityInit() {
+
+    }
+
+    @Override
+    protected void readEntityFromNBT(NBTTagCompound compound) {
+
+    }
+
+    @Override
+    protected void writeEntityToNBT(NBTTagCompound compound) {
+
+    }
 }

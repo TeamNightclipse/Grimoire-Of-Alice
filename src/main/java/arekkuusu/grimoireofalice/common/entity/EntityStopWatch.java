@@ -13,6 +13,7 @@ import arekkuusu.grimoireofalice.common.core.handler.StopWatchHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -83,7 +84,9 @@ public class EntityStopWatch extends Entity {
 		}
 		if (ticksExisted % 8 == 0) {
 			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 1.0F, 1.0F + 0.8F);
-			user.getFoodStats().addExhaustion(4);
+			if(!user.capabilities.isCreativeMode) {
+                user.getFoodStats().addExhaustion(4);
+            }
 		}
 	}
 
@@ -102,7 +105,8 @@ public class EntityStopWatch extends Entity {
 				|| entity instanceof EntityCameraSquare
 				|| entity instanceof EntityBarrier
 				|| entity instanceof EntityMagicCircle
-				|| entity instanceof EntityGrimoireSpell) {
+				|| entity instanceof EntityGrimoireSpell
+				|| entity instanceof EntityHanging) {
 			return;
 		}
 
