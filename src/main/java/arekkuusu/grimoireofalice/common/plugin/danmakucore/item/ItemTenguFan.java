@@ -17,7 +17,9 @@ import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityWi
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTenguFan extends ItemMod {
+public class ItemTenguFan extends ItemMod implements IOwnedBy {
 
 	public ItemTenguFan() {
 		super(LibItemName.TENGU_FAN);
@@ -105,5 +107,10 @@ public class ItemTenguFan extends ItemMod {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.AYA_SHAMEIMARU;
 	}
 }

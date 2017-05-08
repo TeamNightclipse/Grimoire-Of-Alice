@@ -16,6 +16,7 @@ import java.util.UUID;
 import com.google.common.collect.Multimap;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -28,7 +29,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemOnbashira extends ItemModSword {
+@net.minecraftforge.fml.common.Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemOnbashira extends ItemModSword implements IOwnedBy {
 
 	public ItemOnbashira(ToolMaterial material) {
 		super(material, LibItemName.KANAKO_ONBASHIRA);
@@ -70,5 +72,11 @@ public class ItemOnbashira extends ItemModSword {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
 	}
 }

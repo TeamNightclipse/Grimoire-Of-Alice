@@ -8,8 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,14 +26,17 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemIchirinRing extends ItemModSword {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	public ItemIchirinRing(ToolMaterial material) {
 		super(material, LibItemName.ICHIRIN_RING);
@@ -79,19 +84,38 @@ public class ItemIchirinRing extends ItemModSword {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (isWearingUnzan(playerIn)) {
-				if (!worldIn.isRemote) {
-					EntityUnzanFist fist = new EntityUnzanFist(worldIn, playerIn);
-					worldIn.spawnEntityInWorld(fist);
-					fist.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0F, 2F, 0F);
-				}
-				playerIn.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-				playerIn.getCooldownTracker().setCooldown(this, 10);
-			}
-		}
-	}
+        if (entityLiving instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entityLiving;
+            if (isWearingUnzan(player)) {
+                if(isStand(player) && player.isSneaking()){
+                    player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
+                    player.getCooldownTracker().setCooldown(this, 125);
+                    player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
+                }
+                else {
+                    if (!worldIn.isRemote) {
+                        Vec3d look = player.getLookVec();
+                        float distance = 5F;
+                        double dx = player.posX + look.xCoord * distance;
+                        double dy = player.posY + 1 + look.yCoord * distance;
+                        double dz = player.posZ + look.zCoord * distance;
+
+                        EntityUnzanFist fist = new EntityUnzanFist(worldIn, player);
+                        fist.setPosition(dx, dy, dz);
+                        worldIn.spawnEntityInWorld(fist);
+                        fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
+                    }
+                    player.getCooldownTracker().setCooldown(this, 10);
+                    player.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+                }
+            }
+        }
+    }
+
+    private boolean isStand(EntityPlayer player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+        return stack != null && stack.getDisplayName().equalsIgnoreCase("star platinum");
+    }
 
     @Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
@@ -134,5 +158,11 @@ public class ItemIchirinRing extends ItemModSword {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
 	}
 }

@@ -4,6 +4,8 @@ import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemHakuroukenSword extends ItemModSword {
+public class ItemHakuroukenSword extends ItemModSword implements IOwnedBy {
 
 	public ItemHakuroukenSword(ToolMaterial material) {
 		super(material, LibItemName.HAKUROUKEN);
@@ -61,7 +63,7 @@ public class ItemHakuroukenSword extends ItemModSword {
 		danmaku.rotationYaw = entityLiving.rotationYaw;
 		danmaku.rotationPitch = entityLiving.rotationPitch;
 		Vec3d vec3d = entityLiving.getLookVec();
-		danmaku.setAngle(new Vector3(vec3d));
+        danmaku.setAngle(new Vector3(vec3d));
 		danmaku.motionX *= vec3d.xCoord;
 		danmaku.motionY *= -vec3d.yCoord;
 		danmaku.motionZ *= vec3d.zCoord;
@@ -75,5 +77,10 @@ public class ItemHakuroukenSword extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
 		return 100;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.YOUMU_KONPAKU;
 	}
 }

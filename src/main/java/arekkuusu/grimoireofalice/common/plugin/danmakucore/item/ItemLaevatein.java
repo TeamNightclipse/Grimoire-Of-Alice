@@ -15,7 +15,9 @@ import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
@@ -42,7 +44,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
-public class ItemLaevatein extends ItemModSword {
+public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
@@ -168,5 +170,10 @@ public class ItemLaevatein extends ItemModSword {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.FLANDRE_SCARLET;
 	}
 }

@@ -30,17 +30,9 @@ public class RenderMiracleCircle extends Render<EntityMiracleCircle> {
 		bindEntityTexture(entity);
 
 		GlStateManager.translate(x, y, z);
-		GlStateManager.rotate(180 - renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
+        GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 
-		if(renderManager.options.thirdPersonView == 2) {
-			GlStateManager.rotate(renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-		}
-		else {
-			GlStateManager.rotate(-renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-		}
-		GL11.glRotatef(entity.turnAngle, 0.0F, 0.0F, 1.0F);
-
-		GlStateManager.rotate(90 - entity.rotationYaw, 1F, 0F, 0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.disableBlend();

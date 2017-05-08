@@ -16,6 +16,7 @@ import com.google.common.collect.ImmutableSet;
 
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -28,10 +29,12 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBudahBoul extends ItemTool {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 
 	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.ROCK, Material.IRON, Material.IRON, Material.GLASS,
 			Material.PISTON, Material.ANVIL, Material.CIRCUITS, Material.WOOD, Material.GOURD, Material.PLANTS, Material.VINE, Material.GRASS,
@@ -93,5 +96,11 @@ public class ItemBudahBoul extends ItemTool {
 		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) return efficiencyOnProperMaterial;
 		else if(SWORD_MATERIALS.contains(state.getMaterial())) return 1.5f;
 		else return 1.0F;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

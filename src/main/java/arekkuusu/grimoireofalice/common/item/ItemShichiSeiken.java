@@ -13,6 +13,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,11 +26,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemShichiSeiken extends ItemModSword {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
 
 	public ItemShichiSeiken(ToolMaterial material) {
 		super(material, LibItemName.SHICHI_SEIKEN);
@@ -67,5 +70,11 @@ public class ItemShichiSeiken extends ItemModSword {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.IRON_INGOT;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
 	}
 }

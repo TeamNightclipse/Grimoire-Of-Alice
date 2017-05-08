@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.entity;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -17,13 +18,14 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.*;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import java.util.List;
 
 public class EntityUnzanFist extends EntityThrowable {
+
+    private int tick;
 
 	public EntityUnzanFist(World world) {
 		super(world);
@@ -35,18 +37,90 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	public EntityUnzanFist(World world, EntityLivingBase thrower) {
 		super(world, thrower);
-		Vec3d look = thrower.getLookVec();
-		float distance = 5F;
-		double dx = thrower.posX + look.xCoord * distance;
-		double dy = thrower.posY + 1 + look.yCoord * distance;
-		double dz = thrower.posZ + look.zCoord * distance;
-		setPosition(dx, dy, dz);
 	}
 
 	@Override
 	public void onUpdate() {
-		super.onUpdate();
-	}
+        onEntityUpdate();
+        this.lastTickPosX = this.posX;
+        this.lastTickPosY = this.posY;
+        this.lastTickPosZ = this.posZ;
+
+        if (this.throwableShake > 0) {
+            --this.throwableShake;
+        }
+
+        Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
+        Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+        RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d, vec3d1);
+        vec3d = new Vec3d(this.posX, this.posY, this.posZ);
+        vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+
+        if (raytraceresult != null) {
+            vec3d1 = new Vec3d(raytraceresult.hitVec.xCoord, raytraceresult.hitVec.yCoord, raytraceresult.hitVec.zCoord);
+        }
+
+        Entity entity = null;
+        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expandXyz(1.0D));
+        double d0 = 0.0D;
+
+        for (Entity aList : list) {
+            if (aList.canBeCollidedWith()) {
+                if (aList != this.ignoreEntity) {
+                    if (this.ticksExisted < 2 && this.ignoreEntity == null) {
+                        this.ignoreEntity = aList;
+                    }
+                    else {
+                        AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().expandXyz(0.30000001192092896D);
+                        RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+
+                        if (result != null) {
+                            double d1 = vec3d.squareDistanceTo(result.hitVec);
+
+                            if (d1 < d0 || d0 == 0.0D) {
+                                entity = aList;
+                                d0 = d1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (entity != null) {
+            raytraceresult = new RayTraceResult(entity);
+        }
+
+        if (raytraceresult != null) {
+            if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK && this.world.getBlockState(raytraceresult.getBlockPos()).getBlock() == Blocks.PORTAL) {
+                this.setPortal(raytraceresult.getBlockPos());
+            }
+            else if (!net.minecraftforge.common.ForgeHooks.onThrowableImpact(this, raytraceresult)) {
+                this.onImpact(raytraceresult);
+            }
+        }
+
+        this.posX += this.motionX;
+        this.posY += this.motionY;
+        this.posZ += this.motionZ;
+
+        float f1 = 0.99F;
+
+        this.motionX *= (double) f1;
+        this.motionY *= (double) f1;
+        this.motionZ *= (double) f1;
+
+        if (!this.hasNoGravity()) {
+            this.motionY -= (double) getGravityVelocity();
+        }
+
+        this.setPosition(this.posX, this.posY, this.posZ);
+
+        if (!world.isRemote && tick > 20) {
+            setDead();
+        }
+        ++tick;
+    }
 
 	@Override
 	protected void entityInit() {}
@@ -72,26 +146,17 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-		if(result.entityHit != null && result.entityHit != this) {
-			if(result.entityHit == getThrower()) {
-				setDead();
-			}
-			else {
-				explode();
-			}
-		}
-	}
+        if (result.entityHit != null && result.entityHit != this && result.entityHit != getThrower()) {
+            explode();
+        }
+    }
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(!world.isRemote) {
-			if (entityplayer != getThrower()) {
-				explode();
-			} else {
-				setDead();
-			}
-		}
-	}
+        if (!world.isRemote && entityplayer != getThrower()) {
+            explode();
+        }
+    }
 
 	private void explode() {
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);

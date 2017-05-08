@@ -19,6 +19,8 @@ public class ItemBlockOnbashira extends ItemBlock {
 		super(block);
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (facing != EnumFacing.UP) {
 			return EnumActionResult.FAIL;

@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,10 +29,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBloodThirstyOrb extends ItemMod {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 
 	public ItemBloodThirstyOrb() {
 		super(LibItemName.BLOOD_THIRSTY_ORB);
@@ -133,5 +136,11 @@ public class ItemBloodThirstyOrb extends ItemMod {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.REIMU_HAKUREI;
 	}
 }

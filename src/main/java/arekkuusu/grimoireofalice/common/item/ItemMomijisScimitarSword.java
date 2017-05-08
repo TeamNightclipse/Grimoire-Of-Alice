@@ -8,13 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.google.common.collect.Multimap;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -27,7 +23,13 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMomijisScimitarSword extends ItemModSword {
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@net.minecraftforge.fml.common.Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemMomijisScimitarSword extends ItemModSword implements IOwnedBy {
 
 	public ItemMomijisScimitarSword(ToolMaterial material) {
 		super(material, LibItemName.MOMIJIS_SCIMITAR_SWORD);
@@ -63,5 +65,11 @@ public class ItemMomijisScimitarSword extends ItemModSword {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.IRON_INGOT;
+	}
+
+	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MOMIJI_INUBASHIRI;
 	}
 }

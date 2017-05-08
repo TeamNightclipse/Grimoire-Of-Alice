@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelUtsuhoWings;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -21,12 +22,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -67,5 +70,11 @@ public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor {
 		if (model == null) model = new ModelUtsuhoWings();
 		model.setModelAttributes(imodel);
 		return model;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.UTSUHO_REIUJI_OKUU;
 	}
 }

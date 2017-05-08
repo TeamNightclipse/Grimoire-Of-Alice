@@ -55,9 +55,9 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 
 	@Override
 	public final SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound tag = new NBTTagCompound();
+		NBTTagCompound tag = getUpdateTag();
 		writeDataNBT(tag);
-		return new SPacketUpdateTileEntity(pos, -999, tag);
+		return new SPacketUpdateTileEntity(pos, 0, tag);
 	}
 
 	@Override

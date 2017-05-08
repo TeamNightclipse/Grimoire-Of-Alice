@@ -173,6 +173,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 		return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {

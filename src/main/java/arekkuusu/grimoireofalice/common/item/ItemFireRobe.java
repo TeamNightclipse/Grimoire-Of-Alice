@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -28,12 +29,14 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -110,7 +113,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		if(isActive(player)) return new ArmorProperties(4, 0, 0);
-		return new ArmorProperties(4, 100, 100);
+		return new ArmorProperties(4, 25, 10);
 	}
 
 	@Override
@@ -146,5 +149,11 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

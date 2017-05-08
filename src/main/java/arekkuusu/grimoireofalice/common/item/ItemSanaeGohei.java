@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -39,6 +40,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -52,15 +54,12 @@ import java.util.function.BiPredicate;
 
 import static arekkuusu.grimoireofalice.common.item.ItemSanaeGohei.Miracles.*;
 
-public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, null, new String[]{"convertToVillager", "func_82232_p"});
-
-	static {
-		CONVERT_ZOMBIE.setAccessible(true);
-	}
 
 	public ItemSanaeGohei() {
 		super(LibItemName.SANAE_GOHEI, Miracles.values());
@@ -370,5 +369,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> {
 		public String toString() {
 			return name;
 		}
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SANAE_KOCHIYA;
 	}
 }

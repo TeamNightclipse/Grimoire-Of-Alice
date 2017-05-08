@@ -16,5 +16,6 @@
 	"wave": { "sounds":["grimoireofalice:wave"], "subtitle": "grimoire.subtitle.wave" },
 	"wind": { "sounds":["grimoireofalice:wind"], "subtitle": "grimoire.subtitle.wind" },
 	"pageTurn": { "sounds":["grimoireofalice:pageTurn"], "subtitle": "grimoire.subtitle.pageTurn" },
-	"wingFlap": { "sounds":["grimoireofalice:wingFlap"], "subtitle": "grimoire.subtitle.wingFlap" }
+	"wingFlap": { "sounds":["grimoireofalice:wingFlap"], "subtitle": "grimoire.subtitle.wingFlap" },
+	"ora": { "sounds":["grimoireofalice:ora"], "subtitle": "grimoire.subtitle.ora" }
 }

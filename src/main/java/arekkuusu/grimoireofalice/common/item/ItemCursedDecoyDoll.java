@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -25,10 +26,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemCursedDecoyDoll extends ItemMod {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemCursedDecoyDoll extends ItemMod implements IOwnedBy {
 
 	public ItemCursedDecoyDoll() {
 		super(LibItemName.DECOY_DOLL);
@@ -72,5 +75,11 @@ public class ItemCursedDecoyDoll extends ItemMod {
 			float hitX, float hitY, float hitZ) {
 		spawnDoll(stack, worldIn, playerIn);
 		return EnumActionResult.SUCCESS;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
 	}
 }

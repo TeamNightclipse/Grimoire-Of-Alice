@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,12 +25,14 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemShinmyoumaruNeedle extends ItemModSword {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	public ItemShinmyoumaruNeedle(ToolMaterial material) {
 		super(material, LibItemName.SHINMYOUMARU_NEEDLE);
@@ -118,5 +121,11 @@ public class ItemShinmyoumaruNeedle extends ItemModSword {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SHINMYOUMARU_SUKUNA;
 	}
 }

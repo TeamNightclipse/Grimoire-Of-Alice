@@ -6,7 +6,9 @@ import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemRedStoneofAja extends ItemMod {
+public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
 
 	public ItemRedStoneofAja() {
 		super(LibItemName.RED_STONE_OF_AJA);
@@ -102,5 +104,10 @@ public class ItemRedStoneofAja extends ItemMod {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 100;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

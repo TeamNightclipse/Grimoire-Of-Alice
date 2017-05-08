@@ -25,7 +25,7 @@ public class EntityMiracleCircle extends Entity {
     private int charge;
 
     private int circles;
-    public float turnAngle;
+    private float turnAngle;
 
     public EntityMiracleCircle(World worldIn) {
         super(worldIn);
@@ -35,7 +35,7 @@ public class EntityMiracleCircle extends Entity {
         super(worldIn);
         Vec3d vec3 = user.getLookVec();
         posX = user.posX + vec3.xCoord * 2;
-        posY = user.posY + vec3.yCoord + user.getEyeHeight();
+        posY = user.posY + user.getEyeHeight();
         posZ = user.posZ + vec3.zCoord * 2;
         setPosition(posX, posY, posZ);
         this.user = user;
@@ -60,13 +60,12 @@ public class EntityMiracleCircle extends Entity {
         }
 
         if (user != null) {
-            Vec3d vec3 = getRotationVectorFromAngle(user.rotationYaw, user.rotationPitch);
-
             rotationYaw = user.rotationYaw;
             rotationPitch = user.rotationPitch;
 
+            Vec3d vec3 = getRotationVector(getVectorForRotation(0F, rotationYaw));
             posX = user.posX + vec3.xCoord * 2;
-            posY = user.posY + vec3.yCoord + user.getEyeHeight();
+            posY = user.posY + user.getEyeHeight();
             posZ = user.posZ + vec3.zCoord * 2;
             setPosition(posX, posY, posZ);
 
@@ -87,36 +86,9 @@ public class EntityMiracleCircle extends Entity {
         }
     }
 
-    private Vec3d getRotationVectorFromAngle(float yaw, float pitch) {
-        float yaw_rad = (yaw / 180.0F) * (float) Math.PI;
-        float pitch_rad = (pitch / 180.0F) * (float) Math.PI;
-        double vectorX = -MathHelper.sin(yaw_rad) * MathHelper.cos(pitch_rad);
-        double vectorY = -MathHelper.sin(pitch_rad);
-        double vectorZ = MathHelper.cos(yaw_rad) * MathHelper.cos(pitch_rad);
-
-        return getRotationVector(vectorX, vectorY, vectorZ);
-    }
-
-    private Vec3d getRotationVector(double vectorX, double vectorY, double vectorZ) {
-        float disXZ = MathHelper.sqrt(vectorX * vectorX + vectorZ * vectorZ);
-        float angleYaw = (float) MathHelper.atan2(-vectorX, vectorZ);
-        float anglePitch = (float) MathHelper.atan2(-vectorY, disXZ);
-        float baseYaw = angleYaw;
-
-        Vec3d lookAt = new Vec3d(vectorX, vectorY, vectorZ);
-        lookAt.rotateYaw((float) Math.PI * 2);
-
-        angleYaw = turnAngle / 180.0F * (float) Math.PI;
-
-        double X1 = MathHelper.sin(angleYaw) * MathHelper.cos(baseYaw);
-        double Z1 = MathHelper.sin(angleYaw) * MathHelper.sin(baseYaw);
-
-        angleYaw = MathHelper.cos(angleYaw);
-        double vecY = -angleYaw * MathHelper.sin(anglePitch);
-        double vecX = angleYaw * lookAt.xCoord + X1;
-        double vecZ = angleYaw * lookAt.zCoord + Z1;
-
-        return new Vec3d(vecX, vecY, vecZ);
+    private Vec3d getRotationVector(Vec3d vec) {
+        float angleYaw = turnAngle / 180.0F * (float) Math.PI;
+        return vec.rotateYaw(angleYaw);
     }
 
     private void addCharge(int charge) {

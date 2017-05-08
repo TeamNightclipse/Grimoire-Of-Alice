@@ -25,6 +25,7 @@ public class ModSounds {
 		registerSound(ResourceLocationsAPI.WAVE);
 		registerSound(ResourceLocationsAPI.PAGE_TURN);
 		registerSound(ResourceLocationsAPI.WING_FLAP);
+        registerSound(ResourceLocationsAPI.ORA);
 	}
 
 	private static void registerSound(ResourceLocation soundNameIn) {

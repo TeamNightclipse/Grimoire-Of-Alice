@@ -1,6 +1,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,10 +14,12 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-public class ItemGhostAnchor extends ItemModSword {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 
 	public ItemGhostAnchor(ToolMaterial material) {
 		super(material, LibItemName.GHOST_ANCHOR);
@@ -99,5 +102,11 @@ public class ItemGhostAnchor extends ItemModSword {
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
 		return 500;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MINAMITSU_MURASA;
 	}
 }

@@ -9,8 +9,11 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.item.IOwnedBy;
+import net.minecraft.item.ItemStack;
 
-public class ItemAyaCamera extends ItemCamera {
+public class ItemAyaCamera extends ItemCamera implements IOwnedBy {
 
     public ItemAyaCamera() {
         super(LibItemName.AYA_CAMERA);
@@ -20,4 +23,9 @@ public class ItemAyaCamera extends ItemCamera {
     public int getSize() {
         return 5;
     }
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+			return EnumTouhouCharacters.AYA_SHAMEIMARU;
+	}
 }

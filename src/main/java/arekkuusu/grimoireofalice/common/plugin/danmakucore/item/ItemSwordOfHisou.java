@@ -14,7 +14,9 @@ import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.block.material.Material;
@@ -40,7 +42,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSwordOfHisou extends ItemSwordOwner {
+public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU);
@@ -220,5 +222,10 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.TENSHI_HINANAWI;
 	}
 }

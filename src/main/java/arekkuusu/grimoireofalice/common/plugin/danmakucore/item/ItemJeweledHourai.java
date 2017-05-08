@@ -12,7 +12,9 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
@@ -31,7 +33,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemJeweledHourai extends ItemJeweled {
+public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -146,5 +148,10 @@ public class ItemJeweledHourai extends ItemJeweled {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

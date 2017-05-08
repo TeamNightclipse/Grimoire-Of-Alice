@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -22,10 +23,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemUltramarineOrbElixir extends ItemModFood {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemUltramarineOrbElixir extends ItemModFood implements IOwnedBy {
 
 	public ItemUltramarineOrbElixir() {
 		super(0, 0, false, LibItemName.ORB_ELIXIR);
@@ -68,5 +71,11 @@ public class ItemUltramarineOrbElixir extends ItemModFood {
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.DRINK;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.EIRIN_YAGOKORO;
 	}
 }

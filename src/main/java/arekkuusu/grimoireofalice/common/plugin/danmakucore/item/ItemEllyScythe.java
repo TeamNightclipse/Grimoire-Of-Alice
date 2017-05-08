@@ -16,7 +16,9 @@ import net.katsstuff.danmakucore.data.AbstractVector3;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.resources.I18n;
@@ -39,7 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-public class ItemEllyScythe extends ItemModSword {
+public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 
 	public ItemEllyScythe(ToolMaterial material) {
 		super(material, LibItemName.ELLY_SCYTHE);
@@ -149,5 +151,10 @@ public class ItemEllyScythe extends ItemModSword {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.OLD;
 	}
 }

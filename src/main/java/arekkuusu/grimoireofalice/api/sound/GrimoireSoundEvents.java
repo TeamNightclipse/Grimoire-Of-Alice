@@ -6,7 +6,7 @@ import net.minecraft.util.SoundEvent;
 
 public final class GrimoireSoundEvents {
 
-	private GrimoireSoundEvents() {}
+    private GrimoireSoundEvents() {}
 
 	public static final SoundEvent CAMERA_BEEP = getRegisteredSound(ResourceLocationsAPI.CAMERA_BEEP);
 	public static final SoundEvent CAMERA_SHOOT = getRegisteredSound(ResourceLocationsAPI.CAMERA_SHOOT);
@@ -26,8 +26,9 @@ public final class GrimoireSoundEvents {
 	public static final SoundEvent WAVE = getRegisteredSound(ResourceLocationsAPI.WAVE);
 	public static final SoundEvent PAGE_TURN = getRegisteredSound(ResourceLocationsAPI.PAGE_TURN);
 	public static final SoundEvent WING_FLAP = getRegisteredSound(ResourceLocationsAPI.WING_FLAP);
+    public static final SoundEvent ORA = getRegisteredSound(ResourceLocationsAPI.ORA);
 
-	private static SoundEvent getRegisteredSound(ResourceLocation name) {
+    private static SoundEvent getRegisteredSound(ResourceLocation name) {
 		return SoundEvent.REGISTRY.getObject(name);
 	}
 }

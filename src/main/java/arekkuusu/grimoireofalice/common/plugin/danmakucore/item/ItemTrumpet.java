@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -18,7 +20,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTrumpet extends ItemInstrument {
+public class ItemTrumpet extends ItemInstrument implements IOwnedBy {
 
 	public ItemTrumpet() {
 		super(LibItemName.MERLIN_TRUMPET);
@@ -50,5 +52,10 @@ public class ItemTrumpet extends ItemInstrument {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.GOLD_INGOT;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.MERLIN_PRIMSRIVER;
 	}
 }

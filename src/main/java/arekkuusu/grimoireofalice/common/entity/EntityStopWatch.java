@@ -105,6 +105,7 @@ public class EntityStopWatch extends Entity {
 				|| entity instanceof EntityCameraSquare
 				|| entity instanceof EntityBarrier
 				|| entity instanceof EntityMagicCircle
+                || entity instanceof EntityMiracleCircle
 				|| entity instanceof EntityGrimoireSpell
 				|| entity instanceof EntityHanging) {
 			return;

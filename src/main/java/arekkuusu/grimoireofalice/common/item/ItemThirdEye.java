@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKoishiEye;
 import arekkuusu.grimoireofalice.client.model.ModelSatoriEye;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -34,12 +35,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemThirdEye extends ItemModArmor {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 
     @SideOnly(Side.CLIENT)
     private ModelBiped model;
@@ -163,4 +166,11 @@ public class ItemThirdEye extends ItemModArmor {
     public int getItemEnchantability() {
         return 0;
     }
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KOISHI_KOMEIJI
+				: net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SATORI_KOMEIJI;
+	}
 }

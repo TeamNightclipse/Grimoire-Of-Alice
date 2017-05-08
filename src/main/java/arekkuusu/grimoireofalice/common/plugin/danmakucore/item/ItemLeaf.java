@@ -14,7 +14,9 @@ import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +32,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemLeaf extends ItemMod {
+public class ItemLeaf extends ItemMod implements IOwnedBy {
 
 	public ItemLeaf() {
 		super(LibItemName.LEAF);
@@ -78,5 +80,10 @@ public class ItemLeaf extends ItemMod {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.MAMIZOU_FUTATSUIWA;
 	}
 }

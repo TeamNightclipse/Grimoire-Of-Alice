@@ -117,6 +117,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 		return new BlockStateContainer(this, PROPERTYFACING);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {

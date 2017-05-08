@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -20,10 +21,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemHeavelyPeach extends ItemModFood {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemHeavelyPeach extends ItemModFood implements IOwnedBy {
 
 	public ItemHeavelyPeach() {
 		super(20, 5F, false, LibItemName.HEAVENLY_PEACH);
@@ -48,5 +51,11 @@ public class ItemHeavelyPeach extends ItemModFood {
 		super.onFoodEaten(stack, world, player);
 		player.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, itemRand.nextFloat() * 0.1F + 0.9F);
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 160, 0));
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TENSHI_HINANAWI;
 	}
 }

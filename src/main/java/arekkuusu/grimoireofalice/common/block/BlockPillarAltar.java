@@ -102,6 +102,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 		return facing.getHorizontalIndex();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 									 EntityLivingBase placer) {

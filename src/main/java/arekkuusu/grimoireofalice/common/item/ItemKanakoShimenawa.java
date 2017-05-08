@@ -8,11 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelKanakoShimenawa;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -23,13 +22,18 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor {
+import java.util.List;
+
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -48,14 +52,16 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if (player.isWet()) {
-			player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 15, 0));
+		if (player.isWet() && player.ticksExisted % 4 == 0) {
+			world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, player.posX + (itemRand.nextDouble() - 0.5D) * player.width,
+					player.posY + itemRand.nextDouble() * player.height - 0.25D, player.posZ + (itemRand.nextDouble() - 0.5D) * player.width,
+					(itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat(), (itemRand.nextFloat() - 0.5D) * 0.2);
 		}
 	}
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(5, 50, 50);
+		return new ArmorProperties(5, 15, 6);
 	}
 
 	@Override
@@ -82,5 +88,10 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor 
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
 	}
 }

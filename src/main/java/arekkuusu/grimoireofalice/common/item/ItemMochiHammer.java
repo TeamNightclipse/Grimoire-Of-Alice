@@ -16,6 +16,7 @@ import java.util.UUID;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.google.common.collect.Multimap;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -33,7 +34,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMochiHammer extends ItemModSword implements IItemData {
+@net.minecraftforge.fml.common.Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy {
 
 	public ItemMochiHammer(ToolMaterial material) {
 		super(material, LibItemName.MOCHI_HAMMER);
@@ -98,5 +100,11 @@ public class ItemMochiHammer extends ItemModSword implements IItemData {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Item.getItemFromBlock(Blocks.PLANKS);
+	}
+
+	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIRAN;
 	}
 }

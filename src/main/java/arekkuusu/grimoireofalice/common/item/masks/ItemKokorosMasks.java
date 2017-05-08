@@ -113,7 +113,7 @@ public class ItemKokorosMasks extends ItemModMask {
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(100, 1000, 1000);
+		return new ArmorProperties(100, 100, 100);
 	}
 
 	@Override

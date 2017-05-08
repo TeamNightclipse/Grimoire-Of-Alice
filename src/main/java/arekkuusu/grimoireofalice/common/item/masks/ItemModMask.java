@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -17,10 +18,12 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemModMask extends ItemArmor implements ISpecialArmor {
+@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 
 	public ItemModMask(ArmorMaterial material, int dmg, String id) {
 		super(material, dmg, EntityEquipmentSlot.HEAD);
@@ -64,5 +67,11 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
+	}
+
+	@Optional.Method(modid = "danmakucore")
+	@Override
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.HATA_NO_KOKORO;
 	}
 }

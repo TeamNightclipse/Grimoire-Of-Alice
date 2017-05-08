@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,7 +20,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemPiano extends ItemInstrument {
+public class ItemPiano extends ItemInstrument implements IOwnedBy {
 
 	public ItemPiano() {
 		super(LibItemName.LYRICA_PIANO);
@@ -45,5 +47,10 @@ public class ItemPiano extends ItemInstrument {
 	@Override
 	public double getDistance() {
 		return 2D;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.LYRICA_PRIMSRIVER;
 	}
 }

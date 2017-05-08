@@ -13,8 +13,10 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.helper.ItemNBTHelper;
+import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
 import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.client.gui.GuiScreen;
@@ -34,7 +36,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShouLamp extends ItemJeweled {
+public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 
 	private static final String TAG = "Jewels";
 
@@ -140,5 +142,10 @@ public class ItemShouLamp extends ItemJeweled {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 500;
+	}
+
+	@Override
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.SHOU_TORAMARU;
 	}
 }

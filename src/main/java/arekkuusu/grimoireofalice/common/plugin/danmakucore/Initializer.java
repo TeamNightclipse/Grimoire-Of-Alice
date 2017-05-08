@@ -60,7 +60,7 @@ public class Initializer {
 				new DanmakuVariantGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO,
 				new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(0))),
 				new DanmakuVariantGeneric(LibDanmakuVariantName.NOTE, () -> LibGOAShotData.NOTE,
-						new MovementData(0.4D, 0.4D, 0D, Vector3.gravity(0)))
+						new MovementData(0.2D, 0.2D, 0D, Vector3.gravity(0)))
 		);
 	}
 }

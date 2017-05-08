@@ -30,16 +30,17 @@ import net.minecraft.world.World;
 //Much taken from BlockStairs
 public class BlockRope extends BlockMod {
 
-	@SuppressWarnings("WeakerAccess")
-	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	@SuppressWarnings("WeakerAccess")
-	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
-	@SuppressWarnings("WeakerAccess")
-	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
-	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
-	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
+    @SuppressWarnings("WeakerAccess")
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    @SuppressWarnings("WeakerAccess")
+    public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
+    @SuppressWarnings("WeakerAccess")
+    public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
+    private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
+    private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
-	public BlockRope() {
+
+    public BlockRope() {
 		super(LibBlockName.ROPE_BLOCK, Material.WOOD);
 		setSoundType(SoundType.LADDER);
 		setHarvestLevel("axe", 1);
@@ -60,6 +61,7 @@ public class BlockRope extends BlockMod {
 		state.neighborChanged(worldIn, pos, Blocks.AIR);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
