@@ -63,8 +63,8 @@ public class MalletServerEvent {
 		EntityPlayer newPlayer = event.getEntityPlayer();
 
 		if (event.isWasDeath() && oldPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && newPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
-			IHouraiCapability oldCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
-			IHouraiCapability newCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
+			IMalletCapability oldCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
+			IMalletCapability newCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			newCap.doAnimation(oldCap.doAnimation());
 			newCap.setScaled(oldCap.getScaled());
 			newCap.setSmall(oldCap.isSmall());
