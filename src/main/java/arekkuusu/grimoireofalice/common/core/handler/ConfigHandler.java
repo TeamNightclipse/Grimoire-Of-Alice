@@ -310,6 +310,8 @@ public class ConfigHandler {
 			public boolean timeStopRenderEffect = true;
 			@Comment("Max range between Gaps")
 			public int gapRange = 100;
+			@Comment("Do mallet shrink animation")
+			public boolean shrinkAnimation = true;
 		}
 
 		public static class Spawning {

@@ -59,15 +59,6 @@ public class CapabilitiesEvent {
 		}
 	}
 
-	/**
-	 * Tested on:
-	 * - Chests
-	 * - Crafting Pillars
-	 * - Item Frames
-	 * - Dragging the Item in the Inventory
-	 * - Tiles from another mods
-	 * - Crashes: Not tested yet
-	**/
 	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
 		if (ConfigHandler.grimoireOfAlice.features.allowFly && event.getEntityLiving() instanceof EntityPlayer) {

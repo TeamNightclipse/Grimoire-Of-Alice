@@ -33,7 +33,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 		Vec3d look = throwerIn.getLookVec();
 		float distance = 2F;
 		double dx = throwerIn.posX + look.xCoord * distance;
-		double dy = throwerIn.posY + throwerIn.getEyeHeight() - 0.5;
+		double dy = throwerIn.posY + throwerIn.getEyeHeight();
 		double dz = throwerIn.posZ + look.zCoord * distance;
 		setPosition(dx, dy, dz);
 	}

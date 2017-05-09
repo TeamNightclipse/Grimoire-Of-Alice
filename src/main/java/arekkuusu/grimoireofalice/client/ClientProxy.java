@@ -18,7 +18,7 @@ import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
 import arekkuusu.grimoireofalice.common.entity.*;
-import arekkuusu.grimoireofalice.client.handler.MalletEvent;
+import arekkuusu.grimoireofalice.client.handler.MalletClientEvent;
 import arekkuusu.grimoireofalice.client.handler.TextureStitcher;
 import arekkuusu.grimoireofalice.common.core.handler.GuiHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -54,7 +54,7 @@ public class ClientProxy implements ISidedProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		initRenderers();
 		MinecraftForge.EVENT_BUS.register(new TextureStitcher());
-		MinecraftForge.EVENT_BUS.register(new MalletEvent());
+		MinecraftForge.EVENT_BUS.register(new MalletClientEvent());
 	}
 
 	@SideOnly(Side.CLIENT)

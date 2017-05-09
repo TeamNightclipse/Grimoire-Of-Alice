@@ -12,6 +12,7 @@ public class ModEvents {
 		MinecraftForge.EVENT_BUS.register(new CapabilitiesEvent());
         MinecraftForge.EVENT_BUS.register(new AchievementEvents());
         MinecraftForge.EVENT_BUS.register(new HouraiEvents());
+		MinecraftForge.EVENT_BUS.register(new MalletServerEvent());
         if (ConfigHandler.grimoireOfAlice.features.timeStopEffect) {
 			MinecraftForge.EVENT_BUS.register(new StopWatchHandler());
 		}

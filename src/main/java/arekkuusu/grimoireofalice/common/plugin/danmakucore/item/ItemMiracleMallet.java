@@ -3,6 +3,10 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
+import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
+import arekkuusu.grimoireofalice.common.core.net.MalletMessage;
+import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleLantern;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -48,39 +52,13 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 		return true;
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	private void useMallet(EntityPlayer player, EnumHand hand) {
-		if (!player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
-			if (!player.getEntityData().hasKey("MalletResized")) {
-				float size = player.isSneaking() ? 0.5F : 1.5F;
-
-				player.eyeHeight = player.eyeHeight + (player.isSneaking() ? -1.00F : 1.00F);
-				player.getEntityData().setFloat("MalletResized", size);
-			} else {
-				float size = player.getEntityData().getFloat("MalletResized");
-				float eyeHeight = player.eyeHeight;
-
-				if (player.isSneaking()) {
-					size -= 0.5;
-					if (eyeHeight > 1.00F) {
-						eyeHeight -= 1.00F;
-					}
-				} else {
-					size += 0.5;
-					if (eyeHeight < 3.00F) {
-						eyeHeight += 1.00F;
-					}
-				}
-
-				if (size <= 0) {
-					size = 0.5F;
-				}
-				if (size > 2) {
-					size = 2.0F;
-				}
-
-				player.eyeHeight = eyeHeight;
-				player.getEntityData().setFloat("MalletResized", size);
-			}
+		if (player.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && !player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
+			IMalletCapability capability = player.getCapability(MalletProvider.MALLET_CAPABILITY, null);
+			capability.setSmall(!capability.isSmall());
+			capability.markDirty();
+			PacketHandler.sendToNear(player, new MalletMessage(capability, player.getUniqueID()));
 		}
 		player.getCooldownTracker().setCooldown(this, 50);
 		player.swingArm(hand);

@@ -246,7 +246,7 @@ public class VanillaCrafting {
 					.outputs(ModItems.LEAF).build();
 		}
 
-		GameRegistry.addSmelting(Items.QUARTZ, new ItemStack(ModItems.TAMAHAGANE_STEEL), 1);
+		GameRegistry.addSmelting(Items.BLAZE_ROD, new ItemStack(ModItems.TAMAHAGANE_STEEL), 1);
 
 		GameRegistry.addSmelting(ModBlocks.IMPURE_STONE, new ItemStack(ModItems.IMPURE_ROCK), 1);
 	}

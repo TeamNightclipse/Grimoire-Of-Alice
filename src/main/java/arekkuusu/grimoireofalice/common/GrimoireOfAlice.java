@@ -9,9 +9,11 @@
 package arekkuusu.grimoireofalice.common;
 
 import arekkuusu.grimoireofalice.common.core.capability.CapabilityHourai;
+import arekkuusu.grimoireofalice.common.core.capability.CapabilityMallet;
 import arekkuusu.grimoireofalice.common.core.handler.*;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
+import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
 import arekkuusu.grimoireofalice.common.entity.ModEntity;
 import arekkuusu.grimoireofalice.common.event.AchievementEvents;
 import arekkuusu.grimoireofalice.common.event.ModEvents;
@@ -50,7 +52,9 @@ public class GrimoireOfAlice {
 		ModEvents.preInit();
 		ModEntity.preInit();
 		ModSounds.preInit();
+		PacketHandler.init();
 		CapabilityHourai.init();
+		CapabilityMallet.init();
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		proxy.preInit(event);
 		if (danmakuCoreInstalled) {

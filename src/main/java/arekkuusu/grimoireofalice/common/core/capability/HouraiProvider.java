@@ -21,7 +21,7 @@ public class HouraiProvider implements ICapabilitySerializable<NBTTagCompound> {
 	@CapabilityInject(IHouraiCapability.class)
 	public static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
 
-	private final IHouraiCapability houraiCapability = new DefaultHouraiCapability();
+	private final IHouraiCapability houraiCapability = new CapabilityHourai.DefaultHouraiCapability();
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {

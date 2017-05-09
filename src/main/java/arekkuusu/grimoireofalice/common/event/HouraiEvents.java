@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.common.core.capability.HouraiProvider;
 import arekkuusu.grimoireofalice.common.core.capability.IHouraiCapability;
+import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -34,6 +35,7 @@ public class HouraiEvents {
 	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof EntityPlayer) {
 			event.addCapability(new ResourceLocation(LibMod.MODID, "GrimoireData"), new HouraiProvider());
+			event.addCapability(new ResourceLocation(LibMod.MODID, "MalletData"), new MalletProvider());
 		}
 	}
 

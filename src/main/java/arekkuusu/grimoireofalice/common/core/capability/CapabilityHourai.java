@@ -25,4 +25,31 @@ public class CapabilityHourai {
 			}
 		}, DefaultHouraiCapability::new);
 	}
+
+	public static class DefaultHouraiCapability implements IHouraiCapability {
+
+		private byte maxLevel = 3;
+		private byte level = 0;
+
+		@Override
+		public byte getHouraiLevel() {
+			return level;
+		}
+
+		@Override
+		public byte getMaxHouraiLevel() {
+			return maxLevel;
+		}
+
+		@Override
+		public void setHouraiLevel(byte level) {
+			this.level = level;
+			if (level < 0) {
+				this.level = 0;
+			}
+			if (level > maxLevel) {
+				this.level = maxLevel;
+			}
+		}
+	}
 }
