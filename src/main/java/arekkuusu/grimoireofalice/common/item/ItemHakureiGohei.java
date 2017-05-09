@@ -40,7 +40,7 @@ import java.util.List;
 
 import static arekkuusu.grimoireofalice.api.items.GoheiMode.*;
 
-@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 
     public ItemHakureiGohei() {

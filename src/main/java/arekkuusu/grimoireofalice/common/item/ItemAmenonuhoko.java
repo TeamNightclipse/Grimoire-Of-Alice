@@ -39,7 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemAmenonuhoko(ToolMaterial material) {

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@net.minecraftforge.fml.common.Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemMomijisScimitarSword extends ItemModSword implements IOwnedBy {
 
 	public ItemMomijisScimitarSword(ToolMaterial material) {

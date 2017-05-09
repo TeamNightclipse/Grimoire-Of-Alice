@@ -54,7 +54,7 @@ import java.util.function.BiPredicate;
 
 import static arekkuusu.grimoireofalice.common.item.ItemSanaeGohei.Miracles.*;
 
-@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)

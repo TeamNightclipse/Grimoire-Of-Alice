@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 
 	public ItemGhostAnchor(ToolMaterial material) {

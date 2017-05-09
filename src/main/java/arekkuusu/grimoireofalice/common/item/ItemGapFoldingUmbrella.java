@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Optional;
 
-@net.minecraftforge.fml.common.Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 
 	public ItemGapFoldingUmbrella() {

@@ -47,7 +47,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-@Optional.Interface(iface = "IOwnedBy", modid = "danmakucore", striprefs = true)
+@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
