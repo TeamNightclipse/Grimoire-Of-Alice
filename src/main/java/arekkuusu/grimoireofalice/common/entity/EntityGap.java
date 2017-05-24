@@ -102,7 +102,7 @@ public class EntityGap extends Entity {
         if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
             IItemHandler handler = playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null);
             for (int i = 0; i < handler.getSlots(); i++) {
-                if (handler.getStackInSlot(i).isItemEqual(toRemove)) {
+                if (toRemove.isItemEqual(handler.getStackInSlot(i))) {
                     handler.extractItem(i, 1, false);
                 }
             }
