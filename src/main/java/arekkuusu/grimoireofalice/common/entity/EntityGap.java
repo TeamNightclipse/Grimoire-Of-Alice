@@ -87,9 +87,10 @@ public class EntityGap extends Entity {
                 }
             }
             if (portalCooldown == 0) {
-                Optional<EntityLivingBase> optional = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-                        entity -> entity instanceof EntityLivingBase).stream().map(entity -> ((EntityLivingBase) entity)).findFirst();
-                optional.ifPresent(this::teleport);
+                List<Entity> inRange = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(), entity -> entity instanceof EntityLivingBase);
+                if(!inRange.isEmpty()) {
+                    teleport((EntityLivingBase)inRange.get(0));
+                }
             }
             if(portalCooldown > 0) {
                 --portalCooldown;
@@ -112,8 +113,9 @@ public class EntityGap extends Entity {
     private void teleport(EntityLivingBase base) {
         Vec3d vec3d = getLookVec();
 
-        List<EntityGap> list = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(ConfigHandler.grimoireOfAlice.features.gapRange),
-                entity -> entity instanceof EntityGap).stream().map(entity -> (EntityGap) entity).collect(Collectors.toList());
+        @SuppressWarnings("unchecked")
+        List<EntityGap> list = (List<EntityGap>)(List<?>)world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(
+                ConfigHandler.grimoireOfAlice.features.gapRange), entity -> entity instanceof EntityGap);
 
         EntityGap gap = null;
         if(teleportByColor) {
@@ -126,8 +128,8 @@ public class EntityGap extends Entity {
         if (gap != null) {
             gap.portalCooldown = 50;
             if (base instanceof EntityPlayer) {
-                EntityPlayerMP playerMP = (EntityPlayerMP) base;
-                playerMP.setPositionAndUpdate(gap.prevPosX + vec3d.xCoord * 1.5, gap.prevPosY + vec3d.yCoord * 1.5, gap.prevPosZ + vec3d.zCoord * 1.5);
+                EntityPlayer player = (EntityPlayer)base;
+                player.setPositionAndUpdate(gap.prevPosX + vec3d.xCoord * 1.5, gap.prevPosY + vec3d.yCoord * 1.5, gap.prevPosZ + vec3d.zCoord * 1.5);
             }
             else {
                 base.setPosition(gap.prevPosX + vec3d.xCoord * 1.5, gap.prevPosY + vec3d.yCoord * 1.5, gap.prevPosZ + vec3d.zCoord * 1.5);
@@ -169,8 +171,8 @@ public class EntityGap extends Entity {
             if(enumdyecolor != getColor()) {
                 setColor(enumdyecolor);
                 --stack.stackSize;
+                player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
             }
-            player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
         }
         else if (player.isSneaking()) {
             if(!world.isRemote) {
