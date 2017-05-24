@@ -46,7 +46,6 @@ public class Initializer {
 	public static void registerSubEntities(RegistryEvent.Register<SubEntityType> event) {
 		event.getRegistry().registerAll(
 				new SubEntityWind(),
-				new SubEntityNote(),
 				new SubEntityUfo(),
 				new SubEntityLeaf(),
 				new SubEntitySunBullet()

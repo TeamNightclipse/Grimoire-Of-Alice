@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.data.Quat;
+import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
@@ -40,8 +41,7 @@ public class SubEntityUfo extends SubEntityType {
 		public void subEntityTick() {
 			super.subEntityTick();
 			if(!world.isRemote && danmaku.ticksExisted % 10 == 0) {
-				float angle = 360 * rand.nextFloat();
-				danmaku.setAngle(danmaku.getAngle().rotate(Quat.eulerToQuat(angle, angle, 0F)));
+				danmaku.setAngle(Vector3.angleRandom());
 			}
 		}
 	}

@@ -11,13 +11,14 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
+import net.katsstuff.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOASubEntities {
 
-	private static final IForgeRegistry<SubEntityType> REGISTRY = GameRegistry.findRegistry(SubEntityType.class);
+	private static final IForgeRegistry<SubEntityType> REGISTRY = DanmakuRegistry.SUB_ENTITY;
 
 	public static final SubEntityType WIND = REGISTRY.getValue(resource(LibSubEntityName.WIND));
 	public static final SubEntityType NOTE = REGISTRY.getValue(resource(LibSubEntityName.NOTE));

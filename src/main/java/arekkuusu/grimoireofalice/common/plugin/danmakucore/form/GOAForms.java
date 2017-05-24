@@ -11,13 +11,14 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.form;
 import arekkuusu.grimoireofalice.common.lib.LibFormName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.katsstuff.danmakucore.entity.danmaku.form.Form;
+import net.katsstuff.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOAForms {
 
-	private static final IForgeRegistry<Form> REGISTRY = GameRegistry.findRegistry(Form.class);
+	private static final IForgeRegistry<Form> REGISTRY = DanmakuRegistry.FORM;
 
 	public static final Form WIND = REGISTRY.getValue(resource(LibFormName.WIND));
 	public static final Form NOTE = REGISTRY.getValue(resource(LibFormName.NOTE));

@@ -11,13 +11,14 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.variant;
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuVariantName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
+import net.katsstuff.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOADanmakuVariants {
 
-	private static final IForgeRegistry<DanmakuVariant> REGISTRY = GameRegistry.findRegistry(DanmakuVariant.class);
+	private static final IForgeRegistry<DanmakuVariant> REGISTRY = DanmakuRegistry.DANMAKU_VARIANT;
 
 	public static final DanmakuVariant UFO = REGISTRY.getValue(resource(LibDanmakuVariantName.UFO));
 

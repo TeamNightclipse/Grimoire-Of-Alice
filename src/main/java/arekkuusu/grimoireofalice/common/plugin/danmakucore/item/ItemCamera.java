@@ -35,7 +35,7 @@ public class ItemCamera extends ItemMod {
 		setMaxDamage(180);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("takingPhoto"),
-				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
+				(stack, world, entity) -> entity != null && entity.isHandActive() && stack.isItemEqual(entity.getActiveItemStack()) ? 1F : 0F);
 	}
 
 	@Override

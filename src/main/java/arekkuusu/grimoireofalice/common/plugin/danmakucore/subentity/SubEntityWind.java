@@ -8,13 +8,18 @@
  */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
+import java.util.Optional;
+
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.data.ShotData;
+import net.katsstuff.danmakucore.entity.danmaku.DamageSourceDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -67,7 +72,13 @@ public class SubEntityWind extends SubEntityType {
 		protected void impactEntity(RayTraceResult result) {
 			if(!danmaku.world.isRemote) {
 				if(result.entityHit instanceof EntityLiving) {
-					result.entityHit.attackEntityFrom(DamageSource.magic, timeUsed / 2F);
+					Entity indirect;
+					Optional<EntityLivingBase> optUser = danmaku.getUser();
+					//noinspection OptionalIsPresent
+					if(optUser.isPresent()) indirect = optUser.get();
+					else indirect = danmaku.getSource().orElse(null);
+
+					result.entityHit.attackEntityFrom(DamageSourceDanmaku.causeDanmakuDamage(danmaku, indirect), timeUsed / 2F);
 					Vec3d windPos = danmaku.getPositionVector();
 					Vec3d mobPos = result.entityHit.getPositionVector();
 					double ratio = windPos.distanceTo(mobPos) / 4;

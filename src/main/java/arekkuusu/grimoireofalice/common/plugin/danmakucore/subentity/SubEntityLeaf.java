@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import net.katsstuff.danmakucore.data.Quat;
+import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
@@ -33,17 +34,16 @@ public class SubEntityLeaf extends SubEntityType {
 			super.subEntityTick();
 
 			if (danmaku.isShotEndTime()) {
-					for (int j = 0; j < 8; ++j) {
-						danmaku.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
-					}
-				if(!world.isRemote) {
-					DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setShot(LibGOAShotData.UFO).setSource(this.danmaku);
-					float angle = 360 * rand.nextFloat();
-					danmaku.setAngle(this.danmaku.getAngle().rotate(Quat.eulerToQuat(angle, angle, 0F)));
-					world.spawnEntityInWorld(danmaku.build().asEntity());
-					danmaku.setShot(danmaku.shot.setSize(12));
+				for (int j = 0; j < 8; ++j) {
+					danmaku.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, danmaku.posX, danmaku.posY, danmaku.posZ, 0, 0, 0);
 				}
-				danmaku.setDead();
+
+				if(!world.isRemote) {
+					DanmakuTemplate.Builder newDanmaku = DanmakuTemplate.builder().setShot(LibGOAShotData.UFO).setSource(this.danmaku);
+					newDanmaku.setAngle(Vector3.angleRandom());
+					world.spawnEntityInWorld(newDanmaku.build().asEntity());
+					danmaku.setDead();
+				}
 			}
 		}
 	}
