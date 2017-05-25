@@ -6,10 +6,14 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.common.entity;
+package arekkuusu.grimoireofalice.common.plugin.danmakucore.entity;
 
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.core.handler.StopWatchHandler;
+import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
+import arekkuusu.grimoireofalice.common.entity.EntityGrimoireSpell;
+import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
+import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
@@ -32,8 +36,9 @@ public class EntityStopWatch extends Entity {
 	public static final double RANGE = 32D;
 
 	private EntityPlayer user;
-	private ArrayList<UUID> players = new ArrayList<>();
-	private Map<UUID, double[]> dataEntities = new HashMap<>();
+	private List<EntityPlayer> excludedPlayers = new ArrayList<>();
+	private Map<Entity, double[]> dataEntities = new HashMap<>();
+	private List<EntityDanmaku> frozenDanmaku = new ArrayList<>();
 
 	public EntityStopWatch(World worldIn) {
 		super(worldIn);
@@ -42,7 +47,7 @@ public class EntityStopWatch extends Entity {
 	public EntityStopWatch(World worldIn, EntityPlayer player) {
 		super(worldIn);
 		user = player;
-		players.add(user.getUniqueID());
+		excludedPlayers.add(user);
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
 		StopWatchHandler.addClock(this);
@@ -90,12 +95,11 @@ public class EntityStopWatch extends Entity {
 		}
 	}
 
-	//Gets the player other Watches have and adds them to a list of UUID.
 	private void addIgnoredPlayers(Entity entity) {
-		if (entity instanceof EntityStopWatch) {//If the entity is an instance of EntityStopWatch
-			UUID id = ((EntityStopWatch) entity).getPlayer().getUniqueID(); //Get the UUID of the player the Watch contains
-			if (!players.contains(id)) {// Check the player list does not contain the UUID
-				players.add(id);//Add the UUID
+		if (entity instanceof EntityStopWatch) {
+			EntityPlayer player = ((EntityStopWatch) entity).getUser();
+			if (!excludedPlayers.contains(player)) {
+				excludedPlayers.add(player);
 			}
 		}
 	}
@@ -120,18 +124,18 @@ public class EntityStopWatch extends Entity {
 		if (!world.isRemote) {
 
 			//We use the delay to never actually call update at all
-			if (entity instanceof EntityDanmaku) {
-				EntityDanmaku danmaku = (EntityDanmaku) entity;
-				danmaku.setShotData(danmaku.getShotData().setDelay(2));
-
+			if (entity instanceof EntityDanmaku && !frozenDanmaku.contains(entity)) {
+				EntityDanmaku danmaku = (EntityDanmaku)entity;
+				danmaku.setFrozen(true);
+				frozenDanmaku.add(danmaku);
 				return;
 			}
 
-			if (!dataEntities.containsKey(entity.getUniqueID())) {
+			if (!dataEntities.containsKey(entity)) {
 				double x = entity.motionX;
 				double y = entity.motionY;
 				double z = entity.motionZ;
-				dataEntities.put(entity.getUniqueID(), new double[]{x, y, z});
+				dataEntities.put(entity, new double[]{x, y, z});
 			}
 		}
 
@@ -159,18 +163,27 @@ public class EntityStopWatch extends Entity {
 		}
 	}
 
+	@Override
+	public void setDead() {
+		super.setDead();
+		StopWatchHandler.removeClock(this);
+	}
+
 	private void stopEntity() {
 		if (!world.isRemote) {
-			StopWatchHandler.removeClock(this);
 			if (user != null) {
-				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(40));
-				list.stream().filter(entity -> dataEntities.containsKey(entity.getUniqueID()) && !(entity instanceof EntityDanmaku)).forEach(entity -> {
-
-					double[] data = dataEntities.get(entity.getUniqueID());
+				for(Map.Entry<Entity, double[]> entityEntry : dataEntities.entrySet()) {
+					Entity entity = entityEntry.getKey();
+					double[] data = entityEntry.getValue();
 					entity.motionX = data[0];
 					entity.motionY = data[1];
 					entity.motionZ = data[2];
-				});
+				}
+
+				for(EntityDanmaku danmaku : frozenDanmaku) {
+					danmaku.setFrozen(false);
+				}
+
 				if (!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
@@ -183,12 +196,12 @@ public class EntityStopWatch extends Entity {
 		}
 	}
 
-	public EntityPlayer getPlayer() {
+	public EntityPlayer getUser() {
 		return user;
 	}
 
-	public List<UUID> getPlayers() {
-		return players;
+	public List<EntityPlayer> getExcludedPlayers() {
+		return excludedPlayers;
 	}
 
 	@Override

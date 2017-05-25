@@ -2,7 +2,7 @@ package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelFlat;
-import arekkuusu.grimoireofalice.common.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;

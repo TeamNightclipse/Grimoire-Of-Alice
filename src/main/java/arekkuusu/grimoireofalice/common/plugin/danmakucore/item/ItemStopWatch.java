@@ -2,7 +2,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;

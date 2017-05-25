@@ -23,6 +23,8 @@ import arekkuusu.grimoireofalice.client.handler.TextureStitcher;
 import arekkuusu.grimoireofalice.common.core.handler.GuiHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -241,7 +243,7 @@ public class ClientProxy implements ISidedProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityYoukaiBook.class, RenderYoukaiBook::new);
 		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			RenderingRegistry.registerEntityRenderingHandler(EntityStopWatch.class, RenderStopWatch::new);
-			RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);			
+			RenderingRegistry.registerEntityRenderingHandler(EntityCameraSquare.class, RenderCameraSquare::new);
 		}
 		//Tiles
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCraftingAltar.class, new TileCraftingAltarRenderer());

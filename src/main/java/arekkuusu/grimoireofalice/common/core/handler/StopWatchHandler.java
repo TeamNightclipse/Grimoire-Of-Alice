@@ -3,7 +3,7 @@ package arekkuusu.grimoireofalice.common.core.handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -25,12 +25,12 @@ public class StopWatchHandler {
 	@SubscribeEvent
 	public void onTick(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
-		if(!living.world.isRemote && !clocks.isEmpty()) {
+		if(!living.world.isRemote && !clocks.isEmpty() && living instanceof EntityPlayer) {
 			AxisAlignedBB livingAABB = living.getEntityBoundingBox().expandXyz(EntityStopWatch.RANGE);
 
 			for(EntityStopWatch clock : clocks) {
 				if(livingAABB.isVecInside(clock.getPositionVector())) {
-					if(living instanceof EntityPlayer && clock.getPlayers().stream().anyMatch(uuid -> uuid.equals(living.getUniqueID()))) {
+					if(clock.getExcludedPlayers().stream().anyMatch(uuid -> uuid.equals(living))) {
 						return;
 					}
 

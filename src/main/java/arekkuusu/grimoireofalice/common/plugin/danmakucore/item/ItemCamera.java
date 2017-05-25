@@ -11,9 +11,8 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
-import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
