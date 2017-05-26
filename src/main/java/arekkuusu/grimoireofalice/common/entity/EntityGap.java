@@ -23,13 +23,9 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
-
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import java.util.function.ToDoubleFunction;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class EntityGap extends Entity {
@@ -37,12 +33,7 @@ public class EntityGap extends Entity {
     @CapabilityInject(IItemHandler.class)
     private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
     private static final DataParameter<Byte> COLOR_DATA = EntityDataManager.createKey(EntityGap.class, DataSerializers.BYTE);
-
-    private static final String TARGET = "target";
-    private static final String ORIGIN = "origin";
     private static final String COLOR = "color";
-    private UUID target;
-    private UUID origin;
 
     private boolean teleportByColor = true;
     private int portalCooldown;
@@ -56,7 +47,6 @@ public class EntityGap extends Entity {
     public EntityGap(World worldIn, EntityPlayer player,@Nullable ItemStack stack) {
         super(worldIn);
         setPositionAndAngles(player);
-        setOriginUUID(getOriginUUID());
         this.player = player;
         this.stack = stack;
     }
@@ -100,15 +90,16 @@ public class EntityGap extends Entity {
 
     @SuppressWarnings("ConstantConditions")
     private void reduceStack(EntityPlayer playerIn, ItemStack toRemove) {
-        if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-            IItemHandler handler = playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null);
-            for (int i = 0; i < handler.getSlots(); i++) {
-                if (toRemove.isItemEqual(handler.getStackInSlot(i))) {
-                    handler.extractItem(i, 1, false);
-                }
-            }
-        }
-    }
+		if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+			IItemHandler handler = playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null);
+			for (int i = 0; i < handler.getSlots(); i++) {
+				if (toRemove.isItemEqual(handler.getStackInSlot(i))) {
+					handler.extractItem(i, 1, false);
+					break;
+				}
+			}
+		}
+	}
 
     private void teleport(EntityLivingBase base) {
         Vec3d vec3d = getLookVec();
@@ -120,9 +111,6 @@ public class EntityGap extends Entity {
         EntityGap gap = null;
         if(teleportByColor) {
             gap = getColor() == EnumDyeColor.WHITE ? getClosestGap(list) : getClosestGapColorMatch(list);
-        }
-        else if(target != null){
-            gap = getGapByUUID(list, target);
         }
 
         if (gap != null) {
@@ -159,11 +147,6 @@ public class EntityGap extends Entity {
         }).sorted(Comparator.comparingDouble(toDouble));
     }
 
-    @Nullable
-    private EntityGap getGapByUUID(List<EntityGap> gaps, UUID uuid) {
-        return gaps.stream().filter(gap -> gap.getOriginUUID() == uuid).findFirst().orElse(null);
-    }
-
     public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
         if (stack != null && isItemDye(stack)) {
             //TODO: Use other part of ore name to get the actual color
@@ -171,8 +154,8 @@ public class EntityGap extends Entity {
             if(enumdyecolor != getColor()) {
                 setColor(enumdyecolor);
                 --stack.stackSize;
-                player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
             }
+            player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
         }
         else if (player.isSneaking()) {
             if(!world.isRemote) {
@@ -218,23 +201,6 @@ public class EntityGap extends Entity {
         this.teleportByColor = byColor;
     }
 
-    public void setOriginUUID(@Nullable UUID uuid) {
-        this.origin = uuid;
-    }
-
-    public UUID getOriginUUID() {
-        return this.origin;
-    }
-
-    public void setTargetUUID(@Nullable UUID uuid) {
-        this.target = uuid;
-    }
-
-    @Nullable
-    public UUID getTargetUUID() {
-        return this.target;
-    }
-
     public EnumDyeColor getColor() {
         return EnumDyeColor.byMetadata(this.dataManager.get(COLOR_DATA) & 15);
     }
@@ -246,19 +212,11 @@ public class EntityGap extends Entity {
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
-        setTargetUUID(compound.getUniqueId(TARGET));
-        setOriginUUID(compound.getUniqueId(ORIGIN));
         setColor(EnumDyeColor.byMetadata(compound.getByte(COLOR) & 15));
     }
 
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
-        if (target != null) {
-            compound.setUniqueId(TARGET, target);
-        }
-        if (origin != null) {
-            compound.setUniqueId(ORIGIN, origin);
-        }
         compound.setByte(COLOR, this.dataManager.get(COLOR_DATA));
     }
 }
