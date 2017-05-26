@@ -25,7 +25,7 @@ public class RenderKinkakuJiCeiling extends Render<EntityKinkakuJiCeiling> {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);
 		bindEntityTexture(entity);
-		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
+		GlStateManager.scale(2F, 1F, 2F);
 
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 

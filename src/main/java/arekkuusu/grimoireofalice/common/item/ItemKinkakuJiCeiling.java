@@ -75,7 +75,7 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 				ceiling = new EntityKinkakuJiCeiling(playerIn.world, entity);
 			}
 			else {
-				float distance = 5F;
+				float distance = 15F;
 				double dx = playerIn.posX + look.xCoord * distance;
 				double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
 				double dz = playerIn.posZ + look.zCoord * distance;

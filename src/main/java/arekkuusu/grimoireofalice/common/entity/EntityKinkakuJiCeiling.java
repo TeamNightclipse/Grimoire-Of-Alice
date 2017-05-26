@@ -75,7 +75,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
-		if(!world.isRemote && !isDead) {
+		if(!world.isRemote && !isDead && onGround) {
             if(!player.capabilities.isCreativeMode) {
                 dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
             }
@@ -87,7 +87,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX - 0.9, alignedBB.minY, alignedBB.minZ - 0.9, alignedBB.minX + 1.5, alignedBB.minY + 0.1, alignedBB.minZ + 1.5);
+		return new AxisAlignedBB(alignedBB.minX - 1.7, alignedBB.minY, alignedBB.minZ - 1.7, alignedBB.minX + 2.3, alignedBB.minY + 0.1, alignedBB.minZ + 2.3);
 	}
 
 	@Override
