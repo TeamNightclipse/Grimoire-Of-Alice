@@ -272,8 +272,7 @@ public final class AltarRecipes {
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.hakureiGohei) {
-			HAKUREI_GOHEI = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.HAKUREI_GOHEI)
-					, "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE);
+			HAKUREI_GOHEI = GrimoireOfAliceAPI.registerRecipe(new RecipeHakurei());
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.ibarakiBox) {

@@ -97,6 +97,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		registry.addDescription(new ItemStack(ModItems.GRIMOIRE_BOOK), "grimoire.jei.descriptions.grimoire_book", LINE);
 
 		registry.addDescription(new ItemStack(ModItems.HAKUREI_GOHEI), "grimoire.jei.descriptions.hakurei_gohei", LINE
+				, "grimoire.jei.descriptions_body.hakurei_gohei"
 				, "grimoire.jei.descriptions_passive.hakurei_gohei"
 				, "grimoire.jei.descriptions_aura_manipulation.hakurei_gohei"
 				, "grimoire.jei.descriptions_hakurei_yin_yang_orbs.hakurei_gohei"

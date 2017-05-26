@@ -735,7 +735,8 @@ grimoire.jei.descriptions.grilled_lamprey=Obtained by placing fish on stick, pro
 
 grimoire.jei.descriptions.grimoire_book=Magical book that cast spells, it is used to manipulate dolls
 
-grimoire.jei.descriptions.hakurei_gohei=It has 6 modes:
+grimoire.jei.descriptions.hakurei_gohei=Must be crafted in a New Moon, at day time.
+grimoire.jei.descriptions_body.hakurei_gohei=It has 6 modes:
 grimoire.jei.descriptions_passive.hakurei_gohei= -Passive: Gives the user creative fight
 grimoire.jei.descriptions_aura_manipulation.hakurei_gohei= -Aura Manipulation: Move entities in the air
 grimoire.jei.descriptions_hakurei_yin_yang_orbs.hakurei_gohei= -Hakurei Ying Yang Orbs: Summon a bouncing Ying Yang Orb
