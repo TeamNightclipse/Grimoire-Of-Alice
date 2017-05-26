@@ -2,7 +2,6 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
-import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;

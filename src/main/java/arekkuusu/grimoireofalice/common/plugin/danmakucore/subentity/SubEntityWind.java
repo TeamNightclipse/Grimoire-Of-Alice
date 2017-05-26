@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
-import java.util.Optional;
-
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.entity.danmaku.DamageSourceDanmaku;
@@ -21,12 +19,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class SubEntityWind extends SubEntityType {
 

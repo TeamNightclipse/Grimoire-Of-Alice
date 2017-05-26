@@ -9,16 +9,12 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
-import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 public class SubEntityUfo extends SubEntityType {
 

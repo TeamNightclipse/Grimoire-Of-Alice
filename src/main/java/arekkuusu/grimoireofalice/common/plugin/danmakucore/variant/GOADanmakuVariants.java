@@ -13,7 +13,6 @@ import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
 import net.katsstuff.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOADanmakuVariants {

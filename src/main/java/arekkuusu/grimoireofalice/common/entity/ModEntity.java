@@ -10,10 +10,9 @@ package arekkuusu.grimoireofalice.common.entity;
 
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import com.google.common.collect.ImmutableMap;
-
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.EntityRegistry;

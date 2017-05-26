@@ -13,7 +13,6 @@ import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOASubEntities {
