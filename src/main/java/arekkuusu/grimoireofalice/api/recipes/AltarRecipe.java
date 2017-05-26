@@ -15,12 +15,12 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import static net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE;
 
-public class RecipeItems implements IRecipeItems {
+public class AltarRecipe implements IAltarRecipe {
 
 	private final ItemStack result;
 	private final ImmutableList<Object> neededItems;
 
-	public RecipeItems(ItemStack result, Object... inputs) {
+	public AltarRecipe(ItemStack result, Object... inputs) {
 		this.result = result;
 
 		List<Object> stackedList = Arrays.stream(inputs).map(obj -> {

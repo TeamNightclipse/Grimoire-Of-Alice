@@ -16,7 +16,7 @@ public final class GrimoireOfAliceAPI {
     private static final Map<Item, Achievement> achievementAltarMap = new HashMap<>();
     private static final List<Achievement> achievementList = new ArrayList<>();
 
-    private static final List<IRecipeItems> recipes = new ArrayList<>();
+    private static final List<IAltarRecipe> recipes = new ArrayList<>();
 
 	//Don't touch them or I will honk you, strange person in the internet!
 	private static final List<ItemStack> flyItems = new ArrayList<>();
@@ -30,7 +30,7 @@ public final class GrimoireOfAliceAPI {
         return achievementList;
     }
 
-    public static List<IRecipeItems> getRecipes() {
+    public static List<IAltarRecipe> getRecipes() {
 		return ImmutableList.copyOf(recipes);
 	}
 
@@ -51,12 +51,12 @@ public final class GrimoireOfAliceAPI {
     }
 
 	/**
-	 * Adds an IRecipeItems to the ArrayList.
+	 * Adds an IAltarRecipe to the ArrayList.
 	 *
 	 * @param recipe The Recipe
-	 * @return The Registered IRecipeItems
+	 * @return The Registered IAltarRecipe
 	 */
-	public static IRecipeItems registerRecipe(IRecipeItems recipe) {
+	public static IAltarRecipe registerRecipe(IAltarRecipe recipe) {
 		recipes.add(recipe);
 		return recipe;
 	}
@@ -68,8 +68,8 @@ public final class GrimoireOfAliceAPI {
 	 * @param inputs The Inputs of the recipe, no longer than 16. Can be an Item, ItemStack, or an OreDictionary name.
 	 * @return The Registered Recipe
 	 */
-	public static IRecipeItems registerRecipe(ItemStack result, Object... inputs) {
-		return registerRecipe(new RecipeItems(result, inputs));
+	public static IAltarRecipe registerRecipe(ItemStack result, Object... inputs) {
+		return registerRecipe(new AltarRecipe(result, inputs));
 	}
 
 	/**
@@ -79,8 +79,8 @@ public final class GrimoireOfAliceAPI {
 	 * @param inputs The Inputs of the recipe, no longer than 16. Can be an Item, ItemStack, or an OreDictionary name.
 	 * @return The Registered Recipe
 	 */
-	public static IRecipeItems registerRecipeDimension(int dimId, ItemStack result, Object... inputs) {
-		return registerRecipe(new RecipeItemsDimension(dimId, result, inputs));
+	public static IAltarRecipe registerRecipeDimension(int dimId, ItemStack result, Object... inputs) {
+		return registerRecipe(new AltarRecipeDimension(dimId, result, inputs));
 	}
 
 	/**
@@ -99,8 +99,8 @@ public final class GrimoireOfAliceAPI {
 	 * @param inputs The Inputs of the recipe, no longer than 16. Can be an Item, ItemStack, or an OreDictionary name.
 	 * @return The Registered Recipe
 	 */
-	public static IRecipeItems registerRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
-		return registerRecipe(new RecipeItemsMoonPhase(moonPhase, result, inputs));
+	public static IAltarRecipe registerRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
+		return registerRecipe(new AltarRecipeMoonPhase(moonPhase, result, inputs));
 	}
 
 	/**
@@ -110,8 +110,8 @@ public final class GrimoireOfAliceAPI {
 	 * @param inputs The Inputs of the recipe, no longer than 16. Can be an Item, ItemStack, or an OreDictionary name.
 	 * @return The Registered Recipe
 	 */
-	public static IRecipeItems registerRecipeRain(ItemStack result, Object... inputs) {
-		return registerRecipe(new RecipeItemsRain(result, inputs));
+	public static IAltarRecipe registerRecipeRain(ItemStack result, Object... inputs) {
+		return registerRecipe(new AltarRecipeRain(result, inputs));
 	}
 
 	/**
@@ -121,8 +121,8 @@ public final class GrimoireOfAliceAPI {
 	 * @param inputs The Inputs of the recipe, no longer than 16. Can be an Item, ItemStack, or an OreDictionary name.
 	 * @return The Registered Recipe
 	 */
-	public static IRecipeItems registerRecipeThunder(ItemStack result, Object... inputs) {
-		return registerRecipe(new RecipeItemsThunder(result, inputs));
+	public static IAltarRecipe registerRecipeThunder(ItemStack result, Object... inputs) {
+		return registerRecipe(new AltarRecipeThunder(result, inputs));
 	}
 
 	/**

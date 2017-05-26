@@ -5,11 +5,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class RecipeItemsDimension extends RecipeItems {
+public class AltarRecipeDimension extends AltarRecipe {
 
 	private final int dimId;
 
-	public RecipeItemsDimension(int dimId, ItemStack result, Object... inputs) {
+	public AltarRecipeDimension(int dimId, ItemStack result, Object... inputs) {
 		super(result, inputs);
 		this.dimId = dimId;
 	}

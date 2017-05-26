@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
-import arekkuusu.grimoireofalice.common.item.crafting.SpecialRecipes;
+import arekkuusu.grimoireofalice.common.item.crafting.AltarRecipes;
 import arekkuusu.grimoireofalice.common.item.crafting.VanillaCrafting;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -278,7 +278,7 @@ public final class ModItems {
 	public static void init() {
 		VanillaCrafting.booksAndStrings();
 		VanillaCrafting.masks();
-		SpecialRecipes.init();
+		AltarRecipes.init();
 	}
 
 	public static void initOreDictionary() {

@@ -1,12 +1,12 @@
 package arekkuusu.grimoireofalice.client.jei;
 
-import arekkuusu.grimoireofalice.api.recipes.RecipeItems;
+import arekkuusu.grimoireofalice.api.recipes.AltarRecipe;
 import arekkuusu.grimoireofalice.common.lib.LibJEI;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IStackHelper;
 
-public class AltarRecipeItemsHandler implements IRecipeHandler<RecipeItems> {
+public class AltarRecipeItemsHandler implements IRecipeHandler<AltarRecipe> {
 
 	private final IStackHelper stackHelper;
 
@@ -15,8 +15,8 @@ public class AltarRecipeItemsHandler implements IRecipeHandler<RecipeItems> {
 	}
 
 	@Override
-	public Class<RecipeItems> getRecipeClass() {
-		return RecipeItems.class;
+	public Class<AltarRecipe> getRecipeClass() {
+		return AltarRecipe.class;
 	}
 
 	@Override
@@ -25,17 +25,17 @@ public class AltarRecipeItemsHandler implements IRecipeHandler<RecipeItems> {
 	}
 
 	@Override
-	public String getRecipeCategoryUid(RecipeItems recipe) {
+	public String getRecipeCategoryUid(AltarRecipe recipe) {
 		return LibJEI.ALTAR_CATEGORY_UID;
 	}
 
 	@Override
-	public IRecipeWrapper getRecipeWrapper(RecipeItems recipe) {
+	public IRecipeWrapper getRecipeWrapper(AltarRecipe recipe) {
 		return new AltarRecipeItemsWrapper(recipe, stackHelper);
 	}
 
 	@Override
-	public boolean isRecipeValid(RecipeItems recipe) {
+	public boolean isRecipeValid(AltarRecipe recipe) {
 		for(Object obj : recipe.getNeededItems()) {
 			if(stackHelper.toItemStackList(obj).isEmpty()) {
 				return false;

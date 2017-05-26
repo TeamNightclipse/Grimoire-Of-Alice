@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.crafting;
 
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
-import arekkuusu.grimoireofalice.api.recipes.IRecipeItems;
+import arekkuusu.grimoireofalice.api.recipes.IAltarRecipe;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
@@ -23,115 +23,115 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.oredict.OreDictionary;
 
-public final class SpecialRecipes {
+public final class AltarRecipes {
 
 	//Masks
-	public static IRecipeItems MASK;
-	public static IRecipeItems FOX_MASK;
-	public static IRecipeItems FUKU_NO_KAMI_MASK;
-	public static IRecipeItems HANNYA_MASK;
-	public static IRecipeItems HYOTTOKO_MASK;
-	public static IRecipeItems KOOMOTE_MASK;
-	public static IRecipeItems MASK_OF_HOPE;
-	public static IRecipeItems MONKEY_MASK;
-	public static IRecipeItems RAIDEN_MASK;
-	public static IRecipeItems UBA_MASK;
-	public static IRecipeItems KOKOROS_MASKS;
+	public static IAltarRecipe MASK;
+	public static IAltarRecipe FOX_MASK;
+	public static IAltarRecipe FUKU_NO_KAMI_MASK;
+	public static IAltarRecipe HANNYA_MASK;
+	public static IAltarRecipe HYOTTOKO_MASK;
+	public static IAltarRecipe KOOMOTE_MASK;
+	public static IAltarRecipe MASK_OF_HOPE;
+	public static IAltarRecipe MONKEY_MASK;
+	public static IAltarRecipe RAIDEN_MASK;
+	public static IAltarRecipe UBA_MASK;
+	public static IAltarRecipe KOKOROS_MASKS;
 
 	//General
-	public static IRecipeItems THIRD_EYE;
-	public static IRecipeItems AMENONUHOKO;
-	public static IRecipeItems BLOOD_THIRSTY_ORB;
-	public static IRecipeItems BUDAH_BOUL;
-	public static IRecipeItems CURSED_DECOY_DOLL;
-	public static IRecipeItems DEATH_SCYTHE;
-	public static IRecipeItems DRAGON_JEWEL;
-	public static IRecipeItems FAKE_MIRACLE_MALLET;
-	public static IRecipeItems FIRE_ROBE;
-	public static IRecipeItems KANAKO_SHIMENAWA;
-	public static IRecipeItems GAP_FOLDING_UMBRELLA;
-	public static IRecipeItems GHOST_DIPPER;
-	public static IRecipeItems GRIMOIRE_BOOK;
-	public static IRecipeItems HAKUREI_GOHEI;
-	public static IRecipeItems HIHIIROKANE;
-	public static IRecipeItems IBARAKI_BOX_EMPTY;
-	public static IRecipeItems ICHIRIN_AURA;
-	public static IRecipeItems ICHIRIN_RING;
-	public static IRecipeItems KAPPA_HAT;
-	public static IRecipeItems MAPLE_LEAF_SHIELD;
-	public static IRecipeItems MARISA_HAT;
-	public static IRecipeItems MICO_CLOAK;
-	public static IRecipeItems MIKO_STICK;
-	public static IRecipeItems MOCHI_HAMMER;
-	public static IRecipeItems MOMIJIS_SCIMITAR_SWORD;
-	public static IRecipeItems NAZRIN_PENDULUM;
-	public static IRecipeItems NAZRIN_STICK_ONE;
-	public static IRecipeItems NAZRIN_STICK_TWO;
-	public static IRecipeItems NEEDLE;
-	public static IRecipeItems NIMBLE_FABRIC;
-	public static IRecipeItems NUE_TRIDENT;
-	public static IRecipeItems IBUKI_GOURD;
-	public static IRecipeItems ROD_OF_REMORSE;
-	public static IRecipeItems RUMIA_SWORD;
-	public static IRecipeItems SACRED_TOYOSATOMIMI_SWORD;
-	public static IRecipeItems SANAE_GOHEI;
-	public static IRecipeItems SARIEL_WAND;
-	public static IRecipeItems SHICHI_SEIKEN;
-	public static IRecipeItems KANAKO_ONBASHIRA;
-	public static IRecipeItems ORIN_SKULL;
-	public static IRecipeItems STOP_WATCH;
-	public static IRecipeItems SUBSTITUTE_JIZO;
-	public static IRecipeItems SUWAKO_HAT;
-	public static IRecipeItems SWALLOW_COWRIE_SHELL;
-	public static IRecipeItems ROUKANKEN;
-	public static IRecipeItems AYA_CAMERA;
-	public static IRecipeItems HATATE_CAMERA;
-	public static IRecipeItems UFOS;
-	public static IRecipeItems WALL_PASSING_CHISEL;
-	public static IRecipeItems YOUKAI_BOOK;
-	public static IRecipeItems ULTRAMARINE_ORB_ELIXIR;
-	public static IRecipeItems HOURAI_ELIXIR;
-	public static IRecipeItems KAPPA_NOSTRUM;
-	public static IRecipeItems SHINMYOUMARU_HAT;
-	public static IRecipeItems YUUGI_SAKE;
-	public static IRecipeItems TOYOSATOMIMI_HAT;
-	public static IRecipeItems UTSUHO_WINGS;
-	public static IRecipeItems NETHER_SHARD;
-	public static IRecipeItems NUCLEAR_ROD;
-	public static IRecipeItems NUCLEAR_BOOTS;
-	public static IRecipeItems UFO_BLUE;
-	public static IRecipeItems UFO_RED;
-	public static IRecipeItems UFO_GREEN;
-	public static IRecipeItems PATCHY_BOOK;
-	public static IRecipeItems SYRINGE;
-	public static IRecipeItems DRAGON_STONE;
-	public static IRecipeItems ICICLE_SWORD;
-	public static IRecipeItems GAP;
-	public static IRecipeItems GHOST_ANCHOR;
-	public static IRecipeItems HEALING_CHARM;
-	public static IRecipeItems SEAMLESS_CEILING_KINKAKU_JI;
+	public static IAltarRecipe THIRD_EYE;
+	public static IAltarRecipe AMENONUHOKO;
+	public static IAltarRecipe BLOOD_THIRSTY_ORB;
+	public static IAltarRecipe BUDAH_BOUL;
+	public static IAltarRecipe CURSED_DECOY_DOLL;
+	public static IAltarRecipe DEATH_SCYTHE;
+	public static IAltarRecipe DRAGON_JEWEL;
+	public static IAltarRecipe FAKE_MIRACLE_MALLET;
+	public static IAltarRecipe FIRE_ROBE;
+	public static IAltarRecipe KANAKO_SHIMENAWA;
+	public static IAltarRecipe GAP_FOLDING_UMBRELLA;
+	public static IAltarRecipe GHOST_DIPPER;
+	public static IAltarRecipe GRIMOIRE_BOOK;
+	public static IAltarRecipe HAKUREI_GOHEI;
+	public static IAltarRecipe HIHIIROKANE;
+	public static IAltarRecipe IBARAKI_BOX_EMPTY;
+	public static IAltarRecipe ICHIRIN_AURA;
+	public static IAltarRecipe ICHIRIN_RING;
+	public static IAltarRecipe KAPPA_HAT;
+	public static IAltarRecipe MAPLE_LEAF_SHIELD;
+	public static IAltarRecipe MARISA_HAT;
+	public static IAltarRecipe MICO_CLOAK;
+	public static IAltarRecipe MIKO_STICK;
+	public static IAltarRecipe MOCHI_HAMMER;
+	public static IAltarRecipe MOMIJIS_SCIMITAR_SWORD;
+	public static IAltarRecipe NAZRIN_PENDULUM;
+	public static IAltarRecipe NAZRIN_STICK_ONE;
+	public static IAltarRecipe NAZRIN_STICK_TWO;
+	public static IAltarRecipe NEEDLE;
+	public static IAltarRecipe NIMBLE_FABRIC;
+	public static IAltarRecipe NUE_TRIDENT;
+	public static IAltarRecipe IBUKI_GOURD;
+	public static IAltarRecipe ROD_OF_REMORSE;
+	public static IAltarRecipe RUMIA_SWORD;
+	public static IAltarRecipe SACRED_TOYOSATOMIMI_SWORD;
+	public static IAltarRecipe SANAE_GOHEI;
+	public static IAltarRecipe SARIEL_WAND;
+	public static IAltarRecipe SHICHI_SEIKEN;
+	public static IAltarRecipe KANAKO_ONBASHIRA;
+	public static IAltarRecipe ORIN_SKULL;
+	public static IAltarRecipe STOP_WATCH;
+	public static IAltarRecipe SUBSTITUTE_JIZO;
+	public static IAltarRecipe SUWAKO_HAT;
+	public static IAltarRecipe SWALLOW_COWRIE_SHELL;
+	public static IAltarRecipe ROUKANKEN;
+	public static IAltarRecipe AYA_CAMERA;
+	public static IAltarRecipe HATATE_CAMERA;
+	public static IAltarRecipe UFOS;
+	public static IAltarRecipe WALL_PASSING_CHISEL;
+	public static IAltarRecipe YOUKAI_BOOK;
+	public static IAltarRecipe ULTRAMARINE_ORB_ELIXIR;
+	public static IAltarRecipe HOURAI_ELIXIR;
+	public static IAltarRecipe KAPPA_NOSTRUM;
+	public static IAltarRecipe SHINMYOUMARU_HAT;
+	public static IAltarRecipe YUUGI_SAKE;
+	public static IAltarRecipe TOYOSATOMIMI_HAT;
+	public static IAltarRecipe UTSUHO_WINGS;
+	public static IAltarRecipe NETHER_SHARD;
+	public static IAltarRecipe NUCLEAR_ROD;
+	public static IAltarRecipe NUCLEAR_BOOTS;
+	public static IAltarRecipe UFO_BLUE;
+	public static IAltarRecipe UFO_RED;
+	public static IAltarRecipe UFO_GREEN;
+	public static IAltarRecipe PATCHY_BOOK;
+	public static IAltarRecipe SYRINGE;
+	public static IAltarRecipe DRAGON_STONE;
+	public static IAltarRecipe ICICLE_SWORD;
+	public static IAltarRecipe GAP;
+	public static IAltarRecipe GHOST_ANCHOR;
+	public static IAltarRecipe HEALING_CHARM;
+	public static IAltarRecipe SEAMLESS_CEILING_KINKAKU_JI;
 
 	//DanmakuCore
-	public static IRecipeItems ELLY_SCYTHE;
-	public static IRecipeItems JEWELED_HOURAI;
-	public static IRecipeItems LEVATEIN;
-	public static IRecipeItems MIRACLE_MALLET;
-	public static IRecipeItems PIANO;
-	public static IRecipeItems SHOU_LAMP;
-	public static IRecipeItems SPELL_CARD_POUCH;
-	public static IRecipeItems SWORD_OF_HISOU;
-	public static IRecipeItems TENGU_FAN;
-	public static IRecipeItems TRUMPET;
-	public static IRecipeItems VIOLIN;
-	public static IRecipeItems RED_STONE_OF_AYA;
+	public static IAltarRecipe ELLY_SCYTHE;
+	public static IAltarRecipe JEWELED_HOURAI;
+	public static IAltarRecipe LEVATEIN;
+	public static IAltarRecipe MIRACLE_MALLET;
+	public static IAltarRecipe PIANO;
+	public static IAltarRecipe SHOU_LAMP;
+	public static IAltarRecipe SPELL_CARD_POUCH;
+	public static IAltarRecipe SWORD_OF_HISOU;
+	public static IAltarRecipe TENGU_FAN;
+	public static IAltarRecipe TRUMPET;
+	public static IAltarRecipe VIOLIN;
+	public static IAltarRecipe RED_STONE_OF_AYA;
 
 	//Blocks
-	public static IRecipeItems HOLYSTONE;
-	public static IRecipeItems HOLYKEYSTONE;
-	public static IRecipeItems ONBASHIRA;
-	public static IRecipeItems END_CRYSTAL;
+	public static IAltarRecipe HOLYSTONE;
+	public static IAltarRecipe HOLYKEYSTONE;
+	public static IAltarRecipe ONBASHIRA;
+	public static IAltarRecipe END_CRYSTAL;
 
-	private SpecialRecipes() {
+	private AltarRecipes() {
 	}
 
 	public static void init() {
@@ -168,9 +168,9 @@ public final class SpecialRecipes {
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.masks.kokoroMask) {
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.AWKWARD);
 
-			KOKOROS_MASKS = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.KOKOROS_MASKS), potion, ModItems.MASK, Items.NETHER_STAR, ModItems.FOX_MASK,
+			KOKOROS_MASKS = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.KOKOROS_MASKS), ModItems.FOX_MASK,
 					ModItems.FUKU_NO_KAMI_MASK, ModItems.HANNYA_MASK, ModItems.HYOTTOKO_MASK, ModItems.KOOMOTE_MASK, ModItems.MASK_OF_HOPE,
-					ModItems.MONKEY_MASK, ModItems.RAIDEN_MASK, ModItems.UBA_MASK);
+					ModItems.MONKEY_MASK, ModItems.RAIDEN_MASK, ModItems.UBA_MASK, potion, ModItems.MASK, Items.NETHER_STAR);
 
 			FOX_MASK = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.FOX_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
 					ModItems.HARDENED_LEATHER, potion, Items.SUGAR, "dyeBlack");
@@ -232,7 +232,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonJewel) {
 			DRAGON_JEWEL = GrimoireOfAliceAPI.registerRecipeMoonPhase(4, new ItemStack(ModItems.DRAGON_JEWEL)
-					, ModBlocks.DRAGON_STONE, Blocks.GOLD_BLOCK, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
+					, new ItemStack(Items.SKULL, 1, 5), ModBlocks.DRAGON_STONE, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.dragonStone) {
@@ -386,7 +386,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.sanaeGohei) {
 			SANAE_GOHEI = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.SANAE_GOHEI)
-					, "paper", "paper", "paper", "paper", "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE);
+					, "paper", "paper", "stickWood", ModItems.SHIMENAWA_ROPE, "paper", "stickWood", "paper", "paper");
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.sarielWand) {
@@ -453,7 +453,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.food.altar.houraiElixir) {
 			HOURAI_ELIXIR = GrimoireOfAliceAPI.registerRecipeDimension(DimensionType.THE_END.getId(), new ItemStack(ModItems.HOURAI_ELIXIR)
-					, Blocks.DRAGON_EGG, Items.FLOWER_POT, ModItems.ORB_ELIXIR, ModItems.MORTAR_AND_PESTLE);
+					, Blocks.DRAGON_EGG, Items.FLOWER_POT, Items.FLOWER_POT, Items.FLOWER_POT, Items.FLOWER_POT, Items.FLOWER_POT, Items.FLOWER_POT, ModItems.ORB_ELIXIR);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.food.altar.kappaNostrum) {
@@ -508,13 +508,13 @@ public final class SpecialRecipes {
 					, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK, Blocks.ANVIL, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT, Items.GOLD_INGOT);
 		}
 
-		if(ConfigHandler.grimoireOfAlice.crafting.altar.redstoneAja) {
-			RED_STONE_OF_AYA = GrimoireOfAliceAPI.registerRecipeMoonPhase(0, new ItemStack(ModItems.RED_STONE_OF_AJA)
-			,Items.GOLD_INGOT, Items.EMERALD, ModItems.NETHER_SHARD, "blockGlassColorless", ModItems.NETHER_SHARD, Items.EMERALD,Items.GOLD_INGOT, ModItems.NETHER_SHARD);
-		}
-
 		//DanmakuCore
 		if (GrimoireOfAlice.danmakuCoreInstalled) {
+
+			if(ConfigHandler.grimoireOfAlice.crafting.altar.redstoneAja) {
+				RED_STONE_OF_AYA = GrimoireOfAliceAPI.registerRecipeMoonPhase(0, new ItemStack(ModItems.RED_STONE_OF_AJA)
+						,Items.GOLD_INGOT, Items.EMERALD, ModItems.NETHER_SHARD, "blockGlassColorless", ModItems.NETHER_SHARD, Items.EMERALD,Items.GOLD_INGOT, ModItems.NETHER_SHARD);
+			}
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.stopWatch) {
 				STOP_WATCH = GrimoireOfAliceAPI.registerRecipe(new ItemStack(ModItems.STOP_WATCH)
@@ -586,7 +586,7 @@ public final class SpecialRecipes {
 
 			if (ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {
 				JEWELED_HOURAI = GrimoireOfAliceAPI.registerRecipeMoonPhase(3, new ItemStack(ModItems.JEWELED_HOURAI)
-						, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, Items.QUARTZ, Items.QUARTZ, Items.DIAMOND, Items.QUARTZ, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
+						, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.DIAMOND, ModItems.NETHER_SHARD, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
 			}
 		}
 		//Blocks
@@ -602,7 +602,7 @@ public final class SpecialRecipes {
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.onbashira) {
 			ONBASHIRA = GrimoireOfAliceAPI.registerRecipeRain(new ItemStack(ModBlocks.ONBASHIRA)
-					, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.ROPE_BLOCK, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PAPER_BLOCK);
+					, ModBlocks.ROPE_BLOCK, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PAPER_BLOCK, ModBlocks.PILLAR_ALTAR, ModBlocks.ROPE_BLOCK, ModBlocks.PAPER_BLOCK, ModBlocks.PILLAR_ALTAR);
 		}
 
 		if (ConfigHandler.grimoireOfAlice.crafting.altar.endCrystal) {

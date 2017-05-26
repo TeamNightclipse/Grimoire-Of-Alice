@@ -1,18 +1,18 @@
 package arekkuusu.grimoireofalice.api.recipes;
 
+import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.List;
+public class AltarRecipeRain extends AltarRecipe {
 
-public class RecipeItemsThunder extends RecipeItems {
-
-	public RecipeItemsThunder(ItemStack result, Object... inputs) {
+	public AltarRecipeRain(ItemStack result, Object... inputs) {
 		super(result, inputs);
 	}
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
-		return world.isThundering() && super.checkRecipe(usedItems, world);
+		return (world.isThundering() || world.isRaining()) && super.checkRecipe(usedItems, world);
 	}
 }

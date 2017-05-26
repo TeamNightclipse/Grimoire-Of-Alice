@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 /**
  * Interface for Altar Recipes
  */
-public interface IRecipeItems {
+public interface IAltarRecipe {
 
 	/**
 	 * Checks the inputs match the recipe

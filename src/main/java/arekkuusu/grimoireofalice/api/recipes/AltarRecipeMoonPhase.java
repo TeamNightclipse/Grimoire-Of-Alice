@@ -5,11 +5,11 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class RecipeItemsMoonPhase extends RecipeItems {
+public class AltarRecipeMoonPhase extends AltarRecipe {
 
 	private final int moonPhase;
 
-	public RecipeItemsMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
+	public AltarRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
 		super(result, inputs);
 		this.moonPhase = moonPhase;
 	}
