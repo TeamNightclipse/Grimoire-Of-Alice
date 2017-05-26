@@ -177,7 +177,6 @@ public class ClientProxy implements ISidedProxy {
 		registerItem(ModItems.SACRED_TOYOSATOMIMI);
 		registerItem(ModItems.SHINMYOUMARU_NEEDLE);
 		registerItem(ModItems.DEATH_SCYTHE);
-		registerItem(ModItems.ROUKANKEN);
 		registerItem(ModItems.ICICLE_SWORD);
 		registerItem(ModItems.GHOST_ANCHOR);
 
@@ -216,6 +215,7 @@ public class ClientProxy implements ISidedProxy {
 			registerItem(ModItems.AYA_CAMERA);
 			registerItem(ModItems.HATATE_CAMERA);
 			registerItem(ModItems.HAKUROUKEN);
+			registerItem(ModItems.ROUKANKEN);
 			registerItem(ModItems.RED_STONE_OF_AJA);
 		}
 	}

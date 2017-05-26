@@ -293,7 +293,9 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN);
-		addItem(ModItems.HAKUROUKEN);
+		if (GrimoireOfAlice.danmakuCoreInstalled) {
+			addItem(ModItems.HAKUROUKEN);
+		}
 		// ** Yukari Yakumo ** /
 		addItem(ModItems.GAP);
 		// ** Yuuka Kazami ** /
