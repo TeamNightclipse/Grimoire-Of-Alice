@@ -13,9 +13,11 @@ import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormLeaf;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormNote;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormUfo;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.form.FormWind;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.*;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityLeaf;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntitySunBullet;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityUfo;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityWind;
 import net.katsstuff.danmakucore.data.MovementData;
-import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
 import net.katsstuff.danmakucore.entity.danmaku.form.Form;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
@@ -57,7 +59,8 @@ public class Initializer {
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
 		event.getRegistry().registerAll(
 				new DanmakuVariantGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO, MovementData.constant(0.4D)),
-				new DanmakuVariantGeneric(LibDanmakuVariantName.NOTE, () -> LibGOAShotData.NOTE, MovementData.constant(0.2D))
+				new DanmakuVariantGeneric(LibDanmakuVariantName.NOTE, () -> LibGOAShotData.NOTE, MovementData.constant(0.2D)),
+				new DanmakuVariantGeneric(LibDanmakuVariantName.SUN, () -> LibGOAShotData.SUN, MovementData.constant(0.2D))
 		);
 	}
 }

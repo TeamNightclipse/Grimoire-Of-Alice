@@ -2,12 +2,14 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity;
 
 import arekkuusu.grimoireofalice.common.lib.LibSubEntityName;
 import net.katsstuff.danmakucore.data.MovementData;
+import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntityType;
 import net.katsstuff.danmakucore.impl.subentity.SubEntityTypeDefault;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class SubEntitySunBullet extends SubEntityType {
@@ -42,16 +44,23 @@ public class SubEntitySunBullet extends SubEntityType {
 			//TODO: Change MovementData too here?
 			EnumFacing facing = raytrace.sideHit;
 			if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
-				danmaku.rotationYaw *= -1.0F;
-				danmaku.rotationPitch *= -1.0F;
-				danmaku.motionX *= 0.8F;
-				danmaku.motionY *= -0.8F;
-				danmaku.motionZ *= 0.8F;
+				Vec3d vec = danmaku.getLookVec();
+				danmaku.setAngle(new Vector3(vec.xCoord, vec.yCoord * -1D, vec.zCoord));
+				danmaku.motionY *= -1D;
 			}
 			else {
-				danmaku.rotationYaw *= -1.0F;
-				danmaku.motionX *= -0.8F;
-				danmaku.motionZ *= -0.8F;
+				Vec3d vec = danmaku.getLookVec();
+				double x = vec.xCoord;
+				double z = vec.zCoord;
+				if(facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
+					danmaku.motionX *= -1D;
+					x *= -1D;
+				} else {
+					danmaku.motionZ *= -1D;
+					z *= -1D;
+				}
+
+				danmaku.setAngle(new Vector3(x, vec.yCoord, z));
 			}
 		}
 	}

@@ -188,6 +188,7 @@ item.danmaku.danmakuvariant.grimoireofalice.leaf.name=Leaf Shot
 item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO Shot
 item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
 item.danmaku.danmakuvariant.grimoireofalice.note.name=Note Shot
+item.danmaku.danmakuvariant.grimoireofalice.sun.name=Sun Shot
 
 entity.grimoireofalice.pendulum.name=Pendulum
 entity.grimoireofalice.spell.name=Spell
