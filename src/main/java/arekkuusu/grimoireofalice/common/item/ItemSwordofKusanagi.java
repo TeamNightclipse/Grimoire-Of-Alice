@@ -59,7 +59,6 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description.mid.name"));
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_bottom.name"));
 		}
 		else {

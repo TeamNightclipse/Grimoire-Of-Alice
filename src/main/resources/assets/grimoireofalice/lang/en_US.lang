@@ -265,11 +265,11 @@ itemGroup.grimoireofalice=Grimoire of Alice
 
 grimoire.gui.book_1=                          -INDEX-|1.- Introduction|2.- World generation| 2.1.- Shrooms| 2.2.- Ores| 2.3.- Kyoumarubotan|3.- Crafting Altar basics|4.- DanmakuCore| 4.1.- Items| 4.2.- Danmaku|5.- JEI
 grimoire.gui.book_2=                     -Introduction-|                         Welcome!|Here you can read some notes on some of the|mechanics of the game. But because its a very|simple mod, you wont find mind blowing information.||These pages are about world gen, crafting,|and interactions with other mods that can't be|simply explained in the tooltips.|||Yukkuri shiteitte ne!
-grimoire.gui.book_3=                   -World Generation-|                         Shrooms|'Magic' Mushrooms grow deep underground, they|glow in the dark, and some variations are very|dangerous to eat.|||||||                   Don't eat me!
-grimoire.gui.book_4=                   -World Generation-|                           Ores|Impure Stone is the only ore in this mod, they|are very easy to spot, and only spawn bellow the|layer 30.|It requires an Iron Pickaxe or higher, when mined|it drops Impure mineral, used to craft|Hihi'irokane.
-grimoire.gui.book_5=                   -World Generation-|                      Kyoumarubotan|These rare minerals in the shape of a flower|grow inside stone, and rarely show in caves in|plain sight.|* If mined, they drop 3 - 8 gold nuggets.
-grimoire.gui.book_6=                     -Crafting Altar-|                          Recipes|Recipes are easy, they have an input, and an|output.|Altar recipes are different from normal crafting,|items aren't stackable, they vanish after crafting,|and require special conditions to be created.|Such conditions vary in complexity, some require|Rain, Night Time, Moon Phases, Dimensions, etc.
-grimoire.gui.book_7=                      -DanmakuCore-|                            Items|Items that depend on danmakucore, for ex:|"Jeweled Branch of Hourai", and some other|unique items, do not show when the mod is missing,|why are you still reading this? go get that mod|if you haven't yet!|||||||                        JUST DO IT
+grimoire.gui.book_3=                   -World Generation-|                          Shrooms|'Magic' Mushrooms grow deep underground, they|glow in the dark, and some variations are very|dangerous to eat.||||||| I'm just an innocent shroom...| Please don't eat me!
+grimoire.gui.book_4=                   -World Generation-|                             Ores|Impure Stone is the only ore in this mod, they|are very easy to spot, and only spawn bellow the|layer 30.|It requires an Iron Pickaxe or higher, when mined|it drops Impure mineral, used to craft|Hihi'irokane.
+grimoire.gui.book_5=                   -World Generation-|                      Kyoumarubotan|These rare minerals in the shape of a flower|grow inside stone, and rarely show themselves|at plain sight.|* If mined, they drop 3 - 8 gold nuggets.
+grimoire.gui.book_6=                      -Crafting Altar-|                         Recipes|Recipes are easy, they have an input, and an|output.|Altar recipes are different from normal crafting,|items aren't stackable, they vanish after crafting,|and require special conditions to be created.|Such conditions vary in complexity, some require|Rain, Night Time, Moon Phases, Dimensions, etc.
+grimoire.gui.book_7=                      -DanmakuCore-|                            Items|Items that depend on danmakucore, for ex:|"Jeweled Branch of Hourai", and some other|unique items, do not show when the mod is missing.|Why is this? Because they use danmaku.
 grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 3 new Shots to DanmakuCore:|||*Note:              Low damage, Low range.|||*Sun:               Great damage, Bounce off walls.|||*UFO:               Random movements.
 grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you can use JEI to see|recipes in-game. The inside items go on the small|Pillars, the outside items go on the Onbashiras.
 
@@ -548,9 +548,8 @@ grimoire.tooltip.red_stone_of_aja_header.name=Gemstone of perfect reflection
 grimoire.tooltip.tenshi_hat_header.name=Hat from a masochist of the skies
 
 grimoire.tooltip.sword_of_kusanagi_header.name=Divine sword forged with Hihi'irokane, a mythic metal
-grimoire.tooltip.sword_of_kusanagi_description_top.name=Discovered within the fourth tail of the eight-headed,
-grimoire.tooltip.sword_of_kusanagi_description.mid.name=eight-tailed serpent Yamata-no-Orochi when it was slain
-grimoire.tooltip.sword_of_kusanagi_description_bottom.name=by the Shinto god Susanoo-no-Mikoto.
+grimoire.tooltip.sword_of_kusanagi_description_top.name=Discovered within the fourth tail of the eight-headed eight-tailed serpent Yamata-no-Orochi
+grimoire.tooltip.sword_of_kusanagi_description_bottom.name=when it was slain by the Shinto god Susanoo-no-Mikoto.
 grimoire.tooltip.sword_of_kusanagi_shift.name=SHIFT for details
 
 grimoire.tooltip.roukanken_header.name=Long-bladed katana said to be made by youkai
@@ -860,18 +859,18 @@ grimoire.jei.descriptions.raiden_mask=One of the 9 masks owned by the youkai Hat
 grimoire.jei.descriptions.red_stone_of_aja=Must be crafted under a Full Moon at night
 grimoire.jei.descriptions_body.red_stone_of_aja=Shoot a high velocity laser very far away. The more xp the less the item gets damaged
 
-grimoire.jei.descriptions.rod_of_remorse=I shalt lecture the sins of the world
+grimoire.jei.descriptions.rod_of_remorse=I shall lecture the sins of the world
 grimoire.jei.descriptions_body.rod_of_remorse=Rod that reduces a mob's health by 1/4, sinners fall repent of the enormous weight of their sins
 
 grimoire.jei.descriptions.roukanken=Ghostly sword that slices through a bunch of entities at once
 grimoire.jei.descriptions_body.roukanken=One must charge the weapon and release to charge towards the enemy
 
 grimoire.jei.descriptions.rumia_sword=Must be crafted in the Nether
-grimoire.jei.descriptions_body.rumia_sword=Gigant sword that puts on fire everything in sight
+grimoire.jei.descriptions_body.rumia_sword=Giant sword that puts on fire everything in sight
 
 grimoire.jei.descriptions.sacred_toyosatomimi_sword=Finds all nearby mobs and sends them to the chat with their respective coordinates, it also possesses a strong knockback
 
-grimoire.jei.descriptions.sanae_gohei=Gohei from a descendant of the goddess Arahitogami
+grimoire.jei.descriptions.sanae_gohei=Gohei from a descendant of the goddess Arahitogami.
 grimoire.jei.descriptions_body.sanae_gohei=It exchanges Faith for the following Miracles:
 grimoire.jei.descriptions_body.sanae_gohei_clear=Miracle of Clear Skies : 1 Faith -> Clear all Weather.
 grimoire.jei.descriptions_body.sanae_gohei_rain=Miracle of Endless Rain : 4 Faith -> Add Rain Weather.
@@ -887,7 +886,7 @@ grimoire.jei.descriptions.sariel_wand=Must be crafted in the Nether
 grimoire.jei.descriptions_body.sariel_wand=Stores Skulls from Players and some Mobs, they can be placed by using the Item on a block
 
 grimoire.jei.descriptions.seamless_ceiling_of_kinkaku_ji=Must be crafted under a New Moon at Night
-grimoire.jei.descriptions_body.seamless_ceiling_of_kinkaku_ji=Crush your enemies under a massive ceiling of pure gold. Right click the entity to drop it
+grimoire.jei.descriptions_body.seamless_ceiling_of_kinkaku_ji=Crush your enemies under a massive ceiling of pure gold. Right click on entity to place the ceiling
 
 grimoire.jei.descriptions.shichi_seiken=Must be crafted under a First Quarter Moon at Night
 grimoire.jei.descriptions_body.shichi_seiken=Has a chance of dropping 0 to 4 Items when mining an ore

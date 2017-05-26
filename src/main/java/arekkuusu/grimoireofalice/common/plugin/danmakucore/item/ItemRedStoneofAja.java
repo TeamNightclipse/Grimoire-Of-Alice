@@ -81,9 +81,6 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
                             .build().asEntity();
                     worldIn.spawnEntityInWorld(danmaku);
                 }
-
-                EntityMagicCircle circle = new EntityMagicCircle(worldIn, entityLiving, EntityMagicCircle.EnumTextures.RED_NORMAL, 10);
-                worldIn.spawnEntityInWorld(circle);
             }
 			entityLiving.playSound(GrimoireSoundEvents.POWER_UP, 0.2F, 1F);
 

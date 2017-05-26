@@ -30,7 +30,7 @@ public class StopWatchHandler {
 
 			for(EntityStopWatch clock : clocks) {
 				if(livingAABB.isVecInside(clock.getPositionVector())) {
-					if(clock.getExcludedPlayers().stream().anyMatch(uuid -> uuid.equals(living))) {
+					if(clock.getExcludedPlayers().stream().anyMatch(entity -> entity == living)) {
 						return;
 					}
 
