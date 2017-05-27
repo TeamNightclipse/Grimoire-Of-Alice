@@ -49,26 +49,25 @@ public class SubEntitySunBullet extends SubEntityType {
 
 		@Override
 		protected void impactBlock(RayTraceResult raytrace) {
-			//TODO: Change MovementData too here?
 			EnumFacing facing = raytrace.sideHit;
 			if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
-				Vec3d vec = danmaku.getLookVec();
-				danmaku.setAngle(new Vector3(vec.xCoord, vec.yCoord * -1D, vec.zCoord));
-				danmaku.motionY *= -1D;
-			}
-			else {
-				Vec3d vec = danmaku.getLookVec();
-				double x = vec.xCoord;
-				double z = vec.zCoord;
-				if(facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
-					danmaku.motionX *= -1D;
+				Vector3 vec = danmaku.getAngle();
+				danmaku.setAngle(vec.create(vec.getX(), vec.getY() * -1D, vec.getZ()));
+				danmaku.motionY *= -0.5D;
+			} else {
+				Vector3 vec = danmaku.getAngle();
+				double x = vec.getX();
+				double z = vec.getZ();
+				if (facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
+					danmaku.motionX *= -0.5D;
 					x *= -1D;
-				} else {
-					danmaku.motionZ *= -1D;
+				}
+				else {
+					danmaku.motionZ *= -0.5D;
 					z *= -1D;
 				}
 
-				danmaku.setAngle(new Vector3(x, vec.yCoord, z));
+				danmaku.setAngle(vec.create(x, vec.getY(), z));
 			}
 		}
 	}
