@@ -190,7 +190,6 @@ item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind Shot
 item.danmaku.danmakuvariant.grimoireofalice.note.name=Note Shot
 item.danmaku.danmakuvariant.grimoireofalice.sun.name=Sun Shot
 
-subentity.grimoireofalice.leaf=Gravity
 subentity.grimoireofalice.ufo=Random movement
 subentity.grimoireofalice.wind=Push mobs away
 subentity.grimoireofalice.note=Slow movement

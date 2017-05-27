@@ -20,7 +20,6 @@ public class GOASubEntities {
 	private static final IForgeRegistry<SubEntityType> REGISTRY = DanmakuRegistry.SUB_ENTITY;
 
 	public static final SubEntityType WIND = REGISTRY.getValue(resource(LibSubEntityName.WIND));
-	public static final SubEntityType NOTE = REGISTRY.getValue(resource(LibSubEntityName.NOTE));
 	public static final SubEntityType LEAF = REGISTRY.getValue(resource(LibSubEntityName.LEAF));
 	public static final SubEntityType UFO = REGISTRY.getValue(resource(LibSubEntityName.UFO));
 	public static final SubEntityType SUN = REGISTRY.getValue(resource(LibSubEntityName.SUN));
