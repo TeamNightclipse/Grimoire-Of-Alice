@@ -1,3 +1,11 @@
+/*
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
@@ -9,11 +17,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.lang.reflect.Method;
 
-/**
- * This class was created by Arekkuusu on 08/05/2017.
- * It's distributed as part of Wiccan Arts under
- * the MIT license.
- */
 public class MalletServerEvent {
 
 	private static final String SET_SIZE = "setSize";

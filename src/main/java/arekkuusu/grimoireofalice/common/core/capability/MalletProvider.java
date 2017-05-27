@@ -1,3 +1,11 @@
+/*
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.common.core.capability;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,11 +16,6 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 import javax.annotation.Nullable;
 
-/**
- * This class was created by Arekkuusu on 08/05/2017.
- * It's distributed as part of Wiccan Arts under
- * the MIT license.
- */
 public class MalletProvider implements ICapabilitySerializable<NBTTagCompound> {
 
 	@CapabilityInject (IMalletCapability.class)
