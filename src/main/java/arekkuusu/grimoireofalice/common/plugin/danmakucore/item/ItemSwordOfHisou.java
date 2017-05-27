@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.common.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
@@ -122,7 +123,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setColor(LibColor.COLOR_SATURATED_RED))
 							.build();
 
-					DanmakuCreationHelper.createRandomRingShot(danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
+					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
 				}
 			}
 		}

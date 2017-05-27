@@ -50,12 +50,11 @@ public class SubEntitySunBullet extends SubEntityType {
 		@Override
 		protected void impactBlock(RayTraceResult raytrace) {
 			EnumFacing facing = raytrace.sideHit;
+			Vector3 vec = danmaku.getDirection();
 			if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
-				Vector3 vec = danmaku.getAngle();
-				danmaku.setAngle(vec.create(vec.getX(), vec.getY() * -1D, vec.getZ()));
+				danmaku.setDirection(new Vector3(vec.getX(), vec.getY() * -1D, vec.getZ()));
 				danmaku.motionY *= -0.5D;
 			} else {
-				Vector3 vec = danmaku.getAngle();
 				double x = vec.getX();
 				double z = vec.getZ();
 				if (facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
@@ -67,7 +66,7 @@ public class SubEntitySunBullet extends SubEntityType {
 					z *= -1D;
 				}
 
-				danmaku.setAngle(vec.create(x, vec.getY(), z));
+				danmaku.setDirection(new Vector3(x, vec.getY(), z));
 			}
 		}
 	}

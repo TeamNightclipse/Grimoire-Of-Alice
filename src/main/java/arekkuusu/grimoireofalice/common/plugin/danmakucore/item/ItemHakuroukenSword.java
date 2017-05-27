@@ -62,11 +62,11 @@ public class ItemHakuroukenSword extends ItemModSword implements IOwnedBy {
 	private void reverseDanmaku(EntityLivingBase entityLiving, EntityDanmaku danmaku) {
 		danmaku.rotationYaw = entityLiving.rotationYaw;
 		danmaku.rotationPitch = entityLiving.rotationPitch;
-		Vec3d vec3d = entityLiving.getLookVec();
-        danmaku.setAngle(new Vector3(vec3d));
-		danmaku.motionX *= vec3d.xCoord;
-		danmaku.motionY *= -vec3d.yCoord;
-		danmaku.motionZ *= vec3d.zCoord;
+		Vector3 vec3d = Vector3.directionEntity(entityLiving);
+        danmaku.setDirection(vec3d);
+		danmaku.motionX *= vec3d.x();
+		danmaku.motionY *= -vec3d.y();
+		danmaku.motionZ *= vec3d.z();
 	}
 
 	@Override

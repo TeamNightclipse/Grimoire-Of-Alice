@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.lib.LibColor;
@@ -62,7 +63,7 @@ public class ItemInstrument extends ItemMod {
 						.setMovementData(getVelocity())
 						.setShot(LibGOAShotData.NOTE.setColor(color))
 						.build();
-				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, getSize(), getDistance());
+				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, getSize(), getDistance());
 			}
 		}
 		if(count % 10 == 0) {

@@ -37,7 +37,7 @@ public class SubEntityUfo extends SubEntityType {
 		public void subEntityTick() {
 			super.subEntityTick();
 			if(!world.isRemote && danmaku.ticksExisted % 10 == 0) {
-				danmaku.setAngle(Vector3.angleRandom());
+				danmaku.setDirection(Vector3.randomDirection());
 			}
 		}
 	}

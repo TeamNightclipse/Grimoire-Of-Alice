@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
@@ -76,10 +77,10 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(player)
 						.setMovementData(0.5D, 1.5D, 0.1D)
-						.setShot(LibShotData.SHOT_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
+						.setShot(LibShotData.SHOT_POINTED_LASER.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
 						.build();
 
-				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 5, 5);
+				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 5, 5);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 				addJewels(stack, (short)-1);
 			}

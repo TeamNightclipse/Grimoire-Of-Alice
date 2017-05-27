@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
@@ -114,7 +115,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 							.setMovementData(0.8D)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDamage(5F))
 							.build();
-					DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, timeUsed * 0.5F, 0D);
+					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					addJewels(stack, (short) -1);
 				}
 				else {
@@ -125,7 +126,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 								.setMovementData(0.8D)
 								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDamage(5F).setDelay(i))
 								.build();
-						DanmakuCreationHelper.createRandomRingShot(danmaku, timeUsed, timeUsed * 0.5F, 0D);
+						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					}
 					setJewels(stack, (short) 0);
 				}

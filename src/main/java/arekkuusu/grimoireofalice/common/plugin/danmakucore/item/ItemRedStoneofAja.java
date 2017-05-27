@@ -4,6 +4,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemMod;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
@@ -60,7 +61,7 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
                 if (worldIn.canSeeSky(entityLiving.getPosition())) {
                     EntityDanmaku lazer = DanmakuTemplate.builder()
                             .setUser(entityLiving)
-                            .setShot(LibShotData.SHOT_LASER_SHORT.setSizeZ(4))
+                            .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
                             .setMovementData(3D)
                             .build().asEntity();
                     for (int i = 0; i < 4; i++) {
@@ -69,14 +70,14 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
                                 .setShot(LibShotData.SHOT_CIRCLE.setSize(1.5F).setDelay(i * 2))
                                 .setMovementData(3D)
                                 .build();
-                        DanmakuCreationHelper.createWideShot(circle, 2, 15, 0, 1F);
+                        DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
                     }
                     worldIn.spawnEntityInWorld(lazer);
                 }
                 else {
                     EntityDanmaku danmaku = DanmakuTemplate.builder()
                             .setUser(entityLiving)
-                            .setShot(LibShotData.SHOT_LASER_SHORT.setSizeZ(4))
+                            .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
                             .setMovementData(4D)
                             .build().asEntity();
                     worldIn.spawnEntityInWorld(danmaku);

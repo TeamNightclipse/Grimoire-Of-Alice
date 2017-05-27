@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
@@ -87,7 +88,7 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 								.build();
 
-						DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 10, 5);
+						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(playerIn), danmaku, 1, 10, 5);
 					}
 
 					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);

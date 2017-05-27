@@ -39,7 +39,7 @@ public class SubEntityLeaf extends SubEntityType {
 
 				if(!world.isRemote) {
 					DanmakuTemplate.Builder newDanmaku = DanmakuTemplate.builder().setShot(LibGOAShotData.UFO).setSource(this.danmaku);
-					newDanmaku.setAngle(Vector3.angleRandom());
+					newDanmaku.setDirection(Vector3.randomDirection());
 					world.spawnEntityInWorld(newDanmaku.build().asEntity());
 					danmaku.setDead();
 				}

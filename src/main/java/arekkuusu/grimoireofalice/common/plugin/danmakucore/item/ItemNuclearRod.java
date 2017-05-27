@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.plugin.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
+import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
@@ -103,7 +104,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 						.setMovementData(0.5F)
 						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.build();
-				DanmakuCreationHelper.createCircleShot(danmaku, 5, entityLiving.rotationPitch, 1);
+				DanmakuCreationHelper.createCircleShot(Quat.orientationOf(entityLiving), danmaku, 5, entityLiving.rotationPitch, 1);
 			} else {
 				EntityDanmaku danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)

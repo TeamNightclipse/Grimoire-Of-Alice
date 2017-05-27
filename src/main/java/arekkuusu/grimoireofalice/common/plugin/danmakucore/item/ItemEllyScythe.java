@@ -130,7 +130,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 
 		EntityDanmaku danmaku = DanmakuTemplate.builder()
 				.setUser(player)
-				.setAngle(Vector3.Up())
+				.setDirection(Vector3.Up())
 				.setMovementData(0.2D)
 				.setPos(spawnPos)
 				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
