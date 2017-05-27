@@ -74,7 +74,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 					double randZ = z + itemRand.nextGaussian() / 2.0D;
 
 					for (int j = 0; j < 6; ++j) {
-						worldIn.spawnParticle(EnumParticleTypes.DRAGON_BREATH, randX, randY, randZ, vec.xCoord * 0.08D * j, vec.yCoord * 0.6D,
+						worldIn.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, vec.xCoord * 0.08D * j, vec.yCoord * 0.6D,
 								vec.zCoord * 0.08D * j);
 					}
 				}
@@ -100,6 +100,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 	}
 
 	private void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
+		world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.PLAYERS, 1F, 1F);
 		if(!world.isRemote) {
 			EntityDragonJewel jewel = new EntityDragonJewel(world, player);
 			jewel.setPosition(player.posX, player.posY + 2, player.posZ);

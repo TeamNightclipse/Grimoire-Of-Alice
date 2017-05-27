@@ -106,8 +106,8 @@ public class YukkuriEvent {
 
 			if (player.inventory.hasItemStack(new ItemStack(ModItems.SUBSTITUTE_JIZO))) {
 
-				@SuppressWarnings("ConstantConditions") //Liar
-						IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+				@SuppressWarnings ("ConstantConditions") //Liar
+				IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
 				for (int i = 0; i < capability.getSlots(); i++) {
 					ItemStack stack = capability.getStackInSlot(i);
