@@ -73,10 +73,9 @@ public class ItemNazrinStick extends ItemModSword {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_bottom.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_use.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_use.name"));
 			if(!isHoldingItemsBothHands(player)) {
 				list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.nazrin_stick_inactive.name"));
 			}
@@ -85,7 +84,7 @@ public class ItemNazrinStick extends ItemModSword {
 			}
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_shift.name"));
 		}
 	}
 

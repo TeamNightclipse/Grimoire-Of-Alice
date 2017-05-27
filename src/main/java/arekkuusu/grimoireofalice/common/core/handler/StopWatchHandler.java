@@ -25,7 +25,7 @@ public class StopWatchHandler {
 	@SubscribeEvent
 	public void onTick(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
-		if(!living.world.isRemote && !clocks.isEmpty() && living instanceof EntityPlayer) {
+		if(!living.world.isRemote && !clocks.isEmpty()) {
 			AxisAlignedBB livingAABB = living.getEntityBoundingBox().expandXyz(EntityStopWatch.RANGE);
 
 			for(EntityStopWatch clock : clocks) {

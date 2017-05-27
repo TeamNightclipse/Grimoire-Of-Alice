@@ -64,7 +64,7 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_header.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_shift.name"));
 		}
 	}
 

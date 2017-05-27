@@ -69,8 +69,7 @@ public class BlockHolyStone extends BlockMod {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_gifts.name"));
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_header.name"));
 	}
 
 	@Override

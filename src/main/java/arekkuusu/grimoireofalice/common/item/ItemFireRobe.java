@@ -66,7 +66,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_mid.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_shift.name"));
 		}
 	}
 

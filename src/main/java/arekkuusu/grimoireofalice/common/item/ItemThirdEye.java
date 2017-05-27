@@ -70,7 +70,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
         }
         else {
             list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_activate.name"));
-            list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_shift.name"));
+            list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_shift.name"));
         }
     }
 

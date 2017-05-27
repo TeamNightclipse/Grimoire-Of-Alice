@@ -210,11 +210,6 @@ entity.grimoireofalice.youkai.name=Youkai Book
 entity.grimoireofalice.camera.name=Camera frame
 entity.grimoireofalice.watch.name=Watch
 
-subentity.grimoireofalice.leaf=Gravity
-subentity.grimoireofalice.ufo=Random movement
-subentity.grimoireofalice.wind=Push mobs away
-subentity.grimoireofalice.note=Slow movement
-
 effect.grimoireofalice.elixir_potion=Elixir
 effect.grimoireofalice.radiation_poisoning_potion=Radiation Poisoning
 
@@ -270,7 +265,7 @@ grimoire.gui.book_4=                   -World Generation-|                      
 grimoire.gui.book_5=                   -World Generation-|                      Kyoumarubotan|These rare minerals in the shape of a flower|grow inside stone, and rarely show themselves|at plain sight.|* If mined, they drop 3 - 8 gold nuggets.
 grimoire.gui.book_6=                      -Crafting Altar-|                         Recipes|Recipes are easy, they have an input, and an|output.|Altar recipes are different from normal crafting,|items aren't stackable, they vanish after crafting,|and require special conditions to be created.|Such conditions vary in complexity, some require|Rain, Night Time, Moon Phases, Dimensions, etc.
 grimoire.gui.book_7=                      -DanmakuCore-|                            Items|Items that depend on danmakucore, for ex:|"Jeweled Branch of Hourai", and some other|unique items, do not show when the mod is missing.|Why is this? Because they use danmaku.
-grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 3 new Shots to DanmakuCore:|||*Note:              Low damage, Low range.|||*Sun:               Great damage, Bounce off walls.|||*UFO:               Random movements.
+grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 3 new Shots to DanmakuCore:|||*Note:              Low range.|||*Sun:               Bouncing.|||*UFO:               Random movements.
 grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you can use JEI to see|recipes in-game. The inside items go on the small|Pillars, the outside items go on the Onbashiras.
 
 //Tooltips
@@ -278,23 +273,17 @@ grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you
 grimoire.tooltip.crafting_altar_header.name=Differs slightly from a Crafting Table
 
 grimoire.tooltip.holy_key_stone_header.name=Heavy object made of black granite
-grimoire.tooltip.holy_key_stone_use.name=Step on it
 
 grimoire.tooltip.holy_stone_header.name=Magical stone with its own weak gravity field
-grimoire.tooltip.holy_stone_gifts.name=Accepts gifts as items
 
 grimoire.tooltip.kyoumarubotan_header.name=Mythical tree peony
 grimoire.tooltip.kyoumarubotan_description.name=Hematite in the shape of a flower
 
-grimoire.tooltip.shroom_block_header.name="Smells and tastes good"
 grimoire.tooltip.shroom_block_tasty.name=Tasty snack
 
 grimoire.tooltip.onbashira_block_header.name=Kinda heavy
 
 grimoire.tooltip.pillar_altar_header.name=Kinda heavy
-
-grimoire.tooltip.aura_byakuren_header.name="The Sealed Great Magician"
-grimoire.tooltip.aura_byakuren_description.name=These powers are demonic in nature
 
 grimoire.tooltip.ichirin_unzan_header.name=Grants the user a powerful stand
 grimoire.tooltip.ichirin_unzan_description.name=Use rings to control the figure
@@ -302,9 +291,6 @@ grimoire.tooltip.ichirin_unzan_description.name=Use rings to control the figure
 grimoire.tooltip.kanako_shimenawa_header.name=Represents the figure of an entwined snake
 grimoire.tooltip.kanako_shimenawa_description_top.name=Its true power is unknown, the legend says
 grimoire.tooltip.kanako_shimenawa_description_bottom.name=it possesses a power unimaginable to humans
-
-grimoire.tooltip.aura_mokou_header.name="~na no kashira?"
-grimoire.tooltip.aura_mokou_description.name=Phoenix of fire
 
 grimoire.tooltip.toyosatomimi_hat_header.name="Infinite knowledge"
 grimoire.tooltip.toyosatomimi_hat_description_top.name=I can listen to 10 people at once,
@@ -322,7 +308,7 @@ grimoire.tooltip.heavenly_peach_header.name=Fruit from the skies
 grimoire.tooltip.heavenly_peach_description.name=Someone had to fly very high to reach it
 
 grimoire.tooltip.hourai_elixir_header.name=Anyone who drinks this forbidden elixir will cease to age, never become ill, and will never be able to die. One will be as frail and vulnerable as before, but every injury shall cease, critical injuries will be healed in a matter of days and complete destruction results in complete restoration.
-grimoire.tooltip.hourai_elixir_shift.name=SHIFT for details
+grimoire.tooltip.hourai_elixir_shift.name=<hold shift for details>
 
 grimoire.tooltip.ibaraki_box_header.name=In exchange for curing illnesses, the personality of the
 grimoire.tooltip.ibaraki_box_description.name=one who drinks from will temporarily become like an Oni's
@@ -335,7 +321,7 @@ grimoire.tooltip.icicle_sword_header.name=Perfect Freeze!
 grimoire.tooltip.kappas_nostrum_header.name=Powerful healing ointment said to be created by cutting off the arm of a kappa
 grimoire.tooltip.kappas_nostrum_description.name=It gives regeneration and clears all active potion effects
 
-grimoire.tooltip.shroom_dust_header.name=Psilocybin mushroom
+grimoire.tooltip.shroom_dust_header.name=Psilocybin powder
 grimoire.tooltip.shroom_dust_description.name=May induce hallucinations
 
 grimoire.tooltip.nuclear_boots_header.name="Manipulation of Nuclear Energy"
@@ -351,13 +337,13 @@ grimoire.tooltip.third_eye_activate.name=Shift right click to activate
 grimoire.tooltip.third_eye_status.name=Status:
 grimoire.tooltip.third_eye_open.name= Open
 grimoire.tooltip.third_eye_closed.name= Closed
-grimoire.tooltip.third_eye_shift.name=SHIFT for details
+grimoire.tooltip.third_eye_shift.name=<hold shift for details>
 
 grimoire.tooltip.amenonuhoko_header.name=Heavenly jeweled spear
 grimoire.tooltip.amenonuhoko_description_top.name=Once used to raise the
 grimoire.tooltip.amenonuhoko_description_mid.name=primordial land-mass,
 grimoire.tooltip.amenonuhoko_description_bottom.name=Onogoro-shima, from the sea
-grimoire.tooltip.amenonuhoko_shift.name=SHIFT for details
+grimoire.tooltip.amenonuhoko_shift.name=<hold shift for details>
 
 grimoire.tooltip.blood_thirsty_orb_description.name=Feed it blood to teleport to your victim
 
@@ -384,12 +370,12 @@ grimoire.tooltip.fire_robe_header.name=Made from the fur of a mystical rat that 
 grimoire.tooltip.fire_robe_description_top.name=Completely fire proof, the user is protected from hell itself
 grimoire.tooltip.fire_robe_description_mid.name=Stronger than any man-made armor, demonic by nature
 grimoire.tooltip.fire_robe_description_bottom.name=Can be nullified by purification barriers
-grimoire.tooltip.fire_robe_description_shift.name=SHIFT for details
+grimoire.tooltip.fire_robe_description_shift.name=<hold shift for details>
 
 grimoire.tooltip.folding_umbrella_header_header.name=Magical umbrella that teleports players
 grimoire.tooltip.folding_umbrella_header_top.name=Right click to teleport up to 40 blocks
 grimoire.tooltip.folding_umbrella_header_bottom.name=to the direction you are looking
-grimoire.tooltip.folding_umbrella_header_shift.name=SHIFT for details
+grimoire.tooltip.folding_umbrella_header_shift.name=<hold shift for details>
 
 grimoire.tooltip.send_off_lantern_header.name=Allows the player to negate all damage
 grimoire.tooltip.send_off_lantern_description.name=for a short period of time
@@ -405,7 +391,7 @@ grimoire.tooltip.ufos_off.name= OFF
 grimoire.tooltip.ghost_dipper_header.name=Fearsome ladle known to sink monstrous ships
 grimoire.tooltip.ghost_dipper_description_top.name=- Right click water to clear
 grimoire.tooltip.ghost_dipper_description_bottom.name=- Right click on land to place water
-grimoire.tooltip.ghost_dipper_shift.name=SHIFT for details
+grimoire.tooltip.ghost_dipper_shift.name=<hold shift for details>
 
 grimoire.tooltip.glorious_nippon_steel_header.name=Round and precious steel
 
@@ -433,7 +419,7 @@ grimoire.tooltip.ichirin_ring_header.name=Nyuudou bender
 grimoire.tooltip.ichirin_use.name=Use with Rings in both Hands
 grimoire.tooltip.ichirin_inactive.name=Inactive
 grimoire.tooltip.ichirin_active.name=Active
-grimoire.tooltip.ichirin_shift.name=SHIFT for details
+grimoire.tooltip.ichirin_shift.name=<hold shift for details>
 
 grimoire.tooltip.kappa_hat_header.name="River Castle"
 
@@ -452,7 +438,7 @@ grimoire.tooltip.mochi_hammer_header.name=Ooguninushi no Mikoto, Master of the G
 grimoire.tooltip.mochi_hammer_description_top.name="The first strike is for Lord Daikoku~
 grimoire.tooltip.mochi_hammer_description_mid.name=The Second strike is for Lord Daikoku~
 grimoire.tooltip.mochi_hammer_description_bottom.name=And for all of the 180 children..."
-grimoire.tooltip.mochi_hammer_shift.name=SHIFT for details
+grimoire.tooltip.mochi_hammer_shift.name=<hold shift for details>
 grimoire.tooltip.mochi_hammer_description.name=Victims:
 
 grimoire.tooltip.momijis_scimitar_sword_header.name=Very sharp and heavy
@@ -461,15 +447,16 @@ grimoire.tooltip.momijis_scimitar_sword_description.name=It was forged with a ra
 grimoire.tooltip.nazrin_pendulum_header.name=Magical pendulum that searches for ores underground
 grimoire.tooltip.nazrin_pendulum_ore.name=Ore:
 grimoire.tooltip.nazrin_pendulum_description.name=Right click to activate, Shift to dismiss
-grimoire.tooltip.nazrin_pendulum_shift.name=SHIFT for details
+grimoire.tooltip.nazrin_pendulum_shift.name=<hold shift for details>
 
 grimoire.tooltip.nazrin_stick_header.name=Rare treasure from an old era
-grimoire.tooltip.nazrin_stick_description_top.name=By holding it you become the
-grimoire.tooltip.nazrin_stick_description_bottom.name=the Little Dowser General
+grimoire.tooltip.nazrin_stick_description_header.name=By holding it you become the Little Dowser General
 grimoire.tooltip.nazrin_stick_use.name=Use with Nazrin Sticks in both Hands
 grimoire.tooltip.nazrin_stick_inactive.name=Inactive
 grimoire.tooltip.nazrin_stick_active.name=Active
-grimoire.tooltip.nazrin_stick_shift.name=SHIFT for details
+grimoire.tooltip.nazrin_stick_shift.name=<hold shift for details>
+
+grimoire.tooltip.ghost_anchor_header.name=Massive anchor of ship destruction
 
 grimoire.tooltip.needle_header.name=Woosh!
 
@@ -484,8 +471,8 @@ grimoire.tooltip.onbashira_description.name=Its massive density make it almost i
 
 grimoire.tooltip.patchy_book_header.name=Author: Patchouli Knowledge
 
-grimoire.tooltip.popsicle_stick_header.name=Its used...
-grimoire.tooltip.popsicle_stick_description.name=Craft with Melon Block and Ice to get a Sword
+grimoire.tooltip.popsicle_stick_header.name=Someone licked it...
+grimoire.tooltip.popsicle_stick_description.name=Craft with Melon Block and Ice to get a melon sword
 
 grimoire.tooltip.rod_of_remorse_header.name=The worse the sin, the heavier the rod becomes
 grimoire.tooltip.rod_of_remorse_description.name=The person in question will be beaten up until they repent
@@ -497,12 +484,12 @@ grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=Divine sword from Toyo
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name=Finds all souls around the player
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name=and gathers the essence of life
 grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name=in the form of an orb
-grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=SHIFT for details
+grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=<hold shift for details>
 
 grimoire.tooltip.sanae_gohei_header.name=Causes miracles to occur
 grimoire.tooltip.sanae_gohei_use.name=Hold right click to charge with food or faith items
 grimoire.tooltip.sanae_gohei_charge.name=Accumulated Faith:
-grimoire.tooltip.sanae_gohei_shift.name=SHIFT for details
+grimoire.tooltip.sanae_gohei_shift.name=<hold shift for details>
 //Gohei Modes
 grimoire.tooltip.sanae_gohei_mode_header.name=§fGohei Mode :
 grimoire.tooltip.sanae_gohei_mode_clear.name= §bMiracle of Clear Skies
@@ -548,16 +535,15 @@ grimoire.tooltip.red_stone_of_aja_header.name=Gemstone of perfect reflection
 grimoire.tooltip.tenshi_hat_header.name=Hat from a masochist of the skies
 
 grimoire.tooltip.sword_of_kusanagi_header.name=Divine sword forged with Hihi'irokane, a mythic metal
-grimoire.tooltip.sword_of_kusanagi_description_top.name=Discovered within the fourth tail of the eight-headed eight-tailed serpent Yamata-no-Orochi
-grimoire.tooltip.sword_of_kusanagi_description_bottom.name=when it was slain by the Shinto god Susanoo-no-Mikoto.
-grimoire.tooltip.sword_of_kusanagi_shift.name=SHIFT for details
+grimoire.tooltip.sword_of_kusanagi_description_body.name=Discovered within the fourth tail of the eight-headed eight-tailed serpent Yamata-no-Orochi when it was slain by the Shinto god Susanoo-no-Mikoto
+grimoire.tooltip.sword_of_kusanagi_shift.name=<hold shift for details>
 
 grimoire.tooltip.roukanken_header.name=Long-bladed katana said to be made by youkai
 grimoire.tooltip.roukanken_description_top.name="The things that cannot be cut by my Roukanken,
 grimoire.tooltip.roukanken_description_bottom.name=forged by youkai, are close to none!"
-grimoire.tooltip.roukanken_shift.name=SHIFT for details
+grimoire.tooltip.roukanken_shift.name=<hold shift for details>
 
-grimoire.tooltip.syringe_header.name="Its medicine time"
+grimoire.tooltip.syringe_header.name=Applies random potion effects
 
 grimoire.tooltip.tengu_camera_header.name=Swipe the space in front of the player by taking photos
 
@@ -568,17 +554,17 @@ grimoire.tooltip.time_orb_description_bottom.name=the passing of the night
 grimoire.tooltip.ufos_header.name=Gathers items around the player
 
 grimoire.tooltip.wall_passing_chisel_header.name=Wall passing chisel
-grimoire.tooltip.wall_passing_chisel_description.name=It works as a fancy hair pin
+grimoire.tooltip.wall_passing_chisel_description.name=Use on any solid block
 
-grimoire.tooltip.watermelon_blade_header.name=Yes, this exists
+grimoire.tooltip.watermelon_blade_header.name=Eat me!
 
-grimoire.tooltip.watermelon_sword_header.name=Eat cold with salt, lots
-grimoire.tooltip.watermelon_sword_description.name=as salty as life...
+grimoire.tooltip.watermelon_sword_header.name=You cannot eat this sword
+grimoire.tooltip.watermelon_sword_description.name=But it drops melon when damaged
 
-grimoire.tooltip.youkai_book_header.name=Completely normal book
-grimoire.tooltip.youkai_book_description.name=With the exception of containing unknown scriptures
+grimoire.tooltip.youkai_book_header.name=Book written by youkai
+grimoire.tooltip.youkai_book_description.name=May contain evil spirits
 
-grimoire.tooltip.elly_scythe_header.name=War ma fé, heman zo eun Anko drouk
+grimoire.tooltip.elly_scythe_header.name="Blood looter"
 
 grimoire.tooltip.jeweled_hourai_header.name=A jeweled branch from the mythical island of Hōrai
 grimoire.tooltip.jeweled_hourai_description.name="Mirage—the Vision of the Intangible"
@@ -586,25 +572,23 @@ grimoire.tooltip.jeweled_hourai_description.name="Mirage—the Vision of the Int
 grimoire.tooltip.laevatein_header.name=Magic staff gambantein, Lævateinn of fire and chaos
 
 grimoire.tooltip.leaf_header.name=Mamisou's Leaf from Ten Desires
-grimoire.tooltip.leaf_description.name=Right click to shoot
-
-grimoire.tooltip.piano_header.name=Poltergeists posses this piano
-grimoire.tooltip.piano_use.name=Hold right click to use
+grimoire.tooltip.leaf_description.name=Use this to amuse your enemy
 
 grimoire.tooltip.shou_lamp_header.name=Brings about wealth
-grimoire.tooltip.shou_lamp_use.name=Hold and release for a second to shoot danmaku
+grimoire.tooltip.shou_lamp_use.name=Hold and release to shoot danmaku
 grimoire.tooltip.shou_lamp_jewels.name=Jewels:
-grimoire.tooltip.shou_lamp_shift.name=SHIFT for details
+grimoire.tooltip.shou_lamp_shift.name=<hold shift for details>
 
-grimoire.tooltip.spell_card_pouch_header.name=Holds Items for you
+grimoire.tooltip.spell_card_pouch_header.name=Holds Spellcards for you
 
 grimoire.tooltip.hisou_sword_header.name=Sword of Scarlet Perceptions
 grimoire.tooltip.hisou_sword_description_top.name=It takes the form of a golden Chinese jian.
-grimoire.tooltip.hisou_sword_shift.name=SHIFT for details
+grimoire.tooltip.hisou_sword_shift.name=<hold shift for details>
 
 grimoire.tooltip.tengu_fan_header.name=Fan to manipulate winds
-grimoire.tooltip.tengu_fan_description_top.name=Hold right click to charge
-grimoire.tooltip.tengu_fan_description_bottom.name=and release
+
+grimoire.tooltip.piano_header.name=Poltergeists posses this piano
+grimoire.tooltip.piano_use.name=Hold right click to use
 
 grimoire.tooltip.trumpet_header.name=Poltergeists posses this trumpet
 grimoire.tooltip.trumpet_use.name=Hold right click to use
@@ -670,52 +654,48 @@ grimoire.jei.descriptions.amenonuhoko=Must be crafted under a Rainy weather
 grimoire.jei.descriptions_body.amenonuhoko=Generates a big boulder of primordial land-mass when used
 
 grimoire.jei.descriptions.aya_camera=Old camera from the journalist Aya Shameimaru
-grimoire.jei.descriptions_body.aya_camera=Hurts mobs close to the photo taken
+grimoire.jei.descriptions_body.aya_camera=Hurts mobs and deletes danmaku close to the photo taken
 
 grimoire.jei.descriptions.blood_orb=Must be crafted in the Nether
-grimoire.jei.descriptions_body.blood_orb=Teleports the player to the entity its looking at
+grimoire.jei.descriptions_body.blood_orb=Moves the player to the target's position
 
-grimoire.jei.descriptions.byakuren_aura=Gives the player a fancy aura, just for the looks
-
-grimoire.jei.descriptions.toyosatomimi_aura=Gives the player a fancy aura, just for the looks
-
-grimoire.jei.descriptions.cattail_plant=Nitori™ Do not yukkuri shiteitte ne
+grimoire.jei.descriptions.cattail_plant=Nitori™ Yukkuri shiteitte ne
 
 grimoire.jei.descriptions.charm_of_healing=Heals the player passively and actively
-grimoire.jei.descriptions_body.charm_of_healing=Hold right click and release with this item to cure your injuries
+grimoire.jei.descriptions_body.charm_of_healing=Use this item to cure your injuries
 
 grimoire.jei.descriptions.cherry=Found inside chests in Desert Pyramids
 
-grimoire.jei.descriptions.cowrie_shell=Obtained by fishing, its a treasure, so use your Ol' Reliable
+grimoire.jei.descriptions.cowrie_shell=Rare treasure obtained by fishing with a fishing rod.
 
-grimoire.jei.descriptions.cursed_decoy_doll=Cursed doll that works as a decoy for mobs
-grimoire.jei.descriptions_body.cursed_decoy_doll=They will forget the player in question and attack the doll instead
+grimoire.jei.descriptions.cursed_decoy_doll=Cursed doll that works as a decoy for mobs that target the player
+grimoire.jei.descriptions_body.cursed_decoy_doll=Only works for a limited amount of time
 
 grimoire.jei.descriptions.death_scythe=Must be crafted in the Nether
-grimoire.jei.descriptions_body.death_scythe=Pulls mobs towards you, Pushes mobs away from you when shifting
+grimoire.jei.descriptions_body.death_scythe=Pulls mobs towards you when standing, Pushes mobs away from you when shifting
 
 grimoire.jei.descriptions.dragon_jewel=Must be crafted under a New Moon at Night
-grimoire.jei.descriptions_body.dragon_jewel=It hurts all mobs until they hit 1hp in a 20 block radius, it has a change of dealing fatal damage. Shift right click to shoot dragon breath
+grimoire.jei.descriptions_body.dragon_jewel=Puts all mobs to sleep in a 20 block radius. Shift right click to shoot dragon breath
 
 grimoire.jei.descriptions.dragon_scale=Obtained by attacking the Ender Dragon with a ranged weapon
 
-grimoire.jei.descriptions.dragon_stone=Weather Stone with a dragon inside
+grimoire.jei.descriptions.dragon_stone=Weather Stone with a small dragon inside
 
 grimoire.jei.descriptions.elly_scythe=Must be crafted in the Nether
 grimoire.jei.descriptions_body.elly_scythe=Throw a deadly Scythe that curses the target and heals the user. It also summons danmaku from the ground
 
 grimoire.jei.descriptions.faith=Found inside chests in Desert Pyramids and Jungle Temples
 
-grimoire.jei.descriptions.fake_miracle_mallet=Hit multiple targets at once, it deals a good amount of damage
+grimoire.jei.descriptions.fake_miracle_mallet=Hit multiple targets at once. It's as fake as it looks, the original mallet is far more powerful
 
 grimoire.jei.descriptions.fire_robe=Must be crafted under a Waning Crescent Moon at Night
-grimoire.jei.descriptions_body.fire_robe=Magical robe that, besides being invulnerable to fire, possesses an outstanding resistance to pointy objects
+grimoire.jei.descriptions_body.fire_robe=Magical robe that, besides being invulnerable to fire, possesses an outstanding resistance to physical damage
 
 grimoire.jei.descriptions.gap=Gap of time and space
-grimoire.jei.descriptions_body.gap=Teleport entities from one gap to another, if colored it finds the nearest gap with matching color, if not, it finds the nearest gap.
-grimoire.jei.descriptions_color.gap=Use a dye to color the gap, and use white dye to clear the color. Right Click + Shift to remove it.
+grimoire.jei.descriptions_body.gap=Teleport from place to place in the blink of an eye. Looks for the nearest matching Gap
+grimoire.jei.descriptions_color.gap=Use a dye to color the gap, and use white dye to clear the color. Right Click + Shift to drop it.
 
-grimoire.jei.descriptions.gap_folding_umbrella=Magical umbrella that teleports the user 40 blocks to the direction its looking at
+grimoire.jei.descriptions.gap_folding_umbrella=Umbrella impregnated with magic energies, teleports the user to the specified direction
 
 grimoire.jei.descriptions.fox_mask=One of the 9 masks owned by the youkai Hata no Kokoro, it has the power to manipulate emotions
 

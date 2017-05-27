@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,9 +13,12 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
@@ -24,13 +28,18 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 	public ItemGhostAnchor(ToolMaterial material) {
 		super(material, LibItemName.GHOST_ANCHOR);
 		addPropertyOverride(new ResourceLocation("active"),
-				(stack, world, entity) -> entity != null && entity instanceof EntityPlayer
-						&& ((EntityPlayer)entity).getCooldownTracker().hasCooldown(this) ? 1F : 0F);
+				(stack, world, entity) -> entity != null && (entity.motionX * entity.motionX + entity.motionZ * entity.motionZ + entity.motionY * entity.motionY > 9D) ? 1F : 0F);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
+	}
+
+	@Override
+	@SideOnly (Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_anchor_header.name"));
 	}
 
 	@Override

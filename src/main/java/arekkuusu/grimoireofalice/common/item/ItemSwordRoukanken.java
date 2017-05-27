@@ -55,7 +55,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_description_bottom.name"));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.roukanken_shift.name"));
 		}
 	}
 

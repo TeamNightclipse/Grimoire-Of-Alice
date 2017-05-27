@@ -69,7 +69,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 			}
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_shift.name"));
 		}
 	}
 
