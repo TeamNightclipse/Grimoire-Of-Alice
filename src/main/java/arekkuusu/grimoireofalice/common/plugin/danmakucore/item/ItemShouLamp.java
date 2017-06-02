@@ -60,7 +60,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.shou_lamp_jewels.name") + " " + getJewels(stack));
 		}
 		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
+			list.add(TextFormatting.DARK_GRAY + "" +TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
 		}
 	}
 
@@ -76,11 +76,11 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 			if (isActive(player, stack)) {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(player)
-						.setMovementData(0.5D, 1.5D, 0.1D)
-						.setShot(LibShotData.SHOT_POINTED_LASER.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
+						.setMovementData(0.5D, 0.5D, 0.1D)
+						.setShot(LibShotData.SHOT_POINTED_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
 						.build();
 
-				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 5, 5);
+				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 20, 0D);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 				addJewels(stack, (short)-1);
 			}
