@@ -11,8 +11,11 @@ package arekkuusu.grimoireofalice.common.potion;
 import arekkuusu.grimoireofalice.common.lib.LibPotionName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 
 public class PotionRadiationPoisoning extends PotionMod {
@@ -31,6 +34,12 @@ public class PotionRadiationPoisoning extends PotionMod {
 			((EntityPlayer) entityLivingBaseIn).addExhaustion(0.025F * (float) (p_76394_2_ + 1));
 		}
 		entityLivingBaseIn.setFire(100);
+	}
+
+	@Override
+	public void removeAttributesModifiersFromEntity(EntityLivingBase entityLivingBaseIn, AbstractAttributeMap attributeMapIn, int amplifier) {
+		super.removeAttributesModifiersFromEntity(entityLivingBaseIn, attributeMapIn, amplifier);
+		entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500));
 	}
 
 	@Override

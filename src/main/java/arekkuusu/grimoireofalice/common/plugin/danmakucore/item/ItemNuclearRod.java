@@ -68,14 +68,9 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
-		List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5), entity -> entity != livingBase);
-		for (EntityLivingBase living : list) {
-			if (living instanceof EntityPlayer) {
-				if(!hasBoots((EntityPlayer) living)) {
-					living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
-				}
-			}
-			else {
+		if(livingBase instanceof  EntityPlayer && hasFullSet((EntityPlayer) livingBase)) {
+			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5), entity -> entity != livingBase);
+			for (EntityLivingBase living : list) {
 				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
 		}
@@ -84,14 +79,10 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private boolean hasBoots(EntityPlayer player) {
-		return player.inventory.armorInventory[0] != null && player.inventory.armorInventory[0].getItem() == ModItems.NUCLEAR_BOOTS;
-	}
-
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
-			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 10);
+			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
 		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		if (timeUsed < 20) return;
@@ -104,8 +95,15 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 						.setMovementData(0.5F)
 						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.build();
-				DanmakuCreationHelper.createCircleShot(Quat.orientationOf(entityLiving), danmaku, 5, entityLiving.rotationPitch, 1);
-			} else {
+
+				if(entityLiving instanceof  EntityPlayer && hasFullSet((EntityPlayer) entityLiving)) {
+					DanmakuCreationHelper.createSphereShot(Quat.orientationOf(entityLiving), danmaku, 4, 5, entityLiving.rotationPitch, 1D);
+				}
+				else {
+					DanmakuCreationHelper.createCircleShot(Quat.orientationOf(entityLiving), danmaku, 5, entityLiving.rotationPitch, 1D);
+				}
+			}
+			else {
 				EntityDanmaku danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
@@ -118,6 +116,12 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
                 entityLiving.motionZ -= vec3.zCoord;
 			}
 		}
+	}
+
+	private boolean hasFullSet(EntityPlayer player) {
+		return player.inventory.armorInventory[0] != null && player.inventory.armorInventory[2] != null
+				&& player.inventory.armorInventory[0].getItem() == ModItems.NUCLEAR_BOOTS
+				&& player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_WINGS;
 	}
 
 	@Override
