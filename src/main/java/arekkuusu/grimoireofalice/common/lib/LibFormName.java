@@ -12,6 +12,5 @@ public class LibFormName {
 
 	public static final String WIND = "wind";
 	public static final String UFO = "ufo";
-	public static final String NOTE = "note";
 	public static final String LEAF = "leaf";
 }

@@ -11,6 +11,5 @@ package arekkuusu.grimoireofalice.common.lib;
 public class LibDanmakuVariantName {
 
 	public static final String UFO = "ufo";
-	public static final String NOTE = "note";
 	public static final String SUN = "sun";
 }
