@@ -35,7 +35,7 @@ item.hardenedleathergoa.name=强化皮革
 item.swallowegg.name=燕子蛋
 item.cowrieshell.name=子安贝
 item.dragonscale.name=龙之鳞
-item.charmofhealing.name=Charm of Healing
+item.charmofhealing.name=治愈饰品
 item.spiritualstriketalisman.name=灵击符
 item.gap.name=隙间
 item.seamlessceilingofkinkakuji.name=金阁寺的天花板
@@ -88,7 +88,7 @@ item.kappahat.name=荷取的帽子
 item.marisahat.name=魔理沙的帽子
 item.mikocloak.name=丰聪耳的斗篷
 item.shinmyoumaruhat.name=针妙丸的碗
-item.nuclearboots.name=核靴子
+item.nuclearboots.name=第三足
 item.tenshihat.name=天子的帽子
 
 item.aurabyakuren.name=珍珠项链
@@ -99,7 +99,7 @@ item.momijisscimitarsword.name=犬走椛的弯刀
 item.laevatein.name=Laevatein
 item.nazrinstick.0.name=娜兹玲的探知棒
 item.nazrinstick.1.name=娜兹玲的探知棒
-item.ellyscythe.name=Scythe of the Useless Gatekeeper
+item.ellyscythe.name=艾丽的镰刀
 item.mikostick.name=丰聪耳的木板
 item.crestofyggdrasill.name=Crest Of Yggdrasill
 item.amenonuhoko.name=天沼矛
@@ -471,13 +471,13 @@ grimoire.tooltip.nazrin_pendulum_description.name=右击激活，Shift解除
 grimoire.tooltip.nazrin_pendulum_shift.name=按下Shift查看更多
 
 grimoire.tooltip.nazrin_stick_header.name=远古时代的稀世珍宝
-grimoire.tooltip.nazrin_stick_description_header.name=By holding it you become the Little Dowser General
+grimoire.tooltip.nazrin_stick_description_header.name=手持它你就会变得像一个普通的探矿者
 grimoire.tooltip.nazrin_stick_use.name=双手持有纳兹琳的探知棒
 grimoire.tooltip.nazrin_stick_inactive.name=关闭
 grimoire.tooltip.nazrin_stick_active.name=激活
 grimoire.tooltip.nazrin_stick_shift.name=按下Shift查看更多
 
-grimoire.tooltip.ghost_anchor_header.name=Massive anchor of ship destruction
+grimoire.tooltip.ghost_anchor_header.name=船沉没之后遗留的巨大船锚
 
 grimoire.tooltip.needle_header.name=嗖！
 
@@ -556,19 +556,19 @@ grimoire.tooltip.red_stone_of_aja_header.name=拥有强大反射能力的宝石
 grimoire.tooltip.tenshi_hat_header.name=来自受虐天子的帽子
 
 grimoire.tooltip.sword_of_kusanagi_header.name=由一种神奇的金属——绯色金属制作的圣剑
-grimoire.tooltip.sword_of_kusanagi_description_body.name=Discovered within the fourth tail of the eight-headed eight-tailed serpent Yamata-no-Orochi when it was slain by the Shinto god Susanoo-no-Mikoto
+grimoire.tooltip.sword_of_kusanagi_description_body.name=据信这把剑是须佐之男在杀死八岐大蛇后在它的第四尾中找到的
 grimoire.tooltip.sword_of_kusanagi_shift.name=按下Shift查看更多
 
-grimoire.tooltip.roukanken_header.name=据说是妖怪锻造的
-grimoire.tooltip.roukanken_description_top.name="The things that cannot be cut by my Roukanken,
-grimoire.tooltip.roukanken_description_bottom.name=forged by youkai, are close to none!"
+grimoire.tooltip.roukanken_header.name=对这妖怪锻造的楼观剑来说
+grimoire.tooltip.roukanken_description_top.name=斩不断的东西
+grimoire.tooltip.roukanken_description_bottom.name=几乎不存在！
 grimoire.tooltip.roukanken_shift.name=按下Shift查看更多
 
 grimoire.tooltip.syringe_header.name=“它的医治时间”
 
 grimoire.tooltip.tengu_camera_header.name=通过照相来重击玩家面前的地方
 
-grimoire.tooltip.time_orb_header.name=专为东方永夜抄独有
+grimoire.tooltip.time_orb_header.name=东方永夜抄独有物品
 grimoire.tooltip.time_orb_description_top.name=他们相信这个东西
 grimoire.tooltip.time_orb_description_bottom.name=能够减缓夜晚的时间
 
@@ -620,49 +620,49 @@ grimoire.tooltip.violin_use.name=右键使用
 grimoire.tooltip.fox_mask_header.name=Tsukumogami of Determination
 grimoire.tooltip.fox_mask_good_buff_one.name= + 速度
 grimoire.tooltip.fox_mask_good_buff_two.name= + 抗性提升
-grimoire.tooltip.fox_mask_vulnerable.name= *Vulnerable to Magic
+grimoire.tooltip.fox_mask_vulnerable.name= *不免疫魔法攻击
 
 grimoire.tooltip.fuku_no_kami_mask_header.name=Tsukumogami of Humor
 grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= + 抗火
 grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= + 夜视
 grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= - 反胃
-grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *Vulnerable to Wither Effect
+grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *不免疫凋零效果
 
 grimoire.tooltip.hannya_mask_header.name=Tsukumogami of Anger
 grimoire.tooltip.hannya_mask_good_buff.name= + 力量
-grimoire.tooltip.hannya_mask_vulnerable.name= *Vulnerable to Magic
+grimoire.tooltip.hannya_mask_vulnerable.name= *不免疫魔法攻击
 
 grimoire.tooltip.hyottoko_mask_header.name=Tsukumogami of Cheerful
 grimoire.tooltip.hyottoko_mask_good_buff_one.name= + 再生 V
 grimoire.tooltip.hyottoko_mask_good_buff_two.name= + 跳跃提示
-grimoire.tooltip.hyottoko_mask_vulnerable.name= *Vulnerable to Magic
+grimoire.tooltip.hyottoko_mask_vulnerable.name= *不免疫魔法攻击
 
 grimoire.tooltip.koomote_mask_header.name=Tsukumogami of Joy
 grimoire.tooltip.koomote_mask_good_buff.name= + 伤害吸收
 grimoire.tooltip.koomote_mask_bad_buff.name= - 饥饿
-grimoire.tooltip.koomote_mask_vulnerable.name= *Vulnerable to Explosions
+grimoire.tooltip.koomote_mask_vulnerable.name= *不免疫爆炸伤害
 
 grimoire.tooltip.mask_of_hope_header.name=Tsukumogami of Jizo Statue
 grimoire.tooltip.mask_of_hope_description.name=Return to Kokoro if found... or not...
 grimoire.tooltip.mask_of_hope_good_buff.name= - 凋零
 grimoire.tooltip.mask_of_hope_bad_buff.name= - 中毒
-grimoire.tooltip.mask_of_hope_vulnerable.name= *Vulnerable to Wither
+grimoire.tooltip.mask_of_hope_vulnerable.name= *不免疫凋零伤害
 
 grimoire.tooltip.monkey_mask_header.name=Tsukumogami of Awkwardness
 grimoire.tooltip.monkey_mask_good_buff.name= - 隐身
 grimoire.tooltip.monkey_mask_bad_buff.name= - 缓慢 III
-grimoire.tooltip.monkey_mask_vulnerable.name= *Vulnerable to Explosions
+grimoire.tooltip.monkey_mask_vulnerable.name= *不免疫爆炸伤害
 
 grimoire.tooltip.raiden_mask_header.name=Tsukumogami of Surprise
 grimoire.tooltip.raiden_mask_good_buff.name= + 急迫 IV
 grimoire.tooltip.raiden_mask_bad_buff.name= - 虚弱
-grimoire.tooltip.raiden_mask_vulnerable.name= *Vulnerable to Fire
+grimoire.tooltip.raiden_mask_vulnerable.name= *不免疫火焰伤害
 
 grimoire.tooltip.uba_mask_header.name=Tsukumogami of Phatos
 grimoire.tooltip.uba_mask_bad_buff_one.name= - 挖掘疲劳
 grimoire.tooltip.uba_mask_bad_buff_two.name= - 失明
 grimoire.tooltip.uba_mask_bad_buff_tree.name= - 忧郁
-grimoire.tooltip.uba_mask_vulnerable.name= *Vulnerable to Magic
+grimoire.tooltip.uba_mask_vulnerable.name= *不免疫魔法攻击
 
 //JEI
 
