@@ -160,7 +160,7 @@ tile.shroom_15.name=黑色蘑菇
 
 tile.kyoumarubotan.name=京丸牡丹
 
-item.fullpoweritem.name=F点
+item.fullpoweritem.name=满火力道具
 item.staritem.name=星点
 item.cherryitem.name=樱点
 item.timeorb.name=时间点
@@ -173,7 +173,7 @@ item.thirdeye.name=第三只眼
 item.spellcardpouch.name=符卡袋
 item.leafitem.name=叶子
 item.bloodthirstyorb.name=阴阳玉
-item.fakemiraclemallet.name=假的万宝槌
+item.fakemiraclemallet.name=万宝槌（复制品）
 item.substitutejizo.name=替身地藏
 item.nimblefabric.name=闪避布
 item.sendofflantern.name=亡灵的送行提灯
@@ -584,7 +584,7 @@ grimoire.tooltip.watermelon_sword_description.name=就如同这生命一样咸�
 grimoire.tooltip.youkai_book_header.name=完全普通的书籍
 grimoire.tooltip.youkai_book_description.name=包含有一些未知的经文
 
-grimoire.tooltip.elly_scythe_header.name=War ma fé, heman zo eun Anko drouk
+grimoire.tooltip.elly_scythe_header.name=血的掠夺者
 
 grimoire.tooltip.jeweled_hourai_header.name=来自传说中的蓬莱仙岛的玉枝
 grimoire.tooltip.jeweled_hourai_description.name=“幻象的无形之物”
@@ -607,13 +607,13 @@ grimoire.tooltip.hisou_sword_shift.name=按下Shift查看更多
 
 grimoire.tooltip.tengu_fan_header.name=团扇能够操纵风
 
-grimoire.tooltip.piano_header.name=捣蛋鬼的电子琴
+grimoire.tooltip.piano_header.name=骚灵的电子琴
 grimoire.tooltip.piano_use.name=右键使用
 
-grimoire.tooltip.trumpet_header.name=捣蛋鬼的小号
+grimoire.tooltip.trumpet_header.name=骚灵的小号
 grimoire.tooltip.trumpet_use.name=右键使用
 
-grimoire.tooltip.violin_header.name=捣蛋鬼的小提琴
+grimoire.tooltip.violin_header.name=骚灵的小提琴
 grimoire.tooltip.violin_use.name=右键使用
 
 grimoire.tooltip.fox_mask_header.name=坚定的付丧神
