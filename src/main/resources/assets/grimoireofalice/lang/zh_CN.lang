@@ -165,7 +165,7 @@ item.staritem.name=星点
 item.cherryitem.name=樱点
 item.timeorb.name=时间点
 item.faithitem.name=信仰点
-item.ufos.name=UFOs
+item.ufos.name=UFO
 item.ufored.name=红色UFO
 item.ufoblue.name=蓝色UFO
 item.ufogreen.name=绿色UFO
@@ -183,11 +183,11 @@ item.hatatecamera.name=姫海棠的相机
 item.hakureigohei.name=博丽的御币
 item.sanaegohei.name=风祝的御币
 
-item.danmaku.danmakuvariant.grimoireofalice.leaf.name=叶弹幕
-item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO弹幕
-item.danmaku.danmakuvariant.grimoireofalice.wind.name=风弹幕
-item.danmaku.danmakuvariant.grimoireofalice.note.name=音符弹幕
-item.danmaku.danmakuvariant.grimoireofalice.sun.name=太阳弹幕
+item.danmaku.danmakuvariant.grimoireofalice.leaf.name=叶弹
+item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO弹
+item.danmaku.danmakuvariant.grimoireofalice.wind.name=风弹
+item.danmaku.danmakuvariant.grimoireofalice.note.name=音符弹
+item.danmaku.danmakuvariant.grimoireofalice.sun.name=太阳弹
 
 item.danmaku.danmakuvariant.form.grimoireofalice.leaf=重力
 item.danmaku.danmakuvariant.form.grimoireofalice.ufo=随机运动
@@ -204,11 +204,11 @@ form.grimoireofalice.ufo=随机运动
 form.grimoireofalice.wind=推离怪物
 form.grimoireofalice.note=慢速运动
 
-danmakuvariant.grimoireofalice.leaf.name=叶弹幕
-danmakuvariant.grimoireofalice.ufo.name=UFO弹幕
-danmakuvariant.grimoireofalice.wind.name=风弹幕
-danmakuvariant.grimoireofalice.note.name=音符弹幕
-danmakuvariant.grimoireofalice.sun.name=太阳弹幕
+danmakuvariant.grimoireofalice.leaf.name=叶弹
+danmakuvariant.grimoireofalice.ufo.name=UFO弹
+danmakuvariant.grimoireofalice.wind.name=风弹
+danmakuvariant.grimoireofalice.note.name=音符弹
+danmakuvariant.grimoireofalice.sun.name=太阳弹
 
 entity.grimoireofalice.pendulum.name=灵摆
 entity.grimoireofalice.spell.name=符卡
@@ -245,28 +245,28 @@ item.hourai.level_3=你已经永生了！
 achievement.craftAltar=竹取物语
 achievement.craftAltar.desc=辉夜姬的八难题
 
-achievement.craftBuddhaBowl=新的难题“天竺如来佛的石钵”
+achievement.craftBuddhaBowl=新难题“天竺如来佛的石钵”
 achievement.craftBuddhaBowl.desc=制作一个佛御石之钵
 
-achievement.craftJeweledHourai=新的难题“蓬莱的玉枝”
+achievement.craftJeweledHourai=新难题“蓬莱的玉枝”
 achievement.craftJeweledHourai.desc=制作一个蓬莱玉枝
 
-achievement.craftFireRobe=新的难题“唐土的火鼠裘”
+achievement.craftFireRobe=新难题“唐土的火鼠裘”
 achievement.craftFireRobe.desc=制作一个火鼠的皮衣
 
-achievement.craftDragonJewel=新的难题“龙首的五色玉”
+achievement.craftDragonJewel=新难题“龙首的五色玉”
 achievement.craftDragonJewel.desc=制作一个龙颈之玉
 
-achievement.craftCowrieShell=新的难题“燕的子安贝”
+achievement.craftCowrieShell=新难题“燕的子安贝”
 achievement.craftCowrieShell.desc=制作一个燕的子安贝
 
-achievement.craftAyaStone=新的难题“艾哲红石”
+achievement.craftAyaStone=新难题“艾哲红石”
 achievement.craftAyaStone.desc=制作一个艾哲红石
 
-achievement.craftGoldenCeiling=新的难题“金阁寺的天花板”
+achievement.craftGoldenCeiling=新难题“金阁寺的天花板”
 achievement.craftGoldenCeiling.desc=制作一块金阁寺的天花板
 
-achievement.craftElixir=新的难题“长生不老药”
+achievement.craftElixir=新难题“长生不老药”
 achievement.craftElixir.desc=制作一个蓬莱之药
 
 //GUI
@@ -313,7 +313,7 @@ grimoire.tooltip.kanako_shimenawa_description_top.name=传说中它的真正力�
 grimoire.tooltip.kanako_shimenawa_description_bottom.name=它拥有人类难以想象的力量
 
 grimoire.tooltip.toyosatomimi_hat_header.name=“无限的知识”
-grimoire.tooltip.toyosatomimi_hat_description_top.name=我一次可以监听10个人，
+grimoire.tooltip.toyosatomimi_hat_description_top.name=我可以同时听十个人说话，
 grimoire.tooltip.toyosatomimi_hat_description_mid.name=但是很不幸你是第11个。
 grimoire.tooltip.toyosatomimi_hat_description_bottom.name=你太差劲了！
 
@@ -345,14 +345,14 @@ grimoire.tooltip.shroom_dust_header.name=迷幻蘑菇
 grimoire.tooltip.shroom_dust_description.name=会引起幻觉
 
 grimoire.tooltip.nuclear_boots_header.name=“操纵核能”
-grimoire.tooltip.nuclear_boots_description_top.name=左腿“分解之腿”
-grimoire.tooltip.nuclear_boots_description_bottom.name=右腿“融合之腿”
+grimoire.tooltip.nuclear_boots_description_top.name=左腿“分解之足”
+grimoire.tooltip.nuclear_boots_description_bottom.name=右腿“融合之足”
 
 grimoire.tooltip.orb_elixir_header.name=移除死亡的污点
 grimoire.tooltip.orb_elixir_description_top.name=并允许玩家体验
 grimoire.tooltip.orb_elixir_description_bottom.name=当下的未来
 
-grimoire.tooltip.third_eye_header.name=古明地觉的第三只眼
+grimoire.tooltip.third_eye_header.name=觉的第三只眼
 grimoire.tooltip.third_eye_activate.name=Shift右击激活
 grimoire.tooltip.third_eye_status.name=状态：
 grimoire.tooltip.third_eye_open.name=开
@@ -616,48 +616,48 @@ grimoire.tooltip.trumpet_use.name=右键使用
 grimoire.tooltip.violin_header.name=捣蛋鬼的小提琴
 grimoire.tooltip.violin_use.name=右键使用
 
-grimoire.tooltip.fox_mask_header.name=付丧神的决心
+grimoire.tooltip.fox_mask_header.name=坚定的付丧神
 grimoire.tooltip.fox_mask_good_buff_one.name= + 速度
 grimoire.tooltip.fox_mask_good_buff_two.name= + 抗性提升
 grimoire.tooltip.fox_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.fuku_no_kami_mask_header.name=付丧神的幽默
+grimoire.tooltip.fuku_no_kami_mask_header.name=幽默的付丧神
 grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= + 抗火
 grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= + 夜视
 grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= - 反胃
 grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *不免疫凋零效果
 
-grimoire.tooltip.hannya_mask_header.name=付丧神的愤怒
+grimoire.tooltip.hannya_mask_header.name=愤怒的付丧神
 grimoire.tooltip.hannya_mask_good_buff.name= + 力量
 grimoire.tooltip.hannya_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.hyottoko_mask_header.name=付丧神的欢呼
+grimoire.tooltip.hyottoko_mask_header.name=欢呼的付丧神
 grimoire.tooltip.hyottoko_mask_good_buff_one.name= + 再生 V
 grimoire.tooltip.hyottoko_mask_good_buff_two.name= + 跳跃提示
 grimoire.tooltip.hyottoko_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.koomote_mask_header.name=付丧神的喜悦
+grimoire.tooltip.koomote_mask_header.name=喜悦的付丧神
 grimoire.tooltip.koomote_mask_good_buff.name= + 伤害吸收
 grimoire.tooltip.koomote_mask_bad_buff.name= - 饥饿
 grimoire.tooltip.koomote_mask_vulnerable.name= *不免疫爆炸伤害
 
-grimoire.tooltip.mask_of_hope_header.name=付丧神的地藏模样
+grimoire.tooltip.mask_of_hope_header.name=地藏模样的付丧神
 grimoire.tooltip.mask_of_hope_description.name=捡到后还给秦心……
 grimoire.tooltip.mask_of_hope_good_buff.name= - 凋零
 grimoire.tooltip.mask_of_hope_bad_buff.name= - 中毒
 grimoire.tooltip.mask_of_hope_vulnerable.name= *不免疫凋零伤害
 
-grimoire.tooltip.monkey_mask_header.name=付丧神的尴尬
+grimoire.tooltip.monkey_mask_header.name=尴尬的付丧神
 grimoire.tooltip.monkey_mask_good_buff.name= - 隐身
 grimoire.tooltip.monkey_mask_bad_buff.name= - 缓慢 III
 grimoire.tooltip.monkey_mask_vulnerable.name= *不免疫爆炸伤害
 
-grimoire.tooltip.raiden_mask_header.name=付丧神的惊讶
+grimoire.tooltip.raiden_mask_header.name=惊讶的付丧神
 grimoire.tooltip.raiden_mask_good_buff.name= + 急迫 IV
 grimoire.tooltip.raiden_mask_bad_buff.name= - 虚弱
 grimoire.tooltip.raiden_mask_vulnerable.name= *不免疫火焰伤害
 
-grimoire.tooltip.uba_mask_header.name=付丧神的忧虑
+grimoire.tooltip.uba_mask_header.name=忧虑的付丧神
 grimoire.tooltip.uba_mask_bad_buff_one.name= - 挖掘疲劳
 grimoire.tooltip.uba_mask_bad_buff_two.name= - 失明
 grimoire.tooltip.uba_mask_bad_buff_tree.name= - 忧郁
