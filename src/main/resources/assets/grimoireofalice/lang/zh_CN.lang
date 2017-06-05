@@ -47,7 +47,7 @@ item.shroompowder.magenta.name=品红色蘑菇粉
 item.shroompowder.lightBlue.name=浅蓝色蘑菇粉
 item.shroompowder.yellow.name=黄色蘑菇粉
 item.shroompowder.lime.name=黄绿色蘑菇粉
-item.shroompowder.pink.name=粉色蘑菇粉
+item.shroompowder.pink.name=粉红色蘑菇粉
 item.shroompowder.gray.name=灰色蘑菇粉
 item.shroompowder.silver.name=浅灰色蘑菇粉
 item.shroompowder.cyan.name=青色蘑菇粉
@@ -96,12 +96,11 @@ item.auramokou.name=可爱的丝带
 
 item.mochihammer.name=麻糬锤
 item.momijisscimitarsword.name=犬走椛的弯刀
-item.laevatein.name=Laevatein
+item.laevatein.name=莱瓦汀
 item.nazrinstick.0.name=娜兹玲的探知棒
 item.nazrinstick.1.name=娜兹玲的探知棒
 item.ellyscythe.name=艾丽的镰刀
 item.mikostick.name=丰聪耳的木板
-item.crestofyggdrasill.name=Crest Of Yggdrasill
 item.amenonuhoko.name=天沼矛
 item.shinmyoumaruneedle.name=针妙丸的针
 item.nuetrident.name=封兽鵺的三叉戟
@@ -140,7 +139,7 @@ tile.craftingaltar.name=合成祭坛
 tile.pillaraltar.name=圣柱
 tile.impurestone.name=不纯的石头
 tile.hihiirokaneblock.name=绯色金属块
-tile.dragonstone.name=龙之天气石
+tile.dragonstone.name=龙神石
 
 tile.shroom_0.name=白色蘑菇
 tile.shroom_1.name=橙色蘑菇
@@ -148,7 +147,7 @@ tile.shroom_2.name=品红色蘑菇
 tile.shroom_3.name=浅蓝色蘑菇
 tile.shroom_4.name=黄色蘑菇
 tile.shroom_5.name=黄绿色蘑菇
-tile.shroom_6.name=粉色蘑菇
+tile.shroom_6.name=粉红色蘑菇
 tile.shroom_7.name=灰色蘑菇
 tile.shroom_8.name=淡灰色蘑菇
 tile.shroom_9.name=青色蘑菇
@@ -162,10 +161,10 @@ tile.shroom_15.name=黑色蘑菇
 tile.kyoumarubotan.name=京丸牡丹
 
 item.fullpoweritem.name=F点
-item.staritem.name=Star Item
-item.cherryitem.name=Cherry Item
-item.timeorb.name=Time Orb
-item.faithitem.name=Faith Item
+item.staritem.name=星点
+item.cherryitem.name=樱点
+item.timeorb.name=时间点
+item.faithitem.name=信仰点
 item.ufos.name=UFOs
 item.ufored.name=红色UFO
 item.ufoblue.name=蓝色UFO
@@ -184,11 +183,11 @@ item.hatatecamera.name=姫海棠的相机
 item.hakureigohei.name=博丽的御币
 item.sanaegohei.name=风祝的御币
 
-item.danmaku.danmakuvariant.grimoireofalice.leaf.name=leaf 弹幕
-item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO 弹幕
-item.danmaku.danmakuvariant.grimoireofalice.wind.name=Wind 弹幕
-item.danmaku.danmakuvariant.grimoireofalice.note.name=Note 弹幕
-item.danmaku.danmakuvariant.grimoireofalice.sun.name=Sun Shot
+item.danmaku.danmakuvariant.grimoireofalice.leaf.name=叶弹幕
+item.danmaku.danmakuvariant.grimoireofalice.ufo.name=UFO弹幕
+item.danmaku.danmakuvariant.grimoireofalice.wind.name=风弹幕
+item.danmaku.danmakuvariant.grimoireofalice.note.name=音符弹幕
+item.danmaku.danmakuvariant.grimoireofalice.sun.name=太阳弹幕
 
 item.danmaku.danmakuvariant.form.grimoireofalice.leaf=重力
 item.danmaku.danmakuvariant.form.grimoireofalice.ufo=随机运动
@@ -198,18 +197,18 @@ item.danmaku.danmakuvariant.form.grimoireofalice.note=慢速运动
 subentity.grimoireofalice.ufo=随机
 subentity.grimoireofalice.wind=推动怪物
 subentity.grimoireofalice.note=缓慢
-subentity.grimoireofalice.sun=活跃的
+subentity.grimoireofalice.sun=活跃
 
 form.grimoireofalice.leaf=重力
 form.grimoireofalice.ufo=随机运动
 form.grimoireofalice.wind=推离怪物
 form.grimoireofalice.note=慢速运动
 
-danmakuvariant.grimoireofalice.leaf.name=Leaf 弹幕
-danmakuvariant.grimoireofalice.ufo.name=UFO 弹幕
-danmakuvariant.grimoireofalice.wind.name=Wind 弹幕
-danmakuvariant.grimoireofalice.note.name=Note 弹幕
-danmakuvariant.grimoireofalice.sun.name=Sun 弹幕
+danmakuvariant.grimoireofalice.leaf.name=叶弹幕
+danmakuvariant.grimoireofalice.ufo.name=UFO弹幕
+danmakuvariant.grimoireofalice.wind.name=风弹幕
+danmakuvariant.grimoireofalice.note.name=音符弹幕
+danmakuvariant.grimoireofalice.sun.name=太阳弹幕
 
 entity.grimoireofalice.pendulum.name=灵摆
 entity.grimoireofalice.spell.name=符卡
@@ -217,7 +216,7 @@ entity.grimoireofalice.jewel.name=龙颈之玉
 entity.grimoireofalice.fist.name=拳
 entity.grimoireofalice.scythe.name=镰刀
 entity.grimoireofalice.doll.name=玩偶
-entity.grimoireofalice.orb.name=Orb
+entity.grimoireofalice.orb.name=点
 entity.grimoireofalice.barrier.name=屏障
 entity.grimoireofalice.lantern.name=提灯
 entity.grimoireofalice.soul.name=幽灵
@@ -286,7 +285,7 @@ grimoire.gui.book_4=                   -世界生成-|                          
 grimoire.gui.book_5=                   -世界生成-|                      京丸牡丹|以花的形状出现的罕见矿石|长在石头里面，在洞穴中能够很容易被发现|* 如果被采掘，能够掉落3-8个金粒
 grimoire.gui.book_6=                     -祭坛合成-|                          合成|合成十分简单，按照指定的摆好|就能够合成得到对应的武器|不过祭坛合成和普通的合成颇为不同|首先，物品不能堆叠，合成后就会消失|其次需要特殊的条件才能合成。对应的条件往往十分多|诸如雨天，夜晚，月相，维度等
 grimoire.gui.book_7=                      -弹幕核心-|                            物品|物品大多都是基于弹幕核心的，举个例子|“蓬莱的玉枝”。如果这个前置缺失将无法使用这些东西|为啥你还在读这本手册？还不赶快去下载！|||||||                        JUST DO IT
-grimoire.gui.book_8=                      -弹幕核心-|                         弹幕|这模组增加了三种弹幕核心所没有的弹幕：|||*Note:              低伤害，低范围|||*Sun:               高伤害，能够反弹|||*UFO:               随机运动
+grimoire.gui.book_8=                      -弹幕核心-|                         弹幕|这模组增加了三种弹幕核心所没有的弹幕：|||*音符:              低伤害，低范围|||*太阳:               高伤害，能够反弹|||*UFO:               随机运动
 grimoire.gui.book_9=                           -JEI-|正如这个例子所演示的那样，通过JEI能够看到所有|的合成。正中间物品在圣柱上|周围的物品都在御柱上
 
 //Tooltips
@@ -374,7 +373,7 @@ grimoire.tooltip.budah_boul_description_bottom.name=数以千计的启示创造�
 
 grimoire.tooltip.cattail_plant_header.name=她动用了巨大的机器只是为了捡东西……
 
-grimoire.tooltip.suwako_hat_header.name="Hoppu hoppu"
+grimoire.tooltip.suwako_hat_header.name="吼吼"
 
 grimoire.tooltip.decoy_doll_header.name=玩偶能够承受玩家收到的伤害
 
@@ -487,7 +486,7 @@ grimoire.tooltip.nimble_fabric_description.name=在此期间，你不能移动�
 grimoire.tooltip.nue_trident_header.name=封印的狂野三叉戟，未知形态的源泉
 grimoire.tooltip.nue_trident_description.name=为未知而颤抖吧，弱小的人类！
 
-grimoire.tooltip.onbashira_header.name=Leg of an Ent
+grimoire.tooltip.onbashira_header.name=Ent的一只腿
 grimoire.tooltip.onbashira_description.name=它巨大的密度使它几乎不能被使用
 
 grimoire.tooltip.patchy_book_header.name=作者：帕秋莉·诺蕾姬
@@ -533,7 +532,7 @@ grimoire.tooltip.skull_2.name=僵尸
 grimoire.tooltip.skull_3.name=玩家
 grimoire.tooltip.skull_4.name=苦力怕
 
-grimoire.tooltip.shichi_seiken_header.name=Gold inlay of clouds and seven stars with the shape of Orsa Mayor
+grimoire.tooltip.shichi_seiken_header.name=金色的祥云和北斗七星形成了这把剑
 
 grimoire.tooltip.shimenawa_rope_header.name=天子的小礼物
 grimoire.tooltip.shimenawa_rope_description.name=一小片天界
@@ -590,9 +589,9 @@ grimoire.tooltip.elly_scythe_header.name=War ma fé, heman zo eun Anko drouk
 grimoire.tooltip.jeweled_hourai_header.name=来自传说中的蓬莱仙岛的玉枝
 grimoire.tooltip.jeweled_hourai_description.name=“幻象的无形之物”
 
-grimoire.tooltip.laevatein_header.name=Magic staff gambantein, Lævateinn of fire and chaos
+grimoire.tooltip.laevatein_header.name=烈火与混沌的魔杖：莱瓦汀
 
-grimoire.tooltip.leaf_header.name=Mamisou's Leaf from Ten Desires
+grimoire.tooltip.leaf_header.name=神灵庙的狸猫之叶
 grimoire.tooltip.leaf_description.name=右击发射
 
 grimoire.tooltip.shou_lamp_header.name=带来财富
@@ -603,7 +602,7 @@ grimoire.tooltip.shou_lamp_shift.name=按下Shift查看更多
 grimoire.tooltip.spell_card_pouch_header.name=保留你的物品
 
 grimoire.tooltip.hisou_sword_header.name=绯红色的感知之剑
-grimoire.tooltip.hisou_sword_description_top.name=拥有一个类似于中国的剑的外观
+grimoire.tooltip.hisou_sword_description_top.name=外观和金色的中国剑相仿
 grimoire.tooltip.hisou_sword_shift.name=按下Shift查看更多
 
 grimoire.tooltip.tengu_fan_header.name=团扇能够操纵风
@@ -617,48 +616,48 @@ grimoire.tooltip.trumpet_use.name=右键使用
 grimoire.tooltip.violin_header.name=捣蛋鬼的小提琴
 grimoire.tooltip.violin_use.name=右键使用
 
-grimoire.tooltip.fox_mask_header.name=Tsukumogami of Determination
+grimoire.tooltip.fox_mask_header.name=付丧神的决心
 grimoire.tooltip.fox_mask_good_buff_one.name= + 速度
 grimoire.tooltip.fox_mask_good_buff_two.name= + 抗性提升
 grimoire.tooltip.fox_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.fuku_no_kami_mask_header.name=Tsukumogami of Humor
+grimoire.tooltip.fuku_no_kami_mask_header.name=付丧神的幽默
 grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= + 抗火
 grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= + 夜视
 grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= - 反胃
 grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *不免疫凋零效果
 
-grimoire.tooltip.hannya_mask_header.name=Tsukumogami of Anger
+grimoire.tooltip.hannya_mask_header.name=付丧神的愤怒
 grimoire.tooltip.hannya_mask_good_buff.name= + 力量
 grimoire.tooltip.hannya_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.hyottoko_mask_header.name=Tsukumogami of Cheerful
+grimoire.tooltip.hyottoko_mask_header.name=付丧神的欢呼
 grimoire.tooltip.hyottoko_mask_good_buff_one.name= + 再生 V
 grimoire.tooltip.hyottoko_mask_good_buff_two.name= + 跳跃提示
 grimoire.tooltip.hyottoko_mask_vulnerable.name= *不免疫魔法攻击
 
-grimoire.tooltip.koomote_mask_header.name=Tsukumogami of Joy
+grimoire.tooltip.koomote_mask_header.name=付丧神的喜悦
 grimoire.tooltip.koomote_mask_good_buff.name= + 伤害吸收
 grimoire.tooltip.koomote_mask_bad_buff.name= - 饥饿
 grimoire.tooltip.koomote_mask_vulnerable.name= *不免疫爆炸伤害
 
-grimoire.tooltip.mask_of_hope_header.name=Tsukumogami of Jizo Statue
-grimoire.tooltip.mask_of_hope_description.name=Return to Kokoro if found... or not...
+grimoire.tooltip.mask_of_hope_header.name=付丧神的地藏模样
+grimoire.tooltip.mask_of_hope_description.name=捡到后还给秦心……
 grimoire.tooltip.mask_of_hope_good_buff.name= - 凋零
 grimoire.tooltip.mask_of_hope_bad_buff.name= - 中毒
 grimoire.tooltip.mask_of_hope_vulnerable.name= *不免疫凋零伤害
 
-grimoire.tooltip.monkey_mask_header.name=Tsukumogami of Awkwardness
+grimoire.tooltip.monkey_mask_header.name=付丧神的尴尬
 grimoire.tooltip.monkey_mask_good_buff.name= - 隐身
 grimoire.tooltip.monkey_mask_bad_buff.name= - 缓慢 III
 grimoire.tooltip.monkey_mask_vulnerable.name= *不免疫爆炸伤害
 
-grimoire.tooltip.raiden_mask_header.name=Tsukumogami of Surprise
+grimoire.tooltip.raiden_mask_header.name=付丧神的惊讶
 grimoire.tooltip.raiden_mask_good_buff.name= + 急迫 IV
 grimoire.tooltip.raiden_mask_bad_buff.name= - 虚弱
 grimoire.tooltip.raiden_mask_vulnerable.name= *不免疫火焰伤害
 
-grimoire.tooltip.uba_mask_header.name=Tsukumogami of Phatos
+grimoire.tooltip.uba_mask_header.name=付丧神的忧虑
 grimoire.tooltip.uba_mask_bad_buff_one.name= - 挖掘疲劳
 grimoire.tooltip.uba_mask_bad_buff_two.name= - 失明
 grimoire.tooltip.uba_mask_bad_buff_tree.name= - 忧郁
