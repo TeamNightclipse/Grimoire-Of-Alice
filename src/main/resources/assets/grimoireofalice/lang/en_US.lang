@@ -286,7 +286,7 @@ grimoire.gui.book_4=                   -World Generation-|                      
 grimoire.gui.book_5=                   -World Generation-|                      Kyoumarubotan|These rare minerals in the shape of a flower|grow inside stone, and rarely show themselves|at plain sight.|* If mined, they drop 3 - 8 gold nuggets.
 grimoire.gui.book_6=                      -Crafting Altar-|                         Recipes|Recipes are easy, they have an input, and an|output.|Altar recipes are different from normal crafting,|items aren't stackable, they vanish after crafting,|and require special conditions to be created.|Such conditions vary in complexity, some require|Rain, Night Time, Moon Phases, Dimensions, etc.
 grimoire.gui.book_7=                      -DanmakuCore-|                            Items|Items that depend on danmakucore, for ex:|"Jeweled Branch of Hourai", and some other|unique items, do not show when the mod is missing.|Why is this? Because they use danmaku.
-grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 3 new Shots to DanmakuCore:|||*Note:              Low range.|||*Sun:               Bouncing.|||*UFO:               Random movements.
+grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 3 new Shots to DanmakuCore:|||*Sun:               Bouncing.|||*UFO:               Random movements.
 grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you can use JEI to see|recipes in-game. The inside items go on the small|Pillars, the outside items go on the Onbashiras.
 
 //Tooltips
