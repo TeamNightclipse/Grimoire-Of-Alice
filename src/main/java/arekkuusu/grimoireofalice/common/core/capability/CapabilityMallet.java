@@ -66,7 +66,7 @@ public class CapabilityMallet {
 
 		@Override
 		public void markDirty() {
-			this.scaled = small ? 25 : 0;
+			this.scaled = small ? 10 : 0;
 			this.animate = true;
 		}
 	}

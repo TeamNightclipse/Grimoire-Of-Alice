@@ -10,25 +10,17 @@ package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
-import net.minecraft.entity.Entity;
+import arekkuusu.grimoireofalice.common.core.net.MalletMessage;
+import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.lang.reflect.Method;
-
 public class MalletServerEvent {
-
-	private static final String SET_SIZE = "setSize";
-	private static Method setSizeMethod;
-
-	static {
-		try {
-			setSizeMethod = Entity.class.getDeclaredMethod(SET_SIZE, float.class, float.class);
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		}
-	}
 
 	@SuppressWarnings("ConstantConditions")
 	@SubscribeEvent
@@ -37,24 +29,42 @@ public class MalletServerEvent {
 		if (entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 			IMalletCapability capability = entity.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			if (capability.doAnimation()) {
+				float original = entity.getDefaultEyeHeight();
+				float mod = entity.eyeHeight;
 				if (capability.isSmall() && entity.eyeHeight > 0) {
-					entity.eyeHeight -= 0.032F;
+					entity.eyeHeight -= 0.064F;
 				} else
 				if (!capability.isSmall() && entity.eyeHeight < 1.68) {
-					entity.eyeHeight += 0.032F;
+					entity.eyeHeight += 0.080F;
+					mod += 0.080F;
+					if(entity.eyeHeight > original) {
+						entity.eyeHeight = original;
+					}
 				}
-				else {
+
+				if((capability.isSmall() && entity.eyeHeight <= 0.32) || mod >= 1.68F) {
+					float offset = capability.isSmall() ? 0.005F : -0.05F;
 					capability.doAnimation(false);
+					entity.setPositionAndUpdate(entity.posX + offset, entity.posY + 0.1, entity.posZ + offset);
 				}
 			} else
-			if(capability.isSmall() && setSizeMethod != null) {
-				try {
-					entity.eyeHeight = 0.2F;
-					setSizeMethod.setAccessible(true);
-					setSizeMethod.invoke(entity, 0.3F, 0.2F);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			if(capability.isSmall()) {
+				entity.eyeHeight = 0.2F;
+				setSize(entity, 0.3F, 0.3F);
+			}
+		}
+	}
+
+	protected void setSize(EntityLivingBase entity, float width, float height) {
+		if (width != entity.width || height != entity.height) {
+			float f = entity.width;
+			entity.width = width;
+			entity.height = height;
+			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox();
+			entity.setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) entity.width, axisalignedbb.minY + (double) entity.height, axisalignedbb.minZ + (double) entity.width));
+
+			if (entity.width > f && entity.ticksExisted > 0 && !entity.world.isRemote) {
+				entity.moveEntity((double) (f - entity.width), 0, (double) (f - entity.width));
 			}
 		}
 	}
@@ -71,6 +81,19 @@ public class MalletServerEvent {
 			newCap.doAnimation(oldCap.doAnimation());
 			newCap.setScaled(oldCap.getScaled());
 			newCap.setSmall(oldCap.isSmall());
+		}
+	}
+
+	@SuppressWarnings("ConstantConditions")
+	@SubscribeEvent
+	public void onWorldJoin(EntityJoinWorldEvent event) {
+		if (event.getEntity() instanceof EntityPlayerMP) {
+			EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
+			if (player.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+				IMalletCapability capability = player.getCapability(MalletProvider.MALLET_CAPABILITY, null);
+				capability.markDirty();
+				PacketHandler.sendToNear(player, new MalletMessage(capability, player.getUniqueID()));
+			}
 		}
 	}
 }
