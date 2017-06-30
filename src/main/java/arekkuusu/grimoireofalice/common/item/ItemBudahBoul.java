@@ -75,8 +75,8 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-		worldIn.notifyBlockUpdate(pos, state, state, 8);
+	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+		world.notifyBlockUpdate(pos, state, state, 8);
 		return true;
 	}
 

@@ -91,20 +91,21 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if (isOwner(itemStackIn, player)) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (isOwner(stack, player)) {
 			double range = 15.0D;
 			Vec3d look = player.getLookVec();
 			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-			Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + player.getEyeHeight() + look.yCoord * range, player.posZ + look.zCoord * range);
+			Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
 			RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-			if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+			if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
 			else if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK) {
-				createBoulder(player, worldIn, raytraceresult.getBlockPos());
-				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+				createBoulder(player, world, raytraceresult.getBlockPos());
+				return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 			}
 		}
-		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
 
 	private void createBoulder(EntityPlayer player, World world, BlockPos pos) {
@@ -128,8 +129,8 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 
 		@Nullable
 		@Override
-		public Template.BlockInfo processBlock(World worldIn, BlockPos pos, Template.BlockInfo blockInfoIn) {
-			if(worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) || worldIn.getBlockState(pos).getMaterial() == Material.WATER) {
+		public Template.BlockInfo processBlock(World world, BlockPos pos, Template.BlockInfo blockInfoIn) {
+			if(world.getBlockState(pos).getBlock().isReplaceable(world, pos) || world.getBlockState(pos).getMaterial() == Material.WATER) {
 				return blockInfoIn;
 			} else return null;
 		}

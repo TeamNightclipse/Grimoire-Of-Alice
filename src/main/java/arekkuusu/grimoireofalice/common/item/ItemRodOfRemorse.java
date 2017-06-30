@@ -71,28 +71,27 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if(getUsed(itemStackIn)) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(getUsed(stack)) {
 			if(player.capabilities.isCreativeMode) {
-				setUsed(itemStackIn, false);
-				return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+				setUsed(stack, false);
+				return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 			}
 
-			if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-				IItemHandler inventory = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
+			IItemHandler inventory = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 
-				for(int i = 0; i < inventory.getSlots(); i++) {
-					ItemStack stack = inventory.getStackInSlot(i);
-					if(stack != null && isDyeBlack(stack)) {
-						inventory.extractItem(i, 1, false);
-						setUsed(itemStackIn, false);
-						return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
-					}
+			for(int i = 0; i < inventory.getSlots(); i++) {
+				ItemStack invStack = inventory.getStackInSlot(i);
+				if(!invStack.isEmpty() && isDyeBlack(invStack)) {
+					inventory.extractItem(i, 1, false);
+					setUsed(stack, false);
+					return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 				}
 			}
 		}
 
-		return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
 
 	private boolean isDyeBlack(ItemStack stack) {
@@ -123,9 +122,9 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		if(!target.world.isRemote) {
-			playerIn.addChatComponentMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
+			player.sendMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
 					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage").appendText(": "))
 					.appendText(String.valueOf(target.getHealth())));
 		}

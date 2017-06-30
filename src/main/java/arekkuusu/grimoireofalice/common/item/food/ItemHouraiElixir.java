@@ -87,10 +87,10 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		if (entityLiving instanceof EntityPlayer) {
 			stack.damageItem(1, entityLiving);
-			onFoodEaten(stack, worldIn, (EntityPlayer) entityLiving);
+			onFoodEaten(stack, world, (EntityPlayer) entityLiving);
 		}
 		return stack;
 	}
@@ -103,22 +103,22 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 			byte level = capability.getHouraiLevel();
 			switch (level) {
 				case 0:
-					player.addChatComponentMessage(
+					player.sendMessage(
 							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
 									+ new TextComponentTranslation("item.hourai.level_0").getFormattedText()));
 					break;
 				case 1:
-					player.addChatComponentMessage(
+					player.sendMessage(
 							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
 									+ new TextComponentTranslation("item.hourai.level_1").getFormattedText()));
 					break;
 				case 2:
-					player.addChatComponentMessage(
+					player.sendMessage(
 							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
 									+ new TextComponentTranslation("item.hourai.level_2").getFormattedText()));
 					break;
 				default:
-					player.addChatComponentMessage(
+					player.sendMessage(
 							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
 									+ new TextComponentTranslation("item.hourai.level_3").getFormattedText()));
 					break;

@@ -58,26 +58,25 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileCraftingAltar tile = (TileCraftingAltar)worldIn.getTileEntity(pos);
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileCraftingAltar tile = (TileCraftingAltar)world.getTileEntity(pos);
 		boolean ok = false;
 		if(tile != null) {
-			ok = playerIn.isSneaking() ? tile.removeItem(playerIn) : tile.doCrafting(playerIn);
+			ok = player.isSneaking() ? tile.removeItem(player) : tile.doCrafting(player);
 		}
 		return ok;
 	}
 
 	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileCraftingAltar tile = (TileCraftingAltar) worldIn.getTileEntity(pos);
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
 		if (tile != null) tile.destroy();
-		worldIn.removeTileEntity(pos);
+		world.removeTileEntity(pos);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		for(int i = -2; i <= 2; ++i) {
 			for(int j = -2; j <= 2; ++j) {
 				if(i > -2 && i < 2 && j == -1) {
@@ -87,11 +86,11 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 				if(rand.nextInt(16) == 0) {
 					for(int k = 0; k <= 1; ++k) {
 
-						if(!worldIn.isAirBlock(pos.add(i / 2, 0, j / 2))) {
+						if(!world.isAirBlock(pos.add(i / 2, 0, j / 2))) {
 							break;
 						}
 
-						worldIn.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, pos.getX() + 0.5D, pos.getY() + 2.0D, pos.getZ() + 0.5D,
+						world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, pos.getX() + 0.5D, pos.getY() + 2.0D, pos.getZ() + 0.5D,
 								i + rand.nextFloat() - 0.5D, k - rand.nextFloat() - 1.0F, j + rand.nextFloat() - 0.5D);
 					}
 				}
@@ -119,7 +118,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
@@ -151,7 +150,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileCraftingAltar();
 	}
 }

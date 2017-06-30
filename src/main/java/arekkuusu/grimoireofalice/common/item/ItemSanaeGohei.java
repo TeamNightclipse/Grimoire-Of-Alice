@@ -59,7 +59,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
-	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, null, new String[]{"convertToVillager", "func_82232_p"});
+	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, "convertToVillager", "func_82232_p");
 
 	public ItemSanaeGohei() {
 		super(LibItemName.SANAE_GOHEI, Miracles.values());
@@ -84,10 +84,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (playerIn.isSneaking()) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player.isSneaking()) {
 			increaseType(stack);
-			if (worldIn.isRemote) {
+			if (world.isRemote) {
 				String modeName = getType(stack).toString() + ".name";
 				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_header.name");
 				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_" + modeName));
@@ -96,11 +97,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 			}
 		}
 		else {
-			if (!worldIn.isRemote) {
-				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(worldIn, playerIn, stack);
-				worldIn.spawnEntityInWorld(miracleCircle);
+			if (!world.isRemote) {
+				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, player, stack);
+				world.spawnEntity(miracleCircle);
 			}
-			playerIn.setActiveHand(hand);
+			player.setActiveHand(hand);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
@@ -118,117 +119,116 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		World worldIn = entityLiving.world;
-		if (entityLiving instanceof EntityPlayer && !worldIn.isRemote) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
-			if (!playerIn.isSneaking() && !playerIn.getCooldownTracker().hasCooldown(this)) {
+		World world = entityLiving.world;
+		if (entityLiving instanceof EntityPlayer && !world.isRemote) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if (!player.isSneaking() && !player.getCooldownTracker().hasCooldown(this)) {
 				Miracles mode = getType(stack);
 				final int oldCharge = getCharge(stack);
 				int charge = oldCharge;
-				WorldInfo worldInfo = playerIn.world.getWorldInfo();
+				WorldInfo WorldInfo = player.world.getWorldInfo();
 
 				switch (mode) {
 					case RAIN:
-						if (RAIN.canUse(charge, playerIn)) {
+						if (RAIN.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
-							worldInfo.setCleanWeatherTime(0);
-							worldInfo.setRainTime(time);
-							worldInfo.setThunderTime(time);
-							worldInfo.setRaining(true);
-							worldInfo.setThundering(false);
+							WorldInfo.setCleanWeatherTime(0);
+							WorldInfo.setRainTime(time);
+							WorldInfo.setThunderTime(time);
+							WorldInfo.setRaining(true);
+							WorldInfo.setThundering(false);
 
 							charge -= 4;
 						}
 						break;
 					case THUNDER:
-						if (THUNDER.canUse(charge, playerIn)) {
+						if (THUNDER.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
-							worldInfo.setCleanWeatherTime(0);
-							worldInfo.setRainTime(time);
-							worldInfo.setThunderTime(time);
-							worldInfo.setRaining(true);
-							worldInfo.setThundering(true);
+							WorldInfo.setCleanWeatherTime(0);
+							WorldInfo.setRainTime(time);
+							WorldInfo.setThunderTime(time);
+							WorldInfo.setRaining(true);
+							WorldInfo.setThundering(true);
 
 							charge -= 5;
 						}
 						break;
 					case CLEAR:
-						if (CLEAR.canUse(charge, playerIn)) {
+						if (CLEAR.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
-							worldInfo.setCleanWeatherTime(time);
-							worldInfo.setRainTime(0);
-							worldInfo.setThunderTime(0);
-							worldInfo.setRaining(false);
-							worldInfo.setThundering(false);
+							WorldInfo.setCleanWeatherTime(time);
+							WorldInfo.setRainTime(0);
+							WorldInfo.setThunderTime(0);
+							WorldInfo.setRaining(false);
+							WorldInfo.setThundering(false);
 
 							charge -= 1;
 						}
 						break;
 					case TESTIFICATE:
-						if (TESTIFICATE.canUse(charge, playerIn)) {
-							if (convertNearZombies(playerIn, worldIn)) {
+						if (TESTIFICATE.canUse(charge, player)) {
+							if (convertNearZombies(player, world)) {
 								charge -= 15;
 							}
 						}
 						break;
 					case WIND:
-						if (WIND.canUse(charge, playerIn)) {
-							worldIn.playSound(null, playerIn.getPosition(), GrimoireSoundEvents.WIND, SoundCategory.PLAYERS, 1F, 1F);
-							Vec3d vec = playerIn.getLookVec();
-							List<EntityLivingBase> list = playerIn.world.getEntitiesWithinAABB(EntityLivingBase.class,
-									entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, vec.yCoord * 2, vec.zCoord * 2)
-											.expandXyz(3D), entity -> entity != playerIn);
+						if (WIND.canUse(charge, player)) {
+							world.playSound(null, player.getPosition(), GrimoireSoundEvents.WIND, SoundCategory.PLAYERS, 1F, 1F);
+							Vec3d vec = player.getLookVec();
+							List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
+									entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> entity != player);
 							list.forEach(entity -> {
 								if (entity.world instanceof WorldServer) {
 									((WorldServer) entity.world).spawnParticle(EnumParticleTypes.CLOUD, entity.posX
 											, entity.posY, entity.posZ, 5, 0, 0, 0, 0.1D);
 								}
-								entity.motionX = -MathHelper.sin((float) Math.toRadians(playerIn.rotationYaw)) * 4;
-								entity.motionY = -MathHelper.sin((float) Math.toRadians(playerIn.rotationPitch)) * 4;
-								entity.motionZ = MathHelper.cos((float) Math.toRadians(playerIn.rotationYaw)) * 4;
+								entity.motionX = -MathHelper.sin((float) Math.toRadians(player.rotationYaw)) * 4;
+								entity.motionY = -MathHelper.sin((float) Math.toRadians(player.rotationPitch)) * 4;
+								entity.motionZ = MathHelper.cos((float) Math.toRadians(player.rotationYaw)) * 4;
 							});
 
 							charge -= 1;
 						}
 						break;
 					case HEAL:
-						if (HEAL.canUse(charge, playerIn)) {
-							float health = playerIn.getMaxHealth() - playerIn.getHealth();
-							playerIn.heal(health * itemRand.nextFloat());
-							if (worldIn instanceof WorldServer) {
-								((WorldServer) worldIn).spawnParticle(EnumParticleTypes.HEART, playerIn.posX, playerIn.posY + 2, playerIn.posZ, 20, 0D, 0D, 0D, 0D);
+						if (HEAL.canUse(charge, player)) {
+							float health = player.getMaxHealth() - player.getHealth();
+							player.heal(health * itemRand.nextFloat());
+							if (world instanceof WorldServer) {
+								((WorldServer) world).spawnParticle(EnumParticleTypes.HEART, player.posX, player.posY + 2, player.posZ, 20, 0D, 0D, 0D, 0D);
 							}
 
 							charge -= 2;
 						}
 						break;
 					case POTIONS:
-						if (POTIONS.canUse(charge, playerIn)) {
-							List<PotionEffect> effects = consumePotionEffectsInInventory(playerIn);
+						if (POTIONS.canUse(charge, player)) {
+							List<PotionEffect> effects = consumePotionEffectsInInventory(player);
 							if (!effects.isEmpty()) {
-								addPlayerPotionEffects(playerIn, effects);
-								playerIn.getCooldownTracker().setCooldown(this, 15);
+								addPlayerPotionEffects(player, effects);
+								player.getCooldownTracker().setCooldown(this, 15);
 
 								charge -= 3;
 							}
 						}
 						break;
 					case SOIL:
-						if (SOIL.canUse(charge, playerIn)) {
-							applyBonemealRandomPos(playerIn, worldIn);
+						if (SOIL.canUse(charge, player)) {
+							applyBonemealRandomPos(player, world);
 
 							charge -= 6;
 						}
 						break;
 					case TIME:
-						if (TIME.canUse(charge, playerIn)) {
-							long time = worldIn.isDaytime() ? 14000 : 0;
-							worldIn.setWorldTime(time);
+						if (TIME.canUse(charge, player)) {
+							long time = world.isDaytime() ? 14000 : 0;
+							world.setWorldTime(time);
 
-							playerIn.getCooldownTracker().setCooldown(this, 5);
+							player.getCooldownTracker().setCooldown(this, 5);
 
 							charge -= 10;
 						}
@@ -244,14 +244,14 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 25);
 		}
 	}
 
 	private boolean convertNearZombies(EntityPlayer player, World world) {
-		List<EntityZombie> list = world.getEntitiesWithinAABB(EntityZombie.class, player.getEntityBoundingBox().expandXyz(10));
+		List<EntityZombie> list = world.getEntitiesWithinAABB(EntityZombie.class, player.getEntityBoundingBox().grow(10));
 		list.forEach(this::convertToVillager);
 		return !list.isEmpty();
 	}
@@ -269,7 +269,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		BlockPos posF = new BlockPos(player.posX + 4 + itemRand.nextInt(4), player.posY + 4 + itemRand.nextInt(4), player.posZ + 4 + itemRand.nextInt(4));
 
 		BlockPos.getAllInBox(posI, posF).forEach(pos -> {
-			if (itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player)) {
+			if (itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player, player.getActiveHand())) {
 				IBlockState state = world.getBlockState(pos);
 				for (int j = 0; j < 15; ++j) {
 					double d0 = itemRand.nextGaussian() * 0.02D;

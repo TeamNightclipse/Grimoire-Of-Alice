@@ -40,7 +40,7 @@ public class ItemSuwakoHat extends ItemModArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.suwako_hat_header.name"));
 	}
 

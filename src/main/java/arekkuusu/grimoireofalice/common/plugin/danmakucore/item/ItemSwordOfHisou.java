@@ -75,7 +75,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack itemStackIn) {
+	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack stack) {
 		if(!entityLivingBase.world.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
@@ -86,26 +86,27 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 					Vec3d look = player.getLookVec();
 
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
-					entity.attackEntityFrom(DamageSource.magic, 10);
-					entity.motionX -= look.xCoord * 0.5;
-					entity.motionY -= look.yCoord * 0.5;
-					entity.motionZ -= look.zCoord * 0.5;
+					entity.attackEntityFrom(DamageSource.MAGIC, 10);
+					entity.motionX -= look.x * 0.5;
+					entity.motionY -= look.y * 0.5;
+					entity.motionZ -= look.z * 0.5;
 				}
 			}
 		}
-		return super.onEntitySwing(entityLivingBase, itemStackIn);
+		return super.onEntitySwing(entityLivingBase, stack);
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
 		if (count > 260 && count % 5 == 0) {
-			List<EntityMob> list = livingBase.world.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().expandXyz(20));
+			List<EntityMob> list = livingBase.world.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().grow(20));
 			if (!list.isEmpty()) {
 				for (EntityLivingBase entityMob : list) {
 					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, livingBase, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
@@ -131,19 +132,19 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-		if (!worldIn.isRemote) {
+		if (!world.isRemote) {
 			if (entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
 				if (isOwner(stack, player)) {
 					if (timeUsed < 20 && timeUsed > 5) {
-						List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(20));
+						List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20));
 						if (!list.isEmpty()) {
 							int count = (int)(list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
-							worldIn.spawnEntityInWorld(circle);
+							EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
+							world.spawnEntity(circle);
 							player.getCooldownTracker().setCooldown(this, count);
 						}
 					}
@@ -153,9 +154,9 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(player.isSneaking()) {
-			worldIn.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1F, 1F);
+			world.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1F, 1F);
 			for (int t = 0; t < 5; t++) {
 				for (int u = 0; u < 10; u++) {
 					spawnGround(player, itemRand.nextDouble(), itemRand.nextDouble());
@@ -165,18 +166,18 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 				}
 			}
 
-			if(!worldIn.isRemote) {
-				List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(10.0D));
+			if(!world.isRemote) {
+				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(10.0D));
 				for (EntityMob mob : list) {
-					mob.attackEntityFrom(DamageSource.drown, 1);
+					mob.attackEntityFrom(DamageSource.DROWN, 1);
 					Vec3d playerPos = player.getPositionVector();
 					Vec3d mobPos = mob.getPositionVector();
 					double ratio = playerPos.distanceTo(mobPos) / 4;
 					double scaling = 1 - ratio;
 					Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-					mob.motionX = -motion.xCoord * 2;
+					mob.motionX = -motion.x * 2;
 					mob.motionY = .3F;
-					mob.motionZ = -motion.zCoord * 2;
+					mob.motionZ = -motion.z * 2;
 				}
 			}
 			return EnumActionResult.SUCCESS;
@@ -189,20 +190,20 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean()) {
 			if (pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
 				stack.damageItem(1, entityLiving);
-				if (!worldIn.isRemote) {
+				if (!world.isRemote) {
 					EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 							new ItemStack(ModItems.HEAVENLY_PEACH));
 
-					entityLiving.world.spawnEntityInWorld(entityItem);
+					entityLiving.world.spawnEntity(entityItem);
 				}
 				return true;
 			}
 		}
-		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
+		return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
 	}
 
 	@Override

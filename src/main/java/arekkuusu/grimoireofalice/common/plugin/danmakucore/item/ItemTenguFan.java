@@ -54,14 +54,15 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			player.swingArm(EnumHand.MAIN_HAND);
@@ -69,7 +70,7 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 			float speed = timeUsed / 7.0F;
 			if(timeUsed <= 5) return;
 			DanmakuHelper.playShotSound(entityLiving);
-			if(!worldIn.isRemote) {
+			if(!world.isRemote) {
 				EntityDanmaku danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setMovementData(speed)
@@ -77,7 +78,7 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 						.build().asEntity();
 
 				danmaku.getShotData().setSize(5);
-				worldIn.spawnEntityInWorld(danmaku);
+				world.spawnEntity(danmaku);
 				SubEntity subEntity = danmaku.getSubEntity();
 				if(subEntity instanceof SubEntityWind.Wind) {
 					((SubEntityWind.Wind)subEntity).setTimeUsed(timeUsed);

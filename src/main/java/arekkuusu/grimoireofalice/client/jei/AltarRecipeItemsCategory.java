@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.client.jei;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibJEI;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableStatic;
@@ -68,6 +69,11 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 	@Override
 	public String getTitle() {
 		return I18n.format("grimoire.jei.altar.title");
+	}
+
+	@Override
+	public String getModName() {
+		return LibMod.MODNAME;
 	}
 
 	@Override

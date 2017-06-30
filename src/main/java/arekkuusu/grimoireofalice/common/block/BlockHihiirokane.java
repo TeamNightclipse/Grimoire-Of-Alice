@@ -33,7 +33,7 @@ public class BlockHihiirokane extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		float x = pos.getX() + rand.nextFloat();
 		float y = pos.getY() + rand.nextFloat();
 		float z = pos.getZ() + rand.nextFloat();

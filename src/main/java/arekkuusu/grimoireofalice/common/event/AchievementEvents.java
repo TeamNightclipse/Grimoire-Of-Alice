@@ -72,7 +72,7 @@ public class AchievementEvents {
 
     @SubscribeEvent
     public void onCraft(PlayerEvent.ItemCraftedEvent event) {
-        if (event.crafting.getItem() == ALTAR.theItemStack.getItem()) {
+        if (event.crafting.getItem() == ALTAR.icon.getItem()) {
             event.player.addStat(ALTAR);
         }
     }
@@ -80,12 +80,12 @@ public class AchievementEvents {
     @SubscribeEvent
     public void onPickup(PlayerEvent.ItemPickupEvent event) {
         Map<Item, Achievement> map = GrimoireOfAliceAPI.getAchievementAltarMap();
-        Item item = event.pickedUp.getEntityItem().getItem();
+        Item item = event.pickedUp.getItem().getItem();
         if (map.containsKey(item)) {
             Achievement achievement = map.get(item);
             event.player.addStat(achievement);
         }
-        else if (item == ALTAR.theItemStack.getItem()) {
+        else if (item == ALTAR.icon.getItem()) {
             event.player.addStat(ALTAR);
         }
     }

@@ -23,8 +23,8 @@ public class RedMist extends Particle {
 	private static final double RETURN_STRENGTH = 0.01D;
 	private final Entity entity;
 
-	public RedMist(World worldIn, Entity entity, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-		super(worldIn, x, y, z, xSpeed, ySpeed, zSpeed);
+	public RedMist(World world, Entity entity, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 		this.entity = entity;
 
 		particleScale = 16F + rand.nextInt(4);
@@ -41,7 +41,7 @@ public class RedMist extends Particle {
 	}
 
 	@Override
-	public boolean isTransparent() {
+	public boolean shouldDisableDepth() {
 		return true;
 	}
 
@@ -69,7 +69,7 @@ public class RedMist extends Particle {
 				setExpired();
 			}
 
-			moveEntity(motionX, motionY, motionZ);
+			move(motionX, motionY, motionZ);
 		} else {
 			setExpired();
 		}

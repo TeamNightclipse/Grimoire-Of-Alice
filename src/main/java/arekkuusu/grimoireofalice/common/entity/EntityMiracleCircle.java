@@ -6,7 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -27,16 +26,16 @@ public class EntityMiracleCircle extends Entity {
     private int circles;
     private float turnAngle;
 
-    public EntityMiracleCircle(World worldIn) {
-        super(worldIn);
+    public EntityMiracleCircle(World world) {
+        super(world);
     }
 
-    public EntityMiracleCircle(World worldIn, EntityPlayer user, @Nullable ItemStack stack) {
-        super(worldIn);
+    public EntityMiracleCircle(World world, EntityPlayer user, @Nullable ItemStack stack) {
+        super(world);
         Vec3d vec3 = user.getLookVec();
-        posX = user.posX + vec3.xCoord * 2;
+        posX = user.posX + vec3.x * 2;
         posY = user.posY + user.getEyeHeight();
-        posZ = user.posZ + vec3.zCoord * 2;
+        posZ = user.posZ + vec3.z * 2;
         setPosition(posX, posY, posZ);
         this.user = user;
         this.stack = stack;
@@ -64,9 +63,9 @@ public class EntityMiracleCircle extends Entity {
             rotationPitch = user.rotationPitch;
 
             Vec3d vec3 = getRotationVector(getVectorForRotation(0F, rotationYaw));
-            posX = user.posX + vec3.xCoord * 2;
+            posX = user.posX + vec3.x * 2;
             posY = user.posY + user.getEyeHeight();
-            posZ = user.posZ + vec3.zCoord * 2;
+            posZ = user.posZ + vec3.z * 2;
             setPosition(posX, posY, posZ);
 
             if (!world.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
@@ -80,7 +79,7 @@ public class EntityMiracleCircle extends Entity {
                     }
                 }
                 EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, null);
-                world.spawnEntityInWorld(miracleCircle);
+                world.spawnEntity(miracleCircle);
                 ++circles;
             }
         }
@@ -117,7 +116,7 @@ public class EntityMiracleCircle extends Entity {
 
             for (int i = 0; i < capability.getSlots(); ++i) {
                 ItemStack stack = capability.getStackInSlot(i);
-                if (stack != null && stack.getItem() == ModItems.FAITH && stack.stackSize > 0) {
+                if (!stack.isEmpty() && stack.getItem() == ModItems.FAITH) {
                     if (!player.capabilities.isCreativeMode) {
                         capability.extractItem(i, 1, false);
                     }

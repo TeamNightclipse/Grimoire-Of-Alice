@@ -64,10 +64,11 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.playSound(GrimoireSoundEvents.UFO_SPAWN, 0.1F, 1F);
-		setActive(itemStackIn);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.playSound(GrimoireSoundEvents.UFO_SPAWN, 0.1F, 1F);
+		setActive(stack);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -83,10 +84,10 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 	}
 
 	private void itemsInRange(World world, EntityPlayer player) {
-		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(10D));
+		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().grow(10D));
 
 		for(EntityItem item : aList) {
-			if(!hasRoomForStack(item.getEntityItem(), player) && player.getDistanceSqToEntity(item) < 1.5D * 1.5D) {
+			if(!hasRoomForStack(item.getItem(), player) && player.getDistanceSqToEntity(item) < 1.5D * 1.5D) {
 				continue;
 			}
 			item.setPickupDelay(0);
@@ -96,9 +97,9 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 
 	private void givePlayerItems(EntityItem item, EntityPlayer player) {
 		Vec3d look = player.getLookVec();
-		double x = player.posX + look.xCoord * 0.2D;
+		double x = player.posX + look.x * 0.2D;
 		double y = player.posY + player.height / 2F;
-		double z = player.posZ + look.zCoord * 0.2D;
+		double z = player.posZ + look.z * 0.2D;
 		item.setPosition(x, y, z);
 	}
 

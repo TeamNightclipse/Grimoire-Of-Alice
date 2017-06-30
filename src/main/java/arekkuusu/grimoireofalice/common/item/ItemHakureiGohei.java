@@ -66,19 +66,19 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
     }
 
     @Override
-    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+    public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
         if (entityIn instanceof EntityPlayer && getType(stack) == PASSIVE) {
             EntityPlayer player = (EntityPlayer) entityIn;
             if (!player.isSneaking()) {
                 Vec3d vec = player.getLookVec();
                 if (player.motionX < 0.5 && player.motionX > -0.5) {
-                    player.motionX = 0.5 * vec.xCoord;
+                    player.motionX = 0.5 * vec.x;
                 }
                 if (player.motionY < 0.5 && player.motionY > -0.5) {
-                    player.motionY = 0.5 * vec.yCoord;
+                    player.motionY = 0.5 * vec.y;
                 }
                 if (player.motionZ < 0.5 && player.motionZ > -0.5) {
-                    player.motionZ = 0.5 * vec.zCoord;
+                    player.motionZ = 0.5 * vec.z;
                 }
             }
             else {
@@ -89,11 +89,12 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        if (playerIn.isSneaking()) {
-            increaseType(itemStackIn);
-            if (worldIn.isRemote) {
-                String modeName = getType(itemStackIn).toString() + ".name";
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        if (player.isSneaking()) {
+            increaseType(stack);
+            if (world.isRemote) {
+                String modeName = getType(stack).toString() + ".name";
                 ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_header.name");
                 text.appendSibling(new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName));
 
@@ -101,38 +102,38 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
             }
         }
         else {
-            playerIn.setActiveHand(hand);
+            player.setActiveHand(hand);
 
-            GoheiMode mode = getType(itemStackIn);
+            GoheiMode mode = getType(stack);
             if (mode == YING_YANG_ORB) {
-                playerIn.playSound(GrimoireSoundEvents.POWER_UP, 0.1F, itemRand.nextFloat() * 0.1F + 0.8F);
-                if (!worldIn.isRemote) {
-                    EntityHakureiOrb orb = new EntityHakureiOrb(worldIn, playerIn);
-                    worldIn.spawnEntityInWorld(orb);
+                player.playSound(GrimoireSoundEvents.POWER_UP, 0.1F, itemRand.nextFloat() * 0.1F + 0.8F);
+                if (!world.isRemote) {
+                    EntityHakureiOrb orb = new EntityHakureiOrb(world, player);
+                    world.spawnEntity(orb);
                 }
             }
-            else if ((mode == BARRIER_EXPLODE || mode == BARRIER_MOTION) && !worldIn.isRemote) {
-                EntityBarrier barrier = new EntityBarrier(worldIn, playerIn, mode.getType());
-                worldIn.spawnEntityInWorld(barrier);
+            else if ((mode == BARRIER_EXPLODE || mode == BARRIER_MOTION) && !world.isRemote) {
+                EntityBarrier barrier = new EntityBarrier(world, player, mode.getType());
+                world.spawnEntity(barrier);
             }
         }
-        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
     @Override
-    public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int ticks) {
+    public void onUsingTick(ItemStack stack, EntityLivingBase player, int ticks) {
         if (getType(stack) == AURA_MANIPULATION) {
-            List<EntityLivingBase> list = playerIn.world.getEntitiesWithinAABB(EntityLivingBase.class,
-                    playerIn.getEntityBoundingBox().expandXyz(4.0D), entity -> entity != playerIn);
+            List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
+                    player.getEntityBoundingBox().grow(4.0D), entity -> entity != player);
             for (EntityLivingBase mob : list) {
-                Vec3d playerPos = playerIn.getPositionVector();
+                Vec3d playerPos = player.getPositionVector();
                 Vec3d mobPos = mob.getPositionVector();
                 double ratio = playerPos.distanceTo(mobPos) / 4;
                 double scaling = 1 - ratio;
                 Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-                mob.motionX = -motion.xCoord * 1.2;
-                mob.motionY = -motion.yCoord * 1.2;
-                mob.motionZ = -motion.zCoord * 1.2;
+                mob.motionX = -motion.x * 1.2;
+                mob.motionY = -motion.y * 1.2;
+                mob.motionZ = -motion.z * 1.2;
                 mob.fallDistance = 0.0F;
                 if (ticks % 4 == 0) {
                     mob.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, mob.posX + (itemRand.nextDouble() - 0.5D) * mob.width,
@@ -144,25 +145,25 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+    public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
         if (entityLiving instanceof EntityPlayer && !entityLiving.isSneaking()) {
-            EntityPlayer playerIn = (EntityPlayer) entityLiving;
+            EntityPlayer player = (EntityPlayer) entityLiving;
             if (getType(stack) == PASSIVE) {
-                Vec3d look = playerIn.getLookVec();
+                Vec3d look = player.getLookVec();
                 float distance = 5F;
-                double dx = playerIn.posX + look.xCoord * distance;
-                double dy = playerIn.posY + 1 + look.yCoord * distance;
-                double dz = playerIn.posZ + look.zCoord * distance;
-                if (isSafe(worldIn, dx, dy, dz)) {
-                    if (playerIn instanceof EntityPlayerMP) {
-                        ((EntityPlayerMP) playerIn).setPositionAndUpdate(dx, dy, dz);
+                double dx = player.posX + look.x * distance;
+                double dy = player.posY + 1 + look.y * distance;
+                double dz = player.posZ + look.z * distance;
+                if (isSafe(world, dx, dy, dz)) {
+                    if (player instanceof EntityPlayerMP) {
+                        ((EntityPlayerMP) player).setPositionAndUpdate(dx, dy, dz);
                     }
-                    stack.damageItem(1, playerIn);
+                    stack.damageItem(1, player);
                 }
             }
-            EnumHand hand = playerIn.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
-            playerIn.swingArm(hand);
-            playerIn.getCooldownTracker().setCooldown(this, 10);
+            EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+            player.swingArm(hand);
+            player.getCooldownTracker().setCooldown(this, 10);
         }
     }
 
@@ -185,7 +186,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
                 default:
                     attacker.world.spawnParticle(EnumParticleTypes.HEART, target.posX, target.posY + 1, target.posZ, 0.0D, 0.0D, 0.0D);
                     if (!target.world.isRemote) {
-                        target.attackEntityFrom(DamageSource.magic, 5);
+                        target.attackEntityFrom(DamageSource.MAGIC, 5);
                     }
             }
         }

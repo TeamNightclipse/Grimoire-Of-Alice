@@ -41,7 +41,7 @@ public class ShinmyoumaruSpark extends Particle {
 	}
 
 	@Override
-	public boolean isTransparent() {
+	public boolean shouldDisableDepth() {
 		return true;
 	}
 
@@ -57,9 +57,9 @@ public class ShinmyoumaruSpark extends Particle {
 
 		motionY = 0;
 
-		moveEntity(motionX, motionY, motionZ);
+		move(motionX, motionY, motionZ);
 
-		if (isCollided) {
+		if (onGround) {
 			motionX *= 0.699999988079071D;
 			motionZ *= 0.699999988079071D;
 		}

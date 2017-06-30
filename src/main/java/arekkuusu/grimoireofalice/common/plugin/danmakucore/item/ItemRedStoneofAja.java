@@ -43,22 +43,23 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.red_stone_of_aja_header.name"));
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1F, 1F);
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1F, 1F);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
     @Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(timeLeft <= 90) {
-			if (!worldIn.isRemote) {
-                if (worldIn.canSeeSky(entityLiving.getPosition())) {
+			if (!world.isRemote) {
+                if (world.canSeeSky(entityLiving.getPosition())) {
                     EntityDanmaku lazer = DanmakuTemplate.builder()
                             .setUser(entityLiving)
                             .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
@@ -72,7 +73,7 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
                                 .build();
                         DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
                     }
-                    worldIn.spawnEntityInWorld(lazer);
+                    world.spawnEntity(lazer);
                 }
                 else {
                     EntityDanmaku danmaku = DanmakuTemplate.builder()
@@ -80,7 +81,7 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
                             .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
                             .setMovementData(4D)
                             .build().asEntity();
-                    worldIn.spawnEntityInWorld(danmaku);
+                    world.spawnEntity(danmaku);
                 }
             }
 			entityLiving.playSound(GrimoireSoundEvents.POWER_UP, 0.2F, 1F);

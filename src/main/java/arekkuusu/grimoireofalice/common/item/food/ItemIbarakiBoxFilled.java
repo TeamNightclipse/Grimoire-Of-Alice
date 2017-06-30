@@ -53,9 +53,9 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer && !((EntityPlayer)entityLiving).capabilities.isCreativeMode) {
-			--stack.stackSize;
+			stack.shrink(1);
 		}
 		if(entityLiving.getHealth() != entityLiving.getMaxHealth()) {
 			entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
@@ -65,13 +65,14 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 		else {
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
 		}
-		return stack.stackSize <= 0 ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
+		return stack.isEmpty() ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override

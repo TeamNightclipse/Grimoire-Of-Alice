@@ -67,38 +67,39 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 
-			Optional<BlockPos> posLookedAt = getBlockPosLookedAt(playerIn);
+			Optional<BlockPos> posLookedAt = getBlockPosLookedAt(player);
 			BlockPos pos;
-			if (posLookedAt.isPresent() && !playerIn.isSneaking()) {
+			if (posLookedAt.isPresent() && !player.isSneaking()) {
 				pos = posLookedAt.get();
 			} else {
-				Vec3d look = playerIn.getLookVec();
+				Vec3d look = player.getLookVec();
 				double range = 40.0D;
-				double dx = playerIn.posX + look.xCoord * range;
-				double dy = playerIn.posY + 1 + look.yCoord * range;
-				double dz = playerIn.posZ + look.zCoord * range;
+				double dx = player.posX + look.x * range;
+				double dy = player.posY + 1 + look.y * range;
+				double dz = player.posZ + look.z * range;
 				pos = new BlockPos(dx, dy, dz);
 			}
 
-			if (isSafe(worldIn, pos)) {
-				if (!worldIn.isRemote && playerIn instanceof EntityPlayerMP) {
-					((EntityPlayerMP) playerIn).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+			if (isSafe(world, pos)) {
+				if (!world.isRemote && player instanceof EntityPlayerMP) {
+					((EntityPlayerMP) player).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				}
-				stack.damageItem(1, playerIn);
+				stack.damageItem(1, player);
 			}
-			worldIn.playSound(playerIn, pos.getX(), pos.getY(), pos.getZ(), GrimoireSoundEvents.WARP,
+			world.playSound(player, pos.getX(), pos.getY(), pos.getZ(), GrimoireSoundEvents.WARP,
 					SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
-			playerIn.getCooldownTracker().setCooldown(this, 30);
+			player.getCooldownTracker().setCooldown(this, 30);
 		}
 	}
 
@@ -106,7 +107,7 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 		double range = 40.0D;
 		Vec3d look = player.getLookVec();
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + player.getEyeHeight() + look.yCoord * range, player.posZ + look.zCoord * range);
+		Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
 		RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
 		if (raytraceresult != null) {
 			return Optional.of(raytraceresult.getBlockPos().offset(raytraceresult.sideHit));

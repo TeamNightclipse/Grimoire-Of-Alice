@@ -27,8 +27,8 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	private static final DataParameter<Byte> LAYING = EntityDataManager.<Byte>createKey(EntityYoukaiBook.class, DataSerializers.BYTE);
 	private BlockPos spawnPosition;
 
-	public EntityYoukaiBook(World worldIn) {
-		super(worldIn);
+	public EntityYoukaiBook(World world) {
+		super(world);
 		setSize(0.5F, 0.5F);
 	}
 

@@ -53,8 +53,8 @@ public class ItemKappaHat extends ItemModArmor implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (worldIn.isRaining() && stack.isItemDamaged()) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (world.isRaining() && stack.isItemDamaged()) {
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 	}

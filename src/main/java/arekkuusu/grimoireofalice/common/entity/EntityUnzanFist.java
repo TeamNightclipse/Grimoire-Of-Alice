@@ -57,11 +57,11 @@ public class EntityUnzanFist extends EntityThrowable {
         vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
         if (raytraceresult != null) {
-            vec3d1 = new Vec3d(raytraceresult.hitVec.xCoord, raytraceresult.hitVec.yCoord, raytraceresult.hitVec.zCoord);
+            vec3d1 = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
         }
 
         Entity entity = null;
-        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expandXyz(1.0D));
+        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D));
         double d0 = 0.0D;
 
         for (Entity aList : list) {
@@ -71,7 +71,7 @@ public class EntityUnzanFist extends EntityThrowable {
                         this.ignoreEntity = aList;
                     }
                     else {
-                        AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().expandXyz(0.30000001192092896D);
+                        AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
                         RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
                         if (result != null) {
@@ -174,7 +174,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().expandXyz(2);
+		return super.getEntityBoundingBox().grow(2);
 	}
 
 	@Override

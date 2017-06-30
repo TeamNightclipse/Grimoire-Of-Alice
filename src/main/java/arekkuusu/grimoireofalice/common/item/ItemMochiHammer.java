@@ -66,7 +66,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy
 	}
 
 	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id) {
-		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getAttributeUnlocalizedName());
+		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
 		Optional<AttributeModifier> modifierOptional = modifiers.stream()
 				.filter(attributeModifier -> attributeModifier.getID().equals(id))
 				.findFirst();

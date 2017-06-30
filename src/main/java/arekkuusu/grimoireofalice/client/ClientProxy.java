@@ -30,6 +30,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -258,7 +259,7 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	private static void registerBlock(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
-		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		if(iBlock == Items.AIR) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		ModelLoader.setCustomModelResourceLocation(iBlock, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 
@@ -272,7 +273,7 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	private static void registerShroom(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
-		if(iBlock == null) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		if(iBlock == Items.AIR) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		for(int i = 0; i < 16; i++) {
 			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
 		}
@@ -309,7 +310,7 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void displayRecordText(ITextComponent text) {
-		Minecraft.getMinecraft().ingameGUI.setRecordPlaying(text.getFormattedText(), false);
+		Minecraft.getMinecraft().ingameGUI.setOverlayMessage(text.getFormattedText(), false);
 	}
 
 	@SideOnly(Side.CLIENT)

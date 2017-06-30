@@ -59,7 +59,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		int timer = getTimer(stack);
 		if (timer > 0) {
 			setTimer(stack, timer - 1);
@@ -67,14 +67,15 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if (getTimer(itemStackIn) > 0) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (getTimer(stack) > 0) return new ActionResult<>(EnumActionResult.FAIL, stack);
 		player.getCooldownTracker().setCooldown(this, 50);
 		setAllIventory(player, 600);
 		if (!player.capabilities.isCreativeMode) {
-			--itemStackIn.stackSize;
+			stack.shrink(1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@SuppressWarnings ("ConstantConditions")

@@ -49,13 +49,13 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	@Override
-	public int tickRate(World worldIn) {
-		return worldIn.isRaining() ? 40 : 100;
+	public int tickRate(World world) {
+		return world.isRaining() ? 40 : 100;
 	}
 
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+		world.scheduleUpdate(pos, this, tickRate(world));
 	}
 
 	@Override
@@ -138,7 +138,7 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	@Override
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+	public void onEntityWalk(World world, BlockPos pos, Entity entityIn) {
 		if(entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityIn;
 			player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 75, 2));

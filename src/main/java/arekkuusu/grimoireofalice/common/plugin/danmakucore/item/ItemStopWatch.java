@@ -50,27 +50,28 @@ public class ItemStopWatch extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
 		player.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			EntityStopWatch watch = new EntityStopWatch(worldIn, player);
-			if (!worldIn.isRemote) {
+			EntityStopWatch watch = new EntityStopWatch(world, player);
+			if (!world.isRemote) {
 				Vec3d look = player.getLookVec();
 				float distance = 1F;
-				double dx = player.posX + look.xCoord;
+				double dx = player.posX + look.x;
 				double dy = player.posY + player.getEyeHeight() - 1;
-				double dz = player.posZ + look.zCoord * distance;
+				double dz = player.posZ + look.z * distance;
 				watch.setPosition(dx, dy, dz);
-				worldIn.spawnEntityInWorld(watch);
+				world.spawnEntity(watch);
 			}
 			if (!player.capabilities.isCreativeMode) {
-				--stack.stackSize;
+				stack.shrink(1);
 			}
 		}
 	}

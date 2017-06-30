@@ -69,8 +69,8 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (!worldIn.isRemote && entityIn instanceof EntityPlayer) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (!world.isRemote && entityIn instanceof EntityPlayer) {
 			short jewels = getJewels(stack);
 			int i = MathHelper.clamp(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
 			if (jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
@@ -87,9 +87,10 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -99,8 +100,8 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (!worldIn.isRemote) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if (!world.isRemote) {
 			short jewels = getJewels(stack);
 			if (jewels >= 1) {
 				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
@@ -132,7 +133,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 				}
 			}
 		}
-		worldIn.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
+		world.playSound(null, new BlockPos(entityLiving.posX + 0.5D, entityLiving.posY + 0.5D, entityLiving.posZ + 0.5D),
 				SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 	}
 

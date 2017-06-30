@@ -42,9 +42,9 @@ public class EntityBarrier extends Entity {
     public void setPositionAndAngles(EntityPlayer player) {
         Vec3d look = player.getLookVec();
         float distance = 4F;
-        double dx = player.posX + look.xCoord * distance;
-        double dy = player.posY + 1 + look.yCoord * distance;
-        double dz = player.posZ + look.zCoord * distance;
+        double dx = player.posX + look.x * distance;
+        double dy = player.posY + 1 + look.y * distance;
+        double dz = player.posZ + look.z * distance;
         setPosition(dx, dy, dz);
         setRotation(player.rotationYaw, player.rotationPitch);
     }
@@ -99,9 +99,9 @@ public class EntityBarrier extends Entity {
             double ratio = playerPos.distanceTo(mobPos) / 4;
             double scaling = 1 - ratio;
             Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-            living.motionX = -motion.xCoord * 2;
+            living.motionX = -motion.x * 2;
             living.motionY = .3F;
-            living.motionZ = -motion.zCoord * 2;
+            living.motionZ = -motion.z * 2;
         }
     }
 
@@ -141,7 +141,7 @@ public class EntityBarrier extends Entity {
     public AxisAlignedBB getEntityBoundingBox() {
         AxisAlignedBB alignedBB = super.getEntityBoundingBox();
         Vec3d vec = getLookVec();
-        return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 1.6, alignedBB.minY + 1.6, alignedBB.minZ + 1.6).offset(vec.xCoord, vec.yCoord, vec.zCoord);
+        return new AxisAlignedBB(alignedBB.minX - 1, alignedBB.minY - 1, alignedBB.minZ - 1, alignedBB.minX + 1.6, alignedBB.minY + 1.6, alignedBB.minZ + 1.6).offset(vec.x, vec.y, vec.z);
     }
 
     public enum Barrier {

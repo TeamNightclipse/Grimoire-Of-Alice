@@ -69,18 +69,19 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
-			EntityPlayer playerIn = (EntityPlayer) entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (timeLeft < 40) {
-				if (playerIn.getHeldItemOffhand() != null) {
-					ItemStack itemStack = playerIn.getHeldItemOffhand();
+				if (!player.getHeldItemOffhand().isEmpty()) {
+					ItemStack itemStack = player.getHeldItemOffhand();
 					Optional<String> ore = Arrays.stream(OreDictionary.getOreIDs(itemStack))
 							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore")).findFirst();
 
@@ -92,32 +93,33 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 				return;
 			}
 
-			if (!worldIn.isRemote) {
-				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, stack, getOre(stack), !playerIn.isSneaking());
-				Vec3d look = playerIn.getLookVec();
+			if (!world.isRemote) {
+				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), !player.isSneaking());
+				Vec3d look = player.getLookVec();
 				float distance = 2F;
-				double dx = playerIn.posX + look.xCoord * distance;
-				double dy = playerIn.posY + playerIn.getEyeHeight() - 0.5;
-				double dz = playerIn.posZ + look.zCoord * distance;
+				double dx = player.posX + look.x * distance;
+				double dy = player.posY + player.getEyeHeight() - 0.5;
+				double dz = player.posZ + look.z * distance;
 				pendulum.setPosition(dx, dy, dz);
-				worldIn.spawnEntityInWorld(pendulum);
+				world.spawnEntity(pendulum);
 			}
-			playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			if (!playerIn.capabilities.isCreativeMode)
-				--stack.stackSize;
+			player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+			if (!player.capabilities.isCreativeMode)
+				stack.shrink(1);
 		}
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
-		if(!worldIn.isRemote) {
-			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(worldIn, playerIn, stack, getOre(stack), false);
+		ItemStack stack = player.getHeldItem(hand);
+		if(!world.isRemote) {
+			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), false);
 			pendulum.setPosition(pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5);
-			worldIn.spawnEntityInWorld(pendulum);
+			world.spawnEntity(pendulum);
 		}
-		playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-		--stack.stackSize;
+		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+		stack.shrink(1);
 		return EnumActionResult.SUCCESS;
 	}
 

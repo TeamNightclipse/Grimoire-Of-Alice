@@ -61,7 +61,7 @@ public class ItemFakeMiracleMallet extends ItemMod implements IOwnedBy {
 			Vec3d vec = player.getLookVec();
 			if (!player.world.isRemote) {
 				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, vec.yCoord * 2, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
+						entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> entity != player);
 				if(!list.isEmpty()) {
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
 					stack.damageItem(1, player);

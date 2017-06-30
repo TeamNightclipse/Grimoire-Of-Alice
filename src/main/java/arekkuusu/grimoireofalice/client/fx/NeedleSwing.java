@@ -30,8 +30,8 @@ public class NeedleSwing extends Particle {
 	private final float size;
 	private int life;
 
-	public NeedleSwing(TextureManager textureManagerIn, World worldIn, double x, double y, double z, double modifier) {
-		super(worldIn, x, y, z);
+	public NeedleSwing(TextureManager textureManagerIn, World world, double x, double y, double z, double modifier) {
+		super(world, x, y, z);
 		this.textureManager = textureManagerIn;
 		this.size = (float)(2.0F +  modifier * 0.5F);
 		this.lifeTime = 4;

@@ -85,7 +85,7 @@ public class EntityEllyScythe extends EntityThrow {
 			if (stack.getItemDamage() != stack.getMaxDamage()) {
 				EntityItem entityitem = new EntityItem(world, posX, posY, posZ, stack);
 				entityitem.setDefaultPickupDelay();
-				world.spawnEntityInWorld(entityitem);
+				world.spawnEntity(entityitem);
 			}
 			setDead();
 		}
@@ -109,7 +109,7 @@ public class EntityEllyScythe extends EntityThrow {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().expandXyz(1D);
+		return super.getEntityBoundingBox().grow(1D);
 	}
 
 	@Override

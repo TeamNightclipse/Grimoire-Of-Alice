@@ -15,16 +15,16 @@ import net.minecraft.world.World;
 
 public class EntityItemFireProof extends EntityItem {
 
-	public EntityItemFireProof(World worldIn, double x, double y, double z) {
-		super(worldIn, x, y, z);
+	public EntityItemFireProof(World world, double x, double y, double z) {
+		super(world, x, y, z);
 	}
 
-	public EntityItemFireProof(World worldIn, double x, double y, double z, ItemStack stack) {
-		super(worldIn, x, y, z, stack);
+	public EntityItemFireProof(World world, double x, double y, double z, ItemStack stack) {
+		super(world, x, y, z, stack);
 	}
 
-	public EntityItemFireProof(World worldIn) {
-		super(worldIn);
+	public EntityItemFireProof(World world) {
+		super(world);
 	}
 
 	@Override
@@ -35,6 +35,6 @@ public class EntityItemFireProof extends EntityItem {
 
 	@Override
 	public boolean isEntityInvulnerable(DamageSource source) {
-		return source != DamageSource.outOfWorld && !source.isCreativePlayer();
+		return source != DamageSource.OUT_OF_WORLD && !source.isCreativePlayer();
 	}
 }

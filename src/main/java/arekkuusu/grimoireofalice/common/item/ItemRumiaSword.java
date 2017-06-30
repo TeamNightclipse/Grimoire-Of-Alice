@@ -55,7 +55,7 @@ public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			Vec3d vec = player.getLookVec();
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-					entityLiving.getEntityBoundingBox().offset(vec.xCoord * 2, 0, vec.zCoord * 2).expandXyz(3D), entity -> entity != player);
+					entityLiving.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(3D), entity -> entity != player);
 			list.forEach(entity -> entity.setFire(50));
 		}
 		entityLiving.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);

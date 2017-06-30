@@ -52,24 +52,25 @@ public class ItemLeaf extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!playerIn.capabilities.isCreativeMode) {
-			--itemStackIn.stackSize;
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!player.capabilities.isCreativeMode) {
+			stack.shrink(1);
 		}
 
-		if(playerIn.isSneaking()) {
+		if(player.isSneaking()) {
 			for (int j = 0; j < 8; ++j) {
-				worldIn.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, playerIn.posX, playerIn.posY, playerIn.posZ, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
 			}
 		} else {
-			DanmakuHelper.playShotSound(playerIn);
-			if (!worldIn.isRemote) {
-				DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(playerIn).setShot(LibGOAShotData.LEAF);
-				worldIn.spawnEntityInWorld(danmaku.build().asEntity());
+			DanmakuHelper.playShotSound(player);
+			if (!world.isRemote) {
+				DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(player).setShot(LibGOAShotData.LEAF);
+				world.spawnEntity(danmaku.build().asEntity());
 				danmaku.setShot(danmaku.shot.setSize(2));
 			}
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override

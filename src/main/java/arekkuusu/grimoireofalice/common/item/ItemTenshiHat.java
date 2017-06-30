@@ -33,7 +33,7 @@ public class ItemTenshiHat extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.tenshi_hat_header.name"));
 	}
 

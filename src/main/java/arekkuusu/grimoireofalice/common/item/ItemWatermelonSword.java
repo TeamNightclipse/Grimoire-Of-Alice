@@ -60,7 +60,7 @@ public class ItemWatermelonSword extends ItemModSword implements IOwnedBy {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
 					new ItemStack(ModItems.POPSICLE_STICK), false);
 			if(rest != null) {
-				attacker.dropItem(rest.getItem(), rest.stackSize);
+				attacker.dropItem(rest.getItem(), rest.getCount());
 			}
 		}
 
@@ -68,7 +68,7 @@ public class ItemWatermelonSword extends ItemModSword implements IOwnedBy {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(target.getCapability(ITEM_HANDLER_CAPABILITY, null),
 					new ItemStack(Items.MELON, itemRand.nextInt(3)), false);
 			if(rest != null) {
-				attacker.dropItem(rest.getItem(), rest.stackSize);
+				attacker.dropItem(rest.getItem(), rest.getCount());
 			}
 		}
 		else {

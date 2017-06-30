@@ -66,13 +66,13 @@ public class SpellCardContainer extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer playerIn) {
-		return playerIn.getHeldItemMainhand() == stack || playerIn.getHeldItemOffhand() == stack;
+	public boolean canInteractWith(EntityPlayer player) {
+		return player.getHeldItemMainhand() == stack || player.getHeldItemOffhand() == stack;
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		ItemStack itemstack = null;
+		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = inventorySlots.get(slotIndex);
 
 		if(slot != null && slot.getHasStack()) {
@@ -80,26 +80,26 @@ public class SpellCardContainer extends Container {
 			itemstack = itemstack1.copy();
 
 			if(slotIndex < 8) {
-				if(!mergeItemStack(itemstack1, 8, 43, true)) return null;
+				if(!mergeItemStack(itemstack1, 8, 43, true)) return ItemStack.EMPTY;
 				else {
 					slot.onSlotChange(itemstack1, itemstack);
 				}
 			}
 			else {
-				if(!mergeItemStack(itemstack1, 0, 8, false)) return null;
+				if(!mergeItemStack(itemstack1, 0, 8, false)) return ItemStack.EMPTY;
 				slot.onSlotChange(itemstack1, itemstack);
 			}
 
-			if(itemstack1.stackSize == 0) {
-				slot.putStack(null);
+			if(itemstack1.isEmpty()) {
+				slot.putStack(ItemStack.EMPTY);
 			}
 			else {
 				slot.onSlotChanged();
 			}
 
-			if(itemstack1.stackSize == itemstack.stackSize) return null;
+			if(itemstack1.getCount() == itemstack.getCount()) return ItemStack.EMPTY;
 
-			slot.onPickupFromSlot(player, itemstack1);
+			slot.onTake(player, itemstack1);
 		}
 
 		return itemstack;

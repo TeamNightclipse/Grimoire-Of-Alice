@@ -53,8 +53,8 @@ public class BlockKyoumarubotan extends BlockModBush {
 	}
 
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		canBlockStay(worldIn, pos, state);
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		canBlockStay(world, pos, state);
 	}
 
 	@Override
@@ -78,10 +78,10 @@ public class BlockKyoumarubotan extends BlockModBush {
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		IBlockState soil = worldIn.getBlockState(pos.down());
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		IBlockState soil = world.getBlockState(pos.down());
 		Block block = soil.getBlock();
-		return super.canPlaceBlockAt(worldIn, pos)
+		return super.canPlaceBlockAt(world, pos)
 				|| block == Blocks.HARDENED_CLAY
 				|| block == Blocks.STAINED_HARDENED_CLAY
 				|| block == Blocks.STONE

@@ -28,23 +28,24 @@ public class ItemSpiritualStrikeTalisman extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.getCooldownTracker().setCooldown(this, 50);
-		playerIn.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.1F, 0.1F);
-		if(!worldIn.isRemote) {
-			EntitySpiritualStrikeTalisman talisman = new EntitySpiritualStrikeTalisman(worldIn, playerIn);
-			Vec3d look = playerIn.getLookVec();
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.getCooldownTracker().setCooldown(this, 50);
+		player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.1F, 0.1F);
+		if(!world.isRemote) {
+			EntitySpiritualStrikeTalisman talisman = new EntitySpiritualStrikeTalisman(world, player);
+			Vec3d look = player.getLookVec();
 			float distance = 2F;
-			double dx = playerIn.posX + look.xCoord * distance;
-			double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
-			double dz = playerIn.posZ + look.zCoord * distance;
+			double dx = player.posX + look.x * distance;
+			double dy = player.posY + look.y * distance + player.getEyeHeight();
+			double dz = player.posZ + look.z * distance;
 			talisman.setPosition(dx, dy, dz);
-			worldIn.spawnEntityInWorld(talisman);
+			world.spawnEntity(talisman);
 		}
-		if(!playerIn.capabilities.isCreativeMode) {
-			--itemStackIn.stackSize;
+		if(!player.capabilities.isCreativeMode) {
+			stack.shrink(1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Optional.Method(modid = "danmakucore")

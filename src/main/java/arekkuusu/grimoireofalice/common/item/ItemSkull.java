@@ -47,12 +47,13 @@ public class ItemSkull extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.ORIN_NYAA, SoundCategory.PLAYERS, 0.5F, 1F);
-		if (!playerIn.capabilities.isCreativeMode) {
-			--itemStackIn.stackSize;
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		world.playSound(player, player.getPosition(), GrimoireSoundEvents.ORIN_NYAA, SoundCategory.PLAYERS, 0.5F, 1F);
+		if (!player.capabilities.isCreativeMode) {
+			stack.shrink(1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Optional.Method(modid = "danmakucore")

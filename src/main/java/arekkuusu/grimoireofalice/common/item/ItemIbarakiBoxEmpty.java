@@ -56,41 +56,45 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		RayTraceResult raytraceresult = rayTrace(worldIn, playerIn, true);
-		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		RayTraceResult raytraceresult = rayTrace(world, player, true);
+		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(player, world, stack, raytraceresult);
 		if(ret != null) return ret;
 
 		//noinspection ConstantConditions
-		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
+		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, stack);
 		else {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 
-			if(worldIn.isBlockModifiable(playerIn, blockpos)
-					&& playerIn.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, itemStackIn)) {
-				IBlockState iblockstate = worldIn.getBlockState(blockpos);
+			if(world.isBlockModifiable(player, blockpos)
+					&& player.canPlayerEdit(blockpos.offset(raytraceresult.sideHit), raytraceresult.sideHit, stack)) {
+				IBlockState iblockstate = world.getBlockState(blockpos);
 				Material material = iblockstate.getMaterial();
 				//Modified so it accepts both Water and Lava, as both return the same Item
 				if((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
-					worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
-					playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(itemStackIn, playerIn, ModItems.IBARAKI_BOX_FILLED));
+					world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
+					player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
+					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(stack, player, ModItems.IBARAKI_BOX_FILLED));
 				}
 			}
-			return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
 		}
 	}
 
 	private ItemStack fillBucket(ItemStack emptyBuckets, EntityPlayer player, Item fullBucket) {
 		if(player.capabilities.isCreativeMode) return emptyBuckets;
-		else if(--emptyBuckets.stackSize <= 0) return new ItemStack(fullBucket);
 		else {
-			if(!player.inventory.addItemStackToInventory(new ItemStack(fullBucket))) {
-				player.dropItem(new ItemStack(fullBucket), false);
-			}
+			emptyBuckets.shrink(1);
+			if(emptyBuckets.isEmpty()) return new ItemStack(fullBucket);
+			else {
+				if(!player.inventory.addItemStackToInventory(new ItemStack(fullBucket))) {
+					player.dropItem(new ItemStack(fullBucket), false);
+				}
 
-			return emptyBuckets;
+				return emptyBuckets;
+			}
 		}
 	}
 

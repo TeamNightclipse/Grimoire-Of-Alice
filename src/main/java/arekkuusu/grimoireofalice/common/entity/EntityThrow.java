@@ -102,9 +102,9 @@ public abstract class EntityThrow extends EntityThrowable {
 	protected void onImpactBlock(RayTraceResult result) {
 		BlockPos pos = result.getBlockPos();
 		IBlockState tile = world.getBlockState(pos);
-		motionX = result.hitVec.xCoord - posX;
-		motionY = result.hitVec.yCoord - posY;
-		motionZ = result.hitVec.zCoord - posZ;
+		motionX = result.hitVec.x - posX;
+		motionY = result.hitVec.y - posY;
+		motionZ = result.hitVec.z - posZ;
 		double velocity = Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
 		posX -= motionX / velocity * 0.05D;
 		posY -= motionY / velocity * 0.05D;

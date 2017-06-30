@@ -76,32 +76,33 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if(!world.isRemote) {
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 			if(timeUsed > 50) return;
 
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
 				if(isOwner(stack, player)) {
-					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().expandXyz(timeUsed), livingBase -> livingBase != player);
+					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(timeUsed), livingBase -> livingBase != player);
 					if(!list.isEmpty()) {
-						player.addChatComponentMessage(
+						player.sendMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
-						list.forEach(mob -> player.addChatComponentMessage(new TextComponentString(
+						list.forEach(mob -> player.sendMessage(new TextComponentString(
 								getColorForEntity(mob) + "- " + mob.getName() + TextFormatting.RESET + TextFormatting.ITALIC + " : {" + (int)mob.posX + ", " + (int)mob.posY + ", " + (int)mob.posZ + "}")));
-						player.addChatComponentMessage(
+						player.sendMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}
 					else {
-						player.addChatComponentMessage(new TextComponentString(TextFormatting.GOLD + ""
+						player.sendMessage(new TextComponentString(TextFormatting.GOLD + ""
 								+ new TextComponentTranslation("item.toyosatomimi.empty").getFormattedText()));
 					}
 				}

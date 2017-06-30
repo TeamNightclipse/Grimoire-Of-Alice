@@ -79,12 +79,12 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public float getBlockHardness(IBlockState state, World worldIn, BlockPos pos) {
+	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
 		switch(state.getValue(PART)) {
 			case MIDDLE:
 				return 2000F;
 			default:
-				return super.getBlockHardness(state, worldIn, pos);
+				return super.getBlockHardness(state, world, pos);
 		}
 	}
 
@@ -111,7 +111,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+	public void onEntityWalk(World world, BlockPos pos, Entity entityIn) {
 		if(entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityIn;
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
@@ -125,7 +125,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		switch(Part.fromIndex(meta)) {
 			case TOP:
 				return new TilePillarAltar().setRenderHeight(1F);
@@ -135,23 +135,24 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = player.getHeldItem(hand);
 		switch (state.getValue(PART)) {
 			case TOP:
-				TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(pos);
+				TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
 				boolean ok = false;
 				if (tile != null) {
-					if (playerIn.isSneaking()) {
-						ok = tile.removeItem(playerIn);
+					if (player.isSneaking()) {
+						ok = tile.removeItem(player);
 					}
-					else if (heldItem != null) {
-						ok = tile.addItem(playerIn, heldItem);
+					else if (!heldItem.isEmpty()) {
+						ok = tile.addItem(player, heldItem);
 					}
 				}
 				return ok;
 			default:
-				return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+				return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 		}
 	}
 
@@ -162,56 +163,56 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
 		for (int i = 1; i < 4; i++) {
 			pos = pos.up();
-			Block block = worldIn.getBlockState(pos).getBlock();
-			if (!block.isReplaceable(worldIn, pos)) {
+			Block block = world.getBlockState(pos).getBlock();
+			if (!block.isReplaceable(world, pos)) {
 				return false;
 			}
 		}
-		return worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
+		return world.getBlockState(pos).getBlock().isReplaceable(world, pos);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
 		world.setBlockState(pos.up(1), getDefaultState().withProperty(PART, Part.MIDDLE));
 		world.setBlockState(pos.up(2), getDefaultState().withProperty(PART, Part.MIDDLE));
 		world.setBlockState(pos.up(3), getDefaultState().withProperty(PART, Part.TOP));
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	}
 
 	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TilePillarAltar tile = (TilePillarAltar) worldIn.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
 		if (tile != null) {
-			if (!worldIn.isRemote) {
+			if (!world.isRemote) {
 				ItemStack output = tile.getItemStack();
 				if (output != null) {
-					EntityPlayer player = worldIn.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
+					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
 					if (player != null && !player.capabilities.isCreativeMode) {
 						ItemHandlerHelper.giveItemToPlayer(player, output);
 					}
 				}
 			}
-			worldIn.removeTileEntity(pos);
+			world.removeTileEntity(pos);
 		}
 	}
 
 	@Override
-	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+	public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state) {
 
 		switch(state.getValue(PART)) {
 			case LOWER:
 				for(int i = 0; i < 4; i++) {
-					worldIn.setBlockToAir(pos.up(i));
+					world.setBlockToAir(pos.up(i));
 				}
 				break;
 			case TOP:
 				for(int i = 0; i < 4; i++) {
-					worldIn.setBlockToAir(pos.down(i));
+					world.setBlockToAir(pos.down(i));
 				}
 				break;
 			default:
@@ -225,7 +226,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
+	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
 		return false;
 	}
 

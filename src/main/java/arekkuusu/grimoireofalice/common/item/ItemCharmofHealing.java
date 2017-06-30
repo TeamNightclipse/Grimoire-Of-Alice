@@ -22,7 +22,7 @@ public class ItemCharmofHealing extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (entityIn instanceof EntityLivingBase && entityIn.ticksExisted % 125 == 0) {
 			EntityLivingBase livingBase = (EntityLivingBase) entityIn;
 			if (livingBase.getHealth() < livingBase.getMaxHealth()) {
@@ -32,13 +32,14 @@ public class ItemCharmofHealing extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving.getHealth() < entityLiving.getMaxHealth()) {
 			stack.damageItem(1, entityLiving);
 			entityLiving.heal(2.5F);

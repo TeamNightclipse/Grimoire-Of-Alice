@@ -42,17 +42,18 @@ public class ItemHakuroukenSword extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if (!worldIn.isRemote) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if (!world.isRemote) {
 			Vec3d vec = entityLiving.getLookVec();
-			List<EntityDanmaku> list = worldIn.getEntitiesWithinAABB(EntityDanmaku.class, new AxisAlignedBB(entityLiving.getPosition())
-					.offset(vec.xCoord * 2, vec.yCoord * 2, vec.zCoord * 2).expandXyz(3D));
+			List<EntityDanmaku> list = world.getEntitiesWithinAABB(EntityDanmaku.class, new AxisAlignedBB(entityLiving.getPosition())
+					.offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D));
 			if (!list.isEmpty()) {
 				list.forEach(danmaku -> reverseDanmaku(entityLiving, danmaku));
 			}

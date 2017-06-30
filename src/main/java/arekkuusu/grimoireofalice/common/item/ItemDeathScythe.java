@@ -54,9 +54,9 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (!worldIn.isRemote) {
-			List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, entityIn.getEntityBoundingBox().expandXyz(10));
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (!world.isRemote) {
+			List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, entityIn.getEntityBoundingBox().grow(10));
 			list.stream().filter(entityMob -> entityMob.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)
 					.forEach(entityMob -> {
 						entityMob.setAttackTarget(null);
@@ -66,27 +66,28 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase playerIn, int count) {
-		if(playerIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)playerIn;
+	public void onUsingTick(ItemStack stack, EntityLivingBase user, int count) {
+		if(user instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)user;
 			double range = 16.0D;
 			Vec3d look = player.getLookVec();
 			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-			Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
+			Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + look.y * range, player.posZ + look.z * range);
 			RayTraceResult movingObjectPosition = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 			if(movingObjectPosition != null) {
-				vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
+				vec3d1 = new Vec3d(movingObjectPosition.hitVec.x, movingObjectPosition.hitVec.y, movingObjectPosition.hitVec.z);
 			}
 			EntityLivingBase entity = null;
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-					player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D),
-					entityFound -> entityFound != playerIn);
+					player.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D),
+					entityFound -> entityFound != player);
 			double d = 0.0D;
 			for(EntityLivingBase entity1 : list) {
 				float f2 = 0.3F;
@@ -104,14 +105,14 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 			if(entity != null && !player.world.isRemote) {
 				double back = 0.6D;
 				if(player.isSneaking()) {
-					entity.motionX += look.xCoord * back;
-					entity.motionY += look.yCoord * back;
-					entity.motionZ += look.zCoord * back;
+					entity.motionX += look.x * back;
+					entity.motionY += look.y * back;
+					entity.motionZ += look.z * back;
 				}
 				else if(entity.getDistanceToEntity(player) > 2) {
-					entity.motionX -= look.xCoord * back;
-					entity.motionY -= look.yCoord * back;
-					entity.motionZ -= look.zCoord * back;
+					entity.motionX -= look.x * back;
+					entity.motionY -= look.y * back;
+					entity.motionZ -= look.z * back;
 				}
 				stack.damageItem(1, player);
 			}
@@ -119,8 +120,8 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if(!world.isRemote) {
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer)entityLiving;
 				player.getCooldownTracker().setCooldown(this, 10);

@@ -13,6 +13,7 @@ import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import arekkuusu.grimoireofalice.common.core.net.MalletMessage;
 import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -64,7 +65,7 @@ public class MalletServerEvent {
 			entity.setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) entity.width, axisalignedbb.minY + (double) entity.height, axisalignedbb.minZ + (double) entity.width));
 
 			if (entity.width > f && entity.ticksExisted > 0 && !entity.world.isRemote) {
-				entity.moveEntity((double) (f - entity.width), 0, (double) (f - entity.width));
+				entity.move(MoverType.SELF, (double) (f - entity.width), 0, (double) (f - entity.width));
 			}
 		}
 	}

@@ -22,18 +22,18 @@ public class EntityKinkakuJiCeiling extends Entity {
 
 	private boolean doSound;
 
-	public EntityKinkakuJiCeiling(World worldIn) {
-		super(worldIn);
+	public EntityKinkakuJiCeiling(World world) {
+		super(world);
 	}
 
-	public EntityKinkakuJiCeiling(World worldIn, Entity entity) {
-		super(worldIn);
+	public EntityKinkakuJiCeiling(World world, Entity entity) {
+		super(world);
 		setPosition(entity.posX, entity.posY + 5, entity.posZ);
 		rotationYaw = entity.rotationYaw % 360.0F;
 	}
 
-	public EntityKinkakuJiCeiling(World worldIn, EntityLivingBase livingBase, double x, double y, double z) {
-		super(worldIn);
+	public EntityKinkakuJiCeiling(World world, EntityLivingBase livingBase, double x, double y, double z) {
+		super(world);
 		setPosition(x, y, z);
 		rotationYaw = livingBase.rotationYaw % 360.0F;
 	}
@@ -43,7 +43,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 		super.onUpdate();
 		if (!world.isRemote) {
 			if (!onGround && motionY < 0) {
-				world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.fallingBlock, 50));
+				world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.FALLING_BLOCK, 50));
 			}
 			if (ticksExisted > 2000) {
 				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
@@ -74,7 +74,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 	}
 
 	@Override
-	public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
+	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		if(!world.isRemote && !isDead && onGround) {
             if(!player.capabilities.isCreativeMode) {
                 dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);

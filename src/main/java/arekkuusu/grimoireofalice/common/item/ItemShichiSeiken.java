@@ -50,21 +50,21 @@ public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
 		if (ConfigHandler.grimoireOfAlice.features.allowGoodDrops) {
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(state.getBlock())))
 					.mapToObj(OreDictionary::getOreName)
 					.anyMatch(s -> s.startsWith("ore"));
-			Item item = state.getBlock().getItemDropped(state, worldIn.rand, 0);
-			if (!worldIn.isRemote && item != null && isOre) {
-				for (int i = 0; i < worldIn.rand.nextInt(3); i++) {
-					EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item));
-					worldIn.spawnEntityInWorld(entityItem);
+			Item item = state.getBlock().getItemDropped(state, world.rand, 0);
+			if (!world.isRemote && item != null && isOre) {
+				for (int i = 0; i < world.rand.nextInt(3); i++) {
+					EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item));
+					world.spawnEntity(entityItem);
 				}
 			}
 		}
-		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
+		return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
 	}
 
 	@Override

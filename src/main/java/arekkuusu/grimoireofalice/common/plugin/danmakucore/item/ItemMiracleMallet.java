@@ -66,9 +66,10 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		useMallet(playerIn, hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		useMallet(player, hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 			if (player.isSneaking() && !player.world.isRemote) {
 				Vec3d vec = player.getLookVec();
 				List<EntityDanmaku> list = player.world.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox()
-						.offset(vec.xCoord * 10, vec.yCoord * 10, vec.zCoord * 10).expandXyz(10));
+						.offset(vec.x * 10, vec.y * 10, vec.z * 10).grow(10));
 				for (EntityDanmaku danmaku : list) {
 					ShotData data = danmaku.getShotData();
 					if (data.getSizeX() < 5 && data.getSizeY() < 5 && data.getSizeZ() < 5)
@@ -89,12 +90,12 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 			else if (!player.world.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
 				Vec3d vec = player.getLookVec();
 				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-						entityLiving.getEntityBoundingBox().offset(vec.xCoord * 4, 0, vec.zCoord * 4).expandXyz(3D), entity -> entity != player);
+						entityLiving.getEntityBoundingBox().offset(vec.x * 4, 0, vec.z * 4).grow(3D), entity -> entity != player);
 				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10F + itemRand.nextInt(10)));
 
 				for (int i = 0; i < 4; i++) {
 					EntityThrowable lantern = new EntityMiracleLantern(player.world, player);
-					player.world.spawnEntityInWorld(lantern);
+					player.world.spawnEntity(lantern);
 					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
 							, 0F, 0.2F + 0.1F * itemRand.nextInt(3), 3F);
 				}
@@ -105,7 +106,7 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		if (target instanceof EntityPlayer) {
 			useMallet((EntityPlayer) target, hand);
 		}

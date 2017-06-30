@@ -74,55 +74,56 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		boolean isCreative = playerIn.capabilities.isCreativeMode;
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		boolean isCreative = player.capabilities.isCreativeMode;
 
 		ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
-		if (playerIn.isSneaking()) {
-			if (isCreative || playerIn.inventory.hasItemStack(fireCharge)) {
-				playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-				if (!worldIn.isRemote) {
+		if (player.isSneaking()) {
+			if (isCreative || player.inventory.hasItemStack(fireCharge)) {
+				player.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+				if (!world.isRemote) {
 					for (int i = 0; i < 3; i++) {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
-								.setUser(playerIn)
+								.setUser(player)
 								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 								.build();
 
-						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(playerIn), danmaku, 1, 10, 5);
+						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 10, 5);
 					}
 
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, playerIn, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
-					worldIn.spawnEntityInWorld(circle);
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
+					world.spawnEntity(circle);
 				}
 
 				if (!isCreative) {
 					//noinspection ConstantConditions
-					if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+					if (player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 						//noinspection ConstantConditions
-						playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(playerIn, fireCharge), 1, false);
+						player.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(player, fireCharge), 1, false);
 					}
 				}
-				itemStackIn.damageItem(10, playerIn);
-				playerIn.getCooldownTracker().setCooldown(this, 40);
+				stack.damageItem(10, player);
+				player.getCooldownTracker().setCooldown(this, 40);
 			}
 		}
 		else {
-			playerIn.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-			if (!worldIn.isRemote) {
-				EntityFierySword fierySword = new EntityFierySword(worldIn, playerIn);
-				worldIn.spawnEntityInWorld(fierySword);
+			player.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
+			if (!world.isRemote) {
+				EntityFierySword fierySword = new EntityFierySword(world, player);
+				world.spawnEntity(fierySword);
 			}
-			itemStackIn.damageItem(1, playerIn);
-			playerIn.getCooldownTracker().setCooldown(this, 30);
+			stack.damageItem(1, player);
+			player.getCooldownTracker().setCooldown(this, 30);
 		}
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	private int getSlotFor(EntityPlayer player, ItemStack stack) {
-		for (int i = 0; i < player.inventory.mainInventory.length; ++i) {
-			if (player.inventory.mainInventory[i] != null && stack.getItem() == player.inventory.mainInventory[i].getItem()
-					&& ItemStack.areItemStackTagsEqual(stack, player.inventory.mainInventory[i])) {
+		for (int i = 0; i < player.inventory.mainInventory.size(); ++i) {
+			ItemStack invStack = player.inventory.mainInventory.get(i);
+			if (!invStack.isEmpty() && stack.getItem() == invStack.getItem() && ItemStack.areItemStackTagsEqual(stack, invStack)) {
 				return i;
 			}
 		}
@@ -131,9 +132,9 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
-			float y, float z) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
 		BlockPos block = pos.offset(facing);
+		ItemStack stack = player.getHeldItem(hand);
 
 		if(!player.canPlayerEdit(block, facing, stack)) return EnumActionResult.PASS;
 		else {

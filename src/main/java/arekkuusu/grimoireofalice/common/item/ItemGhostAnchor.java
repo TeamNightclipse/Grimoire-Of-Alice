@@ -43,19 +43,19 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if (!worldIn.isRemote && isSelected && entityIn instanceof EntityLivingBase) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
+        if (!world.isRemote && isSelected && entityIn instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) entityIn;
             if (player.motionX * player.motionX + player.motionZ * player.motionZ + player.motionY * player.motionY > 9D) {
-                List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity(player,
+                List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player,
                         player.getEntityBoundingBox().expand(2.0D, 2.0D, 2.0D));
                 for (Entity entity : list) {
                     if (!entity.canBeCollidedWith()) {
                         continue;
                     }
                     entity.attackEntityFrom(DamageSource.causeMobDamage(player), 16.0F);
-                    if (worldIn instanceof WorldServer) {
-                        ((WorldServer) worldIn).spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, player.posX, player.posY + 1, player.posZ, 5
+                    if (world instanceof WorldServer) {
+                        ((WorldServer) world).spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, player.posX, player.posY + 1, player.posZ, 5
                                 , 0D, 0D, 0D, 0D);
                     }
 
@@ -64,7 +64,7 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
                         playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.posY, playerMP.prevPosZ);
                     }
 
-                    worldIn.playSound(null, player.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 1F, 1F );
+                    world.playSound(null, player.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 1F, 1F );
 
                     player.motionX = 0;
                     player.motionZ = 0;
@@ -79,13 +79,14 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
     }
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;

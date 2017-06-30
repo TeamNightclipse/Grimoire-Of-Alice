@@ -26,10 +26,10 @@ public class StopWatchHandler {
 	public void onTick(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase living = event.getEntityLiving();
 		if(!living.world.isRemote && !clocks.isEmpty()) {
-			AxisAlignedBB livingAABB = living.getEntityBoundingBox().expandXyz(EntityStopWatch.RANGE);
+			AxisAlignedBB livingAABB = living.getEntityBoundingBox().grow(EntityStopWatch.RANGE);
 
 			for(EntityStopWatch clock : clocks) {
-				if(livingAABB.isVecInside(clock.getPositionVector())) {
+				if(livingAABB.contains(clock.getPositionVector())) {
 					if(clock.getExcludedPlayers().stream().anyMatch(entity -> entity == living)) {
 						return;
 					}

@@ -47,16 +47,17 @@ public class ItemYoukaiBook extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isRemote) {
-			EntityYoukaiBook book = new EntityYoukaiBook(worldIn);
-			book.setPosition(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
-			worldIn.spawnEntityInWorld(book);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!world.isRemote) {
+			EntityYoukaiBook book = new EntityYoukaiBook(world);
+			book.setPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+			world.spawnEntity(book);
 		}
-		if (!playerIn.capabilities.isCreativeMode) {
-			--itemStackIn.stackSize;
+		if (!player.capabilities.isCreativeMode) {
+			stack.shrink(1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Optional.Method(modid = "danmakucore")

@@ -97,7 +97,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 			for (int i = 0; i < handler.getSlots(); i++) {
 				if (!entity.world.isRemote) {
 					EntityItem item = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, handler.extractItem(i, 64, false));
-					entity.world.spawnEntityInWorld(item);
+					entity.world.spawnEntity(item);
 				}
 			}
 			entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, null);
@@ -145,26 +145,27 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 		return 1;
 	}
 
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (!playerIn.isSneaking()) {
-			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(itemStackIn);
-			ItemStack itemstack = playerIn.getItemStackFromSlot(entityequipmentslot);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!player.isSneaking()) {
+			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(stack);
+			ItemStack slotStack = player.getItemStackFromSlot(entityequipmentslot);
 
-			if (itemstack == null) {
-				playerIn.setItemStackToSlot(entityequipmentslot, itemStackIn.copy());
-				itemStackIn.stackSize = 0;
+			if (slotStack.isEmpty()) {
+				player.setItemStackToSlot(entityequipmentslot, stack.copy());
+				stack.setCount(0);
 			}
 		}
 		else {
-			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.HAT, worldIn, hand.ordinal(), -1, -1);
+			player.openGui(GrimoireOfAlice.instance, LibGuiID.HAT, world, hand.ordinal(), -1, -1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		if(!player.isSneaking()) {
-			world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().expandXyz(5)).forEach(i -> i.onCollideWithPlayer(player));
+			world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().grow(5)).forEach(i -> i.onCollideWithPlayer(player));
 		}
 	}
 

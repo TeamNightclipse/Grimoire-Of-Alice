@@ -59,7 +59,7 @@ public class HouraiEvents {
 
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
 							player.hurtResistantTime);
-					world.spawnEntityInWorld(circle);
+					world.spawnEntity(circle);
 				} else {
 					@SuppressWarnings("ConstantConditions")
 					boolean potion = player.isPotionActive(ModPotions.ELIXIR);

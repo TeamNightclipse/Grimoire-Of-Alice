@@ -43,12 +43,12 @@ public class EntityStopWatch extends Entity {
 	private Map<Entity, double[]> dataEntities = new HashMap<>();
 	private List<EntityDanmaku> frozenDanmaku = new ArrayList<>();
 
-	public EntityStopWatch(World worldIn) {
-		super(worldIn);
+	public EntityStopWatch(World world) {
+		super(world);
 	}
 
-	public EntityStopWatch(World worldIn, EntityPlayer player) {
-		super(worldIn);
+	public EntityStopWatch(World world, EntityPlayer player) {
+		super(world);
 		user = player;
 		excludedPlayers.add(user);
 		ignoreFrustumCheck = true;
@@ -66,7 +66,7 @@ public class EntityStopWatch extends Entity {
 			}
 			else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
-				if (user.isHandActive() && stack != null && stack.getItem() == ModItems.STOP_WATCH) {
+				if (user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.STOP_WATCH) {
 					stopEntity();
 					return;
 				}
@@ -74,15 +74,15 @@ public class EntityStopWatch extends Entity {
 
 			Vec3d look = user.getLookVec();
 			float distance = 1F;
-			double dx = user.posX + look.xCoord + distance;
+			double dx = user.posX + look.x + distance;
 			double dy = user.posY + user.getEyeHeight() - 1;
-			double dz = user.posZ + look.zCoord + distance;
+			double dz = user.posZ + look.z + distance;
 			setPosition(dx, dy, dz);
 
 			if (!world.isRemote) {
 				world.setWorldTime(world.getWorldTime() - 1);
 
-				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().expandXyz(RANGE));
+				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().grow(RANGE));
 				list.forEach(this::haltEntity);
 			}
 		}

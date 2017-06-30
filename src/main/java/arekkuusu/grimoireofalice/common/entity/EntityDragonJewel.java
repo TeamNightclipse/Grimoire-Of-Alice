@@ -30,12 +30,12 @@ public class EntityDragonJewel extends Entity {
 
 	private EntityLivingBase host;
 
-	public EntityDragonJewel(World worldIn) {
-		super(worldIn);
+	public EntityDragonJewel(World world) {
+		super(world);
 	}
 
-	public EntityDragonJewel(World worldIn, EntityLivingBase player) {
-		super(worldIn);
+	public EntityDragonJewel(World world, EntityLivingBase player) {
+		super(world);
 		host = player;
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
@@ -71,14 +71,14 @@ public class EntityDragonJewel extends Entity {
 
 	private void attackEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
-		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.expandXyz(20.0D));
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.grow(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityLiving).map(mob -> (EntityLiving) mob).forEach(mob -> {
 			if(!world.isRemote) {
 				if (mob instanceof EntityMob || mob.getAttackTarget() == host) {
 					mob.setRevengeTarget(null);
 
 					if (mob.getHealth() > 1) {
-						mob.attackEntityFrom(DamageSource.dragonBreath, rand.nextInt(25));
+						mob.attackEntityFrom(DamageSource.DRAGON_BREATH, rand.nextInt(25));
 					}
 				}
 			}

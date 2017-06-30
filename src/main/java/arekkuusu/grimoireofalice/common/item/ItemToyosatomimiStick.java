@@ -50,14 +50,15 @@ public class ItemToyosatomimiStick extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (playerIn.experienceLevel > 0 && !playerIn.capabilities.isCreativeMode) {
-			playerIn.addExperienceLevel(-1);
-			playerIn.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
-			itemStackIn.damageItem(1, playerIn);
-			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (player.experienceLevel > 0 && !player.capabilities.isCreativeMode) {
+			player.addExperienceLevel(-1);
+			player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
+			stack.damageItem(1, player);
+			return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 		}
-		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
 	}
 
 	@Override

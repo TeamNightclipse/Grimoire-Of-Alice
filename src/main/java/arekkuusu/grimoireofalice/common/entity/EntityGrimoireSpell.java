@@ -39,8 +39,8 @@ public class EntityGrimoireSpell extends Entity {
 		super(world);
 	}
 
-	public EntityGrimoireSpell(World worldIn, EntityPlayer entityLiving, int end) {
-		super(worldIn);
+	public EntityGrimoireSpell(World world, EntityPlayer entityLiving, int end) {
+		super(world);
 		setSize(0.5F, 0.5F);
 		setEndTime(end);
 		host = entityLiving;

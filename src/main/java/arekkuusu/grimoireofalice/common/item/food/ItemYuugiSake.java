@@ -44,17 +44,17 @@ public class ItemYuugiSake extends ItemModFood implements IOwnedBy {
 	}
 
 	@Override
-	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
-		super.onFoodEaten(stack, worldIn, player);
+	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+		super.onFoodEaten(stack, world, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 4800, 5));
 		player.getCooldownTracker().setCooldown(this, 50);
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
+	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer) {
-			entityLiving.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-			onFoodEaten(stack, worldIn, (EntityPlayer)entityLiving);
+			entityLiving.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			onFoodEaten(stack, world, (EntityPlayer)entityLiving);
 		}
 		return stack;
 	}

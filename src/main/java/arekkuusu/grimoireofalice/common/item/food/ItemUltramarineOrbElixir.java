@@ -63,7 +63,7 @@ public class ItemUltramarineOrbElixir extends ItemModFood implements IOwnedBy {
 		player.addPotionEffect(new PotionEffect(ModPotions.ELIXIR, 1000, 0));
 		if(!world.isRemote) {
 			EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 1000);
-			world.spawnEntityInWorld(circle);
+			world.spawnEntity(circle);
 		}
 		player.getCooldownTracker().setCooldown(this, 50);
 	}

@@ -60,12 +60,13 @@ public class ItemSyringe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		itemStackIn.damageItem(2, playerIn);
-		doPotionEffect(playerIn);
-		playerIn.attackEntityFrom(DamageSource.generic, 3F);
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		stack.damageItem(2, player);
+		doPotionEffect(player);
+		player.attackEntityFrom(DamageSource.GENERIC, 3F);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override

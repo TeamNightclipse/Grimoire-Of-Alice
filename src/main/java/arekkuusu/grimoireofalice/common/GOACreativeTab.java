@@ -17,12 +17,13 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GOACreativeTab extends CreativeTabs {
 
-	private List<ItemStack> list;
+	private NonNullList<ItemStack> list;
 
 	GOACreativeTab() {
 		super(LibMod.MODID);
@@ -32,14 +33,8 @@ public class GOACreativeTab extends CreativeTabs {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ItemStack getIconItemStack() {
+	public ItemStack getTabIconItem() {
 		return new ItemStack(ModItems.MIRACLE_MALLET);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() {
-		return getIconItemStack().getItem();
 	}
 
 	@Override
@@ -49,7 +44,7 @@ public class GOACreativeTab extends CreativeTabs {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void displayAllRelevantItems(List<ItemStack> list) {
+	public void displayAllRelevantItems(NonNullList<ItemStack> list) {
 		this.list = list;
 
 		//Blocks

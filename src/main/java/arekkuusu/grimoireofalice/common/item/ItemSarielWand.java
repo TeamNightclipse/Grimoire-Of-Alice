@@ -16,8 +16,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.SkeletonType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
@@ -74,17 +74,18 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand) {
-		if (!itemStackIn.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!stack.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, stack);
 
-		if (isOwner(itemStackIn, player)) {
+		if (isOwner(stack, player)) {
 			player.setActiveHand(hand);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			setProfile(stack, player);
@@ -92,30 +93,30 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
-			float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
 		if (facing != EnumFacing.DOWN) {
-			Block block = worldIn.getBlockState(pos).getBlock();
-			if (block.isReplaceable(worldIn, pos)) {
+			Block block = world.getBlockState(pos).getBlock();
+			if (block.isReplaceable(world, pos)) {
 				facing = EnumFacing.UP;
 				pos = pos.down();
 			} else {
-				if (!worldIn.getBlockState(pos).getMaterial().isSolid() && !worldIn.isSideSolid(pos, facing, true)) {
+				if (!world.getBlockState(pos).getMaterial().isSolid() && !world.isSideSolid(pos, facing, true)) {
 					return EnumActionResult.FAIL;
 				}
 				pos = pos.offset(facing);
 			}
 
-			if (playerIn.canPlayerEdit(pos, facing, stack) && Blocks.SKULL.canPlaceBlockAt(worldIn, pos)) {
-				if (!worldIn.isRemote) {
-					worldIn.setBlockState(pos, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, facing), 11);
+			if (player.canPlayerEdit(pos, facing, stack) && Blocks.SKULL.canPlaceBlockAt(world, pos)) {
+				if (!world.isRemote) {
+					world.setBlockState(pos, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, facing), 11);
 					int i = 0;
 
 					if (facing == EnumFacing.UP) {
-						i = MathHelper.floor((playerIn.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
+						i = MathHelper.floor((player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
 					}
 
-					TileEntity tileentity = worldIn.getTileEntity(pos);
+					TileEntity tileentity = world.getTileEntity(pos);
 
 					if (tileentity instanceof TileEntitySkull) {
 						TileEntitySkull tileentityskull = (TileEntitySkull) tileentity;
@@ -129,10 +130,10 @@ public class ItemSarielWand extends ItemSwordOwner {
 						}
 
 						tileentityskull.setSkullRotation(i);
-						Blocks.SKULL.checkWitherSpawn(worldIn, pos, tileentityskull);
+						Blocks.SKULL.checkWitherSpawn(world, pos, tileentityskull);
 					}
 				}
-				playerIn.getCooldownTracker().setCooldown(this, 500);
+				player.getCooldownTracker().setCooldown(this, 500);
 				return EnumActionResult.SUCCESS;
 			}
 		}
@@ -143,12 +144,9 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if (target instanceof EntitySkeleton) {
-			EntitySkeleton skeleton = (EntitySkeleton) target;
-			if (skeleton.getSkeletonType() == SkeletonType.NORMAL) {
-				setType(stack, 0);
-			} else {
-				setType(stack, 1);
-			}
+			setType(stack, 0);
+		} else if(target instanceof EntityWitherSkeleton) {
+			setType(stack, 1);
 		} else if (target instanceof EntityZombie) {
 			setType(stack, 2);
 		} else if (target instanceof EntityPlayer) {

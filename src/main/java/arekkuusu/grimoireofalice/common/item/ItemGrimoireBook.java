@@ -52,9 +52,10 @@ public class ItemGrimoireBook extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -63,11 +64,11 @@ public class ItemGrimoireBook extends ItemMod {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		if(!worldIn.isRemote && entityLiving instanceof EntityPlayer) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if(!world.isRemote && entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
-			EntityGrimoireSpell circle = new EntityGrimoireSpell(worldIn, player, 500);
-			worldIn.spawnEntityInWorld(circle);
+			EntityGrimoireSpell circle = new EntityGrimoireSpell(world, player, 500);
+			world.spawnEntity(circle);
 			player.getCooldownTracker().setCooldown(this, 500);
 		}
 	}

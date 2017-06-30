@@ -29,12 +29,12 @@ public class EntityCameraSquare extends Entity {
     private EntityPlayer player;
     private int maxSize;
 
-    public EntityCameraSquare(World worldIn) {
-        super(worldIn);
+    public EntityCameraSquare(World world) {
+        super(world);
     }
 
-    public EntityCameraSquare(World worldIn, EntityPlayer player, int maxSize) {
-        super(worldIn);
+    public EntityCameraSquare(World world, EntityPlayer player, int maxSize) {
+        super(world);
         this.player = player;
         this.maxSize = maxSize;
     }

@@ -54,26 +54,27 @@ public class ItemCursedDecoyDoll extends ItemMod implements IOwnedBy {
 			EntityCursedDecoyDoll doll = new EntityCursedDecoyDoll(world, player);
 			Vec3d look = player.getLookVec();
 			float distance = 2F;
-			double dx = player.posX + look.xCoord * distance;
+			double dx = player.posX + look.x * distance;
 			double dy = player.posY;
-			double dz = player.posZ + look.zCoord * distance;
+			double dz = player.posZ + look.z * distance;
 			doll.setPosition(dx, dy, dz);
-			world.spawnEntityInWorld(doll);
+			world.spawnEntity(doll);
 		}
 		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-		--stack.stackSize;
+		stack.shrink(1);
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		spawnDoll(itemStackIn, worldIn, playerIn);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		spawnDoll(stack, world, player);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
-		spawnDoll(stack, worldIn, playerIn);
+		spawnDoll(player.getHeldItem(hand), world, player);
 		return EnumActionResult.SUCCESS;
 	}
 

@@ -46,9 +46,10 @@ public class ItemInstrument extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -72,10 +73,10 @@ public class ItemInstrument extends ItemMod {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
-		EntityPlayer playerIn = (EntityPlayer) entityLiving;
-		if (!playerIn.capabilities.isCreativeMode) {
-			playerIn.getCooldownTracker().setCooldown(this, 15);
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		EntityPlayer player = (EntityPlayer) entityLiving;
+		if (!player.capabilities.isCreativeMode) {
+			player.getCooldownTracker().setCooldown(this, 15);
 		}
 	}
 

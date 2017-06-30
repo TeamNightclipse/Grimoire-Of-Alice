@@ -76,12 +76,12 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 			double range = 50.0D;
 			Vec3d look = entityLiving.getLookVec();
 			Vec3d vec3d = new Vec3d(entityLiving.posX, entityLiving.posY + entityLiving.getEyeHeight(), entityLiving.posZ);
-			Vec3d vec3d1 = new Vec3d(entityLiving.posX + look.xCoord * range, entityLiving.posY + look.yCoord * range, entityLiving.posZ + look.zCoord * range);
+			Vec3d vec3d1 = new Vec3d(entityLiving.posX + look.x * range, entityLiving.posY + look.y * range, entityLiving.posZ + look.z * range);
 			RayTraceResult traceResult = entityLiving.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
 
 			List<Entity> list = entityLiving.world.getEntitiesInAABBexcluding(entityLiving
-					, entityLiving.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D)
+					, entityLiving.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D)
 					, Entity::canBeCollidedWith);
 
 			Entity entity = null;
@@ -98,7 +98,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 			}
 
 			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, entity);
-			entityLiving.world.spawnEntityInWorld(entityNetherSoul);
+			entityLiving.world.spawnEntity(entityNetherSoul);
 			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
 		}
 		if (entityLiving instanceof EntityPlayer) {
@@ -108,14 +108,15 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(isOwner(stack, player)) {
@@ -132,22 +133,22 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 						spawnSmoke(player, -itemRand.nextDouble(), itemRand.nextDouble());
 					}
 				}
-				if(!worldIn.isRemote) {
-					List<EntityMob> list = worldIn.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().expandXyz(4.0D));
+				if(!world.isRemote) {
+					List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(4.0D));
 					for(EntityMob mob : list) {
-						mob.attackEntityFrom(DamageSource.magic, convert);
+						mob.attackEntityFrom(DamageSource.MAGIC, convert);
 						Vec3d playerPos = player.getPositionVector();
 						Vec3d mobPos = mob.getPositionVector();
 						double ratio = playerPos.distanceTo(mobPos) / 4;
 						double scaling = 1 - ratio;
 						Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-						mob.motionX = -motion.xCoord * 2;
+						mob.motionX = -motion.x * 2;
 						mob.motionY = .3F;
-						mob.motionZ = -motion.zCoord * 2;
+						mob.motionZ = -motion.z * 2;
 					}
 				}
 			}
-			worldIn.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERDRAGON_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
+			world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERDRAGON_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
 		}
 	}
 

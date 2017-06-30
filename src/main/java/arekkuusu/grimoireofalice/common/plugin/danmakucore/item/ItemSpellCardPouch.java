@@ -101,10 +101,11 @@ public class ItemSpellCardPouch extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(@Nonnull ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!playerIn.isSneaking()) {
-			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, worldIn, hand.ordinal(), -1, -1);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!player.isSneaking()) {
+			player.openGui(GrimoireOfAlice.instance, LibGuiID.POUCH_BAG, world, hand.ordinal(), -1, -1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 }

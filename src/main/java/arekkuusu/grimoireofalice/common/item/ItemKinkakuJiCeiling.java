@@ -39,22 +39,23 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
 		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.seamless_ceiling_of_kinkaku_ji_header.name"));
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isRemote) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!world.isRemote) {
 			double range = 50.0D;
-			Vec3d look = playerIn.getLookVec();
-			Vec3d vec3d = new Vec3d(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
-			Vec3d vec3d1 = new Vec3d(playerIn.posX + look.xCoord * range, playerIn.posY + look.yCoord * range, playerIn.posZ + look.zCoord * range);
-			RayTraceResult traceResult = playerIn.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
+			Vec3d look = player.getLookVec();
+			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+			Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + look.y * range, player.posZ + look.z * range);
+			RayTraceResult traceResult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
 
-			List<Entity> list = playerIn.world.getEntitiesInAABBexcluding(playerIn
-					, playerIn.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D)
+			List<Entity> list = player.world.getEntitiesInAABBexcluding(player
+					, player.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D)
 					, Entity::canBeCollidedWith);
 
 			Entity entity = null;
@@ -72,22 +73,22 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 
 			EntityKinkakuJiCeiling ceiling;
 			if(entity != null) {
-				ceiling = new EntityKinkakuJiCeiling(playerIn.world, entity);
+				ceiling = new EntityKinkakuJiCeiling(player.world, entity);
 			}
 			else {
 				float distance = 15F;
-				double dx = playerIn.posX + look.xCoord * distance;
-				double dy = playerIn.posY + look.yCoord * distance + playerIn.getEyeHeight();
-				double dz = playerIn.posZ + look.zCoord * distance;
-                if(!isSafe(worldIn, new BlockPos(dx, dy, dz))) {
-                    return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+				double dx = player.posX + look.x * distance;
+				double dy = player.posY + look.y * distance + player.getEyeHeight();
+				double dz = player.posZ + look.z * distance;
+                if(!isSafe(world, new BlockPos(dx, dy, dz))) {
+                    return new ActionResult<>(EnumActionResult.FAIL, stack);
                 }
-				ceiling = new EntityKinkakuJiCeiling(playerIn.world, playerIn, dx, dy, dz);
+				ceiling = new EntityKinkakuJiCeiling(player.world, player, dx, dy, dz);
 			}
-			playerIn.world.spawnEntityInWorld(ceiling);
-			--itemStackIn.stackSize;
+			player.world.spawnEntity(ceiling);
+			stack.shrink(1);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	private boolean isSafe(World world, BlockPos pos) {
@@ -96,10 +97,10 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
     }
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
-		if(!playerIn.world.isRemote) {
-			EntityKinkakuJiCeiling ceiling = new EntityKinkakuJiCeiling(playerIn.world, target);
-			playerIn.world.spawnEntityInWorld(ceiling);
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
+		if(!player.world.isRemote) {
+			EntityKinkakuJiCeiling ceiling = new EntityKinkakuJiCeiling(player.world, target);
+			player.world.spawnEntity(ceiling);
 		}
 		return true;
 	}

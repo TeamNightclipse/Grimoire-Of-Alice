@@ -67,13 +67,14 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entityLiving;
 			if(player.isSneaking()) {
@@ -90,28 +91,28 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 				durationSeconds *= 1.5F;
 
 				DanmakuHelper.playShotSound(player);
-				if(!worldIn.isRemote) {
-					EntityEllyScythe scythe = new EntityEllyScythe(worldIn, player, stack, durationSeconds);
+				if(!world.isRemote) {
+					EntityEllyScythe scythe = new EntityEllyScythe(world, player, stack, durationSeconds);
 					scythe.setCritical(critical);
 					Vec3d look = player.getLookVec();
 					float distance = 1.5F;
-					double dx = player.posX + look.xCoord * distance;
-					double dz = player.posZ + look.zCoord * distance;
+					double dx = player.posX + look.x * distance;
+					double dz = player.posZ + look.z * distance;
 					scythe.setPosition(dx, player.posY + 1.5, dz);
-					worldIn.spawnEntityInWorld(scythe);
+					world.spawnEntity(scythe);
 				}
 
 				if(!player.capabilities.isCreativeMode) {
-					player.inventory.mainInventory[player.inventory.currentItem] = null;
+					player.inventory.mainInventory.set(player.inventory.currentItem, ItemStack.EMPTY);
 				}
 			}
-			else if(!worldIn.isRemote) {
+			else if(!world.isRemote) {
 				for(int i = 0; i < 25; i++) {
 					DanmakuHelper.playShotSound(player);
 					spawnGroundDanmaku(player);
 				}
-				EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
-				worldIn.spawnEntityInWorld(circle);
+				EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
+				world.spawnEntity(circle);
 				player.getCooldownTracker().setCooldown(this, 50);
 			}
 		}
@@ -135,7 +136,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 				.setPos(spawnPos)
 				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
 				.build().asEntity();
-		player.world.spawnEntityInWorld(danmaku);
+		player.world.spawnEntity(danmaku);
 	}
 
 	@Override

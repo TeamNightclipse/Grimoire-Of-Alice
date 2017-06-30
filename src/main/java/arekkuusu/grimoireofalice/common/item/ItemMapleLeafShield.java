@@ -54,7 +54,7 @@ public class ItemMapleLeafShield extends ItemModShield implements IOwnedBy {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		entityLiving.addPotionEffect(new PotionEffect(MobEffects.SPEED, 240, 0));
 	}
 

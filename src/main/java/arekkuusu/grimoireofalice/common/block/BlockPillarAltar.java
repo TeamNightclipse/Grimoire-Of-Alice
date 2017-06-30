@@ -57,26 +57,27 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
-			@Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TilePillarAltar tile = (TilePillarAltar)worldIn.getTileEntity(pos);
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = player.getHeldItem(hand);
+		TilePillarAltar tile = (TilePillarAltar)world.getTileEntity(pos);
 		boolean ok = false;
 		if(tile != null) {
-			if(playerIn.isSneaking()) {
-				ok = tile.removeItem(playerIn);
+			if(player.isSneaking()) {
+				ok = tile.removeItem(player);
 			}
-			else if(heldItem != null && heldItem.stackSize > 0) {
-				ok = tile.addItem(playerIn, heldItem);
+			else if(!heldItem.isEmpty()) {
+				ok = tile.addItem(player, heldItem);
 			}
 		}
 		return ok;
 	}
 
 	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		ITileItemHolder tile = (ITileItemHolder) worldIn.getTileEntity(pos);
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		ITileItemHolder tile = (ITileItemHolder) world.getTileEntity(pos);
 		if (tile != null) tile.destroy();
-		worldIn.removeTileEntity(pos);
+		world.removeTileEntity(pos);
 	}
 
 	@Override
@@ -104,7 +105,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 									 EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
@@ -123,7 +124,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TilePillarAltar().setRenderHeight(1.4F);
 	}
 

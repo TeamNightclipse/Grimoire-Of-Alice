@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -53,14 +54,14 @@ public class YukkuriEvent {
 
 	@SubscribeEvent
 	public void livingDeathEvent(LivingDeathEvent event) {
-		Entity attacker = event.getSource().getEntity();
+		Entity attacker = event.getSource().getTrueSource();
 		if (attacker != null && !attacker.world.isRemote && attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker;
 			ItemStack heldItem = player.getHeldItemMainhand();
-			if (heldItem == null || heldItem.getItem() != ModItems.MOCHI_HAMMER) {
+			if (!heldItem.isEmpty() || heldItem.getItem() != ModItems.MOCHI_HAMMER) {
 				heldItem = player.getHeldItemOffhand();
 			}
-			if (heldItem != null && heldItem.getItem() == ModItems.MOCHI_HAMMER && heldItem.getItem() instanceof IItemData) {
+			if (!heldItem.isEmpty() && heldItem.getItem() == ModItems.MOCHI_HAMMER && heldItem.getItem() instanceof IItemData) {
 				IItemData item = (IItemData) heldItem.getItem();
 				item.setData(heldItem, (item.getData(heldItem) + 1));
 			}
@@ -72,7 +73,7 @@ public class YukkuriEvent {
 		if (event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-			if (stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
+			if (!stack.isEmpty()&& stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
 				if ((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
 					event.setCanceled(true);
 				return;
@@ -81,7 +82,7 @@ public class YukkuriEvent {
 				event.setCanceled(true);
 				return;
 			}
-			if(event.getSource() == DamageSource.fall && isGoheiMode(player, GoheiMode.PASSIVE)) {
+			if(event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)) {
 				event.setCanceled(true);
 			}
 		}
@@ -95,7 +96,7 @@ public class YukkuriEvent {
 				event.setCanceled(true);
 				return;
 			}
-			if(event.getSource() == DamageSource.fall && isGoheiMode(player, GoheiMode.PASSIVE)) {
+			if(event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)) {
 				event.setCanceled(true);
 				return;
 			}
@@ -111,7 +112,7 @@ public class YukkuriEvent {
 
 				for (int i = 0; i < capability.getSlots(); i++) {
 					ItemStack stack = capability.getStackInSlot(i);
-					if (stack != null && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
+					if (!stack.isEmpty() && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
 						capability.extractItem(i, 1, false);
 						player.playSound(SoundEvents.BLOCK_GRASS_BREAK, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
 						event.setCanceled(true);
@@ -121,7 +122,7 @@ public class YukkuriEvent {
 			}
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-			if(stack != null && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
+			if(!stack.isEmpty() && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
 				if ((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())
 					event.setCanceled(true);
 			}
@@ -159,8 +160,8 @@ public class YukkuriEvent {
 
 	private boolean isUsingItem(EntityLivingBase base, Item item) {
 		ItemStack stack = base.getHeldItemMainhand();
-		if (stack == null) stack = base.getHeldItemOffhand();
-		return stack != null && stack.getItem() == item && base.isHandActive();
+		if (stack.isEmpty()) stack = base.getHeldItemOffhand();
+		return !stack.isEmpty() && stack.getItem() == item && base.isHandActive();
 	}
 
 	private boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
@@ -168,9 +169,9 @@ public class YukkuriEvent {
 		return hasItemStack(player.inventory.mainInventory, stack) && getValidMode(player.inventory.mainInventory, stack, mode);
 	}
 
-	private boolean hasItemStack(ItemStack[] stacks, ItemStack itemStackIn) {
+	private boolean hasItemStack(NonNullList<ItemStack> stacks, ItemStack stack) {
 		for (ItemStack itemStack : stacks) {
-			if (itemStack != null && itemStack.isItemEqualIgnoreDurability(itemStackIn)) {
+			if (!itemStack.isEmpty() && itemStack.isItemEqualIgnoreDurability(stack)) {
 				return true;
 			}
 		}
@@ -178,9 +179,9 @@ public class YukkuriEvent {
 		return false;
 	}
 
-	private boolean getValidMode(ItemStack[] stacks, ItemStack stack, GoheiMode mode) {
+	private boolean getValidMode(NonNullList<ItemStack> stacks, ItemStack stack, GoheiMode mode) {
 		for (ItemStack itemStack : stacks) {
-			if (itemStack != null && stack.getItem() == itemStack.getItem() && getGoheiMode(itemStack) == mode) {
+			if (!itemStack.isEmpty() && stack.getItem() == itemStack.getItem() && getGoheiMode(itemStack) == mode) {
 				return true;
 			}
 		}

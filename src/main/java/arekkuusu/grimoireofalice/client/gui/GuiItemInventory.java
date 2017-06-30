@@ -31,7 +31,7 @@ public class GuiItemInventory extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		String s = I18n.format("grimoire.gui.pouch.name");
-		fontRendererObj.drawString(s, xSize / 2 - fontRendererObj.getStringWidth(s) / 2, 0, 4210752);
+		fontRenderer.drawString(s, xSize / 2 - fontRenderer.getStringWidth(s) / 2, 0, 4210752);
 	}
 
 	@Override

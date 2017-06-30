@@ -21,6 +21,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -58,7 +59,7 @@ public class ItemShroomPowder extends ItemMod {
 
 			if (!entitysheep.getSheared() && entitysheep.getFleeceColor() != dyeColor) {
 				entitysheep.setFleeceColor(dyeColor);
-				--stack.stackSize;
+				stack.shrink(1);
 			}
 			return true;
 		}
@@ -72,7 +73,7 @@ public class ItemShroomPowder extends ItemMod {
 	}
 
 	@Override
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List<ItemStack> list) {
+	public void getSubItems(Item item, CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
 		for(int i = 0; i < 16; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}

@@ -51,17 +51,18 @@ public class ItemTimeOrb extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(!worldIn.isDaytime()) {
-			if(!playerIn.capabilities.isCreativeMode) {
-				--itemStackIn.stackSize;
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!world.isDaytime()) {
+			if(!player.capabilities.isCreativeMode) {
+				stack.shrink(1);
 			}
 
-			playerIn.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			if(!worldIn.isRemote) {
-				worldIn.setWorldTime(worldIn.getWorldTime() - 500);
+			player.playSound(SoundEvents.ENTITY_FIREWORK_TWINKLE, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+			if(!world.isRemote) {
+				world.setWorldTime(world.getWorldTime() - 500);
 			}
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 }

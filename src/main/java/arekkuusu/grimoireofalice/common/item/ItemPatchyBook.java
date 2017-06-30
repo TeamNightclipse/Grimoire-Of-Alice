@@ -52,11 +52,12 @@ public class ItemPatchyBook extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(worldIn.isRemote) {
-			playerIn.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(world.isRemote) {
+			player.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override

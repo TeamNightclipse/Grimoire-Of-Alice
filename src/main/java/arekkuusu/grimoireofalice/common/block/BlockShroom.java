@@ -26,6 +26,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -64,8 +65,8 @@ public class BlockShroom extends BlockModBush {
 	}
 
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		canBlockStay(worldIn, pos, state);
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+		canBlockStay(world, pos, state);
 	}
 
 	@Override
@@ -74,10 +75,10 @@ public class BlockShroom extends BlockModBush {
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		IBlockState soil = worldIn.getBlockState(pos.down());
+	public boolean canPlaceBlockAt(World world, BlockPos pos) {
+		IBlockState soil = world.getBlockState(pos.down());
 		Block block = soil.getBlock();
-		return super.canPlaceBlockAt(worldIn, pos)
+		return super.canPlaceBlockAt(world, pos)
 				|| block == Blocks.HARDENED_CLAY
 				|| block == Blocks.STAINED_HARDENED_CLAY
 				|| block == Blocks.STONE
@@ -94,7 +95,7 @@ public class BlockShroom extends BlockModBush {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List<ItemStack> stacks) {
+	public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> stacks) {
 		for(int i = 0; i < 16; i++) {
 			stacks.add(new ItemStack(item, 1, i));
 		}

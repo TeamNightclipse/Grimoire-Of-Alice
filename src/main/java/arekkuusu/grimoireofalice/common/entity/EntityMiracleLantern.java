@@ -20,21 +20,21 @@ import net.minecraft.world.World;
 
 public class EntityMiracleLantern extends EntityThrowable {
 
-	public EntityMiracleLantern(World worldIn) {
-		super(worldIn);
+	public EntityMiracleLantern(World world) {
+		super(world);
 	}
 
-	public EntityMiracleLantern(World worldIn, double x, double y, double z) {
-		super(worldIn, x, y, z);
+	public EntityMiracleLantern(World world, double x, double y, double z) {
+		super(world, x, y, z);
 	}
 
-	public EntityMiracleLantern(World worldIn, EntityLivingBase throwerIn) {
-		super(worldIn, throwerIn);
+	public EntityMiracleLantern(World world, EntityLivingBase throwerIn) {
+		super(world, throwerIn);
 		Vec3d look = throwerIn.getLookVec();
 		float distance = 2F;
-		double dx = throwerIn.posX + look.xCoord * distance;
+		double dx = throwerIn.posX + look.x * distance;
 		double dy = throwerIn.posY + throwerIn.getEyeHeight();
-		double dz = throwerIn.posZ + look.zCoord * distance;
+		double dz = throwerIn.posZ + look.z * distance;
 		setPosition(dx, dy, dz);
 	}
 
@@ -55,7 +55,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if (result.entityHit != null) result.entityHit.attackEntityFrom(DamageSource.magic, 5F);
+		if (result.entityHit != null) result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5F);
 		playSound(SoundEvents.BLOCK_ANVIL_PLACE, 0.1F, 0.1F);
 		if (!world.isRemote) setDead();
 	}

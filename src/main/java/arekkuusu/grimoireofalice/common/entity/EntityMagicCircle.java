@@ -30,8 +30,8 @@ public class EntityMagicCircle extends Entity {
 		super(world);
 	}
 
-	public EntityMagicCircle(World worldIn, EntityLivingBase entityLiving, EnumTextures texture, int end) {
-		super(worldIn);
+	public EntityMagicCircle(World world, EntityLivingBase entityLiving, EnumTextures texture, int end) {
+		super(world);
 		setSize(0.5F, 0.5F);
 		setTexture(texture.ordinal());
 		endTime = end;

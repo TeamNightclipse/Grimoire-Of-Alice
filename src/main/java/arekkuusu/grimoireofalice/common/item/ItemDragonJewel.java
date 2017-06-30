@@ -58,7 +58,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			if (isSelected && player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
@@ -67,21 +67,21 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 				double y = player.posY + player.getEyeHeight();
 				double z = player.posZ;
 
-				worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.PLAYERS, 1F, 1F);
+				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.PLAYERS, 1F, 1F);
 				for (int i = 0; i < 8; ++i) {
 					double randX = x + itemRand.nextGaussian() / 2.0D;
 					double randY = y + itemRand.nextGaussian() / 2.0D;
 					double randZ = z + itemRand.nextGaussian() / 2.0D;
 
 					for (int j = 0; j < 6; ++j) {
-						worldIn.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, vec.xCoord * 0.08D * j, vec.yCoord * 0.6D,
-								vec.zCoord * 0.08D * j);
+						world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, vec.x * 0.08D * j, vec.y * 0.6D,
+								vec.z * 0.08D * j);
 					}
 				}
 
-				if (!worldIn.isRemote) {
+				if (!world.isRemote) {
 					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-							player.getEntityBoundingBox().offset(vec.xCoord * 3, 0, vec.zCoord * 3).expandXyz(4D), entity -> entity != player);
+							player.getEntityBoundingBox().offset(vec.x * 3, 0, vec.z * 3).grow(4D), entity -> entity != player);
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 				}
 			}
@@ -89,14 +89,15 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if (!playerIn.isSneaking()) {
-			spawnJewel(itemStackIn, worldIn, playerIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!player.isSneaking()) {
+			spawnJewel(stack, world, player);
 		}
 		else {
-			playerIn.getCooldownTracker().setCooldown(this, 30);
+			player.getCooldownTracker().setCooldown(this, 30);
 		}
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	private void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
@@ -104,17 +105,17 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 		if(!world.isRemote) {
 			EntityDragonJewel jewel = new EntityDragonJewel(world, player);
 			jewel.setPosition(player.posX, player.posY + 2, player.posZ);
-			world.spawnEntityInWorld(jewel);
+			world.spawnEntity(jewel);
 		}
 		if(!player.capabilities.isCreativeMode) {
-			--stack.stackSize;
+			stack.shrink(1);
 		}
 	}
 
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ) {
-		spawnJewel(stack, worldIn, playerIn);
+		spawnJewel(player.getHeldItem(hand), world, player);
 		return EnumActionResult.SUCCESS;
 	}
 

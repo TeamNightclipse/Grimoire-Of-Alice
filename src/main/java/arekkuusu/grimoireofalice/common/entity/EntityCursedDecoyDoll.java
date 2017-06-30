@@ -30,12 +30,12 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 
 	private EntityPlayer user;
 
-	public EntityCursedDecoyDoll(World worldIn) {
-		super(worldIn);
+	public EntityCursedDecoyDoll(World world) {
+		super(world);
 	}
 
-	public EntityCursedDecoyDoll(World worldIn, EntityPlayer user) {
-		super(worldIn);
+	public EntityCursedDecoyDoll(World world, EntityPlayer user) {
+		super(world);
 		this.user = user;
 		setRotation(user.rotationYaw, 0);
 		setHealth(20);
@@ -59,7 +59,7 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 
 	private void stealAgroAround() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
-		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, axis.expandXyz(20.0D));
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, axis.grow(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob)mob).forEach(mob -> {
 			mob.setAttackTarget(this);
 			mob.setRevengeTarget(this);

@@ -61,15 +61,16 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
 		if(livingBase instanceof  EntityPlayer && hasFullSet((EntityPlayer) livingBase)) {
-			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().expandXyz(5), entity -> entity != livingBase);
+			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().grow(5), entity -> entity != livingBase);
 			for (EntityLivingBase living : list) {
 				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
@@ -80,7 +81,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
 		}
@@ -88,7 +89,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 		if (timeUsed < 20) return;
 
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-		if (!worldIn.isRemote) {
+		if (!world.isRemote) {
 			if (entityLiving.isSneaking()) {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
@@ -109,19 +110,20 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.setMovementData(1F)
 						.build().asEntity();
-				worldIn.spawnEntityInWorld(danmaku);
+				world.spawnEntity(danmaku);
                 Vec3d vec3 = entityLiving.getLookVec();
-                entityLiving.motionX -= vec3.xCoord;
-                entityLiving.motionY -= vec3.yCoord;
-                entityLiving.motionZ -= vec3.zCoord;
+                entityLiving.motionX -= vec3.x;
+                entityLiving.motionY -= vec3.y;
+                entityLiving.motionZ -= vec3.z;
 			}
 		}
 	}
 
 	private boolean hasFullSet(EntityPlayer player) {
-		return player.inventory.armorInventory[0] != null && player.inventory.armorInventory[2] != null
-				&& player.inventory.armorInventory[0].getItem() == ModItems.NUCLEAR_BOOTS
-				&& player.inventory.armorInventory[2].getItem() == ModItems.UTSUHO_WINGS;
+		ItemStack boots = player.inventory.armorInventory.get(0);
+		ItemStack body = player.inventory.armorInventory.get(2);
+
+		return !boots.isEmpty() && !body.isEmpty() && boots.getItem() == ModItems.NUCLEAR_BOOTS && body.getItem() == ModItems.UTSUHO_WINGS;
 	}
 
 	@Override

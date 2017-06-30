@@ -83,13 +83,13 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
     private void spawnFist(World world, EntityLivingBase player, float yaw) {
         Vec3d look = player.getLookVec().rotateYaw(yaw);
         float distance = 5F;
-        double x = player.posX + look.xCoord * distance;
-        double y = player.posY + 1 + look.yCoord * distance;
-        double z = player.posZ + look.zCoord * distance;
+        double x = player.posX + look.x * distance;
+        double y = player.posY + 1 + look.y * distance;
+        double z = player.posZ + look.z * distance;
 
         EntityUnzanFist fist = new EntityUnzanFist(world, player);
         fist.setPosition(x, y, z);
-        world.spawnEntityInWorld(fist);
+        world.spawnEntity(fist);
         fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 50);
     }
 

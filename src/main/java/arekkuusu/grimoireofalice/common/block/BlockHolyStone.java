@@ -73,13 +73,13 @@ public class BlockHolyStone extends BlockMod {
 	}
 
 	@Override
-	public int tickRate(World worldIn) {
-		return worldIn.isRaining() ? 40 : 100;
+	public int tickRate(World world) {
+		return world.isRaining() ? 40 : 100;
 	}
 
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		worldIn.scheduleUpdate(pos, this, tickRate(worldIn));
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+		world.scheduleUpdate(pos, this, tickRate(world));
 	}
 
 	@Override
@@ -108,9 +108,9 @@ public class BlockHolyStone extends BlockMod {
 		double scaling = 1 - ratio;
 		double back = 0.25;
 		Vec3d motion = blockPos.subtract(mobPos).scale(scaling);
-		livingBase.motionX += motion.xCoord * back;
-		livingBase.motionY += motion.yCoord * back;
-		livingBase.motionZ += motion.zCoord * back;
+		livingBase.motionX += motion.x * back;
+		livingBase.motionY += motion.y * back;
+		livingBase.motionZ += motion.z * back;
 	}
 
 	private void spawnParticles(World world, BlockPos pos) {
@@ -123,19 +123,18 @@ public class BlockHolyStone extends BlockMod {
 
 	private Optional<List<EntityLivingBase>> getEntitiesInRange(World world, BlockPos pos) {
 		if (world.isRaining()) {
-			return Optional.of(world.getEntitiesWithinAABB(EntityLivingBase.class,
-					SMALL.offset(pos).expandXyz(5)));
+			return Optional.of(world.getEntitiesWithinAABB(EntityLivingBase.class, SMALL.offset(pos).grow(5)));
 		}
 		else return Optional.empty();
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote && heldItem != null) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack heldItem = player.getHeldItem(hand);
+		if (!world.isRemote && !heldItem.isEmpty()) {
 			Optional<Consumer<EntityPlayer>> effect = Optional.ofNullable(effects.get(heldItem.getItem()));
 			if (effect.isPresent()) {
-				--heldItem.stackSize;
+				heldItem.shrink(1);
 				effect.get().accept(player);
 				player.world.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
 				return true;

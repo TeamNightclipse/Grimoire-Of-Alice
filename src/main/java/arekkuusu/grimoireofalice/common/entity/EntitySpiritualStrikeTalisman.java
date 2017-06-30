@@ -15,14 +15,14 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 
 	private EntityLivingBase living;
 
-	public EntitySpiritualStrikeTalisman(World worldIn) {
-		super(worldIn);
+	public EntitySpiritualStrikeTalisman(World world) {
+		super(world);
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
 	}
 
-	public EntitySpiritualStrikeTalisman(World worldIn, EntityLivingBase living) {
-		super(worldIn);
+	public EntitySpiritualStrikeTalisman(World world, EntityLivingBase living) {
+		super(world);
 		this.living = living;
 	}
 
@@ -31,7 +31,7 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 		super.onUpdate();
 		if (!world.isRemote) {
 			if (ticksExisted < 24) {
-				List<Entity> list = world.getEntitiesInAABBexcluding(this, new AxisAlignedBB(living.getPosition()).expandXyz(5), entity -> entity != living);
+				List<Entity> list = world.getEntitiesInAABBexcluding(this, new AxisAlignedBB(living.getPosition()).grow(5), entity -> entity != living);
 				list.forEach(entity -> {
 					Vec3d vec = getPositionVector();
 					Vec3d mobPos = entity.getPositionVector();
@@ -39,9 +39,9 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 						double ratio = vec.distanceTo(mobPos) / 5;
 						double scaling = 1 - ratio;
 						Vec3d motion = vec.subtract(mobPos).scale(scaling);
-						entity.motionX = -motion.xCoord * 2;
+						entity.motionX = -motion.x * 2;
 						entity.motionY = .3F;
-						entity.motionZ = -motion.zCoord * 2;
+						entity.motionZ = -motion.z * 2;
 					}
 				});
 			}

@@ -123,7 +123,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 
 	@Override
 	public AxisAlignedBB getEntityBoundingBox() {
-		return super.getEntityBoundingBox().expandXyz(getSize());
+		return super.getEntityBoundingBox().grow(getSize());
 	}
 
 	@Override

@@ -21,27 +21,28 @@ public class ItemBlockOnbashira extends ItemBlock {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
 		if (facing != EnumFacing.UP) {
 			return EnumActionResult.FAIL;
 		}
 		else {
-			IBlockState iblockstate = worldIn.getBlockState(pos);
+			IBlockState iblockstate = world.getBlockState(pos);
 			Block block = iblockstate.getBlock();
 
-			if (!block.isReplaceable(worldIn, pos)) {
+			if (!block.isReplaceable(world, pos)) {
 				pos = pos.offset(facing);
 			}
 
-			if (stack.stackSize != 0 && playerIn.canPlayerEdit(pos, facing, stack)
-					&& worldIn.canBlockBePlaced(this.block, pos, false, facing, null, stack) && this.block.canPlaceBlockAt(worldIn, pos)) {
+			if (!stack.isEmpty() && player.canPlayerEdit(pos, facing, stack)
+					&& world.mayPlace(this.block, pos, false, facing, null) && this.block.canPlaceBlockAt(world, pos)) {
 				int i = this.getMetadata(stack.getMetadata());
-				IBlockState iblockstate1 = this.block.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, i, playerIn);
+				IBlockState iblockstate1 = this.block.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, i, player);
 
-				if (placeBlockAt(stack, playerIn, worldIn, pos, facing, hitX, hitY, hitZ, iblockstate1)) {
-					SoundType soundtype = worldIn.getBlockState(pos).getBlock().getSoundType(worldIn.getBlockState(pos), worldIn, pos, playerIn);
-					worldIn.playSound(playerIn, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-					--stack.stackSize;
+				if (placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, iblockstate1)) {
+					SoundType soundtype = world.getBlockState(pos).getBlock().getSoundType(world.getBlockState(pos), world, pos, player);
+					world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+					stack.shrink(1);
 				}
 
 				return EnumActionResult.SUCCESS;

@@ -64,68 +64,69 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		RayTraceResult raytraceresult = rayTrace(worldIn, playerIn, true);
-		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(playerIn, worldIn, itemStackIn, raytraceresult);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		RayTraceResult raytraceresult = rayTrace(world, player, true);
+		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(player, world, stack, raytraceresult);
 		if(ret != null) return ret;
 
 		//noinspection ConstantConditions
-		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
-		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, itemStackIn);
+		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
+		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, stack);
 		else {
-			if(!playerIn.isSneaking()) {
+			if(!player.isSneaking()) {
 				BlockPos blockpos = raytraceresult.getBlockPos();
 
-				if (absorb(worldIn, blockpos)) {
-					worldIn.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					if (itemStackIn.isItemDamaged()) {
-						itemStackIn.setItemDamage(itemStackIn.getItemDamage() - 1);
+				if (absorb(world, blockpos)) {
+					world.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					if (stack.isItemDamaged()) {
+						stack.setItemDamage(stack.getItemDamage() - 1);
 					}
-					playerIn.setActiveHand(hand);
-					return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+					player.setActiveHand(hand);
+					return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 				}
 			} else {
 				BlockPos pos = raytraceresult.getBlockPos();
-				boolean replaceable = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
+				boolean replaceable = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
 				BlockPos posUp = replaceable && raytraceresult.sideHit == EnumFacing.UP ? pos : pos.offset(raytraceresult.sideHit);
 
-				if(playerIn.canPlayerEdit(posUp, raytraceresult.sideHit, itemStackIn)) {
+				if(player.canPlayerEdit(posUp, raytraceresult.sideHit, stack)) {
 
-					IBlockState iblockstate = worldIn.getBlockState(posUp);
+					IBlockState iblockstate = world.getBlockState(posUp);
 					Material material = iblockstate.getMaterial();
 					boolean isSolid = material.isSolid();
-					boolean canReplace = iblockstate.getBlock().isReplaceable(worldIn, posUp);
+					boolean canReplace = iblockstate.getBlock().isReplaceable(world, posUp);
 
-					if(worldIn.isAirBlock(posUp) || !isSolid || canReplace) {
-						if(worldIn.provider.doesWaterVaporize()) {
-							worldIn.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
-									2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+					if(world.isAirBlock(posUp) || !isSolid || canReplace) {
+						if(world.provider.doesWaterVaporize()) {
+							world.playSound(null, posUp, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F,
+									2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 
 							for(int k = 0; k < 8; ++k) {
-								worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(),
+								world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(),
 										posUp.getY() + itemRand.nextDouble(), posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
 							}
 						}
 						else {
-							if(!worldIn.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
-								worldIn.destroyBlock(posUp, true);
+							if(!world.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
+								world.destroyBlock(posUp, true);
 							}
 
-							worldIn.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-							worldIn.setBlockState(posUp, Blocks.FLOWING_WATER.getDefaultState(), 11);
-							itemStackIn.damageItem(1, playerIn);
-							playerIn.setActiveHand(hand);
-							return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+							world.playSound(null, posUp, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+							world.setBlockState(posUp, Blocks.FLOWING_WATER.getDefaultState(), 11);
+							stack.damageItem(1, player);
+							player.setActiveHand(hand);
+							return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 						}
 					}
 				}
 			}
 		}
 
-		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
 	}
 
-	private boolean absorb(World worldIn, BlockPos pos) {
+	private boolean absorb(World world, BlockPos pos) {
 		Queue<Tuple<BlockPos, Integer>> queue = Lists.newLinkedList();
 		queue.add(new Tuple<>(pos, 0));
 		int blocksChanged = 0;
@@ -138,12 +139,12 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 			for(EnumFacing enumfacing : EnumFacing.values()) {
 				BlockPos offset = blockpos.offset(enumfacing);
 
-				if(worldIn.getBlockState(offset).getMaterial() == Material.WATER) {
+				if(world.getBlockState(offset).getMaterial() == Material.WATER) {
 					++blocksChanged;
 
 					//The client is for the most part concerned with if any blocks were changed. If we reach this far that is true. No need to do more.
-					if(!worldIn.isRemote) {
-						worldIn.setBlockState(offset, Blocks.AIR.getDefaultState());
+					if(!world.isRemote) {
+						world.setBlockState(offset, Blocks.AIR.getDefaultState());
 
 						if(depth < 6) {
 							queue.add(new Tuple<>(offset, depth + 1));

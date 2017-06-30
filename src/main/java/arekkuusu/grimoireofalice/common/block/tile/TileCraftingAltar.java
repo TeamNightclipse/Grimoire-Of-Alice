@@ -73,7 +73,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		if(!hasItem()) {
 			added = true;
 			ItemStack stackToAdd = stack.copy();
-			stackToAdd.stackSize = 1;
+			stackToAdd.setCount(1);
 			itemHandler.insertItem(0, stackToAdd, false);
 		}
 		return added;
@@ -98,9 +98,9 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	public void destroy() {
 		if (!world.isRemote) {
 			ItemStack output = itemHandler.extractItem(0, 1, false);
-			if (output != null) {
+			if (!output.isEmpty()) {
 				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-                world.spawnEntityInWorld(outputItem);
+                world.spawnEntity(outputItem);
 			}
 		}
 	}

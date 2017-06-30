@@ -49,22 +49,23 @@ public class ItemCamera extends ItemMod {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        if (!worldIn.isRemote) {
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if (!world.isRemote) {
             int size = getSize();
 
-            EntityCameraSquare camera = new EntityCameraSquare(worldIn, playerIn, size);
-            Vec3d look = playerIn.getLookVec();
+            EntityCameraSquare camera = new EntityCameraSquare(world, player, size);
+            Vec3d look = player.getLookVec();
             double distance = size + 4D;
-            double dx = playerIn.posX + look.xCoord * distance;
-            double dy = playerIn.posY + 2 + look.yCoord * distance;
-            double dz = playerIn.posZ + look.zCoord * distance;
+            double dx = player.posX + look.x * distance;
+            double dy = player.posY + 2 + look.y * distance;
+            double dz = player.posZ + look.z * distance;
             camera.setPosition(dx, dy, dz);
-            worldIn.spawnEntityInWorld(camera);
+            world.spawnEntity(camera);
         }
-        worldIn.playSound(playerIn, playerIn.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
-        playerIn.setActiveHand(hand);
-        return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+        world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
+        player.setActiveHand(hand);
+        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
 
 	@Override
@@ -79,12 +80,12 @@ public class ItemCamera extends ItemMod {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(!player.capabilities.isCreativeMode)
 				stack.damageItem(1, player);
-			worldIn.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
+			world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
 			player.getCooldownTracker().setCooldown(this, 100);
 		}
 	}

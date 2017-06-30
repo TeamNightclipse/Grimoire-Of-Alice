@@ -61,28 +61,29 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) { //Recycled code...
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) { //Recycled code...
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (player.isSneaking()) {
-				moveToClosestPlayer(worldIn, player);
+				moveToClosestPlayer(world, player);
 			}
 			else {
 				moveToMob(player);
 			}
 			stack.damageItem(1, player);
-			player.attackEntityFrom(DamageSource.generic, 1);
+			player.attackEntityFrom(DamageSource.GENERIC, 1);
 		}
 	}
 
-	private void moveToClosestPlayer(World worldIn, EntityPlayer player) {
-		EntityPlayer closest = worldIn.getClosestPlayerToEntity(player, 30D);
+	private void moveToClosestPlayer(World world, EntityPlayer player) {
+		EntityPlayer closest = world.getClosestPlayerToEntity(player, 30D);
 		if(closest != null) {
 			if(player instanceof EntityPlayerMP) {
 				((EntityPlayerMP) player).setPositionAndUpdate(closest.posX, closest.posY, closest.posZ);
@@ -95,18 +96,18 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 		double range = 32.0D;
 		Vec3d look = player.getLookVec();
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-		Vec3d vec3d1 = new Vec3d(player.posX + look.xCoord * range, player.posY + look.yCoord * range, player.posZ + look.zCoord * range);
+		Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + look.y * range, player.posZ + look.z * range);
 		RayTraceResult movingObjectPosition = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
 		if(movingObjectPosition != null) {
-			vec3d1 = new Vec3d(movingObjectPosition.hitVec.xCoord, movingObjectPosition.hitVec.yCoord, movingObjectPosition.hitVec.zCoord);
+			vec3d1 = new Vec3d(movingObjectPosition.hitVec.x, movingObjectPosition.hitVec.y, movingObjectPosition.hitVec.z);
 		}
 		EntityLivingBase entity = null;
 		List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-				player.getEntityBoundingBox().addCoord(look.xCoord * range, look.yCoord * range, look.zCoord * range).expandXyz(1.0D),
+				player.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D),
 				foundEntity -> foundEntity != player);
 		double d = 0.0D;
 		for(EntityLivingBase entity1 : list) {
-			AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().expandXyz(0.3F);
+			AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(0.3F);
 			RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 			if(movingObjectPosition1 != null) {
 				double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);

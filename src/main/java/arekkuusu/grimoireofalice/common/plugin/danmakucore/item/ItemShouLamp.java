@@ -70,7 +70,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if (entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
 			if (isActive(player, stack)) {
@@ -88,9 +88,10 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		playerIn.setActiveHand(hand);
-		return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
 	@Override
@@ -98,32 +99,32 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 		if (getJewels(stack) < 500 && player instanceof EntityPlayer) {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
 			if(count % 4 == 0)
-				player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_TOUCH, 0.1F, 1F);
+				player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
 			addJewels(stack, (short)1);
 		}
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if (entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if (player.isSneaking() && !isActive(player, stack)) {
 				short jewels = getJewels(stack);
-				if (!worldIn.isRemote) {
-					EntityMagicCircle circle = new EntityMagicCircle(worldIn, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, jewels);
-					worldIn.spawnEntityInWorld(circle);
+				if (!world.isRemote) {
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, jewels);
+					world.spawnEntity(circle);
 				}
 				player.getCooldownTracker().setCooldown(this, jewels + 1);
 
 				if (timeLeft < 200) {
-					List<EntityLivingBase> list = worldIn.getEntitiesWithinAABB(EntityLivingBase.class,
-							player.getEntityBoundingBox().expandXyz(4.0D));
+					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class,
+							player.getEntityBoundingBox().grow(4.0D));
 					for (EntityLivingBase mob : list) {
 						mob.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
 						if (!mob.world.isRemote) {
-							EntityMagicCircle circle = new EntityMagicCircle(worldIn, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL,
+							EntityMagicCircle circle = new EntityMagicCircle(world, mob, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL,
 									jewels * 2);
-							worldIn.spawnEntityInWorld(circle);
+							world.spawnEntity(circle);
 						}
 					}
 				}

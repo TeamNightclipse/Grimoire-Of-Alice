@@ -39,12 +39,12 @@ public class EntityNazrinPendulum extends Entity {
 	public EntityPlayer user;
 	private boolean follow;
 
-	public EntityNazrinPendulum(World worldIn) {
-		super(worldIn);
+	public EntityNazrinPendulum(World world) {
+		super(world);
 	}
 
-	public EntityNazrinPendulum(World worldIn, EntityPlayer player, ItemStack stack, String ore, boolean follow) {
-		super(worldIn);
+	public EntityNazrinPendulum(World world, EntityPlayer player, ItemStack stack, String ore, boolean follow) {
+		super(world);
 		user = player;
 		this.stack = stack.copy();
 		this.follow = follow;
@@ -70,9 +70,9 @@ public class EntityNazrinPendulum extends Entity {
 			if(user != null && follow) {
 				Vec3d look = user.getLookVec();
 				float distance = 2F;
-				double dx = user.posX + look.xCoord * distance;
+				double dx = user.posX + look.x * distance;
 				double dy = user.posY + user.getEyeHeight() - 0.5;
-				double dz = user.posZ + look.zCoord * distance;
+				double dz = user.posZ + look.z * distance;
 				setPosition(dx, dy, dz);
 			}
 

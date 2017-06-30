@@ -106,7 +106,7 @@ public class GuiScreenGuide extends GuiScreen {
 		List<String> get = TEXTS.get(MathHelper.clamp(currPage, 0, 9));
 		for (int i = 0; i < get.size(); i++) {
 			String s = get.get(i);
-			fontRendererObj.drawString(s, (width - 245) / 2, 70 + i * 12, 0);
+			fontRenderer.drawString(s, (width - 245) / 2, 70 + i * 12, 0);
 		}
 
 		super.drawScreen(parWidth, parHeight, p_73863_3_);
@@ -135,7 +135,7 @@ public class GuiScreenGuide extends GuiScreen {
 		@Override
 		public void drawButton(Minecraft mc, int mouseX, int mouseY) {
 			if(visible) {
-				boolean flag = mouseX >= xPosition && mouseY >= yPosition && mouseX < xPosition + width && mouseY < yPosition + height;
+				boolean flag = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[0]);
 				int i = 0;
@@ -149,7 +149,7 @@ public class GuiScreenGuide extends GuiScreen {
 					j += 13;
 				}
 
-				this.drawTexturedModalRect(xPosition, yPosition, i, j, 23, 13);
+				this.drawTexturedModalRect(x, y, i, j, 23, 13);
 			}
 		}
 	}

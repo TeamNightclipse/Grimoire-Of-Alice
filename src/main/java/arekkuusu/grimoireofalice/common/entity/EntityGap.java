@@ -40,12 +40,12 @@ public class EntityGap extends Entity {
     private EntityPlayer player;
     private ItemStack stack;
 
-    public EntityGap(World worldIn) {
-        super(worldIn);
+    public EntityGap(World world) {
+        super(world);
     }
 
-    public EntityGap(World worldIn, EntityPlayer player,@Nullable ItemStack stack) {
-        super(worldIn);
+    public EntityGap(World world, EntityPlayer player,@Nullable ItemStack stack) {
+        super(world);
         setPositionAndAngles(player);
         this.player = player;
         this.stack = stack;
@@ -54,9 +54,9 @@ public class EntityGap extends Entity {
     public void setPositionAndAngles(EntityPlayer player) {
         Vec3d look = player.getLookVec();
         float distance = 2F;
-        double dx = player.posX + look.xCoord * distance;
-        double dy = player.posY + look.yCoord * distance + player.getEyeHeight();
-        double dz = player.posZ + look.zCoord * distance;
+        double dx = player.posX + look.x * distance;
+        double dy = player.posY + look.y * distance + player.getEyeHeight();
+        double dz = player.posZ + look.z * distance;
         setPosition(dx, dy, dz);
         setRotation(player.rotationYaw, player.rotationPitch);
     }
@@ -89,9 +89,9 @@ public class EntityGap extends Entity {
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void reduceStack(EntityPlayer playerIn, ItemStack toRemove) {
-		if (playerIn.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-			IItemHandler handler = playerIn.getCapability(ITEM_HANDLER_CAPABILITY, null);
+    private void reduceStack(EntityPlayer player, ItemStack toRemove) {
+		if (player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+			IItemHandler handler = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 			for (int i = 0; i < handler.getSlots(); i++) {
 				if (toRemove.isItemEqual(handler.getStackInSlot(i))) {
 					handler.extractItem(i, 1, false);
@@ -105,7 +105,7 @@ public class EntityGap extends Entity {
         Vec3d vec3d = getLookVec();
 
         @SuppressWarnings("unchecked")
-        List<EntityGap> list = (List<EntityGap>)(List<?>)world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().expandXyz(
+        List<EntityGap> list = (List<EntityGap>)(List<?>)world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().grow(
                 ConfigHandler.grimoireOfAlice.features.gapRange), entity -> entity instanceof EntityGap);
 
         EntityGap gap = null;
@@ -117,10 +117,10 @@ public class EntityGap extends Entity {
             gap.portalCooldown = 50;
             if (base instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer)base;
-                player.setPositionAndUpdate(gap.prevPosX + vec3d.xCoord * 1.5, gap.prevPosY + vec3d.yCoord * 1.5, gap.prevPosZ + vec3d.zCoord * 1.5);
+                player.setPositionAndUpdate(gap.prevPosX + vec3d.x * 1.5, gap.prevPosY + vec3d.y * 1.5, gap.prevPosZ + vec3d.z * 1.5);
             }
             else {
-                base.setPosition(gap.prevPosX + vec3d.xCoord * 1.5, gap.prevPosY + vec3d.yCoord * 1.5, gap.prevPosZ + vec3d.zCoord * 1.5);
+                base.setPosition(gap.prevPosX + vec3d.x * 1.5, gap.prevPosY + vec3d.y * 1.5, gap.prevPosZ + vec3d.z * 1.5);
             }
             gap.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0.1F, 0.1F);
         }
@@ -147,13 +147,15 @@ public class EntityGap extends Entity {
         }).sorted(Comparator.comparingDouble(toDouble));
     }
 
-    public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand) {
-        if (stack != null && isItemDye(stack)) {
+    @Override
+    public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        if (!stack.isEmpty() && isItemDye(stack)) {
             //TODO: Use other part of ore name to get the actual color
             EnumDyeColor enumdyecolor = EnumDyeColor.byDyeDamage(stack.getMetadata());
             if(enumdyecolor != getColor()) {
                 setColor(enumdyecolor);
-                --stack.stackSize;
+                stack.shrink(1);
             }
             player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
         }

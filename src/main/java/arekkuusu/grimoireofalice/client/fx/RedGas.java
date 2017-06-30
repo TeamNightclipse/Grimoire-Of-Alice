@@ -47,7 +47,7 @@ public class RedGas extends Particle {
 	}
 
 	@Override
-	public boolean isTransparent() {
+	public boolean shouldDisableDepth() {
 		return true;
 	}
 
@@ -62,7 +62,7 @@ public class RedGas extends Particle {
 		}
 
 		motionY += 0.004D;
-		moveEntity(motionX, motionY, motionZ);
+		move(motionX, motionY, motionZ);
 
 		if (posY == prevPosY) {
 			motionX *= 1.1D;
@@ -73,7 +73,7 @@ public class RedGas extends Particle {
 		motionY *= 0.9599999785423279D;
 		motionZ *= 0.9599999785423279D;
 
-		if (isCollided) {
+		if (onGround) {
 			motionX *= 0.699999988079071D;
 			motionZ *= 0.699999988079071D;
 		}

@@ -83,9 +83,9 @@ public class SubEntityWind extends SubEntityType {
 					double ratio = windPos.distanceTo(mobPos) / 4;
 					double scaling = 1 - ratio;
 					Vec3d motion = windPos.subtract(mobPos).scale(scaling);
-					result.entityHit.motionX = -motion.xCoord * timeUsed / 2;
+					result.entityHit.motionX = -motion.x * timeUsed / 2;
 					result.entityHit.motionY = danmaku.motionY;
-					result.entityHit.motionZ = -motion.zCoord * timeUsed / 2;
+					result.entityHit.motionZ = -motion.z * timeUsed / 2;
 				}
 			}
 		}

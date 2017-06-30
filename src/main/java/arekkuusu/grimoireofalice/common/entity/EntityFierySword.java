@@ -22,12 +22,12 @@ public class EntityFierySword extends Entity {
 
 	public EntityPlayer player;
 
-	public EntityFierySword(World worldIn) {
-		super(worldIn);
+	public EntityFierySword(World world) {
+		super(world);
 	}
 
-	public EntityFierySword(World worldIn, EntityPlayer player) {
-		super(worldIn);
+	public EntityFierySword(World world, EntityPlayer player) {
+		super(world);
 		setGlowing(true);
 		setPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 		this.player = player;
@@ -86,7 +86,7 @@ public class EntityFierySword extends Entity {
 		Vec3d vec = getLookVec();
 
 		AxisAlignedBB alignedBB = super.getEntityBoundingBox();
-		return new AxisAlignedBB(alignedBB.minX - 1.9, alignedBB.minY - 2.4, alignedBB.minZ - 1.9, alignedBB.minX + 2.5, alignedBB.minY + 2.5, alignedBB.minZ + 2.5).offset(vec.xCoord * 5, vec.yCoord * 5, vec.zCoord * 5);
+		return new AxisAlignedBB(alignedBB.minX - 1.9, alignedBB.minY - 2.4, alignedBB.minZ - 1.9, alignedBB.minX + 2.5, alignedBB.minY + 2.5, alignedBB.minZ + 2.5).offset(vec.x * 5, vec.y * 5, vec.z * 5);
 	}
 
 	@Override

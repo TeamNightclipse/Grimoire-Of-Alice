@@ -16,6 +16,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -109,11 +110,10 @@ public class BlockModPillar extends BlockMod {
 		return new BlockStateContainer(this, AXIS);
 	}
 
-	@Nullable
 	@Override
 	protected ItemStack getSilkTouchDrop(IBlockState state) {
 		Item itemBlock = Item.getItemFromBlock(this);
-		return itemBlock == null ? null : new ItemStack(itemBlock);
+		return itemBlock == Items.AIR ? ItemStack.EMPTY : new ItemStack(itemBlock);
 	}
 
 	/**
@@ -122,8 +122,8 @@ public class BlockModPillar extends BlockMod {
 	 */
     @SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
-		return super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, facing.getAxis());
+		return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, facing.getAxis());
 	}
 }

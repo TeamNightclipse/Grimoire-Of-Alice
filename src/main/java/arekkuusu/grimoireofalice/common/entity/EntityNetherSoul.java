@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
@@ -26,20 +27,20 @@ public class EntityNetherSoul extends EntityThrowable {
 	private static final double MOVING_STRENGTH = 0.01D;
 	private Entity target;
 
-	public EntityNetherSoul(World worldIn) {
-		super(worldIn);
+	public EntityNetherSoul(World world) {
+		super(world);
 	}
 
-	public EntityNetherSoul(World worldIn, double x, double y, double z) {
-		super(worldIn, x, y, z);
+	public EntityNetherSoul(World world, double x, double y, double z) {
+		super(world, x, y, z);
 	}
 
-	public EntityNetherSoul(World worldIn, EntityLivingBase throwerIn) {
-		super(worldIn, throwerIn);
+	public EntityNetherSoul(World world, EntityLivingBase throwerIn) {
+		super(world, throwerIn);
 	}
 
-	public EntityNetherSoul(World worldIn, EntityLivingBase throwerIn,@Nullable Entity target) {
-		super(worldIn, throwerIn);
+	public EntityNetherSoul(World world, EntityLivingBase throwerIn,@Nullable Entity target) {
+		super(world, throwerIn);
 		this.target = target;
 	}
 
@@ -71,10 +72,10 @@ public class EntityNetherSoul extends EntityThrowable {
 			prevPosY = posY += motionY;
 			prevPosZ = posZ += motionZ;
 
-			moveEntity(motionX, motionY, motionZ);
+			move(MoverType.SELF, motionX, motionY, motionZ);
 		}
 		else {
-			List<Entity> list = world.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().expandXyz(30),
+			List<Entity> list = world.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().grow(30),
 					entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
 			if (!list.isEmpty()) {
 				float closest = 30;
@@ -88,7 +89,7 @@ public class EntityNetherSoul extends EntityThrowable {
 			}
 			else if (getThrower() != null) {
 				Vec3d vec3d = getThrower().getLookVec();
-				setThrowableHeading(vec3d.xCoord, vec3d.yCoord, vec3d.zCoord, 0.5F, 0);
+				setThrowableHeading(vec3d.x, vec3d.y, vec3d.z, 0.5F, 0);
 			} else if(!world.isRemote) setDead();
 		}
 		if (ticksExisted >= 200 && !world.isRemote) {
@@ -99,7 +100,8 @@ public class EntityNetherSoul extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if (result.entityHit != null) {
-			result.entityHit.attackEntityFrom(DamageSource.generic.setDamageBypassesArmor(), 10);
+			//TODO: DamageSource is mutable. Don't mutate the generic one. Create a new damage source
+			//result.entityHit.attackEntityFrom(DamageSource.GENERIC.setDamageBypassesArmor(), 10);
 			if (!world.isRemote) setDead();
 		}
 	}

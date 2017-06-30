@@ -19,12 +19,12 @@ public class EntityIceBlock extends Entity {
 
 	private EntityLivingBase frozen;
 
-	public EntityIceBlock(World worldIn) {
-		super(worldIn);
+	public EntityIceBlock(World world) {
+		super(world);
 	}
 
-	public EntityIceBlock(World worldIn, EntityLivingBase frozen, float width, float height) {
-		super(worldIn);
+	public EntityIceBlock(World world, EntityLivingBase frozen, float width, float height) {
+		super(world);
 		setPosition(frozen.posX, frozen.posY, frozen.posZ);
 		setIceBlockWidth(width);
 		setIceBlockHeight(height + 0.8F);
@@ -47,7 +47,7 @@ public class EntityIceBlock extends Entity {
 				setPosition(frozen.posX, frozen.posY, frozen.posZ);
 				freezeEntity();
 				if(ticksExisted % 20 == 0) {
-					frozen.attackEntityFrom(DamageSource.drown, 0.15F);
+					frozen.attackEntityFrom(DamageSource.DROWN, 0.15F);
 				}
 			}
 			else {

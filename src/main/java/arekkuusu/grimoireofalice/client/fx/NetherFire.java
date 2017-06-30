@@ -44,7 +44,7 @@ public class NetherFire extends Particle {
 	}
 
 	@Override
-	public boolean isTransparent() {
+	public boolean shouldDisableDepth() {
 		return true;
 	}
 

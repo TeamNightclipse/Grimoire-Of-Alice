@@ -32,15 +32,15 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
             world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_ADD_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			added = true;
 			ItemStack stackToAdd = stack.copy();
-			stackToAdd.stackSize = 1;
+			stackToAdd.setCount(1);
 			if(!world.isRemote) {
 				itemHandler.insertItem(0, stackToAdd, false);
 			}
 
 			if(player == null || !player.capabilities.isCreativeMode) {
-				stack.stackSize--;
-				if(stack.stackSize == 0 && player != null) {
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+				stack.shrink(1);
+				if(stack.isEmpty() && player != null) {
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
 				}
 			}
 		}
@@ -66,16 +66,16 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 	public void destroy() {
 		if (!world.isRemote) {
 			ItemStack output = itemHandler.extractItem(0, 1, false);
-			if (output != null) {
+			if (!output.isEmpty()) {
 				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-                world.spawnEntityInWorld(outputItem);
+                world.spawnEntity(outputItem);
 			}
 		}
 	}
 
 	@Override
 	public boolean hasItem() {
-		return itemHandler.getStackInSlot(0) != null;
+		return !itemHandler.getStackInSlot(0).isEmpty();
 	}
 
 	public ItemStack getItemStack() {

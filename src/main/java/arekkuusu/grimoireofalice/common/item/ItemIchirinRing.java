@@ -74,16 +74,17 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 	}
 
     @Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-		if(isHoldingRing(hand, playerIn)) {
-			playerIn.setActiveHand(hand);
-			return new ActionResult<>(EnumActionResult.SUCCESS, itemStackIn);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(isHoldingRing(hand, player)) {
+			player.setActiveHand(hand);
+			return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 		}
-		return new ActionResult<>(EnumActionResult.FAIL, itemStackIn);
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
         if (entityLiving instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entityLiving;
             if (isWearingUnzan(player)) {
@@ -93,16 +94,16 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
                     player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
                 }
                 else {
-                    if (!worldIn.isRemote) {
+                    if (!world.isRemote) {
                         Vec3d look = player.getLookVec();
                         float distance = 5F;
-                        double dx = player.posX + look.xCoord * distance;
-                        double dy = player.posY + 1 + look.yCoord * distance;
-                        double dz = player.posZ + look.zCoord * distance;
+                        double dx = player.posX + look.x * distance;
+                        double dy = player.posY + 1 + look.y * distance;
+                        double dz = player.posZ + look.z * distance;
 
-                        EntityUnzanFist fist = new EntityUnzanFist(worldIn, player);
+                        EntityUnzanFist fist = new EntityUnzanFist(world, player);
                         fist.setPosition(dx, dy, dz);
-                        worldIn.spawnEntityInWorld(fist);
+                        world.spawnEntity(fist);
                         fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
                     }
                     player.getCooldownTracker().setCooldown(this, 10);

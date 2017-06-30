@@ -40,7 +40,7 @@ public class ItemIcicleSword extends ItemModSword implements IOwnedBy {
 		stack.damageItem(1, attacker);
 		if (!attacker.world.isRemote) {
 			EntityIceBlock iceBlock = new EntityIceBlock(attacker.world, target, target.width, target.height);
-			attacker.world.spawnEntityInWorld(iceBlock);
+			attacker.world.spawnEntity(iceBlock);
 		}
 		return true;
 	}

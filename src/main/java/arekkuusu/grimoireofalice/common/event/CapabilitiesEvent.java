@@ -26,7 +26,7 @@ public class CapabilitiesEvent {
 			EntityPlayer player = event.getEntityPlayer();
 			List<EntityItem> drop = event.getDrops();
 			for(EntityItem item : drop) {
-				Item i = item.getEntityItem().getItem();
+				Item i = item.getItem().getItem();
 				if(isFlyItem(i)) {
 					if(!player.capabilities.isCreativeMode) {
 						player.capabilities.allowFlying = false;
@@ -45,7 +45,7 @@ public class CapabilitiesEvent {
 	public void onItemToss(ItemTossEvent event) {
 		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
 			EntityPlayer player = event.getPlayer();
-			Item item = event.getEntityItem().getEntityItem().getItem();
+			Item item = event.getEntityItem().getItem().getItem();
 			if(isFlyItem(item)) {
 				if(!player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
@@ -89,7 +89,7 @@ public class CapabilitiesEvent {
 	private boolean canFly(EntityPlayer player) {
 		return GrimoireOfAliceAPI.getFlyItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
 				|| GrimoireOfAliceAPI.getFlyArmor().stream().anyMatch(
-						stack -> Arrays.stream(player.inventory.armorInventory).anyMatch(stack::isItemEqual));
+						stack -> player.inventory.armorInventory.stream().anyMatch(stack::isItemEqual));
 	}
 
 	private boolean isFlyItem(Item item) {
