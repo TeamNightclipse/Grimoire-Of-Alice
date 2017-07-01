@@ -85,7 +85,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 
 			for (int i = 0; i < capability.getSlots(); i++) {
 				ItemStack stack = capability.getStackInSlot(i);
-				if (stack != null && stack.getItem() == this) {
+				if (!stack.isEmpty() && stack.getItem() == this) {
 					setTimer(stack, time);
 				}
 			}

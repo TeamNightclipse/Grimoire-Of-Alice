@@ -190,7 +190,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 		if (tile != null) {
 			if (!world.isRemote) {
 				ItemStack output = tile.getItemStack();
-				if (output != null) {
+				if (!output.isEmpty()) {
 					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
 					if (player != null && !player.capabilities.isCreativeMode) {
 						ItemHandlerHelper.giveItemToPlayer(player, output);

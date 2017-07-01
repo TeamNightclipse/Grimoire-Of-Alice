@@ -30,7 +30,7 @@ public class ShapedRecipe {
 	private String row1 = "";
 	private String row2 = "";
 	private String row3 = "";
-	private ItemStack out = null;
+	private ItemStack out = ItemStack.EMPTY;
 	private boolean mirrored = false;
 
 	private final Map<Character, Object> characters = new HashMap<>();

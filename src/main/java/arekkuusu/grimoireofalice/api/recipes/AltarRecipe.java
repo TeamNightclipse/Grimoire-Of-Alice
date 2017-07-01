@@ -72,7 +72,7 @@ public class AltarRecipe implements IAltarRecipe {
 	}
 
 	private static boolean itemMatches(ItemStack target, ItemStack input) {
-		return input != null && target != null && target.getItem() == input.getItem() && (target.getItemDamage() == input.getItemDamage()
+		return !input.isEmpty() && !target.isEmpty() && target.getItem() == input.getItem() && (target.getItemDamage() == input.getItemDamage()
 				|| input.getItemDamage() == WILDCARD_VALUE);
 	}
 

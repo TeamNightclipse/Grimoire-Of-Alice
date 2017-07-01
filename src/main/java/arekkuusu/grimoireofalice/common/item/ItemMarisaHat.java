@@ -100,7 +100,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 					entity.world.spawnEntity(item);
 				}
 			}
-			entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, null);
+			entity.setItemStackToSlot(EntityEquipmentSlot.HEAD, ItemStack.EMPTY);
 		}
 	}
 

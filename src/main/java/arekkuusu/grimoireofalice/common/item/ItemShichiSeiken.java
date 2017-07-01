@@ -57,7 +57,7 @@ public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
 					.mapToObj(OreDictionary::getOreName)
 					.anyMatch(s -> s.startsWith("ore"));
 			Item item = state.getBlock().getItemDropped(state, world.rand, 0);
-			if (!world.isRemote && item != null && isOre) {
+			if (!world.isRemote && item != Items.AIR && isOre) {
 				for (int i = 0; i < world.rand.nextInt(3); i++) {
 					EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item));
 					world.spawnEntity(entityItem);

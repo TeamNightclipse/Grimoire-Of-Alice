@@ -71,7 +71,7 @@ public abstract class EntityThrow extends EntityThrowable {
 	}
 
 	public ItemStack getStack() {
-		return stack == null ? new ItemStack(ModItems.ELLY_SCYTHE) : stack;
+		return stack.isEmpty() ? new ItemStack(ModItems.ELLY_SCYTHE) : stack;
 	}
 
 	public void setStack(ItemStack stack) {

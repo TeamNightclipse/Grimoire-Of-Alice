@@ -290,12 +290,12 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		List<PotionEffect> potionEffects = new ArrayList<>();
 		for (int i = 0; i < capability.getSlots(); ++i) {
 			ItemStack stack = capability.getStackInSlot(i);
-			if (stack != null && PotionUtils.getPotionFromItem(stack) != PotionTypes.WATER) {
+			if (!stack.isEmpty() && PotionUtils.getPotionFromItem(stack) != PotionTypes.WATER) {
 				if (!player.capabilities.isCreativeMode) {
 					//noinspection ConstantConditions
 					capability.extractItem(i, 1, false);
 				}
-				PotionUtils.getEffectsFromStack(stack).forEach(potionEffects::add);
+				potionEffects.addAll(PotionUtils.getEffectsFromStack(stack));
 			}
 		}
 		return potionEffects;

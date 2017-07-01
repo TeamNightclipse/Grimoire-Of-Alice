@@ -60,7 +60,7 @@ public class SpellCardContainer extends Container {
 		}
 
 		@Override
-		public boolean isItemValid(@Nullable ItemStack stack) {
+		public boolean isItemValid(ItemStack stack) {
 			return false;
 		}
 	}

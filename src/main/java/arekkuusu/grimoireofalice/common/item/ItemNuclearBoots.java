@@ -86,10 +86,10 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
         boolean hasRod = GrimoireOfAlice.danmakuCoreInstalled;
         if (hasRod) {
             ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
-            if (stack == null) {
+            if (stack.isEmpty()) {
                 stack = player.getHeldItem(EnumHand.OFF_HAND);
             }
-            hasRod = stack != null;
+            hasRod = !stack.isEmpty();
         }
         return hasRod;
     }

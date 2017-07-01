@@ -155,7 +155,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	@Override
 	public boolean hasItem() {
-		return itemHandler.getItemSimulate(0) != null;
+		return !itemHandler.getItemSimulate(0).isEmpty();
 	}
 
 	public ItemStack getItemStack() {

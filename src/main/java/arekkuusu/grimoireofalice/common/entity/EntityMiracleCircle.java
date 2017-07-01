@@ -30,7 +30,7 @@ public class EntityMiracleCircle extends Entity {
         super(world);
     }
 
-    public EntityMiracleCircle(World world, EntityPlayer user, @Nullable ItemStack stack) {
+    public EntityMiracleCircle(World world, EntityPlayer user, ItemStack stack) {
         super(world);
         Vec3d vec3 = user.getLookVec();
         posX = user.posX + vec3.x * 2;
@@ -45,7 +45,7 @@ public class EntityMiracleCircle extends Entity {
     public void onUpdate() {
         super.onUpdate();
         if ((user == null || user.isDead || !user.isHandActive()) && !world.isRemote) {
-            if (stack != null && user != null) {
+            if (!stack.isEmpty() && user != null) {
                 user.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.2F, 0.1F);
                 if (getCharge() < 30) {
                     addCharge(charge);
@@ -78,7 +78,7 @@ public class EntityMiracleCircle extends Entity {
                         charge += 1;
                     }
                 }
-                EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, null);
+                EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, user, ItemStack.EMPTY);
                 world.spawnEntity(miracleCircle);
                 ++circles;
             }

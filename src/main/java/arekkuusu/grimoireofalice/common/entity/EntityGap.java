@@ -44,7 +44,7 @@ public class EntityGap extends Entity {
         super(world);
     }
 
-    public EntityGap(World world, EntityPlayer player,@Nullable ItemStack stack) {
+    public EntityGap(World world, EntityPlayer player, ItemStack stack) {
         super(world);
         setPositionAndAngles(player);
         this.player = player;
@@ -72,7 +72,7 @@ public class EntityGap extends Entity {
                 else {
                     player.getCooldownTracker().setCooldown(stack.getItem(), 25);
                     reduceStack(player, stack);
-                    stack = null;
+                    stack = ItemStack.EMPTY;
                     player = null;
                 }
             }

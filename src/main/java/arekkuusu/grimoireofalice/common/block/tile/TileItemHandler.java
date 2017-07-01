@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.block.tile;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import net.minecraft.block.state.IBlockState;
@@ -80,13 +81,13 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 	}
 
 	@Override
-	public boolean hasCapability(@Nonnull Capability<?> cap, @Nonnull EnumFacing side) {
+	public boolean hasCapability(@Nonnull Capability<?> cap, @Nullable EnumFacing side) {
 		return cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(cap, side);
 	}
 
-	@Nonnull
+	@Nullable
 	@Override
-	public <T> T getCapability(@Nonnull Capability<T> capability, @Nonnull EnumFacing side) {
+	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing side) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
 				? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler)
 				: super.getCapability(capability, side);
@@ -119,13 +120,13 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 		@Override
 		public ItemStack extractItem(int slot, int amount, boolean simulate) {
 			if (allow) return super.extractItem(slot, amount, simulate);
-			else return null;
+			else return ItemStack.EMPTY;
 		}
 
 		public ItemStack getItemSimulate(int slot) {
 			if (allow) {
 				return super.extractItem(slot, 1, true);
-			} else return null;
+			} else return ItemStack.EMPTY;
 		}
 
 		@Override

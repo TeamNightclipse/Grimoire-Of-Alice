@@ -77,14 +77,13 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 		return new ArrayList<>();
 	}
 
-	@Nullable
 	@Override
 	public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn) {
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
-	public void setItemStackToSlot(EntityEquipmentSlot slotIn, @Nullable ItemStack stack) {}
+	public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack) {}
 
 	private void stopEntity() {
 		if(!world.isRemote) {

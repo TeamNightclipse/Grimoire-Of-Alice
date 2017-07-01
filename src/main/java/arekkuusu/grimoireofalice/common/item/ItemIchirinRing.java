@@ -115,7 +115,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
     private boolean isStand(EntityPlayer player) {
         ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-        return stack != null && stack.getDisplayName().equalsIgnoreCase("star platinum");
+        return !stack.isEmpty() && stack.getDisplayName().equalsIgnoreCase("star platinum");
     }
 
     @Override
@@ -133,12 +133,12 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	private boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
 		ItemStack main = player.getHeldItem(hand);
-		return main != null && main.getItem() == ModItems.ICHIRIN_RING;
+		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	private boolean isWearingUnzan(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-		return stack != null && stack.getItem() == ModItems.ICHIRIN_UNZAN;
+		return !stack.isEmpty() && stack.getItem() == ModItems.ICHIRIN_UNZAN;
 	}
 
 	@Override

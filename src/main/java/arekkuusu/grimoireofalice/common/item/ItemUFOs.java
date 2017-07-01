@@ -106,7 +106,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 	@SuppressWarnings("ConstantConditions")
 	private boolean hasRoomForStack(ItemStack item, EntityPlayer player) {
 		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)
-				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true) == null;
+				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true).isEmpty();
 	}
 
 	private void setActive(ItemStack stack) {

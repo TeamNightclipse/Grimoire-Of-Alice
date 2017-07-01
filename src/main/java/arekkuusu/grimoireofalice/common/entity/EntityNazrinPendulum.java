@@ -83,10 +83,10 @@ public class EntityNazrinPendulum extends Entity {
 				ItemStack stack = new ItemStack(block);
 
 				//noinspection ConstantConditions Liar
-				if(stack.getItem() == null) {
+				if(stack.isEmpty()) {
 					continue;
 				}
-				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block))).mapToObj(OreDictionary::getOreName).anyMatch(
+				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(stack)).mapToObj(OreDictionary::getOreName).anyMatch(
 						s -> !ore.isEmpty() ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
 
 				if(isOre) {
