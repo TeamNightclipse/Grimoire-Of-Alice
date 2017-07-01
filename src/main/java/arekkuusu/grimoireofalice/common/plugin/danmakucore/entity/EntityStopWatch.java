@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.entity;
 
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.core.handler.StopWatchHandler;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.common.entity.EntityGrimoireSpell;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
@@ -31,17 +30,18 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class EntityStopWatch extends Entity {
 
 	public static final double RANGE = 32D;
 
 	private EntityPlayer user;
-	private List<EntityPlayer> excludedPlayers = new ArrayList<>();
-	private Map<Entity, double[]> dataEntities = new HashMap<>();
-	private List<EntityDanmaku> frozenDanmaku = new ArrayList<>();
+	private Set<EntityPlayer> excludedPlayers = new HashSet<>();
+	private Set<Entity> frozen = new HashSet<>();
 
 	public EntityStopWatch(World world) {
 		super(world);
@@ -53,7 +53,6 @@ public class EntityStopWatch extends Entity {
 		excludedPlayers.add(user);
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
-		StopWatchHandler.addClock(this);
 	}
 
 	@Override
@@ -100,10 +99,7 @@ public class EntityStopWatch extends Entity {
 
 	private void addIgnoredPlayers(Entity entity) {
 		if (entity instanceof EntityStopWatch) {
-			EntityPlayer player = ((EntityStopWatch) entity).getUser();
-			if (!excludedPlayers.contains(player)) {
-				excludedPlayers.add(player);
-			}
+			excludedPlayers.add(((EntityStopWatch) entity).getUser());
 		}
 	}
 
@@ -120,91 +116,37 @@ public class EntityStopWatch extends Entity {
 
 		addIgnoredPlayers(entity);
 
-		if (entity instanceof EntityLivingBase) {
-			return;
-		}
-
-		if (!world.isRemote) {
-
-			//We use the delay to never actually call update at all
-			if (entity instanceof EntityDanmaku && !frozenDanmaku.contains(entity)) {
-				EntityDanmaku danmaku = (EntityDanmaku)entity;
-				danmaku.setFrozen(true);
-				frozenDanmaku.add(danmaku);
-				return;
-			}
-
-			if (!dataEntities.containsKey(entity)) {
-				double x = entity.motionX;
-				double y = entity.motionY;
-				double z = entity.motionZ;
-				dataEntities.put(entity, new double[]{x, y, z});
-			}
-		}
-
-		if (entity.ticksExisted >= 2) {
-			entity.setPosition(entity.prevPosX, entity.prevPosY, entity.prevPosZ);
-			entity.rotationYaw = entity.prevRotationYaw;
-			entity.rotationPitch = entity.prevRotationPitch;
-			entity.motionX = 0;
-
-			if (!entity.onGround) {
-				entity.motionY = 0;
-			}
-			entity.motionZ = 0;
-
-			entity.setAir(0);
-			entity.ticksExisted--;
-			entity.fallDistance = 0;
-
-			if (entity instanceof EntityThrowable) {
-				++((EntityThrowable) entity).throwableShake;
-			}
-			else if (entity instanceof EntityArrow) {
-				++((EntityArrow) entity).arrowShake;
-			}
+		//noinspection SuspiciousMethodCalls
+		if (entity.ticksExisted >= 2 && !excludedPlayers.contains(entity)) {
+			frozen.add(entity);
+			entity.updateBlocked = true;
 		}
 	}
 
 	@Override
 	public void setDead() {
 		super.setDead();
-		StopWatchHandler.removeClock(this);
+		if(!world.isRemote) {
+			frozen.forEach(e -> e.updateBlocked = false);
+		}
 	}
 
 	private void stopEntity() {
 		if (!world.isRemote) {
 			if (user != null) {
-				for(Map.Entry<Entity, double[]> entityEntry : dataEntities.entrySet()) {
-					Entity entity = entityEntry.getKey();
-					double[] data = entityEntry.getValue();
-					entity.motionX = data[0];
-					entity.motionY = data[1];
-					entity.motionZ = data[2];
-				}
-
-				for(EntityDanmaku danmaku : frozenDanmaku) {
-					danmaku.setFrozen(false);
-				}
-
 				if (!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
-				setDead();
 			}
 			else {
 				dropItem(ModItems.STOP_WATCH, 1);
-				setDead();
 			}
+			setDead();
 		}
 	}
 
 	public EntityPlayer getUser() {
 		return user;
-	}
-
-	public List<EntityPlayer> getExcludedPlayers() {
-		return excludedPlayers;
 	}
 
 	@Override

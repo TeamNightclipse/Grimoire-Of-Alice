@@ -40,12 +40,12 @@ public class EntityIceBlock extends Entity {
 				setDead();
 			}
 			if(ticksExisted >= 125 && getIceBlockHeight() > 0) {
+				frozen.updateBlocked = false;
 				setIceBlockHeight(getIceBlockHeight() - 0.1F);
 				return;
 			}
 			if(frozen != null && !frozen.isDead && !frozen.isBurning()) {
-				setPosition(frozen.posX, frozen.posY, frozen.posZ);
-				freezeEntity();
+				frozen.updateBlocked = true;
 				if(ticksExisted % 20 == 0) {
 					frozen.attackEntityFrom(DamageSource.DROWN, 0.15F);
 				}
@@ -61,29 +61,11 @@ public class EntityIceBlock extends Entity {
 		if (world instanceof WorldServer) {
 			((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 20, 0D, 0D, 0D, 0D);
 		}
+
+		if(!world.isRemote) {
+			frozen.updateBlocked = false;
+		}
 		super.setDead();
-	}
-
-	private void freezeEntity() {
-		frozen.setPosition(frozen.posX, frozen.posY, frozen.posZ);
-		frozen.rotationYawHead = frozen.prevRotationYawHead;
-		frozen.rotationPitch = frozen.prevRotationPitch;
-		frozen.rotationYaw = frozen.prevRotationYaw;
-		frozen.motionX = 0;
-
-		if (!frozen.onGround) {
-			frozen.motionY = 0;
-		}
-		frozen.motionZ = 0;
-
-		frozen.setAir(0);
-		frozen.ticksExisted--;
-		frozen.fallDistance = 0;
-
-		if(frozen instanceof EntityPlayerMP) {
-			EntityPlayerMP playerMP = (EntityPlayerMP) frozen;
-			playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.prevPosY, playerMP.prevPosZ);
-		}
 	}
 
 	@Override
