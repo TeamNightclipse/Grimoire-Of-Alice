@@ -29,10 +29,12 @@ public class EntityEllyScythe extends EntityThrow {
 
 	public EntityEllyScythe(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityEllyScythe(World world, double x, double y, double z) {
 		super(world, x, y, z);
+		isImmuneToFire = true;
 	}
 
 	public EntityEllyScythe(World world, EntityLivingBase thrower, ItemStack itemstack, float velocity) {

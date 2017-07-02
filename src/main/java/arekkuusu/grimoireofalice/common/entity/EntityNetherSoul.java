@@ -13,8 +13,11 @@ import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -29,14 +32,17 @@ public class EntityNetherSoul extends EntityThrowable {
 
 	public EntityNetherSoul(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityNetherSoul(World world, double x, double y, double z) {
 		super(world, x, y, z);
+		isImmuneToFire = true;
 	}
 
 	public EntityNetherSoul(World world, EntityLivingBase throwerIn) {
 		super(world, throwerIn);
+		isImmuneToFire = true;
 	}
 
 	public EntityNetherSoul(World world, EntityLivingBase throwerIn,@Nullable Entity target) {
@@ -100,8 +106,8 @@ public class EntityNetherSoul extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if (result.entityHit != null) {
-			//TODO: DamageSource is mutable. Don't mutate the generic one. Create a new damage source
-			//result.entityHit.attackEntityFrom(DamageSource.GENERIC.setDamageBypassesArmor(), 10);
+			float damage = getThrower() instanceof EntityPlayer ? MathHelper.clamp((((EntityPlayer) getThrower()).experienceLevel * 0.5F), 0, 60) : 1F;
+			result.entityHit.attackEntityFrom(DamageSource.MAGIC, damage);
 			if (!world.isRemote) setDead();
 		}
 	}
@@ -109,5 +115,10 @@ public class EntityNetherSoul extends EntityThrowable {
 	@Override
 	protected float getGravityVelocity() {
 		return 0;
+	}
+
+	@Override
+	public AxisAlignedBB getEntityBoundingBox() {
+		return super.getEntityBoundingBox().grow(0.25D);
 	}
 }

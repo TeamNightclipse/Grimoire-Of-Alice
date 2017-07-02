@@ -8,8 +8,10 @@
  */
 package arekkuusu.grimoireofalice.client.gui;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import com.google.common.collect.ImmutableList;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
 
@@ -95,6 +97,7 @@ public class GuiScreenGuide extends GuiScreen {
 				--currPage;
 			}
 		}
+		playTurnPage();
 	}
 
 	@Override
@@ -115,6 +118,8 @@ public class GuiScreenGuide extends GuiScreen {
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
+		EntityPlayerSP player = Minecraft.getMinecraft().player;
+		player.playSound(GrimoireSoundEvents.PAGE_TURN, 1F, 1F);
 	}
 
 	@Override
@@ -152,5 +157,10 @@ public class GuiScreenGuide extends GuiScreen {
 				this.drawTexturedModalRect(x, y, i, j, 23, 13);
 			}
 		}
+	}
+
+	private void playTurnPage() {
+		EntityPlayerSP player = Minecraft.getMinecraft().player;
+		player.playSound(GrimoireSoundEvents.PAGE_TURN, 0.5F, 1.25F);
 	}
 }

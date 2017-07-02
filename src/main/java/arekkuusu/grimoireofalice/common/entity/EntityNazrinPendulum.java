@@ -41,6 +41,7 @@ public class EntityNazrinPendulum extends Entity {
 
 	public EntityNazrinPendulum(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityNazrinPendulum(World world, EntityPlayer player, ItemStack stack, String ore, boolean follow) {
@@ -49,6 +50,7 @@ public class EntityNazrinPendulum extends Entity {
 		this.stack = stack.copy();
 		this.follow = follow;
 		this.ore = ore;
+		isImmuneToFire = true;
 	}
 
 	@Override

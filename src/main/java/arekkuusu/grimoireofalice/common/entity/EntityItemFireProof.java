@@ -17,14 +17,17 @@ public class EntityItemFireProof extends EntityItem {
 
 	public EntityItemFireProof(World world, double x, double y, double z) {
 		super(world, x, y, z);
+		isImmuneToFire = true;
 	}
 
 	public EntityItemFireProof(World world, double x, double y, double z, ItemStack stack) {
 		super(world, x, y, z, stack);
+		isImmuneToFire = true;
 	}
 
 	public EntityItemFireProof(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	@Override

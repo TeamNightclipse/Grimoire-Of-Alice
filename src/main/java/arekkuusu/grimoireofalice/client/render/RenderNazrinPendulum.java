@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
@@ -33,6 +34,7 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 	@Override
 	public void doRender(EntityNazrinPendulum pendulum, double x, double y, double z, float yaw, float pitch) {
 		GlStateManager.pushMatrix();
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
 		bindEntityTexture(pendulum);
 		GlStateManager.translate(x, y, z);
 

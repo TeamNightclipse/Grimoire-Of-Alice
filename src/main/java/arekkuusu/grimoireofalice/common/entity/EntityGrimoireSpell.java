@@ -37,6 +37,7 @@ public class EntityGrimoireSpell extends Entity {
 
 	public EntityGrimoireSpell(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityGrimoireSpell(World world, EntityPlayer entityLiving, int end) {
@@ -49,6 +50,7 @@ public class EntityGrimoireSpell extends Entity {
 		posZ = host.posZ;
 		setPosition(posX, posY, posZ);
 		setRotation(host.rotationYaw, 0);
+		isImmuneToFire = true;
 	}
 
 	@Override

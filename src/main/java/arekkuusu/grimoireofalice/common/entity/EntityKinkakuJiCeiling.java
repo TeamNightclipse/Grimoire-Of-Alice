@@ -30,12 +30,14 @@ public class EntityKinkakuJiCeiling extends Entity {
 		super(world);
 		setPosition(entity.posX, entity.posY + 5, entity.posZ);
 		rotationYaw = entity.rotationYaw % 360.0F;
+		isImmuneToFire = true;
 	}
 
 	public EntityKinkakuJiCeiling(World world, EntityLivingBase livingBase, double x, double y, double z) {
 		super(world);
 		setPosition(x, y, z);
 		rotationYaw = livingBase.rotationYaw % 360.0F;
+		isImmuneToFire = true;
 	}
 
 	@Override

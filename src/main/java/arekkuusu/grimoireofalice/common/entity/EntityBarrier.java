@@ -29,6 +29,7 @@ public class EntityBarrier extends Entity {
 
     public EntityBarrier(World world) {
         super(world);
+		isImmuneToFire = true;
     }
 
     public EntityBarrier(World world, EntityPlayer player, byte type) {
@@ -37,6 +38,7 @@ public class EntityBarrier extends Entity {
         this.type = Barrier.fromType(type);
         setPositionAndAngles(player);
         setNoGravity(true);
+		isImmuneToFire = true;
     }
 
     public void setPositionAndAngles(EntityPlayer player) {

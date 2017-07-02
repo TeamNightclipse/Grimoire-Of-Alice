@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +25,8 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 	@Override
 	public void doRender(EntityHakureiOrb entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
+		GlStateManager.disableLighting();
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.enableBlend();
@@ -36,6 +39,7 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 		GlStateManager.rotate(90 * 5F, 0.0F, 0.0F, 1.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.disableBlend();
+		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

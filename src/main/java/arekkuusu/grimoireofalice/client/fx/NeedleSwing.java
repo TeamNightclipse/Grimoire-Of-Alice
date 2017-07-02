@@ -67,8 +67,8 @@ public class NeedleSwing extends Particle {
 	}
 
 	@Override
-	public int getBrightnessForRender(float i) {
-		return 61680;
+	public int getBrightnessForRender(float p_189214_1_) {
+		return 244;
 	}
 
 	@Override

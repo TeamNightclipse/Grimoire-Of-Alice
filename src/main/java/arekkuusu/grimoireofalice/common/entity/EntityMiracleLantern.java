@@ -22,10 +22,12 @@ public class EntityMiracleLantern extends EntityThrowable {
 
 	public EntityMiracleLantern(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityMiracleLantern(World world, double x, double y, double z) {
 		super(world, x, y, z);
+		isImmuneToFire = true;
 	}
 
 	public EntityMiracleLantern(World world, EntityLivingBase throwerIn) {
@@ -36,6 +38,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 		double dy = throwerIn.posY + throwerIn.getEyeHeight();
 		double dz = throwerIn.posZ + look.z * distance;
 		setPosition(dx, dy, dz);
+		isImmuneToFire = true;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.lib.LibGuiID;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -54,6 +55,7 @@ public class ItemPatchyBook extends ItemMod implements IOwnedBy {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
+		player.playSound(GrimoireSoundEvents.PAGE_TURN, 1F, 1F);
 		if(world.isRemote) {
 			player.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		}

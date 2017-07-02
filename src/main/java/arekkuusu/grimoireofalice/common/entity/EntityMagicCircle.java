@@ -28,6 +28,7 @@ public class EntityMagicCircle extends Entity {
 
 	public EntityMagicCircle(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityMagicCircle(World world, EntityLivingBase entityLiving, EnumTextures texture, int end) {
@@ -40,6 +41,7 @@ public class EntityMagicCircle extends Entity {
 		posY = host.posY + 0.1D;
 		posZ = host.posZ;
 		setPositionAndRotation(posX, posY, posZ, host.rotationYaw, host.rotationPitch);
+		isImmuneToFire = true;
 	}
 
 	@Override

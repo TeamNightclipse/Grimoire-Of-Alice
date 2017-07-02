@@ -16,7 +16,7 @@ public class LibMod {
 	//Name of MOD
 	public static final String MODVER = "@VERSION@";
 	//Version of MOD
-	public static final String DEPENDENCIES = "required-after:Forge@[12.18.2.2105,];after:danmakucore@[0.4.0,]";
+	public static final String DEPENDENCIES = "";
 	//Dependency
 	public static final String PROXYCLIENT = "arekkuusu.grimoireofalice.client.ClientProxy";
 	//Client Required

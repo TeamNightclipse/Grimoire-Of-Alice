@@ -17,10 +17,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemDye;
@@ -59,7 +60,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
-	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombie.class, "convertToVillager", "func_82232_p");
+	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_82232_p", int.class);
 
 	public ItemSanaeGohei() {
 		super(LibItemName.SANAE_GOHEI, Miracles.values());
@@ -140,6 +141,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(false);
 
 							charge -= 4;
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case THUNDER:
@@ -153,6 +155,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(true);
 
 							charge -= 5;
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case CLEAR:
@@ -166,12 +169,14 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(false);
 
 							charge -= 1;
+							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case TESTIFICATE:
 						if (TESTIFICATE.canUse(charge, player)) {
 							if (convertNearZombies(player, world)) {
 								charge -= 15;
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F,1F);
 							}
 						}
 						break;
@@ -192,6 +197,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							});
 
 							charge -= 1;
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_THROW, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case HEAL:
@@ -203,6 +209,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							}
 
 							charge -= 2;
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case POTIONS:
@@ -213,6 +220,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 								player.getCooldownTracker().setCooldown(this, 15);
 
 								charge -= 3;
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.PLAYERS, 1F,1F);
 							}
 						}
 						break;
@@ -221,6 +229,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							applyBonemealRandomPos(player, world);
 
 							charge -= 6;
+							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 					case TIME:
@@ -231,6 +240,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							player.getCooldownTracker().setCooldown(this, 5);
 
 							charge -= 10;
+							player.world.playSound(null, player.getPosition(), SoundEvents.AMBIENT_CAVE, SoundCategory.PLAYERS, 1F,1F);
 						}
 						break;
 				}
@@ -251,14 +261,14 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	}
 
 	private boolean convertNearZombies(EntityPlayer player, World world) {
-		List<EntityZombie> list = world.getEntitiesWithinAABB(EntityZombie.class, player.getEntityBoundingBox().grow(10));
+		List<EntityZombieVillager> list = world.getEntitiesWithinAABB(EntityZombieVillager.class, player.getEntityBoundingBox().grow(10));
 		list.forEach(this::convertToVillager);
 		return !list.isEmpty();
 	}
 
-	private void convertToVillager(EntityZombie zombie) {
+	private void convertToVillager(EntityZombieVillager zombie) {
 		try {
-			CONVERT_ZOMBIE.invoke(zombie);
+			CONVERT_ZOMBIE.invoke(zombie, 0);
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

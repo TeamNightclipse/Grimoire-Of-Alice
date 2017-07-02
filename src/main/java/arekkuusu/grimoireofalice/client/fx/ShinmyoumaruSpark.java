@@ -46,6 +46,11 @@ public class ShinmyoumaruSpark extends Particle {
 	}
 
 	@Override
+	public int getBrightnessForRender(float p_189214_1_) {
+		return 244;
+	}
+
+	@Override
 	public void onUpdate() {
 		prevPosX = posX;
 		prevPosY = posY;

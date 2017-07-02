@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -24,9 +25,10 @@ public class RenderMiracleCircle extends Render<EntityMiracleCircle> {
 	@Override
 	public void doRender(EntityMiracleCircle entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
+		GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_COLOR);
 		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE_MINUS_SRC_COLOR);
 		bindEntityTexture(entity);
 
 		GlStateManager.translate(x, y, z);
@@ -38,7 +40,6 @@ public class RenderMiracleCircle extends Render<EntityMiracleCircle> {
 		GlStateManager.disableBlend();
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
-
 	}
 
 	@Override

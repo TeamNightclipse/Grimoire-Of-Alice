@@ -5,8 +5,8 @@
         "0": "grimoireofalice:models/block/onbashira_log_dark",
         "1": "grimoireofalice:models/block/onbashira_log_light",
         "2": "grimoireofalice:models/block/onbashira_log_top",
-        "3": "grimoireofalice:models/block/Rope",
-        "4": "grimoireofalice:models/block/Paper"
+        "3": "grimoireofalice:models/block/rope",
+        "4": "grimoireofalice:models/block/paper"
     },
     "elements": [
         {

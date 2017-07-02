@@ -28,6 +28,7 @@ public class EntityMiracleCircle extends Entity {
 
     public EntityMiracleCircle(World world) {
         super(world);
+		isImmuneToFire = true;
     }
 
     public EntityMiracleCircle(World world, EntityPlayer user, ItemStack stack) {
@@ -39,6 +40,7 @@ public class EntityMiracleCircle extends Entity {
         setPosition(posX, posY, posZ);
         this.user = user;
         this.stack = stack;
+		isImmuneToFire = true;
     }
 
     @Override
@@ -68,7 +70,7 @@ public class EntityMiracleCircle extends Entity {
             posZ = user.posZ + vec3.z * 2;
             setPosition(posX, posY, posZ);
 
-            if (!world.isRemote && stack != null && ticksExisted % 60 == 0 && circles < 4) {
+            if (!world.isRemote && !stack.isEmpty() && ticksExisted % 60 == 0 && circles < 4) {
                 if (getCharge() < 30) {
                     if (hasFaith(user) && consumeFaith(user)) {
                         charge += 5;

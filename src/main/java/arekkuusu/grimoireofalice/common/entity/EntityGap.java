@@ -42,6 +42,7 @@ public class EntityGap extends Entity {
 
     public EntityGap(World world) {
         super(world);
+		isImmuneToFire = true;
     }
 
     public EntityGap(World world, EntityPlayer player, ItemStack stack) {
@@ -49,6 +50,7 @@ public class EntityGap extends Entity {
         setPositionAndAngles(player);
         this.player = player;
         this.stack = stack;
+		isImmuneToFire = true;
     }
 
     public void setPositionAndAngles(EntityPlayer player) {

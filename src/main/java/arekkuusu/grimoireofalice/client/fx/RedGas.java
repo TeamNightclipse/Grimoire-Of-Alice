@@ -38,7 +38,7 @@ public class RedGas extends Particle {
 
 	@Override
 	public int getBrightnessForRender(float i) {
-		return 61680;
+		return 244;
 	}
 
 	@Override

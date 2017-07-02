@@ -147,6 +147,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	private void onImpactEntity(RayTraceResult result) {
         if (result.entityHit != null && result.entityHit != this && result.entityHit != getThrower()) {
+        	if(isBurning()) result.entityHit.setFire(5);
             explode();
         }
     }

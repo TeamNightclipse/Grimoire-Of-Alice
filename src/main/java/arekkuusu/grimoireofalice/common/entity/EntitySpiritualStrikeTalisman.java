@@ -19,11 +19,13 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 		super(world);
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
+		isImmuneToFire = true;
 	}
 
 	public EntitySpiritualStrikeTalisman(World world, EntityLivingBase living) {
 		super(world);
 		this.living = living;
+		isImmuneToFire = true;
 	}
 
 	@Override

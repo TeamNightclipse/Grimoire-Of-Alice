@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.client.model.ModelFlat;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -25,6 +26,8 @@ public class RenderBarrier extends Render<EntityBarrier> {
 	@Override
 	public void doRender(EntityBarrier entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
+		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
@@ -42,6 +45,7 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.disableBlend();
+		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

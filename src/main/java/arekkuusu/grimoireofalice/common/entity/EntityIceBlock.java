@@ -21,6 +21,7 @@ public class EntityIceBlock extends Entity {
 
 	public EntityIceBlock(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityIceBlock(World world, EntityLivingBase frozen, float width, float height) {
@@ -30,6 +31,7 @@ public class EntityIceBlock extends Entity {
 		setIceBlockHeight(height + 0.8F);
 		this.frozen = frozen;
 		preventEntitySpawning = true;
+		isImmuneToFire = true;
 	}
 
 	@Override

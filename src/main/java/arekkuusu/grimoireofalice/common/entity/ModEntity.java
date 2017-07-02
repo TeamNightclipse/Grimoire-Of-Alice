@@ -40,7 +40,7 @@ public class ModEntity {
         registerEntity(EntityCursedDecoyDoll.class, "doll", ++modEntityID, 64, 10, true);
         registerEntity(EntityHakureiOrb.class, "orb", ++modEntityID, 64, 1, true);
         registerEntity(EntityBarrier.class, "barrier", ++modEntityID, 64, 1, true);
-        registerEntity(EntityMiracleLantern.class, "lantern", ++modEntityID, 64, 10, true);
+        registerEntity(EntityMiracleLantern.class, "lantern", ++modEntityID, 64, 1, true);
         registerEntity(EntityNetherSoul.class, "soul", ++modEntityID, 64, 1, true);
         registerEntity(EntityFierySword.class, "fiery_sword", ++modEntityID, 64, 1, true);
         registerEntity(EntityIceBlock.class, "ice_block", ++modEntityID, 64, 10, true);

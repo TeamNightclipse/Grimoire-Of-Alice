@@ -18,7 +18,7 @@ public final class GrimoireOfAliceAPI {
 
     private static final List<IAltarRecipe> recipes = new ArrayList<>();
 
-	//Don't touch them or I will honk you, strange person in the internet!
+	//#HONK!
 	private static final List<ItemStack> flyItems = new ArrayList<>();
 	private static final List<ItemStack> flyArmor = new ArrayList<>();
 

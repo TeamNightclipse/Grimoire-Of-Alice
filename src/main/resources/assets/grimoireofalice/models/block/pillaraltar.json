@@ -4,8 +4,8 @@
         "particle": "grimoireofalice:blocks/onbashira",
         "0": "grimoireofalice:models/block/pillar_log",
         "1": "grimoireofalice:models/block/pillar_log_top",
-        "2": "grimoireofalice:models/block/Rope",
-        "3": "grimoireofalice:models/block/Paper"
+        "2": "grimoireofalice:models/block/rope",
+        "3": "grimoireofalice:models/block/paper"
     },
     "elements": [
         {

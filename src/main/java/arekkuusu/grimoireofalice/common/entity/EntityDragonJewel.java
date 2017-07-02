@@ -32,6 +32,7 @@ public class EntityDragonJewel extends Entity {
 
 	public EntityDragonJewel(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityDragonJewel(World world, EntityLivingBase player) {
@@ -39,6 +40,7 @@ public class EntityDragonJewel extends Entity {
 		host = player;
 		ignoreFrustumCheck = true;
 		preventEntitySpawning = true;
+		isImmuneToFire = true;
 	}
 
 	@Override

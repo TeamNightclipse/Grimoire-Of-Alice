@@ -28,7 +28,7 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 	public ItemGhostAnchor(ToolMaterial material) {
 		super(material, LibItemName.GHOST_ANCHOR);
 		addPropertyOverride(new ResourceLocation("active"),
-				(stack, world, entity) -> entity != null && (entity.motionX * entity.motionX + entity.motionZ * entity.motionZ + entity.motionY * entity.motionY > 9D) ? 1F : 0F);
+				(stack, world, entity) -> entity != null && (entity.motionX * entity.motionX + entity.motionZ * entity.motionZ + entity.motionY * entity.motionY > 6D) ? 1F : 0F);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
         if (!world.isRemote && isSelected && entityIn instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) entityIn;
-            if (player.motionX * player.motionX + player.motionZ * player.motionZ + player.motionY * player.motionY > 9D) {
+            if (player.motionX * player.motionX + player.motionZ * player.motionZ + player.motionY * player.motionY > 6D) {
                 List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player,
                         player.getEntityBoundingBox().expand(2.0D, 2.0D, 2.0D));
                 for (Entity entity : list) {
@@ -64,7 +64,7 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
                         playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.posY, playerMP.prevPosZ);
                     }
 
-                    world.playSound(null, player.getPosition(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 1F, 1F );
+                    world.playSound(null, player.getPosition(), SoundEvents.BLOCK_ANVIL_HIT, SoundCategory.PLAYERS, 1F, 1F );
 
                     player.motionX = 0;
                     player.motionZ = 0;

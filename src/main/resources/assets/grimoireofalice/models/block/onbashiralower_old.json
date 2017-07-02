@@ -4,7 +4,7 @@
         "particle": "grimoireofalice:blocks/onbashira",
         "0": "grimoireofalice:models/block/onbashira_sideb",
         "1": "grimoireofalice:models/block/onbashira_sidea",
-        "2": "grimoireofalice:models/block/Forms"
+        "2": "grimoireofalice:models/block/forms"
     },
     "elements": [
         {

@@ -24,6 +24,7 @@ public class EntityFierySword extends Entity {
 
 	public EntityFierySword(World world) {
 		super(world);
+		isImmuneToFire = true;
 	}
 
 	public EntityFierySword(World world, EntityPlayer player) {
@@ -33,6 +34,7 @@ public class EntityFierySword extends Entity {
 		this.player = player;
 		this.rotationYaw = player.rotationYawHead - 65;
 		this.rotationPitch = player.rotationPitch;
+		isImmuneToFire = true;
 	}
 
 	@Override
