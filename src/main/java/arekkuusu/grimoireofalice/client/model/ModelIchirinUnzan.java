@@ -99,179 +99,179 @@ public class ModelIchirinUnzan extends ModelBiped {
 
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float netHeadYaw, float headPitch, float scale) {
-        float maxUpAndDown = 0.05F;
-        float speed = 2;
-        float angle = 0;
+		float maxUpAndDown = 0.05F;
+		float speed = 2;
+		float angle = 0;
 
-        float toDegrees = (float) Math.PI / 180F;
-        angle += speed * age;
-        if (angle > 360) angle -= 360;
+		float toDegrees = (float) Math.PI / 180F;
+		angle += speed * age;
+		if(angle > 360) {
+			angle -= 360;
+		}
 
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
-        head.render(size);
-        GlStateManager.disableBlend();
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
-        square1.render(size);
-        square8.render(size);
-        GlStateManager.disableBlend();
-        GlStateManager.enableBlend();
-        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
-        square2.render(size);
-        square3.render(size);
-        square4.render(size);
-        square5.render(size);
-        square6.render(size);
-        square7.render(size);
-        square9.render(size);
-        square10.render(size);
-        GlStateManager.disableBlend();
-        GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
+		head.render(size);
+		GlStateManager.disableBlend();
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.9F);
+		square1.render(size);
+		square8.render(size);
+		GlStateManager.disableBlend();
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.8F);
+		square2.render(size);
+		square3.render(size);
+		square4.render(size);
+		square5.render(size);
+		square6.render(size);
+		square7.render(size);
+		square9.render(size);
+		square10.render(size);
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
 
-        boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
-        this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
+		boolean flag = entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getTicksElytraFlying() > 4;
+		this.bipedHead.rotateAngleY = netHeadYaw * 0.017453292F;
 
-        if (flag)
-        {
-            this.bipedHead.rotateAngleX = -((float)Math.PI / 4F);
-        }
-        else
-        {
-            this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
-        }
+		if(flag) {
+			this.bipedHead.rotateAngleX = -((float) Math.PI / 4F);
+		}
+		else {
+			this.bipedHead.rotateAngleX = headPitch * 0.017453292F;
+		}
 
-        this.jewel.rotateAngleY = 0.0F;
-        this.fistRight.rotationPointZ = 0.0F;
-        this.fistRight.rotationPointX = -5.0F;
-        this.fistLeft.rotationPointZ = 0.0F;
-        this.fistLeft.rotationPointX = 5.0F;
-        float f = 1.0F;
+		this.jewel.rotateAngleY = 0.0F;
+		this.fistRight.rotationPointZ = 0.0F;
+		this.fistRight.rotationPointX = -5.0F;
+		this.fistLeft.rotationPointZ = 0.0F;
+		this.fistLeft.rotationPointX = 5.0F;
+		float f = 1.0F;
 
-        if (flag) {
-            f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
-            f = f / 0.2F;
-            f = f * f * f;
-        }
+		if(flag) {
+			f = (float) (entity.motionX * entity.motionX + entity.motionY * entity.motionY + entity.motionZ * entity.motionZ);
+			f = f / 0.2F;
+			f = f * f * f;
+		}
 
-        if (f < 1.0F) {
-            f = 1.0F;
-        }
+		if(f < 1.0F) {
+			f = 1.0F;
+		}
 
-        this.fistRight.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.fistLeft.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
-        this.fistRight.rotateAngleZ = 0.0F;
-        this.fistLeft.rotateAngleZ = 0.0F;
+		this.fistRight.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.fistLeft.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+		this.fistRight.rotateAngleZ = 0.0F;
+		this.fistLeft.rotateAngleZ = 0.0F;
 
-        if (this.isRiding) {
-            this.fistRight.rotateAngleX += -((float) Math.PI / 5F);
-            this.fistLeft.rotateAngleX += -((float) Math.PI / 5F);
-        }
+		if(this.isRiding) {
+			this.fistRight.rotateAngleX += -((float) Math.PI / 5F);
+			this.fistLeft.rotateAngleX += -((float) Math.PI / 5F);
+		}
 
-        this.fistRight.rotateAngleY = 0.0F;
-        this.fistRight.rotateAngleZ = 0.0F;
+		this.fistRight.rotateAngleY = 0.0F;
+		this.fistRight.rotateAngleZ = 0.0F;
 
-        switch (this.leftArmPose) {
-            case EMPTY:
-                this.fistLeft.rotateAngleY = 0.0F;
-                break;
-            case BLOCK:
-                this.fistLeft.rotateAngleX = this.fistLeft.rotateAngleX * 0.5F - 0.9424779F;
-                this.fistLeft.rotateAngleY = 0.5235988F;
-                break;
-            case ITEM:
-                this.fistLeft.rotateAngleX = this.fistLeft.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
-                this.fistLeft.rotateAngleY = 0.0F;
-        }
+		switch(this.leftArmPose) {
+			case EMPTY:
+				this.fistLeft.rotateAngleY = 0.0F;
+				break;
+			case BLOCK:
+				this.fistLeft.rotateAngleX = this.fistLeft.rotateAngleX * 0.5F - 0.9424779F;
+				this.fistLeft.rotateAngleY = 0.5235988F;
+				break;
+			case ITEM:
+				this.fistLeft.rotateAngleX = this.fistLeft.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
+				this.fistLeft.rotateAngleY = 0.0F;
+		}
 
-        switch (this.rightArmPose) {
-            case EMPTY:
-                this.fistRight.rotateAngleY = 0.0F;
-                break;
-            case BLOCK:
-                this.fistRight.rotateAngleX = this.fistRight.rotateAngleX * 0.5F - 0.9424779F;
-                this.fistRight.rotateAngleY = -0.5235988F;
-                break;
-            case ITEM:
-                this.fistRight.rotateAngleX = this.fistRight.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
-                this.fistRight.rotateAngleY = 0.0F;
-        }
+		switch(this.rightArmPose) {
+			case EMPTY:
+				this.fistRight.rotateAngleY = 0.0F;
+				break;
+			case BLOCK:
+				this.fistRight.rotateAngleX = this.fistRight.rotateAngleX * 0.5F - 0.9424779F;
+				this.fistRight.rotateAngleY = -0.5235988F;
+				break;
+			case ITEM:
+				this.fistRight.rotateAngleX = this.fistRight.rotateAngleX * 0.5F - ((float) Math.PI / 10F);
+				this.fistRight.rotateAngleY = 0.0F;
+		}
 
-        if (this.swingProgress > 0.0F) {
-            EnumHandSide enumhandside = this.getMainHand(entity);
-            ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
-            float f1 = this.swingProgress;
-            this.jewel.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
+		if(this.swingProgress > 0.0F) {
+			EnumHandSide enumhandside = this.getMainHand(entity);
+			ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
+			float f1 = this.swingProgress;
+			this.jewel.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
 
-            if (enumhandside == EnumHandSide.LEFT) {
-                this.jewel.rotateAngleY *= -1.0F;
-            }
+			if(enumhandside == EnumHandSide.LEFT) {
+				this.jewel.rotateAngleY *= -1.0F;
+			}
 
-            this.fistRight.rotationPointZ = MathHelper.sin(this.jewel.rotateAngleY) * 5.0F;
-            this.fistRight.rotationPointX = -MathHelper.cos(this.jewel.rotateAngleY) * 5.0F;
-            this.fistLeft.rotationPointZ = -MathHelper.sin(this.jewel.rotateAngleY) * 5.0F;
-            this.fistLeft.rotationPointX = MathHelper.cos(this.jewel.rotateAngleY) * 5.0F;
-            this.fistRight.rotateAngleY += this.jewel.rotateAngleY;
-            this.fistLeft.rotateAngleY += this.jewel.rotateAngleY;
-            this.fistLeft.rotateAngleX += this.jewel.rotateAngleY;
+			this.fistRight.rotationPointZ = MathHelper.sin(this.jewel.rotateAngleY) * 5.0F;
+			this.fistRight.rotationPointX = -MathHelper.cos(this.jewel.rotateAngleY) * 5.0F;
+			this.fistLeft.rotationPointZ = -MathHelper.sin(this.jewel.rotateAngleY) * 5.0F;
+			this.fistLeft.rotationPointX = MathHelper.cos(this.jewel.rotateAngleY) * 5.0F;
+			this.fistRight.rotateAngleY += this.jewel.rotateAngleY;
+			this.fistLeft.rotateAngleY += this.jewel.rotateAngleY;
+			this.fistLeft.rotateAngleX += this.jewel.rotateAngleY;
 
-            f1 = 20F - this.swingProgress;
-            f1 *= f1;
-            f1 *= f1;
-            f1 = 1.0F - f1;
-            float f2 = MathHelper.sin(f1 * (float)Math.PI);
-            float f3 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
-            modelrenderer.rotateAngleX = (float)((double)modelrenderer.rotateAngleX - ((double)f2 * 1.2D + (double)f3));
-            modelrenderer.rotateAngleY += this.jewel.rotateAngleY * 4.0F;
-            modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
-        }
+			f1 = 20F - this.swingProgress;
+			f1 *= f1;
+			f1 *= f1;
+			f1 = 1.0F - f1;
+			float f2 = MathHelper.sin(f1 * (float) Math.PI);
+			float f3 = MathHelper.sin(this.swingProgress * (float) Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+			modelrenderer.rotateAngleX = (float) ((double) modelrenderer.rotateAngleX - ((double) f2 * 1.2D + (double) f3));
+			modelrenderer.rotateAngleY += this.jewel.rotateAngleY * 4.0F;
+			modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
+		}
 
-        if (this.isSneak) {
-            this.jewel.rotateAngleX = 0.5F;
-            this.fistRight.rotateAngleX += 0.4F;
-            this.fistLeft.rotateAngleX += 0.4F;
-        }
-        else {
-            this.jewel.rotateAngleX = 0.0F;
-        }
+		if(this.isSneak) {
+			this.jewel.rotateAngleX = 0.5F;
+			this.fistRight.rotateAngleX += 0.4F;
+			this.fistLeft.rotateAngleX += 0.4F;
+		}
+		else {
+			this.jewel.rotateAngleX = 0.0F;
+		}
 
-        this.fistRight.rotateAngleZ += MathHelper.cos(age * 0.09F) * 0.05F + 0.05F;
-        this.fistLeft.rotateAngleZ -= MathHelper.cos(age * 0.09F) * 0.05F + 0.05F;
-        this.fistRight.rotateAngleX += MathHelper.sin(age * 0.067F) * 0.05F;
-        this.fistLeft.rotateAngleX -= MathHelper.sin(age * 0.067F) * 0.05F;
+		this.fistRight.rotateAngleZ += MathHelper.cos(age * 0.09F) * 0.05F + 0.05F;
+		this.fistLeft.rotateAngleZ -= MathHelper.cos(age * 0.09F) * 0.05F + 0.05F;
+		this.fistRight.rotateAngleX += MathHelper.sin(age * 0.067F) * 0.05F;
+		this.fistLeft.rotateAngleX -= MathHelper.sin(age * 0.067F) * 0.05F;
 
-        GlStateManager.pushMatrix();
+		GlStateManager.pushMatrix();
 
-        if (this.isChild) {
-            GlStateManager.scale(0.75F, 0.75F, 0.75F);
-            GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
-            GlStateManager.popMatrix();
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(0.5F, 0.5F, 0.5F);
-            GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
-            this.jewel.render(scale);
+		if(this.isChild) {
+			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+			this.jewel.render(scale);
 
-            renderFists(scale);
-        }
-        else {
-            if (entity.isSneaking()) {
-                GlStateManager.translate(0.0F, 0.2F, 0.0F);
-            }
+			renderFists(scale);
+		}
+		else {
+			if(entity.isSneaking()) {
+				GlStateManager.translate(0.0F, 0.2F, 0.0F);
+			}
 
-            this.jewel.render(scale);
+			this.jewel.render(scale);
 
-            renderFists(scale);
-        }
+			renderFists(scale);
+		}
 
-        GlStateManager.popMatrix();
-    }
+		GlStateManager.popMatrix();
+	}
 
-	private void renderFists(float scale){
+	private void renderFists(float scale) {
 		if(renderRight) {
 			GlStateManager.pushMatrix();
 			GlStateManager.enableBlend();

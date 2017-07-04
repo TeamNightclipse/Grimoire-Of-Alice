@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGrilledLamprey extends ItemModFood implements IOwnedBy{
+public class ItemGrilledLamprey extends ItemModFood implements IOwnedBy {
 
 	public ItemGrilledLamprey() {
 		super(20, 2F, true, LibItemName.GRILLED_LAMPREY);

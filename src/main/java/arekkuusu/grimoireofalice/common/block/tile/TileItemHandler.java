@@ -113,20 +113,31 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-			if (allow) return super.insertItem(slot, stack, simulate);
-			else return stack;
+			if(allow) {
+				return super.insertItem(slot, stack, simulate);
+			}
+			else {
+				return stack;
+			}
 		}
 
 		@Override
 		public ItemStack extractItem(int slot, int amount, boolean simulate) {
-			if (allow) return super.extractItem(slot, amount, simulate);
-			else return ItemStack.EMPTY;
+			if(allow) {
+				return super.extractItem(slot, amount, simulate);
+			}
+			else {
+				return ItemStack.EMPTY;
+			}
 		}
 
 		public ItemStack getItemSimulate(int slot) {
-			if (allow) {
+			if(allow) {
 				return super.extractItem(slot, 1, true);
-			} else return ItemStack.EMPTY;
+			}
+			else {
+				return ItemStack.EMPTY;
+			}
 		}
 
 		@Override

@@ -70,15 +70,15 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (!world.isRemote && entityIn instanceof EntityPlayer) {
+		if(!world.isRemote && entityIn instanceof EntityPlayer) {
 			short jewels = getJewels(stack);
 			int i = MathHelper.clamp(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
-			if (jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
+			if(jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
 				jewels += 1;
-				if (jewels < 0) {
+				if(jewels < 0) {
 					jewels = 0;
 				}
-				else if (jewels > 5) {
+				else if(jewels > 5) {
 					jewels = 5;
 				}
 				setJewels(stack, jewels);
@@ -101,14 +101,14 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			short jewels = getJewels(stack);
-			if (jewels >= 1) {
+			if(jewels >= 1) {
 				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
-				if (timeUsed > 30) {
+				if(timeUsed > 30) {
 					timeUsed = 30;
 				}
-				if (!entityLiving.isSneaking()) {
+				if(!entityLiving.isSneaking()) {
 					int color = COLORS[itemRand.nextInt(COLORS.length)];
 
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
@@ -120,7 +120,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 					addJewels(stack, (short) -1);
 				}
 				else {
-					for (int i = 0; i < jewels; i++) {
+					for(int i = 0; i < jewels; i++) {
 						int color = COLORS[itemRand.nextInt(COLORS.length)];
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)

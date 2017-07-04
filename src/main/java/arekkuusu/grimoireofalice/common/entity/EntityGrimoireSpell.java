@@ -98,7 +98,7 @@ public class EntityGrimoireSpell extends Entity {
 		float bookRotationPrev = bookRotation;
 		double d0 = host.posX - (posX + 0.5F);
 		double d1 = host.posZ - (posZ + 0.5F);
-		float tRot = (float)MathHelper.atan2(d1, d0);
+		float tRot = (float) MathHelper.atan2(d1, d0);
 		bookSpread += 0.1F;
 
 		if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
@@ -113,29 +113,29 @@ public class EntityGrimoireSpell extends Entity {
 			bookSpread -= 0.1F;
 		}
 
-		while(bookRotation >= (float)Math.PI) {
-			bookRotation -= (float)Math.PI * 2F;
+		while(bookRotation >= (float) Math.PI) {
+			bookRotation -= (float) Math.PI * 2F;
 		}
 
-		while(bookRotation < -(float)Math.PI) {
-			bookRotation += (float)Math.PI * 2F;
+		while(bookRotation < -(float) Math.PI) {
+			bookRotation += (float) Math.PI * 2F;
 		}
 
-		while(tRot >= (float)Math.PI) {
-			tRot -= (float)Math.PI * 2F;
+		while(tRot >= (float) Math.PI) {
+			tRot -= (float) Math.PI * 2F;
 		}
 
-		while(tRot < -(float)Math.PI) {
-			tRot += (float)Math.PI * 2F;
+		while(tRot < -(float) Math.PI) {
+			tRot += (float) Math.PI * 2F;
 		}
 
 		float f2 = tRot - bookRotation;
-		while(f2 >= (float)Math.PI) {
-			f2 -= (float)Math.PI * 2F;
+		while(f2 >= (float) Math.PI) {
+			f2 -= (float) Math.PI * 2F;
 		}
 
-		while(f2 < -(float)Math.PI) {
-			f2 += (float)Math.PI * 2F;
+		while(f2 < -(float) Math.PI) {
+			f2 += (float) Math.PI * 2F;
 		}
 
 		bookRotation += f2 * 0.4F;

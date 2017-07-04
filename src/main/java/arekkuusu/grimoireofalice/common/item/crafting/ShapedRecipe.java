@@ -97,7 +97,9 @@ public class ShapedRecipe {
 
 	public void build() throws IllegalArgumentException {
 		List<String> rows = ImmutableList.of(row1, row2, row3);
-		if(rows.stream().allMatch(String::isEmpty)) throw new IllegalArgumentException("Please specify at least one grid row for recipe builder");
+		if(rows.stream().allMatch(String::isEmpty)) {
+			throw new IllegalArgumentException("Please specify at least one grid row for recipe builder");
+		}
 		rows = rows.stream().filter(s -> !s.isEmpty()).collect(Collectors.toList());
 
 		List<Object> objects = new ArrayList<>();
@@ -115,8 +117,9 @@ public class ShapedRecipe {
 
 			//We iterate over all the chars and check if the exists
 			for(char rowChar : row.toCharArray()) {
-				if(!allowedCharacters.contains(rowChar))
+				if(!allowedCharacters.contains(rowChar)) {
 					throw new IllegalArgumentException("Found a row where not all characters were mapped: " + row);
+				}
 			}
 
 			objects.add(row);

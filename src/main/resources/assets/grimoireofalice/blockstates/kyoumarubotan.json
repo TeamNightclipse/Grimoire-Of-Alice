@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "grimoireofalice:kyoumarubotan" }
+  "variants": {
+    "normal": {
+      "model": "grimoireofalice:kyoumarubotan"
     }
+  }
 }

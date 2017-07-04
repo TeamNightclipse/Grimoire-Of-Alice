@@ -79,7 +79,9 @@ public class ModelKokorosMasks extends ModelBiped {
 
 		float toDegrees = (float) Math.PI / 180F;
 		angle += speed * age;
-		if (angle > 360) angle -= 360;
+		if(angle > 360) {
+			angle -= 360;
+		}
 
 		GlStateManager.pushMatrix();
 		GlStateManager.scale(0.7F, 0.7F, 0.7F);

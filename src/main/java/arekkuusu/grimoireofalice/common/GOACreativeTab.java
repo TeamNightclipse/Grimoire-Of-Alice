@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -89,7 +87,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.STAR);
 		addItem(ModItems.CHERRY);
 		addItem(ModItems.FAITH);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.POUCH);
 		}
 
@@ -101,12 +99,12 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Kosuzu Motoori ** /
 		addItem(ModItems.YOUKAI_BOOK);
 		// **Aya Shameimaru ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.TENGU_FAN);
 			addItem(ModItems.AYA_CAMERA);
 		}
 		// ** Hatate Himekaidou ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.HATATE_CAMERA);
 		}
 		// ** Benben Tsukumo ** /
@@ -121,11 +119,11 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Daiyousei ** /
 		// ** Doremy Sweet ** /
 		// ** Elly ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.ELLY_SCYTHE);
 		}
 		//** Flandre Scarlet ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.LAEVATEIN);
 		}
 		// ** Fujiwara no Mokou ** /
@@ -150,7 +148,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Iku Nagae ** /
 		// ** Junko ** /
 		// ** Kaguya Houraisan ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.JEWELED_HOURAI);
 		}
 		addItem(ModItems.BUDAH_BOUL);
@@ -158,7 +156,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.FIRE_ROBE);
 		addItem(ModItems.SWALLOW_COWRIE_SHELL);
 		addItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.RED_STONE_OF_AJA);
 		}
 		// ** Kanako Yasaka ** /
@@ -180,13 +178,13 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.DEATH_SCYTHE);
 		// ** Kyouko Kasodani ** /
 		// ** Lunasa Prismriver - Merlin Prismriver - Lyrica Prismriver ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.LUNASA_VIOLIN);
 			addItem(ModItems.LYRICA_PIANO);
 			addItem(ModItems.MERLIN_TRUMPET);
 		}
 		// ** Mamizou Futatsuiwa ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.LEAF);
 		}
 		// ** Marisa Kirisame ** /
@@ -232,7 +230,7 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Reisen Udongein Inaba ** /
 		// ** Remilia Scarlet ** /
 		// ** Sakuya Izayoi ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.STOP_WATCH); //FIXME: Throwable entities get buggy the first 5 seconds under the time stop effect.
 		}
 		// ** Rin Kaenbyou ** /
@@ -253,12 +251,12 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Shinki ** /
 		// ** Shinmyoumaru Sukuna ** /
 		addItem(ModItems.SHINMYOUMARU_HAT);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.MIRACLE_MALLET);
 		}
 		addItem(ModItems.SHINMYOUMARU_NEEDLE);
 		// ** Shou Toramaru ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.SHOU_LAMP);
 		}
 		// ** Suika Ibuki ** /
@@ -267,7 +265,7 @@ public class GOACreativeTab extends CreativeTabs {
 		addItem(ModItems.YUUGI_SAKE);
 		// ** Sumireko Usami ** /
 		// ** Tenshi Hinanawi ** /
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.HISOU);
 		}
 		addItem(ModItems.TENSHI_HAT);
@@ -282,13 +280,13 @@ public class GOACreativeTab extends CreativeTabs {
 		// ** Utsuho Reiuji ** /
 		addItem(ModItems.UTSUHO_WINGS);
 		addItem(ModItems.NUCLEAR_BOOTS);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.NUCLEAR_ROD);
 		}
 		// ** Yatsuhashi Tsukumo ** /
 		// ** Youmu Konpaku ** /
 		addItem(ModItems.ROUKANKEN);
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			addItem(ModItems.HAKUROUKEN);
 		}
 		// ** Yukari Yakumo ** /

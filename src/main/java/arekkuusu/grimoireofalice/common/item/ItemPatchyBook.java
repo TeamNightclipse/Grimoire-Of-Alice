@@ -57,7 +57,7 @@ public class ItemPatchyBook extends ItemMod implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		player.playSound(GrimoireSoundEvents.PAGE_TURN, 1F, 1F);
 		if(world.isRemote) {
-			player.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			player.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}

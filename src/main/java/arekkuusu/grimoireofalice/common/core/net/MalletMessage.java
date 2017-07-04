@@ -47,13 +47,13 @@ public class MalletMessage implements IMessage {
 
 	public static class MalletMessageHandler implements IMessageHandler<MalletMessage, IMessage> {
 
-		@SuppressWarnings ("ConstantConditions")
+		@SuppressWarnings("ConstantConditions")
 		@Override
 		public IMessage onMessage(MalletMessage message, MessageContext ctx) {
 			Minecraft.getMinecraft().addScheduledTask(() -> {
 				final EntityPlayer entityTarget = Minecraft.getMinecraft().world.getPlayerEntityByUUID(message.target);
 
-				if (entityTarget != null && entityTarget.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+				if(entityTarget != null && entityTarget.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 					IMalletCapability capability = entityTarget.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 					capability.setSmall(message.capability.isSmall());
 					capability.setScaled(message.capability.getScaled());

@@ -8,13 +8,15 @@ import net.minecraft.item.ItemStack;
 public interface IItemData {
 	/**
 	 * Sets the amount
+	 *
 	 * @param itemStack ItemStack to modify
-	 * @param amount Amount to set to NBT
+	 * @param amount    Amount to set to NBT
 	 */
 	void setData(ItemStack itemStack, int amount);
 
 	/**
 	 * Return the amount stored in the NBT
+	 *
 	 * @param itemStack ItemStack to access
 	 * @return
 	 */

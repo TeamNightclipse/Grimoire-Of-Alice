@@ -61,7 +61,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		int timer = getTimer(stack);
-		if (timer > 0) {
+		if(timer > 0) {
 			setTimer(stack, timer - 1);
 		}
 	}
@@ -69,23 +69,25 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (getTimer(stack) > 0) return new ActionResult<>(EnumActionResult.FAIL, stack);
+		if(getTimer(stack) > 0) {
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
+		}
 		player.getCooldownTracker().setCooldown(this, 50);
 		setAllIventory(player, 600);
-		if (!player.capabilities.isCreativeMode) {
+		if(!player.capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-	@SuppressWarnings ("ConstantConditions")
+	@SuppressWarnings("ConstantConditions")
 	private void setAllIventory(EntityPlayer player, int time) {
-		if (player.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
+		if(player.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
 			IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
-			for (int i = 0; i < capability.getSlots(); i++) {
+			for(int i = 0; i < capability.getSlots(); i++) {
 				ItemStack stack = capability.getStackInSlot(i);
-				if (!stack.isEmpty() && stack.getItem() == this) {
+				if(!stack.isEmpty() && stack.getItem() == this) {
 					setTimer(stack, time);
 				}
 			}
@@ -102,7 +104,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 
 	private NBTTagCompound getNBT(ItemStack stack) {
 		NBTTagCompound tag = stack.getTagCompound();
-		if (tag == null) {
+		if(tag == null) {
 			tag = new NBTTagCompound();
 			stack.setTagCompound(tag);
 		}

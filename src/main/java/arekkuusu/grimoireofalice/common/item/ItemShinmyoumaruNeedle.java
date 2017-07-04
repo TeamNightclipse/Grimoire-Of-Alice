@@ -58,10 +58,10 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer) {
+		if(entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
-			if (isSelected && player.getCooldownTracker().hasCooldown(this) && !wasShifting(stack)) {
-				if (player.ticksExisted % 2 == 0) {
+			if(isSelected && player.getCooldownTracker().hasCooldown(this) && !wasShifting(stack)) {
+				if(player.ticksExisted % 2 == 0) {
 					EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 					player.swingArm(hand);
 
@@ -73,7 +73,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NEEDLE_SWING, null, dx, dy, dz, itemRand.nextFloat(), 0F, 0F);
 					world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
 
-					if (!world.isRemote) {
+					if(!world.isRemote) {
 						List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 								player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> entity != player);
 						list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
@@ -85,10 +85,12 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityLiving);
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if(timeUsed > 50) timeUsed = 50;
+			if(timeUsed > 50) {
+				timeUsed = 50;
+			}
 			setShifting(stack, player.isSneaking());
 			player.getCooldownTracker().setCooldown(this, timeUsed);
 		}
@@ -97,7 +99,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	private void setShifting(ItemStack itemStack, boolean does) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}

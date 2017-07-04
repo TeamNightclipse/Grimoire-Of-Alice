@@ -60,11 +60,11 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 
 			Entity entity = null;
 			double d = 0.0D;
-			for (Entity entity1 : list) {
+			for(Entity entity1 : list) {
 				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
-				if (movingObjectPosition1 != null) {
+				if(movingObjectPosition1 != null) {
 					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if (d1 < d || d == 0.0D) {
+					if(d1 < d || d == 0.0D) {
 						entity = entity1;
 						d = d1;
 					}
@@ -80,9 +80,9 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 				double dx = player.posX + look.x * distance;
 				double dy = player.posY + look.y * distance + player.getEyeHeight();
 				double dz = player.posZ + look.z * distance;
-                if(!isSafe(world, new BlockPos(dx, dy, dz))) {
-                    return new ActionResult<>(EnumActionResult.FAIL, stack);
-                }
+				if(!isSafe(world, new BlockPos(dx, dy, dz))) {
+					return new ActionResult<>(EnumActionResult.FAIL, stack);
+				}
 				ceiling = new EntityKinkakuJiCeiling(player.world, player, dx, dy, dz);
 			}
 			player.world.spawnEntity(ceiling);
@@ -92,9 +92,9 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 	}
 
 	private boolean isSafe(World world, BlockPos pos) {
-        IBlockState state = world.getBlockState(pos);
-        return state.getBlock().isAir(state, world, pos);
-    }
+		IBlockState state = world.getBlockState(pos);
+		return state.getBlock().isAir(state, world, pos);
+	}
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {

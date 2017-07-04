@@ -1,6 +1,6 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "grimoireofalice:blocks/shroom"
-    }
+  "parent": "block/cross",
+  "textures": {
+    "cross": "grimoireofalice:blocks/shroom"
+  }
 }

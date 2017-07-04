@@ -34,7 +34,7 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		float colorRev = 3.141593F * 5.6125F / 180F;
 		float color = entity.ticksExisted * colorRev;
 
-		GlStateManager.color(1 +MathHelper.sin(color), 3 + MathHelper.cos(color), 5 + MathHelper.sin(color), 0.90F);
+		GlStateManager.color(1 + MathHelper.sin(color), 3 + MathHelper.cos(color), 5 + MathHelper.sin(color), 0.90F);
 
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);

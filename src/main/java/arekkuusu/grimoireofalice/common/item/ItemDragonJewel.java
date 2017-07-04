@@ -59,27 +59,27 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (entityIn instanceof EntityPlayer) {
+		if(entityIn instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityIn;
-			if (isSelected && player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
+			if(isSelected && player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
 				Vec3d vec = player.getLookVec();
 				double x = player.posX;
 				double y = player.posY + player.getEyeHeight();
 				double z = player.posZ;
 
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_GROWL, SoundCategory.PLAYERS, 1F, 1F);
-				for (int i = 0; i < 8; ++i) {
+				for(int i = 0; i < 8; ++i) {
 					double randX = x + itemRand.nextGaussian() / 2.0D;
 					double randY = y + itemRand.nextGaussian() / 2.0D;
 					double randZ = z + itemRand.nextGaussian() / 2.0D;
 
-					for (int j = 0; j < 6; ++j) {
+					for(int j = 0; j < 6; ++j) {
 						world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, vec.x * 0.08D * j, vec.y * 0.6D,
 								vec.z * 0.08D * j);
 					}
 				}
 
-				if (!world.isRemote) {
+				if(!world.isRemote) {
 					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 							player.getEntityBoundingBox().offset(vec.x * 3, 0, vec.z * 3).grow(4D), entity -> entity != player);
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
@@ -91,7 +91,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (!player.isSneaking()) {
+		if(!player.isSneaking()) {
 			spawnJewel(stack, world, player);
 		}
 		else {
@@ -114,7 +114,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
-			float hitX, float hitY, float hitZ) {
+									  float hitX, float hitY, float hitZ) {
 		spawnJewel(player.getHeldItem(hand), world, player);
 		return EnumActionResult.SUCCESS;
 	}

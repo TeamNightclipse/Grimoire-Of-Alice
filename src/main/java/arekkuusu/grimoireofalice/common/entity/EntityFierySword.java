@@ -40,10 +40,11 @@ public class EntityFierySword extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(player == null || player.isDead){
+		if(player == null || player.isDead) {
 			stop();
-		} else {
-			if(ticksExisted > 20){
+		}
+		else {
+			if(ticksExisted > 20) {
 				stop();
 			}
 			if(!world.isRemote) {
@@ -56,12 +57,12 @@ public class EntityFierySword extends Entity {
 		}
 	}
 
-	private void burn(EntityLivingBase livingBase){
+	private void burn(EntityLivingBase livingBase) {
 		livingBase.setFire(3 + rand.nextInt(4));
 	}
 
-	private void stop(){ //Hammertime!
-		if(!world.isRemote){
+	private void stop() { //Hammertime!
+		if(!world.isRemote) {
 			setDead();
 		}
 	}
@@ -73,7 +74,7 @@ public class EntityFierySword extends Entity {
 
 	@Override
 	public Vec3d getLook(float partialTicks) {
-		if (partialTicks == 1.0F) {
+		if(partialTicks == 1.0F) {
 			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
 		}
 		else {

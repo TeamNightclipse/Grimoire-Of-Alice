@@ -28,11 +28,11 @@ public class ItemGohei<E extends Enum<E>> extends ItemMod {
 
 	protected void setType(ItemStack itemStack, E mode) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}
-		nbt.setByte("GoheiMode", (byte)mode.ordinal());
+		nbt.setByte("GoheiMode", (byte) mode.ordinal());
 	}
 
 	protected E getType(ItemStack itemStack) {

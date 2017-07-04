@@ -82,12 +82,12 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	@Override
 	public boolean removeItem(@Nullable EntityPlayer player) {
 		boolean removed = false;
-		if (hasItem()) {
-            world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
+		if(hasItem()) {
+			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
 			removed = true;
 
 			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
-			if (player != null && !player.capabilities.isCreativeMode) {
+			if(player != null && !player.capabilities.isCreativeMode) {
 				ItemHandlerHelper.giveItemToPlayer(player, stackToTake, player.inventory.currentItem);
 			}
 		}
@@ -96,11 +96,11 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	@Override
 	public void destroy() {
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			ItemStack output = itemHandler.extractItem(0, 1, false);
-			if (!output.isEmpty()) {
+			if(!output.isEmpty()) {
 				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-                world.spawnEntity(outputItem);
+				world.spawnEntity(outputItem);
 			}
 		}
 	}
@@ -111,14 +111,14 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			for(BlockPos pos : PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
 				if(world.getBlockState(pos).getBlock() == ModBlocks.PILLAR_ALTAR) {
-					altars.add((TilePillarAltar)world.getTileEntity(pos));
+					altars.add((TilePillarAltar) world.getTileEntity(pos));
 				}
 			}
 			for(BlockPos pos : SECOND_PILLAR_LOCATIONS) {
 				pos = pos.add(getPos());
 				if(world.getBlockState(pos).getBlock() == ModBlocks.ONBASHIRA
 						&& world.getBlockState(pos).getValue(BlockOnbashira.PART) == BlockOnbashira.Part.TOP) {
-					altars.add((TilePillarAltar)world.getTileEntity(pos));
+					altars.add((TilePillarAltar) world.getTileEntity(pos));
 				}
 			}
 			if(!altars.isEmpty() && altars.size() >= 2) {
@@ -133,9 +133,10 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 					}
 					ItemStack result = recipe.getResult();
 					addItem(null, result);
-                    AchievementEvents.onAltarCraft(player, result.getItem());
-                    if(world instanceof WorldServer)
+					AchievementEvents.onAltarCraft(player, result.getItem());
+					if(world instanceof WorldServer) {
 						doEffect();
+					}
 				});
 			}
 		}
@@ -143,8 +144,8 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 	}
 
 	private void doEffect() {
-        world.playSound(null, getPos(), GrimoireSoundEvents.CRAFTING_SPELL, SoundCategory.BLOCKS, 1F, 0.5F);
-		for (int i = 0; i < 9; i++) {
+		world.playSound(null, getPos(), GrimoireSoundEvents.CRAFTING_SPELL, SoundCategory.BLOCKS, 1F, 0.5F);
+		for(int i = 0; i < 9; i++) {
 			double d0 = pos.getX() + rand.nextFloat();
 			double d1 = pos.getY() + 1 + rand.nextFloat();
 			double d2 = pos.getZ() + rand.nextFloat();
@@ -164,13 +165,13 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 
 	@Override
 	public void update() {
-		if (tickCount % 2 == 0) {
+		if(tickCount % 2 == 0) {
 			double p0 = pos.getX() - 4.5D + rand.nextInt(10);
 			double p1 = pos.getY() + 0.5D + rand.nextInt(5);
 			double p2 = pos.getZ() - 4.5D + rand.nextInt(10);
 			double p3 = (0.4F - (rand.nextFloat() + rand.nextFloat()) * 0.4F);
 
-            world.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
+			world.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D, rand.nextGaussian() * 0.005D);
 		}
 
 		bookSpreadPrev = bookSpread;
@@ -180,7 +181,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		if(entityplayer != null) {
 			double d0 = entityplayer.posX - (pos.getX() + 0.5F);
 			double d1 = entityplayer.posZ - (pos.getZ() + 0.5F);
-			tRot = (float)MathHelper.atan2(d1, d0);
+			tRot = (float) MathHelper.atan2(d1, d0);
 			bookSpread += 0.1F;
 
 			if(bookSpread < 0.5F || rand.nextInt(40) == 0) {

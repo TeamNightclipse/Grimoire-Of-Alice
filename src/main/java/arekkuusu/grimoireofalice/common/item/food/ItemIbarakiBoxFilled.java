@@ -54,7 +54,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
-		if(entityLiving instanceof EntityPlayer && !((EntityPlayer)entityLiving).capabilities.isCreativeMode) {
+		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
 		if(entityLiving.getHealth() != entityLiving.getMaxHealth()) {

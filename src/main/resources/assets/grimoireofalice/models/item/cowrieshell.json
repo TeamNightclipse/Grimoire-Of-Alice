@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "grimoireofalice:items/cowrieshell"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "grimoireofalice:items/cowrieshell"
+  }
 }

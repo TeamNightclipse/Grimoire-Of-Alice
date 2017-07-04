@@ -24,9 +24,15 @@ public class AltarRecipe implements IAltarRecipe {
 		this.result = result;
 
 		List<Object> stackedList = Arrays.stream(inputs).map(obj -> {
-			if(obj instanceof Item) return new ItemStack((Item)obj);
-			else if(obj instanceof Block) return new ItemStack((Block)obj);
-			else return obj;
+			if(obj instanceof Item) {
+				return new ItemStack((Item) obj);
+			}
+			else if(obj instanceof Block) {
+				return new ItemStack((Block) obj);
+			}
+			else {
+				return obj;
+			}
 		}).collect(Collectors.toList());
 
 		neededItems = ImmutableList.copyOf(stackedList);
@@ -39,17 +45,19 @@ public class AltarRecipe implements IAltarRecipe {
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
 		List<Object> toCompare = new ArrayList<>(neededItems);
-		if(toCompare.size() != usedItems.size()) return false;
+		if(toCompare.size() != usedItems.size()) {
+			return false;
+		}
 
 		for(ItemStack stack : usedItems) {
 			int index = -1;
 			for(int j = 0; j < toCompare.size(); j++) {
 				Object obj = toCompare.get(j);
-				if(obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack)obj)) {
+				if(obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack) obj)) {
 					index = j;
 					break;
 				}
-				else if(obj instanceof String && containsMatch(OreDictionary.getOres((String)obj), stack)) {
+				else if(obj instanceof String && containsMatch(OreDictionary.getOres((String) obj), stack)) {
 					index = j;
 					break;
 				}
@@ -57,14 +65,16 @@ public class AltarRecipe implements IAltarRecipe {
 			if(index != -1) {
 				toCompare.remove(index);
 			}
-			else return false;
+			else {
+				return false;
+			}
 		}
 		return toCompare.isEmpty();
 	}
 
 	private static boolean containsMatch(List<ItemStack> inputs, ItemStack target) {
-		for (ItemStack input : inputs) {
-			if (itemMatches(target, input)) {
+		for(ItemStack input : inputs) {
+			if(itemMatches(target, input)) {
 				return true;
 			}
 		}

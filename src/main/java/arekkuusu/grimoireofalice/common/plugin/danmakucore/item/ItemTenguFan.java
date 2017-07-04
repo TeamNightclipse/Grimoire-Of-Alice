@@ -64,11 +64,13 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.swingArm(EnumHand.MAIN_HAND);
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 			float speed = timeUsed / 7.0F;
-			if(timeUsed <= 5) return;
+			if(timeUsed <= 5) {
+				return;
+			}
 			DanmakuHelper.playShotSound(entityLiving);
 			if(!world.isRemote) {
 				EntityDanmaku danmaku = DanmakuTemplate.builder()
@@ -81,7 +83,7 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 				world.spawnEntity(danmaku);
 				SubEntity subEntity = danmaku.getSubEntity();
 				if(subEntity instanceof SubEntityWind.Wind) {
-					((SubEntityWind.Wind)subEntity).setTimeUsed(timeUsed);
+					((SubEntityWind.Wind) subEntity).setTimeUsed(timeUsed);
 				}
 			}
 			stack.damageItem(1, entityLiving);

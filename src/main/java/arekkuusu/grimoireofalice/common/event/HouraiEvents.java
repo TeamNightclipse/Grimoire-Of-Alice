@@ -33,7 +33,7 @@ public class HouraiEvents {
 
 	@SubscribeEvent
 	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
-		if (event.getObject() instanceof EntityPlayer) {
+		if(event.getObject() instanceof EntityPlayer) {
 			event.addCapability(new ResourceLocation(LibMod.MODID, "GrimoireData"), new HouraiProvider());
 			event.addCapability(new ResourceLocation(LibMod.MODID, "MalletData"), new MalletProvider());
 		}
@@ -42,28 +42,29 @@ public class HouraiEvents {
 	@SuppressWarnings("ConstantConditions")
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onDeath(LivingDeathEvent event) {
-		if (ConfigHandler.grimoireOfAlice.features.allowRevive) {
+		if(ConfigHandler.grimoireOfAlice.features.allowRevive) {
 			EntityLivingBase victim = event.getEntityLiving();
 			World world = victim.world;
 
-			if (!world.isRemote && victim instanceof EntityPlayer) {
+			if(!world.isRemote && victim instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) victim;
-				if (player.hasCapability(HOURAI_CAPABILITY, null) && player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() == 3) {
+				if(player.hasCapability(HOURAI_CAPABILITY, null) && player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() == 3) {
 					player.hurtResistantTime = 50;
 					player.isDead = false;
 					player.setHealth(player.getMaxHealth());
 					player.getFoodStats().addStats(100, 100);
 					event.setCanceled(true);
 
-                    world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITHER_DEATH, SoundCategory.PLAYERS, 1F, 1F );
+					world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITHER_DEATH, SoundCategory.PLAYERS, 1F, 1F);
 
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
 							player.hurtResistantTime);
 					world.spawnEntity(circle);
-				} else {
+				}
+				else {
 					@SuppressWarnings("ConstantConditions")
 					boolean potion = player.isPotionActive(ModPotions.ELIXIR);
-					if (potion) {
+					if(potion) {
 						player.hurtResistantTime = 100;
 						player.isDead = false;
 						player.setHealth(player.getMaxHealth());
@@ -77,7 +78,7 @@ public class HouraiEvents {
 	@SuppressWarnings("ConstantConditions")
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (event.player.hasCapability(HOURAI_CAPABILITY, null) && event.player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() > 1) {
+		if(event.player.hasCapability(HOURAI_CAPABILITY, null) && event.player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() > 1) {
 			List<PotionEffect> badPotions = event.player.getActivePotionEffects().stream()
 					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
 			badPotions.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
@@ -90,7 +91,7 @@ public class HouraiEvents {
 		EntityPlayer oldPlayer = event.getOriginal();
 		EntityPlayer newPlayer = event.getEntityPlayer();
 
-		if (event.isWasDeath() && oldPlayer.hasCapability(HOURAI_CAPABILITY, null) && newPlayer.hasCapability(HOURAI_CAPABILITY, null)) {
+		if(event.isWasDeath() && oldPlayer.hasCapability(HOURAI_CAPABILITY, null) && newPlayer.hasCapability(HOURAI_CAPABILITY, null)) {
 			IHouraiCapability oldCap = oldPlayer.getCapability(HOURAI_CAPABILITY, null);
 			IHouraiCapability newCap = oldPlayer.getCapability(HOURAI_CAPABILITY, null);
 			newCap.setHouraiLevel(oldCap.getHouraiLevel());

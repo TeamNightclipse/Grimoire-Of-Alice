@@ -58,10 +58,10 @@ public class ItemStopWatch extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			EntityStopWatch watch = new EntityStopWatch(world, player);
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				Vec3d look = player.getLookVec();
 				float distance = 1F;
 				double dx = player.posX + look.x;
@@ -70,7 +70,7 @@ public class ItemStopWatch extends ItemMod implements IOwnedBy {
 				watch.setPosition(dx, dy, dz);
 				world.spawnEntity(watch);
 			}
-			if (!player.capabilities.isCreativeMode) {
+			if(!player.capabilities.isCreativeMode) {
 				stack.shrink(1);
 			}
 		}

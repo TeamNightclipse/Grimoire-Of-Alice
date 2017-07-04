@@ -46,17 +46,18 @@ public class ItemMaskOfHope extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.mask_of_hope_header.name"));
-        list.add(TextFormatting.DARK_GRAY + I18n.format("grimoire.tooltip.mask_of_hope_description.name"));
+		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.mask_of_hope_header.name"));
+		list.add(TextFormatting.DARK_GRAY + I18n.format("grimoire.tooltip.mask_of_hope_description.name"));
 
-        if (player.experienceLevel <= 120) {
-            list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_good_buff.name"));
-        } else {
-            list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_bad_buff.name"));
-        }
+		if(player.experienceLevel <= 120) {
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_good_buff.name"));
+		}
+		else {
+			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_bad_buff.name"));
+		}
 
-        list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_vulnerable.name"));
-    }
+		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_vulnerable.name"));
+	}
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
@@ -81,7 +82,9 @@ public class ItemMaskOfHope extends ItemModMask {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
-		if (model == null) model = new ModelMask();
+		if(model == null) {
+			model = new ModelMask();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

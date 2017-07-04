@@ -1,14 +1,14 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "grimoireofalice:items/rodofremorse"
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "used": 1
-            },
-            "model": "grimoireofalice:item/rodofremorse0"
-        }
-    ]
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "grimoireofalice:items/rodofremorse"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "used": 1
+      },
+      "model": "grimoireofalice:item/rodofremorse0"
+    }
+  ]
 }

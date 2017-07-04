@@ -83,7 +83,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		super.onUpdate(stack, world, entity, slot, selected);
 		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
+			EntityPlayer player = (EntityPlayer) entity;
 			if(!world.isRemote && !player.capabilities.isCreativeMode && player.getCooldownTracker().hasCooldown(this)) {
 				player.fallDistance = 0.0F;
 			}
@@ -93,14 +93,16 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (isOwner(stack, player)) {
+		if(isOwner(stack, player)) {
 			double range = 15.0D;
 			Vec3d look = player.getLookVec();
 			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 			Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
 			RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-			if (raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
-			else if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK) {
+			if(raytraceresult == null) {
+				return new ActionResult<>(EnumActionResult.PASS, stack);
+			}
+			else if(raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK) {
 				createBoulder(player, world, raytraceresult.getBlockPos());
 				return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 			}
@@ -111,7 +113,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	private void createBoulder(EntityPlayer player, World world, BlockPos pos) {
 		player.playSound(SoundEvents.BLOCK_ANVIL_FALL, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			TemplateManager templatemanager = world.getSaveHandler().getStructureTemplateManager();
 			Template template = templatemanager.getTemplate(world.getMinecraftServer(), ResourceLocations.STRUCTURE_BOULDER);
 			template.addBlocksToWorld(world, pos.add(-2, -2, -2), new BoulderTemplate(), new PlacementSettings(), 2);
@@ -132,7 +134,10 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 		public Template.BlockInfo processBlock(World world, BlockPos pos, Template.BlockInfo blockInfoIn) {
 			if(world.getBlockState(pos).getBlock().isReplaceable(world, pos) || world.getBlockState(pos).getMaterial() == Material.WATER) {
 				return blockInfoIn;
-			} else return null;
+			}
+			else {
+				return null;
+			}
 		}
 	}
 

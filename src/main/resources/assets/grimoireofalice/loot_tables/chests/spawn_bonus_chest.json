@@ -1,13 +1,15 @@
 {
-  "pools": [{
-    "name": "grimoireofalice:spawn_bonus_chest",
-    "rolls": 1,
-    "entries": [
-      {
-        "type": "item",
-        "name": "grimoireofalice:patchybook",
-        "weight": 10
-      }
-    ]
-  }]
+  "pools": [
+    {
+      "name": "grimoireofalice:spawn_bonus_chest",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "grimoireofalice:patchybook",
+          "weight": 10
+        }
+      ]
+    }
+  ]
 }

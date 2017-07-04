@@ -1,21 +1,116 @@
 {
-	"camera_beep": { "sounds":["grimoireofalice:camera_beep"], "subtitle": "grimoire.subtitle.camera_beep" },
-	"camera_shoot": { "sounds":["grimoireofalice:camera_shoot"], "subtitle": "grimoire.subtitle.camera_shoot" },
-	"camera_shutter": { "sounds":["grimoireofalice:camera_shutter"], "subtitle": "grimoire.subtitle.camera_shutter" },
-	"needle_sweep": { "sounds":["grimoireofalice:needle_sweep"], "subtitle": "grimoire.subtitle.needle_sweep" },
-	"simple_bell": { "sounds":["grimoireofalice:simple_bell"], "subtitle": "grimoire.subtitle.simple_bell" },
-	"crafting_spell": { "sounds":["grimoireofalice:crafting_spell"], "subtitle": "grimoire.subtitle.crafting_spell" },
-	"orin_nyaa": { "sounds":["grimoireofalice:orin_nyaa"], "subtitle": "grimoire.subtitle.orin_nyaa" },
-	"power_up": { "sounds":["grimoireofalice:power_up"], "subtitle": "grimoire.subtitle.power_up" },
-	"attack_long": { "sounds":["grimoireofalice:attack_long"], "subtitle": "grimoire.subtitle.attack_long" },
-	"horn": { "sounds":["grimoireofalice:horn"], "subtitle": "grimoire.subtitle.horn" },
-	"warp": { "sounds":["grimoireofalice:warp"], "subtitle": "grimoire.subtitle.warp" },
-	"ufo_iddle": { "sounds":["grimoireofalice:ufo_iddle"], "subtitle": "grimoire.subtitle.ufo_iddle" },
-	"ufo_spawn": { "sounds":["grimoireofalice:ufo_spawn"], "subtitle": "grimoire.subtitle.ufo_spawn" },
-	"caution": { "sounds":["grimoireofalice:caution"], "subtitle": "grimoire.subtitle.caution" },
-	"wave": { "sounds":["grimoireofalice:wave"], "subtitle": "grimoire.subtitle.wave" },
-	"wind": { "sounds":["grimoireofalice:wind"], "subtitle": "grimoire.subtitle.wind" },
-	"page_turn": { "sounds":["grimoireofalice:page_turn"], "subtitle": "grimoire.subtitle.page_turn" },
-	"wing_flap": { "sounds":["grimoireofalice:wing_flap"], "subtitle": "grimoire.subtitle.wing_flap" },
-	"ora": { "sounds":["grimoireofalice:ora"], "subtitle": "grimoire.subtitle.ora" }
+  "camera_beep": {
+    "sounds": [
+      "grimoireofalice:camera_beep"
+    ],
+    "subtitle": "grimoire.subtitle.camera_beep"
+  },
+  "camera_shoot": {
+    "sounds": [
+      "grimoireofalice:camera_shoot"
+    ],
+    "subtitle": "grimoire.subtitle.camera_shoot"
+  },
+  "camera_shutter": {
+    "sounds": [
+      "grimoireofalice:camera_shutter"
+    ],
+    "subtitle": "grimoire.subtitle.camera_shutter"
+  },
+  "needle_sweep": {
+    "sounds": [
+      "grimoireofalice:needle_sweep"
+    ],
+    "subtitle": "grimoire.subtitle.needle_sweep"
+  },
+  "simple_bell": {
+    "sounds": [
+      "grimoireofalice:simple_bell"
+    ],
+    "subtitle": "grimoire.subtitle.simple_bell"
+  },
+  "crafting_spell": {
+    "sounds": [
+      "grimoireofalice:crafting_spell"
+    ],
+    "subtitle": "grimoire.subtitle.crafting_spell"
+  },
+  "orin_nyaa": {
+    "sounds": [
+      "grimoireofalice:orin_nyaa"
+    ],
+    "subtitle": "grimoire.subtitle.orin_nyaa"
+  },
+  "power_up": {
+    "sounds": [
+      "grimoireofalice:power_up"
+    ],
+    "subtitle": "grimoire.subtitle.power_up"
+  },
+  "attack_long": {
+    "sounds": [
+      "grimoireofalice:attack_long"
+    ],
+    "subtitle": "grimoire.subtitle.attack_long"
+  },
+  "horn": {
+    "sounds": [
+      "grimoireofalice:horn"
+    ],
+    "subtitle": "grimoire.subtitle.horn"
+  },
+  "warp": {
+    "sounds": [
+      "grimoireofalice:warp"
+    ],
+    "subtitle": "grimoire.subtitle.warp"
+  },
+  "ufo_iddle": {
+    "sounds": [
+      "grimoireofalice:ufo_iddle"
+    ],
+    "subtitle": "grimoire.subtitle.ufo_iddle"
+  },
+  "ufo_spawn": {
+    "sounds": [
+      "grimoireofalice:ufo_spawn"
+    ],
+    "subtitle": "grimoire.subtitle.ufo_spawn"
+  },
+  "caution": {
+    "sounds": [
+      "grimoireofalice:caution"
+    ],
+    "subtitle": "grimoire.subtitle.caution"
+  },
+  "wave": {
+    "sounds": [
+      "grimoireofalice:wave"
+    ],
+    "subtitle": "grimoire.subtitle.wave"
+  },
+  "wind": {
+    "sounds": [
+      "grimoireofalice:wind"
+    ],
+    "subtitle": "grimoire.subtitle.wind"
+  },
+  "page_turn": {
+    "sounds": [
+      "grimoireofalice:page_turn"
+    ],
+    "subtitle": "grimoire.subtitle.page_turn"
+  },
+  "wing_flap": {
+    "sounds": [
+      "grimoireofalice:wing_flap"
+    ],
+    "subtitle": "grimoire.subtitle.wing_flap"
+  },
+  "ora": {
+    "sounds": [
+      "grimoireofalice:ora"
+    ],
+    "subtitle": "grimoire.subtitle.ora"
+  }
 }

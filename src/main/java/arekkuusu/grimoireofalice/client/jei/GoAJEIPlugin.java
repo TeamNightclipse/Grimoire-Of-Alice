@@ -235,16 +235,16 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		addDescription(registry, new ItemStack(ModItems.SACRED_TOYOSATOMIMI), "grimoire.jei.descriptions.sacred_toyosatomimi_sword", LINE);
 
 		addDescription(registry, new ItemStack(ModItems.SANAE_GOHEI), "grimoire.jei.descriptions.sanae_gohei", LINE
-				,"grimoire.jei.descriptions_body.sanae_gohei"
-				,"grimoire.jei.descriptions_body.sanae_gohei_clear"
-				,"grimoire.jei.descriptions_body.sanae_gohei_rain"
-				,"grimoire.jei.descriptions_body.sanae_gohei_thunder"
-				,"grimoire.jei.descriptions_body.sanae_gohei_wind"
-				,"grimoire.jei.descriptions_body.sanae_gohei_moses"
-				,"grimoire.jei.descriptions_body.sanae_gohei_heal"
-				,"grimoire.jei.descriptions_body.sanae_gohei_potions"
-				,"grimoire.jei.descriptions_body.sanae_gohei_crops"
-				,"grimoire.jei.descriptions_body.sanae_gohei_time");
+				, "grimoire.jei.descriptions_body.sanae_gohei"
+				, "grimoire.jei.descriptions_body.sanae_gohei_clear"
+				, "grimoire.jei.descriptions_body.sanae_gohei_rain"
+				, "grimoire.jei.descriptions_body.sanae_gohei_thunder"
+				, "grimoire.jei.descriptions_body.sanae_gohei_wind"
+				, "grimoire.jei.descriptions_body.sanae_gohei_moses"
+				, "grimoire.jei.descriptions_body.sanae_gohei_heal"
+				, "grimoire.jei.descriptions_body.sanae_gohei_potions"
+				, "grimoire.jei.descriptions_body.sanae_gohei_crops"
+				, "grimoire.jei.descriptions_body.sanae_gohei_time");
 
 		addDescription(registry, new ItemStack(ModItems.SARIEL_WAND), "grimoire.jei.descriptions.sariel_wand", LINE
 				, "grimoire.jei.descriptions_body.sariel_wand");
@@ -307,7 +307,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 				, "grimoire.jei.descriptions_body.ufos");
 
 		addDescription(registry, new ItemStack(ModItems.UTSUHO_WINGS), "grimoire.jei.descriptions.utsuho_wings", LINE
-				,"grimoire.jei.descriptions_body.utsuho_wings");
+				, "grimoire.jei.descriptions_body.utsuho_wings");
 
 		addDescription(registry, new ItemStack(ModItems.WALL_PASSING_CHISEL), "grimoire.jei.descriptions.wall_passing_chisel", LINE);
 
@@ -318,7 +318,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		addDescription(registry, new ItemStack(ModItems.YOUKAI_BOOK), "grimoire.jei.descriptions.youkai_book", LINE);
 
 		addDescription(registry, new ItemStack(ModItems.YUUGI_SAKE), "grimoire.jei.descriptions.yuugi_sake", LINE
-				,"grimoire.jei.descriptions_body.yuugi_sake");
+				, "grimoire.jei.descriptions_body.yuugi_sake");
 
 		addDescription(registry, new ItemStack(ModBlocks.IMPURE_STONE), "grimoire.jei.descriptions.impure_stone", LINE);
 
@@ -338,7 +338,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		addDescription(registry, new ItemStack(ModBlocks.ALTAR), "grimoire.jei.descriptions.altar", LINE);
 	}
-	
+
 	private void addDescription(IModRegistry registry, ItemStack stack, String... keys) {
 		registry.addIngredientInfo(stack, ItemStack.class, keys);
 	}

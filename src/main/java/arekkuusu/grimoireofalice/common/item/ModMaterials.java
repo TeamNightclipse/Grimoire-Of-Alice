@@ -7,7 +7,8 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public final class ModMaterials {
 
-	private ModMaterials() {}
+	private ModMaterials() {
+	}
 
 	//Armor Materials
 	public static final ItemArmor.ArmorMaterial WEAK_PAPER = EnumHelper.addArmorMaterial("WEAK_PAPER", "No", 33, new int[]{3, 4, 3, 2}, 30,

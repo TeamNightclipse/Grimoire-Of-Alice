@@ -52,13 +52,13 @@ public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		stack.damageItem(1, entityLiving);
-		if (ConfigHandler.grimoireOfAlice.features.allowGoodDrops) {
+		if(ConfigHandler.grimoireOfAlice.features.allowGoodDrops) {
 			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(state.getBlock())))
 					.mapToObj(OreDictionary::getOreName)
 					.anyMatch(s -> s.startsWith("ore"));
 			Item item = state.getBlock().getItemDropped(state, world.rand, 0);
-			if (!world.isRemote && item != Items.AIR && isOre) {
-				for (int i = 0; i < world.rand.nextInt(3); i++) {
+			if(!world.isRemote && item != Items.AIR && isOre) {
+				for(int i = 0; i < world.rand.nextInt(3); i++) {
 					EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(item));
 					world.spawnEntity(entityItem);
 				}

@@ -44,13 +44,14 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	@Override
-	protected void entityInit() {}
+	protected void entityInit() {
+	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!world.isRemote) {
-			if (host == null) {
+		if(!world.isRemote) {
+			if(host == null) {
 				setDead();
 			}
 			else if((ticksExisted > 10 && (host.isSneaking() && host.isSwingInProgress)) || ticksExisted > 500) {
@@ -58,11 +59,11 @@ public class EntityDragonJewel extends Entity {
 			}
 		}
 		attackEntities();
-		if (ticksExisted % 50 == 0) {
+		if(ticksExisted % 50 == 0) {
 			world.playSound(null, posX, posY, posZ, GrimoireSoundEvents.HORN, SoundCategory.NEUTRAL, 0.5F, 1F);
 		}
-		if (ticksExisted % 10 == 0) {
-			for (int i = 0; i < 2; ++i) {
+		if(ticksExisted % 10 == 0) {
+			for(int i = 0; i < 2; ++i) {
 				world.spawnParticle(EnumParticleTypes.PORTAL
 						, posX + (rand.nextDouble() - 0.5D) * width, posY + rand.nextDouble() * height - 0.25D,
 						posZ + (rand.nextDouble() - 0.5D) * width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble()
@@ -76,16 +77,16 @@ public class EntityDragonJewel extends Entity {
 		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.grow(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityLiving).map(mob -> (EntityLiving) mob).forEach(mob -> {
 			if(!world.isRemote) {
-				if (mob instanceof EntityMob || mob.getAttackTarget() == host) {
+				if(mob instanceof EntityMob || mob.getAttackTarget() == host) {
 					mob.setRevengeTarget(null);
 
-					if (mob.getHealth() > 1) {
+					if(mob.getHealth() > 1) {
 						mob.attackEntityFrom(DamageSource.DRAGON_BREATH, rand.nextInt(25));
 					}
 				}
 			}
 
-			for (int i = 0; i < 2; ++i) {
+			for(int i = 0; i < 2; ++i) {
 				mob.world.spawnParticle(EnumParticleTypes.PORTAL,
 						mob.posX + (rand.nextDouble() - 0.5D) * mob.width,
 						mob.posY + rand.nextDouble() * mob.height - 0.25D,
@@ -96,13 +97,14 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!world.isRemote) {
-			if (host != null && host instanceof EntityPlayer) {
+		if(!world.isRemote) {
+			if(host != null && host instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) host;
 				if(!player.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
 				}
-			} else {
+			}
+			else {
 				dropItem(ModItems.DRAGON_JEWEL, 1);
 			}
 			setDead();
@@ -120,8 +122,10 @@ public class EntityDragonJewel extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {}
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {}
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+	}
 }

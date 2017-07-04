@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
+public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 
 	@CapabilityInject(IHouraiCapability.class)
 	private static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
@@ -82,13 +82,14 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 		player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 0));
 		player.addPotionEffect(new PotionEffect(MobEffects.POISON, 100, 0));
-		if(!world.isRemote)
+		if(!world.isRemote) {
 			setPlayerElixir(player);
+		}
 	}
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			stack.damageItem(1, entityLiving);
 			onFoodEaten(stack, world, (EntityPlayer) entityLiving);
 		}
@@ -97,11 +98,11 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 
 	@SuppressWarnings("ConstantConditions")
 	private void setPlayerElixir(EntityPlayer player) {
-		if (player.hasCapability(HOURAI_CAPABILITY, null)) {
+		if(player.hasCapability(HOURAI_CAPABILITY, null)) {
 			IHouraiCapability capability = player.getCapability(HOURAI_CAPABILITY, null);
 			byte maxLevel = capability.getMaxHouraiLevel();
 			byte level = capability.getHouraiLevel();
-			switch (level) {
+			switch(level) {
 				case 0:
 					player.sendMessage(
 							new TextComponentString(TextFormatting.DARK_RED + "" + TextFormatting.ITALIC
@@ -123,7 +124,9 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy{
 									+ new TextComponentTranslation("item.hourai.level_3").getFormattedText()));
 					break;
 			}
-			if (level < maxLevel) capability.setHouraiLevel((byte) (level + 1));
+			if(level < maxLevel) {
+				capability.setHouraiLevel((byte) (level + 1));
+			}
 		}
 	}
 

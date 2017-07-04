@@ -93,12 +93,24 @@ public class BlockHolyKeyStone extends BlockMod {
 			float y = pos.getY() + rand.nextFloat();
 			float z = pos.getZ() + rand.nextFloat();
 
-			if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) == 0)) y = pos.getY() + 1 + d0;
-			if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) y = pos.getY() - d0;
-			if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)) == 0)) z = pos.getZ() + 1 + d0;
-			if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) z = pos.getZ() - d0;
-			if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())) == 0)) x = pos.getX() + 1 + d0;
-			if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())) == 0)) x = pos.getX() - d0;
+			if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) == 0)) {
+				y = pos.getY() + 1 + d0;
+			}
+			if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) {
+				y = pos.getY() - d0;
+			}
+			if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)) == 0)) {
+				z = pos.getZ() + 1 + d0;
+			}
+			if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) {
+				z = pos.getZ() - d0;
+			}
+			if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())) == 0)) {
+				x = pos.getX() + 1 + d0;
+			}
+			if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())) == 0)) {
+				x = pos.getX() - d0;
+			}
 
 			if(x < pos.getX() || x > pos.getX() + 1 || y < 0.0D || y > pos.getY() + 1 || z < pos.getZ() || z > pos.getZ() + 1) {
 				world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, 0.0D, 0.0D, 0.0D, 0);
@@ -107,8 +119,12 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
-		if(world.isRaining()) return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 3, false));
-		else return Optional.empty();
+		if(world.isRaining()) {
+			return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 3, false));
+		}
+		else {
+			return Optional.empty();
+		}
 	}
 
 	@Override
@@ -141,7 +157,7 @@ public class BlockHolyKeyStone extends BlockMod {
 	@Override
 	public void onEntityWalk(World world, BlockPos pos, Entity entityIn) {
 		if(entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityIn;
+			EntityPlayer player = (EntityPlayer) entityIn;
 			player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 75, 2));
 			player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 50, 2));
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50, 2));

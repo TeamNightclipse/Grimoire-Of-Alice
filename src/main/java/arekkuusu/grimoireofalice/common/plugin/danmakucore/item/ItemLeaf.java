@@ -59,12 +59,13 @@ public class ItemLeaf extends ItemMod implements IOwnedBy {
 		}
 
 		if(player.isSneaking()) {
-			for (int j = 0; j < 8; ++j) {
+			for(int j = 0; j < 8; ++j) {
 				world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
 			}
-		} else {
+		}
+		else {
 			DanmakuHelper.playShotSound(player);
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(player).setShot(LibGOAShotData.LEAF);
 				world.spawnEntity(danmaku.build().asEntity());
 				danmaku.setShot(danmaku.shot.setSize(2));

@@ -80,13 +80,17 @@ public class SpellCardContainer extends Container {
 			itemstack = itemstack1.copy();
 
 			if(slotIndex < 8) {
-				if(!mergeItemStack(itemstack1, 8, 43, true)) return ItemStack.EMPTY;
+				if(!mergeItemStack(itemstack1, 8, 43, true)) {
+					return ItemStack.EMPTY;
+				}
 				else {
 					slot.onSlotChange(itemstack1, itemstack);
 				}
 			}
 			else {
-				if(!mergeItemStack(itemstack1, 0, 8, false)) return ItemStack.EMPTY;
+				if(!mergeItemStack(itemstack1, 0, 8, false)) {
+					return ItemStack.EMPTY;
+				}
 				slot.onSlotChange(itemstack1, itemstack);
 			}
 
@@ -97,7 +101,9 @@ public class SpellCardContainer extends Container {
 				slot.onSlotChanged();
 			}
 
-			if(itemstack1.getCount() == itemstack.getCount()) return ItemStack.EMPTY;
+			if(itemstack1.getCount() == itemstack.getCount()) {
+				return ItemStack.EMPTY;
+			}
 
 			slot.onTake(player, itemstack1);
 		}

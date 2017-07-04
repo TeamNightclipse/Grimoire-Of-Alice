@@ -54,17 +54,18 @@ public class ItemKappaHat extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (world.isRaining() && stack.isItemDamaged()) {
+		if(world.isRaining() && stack.isItemDamaged()) {
 			stack.setItemDamage(stack.getItemDamage() - 1);
 		}
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.world.isRemote && !player.capabilities.isFlying && player.moveForward > 0F) {
-			if (player.isInWater() || player.isInsideOfMaterial(Material.WATER)) {
+		if(player.world.isRemote && !player.capabilities.isFlying && player.moveForward > 0F) {
+			if(player.isInWater() || player.isInsideOfMaterial(Material.WATER)) {
 				player.moveRelative(0F, 1F, 0.085F);
-			} else if (!player.isWet()) {
+			}
+			else if(!player.isWet()) {
 				player.motionX *= 0.4;
 				player.motionZ *= 0.4;
 			}
@@ -79,7 +80,9 @@ public class ItemKappaHat extends ItemModArmor implements IOwnedBy {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
-		if (model == null) model = new ModelKappaHat();
+		if(model == null) {
+			model = new ModelKappaHat();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

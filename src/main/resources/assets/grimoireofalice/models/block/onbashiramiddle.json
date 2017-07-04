@@ -1,23 +1,79 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
-    "textures": {
-		"particle": "grimoireofalice:blocks/onbashira",
-        "0": "grimoireofalice:models/block/onbashira_log_dark",
-        "1": "grimoireofalice:models/block/onbashira_log_light"
-    },
-    "elements": [
-        {
-            "name": "Cube",
-            "from": [ 0.0, 0.0, 0.0 ], 
-            "to": [ 16.0, 16.0, 16.0 ], 
-            "faces": {
-                "north": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "east": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "south": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "west": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "up": { "texture": "#1", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
-                "down": { "texture": "#0", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
-            }
+  "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+  "textures": {
+    "particle": "grimoireofalice:blocks/onbashira",
+    "0": "grimoireofalice:models/block/onbashira_log_dark",
+    "1": "grimoireofalice:models/block/onbashira_log_light"
+  },
+  "elements": [
+    {
+      "name": "Cube",
+      "from": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "east": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "west": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "up": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "down": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
         }
-    ]
+      }
+    }
+  ]
 }

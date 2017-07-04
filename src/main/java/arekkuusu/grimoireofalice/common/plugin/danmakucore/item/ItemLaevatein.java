@@ -68,7 +68,7 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if(entity instanceof EntityPlayer && isSelected) {
-			EntityPlayer player = (EntityPlayer)entity;
+			EntityPlayer player = (EntityPlayer) entity;
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 0, 0));
 		}
 	}
@@ -79,11 +79,11 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 		boolean isCreative = player.capabilities.isCreativeMode;
 
 		ItemStack fireCharge = new ItemStack(Items.FIRE_CHARGE);
-		if (player.isSneaking()) {
-			if (isCreative || player.inventory.hasItemStack(fireCharge)) {
+		if(player.isSneaking()) {
+			if(isCreative || player.inventory.hasItemStack(fireCharge)) {
 				player.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-				if (!world.isRemote) {
-					for (int i = 0; i < 3; i++) {
+				if(!world.isRemote) {
+					for(int i = 0; i < 3; i++) {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(player)
 								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
@@ -96,9 +96,9 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 					world.spawnEntity(circle);
 				}
 
-				if (!isCreative) {
+				if(!isCreative) {
 					//noinspection ConstantConditions
-					if (player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
+					if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 						//noinspection ConstantConditions
 						player.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(player, fireCharge), 1, false);
 					}
@@ -109,7 +109,7 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 		}
 		else {
 			player.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				EntityFierySword fierySword = new EntityFierySword(world, player);
 				world.spawnEntity(fierySword);
 			}
@@ -121,9 +121,9 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 	}
 
 	private int getSlotFor(EntityPlayer player, ItemStack stack) {
-		for (int i = 0; i < player.inventory.mainInventory.size(); ++i) {
+		for(int i = 0; i < player.inventory.mainInventory.size(); ++i) {
 			ItemStack invStack = player.inventory.mainInventory.get(i);
-			if (!invStack.isEmpty() && stack.getItem() == invStack.getItem() && ItemStack.areItemStackTagsEqual(stack, invStack)) {
+			if(!invStack.isEmpty() && stack.getItem() == invStack.getItem() && ItemStack.areItemStackTagsEqual(stack, invStack)) {
 				return i;
 			}
 		}
@@ -136,7 +136,9 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 		BlockPos block = pos.offset(facing);
 		ItemStack stack = player.getHeldItem(hand);
 
-		if(!player.canPlayerEdit(block, facing, stack)) return EnumActionResult.PASS;
+		if(!player.canPlayerEdit(block, facing, stack)) {
+			return EnumActionResult.PASS;
+		}
 		else {
 			boolean success = false;
 			for(int i = -1; i <= 1; i++) {

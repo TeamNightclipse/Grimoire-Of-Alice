@@ -42,7 +42,7 @@ public class ModelFireRobe extends ModelBiped {
 		this.chest.addBox(-4.0F, 0.0F, -2.0F, 8, 14, 4, 0.25F);
 	}
 
-    @Override
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		bipedRightArm = rightArm;
 		bipedBody = chest;
@@ -50,12 +50,12 @@ public class ModelFireRobe extends ModelBiped {
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	}
 
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
+	/**
+	 * This is a helper function from Tabula to set the rotation of model parts
+	 */
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
 }

@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "grimoireofalice:compactstone" }
+  "variants": {
+    "normal": {
+      "model": "grimoireofalice:compactstone"
     }
+  }
 }

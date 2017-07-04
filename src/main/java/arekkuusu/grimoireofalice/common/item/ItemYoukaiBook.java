@@ -54,7 +54,7 @@ public class ItemYoukaiBook extends ItemMod implements IOwnedBy {
 			book.setPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 			world.spawnEntity(book);
 		}
-		if (!player.capabilities.isCreativeMode) {
+		if(!player.capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);

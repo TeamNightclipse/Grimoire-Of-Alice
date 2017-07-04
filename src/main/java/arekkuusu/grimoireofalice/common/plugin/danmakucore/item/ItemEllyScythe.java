@@ -76,12 +76,14 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(player.isSneaking()) {
 				int duration = getMaxItemUseDuration(stack) - timeLeft;
 				float durationSeconds = duration / 20F;
 				durationSeconds = (durationSeconds * durationSeconds + durationSeconds * 2.0F) / 3F;
-				if(durationSeconds < 0.1F) return;
+				if(durationSeconds < 0.1F) {
+					return;
+				}
 
 				boolean critical = false;
 				if(durationSeconds > 1.5F) {

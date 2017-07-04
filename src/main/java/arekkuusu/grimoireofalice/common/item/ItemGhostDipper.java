@@ -68,24 +68,31 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		RayTraceResult raytraceresult = rayTrace(world, player, true);
 		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(player, world, stack, raytraceresult);
-		if(ret != null) return ret;
+		if(ret != null) {
+			return ret;
+		}
 
 		//noinspection ConstantConditions
-		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
-		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, stack);
+		if(raytraceresult == null) {
+			return new ActionResult<>(EnumActionResult.PASS, stack);
+		}
+		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+			return new ActionResult<>(EnumActionResult.PASS, stack);
+		}
 		else {
 			if(!player.isSneaking()) {
 				BlockPos blockpos = raytraceresult.getBlockPos();
 
-				if (absorb(world, blockpos)) {
+				if(absorb(world, blockpos)) {
 					world.playSound(null, blockpos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					if (stack.isItemDamaged()) {
+					if(stack.isItemDamaged()) {
 						stack.setItemDamage(stack.getItemDamage() - 1);
 					}
 					player.setActiveHand(hand);
 					return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 				}
-			} else {
+			}
+			else {
 				BlockPos pos = raytraceresult.getBlockPos();
 				boolean replaceable = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
 				BlockPos posUp = replaceable && raytraceresult.sideHit == EnumFacing.UP ? pos : pos.offset(raytraceresult.sideHit);

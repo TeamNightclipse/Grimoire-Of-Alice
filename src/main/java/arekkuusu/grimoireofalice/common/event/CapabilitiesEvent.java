@@ -61,26 +61,26 @@ public class CapabilitiesEvent {
 
 	@SubscribeEvent
 	public void updatePlayerFlyStatus(LivingEvent.LivingUpdateEvent event) {
-		if (ConfigHandler.grimoireOfAlice.features.allowFly && event.getEntityLiving() instanceof EntityPlayer) {
+		if(ConfigHandler.grimoireOfAlice.features.allowFly && event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			//Flying
-			if (playersFlying.contains(player)) {
-				if (canFly(player)) {
+			if(playersFlying.contains(player)) {
+				if(canFly(player)) {
 					player.capabilities.allowFlying = true;
-					if (!player.world.isRemote) {
+					if(!player.world.isRemote) {
 						player.sendPlayerAbilities();
 					}
 				}
-				else if (!player.isSpectator() && !player.capabilities.isCreativeMode) {
+				else if(!player.isSpectator() && !player.capabilities.isCreativeMode) {
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
-					if (!player.world.isRemote) {
+					if(!player.world.isRemote) {
 						player.sendPlayerAbilities();
 					}
 					playersFlying.remove(player);
 				}
 			}
-			else if (canFly(player)) {
+			else if(canFly(player)) {
 				playersFlying.add(player);
 			}
 		}
@@ -89,7 +89,7 @@ public class CapabilitiesEvent {
 	private boolean canFly(EntityPlayer player) {
 		return GrimoireOfAliceAPI.getFlyItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
 				|| GrimoireOfAliceAPI.getFlyArmor().stream().anyMatch(
-						stack -> player.inventory.armorInventory.stream().anyMatch(stack::isItemEqual));
+				stack -> player.inventory.armorInventory.stream().anyMatch(stack::isItemEqual));
 	}
 
 	private boolean isFlyItem(Item item) {

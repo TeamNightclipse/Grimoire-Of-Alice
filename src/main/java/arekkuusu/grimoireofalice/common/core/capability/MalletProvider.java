@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class MalletProvider implements ICapabilitySerializable<NBTTagCompound> {
 
-	@CapabilityInject (IMalletCapability.class)
+	@CapabilityInject(IMalletCapability.class)
 	public static final Capability<IMalletCapability> MALLET_CAPABILITY = null;
 
 	private final IMalletCapability houraiCapability = new CapabilityMallet.DefaultMalletCapability();

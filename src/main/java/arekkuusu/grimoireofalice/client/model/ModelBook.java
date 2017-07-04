@@ -93,7 +93,7 @@ public class ModelBook extends ModelBase {
 	}
 
 	public void setRotationAngles(Entity entity, float ageInTicks) {
-		if (!((EntityYoukaiBook) entity).getIsBookLaying()) {
+		if(!((EntityYoukaiBook) entity).getIsBookLaying()) {
 			float angle = MathHelper.cos(ageInTicks * 0.8F) * (float) Math.PI * 0.25F;
 			book_cover_north.rotateAngleX = (16 - angle) * 0.5F;
 			book_cover_south.rotateAngleX = book_cover_north.rotateAngleX;

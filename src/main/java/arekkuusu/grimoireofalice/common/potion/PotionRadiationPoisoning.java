@@ -27,10 +27,10 @@ public class PotionRadiationPoisoning extends PotionMod {
 
 	@Override
 	public void performEffect(EntityLivingBase entityLivingBaseIn, int p_76394_2_) {
-		if (entityLivingBaseIn.getHealth() > 1.0F) {
+		if(entityLivingBaseIn.getHealth() > 1.0F) {
 			entityLivingBaseIn.attackEntityFrom(DamageSource.MAGIC, 2.0F);
 		}
-		if (entityLivingBaseIn instanceof EntityPlayer) {
+		if(entityLivingBaseIn instanceof EntityPlayer) {
 			((EntityPlayer) entityLivingBaseIn).addExhaustion(0.025F * (float) (p_76394_2_ + 1));
 		}
 		entityLivingBaseIn.setFire(100);

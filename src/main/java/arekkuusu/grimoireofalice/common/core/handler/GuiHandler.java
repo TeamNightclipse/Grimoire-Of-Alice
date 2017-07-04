@@ -30,12 +30,16 @@ public class GuiHandler implements IGuiHandler {
 			case 1:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem = player.getHeldItem(hand);
-				if(heldItem.isEmpty() || heldItem.getItem() != ModItems.POUCH) return null;
+				if(heldItem.isEmpty() || heldItem.getItem() != ModItems.POUCH) {
+					return null;
+				}
 				return new SpellCardContainer(player.inventory, heldItem);
 			case 2:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
-				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.MARISA_HAT) return null;
+				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.MARISA_HAT) {
+					return null;
+				}
 				return new HatContainer(player.inventory, heldItem0);
 			default:
 				return null;
@@ -45,18 +49,22 @@ public class GuiHandler implements IGuiHandler {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		switch (ID) {
+		switch(ID) {
 			case 0:
 				return new GuiScreenGuide();
 			case 1:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
-				if (heldItem0.isEmpty() || heldItem0.getItem() != ModItems.POUCH) return null;
+				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.POUCH) {
+					return null;
+				}
 				return new GuiItemInventory(player.inventory, heldItem0);
 			case 2:
 				EnumHand hand1 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem1 = player.getHeldItem(hand1);
-				if (heldItem1.isEmpty() || heldItem1.getItem() != ModItems.MARISA_HAT) return null;
+				if(heldItem1.isEmpty() || heldItem1.getItem() != ModItems.MARISA_HAT) {
+					return null;
+				}
 				return new GuiMarisaHat(player.inventory, heldItem1);
 			default:
 				return null;

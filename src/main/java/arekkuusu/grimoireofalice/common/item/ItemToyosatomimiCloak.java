@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmor, IOwnedBy {
+public class ItemToyosatomimiCloak extends ItemModArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -56,8 +56,8 @@ public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmo
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (player.world.isRemote) {
-			if ((player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.WATER)) {
+		if(player.world.isRemote) {
+			if((player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.WATER)) {
 				player.moveRelative(0F, 1F, 0.085F);
 			}
 		}
@@ -80,7 +80,9 @@ public class ItemToyosatomimiCloak extends ItemModArmor  implements ISpecialArmo
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelToyosatomimiCloack();
+		if(model == null) {
+			model = new ModelToyosatomimiCloack();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

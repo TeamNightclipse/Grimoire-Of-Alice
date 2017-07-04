@@ -77,10 +77,10 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			if (timeLeft < 40) {
-				if (!player.getHeldItemOffhand().isEmpty()) {
+			if(timeLeft < 40) {
+				if(!player.getHeldItemOffhand().isEmpty()) {
 					ItemStack itemStack = player.getHeldItemOffhand();
 					Optional<String> ore = Arrays.stream(OreDictionary.getOreIDs(itemStack))
 							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore")).findFirst();
@@ -93,7 +93,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 				return;
 			}
 
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), !player.isSneaking());
 				Vec3d look = player.getLookVec();
 				float distance = 2F;
@@ -104,14 +104,15 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 				world.spawnEntity(pendulum);
 			}
 			player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-			if (!player.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode) {
 				stack.shrink(1);
+			}
 		}
 	}
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
-			float hitX, float hitY, float hitZ) {
+									  float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!world.isRemote) {
 			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), false);
@@ -125,7 +126,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 
 	private void setOre(ItemStack itemStack, String ore) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}

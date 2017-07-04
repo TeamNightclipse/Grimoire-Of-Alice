@@ -1,33 +1,43 @@
 {
-  "pools": [{
-    "name": "grimoireofalice:abandoned_mineshaft",
-    "rolls": 1,
-    "entries": [
-      {
-        "type": "item",
-        "name": "grimoireofalice:shroompowder",
-        "weight": 4
-      },
-      {
-        "type": "item",
-        "name": "grimoireofalice:fullpoweritem",
-        "weight": 5
-      },
-	  {
-        "type": "item",
-        "name": "grimoireofalice:ufored",
-        "weight": 5
-      },
-	  {
-        "type": "item",
-        "name": "grimoireofalice:staritem",
-        "weight": 5,
-        "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }]
-      },
-      {
-        "type": "empty",
-        "weight": 35
-      }
-    ]
-  }]
+  "pools": [
+    {
+      "name": "grimoireofalice:abandoned_mineshaft",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "grimoireofalice:shroompowder",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:fullpoweritem",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:ufored",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:staritem",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "empty",
+          "weight": 35
+        }
+      ]
+    }
+  ]
 }

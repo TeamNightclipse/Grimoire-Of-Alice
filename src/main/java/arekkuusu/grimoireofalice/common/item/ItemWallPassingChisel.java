@@ -53,7 +53,7 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
-			float y, float z) {
+									  float y, float z) {
 		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
 			if(player instanceof EntityPlayerMP) {
@@ -67,8 +67,8 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 	}
 
 	/**
-	 * @param world The world
-	 * @param pos Pos of the block right clicked
+	 * @param world  The world
+	 * @param pos    Pos of the block right clicked
 	 * @param facing Facing of the block right clicked
 	 * @return Position for player
 	 */
@@ -82,12 +82,14 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 			if(stateBase.getBlock() != Blocks.BEDROCK && stateBase.getBlock().canEntityDestroy(stateBase, world, pos, player)) {
 				if(isSafePos(world, triedPos)) {
 					//Logic to prevent player to suffocate or get in awkward positions
-					if (facing == EnumFacing.DOWN) {
-						if (!isSafePos(world, triedPos.offset(facing))) return null;
+					if(facing == EnumFacing.DOWN) {
+						if(!isSafePos(world, triedPos.offset(facing))) {
+							return null;
+						}
 						triedPos = triedPos.offset(facing);
 					}
-					else if (facing != EnumFacing.UP) {
-						if (isSafePos(world, triedPos.down())) {
+					else if(facing != EnumFacing.UP) {
+						if(isSafePos(world, triedPos.down())) {
 							triedPos = triedPos.down();
 						}
 					}

@@ -87,15 +87,25 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 
 	@Override
 	public float getStrVsBlock(ItemStack stack, IBlockState state) {
-		if(state.getBlock() == Blocks.WEB) return 20.0f;
-
-		for(String type : getToolClasses(stack)) {
-			if(state.getBlock().isToolEffective(type, state)) return efficiencyOnProperMaterial;
+		if(state.getBlock() == Blocks.WEB) {
+			return 20.0f;
 		}
 
-		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) return efficiencyOnProperMaterial;
-		else if(SWORD_MATERIALS.contains(state.getMaterial())) return 1.5f;
-		else return 1.0F;
+		for(String type : getToolClasses(stack)) {
+			if(state.getBlock().isToolEffective(type, state)) {
+				return efficiencyOnProperMaterial;
+			}
+		}
+
+		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) {
+			return efficiencyOnProperMaterial;
+		}
+		else if(SWORD_MATERIALS.contains(state.getMaterial())) {
+			return 1.5f;
+		}
+		else {
+			return 1.0F;
+		}
 	}
 
 	@Optional.Method(modid = "danmakucore")

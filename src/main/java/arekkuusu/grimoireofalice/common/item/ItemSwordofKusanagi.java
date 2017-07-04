@@ -68,11 +68,11 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		if (entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).getCooldownTracker().hasCooldown(this)) {
+		if(entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).getCooldownTracker().hasCooldown(this)) {
 			return false;
 		}
 		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
-		if (!entityLiving.world.isRemote) {
+		if(!entityLiving.world.isRemote) {
 			double range = 50.0D;
 			Vec3d look = entityLiving.getLookVec();
 			Vec3d vec3d = new Vec3d(entityLiving.posX, entityLiving.posY + entityLiving.getEyeHeight(), entityLiving.posZ);
@@ -86,11 +86,11 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 			Entity entity = null;
 			double d = 0.0D;
-			for (Entity entity1 : list) {
+			for(Entity entity1 : list) {
 				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
-				if (movingObjectPosition1 != null) {
+				if(movingObjectPosition1 != null) {
 					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if (d1 < d || d == 0.0D) {
+					if(d1 < d || d == 0.0D) {
 						entity = entity1;
 						d = d1;
 					}
@@ -101,7 +101,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 			entityLiving.world.spawnEntity(entityNetherSoul);
 			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
 		}
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
 		}
 		return true;
@@ -118,13 +118,15 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(isOwner(stack, player)) {
 				int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 				float convert = timeUsed * 6 / 20F;
 				convert = (convert * convert + convert * 2.0F) / 3F;
 				convert *= 1.5F;
-				if(convert > 10F) return;
+				if(convert > 10F) {
+					return;
+				}
 				for(int t = 0; t < convert; t++) {
 					for(int u = 0; u < 10; u++) {
 						spawnSmoke(player, itemRand.nextDouble(), itemRand.nextDouble());

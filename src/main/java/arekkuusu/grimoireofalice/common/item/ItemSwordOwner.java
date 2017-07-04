@@ -55,7 +55,7 @@ public class ItemSwordOwner extends ItemModSword {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
+			EntityPlayer player = (EntityPlayer) entity;
 
 			if(!stack.hasTagCompound()) {
 				stack.setTagCompound(new NBTTagCompound());

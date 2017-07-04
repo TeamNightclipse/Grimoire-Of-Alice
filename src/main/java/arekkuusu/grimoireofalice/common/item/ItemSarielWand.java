@@ -76,9 +76,11 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (!stack.hasTagCompound()) return new ActionResult<>(EnumActionResult.FAIL, stack);
+		if(!stack.hasTagCompound()) {
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
+		}
 
-		if (isOwner(stack, player)) {
+		if(isOwner(stack, player)) {
 			player.setActiveHand(hand);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
@@ -86,7 +88,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			setProfile(stack, player);
 		}
@@ -95,34 +97,35 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (facing != EnumFacing.DOWN) {
+		if(facing != EnumFacing.DOWN) {
 			Block block = world.getBlockState(pos).getBlock();
-			if (block.isReplaceable(world, pos)) {
+			if(block.isReplaceable(world, pos)) {
 				facing = EnumFacing.UP;
 				pos = pos.down();
-			} else {
-				if (!world.getBlockState(pos).getMaterial().isSolid() && !world.isSideSolid(pos, facing, true)) {
+			}
+			else {
+				if(!world.getBlockState(pos).getMaterial().isSolid() && !world.isSideSolid(pos, facing, true)) {
 					return EnumActionResult.FAIL;
 				}
 				pos = pos.offset(facing);
 			}
 
-			if (player.canPlayerEdit(pos, facing, stack) && Blocks.SKULL.canPlaceBlockAt(world, pos)) {
-				if (!world.isRemote) {
+			if(player.canPlayerEdit(pos, facing, stack) && Blocks.SKULL.canPlaceBlockAt(world, pos)) {
+				if(!world.isRemote) {
 					world.setBlockState(pos, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, facing), 11);
 					int i = 0;
 
-					if (facing == EnumFacing.UP) {
+					if(facing == EnumFacing.UP) {
 						i = MathHelper.floor((player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
 					}
 
 					TileEntity tileentity = world.getTileEntity(pos);
 
-					if (tileentity instanceof TileEntitySkull) {
+					if(tileentity instanceof TileEntitySkull) {
 						TileEntitySkull tileentityskull = (TileEntitySkull) tileentity;
 
 						int type = getType(stack);
-						if (type == 3) {
+						if(type == 3) {
 							tileentityskull.setPlayerProfile(getProfile(stack));
 						}
 						else {
@@ -143,15 +146,19 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (target instanceof EntitySkeleton) {
+		if(target instanceof EntitySkeleton) {
 			setType(stack, 0);
-		} else if(target instanceof EntityWitherSkeleton) {
+		}
+		else if(target instanceof EntityWitherSkeleton) {
 			setType(stack, 1);
-		} else if (target instanceof EntityZombie) {
+		}
+		else if(target instanceof EntityZombie) {
 			setType(stack, 2);
-		} else if (target instanceof EntityPlayer) {
+		}
+		else if(target instanceof EntityPlayer) {
 			setProfile(stack, (EntityPlayer) target);
-		} else if (target instanceof EntityCreeper) {
+		}
+		else if(target instanceof EntityCreeper) {
 			setType(stack, 4);
 		}
 		return true;
@@ -164,7 +171,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	private void setType(ItemStack stack, int type) {
 		NBTTagCompound nbt = stack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			stack.setTagCompound(nbt);
 		}
@@ -175,7 +182,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	private void setProfile(ItemStack stack, EntityPlayer player) {
 		NBTTagCompound nbt = stack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			stack.setTagCompound(nbt);
 		}
@@ -190,13 +197,15 @@ public class ItemSarielWand extends ItemSwordOwner {
 			UUID uuid = nbt.getUniqueId(PLAYER_UUID);
 			return uuid == null ? null : getCache().getProfileByUUID(uuid);
 		}
-		else return null;
+		else {
+			return null;
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	private String getName(ItemStack stack) {
 		int type = getType(stack);
-		switch (type) {
+		switch(type) {
 			case 3:
 				NBTTagCompound nbt = stack.getTagCompound();
 

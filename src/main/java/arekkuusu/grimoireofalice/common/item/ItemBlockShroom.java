@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 
 public class ItemBlockShroom extends ItemBlock {
 
-	public ItemBlockShroom(Block block){
+	public ItemBlockShroom(Block block) {
 		super(block);
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
@@ -38,7 +38,7 @@ public class ItemBlockShroom extends ItemBlock {
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
-		if(entityLiving instanceof EntityPlayer && !((EntityPlayer)entityLiving).capabilities.isCreativeMode) {
+		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
 

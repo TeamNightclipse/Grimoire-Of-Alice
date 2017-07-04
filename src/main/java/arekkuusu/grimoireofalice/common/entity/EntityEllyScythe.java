@@ -50,13 +50,13 @@ public class EntityEllyScythe extends EntityThrow {
 	public void onUpdate() {
 		super.onUpdate();
 		EntityLivingBase thrower = getThrower();
-		if (thrower == null || strength <= 0 || ticksExisted > 250) {
+		if(thrower == null || strength <= 0 || ticksExisted > 250) {
 			stop();
 		}
 
 		strength *= 0.994F;
-		if (strength < MIN_FLOAT_STRENGTH) {
-			if (getCritical()) {
+		if(strength < MIN_FLOAT_STRENGTH) {
+			if(getCritical()) {
 				setCritical(false);
 			}
 			strength = 0F;
@@ -64,7 +64,7 @@ public class EntityEllyScythe extends EntityThrow {
 
 		rotationYaw += 20F * strength;
 
-		if (getThrower() != null && strength > 0F) {
+		if(getThrower() != null && strength > 0F) {
 			EntityLivingBase shootingEntity = getThrower();
 			double dx = posX - shootingEntity.posX;
 			double dy = posY - shootingEntity.posY - shootingEntity.getEyeHeight();
@@ -84,7 +84,7 @@ public class EntityEllyScythe extends EntityThrow {
 	private void stop() {
 		if(!world.isRemote) {
 			ItemStack stack = getStack();
-			if (stack.getItemDamage() != stack.getMaxDamage()) {
+			if(stack.getItemDamage() != stack.getMaxDamage()) {
 				EntityItem entityitem = new EntityItem(world, posX, posY, posZ, stack);
 				entityitem.setDefaultPickupDelay();
 				world.spawnEntity(entityitem);
@@ -95,9 +95,9 @@ public class EntityEllyScythe extends EntityThrow {
 
 	@Override
 	void applyHitEffects(Entity entity) {
-		if (getThrower() instanceof EntityPlayer && entity instanceof EntityLivingBase) {
+		if(getThrower() instanceof EntityPlayer && entity instanceof EntityLivingBase) {
 			EntityLivingBase target = (EntityLivingBase) entity;
-			if (target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
+			if(target.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
 				target.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 64, 0));
 			}
 			else {

@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "grimoireofalice:items/mikostick"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "grimoireofalice:items/mikostick"
+  }
 }

@@ -58,9 +58,9 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
+									EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		TilePillarAltar tile = (TilePillarAltar)world.getTileEntity(pos);
+		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
 		boolean ok = false;
 		if(tile != null) {
 			if(player.isSneaking()) {
@@ -76,7 +76,9 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		ITileItemHolder tile = (ITileItemHolder) world.getTileEntity(pos);
-		if (tile != null) tile.destroy();
+		if(tile != null) {
+			tile.destroy();
+		}
 		world.removeTileEntity(pos);
 	}
 
@@ -106,7 +108,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-									 EntityLivingBase placer) {
+											EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
 	}

@@ -36,15 +36,16 @@ public class BlockImpureRock extends BlockMod {
 
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		if (fortune > 0) {
+		if(fortune > 0) {
 			int i = random.nextInt(fortune + 2) - 1;
 
-			if (i < 0) {
+			if(i < 0) {
 				i = 0;
 			}
 
 			return this.quantityDropped(random) * (i + 1);
-		} else {
+		}
+		else {
 			return this.quantityDropped(random);
 		}
 	}

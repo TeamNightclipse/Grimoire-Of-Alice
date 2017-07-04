@@ -17,11 +17,11 @@ public class WorldGenLoot {
 			"chests/abandoned_mineshaft", "chests/desert_pyramid",
 			"chests/jungle_temple", "chests/simple_dungeon",
 			"chests/spawn_bonus_chest", "chests/stronghold_corridor",
-			"chests/village_blacksmith" , "gameplay/fishing"
+			"chests/village_blacksmith", "gameplay/fishing"
 	);
 
 	public WorldGenLoot() {
-		for (String table : TABLES) LootTableList.register(new ResourceLocation(LibMod.MODID, table));
+		for(String table : TABLES) LootTableList.register(new ResourceLocation(LibMod.MODID, table));
 	}
 
 	@SubscribeEvent
@@ -31,24 +31,29 @@ public class WorldGenLoot {
 
 		String lootName = event.getName().toString();
 
-		if (lootName.startsWith(chestLoot)) {
+		if(lootName.startsWith(chestLoot)) {
 			String file = lootName.substring(lootName.indexOf(chestLoot) + chestLoot.length());
-			switch (file) {
+			switch(file) {
 				case "abandoned_mineshaft":
 				case "desert_pyramid":
 				case "jungle_temple":
 				case "simple_dungeon":
 				case "spawn_bonus_chest":
 				case "stronghold_corridor":
-				case "village_blacksmith": event.getTable().addPool(getInjectPool("chests/" + file)); break;
-				default: break;
+				case "village_blacksmith":
+					event.getTable().addPool(getInjectPool("chests/" + file));
+					break;
+				default:
+					break;
 			}
 		}
 		else if(lootName.startsWith(fishingLoot)) {
 			String file = lootName.substring(lootName.indexOf(fishingLoot) + fishingLoot.length());
-			switch (file) {
-				case "fishing": event.getTable().addPool(getInjectPool("gameplay/" + file));
-					default: break;
+			switch(file) {
+				case "fishing":
+					event.getTable().addPool(getInjectPool("gameplay/" + file));
+				default:
+					break;
 			}
 		}
 	}

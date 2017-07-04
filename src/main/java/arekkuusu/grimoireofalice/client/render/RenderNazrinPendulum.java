@@ -44,7 +44,9 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 
 		float toDegrees = (float) Math.PI / 180F;
 		angle += speed * pendulum.ticksExisted;
-		if (angle > 360) angle -= 360;
+		if(angle > 360) {
+			angle -= 360;
+		}
 
 		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
 

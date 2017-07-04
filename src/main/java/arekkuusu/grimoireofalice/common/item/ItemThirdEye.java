@@ -44,129 +44,129 @@ import java.util.List;
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 
-    @SideOnly(Side.CLIENT)
-    private ModelBiped model;
+	@SideOnly(Side.CLIENT)
+	private ModelBiped model;
 
-    public ItemThirdEye(ArmorMaterial material, int dmg) {
-        super(material, dmg, LibItemName.EYE, EntityEquipmentSlot.CHEST);
-        setMaxStackSize(1);
-        setMaxDamage(125);
-        setNoRepair();
-        addPropertyOverride(new ResourceLocation("status"),
-                (stack, world, entity) -> isClosed(stack) ? 1F : 0F);
-    }
+	public ItemThirdEye(ArmorMaterial material, int dmg) {
+		super(material, dmg, LibItemName.EYE, EntityEquipmentSlot.CHEST);
+		setMaxStackSize(1);
+		setMaxDamage(125);
+		setNoRepair();
+		addPropertyOverride(new ResourceLocation("status"),
+				(stack, world, entity) -> isClosed(stack) ? 1F : 0F);
+	}
 
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.RARE;
-    }
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.RARE;
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
-        list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_header.name"));
-        if (GuiScreen.isShiftKeyDown()) {
-            list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_status.name") + " " + getStatus(stack));
-        }
-        else {
-            list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_activate.name"));
-            list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_shift.name"));
-        }
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_header.name"));
+		if(GuiScreen.isShiftKeyDown()) {
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_status.name") + " " + getStatus(stack));
+		}
+		else {
+			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_activate.name"));
+			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_shift.name"));
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    private String getStatus(ItemStack stack) {
-        return isClosed(stack) ? TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.third_eye_closed.name")
-                : TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.third_eye_open.name");
-    }
+	@SideOnly(Side.CLIENT)
+	private String getStatus(ItemStack stack) {
+		return isClosed(stack) ? TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.third_eye_closed.name")
+				: TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.third_eye_open.name");
+	}
 
-    @Override
-    public void onArmorTick(World world, final EntityPlayer player, ItemStack itemStack) {
-        if (isClosed(itemStack)) {
-            if (!player.isSneaking()) {
-                applyEffectNearby(world, player, new PotionEffect(MobEffects.BLINDNESS, 40, 0));
-                player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
-                if (!world.isRemote) {
-                    world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(player.getPosition()).grow(20D),
-                            entity -> entity != null && entity.getAttackTarget() == player)
-                            .forEach(livingBase -> livingBase.setLastAttackedEntity(null));
-                }
-            }
-        }
-        else {
-            applyEffectNearby(world, player, new PotionEffect(MobEffects.GLOWING, 20, 0));
-        }
-    }
+	@Override
+	public void onArmorTick(World world, final EntityPlayer player, ItemStack itemStack) {
+		if(isClosed(itemStack)) {
+			if(!player.isSneaking()) {
+				applyEffectNearby(world, player, new PotionEffect(MobEffects.BLINDNESS, 40, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
+				if(!world.isRemote) {
+					world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(player.getPosition()).grow(20D),
+							entity -> entity != null && entity.getAttackTarget() == player)
+							.forEach(livingBase -> livingBase.setLastAttackedEntity(null));
+				}
+			}
+		}
+		else {
+			applyEffectNearby(world, player, new PotionEffect(MobEffects.GLOWING, 20, 0));
+		}
+	}
 
-    private void applyEffectNearby(World world, EntityPlayer player, PotionEffect effect) {
-        List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().grow(20D));
-        list.stream()
-                .filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob)
-                .forEach(mob -> mob.addPotionEffect(effect));
-    }
+	private void applyEffectNearby(World world, EntityPlayer player, PotionEffect effect) {
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().grow(20D));
+		list.stream()
+				.filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob)
+				.forEach(mob -> mob.addPotionEffect(effect));
+	}
 
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (!player.isSneaking()) {
-            EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(stack);
-            ItemStack invStack = player.getItemStackFromSlot(entityequipmentslot);
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!player.isSneaking()) {
+			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(stack);
+			ItemStack invStack = player.getItemStackFromSlot(entityequipmentslot);
 
-            if (invStack.isEmpty()) {
-                player.setItemStackToSlot(entityequipmentslot, stack.copy());
-                stack.setCount(0);
-            }
-        }
-        else {
-            player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1F, 1F);
-            setClosed(stack, !isClosed(stack));
-            stack.damageItem(1, player);
-        }
-        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-    }
+			if(invStack.isEmpty()) {
+				player.setItemStackToSlot(entityequipmentslot, stack.copy());
+				stack.setCount(0);
+			}
+		}
+		else {
+			player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1F, 1F);
+			setClosed(stack, !isClosed(stack));
+			stack.damageItem(1, player);
+		}
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+	}
 
-    private void setClosed(ItemStack stack, boolean isOpen) {
-        NBTTagCompound tagCompound = stack.getTagCompound();
-        if (tagCompound == null) {
-            tagCompound = new NBTTagCompound();
-            stack.setTagCompound(tagCompound);
-        }
-        tagCompound.setBoolean("eye", isOpen);
-    }
+	private void setClosed(ItemStack stack, boolean isOpen) {
+		NBTTagCompound tagCompound = stack.getTagCompound();
+		if(tagCompound == null) {
+			tagCompound = new NBTTagCompound();
+			stack.setTagCompound(tagCompound);
+		}
+		tagCompound.setBoolean("eye", isOpen);
+	}
 
-    private boolean isClosed(ItemStack stack) {
-        NBTTagCompound tagCompound = stack.getTagCompound();
-        return tagCompound != null && tagCompound.getBoolean("eye");
-    }
+	private boolean isClosed(ItemStack stack) {
+		NBTTagCompound tagCompound = stack.getTagCompound();
+		return tagCompound != null && tagCompound.getBoolean("eye");
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-        if (isClosed(itemStack)) {
-            if ((model == null || model instanceof ModelSatoriEye)) {
-                model = new ModelKoishiEye();
-            }
-        }
-        else if (model == null || model instanceof ModelKoishiEye) {
-            model = new ModelSatoriEye();
-        }
-        model.setModelAttributes(imodel);
-        return model;
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+		if(isClosed(itemStack)) {
+			if((model == null || model instanceof ModelSatoriEye)) {
+				model = new ModelKoishiEye();
+			}
+		}
+		else if(model == null || model instanceof ModelKoishiEye) {
+			model = new ModelSatoriEye();
+		}
+		model.setModelAttributes(imodel);
+		return model;
+	}
 
-    @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return isClosed(stack) ? ResourceLocations.KOISHI_EYE.toString() : ResourceLocations.SATORI_EYE.toString();
-    }
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
+		return isClosed(stack) ? ResourceLocations.KOISHI_EYE.toString() : ResourceLocations.SATORI_EYE.toString();
+	}
 
-    @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
-        return 1;
-    }
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
+		return 1;
+	}
 
-    @Override
-    public int getItemEnchantability() {
-        return 0;
-    }
+	@Override
+	public int getItemEnchantability() {
+		return 0;
+	}
 
 	@Optional.Method(modid = "danmakucore")
 	@Override

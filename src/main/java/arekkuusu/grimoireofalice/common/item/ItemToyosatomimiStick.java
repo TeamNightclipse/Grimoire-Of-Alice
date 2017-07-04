@@ -52,7 +52,7 @@ public class ItemToyosatomimiStick extends ItemModSword implements IOwnedBy {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (player.experienceLevel > 0 && !player.capabilities.isCreativeMode) {
+		if(player.experienceLevel > 0 && !player.capabilities.isCreativeMode) {
 			player.addExperienceLevel(-1);
 			player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 			stack.damageItem(1, player);

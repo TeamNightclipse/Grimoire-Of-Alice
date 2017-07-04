@@ -43,11 +43,11 @@ public class EntityKinkakuJiCeiling extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!world.isRemote) {
-			if (!onGround && motionY < 0) {
+		if(!world.isRemote) {
+			if(!onGround && motionY < 0) {
 				world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.FALLING_BLOCK, 50));
 			}
-			if (ticksExisted > 2000) {
+			if(ticksExisted > 2000) {
 				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
 				setDead();
 			}
@@ -60,14 +60,14 @@ public class EntityKinkakuJiCeiling extends Entity {
 		onGround = raytraceresult != null && raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK
 				&& world.getBlockState(raytraceresult.getBlockPos()).getMaterial() != Material.PLANTS;
 
-		if (!onGround) {
+		if(!onGround) {
 			motionY -= 0.025;
 			posX += motionX;
 			posY += motionY;
 			posZ += motionZ;
 			doSound = true;
 		}
-		else if (doSound) {
+		else if(doSound) {
 			playSound(SoundEvents.BLOCK_ANVIL_LAND, 1F, 1F);
 			doSound = false;
 		}
@@ -78,9 +78,9 @@ public class EntityKinkakuJiCeiling extends Entity {
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		if(!world.isRemote && !isDead && onGround) {
-            if(!player.capabilities.isCreativeMode) {
-                dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
-            }
+			if(!player.capabilities.isCreativeMode) {
+				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
+			}
 			setDead();
 		}
 		return true;

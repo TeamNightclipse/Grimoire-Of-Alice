@@ -16,6 +16,7 @@ public enum GoheiMode {
 
 	/**
 	 * Create a new Mode
+	 *
 	 * @param name Name of the Mode, used for translation in the Lang file
 	 * @param type The byte stored in the NBT
 	 */
@@ -26,11 +27,12 @@ public enum GoheiMode {
 
 	/**
 	 * Returns the GoheiMode with the correct type
+	 *
 	 * @param type The byte stored in the NBT
 	 * @return
 	 */
 	public static GoheiMode fromType(byte type) {
-		switch (type) {
+		switch(type) {
 			case 0:
 				return PASSIVE;
 			case 1:

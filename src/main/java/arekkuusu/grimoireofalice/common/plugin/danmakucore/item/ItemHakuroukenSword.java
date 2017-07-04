@@ -50,11 +50,11 @@ public class ItemHakuroukenSword extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			Vec3d vec = entityLiving.getLookVec();
 			List<EntityDanmaku> list = world.getEntitiesWithinAABB(EntityDanmaku.class, new AxisAlignedBB(entityLiving.getPosition())
 					.offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D));
-			if (!list.isEmpty()) {
+			if(!list.isEmpty()) {
 				list.forEach(danmaku -> reverseDanmaku(entityLiving, danmaku));
 			}
 		}
@@ -64,7 +64,7 @@ public class ItemHakuroukenSword extends ItemModSword implements IOwnedBy {
 		danmaku.rotationYaw = entityLiving.rotationYaw;
 		danmaku.rotationPitch = entityLiving.rotationPitch;
 		Vector3 vec3d = Vector3.directionEntity(entityLiving);
-        danmaku.setDirection(vec3d);
+		danmaku.setDirection(vec3d);
 		danmaku.motionX *= vec3d.x();
 		danmaku.motionY *= -vec3d.y();
 		danmaku.motionZ *= vec3d.z();

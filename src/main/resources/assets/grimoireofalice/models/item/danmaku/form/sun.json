@@ -1,7 +1,7 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "grimoireofalice:items/danmaku/sun",
-		"layer1": "grimoireofalice:items/danmaku/sun_center"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "grimoireofalice:items/danmaku/sun",
+    "layer1": "grimoireofalice:items/danmaku/sun_center"
+  }
 }

@@ -97,9 +97,9 @@ public class ItemNazrinStick extends ItemModSword {
 				List<Block> blockLayer = new ArrayList<>(10);
 				for(int i = 1; i < 10; i++) {
 					Block block = world.getBlockState(pos.down(i)).getBlock();
-						boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
-								.mapToObj(OreDictionary::getOreName)
-								.anyMatch(s -> s.startsWith("ore"));
+					boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(block)))
+							.mapToObj(OreDictionary::getOreName)
+							.anyMatch(s -> s.startsWith("ore"));
 					if(isOre) {
 						blockLayer.add(block);
 					}
@@ -141,7 +141,7 @@ public class ItemNazrinStick extends ItemModSword {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 
 			if(!player.capabilities.isCreativeMode) {
 				if(player.experienceLevel > 30) {

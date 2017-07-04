@@ -23,7 +23,7 @@ public class RedGas extends Particle {
 		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 		motionY *= 0.20000000298023224D;
 
-		if (xSpeed == 0.0D && zSpeed == 0.0D) {
+		if(xSpeed == 0.0D && zSpeed == 0.0D) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}
@@ -57,14 +57,14 @@ public class RedGas extends Particle {
 		prevPosY = posY;
 		prevPosZ = posZ;
 
-		if (particleAge++ >= particleMaxAge) {
+		if(particleAge++ >= particleMaxAge) {
 			setExpired();
 		}
 
 		motionY += 0.004D;
 		move(motionX, motionY, motionZ);
 
-		if (posY == prevPosY) {
+		if(posY == prevPosY) {
 			motionX *= 1.1D;
 			motionZ *= 1.1D;
 		}
@@ -73,7 +73,7 @@ public class RedGas extends Particle {
 		motionY *= 0.9599999785423279D;
 		motionZ *= 0.9599999785423279D;
 
-		if (onGround) {
+		if(onGround) {
 			motionX *= 0.699999988079071D;
 			motionZ *= 0.699999988079071D;
 		}

@@ -52,7 +52,7 @@ public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		if(entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			Vec3d vec = player.getLookVec();
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 					entityLiving.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(3D), entity -> entity != player);

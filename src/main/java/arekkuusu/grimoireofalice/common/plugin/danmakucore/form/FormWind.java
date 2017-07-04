@@ -45,8 +45,10 @@ public class FormWind extends FormGeneric {
 			@Override
 			@SideOnly(Side.CLIENT)
 			public void renderForm(EntityDanmaku danmaku, double x, double y, double z, float entityYaw, float partialTicks,
-					RenderManager rendermanager) {
-				if(modelWind == null) modelWind = new ModelWind();
+								   RenderManager rendermanager) {
+				if(modelWind == null) {
+					modelWind = new ModelWind();
+				}
 
 				float pitch = danmaku.rotationPitch;
 				float yaw = danmaku.rotationYaw;

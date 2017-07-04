@@ -55,35 +55,35 @@ public class ItemRedStoneofAja extends ItemMod implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-    @Override
+	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(timeLeft <= 90) {
-			if (!world.isRemote) {
-                if (world.canSeeSky(entityLiving.getPosition())) {
-                    EntityDanmaku lazer = DanmakuTemplate.builder()
-                            .setUser(entityLiving)
-                            .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
-                            .setMovementData(3D)
-                            .build().asEntity();
-                    for (int i = 0; i < 4; i++) {
-                        DanmakuTemplate circle = DanmakuTemplate.builder()
-                                .setUser(entityLiving)
-                                .setShot(LibShotData.SHOT_CIRCLE.setSize(1.5F).setDelay(i * 2))
-                                .setMovementData(3D)
-                                .build();
-                        DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
-                    }
-                    world.spawnEntity(lazer);
-                }
-                else {
-                    EntityDanmaku danmaku = DanmakuTemplate.builder()
-                            .setUser(entityLiving)
-                            .setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
-                            .setMovementData(4D)
-                            .build().asEntity();
-                    world.spawnEntity(danmaku);
-                }
-            }
+			if(!world.isRemote) {
+				if(world.canSeeSky(entityLiving.getPosition())) {
+					EntityDanmaku lazer = DanmakuTemplate.builder()
+							.setUser(entityLiving)
+							.setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
+							.setMovementData(3D)
+							.build().asEntity();
+					for(int i = 0; i < 4; i++) {
+						DanmakuTemplate circle = DanmakuTemplate.builder()
+								.setUser(entityLiving)
+								.setShot(LibShotData.SHOT_CIRCLE.setSize(1.5F).setDelay(i * 2))
+								.setMovementData(3D)
+								.build();
+						DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
+					}
+					world.spawnEntity(lazer);
+				}
+				else {
+					EntityDanmaku danmaku = DanmakuTemplate.builder()
+							.setUser(entityLiving)
+							.setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
+							.setMovementData(4D)
+							.build().asEntity();
+					world.spawnEntity(danmaku);
+				}
+			}
 			entityLiving.playSound(GrimoireSoundEvents.POWER_UP, 0.2F, 1F);
 
 			if(entityLiving instanceof EntityPlayer) {

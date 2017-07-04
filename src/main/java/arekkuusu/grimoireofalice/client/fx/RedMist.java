@@ -52,7 +52,7 @@ public class RedMist extends Particle {
 
 	@Override
 	public void onUpdate() {
-		if (entity != null && !entity.isDead) {
+		if(entity != null && !entity.isDead) {
 			double dx = posX - entity.posX;
 			double dy = posY - entity.posY - entity.getEyeHeight();
 			double dz = posZ - entity.posZ;
@@ -70,12 +70,13 @@ public class RedMist extends Particle {
 			prevPosY = posY += motionY;
 			prevPosZ = posZ += motionZ;
 
-			if (particleAge++ >= particleMaxAge) {
+			if(particleAge++ >= particleMaxAge) {
 				setExpired();
 			}
 
 			move(motionX, motionY, motionZ);
-		} else {
+		}
+		else {
 			setExpired();
 		}
 	}

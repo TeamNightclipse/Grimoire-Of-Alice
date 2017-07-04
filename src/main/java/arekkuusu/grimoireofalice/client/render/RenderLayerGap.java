@@ -16,7 +16,7 @@ public class RenderLayerGap {
 	private static final ModelBase MODEL = new ModelFlat();
 	private final RenderGap renderGap;
 
-	public RenderLayerGap(RenderGap renderGap){
+	public RenderLayerGap(RenderGap renderGap) {
 		this.renderGap = renderGap;
 	}
 

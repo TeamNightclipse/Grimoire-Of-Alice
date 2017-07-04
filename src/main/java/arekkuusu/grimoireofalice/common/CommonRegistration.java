@@ -168,7 +168,7 @@ public class CommonRegistration {
 				itemBlock(ModBlocks.DRAGON_STONE)
 		);
 
-		if (GrimoireOfAlice.danmakuCoreInstalled) {
+		if(GrimoireOfAlice.danmakuCoreInstalled) {
 			event.getRegistry().registerAll(
 					new ItemStopWatch(),
 					new ItemMiracleMallet(),

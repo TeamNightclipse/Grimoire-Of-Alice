@@ -56,7 +56,7 @@ public class BlockPaper extends BlockModPillar {
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-									 EntityLivingBase placer) {
+											EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
 	}

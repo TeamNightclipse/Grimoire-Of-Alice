@@ -112,7 +112,9 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		if(isActive(player)) return new ArmorProperties(4, 0, 0);
+		if(isActive(player)) {
+			return new ArmorProperties(4, 0, 0);
+		}
 		return new ArmorProperties(4, 25, 10);
 	}
 
@@ -124,7 +126,9 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 	@SideOnly(Side.CLIENT)
 	@Override
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-		if (model == null) model = new ModelFireRobe();
+		if(model == null) {
+			model = new ModelFireRobe();
+		}
 		model.setModelAttributes(_default);
 		return model;
 	}

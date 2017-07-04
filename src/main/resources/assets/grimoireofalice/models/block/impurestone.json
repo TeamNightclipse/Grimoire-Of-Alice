@@ -1,6 +1,6 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "grimoireofalice:blocks/impurestone"
-    }
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "grimoireofalice:blocks/impurestone"
+  }
 }

@@ -23,9 +23,9 @@ public class ResourceLocationsAPI {
 	public static final ResourceLocation WIND = getLocation("wind");
 	public static final ResourceLocation PAGE_TURN = getLocation("page_turn");
 	public static final ResourceLocation WING_FLAP = getLocation("wing_flap");
-    public static final ResourceLocation ORA = getLocation("ora");
+	public static final ResourceLocation ORA = getLocation("ora");
 
-    private static ResourceLocation getLocation(String name){
+	private static ResourceLocation getLocation(String name) {
 		return new ResourceLocation("grimoireofalice", name);
 	}
 }

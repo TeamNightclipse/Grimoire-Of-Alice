@@ -69,35 +69,37 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
-		if(livingBase instanceof  EntityPlayer && hasFullSet((EntityPlayer) livingBase)) {
+		if(livingBase instanceof EntityPlayer && hasFullSet((EntityPlayer) livingBase)) {
 			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().grow(5), entity -> entity != livingBase);
-			for (EntityLivingBase living : list) {
+			for(EntityLivingBase living : list) {
 				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
 		}
-		if (count % 50 == 0) {
+		if(count % 50 == 0) {
 			livingBase.playSound(GrimoireSoundEvents.CAUTION, 0.2F, 0F);
 		}
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
 		}
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-		if (timeUsed < 20) return;
+		if(timeUsed < 20) {
+			return;
+		}
 
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-		if (!world.isRemote) {
-			if (entityLiving.isSneaking()) {
+		if(!world.isRemote) {
+			if(entityLiving.isSneaking()) {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setMovementData(0.5F)
 						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.build();
 
-				if(entityLiving instanceof  EntityPlayer && hasFullSet((EntityPlayer) entityLiving)) {
+				if(entityLiving instanceof EntityPlayer && hasFullSet((EntityPlayer) entityLiving)) {
 					DanmakuCreationHelper.createSphereShot(Quat.orientationOf(entityLiving), danmaku, 4, 5, entityLiving.rotationPitch, 1D);
 				}
 				else {
@@ -111,10 +113,10 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 						.setMovementData(1F)
 						.build().asEntity();
 				world.spawnEntity(danmaku);
-                Vec3d vec3 = entityLiving.getLookVec();
-                entityLiving.motionX -= vec3.x;
-                entityLiving.motionY -= vec3.y;
-                entityLiving.motionZ -= vec3.z;
+				Vec3d vec3 = entityLiving.getLookVec();
+				entityLiving.motionX -= vec3.x;
+				entityLiving.motionY -= vec3.y;
+				entityLiving.motionZ -= vec3.z;
 			}
 		}
 	}

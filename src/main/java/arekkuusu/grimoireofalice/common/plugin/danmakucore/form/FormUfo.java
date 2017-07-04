@@ -46,7 +46,7 @@ public class FormUfo extends FormGeneric {
 			@Override
 			@SideOnly(Side.CLIENT)
 			public void renderForm(EntityDanmaku danmaku, double x, double y, double z, float entityYaw, float partialTicks,
-					RenderManager rendermanager) {
+								   RenderManager rendermanager) {
 				float pitch = danmaku.rotationPitch;
 				float yaw = danmaku.rotationYaw;
 				float roll = danmaku.getRoll();

@@ -57,7 +57,7 @@ public class GrimoireOfAlice {
 		CapabilityMallet.init();
 		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldGenPlants());
 		proxy.preInit(event);
-		if (danmakuCoreInstalled) {
+		if(danmakuCoreInstalled) {
 			LogHelper.info("Deep Voice, do you have an answer? Doesn't matter, we must know");
 		}
 		else {
@@ -72,8 +72,8 @@ public class GrimoireOfAlice {
 		ModItems.init();
 		ModItems.initOreDictionary();
 		ModItems.initFlyingItems();
-        AchievementEvents.init();
-		if (danmakuCoreInstalled) {
+		AchievementEvents.init();
+		if(danmakuCoreInstalled) {
 			LogHelper.info("Alright...");
 			LogHelper.info("The answer to the ultimate question, of life, the universe and everything, is...");
 			LogHelper.info(42);

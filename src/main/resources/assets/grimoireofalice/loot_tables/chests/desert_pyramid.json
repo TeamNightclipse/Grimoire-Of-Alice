@@ -1,30 +1,56 @@
 {
-  "pools": [{
-    "name": "grimoireofalice:desert_pyramid",
-    "rolls": 1,
-    "entries": [
-      {
-        "type": "item",
-        "name": "grimoireofalice:cherryitem",
-        "weight": 3,
-        "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 3 } }]
-      },
-	  {
-        "type": "item",
-        "name": "grimoireofalice:faithitem",
-        "weight": 4,
-        "functions": [{ "function": "minecraft:set_count", "count": { "min": 6, "max": 16 } }]
-      },
-      {
-        "type": "item",
-        "name": "grimoireofalice:timeorb",
-        "weight": 7,
-        "functions": [{ "function": "minecraft:set_count", "count": { "min": 1, "max": 5 } }]
-      },
-      {
-        "type": "empty",
-        "weight": 50
-      }
-    ]
-  }]
+  "pools": [
+    {
+      "name": "grimoireofalice:desert_pyramid",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "grimoireofalice:cherryitem",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:faithitem",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 6,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:timeorb",
+          "weight": 7,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "empty",
+          "weight": 50
+        }
+      ]
+    }
+  ]
 }

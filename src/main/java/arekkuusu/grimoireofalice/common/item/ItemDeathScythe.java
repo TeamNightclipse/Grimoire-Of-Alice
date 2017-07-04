@@ -55,7 +55,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, entityIn.getEntityBoundingBox().grow(10));
 			list.stream().filter(entityMob -> entityMob.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD)
 					.forEach(entityMob -> {
@@ -75,7 +75,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase user, int count) {
 		if(user instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)user;
+			EntityPlayer player = (EntityPlayer) user;
 			double range = 16.0D;
 			Vec3d look = player.getLookVec();
 			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
@@ -123,7 +123,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(!world.isRemote) {
 			if(entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entityLiving;
+				EntityPlayer player = (EntityPlayer) entityLiving;
 				player.getCooldownTracker().setCooldown(this, 10);
 			}
 		}

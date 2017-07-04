@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor, IOwnedBy {
+public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -52,7 +52,7 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor,
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if (player.isWet() && player.ticksExisted % 4 == 0) {
+		if(player.isWet() && player.ticksExisted % 4 == 0) {
 			world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, player.posX + (itemRand.nextDouble() - 0.5D) * player.width,
 					player.posY + itemRand.nextDouble() * player.height - 0.25D, player.posZ + (itemRand.nextDouble() - 0.5D) * player.width,
 					(itemRand.nextFloat() - 0.5D) * 0.2, -itemRand.nextFloat(), (itemRand.nextFloat() - 0.5D) * 0.2);
@@ -70,12 +70,15 @@ public class ItemKanakoShimenawa extends ItemModArmor  implements ISpecialArmor,
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelKanakoShimenawa();
+		if(model == null) {
+			model = new ModelKanakoShimenawa();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

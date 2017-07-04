@@ -44,10 +44,10 @@ public class CapabilityHourai {
 		@Override
 		public void setHouraiLevel(byte level) {
 			this.level = level;
-			if (level < 0) {
+			if(level < 0) {
 				this.level = 0;
 			}
-			if (level > maxLevel) {
+			if(level > maxLevel) {
 				this.level = maxLevel;
 			}
 		}

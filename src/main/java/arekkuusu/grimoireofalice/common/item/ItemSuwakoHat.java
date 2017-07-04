@@ -70,7 +70,9 @@ public class ItemSuwakoHat extends ItemModArmor {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelSuwakoHat();
+		if(model == null) {
+			model = new ModelSuwakoHat();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

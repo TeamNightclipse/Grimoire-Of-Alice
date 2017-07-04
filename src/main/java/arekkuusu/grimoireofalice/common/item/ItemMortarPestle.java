@@ -30,7 +30,7 @@ public class ItemMortarPestle extends ItemMod {
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
 		int dmg = stack.getItemDamage();
-		if (dmg == stack.getMaxDamage()) {
+		if(dmg == stack.getMaxDamage()) {
 			return new ItemStack(stack.getItem(), 0, stack.getMaxDamage());
 		}
 		ItemStack itemStack = stack.copy();

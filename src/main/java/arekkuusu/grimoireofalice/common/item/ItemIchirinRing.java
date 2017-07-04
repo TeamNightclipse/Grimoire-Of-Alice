@@ -73,7 +73,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 		}
 	}
 
-    @Override
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(isHoldingRing(hand, player)) {
@@ -85,49 +85,50 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-        if (entityLiving instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entityLiving;
-            if (isWearingUnzan(player)) {
-                if(isStand(player) && player.isSneaking()){
-                    player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
-                    player.getCooldownTracker().setCooldown(this, 125);
-                    player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
-                }
-                else {
-                    if (!world.isRemote) {
-                        Vec3d look = player.getLookVec();
-                        float distance = 5F;
-                        double dx = player.posX + look.x * distance;
-                        double dy = player.posY + 1 + look.y * distance;
-                        double dz = player.posZ + look.z * distance;
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
+			if(isWearingUnzan(player)) {
+				if(isStand(player) && player.isSneaking()) {
+					player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
+					player.getCooldownTracker().setCooldown(this, 125);
+					player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
+				}
+				else {
+					if(!world.isRemote) {
+						Vec3d look = player.getLookVec();
+						float distance = 5F;
+						double dx = player.posX + look.x * distance;
+						double dy = player.posY + 1 + look.y * distance;
+						double dz = player.posZ + look.z * distance;
 
-                        EntityUnzanFist fist = new EntityUnzanFist(world, player);
-                        fist.setPosition(dx, dy, dz);
-                        world.spawnEntity(fist);
-                        fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
-                    }
-                    player.getCooldownTracker().setCooldown(this, 10);
-                    player.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
-                }
-            }
-        }
-    }
+						EntityUnzanFist fist = new EntityUnzanFist(world, player);
+						fist.setPosition(dx, dy, dz);
+						world.spawnEntity(fist);
+						fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
+					}
+					player.getCooldownTracker().setCooldown(this, 10);
+					player.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
+				}
+			}
+		}
+	}
 
-    private boolean isStand(EntityPlayer player) {
-        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-        return !stack.isEmpty() && stack.getDisplayName().equalsIgnoreCase("star platinum");
-    }
+	private boolean isStand(EntityPlayer player) {
+		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+		return !stack.isEmpty() && stack.getDisplayName().equalsIgnoreCase("star platinum");
+	}
 
-    @Override
+	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if(attacker instanceof EntityPlayer && !isWearingUnzan((EntityPlayer) attacker)) {
 			stack.damageItem(1, attacker);
-		} else {
+		}
+		else {
 			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
 			attacker.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
-        target.motionX = -MathHelper.sin((float)Math.toRadians(attacker.rotationYaw));
-        target.motionZ = MathHelper.cos((float)Math.toRadians(attacker.rotationYaw));
+		target.motionX = -MathHelper.sin((float) Math.toRadians(attacker.rotationYaw));
+		target.motionZ = MathHelper.cos((float) Math.toRadians(attacker.rotationYaw));
 		return true;
 	}
 

@@ -147,15 +147,19 @@ public abstract class EntityThrow extends EntityThrowable {
 	@Override
 	protected float getGravityVelocity() {
 		double speed = Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
-		if(speed < gravityThreshold()) return super.getGravityVelocity();
-		else return 0F;
+		if(speed < gravityThreshold()) {
+			return super.getGravityVelocity();
+		}
+		else {
+			return 0F;
+		}
 	}
 
 	abstract double gravityThreshold();
 
 	protected void setPickupModeFromEntity(EntityLivingBase entityliving) {
 		if(entityliving instanceof EntityPlayer) {
-			if(((EntityPlayer)entityliving).capabilities.isCreativeMode) {
+			if(((EntityPlayer) entityliving).capabilities.isCreativeMode) {
 				canBePickedUp(PICKUP_CREATIVE);
 			}
 			else {
@@ -176,9 +180,15 @@ public abstract class EntityThrow extends EntityThrowable {
 	}
 
 	private boolean canPickup(EntityPlayer entityplayer) {
-		if(canBePickedUp == PICKUP_ALL) return true;
-		else if(canBePickedUp == PICKUP_CREATIVE) return entityplayer.capabilities.isCreativeMode;
-		else return canBePickedUp == PICKUP_OWNER && entityplayer == getThrower();
+		if(canBePickedUp == PICKUP_ALL) {
+			return true;
+		}
+		else if(canBePickedUp == PICKUP_CREATIVE) {
+			return entityplayer.capabilities.isCreativeMode;
+		}
+		else {
+			return canBePickedUp == PICKUP_OWNER && entityplayer == getThrower();
+		}
 	}
 
 	public void setPickupMode(PickupMode i) {

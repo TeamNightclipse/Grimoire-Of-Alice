@@ -32,8 +32,8 @@ public class RenderMiracleCircle extends Render<EntityMiracleCircle> {
 		bindEntityTexture(entity);
 
 		GlStateManager.translate(x, y, z);
-        GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
-        GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
+		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
+		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 

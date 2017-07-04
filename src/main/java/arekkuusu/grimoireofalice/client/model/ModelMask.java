@@ -59,12 +59,14 @@ public class ModelMask extends ModelBiped {
 
 		float toDegrees = (float) Math.PI / 180F;
 		angle += speed * age;
-		if (angle > 360) angle -= 360;
+		if(angle > 360) {
+			angle -= 360;
+		}
 
 		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
 		GlStateManager.translate(0, 0, maxUpAndDown * Math.cos(angle * toDegrees));
 		GlStateManager.rotate(45, 0.0F, 1.0F, 0.0F);
-		if (this.isChild) {
+		if(this.isChild) {
 			GlStateManager.scale(0.5F, 0.5F, 0.5F);
 			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
 			this.mask.render(scale);
@@ -74,7 +76,7 @@ public class ModelMask extends ModelBiped {
 			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
 		}
 		else {
-			if (entity.isSneaking()) {
+			if(entity.isSneaking()) {
 				GlStateManager.translate(0.0F, 0.2F, 0.0F);
 			}
 
@@ -88,11 +90,11 @@ public class ModelMask extends ModelBiped {
 		boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
 		this.mask.rotateAngleY = netHeadYaw * 0.017453292F;
 
-		if (flag) {
+		if(flag) {
 			this.mask.rotateAngleX = -((float) Math.PI / 4F);
 		}
 
-		if (this.isSneak) {
+		if(this.isSneak) {
 			this.mask.rotationPointY = 1.0F;
 		}
 		else {

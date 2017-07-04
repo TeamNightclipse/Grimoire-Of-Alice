@@ -17,6 +17,7 @@ import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -54,10 +55,13 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 
 	@SuppressWarnings("ConstantConditions")
 	private void useMallet(EntityPlayer player, EnumHand hand) {
-		if (player.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && !player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
+		if(!player.world.isRemote && player.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && !player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {
 			IMalletCapability capability = player.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			capability.setSmall(!capability.isSmall());
 			capability.markDirty();
+			if(player instanceof EntityPlayerMP) {
+				PacketHandler.sendTo((EntityPlayerMP) player, new MalletMessage(capability, player.getUniqueID()));
+			}
 			PacketHandler.sendToNear(player, new MalletMessage(capability, player.getUniqueID()));
 		}
 		player.getCooldownTracker().setCooldown(this, 50);
@@ -74,26 +78,27 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.world.playSound(player, player.getPosition(), GrimoireSoundEvents.SIMPLE_BELL, SoundCategory.PLAYERS, 1F, 1F);
-			if (player.isSneaking() && !player.world.isRemote) {
+			if(player.isSneaking() && !player.world.isRemote) {
 				Vec3d vec = player.getLookVec();
 				List<EntityDanmaku> list = player.world.getEntitiesWithinAABB(EntityDanmaku.class, player.getEntityBoundingBox()
 						.offset(vec.x * 10, vec.y * 10, vec.z * 10).grow(10));
-				for (EntityDanmaku danmaku : list) {
+				for(EntityDanmaku danmaku : list) {
 					ShotData data = danmaku.getShotData();
-					if (data.getSizeX() < 5 && data.getSizeY() < 5 && data.getSizeZ() < 5)
+					if(data.getSizeX() < 5 && data.getSizeY() < 5 && data.getSizeZ() < 5) {
 						danmaku.setShotData(data.scaleSize(1.2F));
+					}
 				}
 			}
-			else if (!player.world.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
+			else if(!player.world.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
 				Vec3d vec = player.getLookVec();
 				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 						entityLiving.getEntityBoundingBox().offset(vec.x * 4, 0, vec.z * 4).grow(3D), entity -> entity != player);
 				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10F + itemRand.nextInt(10)));
 
-				for (int i = 0; i < 4; i++) {
+				for(int i = 0; i < 4; i++) {
 					EntityThrowable lantern = new EntityMiracleLantern(player.world, player);
 					player.world.spawnEntity(lantern);
 					lantern.setHeadingFromThrower(player, player.rotationPitch - (25 + itemRand.nextInt(20)), player.rotationYaw
@@ -107,7 +112,7 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
-		if (target instanceof EntityPlayer) {
+		if(target instanceof EntityPlayer) {
 			useMallet((EntityPlayer) target, hand);
 		}
 		return true;

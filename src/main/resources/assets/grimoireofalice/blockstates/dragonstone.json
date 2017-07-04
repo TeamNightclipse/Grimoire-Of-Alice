@@ -1,8 +1,19 @@
 {
   "variants": {
-    "facing=north": { "model": "grimoireofalice:dragonstone" },
-    "facing=south": { "model": "grimoireofalice:dragonstone", "y": 180 },
-    "facing=east":  { "model": "grimoireofalice:dragonstone", "y": 90 },
-    "facing=west":  { "model": "grimoireofalice:dragonstone", "y": 270 }
+    "facing=north": {
+      "model": "grimoireofalice:dragonstone"
+    },
+    "facing=south": {
+      "model": "grimoireofalice:dragonstone",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "grimoireofalice:dragonstone",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "grimoireofalice:dragonstone",
+      "y": 270
+    }
   }
 }

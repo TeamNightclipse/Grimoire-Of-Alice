@@ -80,8 +80,12 @@ public class ItemSpellCardPouch extends ItemMod {
 		@Nullable
 		@Override
 		public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
-			else return null;
+			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
+			}
+			else {
+				return null;
+			}
 		}
 
 		@Override

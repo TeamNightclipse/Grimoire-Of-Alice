@@ -30,17 +30,17 @@ import net.minecraft.world.World;
 //Much taken from BlockStairs
 public class BlockRope extends BlockMod {
 
-    @SuppressWarnings("WeakerAccess")
-    public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    @SuppressWarnings("WeakerAccess")
-    public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
-    @SuppressWarnings("WeakerAccess")
-    public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
-    private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
-    private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyDirection FACING = BlockHorizontal.FACING;
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
+	@SuppressWarnings("WeakerAccess")
+	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
+	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
+	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
 
-    public BlockRope() {
+	public BlockRope() {
 		super(LibBlockName.ROPE_BLOCK, Material.WOOD);
 		setSoundType(SoundType.LADDER);
 		setHarvestLevel("axe", 1);
@@ -64,7 +64,7 @@ public class BlockRope extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer) {
+											EntityLivingBase placer) {
 		IBlockState iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing()).withProperty(SHAPE, BlockStairs.EnumShape.STRAIGHT);
 		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F) ?
@@ -101,11 +101,11 @@ public class BlockRope extends BlockMod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		if (isBlockRope(state)) {
-			if (state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
+		if(isBlockRope(state)) {
+			if(state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
 				return TOP_AABB;
 			}
-			else if (state.getValue(HALF) == BlockStairs.EnumHalf.BOTTOM) {
+			else if(state.getValue(HALF) == BlockStairs.EnumHalf.BOTTOM) {
 				return BOTTOM_AABB;
 			}
 		}
@@ -122,7 +122,9 @@ public class BlockRope extends BlockMod {
 
 			if(enumfacing1.getAxis() != blockState.getValue(FACING).getAxis()
 					&& isDifferentRope(blockState, blockAccess, blockPos, enumfacing1.getOpposite())) {
-				if(enumfacing1 == enumfacing.rotateYCCW()) return BlockStairs.EnumShape.OUTER_LEFT;
+				if(enumfacing1 == enumfacing.rotateYCCW()) {
+					return BlockStairs.EnumShape.OUTER_LEFT;
+				}
 
 				return BlockStairs.EnumShape.OUTER_RIGHT;
 			}
@@ -134,7 +136,9 @@ public class BlockRope extends BlockMod {
 			EnumFacing enumfacing2 = iblockstate1.getValue(FACING);
 
 			if(enumfacing2.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, enumfacing2)) {
-				if(enumfacing2 == enumfacing.rotateYCCW()) return BlockStairs.EnumShape.INNER_LEFT;
+				if(enumfacing2 == enumfacing.rotateYCCW()) {
+					return BlockStairs.EnumShape.INNER_LEFT;
+				}
 
 				return BlockStairs.EnumShape.INNER_RIGHT;
 			}

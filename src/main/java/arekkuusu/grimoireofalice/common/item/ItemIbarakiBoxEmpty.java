@@ -60,11 +60,17 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		RayTraceResult raytraceresult = rayTrace(world, player, true);
 		ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onBucketUse(player, world, stack, raytraceresult);
-		if(ret != null) return ret;
+		if(ret != null) {
+			return ret;
+		}
 
 		//noinspection ConstantConditions
-		if(raytraceresult == null) return new ActionResult<>(EnumActionResult.PASS, stack);
-		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) return new ActionResult<>(EnumActionResult.PASS, stack);
+		if(raytraceresult == null) {
+			return new ActionResult<>(EnumActionResult.PASS, stack);
+		}
+		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+			return new ActionResult<>(EnumActionResult.PASS, stack);
+		}
 		else {
 			BlockPos blockpos = raytraceresult.getBlockPos();
 
@@ -84,10 +90,14 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 	}
 
 	private ItemStack fillBucket(ItemStack emptyBuckets, EntityPlayer player, Item fullBucket) {
-		if(player.capabilities.isCreativeMode) return emptyBuckets;
+		if(player.capabilities.isCreativeMode) {
+			return emptyBuckets;
+		}
 		else {
 			emptyBuckets.shrink(1);
-			if(emptyBuckets.isEmpty()) return new ItemStack(fullBucket);
+			if(emptyBuckets.isEmpty()) {
+				return new ItemStack(fullBucket);
+			}
 			else {
 				if(!player.inventory.addItemStackToInventory(new ItemStack(fullBucket))) {
 					player.dropItem(new ItemStack(fullBucket), false);

@@ -1,14 +1,14 @@
 {
-    "parent": "grimoireofalice:item/handheld_big",
-    "textures": {
-        "layer0": "grimoireofalice:items/ghostdipper"
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "using": 1
-            },
-            "model": "grimoireofalice:item/ghostdipperused"
-        }
-    ]
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/ghostdipper"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "using": 1
+      },
+      "model": "grimoireofalice:item/ghostdipperused"
+    }
+  ]
 }

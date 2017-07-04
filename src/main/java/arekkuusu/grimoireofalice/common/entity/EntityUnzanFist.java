@@ -25,7 +25,7 @@ import java.util.List;
 
 public class EntityUnzanFist extends EntityThrowable {
 
-    private int tick;
+	private int tick;
 
 	public EntityUnzanFist(World world) {
 		super(world);
@@ -41,97 +41,98 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	public void onUpdate() {
-        onEntityUpdate();
-        this.lastTickPosX = this.posX;
-        this.lastTickPosY = this.posY;
-        this.lastTickPosZ = this.posZ;
+		onEntityUpdate();
+		this.lastTickPosX = this.posX;
+		this.lastTickPosY = this.posY;
+		this.lastTickPosZ = this.posZ;
 
-        if (this.throwableShake > 0) {
-            --this.throwableShake;
-        }
+		if(this.throwableShake > 0) {
+			--this.throwableShake;
+		}
 
-        Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
-        Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-        RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d, vec3d1);
-        vec3d = new Vec3d(this.posX, this.posY, this.posZ);
-        vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+		Vec3d vec3d = new Vec3d(this.posX, this.posY, this.posZ);
+		Vec3d vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+		RayTraceResult raytraceresult = this.world.rayTraceBlocks(vec3d, vec3d1);
+		vec3d = new Vec3d(this.posX, this.posY, this.posZ);
+		vec3d1 = new Vec3d(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-        if (raytraceresult != null) {
-            vec3d1 = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
-        }
+		if(raytraceresult != null) {
+			vec3d1 = new Vec3d(raytraceresult.hitVec.x, raytraceresult.hitVec.y, raytraceresult.hitVec.z);
+		}
 
-        Entity entity = null;
-        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D));
-        double d0 = 0.0D;
+		Entity entity = null;
+		List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().expand(this.motionX, this.motionY, this.motionZ).grow(1.0D));
+		double d0 = 0.0D;
 
-        for (Entity aList : list) {
-            if (aList.canBeCollidedWith()) {
-                if (aList != this.ignoreEntity) {
-                    if (this.ticksExisted < 2 && this.ignoreEntity == null) {
-                        this.ignoreEntity = aList;
-                    }
-                    else {
-                        AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
-                        RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+		for(Entity aList : list) {
+			if(aList.canBeCollidedWith()) {
+				if(aList != this.ignoreEntity) {
+					if(this.ticksExisted < 2 && this.ignoreEntity == null) {
+						this.ignoreEntity = aList;
+					}
+					else {
+						AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
+						RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
-                        if (result != null) {
-                            double d1 = vec3d.squareDistanceTo(result.hitVec);
+						if(result != null) {
+							double d1 = vec3d.squareDistanceTo(result.hitVec);
 
-                            if (d1 < d0 || d0 == 0.0D) {
-                                entity = aList;
-                                d0 = d1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+							if(d1 < d0 || d0 == 0.0D) {
+								entity = aList;
+								d0 = d1;
+							}
+						}
+					}
+				}
+			}
+		}
 
-        if (entity != null) {
-            raytraceresult = new RayTraceResult(entity);
-        }
+		if(entity != null) {
+			raytraceresult = new RayTraceResult(entity);
+		}
 
-        if (raytraceresult != null) {
-            if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK && this.world.getBlockState(raytraceresult.getBlockPos()).getBlock() == Blocks.PORTAL) {
-                this.setPortal(raytraceresult.getBlockPos());
-            }
-            else if (!net.minecraftforge.common.ForgeHooks.onThrowableImpact(this, raytraceresult)) {
-                this.onImpact(raytraceresult);
-            }
-        }
+		if(raytraceresult != null) {
+			if(raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK && this.world.getBlockState(raytraceresult.getBlockPos()).getBlock() == Blocks.PORTAL) {
+				this.setPortal(raytraceresult.getBlockPos());
+			}
+			else if(!net.minecraftforge.common.ForgeHooks.onThrowableImpact(this, raytraceresult)) {
+				this.onImpact(raytraceresult);
+			}
+		}
 
-        this.posX += this.motionX;
-        this.posY += this.motionY;
-        this.posZ += this.motionZ;
+		this.posX += this.motionX;
+		this.posY += this.motionY;
+		this.posZ += this.motionZ;
 
-        float f1 = 0.99F;
+		float f1 = 0.99F;
 
-        this.motionX *= (double) f1;
-        this.motionY *= (double) f1;
-        this.motionZ *= (double) f1;
+		this.motionX *= (double) f1;
+		this.motionY *= (double) f1;
+		this.motionZ *= (double) f1;
 
-        if (!this.hasNoGravity()) {
-            this.motionY -= (double) getGravityVelocity();
-        }
+		if(!this.hasNoGravity()) {
+			this.motionY -= (double) getGravityVelocity();
+		}
 
-        this.setPosition(this.posX, this.posY, this.posZ);
+		this.setPosition(this.posX, this.posY, this.posZ);
 
-        if (!world.isRemote && tick > 20) {
-            setDead();
-        }
-        ++tick;
-    }
+		if(!world.isRemote && tick > 20) {
+			setDead();
+		}
+		++tick;
+	}
 
 	@Override
-	protected void entityInit() {}
+	protected void entityInit() {
+	}
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if (!world.isRemote) {
-			if (result.typeOfHit == RayTraceResult.Type.BLOCK) {
+		if(!world.isRemote) {
+			if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
 				onImpactBlock(result);
 			}
-			else if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
+			else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
 				onImpactEntity(result);
 			}
 		}
@@ -140,24 +141,26 @@ public class EntityUnzanFist extends EntityThrowable {
 	private void onImpactBlock(RayTraceResult result) {
 		IBlockState base = world.getBlockState(result.getBlockPos());
 		boolean canHitBlock = base.getBlock() != Blocks.TALLGRASS && base.getBlock() != Blocks.DOUBLE_PLANT;
-		if (canHitBlock) {
+		if(canHitBlock) {
 			explode();
 		}
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-        if (result.entityHit != null && result.entityHit != this && result.entityHit != getThrower()) {
-        	if(isBurning()) result.entityHit.setFire(5);
-            explode();
-        }
-    }
+		if(result.entityHit != null && result.entityHit != this && result.entityHit != getThrower()) {
+			if(isBurning()) {
+				result.entityHit.setFire(5);
+			}
+			explode();
+		}
+	}
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-        if (!world.isRemote && entityplayer != getThrower()) {
-            explode();
-        }
-    }
+		if(!world.isRemote && entityplayer != getThrower()) {
+			explode();
+		}
+	}
 
 	private void explode() {
 		playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, rand.nextFloat() * 1.0F + 0.8F);

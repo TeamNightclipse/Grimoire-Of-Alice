@@ -75,14 +75,15 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 
 			Optional<BlockPos> posLookedAt = getBlockPosLookedAt(player);
 			BlockPos pos;
-			if (posLookedAt.isPresent() && !player.isSneaking()) {
+			if(posLookedAt.isPresent() && !player.isSneaking()) {
 				pos = posLookedAt.get();
-			} else {
+			}
+			else {
 				Vec3d look = player.getLookVec();
 				double range = 40.0D;
 				double dx = player.posX + look.x * range;
@@ -91,8 +92,8 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 				pos = new BlockPos(dx, dy, dz);
 			}
 
-			if (isSafe(world, pos)) {
-				if (!world.isRemote && player instanceof EntityPlayerMP) {
+			if(isSafe(world, pos)) {
+				if(!world.isRemote && player instanceof EntityPlayerMP) {
 					((EntityPlayerMP) player).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				}
 				stack.damageItem(1, player);
@@ -109,14 +110,18 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
 		Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
 		RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-		if (raytraceresult != null) {
+		if(raytraceresult != null) {
 			return Optional.of(raytraceresult.getBlockPos().offset(raytraceresult.sideHit));
 		}
-		else return Optional.empty();
+		else {
+			return Optional.empty();
+		}
 	}
 
 	private boolean isSafe(World world, BlockPos pos) {
-		if(pos.getY() < 0) return false;
+		if(pos.getY() < 0) {
+			return false;
+		}
 		IBlockState state = world.getBlockState(pos);
 		return state.getBlock().isAir(state, world, pos) || !state.isSideSolid(world, pos, EnumFacing.UP);
 	}

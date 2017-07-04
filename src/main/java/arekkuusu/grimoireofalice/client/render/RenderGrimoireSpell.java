@@ -60,7 +60,7 @@ public class RenderGrimoireSpell extends Render<EntityGrimoireSpell> {
 		}
 
 		float rotateAngle = circle.getBookRotationPrev() + bookRotation * 5;
-		GlStateManager.rotate(-rotateAngle * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(-rotateAngle * (180F / (float) Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
 		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float pageFlipLow = circle.getPageFlipPrev() + (circle.getPageFlip() - circle.getPageFlipPrev()) * 5 + 0.25F;

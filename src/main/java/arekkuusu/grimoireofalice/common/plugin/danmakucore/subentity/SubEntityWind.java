@@ -74,8 +74,12 @@ public class SubEntityWind extends SubEntityType {
 					Entity indirect;
 					Optional<EntityLivingBase> optUser = danmaku.getUser();
 					//noinspection OptionalIsPresent
-					if(optUser.isPresent()) indirect = optUser.get();
-					else indirect = danmaku.getSource().orElse(null);
+					if(optUser.isPresent()) {
+						indirect = optUser.get();
+					}
+					else {
+						indirect = danmaku.getSource().orElse(null);
+					}
 
 					result.entityHit.attackEntityFrom(DamageSourceDanmaku.causeDanmakuDamage(danmaku, indirect), timeUsed / 2F);
 					Vec3d windPos = danmaku.getPositionVector();

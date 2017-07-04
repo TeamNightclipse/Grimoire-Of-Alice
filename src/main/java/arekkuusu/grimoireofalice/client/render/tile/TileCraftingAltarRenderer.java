@@ -35,7 +35,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		}
 
 		float f2 = te.bookRotationPrev + f1 * partialTicks;
-		GlStateManager.rotate(-f2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(-f2 * (180F / (float) Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
 		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
 		float f3 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.25F;

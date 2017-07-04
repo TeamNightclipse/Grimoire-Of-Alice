@@ -51,22 +51,22 @@ public class ItemCamera extends ItemMod {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (!world.isRemote) {
-            int size = getSize();
+		if(!world.isRemote) {
+			int size = getSize();
 
-            EntityCameraSquare camera = new EntityCameraSquare(world, player, size);
-            Vec3d look = player.getLookVec();
-            double distance = size + 4D;
-            double dx = player.posX + look.x * distance;
-            double dy = player.posY + 2 + look.y * distance;
-            double dz = player.posZ + look.z * distance;
-            camera.setPosition(dx, dy, dz);
-            world.spawnEntity(camera);
-        }
-        world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
-        player.setActiveHand(hand);
-        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-    }
+			EntityCameraSquare camera = new EntityCameraSquare(world, player, size);
+			Vec3d look = player.getLookVec();
+			double distance = size + 4D;
+			double dx = player.posX + look.x * distance;
+			double dy = player.posY + 2 + look.y * distance;
+			double dz = player.posZ + look.z * distance;
+			camera.setPosition(dx, dy, dz);
+			world.spawnEntity(camera);
+		}
+		world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
+		player.setActiveHand(hand);
+		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+	}
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
@@ -81,18 +81,19 @@ public class ItemCamera extends ItemMod {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			if(!player.capabilities.isCreativeMode)
+			if(!player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
+			}
 			world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_SHOOT, SoundCategory.PLAYERS, 1F, 1F);
 			player.getCooldownTracker().setCooldown(this, 100);
 		}
 	}
 
 	public int getSize() {
-        return 0;
-    }
+		return 0;
+	}
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {

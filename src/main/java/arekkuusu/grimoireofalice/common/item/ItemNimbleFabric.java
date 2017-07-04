@@ -66,13 +66,15 @@ public class ItemNimbleFabric extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(count == 1) player.stopActiveHand();
+		if(count == 1) {
+			player.stopActiveHand();
+		}
 		player.motionY = player.motionX = player.motionZ = 0;
 	}
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			player.getCooldownTracker().setCooldown(this, 500);
 			stack.damageItem(1, entityLiving);

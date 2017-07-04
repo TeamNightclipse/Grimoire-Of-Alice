@@ -1,17 +1,19 @@
 {
-  "pools": [{
-    "name": "grimoireofalice:village_blacksmith",
-    "rolls": 1,
-    "entries": [
-      {
-        "type": "item",
-        "name": "grimoireofalice:mochihammer",
-        "weight": 4
-      },
-      {
-        "type": "empty",
-        "weight": 70
-      }
-    ]
-  }]
+  "pools": [
+    {
+      "name": "grimoireofalice:village_blacksmith",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "grimoireofalice:mochihammer",
+          "weight": 4
+        },
+        {
+          "type": "empty",
+          "weight": 70
+        }
+      ]
+    }
+  ]
 }

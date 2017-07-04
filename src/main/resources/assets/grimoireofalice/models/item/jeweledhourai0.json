@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "grimoireofalice:items/jeweledhourai0"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "grimoireofalice:items/jeweledhourai0"
+  }
 }

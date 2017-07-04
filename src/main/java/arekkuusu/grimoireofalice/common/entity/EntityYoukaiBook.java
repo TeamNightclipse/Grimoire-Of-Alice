@@ -87,7 +87,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	public void setIsBookLaying(boolean isBookLaying) {
 		byte b0 = dataManager.get(LAYING);
 
-		if (isBookLaying) {
+		if(isBookLaying) {
 			dataManager.set(LAYING, (byte) (b0 | 1));
 		}
 		else {
@@ -99,12 +99,12 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	public void onUpdate() {
 		super.onUpdate();
 
-		if (getIsBookLaying()) {
+		if(getIsBookLaying()) {
 			motionX = 0.0D;
 			motionZ = 0.0D;
 		}
 		else {
-			if (ticksExisted % 8 == 0) {
+			if(ticksExisted % 8 == 0) {
 				playSound(GrimoireSoundEvents.WING_FLAP, 0.5F, getSoundPitch());
 				playSound(GrimoireSoundEvents.PAGE_TURN, getSoundVolume(), getSoundPitch());
 			}
@@ -113,7 +113,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 
 		if(world.isDaytime() && !world.isRemote) {
 			float f = this.getBrightness(1.0F);
-			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(getPosition())) {
+			if(f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(getPosition())) {
 				setFire(2);
 			}
 		}
@@ -124,13 +124,13 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 		super.updateAITasks();
 		BlockPos blockpos = new BlockPos(this).down();
 
-		if (getIsBookLaying()) {
-			if (world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
-				if (rand.nextInt(200) == 0) {
+		if(getIsBookLaying()) {
+			if(world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
+				if(rand.nextInt(200) == 0) {
 					rotationYawHead = (float) rand.nextInt(360);
 				}
 
-				if (this.world.getNearestPlayerNotCreative(this, 4.0D) != null) {
+				if(this.world.getNearestPlayerNotCreative(this, 4.0D) != null) {
 					setIsBookLaying(false);
 					world.playEvent(null, 1025, blockpos, 0);
 				}
@@ -141,11 +141,11 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			}
 		}
 		else {
-			if (spawnPosition != null && (!world.isAirBlock(spawnPosition) || spawnPosition.getY() < 1)) {
+			if(spawnPosition != null && (!world.isAirBlock(spawnPosition) || spawnPosition.getY() < 1)) {
 				spawnPosition = null;
 			}
 
-			if (spawnPosition == null || rand.nextInt(30) == 0 || spawnPosition.distanceSq((double) ((int) posX), (double) ((int) posY), (double) ((int) posZ)) < 4.0D) {
+			if(spawnPosition == null || rand.nextInt(30) == 0 || spawnPosition.distanceSq((double) ((int) posX), (double) ((int) posY), (double) ((int) posZ)) < 4.0D) {
 				spawnPosition = new BlockPos((int) posX + rand.nextInt(7) - rand.nextInt(7), (int) posY + rand.nextInt(6) - 2, (int) posZ + rand.nextInt(7) - rand.nextInt(7));
 			}
 
@@ -160,7 +160,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 			moveForward = 0.5F;
 			rotationYaw += f1;
 
-			if (rand.nextInt(100) == 0 && world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
+			if(rand.nextInt(100) == 0 && world.getBlockState(blockpos).getMaterial() == Material.WOOD) {
 				setIsBookLaying(true);
 			}
 		}
@@ -186,11 +186,11 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
-		if (isEntityInvulnerable(source)) {
+		if(isEntityInvulnerable(source)) {
 			return false;
 		}
 		else {
-			if (!world.isRemote && getIsBookLaying()) {
+			if(!world.isRemote && getIsBookLaying()) {
 				setIsBookLaying(false);
 			}
 
@@ -214,7 +214,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	public boolean getCanSpawnHere() {
 		BlockPos blockpos = new BlockPos(posX, getEntityBoundingBox().minY, posZ);
 
-		if (world.canSeeSky(blockpos) || world.getLightFromNeighbors(blockpos) < rand.nextInt(4)) {
+		if(world.canSeeSky(blockpos) || world.getLightFromNeighbors(blockpos) < rand.nextInt(4)) {
 			return false;
 		}
 
@@ -222,8 +222,8 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 		BlockPos posF = new BlockPos(posX + 4, getEntityBoundingBox().minY + 4, posZ + 4);
 		int bookCout = 0;
 
-		for (BlockPos pos : BlockPos.getAllInBox(posI, posF)) {
-			if (world.getBlockState(pos).getBlock() == Blocks.BOOKSHELF) {
+		for(BlockPos pos : BlockPos.getAllInBox(posI, posF)) {
+			if(world.getBlockState(pos).getBlock() == Blocks.BOOKSHELF) {
 				bookCout++;
 			}
 		}

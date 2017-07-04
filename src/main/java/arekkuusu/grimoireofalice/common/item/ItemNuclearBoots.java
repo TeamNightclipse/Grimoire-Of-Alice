@@ -59,51 +59,53 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
 		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_boots_description_bottom.name"));
 	}
 
-    @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (!world.isRemote && player.ticksExisted % 20 == 0 && isHoldingRod(player)) {
-            BlockPos posI = new BlockPos(player.posX - 4, player.posY - 4, player.posZ - 4);
-            BlockPos posF = new BlockPos(player.posX + 4, player.posY + 4, player.posZ + 4);
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+		if(!world.isRemote && player.ticksExisted % 20 == 0 && isHoldingRod(player)) {
+			BlockPos posI = new BlockPos(player.posX - 4, player.posY - 4, player.posZ - 4);
+			BlockPos posF = new BlockPos(player.posX + 4, player.posY + 4, player.posZ + 4);
 
-            BlockPos.getAllInBox(posI, posF).forEach(pos -> {
-                Material material = world.getBlockState(pos).getMaterial();
-                if (material == Material.WATER && itemRand.nextInt(10) == 0) {
-                    ((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX(),
-                            pos.getY(), pos.getZ(), 8, 0D, 0D, 0D, 0D);
-                }
-                else if (material == Material.ICE && itemRand.nextInt(5) == 0) {
-                    setBlock(world, Blocks.FLOWING_WATER, pos);
-                }
-                else if (material == Material.SNOW && itemRand.nextBoolean()) {
-                    world.setBlockToAir(pos);
-                    setBlock(world, Blocks.AIR, pos);
-                }
-            });
-        }
-    }
+			BlockPos.getAllInBox(posI, posF).forEach(pos -> {
+				Material material = world.getBlockState(pos).getMaterial();
+				if(material == Material.WATER && itemRand.nextInt(10) == 0) {
+					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX(),
+							pos.getY(), pos.getZ(), 8, 0D, 0D, 0D, 0D);
+				}
+				else if(material == Material.ICE && itemRand.nextInt(5) == 0) {
+					setBlock(world, Blocks.FLOWING_WATER, pos);
+				}
+				else if(material == Material.SNOW && itemRand.nextBoolean()) {
+					world.setBlockToAir(pos);
+					setBlock(world, Blocks.AIR, pos);
+				}
+			});
+		}
+	}
 
-    private boolean isHoldingRod(EntityPlayer player) {
-        boolean hasRod = GrimoireOfAlice.danmakuCoreInstalled;
-        if (hasRod) {
-            ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
-            if (stack.isEmpty()) {
-                stack = player.getHeldItem(EnumHand.OFF_HAND);
-            }
-            hasRod = !stack.isEmpty();
-        }
-        return hasRod;
-    }
+	private boolean isHoldingRod(EntityPlayer player) {
+		boolean hasRod = GrimoireOfAlice.danmakuCoreInstalled;
+		if(hasRod) {
+			ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
+			if(stack.isEmpty()) {
+				stack = player.getHeldItem(EnumHand.OFF_HAND);
+			}
+			hasRod = !stack.isEmpty();
+		}
+		return hasRod;
+	}
 
-    private void setBlock(World world, Block block, BlockPos pos) {
-        world.setBlockState(pos, block.getDefaultState(), 3);
-        ((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX(),
-                pos.getY(), pos.getZ(), 8, 0D, 0D, 0D, 0D);
-    }
+	private void setBlock(World world, Block block, BlockPos pos) {
+		world.setBlockState(pos, block.getDefaultState(), 3);
+		((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX(),
+				pos.getY(), pos.getZ(), 8, 0D, 0D, 0D, 0D);
+	}
 
-    @Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelNuclearBoots();
+		if(model == null) {
+			model = new ModelNuclearBoots();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

@@ -1,5 +1,7 @@
 {
   "variants": {
-	"normal": { "model": "grimoireofalice:holykeystone" }
+    "normal": {
+      "model": "grimoireofalice:holykeystone"
+    }
   }
 }

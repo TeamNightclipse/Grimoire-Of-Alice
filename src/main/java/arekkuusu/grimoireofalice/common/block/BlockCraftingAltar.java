@@ -59,7 +59,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileCraftingAltar tile = (TileCraftingAltar)world.getTileEntity(pos);
+		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
 		boolean ok = false;
 		if(tile != null) {
 			ok = player.isSneaking() ? tile.removeItem(player) : tile.doCrafting(player);
@@ -70,7 +70,9 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
-		if (tile != null) tile.destroy();
+		if(tile != null) {
+			tile.destroy();
+		}
 		world.removeTileEntity(pos);
 	}
 
@@ -119,7 +121,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer) {
+											EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
 	}
@@ -132,8 +134,7 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public BlockRenderLayer getBlockLayer()
-	{
+	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

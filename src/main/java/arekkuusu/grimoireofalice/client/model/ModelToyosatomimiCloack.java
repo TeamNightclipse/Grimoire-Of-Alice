@@ -94,21 +94,21 @@ public class ModelToyosatomimiCloack extends ModelBiped {
 		this.cape0.addChild(this.cape3);
 	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		bipedBody = capeBase;
 		bipedRightArm.showModel = false;
 		bipedLeftArm.showModel = false;
 		super.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-    }
+	}
 
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
+	/**
+	 * This is a helper function from Tabula to set the rotation of model parts
+	 */
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
 }

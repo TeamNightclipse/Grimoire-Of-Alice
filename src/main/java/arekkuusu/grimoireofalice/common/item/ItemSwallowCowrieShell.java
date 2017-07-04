@@ -67,7 +67,7 @@ public class ItemSwallowCowrieShell extends ItemMod implements IOwnedBy {
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		entityLiving.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 4800, 0));
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer entityplayer = (EntityPlayer) entityLiving;
 			entityplayer.getFoodStats().addStats(100, 10);
 			world.playSound(entityplayer, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);

@@ -1,6 +1,6 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "grimoireofalice:blocks/hyperconcentratedmagic"
-    }
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "grimoireofalice:blocks/hyperconcentratedmagic"
+  }
 }

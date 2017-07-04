@@ -85,7 +85,7 @@ public class BlockHolyStone extends BlockMod {
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		Optional<List<EntityLivingBase>> entitiesInRange = getEntitiesInRange(world, pos);
-		if (entitiesInRange.isPresent()) {
+		if(entitiesInRange.isPresent()) {
 			entitiesInRange.get().forEach(livingBase -> addGravity(livingBase, pos));
 			world.scheduleUpdate(pos, this, 10); //Update more frequently if entities are around
 		}
@@ -122,18 +122,20 @@ public class BlockHolyStone extends BlockMod {
 	}
 
 	private Optional<List<EntityLivingBase>> getEntitiesInRange(World world, BlockPos pos) {
-		if (world.isRaining()) {
+		if(world.isRaining()) {
 			return Optional.of(world.getEntitiesWithinAABB(EntityLivingBase.class, SMALL.offset(pos).grow(5)));
 		}
-		else return Optional.empty();
+		else {
+			return Optional.empty();
+		}
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		if (!world.isRemote && !heldItem.isEmpty()) {
+		if(!world.isRemote && !heldItem.isEmpty()) {
 			Optional<Consumer<EntityPlayer>> effect = Optional.ofNullable(effects.get(heldItem.getItem()));
-			if (effect.isPresent()) {
+			if(effect.isPresent()) {
 				heldItem.shrink(1);
 				effect.get().accept(player);
 				player.world.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);

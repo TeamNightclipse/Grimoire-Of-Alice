@@ -95,7 +95,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 	}
 
 	private boolean isDyeBlack(ItemStack stack) {
-		for (int oreId : OreDictionary.getOreIDs(stack)) {
+		for(int oreId : OreDictionary.getOreIDs(stack)) {
 			if(OreDictionary.getOreName(oreId).equals("dyeBlack")) {
 				return true;
 			}
@@ -110,7 +110,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (!getUsed(stack) && target.getHealth() > 1) {
+		if(!getUsed(stack) && target.getHealth() > 1) {
 			float perc = 0.75F;
 			target.setHealth(target.getHealth() * perc);
 			if(target.getLastDamageSource() != null) {
@@ -133,7 +133,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 
 	private void setUsed(ItemStack itemStack, boolean used) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}

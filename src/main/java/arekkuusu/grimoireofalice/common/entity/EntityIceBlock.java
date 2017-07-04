@@ -37,8 +37,8 @@ public class EntityIceBlock extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!world.isRemote) {
-			if (ticksExisted > 150) {
+		if(!world.isRemote) {
+			if(ticksExisted > 150) {
 				setDead();
 			}
 			if(ticksExisted >= 125 && getIceBlockHeight() > 0) {
@@ -60,7 +60,7 @@ public class EntityIceBlock extends Entity {
 
 	@Override
 	public void setDead() {
-		if (world instanceof WorldServer) {
+		if(world instanceof WorldServer) {
 			((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 20, 0D, 0D, 0D, 0D);
 		}
 

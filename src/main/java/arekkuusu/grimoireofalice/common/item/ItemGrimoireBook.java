@@ -66,7 +66,7 @@ public class ItemGrimoireBook extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(!world.isRemote && entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			EntityGrimoireSpell circle = new EntityGrimoireSpell(world, player, 500);
 			world.spawnEntity(circle);
 			player.getCooldownTracker().setCooldown(this, 500);

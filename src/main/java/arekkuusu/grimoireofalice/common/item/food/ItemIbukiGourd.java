@@ -52,7 +52,7 @@ public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer) {
 			entityLiving.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			onFoodEaten(stack, world, (EntityPlayer)entityLiving);
+			onFoodEaten(stack, world, (EntityPlayer) entityLiving);
 		}
 		return stack;
 	}

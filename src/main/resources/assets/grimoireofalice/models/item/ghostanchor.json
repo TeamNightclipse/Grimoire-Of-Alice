@@ -1,14 +1,14 @@
 {
-    "parent": "grimoireofalice:item/handheld_big",
-    "textures": {
-        "layer0": "grimoireofalice:items/ghostanchor"
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "active": 1
-            },
-            "model": "grimoireofalice:item/ghostanchor_active"
-        }
-    ]
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/ghostanchor"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "grimoireofalice:item/ghostanchor_active"
+    }
+  ]
 }

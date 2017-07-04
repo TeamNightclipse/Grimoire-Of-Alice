@@ -56,7 +56,7 @@ public class EntityNazrinPendulum extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!world.isRemote) {
+		if(!world.isRemote) {
 			if(user == null || isEntityInsideOpaqueBlock()) {
 				stopEntity();
 			}
@@ -96,8 +96,8 @@ public class EntityNazrinPendulum extends Entity {
 				}
 			}
 			blockLayer.forEach(ignored -> {
-				if (rand.nextInt(8) == 2 && world instanceof WorldServer) {
-					((WorldServer)world).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
+				if(rand.nextInt(8) == 2 && world instanceof WorldServer) {
+					((WorldServer) world).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
 				}
 			});
 		}
@@ -113,9 +113,9 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!world.isRemote) {
-			if (user != null) {
-				if (user.capabilities.isCreativeMode) {
+		if(!world.isRemote) {
+			if(user != null) {
+				if(user.capabilities.isCreativeMode) {
 					setDead();
 					return;
 				}
@@ -135,8 +135,10 @@ public class EntityNazrinPendulum extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {}
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {}
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+	}
 }

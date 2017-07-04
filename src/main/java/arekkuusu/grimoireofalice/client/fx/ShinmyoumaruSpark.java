@@ -22,7 +22,7 @@ public class ShinmyoumaruSpark extends Particle {
 	public ShinmyoumaruSpark(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 
-		if (xSpeed == 0.0D && zSpeed == 0.0D) {
+		if(xSpeed == 0.0D && zSpeed == 0.0D) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}
@@ -56,7 +56,7 @@ public class ShinmyoumaruSpark extends Particle {
 		prevPosY = posY;
 		prevPosZ = posZ;
 
-		if (particleAge++ >= particleMaxAge) {
+		if(particleAge++ >= particleMaxAge) {
 			setExpired();
 		}
 
@@ -64,7 +64,7 @@ public class ShinmyoumaruSpark extends Particle {
 
 		move(motionX, motionY, motionZ);
 
-		if (onGround) {
+		if(onGround) {
 			motionX *= 0.699999988079071D;
 			motionZ *= 0.699999988079071D;
 		}

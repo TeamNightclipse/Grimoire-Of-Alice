@@ -101,7 +101,7 @@ public final class ResourceLocations {
 	//Structures
 	public static final ResourceLocation STRUCTURE_BOULDER = getLocation("boulder");
 
-	private static ResourceLocation getLocation(String name){
+	private static ResourceLocation getLocation(String name) {
 		return new ResourceLocation(LibMod.MODID, name);
 	}
 }

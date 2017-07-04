@@ -45,7 +45,7 @@ public class EntityNetherSoul extends EntityThrowable {
 		isImmuneToFire = true;
 	}
 
-	public EntityNetherSoul(World world, EntityLivingBase throwerIn,@Nullable Entity target) {
+	public EntityNetherSoul(World world, EntityLivingBase throwerIn, @Nullable Entity target) {
 		super(world, throwerIn);
 		this.target = target;
 	}
@@ -53,14 +53,16 @@ public class EntityNetherSoul extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (isDead) return;
+		if(isDead) {
+			return;
+		}
 		GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NETHER_FIRE, null, posX, posY, posZ, 0, 0, 0);
-		if (ticksExisted % 4 == 0) {
-			for (int i = 0; i < 5; i++) {
+		if(ticksExisted % 4 == 0) {
+			for(int i = 0; i < 5; i++) {
 				GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_GAS, null, posX, posY, posZ, 0, 0, 0);
 			}
 		}
-		if (target != null && !target.isDead) {
+		if(target != null && !target.isDead) {
 			double dx = posX - target.posX;
 			double dy = posY - target.posY - target.getEyeHeight();
 			double dz = posZ - target.posZ;
@@ -83,32 +85,37 @@ public class EntityNetherSoul extends EntityThrowable {
 		else {
 			List<Entity> list = world.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().grow(30),
 					entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
-			if (!list.isEmpty()) {
+			if(!list.isEmpty()) {
 				float closest = 30;
-				for (Entity entity : list) {
+				for(Entity entity : list) {
 					float i = entity.getDistanceToEntity(this);
-					if (i < closest) {
+					if(i < closest) {
 						closest = i;
 						target = entity;
 					}
 				}
 			}
-			else if (getThrower() != null) {
+			else if(getThrower() != null) {
 				Vec3d vec3d = getThrower().getLookVec();
 				setThrowableHeading(vec3d.x, vec3d.y, vec3d.z, 0.5F, 0);
-			} else if(!world.isRemote) setDead();
+			}
+			else if(!world.isRemote) {
+				setDead();
+			}
 		}
-		if (ticksExisted >= 200 && !world.isRemote) {
+		if(ticksExisted >= 200 && !world.isRemote) {
 			setDead();
 		}
 	}
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if (result.entityHit != null) {
+		if(result.entityHit != null) {
 			float damage = getThrower() instanceof EntityPlayer ? MathHelper.clamp((((EntityPlayer) getThrower()).experienceLevel * 0.5F), 0, 60) : 1F;
 			result.entityHit.attackEntityFrom(DamageSource.MAGIC, damage);
-			if (!world.isRemote) setDead();
+			if(!world.isRemote) {
+				setDead();
+			}
 		}
 	}
 

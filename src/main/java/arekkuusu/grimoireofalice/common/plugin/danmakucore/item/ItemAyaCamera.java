@@ -15,17 +15,17 @@ import net.minecraft.item.ItemStack;
 
 public class ItemAyaCamera extends ItemCamera implements IOwnedBy {
 
-    public ItemAyaCamera() {
-        super(LibItemName.AYA_CAMERA);
-    }
+	public ItemAyaCamera() {
+		super(LibItemName.AYA_CAMERA);
+	}
 
-    @Override
-    public int getSize() {
-        return 5;
-    }
+	@Override
+	public int getSize() {
+		return 5;
+	}
 
 	@Override
 	public EnumTouhouCharacters character(ItemStack stack) {
-			return EnumTouhouCharacters.AYA_SHAMEIMARU;
+		return EnumTouhouCharacters.AYA_SHAMEIMARU;
 	}
 }

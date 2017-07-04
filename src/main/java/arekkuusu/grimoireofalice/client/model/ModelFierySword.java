@@ -58,7 +58,7 @@ public class ModelFierySword extends ModelBase {
 		this.base.addChild(this.flat);
 		this.base_trs.addChild(this.flat_trs);
 		this.base_trs.addChild(this.long_trs);
-    }
+	}
 
 	@SideOnly(Side.CLIENT)
 	public void renderInsideForm(float f5) {
@@ -81,12 +81,12 @@ public class ModelFierySword extends ModelBase {
 		GlStateManager.disableBlend();
 	}
 
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
+	/**
+	 * This is a helper function from Tabula to set the rotation of model parts
+	 */
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+		modelRenderer.rotateAngleX = x;
+		modelRenderer.rotateAngleY = y;
+		modelRenderer.rotateAngleZ = z;
+	}
 }

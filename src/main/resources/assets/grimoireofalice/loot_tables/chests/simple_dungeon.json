@@ -1,27 +1,29 @@
 {
-  "pools": [{
-    "name": "grimoireofalice:simple_dungeon",
-    "rolls": 1,
-    "entries": [
-      {
-        "type": "item",
-        "name": "grimoireofalice:ufored",
-        "weight": 4
-	  },
-      {
-        "type": "item",
-        "name": "grimoireofalice:ufoblue",
-        "weight": 5
-      },
-      {
-        "type": "item",
-        "name": "grimoireofalice:ufogreen",
-        "weight": 6
-      },
-      {
-        "type": "empty",
-        "weight": 34
-      }
-    ]
-  }]
+  "pools": [
+    {
+      "name": "grimoireofalice:simple_dungeon",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "grimoireofalice:ufored",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:ufoblue",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "grimoireofalice:ufogreen",
+          "weight": 6
+        },
+        {
+          "type": "empty",
+          "weight": 34
+        }
+      ]
+    }
+  ]
 }

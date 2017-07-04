@@ -72,8 +72,8 @@ public class EntityMagicCircle extends Entity {
 				posZ = host.posZ;
 				setPosition(posX, posY, posZ);
 
-                rotationYaw = MathHelper.wrapDegrees(rotationYaw);
-                rotationPitch = MathHelper.wrapDegrees(rotationPitch);
+				rotationYaw = MathHelper.wrapDegrees(rotationYaw);
+				rotationPitch = MathHelper.wrapDegrees(rotationPitch);
 
 				setRotation(rotationYaw, rotationPitch);
 
@@ -119,10 +119,12 @@ public class EntityMagicCircle extends Entity {
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {}
+	protected void readEntityFromNBT(NBTTagCompound compound) {
+	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {}
+	protected void writeEntityToNBT(NBTTagCompound compound) {
+	}
 
 	public enum EnumTextures {
 		RED_NORMAL,

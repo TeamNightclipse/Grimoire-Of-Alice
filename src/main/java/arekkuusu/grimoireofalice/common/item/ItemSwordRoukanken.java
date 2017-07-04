@@ -69,7 +69,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(entityIn instanceof EntityPlayer & isSelected) {
-			EntityPlayer player = (EntityPlayer)entityIn;
+			EntityPlayer player = (EntityPlayer) entityIn;
 
 			if(player.motionX * player.motionX + player.motionZ * player.motionZ > 3D * 3D) {
 				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player,
@@ -79,7 +79,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 						continue;
 					}
 					if(entity instanceof EntityLivingBase) {
-						EntityLivingBase living = (EntityLivingBase)entity;
+						EntityLivingBase living = (EntityLivingBase) entity;
 						if(player.canEntityBeSeen(living)) {
 							if(!world.isRemote) {
 								if(living.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD) {
@@ -111,7 +111,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer && ((EntityPlayer) entityLiving).onGround) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 			if(timeUsed > 30) {
 				timeUsed = 30;

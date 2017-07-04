@@ -56,7 +56,9 @@ public class ItemToyosatomimiHat extends ItemModArmor implements IOwnedBy {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if (model == null) model = new ModelToyosatomimiHat();
+		if(model == null) {
+			model = new ModelToyosatomimiHat();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

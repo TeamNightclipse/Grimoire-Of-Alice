@@ -81,7 +81,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 
 	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
-		return new ArmorProperties(0,1,5);
+		return new ArmorProperties(0, 1, 5);
 	}
 
 	@Override
@@ -92,10 +92,10 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 		stack.damageItem(damage, entity);
-		if (stack.getItemDamage() == 0) {
+		if(stack.getItemDamage() == 0) {
 			IItemHandler handler = stack.getCapability(ITEM_HANDLER_CAPABILITY, null);
-			for (int i = 0; i < handler.getSlots(); i++) {
-				if (!entity.world.isRemote) {
+			for(int i = 0; i < handler.getSlots(); i++) {
+				if(!entity.world.isRemote) {
 					EntityItem item = new EntityItem(entity.world, entity.posX, entity.posY, entity.posZ, handler.extractItem(i, 64, false));
 					entity.world.spawnEntity(item);
 				}
@@ -125,8 +125,12 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 		@Nullable
 		@Override
 		public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
-			else return null;
+			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
+			}
+			else {
+				return null;
+			}
 		}
 
 		@Override
@@ -147,11 +151,11 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (!player.isSneaking()) {
+		if(!player.isSneaking()) {
 			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(stack);
 			ItemStack slotStack = player.getItemStackFromSlot(entityequipmentslot);
 
-			if (slotStack.isEmpty()) {
+			if(slotStack.isEmpty()) {
 				player.setItemStackToSlot(entityequipmentslot, stack.copy());
 				stack.setCount(0);
 			}
@@ -177,7 +181,9 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelMarisaHat();
+		if(model == null) {
+			model = new ModelMarisaHat();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

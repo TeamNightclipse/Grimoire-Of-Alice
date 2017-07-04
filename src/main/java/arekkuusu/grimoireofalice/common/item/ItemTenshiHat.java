@@ -45,7 +45,9 @@ public class ItemTenshiHat extends ItemModArmor implements IOwnedBy {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
-		if(model == null) model = new ModelTenshiHat();
+		if(model == null) {
+			model = new ModelTenshiHat();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

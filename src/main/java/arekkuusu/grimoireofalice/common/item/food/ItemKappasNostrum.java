@@ -58,7 +58,7 @@ public class ItemKappasNostrum extends ItemModFood implements IOwnedBy {
 
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			stack.damageItem(1, entityLiving);
 			entityLiving.playSound(SoundEvents.ENTITY_WITCH_DRINK, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 			onFoodEaten(stack, world, (EntityPlayer) entityLiving);

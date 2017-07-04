@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor, IOwnedBy {
+public class ItemUtsuhoWings extends ItemModArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -67,7 +67,9 @@ public class ItemUtsuhoWings extends ItemModArmor  implements ISpecialArmor, IOw
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
-		if (model == null) model = new ModelUtsuhoWings();
+		if(model == null) {
+			model = new ModelUtsuhoWings();
+		}
 		model.setModelAttributes(imodel);
 		return model;
 	}

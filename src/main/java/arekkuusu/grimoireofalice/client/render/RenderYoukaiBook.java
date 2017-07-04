@@ -32,7 +32,7 @@ public class RenderYoukaiBook extends RenderLiving<EntityYoukaiBook> {
 	@Override
 	protected void applyRotations(EntityYoukaiBook entityLiving, float p_77043_2_, float rotationYaw, float partialTicks) {
 		GlStateManager.translate(0.0F, -1F, 0.0F);
-		if (entityLiving.getIsBookLaying()) {
+		if(entityLiving.getIsBookLaying()) {
 			GlStateManager.translate(0.0F, -0.1F, 0.0F);
 		}
 		else {

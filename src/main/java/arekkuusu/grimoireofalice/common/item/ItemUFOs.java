@@ -74,10 +74,11 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int idk, boolean selected) {
 		if(entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
+			EntityPlayer player = (EntityPlayer) entity;
 			if(selected && isActive(stack)) {
-				if(player.ticksExisted % 14 == 0)
+				if(player.ticksExisted % 14 == 0) {
 					player.playSound(GrimoireSoundEvents.UFO_IDDLE, 0.1F, 1F);
+				}
 				itemsInRange(world, player);
 			}
 		}
@@ -121,7 +122,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private boolean isActive(ItemStack stack){
+	private boolean isActive(ItemStack stack) {
 		return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("Active");
 	}
 

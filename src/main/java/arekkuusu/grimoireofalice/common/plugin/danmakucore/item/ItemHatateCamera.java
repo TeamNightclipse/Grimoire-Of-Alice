@@ -15,14 +15,14 @@ import net.minecraft.item.ItemStack;
 
 public class ItemHatateCamera extends ItemCamera implements IOwnedBy {
 
-    public ItemHatateCamera() {
-        super(LibItemName.HATATE_CAMERA);
-    }
+	public ItemHatateCamera() {
+		super(LibItemName.HATATE_CAMERA);
+	}
 
-    @Override
-    public int getSize() {
-        return 4;
-    }
+	@Override
+	public int getSize() {
+		return 4;
+	}
 
 	@Override
 	public EnumTouhouCharacters character(ItemStack stack) {

@@ -52,8 +52,8 @@ public class ItemWatermelonBlade extends ItemModSword implements IOwnedBy {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
-		if (entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
-			EntityPlayer entityplayer = (EntityPlayer)entityLiving;
+		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
+			EntityPlayer entityplayer = (EntityPlayer) entityLiving;
 			entityplayer.getFoodStats().addStats(1, 0);
 			entityplayer.addStat(StatList.getObjectUseStats(this));
 			stack.damageItem(10, entityLiving);

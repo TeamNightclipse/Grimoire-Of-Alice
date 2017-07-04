@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "normal": { "model": "grimoireofalice:hyperconcentratedmagic" }
+  "variants": {
+    "normal": {
+      "model": "grimoireofalice:hyperconcentratedmagic"
     }
+  }
 }

@@ -58,14 +58,14 @@ public class EntityStopWatch extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (ConfigHandler.grimoireOfAlice.features.timeStopEffect && user != null && !user.isDead) {
-			if (ticksExisted > 1000 || (user.isSneaking() && user.isSwingInProgress) || user.getFoodStats().getFoodLevel() <= 6) {
+		if(ConfigHandler.grimoireOfAlice.features.timeStopEffect && user != null && !user.isDead) {
+			if(ticksExisted > 1000 || (user.isSneaking() && user.isSwingInProgress) || user.getFoodStats().getFoodLevel() <= 6) {
 				stopEntity();
 				return;
 			}
 			else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
-				if (user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.STOP_WATCH) {
+				if(user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.STOP_WATCH) {
 					stopEntity();
 					return;
 				}
@@ -78,7 +78,7 @@ public class EntityStopWatch extends Entity {
 			double dz = user.posZ + look.z + distance;
 			setPosition(dx, dy, dz);
 
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				world.setWorldTime(world.getWorldTime() - 1);
 
 				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().grow(RANGE));
@@ -89,26 +89,26 @@ public class EntityStopWatch extends Entity {
 			stopEntity();
 			return;
 		}
-		if (ticksExisted % 8 == 0) {
+		if(ticksExisted % 8 == 0) {
 			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 1.0F, 1.0F + 0.8F);
 			if(!user.capabilities.isCreativeMode) {
-                user.getFoodStats().addExhaustion(4);
-            }
+				user.getFoodStats().addExhaustion(4);
+			}
 		}
 	}
 
 	private void addIgnoredPlayers(Entity entity) {
-		if (entity instanceof EntityStopWatch) {
+		if(entity instanceof EntityStopWatch) {
 			excludedPlayers.add(((EntityStopWatch) entity).getUser());
 		}
 	}
 
 	private void haltEntity(Entity entity) {
-		if (entity instanceof EntityStopWatch
+		if(entity instanceof EntityStopWatch
 				|| entity instanceof EntityCameraSquare
 				|| entity instanceof EntityBarrier
 				|| entity instanceof EntityMagicCircle
-                || entity instanceof EntityMiracleCircle
+				|| entity instanceof EntityMiracleCircle
 				|| entity instanceof EntityGrimoireSpell
 				|| entity instanceof EntityHanging) {
 			return;
@@ -117,7 +117,7 @@ public class EntityStopWatch extends Entity {
 		addIgnoredPlayers(entity);
 
 		//noinspection SuspiciousMethodCalls
-		if (entity.ticksExisted >= 2 && !excludedPlayers.contains(entity)) {
+		if(entity.ticksExisted >= 2 && !excludedPlayers.contains(entity)) {
 			frozen.add(entity);
 			entity.updateBlocked = true;
 		}
@@ -132,9 +132,9 @@ public class EntityStopWatch extends Entity {
 	}
 
 	private void stopEntity() {
-		if (!world.isRemote) {
-			if (user != null) {
-				if (!user.capabilities.isCreativeMode) {
+		if(!world.isRemote) {
+			if(user != null) {
+				if(!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOP_WATCH));
 				}
 			}

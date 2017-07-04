@@ -259,7 +259,9 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	private static void registerBlock(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
-		if(iBlock == Items.AIR) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		if(iBlock == Items.AIR) {
+			throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		}
 		ModelLoader.setCustomModelResourceLocation(iBlock, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 
@@ -273,7 +275,9 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	private static void registerShroom(Block block) {
 		Item iBlock = Item.getItemFromBlock(block);
-		if(iBlock == Items.AIR) throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		if(iBlock == Items.AIR) {
+			throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
+		}
 		for(int i = 0; i < 16; i++) {
 			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
 		}
@@ -282,14 +286,18 @@ public class ClientProxy implements ISidedProxy {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void sparkleFX(ParticleFX particleFX, @Nullable Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-		if (!doParticle()) return;
+		if(!doParticle()) {
+			return;
+		}
 		Particle particle;
-		switch (particleFX) {
+		switch(particleFX) {
 			case SHINMYOUMARU_SPARKLE:
 				particle = new ShinmyoumaruSpark(Minecraft.getMinecraft().world, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			case RED_MIST:
-				if (entity == null) return;
+				if(entity == null) {
+					return;
+				}
 				particle = new RedMist(Minecraft.getMinecraft().world, entity, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 				break;
 			case NEEDLE_SWING:
@@ -315,14 +323,17 @@ public class ClientProxy implements ISidedProxy {
 
 	@SideOnly(Side.CLIENT)
 	private boolean doParticle() {
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER)
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
 			return false;
+		}
 
 		float chance = 1F;
-		if (Minecraft.getMinecraft().gameSettings.particleSetting == 1)
+		if(Minecraft.getMinecraft().gameSettings.particleSetting == 1) {
 			chance = 0.6F;
-		else if (Minecraft.getMinecraft().gameSettings.particleSetting == 2)
+		}
+		else if(Minecraft.getMinecraft().gameSettings.particleSetting == 2) {
 			chance = 0.2F;
+		}
 
 		return chance == 1F || Math.random() < chance;
 	}

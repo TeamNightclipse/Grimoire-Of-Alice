@@ -44,13 +44,15 @@ public class RenderGap extends Render<EntityGap> {
 
 		float toDegrees = (float) Math.PI / 180F;
 		angle += speed * entity.ticksExisted;
-		if (angle > 360) angle -= 360;
+		if(angle > 360) {
+			angle -= 360;
+		}
 
 		GlStateManager.translate(0, maxUpAndDown * MathHelper.sin(angle * toDegrees), 0);
 		GlStateManager.rotate(entity.rotationYaw + 90, 0F, 1F, 0F);
 		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 
-		if (this.renderOutlines) {
+		if(this.renderOutlines) {
 			setScoreTeamColor();
 			GlStateManager.enableColorMaterial();
 			GlStateManager.enableOutlineMode(getTeamColor(entity));
@@ -72,7 +74,7 @@ public class RenderGap extends Render<EntityGap> {
 			bindEntityTexture(entity);
 			MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 
-			if (flag) {
+			if(flag) {
 				unsetBrightness();
 			}
 
@@ -95,9 +97,10 @@ public class RenderGap extends Render<EntityGap> {
 		int i = 0;
 		boolean flag = (i >> 24 & 255) > 0;
 
-		if (!flag) {
+		if(!flag) {
 			return false;
-		} else {
+		}
+		else {
 			GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
 			GlStateManager.enableTexture2D();
 			GlStateManager.glTexEnvi(8960, 8704, OpenGlHelper.GL_COMBINE);

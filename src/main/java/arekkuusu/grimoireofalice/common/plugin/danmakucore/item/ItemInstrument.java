@@ -54,9 +54,9 @@ public class ItemInstrument extends ItemMod {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if (player instanceof EntityPlayer && count % 2 == 0) {
+		if(player instanceof EntityPlayer && count % 2 == 0) {
 			player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_NOTE_HARP, SoundCategory.RECORDS, 0.5F, 1F);
-			if (!player.world.isRemote) {
+			if(!player.world.isRemote) {
 				int color = COLORS[itemRand.nextInt(COLORS.length)];
 
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
@@ -75,7 +75,7 @@ public class ItemInstrument extends ItemMod {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		EntityPlayer player = (EntityPlayer) entityLiving;
-		if (!player.capabilities.isCreativeMode) {
+		if(!player.capabilities.isCreativeMode) {
 			player.getCooldownTracker().setCooldown(this, 15);
 		}
 	}

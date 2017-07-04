@@ -80,7 +80,7 @@ public class ItemKokorosMasks extends ItemModMask {
 		super.onUpdate(stack, world, entity, slot, selected);
 
 		if(selected && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
+			EntityPlayer player = (EntityPlayer) entity;
 
 			if(!stack.hasTagCompound()) {
 				stack.setTagCompound(new NBTTagCompound());
@@ -96,10 +96,14 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
-		if (!armor.hasTagCompound()) return;
+		if(!armor.hasTagCompound()) {
+			return;
+		}
 
-		if (player.getUniqueID().equals(armor.getTagCompound().getUniqueId(OWNER_TAG))) {
-			if (player.moveForward > 0) player.moveRelative(0F, 2F, 0.085F);
+		if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId(OWNER_TAG))) {
+			if(player.moveForward > 0) {
+				player.moveRelative(0F, 2F, 0.085F);
+			}
 			List<PotionEffect> badPotions = player.getActivePotionEffects().stream()
 					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
 			badPotions.forEach(potionEffect -> player.removePotionEffect(potionEffect.getPotion()));
@@ -122,14 +126,17 @@ public class ItemKokorosMasks extends ItemModMask {
 	}
 
 	@Override
-	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {}
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
 		//noinspection ConstantConditions
 		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
-			if(model == null || model instanceof ModelMask) model = new ModelKokorosMasks();
+			if(model == null || model instanceof ModelMask) {
+				model = new ModelKokorosMasks();
+			}
 		}
 		else if(model == null || model instanceof ModelKokorosMasks) {
 			model = new ModelMask();
@@ -140,12 +147,16 @@ public class ItemKokorosMasks extends ItemModMask {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(!stack.hasTagCompound()) return ResourceLocations.MASK_OF_HOPE.toString();
+		if(!stack.hasTagCompound()) {
+			return ResourceLocations.MASK_OF_HOPE.toString();
+		}
 
 		//noinspection ConstantConditions
 		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
 			return ResourceLocations.KOKOROS_MASKS.toString();
 		}
-		else return ResourceLocations.MASK_OF_HOPE.toString();
+		else {
+			return ResourceLocations.MASK_OF_HOPE.toString();
+		}
 	}
 }

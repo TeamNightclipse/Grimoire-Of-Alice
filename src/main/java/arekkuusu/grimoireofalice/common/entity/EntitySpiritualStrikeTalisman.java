@@ -31,8 +31,8 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!world.isRemote) {
-			if (ticksExisted < 24) {
+		if(!world.isRemote) {
+			if(ticksExisted < 24) {
 				List<Entity> list = world.getEntitiesInAABBexcluding(this, new AxisAlignedBB(living.getPosition()).grow(5), entity -> entity != living);
 				list.forEach(entity -> {
 					Vec3d vec = getPositionVector();
@@ -48,7 +48,7 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 				});
 			}
 			else {
-				if (world instanceof WorldServer) {
+				if(world instanceof WorldServer) {
 					((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_NORMAL, posX, posY, posZ, 30, 0D, 0D, 0D, 0.05D);
 				}
 				setDead();

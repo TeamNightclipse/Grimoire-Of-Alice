@@ -1,28 +1,76 @@
 {
-    "parent": "item/generated",
-    "display": {
-        "thirdperson_righthand": {
-            "rotation": [ 0, -90, 55 ],
-            "translation": [ 0, 6.8, 1.3 ],
-            "scale": [ 2.5, 2.5, 2.5 ]
-        },
-        "thirdperson_lefthand": {
-            "rotation": [ 0, 90, -55 ],
-            "translation": [ 0, 6.8, 1.3 ],
-            "scale": [ 2.5, 2.5, 2.5 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, -90, 25 ],
-            "translation": [ 1.13, 3.2, 1.13 ],
-            "scale": [ 1.68, 1.68, 1.68 ]
-        },
-        "firstperson_lefthand": {
-            "rotation": [ 0, 90, -25 ],
-            "translation": [ 1.13, 3.2, 1.13 ],
-            "scale": [ 1.68, 1.68, 1.68 ]
-        }
+  "parent": "item/generated",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        0,
+        6.8,
+        1.3
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ]
     },
-    "textures": {
-        "layer0": "grimoireofalice:items/fakemiraclemallet"
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        6.8,
+        1.3
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        25
+      ],
+      "translation": [
+        1.13,
+        3.2,
+        1.13
+      ],
+      "scale": [
+        1.68,
+        1.68,
+        1.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -25
+      ],
+      "translation": [
+        1.13,
+        3.2,
+        1.13
+      ],
+      "scale": [
+        1.68,
+        1.68,
+        1.68
+      ]
     }
+  },
+  "textures": {
+    "layer0": "grimoireofalice:items/fakemiraclemallet"
+  }
 }

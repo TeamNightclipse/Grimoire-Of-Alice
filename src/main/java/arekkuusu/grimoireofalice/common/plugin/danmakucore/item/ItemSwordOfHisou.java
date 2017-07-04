@@ -77,12 +77,12 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLivingBase, ItemStack stack) {
 		if(!entityLivingBase.world.isRemote && entityLivingBase instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLivingBase;
+			EntityPlayer player = (EntityPlayer) entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase, 35);
 
 				if(lookedAt.isPresent()) {
-					EntityLivingBase entity = (EntityLivingBase)lookedAt.get();
+					EntityLivingBase entity = (EntityLivingBase) lookedAt.get();
 					Vec3d look = player.getLookVec();
 
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
@@ -105,20 +105,20 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
-		if (count > 260 && count % 5 == 0) {
+		if(count > 260 && count % 5 == 0) {
 			List<EntityMob> list = livingBase.world.getEntitiesWithinAABB(EntityMob.class, livingBase.getEntityBoundingBox().grow(20));
-			if (!list.isEmpty()) {
-				for (EntityLivingBase entityMob : list) {
+			if(!list.isEmpty()) {
+				for(EntityLivingBase entityMob : list) {
 					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_MIST, livingBase, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
 				}
 			}
 		}
-		if (count < 260 && count > 220 && count % 2 == 0) {
+		if(count < 260 && count > 220 && count % 2 == 0) {
 			livingBase.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 			World world = livingBase.world;
-			if (!world.isRemote && livingBase instanceof EntityPlayer) {
+			if(!world.isRemote && livingBase instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) livingBase;
-				if (isOwner(stack, player)) {
+				if(isOwner(stack, player)) {
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(player)
 							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setColor(LibColor.COLOR_SATURATED_RED))
@@ -135,14 +135,14 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-		if (!world.isRemote) {
-			if (entityLiving instanceof EntityPlayer) {
+		if(!world.isRemote) {
+			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
-				if (isOwner(stack, player)) {
-					if (timeUsed < 20 && timeUsed > 5) {
+				if(isOwner(stack, player)) {
+					if(timeUsed < 20 && timeUsed > 5) {
 						List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20));
-						if (!list.isEmpty()) {
-							int count = (int)(list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
+						if(!list.isEmpty()) {
+							int count = (int) (list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
 							EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 							world.spawnEntity(circle);
 							player.getCooldownTracker().setCooldown(this, count);
@@ -157,8 +157,8 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(player.isSneaking()) {
 			world.playSound(player, hitX, hitY, hitZ, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1F, 1F);
-			for (int t = 0; t < 5; t++) {
-				for (int u = 0; u < 10; u++) {
+			for(int t = 0; t < 5; t++) {
+				for(int u = 0; u < 10; u++) {
 					spawnGround(player, itemRand.nextDouble(), itemRand.nextDouble());
 					spawnGround(player, -itemRand.nextDouble(), -itemRand.nextDouble());
 					spawnGround(player, itemRand.nextDouble(), -itemRand.nextDouble());
@@ -168,7 +168,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 			if(!world.isRemote) {
 				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(10.0D));
-				for (EntityMob mob : list) {
+				for(EntityMob mob : list) {
 					mob.attackEntityFrom(DamageSource.DROWN, 1);
 					Vec3d playerPos = player.getPositionVector();
 					Vec3d mobPos = mob.getPositionVector();
@@ -192,9 +192,9 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean()) {
-			if (pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
+			if(pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
 				stack.damageItem(1, entityLiving);
-				if (!world.isRemote) {
+				if(!world.isRemote) {
 					EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 							new ItemStack(ModItems.HEAVENLY_PEACH));
 

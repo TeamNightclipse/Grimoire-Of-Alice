@@ -13,24 +13,24 @@ import java.util.Map;
 
 public final class GrimoireOfAliceAPI {
 
-    private static final Map<Item, Achievement> achievementAltarMap = new HashMap<>();
-    private static final List<Achievement> achievementList = new ArrayList<>();
+	private static final Map<Item, Achievement> achievementAltarMap = new HashMap<>();
+	private static final List<Achievement> achievementList = new ArrayList<>();
 
-    private static final List<IAltarRecipe> recipes = new ArrayList<>();
+	private static final List<IAltarRecipe> recipes = new ArrayList<>();
 
 	//#HONK!
 	private static final List<ItemStack> flyItems = new ArrayList<>();
 	private static final List<ItemStack> flyArmor = new ArrayList<>();
 
-    public static Map<Item, Achievement> getAchievementAltarMap() {
-        return achievementAltarMap;
-    }
+	public static Map<Item, Achievement> getAchievementAltarMap() {
+		return achievementAltarMap;
+	}
 
-    public static List<Achievement> getAchievementList() {
-        return achievementList;
-    }
+	public static List<Achievement> getAchievementList() {
+		return achievementList;
+	}
 
-    public static List<IAltarRecipe> getRecipes() {
+	public static List<IAltarRecipe> getRecipes() {
 		return ImmutableList.copyOf(recipes);
 	}
 
@@ -43,12 +43,12 @@ public final class GrimoireOfAliceAPI {
 	}
 
 	public static void registerAltarAchievement(Item item, Achievement achievement) {
-        achievementAltarMap.put(item, achievement.registerStat());
-    }
+		achievementAltarMap.put(item, achievement.registerStat());
+	}
 
-    public static void registerAchievement(Achievement achievement) {
-        achievementList.add(achievement.registerStat());
-    }
+	public static void registerAchievement(Achievement achievement) {
+		achievementList.add(achievement.registerStat());
+	}
 
 	/**
 	 * Adds an IAltarRecipe to the ArrayList.
@@ -130,7 +130,7 @@ public final class GrimoireOfAliceAPI {
 	 *
 	 * @param item The ItemStack of the Item
 	 */
-	public static void registerFlyItem(ItemStack item){
+	public static void registerFlyItem(ItemStack item) {
 		flyItems.add(item);
 	}
 
@@ -139,7 +139,7 @@ public final class GrimoireOfAliceAPI {
 	 *
 	 * @param item The ItemStack of the Item
 	 */
-	public static void registerFlyArmor(ItemStack item){
+	public static void registerFlyArmor(ItemStack item) {
 		flyArmor.add(item);
 	}
 }

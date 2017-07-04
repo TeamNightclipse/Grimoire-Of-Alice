@@ -69,9 +69,9 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) { //Recycled code...
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			if (player.isSneaking()) {
+			if(player.isSneaking()) {
 				moveToClosestPlayer(world, player);
 			}
 			else {

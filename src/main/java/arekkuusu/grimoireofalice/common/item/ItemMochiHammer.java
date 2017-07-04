@@ -81,12 +81,12 @@ public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy
 	@Override
 	public void setData(ItemStack itemStack, int kills) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 			nbt.setInteger("Lunatic", kills);
 		}
-		else if (nbt.getInteger("Lunatic") >= 0) {
+		else if(nbt.getInteger("Lunatic") >= 0) {
 			nbt.setInteger("Lunatic", kills);
 		}
 	}

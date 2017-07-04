@@ -24,12 +24,12 @@ public class MalletClientEvent {
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
-		if (grimoireOfAlice.features.shrinkAnimation && entity.world.isRemote && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+		if(grimoireOfAlice.features.shrinkAnimation && entity.world.isRemote && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 			IMalletCapability capability = entity.getCapability(MalletProvider.MALLET_CAPABILITY, null);
-			if (capability.doAnimation()) {
+			if(capability.doAnimation()) {
 				int scale = capability.getScaled();
 
-				for (int i = 0; i < 10; ++i) {
+				for(int i = 0; i < 10; ++i) {
 					Random rand = entity.world.rand;
 					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.SHINMYOUMARU_SPARKLE, null,
 							entity.posX + (rand.nextDouble() - 0.5D) * entity.width,
@@ -38,14 +38,14 @@ public class MalletClientEvent {
 							(rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D);
 				}
 
-				if (capability.isSmall() && scale > 0) {
+				if(capability.isSmall() && scale > 0) {
 					capability.setScaled(--scale);
-				} else
-				if (!capability.isSmall() && scale < 10) {
+				}
+				else if(!capability.isSmall() && scale < 10) {
 					capability.setScaled(++scale);
 				}
 
-				if ((capability.isSmall() && scale <= 0) || scale >= 10) {
+				if((capability.isSmall() && scale <= 0) || scale >= 10) {
 					capability.doAnimation(false);
 				}
 			}
@@ -55,14 +55,14 @@ public class MalletClientEvent {
 	@SubscribeEvent
 	public void onRenderLiving(RenderLivingEvent.Pre event) {
 		EntityLivingBase entity = event.getEntity();
-		if (grimoireOfAlice.features.shrinkAnimation && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+		if(grimoireOfAlice.features.shrinkAnimation && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 			IMalletCapability capability = entity.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			GlStateManager.pushMatrix();
-			if (capability.doAnimation()) {
+			if(capability.doAnimation()) {
 				double scale = 0.1D + ((double) capability.getScaled() / 10);
 				GlStateManager.scale(scale, scale, scale);
-			} else
-			if(capability.isSmall()) {
+			}
+			else if(capability.isSmall()) {
 				GlStateManager.scale(0.1D, 0.1D, 0.1D);
 			}
 		}
@@ -71,7 +71,7 @@ public class MalletClientEvent {
 	@SubscribeEvent
 	public void onRenderLivingFinished(RenderLivingEvent.Post event) {
 		EntityLivingBase entity = event.getEntity();
-		if (grimoireOfAlice.features.shrinkAnimation && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+		if(grimoireOfAlice.features.shrinkAnimation && entity.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 			GlStateManager.popMatrix();
 		}
 	}

@@ -99,13 +99,14 @@ public class EntityHakureiOrb extends EntityThrowable {
 	private void bounce(RayTraceResult raytrace) {
 		EnumFacing facing = raytrace.sideHit;
 		Vec3d vec = getLook(1);
-		if (facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
+		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
 			setDirection(new Vec3d(vec.x, vec.y * -1D, vec.z));
 			motionY *= -0.5D;
-		} else {
+		}
+		else {
 			double x = vec.x;
 			double z = vec.z;
-			if (facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
+			if(facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
 				motionX *= -0.5D;
 				x *= -1D;
 			}
@@ -120,16 +121,16 @@ public class EntityHakureiOrb extends EntityThrowable {
 
 	private void setDirection(Vec3d vec) {
 		float f = MathHelper.sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-		double x = vec.x / (double)f;
-		double y = vec.y / (double)f;
-		double z = vec.z / (double)f;
+		double x = vec.x / (double) f;
+		double y = vec.y / (double) f;
+		double z = vec.z / (double) f;
 		double velocity = motionX * motionX + motionZ * motionZ + motionY * motionY;
 		x = x * velocity * 0.1;
 		y = y * velocity * 0.1;
 		z = z * velocity * 0.1;
 		float f1 = MathHelper.sqrt(x * x + z * z);
-		this.rotationYaw = (float)(MathHelper.atan2(x, z) * (180D / Math.PI));
-		this.rotationPitch = (float)(MathHelper.atan2(y, (double)f1) * (180D / Math.PI));
+		this.rotationYaw = (float) (MathHelper.atan2(x, z) * (180D / Math.PI));
+		this.rotationPitch = (float) (MathHelper.atan2(y, (double) f1) * (180D / Math.PI));
 		this.prevRotationYaw = this.rotationYaw;
 		this.prevRotationPitch = this.rotationPitch;
 	}
@@ -167,7 +168,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void setSize(float size) {
-		if (width != this.width || height != this.height) {
+		if(width != this.width || height != this.height) {
 			this.width = size;
 			this.height = size;
 			AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();

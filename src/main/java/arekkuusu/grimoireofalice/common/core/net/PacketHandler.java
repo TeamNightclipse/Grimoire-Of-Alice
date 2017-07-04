@@ -35,13 +35,13 @@ public final class PacketHandler {
 	}
 
 	public static void sendToNear(World world, BlockPos pos, IMessage message) {
-		if (world instanceof WorldServer) {
+		if(world instanceof WorldServer) {
 			final WorldServer ws = (WorldServer) world;
 
-			for (EntityPlayer player : ws.playerEntities) {
+			for(EntityPlayer player : ws.playerEntities) {
 				final EntityPlayerMP playerMP = (EntityPlayerMP) player;
 
-				if (playerMP.getDistanceSq(pos) < 64 * 64
+				if(playerMP.getDistanceSq(pos) < 64 * 64
 						&& ws.getPlayerChunkMap().isPlayerWatchingChunk(playerMP, pos.getX() >> 4, pos.getZ() >> 4)) {
 					HANDLER.sendTo(message, playerMP);
 				}

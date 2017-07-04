@@ -73,7 +73,7 @@ public class ItemCursedDecoyDoll extends ItemMod implements IOwnedBy {
 
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing,
-			float hitX, float hitY, float hitZ) {
+									  float hitX, float hitY, float hitZ) {
 		spawnDoll(player.getHeldItem(hand), world, player);
 		return EnumActionResult.SUCCESS;
 	}

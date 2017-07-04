@@ -1,14 +1,14 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "grimoireofalice:items/3rdeye"
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "status": 1.0
-            },
-            "model": "grimoireofalice:item/thirdeye0"
-        }
-    ]
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "grimoireofalice:items/3rdeye"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "status": 1.0
+      },
+      "model": "grimoireofalice:item/thirdeye0"
+    }
+  ]
 }

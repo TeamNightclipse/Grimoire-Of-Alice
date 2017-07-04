@@ -75,7 +75,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sanae_gohei_header.name"));
-		if (GuiScreen.isShiftKeyDown()) {
+		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sanae_gohei_use.name"));
 			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.sanae_gohei_charge.name") + " " + getCharge(stack));
 		}
@@ -87,9 +87,9 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if (player.isSneaking()) {
+		if(player.isSneaking()) {
 			increaseType(stack);
-			if (world.isRemote) {
+			if(world.isRemote) {
 				String modeName = getType(stack).toString() + ".name";
 				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_header.name");
 				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_" + modeName));
@@ -98,7 +98,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 			}
 		}
 		else {
-			if (!world.isRemote) {
+			if(!world.isRemote) {
 				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, player, stack);
 				world.spawnEntity(miracleCircle);
 			}
@@ -109,7 +109,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		for (int i = 0; i < 2; ++i) {
+		for(int i = 0; i < 2; ++i) {
 			player.world.spawnParticle(EnumParticleTypes.REDSTONE,
 					player.posX + (itemRand.nextDouble() - 0.5D) * player.width,
 					player.posY + itemRand.nextDouble() * player.height - 0.25D,
@@ -121,17 +121,17 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		World world = entityLiving.world;
-		if (entityLiving instanceof EntityPlayer && !world.isRemote) {
+		if(entityLiving instanceof EntityPlayer && !world.isRemote) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
-			if (!player.isSneaking() && !player.getCooldownTracker().hasCooldown(this)) {
+			if(!player.isSneaking() && !player.getCooldownTracker().hasCooldown(this)) {
 				Miracles mode = getType(stack);
 				final int oldCharge = getCharge(stack);
 				int charge = oldCharge;
 				WorldInfo WorldInfo = player.world.getWorldInfo();
 
-				switch (mode) {
+				switch(mode) {
 					case RAIN:
-						if (RAIN.canUse(charge, player)) {
+						if(RAIN.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
 							WorldInfo.setCleanWeatherTime(0);
@@ -141,11 +141,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(false);
 
 							charge -= 4;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case THUNDER:
-						if (THUNDER.canUse(charge, player)) {
+						if(THUNDER.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
 							WorldInfo.setCleanWeatherTime(0);
@@ -155,11 +155,11 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(true);
 
 							charge -= 5;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case CLEAR:
-						if (CLEAR.canUse(charge, player)) {
+						if(CLEAR.canUse(charge, player)) {
 							int time = 400 + itemRand.nextInt(1000) * 20;
 
 							WorldInfo.setCleanWeatherTime(time);
@@ -169,25 +169,25 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							WorldInfo.setThundering(false);
 
 							charge -= 1;
-							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case TESTIFICATE:
-						if (TESTIFICATE.canUse(charge, player)) {
-							if (convertNearZombies(player, world)) {
+						if(TESTIFICATE.canUse(charge, player)) {
+							if(convertNearZombies(player, world)) {
 								charge -= 15;
-								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F,1F);
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F, 1F);
 							}
 						}
 						break;
 					case WIND:
-						if (WIND.canUse(charge, player)) {
+						if(WIND.canUse(charge, player)) {
 							world.playSound(null, player.getPosition(), GrimoireSoundEvents.WIND, SoundCategory.PLAYERS, 1F, 1F);
 							Vec3d vec = player.getLookVec();
 							List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 									entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> entity != player);
 							list.forEach(entity -> {
-								if (entity.world instanceof WorldServer) {
+								if(entity.world instanceof WorldServer) {
 									((WorldServer) entity.world).spawnParticle(EnumParticleTypes.CLOUD, entity.posX
 											, entity.posY, entity.posZ, 5, 0, 0, 0, 0.1D);
 								}
@@ -197,55 +197,55 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 							});
 
 							charge -= 1;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_THROW, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_THROW, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case HEAL:
-						if (HEAL.canUse(charge, player)) {
+						if(HEAL.canUse(charge, player)) {
 							float health = player.getMaxHealth() - player.getHealth();
 							player.heal(health * itemRand.nextFloat());
-							if (world instanceof WorldServer) {
+							if(world instanceof WorldServer) {
 								((WorldServer) world).spawnParticle(EnumParticleTypes.HEART, player.posX, player.posY + 2, player.posZ, 20, 0D, 0D, 0D, 0D);
 							}
 
 							charge -= 2;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case POTIONS:
-						if (POTIONS.canUse(charge, player)) {
+						if(POTIONS.canUse(charge, player)) {
 							List<PotionEffect> effects = consumePotionEffectsInInventory(player);
-							if (!effects.isEmpty()) {
+							if(!effects.isEmpty()) {
 								addPlayerPotionEffects(player, effects);
 								player.getCooldownTracker().setCooldown(this, 15);
 
 								charge -= 3;
-								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.PLAYERS, 1F,1F);
+								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.PLAYERS, 1F, 1F);
 							}
 						}
 						break;
 					case SOIL:
-						if (SOIL.canUse(charge, player)) {
+						if(SOIL.canUse(charge, player)) {
 							applyBonemealRandomPos(player, world);
 
 							charge -= 6;
-							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case TIME:
-						if (TIME.canUse(charge, player)) {
+						if(TIME.canUse(charge, player)) {
 							long time = world.isDaytime() ? 14000 : 0;
 							world.setWorldTime(time);
 
 							player.getCooldownTracker().setCooldown(this, 5);
 
 							charge -= 10;
-							player.world.playSound(null, player.getPosition(), SoundEvents.AMBIENT_CAVE, SoundCategory.PLAYERS, 1F,1F);
+							player.world.playSound(null, player.getPosition(), SoundEvents.AMBIENT_CAVE, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 				}
 
-				if (oldCharge != charge) {
+				if(oldCharge != charge) {
 					setCharge(stack, charge);
 				}
 			}
@@ -255,7 +255,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if (entityLiving instanceof EntityPlayer) {
+		if(entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 25);
 		}
 	}
@@ -269,7 +269,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	private void convertToVillager(EntityZombieVillager zombie) {
 		try {
 			CONVERT_ZOMBIE.invoke(zombie, 0);
-		} catch (IllegalAccessException | InvocationTargetException e) {
+		} catch(IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
@@ -279,15 +279,15 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		BlockPos posF = new BlockPos(player.posX + 4 + itemRand.nextInt(4), player.posY + 4 + itemRand.nextInt(4), player.posZ + 4 + itemRand.nextInt(4));
 
 		BlockPos.getAllInBox(posI, posF).forEach(pos -> {
-			if (itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player, player.getActiveHand())) {
+			if(itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player, player.getActiveHand())) {
 				IBlockState state = world.getBlockState(pos);
-				for (int j = 0; j < 15; ++j) {
+				for(int j = 0; j < 15; ++j) {
 					double d0 = itemRand.nextGaussian() * 0.02D;
 					double d1 = itemRand.nextGaussian() * 0.02D;
 					double d2 = itemRand.nextGaussian() * 0.02D;
 					world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, pos.getX() + itemRand.nextFloat(), pos.getY() + itemRand.nextFloat() * state.getBoundingBox(world, pos).maxY, pos.getZ() + itemRand.nextFloat(), d0, d1, d2);
 				}
-				if (!world.isRemote) {
+				if(!world.isRemote) {
 					world.playEvent(2005, pos, 0);
 				}
 			}
@@ -298,10 +298,10 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 	private List<PotionEffect> consumePotionEffectsInInventory(EntityPlayer player) {
 		IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 		List<PotionEffect> potionEffects = new ArrayList<>();
-		for (int i = 0; i < capability.getSlots(); ++i) {
+		for(int i = 0; i < capability.getSlots(); ++i) {
 			ItemStack stack = capability.getStackInSlot(i);
-			if (!stack.isEmpty() && PotionUtils.getPotionFromItem(stack) != PotionTypes.WATER) {
-				if (!player.capabilities.isCreativeMode) {
+			if(!stack.isEmpty() && PotionUtils.getPotionFromItem(stack) != PotionTypes.WATER) {
+				if(!player.capabilities.isCreativeMode) {
 					//noinspection ConstantConditions
 					capability.extractItem(i, 1, false);
 				}
@@ -324,7 +324,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	private void setCharge(ItemStack itemStack, int charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
-		if (nbt == null) {
+		if(nbt == null) {
 			nbt = new NBTTagCompound();
 			itemStack.setTagCompound(nbt);
 		}

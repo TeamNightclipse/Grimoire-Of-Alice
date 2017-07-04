@@ -1,14 +1,14 @@
 {
-    "parent": "grimoireofalice:item/handheld_big",
-    "textures": {
-        "layer0": "grimoireofalice:items/hisousword"
-    },
-    "overrides": [
-        {
-            "predicate": {
-                "playing": 1
-            },
-            "model": "grimoireofalice:item/hisou0"
-        }
-    ]
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/hisousword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "playing": 1
+      },
+      "model": "grimoireofalice:item/hisou0"
+    }
+  ]
 }

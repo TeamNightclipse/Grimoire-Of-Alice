@@ -70,8 +70,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		target.motionX = -MathHelper.sin((float)Math.toRadians(attacker.rotationYaw));
-		target.motionZ = MathHelper.cos((float)Math.toRadians(attacker.rotationYaw));
+		target.motionX = -MathHelper.sin((float) Math.toRadians(attacker.rotationYaw));
+		target.motionZ = MathHelper.cos((float) Math.toRadians(attacker.rotationYaw));
 		return true;
 	}
 
@@ -87,17 +87,19 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(!world.isRemote) {
 			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
-			if(timeUsed > 50) return;
+			if(timeUsed > 50) {
+				return;
+			}
 
 			if(entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entityLiving;
+				EntityPlayer player = (EntityPlayer) entityLiving;
 				if(isOwner(stack, player)) {
 					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(timeUsed), livingBase -> livingBase != player);
 					if(!list.isEmpty()) {
 						player.sendMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 						list.forEach(mob -> player.sendMessage(new TextComponentString(
-								getColorForEntity(mob) + "- " + mob.getName() + TextFormatting.RESET + TextFormatting.ITALIC + " : {" + (int)mob.posX + ", " + (int)mob.posY + ", " + (int)mob.posZ + "}")));
+								getColorForEntity(mob) + "- " + mob.getName() + TextFormatting.RESET + TextFormatting.ITALIC + " : {" + (int) mob.posX + ", " + (int) mob.posY + ", " + (int) mob.posZ + "}")));
 						player.sendMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}
@@ -113,13 +115,13 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	private TextFormatting getColorForEntity(EntityLivingBase livingBase) {
-		if (livingBase instanceof EntityMob) {
+		if(livingBase instanceof EntityMob) {
 			return TextFormatting.DARK_RED;
 		}
-		else if (livingBase instanceof EntityAnimal) {
+		else if(livingBase instanceof EntityAnimal) {
 			return TextFormatting.GOLD;
 		}
-		else if (livingBase instanceof EntityWaterMob) {
+		else if(livingBase instanceof EntityWaterMob) {
 			return TextFormatting.DARK_AQUA;
 		}
 

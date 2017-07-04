@@ -33,7 +33,7 @@ public class NetherFire extends Particle {
 
 	@Override
 	public void renderParticle(VertexBuffer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ,
-			float rotationXY, float rotationXZ) {
+							   float rotationXY, float rotationXZ) {
 		particleScale *= 0.9;
 		super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
 	}
@@ -59,7 +59,7 @@ public class NetherFire extends Particle {
 		prevPosY = posY;
 		prevPosZ = posZ;
 
-		if (particleAge++ >= particleMaxAge) {
+		if(particleAge++ >= particleMaxAge) {
 			setExpired();
 		}
 	}

@@ -44,8 +44,8 @@ public class EntityMiracleLantern extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (ticksExisted % 4 == 0) {
-			for (int i = 0; i < 5; i++) {
+		if(ticksExisted % 4 == 0) {
+			for(int i = 0; i < 5; i++) {
 				GrimoireOfAlice.proxy.sparkleFX(ParticleFX.SHINMYOUMARU_SPARKLE, null, posX, posY, posZ, 0, 0.1, 0);
 			}
 		}
@@ -58,8 +58,12 @@ public class EntityMiracleLantern extends EntityThrowable {
 
 	@Override
 	protected void onImpact(RayTraceResult result) {
-		if (result.entityHit != null) result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5F);
+		if(result.entityHit != null) {
+			result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5F);
+		}
 		playSound(SoundEvents.BLOCK_ANVIL_PLACE, 0.1F, 0.1F);
-		if (!world.isRemote) setDead();
+		if(!world.isRemote) {
+			setDead();
+		}
 	}
 }

@@ -1,12 +1,12 @@
 {
-    "parent": "block/cube",
-    "textures": {
-		"particle": "grimoireofalice:blocks/sugar0",
-		"down": "grimoireofalice:blocks/sugar0",
-        "up": "grimoireofalice:blocks/sugar1",
-        "north": "grimoireofalice:blocks/sugar2",
-        "east": "grimoireofalice:blocks/sugar3",
-        "south": "grimoireofalice:blocks/sugar4",
-        "west": "grimoireofalice:blocks/sugar5"
-    }
+  "parent": "block/cube",
+  "textures": {
+    "particle": "grimoireofalice:blocks/sugar0",
+    "down": "grimoireofalice:blocks/sugar0",
+    "up": "grimoireofalice:blocks/sugar1",
+    "north": "grimoireofalice:blocks/sugar2",
+    "east": "grimoireofalice:blocks/sugar3",
+    "south": "grimoireofalice:blocks/sugar4",
+    "west": "grimoireofalice:blocks/sugar5"
+  }
 }

@@ -1,8 +1,19 @@
 {
   "variants": {
-    "facing=north": { "model": "grimoireofalice:craftingaltar" },
-    "facing=south": { "model": "grimoireofalice:craftingaltar", "y": 180 },
-    "facing=east":  { "model": "grimoireofalice:craftingaltar", "y": 90 },
-    "facing=west":  { "model": "grimoireofalice:craftingaltar", "y": 270 }
+    "facing=north": {
+      "model": "grimoireofalice:craftingaltar"
+    },
+    "facing=south": {
+      "model": "grimoireofalice:craftingaltar",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "grimoireofalice:craftingaltar",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "grimoireofalice:craftingaltar",
+      "y": 270
+    }
   }
 }
