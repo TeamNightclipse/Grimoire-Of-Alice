@@ -14,6 +14,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class GoAJEIPlugin extends BlankModPlugin {
+	private static final String LINE = "--------------------------";
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -30,7 +31,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 	}
 
 	private void addDescriptions(IModRegistry registry) {
-		final String LINE = "--------------------------";
 		addDescription(registry, new ItemStack(ModItems.BUDAH_BOUL), "grimoire.jei.descriptions.budah_boul", LINE
 				, "grimoire.jei.descriptions_body.budah_boul");
 

@@ -173,11 +173,9 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 						}
 						break;
 					case TESTIFICATE:
-						if(TESTIFICATE.canUse(charge, player)) {
-							if(convertNearZombies(player, world)) {
-								charge -= 15;
-								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F, 1F);
-							}
+						if(TESTIFICATE.canUse(charge, player) && convertNearZombies(player, world)) {
+							charge -= 15;
+							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F, 1F);
 						}
 						break;
 					case WIND:

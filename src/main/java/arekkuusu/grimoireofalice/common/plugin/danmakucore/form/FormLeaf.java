@@ -60,7 +60,7 @@ public class FormLeaf extends FormGeneric {
 				GlStateManager.rotate(pitch, 1F, 0F, 0F);
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
-				GlStateManager.rotate(danmaku.ticksExisted * 32, 0.0F, 1.0F, 0.0F);
+				GlStateManager.rotate(danmaku.ticksExisted * 32F, 0.0F, 1.0F, 0.0F);
 
 				//TODO: color
 				renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);

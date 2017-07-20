@@ -24,6 +24,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
@@ -87,29 +88,24 @@ public class BlockHolyKeyStone extends BlockMod {
 	}
 
 	private void spawnParticles(World world, BlockPos pos, Random rand) {
-		float d0 = 0.0625F;
-		for(int l = 0; l < 6; ++l) {
+		for(EnumFacing facing : EnumFacing.values()) {
 			float x = pos.getX() + rand.nextFloat();
 			float y = pos.getY() + rand.nextFloat();
 			float z = pos.getZ() + rand.nextFloat();
+			float d0 = facing.getAxisDirection().getOffset() * 0.0625F;
 
-			if(l == 0 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ())) == 0)) {
-				y = pos.getY() + 1 + d0;
-			}
-			if(l == 1 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) {
-				y = pos.getY() - d0;
-			}
-			if(l == 2 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)) == 0)) {
-				z = pos.getZ() + 1 + d0;
-			}
-			if(l == 3 && !(world.getBlockLightOpacity(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())) == 0)) {
-				z = pos.getZ() - d0;
-			}
-			if(l == 4 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())) == 0)) {
-				x = pos.getX() + 1 + d0;
-			}
-			if(l == 5 && !(world.getBlockLightOpacity(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())) == 0)) {
-				x = pos.getX() - d0;
+			if(world.getBlockLightOpacity(pos.offset(facing)) != 0) {
+				switch(facing.getAxis()) {
+					case X:
+						x = pos.getX() + facing.getFrontOffsetX() + d0;
+						break;
+					case Y:
+						y = pos.getY() + facing.getFrontOffsetY() + d0;
+						break;
+					case Z:
+						z = pos.getZ() + facing.getFrontOffsetZ() + d0;
+						break;
+				}
 			}
 
 			if(x < pos.getX() || x > pos.getX() + 1 || y < 0.0D || y > pos.getY() + 1 || z < pos.getZ() || z > pos.getZ() + 1) {

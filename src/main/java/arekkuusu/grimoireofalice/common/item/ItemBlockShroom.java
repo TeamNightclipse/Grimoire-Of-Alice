@@ -42,7 +42,7 @@ public class ItemBlockShroom extends ItemBlock {
 			stack.shrink(1);
 		}
 
-		if(!(stack.getItemDamage() % 3 == 0)) {
+		if(stack.getItemDamage() % 3 != 0) {
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 2400, 0));
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 2400, 1));

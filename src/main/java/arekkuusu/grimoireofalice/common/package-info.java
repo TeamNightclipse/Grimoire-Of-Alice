@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package arekkuusu.grimoireofalice;
+package arekkuusu.grimoireofalice.common;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

@@ -60,24 +60,22 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(entityIn instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) entityIn);
-			if(isSelected && player.getCooldownTracker().hasCooldown(this) && !wasShifting(stack)) {
-				if(player.ticksExisted % 2 == 0) {
-					EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
-					player.swingArm(hand);
+			if(isSelected && player.getCooldownTracker().hasCooldown(this) && !wasShifting(stack) && player.ticksExisted % 2 == 0) {
+				EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+				player.swingArm(hand);
 
-					Vec3d vec = player.getLookVec();
-					float distance = 4F + itemRand.nextInt(3);
-					double dx = player.posX + vec.x * distance;
-					double dy = player.posY + 2.5 + vec.y * distance;
-					double dz = player.posZ + vec.z * distance;
-					GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NEEDLE_SWING, null, dx, dy, dz, itemRand.nextFloat(), 0F, 0F);
-					world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
+				Vec3d vec = player.getLookVec();
+				float distance = 4F + itemRand.nextInt(3);
+				double dx = player.posX + vec.x * distance;
+				double dy = player.posY + 2.5 + vec.y * distance;
+				double dz = player.posZ + vec.z * distance;
+				GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NEEDLE_SWING, null, dx, dy, dz, itemRand.nextFloat(), 0F, 0F);
+				world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
 
-					if(!world.isRemote) {
-						List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-								player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> entity != player);
-						list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
-					}
+				if(!world.isRemote) {
+					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
+							player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> entity != player);
+					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 				}
 			}
 		}

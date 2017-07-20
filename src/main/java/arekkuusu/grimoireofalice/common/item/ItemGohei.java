@@ -2,7 +2,6 @@ package arekkuusu.grimoireofalice.common.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.MathHelper;
 
 public class ItemGohei<E extends Enum<E>> extends ItemMod {
 

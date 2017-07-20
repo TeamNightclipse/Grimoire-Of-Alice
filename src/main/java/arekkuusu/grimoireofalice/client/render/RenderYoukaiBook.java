@@ -3,7 +3,6 @@ package arekkuusu.grimoireofalice.client.render;
 import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.model.ModelBook;
 import arekkuusu.grimoireofalice.common.entity.EntityYoukaiBook;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

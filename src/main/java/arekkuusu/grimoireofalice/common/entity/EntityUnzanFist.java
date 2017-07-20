@@ -65,22 +65,20 @@ public class EntityUnzanFist extends EntityThrowable {
 		double d0 = 0.0D;
 
 		for(Entity aList : list) {
-			if(aList.canBeCollidedWith()) {
-				if(aList != this.ignoreEntity) {
-					if(this.ticksExisted < 2 && this.ignoreEntity == null) {
-						this.ignoreEntity = aList;
-					}
-					else {
-						AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
-						RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
+			if(aList.canBeCollidedWith() && aList != this.ignoreEntity) {
+				if(this.ticksExisted < 2 && this.ignoreEntity == null) {
+					this.ignoreEntity = aList;
+				}
+				else {
+					AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
+					RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
-						if(result != null) {
-							double d1 = vec3d.squareDistanceTo(result.hitVec);
+					if(result != null) {
+						double d1 = vec3d.squareDistanceTo(result.hitVec);
 
-							if(d1 < d0 || d0 == 0.0D) {
-								entity = aList;
-								d0 = d1;
-							}
+						if(d1 < d0 || d0 == 0.0D) {
+							entity = aList;
+							d0 = d1;
 						}
 					}
 				}

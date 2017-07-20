@@ -205,6 +205,10 @@ public class BlockRope extends BlockMod {
 							return state.withRotation(Rotation.CLOCKWISE_180);
 					}
 				}
+
+				break;
+			case NONE:
+				break;
 		}
 
 		return super.withMirror(state, mirrorIn);

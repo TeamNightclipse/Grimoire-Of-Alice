@@ -53,6 +53,7 @@ public class RedGas extends Particle {
 
 	@Override
 	public void onUpdate() {
+		//FIXME:  Figure out what order to do these in. Setting prevPos to pos is normally done last. A call to move is also normally done last.
 		prevPosX = posX;
 		prevPosY = posY;
 		prevPosZ = posZ;

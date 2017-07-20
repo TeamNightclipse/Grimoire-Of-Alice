@@ -76,13 +76,11 @@ public class EntityDragonJewel extends Entity {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
 		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.grow(20.0D));
 		list.stream().filter(mob -> mob instanceof EntityLiving).map(mob -> (EntityLiving) mob).forEach(mob -> {
-			if(!world.isRemote) {
-				if(mob instanceof EntityMob || mob.getAttackTarget() == host) {
-					mob.setRevengeTarget(null);
+			if(!world.isRemote && (mob instanceof EntityMob || mob.getAttackTarget() == host)) {
+				mob.setRevengeTarget(null);
 
-					if(mob.getHealth() > 1) {
-						mob.attackEntityFrom(DamageSource.DRAGON_BREATH, rand.nextInt(25));
-					}
+				if(mob.getHealth() > 1) {
+					mob.attackEntityFrom(DamageSource.DRAGON_BREATH, rand.nextInt(25));
 				}
 			}
 

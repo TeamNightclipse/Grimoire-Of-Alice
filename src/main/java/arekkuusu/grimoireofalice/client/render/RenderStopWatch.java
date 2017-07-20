@@ -26,7 +26,7 @@ public class RenderStopWatch extends Render<EntityStopWatch> {
 		GlStateManager.translate(x, y + 0.4, z);
 		GlStateManager.scale(0.15F, 0.15F, 0.15F);
 		GlStateManager.rotate(180F, 1.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(entity.ticksExisted * 8, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.ticksExisted * 8F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();
 	}

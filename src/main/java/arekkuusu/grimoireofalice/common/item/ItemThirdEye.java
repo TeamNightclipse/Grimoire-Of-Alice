@@ -105,6 +105,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 				.forEach(mob -> mob.addPotionEffect(effect));
 	}
 
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!player.isSneaking()) {

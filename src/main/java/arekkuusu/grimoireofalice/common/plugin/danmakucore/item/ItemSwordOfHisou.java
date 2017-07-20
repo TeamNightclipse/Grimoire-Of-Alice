@@ -19,7 +19,6 @@ import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
@@ -135,19 +134,15 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
-		if(!world.isRemote) {
-			if(entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
-				if(isOwner(stack, player)) {
-					if(timeUsed < 20 && timeUsed > 5) {
-						List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20));
-						if(!list.isEmpty()) {
-							int count = (int) (list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
-							EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
-							world.spawnEntity(circle);
-							player.getCooldownTracker().setCooldown(this, count);
-						}
-					}
+		if(!world.isRemote && entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
+			if(isOwner(stack, player) && timeUsed < 20 && timeUsed > 5) {
+				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20));
+				if(!list.isEmpty()) {
+					int count = (int)(list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
+					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
+					world.spawnEntity(circle);
+					player.getCooldownTracker().setCooldown(this, count);
 				}
 			}
 		}
@@ -191,17 +186,15 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
-		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean()) {
-			if(pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
-				stack.damageItem(1, entityLiving);
-				if(!world.isRemote) {
-					EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-							new ItemStack(ModItems.HEAVENLY_PEACH));
+		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean() && pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
+			stack.damageItem(1, entityLiving);
+			if(!world.isRemote) {
+				EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+						new ItemStack(ModItems.HEAVENLY_PEACH));
 
-					entityLiving.world.spawnEntity(entityItem);
-				}
-				return true;
+				entityLiving.world.spawnEntity(entityItem);
 			}
+			return true;
 		}
 		return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
 	}

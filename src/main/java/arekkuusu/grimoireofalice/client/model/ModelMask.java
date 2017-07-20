@@ -5,8 +5,6 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumHandSide;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -18,32 +16,32 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelMask extends ModelBiped {
 
 	private final ModelRenderer mask;
-	private final ModelRenderer mask_left;
-	private final ModelRenderer mask_right;
-	private final ModelRenderer mask_left_1;
+	private final ModelRenderer maskLeft;
+	private final ModelRenderer maskRight;
+	private final ModelRenderer maskLeft1;
 
 	public ModelMask() {
 		this.textureWidth = 32;
 		this.textureHeight = 32;
-		this.mask_right = new ModelRenderer(this, 0, -8);
-		this.mask_right.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.mask_right.addBox(-7.3F, -8.0F, -5.2F, 0, 8, 8, 0.0F);
-		this.setRotateAngle(mask_right, 0.0F, -0.4904375198104066F, 0.0F);
-		this.mask_left_1 = new ModelRenderer(this, 0, 16);
-		this.mask_left_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.mask_left_1.addBox(6.4F, -8.0F, -4.48F, 0, 8, 8, 0.0F);
-		this.setRotateAngle(mask_left_1, 0.0F, -0.9754645189396307F, 0.0F);
-		this.mask_left = new ModelRenderer(this, 0, 8);
-		this.mask_left.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.mask_left.addBox(7.3F, -8.0F, -5.2F, 0, 8, 8, 0.0F);
-		this.setRotateAngle(mask_left, 0.0F, 0.4904375198104066F, 0.0F);
+		this.maskRight = new ModelRenderer(this, 0, -8);
+		this.maskRight.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.maskRight.addBox(-7.3F, -8.0F, -5.2F, 0, 8, 8, 0.0F);
+		this.setRotateAngle(maskRight, 0.0F, -0.4904375198104066F, 0.0F);
+		this.maskLeft1 = new ModelRenderer(this, 0, 16);
+		this.maskLeft1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.maskLeft1.addBox(6.4F, -8.0F, -4.48F, 0, 8, 8, 0.0F);
+		this.setRotateAngle(maskLeft1, 0.0F, -0.9754645189396307F, 0.0F);
+		this.maskLeft = new ModelRenderer(this, 0, 8);
+		this.maskLeft.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.maskLeft.addBox(7.3F, -8.0F, -5.2F, 0, 8, 8, 0.0F);
+		this.setRotateAngle(maskLeft, 0.0F, 0.4904375198104066F, 0.0F);
 		this.mask = new ModelRenderer(this, 0, 8);
 		this.mask.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.mask.addBox(-4.0F, -8.0F, -8.0F, 8, 8, 0, 0.0F);
 		this.setRotateAngle(mask, -0.18203784098300857F, 0.5918411493512771F, 0.0F);
-		this.mask.addChild(this.mask_right);
-		this.mask_left.addChild(this.mask_left_1);
-		this.mask.addChild(this.mask_left);
+		this.mask.addChild(this.maskRight);
+		this.maskLeft.addChild(this.maskLeft1);
+		this.mask.addChild(this.maskLeft);
 	}
 
 	@Override

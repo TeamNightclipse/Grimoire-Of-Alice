@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelKoishiEye extends ModelBiped {
 
+	//TODO: Give better names
 	private final ModelRenderer eye;
 	private final ModelRenderer right_0;
 	private final ModelRenderer left_0;
@@ -228,6 +229,7 @@ public class ModelKoishiEye extends ModelBiped {
 		GlStateManager.popMatrix();
 	}
 
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
 		this.eye.rotateAngleY = 0.0F;
 

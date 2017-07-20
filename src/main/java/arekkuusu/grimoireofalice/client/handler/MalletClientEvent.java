@@ -6,7 +6,6 @@ import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

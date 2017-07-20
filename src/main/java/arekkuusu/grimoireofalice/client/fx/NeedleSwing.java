@@ -47,7 +47,7 @@ public class NeedleSwing extends Particle {
 			this.textureManager.bindTexture(ResourceLocations.NEEDLE_SWING);
 			float u1 = (i % 4) / 4.0F;
 			float u2 = u1 + 0.24975F;
-			float v1 = (i / 2) / 2.0F;
+			float v1 = (i / 2F) / 2.0F;
 			float v2 = v1 + 0.4995F;
 			float x = (float) (prevPosX + (posX - prevPosX) * partialTicks - interpPosX);
 			float y = (float) (prevPosY + (posY - prevPosY) * partialTicks - interpPosY);

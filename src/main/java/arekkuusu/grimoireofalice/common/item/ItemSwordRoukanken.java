@@ -68,7 +68,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
-		if(entityIn instanceof EntityPlayer & isSelected) {
+		if(entityIn instanceof EntityPlayer && isSelected) {
 			EntityPlayer player = (EntityPlayer) entityIn;
 
 			if(player.motionX * player.motionX + player.motionZ * player.motionZ > 3D * 3D) {

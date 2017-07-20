@@ -53,11 +53,8 @@ public class AltarRecipe implements IAltarRecipe {
 			int index = -1;
 			for(int j = 0; j < toCompare.size(); j++) {
 				Object obj = toCompare.get(j);
-				if(obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack) obj)) {
-					index = j;
-					break;
-				}
-				else if(obj instanceof String && containsMatch(OreDictionary.getOres((String) obj), stack)) {
+				if((obj instanceof ItemStack && ItemStack.areItemStacksEqual(stack, (ItemStack) obj))
+						|| (obj instanceof String && containsMatch(OreDictionary.getOres((String) obj), stack))) {
 					index = j;
 					break;
 				}

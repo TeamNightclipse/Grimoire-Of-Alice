@@ -96,12 +96,9 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 					world.spawnEntity(circle);
 				}
 
-				if(!isCreative) {
+				if(!isCreative && player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 					//noinspection ConstantConditions
-					if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-						//noinspection ConstantConditions
-						player.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(player, fireCharge), 1, false);
-					}
+					player.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(player, fireCharge), 1, false);
 				}
 				stack.damageItem(10, player);
 				player.getCooldownTracker().setCooldown(this, 40);

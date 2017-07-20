@@ -51,10 +51,8 @@ public class EntityMagicCircle extends Entity {
 			if(host != null && !host.isDead && !host.isHandActive()) {
 				setAnimationCount(last);
 
-				if(endTime < ticksExisted && endTime >= 0) {
-					if(!world.isRemote) {
-						setDead();
-					}
+				if(endTime < ticksExisted && endTime >= 0 && !world.isRemote) {
+					setDead();
 				}
 
 				if(getAnimationCount() < 5) {

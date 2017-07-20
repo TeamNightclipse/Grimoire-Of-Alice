@@ -10,8 +10,6 @@ package arekkuusu.grimoireofalice.common.block;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
@@ -80,33 +78,33 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("deprecation")
 	@Override
 	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
-		switch(state.getValue(PART)) {
-			case MIDDLE:
-				return 2000F;
-			default:
-				return super.getBlockHardness(state, world, pos);
+		if(state.getValue(PART) == Part.MIDDLE) {
+			return 2000F;
+		}
+		else {
+			return super.getBlockHardness(state, world, pos);
 		}
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		switch(state.getValue(PART)) {
-			case TOP:
-				return BB_TOP;
-			default:
-				return super.getBoundingBox(state, source, pos);
+		if(state.getValue(PART) == Part.TOP) {
+			return BB_TOP;
+		}
+		else {
+			return super.getBoundingBox(state, source, pos);
 		}
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public Material getMaterial(IBlockState state) {
-		switch(state.getValue(PART)) {
-			case MIDDLE:
-				return Material.AIR;
-			default:
-				return super.getMaterial(state);
+		if(state.getValue(PART) == Part.MIDDLE) {
+			return Material.AIR;
+		}
+		else {
+			return super.getMaterial(state);
 		}
 	}
 
@@ -126,11 +124,11 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		switch(Part.fromIndex(meta)) {
-			case TOP:
-				return new TilePillarAltar().setRenderHeight(1F);
-			default:
-				return null;
+		if(Part.fromIndex(meta) == Part.TOP) {
+			return new TilePillarAltar().setRenderHeight(1F);
+		}
+		else {
+			return null;
 		}
 	}
 
@@ -138,21 +136,21 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 									EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		switch(state.getValue(PART)) {
-			case TOP:
-				TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
-				boolean ok = false;
-				if(tile != null) {
-					if(player.isSneaking()) {
-						ok = tile.removeItem(player);
-					}
-					else if(!heldItem.isEmpty()) {
-						ok = tile.addItem(player, heldItem);
-					}
+		if(state.getValue(PART) == Part.TOP) {
+			TilePillarAltar tile = (TilePillarAltar)world.getTileEntity(pos);
+			boolean ok = false;
+			if(tile != null) {
+				if(player.isSneaking()) {
+					ok = tile.removeItem(player);
 				}
-				return ok;
-			default:
-				return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+				else if(!heldItem.isEmpty()) {
+					ok = tile.addItem(player, heldItem);
+				}
+			}
+			return ok;
+		}
+		else {
+			return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
 		}
 	}
 

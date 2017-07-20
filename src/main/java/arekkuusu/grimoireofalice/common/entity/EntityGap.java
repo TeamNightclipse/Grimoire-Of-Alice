@@ -5,7 +5,6 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
@@ -37,19 +36,19 @@ public class EntityGap extends Entity {
 
 	private boolean teleportByColor = true;
 	private int portalCooldown;
-	private EntityPlayer player;
-	private ItemStack stack;
+	private EntityPlayer holdingPlayer;
+	private ItemStack holdingStack;
 
 	public EntityGap(World world) {
 		super(world);
 		isImmuneToFire = true;
 	}
 
-	public EntityGap(World world, EntityPlayer player, ItemStack stack) {
+	public EntityGap(World world, EntityPlayer holdingPlayer, ItemStack holdingStack) {
 		super(world);
-		setPositionAndAngles(player);
-		this.player = player;
-		this.stack = stack;
+		setPositionAndAngles(holdingPlayer);
+		this.holdingPlayer = holdingPlayer;
+		this.holdingStack = holdingStack;
 		isImmuneToFire = true;
 	}
 
@@ -67,15 +66,15 @@ public class EntityGap extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if(!world.isRemote) {
-			if(player != null) {
-				if(player.isHandActive() && !player.isDead) {
-					setPositionAndAngles(player);
+			if(holdingPlayer != null) {
+				if(holdingPlayer.isHandActive() && !holdingPlayer.isDead) {
+					setPositionAndAngles(holdingPlayer);
 				}
 				else {
-					player.getCooldownTracker().setCooldown(stack.getItem(), 25);
-					reduceStack(player, stack);
-					stack = ItemStack.EMPTY;
-					player = null;
+					holdingPlayer.getCooldownTracker().setCooldown(holdingStack.getItem(), 25);
+					reduceStack(holdingPlayer, holdingStack);
+					holdingStack = ItemStack.EMPTY;
+					holdingPlayer = null;
 				}
 			}
 			if(portalCooldown == 0) {

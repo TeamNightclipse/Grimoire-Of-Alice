@@ -20,7 +20,7 @@ import java.util.List;
 
 public class EntityFierySword extends Entity {
 
-	public EntityPlayer player;
+	private EntityPlayer player;
 
 	public EntityFierySword(World world) {
 		super(world);

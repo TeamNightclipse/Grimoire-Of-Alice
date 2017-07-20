@@ -21,7 +21,7 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 		super(renderManager);
 	}
 
-	private static final int p[][] = {
+	private static final int[][] p = {
 			{0, 1, 2, 3},
 			{3, 2, 5, 4},
 			{2, 1, 6, 5},
@@ -30,7 +30,7 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 			{4, 5, 6, 7}
 	};
 
-	private static final int t[][] = {
+	private static final int[][] t = {
 			{0, 1},
 			{1, 1},
 			{1, 0},
@@ -52,9 +52,9 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 		float width = box.getIceBlockWidth() / 2.0F + 0.4F;
 		float height = box.getIceBlockHeight();
 
-		float px[] = {-width, width, width, -width, -width, width, width, -width};
-		float py[] = {height, height, height, height, 0.0F, 0.0F, 0.0F, 0.0F};
-		float pz[] = {width, width, -width, -width, -width, -width, width, width};
+		float[] px = {-width, width, width, -width, -width, width, width, -width};
+		float[] py = {height, height, height, height, 0.0F, 0.0F, 0.0F, 0.0F};
+		float[] pz = {width, width, -width, -width, -width, -width, width, width};
 
 		for(int i = 0; i < 6; i++) {
 			vex.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);

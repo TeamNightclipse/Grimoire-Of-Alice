@@ -9,11 +9,7 @@
 package arekkuusu.grimoireofalice.common.potion;
 
 import arekkuusu.grimoireofalice.common.lib.LibPotionName;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PotionElixir extends PotionMod {
 

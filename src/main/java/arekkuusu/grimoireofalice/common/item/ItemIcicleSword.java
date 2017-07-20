@@ -45,6 +45,7 @@ public class ItemIcicleSword extends ItemModSword implements IOwnedBy {
 		return true;
 	}
 
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return OreDictionary.itemMatches(new ItemStack(Blocks.ICE), repair, false) || super.getIsRepairable(toRepair, repair);
 	}

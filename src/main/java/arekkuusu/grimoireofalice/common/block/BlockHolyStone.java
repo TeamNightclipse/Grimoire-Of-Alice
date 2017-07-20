@@ -11,8 +11,6 @@ package arekkuusu.grimoireofalice.common.block;
 import java.util.*;
 import java.util.function.Consumer;
 
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableMap;
 
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;

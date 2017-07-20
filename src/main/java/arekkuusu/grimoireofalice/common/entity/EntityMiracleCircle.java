@@ -12,8 +12,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.items.IItemHandler;
 
-import javax.annotation.Nullable;
-
 public class EntityMiracleCircle extends Entity {
 
 	@CapabilityInject(IItemHandler.class)

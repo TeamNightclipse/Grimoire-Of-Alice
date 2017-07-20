@@ -17,20 +17,20 @@ import org.lwjgl.opengl.GL11;
 public class ModelFierySword extends ModelBase {
 
 	private final ModelRenderer base;
-	private final ModelRenderer base_trs;
+	private final ModelRenderer baseTrs;
 	private final ModelRenderer big;
 	private final ModelRenderer longer;
 	private final ModelRenderer flat;
-	private final ModelRenderer big_trs;
-	private final ModelRenderer long_trs;
-	private final ModelRenderer flat_trs;
+	private final ModelRenderer bigTrs;
+	private final ModelRenderer longTrs;
+	private final ModelRenderer flatTrs;
 
 	public ModelFierySword() {
 		this.textureWidth = 192;
 		this.textureHeight = 128;
-		this.big_trs = new ModelRenderer(this, 0, 0);
-		this.big_trs.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.big_trs.addBox(-28.5F, -10.5F, 41.5F, 57, 21, 21, 0.0F);
+		this.bigTrs = new ModelRenderer(this, 0, 0);
+		this.bigTrs.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.bigTrs.addBox(-28.5F, -10.5F, 41.5F, 57, 21, 21, 0.0F);
 		this.big = new ModelRenderer(this, 0, 0);
 		this.big.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.big.addBox(-30.0F, -12.0F, 40.0F, 60, 24, 24, 0.0F);
@@ -43,21 +43,21 @@ public class ModelFierySword extends ModelBase {
 		this.flat = new ModelRenderer(this, 0, 0);
 		this.flat.setRotationPoint(0.0F, 0.0F, 0.0F);
 		this.flat.addBox(-25.0F, -5.0F, 80.0F, 50, 10, 24, 0.0F);
-		this.base_trs = new ModelRenderer(this, 51, 12);
-		this.base_trs.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.base_trs.addBox(-8.5F, -8.5F, 29.5F, 17, 17, 9, 0.0F);
-		this.flat_trs = new ModelRenderer(this, 0, 0);
-		this.flat_trs.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.flat_trs.addBox(-23.5F, -3.5F, 81.0F, 47, 7, 21, 0.0F);
-		this.long_trs = new ModelRenderer(this, 7, 43);
-		this.long_trs.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.long_trs.addBox(-8.5F, -8.5F, 65.5F, 17, 17, 67, 0.0F);
-		this.base_trs.addChild(this.big_trs);
+		this.baseTrs = new ModelRenderer(this, 51, 12);
+		this.baseTrs.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.baseTrs.addBox(-8.5F, -8.5F, 29.5F, 17, 17, 9, 0.0F);
+		this.flatTrs = new ModelRenderer(this, 0, 0);
+		this.flatTrs.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.flatTrs.addBox(-23.5F, -3.5F, 81.0F, 47, 7, 21, 0.0F);
+		this.longTrs = new ModelRenderer(this, 7, 43);
+		this.longTrs.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.longTrs.addBox(-8.5F, -8.5F, 65.5F, 17, 17, 67, 0.0F);
+		this.baseTrs.addChild(this.bigTrs);
 		this.base.addChild(this.big);
 		this.base.addChild(this.longer);
 		this.base.addChild(this.flat);
-		this.base_trs.addChild(this.flat_trs);
-		this.base_trs.addChild(this.long_trs);
+		this.baseTrs.addChild(this.flatTrs);
+		this.baseTrs.addChild(this.longTrs);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -65,7 +65,7 @@ public class ModelFierySword extends ModelBase {
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GlStateManager.color(1, 1, 1, 1F);
-		this.base_trs.render(f5);
+		this.baseTrs.render(f5);
 		GlStateManager.disableBlend();
 	}
 

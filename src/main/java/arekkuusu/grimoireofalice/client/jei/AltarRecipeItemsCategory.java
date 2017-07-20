@@ -29,7 +29,7 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 	private static final ResourceLocation furnace = new ResourceLocation("minecraft", "textures/gui/container/furnace.png");
 	private final IDrawableStatic outputSlot;
 
-	public static final int[][] OUTER_PILLARS = {
+	private static final int[][] OUTER_PILLARS = {
 			{oLvl1, oLvl1},
 			{oLvl1, oLvl2},
 			{oLvl1, oLvl3},

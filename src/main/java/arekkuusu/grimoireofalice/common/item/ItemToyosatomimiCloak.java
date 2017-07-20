@@ -56,10 +56,9 @@ public class ItemToyosatomimiCloak extends ItemModArmor implements ISpecialArmor
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if(player.world.isRemote) {
-			if((player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(Material.WATER)) {
-				player.moveRelative(0F, 1F, 0.085F);
-			}
+		if(player.world.isRemote && (player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(
+				Material.WATER)) {
+			player.moveRelative(0F, 1F, 0.085F);
 		}
 	}
 

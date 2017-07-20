@@ -168,12 +168,6 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void setSize(float size) {
-		if(width != this.width || height != this.height) {
-			this.width = size;
-			this.height = size;
-			AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
-			this.setEntityBoundingBox(new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.minX + (double) this.width, axisalignedbb.minY + (double) this.height, axisalignedbb.minZ + (double) this.width));
-		}
 		dataManager.set(SIZE, size);
 	}
 

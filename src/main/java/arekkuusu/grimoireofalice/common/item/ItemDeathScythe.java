@@ -121,11 +121,9 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
-		if(!world.isRemote) {
-			if(entityLiving instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) entityLiving;
-				player.getCooldownTracker().setCooldown(this, 10);
-			}
+		if(!world.isRemote && entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entityLiving;
+			player.getCooldownTracker().setCooldown(this, 10);
 		}
 	}
 

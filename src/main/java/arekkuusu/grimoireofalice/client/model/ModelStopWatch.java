@@ -21,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelStopWatch extends ModelBase {
 
+	//TODO: Better names
 	private final ModelRenderer shape1;
 	private final ModelRenderer shape1_1;
 	private final ModelRenderer shape1_2;

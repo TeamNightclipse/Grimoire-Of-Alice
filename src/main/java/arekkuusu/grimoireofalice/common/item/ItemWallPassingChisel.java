@@ -88,10 +88,8 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 						}
 						triedPos = triedPos.offset(facing);
 					}
-					else if(facing != EnumFacing.UP) {
-						if(isSafePos(world, triedPos.down())) {
-							triedPos = triedPos.down();
-						}
+					else if(facing != EnumFacing.UP && isSafePos(world, triedPos.down())) {
+						triedPos = triedPos.down();
 					}
 
 					return triedPos;

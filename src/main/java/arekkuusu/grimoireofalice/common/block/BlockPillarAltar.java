@@ -10,8 +10,6 @@ package arekkuusu.grimoireofalice.common.block;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;

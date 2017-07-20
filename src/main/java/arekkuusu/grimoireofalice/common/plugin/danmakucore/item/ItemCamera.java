@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemCamera extends ItemMod {
+public abstract class ItemCamera extends ItemMod {
 
 	public ItemCamera(String id) {
 		super(id);
@@ -91,9 +91,7 @@ public class ItemCamera extends ItemMod {
 		}
 	}
 
-	public int getSize() {
-		return 0;
-	}
+	public abstract int getSize();
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {

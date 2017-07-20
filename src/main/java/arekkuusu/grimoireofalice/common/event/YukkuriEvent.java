@@ -3,16 +3,13 @@ package arekkuusu.grimoireofalice.common.event;
 import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -123,10 +120,9 @@ public class YukkuriEvent {
 			}
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-			if(!stack.isEmpty() && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
-				if((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion()) {
-					event.setCanceled(true);
-				}
+			if(!stack.isEmpty() && stack.getItem() == ModItems.KANAKO_SHIMENAWA && (
+					(event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())) {
+				event.setCanceled(true);
 			}
 		}
 		else {

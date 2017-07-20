@@ -55,9 +55,9 @@ public class PotionMod extends Potion {
 		int textureY = 198 + iconIndex / 8 * 18;
 		float f = 0.00390625F; //What is this for?
 
-		buf.pos(x, y + 18, 0).tex(textureX * f, (textureY + 18) * f).endVertex();
-		buf.pos(x + 18, y + 18, 0).tex((textureX + 18) * f, (textureY + 18) * f).endVertex();
-		buf.pos(x + 18, y, 0).tex((textureX + 18) * f, textureY * f).endVertex();
+		buf.pos(x, y + 18D, 0).tex(textureX * f, (textureY + 18) * f).endVertex();
+		buf.pos(x + 18D, y + 18D, 0).tex((textureX + 18) * f, (textureY + 18) * f).endVertex();
+		buf.pos(x + 18D, y, 0).tex((textureX + 18) * f, textureY * f).endVertex();
 		buf.pos(x, y, 0).tex(textureX * f, textureY * f).endVertex();
 
 		tessellator.draw();

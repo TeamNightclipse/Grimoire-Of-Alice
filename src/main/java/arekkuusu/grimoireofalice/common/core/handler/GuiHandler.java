@@ -25,8 +25,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiHandler implements IGuiHandler {
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		switch(ID) {
+	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+		switch(id) {
 			case 1:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem = player.getHeldItem(hand);
@@ -48,8 +48,8 @@ public class GuiHandler implements IGuiHandler {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		switch(ID) {
+	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
+		switch(id) {
 			case 0:
 				return new GuiScreenGuide();
 			case 1:

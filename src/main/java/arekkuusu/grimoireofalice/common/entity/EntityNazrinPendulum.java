@@ -19,9 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -36,7 +33,7 @@ public class EntityNazrinPendulum extends Entity {
 	private ItemStack stack;
 	private String ore = "";
 
-	public EntityPlayer user;
+	private EntityPlayer user;
 	private boolean follow;
 
 	public EntityNazrinPendulum(World world) {
@@ -61,10 +58,7 @@ public class EntityNazrinPendulum extends Entity {
 				stopEntity();
 			}
 			else {
-				if(ticksExisted > 10 && user.isSneaking()) {
-					stopEntity();
-				}
-				else if(user.hurtTime > 0) {
+				if(ticksExisted > 10 && user.isSneaking() || user.hurtTime > 0) {
 					stopEntity();
 				}
 			}
@@ -85,6 +79,7 @@ public class EntityNazrinPendulum extends Entity {
 				ItemStack stack = new ItemStack(block);
 
 				//noinspection ConstantConditions Liar
+				//Check that the block has an item representation
 				if(stack.isEmpty()) {
 					continue;
 				}

@@ -67,7 +67,7 @@ public class FormWind extends FormGeneric {
 				GlStateManager.rotate(roll, 0F, 0F, 1F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
 
-				GlStateManager.rotate(danmaku.ticksExisted * 64, 0.0F, 1.0F, 0.0F);
+				GlStateManager.rotate(danmaku.ticksExisted * 64F, 0.0F, 1.0F, 0.0F);
 				//A bit hacky to pass in the color here, but meh
 				modelWind.render(danmaku, r, g, b, 0.0F, 0.0F, 0.0625F);
 			}

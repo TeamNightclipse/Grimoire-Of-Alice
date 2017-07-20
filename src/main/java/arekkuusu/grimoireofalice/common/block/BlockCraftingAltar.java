@@ -11,8 +11,6 @@ package arekkuusu.grimoireofalice.common.block;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;

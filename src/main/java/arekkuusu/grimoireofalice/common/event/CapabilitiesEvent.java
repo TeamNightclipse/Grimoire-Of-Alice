@@ -1,7 +1,6 @@
 package arekkuusu.grimoireofalice.common.event;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
@@ -27,15 +26,13 @@ public class CapabilitiesEvent {
 			List<EntityItem> drop = event.getDrops();
 			for(EntityItem item : drop) {
 				Item i = item.getItem().getItem();
-				if(isFlyItem(i)) {
-					if(!player.capabilities.isCreativeMode) {
-						player.capabilities.allowFlying = false;
-						player.capabilities.isFlying = false;
-						if(!player.world.isRemote) {
-							player.sendPlayerAbilities();
-						}
-						playersFlying.remove(player);
+				if(isFlyItem(i) && !player.capabilities.isCreativeMode) {
+					player.capabilities.allowFlying = false;
+					player.capabilities.isFlying = false;
+					if(!player.world.isRemote) {
+						player.sendPlayerAbilities();
 					}
+					playersFlying.remove(player);
 				}
 			}
 		}
@@ -46,15 +43,13 @@ public class CapabilitiesEvent {
 		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
 			EntityPlayer player = event.getPlayer();
 			Item item = event.getEntityItem().getItem().getItem();
-			if(isFlyItem(item)) {
-				if(!player.capabilities.isCreativeMode) {
-					player.capabilities.allowFlying = false;
-					player.capabilities.isFlying = false;
-					if(!player.world.isRemote) {
-						player.sendPlayerAbilities();
-					}
-					playersFlying.remove(player);
+			if(isFlyItem(item) && !player.capabilities.isCreativeMode) {
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
+				if(!player.world.isRemote) {
+					player.sendPlayerAbilities();
 				}
+				playersFlying.remove(player);
 			}
 		}
 	}

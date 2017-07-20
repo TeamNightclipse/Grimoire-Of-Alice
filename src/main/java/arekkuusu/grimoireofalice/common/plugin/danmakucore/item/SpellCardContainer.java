@@ -8,8 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

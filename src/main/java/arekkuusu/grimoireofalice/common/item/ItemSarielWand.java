@@ -205,25 +205,25 @@ public class ItemSarielWand extends ItemSwordOwner {
 	@SideOnly(Side.CLIENT)
 	private String getName(ItemStack stack) {
 		int type = getType(stack);
-		switch(type) {
-			case 3:
-				NBTTagCompound nbt = stack.getTagCompound();
+		if(type == 3) {
+			NBTTagCompound nbt = stack.getTagCompound();
 
-				if(nbt != null) {
-					UUID uuid = nbt.getUniqueId(PLAYER_UUID);
+			if(nbt != null) {
+				UUID uuid = nbt.getUniqueId(PLAYER_UUID);
 
-					if(uuid != null) {
-						GameProfile profile = getCache().getProfileByUUID(uuid);
+				if(uuid != null) {
+					GameProfile profile = getCache().getProfileByUUID(uuid);
 
-						if(profile != null) {
-							return profile.getName();
-						}
+					if(profile != null) {
+						return profile.getName();
 					}
 				}
+			}
 
-				return I18n.format("grimoire.tooltip.skull_3.name");
-			default:
-				return I18n.format("grimoire.tooltip.skull_" + type + ".name");
+			return I18n.format("grimoire.tooltip.skull_3.name");
+		}
+		else {
+			return I18n.format("grimoire.tooltip.skull_" + type + ".name");
 		}
 	}
 

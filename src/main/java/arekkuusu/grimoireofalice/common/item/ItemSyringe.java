@@ -49,12 +49,10 @@ public class ItemSyringe extends ItemModSword implements IOwnedBy {
 	}
 
 	private void doPotionEffect(EntityLivingBase target) {
-		if(!target.world.isRemote) {
-			if(target.getActivePotionEffects().size() < 5) {
-				Potion potion = Potion.REGISTRY.getRandomObject(target.getRNG());
-				if(potion != null) {
-					target.addPotionEffect(new PotionEffect(potion, 1200, 0));
-				}
+		if(!target.world.isRemote && target.getActivePotionEffects().size() < 5) {
+			Potion potion = Potion.REGISTRY.getRandomObject(target.getRNG());
+			if(potion != null) {
+				target.addPotionEffect(new PotionEffect(potion, 1200, 0));
 			}
 		}
 	}

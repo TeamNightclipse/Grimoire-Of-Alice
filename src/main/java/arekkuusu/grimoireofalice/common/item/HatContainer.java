@@ -10,8 +10,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-import javax.annotation.Nullable;
-
 public class HatContainer extends Container {
 
 	private final ItemStack stack;

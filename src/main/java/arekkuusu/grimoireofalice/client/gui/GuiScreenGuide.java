@@ -92,10 +92,8 @@ public class GuiScreenGuide extends GuiScreen {
 				++currPage;
 			}
 		}
-		else if(parButton == buttonPreviousPage) {
-			if(currPage > 0) {
-				--currPage;
-			}
+		else if(parButton == buttonPreviousPage && currPage > 0) {
+			--currPage;
 		}
 		playTurnPage();
 	}

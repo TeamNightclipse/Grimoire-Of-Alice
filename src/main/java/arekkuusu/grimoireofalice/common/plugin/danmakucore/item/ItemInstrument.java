@@ -23,7 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class ItemInstrument extends ItemMod {
+public abstract class ItemInstrument extends ItemMod {
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -80,17 +80,11 @@ public class ItemInstrument extends ItemMod {
 		}
 	}
 
-	public double getVelocity() {
-		return 0.1D;
-	}
+	public abstract double getVelocity();
 
-	public float getSize() {
-		return 1F;
-	}
+	public abstract float getSize();
 
-	public double getDistance() {
-		return 1D;
-	}
+	public abstract double getDistance();
 
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {

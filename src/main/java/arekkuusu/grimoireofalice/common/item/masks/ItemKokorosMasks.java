@@ -67,10 +67,8 @@ public class ItemKokorosMasks extends ItemModMask {
 		list.add(TextFormatting.ITALIC + "being worn at the same time");
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = stack.getTagCompound().getUniqueId(OWNER_TAG);
-			if(ownerUuid != null) {
-				if(UsernameCache.containsUUID(ownerUuid)) {
-					list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-				}
+			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
+				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
 			}
 		}
 	}

@@ -19,56 +19,56 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModelKokorosMasks extends ModelBiped {
 
 	//fields
-	private final ModelRenderer Mask1;
-	private final ModelRenderer Mask2;
-	private final ModelRenderer Mask3;
-	private final ModelRenderer Mask4;
-	private final ModelRenderer Mask5;
-	private final ModelRenderer Mask6;
-	private final ModelRenderer Mask7;
-	private final ModelRenderer Mask8;
-	private final ModelRenderer Mask9;
+	private final ModelRenderer mask1;
+	private final ModelRenderer mask2;
+	private final ModelRenderer mask3;
+	private final ModelRenderer mask4;
+	private final ModelRenderer mask5;
+	private final ModelRenderer mask6;
+	private final ModelRenderer mask7;
+	private final ModelRenderer mask8;
+	private final ModelRenderer mask9;
 
 	public ModelKokorosMasks() {
 		textureWidth = 256;
 		textureHeight = 256;
 
-		Mask1 = new ModelRenderer(this, 0, 0);
-		Mask1.addBox(-10.5F, -5F, -31F, 21, 21, 1);
-		Mask1.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask1, 0F, 0F, 0F);
-		Mask2 = new ModelRenderer(this, 0, 24);
-		Mask2.addBox(-10.5F, -5F, 31F, 21, 21, 1);
-		Mask2.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask2, 0F, 0F, 0F);
-		Mask3 = new ModelRenderer(this, 48, 0);
-		Mask3.addBox(31F, -5F, -10.5F, 1, 21, 21);
-		Mask3.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask3, 0F, 0F, 0F);
-		Mask4 = new ModelRenderer(this, 95, 0);
-		Mask4.addBox(-31F, -5F, -10.5F, 1, 21, 21);
-		Mask4.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask4, 0F, 0F, 0F);
-		Mask5 = new ModelRenderer(this, 96, 88);
-		Mask5.addBox(30.5F, -5F, -9.5F, 1, 21, 21);
-		Mask5.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask5, 0F, 0.7941248F, 0F);
-		Mask6 = new ModelRenderer(this, 48, 88);
-		Mask6.addBox(-31.5F, -5F, -10F, 1, 21, 21);
-		Mask6.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask6, 0F, 0.7853982F, 0F);
-		Mask7 = new ModelRenderer(this, 96, 44);
-		Mask7.addBox(-31F, -5F, -10.5F, 1, 21, 21);
-		Mask7.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask7, 0F, -0.7853982F, 0F);
-		Mask8 = new ModelRenderer(this, 48, 44);
-		Mask8.addBox(31F, -5F, -10.5F, 1, 21, 21);
-		Mask8.setRotationPoint(0F, 0F, 0F);
-		setRotation(Mask8, 0F, -0.7853982F, 0F);
-		Mask9 = new ModelRenderer(this, 142, 0);
-		Mask9.addBox(12F, -15F, -5F, 1, 21, 21);
-		Mask9.setRotationPoint(0F, -16F, 0F);
-		setRotation(Mask9, 0F, 0.3490659F, 0F);
+		mask1 = new ModelRenderer(this, 0, 0);
+		mask1.addBox(-10.5F, -5F, -31F, 21, 21, 1);
+		mask1.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask1, 0F, 0F, 0F);
+		mask2 = new ModelRenderer(this, 0, 24);
+		mask2.addBox(-10.5F, -5F, 31F, 21, 21, 1);
+		mask2.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask2, 0F, 0F, 0F);
+		mask3 = new ModelRenderer(this, 48, 0);
+		mask3.addBox(31F, -5F, -10.5F, 1, 21, 21);
+		mask3.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask3, 0F, 0F, 0F);
+		mask4 = new ModelRenderer(this, 95, 0);
+		mask4.addBox(-31F, -5F, -10.5F, 1, 21, 21);
+		mask4.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask4, 0F, 0F, 0F);
+		mask5 = new ModelRenderer(this, 96, 88);
+		mask5.addBox(30.5F, -5F, -9.5F, 1, 21, 21);
+		mask5.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask5, 0F, 0.7941248F, 0F);
+		mask6 = new ModelRenderer(this, 48, 88);
+		mask6.addBox(-31.5F, -5F, -10F, 1, 21, 21);
+		mask6.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask6, 0F, 0.7853982F, 0F);
+		mask7 = new ModelRenderer(this, 96, 44);
+		mask7.addBox(-31F, -5F, -10.5F, 1, 21, 21);
+		mask7.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask7, 0F, -0.7853982F, 0F);
+		mask8 = new ModelRenderer(this, 48, 44);
+		mask8.addBox(31F, -5F, -10.5F, 1, 21, 21);
+		mask8.setRotationPoint(0F, 0F, 0F);
+		setRotation(mask8, 0F, -0.7853982F, 0F);
+		mask9 = new ModelRenderer(this, 142, 0);
+		mask9.addBox(12F, -15F, -5F, 1, 21, 21);
+		mask9.setRotationPoint(0F, -16F, 0F);
+		setRotation(mask9, 0F, 0.3490659F, 0F);
 	}
 
 	@Override
@@ -88,16 +88,16 @@ public class ModelKokorosMasks extends ModelBiped {
 		GlStateManager.translate(0, maxUpAndDown * Math.sin(angle * toDegrees), 0);
 		GlStateManager.pushMatrix();
 		GlStateManager.rotate(age * 5, 0.0F, 1.0F, 0.0F);
-		Mask1.render(scale);
-		Mask2.render(scale);
-		Mask3.render(scale);
-		Mask4.render(scale);
-		Mask5.render(scale);
-		Mask6.render(scale);
-		Mask7.render(scale);
-		Mask8.render(scale);
+		mask1.render(scale);
+		mask2.render(scale);
+		mask3.render(scale);
+		mask4.render(scale);
+		mask5.render(scale);
+		mask6.render(scale);
+		mask7.render(scale);
+		mask8.render(scale);
 		GlStateManager.popMatrix();
-		Mask9.render(scale);
+		mask9.render(scale);
 		GlStateManager.popMatrix();
 	}
 

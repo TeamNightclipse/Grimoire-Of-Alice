@@ -21,18 +21,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelToyosatomimiCloack extends ModelBiped {
 
-	public ModelRenderer capeBase;
-	public ModelRenderer cape0;
-	public ModelRenderer cape1;
-	public ModelRenderer cape2;
-	public ModelRenderer cape3;
-	public ModelRenderer cape4;
-	public ModelRenderer cape5;
-	public ModelRenderer cape6;
-	public ModelRenderer cape7;
-	public ModelRenderer cape8;
-	public ModelRenderer cape9;
-	public ModelRenderer cape10;
+	private ModelRenderer capeBase;
+	private ModelRenderer cape0;
+	private ModelRenderer cape1;
+	private ModelRenderer cape2;
+	private ModelRenderer cape3;
+	private ModelRenderer cape4;
+	private ModelRenderer cape5;
+	private ModelRenderer cape6;
+	private ModelRenderer cape7;
+	private ModelRenderer cape8;
+	private ModelRenderer cape9;
+	private ModelRenderer cape10;
 
 	public ModelToyosatomimiCloack() {
 		this.textureWidth = 64;

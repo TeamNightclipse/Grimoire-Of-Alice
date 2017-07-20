@@ -49,11 +49,8 @@ public class WorldGenLoot {
 		}
 		else if(lootName.startsWith(fishingLoot)) {
 			String file = lootName.substring(lootName.indexOf(fishingLoot) + fishingLoot.length());
-			switch(file) {
-				case "fishing":
-					event.getTable().addPool(getInjectPool("gameplay/" + file));
-				default:
-					break;
+			if(file.equals("fishing")) {
+				event.getTable().addPool(getInjectPool("gameplay/" + file));
 			}
 		}
 	}

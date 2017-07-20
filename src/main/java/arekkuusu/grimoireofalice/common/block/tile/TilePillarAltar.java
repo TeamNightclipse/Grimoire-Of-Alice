@@ -10,8 +10,6 @@ package arekkuusu.grimoireofalice.common.block.tile;
 
 import javax.annotation.Nullable;
 
-import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;

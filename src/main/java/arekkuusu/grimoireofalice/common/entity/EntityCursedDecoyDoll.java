@@ -24,8 +24,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-import javax.annotation.Nullable;
-
 public class EntityCursedDecoyDoll extends EntityLivingBase {
 
 	private EntityPlayer user;

@@ -52,10 +52,8 @@ public class SubEntityWind extends SubEntityType {
 			super.subEntityTick();
 			World world = danmaku.world;
 
-			if(!world.isRemote) {
-				if(danmaku.isInWater() || danmaku.isInLava()) {
-					danmaku.setDead();
-				}
+			if(!world.isRemote && (danmaku.isInWater() || danmaku.isInLava())) {
+				danmaku.setDead();
 			}
 
 			if(danmaku.ticksExisted % 4 == 0 && danmaku.getShotData().delay() == 0) {
@@ -69,28 +67,26 @@ public class SubEntityWind extends SubEntityType {
 
 		@Override
 		protected void impactEntity(RayTraceResult result) {
-			if(!danmaku.world.isRemote) {
-				if(result.entityHit instanceof EntityLiving) {
-					Entity indirect;
-					Optional<EntityLivingBase> optUser = danmaku.getUser();
-					//noinspection OptionalIsPresent
-					if(optUser.isPresent()) {
-						indirect = optUser.get();
-					}
-					else {
-						indirect = danmaku.getSource().orElse(null);
-					}
-
-					result.entityHit.attackEntityFrom(DamageSourceDanmaku.causeDanmakuDamage(danmaku, indirect), timeUsed / 2F);
-					Vec3d windPos = danmaku.getPositionVector();
-					Vec3d mobPos = result.entityHit.getPositionVector();
-					double ratio = windPos.distanceTo(mobPos) / 4;
-					double scaling = 1 - ratio;
-					Vec3d motion = windPos.subtract(mobPos).scale(scaling);
-					result.entityHit.motionX = -motion.x * timeUsed / 2;
-					result.entityHit.motionY = danmaku.motionY;
-					result.entityHit.motionZ = -motion.z * timeUsed / 2;
+			if(!danmaku.world.isRemote && result.entityHit instanceof EntityLiving) {
+				Entity indirect;
+				Optional<EntityLivingBase> optUser = danmaku.getUser();
+				//noinspection OptionalIsPresent
+				if(optUser.isPresent()) {
+					indirect = optUser.get();
 				}
+				else {
+					indirect = danmaku.getSource().orElse(null);
+				}
+
+				result.entityHit.attackEntityFrom(DamageSourceDanmaku.causeDanmakuDamage(danmaku, indirect), timeUsed / 2F);
+				Vec3d windPos = danmaku.getPositionVector();
+				Vec3d mobPos = result.entityHit.getPositionVector();
+				double ratio = windPos.distanceTo(mobPos) / 4;
+				double scaling = 1 - ratio;
+				Vec3d motion = windPos.subtract(mobPos).scale(scaling);
+				result.entityHit.motionX = -motion.x * timeUsed / 2;
+				result.entityHit.motionY = danmaku.motionY;
+				result.entityHit.motionZ = -motion.z * timeUsed / 2;
 			}
 		}
 
