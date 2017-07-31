@@ -44,7 +44,7 @@ public class ItemGrilledLamprey extends ItemModFood implements IOwnedBy {
 	}
 
 	@Optional.Method(modid = "danmakucore")
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MYSTIA_LORELEI;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MYSTIA_LORELEI;
 	}
 }

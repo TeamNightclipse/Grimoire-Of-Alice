@@ -70,7 +70,7 @@ public class ItemToyosatomimiHat extends ItemModArmor implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

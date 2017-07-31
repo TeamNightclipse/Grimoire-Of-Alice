@@ -143,7 +143,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

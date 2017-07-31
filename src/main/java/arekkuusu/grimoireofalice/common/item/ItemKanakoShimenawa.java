@@ -92,7 +92,7 @@ public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, 
 	}
 
 	@Optional.Method(modid = "danmakucore")
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KANAKO_YASAKA;
 	}
 }

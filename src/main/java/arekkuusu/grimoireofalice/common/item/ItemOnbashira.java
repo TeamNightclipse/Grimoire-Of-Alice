@@ -76,7 +76,7 @@ public class ItemOnbashira extends ItemModSword implements IOwnedBy {
 
 	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KANAKO_YASAKA;
 	}
 }

@@ -150,7 +150,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 
 	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NAZRIN;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.NAZRIN;
 	}
 }

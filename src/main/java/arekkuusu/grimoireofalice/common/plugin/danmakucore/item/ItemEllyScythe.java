@@ -12,11 +12,12 @@ import arekkuusu.grimoireofalice.common.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemModSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.plugin.danmakucore.GoATouhouCharacters;
 import net.katsstuff.danmakucore.data.AbstractVector3;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.katsstuff.danmakucore.lib.LibColor;
@@ -157,7 +158,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.OLD;
+	public TouhouCharacter character(ItemStack stack) {
+		return GoATouhouCharacters.ELLY;
 	}
 }

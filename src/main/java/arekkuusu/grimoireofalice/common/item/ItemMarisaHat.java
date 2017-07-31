@@ -196,7 +196,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MARISA_KIRISAME;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MARISA_KIRISAME;
 	}
 }

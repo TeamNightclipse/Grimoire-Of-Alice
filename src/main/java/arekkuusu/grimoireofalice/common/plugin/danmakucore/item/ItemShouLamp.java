@@ -14,7 +14,7 @@ import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.Quat;
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
 import net.katsstuff.danmakucore.helper.ItemNBTHelper;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -148,7 +148,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.SHOU_TORAMARU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SHOU_TORAMARU;
 	}
 }

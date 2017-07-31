@@ -122,7 +122,7 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.ICHIRIN_KUMOI;
 	}
 }

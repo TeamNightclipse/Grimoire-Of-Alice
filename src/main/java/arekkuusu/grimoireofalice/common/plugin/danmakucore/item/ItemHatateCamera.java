@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.item.ItemStack;
 
@@ -25,7 +25,7 @@ public class ItemHatateCamera extends ItemCamera implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.HATATE_HIMAKAIDOU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.HATATE_HIMAKAIDOU;
 	}
 }

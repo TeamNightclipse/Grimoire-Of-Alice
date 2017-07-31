@@ -171,8 +171,8 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KOISHI_KOMEIJI
-				: net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SATORI_KOMEIJI;
+	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
+		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.TouhouCharacter.KOISHI_KOMEIJI
+				: net.katsstuff.danmakucore.entity.living.TouhouCharacter.SATORI_KOMEIJI;
 	}
 }

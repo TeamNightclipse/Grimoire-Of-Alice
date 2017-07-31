@@ -17,7 +17,7 @@ import arekkuusu.grimoireofalice.common.plugin.danmakucore.subentity.SubEntityWi
 import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.katsstuff.danmakucore.entity.danmaku.subentity.SubEntity;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.helper.DanmakuHelper;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
@@ -111,7 +111,7 @@ public class ItemTenguFan extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.AYA_SHAMEIMARU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.AYA_SHAMEIMARU;
 	}
 }

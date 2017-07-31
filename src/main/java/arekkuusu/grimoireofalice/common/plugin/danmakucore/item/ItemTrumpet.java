@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.plugin.danmakucore.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -55,7 +55,7 @@ public class ItemTrumpet extends ItemInstrument implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.MERLIN_PRIMSRIVER;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.MERLIN_PRIMSRIVER;
 	}
 }
