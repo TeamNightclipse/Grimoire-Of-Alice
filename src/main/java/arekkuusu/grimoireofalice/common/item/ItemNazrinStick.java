@@ -71,7 +71,7 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
@@ -190,7 +190,7 @@ public class ItemNazrinStick extends ItemModSword {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
+		return 72_000;
 	}
 
 	@Override

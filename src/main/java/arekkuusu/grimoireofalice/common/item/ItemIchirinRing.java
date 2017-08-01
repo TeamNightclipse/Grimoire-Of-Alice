@@ -57,7 +57,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_ring_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_use.name"));
@@ -113,7 +113,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 		}
 	}
 
-	private boolean isStand(EntityPlayer player) {
+	private static boolean isStand(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 		return !stack.isEmpty() && stack.getDisplayName().equalsIgnoreCase("star platinum");
 	}
@@ -132,12 +132,12 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 		return true;
 	}
 
-	private boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
+	private static boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
 		ItemStack main = player.getHeldItem(hand);
 		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
-	private boolean isWearingUnzan(EntityPlayer player) {
+	private static boolean isWearingUnzan(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
 		return !stack.isEmpty() && stack.getItem() == ModItems.ICHIRIN_UNZAN;
 	}

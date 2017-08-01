@@ -51,7 +51,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.dragon_jewel_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.dragon_jewel_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.dragon_jewel_description_bottom.name"));
@@ -81,7 +81,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 
 				if(!world.isRemote) {
 					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-							player.getEntityBoundingBox().offset(vec.x * 3, 0, vec.z * 3).grow(4D), entity -> entity != player);
+							player.getEntityBoundingBox().offset(vec.x * 3, 0, vec.z * 3).grow(4D), entity -> !player.equals(entity));
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 				}
 			}
@@ -100,7 +100,7 @@ public class ItemDragonJewel extends ItemMod implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-	private void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
+	private static void spawnJewel(ItemStack stack, World world, EntityPlayer player) {
 		world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE, SoundCategory.PLAYERS, 1F, 1F);
 		if(!world.isRemote) {
 			EntityDragonJewel jewel = new EntityDragonJewel(world, player);

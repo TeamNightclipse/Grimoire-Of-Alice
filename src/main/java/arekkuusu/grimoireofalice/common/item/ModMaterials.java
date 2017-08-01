@@ -7,9 +7,6 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public final class ModMaterials {
 
-	private ModMaterials() {
-	}
-
 	//Armor Materials
 	public static final ItemArmor.ArmorMaterial WEAK_PAPER = EnumHelper.addArmorMaterial("WEAK_PAPER", "No", 33, new int[]{3, 4, 3, 2}, 30,
 			SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
@@ -31,4 +28,7 @@ public final class ModMaterials {
 	public static final Item.ToolMaterial STRONG_STONE = EnumHelper.addToolMaterial("STRONG_STONE", 2, 250, 3.0F, 1.5F, 14);
 	public static final Item.ToolMaterial NOODLE = EnumHelper.addToolMaterial("NOODLE", 3, 251, 15.0F, 0F, 30);
 	public static final Item.ToolMaterial BUDAH_BOUL = EnumHelper.addToolMaterial("BUDAH_BOUL", 4, 1561, 80.0F, 3.0F, 100);
+
+	private ModMaterials() {
+	}
 }

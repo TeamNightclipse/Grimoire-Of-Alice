@@ -61,7 +61,7 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.laevatein_header.name"));
 	}
 
@@ -117,7 +117,7 @@ public class ItemLaevatein extends ItemModSword implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-	private int getSlotFor(EntityPlayer player, ItemStack stack) {
+	private static int getSlotFor(EntityPlayer player, ItemStack stack) {
 		for(int i = 0; i < player.inventory.mainInventory.size(); ++i) {
 			ItemStack invStack = player.inventory.mainInventory.get(i);
 			if(!invStack.isEmpty() && stack.getItem() == invStack.getItem() && ItemStack.areItemStackTagsEqual(stack, invStack)) {

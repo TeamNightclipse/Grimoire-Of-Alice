@@ -42,7 +42,7 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miracle_mallet_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miracle_mallet_description.name"));
 	}
@@ -95,7 +95,7 @@ public class ItemMiracleMallet extends ItemMod implements IOwnedBy {
 			else if(!player.world.isRemote && !player.getCooldownTracker().hasCooldown(this)) {
 				Vec3d vec = player.getLookVec();
 				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-						entityLiving.getEntityBoundingBox().offset(vec.x * 4, 0, vec.z * 4).grow(3D), entity -> entity != player);
+						entityLiving.getEntityBoundingBox().offset(vec.x * 4, 0, vec.z * 4).grow(3D), entity -> !player.equals(entity));
 				list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10F + itemRand.nextInt(10)));
 
 				for(int i = 0; i < 4; i++) {

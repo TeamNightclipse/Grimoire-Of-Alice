@@ -63,7 +63,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_status.name") + " " + getStatus(stack));
@@ -75,7 +75,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private String getStatus(ItemStack stack) {
+	private static String getStatus(ItemStack stack) {
 		return isClosed(stack) ? TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.third_eye_closed.name")
 				: TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.third_eye_open.name");
 	}
@@ -88,7 +88,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 				player.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 10, 0));
 				if(!world.isRemote) {
 					world.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB(player.getPosition()).grow(20D),
-							entity -> entity != null && entity.getAttackTarget() == player)
+							entity -> entity != null && player.equals(entity.getAttackTarget()))
 							.forEach(livingBase -> livingBase.setLastAttackedEntity(null));
 				}
 			}
@@ -98,7 +98,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 		}
 	}
 
-	private void applyEffectNearby(World world, EntityPlayer player, PotionEffect effect) {
+	private static void applyEffectNearby(World world, EntityPlayer player, PotionEffect effect) {
 		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(player, player.getEntityBoundingBox().grow(20D));
 		list.stream()
 				.filter(mob -> mob instanceof EntityMob).map(mob -> (EntityMob) mob)
@@ -125,7 +125,7 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-	private void setClosed(ItemStack stack, boolean isOpen) {
+	private static void setClosed(ItemStack stack, boolean isOpen) {
 		NBTTagCompound tagCompound = stack.getTagCompound();
 		if(tagCompound == null) {
 			tagCompound = new NBTTagCompound();
@@ -134,14 +134,14 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 		tagCompound.setBoolean("eye", isOpen);
 	}
 
-	private boolean isClosed(ItemStack stack) {
+	private static boolean isClosed(ItemStack stack) {
 		NBTTagCompound tagCompound = stack.getTagCompound();
 		return tagCompound != null && tagCompound.getBoolean("eye");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(isClosed(itemStack)) {
 			if((model == null || model instanceof ModelSatoriEye)) {
 				model = new ModelKoishiEye();

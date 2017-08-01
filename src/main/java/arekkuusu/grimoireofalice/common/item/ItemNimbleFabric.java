@@ -52,7 +52,7 @@ public class ItemNimbleFabric extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nimble_fabric_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nimble_fabric_description.name"));
 	}

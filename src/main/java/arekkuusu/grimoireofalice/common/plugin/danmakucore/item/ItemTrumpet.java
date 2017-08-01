@@ -29,7 +29,7 @@ public class ItemTrumpet extends ItemInstrument implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Poltergeists posses this trumpet");
 		list.add(TextFormatting.ITALIC + "Hold right click to use");
 	}

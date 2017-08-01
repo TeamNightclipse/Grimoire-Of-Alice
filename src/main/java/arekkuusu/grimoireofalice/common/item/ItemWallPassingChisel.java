@@ -46,7 +46,7 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.wall_passing_chisel_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.wall_passing_chisel_description.name"));
 	}
@@ -73,7 +73,7 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 	 * @return Position for player
 	 */
 	@Nullable
-	private BlockPos travelBlockPos(World world, EntityPlayer player, BlockPos pos, EnumFacing facing) {
+	private static BlockPos travelBlockPos(World world, EntityPlayer player, BlockPos pos, EnumFacing facing) {
 		facing = facing.getOpposite();
 		BlockPos triedPos = pos;
 
@@ -103,7 +103,7 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 		return null;
 	}
 
-	private boolean isSafePos(World world, BlockPos pos) {
+	private static boolean isSafePos(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
 		return state.getBlock().isAir(state, world, pos);// || state.isSideSolid(world, pos, EnumFacing.UP);
 	}

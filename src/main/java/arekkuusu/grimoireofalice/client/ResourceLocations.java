@@ -24,7 +24,7 @@ public final class ResourceLocations {
 	public static final ResourceLocation ORB_TEXTURE = getLocation("textures/models/entities/orb.png");
 	public static final ResourceLocation NETHER_SOUL_TEXTURE = getLocation("textures/models/entities/leaf.png");
 
-	public static final ResourceLocation CIRCLE_TEXTURE[] = {
+	public static final ResourceLocation[] CIRCLE_TEXTURE = {
 			getLocation("textures/models/entities/magic_circle_0.png"),
 			getLocation("textures/models/entities/magic_circle_1.png"),
 			getLocation("textures/models/entities/magic_circle_2.png"),
@@ -83,7 +83,7 @@ public final class ResourceLocations {
 
 	//GUI
 	public static final ResourceLocation POTION_TEXTURES = getLocation("textures/gui/potions.png");
-	public static final ResourceLocation BOOK_GUI_TEXTURES[] = {
+	public static final ResourceLocation[] BOOK_GUI_TEXTURES = {
 			getLocation("textures/gui/guide/guide0.png"),
 			getLocation("textures/gui/guide/guide1.png"),
 			getLocation("textures/gui/guide/guide2.png"),

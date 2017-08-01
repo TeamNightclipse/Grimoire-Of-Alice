@@ -50,7 +50,7 @@ public class ItemCharmofHealing extends ItemMod implements IOwnedBy {
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
+	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BOW;
 	}
 

@@ -55,7 +55,7 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_top.name"));
@@ -104,7 +104,7 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private Optional<BlockPos> getBlockPosLookedAt(EntityPlayer player) {
+	private static Optional<BlockPos> getBlockPosLookedAt(EntityPlayer player) {
 		double range = 40.0D;
 		Vec3d look = player.getLookVec();
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
@@ -118,7 +118,7 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private boolean isSafe(World world, BlockPos pos) {
+	private static boolean isSafe(World world, BlockPos pos) {
 		if(pos.getY() < 0) {
 			return false;
 		}

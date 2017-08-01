@@ -17,10 +17,6 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/blocks/ice.png");
 
-	public RenderIceBlock(RenderManager renderManager) {
-		super(renderManager);
-	}
-
 	private static final int[][] p = {
 			{0, 1, 2, 3},
 			{3, 2, 5, 4},
@@ -36,6 +32,10 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 			{1, 0},
 			{0, 0}
 	};
+
+	public RenderIceBlock(RenderManager renderManager) {
+		super(renderManager);
+	}
 
 	@Override
 	public void doRender(EntityIceBlock box, double x, double y, double z, float entityYaw, float partialTicks) {

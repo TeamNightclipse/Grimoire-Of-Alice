@@ -44,7 +44,7 @@ public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rumia_sword_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rumia_sword_description.name"));
 	}
@@ -55,7 +55,7 @@ public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			Vec3d vec = player.getLookVec();
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-					entityLiving.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(3D), entity -> entity != player);
+					entityLiving.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(3D), entity -> !player.equals(entity));
 			list.forEach(entity -> entity.setFire(50));
 		}
 		entityLiving.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);

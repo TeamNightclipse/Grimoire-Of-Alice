@@ -94,7 +94,7 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
 		return hasRod;
 	}
 
-	private void setBlock(World world, Block block, BlockPos pos) {
+	private static void setBlock(World world, Block block, BlockPos pos) {
 		world.setBlockState(pos, block.getDefaultState(), 3);
 		((WorldServer) world).spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX(),
 				pos.getY(), pos.getZ(), 8, 0D, 0D, 0D, 0D);
@@ -102,7 +102,7 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelNuclearBoots();
 		}

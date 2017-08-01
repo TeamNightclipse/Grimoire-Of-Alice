@@ -45,7 +45,7 @@ public class ItemMaskOfHope extends ItemModMask {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.mask_of_hope_header.name"));
 		list.add(TextFormatting.DARK_GRAY + I18n.format("grimoire.tooltip.mask_of_hope_description.name"));
 

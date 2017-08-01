@@ -30,7 +30,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		addDescriptions(registry);
 	}
 
-	private void addDescriptions(IModRegistry registry) {
+	private static void addDescriptions(IModRegistry registry) {
 		addDescription(registry, new ItemStack(ModItems.BUDAH_BOUL), "grimoire.jei.descriptions.budah_boul", LINE
 				, "grimoire.jei.descriptions_body.budah_boul");
 
@@ -339,7 +339,7 @@ public class GoAJEIPlugin extends BlankModPlugin {
 		addDescription(registry, new ItemStack(ModBlocks.ALTAR), "grimoire.jei.descriptions.altar", LINE);
 	}
 
-	private void addDescription(IModRegistry registry, ItemStack stack, String... keys) {
+	private static void addDescription(IModRegistry registry, ItemStack stack, String... keys) {
 		registry.addIngredientInfo(stack, ItemStack.class, keys);
 	}
 }

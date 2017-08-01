@@ -50,7 +50,7 @@ public class ItemFakeMiracleMallet extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fake_miracle_mallet_header.name"));
 	}
 
@@ -61,7 +61,7 @@ public class ItemFakeMiracleMallet extends ItemMod implements IOwnedBy {
 			Vec3d vec = player.getLookVec();
 			if(!player.world.isRemote) {
 				List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-						entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> entity != player);
+						entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> !player.equals(entity));
 				if(!list.isEmpty()) {
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeMobDamage(entityLiving), 10F));
 					stack.damageItem(1, player);

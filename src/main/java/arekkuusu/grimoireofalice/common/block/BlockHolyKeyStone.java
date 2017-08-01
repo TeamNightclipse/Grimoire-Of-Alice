@@ -46,7 +46,7 @@ public class BlockHolyKeyStone extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_key_stone_header.name"));
 	}
 
@@ -81,7 +81,7 @@ public class BlockHolyKeyStone extends BlockMod {
 		optPlayer.ifPresent(ignored -> spawnParticles(world, pos, rand));
 	}
 
-	private void addPlayerEffect(EntityPlayer player) {
+	private static void addPlayerEffect(EntityPlayer player) {
 		player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 50, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 50, 3));
 		player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50, 3));
@@ -114,7 +114,7 @@ public class BlockHolyKeyStone extends BlockMod {
 		}
 	}
 
-	private Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
+	private static Optional<EntityPlayer> getPlayerInRange(World world, BlockPos pos) {
 		if(world.isRaining()) {
 			return Optional.ofNullable(world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 3, false));
 		}

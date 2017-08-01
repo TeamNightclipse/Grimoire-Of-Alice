@@ -37,7 +37,7 @@ public class ItemMomijisScimitarSword extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.momijis_scimitar_sword_header.name"));
 		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.momijis_scimitar_sword_description.name"));
 	}
@@ -49,7 +49,7 @@ public class ItemMomijisScimitarSword extends ItemModSword implements IOwnedBy {
 		return modifiers;
 	}
 
-	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier) {
+	private static void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier) {
 		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
 		Optional<AttributeModifier> modifierOptional = modifiers.stream()
 				.filter(attributeModifier -> attributeModifier.getID().equals(id))

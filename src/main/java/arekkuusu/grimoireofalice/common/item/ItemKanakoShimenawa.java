@@ -42,7 +42,7 @@ public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, 
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_bottom.name"));
@@ -73,7 +73,7 @@ public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, 
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelKanakoShimenawa();
 		}

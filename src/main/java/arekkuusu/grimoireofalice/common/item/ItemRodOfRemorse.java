@@ -39,6 +39,9 @@ import net.minecraftforge.oredict.OreDictionary;
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 
+	@CapabilityInject(IItemHandler.class)
+	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
+
 	public ItemRodOfRemorse() {
 		super(LibItemName.ROD_REMORSE);
 		setMaxStackSize(1);
@@ -46,9 +49,6 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 		addPropertyOverride(new ResourceLocation("used"),
 				(stack, world, entity) -> getUsed(stack) ? 1F : 0F);
 	}
-
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -63,7 +63,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rod_of_remorse_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rod_of_remorse_description.name"));
 	}
@@ -93,7 +93,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
 
-	private boolean isDyeBlack(ItemStack stack) {
+	private static boolean isDyeBlack(ItemStack stack) {
 		for(int oreId : OreDictionary.getOreIDs(stack)) {
 			if(OreDictionary.getOreName(oreId).equals("dyeBlack")) {
 				return true;
@@ -130,7 +130,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 		return true;
 	}
 
-	private void setUsed(ItemStack itemStack, boolean used) {
+	private static void setUsed(ItemStack itemStack, boolean used) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -139,7 +139,7 @@ public class ItemRodOfRemorse extends ItemMod implements IOwnedBy {
 		nbt.setBoolean("IsUsed", used);
 	}
 
-	private boolean getUsed(ItemStack itemStack) {
+	private static boolean getUsed(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt != null && nbt.getBoolean("IsUsed");
 	}

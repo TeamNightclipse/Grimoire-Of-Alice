@@ -43,6 +43,12 @@ public class GuiScreenGuide extends GuiScreen {
 			getText("grimoire.gui.book_9")
 	);
 
+	private static final int BOOK_TOTAL_PAGES = 10;
+	private int currPage = 0;
+	private GuiButton buttonDone;
+	private NextPageButton buttonNextPage;
+	private NextPageButton buttonPreviousPage;
+
 	private static List<String> getText(String text) {
 		List<String> lines = new ArrayList<>();
 		String formatted = I18n.format(text);
@@ -51,12 +57,6 @@ public class GuiScreenGuide extends GuiScreen {
 
 		return lines;
 	}
-
-	private static final int BOOK_TOTAL_PAGES = 10;
-	private int currPage = 0;
-	private GuiButton buttonDone;
-	private NextPageButton buttonNextPage;
-	private NextPageButton buttonPreviousPage;
 
 	@Override
 	public void initGui() {
@@ -99,7 +99,7 @@ public class GuiScreenGuide extends GuiScreen {
 	}
 
 	@Override
-	public void drawScreen(int parWidth, int parHeight, float p_73863_3_) {
+	public void drawScreen(int parWidth, int parHeight, float partialTicks) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[currPage]);
 		drawTexturedModalRect((width - 250) / 2, 56, 0, 0, 256, 192);
@@ -110,7 +110,7 @@ public class GuiScreenGuide extends GuiScreen {
 			fontRenderer.drawString(s, (width - 245) / 2, 70 + i * 12, 0);
 		}
 
-		super.drawScreen(parWidth, parHeight, p_73863_3_);
+		super.drawScreen(parWidth, parHeight, partialTicks);
 	}
 
 	@Override
@@ -157,7 +157,7 @@ public class GuiScreenGuide extends GuiScreen {
 		}
 	}
 
-	private void playTurnPage() {
+	private static void playTurnPage() {
 		EntityPlayerSP player = Minecraft.getMinecraft().player;
 		player.playSound(GrimoireSoundEvents.PAGE_TURN, 0.5F, 1.25F);
 	}

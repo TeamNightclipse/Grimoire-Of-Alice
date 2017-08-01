@@ -35,7 +35,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 		GlStateManager.translate(x, y, z);
 		GlStateManager.enableRescaleNormal();
 		GlStateManager.scale(2F, 2F, 2F);
-		GlStateManager.rotate(entity.getTicksAlive() * 32, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.getTicksAlive() * 32F, 0.0F, 1.0F, 0.0F);
 		renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();

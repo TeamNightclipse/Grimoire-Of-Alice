@@ -55,11 +55,11 @@ public class WorldGenLoot {
 		}
 	}
 
-	private LootPool getInjectPool(String entryName) {
+	private static LootPool getInjectPool(String entryName) {
 		return new LootPool(new LootEntry[]{getInjectEntry(entryName, 1)}, new LootCondition[0], new RandomValueRange(1), new RandomValueRange(0, 1), "grimoireofalice_pool");
 	}
 
-	private LootEntryTable getInjectEntry(String name, int weight) {
+	private static LootEntryTable getInjectEntry(String name, int weight) {
 		return new LootEntryTable(new ResourceLocation(LibMod.MODID, name), weight, 0, new LootCondition[0], "grimoireofalice_entry");
 	}
 }

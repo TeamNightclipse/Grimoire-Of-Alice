@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
@@ -56,7 +57,7 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.blood_thirsty_orb_description.name"));
 	}
 
@@ -82,17 +83,17 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private void moveToClosestPlayer(World world, EntityPlayer player) {
+	private static void moveToClosestPlayer(World world, EntityPlayer player) {
 		EntityPlayer closest = world.getClosestPlayerToEntity(player, 30D);
 		if(closest != null) {
 			if(player instanceof EntityPlayerMP) {
-				((EntityPlayerMP) player).setPositionAndUpdate(closest.posX, closest.posY, closest.posZ);
+				player.setPositionAndUpdate(closest.posX, closest.posY, closest.posZ);
 			}
 			player.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}
 	}
 
-	private void moveToMob(EntityPlayer player) {
+	private static void moveToMob(EntityPlayer player) {
 		double range = 32.0D;
 		Vec3d look = player.getLookVec();
 		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
@@ -104,14 +105,14 @@ public class ItemBloodThirstyOrb extends ItemMod implements IOwnedBy {
 		EntityLivingBase entity = null;
 		List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 				player.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D),
-				foundEntity -> foundEntity != player);
+				foundEntity -> !player.equals(foundEntity));
 		double d = 0.0D;
 		for(EntityLivingBase entity1 : list) {
 			AxisAlignedBB axisalignedbb = entity1.getEntityBoundingBox().grow(0.3F);
 			RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 			if(movingObjectPosition1 != null) {
 				double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-				if(d1 < d || d == 0.0D) {
+				if(d1 < d || MathUtil.fuzzyEqual(d, 0D)) {
 					entity = entity1;
 					d = d1;
 				}

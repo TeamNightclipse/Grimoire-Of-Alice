@@ -90,7 +90,7 @@ public class EntityGap extends Entity {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private void reduceStack(EntityPlayer player, ItemStack toRemove) {
+	private static void reduceStack(EntityPlayer player, ItemStack toRemove) {
 		if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			IItemHandler handler = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 			for(int i = 0; i < handler.getSlots(); i++) {
@@ -170,7 +170,7 @@ public class EntityGap extends Entity {
 		return true;
 	}
 
-	private boolean isItemDye(ItemStack stack) {
+	private static boolean isItemDye(ItemStack stack) {
 		for(int oreId : OreDictionary.getOreIDs(stack)) {
 			if(OreDictionary.getOreName(oreId).startsWith("dye")) {
 				return true;

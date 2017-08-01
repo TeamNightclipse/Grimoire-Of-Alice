@@ -22,37 +22,37 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 
 	private final IGuiHelper guiHelper;
 
-	private static final int oLvl1 = 0;
-	private static final int oLvl2 = 36 + 4;
-	private static final int oLvl3 = 72 + 8;
+	private static final int O_LVL_1 = 0;
+	private static final int O_LVL_2 = 36 + 4;
+	private static final int O_LVL_3 = 72 + 8;
 
 	private static final ResourceLocation furnace = new ResourceLocation("minecraft", "textures/gui/container/furnace.png");
 	private final IDrawableStatic outputSlot;
 
 	private static final int[][] OUTER_PILLARS = {
-			{oLvl1, oLvl1},
-			{oLvl1, oLvl2},
-			{oLvl1, oLvl3},
-			{oLvl2, oLvl1},
-			{oLvl2, oLvl3},
-			{oLvl3, oLvl1},
-			{oLvl3, oLvl2},
-			{oLvl3, oLvl3}
+			{O_LVL_1, O_LVL_1},
+			{O_LVL_1, O_LVL_2},
+			{O_LVL_1, O_LVL_3},
+			{O_LVL_2, O_LVL_1},
+			{O_LVL_2, O_LVL_3},
+			{O_LVL_3, O_LVL_1},
+			{O_LVL_3, O_LVL_2},
+			{O_LVL_3, O_LVL_3}
 	};
 
-	private static final int iLvl1 = 18;
-	private static final int iLvl2 = 36 + 4;
-	private static final int iLvl3 = 54 + 8;
+	private static final int I_LVL_1 = 18;
+	private static final int I_LVL_2 = 36 + 4;
+	private static final int I_LVL_3 = 54 + 8;
 
 	private static final int[][] INNER_PILLARS = {
-			{iLvl1, iLvl1},
-			{iLvl1, iLvl2},
-			{iLvl1, iLvl3},
-			{iLvl2, iLvl1},
-			{iLvl2, iLvl3},
-			{iLvl3, iLvl1},
-			{iLvl3, iLvl2},
-			{iLvl3, iLvl3}
+			{I_LVL_1, I_LVL_1},
+			{I_LVL_1, I_LVL_2},
+			{I_LVL_1, I_LVL_3},
+			{I_LVL_2, I_LVL_1},
+			{I_LVL_2, I_LVL_3},
+			{I_LVL_3, I_LVL_1},
+			{I_LVL_3, I_LVL_2},
+			{I_LVL_3, I_LVL_3}
 	};
 
 	public AltarRecipeItemsCategory(IGuiHelper guiHelper) {

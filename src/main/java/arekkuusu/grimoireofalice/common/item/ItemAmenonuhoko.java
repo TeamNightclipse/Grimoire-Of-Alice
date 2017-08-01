@@ -55,7 +55,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_top.name"));
@@ -65,7 +65,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 		else {
 			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_shift.name"));
 		}
-		super.addInformation(stack, player, list, p_77624_4_);
+		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase p_77644_2_, EntityLivingBase p_77644_3_) {
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		return true;
 	}
 
@@ -127,7 +127,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 		return 0;
 	}
 
-	private class BoulderTemplate implements ITemplateProcessor {
+	private static class BoulderTemplate implements ITemplateProcessor {
 
 		@Nullable
 		@Override

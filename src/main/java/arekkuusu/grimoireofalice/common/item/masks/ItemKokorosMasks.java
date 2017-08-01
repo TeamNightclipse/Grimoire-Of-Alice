@@ -61,7 +61,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Tsukumogami of Emotions");
 		list.add(TextFormatting.ITALIC + "Feel the power of 66 masks");
 		list.add(TextFormatting.ITALIC + "being worn at the same time");
@@ -129,9 +129,9 @@ public class ItemKokorosMasks extends ItemModMask {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		//noinspection ConstantConditions
-		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if(itemStack.hasTagCompound() && entityLiving.getUniqueID().equals(itemStack.getTagCompound().getUniqueId(OWNER_TAG))) {
 			if(model == null || model instanceof ModelMask) {
 				model = new ModelKokorosMasks();
 			}
@@ -150,7 +150,7 @@ public class ItemKokorosMasks extends ItemModMask {
 		}
 
 		//noinspection ConstantConditions
-		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId("GrimoireOwner"))) {
+		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId(OWNER_TAG))) {
 			return ResourceLocations.KOKOROS_MASKS.toString();
 		}
 		else {

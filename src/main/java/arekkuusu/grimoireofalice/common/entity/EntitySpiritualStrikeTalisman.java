@@ -33,7 +33,7 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 		super.onUpdate();
 		if(!world.isRemote) {
 			if(ticksExisted < 24) {
-				List<Entity> list = world.getEntitiesInAABBexcluding(this, new AxisAlignedBB(living.getPosition()).grow(5), entity -> entity != living);
+				List<Entity> list = world.getEntitiesInAABBexcluding(this, new AxisAlignedBB(living.getPosition()).grow(5), entity -> !living.equals(entity));
 				list.forEach(entity -> {
 					Vec3d vec = getPositionVector();
 					Vec3d mobPos = entity.getPositionVector();

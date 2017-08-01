@@ -33,7 +33,7 @@ public class ItemShinmyoumaruHat extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelShinmyoumaruHat();
 		}

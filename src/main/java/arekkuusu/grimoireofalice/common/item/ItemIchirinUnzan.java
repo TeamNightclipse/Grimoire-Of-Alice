@@ -44,7 +44,7 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_unzan_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_unzan_description.name"));
 	}
@@ -80,7 +80,7 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 		}
 	}
 
-	private void spawnFist(World world, EntityLivingBase player, float yaw) {
+	private static void spawnFist(World world, EntityLivingBase player, float yaw) {
 		Vec3d look = player.getLookVec().rotateYaw(yaw);
 		float distance = 5F;
 		double x = player.posX + look.x * distance;
@@ -93,19 +93,19 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 		fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 50);
 	}
 
-	private boolean isHoldingRight(EntityLivingBase player) {
+	private static boolean isHoldingRight(EntityLivingBase player) {
 		ItemStack main = player.getHeldItemMainhand();
 		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
-	private boolean isHoldingLeft(EntityLivingBase player) {
+	private static boolean isHoldingLeft(EntityLivingBase player) {
 		ItemStack off = player.getHeldItemOffhand();
 		return !off.isEmpty() && off.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelIchirinUnzan(0.05F);
 		}

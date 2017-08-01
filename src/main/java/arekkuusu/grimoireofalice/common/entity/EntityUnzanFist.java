@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -65,7 +66,7 @@ public class EntityUnzanFist extends EntityThrowable {
 		double d0 = 0.0D;
 
 		for(Entity aList : list) {
-			if(aList.canBeCollidedWith() && aList != this.ignoreEntity) {
+			if(aList.canBeCollidedWith() && !aList.equals(this.ignoreEntity)) {
 				if(this.ticksExisted < 2 && this.ignoreEntity == null) {
 					this.ignoreEntity = aList;
 				}
@@ -76,7 +77,7 @@ public class EntityUnzanFist extends EntityThrowable {
 					if(result != null) {
 						double d1 = vec3d.squareDistanceTo(result.hitVec);
 
-						if(d1 < d0 || d0 == 0.0D) {
+						if(d1 < d0 || MathUtil.fuzzyEqual(d0, 0D)) {
 							entity = aList;
 							d0 = d1;
 						}
@@ -145,7 +146,7 @@ public class EntityUnzanFist extends EntityThrowable {
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-		if(result.entityHit != null && result.entityHit != this && result.entityHit != getThrower()) {
+		if(result.entityHit != null && !result.entityHit.equals(this) && !result.entityHit.equals(getThrower())) {
 			if(isBurning()) {
 				result.entityHit.setFire(5);
 			}
@@ -155,7 +156,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer entityplayer) {
-		if(!world.isRemote && entityplayer != getThrower()) {
+		if(!world.isRemote && !entityplayer.equals(getThrower())) {
 			explode();
 		}
 	}
@@ -168,7 +169,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 		EntityLivingBase thrower = getThrower();
 
-		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != thrower);
+		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, getEntityBoundingBox(), entity -> entity != null && !entity.equals(thrower));
 		list.forEach(entity -> entity.attackEntityFrom(DamageSource.causeExplosionDamage(thrower), 6F));
 
 		setDead();

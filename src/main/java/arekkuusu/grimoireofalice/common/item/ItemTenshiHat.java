@@ -27,7 +27,7 @@ public class ItemTenshiHat extends ItemModArmor implements IOwnedBy {
 
 	public ItemTenshiHat(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibItemName.TENSHI_HAT, EntityEquipmentSlot.HEAD);
-		setMaxDamage(10000);
+		setMaxDamage(10_000);
 		setMaxStackSize(1);
 	}
 
@@ -44,7 +44,7 @@ public class ItemTenshiHat extends ItemModArmor implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelTenshiHat();
 		}

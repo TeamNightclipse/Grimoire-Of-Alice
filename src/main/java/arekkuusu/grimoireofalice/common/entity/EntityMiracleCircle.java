@@ -105,13 +105,13 @@ public class EntityMiracleCircle extends Entity {
 		return nbt == null ? 0 : nbt.getInteger("GoheiCharge");
 	}
 
-	private boolean hasFaith(EntityPlayer player) {
+	private static boolean hasFaith(EntityPlayer player) {
 		//noinspection ConstantConditions
 		return player.inventory.hasItemStack(new ItemStack(ModItems.FAITH));
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private boolean consumeFaith(EntityPlayer player) {
+	private static boolean consumeFaith(EntityPlayer player) {
 		if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
 

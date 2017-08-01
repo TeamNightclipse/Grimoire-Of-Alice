@@ -81,13 +81,13 @@ public class CapabilitiesEvent {
 		}
 	}
 
-	private boolean canFly(EntityPlayer player) {
+	private static boolean canFly(EntityPlayer player) {
 		return GrimoireOfAliceAPI.getFlyItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
 				|| GrimoireOfAliceAPI.getFlyArmor().stream().anyMatch(
 				stack -> player.inventory.armorInventory.stream().anyMatch(stack::isItemEqual));
 	}
 
-	private boolean isFlyItem(Item item) {
+	private static boolean isFlyItem(Item item) {
 		List<ItemStack> flyItems = GrimoireOfAliceAPI.getFlyItems();
 		List<ItemStack> flyArmor = GrimoireOfAliceAPI.getFlyArmor();
 

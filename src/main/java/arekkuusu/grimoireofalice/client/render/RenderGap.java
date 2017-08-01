@@ -155,7 +155,7 @@ public class RenderGap extends Render<EntityGap> {
 		}
 	}
 
-	private void unsetBrightness() {
+	private static void unsetBrightness() {
 		GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
 		GlStateManager.enableTexture2D();
 		GlStateManager.glTexEnvi(8960, 8704, OpenGlHelper.GL_COMBINE);
@@ -195,14 +195,14 @@ public class RenderGap extends Render<EntityGap> {
 		GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
 	}
 
-	private void setScoreTeamColor() {
+	private static void setScoreTeamColor() {
 		GlStateManager.disableLighting();
 		GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
 		GlStateManager.disableTexture2D();
 		GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
 	}
 
-	private void unsetScoreTeamColor() {
+	private static void unsetScoreTeamColor() {
 		GlStateManager.enableLighting();
 		GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
 		GlStateManager.enableTexture2D();

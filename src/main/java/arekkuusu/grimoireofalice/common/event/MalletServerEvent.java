@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.core.net.MalletMessage;
 import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
 import net.minecraft.entity.EntityLivingBase;
@@ -57,7 +58,7 @@ public class MalletServerEvent {
 	}
 
 	protected void setSize(EntityLivingBase entity, float width, float height) {
-		if(width != entity.width || height != entity.height) {
+		if(!MathUtil.fuzzyEqual(width, entity.width) || !MathUtil.fuzzyEqual(height, entity.height)) {
 			float f = entity.width;
 			entity.width = width;
 			entity.height = height;

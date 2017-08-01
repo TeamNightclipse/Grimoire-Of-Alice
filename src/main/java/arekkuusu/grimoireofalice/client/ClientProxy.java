@@ -17,6 +17,7 @@ import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.client.render.*;
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
 import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.entity.*;
 import arekkuusu.grimoireofalice.client.handler.MalletClientEvent;
 import arekkuusu.grimoireofalice.client.handler.TextureStitcher;
@@ -32,6 +33,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -222,7 +224,7 @@ public class ClientProxy implements ISidedProxy {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void initRenderers() {
+	private static void initRenderers() {
 		//Entities
 		RenderingRegistry.registerEntityRenderingHandler(EntityMagicCircle.class, RenderMagicCircle::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrimoireSpell.class, RenderGrimoireSpell::new);
@@ -253,7 +255,7 @@ public class ClientProxy implements ISidedProxy {
 
 	@SideOnly(Side.CLIENT)
 	private static void registerItem(Item item) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, invMRL(item.getRegistryName()));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -262,13 +264,13 @@ public class ClientProxy implements ISidedProxy {
 		if(iBlock == Items.AIR) {
 			throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		}
-		ModelLoader.setCustomModelResourceLocation(iBlock, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(iBlock, 0, invMRL(block.getRegistryName()));
 	}
 
 	@SideOnly(Side.CLIENT)
 	private static void registerItemWithTypes(Item item) {
 		for(int i = 0; i < 16; i++) {
-			ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(LibMod.MODID + ":shroompowder_" + i, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(item, i, invMRL("shroompowder_" + i));
 		}
 	}
 
@@ -279,8 +281,16 @@ public class ClientProxy implements ISidedProxy {
 			throw new IllegalArgumentException("Tried to register a block that doesn't have an item");
 		}
 		for(int i = 0; i < 16; i++) {
-			ModelLoader.setCustomModelResourceLocation(iBlock, i, new ModelResourceLocation(LibMod.MODID + ":shroom_" + i, "inventory"));
+			ModelLoader.setCustomModelResourceLocation(iBlock, i, invMRL("shroom_" + i));
 		}
+	}
+
+	private static ModelResourceLocation invMRL(String name) {
+		return invMRL(new ResourceLocation(LibMod.MODID, name));
+	}
+
+	private static ModelResourceLocation invMRL(ResourceLocation resourceLocation) {
+		return new ModelResourceLocation(resourceLocation, "inventory");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -322,7 +332,7 @@ public class ClientProxy implements ISidedProxy {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private boolean doParticle() {
+	private static boolean doParticle() {
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
 			return false;
 		}
@@ -335,6 +345,6 @@ public class ClientProxy implements ISidedProxy {
 			chance = 0.2F;
 		}
 
-		return chance == 1F || Math.random() < chance;
+		return MathUtil.fuzzyEqual(chance, 1F) || Math.random() < chance;
 	}
 }

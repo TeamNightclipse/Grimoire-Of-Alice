@@ -46,7 +46,7 @@ public class ItemGrimoireBook extends ItemMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.grimoire_book_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.grimoire_book_description.name"));
 	}

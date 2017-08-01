@@ -45,7 +45,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.mochi_hammer_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.mochi_hammer_description_top.name"));
@@ -65,7 +65,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy
 		return modifiers;
 	}
 
-	private void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id) {
+	private static void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id) {
 		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
 		Optional<AttributeModifier> modifierOptional = modifiers.stream()
 				.filter(attributeModifier -> attributeModifier.getID().equals(id))

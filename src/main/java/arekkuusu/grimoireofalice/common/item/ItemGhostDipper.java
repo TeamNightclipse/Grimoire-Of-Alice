@@ -52,7 +52,7 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_description_top.name"));
@@ -73,10 +73,7 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 		}
 
 		//noinspection ConstantConditions
-		if(raytraceresult == null) {
-			return new ActionResult<>(EnumActionResult.PASS, stack);
-		}
-		else if(raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
+		if(raytraceresult == null || raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(EnumActionResult.PASS, stack);
 		}
 		else {
@@ -133,7 +130,7 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.FAIL, stack);
 	}
 
-	private boolean absorb(World world, BlockPos pos) {
+	private static boolean absorb(World world, BlockPos pos) {
 		Queue<Tuple<BlockPos, Integer>> queue = Lists.newLinkedList();
 		queue.add(new Tuple<>(pos, 0));
 		int blocksChanged = 0;

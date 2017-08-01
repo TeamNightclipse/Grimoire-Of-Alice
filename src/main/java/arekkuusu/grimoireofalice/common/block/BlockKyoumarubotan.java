@@ -42,7 +42,7 @@ public class BlockKyoumarubotan extends BlockModBush {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kyoumarubotan_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kyoumarubotan_description.name"));
 	}

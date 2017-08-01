@@ -91,7 +91,7 @@ public class EntityCameraSquare extends Entity {
 
 	private List<Entity> getEntities() {
 		return world.getEntitiesWithinAABB(Entity.class,
-				getEntityBoundingBox(), entity -> entity != player && !(entity instanceof EntityHanging));
+				getEntityBoundingBox(), entity -> !player.equals(entity) && !(entity instanceof EntityHanging));
 	}
 
 	@Override

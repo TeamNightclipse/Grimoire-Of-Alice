@@ -57,7 +57,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_header.name"));
 		list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.nazrin_pendulum_ore.name") + " " + getOre(stack));
 		if(GuiScreen.isShiftKeyDown()) {
@@ -116,7 +116,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!world.isRemote) {
 			EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), false);
-			pendulum.setPosition(pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5);
+			pendulum.setPosition(pos.getX() + 0.5, pos.getY() + 2D, pos.getZ() + 0.5);
 			world.spawnEntity(pendulum);
 		}
 		player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -124,7 +124,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 		return EnumActionResult.SUCCESS;
 	}
 
-	private void setOre(ItemStack itemStack, String ore) {
+	private static void setOre(ItemStack itemStack, String ore) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -133,7 +133,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 		nbt.setString("oreBlock", ore);
 	}
 
-	private String getOre(ItemStack itemStack) {
+	private static String getOre(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? "" : nbt.getString("oreBlock");
 	}

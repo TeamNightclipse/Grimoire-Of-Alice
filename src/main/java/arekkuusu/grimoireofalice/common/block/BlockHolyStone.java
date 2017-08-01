@@ -53,7 +53,7 @@ public class BlockHolyStone extends BlockMod {
 		setResistance(15.0F);
 	}
 
-	private ImmutableMap<Item, Consumer<EntityPlayer>> effectsMap() {
+	private static ImmutableMap<Item, Consumer<EntityPlayer>> effectsMap() {
 		ImmutableMap.Builder<Item, Consumer<EntityPlayer>> builder = ImmutableMap.builder();
 		builder.put(Items.GOLD_NUGGET, player -> player.addExperience(5));
 		builder.put(Items.GOLD_INGOT, player -> player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 2490, 0)));
@@ -66,7 +66,7 @@ public class BlockHolyStone extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_header.name"));
 	}
 
@@ -99,7 +99,7 @@ public class BlockHolyStone extends BlockMod {
 		getEntitiesInRange(world, pos).ifPresent(ignored -> spawnParticles(world, pos));
 	}
 
-	private void addGravity(EntityLivingBase livingBase, BlockPos pos) {
+	private static void addGravity(EntityLivingBase livingBase, BlockPos pos) {
 		Vec3d blockPos = new Vec3d(pos);
 		Vec3d mobPos = livingBase.getPositionVector();
 		double ratio = blockPos.distanceTo(mobPos) / 10;
@@ -111,7 +111,7 @@ public class BlockHolyStone extends BlockMod {
 		livingBase.motionZ += motion.z * back;
 	}
 
-	private void spawnParticles(World world, BlockPos pos) {
+	private static void spawnParticles(World world, BlockPos pos) {
 		float randX = pos.getX() + world.rand.nextFloat();
 		float randY = pos.getY() + world.rand.nextFloat();
 		float randZ = pos.getZ() + world.rand.nextFloat();
@@ -119,7 +119,7 @@ public class BlockHolyStone extends BlockMod {
 		world.spawnParticle(EnumParticleTypes.FLAME, randX, randY, randZ, 0.0D, 0.0D, 0.0D);
 	}
 
-	private Optional<List<EntityLivingBase>> getEntitiesInRange(World world, BlockPos pos) {
+	private static Optional<List<EntityLivingBase>> getEntitiesInRange(World world, BlockPos pos) {
 		if(world.isRaining()) {
 			return Optional.of(world.getEntitiesWithinAABB(EntityLivingBase.class, SMALL.offset(pos).grow(5)));
 		}

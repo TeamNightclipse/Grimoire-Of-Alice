@@ -59,7 +59,7 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_header.name"));
 		}
@@ -97,7 +97,7 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private void setPlayerElixir(EntityPlayer player) {
+	private static void setPlayerElixir(EntityPlayer player) {
 		if(player.hasCapability(HOURAI_CAPABILITY, null)) {
 			IHouraiCapability capability = player.getCapability(HOURAI_CAPABILITY, null);
 			byte maxLevel = capability.getMaxHouraiLevel();

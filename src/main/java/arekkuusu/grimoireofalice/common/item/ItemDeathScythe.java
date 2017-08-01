@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
@@ -48,7 +49,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_description.name"));
 	}
@@ -87,7 +88,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 			EntityLivingBase entity = null;
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 					player.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D),
-					entityFound -> entityFound != player);
+					entityFound -> !player.equals(entityFound));
 			double d = 0.0D;
 			for(EntityLivingBase entity1 : list) {
 				float f2 = 0.3F;
@@ -95,7 +96,7 @@ public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
 				RayTraceResult movingObjectPosition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 				if(movingObjectPosition1 != null) {
 					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if(d1 < d || d == 0.0D) {
+					if(d1 < d || MathUtil.fuzzyEqual(d, 0D)) {
 						entity = entity1;
 						d = d1;
 					}

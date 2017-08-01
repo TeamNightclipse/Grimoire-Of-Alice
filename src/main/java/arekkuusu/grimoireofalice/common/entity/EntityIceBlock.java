@@ -13,8 +13,8 @@ import net.minecraft.world.WorldServer;
 
 public class EntityIceBlock extends Entity {
 
-	private static final DataParameter<Float> WIDTH = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
-	private static final DataParameter<Float> HEIGHT = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private static final DataParameter<Float> WIDTH_PARAMETER = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
+	private static final DataParameter<Float> HEIGHT_PARAMETER = EntityDataManager.createKey(EntityMagicCircle.class, DataSerializers.FLOAT);
 
 	private EntityLivingBase frozen;
 
@@ -81,24 +81,24 @@ public class EntityIceBlock extends Entity {
 
 	@Override
 	protected void entityInit() {
-		dataManager.register(WIDTH, 0F);
-		dataManager.register(HEIGHT, 0F);
+		dataManager.register(WIDTH_PARAMETER, 0F);
+		dataManager.register(HEIGHT_PARAMETER, 0F);
 	}
 
 	public float getIceBlockWidth() {
-		return dataManager.get(WIDTH);
+		return dataManager.get(WIDTH_PARAMETER);
 	}
 
 	public void setIceBlockWidth(float iceBlockWidth) {
-		dataManager.set(WIDTH, iceBlockWidth);
+		dataManager.set(WIDTH_PARAMETER, iceBlockWidth);
 	}
 
 	public float getIceBlockHeight() {
-		return dataManager.get(HEIGHT);
+		return dataManager.get(HEIGHT_PARAMETER);
 	}
 
 	public void setIceBlockHeight(float iceBlockHeight) {
-		dataManager.set(HEIGHT, iceBlockHeight);
+		dataManager.set(HEIGHT_PARAMETER, iceBlockHeight);
 	}
 
 	@Override

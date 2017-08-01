@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.block.tile;
 
 import javax.annotation.Nullable;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -45,44 +46,13 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 		return added;
 	}
 
-	@Override
-	public boolean removeItem(@Nullable EntityPlayer player) {
-		boolean removed = false;
-		if(hasItem()) {
-			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
-			removed = true;
-
-			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
-			if(player != null && !player.capabilities.isCreativeMode) {
-				ItemHandlerHelper.giveItemToPlayer(player, stackToTake, player.inventory.currentItem);
-			}
-		}
-		return removed;
-	}
-
-	@Override
-	public void destroy() {
-		if(!world.isRemote) {
-			ItemStack output = itemHandler.extractItem(0, 1, false);
-			if(!output.isEmpty()) {
-				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-				world.spawnEntity(outputItem);
-			}
-		}
-	}
-
-	@Override
-	public boolean hasItem() {
-		return !itemHandler.getStackInSlot(0).isEmpty();
-	}
-
 	public ItemStack getItemStack() {
 		return itemHandler.getItemSimulate(0);
 	}
 
 	public float getRenderHeight() {
 		float height = getTileData().getFloat("RenderHeight");
-		return height == 0 ? 1.4F : height;
+		return MathUtil.fuzzyEqual(height, 0F) ? 1.4F : height;
 	}
 
 	public TilePillarAltar setRenderHeight(float renderHeight) {

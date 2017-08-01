@@ -8,62 +8,34 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.storage.WorldInfo;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandler;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiPredicate;
-
-import static arekkuusu.grimoireofalice.common.item.ItemSanaeGohei.Miracles.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implements IOwnedBy {
-
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
-	private static final Method CONVERT_ZOMBIE = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_82232_p", int.class);
+public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> implements IOwnedBy {
 
 	public ItemSanaeGohei() {
-		super(LibItemName.SANAE_GOHEI, Miracles.values());
+		super(LibItemName.SANAE_GOHEI, EnumMiracle.values());
 	}
 
 	@Override
@@ -73,7 +45,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sanae_gohei_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sanae_gohei_use.name"));
@@ -124,127 +96,12 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		if(entityLiving instanceof EntityPlayer && !world.isRemote) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(!player.isSneaking() && !player.getCooldownTracker().hasCooldown(this)) {
-				Miracles mode = getType(stack);
-				final int oldCharge = getCharge(stack);
-				int charge = oldCharge;
-				WorldInfo WorldInfo = player.world.getWorldInfo();
+				EnumMiracle mode = getType(stack);
+				final int charge = getCharge(stack);
 
-				switch(mode) {
-					case RAIN:
-						if(RAIN.canUse(charge, player)) {
-							int time = 400 + itemRand.nextInt(1000) * 20;
-
-							WorldInfo.setCleanWeatherTime(0);
-							WorldInfo.setRainTime(time);
-							WorldInfo.setThunderTime(time);
-							WorldInfo.setRaining(true);
-							WorldInfo.setThundering(false);
-
-							charge -= 4;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case THUNDER:
-						if(THUNDER.canUse(charge, player)) {
-							int time = 400 + itemRand.nextInt(1000) * 20;
-
-							WorldInfo.setCleanWeatherTime(0);
-							WorldInfo.setRainTime(time);
-							WorldInfo.setThunderTime(time);
-							WorldInfo.setRaining(true);
-							WorldInfo.setThundering(true);
-
-							charge -= 5;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case CLEAR:
-						if(CLEAR.canUse(charge, player)) {
-							int time = 400 + itemRand.nextInt(1000) * 20;
-
-							WorldInfo.setCleanWeatherTime(time);
-							WorldInfo.setRainTime(0);
-							WorldInfo.setThunderTime(0);
-							WorldInfo.setRaining(false);
-							WorldInfo.setThundering(false);
-
-							charge -= 1;
-							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case TESTIFICATE:
-						if(TESTIFICATE.canUse(charge, player) && convertNearZombies(player, world)) {
-							charge -= 15;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case WIND:
-						if(WIND.canUse(charge, player)) {
-							world.playSound(null, player.getPosition(), GrimoireSoundEvents.WIND, SoundCategory.PLAYERS, 1F, 1F);
-							Vec3d vec = player.getLookVec();
-							List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-									entityLiving.getEntityBoundingBox().offset(vec.x * 2, vec.y * 2, vec.z * 2).grow(3D), entity -> entity != player);
-							list.forEach(entity -> {
-								if(entity.world instanceof WorldServer) {
-									((WorldServer) entity.world).spawnParticle(EnumParticleTypes.CLOUD, entity.posX
-											, entity.posY, entity.posZ, 5, 0, 0, 0, 0.1D);
-								}
-								entity.motionX = -MathHelper.sin((float) Math.toRadians(player.rotationYaw)) * 4;
-								entity.motionY = -MathHelper.sin((float) Math.toRadians(player.rotationPitch)) * 4;
-								entity.motionZ = MathHelper.cos((float) Math.toRadians(player.rotationYaw)) * 4;
-							});
-
-							charge -= 1;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_THROW, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case HEAL:
-						if(HEAL.canUse(charge, player)) {
-							float health = player.getMaxHealth() - player.getHealth();
-							player.heal(health * itemRand.nextFloat());
-							if(world instanceof WorldServer) {
-								((WorldServer) world).spawnParticle(EnumParticleTypes.HEART, player.posX, player.posY + 2, player.posZ, 20, 0D, 0D, 0D, 0D);
-							}
-
-							charge -= 2;
-							player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case POTIONS:
-						if(POTIONS.canUse(charge, player)) {
-							List<PotionEffect> effects = consumePotionEffectsInInventory(player);
-							if(!effects.isEmpty()) {
-								addPlayerPotionEffects(player, effects);
-								player.getCooldownTracker().setCooldown(this, 15);
-
-								charge -= 3;
-								player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITCH_DRINK, SoundCategory.PLAYERS, 1F, 1F);
-							}
-						}
-						break;
-					case SOIL:
-						if(SOIL.canUse(charge, player)) {
-							applyBonemealRandomPos(player, world);
-
-							charge -= 6;
-							player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_CLOTH_PLACE, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-					case TIME:
-						if(TIME.canUse(charge, player)) {
-							long time = world.isDaytime() ? 14000 : 0;
-							world.setWorldTime(time);
-
-							player.getCooldownTracker().setCooldown(this, 5);
-
-							charge -= 10;
-							player.world.playSound(null, player.getPosition(), SoundEvents.AMBIENT_CAVE, SoundCategory.PLAYERS, 1F, 1F);
-						}
-						break;
-				}
-
-				if(oldCharge != charge) {
-					setCharge(stack, charge);
+				if(mode.behavior.canUse(charge, player)) {
+					int subtract = mode.behavior.execute(this, charge, player);
+					setCharge(stack, charge - subtract);
 				}
 			}
 		}
@@ -258,61 +115,6 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		}
 	}
 
-	private boolean convertNearZombies(EntityPlayer player, World world) {
-		List<EntityZombieVillager> list = world.getEntitiesWithinAABB(EntityZombieVillager.class, player.getEntityBoundingBox().grow(10));
-		list.forEach(this::convertToVillager);
-		return !list.isEmpty();
-	}
-
-	private void convertToVillager(EntityZombieVillager zombie) {
-		try {
-			CONVERT_ZOMBIE.invoke(zombie, 0);
-		} catch(IllegalAccessException | InvocationTargetException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void applyBonemealRandomPos(EntityPlayer player, World world) {
-		BlockPos posI = new BlockPos(player.posX - 4 + itemRand.nextInt(4), player.posY - 4 + itemRand.nextInt(4), player.posZ - 4 + itemRand.nextInt(4));
-		BlockPos posF = new BlockPos(player.posX + 4 + itemRand.nextInt(4), player.posY + 4 + itemRand.nextInt(4), player.posZ + 4 + itemRand.nextInt(4));
-
-		BlockPos.getAllInBox(posI, posF).forEach(pos -> {
-			if(itemRand.nextBoolean() && ItemDye.applyBonemeal(new ItemStack(Items.DYE), world, pos, player, player.getActiveHand())) {
-				IBlockState state = world.getBlockState(pos);
-				for(int j = 0; j < 15; ++j) {
-					double d0 = itemRand.nextGaussian() * 0.02D;
-					double d1 = itemRand.nextGaussian() * 0.02D;
-					double d2 = itemRand.nextGaussian() * 0.02D;
-					world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, pos.getX() + itemRand.nextFloat(), pos.getY() + itemRand.nextFloat() * state.getBoundingBox(world, pos).maxY, pos.getZ() + itemRand.nextFloat(), d0, d1, d2);
-				}
-				if(!world.isRemote) {
-					world.playEvent(2005, pos, 0);
-				}
-			}
-		});
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	private List<PotionEffect> consumePotionEffectsInInventory(EntityPlayer player) {
-		IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
-		List<PotionEffect> potionEffects = new ArrayList<>();
-		for(int i = 0; i < capability.getSlots(); ++i) {
-			ItemStack stack = capability.getStackInSlot(i);
-			if(!stack.isEmpty() && PotionUtils.getPotionFromItem(stack) != PotionTypes.WATER) {
-				if(!player.capabilities.isCreativeMode) {
-					//noinspection ConstantConditions
-					capability.extractItem(i, 1, false);
-				}
-				potionEffects.addAll(PotionUtils.getEffectsFromStack(stack));
-			}
-		}
-		return potionEffects;
-	}
-
-	private void addPlayerPotionEffects(EntityPlayer player, List<PotionEffect> potionEffects) {
-		potionEffects.forEach(player::addPotionEffect);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
@@ -320,7 +122,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 				+ I18n.format("grimoire.tooltip.sanae_gohei_mode_" + getType(stack).toString() + ".name");
 	}
 
-	private void setCharge(ItemStack itemStack, int charge) {
+	private static void setCharge(ItemStack itemStack, int charge) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -329,7 +131,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		nbt.setInteger("GoheiCharge", charge);
 	}
 
-	private int getCharge(ItemStack itemStack) {
+	private static int getCharge(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? 0 : nbt.getInteger("GoheiCharge");
 	}
@@ -349,33 +151,27 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.Miracles> implement
 		return 0;
 	}
 
-	public enum Miracles {
+	public enum EnumMiracle {
 
-		CLEAR("clear", (i, player) -> i >= 1),
-		WIND("wind", (i, player) -> i >= 1 && !player.isInWater()),
-		HEAL("heal", (i, player) -> i >= 2 && player.shouldHeal()),
-		POTIONS("potions", (i, player) -> i >= 3),
-		RAIN("rain", (i, player) -> i >= 4),
-		THUNDER("thunder", (i, player) -> i >= 5),
-		SOIL("soil", (i, player) -> i >= 8),
-		TIME("time", (i, player) -> i >= 15),
-		TESTIFICATE("testificate", (i, player) -> i >= 15);
+		CLEAR(Miracles.CLEAR),
+		WIND(Miracles.WIND),
+		HEAL(Miracles.HEAL),
+		POTIONS(Miracles.POTIONS),
+		RAIN(Miracles.RAIN),
+		THUNDER(Miracles.THUNDER),
+		SOIL(Miracles.SOIL),
+		TIME(Miracles.TIME),
+		TESTIFICATE(Miracles.TESTIFICATE);
 
-		private final BiPredicate<Integer, EntityPlayer> condition;
-		private final String name;
+		private final Miracle behavior;
 
-		Miracles(String name, BiPredicate<Integer, EntityPlayer> condition) {
-			this.condition = condition;
-			this.name = name;
-		}
-
-		public boolean canUse(int i, EntityPlayer player) {
-			return condition.test(i, player);
+		EnumMiracle(Miracle behavior) {
+			this.behavior = behavior;
 		}
 
 		@Override
 		public String toString() {
-			return name;
+			return behavior.getName();
 		}
 	}
 

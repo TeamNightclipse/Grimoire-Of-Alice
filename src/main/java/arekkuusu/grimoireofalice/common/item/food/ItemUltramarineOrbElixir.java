@@ -49,7 +49,7 @@ public class ItemUltramarineOrbElixir extends ItemModFood implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.orb_elixir_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.orb_elixir_description_top.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.orb_elixir_description_bottom.name"));

@@ -39,7 +39,7 @@ public class GrimoireOfAlice {
 	@Instance(LibMod.MODID)
 	public static GrimoireOfAlice instance;
 
-	@SidedProxy(serverSide = LibMod.PROXYCOMMON, clientSide = LibMod.PROXYCLIENT)
+	@SidedProxy(clientSide = LibMod.PROXYCLIENT, serverSide = LibMod.PROXYCOMMON)
 	public static ISidedProxy proxy;
 
 	@EventHandler

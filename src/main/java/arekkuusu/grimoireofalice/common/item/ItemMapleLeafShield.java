@@ -48,7 +48,7 @@ public class ItemMapleLeafShield extends ItemModShield implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.maple_leaf_shield_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.maple_leaf_shield_effect.name"));
 	}

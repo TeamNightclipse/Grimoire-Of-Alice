@@ -93,7 +93,7 @@ public class HouraiEvents {
 
 		if(event.isWasDeath() && oldPlayer.hasCapability(HOURAI_CAPABILITY, null) && newPlayer.hasCapability(HOURAI_CAPABILITY, null)) {
 			IHouraiCapability oldCap = oldPlayer.getCapability(HOURAI_CAPABILITY, null);
-			IHouraiCapability newCap = oldPlayer.getCapability(HOURAI_CAPABILITY, null);
+			IHouraiCapability newCap = newPlayer.getCapability(HOURAI_CAPABILITY, null);
 			newCap.setHouraiLevel(oldCap.getHouraiLevel());
 		}
 	}

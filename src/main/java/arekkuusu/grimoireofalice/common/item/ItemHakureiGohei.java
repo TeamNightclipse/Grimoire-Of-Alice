@@ -56,7 +56,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
 	}
 
@@ -124,7 +124,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int ticks) {
 		if(getType(stack) == AURA_MANIPULATION) {
 			List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-					player.getEntityBoundingBox().grow(4.0D), entity -> entity != player);
+					player.getEntityBoundingBox().grow(4.0D), entity -> !player.equals(entity));
 			for(EntityLivingBase mob : list) {
 				Vec3d playerPos = player.getPositionVector();
 				Vec3d mobPos = mob.getPositionVector();
@@ -196,7 +196,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 		return true;
 	}
 
-	private boolean isSafe(World world, double x, double y, double z) {
+	private static boolean isSafe(World world, double x, double y, double z) {
 		if(y < 0) {
 			return false;
 		}

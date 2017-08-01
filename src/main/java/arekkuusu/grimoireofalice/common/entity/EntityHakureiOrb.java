@@ -136,7 +136,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 	}
 
 	private void onImpactEntity(RayTraceResult result) {
-		if(result.entityHit != null && result.entityHit != getThrower()) {
+		if(result.entityHit != null && !result.entityHit.equals(getThrower())) {
 			applyHitEffects(result.entityHit);
 			if(!world.isRemote) {
 				setDead();

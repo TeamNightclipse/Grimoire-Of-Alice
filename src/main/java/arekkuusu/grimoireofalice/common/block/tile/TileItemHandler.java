@@ -13,16 +13,21 @@ import javax.annotation.Nullable;
 
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 public abstract class TileItemHandler extends TileEntity implements ITileItemHolder {
@@ -46,6 +51,37 @@ public abstract class TileItemHandler extends TileEntity implements ITileItemHol
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
 		readDataNBT(par1nbtTagCompound);
+	}
+
+	@Override
+	public boolean removeItem(@Nullable EntityPlayer player) {
+		boolean removed = false;
+		if(hasItem()) {
+			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
+			removed = true;
+
+			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
+			if(player != null && !player.capabilities.isCreativeMode) {
+				ItemHandlerHelper.giveItemToPlayer(player, stackToTake, player.inventory.currentItem);
+			}
+		}
+		return removed;
+	}
+
+	@Override
+	public void destroy() {
+		if(!world.isRemote) {
+			ItemStack output = itemHandler.extractItem(0, 1, false);
+			if(!output.isEmpty()) {
+				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
+				world.spawnEntity(outputItem);
+			}
+		}
+	}
+
+	@Override
+	public boolean hasItem() {
+		return !itemHandler.getStackInSlot(0).isEmpty();
 	}
 
 	@Nonnull

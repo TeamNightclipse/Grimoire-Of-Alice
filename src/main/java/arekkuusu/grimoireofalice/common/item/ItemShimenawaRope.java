@@ -33,7 +33,7 @@ public class ItemShimenawaRope extends ItemMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shimenawa_rope_header.name"));
 		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.shimenawa_rope_description.name"));
 	}

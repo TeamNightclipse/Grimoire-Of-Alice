@@ -45,7 +45,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.needle_header.name"));
 	}
 
@@ -74,7 +74,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 				if(!world.isRemote) {
 					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
-							player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> entity != player);
+							player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> !player.equals(entity));
 					list.forEach(entity -> entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 6));
 				}
 			}
@@ -95,7 +95,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 		stack.damageItem(1, entityLiving);
 	}
 
-	private void setShifting(ItemStack itemStack, boolean does) {
+	private static void setShifting(ItemStack itemStack, boolean does) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -104,7 +104,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 		nbt.setBoolean("NeedleMode", does);
 	}
 
-	private boolean wasShifting(ItemStack itemStack) {
+	private static boolean wasShifting(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt != null && nbt.getBoolean("NeedleMode");
 	}

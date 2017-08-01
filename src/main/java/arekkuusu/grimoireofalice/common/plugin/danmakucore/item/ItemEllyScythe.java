@@ -56,7 +56,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_header.name"));
 	}
 
@@ -122,7 +122,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 	}
 
 	//Taken from DanmakuCore in SpellcardEntityDelusionEnlightenment
-	private void spawnGroundDanmaku(EntityPlayer player) {
+	private static void spawnGroundDanmaku(EntityPlayer player) {
 		AbstractVector3 angle = Vector3.getVecWithoutY(Vector3.randomVector());
 		Random random = new Random();
 		Vector3 posSource = new Vector3(player).offset(angle, random.nextDouble() * 16);
@@ -149,7 +149,7 @@ public class ItemEllyScythe extends ItemModSword implements IOwnedBy {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemstack) {
-		return 72000;
+		return 72_000;
 	}
 
 	@Override

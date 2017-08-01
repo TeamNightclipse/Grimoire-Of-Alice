@@ -56,7 +56,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"));
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name"));
@@ -65,7 +65,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 		else {
 			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name"));
 		}
-		super.addInformation(stack, player, list, p_77624_4_);
+		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
 				if(isOwner(stack, player)) {
-					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(timeUsed), livingBase -> livingBase != player);
+					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(timeUsed), livingBase -> !player.equals(livingBase));
 					if(!list.isEmpty()) {
 						player.sendMessage(
 								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
@@ -114,7 +114,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 		}
 	}
 
-	private TextFormatting getColorForEntity(EntityLivingBase livingBase) {
+	private static TextFormatting getColorForEntity(EntityLivingBase livingBase) {
 		if(livingBase instanceof EntityMob) {
 			return TextFormatting.DARK_RED;
 		}

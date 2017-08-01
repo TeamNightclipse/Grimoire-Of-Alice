@@ -25,11 +25,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSwordOwner extends ItemModSword {
 
+	public static final String OWNER_TAG = "GrimoireOwner";
+
 	public ItemSwordOwner(ToolMaterial material, String id) {
 		super(material, id);
 	}
-
-	public static final String OWNER_TAG = "GrimoireOwner";
 
 	@SuppressWarnings("ConstantConditions")
 	@Override
@@ -43,7 +43,7 @@ public class ItemSwordOwner extends ItemModSword {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		if(stack.hasTagCompound()) {
 			UUID ownerUuid = getOwnerUUID(stack);
 			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {

@@ -45,7 +45,7 @@ public class ItemSuwakoHat extends ItemModArmor {
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if(!stack.isItemEnchanted()) {
 			stack.addEnchantment(Enchantments.THORNS, 10);
 		}
@@ -69,7 +69,7 @@ public class ItemSuwakoHat extends ItemModArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot Ui, ModelBiped imodel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(model == null) {
 			model = new ModelSuwakoHat();
 		}

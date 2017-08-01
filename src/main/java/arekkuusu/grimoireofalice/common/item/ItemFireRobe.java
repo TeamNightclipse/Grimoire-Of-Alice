@@ -59,7 +59,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fire_robe_description_top.name"));
@@ -70,7 +70,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 		}
 	}
 
-	private void extinguishEffect(EntityLivingBase target, World world) {
+	private static void extinguishEffect(EntityLivingBase target, World world) {
 		if(!world.isRemote) {
 			target.extinguish();
 		}
@@ -99,7 +99,7 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 		return true;
 	}
 
-	private boolean isActive(EntityLivingBase target) {
+	private static boolean isActive(EntityLivingBase target) {
 		return target.isPotionActive(MobEffects.GLOWING);
 	}
 
@@ -125,11 +125,11 @@ public class ItemFireRobe extends ItemModArmor implements ISpecialArmor, IOwnedB
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped modelBiped) {
 		if(model == null) {
 			model = new ModelFireRobe();
 		}
-		model.setModelAttributes(_default);
+		model.setModelAttributes(modelBiped);
 		return model;
 	}
 

@@ -65,12 +65,12 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_description.name"));
 		list.add("");
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_mode.name") + " " + getName(stack));
-		super.addInformation(stack, player, list, p_77624_4_);
+		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -112,36 +112,42 @@ public class ItemSarielWand extends ItemSwordOwner {
 
 			if(player.canPlayerEdit(pos, facing, stack) && Blocks.SKULL.canPlaceBlockAt(world, pos)) {
 				if(!world.isRemote) {
-					world.setBlockState(pos, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, facing), 11);
-					int i = 0;
-
-					if(facing == EnumFacing.UP) {
-						i = MathHelper.floor((player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
-					}
-
-					TileEntity tileentity = world.getTileEntity(pos);
-
-					if(tileentity instanceof TileEntitySkull) {
-						TileEntitySkull tileentityskull = (TileEntitySkull) tileentity;
-
-						int type = getType(stack);
-						if(type == 3) {
-							tileentityskull.setPlayerProfile(getProfile(stack));
-						}
-						else {
-							tileentityskull.setType(type);
-						}
-
-						tileentityskull.setSkullRotation(i);
-						Blocks.SKULL.checkWitherSpawn(world, pos, tileentityskull);
-					}
+					placeSkull(player, pos, facing, stack);
 				}
+
 				player.getCooldownTracker().setCooldown(this, 500);
 				return EnumActionResult.SUCCESS;
 			}
 		}
 
 		return EnumActionResult.FAIL;
+	}
+
+	private static void placeSkull(EntityPlayer player, BlockPos pos, EnumFacing facing, ItemStack heldStack) {
+		World world = player.world;
+		world.setBlockState(pos, Blocks.SKULL.getDefaultState().withProperty(BlockSkull.FACING, facing), 11);
+		int i = 0;
+
+		if(facing == EnumFacing.UP) {
+			i = MathHelper.floor((player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
+		}
+
+		TileEntity tileentity = world.getTileEntity(pos);
+
+		if(tileentity instanceof TileEntitySkull) {
+			TileEntitySkull tileentityskull = (TileEntitySkull) tileentity;
+
+			int type = getType(heldStack);
+			if(type == 3) {
+				tileentityskull.setPlayerProfile(getProfile(heldStack));
+			}
+			else {
+				tileentityskull.setType(type);
+			}
+
+			tileentityskull.setSkullRotation(i);
+			Blocks.SKULL.checkWitherSpawn(world, pos, tileentityskull);
+		}
 	}
 
 	@Override
@@ -164,12 +170,12 @@ public class ItemSarielWand extends ItemSwordOwner {
 		return true;
 	}
 
-	private int getType(ItemStack stack) {
+	private static int getType(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
 		return nbt == null ? 0 : nbt.getInteger(SKULL_TYPE);
 	}
 
-	private void setType(ItemStack stack, int type) {
+	private static void setType(ItemStack stack, int type) {
 		NBTTagCompound nbt = stack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -180,7 +186,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 		nbt.removeTag(PLAYER_UUID + "Least");
 	}
 
-	private void setProfile(ItemStack stack, EntityPlayer player) {
+	private static void setProfile(ItemStack stack, EntityPlayer player) {
 		NBTTagCompound nbt = stack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -191,7 +197,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@Nullable
-	private GameProfile getProfile(ItemStack stack) {
+	private static GameProfile getProfile(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
 		if(nbt != null) {
 			UUID uuid = nbt.getUniqueId(PLAYER_UUID);
@@ -203,7 +209,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private String getName(ItemStack stack) {
+	private static String getName(ItemStack stack) {
 		int type = getType(stack);
 		if(type == 3) {
 			NBTTagCompound nbt = stack.getTagCompound();
@@ -242,7 +248,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 		return 0;
 	}
 
-	private PlayerProfileCache getCache() {
+	private static PlayerProfileCache getCache() {
 		return FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerProfileCache();
 	}
 }

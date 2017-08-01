@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -64,7 +65,7 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
 				if(movingObjectPosition1 != null) {
 					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if(d1 < d || d == 0.0D) {
+					if(d1 < d || MathUtil.fuzzyEqual(d, 0D)) {
 						entity = entity1;
 						d = d1;
 					}
@@ -91,7 +92,7 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
 
-	private boolean isSafe(World world, BlockPos pos) {
+	private static boolean isSafe(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
 		return state.getBlock().isAir(state, world, pos);
 	}

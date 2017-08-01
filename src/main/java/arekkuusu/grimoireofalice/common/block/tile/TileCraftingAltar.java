@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.block.BlockOnbashira;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.event.AchievementEvents;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -79,32 +80,6 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		return added;
 	}
 
-	@Override
-	public boolean removeItem(@Nullable EntityPlayer player) {
-		boolean removed = false;
-		if(hasItem()) {
-			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_REMOVE_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
-			removed = true;
-
-			ItemStack stackToTake = itemHandler.extractItem(0, 1, false);
-			if(player != null && !player.capabilities.isCreativeMode) {
-				ItemHandlerHelper.giveItemToPlayer(player, stackToTake, player.inventory.currentItem);
-			}
-		}
-		return removed;
-	}
-
-	@Override
-	public void destroy() {
-		if(!world.isRemote) {
-			ItemStack output = itemHandler.extractItem(0, 1, false);
-			if(!output.isEmpty()) {
-				EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-				world.spawnEntity(outputItem);
-			}
-		}
-	}
-
 	public boolean doCrafting(@Nullable final EntityPlayer player) {
 		if(!world.isRemote && !hasItem()) {
 			List<TilePillarAltar> altars = new ArrayList<>();
@@ -154,11 +129,6 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 		}
 	}
 
-	@Override
-	public boolean hasItem() {
-		return !itemHandler.getItemSimulate(0).isEmpty();
-	}
-
 	public ItemStack getItemStack() {
 		return itemHandler.getItemSimulate(0);
 	}
@@ -187,7 +157,7 @@ public class TileCraftingAltar extends TileItemHandler implements ITickable {
 			if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
 				float f1 = flipT;
 
-				while(f1 == flipT) {
+				while(MathUtil.fuzzyEqual(f1, flipT)) {
 					flipT += rand.nextInt(4) - rand.nextInt(4);
 				}
 			}

@@ -51,7 +51,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_description.name"));
 	}
@@ -92,15 +92,15 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private void setTimer(ItemStack stack, int time) {
+	private static void setTimer(ItemStack stack, int time) {
 		getNBT(stack).setInteger(TAG, time);
 	}
 
-	private int getTimer(ItemStack stack) {
+	private static int getTimer(ItemStack stack) {
 		return getNBT(stack).getInteger(TAG);
 	}
 
-	private NBTTagCompound getNBT(ItemStack stack) {
+	private static NBTTagCompound getNBT(ItemStack stack) {
 		NBTTagCompound tag = stack.getTagCompound();
 		if(tag == null) {
 			tag = new NBTTagCompound();

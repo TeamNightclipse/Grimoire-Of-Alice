@@ -17,114 +17,114 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelBook extends ModelBase {
 
-	private final ModelRenderer big_paper_north;
-	private final ModelRenderer small_paper_north;
-	private final ModelRenderer small_paper_north_middle;
-	private final ModelRenderer small_paper_north_bottom;
-	private final ModelRenderer book_base;
-	private final ModelRenderer big_paper_south;
-	private final ModelRenderer small_paper_south;
-	private final ModelRenderer small_paper_south_middle;
-	private final ModelRenderer small_paper_south_bottom;
-	private final ModelRenderer book_cover_north;
-	private final ModelRenderer book_cover_south;
+	private final ModelRenderer bigPaperNorth;
+	private final ModelRenderer smallPaperNorth;
+	private final ModelRenderer smallPaperNorthMiddle;
+	private final ModelRenderer smallPaperNorthBottom;
+	private final ModelRenderer bookBase;
+	private final ModelRenderer bigPaperSouth;
+	private final ModelRenderer smallPaperSouth;
+	private final ModelRenderer smallPaperSouthMiddle;
+	private final ModelRenderer smallPaperSouthBottom;
+	private final ModelRenderer bookCoverNorth;
+	private final ModelRenderer bookCoverSouth;
 
 	public ModelBook() {
 		this.textureWidth = 64;
 		this.textureHeight = 32;
 
-		this.small_paper_south = new ModelRenderer(this, 17, 16);
-		this.small_paper_south.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_south.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
-		this.book_cover_north = new ModelRenderer(this, 0, 0);
-		this.book_cover_north.setRotationPoint(0.0F, 0.0F, -1.0F);
-		this.book_cover_north.addBox(-5.0F, -6.0F, 0.0F, 10, 6, 0, 0.0F);
-		this.setRotateAngle(book_cover_north, 0.0F, -3.141592653589793F, 0.0F);
-		this.small_paper_north = new ModelRenderer(this, 0, 16);
-		this.small_paper_north.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_north.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
-		this.big_paper_south = new ModelRenderer(this, 19, 8);
-		this.big_paper_south.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.big_paper_south.addBox(-4.0F, -5.0F, -0.01F, 8, 5, 1, 0.0F);
-		this.book_base = new ModelRenderer(this, 0, 22);
-		this.book_base.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.book_base.addBox(-1.0F, 0.01F, -5.0F, 2, 0, 10, 0.0F);
-		this.setRotateAngle(book_base, 0.0F, 1.5707963267948966F, 0.0F);
-		this.book_cover_south = new ModelRenderer(this, 21, 0);
-		this.book_cover_south.setRotationPoint(0.0F, 0.0F, 1.0F);
-		this.book_cover_south.addBox(-5.0F, -6.0F, 0.0F, 10, 6, 0, 0.0F);
-		this.big_paper_north = new ModelRenderer(this, 0, 8);
-		this.big_paper_north.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.big_paper_north.addBox(-4.0F, -5.0F, -0.99F, 8, 5, 1, 0.0F);
+		this.smallPaperSouth = new ModelRenderer(this, 17, 16);
+		this.smallPaperSouth.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperSouth.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.bookCoverNorth = new ModelRenderer(this, 0, 0);
+		this.bookCoverNorth.setRotationPoint(0.0F, 0.0F, -1.0F);
+		this.bookCoverNorth.addBox(-5.0F, -6.0F, 0.0F, 10, 6, 0, 0.0F);
+		this.setRotateAngle(bookCoverNorth, 0.0F, -3.141592653589793F, 0.0F);
+		this.smallPaperNorth = new ModelRenderer(this, 0, 16);
+		this.smallPaperNorth.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperNorth.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.bigPaperSouth = new ModelRenderer(this, 19, 8);
+		this.bigPaperSouth.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.bigPaperSouth.addBox(-4.0F, -5.0F, -0.01F, 8, 5, 1, 0.0F);
+		this.bookBase = new ModelRenderer(this, 0, 22);
+		this.bookBase.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.bookBase.addBox(-1.0F, 0.01F, -5.0F, 2, 0, 10, 0.0F);
+		this.setRotateAngle(bookBase, 0.0F, 1.5707963267948966F, 0.0F);
+		this.bookCoverSouth = new ModelRenderer(this, 21, 0);
+		this.bookCoverSouth.setRotationPoint(0.0F, 0.0F, 1.0F);
+		this.bookCoverSouth.addBox(-5.0F, -6.0F, 0.0F, 10, 6, 0, 0.0F);
+		this.bigPaperNorth = new ModelRenderer(this, 0, 8);
+		this.bigPaperNorth.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.bigPaperNorth.addBox(-4.0F, -5.0F, -0.99F, 8, 5, 1, 0.0F);
 
-		this.small_paper_south_middle = new ModelRenderer(this, 0, 16);
-		this.small_paper_south_middle.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_south_middle.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.smallPaperSouthMiddle = new ModelRenderer(this, 0, 16);
+		this.smallPaperSouthMiddle.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperSouthMiddle.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
 
-		this.small_paper_south_bottom = new ModelRenderer(this, 0, 16);
-		this.small_paper_south_bottom.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_south_bottom.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.smallPaperSouthBottom = new ModelRenderer(this, 0, 16);
+		this.smallPaperSouthBottom.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperSouthBottom.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
 
-		this.small_paper_north_middle = new ModelRenderer(this, 17, 16);
-		this.small_paper_north_middle.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_north_middle.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.smallPaperNorthMiddle = new ModelRenderer(this, 17, 16);
+		this.smallPaperNorthMiddle.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperNorthMiddle.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
 
-		this.small_paper_north_bottom = new ModelRenderer(this, 17, 16);
-		this.small_paper_north_bottom.setRotationPoint(0.0F, 0.0F, 0.0F);
-		this.small_paper_north_bottom.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
+		this.smallPaperNorthBottom = new ModelRenderer(this, 17, 16);
+		this.smallPaperNorthBottom.setRotationPoint(0.0F, 0.0F, 0.0F);
+		this.smallPaperNorthBottom.addBox(-4.0F, -5.0F, 0.0F, 8, 5, 0, 0.0F);
 	}
 
 	@Override
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		setRotationAngles(entityIn, ageInTicks);
 		GlStateManager.enableCull();
-		this.small_paper_south.render(scale);
-		this.small_paper_south_middle.render(scale);
-		this.small_paper_south_bottom.render(scale);
-		this.big_paper_south.render(scale);
-		this.book_cover_south.render(scale);
-		this.book_base.render(scale);
-		this.book_cover_north.render(scale);
-		this.big_paper_north.render(scale);
-		this.small_paper_north.render(scale);
-		this.small_paper_north_middle.render(scale);
-		this.small_paper_north_bottom.render(scale);
+		this.smallPaperSouth.render(scale);
+		this.smallPaperSouthMiddle.render(scale);
+		this.smallPaperSouthBottom.render(scale);
+		this.bigPaperSouth.render(scale);
+		this.bookCoverSouth.render(scale);
+		this.bookBase.render(scale);
+		this.bookCoverNorth.render(scale);
+		this.bigPaperNorth.render(scale);
+		this.smallPaperNorth.render(scale);
+		this.smallPaperNorthMiddle.render(scale);
+		this.smallPaperNorthBottom.render(scale);
 		GlStateManager.disableCull();
 	}
 
 	public void setRotationAngles(Entity entity, float ageInTicks) {
 		if(!((EntityYoukaiBook) entity).getIsBookLaying()) {
 			float angle = MathHelper.cos(ageInTicks * 0.8F) * (float) Math.PI * 0.25F;
-			book_cover_north.rotateAngleX = (16 - angle) * 0.5F;
-			book_cover_south.rotateAngleX = book_cover_north.rotateAngleX;
+			bookCoverNorth.rotateAngleX = (16 - angle) * 0.5F;
+			bookCoverSouth.rotateAngleX = bookCoverNorth.rotateAngleX;
 
-			big_paper_north.rotateAngleX = (15 - angle) * 0.5F;
-			big_paper_south.rotateAngleX = -big_paper_north.rotateAngleX;
+			bigPaperNorth.rotateAngleX = (15 - angle) * 0.5F;
+			bigPaperSouth.rotateAngleX = -bigPaperNorth.rotateAngleX;
 
-			small_paper_north.rotateAngleX = (12 - angle) * 0.5F;
-			small_paper_south.rotateAngleX = -small_paper_north.rotateAngleX;
+			smallPaperNorth.rotateAngleX = (12 - angle) * 0.5F;
+			smallPaperSouth.rotateAngleX = -smallPaperNorth.rotateAngleX;
 
-			small_paper_north_middle.rotateAngleX = (13 - angle) * 0.5F;
-			small_paper_south_middle.rotateAngleX = -small_paper_north_middle.rotateAngleX;
+			smallPaperNorthMiddle.rotateAngleX = (13 - angle) * 0.5F;
+			smallPaperSouthMiddle.rotateAngleX = -smallPaperNorthMiddle.rotateAngleX;
 
-			small_paper_north_bottom.rotateAngleX = (14 - angle) * 0.5F;
-			small_paper_south_bottom.rotateAngleX = -small_paper_north_bottom.rotateAngleX;
+			smallPaperNorthBottom.rotateAngleX = (14 - angle) * 0.5F;
+			smallPaperSouthBottom.rotateAngleX = -smallPaperNorthBottom.rotateAngleX;
 		}
 		else {
-			book_cover_north.rotateAngleX = 0;
-			book_cover_south.rotateAngleX = 0;
+			bookCoverNorth.rotateAngleX = 0;
+			bookCoverSouth.rotateAngleX = 0;
 
-			big_paper_north.rotateAngleX = 0;
-			big_paper_south.rotateAngleX = 0;
+			bigPaperNorth.rotateAngleX = 0;
+			bigPaperSouth.rotateAngleX = 0;
 
-			small_paper_north.rotateAngleX = 0;
-			small_paper_south.rotateAngleX = 0;
+			smallPaperNorth.rotateAngleX = 0;
+			smallPaperSouth.rotateAngleX = 0;
 
-			small_paper_north_middle.rotateAngleX = 0;
-			small_paper_south_middle.rotateAngleX = 0;
+			smallPaperNorthMiddle.rotateAngleX = 0;
+			smallPaperSouthMiddle.rotateAngleX = 0;
 
-			small_paper_north_bottom.rotateAngleX = 0;
-			small_paper_south_bottom.rotateAngleX = 0;
+			smallPaperNorthBottom.rotateAngleX = 0;
+			smallPaperSouthBottom.rotateAngleX = 0;
 		}
 	}
 

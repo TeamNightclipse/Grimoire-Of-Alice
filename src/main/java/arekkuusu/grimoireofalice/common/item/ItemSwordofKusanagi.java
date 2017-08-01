@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -55,7 +56,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_description_body.name"));
@@ -63,7 +64,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 		else {
 			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sword_of_kusanagi_shift.name"));
 		}
-		super.addInformation(stack, player, list, p_77624_4_);
+		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -90,7 +91,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
 				if(movingObjectPosition1 != null) {
 					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if(d1 < d || d == 0.0D) {
+					if(d1 < d || MathUtil.fuzzyEqual(d, 0D)) {
 						entity = entity1;
 						d = d1;
 					}
@@ -154,7 +155,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 		}
 	}
 
-	private void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
+	private static void spawnSmoke(EntityPlayer player, double xVelocity, double zVelocity) {
 		player.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 
@@ -170,7 +171,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
+		return 72_000;
 	}
 
 	@Override

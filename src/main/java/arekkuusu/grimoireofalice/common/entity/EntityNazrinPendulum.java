@@ -8,9 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.block.Block;
@@ -54,47 +52,52 @@ public class EntityNazrinPendulum extends Entity {
 	public void onUpdate() {
 		super.onUpdate();
 		if(!world.isRemote) {
-			if(user == null || isEntityInsideOpaqueBlock()) {
+			if(user == null || isEntityInsideOpaqueBlock() || ticksExisted > 10 && user.isSneaking() || user.hurtTime > 0) {
 				stopEntity();
-			}
-			else {
-				if(ticksExisted > 10 && user.isSneaking() || user.hurtTime > 0) {
-					stopEntity();
-				}
+				return;
 			}
 
-			if(user != null && follow) {
-				Vec3d look = user.getLookVec();
-				float distance = 2F;
-				double dx = user.posX + look.x * distance;
-				double dy = user.posY + user.getEyeHeight() - 0.5;
-				double dz = user.posZ + look.z * distance;
-				setPosition(dx, dy, dz);
+			followPlayer();
+			surveyArea();
+		}
+	}
+
+	private void followPlayer() {
+		if(follow) {
+			Vec3d look = user.getLookVec();
+			float distance = 2F;
+			double dx = user.posX + look.x * distance;
+			double dy = user.posY + user.getEyeHeight() - 0.5;
+			double dz = user.posZ + look.z * distance;
+			setPosition(dx, dy, dz);
+		}
+	}
+
+	private void surveyArea() {
+		int count = 0;
+		BlockPos pos = new BlockPos(posX, posY, posZ);
+		for(int i = 1; i < 20; i++) {
+			Block block = world.getBlockState(pos.down(i)).getBlock();
+			ItemStack blockStack = new ItemStack(block);
+
+			//noinspection ConstantConditions Liar
+			//Check that the block has an item representation
+			if(blockStack.isEmpty()) {
+				continue;
 			}
 
-			List<Block> blockLayer = new ArrayList<>(20);
-			BlockPos pos = new BlockPos(posX, posY, posZ);
-			for(int i = 1; i < 20; i++) {
-				Block block = world.getBlockState(pos.down(i)).getBlock();
-				ItemStack stack = new ItemStack(block);
+			boolean searchForOre = !ore.isEmpty();
+			boolean isValuable = Arrays.stream(OreDictionary.getOreIDs(blockStack)).mapToObj(OreDictionary::getOreName).anyMatch(
+					s -> searchForOre ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
 
-				//noinspection ConstantConditions Liar
-				//Check that the block has an item representation
-				if(stack.isEmpty()) {
-					continue;
-				}
-				boolean isOre = Arrays.stream(OreDictionary.getOreIDs(stack)).mapToObj(OreDictionary::getOreName).anyMatch(
-						s -> !ore.isEmpty() ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
-
-				if(isOre) {
-					blockLayer.add(block);
-				}
+			if(isValuable) {
+				count++;
 			}
-			blockLayer.forEach(ignored -> {
-				if(rand.nextInt(8) == 2 && world instanceof WorldServer) {
-					((WorldServer) world).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
-				}
-			});
+		}
+		for(int i = 0; i < count; i++) {
+			if(rand.nextInt(8) == 2 && world instanceof WorldServer) {
+				((WorldServer) world).spawnParticle(EnumParticleTypes.CRIT_MAGIC, posX, posY, posZ, 1, 0D, rand.nextDouble(), 0D, 0.1D);
+			}
 		}
 	}
 

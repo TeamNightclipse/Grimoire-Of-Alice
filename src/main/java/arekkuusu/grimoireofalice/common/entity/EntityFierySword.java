@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,7 +50,7 @@ public class EntityFierySword extends Entity {
 			}
 			if(!world.isRemote) {
 				List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class,
-						getEntityBoundingBox(), input -> input != player);
+						getEntityBoundingBox(), input -> !player.equals(input));
 				list.forEach(this::burn);
 			}
 			setPosition(player.posX, player.posY + player.getEyeHeight(), player.posZ);
@@ -70,18 +71,6 @@ public class EntityFierySword extends Entity {
 	@Override
 	public Vec3d getLookVec() {
 		return this.getLook(1.0F);
-	}
-
-	@Override
-	public Vec3d getLook(float partialTicks) {
-		if(partialTicks == 1.0F) {
-			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
-		}
-		else {
-			float f = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partialTicks;
-			float f1 = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * partialTicks;
-			return this.getVectorForRotation(f, f1);
-		}
 	}
 
 	@Override

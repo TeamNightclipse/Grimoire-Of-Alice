@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.item.food;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -47,7 +48,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_description.name"));
 	}
@@ -57,7 +58,8 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
-		if(entityLiving.getHealth() != entityLiving.getMaxHealth()) {
+
+		if(!MathUtil.fuzzyEqual(entityLiving.getHealth(), entityLiving.getMaxHealth())) {
 			entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 			entityLiving.heal(100);
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
@@ -76,12 +78,12 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
+	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.DRINK;
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
+	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
 	}
 

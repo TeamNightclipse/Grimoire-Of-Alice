@@ -62,7 +62,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_description_top.name"));
@@ -70,7 +70,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hisou_sword_shift.name"));
 		}
-		super.addInformation(stack, player, list, p_77624_4_);
+		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 		if(!entityLivingBase.world.isRemote && entityLivingBase instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
-				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> entity != player && entity instanceof EntityLivingBase, 35);
+				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> !player.equals(entity) && entity instanceof EntityLivingBase, 35);
 
 				if(lookedAt.isPresent()) {
 					EntityLivingBase entity = (EntityLivingBase) lookedAt.get();
@@ -180,7 +180,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 		return EnumActionResult.FAIL;
 	}
 
-	private void spawnGround(EntityPlayer player, double xVelocity, double zVelocity) {
+	private static void spawnGround(EntityPlayer player, double xVelocity, double zVelocity) {
 		player.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, player.posX, player.posY, player.posZ, xVelocity, 0, zVelocity);
 	}
 

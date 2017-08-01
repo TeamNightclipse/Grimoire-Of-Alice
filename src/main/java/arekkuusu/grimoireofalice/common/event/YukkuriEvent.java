@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.event;
 import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,15 +37,16 @@ public class YukkuriEvent {
 		EntityPlayer player = event.player;
 		if(player.getEntityData().hasKey("MalletResized")) {
 			float modifier = player.getEntityData().getFloat("MalletResized");
+			boolean isHalf = MathUtil.fuzzyEqual(modifier, 0.5F);
 
 			AxisAlignedBB axisAlignedBB = player.getEntityBoundingBox(); //Get Bounding Box
 			double minX = axisAlignedBB.minX;
 			double minY = axisAlignedBB.minY;
 			double minZ = axisAlignedBB.minZ;
 			axisAlignedBB = new AxisAlignedBB(minX, minY, minZ
-					, modifier == 0.5 ? minX + 0.5 : minX + modifier * 0.8
-					, modifier == 0.5 ? minY + 0.9 : minY + (modifier - 0.1) * 2
-					, modifier == 0.5 ? minZ + 0.5 : minZ + modifier * 0.8); //Expand bounding Box
+					, isHalf ? minX + 0.5 : minX + modifier * 0.8
+					, isHalf ? minY + 0.9 : minY + (modifier - 0.1) * 2
+					, isHalf ? minZ + 0.5 : minZ + modifier * 0.8); //Expand bounding Box
 			player.setEntityBoundingBox(axisAlignedBB); //Set Bounding Box
 		}
 	}
@@ -90,15 +92,8 @@ public class YukkuriEvent {
 	public void livingHurtEvent(LivingHurtEvent event) {
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
-				event.setCanceled(true);
-				return;
-			}
-			if(event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)) {
-				event.setCanceled(true);
-				return;
-			}
-			if(player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
+			if(isUsingItem(player, ModItems.NIMBLE_FABRIC) || event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)
+					|| player.getCooldownTracker().hasCooldown(ModItems.GHASTLY_SEND_OFF_LANTERN)) {
 				event.setCanceled(true);
 				return;
 			}
@@ -106,7 +101,7 @@ public class YukkuriEvent {
 			if(player.inventory.hasItemStack(new ItemStack(ModItems.SUBSTITUTE_JIZO))) {
 
 				@SuppressWarnings("ConstantConditions") //Liar
-						IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+				IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
 				for(int i = 0; i < capability.getSlots(); i++) {
 					ItemStack stack = capability.getStackInSlot(i);
@@ -156,7 +151,7 @@ public class YukkuriEvent {
 		}
 	}
 
-	private boolean isUsingItem(EntityLivingBase base, Item item) {
+	private static boolean isUsingItem(EntityLivingBase base, Item item) {
 		ItemStack stack = base.getHeldItemMainhand();
 		if(stack.isEmpty()) {
 			stack = base.getHeldItemOffhand();
@@ -164,12 +159,12 @@ public class YukkuriEvent {
 		return !stack.isEmpty() && stack.getItem() == item && base.isHandActive();
 	}
 
-	private boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
+	private static boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
 		ItemStack stack = new ItemStack(ModItems.HAKUREI_GOHEI);
 		return hasItemStack(player.inventory.mainInventory, stack) && getValidMode(player.inventory.mainInventory, stack, mode);
 	}
 
-	private boolean hasItemStack(NonNullList<ItemStack> stacks, ItemStack stack) {
+	private static boolean hasItemStack(NonNullList<ItemStack> stacks, ItemStack stack) {
 		for(ItemStack itemStack : stacks) {
 			if(!itemStack.isEmpty() && itemStack.isItemEqualIgnoreDurability(stack)) {
 				return true;
@@ -179,7 +174,7 @@ public class YukkuriEvent {
 		return false;
 	}
 
-	private boolean getValidMode(NonNullList<ItemStack> stacks, ItemStack stack, GoheiMode mode) {
+	private static boolean getValidMode(NonNullList<ItemStack> stacks, ItemStack stack, GoheiMode mode) {
 		for(ItemStack itemStack : stacks) {
 			if(!itemStack.isEmpty() && stack.getItem() == itemStack.getItem() && getGoheiMode(itemStack) == mode) {
 				return true;
@@ -189,7 +184,7 @@ public class YukkuriEvent {
 		return false;
 	}
 
-	private GoheiMode getGoheiMode(ItemStack itemStack) {
+	private static GoheiMode getGoheiMode(ItemStack itemStack) {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		return nbt == null ? GoheiMode.OFFENSIVE : GoheiMode.fromType(nbt.getByte("GoheiMode"));
 	}

@@ -56,7 +56,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ufos_header.name"));
 		list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.ufos_status.name")
 				+ TextFormatting.RESET
@@ -84,7 +84,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private void itemsInRange(World world, EntityPlayer player) {
+	private static void itemsInRange(World world, EntityPlayer player) {
 		List<EntityItem> aList = world.getEntitiesWithinAABB(EntityItem.class, player.getEntityBoundingBox().grow(10D));
 
 		for(EntityItem item : aList) {
@@ -96,7 +96,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private void givePlayerItems(EntityItem item, EntityPlayer player) {
+	private static void givePlayerItems(EntityItem item, EntityPlayer player) {
 		Vec3d look = player.getLookVec();
 		double x = player.posX + look.x * 0.2D;
 		double y = player.posY + player.height / 2F;
@@ -105,12 +105,12 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private boolean hasRoomForStack(ItemStack item, EntityPlayer player) {
+	private static boolean hasRoomForStack(ItemStack item, EntityPlayer player) {
 		return player.hasCapability(ITEM_HANDLER_CAPABILITY, null)
 				&& ItemHandlerHelper.insertItemStacked(player.getCapability(ITEM_HANDLER_CAPABILITY, null), item, true).isEmpty();
 	}
 
-	private void setActive(ItemStack stack) {
+	private static void setActive(ItemStack stack) {
 		NBTTagCompound nbt = stack.getTagCompound();
 		if(nbt == null) {
 			nbt = new NBTTagCompound();
@@ -122,7 +122,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private boolean isActive(ItemStack stack) {
+	private static boolean isActive(ItemStack stack) {
 		return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("Active");
 	}
 

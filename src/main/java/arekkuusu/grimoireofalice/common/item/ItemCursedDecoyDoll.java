@@ -45,11 +45,11 @@ public class ItemCursedDecoyDoll extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.decoy_doll_header.name"));
 	}
 
-	private void spawnDoll(ItemStack stack, World world, EntityPlayer player) {
+	private static void spawnDoll(ItemStack stack, World world, EntityPlayer player) {
 		if(!world.isRemote) {
 			EntityCursedDecoyDoll doll = new EntityCursedDecoyDoll(world, player);
 			Vec3d look = player.getLookVec();

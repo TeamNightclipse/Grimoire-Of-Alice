@@ -19,8 +19,8 @@ public class RenderBarrier extends Render<EntityBarrier> {
 
 	private static final ModelBase MODEL = new ModelFlat();
 
-	public RenderBarrier(RenderManager p_i46179_1_) {
-		super(p_i46179_1_);
+	public RenderBarrier(RenderManager renderManager) {
+		super(renderManager);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		GlStateManager.scale(2F, 2F, 2F);
 		GlStateManager.rotate(90 - entity.rotationYaw, 0F, 1F, 0F);
 		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
-		GlStateManager.rotate(entity.ticksExisted * 4, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(entity.ticksExisted * 4F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 
 		GlStateManager.disableBlend();

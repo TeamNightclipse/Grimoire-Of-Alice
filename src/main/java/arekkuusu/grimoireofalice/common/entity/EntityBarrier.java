@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -73,7 +74,7 @@ public class EntityBarrier extends Entity {
 
 			if(!world.isRemote) {
 				List<Entity> entities = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(),
-						entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && entity1 != player);
+						entity1 -> entity1 != null && !(entity1 instanceof EntityBarrier) && entity1.canBeCollidedWith() && !entity1.equals(player));
 
 				if(!entities.isEmpty()) {
 					onDetectEntity(entities.get(0));
@@ -129,18 +130,6 @@ public class EntityBarrier extends Entity {
 	@Override
 	public Vec3d getLookVec() {
 		return this.getLook(1.0F);
-	}
-
-	@Override
-	public Vec3d getLook(float partialTicks) {
-		if(partialTicks == 1.0F) {
-			return this.getVectorForRotation(this.rotationPitch, this.rotationYaw);
-		}
-		else {
-			float f = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * partialTicks;
-			float f1 = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * partialTicks;
-			return this.getVectorForRotation(f, f1);
-		}
 	}
 
 	@Override

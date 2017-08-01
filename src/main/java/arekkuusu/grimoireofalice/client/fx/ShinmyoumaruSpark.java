@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.client.fx;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -22,7 +23,7 @@ public class ShinmyoumaruSpark extends Particle {
 	public ShinmyoumaruSpark(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
 
-		if(xSpeed == 0.0D && zSpeed == 0.0D) {
+		if(MathUtil.fuzzyEqual(xSpeed, 0D) && MathUtil.fuzzyEqual(zSpeed, 0D)) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}

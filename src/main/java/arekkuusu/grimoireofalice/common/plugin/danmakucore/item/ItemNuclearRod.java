@@ -56,7 +56,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_rod_header.name"));
 	}
 
@@ -70,7 +70,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase livingBase, int count) {
 		if(livingBase instanceof EntityPlayer && hasFullSet((EntityPlayer) livingBase)) {
-			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().grow(5), entity -> entity != livingBase);
+			List<EntityLivingBase> list = livingBase.world.getEntitiesWithinAABB(EntityLivingBase.class, livingBase.getEntityBoundingBox().grow(5), entity -> !livingBase.equals(entity));
 			for(EntityLivingBase living : list) {
 				living.addPotionEffect(new PotionEffect(ModPotions.RADIATION_POISONING, 100));
 			}
@@ -121,7 +121,7 @@ public class ItemNuclearRod extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private boolean hasFullSet(EntityPlayer player) {
+	private static boolean hasFullSet(EntityPlayer player) {
 		ItemStack boots = player.inventory.armorInventory.get(0);
 		ItemStack body = player.inventory.armorInventory.get(2);
 

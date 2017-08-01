@@ -8,6 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
+import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -104,7 +105,7 @@ public class EntityGrimoireSpell extends Entity {
 		if(bookSpread < 0.5F || rand.nextInt(40) == 0) {
 			float f1 = flipT;
 
-			while(f1 != flipT) {
+			while(!MathUtil.fuzzyEqual(f1, flipT)) {
 				flipT += rand.nextInt(4) - rand.nextInt(4);
 			}
 		}

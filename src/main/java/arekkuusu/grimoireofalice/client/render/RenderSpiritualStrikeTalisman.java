@@ -26,8 +26,8 @@ public class RenderSpiritualStrikeTalisman extends Render<EntitySpiritualStrikeT
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(90F, 1F, 0F, 0F);
 		GlStateManager.rotate(15F, 0F, 0F, 1F);
-		GlStateManager.rotate(entity.ticksExisted * 2, 0F, 1F, 0F);
-		GlStateManager.rotate(entity.ticksExisted * 8, 0F, 0F, 1F);
+		GlStateManager.rotate(entity.ticksExisted * 2F, 0F, 1F, 0F);
+		GlStateManager.rotate(entity.ticksExisted * 8F, 0F, 0F, 1F);
 		bindEntityTexture(entity);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();

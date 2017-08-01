@@ -50,7 +50,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean p_77624_4_) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_header.name"));
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_description.name"));
 	}
@@ -89,7 +89,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 		}
 	}
 
-	private ItemStack fillBucket(ItemStack emptyBuckets, EntityPlayer player, Item fullBucket) {
+	private static ItemStack fillBucket(ItemStack emptyBuckets, EntityPlayer player, Item fullBucket) {
 		if(player.capabilities.isCreativeMode) {
 			return emptyBuckets;
 		}
