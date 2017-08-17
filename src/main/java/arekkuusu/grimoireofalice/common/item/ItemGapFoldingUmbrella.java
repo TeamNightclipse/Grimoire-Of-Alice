@@ -8,7 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import java.util.List;
+import java.util.Optional;
+
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +24,11 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -28,9 +36,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-import java.util.Optional;
 
 @net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
@@ -105,13 +110,9 @@ public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
 	}
 
 	private static Optional<BlockPos> getBlockPosLookedAt(EntityPlayer player) {
-		double range = 40.0D;
-		Vec3d look = player.getLookVec();
-		Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-		Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
-		RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-		if(raytraceresult != null) {
-			return Optional.of(raytraceresult.getBlockPos().offset(raytraceresult.sideHit));
+		RayTraceResult rayTraceResult = MiscHelper.rayTraceLook(player, 40.0D);
+		if(rayTraceResult != null) {
+			return Optional.of(rayTraceResult.getBlockPos().offset(rayTraceResult.sideHit));
 		}
 		else {
 			return Optional.empty();

@@ -14,6 +14,7 @@ import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -265,15 +266,15 @@ public class VanillaCrafting {
 					.add(ModItems.UBA_MASK)
 					.outputs(ModItems.KOKOROS_MASKS).build();
 
-			mask().where('R').mapsTo(Items.SUGAR).outputs(ModItems.FOX_MASK).build();
-			mask().where('R').mapsTo(Items.BLAZE_POWDER).outputs(ModItems.FUKU_NO_KAMI_MASK).build();
-			mask().where('R').mapsTo(Items.POISONOUS_POTATO).outputs(ModItems.HANNYA_MASK).build();
-			mask().where('R').mapsTo(Items.GHAST_TEAR).outputs(ModItems.HYOTTOKO_MASK).build();
-			mask().where('R').mapsTo(Items.ROTTEN_FLESH).outputs(ModItems.KOOMOTE_MASK).build();
-			mask().where('R').mapsTo(Items.FERMENTED_SPIDER_EYE).outputs(ModItems.MASK_OF_HOPE).build();
-			mask().where('R').mapsTo(Items.MUSHROOM_STEW).outputs(ModItems.MONKEY_MASK).build();
-			mask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
-			mask().where('R').mapsTo(Items.NETHER_STAR).outputs(ModItems.UBA_MASK).build();
+			mask(Items.SUGAR, ModItems.FOX_MASK);
+			mask(Items.BLAZE_POWDER, ModItems.FUKU_NO_KAMI_MASK);
+			mask(Items.POISONOUS_POTATO, ModItems.HANNYA_MASK);
+			mask(Items.GHAST_TEAR, ModItems.HYOTTOKO_MASK);
+			mask(Items.ROTTEN_FLESH, ModItems.KOOMOTE_MASK);
+			mask(Items.FERMENTED_SPIDER_EYE, ModItems.MASK_OF_HOPE);
+			mask(Items.MUSHROOM_STEW, ModItems.MONKEY_MASK);
+			rawMask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
+			mask(Items.NETHER_STAR, ModItems.UBA_MASK);
 		}
 	}
 
@@ -285,11 +286,15 @@ public class VanillaCrafting {
 		return new ShapelessRecipe();
 	}
 
-	private static ShapedRecipe mask() {
+	private static ShapedRecipe rawMask() {
 		return new ShapedRecipe().grid("IAR", "SGS", " S ")
 				.where('S').mapsTo(ModItems.PASTE)
 				.where('G').mapsTo(ModItems.MASK)
 				.where('A').mapsTo(ModItems.NETHER_SHARD)
 				.where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
+	}
+
+	private static void mask(Item item, Item output) {
+		rawMask().where('R').mapsTo(item).outputs(item).build();
 	}
 }

@@ -8,8 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import java.util.List;
+
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelKoishiEye;
 import arekkuusu.grimoireofalice.client.model.ModelSatoriEye;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -38,8 +39,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
@@ -144,10 +143,10 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped imodel) {
 		if(isClosed(itemStack)) {
 			if((model == null || model instanceof ModelSatoriEye)) {
-				model = new ModelKoishiEye();
+				model = new ModelSatoriEye();
 			}
 		}
-		else if(model == null || model instanceof ModelKoishiEye) {
+		else if(model == null || model instanceof ModelSatoriEye) {
 			model = new ModelSatoriEye();
 		}
 		model.setModelAttributes(imodel);

@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -57,18 +58,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 									EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack heldItem = player.getHeldItem(hand);
-		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
-		boolean ok = false;
-		if(tile != null) {
-			if(player.isSneaking()) {
-				ok = tile.removeItem(player);
-			}
-			else if(!heldItem.isEmpty()) {
-				ok = tile.addItem(player, heldItem);
-			}
-		}
-		return ok;
+		return MiscHelper.tileEntityHandlerProcesInteract(world, pos, player, hand);
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -140,14 +141,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 					List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(4.0D));
 					for(EntityMob mob : list) {
 						mob.attackEntityFrom(DamageSource.MAGIC, convert);
-						Vec3d playerPos = player.getPositionVector();
-						Vec3d mobPos = mob.getPositionVector();
-						double ratio = playerPos.distanceTo(mobPos) / 4;
-						double scaling = 1 - ratio;
-						Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-						mob.motionX = -motion.x * 2;
-						mob.motionY = .3F;
-						mob.motionZ = -motion.z * 2;
+						MiscHelper.pushEntity(player, mob);
 					}
 				}
 			}

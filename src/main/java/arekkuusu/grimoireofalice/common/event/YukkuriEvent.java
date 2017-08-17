@@ -134,21 +134,18 @@ public class YukkuriEvent {
 	public void onLivingDropsEvent(LivingDropsEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
 		if(entity instanceof EntityDragon && ConfigHandler.grimoireOfAlice.features.swordOfKusanagi) {
-			World world = entity.getEntityWorld();
-			BlockPos pos = entity.getPosition();
-
-			EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.SWORD_OF_KUSANAGI));
-
-			event.getDrops().add(item);
+			event.getDrops().add(createDrop(ModItems.SWORD_OF_KUSANAGI, entity));
 		}
 		else if(entity instanceof EntityChicken && event.getEntity().getEntityWorld().rand.nextInt(200) == 1) {
-			World world = entity.getEntityWorld();
-			BlockPos pos = entity.getPosition();
-
-			EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.SWALLOW_EGG));
-
-			event.getDrops().add(item);
+			event.getDrops().add(createDrop(ModItems.SWALLOW_EGG, entity));
 		}
+	}
+
+	private EntityItem createDrop(Item item, Entity entity) {
+		World world = entity.getEntityWorld();
+		BlockPos pos = entity.getPosition();
+
+		return new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(item));
 	}
 
 	private static boolean isUsingItem(EntityLivingBase base, Item item) {

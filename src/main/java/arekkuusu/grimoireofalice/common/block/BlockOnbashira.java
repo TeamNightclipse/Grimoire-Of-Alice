@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -135,19 +136,8 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 									EnumFacing side, float hitX, float hitY, float hitZ) {
-		ItemStack heldItem = player.getHeldItem(hand);
 		if(state.getValue(PART) == Part.TOP) {
-			TilePillarAltar tile = (TilePillarAltar)world.getTileEntity(pos);
-			boolean ok = false;
-			if(tile != null) {
-				if(player.isSneaking()) {
-					ok = tile.removeItem(player);
-				}
-				else if(!heldItem.isEmpty()) {
-					ok = tile.addItem(player, heldItem);
-				}
-			}
-			return ok;
+			return MiscHelper.tileEntityHandlerProcesInteract(world, pos, player, hand);
 		}
 		else {
 			return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);

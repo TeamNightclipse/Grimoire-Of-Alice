@@ -1,5 +1,8 @@
 package arekkuusu.grimoireofalice.common.entity;
 
+import java.util.List;
+
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,8 +11,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import java.util.List;
 
 public class EntitySpiritualStrikeTalisman extends Entity {
 
@@ -38,12 +39,7 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 					Vec3d vec = getPositionVector();
 					Vec3d mobPos = entity.getPositionVector();
 					if(vec.distanceTo(mobPos) < 5) {
-						double ratio = vec.distanceTo(mobPos) / 5;
-						double scaling = 1 - ratio;
-						Vec3d motion = vec.subtract(mobPos).scale(scaling);
-						entity.motionX = -motion.x * 2;
-						entity.motionY = .3F;
-						entity.motionZ = -motion.z * 2;
+						MiscHelper.pushEntity(this, entity);
 					}
 				});
 			}

@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.client.model;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -17,7 +19,6 @@ import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
 
 /**
  * AuraIchirin - Arekkuusu Created using Tabula 5.1.0
@@ -273,46 +274,31 @@ public class ModelIchirinUnzan extends ModelBiped {
 
 	private void renderFists(float scale) {
 		if(renderRight) {
-			GlStateManager.pushMatrix();
-			GlStateManager.enableBlend();
-			GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
-			GlStateManager.translate(this.fistRight.offsetX, this.fistRight.offsetY, this.fistRight.offsetZ);
-			GlStateManager.translate(this.fistRight.rotationPointX * scale, this.fistRight.rotationPointY * scale, this.fistRight.rotationPointZ * scale);
-			GlStateManager.scale(2.5D, 2.5D, 2.5D);
-			GlStateManager.translate(-this.fistRight.offsetX, -this.fistRight.offsetY, -this.fistRight.offsetZ);
-			GlStateManager.translate(-this.fistRight.rotationPointX * scale, -this.fistRight.rotationPointY * scale, -this.fistRight.rotationPointZ * scale);
-			this.fistRight.render(scale);
-			GlStateManager.disableBlend();
-			GlStateManager.popMatrix();
+			renderFist(this.fistRight, scale);
 		}
 
 		if(renderLeft) {
-			GlStateManager.pushMatrix();
-			GlStateManager.enableBlend();
-			GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
-			GlStateManager.translate(this.fistLeft.offsetX, this.fistLeft.offsetY, this.fistLeft.offsetZ);
-			GlStateManager.translate(this.fistLeft.rotationPointX * scale, this.fistLeft.rotationPointY * scale, this.fistLeft.rotationPointZ * scale);
-			GlStateManager.scale(2.5D, 2.5D, 2.5D);
-			GlStateManager.translate(-this.fistLeft.offsetX, -this.fistLeft.offsetY, -this.fistLeft.offsetZ);
-			GlStateManager.translate(-this.fistLeft.rotationPointX * scale, -this.fistLeft.rotationPointY * scale, -this.fistLeft.rotationPointZ * scale);
-			this.fistLeft.render(scale);
-			GlStateManager.disableBlend();
-			GlStateManager.popMatrix();
+			renderFist(this.fistLeft, scale);
 		}
 	}
 
-	public boolean renderRight() {
-		return renderRight;
+	private static void renderFist(ModelRenderer fist, float scale) {
+		GlStateManager.pushMatrix();
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 0.95F);
+		GlStateManager.translate(fist.offsetX, fist.offsetY, fist.offsetZ);
+		GlStateManager.translate(fist.rotationPointX * scale, fist.rotationPointY * scale, fist.rotationPointZ * scale);
+		GlStateManager.scale(2.5D, 2.5D, 2.5D);
+		GlStateManager.translate(-fist.offsetX, -fist.offsetY, -fist.offsetZ);
+		GlStateManager.translate(-fist.rotationPointX * scale, -fist.rotationPointY * scale, -fist.rotationPointZ * scale);
+		fist.render(scale);
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
 	}
 
 	public void setRenderRight(boolean renderRight) {
 		this.renderRight = renderRight;
-	}
-
-	public boolean renderLeft() {
-		return renderLeft;
 	}
 
 	public void setRenderLeft(boolean renderLeft) {

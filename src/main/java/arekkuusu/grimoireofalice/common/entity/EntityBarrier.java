@@ -8,7 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
+import java.util.List;
+
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -19,8 +21,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-
-import java.util.List;
 
 public class EntityBarrier extends Entity {
 
@@ -98,14 +98,7 @@ public class EntityBarrier extends Entity {
 			setDead();
 		}
 		else if(type == Barrier.MOTION) {
-			Vec3d playerPos = getPositionVector();
-			Vec3d mobPos = living.getPositionVector();
-			double ratio = playerPos.distanceTo(mobPos) / 4;
-			double scaling = 1 - ratio;
-			Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-			living.motionX = -motion.x * 2;
-			living.motionY = .3F;
-			living.motionZ = -motion.z * 2;
+			MiscHelper.pushEntity(this, living);
 		}
 	}
 

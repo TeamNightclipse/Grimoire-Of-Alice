@@ -7,6 +7,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.fx.ParticleFX;
 import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.item.ItemSwordOwner;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -165,14 +166,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(10.0D));
 				for(EntityMob mob : list) {
 					mob.attackEntityFrom(DamageSource.DROWN, 1);
-					Vec3d playerPos = player.getPositionVector();
-					Vec3d mobPos = mob.getPositionVector();
-					double ratio = playerPos.distanceTo(mobPos) / 4;
-					double scaling = 1 - ratio;
-					Vec3d motion = playerPos.subtract(mobPos).scale(scaling);
-					mob.motionX = -motion.x * 2;
-					mob.motionY = .3F;
-					mob.motionZ = -motion.z * 2;
+					MiscHelper.pushEntity(player, mob);
 				}
 			}
 			return EnumActionResult.SUCCESS;

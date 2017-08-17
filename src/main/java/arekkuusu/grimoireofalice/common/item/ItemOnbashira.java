@@ -8,19 +8,16 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import com.google.common.collect.Multimap;
 
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
@@ -51,22 +48,9 @@ public class ItemOnbashira extends ItemModSword implements IOwnedBy {
 	@Override
 	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
 		Multimap<String, AttributeModifier> modifiers = super.getAttributeModifiers(slot, stack);
-		multiplyModifier(modifiers, SharedMonsterAttributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER, 3);
-		multiplyModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, 1.5);
+		MiscHelper.multiplyItemModifier(modifiers, SharedMonsterAttributes.ATTACK_DAMAGE, ATTACK_DAMAGE_MODIFIER, 3);
+		MiscHelper.multiplyItemModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, 1.5);
 		return modifiers;
-	}
-
-	private static void multiplyModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier) {
-		Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
-		Optional<AttributeModifier> modifierOptional = modifiers.stream()
-				.filter(attributeModifier -> attributeModifier.getID().equals(id))
-				.findFirst();
-
-		if(modifierOptional.isPresent()) {
-			AttributeModifier modifier = modifierOptional.get();
-			modifiers.remove(modifier);
-			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation()));
-		}
 	}
 
 	@Override

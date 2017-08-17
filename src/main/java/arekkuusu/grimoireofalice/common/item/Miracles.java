@@ -37,34 +37,6 @@ public class Miracles {
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
-	public static final Miracle CLEAR = new Miracle() {
-
-		@Override
-		public String getName() {
-			return "clear";
-		}
-
-		@Override
-		public boolean canUse(int charge, EntityPlayer player) {
-			return charge >= 1;
-		}
-
-		@Override
-		public int execute(Item item, int charge, EntityPlayer player) {
-			WorldInfo worldInfo = player.world.getWorldInfo();
-			int time = 400 + player.getRNG().nextInt(1000) * 20;
-
-			worldInfo.setCleanWeatherTime(time);
-			worldInfo.setRainTime(0);
-			worldInfo.setThunderTime(0);
-			worldInfo.setRaining(false);
-			worldInfo.setThundering(false);
-
-			player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F, 1F);
-			return 1;
-		}
-	};
-
 	public static final Miracle WIND = new Miracle() {
 
 		@Override
@@ -172,62 +144,65 @@ public class Miracles {
 		}
 	};
 
-	public static final Miracle RAIN = new Miracle() {
+	public static class WeatherMiracle implements Miracle {
+
+		private final int cleanWeatherTime;
+		private final int rainTime;
+		private final int thunderTime;
+		private final boolean raining;
+		private final boolean thundering;
+
+		private final String name;
+		private final int chargeCost;
+
+		/**
+		 * @param cleanWeatherTime How long there will be clear weather, or random if -1
+		 * @param rainTime How long there will be rain, or random if -1
+		 * @param thunderTime How long there will be thunder, or random if -1
+		 * @param raining If there will be rain
+		 * @param thundering If there will be thunder
+		 * @param name The miracle name
+		 * @param chargeCost The charge cost
+		 */
+		public WeatherMiracle(int cleanWeatherTime, int rainTime, int thunderTime, boolean raining, boolean thundering, String name, int chargeCost) {
+			this.cleanWeatherTime = cleanWeatherTime;
+			this.rainTime = rainTime;
+			this.thunderTime = thunderTime;
+			this.raining = raining;
+			this.thundering = thundering;
+			this.name = name;
+			this.chargeCost = chargeCost;
+		}
 
 		@Override
 		public String getName() {
-			return "rain";
+			return name;
 		}
 
 		@Override
 		public boolean canUse(int charge, EntityPlayer player) {
-			return charge >= 4;
+			return charge >= chargeCost;
 		}
 
 		@Override
 		public int execute(Item item, int charge, EntityPlayer player) {
 			WorldInfo worldInfo = player.world.getWorldInfo();
-			int time = 400 + player.getRNG().nextInt(1000) * 20;
+			int randTime = 400 + player.getRNG().nextInt(1000) * 20;
 
-			worldInfo.setCleanWeatherTime(0);
-			worldInfo.setRainTime(time);
-			worldInfo.setThunderTime(time);
-			worldInfo.setRaining(true);
-			worldInfo.setThundering(false);
-
-			player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
-			return 4;
-		}
-	};
-
-	public static final Miracle THUNDER = new Miracle() {
-
-		@Override
-		public String getName() {
-			return "thunder";
-		}
-
-		@Override
-		public boolean canUse(int charge, EntityPlayer player) {
-			return charge >= 5;
-		}
-
-		@Override
-		public int execute(Item item, int charge, EntityPlayer player) {
-			WorldInfo worldInfo = player.world.getWorldInfo();
-			int time = 400 + player.getRNG().nextInt(1000) * 20;
-
-			worldInfo.setCleanWeatherTime(0);
-			worldInfo.setRainTime(time);
-			worldInfo.setThunderTime(time);
-			worldInfo.setRaining(true);
-			worldInfo.setThundering(true);
+			worldInfo.setCleanWeatherTime(cleanWeatherTime == -1 ? randTime : cleanWeatherTime);
+			worldInfo.setRainTime(rainTime == -1 ? randTime : rainTime);
+			worldInfo.setThunderTime(thunderTime == -1 ? randTime : thunderTime);
+			worldInfo.setRaining(raining);
+			worldInfo.setThundering(thundering);
 
 			player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.PLAYERS, 1F, 1F);
-
-			return 5;
+			return chargeCost;
 		}
-	};
+	}
+
+	public static final Miracle RAIN = new WeatherMiracle(0, -1, -1, true, false, "rain", 4);
+	public static final Miracle THUNDER = new WeatherMiracle(0, -1, -1, true, true, "thunder", 5);
+	public static final Miracle CLEAR = new WeatherMiracle(-1, 0, 0, false, false, "clear", 1);
 
 	public static final Miracle SOIL = new Miracle() {
 

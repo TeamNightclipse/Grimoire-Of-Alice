@@ -26,14 +26,7 @@ public class CapabilitiesEvent {
 			List<EntityItem> drop = event.getDrops();
 			for(EntityItem item : drop) {
 				Item i = item.getItem().getItem();
-				if(isFlyItem(i) && !player.capabilities.isCreativeMode) {
-					player.capabilities.allowFlying = false;
-					player.capabilities.isFlying = false;
-					if(!player.world.isRemote) {
-						player.sendPlayerAbilities();
-					}
-					playersFlying.remove(player);
-				}
+				processItemRemoveFlyer(player, i);
 			}
 		}
 	}
@@ -43,14 +36,7 @@ public class CapabilitiesEvent {
 		if(ConfigHandler.grimoireOfAlice.features.allowFly) {
 			EntityPlayer player = event.getPlayer();
 			Item item = event.getEntityItem().getItem().getItem();
-			if(isFlyItem(item) && !player.capabilities.isCreativeMode) {
-				player.capabilities.allowFlying = false;
-				player.capabilities.isFlying = false;
-				if(!player.world.isRemote) {
-					player.sendPlayerAbilities();
-				}
-				playersFlying.remove(player);
-			}
+			processItemRemoveFlyer(player, item);
 		}
 	}
 
@@ -78,6 +64,17 @@ public class CapabilitiesEvent {
 			else if(canFly(player)) {
 				playersFlying.add(player);
 			}
+		}
+	}
+
+	private void processItemRemoveFlyer(EntityPlayer player, Item item) {
+		if(isFlyItem(item) && !player.capabilities.isCreativeMode) {
+			player.capabilities.allowFlying = false;
+			player.capabilities.isFlying = false;
+			if(!player.world.isRemote) {
+				player.sendPlayerAbilities();
+			}
+			playersFlying.remove(player);
 		}
 	}
 

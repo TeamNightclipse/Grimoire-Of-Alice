@@ -8,7 +8,12 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
@@ -25,7 +30,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
@@ -35,9 +39,6 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
@@ -94,16 +95,12 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(isOwner(stack, player)) {
-			double range = 15.0D;
-			Vec3d look = player.getLookVec();
-			Vec3d vec3d = new Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-			Vec3d vec3d1 = new Vec3d(player.posX + look.x * range, player.posY + player.getEyeHeight() + look.y * range, player.posZ + look.z * range);
-			RayTraceResult raytraceresult = player.world.rayTraceBlocks(vec3d, vec3d1, false, true, false);
-			if(raytraceresult == null) {
+			RayTraceResult rayTraceResult = MiscHelper.rayTraceLook(player, 15.0D);
+			if(rayTraceResult == null) {
 				return new ActionResult<>(EnumActionResult.PASS, stack);
 			}
-			else if(raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK) {
-				createBoulder(player, world, raytraceresult.getBlockPos());
+			else if(rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK) {
+				createBoulder(player, world, rayTraceResult.getBlockPos());
 				return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 			}
 		}
