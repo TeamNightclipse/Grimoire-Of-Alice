@@ -8,15 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -24,29 +22,20 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static net.minecraft.item.EnumRarity.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemCursedDecoyDoll extends ItemMod implements IOwnedBy {
+public class ItemCursedDecoyDoll extends ItemModFlavored implements IOwnedBy {
 
 	public ItemCursedDecoyDoll() {
-		super(LibItemName.DECOY_DOLL);
+		super(LibItemName.DECOY_DOLL, ItemFlavor.simpleBuilder()
+				.common(FormattedString.withItalics("grimoire.tooltip.decoy_doll_header.name"))
+				.rarity(UNCOMMON)
+				.build());
 		setMaxStackSize(1);
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.decoy_doll_header.name"));
 	}
 
 	private static void spawnDoll(ItemStack stack, World world, EntityPlayer player) {

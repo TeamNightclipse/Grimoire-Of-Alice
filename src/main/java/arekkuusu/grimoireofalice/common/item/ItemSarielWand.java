@@ -8,11 +8,18 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
+import com.google.common.collect.ImmutableList;
 import com.mojang.authlib.GameProfile;
+
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -33,15 +40,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
+import static net.minecraft.util.text.TextFormatting.*;
 
 public class ItemSarielWand extends ItemSwordOwner {
 
@@ -49,28 +51,13 @@ public class ItemSarielWand extends ItemSwordOwner {
 	private static final String PLAYER_UUID = "PlayerUUID";
 
 	public ItemSarielWand(ToolMaterial material) {
-		super(material, LibItemName.SARIEL_WAND);
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack par1ItemStack) {
-		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_description.name"));
-		list.add("");
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sariel_wand_mode.name") + " " + getName(stack));
-		super.addInformation(stack, player, list, advanced);
+		super(material, LibItemName.SARIEL_WAND, ItemFlavor.complexBuilder()
+				.common((stack, p) -> ImmutableList.of(FormattedString.withItalics(WHITE, "grimoire.tooltip.sariel_wand_header.name"),
+						FormattedString.withItalics("grimoire.tooltip.sariel_wand_description.name"), FormattedString.ofRaw(""),
+						FormattedString.withItalics("grimoire.tooltip.sariel_wand_mode.name").withI18nArgs(getName(stack))))
+				.effect(s -> true)
+				.rarity(s -> EnumRarity.EPIC)
+				.build());
 	}
 
 	@Override
@@ -208,7 +195,6 @@ public class ItemSarielWand extends ItemSwordOwner {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
 	private static String getName(ItemStack stack) {
 		int type = getType(stack);
 		if(type == 3) {
@@ -226,10 +212,10 @@ public class ItemSarielWand extends ItemSwordOwner {
 				}
 			}
 
-			return I18n.format("grimoire.tooltip.skull_3.name");
+			return "grimoire.tooltip.skull_3.name";
 		}
 		else {
-			return I18n.format("grimoire.tooltip.skull_" + type + ".name");
+			return "grimoire.tooltip.skull_" + type + ".name";
 		}
 	}
 

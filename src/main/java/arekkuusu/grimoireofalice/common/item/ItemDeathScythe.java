@@ -10,17 +10,17 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -28,30 +28,20 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static net.minecraft.item.EnumRarity.*;
+import static net.minecraft.util.text.TextFormatting.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemDeathScythe extends ItemModSword implements IOwnedBy {
+public class ItemDeathScythe extends ItemModSwordFlavored implements IOwnedBy {
 
 	public ItemDeathScythe(ToolMaterial material) {
-		super(material, LibItemName.DEATH_SCYTHE);
+		super(material, LibItemName.DEATH_SCYTHE, ItemFlavor.simpleBuilder().common(
+				FormattedString.withItalics(WHITE, "grimoire.tooltip.death_scythe_header.name"),
+				FormattedString.withItalics("grimoire.tooltip.death_scythe_description.name")).rarity(RARE).build());
 		setNoRepair();
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.death_scythe_description.name"));
 	}
 
 	@Override

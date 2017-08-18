@@ -10,13 +10,16 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
+
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -26,26 +29,18 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static net.minecraft.item.EnumRarity.*;
+
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemFakeMiracleMallet extends ItemMod implements IOwnedBy {
+public class ItemFakeMiracleMallet extends ItemModFlavored implements IOwnedBy {
 
 	public ItemFakeMiracleMallet() {
-		super(LibItemName.FAKE_MIRACLE_MALLET);
+		super(LibItemName.FAKE_MIRACLE_MALLET,
+				ItemFlavor.of(ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.fake_miracle_mallet_header.name")), true, UNCOMMON));
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
 		addPropertyOverride(new ResourceLocation("swinging"), (stack, world, entity) -> entity != null && entity.isSwingInProgress ? 1F : 0F);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.UNCOMMON;
 	}
 
 	@Override

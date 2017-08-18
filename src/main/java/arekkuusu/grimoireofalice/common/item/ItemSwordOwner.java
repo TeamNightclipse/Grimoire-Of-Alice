@@ -8,27 +8,37 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ImmutableList;
+
+import arekkuusu.grimoireofalice.common.ComplexItemFlavor;
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSwordOwner extends ItemModSword {
+public class ItemSwordOwner extends ItemModSwordFlavored {
 
 	public static final String OWNER_TAG = "GrimoireOwner";
 
-	public ItemSwordOwner(ToolMaterial material, String id) {
-		super(material, id);
+	public ItemSwordOwner(ToolMaterial material, String id, ItemFlavor flavor) {
+		super(material, id, flavor.append(ComplexItemFlavor.of((stack, player) -> {
+			if(stack.hasTagCompound()) {
+				UUID ownerUuid = getOwnerUUID(stack);
+				if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
+					return ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.ownedProperty", UsernameCache.getLastKnownUsername(ownerUuid)));
+				}
+			}
+
+			return ImmutableList.of();
+		}), false, false));
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -38,18 +48,6 @@ public class ItemSwordOwner extends ItemModSword {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		stack.getTagCompound().setUniqueId(OWNER_TAG, player.getUniqueID());
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = getOwnerUUID(stack);
-			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
-				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-			}
-		}
 	}
 
 	@Override
@@ -70,12 +68,12 @@ public class ItemSwordOwner extends ItemModSword {
 
 	@SuppressWarnings("ConstantConditions")
 	@Nullable
-	public UUID getOwnerUUID(ItemStack stack) {
+	public static UUID getOwnerUUID(ItemStack stack) {
 		return stack.hasTagCompound() ? stack.getTagCompound().getUniqueId(OWNER_TAG) : null;
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	public boolean isOwner(ItemStack stack, EntityPlayer player) {
+	public static boolean isOwner(ItemStack stack, EntityPlayer player) {
 		return stack.hasTagCompound() && player.getUniqueID().equals(getOwnerUUID(stack));
 	}
 }

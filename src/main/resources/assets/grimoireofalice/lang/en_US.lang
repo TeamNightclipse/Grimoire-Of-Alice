@@ -291,6 +291,9 @@ grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you
 
 //Tooltips
 
+grimoire.tooltip.shift_description=<hold shift for details>
+grimoire.tooltip.ownedProperty=Property of %s
+
 grimoire.tooltip.crafting_altar_header.name=Differs slightly from a Crafting Table
 
 grimoire.tooltip.holy_key_stone_header.name=Heavy object made of black granite
@@ -525,7 +528,7 @@ grimoire.tooltip.sanae_gohei_mode_time.name= §bMiracle of Time Shift
 
 grimoire.tooltip.sariel_wand_header.name=Immense Knowledge, Angel of Death, Commaner of God...
 grimoire.tooltip.sariel_wand_description.name=Legendary wand from a fallen Angel
-grimoire.tooltip.sariel_wand_mode.name=Skull:
+grimoire.tooltip.sariel_wand_mode.name=Skull: %s
 
 grimoire.tooltip.skull_0.name=Skeleton
 grimoire.tooltip.skull_1.name=Wither Skeleton

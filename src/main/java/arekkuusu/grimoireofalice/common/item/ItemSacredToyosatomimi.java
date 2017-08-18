@@ -8,17 +8,16 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -29,43 +28,27 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
+import static net.minecraft.item.EnumRarity.*;
+import static net.minecraft.util.text.TextFormatting.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSacredToyosatomimi(ToolMaterial material) {
-		super(material, LibItemName.SACRED_TOYOSATOMIMI);
+		super(material, LibItemName.SACRED_TOYOSATOMIMI, ItemFlavor.simpleBuilder()
+				.shift(ImmutableList.of(
+						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"),
+						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_mid.name"),
+						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name")))
+				.effect(true)
+				.rarity(RARE)
+				.build());
 		setNoRepair();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.EPIC;
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name"));
-		}
-		super.addInformation(stack, player, list, advanced);
 	}
 
 	@Override
@@ -97,14 +80,14 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(timeUsed), livingBase -> !player.equals(livingBase));
 					if(!list.isEmpty()) {
 						player.sendMessage(
-								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
+								new TextComponentString(GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 						list.forEach(mob -> player.sendMessage(new TextComponentString(
-								getColorForEntity(mob) + "- " + mob.getName() + TextFormatting.RESET + TextFormatting.ITALIC + " : {" + (int) mob.posX + ", " + (int) mob.posY + ", " + (int) mob.posZ + "}")));
+								getColorForEntity(mob) + "- " + mob.getName() + RESET + ITALIC + " : {" + (int) mob.posX + ", " + (int) mob.posY + ", " + (int) mob.posZ + "}")));
 						player.sendMessage(
-								new TextComponentString(TextFormatting.GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
+								new TextComponentString(GOLD + "- - - - - - - - - - - - - - - - - - - - - - - - -"));
 					}
 					else {
-						player.sendMessage(new TextComponentString(TextFormatting.GOLD + ""
+						player.sendMessage(new TextComponentString(GOLD + ""
 								+ new TextComponentTranslation("item.toyosatomimi.empty").getFormattedText()));
 					}
 				}
@@ -116,16 +99,16 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	private static TextFormatting getColorForEntity(EntityLivingBase livingBase) {
 		if(livingBase instanceof EntityMob) {
-			return TextFormatting.DARK_RED;
+			return DARK_RED;
 		}
 		else if(livingBase instanceof EntityAnimal) {
-			return TextFormatting.GOLD;
+			return GOLD;
 		}
 		else if(livingBase instanceof EntityWaterMob) {
-			return TextFormatting.DARK_AQUA;
+			return DARK_AQUA;
 		}
 
-		return TextFormatting.DARK_GRAY;
+		return DARK_GRAY;
 	}
 
 	@Override

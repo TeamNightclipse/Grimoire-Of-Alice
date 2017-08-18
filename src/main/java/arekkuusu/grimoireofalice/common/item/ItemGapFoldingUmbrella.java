@@ -8,16 +8,15 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
 import java.util.Optional;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -32,43 +31,21 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static net.minecraft.util.text.TextFormatting.*;
 
 @net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGapFoldingUmbrella extends ItemMod implements IOwnedBy {
+public class ItemGapFoldingUmbrella extends ItemModFlavored implements IOwnedBy {
 
 	public ItemGapFoldingUmbrella() {
-		super(LibItemName.FOLDING_UMBRELLA);
+		super(LibItemName.FOLDING_UMBRELLA, ItemFlavor.simpleBuilder().common(
+				FormattedString.withItalics(WHITE, "grimoire.tooltip.folding_umbrella_header_header.name")).shift(
+				FormattedString.withItalics("grimoire.tooltip.folding_umbrella_header_top.name"),
+				FormattedString.withItalics("grimoire.tooltip.folding_umbrella_header_bottom.name")).effect(true).rarity(EnumRarity.RARE).build());
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_bottom.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.folding_umbrella_header_shift.name"));
-		}
 	}
 
 	@Override

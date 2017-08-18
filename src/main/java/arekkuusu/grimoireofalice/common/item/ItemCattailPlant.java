@@ -8,30 +8,19 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemCattailPlant extends ItemModSword implements IOwnedBy {
+public class ItemCattailPlant extends ItemModSwordFlavored implements IOwnedBy {
 
 	public ItemCattailPlant(ToolMaterial material) {
-		super(material, LibItemName.CATTAIL_PLANT);
+		super(material, LibItemName.CATTAIL_PLANT, ItemFlavor.of(FormattedString.withItalics("grimoire.tooltip.cattail_plant_header.name")));
 		setNoRepair();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.cattail_plant_header.name"));
 	}
 
 	@Optional.Method(modid = "danmakucore")

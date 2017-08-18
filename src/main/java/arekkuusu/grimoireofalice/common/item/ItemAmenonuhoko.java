@@ -8,71 +8,47 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ImmutableList;
+
 import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.common.FormattedString;
+import arekkuusu.grimoireofalice.common.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static net.minecraft.item.EnumRarity.RARE;
+import static net.minecraft.util.text.TextFormatting.WHITE;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemAmenonuhoko(ToolMaterial material) {
-		super(material, LibItemName.AMENONUHOKO);
+		super(material, LibItemName.AMENONUHOKO, ItemFlavor.simpleBuilder().common(
+				FormattedString.withItalics(WHITE, "grimoire.tooltip.amenonuhoko_header.name")).shift(
+				ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_top.name"),
+						FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_mid.name"),
+						FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_bottom.name"))).effect(true).rarity(RARE).build());
 		setNoRepair();
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.RARE;
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_mid.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_description_bottom.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.amenonuhoko_shift.name"));
-		}
-		super.addInformation(stack, player, list, advanced);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
 	}
 
 	@Override
