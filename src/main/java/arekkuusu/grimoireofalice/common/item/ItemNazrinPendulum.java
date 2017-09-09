@@ -37,7 +37,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 @net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
+public class ItemNazrinPendulum extends ItemBase implements IOwnedBy {
 
 	public ItemNazrinPendulum() {
 		super(LibItemName.NAZRIN_PENDULUM);
@@ -150,7 +150,7 @@ public class ItemNazrinPendulum extends ItemMod implements IOwnedBy {
 
 	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.NAZRIN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NAZRIN;
 	}
 }

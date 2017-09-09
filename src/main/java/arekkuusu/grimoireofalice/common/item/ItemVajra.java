@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 
-public class ItemVajra extends ItemMod {
+public class ItemVajra extends ItemBase {
 
 	public ItemVajra() {
 		super(LibItemName.VAJRA);

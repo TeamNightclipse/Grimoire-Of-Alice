@@ -10,16 +10,11 @@ package arekkuusu.grimoireofalice.common.lib;
 
 public class LibMod {
 
-	public static final String MODID = "grimoireofalice";
-	//ID for MOD
-	public static final String MODNAME = "GrimoireofAlice";
-	//Name of MOD
-	public static final String MODVER = "@VERSION@";
-	//Version of MOD
-	public static final String DEPENDENCIES = "";
-	//Dependency
-	public static final String PROXYCLIENT = "arekkuusu.grimoireofalice.client.ClientProxy";
-	//Client Required
-	public static final String PROXYCOMMON = "arekkuusu.grimoireofalice.common.core.ServerProxy";
+	public static final String MOD_ID = "grimoireofalice";
+	public static final String MOD_NAME = "GrimoireofAlice";
+	public static final String MOD_VERSION = "@VERSION@";
+
+	public static final String CLIENT_PROXY = "arekkuusu.grimoireofalice.client.ClientProxy";
+	public static final String SERVER_PROXY = "arekkuusu.grimoireofalice.common.core.ServerProxy";
 
 }

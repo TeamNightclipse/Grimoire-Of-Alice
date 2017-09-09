@@ -1,8 +1,8 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelStopWatch;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
+import arekkuusu.grimoireofalice.client.render.model.ModelStopWatch;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
+import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -33,6 +33,6 @@ public class RenderStopWatch extends Render<EntityStopWatch> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityStopWatch entity) {
-		return ResourceLocations.WATCH_TEXTURE;
+		return ResourceLibrary.WATCH_TEXTURE;
 	}
 }

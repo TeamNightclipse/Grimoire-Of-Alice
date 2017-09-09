@@ -41,7 +41,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
+public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
 
 	public static final PropertyEnum<Part> PART = PropertyEnum.create("part", Part.class);
 	public static final PropertyEnum<Model> MODEL = PropertyEnum.create("model", Model.class);
@@ -137,7 +137,10 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 									EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(state.getValue(PART) == Part.TOP) {
-			return MiscHelper.tileEntityHandlerProcesInteract(world, pos, player, hand);
+			TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
+			if(tile == null) return false;
+			tile.handleItemTransfer(player, hand);
+			return true;
 		}
 		else {
 			return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
@@ -174,7 +177,7 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
+		/*TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
 		if(tile != null) {
 			if(!world.isRemote) {
 				ItemStack output = tile.getItemStack();
@@ -186,12 +189,11 @@ public class BlockOnbashira extends BlockMod implements ITileEntityProvider {
 				}
 			}
 			world.removeTileEntity(pos);
-		}
+		}*/
 	}
 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state) {
-
 		switch(state.getValue(PART)) {
 			case LOWER:
 				for(int i = 0; i < 4; i++) {

@@ -8,19 +8,18 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelNazrinPendulum;
+import arekkuusu.grimoireofalice.client.render.model.ModelNazrinPendulum;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
@@ -64,6 +63,6 @@ public class RenderNazrinPendulum extends Render<EntityNazrinPendulum> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityNazrinPendulum entity) {
-		return ResourceLocations.NAZRIN_TEXTURE;
+		return ResourceLibrary.NAZRIN_TEXTURE;
 	}
 }

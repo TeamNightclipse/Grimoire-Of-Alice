@@ -99,11 +99,11 @@ public class EntityDragonJewel extends Entity {
 			if(host != null && host instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) host;
 				if(!player.capabilities.isCreativeMode) {
-					ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.DRAGON_JEWEL));
+					ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ModItems.dragon_jewel));
 				}
 			}
 			else {
-				dropItem(ModItems.DRAGON_JEWEL, 1);
+				dropItem(ModItems.dragon_jewel, 1);
 			}
 			setDead();
 		}

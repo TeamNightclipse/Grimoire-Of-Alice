@@ -28,13 +28,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 //Much taken from BlockStairs
-public class BlockRope extends BlockMod {
+@SuppressWarnings({"deprecation", "WeakerAccess"})
+public class BlockRope extends BlockBase {
 
-	@SuppressWarnings("WeakerAccess")
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	@SuppressWarnings("WeakerAccess")
 	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
-	@SuppressWarnings("WeakerAccess")
 	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
 	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
 	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
@@ -61,7 +59,6 @@ public class BlockRope extends BlockMod {
 		state.neighborChanged(world, pos, Blocks.AIR, pos);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 											EntityLivingBase placer) {
@@ -72,7 +69,6 @@ public class BlockRope extends BlockMod {
 				iblockstate.withProperty(HALF, BlockStairs.EnumHalf.TOP);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
@@ -92,13 +88,11 @@ public class BlockRope extends BlockMod {
 		return i;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return state.withProperty(SHAPE, getRopeShape(state, world, pos));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		if(isBlockRope(state)) {
@@ -158,13 +152,11 @@ public class BlockRope extends BlockMod {
 		return state.getBlock() instanceof BlockRope;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
 		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		EnumFacing enumfacing = state.getValue(FACING);

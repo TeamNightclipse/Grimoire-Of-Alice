@@ -8,8 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockHihiirokane extends BlockMod {
+public class BlockHihiirokane extends BlockBase {
 
 	public BlockHihiirokane() {
 		super(LibBlockName.HIHIIROKANE_BLOCK, Material.IRON);
@@ -33,10 +32,10 @@ public class BlockHihiirokane extends BlockMod {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
 		float x = pos.getX() + rand.nextFloat();
 		float y = pos.getY() + rand.nextFloat();
 		float z = pos.getZ() + rand.nextFloat();
-		GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_GAS, null, x, y, z, 0.0F, 0.1F, 0.0F);
+		ParticleUtil.spawnRedGas(world, x, y, z, 0F, 0.1F, 0F);
 	}
 }

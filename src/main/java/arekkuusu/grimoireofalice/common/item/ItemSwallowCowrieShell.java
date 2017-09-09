@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemSwallowCowrieShell extends ItemMod implements IOwnedBy {
+public class ItemSwallowCowrieShell extends ItemBase implements IOwnedBy {
 
 	public ItemSwallowCowrieShell() {
 		super(LibItemName.SWALLOW_COWRIE_SHELL);
@@ -100,7 +100,7 @@ public class ItemSwallowCowrieShell extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KAGUYA_HOURAISAN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

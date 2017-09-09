@@ -9,8 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
@@ -32,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
+public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 
 	public ItemShinmyoumaruNeedle(ToolMaterial material) {
 		super(material, LibItemName.SHINMYOUMARU_NEEDLE);
@@ -69,7 +68,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 				double dx = player.posX + vec.x * distance;
 				double dy = player.posY + 2.5 + vec.y * distance;
 				double dz = player.posZ + vec.z * distance;
-				GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NEEDLE_SWING, null, dx, dy, dz, itemRand.nextFloat(), 0F, 0F);
+				ParticleUtil.spawnNeedleSwing(world, dx, dy, dz, itemRand.nextFloat(), 0F, 0F, 20, 0.5F + itemRand.nextFloat());
 				world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
 
 				if(!world.isRemote) {
@@ -126,7 +125,7 @@ public class ItemShinmyoumaruNeedle extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SHINMYOUMARU_SUKUNA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SHINMYOUMARU_SUKUNA;
 	}
 }

@@ -69,7 +69,7 @@ public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SUIKA_IKBUKI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SUIKA_IKBUKI;
 	}
 }

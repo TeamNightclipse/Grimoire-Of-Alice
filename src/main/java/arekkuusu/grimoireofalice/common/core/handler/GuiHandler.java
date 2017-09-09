@@ -13,7 +13,7 @@ import arekkuusu.grimoireofalice.client.gui.GuiMarisaHat;
 import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.common.item.HatContainer;
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.item.SpellCardContainer;
+import arekkuusu.grimoireofalice.common.item.SpellCardContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -30,14 +30,14 @@ public class GuiHandler implements IGuiHandler {
 			case 1:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem = player.getHeldItem(hand);
-				if(heldItem.isEmpty() || heldItem.getItem() != ModItems.POUCH) {
+				if(heldItem.isEmpty() || heldItem.getItem() != ModItems.spellcard_pouch) {
 					return null;
 				}
 				return new SpellCardContainer(player.inventory, heldItem);
 			case 2:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
-				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.MARISA_HAT) {
+				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.marisa_hat) {
 					return null;
 				}
 				return new HatContainer(player.inventory, heldItem0);
@@ -55,14 +55,14 @@ public class GuiHandler implements IGuiHandler {
 			case 1:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
-				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.POUCH) {
+				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.spellcard_pouch) {
 					return null;
 				}
 				return new GuiItemInventory(player.inventory, heldItem0);
 			case 2:
 				EnumHand hand1 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem1 = player.getHeldItem(hand1);
-				if(heldItem1.isEmpty() || heldItem1.getItem() != ModItems.MARISA_HAT) {
+				if(heldItem1.isEmpty() || heldItem1.getItem() != ModItems.marisa_hat) {
 					return null;
 				}
 				return new GuiMarisaHat(player.inventory, heldItem1);

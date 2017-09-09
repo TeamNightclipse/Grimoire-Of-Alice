@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemCharmofHealing extends ItemMod implements IOwnedBy {
+public class ItemCharmofHealing extends ItemBase implements IOwnedBy {
 
 	public ItemCharmofHealing() {
 		super(LibItemName.CHARM_OF_HEALING);
@@ -61,7 +61,7 @@ public class ItemCharmofHealing extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SANAE_KOCHIYA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SANAE_KOCHIYA;
 	}
 }

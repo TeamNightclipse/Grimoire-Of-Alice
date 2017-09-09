@@ -1,0 +1,6 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/sacred_sword_of_toyosatomimi"
+  }
+}

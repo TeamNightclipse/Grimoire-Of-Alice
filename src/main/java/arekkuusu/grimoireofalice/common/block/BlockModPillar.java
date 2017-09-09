@@ -23,7 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 //Much taken from BlockPillar
-public class BlockModPillar extends BlockMod {
+public class BlockModPillar extends BlockBase {
 
 	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
 

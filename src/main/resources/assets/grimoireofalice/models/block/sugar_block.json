@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "grimoireofalice:blocks/sugar_0",
+    "down": "grimoireofalice:blocks/sugar_0",
+    "up": "grimoireofalice:blocks/sugar_1",
+    "north": "grimoireofalice:blocks/sugar_2",
+    "east": "grimoireofalice:blocks/sugar_3",
+    "south": "grimoireofalice:blocks/sugar_4",
+    "west": "grimoireofalice:blocks/sugar_5"
+  }
+}

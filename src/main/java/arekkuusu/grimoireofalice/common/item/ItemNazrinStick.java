@@ -39,16 +39,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemNazrinStick extends ItemModSword {
+public class ItemNazrinStick extends ItemBaseSword {
 
 	private static final String TYPE = "type";
 
 	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
+	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
 	public static final ItemStack TYPEA = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibMod.MODID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
+	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
 	public static final ItemStack TYPEB = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	public ItemNazrinStick(ToolMaterial material, String id) {

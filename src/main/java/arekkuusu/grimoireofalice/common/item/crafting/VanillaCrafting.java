@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.item.crafting;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ModItems;
@@ -26,149 +25,149 @@ public class VanillaCrafting {
 		shaped().grid("SSS", "SAS", "SSS")
 				.where('S').mapsTo("paper")
 				.where('A').mapsTo(Items.CLAY_BALL)
-				.outputs(new ItemStack(ModItems.SOLDIFIED_PAPER, 1)).build();
+				.outputs(new ItemStack(ModItems.solidified_paper, 1)).build();
 
 		//Blocks
 		shaped().grid("SSS", "SSS", "SSS")
 				.where('S').mapsTo(Items.SUGAR)
-				.outputs(ModBlocks.SUGAR_BLOCK).build();
+				.outputs(ModBlocks.sugar_block).build();
 
 		shaped().grid("ASA", "IWI", "ASA")
 				.where('W').mapsTo("logWood")
 				.where('I').mapsTo("nuggetIron")
 				.where('S').mapsTo(Items.STICK)
-				.where('A').mapsTo(ModItems.PASTE)
-				.outputs(new ItemStack(ModBlocks.ROPE_BLOCK, 8)).build();
+				.where('A').mapsTo(ModItems.paste)
+				.outputs(new ItemStack(ModBlocks.rope_block, 8)).build();
 
 		shaped().grid(" S ", " A ", "AAA")
 				.where('A').mapsTo("paper")
-				.where('S').mapsTo(ModItems.SOLDIFIED_PAPER)
-				.outputs(new ItemStack(ModBlocks.PAPER_BLOCK, 8)).build();
+				.where('S').mapsTo(ModItems.solidified_paper)
+				.outputs(new ItemStack(ModBlocks.paper_block, 8)).build();
 
 		shaped().grid("AAA", "ASA", "AAA")
 				.where('A').mapsTo("stone")
 				.where('S').mapsTo(new ItemStack(Blocks.DIRT, 1, 1))
-				.outputs(ModBlocks.COMPACT_STONE).build();
+				.outputs(ModBlocks.compact_stone).build();
 
 		shaped().grid("RLR", "PGP")
-				.where('G').mapsTo(ModBlocks.COMPACT_STONE)
+				.where('G').mapsTo(ModBlocks.compact_stone)
 				.where('L').mapsTo("logWood")
-				.where('R').mapsTo(ModBlocks.ROPE_BLOCK)
-				.where('P').mapsTo(ModBlocks.PAPER_BLOCK)
-				.outputs(ModBlocks.PILLAR_ALTAR).build();
+				.where('R').mapsTo(ModBlocks.rope_block)
+				.where('P').mapsTo(ModBlocks.paper_block)
+				.outputs(ModBlocks.pillar_altar).build();
 
 		shaped().grid("FFF", "FIF", "FFF")
 				.where('F').mapsTo(Items.FEATHER)
 				.where('I').mapsTo("dyeBlack")
-				.outputs(new ItemStack(ModItems.BLACK_FEATHER, 2)).build();
+				.outputs(new ItemStack(ModItems.black_feather, 2)).build();
 
 		shaped().grid("PBP", "WCW", "WDW")
 				.where('P').mapsTo("paper")
 				.where('B').mapsTo(Items.BOOK)
 				.where('W').mapsTo("plankWood")
-				.where('D').mapsTo(ModBlocks.COMPACT_STONE)
+				.where('D').mapsTo(ModBlocks.compact_stone)
 				.where('C').mapsTo(Blocks.CRAFTING_TABLE)
-				.outputs(ModBlocks.ALTAR).build();
+				.outputs(ModBlocks.crafting_altar).build();
 
 		shaped().grid("N N", "PLP", "N N")
 				.where('N').mapsTo("nuggetIron")
 				.where('P').mapsTo(Items.PAPER)
 				.where('L').mapsTo(Items.LEATHER)
-				.outputs(ModItems.HARDENED_LEATHER).build();
+				.outputs(ModItems.hardened_leather).build();
 
 		shaped().grid("NNN", "NNN", "NNN")
-				.where('N').mapsTo(ModItems.IRON_NUGGET)
+				.where('N').mapsTo(ModItems.iron_nugget)
 				.outputs(Items.IRON_INGOT).build();
 
 		shapeless()
-				.add(ModBlocks.SUGAR_BLOCK)
+				.add(ModBlocks.sugar_block)
 				.outputs(new ItemStack(Items.SUGAR, 9)).build();
 
 		shapeless()
 				.add(Items.IRON_INGOT)
-				.outputs(new ItemStack(ModItems.IRON_NUGGET, 9)).build();
+				.outputs(new ItemStack(ModItems.iron_nugget, 9)).build();
 
 		shapeless()
-				.add(ModItems.SOLDIFIED_PAPER)
+				.add(ModItems.solidified_paper)
 				.add(Items.STRING)
 				.add(Items.WATER_BUCKET)
 				.add(Items.CLAY_BALL)
-				.outputs(new ItemStack(ModItems.PASTE, 2)).build();
+				.outputs(new ItemStack(ModItems.paste, 2)).build();
 
 		shapeless()
 				.add(Items.STICK)
 				.add(Items.BOWL)
-				.outputs(ModItems.MORTAR_AND_PESTLE).build();
+				.outputs(ModItems.mortar_n_pestle).build();
 
 		if(ConfigHandler.grimoireOfAlice.crafting.mask) {
 			shapeless()
-					.add(ModItems.PASTE)
-					.add(ModItems.SOLDIFIED_PAPER)
-					.add(ModItems.SOLDIFIED_PAPER)
-					.outputs(ModItems.MASK).build();
+					.add(ModItems.paste)
+					.add(ModItems.solidified_paper)
+					.add(ModItems.solidified_paper)
+					.outputs(ModItems.mask).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.hihiirokane) {
 			shapeless()
-					.add(ModItems.IMPURE_ROCK)
+					.add(ModItems.impure_rock)
 					.add(Blocks.COAL_BLOCK)
-					.outputs(ModItems.HIHIIROKANE).build();
+					.outputs(ModItems.hihiirokane).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.hihiirokaneBlock) {
 			shaped().grid("HHH", "HHH", "HHH")
-					.where('H').mapsTo(ModItems.HIHIIROKANE)
-					.outputs(ModBlocks.HIHIIROKANE_BLOCK).build();
+					.where('H').mapsTo(ModItems.hihiirokane)
+					.outputs(ModBlocks.hihiirokane_block).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.shimenawaRope) {
 			shaped().grid("RRR", "PPP")
-					.where('R').mapsTo(ModBlocks.ROPE_BLOCK)
-					.where('P').mapsTo(ModBlocks.PAPER_BLOCK)
-					.outputs(ModItems.SHIMENAWA_ROPE).build();
+					.where('R').mapsTo(ModBlocks.rope_block)
+					.where('P').mapsTo(ModBlocks.paper_block)
+					.outputs(ModItems.shimenawa_rope).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.popsicleStick) {
 			shaped().grid("  S", "SS ", "SS ")
 					.where('S').mapsTo("stickWood")
-					.outputs(ModItems.POPSICLE_STICK).build();
+					.outputs(ModItems.popsicle_stick).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.waterMelonBlade) {
 			shaped().grid("  M", " M ", "MS ")
 					.where('M').mapsTo(Items.MELON)
 					.where('S').mapsTo("stickWood")
-					.outputs(ModItems.WATERMELON_BLADE).build();
+					.outputs(ModItems.watermelon_blade).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.hakurouken) {
 			shaped().grid(" I ", "S  ")
 					.where('S').mapsTo(Items.STICK)
 					.where('I').mapsTo(Items.IRON_INGOT)
-					.outputs(ModItems.HAKUROUKEN).build();
+					.outputs(ModItems.hakurouken).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.tenshiHat) {
 			shaped().grid("F F", "CHC")
-					.where('F').mapsTo(ModItems.HEAVENLY_PEACH)
+					.where('F').mapsTo(ModItems.heavenly_peach)
 					.where('H').mapsTo(Items.LEATHER_HELMET)
 					.where('C').mapsTo(new ItemStack(Blocks.CARPET, 1, 15))
-					.outputs(ModItems.TENSHI_HAT).build();
+					.outputs(ModItems.tenshi_hat).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.talisman) {
 			shaped().grid("G  ", " P ", "  G")
 					.where('G').mapsTo(Items.GLOWSTONE_DUST)
-					.where('P').mapsTo(ModItems.SOLDIFIED_PAPER)
-					.outputs(ModItems.SPIRITUAL_STRIKE_TALISMAN).build();
+					.where('P').mapsTo(ModItems.solidified_paper)
+					.outputs(ModItems.spiritual_strike_talisman).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.waterMelonSword) {
 			shapeless()
-					.add(ModItems.POPSICLE_STICK)
+					.add(ModItems.popsicle_stick)
 					.add(Blocks.MELON_BLOCK)
 					.add(Blocks.ICE)
-					.outputs(ModItems.WATERMELON_SWORD).build();
+					.outputs(ModItems.watermelon_sword).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.cattailPlant) {
@@ -176,15 +175,15 @@ public class VanillaCrafting {
 					.where('A').mapsTo(Blocks.VINE)
 					.where('E').mapsTo(Items.SLIME_BALL)
 					.where('S').mapsTo("stickWood")
-					.outputs(ModItems.CATTAIL_PLANT).build();
+					.outputs(ModItems.cattail_plant).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.ghastlySendOffLantern) {
 			shaped().grid("EAE", "ASA", "EAE")
 					.where('A').mapsTo(Blocks.GLASS_PANE)
-					.where('E').mapsTo(ModItems.SOLDIFIED_PAPER)
+					.where('E').mapsTo(ModItems.solidified_paper)
 					.where('S').mapsTo(Blocks.TORCH)
-					.outputs(new ItemStack(ModItems.GHASTLY_SEND_OFF_LANTERN, 4)).build();
+					.outputs(new ItemStack(ModItems.send_off_lantern, 4)).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.patchyBook) {
@@ -192,7 +191,7 @@ public class VanillaCrafting {
 					.add(Items.WRITABLE_BOOK)
 					.add("stickWood")
 					.add(Items.FEATHER)
-					.outputs(ModItems.PATCHY_BOOK).build();
+					.outputs(ModItems.patchy_book).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.food.grilledLamprey) {
@@ -203,78 +202,76 @@ public class VanillaCrafting {
 					.add(Items.COOKED_FISH)
 					.add(Items.COOKED_FISH)
 					.add("stickWood")
-					.outputs(ModItems.GRILLED_LAMPREY).build();
+					.outputs(ModItems.grilled_lamprey).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.syringe) {
 			shapeless()
 					.add(Items.GLASS_BOTTLE)
-					.add(new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE))
-					.outputs(ModItems.SYRINGE).build();
+					.add(new ItemStack(ModItems.shroom_powder, 1, OreDictionary.WILDCARD_VALUE))
+					.outputs(ModItems.syringe).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.simpleUfo) {
 			shaped().grid("GGG", "GIG", "B B")
 					.where('I').mapsTo(Blocks.SLIME_BLOCK)
-					.where('B').mapsTo(ModItems.PASTE)
+					.where('B').mapsTo(ModItems.paste)
 					.where('G').mapsTo("blockGlassGreen")
-					.outputs(ModItems.UFO_GREEN).build();
+					.outputs(ModItems.ufo_green).build();
 
 			shaped().grid("GGG", "GIG", "B B")
 					.where('I').mapsTo(Blocks.SLIME_BLOCK)
-					.where('B').mapsTo(ModItems.PASTE)
+					.where('B').mapsTo(ModItems.paste)
 					.where('G').mapsTo("blockGlassRed")
-					.outputs(ModItems.UFO_RED).build();
+					.outputs(ModItems.ufo_red).build();
 
 			shaped().grid("GGG", "GIG", "B B")
 					.where('I').mapsTo(Blocks.SLIME_BLOCK)
-					.where('B').mapsTo(ModItems.PASTE)
+					.where('B').mapsTo(ModItems.paste)
 					.where('G').mapsTo("blockGlassBlue")
-					.outputs(ModItems.UFO_BLUE).build();
+					.outputs(ModItems.ufo_blue).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.food.shroomPowder) {
 			for(int i = 0; i < 16; i++)
 				shapeless()
-						.add(new ItemStack(ModBlocks.SHROOM, 1, i))
-						.add(new ItemStack(ModItems.MORTAR_AND_PESTLE, 1, OreDictionary.WILDCARD_VALUE))
-						.outputs(new ItemStack(ModItems.SHROOM_POWDER, 1, 15 - i)).build();
+						.add(new ItemStack(ModBlocks.shroom, 1, i))
+						.add(new ItemStack(ModItems.mortar_n_pestle, 1, OreDictionary.WILDCARD_VALUE))
+						.outputs(new ItemStack(ModItems.shroom_powder, 1, 15 - i)).build();
 		}
 
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			shapeless()
-					.add("treeLeaves")
-					.outputs(ModItems.LEAF).build();
-		}
+		shapeless()
+				.add("treeLeaves")
+				.outputs(ModItems.leaf_item).build();
 
-		GameRegistry.addSmelting(Items.BLAZE_ROD, new ItemStack(ModItems.TAMAHAGANE_STEEL), 1);
+		GameRegistry.addSmelting(Items.BLAZE_ROD, new ItemStack(ModItems.tamahagane_steel), 1);
 
-		GameRegistry.addSmelting(ModBlocks.IMPURE_STONE, new ItemStack(ModItems.IMPURE_ROCK), 1);
+		GameRegistry.addSmelting(ModBlocks.impure_stone, new ItemStack(ModItems.impure_rock), 1);
 	}
 
 	public static void masks() {
 		if(ConfigHandler.grimoireOfAlice.crafting.kokoroMask) {
 			shapeless()
-					.add(ModItems.FOX_MASK)
-					.add(ModItems.FUKU_NO_KAMI_MASK)
-					.add(ModItems.HANNYA_MASK)
-					.add(ModItems.HYOTTOKO_MASK)
-					.add(ModItems.KOOMOTE_MASK)
-					.add(ModItems.MASK_OF_HOPE)
-					.add(ModItems.MONKEY_MASK)
-					.add(ModItems.RAIDEN_MASK)
-					.add(ModItems.UBA_MASK)
-					.outputs(ModItems.KOKOROS_MASKS).build();
+					.add(ModItems.fox_mask)
+					.add(ModItems.fuku_no_kami_mask)
+					.add(ModItems.hannya_mask)
+					.add(ModItems.hyottoko_mask)
+					.add(ModItems.koomote_mask)
+					.add(ModItems.mask_of_hope)
+					.add(ModItems.monkey_mask)
+					.add(ModItems.raiden_mask)
+					.add(ModItems.uba_mask)
+					.outputs(ModItems.kokoro_masks).build();
 
-			mask(Items.SUGAR, ModItems.FOX_MASK);
-			mask(Items.BLAZE_POWDER, ModItems.FUKU_NO_KAMI_MASK);
-			mask(Items.POISONOUS_POTATO, ModItems.HANNYA_MASK);
-			mask(Items.GHAST_TEAR, ModItems.HYOTTOKO_MASK);
-			mask(Items.ROTTEN_FLESH, ModItems.KOOMOTE_MASK);
-			mask(Items.FERMENTED_SPIDER_EYE, ModItems.MASK_OF_HOPE);
-			mask(Items.MUSHROOM_STEW, ModItems.MONKEY_MASK);
-			rawMask().where('R').mapsTo("slimeball").outputs(ModItems.RAIDEN_MASK).build();
-			mask(Items.NETHER_STAR, ModItems.UBA_MASK);
+			mask(Items.SUGAR, ModItems.fox_mask);
+			mask(Items.BLAZE_POWDER, ModItems.fuku_no_kami_mask);
+			mask(Items.POISONOUS_POTATO, ModItems.hannya_mask);
+			mask(Items.GHAST_TEAR, ModItems.hyottoko_mask);
+			mask(Items.ROTTEN_FLESH, ModItems.koomote_mask);
+			mask(Items.FERMENTED_SPIDER_EYE, ModItems.mask_of_hope);
+			mask(Items.MUSHROOM_STEW, ModItems.monkey_mask);
+			rawMask().where('R').mapsTo("slimeball").outputs(ModItems.raiden_mask).build();
+			mask(Items.NETHER_STAR, ModItems.uba_mask);
 		}
 	}
 
@@ -288,9 +285,9 @@ public class VanillaCrafting {
 
 	private static ShapedRecipe rawMask() {
 		return new ShapedRecipe().grid("IAR", "SGS", " S ")
-				.where('S').mapsTo(ModItems.PASTE)
-				.where('G').mapsTo(ModItems.MASK)
-				.where('A').mapsTo(ModItems.NETHER_SHARD)
+				.where('S').mapsTo(ModItems.paste)
+				.where('G').mapsTo(ModItems.mask)
+				.where('A').mapsTo(ModItems.nether_shard)
 				.where('I').mapsTo(new ItemStack(Items.POTIONITEM, 1, 16));
 	}
 

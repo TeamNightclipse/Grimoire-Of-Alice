@@ -15,48 +15,45 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDragonStone extends BlockMod {
+@SuppressWarnings("deprecation")
+public class BlockDragonStone extends BlockBase {
 
-	private static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
 
 	public BlockDragonStone() {
 		super(LibBlockName.DRAGON_STONE, Material.ROCK);
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getHorizontal(meta);
-		return getDefaultState().withProperty(PROPERTYFACING, facing);
+		return getDefaultState().withProperty(FACING, facing);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		EnumFacing facing = state.getValue(PROPERTYFACING);
+		EnumFacing facing = state.getValue(FACING);
 		return facing.getHorizontalIndex();
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, PROPERTYFACING);
+		return new BlockStateContainer(this, FACING);
 	}
 
-	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 											EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
-		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing.getOpposite());
+		return this.getDefaultState().withProperty(FACING, enumfacing.getOpposite());
 	}
 
-	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation") //Internal, not deprecated
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -68,7 +65,6 @@ public class BlockDragonStone extends BlockMod {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB;

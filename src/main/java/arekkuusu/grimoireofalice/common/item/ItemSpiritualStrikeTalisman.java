@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemSpiritualStrikeTalisman extends ItemMod implements IOwnedBy {
+public class ItemSpiritualStrikeTalisman extends ItemBase implements IOwnedBy {
 
 	public ItemSpiritualStrikeTalisman() {
 		super(LibItemName.SPIRITUAL_STRIKE_TALISMAN);
@@ -50,7 +50,7 @@ public class ItemSpiritualStrikeTalisman extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.REIMU_HAKUREI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.REIMU_HAKUREI;
 	}
 }

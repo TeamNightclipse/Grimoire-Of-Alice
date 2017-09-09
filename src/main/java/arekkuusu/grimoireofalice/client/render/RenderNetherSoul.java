@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -22,6 +22,6 @@ public class RenderNetherSoul extends Render<EntityNetherSoul> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityNetherSoul entity) {
-		return ResourceLocations.NETHER_SOUL_TEXTURE;
+		return ResourceLibrary.NETHER_SOUL_TEXTURE;
 	}
 }

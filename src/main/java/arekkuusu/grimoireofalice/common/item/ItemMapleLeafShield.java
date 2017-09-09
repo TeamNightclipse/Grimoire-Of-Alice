@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemMapleLeafShield extends ItemModShield implements IOwnedBy {
+public class ItemMapleLeafShield extends ItemBaseShield implements IOwnedBy {
 
 	public ItemMapleLeafShield() {
 		super(LibItemName.MAPLE_LEAF_SHIELD);
@@ -82,7 +82,7 @@ public class ItemMapleLeafShield extends ItemModShield implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MOMIJI_INUBASHIRI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MOMIJI_INUBASHIRI;
 	}
 }

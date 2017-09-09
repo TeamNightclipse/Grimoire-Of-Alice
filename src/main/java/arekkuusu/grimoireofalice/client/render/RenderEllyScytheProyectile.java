@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -34,7 +34,7 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	@Override
 	public void doRender(EntityEllyScythe ellyScythe, double x, double y, double z, float yaw, float pitch) {
-		ItemStack stack = new ItemStack(ModItems.ELLY_SCYTHE);
+		ItemStack stack = new ItemStack(ModItems.elly_scythe);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);
@@ -50,6 +50,6 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityEllyScythe entity) {
-		return ResourceLocations.WHITE;
+		return ResourceLibrary.WHITE;
 	}
 }

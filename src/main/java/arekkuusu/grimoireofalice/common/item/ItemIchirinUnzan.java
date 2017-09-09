@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelIchirinUnzan;
+import arekkuusu.grimoireofalice.client.render.model.ModelIchirinUnzan;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOwnedBy {
+public class ItemIchirinUnzan extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelIchirinUnzan model;
@@ -95,12 +95,12 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 
 	private static boolean isHoldingRight(EntityLivingBase player) {
 		ItemStack main = player.getHeldItemMainhand();
-		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
+		return !main.isEmpty() && main.getItem() == ModItems.ichirin_ring;
 	}
 
 	private static boolean isHoldingLeft(EntityLivingBase player) {
 		ItemStack off = player.getHeldItemOffhand();
-		return !off.isEmpty() && off.getItem() == ModItems.ICHIRIN_RING;
+		return !off.isEmpty() && off.getItem() == ModItems.ichirin_ring;
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class ItemIchirinUnzan extends ItemModArmor implements ISpecialArmor, IOw
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.ICHIRIN_KUMOI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
 	}
 }

@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.item.ItemStack;
 
-public class ItemMortarPestle extends ItemMod {
+public class ItemMortarPestle extends ItemBase {
 
 	public ItemMortarPestle() {
 		super(LibItemName.MORTAR_AND_PESTLE);

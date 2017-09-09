@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelUnzanFist;
+import arekkuusu.grimoireofalice.client.render.model.ModelUnzanFist;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -39,6 +39,6 @@ public class RenderUnzanFist extends Render<EntityUnzanFist> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityUnzanFist entity) {
-		return ResourceLocations.UNZAN_FIST_TEXTURE;
+		return ResourceLibrary.UNZAN_FIST_TEXTURE;
 	}
 }

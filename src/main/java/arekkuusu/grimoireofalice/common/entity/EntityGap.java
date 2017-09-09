@@ -24,6 +24,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.Stream;
 
@@ -151,18 +152,18 @@ public class EntityGap extends Entity {
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		if(!stack.isEmpty() && isItemDye(stack)) {
-			//TODO: Use other part of ore name to get the actual color
-			EnumDyeColor enumdyecolor = EnumDyeColor.byDyeDamage(stack.getMetadata());
-			if(enumdyecolor != getColor()) {
-				setColor(enumdyecolor);
+		Optional<EnumDyeColor> optional = getItemDye(stack);
+		if(!stack.isEmpty() && optional.isPresent()) {
+			EnumDyeColor color = optional.get();
+			if(color != getColor()) {
+				setColor(color);
 				stack.shrink(1);
 			}
 			player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
 		}
 		else if(player.isSneaking()) {
 			if(!world.isRemote) {
-				dropItem(ModItems.GAP, 1);
+				dropItem(ModItems.gap, 1);
 				setDead();
 			}
 			player.playSound(SoundEvents.ENTITY_ITEMFRAME_BREAK, 1F, 1F);
@@ -170,14 +171,16 @@ public class EntityGap extends Entity {
 		return true;
 	}
 
-	private static boolean isItemDye(ItemStack stack) {
+	private static Optional<EnumDyeColor> getItemDye(ItemStack stack) {
 		for(int oreId : OreDictionary.getOreIDs(stack)) {
-			if(OreDictionary.getOreName(oreId).startsWith("dye")) {
-				return true;
+			String name = OreDictionary.getOreName(oreId);
+			if(name.startsWith("dye")) {
+				name = name.substring(0, 3);
+				return Optional.of(EnumDyeColor.valueOf(name));
 			}
 		}
 
-		return false;
+		return Optional.empty();
 	}
 
 	@Override

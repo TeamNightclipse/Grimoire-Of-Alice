@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelDoll;
+import arekkuusu.grimoireofalice.client.render.model.ModelDoll;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -32,6 +32,6 @@ public class RenderCursedDecoyDoll extends Render<EntityCursedDecoyDoll> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityCursedDecoyDoll entity) {
-		return ResourceLocations.DOLL_TEXTURE;
+		return ResourceLibrary.DOLL_TEXTURE;
 	}
 }

@@ -30,7 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
+public class ItemGhastlySendOffLantern extends ItemBase implements IOwnedBy {
 
 	private static final String TAG = "timer";
 
@@ -111,7 +111,7 @@ public class ItemGhastlySendOffLantern extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIJA_KIJIN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
 	}
 }

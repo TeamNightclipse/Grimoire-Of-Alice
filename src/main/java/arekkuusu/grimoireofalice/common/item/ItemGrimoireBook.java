@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemGrimoireBook extends ItemMod {
+public class ItemGrimoireBook extends ItemBase {
 
 	public ItemGrimoireBook() {
 		super(LibItemName.GRIMOIRE_BOOK);

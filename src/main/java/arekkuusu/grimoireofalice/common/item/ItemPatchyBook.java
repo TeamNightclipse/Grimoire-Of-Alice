@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibGuiID;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemPatchyBook extends ItemMod implements IOwnedBy {
+public class ItemPatchyBook extends ItemBase implements IOwnedBy {
 
 	public ItemPatchyBook() {
 		super(LibItemName.PATCHY_BOOK);
@@ -57,7 +57,7 @@ public class ItemPatchyBook extends ItemMod implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		player.playSound(GrimoireSoundEvents.PAGE_TURN, 1F, 1F);
 		if(world.isRemote) {
-			player.openGui(GrimoireOfAlice.instance, LibGuiID.GUIDE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+			player.openGui(Alice.instance, LibGuiID.GUIDE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
@@ -69,7 +69,7 @@ public class ItemPatchyBook extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.PATCHULI_KNOWLEDGE;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.PATCHULI_KNOWLEDGE;
 	}
 }

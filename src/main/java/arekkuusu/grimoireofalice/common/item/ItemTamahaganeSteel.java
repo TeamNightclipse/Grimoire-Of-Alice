@@ -19,7 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTamahaganeSteel extends ItemMod {
+public class ItemTamahaganeSteel extends ItemBase {
 
 	public ItemTamahaganeSteel() {
 		super(LibItemName.TAMAHAGANE_STEEL);

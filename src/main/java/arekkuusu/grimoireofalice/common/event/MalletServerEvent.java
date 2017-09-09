@@ -11,8 +11,8 @@ package arekkuusu.grimoireofalice.common.event;
 import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
-import arekkuusu.grimoireofalice.common.core.net.MalletMessage;
-import arekkuusu.grimoireofalice.common.core.net.PacketHandler;
+import arekkuusu.grimoireofalice.common.core.network.MalletMessage;
+import arekkuusu.grimoireofalice.common.core.network.PacketHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
@@ -77,7 +77,8 @@ public class MalletServerEvent {
 		EntityPlayer oldPlayer = event.getOriginal();
 		EntityPlayer newPlayer = event.getEntityPlayer();
 
-		if(event.isWasDeath() && oldPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && newPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
+		if(event.isWasDeath() && oldPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null)
+				&& newPlayer.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 			IMalletCapability oldCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			IMalletCapability newCap = oldPlayer.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 			newCap.doAnimation(oldCap.doAnimation());
@@ -94,8 +95,8 @@ public class MalletServerEvent {
 			if(player.hasCapability(MalletProvider.MALLET_CAPABILITY, null)) {
 				IMalletCapability capability = player.getCapability(MalletProvider.MALLET_CAPABILITY, null);
 				capability.markDirty();
-				PacketHandler.sendTo(player, new MalletMessage(capability, player.getUniqueID()));
-				PacketHandler.sendToNear(player, new MalletMessage(capability, player.getUniqueID()));
+				PacketHandler.INSTANCE.sendToAllAround(new MalletMessage(capability, player.getUniqueID())
+						, PacketHandler.fromEntity(player, 64));
 			}
 		}
 	}

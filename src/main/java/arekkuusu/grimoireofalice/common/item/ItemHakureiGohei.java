@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
@@ -98,7 +98,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_header.name");
 				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.hakurei_gohei_mode_" + modeName));
 
-				GrimoireOfAlice.proxy.displayRecordText(text);
+				Alice.proxy.displayRecordText(text);
 			}
 		}
 		else {
@@ -235,7 +235,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.REIMU_HAKUREI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.REIMU_HAKUREI;
 	}
 }

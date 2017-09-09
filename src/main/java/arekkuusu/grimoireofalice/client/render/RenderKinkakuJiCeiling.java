@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelKinkakuJiCeiling;
+import arekkuusu.grimoireofalice.client.render.model.ModelKinkakuJiCeiling;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -34,6 +34,6 @@ public class RenderKinkakuJiCeiling extends Render<EntityKinkakuJiCeiling> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityKinkakuJiCeiling entity) {
-		return ResourceLocations.KINKAKU_JI_CEILING;
+		return ResourceLibrary.KINKAKU_JI_CEILING;
 	}
 }

@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
+public class ItemGhostAnchor extends ItemBaseSword implements IOwnedBy {
 
 	public ItemGhostAnchor(ToolMaterial material) {
 		super(material, LibItemName.GHOST_ANCHOR);
@@ -116,7 +116,7 @@ public class ItemGhostAnchor extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MINAMITSU_MURASA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MINAMITSU_MURASA;
 	}
 }

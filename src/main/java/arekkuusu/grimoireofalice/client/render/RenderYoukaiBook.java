@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelBook;
+import arekkuusu.grimoireofalice.client.render.model.ModelBook;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityYoukaiBook;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -20,7 +20,7 @@ public class RenderYoukaiBook extends RenderLiving<EntityYoukaiBook> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityYoukaiBook entity) {
-		return ResourceLocations.YOUKAI_BOOK;
+		return ResourceLibrary.YOUKAI_BOOK;
 	}
 
 	@Override

@@ -1,0 +1,84 @@
+{
+  "parent": "item/generated",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        90,
+        -180,
+        55
+      ],
+      "translation": [
+        8,
+        6.0,
+        1.5
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        90,
+        90,
+        -55
+      ],
+      "translation": [
+        0,
+        6.0,
+        0.5
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        25
+      ],
+      "translation": [
+        1.13,
+        3.2,
+        1.13
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -25
+      ],
+      "translation": [
+        1.13,
+        3.2,
+        1.13
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "grimoireofalice:items/lunasa_violin"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "playing": 1
+      },
+      "model": "grimoireofalice:item/lunasa_violin_used"
+    }
+  ]
+}

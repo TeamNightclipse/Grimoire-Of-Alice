@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +30,7 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setNoRepair();
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		setCreativeTab(Alice.CREATIVE_TAB);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.HATA_NO_KOKORO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.HATA_NO_KOKORO;
 	}
 }

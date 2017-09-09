@@ -14,9 +14,9 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
 
-import arekkuusu.grimoireofalice.common.ComplexItemFlavor;
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.ComplexItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.UsernameCache;
 
-public class ItemSwordOwner extends ItemModSwordFlavored {
+public class ItemSwordOwner extends ItemBaseSwordFlavored {
 
 	public static final String OWNER_TAG = "GrimoireOwner";
 

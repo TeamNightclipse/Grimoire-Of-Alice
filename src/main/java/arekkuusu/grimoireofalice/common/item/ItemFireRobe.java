@@ -11,9 +11,9 @@ package arekkuusu.grimoireofalice.common.item;
 import com.google.common.collect.ImmutableList;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFireRobe;
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.client.render.model.ModelFireRobe;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -25,7 +25,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextFormatting;
@@ -36,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemFireRobe extends ItemModArmorFlavored implements ISpecialArmor, IOwnedBy {
+public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -66,8 +65,7 @@ public class ItemFireRobe extends ItemModArmorFlavored implements ISpecialArmor,
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		boolean isActive = player.getActivePotionEffects().contains(new PotionEffect(MobEffects.GLOWING));
-		if(player.isBurning() && !isActive) {
+		if(player.isBurning() && !isActive(player)) {
 			extinguishEffect(player, world);
 		}
 	}
@@ -141,7 +139,7 @@ public class ItemFireRobe extends ItemModArmorFlavored implements ISpecialArmor,
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KAGUYA_HOURAISAN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

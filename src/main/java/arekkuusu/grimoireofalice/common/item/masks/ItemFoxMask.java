@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelMask;
+import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;

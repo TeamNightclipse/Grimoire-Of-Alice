@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemSyringe extends ItemModSword implements IOwnedBy {
+public class ItemSyringe extends ItemBaseSword implements IOwnedBy {
 
 	public ItemSyringe(ToolMaterial material) {
 		super(material, LibItemName.SYRINGE);
@@ -81,7 +81,7 @@ public class ItemSyringe extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.EIRIN_YAGOKORO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.EIRIN_YAGOKORO;
 	}
 }

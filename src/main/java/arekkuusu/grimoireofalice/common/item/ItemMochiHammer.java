@@ -35,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy {
+public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedBy {
 
 	public ItemMochiHammer(ToolMaterial material) {
 		super(material, LibItemName.MOCHI_HAMMER);
@@ -104,7 +104,7 @@ public class ItemMochiHammer extends ItemModSword implements IItemData, IOwnedBy
 
 	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIRAN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIRAN;
 	}
 }

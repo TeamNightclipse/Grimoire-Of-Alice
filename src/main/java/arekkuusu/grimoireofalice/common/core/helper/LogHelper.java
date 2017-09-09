@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.FMLLog;
 public class LogHelper {
 
 	private static void log(Level loglevel, Object object) {
-		FMLLog.log(LibMod.MODNAME, loglevel, String.valueOf(object));
+		FMLLog.log(LibMod.MOD_NAME, loglevel, String.valueOf(object));
 	}
 
 	public static void all(Object object) {

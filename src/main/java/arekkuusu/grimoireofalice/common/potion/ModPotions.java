@@ -13,7 +13,7 @@ import arekkuusu.grimoireofalice.common.lib.LibPotionName;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
-@ObjectHolder(LibMod.MODID)
+@ObjectHolder(LibMod.MOD_ID)
 public class ModPotions {
 
 	@ObjectHolder(LibPotionName.ELIXIRPOTION)

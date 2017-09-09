@@ -1,10 +1,10 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFierySword;
+import arekkuusu.grimoireofalice.client.render.model.ModelFierySword;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
+import arekkuusu.grimoireofalice.client.util.helper.BlendHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -24,7 +24,8 @@ public class RenderFierySword extends Render<EntityFierySword> {
 	public void doRender(EntityFierySword entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
+		BlendHelper.lightMap(255, 255);
+
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(-entity.rotationYaw - 180F, 0F, 1F, 0F);
@@ -41,6 +42,6 @@ public class RenderFierySword extends Render<EntityFierySword> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityFierySword entity) {
-		return ResourceLocations.FIERY_SWORD_TEXTURE;
+		return ResourceLibrary.FIERY_SWORD_TEXTURE;
 	}
 }

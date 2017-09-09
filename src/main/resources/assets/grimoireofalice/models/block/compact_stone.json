@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "grimoireofalice:blocks/compact_stone_0"
+  }
+}

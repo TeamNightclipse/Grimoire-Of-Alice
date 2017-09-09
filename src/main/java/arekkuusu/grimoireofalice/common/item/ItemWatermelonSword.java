@@ -28,7 +28,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemWatermelonSword extends ItemModSword implements IOwnedBy {
+public class ItemWatermelonSword extends ItemBaseSword implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
@@ -58,7 +58,7 @@ public class ItemWatermelonSword extends ItemModSword implements IOwnedBy {
 
 		if(stack.getItemDamage() <= 0 && attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
-					new ItemStack(ModItems.POPSICLE_STICK), false);
+					new ItemStack(ModItems.popsicle_stick), false);
 			if(!rest.isEmpty()) {
 				attacker.dropItem(rest.getItem(), rest.getCount());
 			}
@@ -85,7 +85,7 @@ public class ItemWatermelonSword extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.CIRNO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.CIRNO;
 	}
 }

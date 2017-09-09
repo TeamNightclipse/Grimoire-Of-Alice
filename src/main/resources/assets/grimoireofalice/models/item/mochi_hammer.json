@@ -1,0 +1,74 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/mochi_hammer_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "deaths": 0.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_0"
+    },
+    {
+      "predicate": {
+        "deaths": 1.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_1"
+    },
+    {
+      "predicate": {
+        "deaths": 10.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_2"
+    },
+    {
+      "predicate": {
+        "deaths": 20.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_3"
+    },
+    {
+      "predicate": {
+        "deaths": 30.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_4"
+    },
+    {
+      "predicate": {
+        "deaths": 40.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_5"
+    },
+    {
+      "predicate": {
+        "deaths": 50.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_6"
+    },
+    {
+      "predicate": {
+        "deaths": 60.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_7"
+    },
+    {
+      "predicate": {
+        "deaths": 70.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_8"
+    },
+    {
+      "predicate": {
+        "deaths": 80.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_9"
+    },
+    {
+      "predicate": {
+        "deaths": 90.0
+      },
+      "model": "grimoireofalice:item/mochi_hammer_10"
+    }
+  ]
+}

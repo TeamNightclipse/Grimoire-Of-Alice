@@ -35,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
+public class ItemSwordRoukanken extends ItemBaseSword implements IOwnedBy {
 
 	public ItemSwordRoukanken(ToolMaterial material) {
 		super(material, LibItemName.ROUKANKEN);
@@ -142,7 +142,7 @@ public class ItemSwordRoukanken extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.YOUMU_KONPAKU;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.YOUMU_KONPAKU;
 	}
 }

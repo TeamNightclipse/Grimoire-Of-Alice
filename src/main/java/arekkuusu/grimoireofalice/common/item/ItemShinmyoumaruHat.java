@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelShinmyoumaruHat;
+import arekkuusu.grimoireofalice.client.render.model.ModelShinmyoumaruHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemShinmyoumaruHat extends ItemModArmor implements IOwnedBy {
+public class ItemShinmyoumaruHat extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -48,7 +48,7 @@ public class ItemShinmyoumaruHat extends ItemModArmor implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SHINMYOUMARU_SUKUNA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SHINMYOUMARU_SUKUNA;
 	}
 }

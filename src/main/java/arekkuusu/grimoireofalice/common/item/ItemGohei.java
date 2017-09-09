@@ -3,7 +3,7 @@ package arekkuusu.grimoireofalice.common.item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class ItemGohei<E extends Enum<E>> extends ItemMod {
+public class ItemGohei<E extends Enum<E>> extends ItemBase {
 
 	private E[] modes;
 

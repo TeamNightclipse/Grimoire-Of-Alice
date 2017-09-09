@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
+public class ItemRumiaSword extends ItemBaseSword implements IOwnedBy {
 
 	public ItemRumiaSword(ToolMaterial material) {
 		super(material, LibItemName.RUMIA_SWORD);
@@ -69,7 +69,7 @@ public class ItemRumiaSword extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.RUMIA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RUMIA;
 	}
 }

@@ -19,7 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShimenawaRope extends ItemMod {
+public class ItemShimenawaRope extends ItemBase {
 
 	public ItemShimenawaRope() {
 		super(LibItemName.SHIMENAWA_ROPE);

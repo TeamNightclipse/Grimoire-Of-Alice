@@ -21,7 +21,7 @@ public class WorldGenLoot {
 	);
 
 	public WorldGenLoot() {
-		for(String table : TABLES) LootTableList.register(new ResourceLocation(LibMod.MODID, table));
+		for(String table : TABLES) LootTableList.register(new ResourceLocation(LibMod.MOD_ID, table));
 	}
 
 	@SubscribeEvent
@@ -60,6 +60,6 @@ public class WorldGenLoot {
 	}
 
 	private static LootEntryTable getInjectEntry(String name, int weight) {
-		return new LootEntryTable(new ResourceLocation(LibMod.MODID, name), weight, 0, new LootCondition[0], "grimoireofalice_entry");
+		return new LootEntryTable(new ResourceLocation(LibMod.MOD_ID, name), weight, 0, new LootCondition[0], "grimoireofalice_entry");
 	}
 }

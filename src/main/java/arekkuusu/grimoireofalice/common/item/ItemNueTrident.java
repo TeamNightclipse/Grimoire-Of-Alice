@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemNueTrident extends ItemModSword implements IOwnedBy {
+public class ItemNueTrident extends ItemBaseSword implements IOwnedBy {
 
 	public ItemNueTrident(ToolMaterial material) {
 		super(material, LibItemName.NUE_TRIDENT);
@@ -58,7 +58,7 @@ public class ItemNueTrident extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.NUE_HOUJUU;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NUE_HOUJUU;
 	}
 }

@@ -3,7 +3,7 @@ package arekkuusu.grimoireofalice.common.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import arekkuusu.grimoireofalice.api.GrimoireOfAliceAPI;
+import arekkuusu.grimoireofalice.api.AliceAPI;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -79,14 +79,14 @@ public class CapabilitiesEvent {
 	}
 
 	private static boolean canFly(EntityPlayer player) {
-		return GrimoireOfAliceAPI.getFlyItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
-				|| GrimoireOfAliceAPI.getFlyArmor().stream().anyMatch(
+		return AliceAPI.getFlyingItems().stream().anyMatch(stack -> player.inventory.hasItemStack(stack))
+				|| AliceAPI.getFlyingArmor().stream().anyMatch(
 				stack -> player.inventory.armorInventory.stream().anyMatch(stack::isItemEqual));
 	}
 
 	private static boolean isFlyItem(Item item) {
-		List<ItemStack> flyItems = GrimoireOfAliceAPI.getFlyItems();
-		List<ItemStack> flyArmor = GrimoireOfAliceAPI.getFlyArmor();
+		List<ItemStack> flyItems = AliceAPI.getFlyingItems();
+		List<ItemStack> flyArmor = AliceAPI.getFlyingArmor();
 
 		return (!flyItems.isEmpty() && flyItems.stream().anyMatch(stack -> item == stack.getItem())) ||
 				(!flyArmor.isEmpty() && flyArmor.stream().anyMatch(stack -> item == stack.getItem()));

@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
+public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 
 	public ItemIchirinRing(ToolMaterial material) {
 		super(material, LibItemName.ICHIRIN_RING);
@@ -89,7 +89,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(isWearingUnzan(player)) {
 				if(isStand(player) && player.isSneaking()) {
-					player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
+					player.getCooldownTracker().setCooldown(ModItems.ichirin_unzan, 125);
 					player.getCooldownTracker().setCooldown(this, 125);
 					player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
 				}
@@ -134,12 +134,12 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	private static boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
 		ItemStack main = player.getHeldItem(hand);
-		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
+		return !main.isEmpty() && main.getItem() == ModItems.ichirin_ring;
 	}
 
 	private static boolean isWearingUnzan(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-		return !stack.isEmpty() && stack.getItem() == ModItems.ICHIRIN_UNZAN;
+		return !stack.isEmpty() && stack.getItem() == ModItems.ichirin_unzan;
 	}
 
 	@Override
@@ -164,7 +164,7 @@ public class ItemIchirinRing extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.ICHIRIN_KUMOI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
 	}
 }

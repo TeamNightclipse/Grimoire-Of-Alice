@@ -26,7 +26,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShroomPowder extends ItemMod {
+public class ItemShroomPowder extends ItemBase {
 
 	public ItemShroomPowder() {
 		super(LibItemName.SHROOM_POWDER);

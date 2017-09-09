@@ -8,46 +8,17 @@
  */
 package arekkuusu.grimoireofalice.common.block.tile;
 
-import javax.annotation.Nullable;
-
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.SoundCategory;
-import net.minecraftforge.items.ItemHandlerHelper;
 
-public class TilePillarAltar extends TileItemHandler implements ITickable {
+public class TilePillarAltar extends TileBase implements ITickable {
 
 	public int tickCount;
 
-	@Override
-	public boolean addItem(@Nullable EntityPlayer player, ItemStack stack) {
-		boolean added = false;
-		if(!hasItem()) {
-			world.playSound(null, getPos(), SoundEvents.ENTITY_ITEMFRAME_ADD_ITEM, SoundCategory.BLOCKS, 1F, 0.5F);
-			added = true;
-			ItemStack stackToAdd = stack.copy();
-			stackToAdd.setCount(1);
-			if(!world.isRemote) {
-				itemHandler.insertItem(0, stackToAdd, false);
-			}
-
-			if(player == null || !player.capabilities.isCreativeMode) {
-				stack.shrink(1);
-				if(stack.isEmpty() && player != null) {
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
-				}
-			}
-		}
-		return added;
-	}
-
-	public ItemStack getItemStack() {
-		return itemHandler.getItemSimulate(0);
+	public TilePillarAltar() {
+		super(1);
 	}
 
 	public float getRenderHeight() {
@@ -64,10 +35,5 @@ public class TilePillarAltar extends TileItemHandler implements ITickable {
 	@Override
 	public void update() {
 		tickCount++;
-	}
-
-	@Override
-	public int getSizeInventory() {
-		return 1;
 	}
 }

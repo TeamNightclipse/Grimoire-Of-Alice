@@ -44,7 +44,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 				world.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().offset(0, -1, 0)).forEach(entity -> entity.attackEntityFrom(DamageSource.FALLING_BLOCK, 50));
 			}
 			if(ticksExisted > 2000) {
-				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
+				dropItem(ModItems.seamless_ceiling_of_kinkakuji, 1);
 				setDead();
 			}
 		}
@@ -75,7 +75,7 @@ public class EntityKinkakuJiCeiling extends Entity {
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		if(!world.isRemote && !isDead && onGround) {
 			if(!player.capabilities.isCreativeMode) {
-				dropItem(ModItems.SEAMLESS_CEILING_KINKAKU_JI, 1);
+				dropItem(ModItems.seamless_ceiling_of_kinkakuji, 1);
 			}
 			setDead();
 		}

@@ -33,13 +33,13 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemUFOs extends ItemMod implements IOwnedBy {
+public class ItemUFOs extends ItemBase implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemUFOs() {
-		super(LibItemName.UFOS);
+		super(LibItemName.UFO);
 		setMaxStackSize(1);
 	}
 
@@ -128,7 +128,7 @@ public class ItemUFOs extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.NUE_HOUJUU;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NUE_HOUJUU;
 	}
 }

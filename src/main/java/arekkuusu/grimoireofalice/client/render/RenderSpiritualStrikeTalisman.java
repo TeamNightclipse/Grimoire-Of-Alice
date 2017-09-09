@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntitySpiritualStrikeTalisman;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -35,6 +35,6 @@ public class RenderSpiritualStrikeTalisman extends Render<EntitySpiritualStrikeT
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntitySpiritualStrikeTalisman entity) {
-		return ResourceLocations.TALISMAN;
+		return ResourceLibrary.TALISMAN;
 	}
 }

@@ -67,7 +67,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 		else {
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
 		}
-		return stack.isEmpty() ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
+		return stack.isEmpty() ? new ItemStack(ModItems.ibaraki_box_empty) : stack;
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.EIRIN_YAGOKORO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.EIRIN_YAGOKORO;
 	}
 }

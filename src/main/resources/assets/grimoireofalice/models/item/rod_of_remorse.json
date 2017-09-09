@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "grimoireofalice:items/rod_of_remorse"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "used": 1
+      },
+      "model": "grimoireofalice:item/rod_of_remorse_0"
+    }
+  ]
+}

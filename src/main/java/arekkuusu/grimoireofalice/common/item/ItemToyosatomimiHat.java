@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelToyosatomimiHat;
+import arekkuusu.grimoireofalice.client.render.model.ModelToyosatomimiHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemToyosatomimiHat extends ItemModArmor implements IOwnedBy {
+public class ItemToyosatomimiHat extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -70,7 +70,7 @@ public class ItemToyosatomimiHat extends ItemModArmor implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
 	}
 }

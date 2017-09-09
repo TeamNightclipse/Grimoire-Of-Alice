@@ -11,6 +11,8 @@ package arekkuusu.grimoireofalice.common.block;
 import java.util.List;
 import java.util.Random;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -35,7 +37,8 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockShroom extends BlockModBush {
+@SuppressWarnings("deprecation")
+public class BlockShroom extends BlockModBush implements IModel {
 
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
 
@@ -82,7 +85,7 @@ public class BlockShroom extends BlockModBush {
 				|| block == Blocks.HARDENED_CLAY
 				|| block == Blocks.STAINED_HARDENED_CLAY
 				|| block == Blocks.STONE
-				|| block == ModBlocks.COMPACT_STONE;
+				|| block == ModBlocks.compact_stone;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -116,12 +119,17 @@ public class BlockShroom extends BlockModBush {
 		return state.getValue(COLOR).getMetadata();
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		if(meta >= EnumDyeColor.values().length) {
 			meta = 0;
 		}
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, EnumDyeColor.class);
 	}
 }

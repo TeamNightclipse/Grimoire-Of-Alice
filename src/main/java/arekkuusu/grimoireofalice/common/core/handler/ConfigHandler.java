@@ -13,7 +13,7 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 
 @SuppressWarnings("WeakerAccess")
-@Config(modid = LibMod.MODID)
+@Config(modid = LibMod.MOD_ID)
 public class ConfigHandler {
 
 	@Comment("Don't change this if you don't know what you are doing")
@@ -61,7 +61,7 @@ public class ConfigHandler {
 			public boolean patchyBook = true;
 			@Comment("Can players craft the syringe?")
 			public boolean syringe = true;
-			@Comment("Can players craft the simple ufos?")
+			@Comment("Can players craft the simple ufo?")
 			public boolean simpleUfo = true;
 			@Comment("Can players get Kokoro's Masks?")
 			public boolean kokoroMask = false;
@@ -84,7 +84,7 @@ public class ConfigHandler {
 				public boolean patchyBook = true;
 				@Comment("Can players craft the syringe?")
 				public boolean syringe = true;
-				@Comment("Can players craft the simple ufos?")
+				@Comment("Can players craft the simple ufo?")
 				public boolean simpleUfo = false;
 				@Comment("Can players craft the third eye?")
 				public boolean thirdEye = true;

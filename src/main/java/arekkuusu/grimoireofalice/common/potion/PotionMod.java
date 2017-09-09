@@ -26,7 +26,7 @@ public class PotionMod extends Potion {
 
 	public PotionMod(String name, boolean badEffect, int color, int iconIndex) {
 		super(badEffect, color);
-		setPotionName("effect." + LibMod.MODID + "." + name);
+		setPotionName("effect." + LibMod.MOD_ID + "." + name);
 		setRegistryName(name);
 		this.iconIndex = iconIndex;
 	}

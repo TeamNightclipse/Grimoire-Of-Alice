@@ -10,10 +10,11 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,16 +30,14 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
 import static net.minecraft.item.EnumRarity.*;
 import static net.minecraft.util.text.TextFormatting.*;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemDeathScythe extends ItemModSwordFlavored implements IOwnedBy {
+public class ItemDeathScythe extends ItemBaseSwordFlavored implements IOwnedBy {
 
 	public ItemDeathScythe(ToolMaterial material) {
-		super(material, LibItemName.DEATH_SCYTHE, ItemFlavor.simpleBuilder().common(
+		super(material, LibItemName.KOMACHI_SCYTHE, ItemFlavor.simpleBuilder().common(
 				FormattedString.withItalics(WHITE, "grimoire.tooltip.death_scythe_header.name"),
 				FormattedString.withItalics("grimoire.tooltip.death_scythe_description.name")).rarity(RARE).build());
 		setNoRepair();
@@ -133,9 +132,8 @@ public class ItemDeathScythe extends ItemModSwordFlavored implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KOMACHI_ONOZUKA;
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.KOMACHI_ONOZUKA;
 	}
 }

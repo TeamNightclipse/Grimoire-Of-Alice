@@ -8,15 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import javax.annotation.Nullable;
-
-import com.google.common.collect.ImmutableList;
-
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
+import com.google.common.collect.ImmutableList;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -27,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -34,13 +33,15 @@ import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
-import net.minecraftforge.fml.common.Optional;
+
+import javax.annotation.Nullable;
 
 import static net.minecraft.item.EnumRarity.RARE;
 import static net.minecraft.util.text.TextFormatting.WHITE;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
+
+	public static final ResourceLocation STRUCTURE_BOULDER = new ResourceLocation(LibMod.MOD_ID, "boulder");
 
 	public ItemAmenonuhoko(ToolMaterial material) {
 		super(material, LibItemName.AMENONUHOKO, ItemFlavor.simpleBuilder().common(
@@ -88,7 +89,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 
 		if(!world.isRemote) {
 			TemplateManager templatemanager = world.getSaveHandler().getStructureTemplateManager();
-			Template template = templatemanager.getTemplate(world.getMinecraftServer(), ResourceLocations.STRUCTURE_BOULDER);
+			Template template = templatemanager.getTemplate(world.getMinecraftServer(), STRUCTURE_BOULDER);
 			template.addBlocksToWorld(world, pos.add(-2, -2, -2), new BoulderTemplate(), new PlacementSettings(), 2);
 		}
 
@@ -114,9 +115,8 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 		}
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.RINNOSUKE_MORICHIKA;
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
 	}
 }

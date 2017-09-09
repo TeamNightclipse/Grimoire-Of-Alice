@@ -7,15 +7,15 @@ import net.minecraft.world.World;
 
 public class AltarRecipeMoonPhase extends AltarRecipe {
 
-	private final int moonPhase;
+	private final MoonPhase phase;
 
-	public AltarRecipeMoonPhase(int moonPhase, ItemStack result, Object... inputs) {
+	public AltarRecipeMoonPhase(MoonPhase phase, ItemStack result, Object... inputs) {
 		super(result, inputs);
-		this.moonPhase = moonPhase;
+		this.phase = phase;
 	}
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
-		return !world.isDaytime() && moonPhase == world.provider.getMoonPhase(world.getWorldTime()) && super.checkRecipe(usedItems, world);
+		return !world.isDaytime() && phase.ordinal() == world.provider.getMoonPhase(world.getWorldTime()) && super.checkRecipe(usedItems, world);
 	}
 }

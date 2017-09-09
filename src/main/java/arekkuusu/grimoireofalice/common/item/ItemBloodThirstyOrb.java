@@ -12,8 +12,8 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.Optional;
 import static net.minecraft.item.EnumRarity.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemBloodThirstyOrb extends ItemModFlavored implements IOwnedBy {
+public class ItemBloodThirstyOrb extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemBloodThirstyOrb() {
 		super(LibItemName.BLOOD_THIRSTY_ORB,
@@ -127,7 +127,7 @@ public class ItemBloodThirstyOrb extends ItemModFlavored implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.REIMU_HAKUREI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.REIMU_HAKUREI;
 	}
 }

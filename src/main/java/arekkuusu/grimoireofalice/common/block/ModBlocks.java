@@ -8,44 +8,71 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
+import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
-@ObjectHolder(LibMod.MODID)
+@ObjectHolder(LibMod.MOD_ID)
 public class ModBlocks {
 
-	@ObjectHolder(LibBlockName.COMPACT_STONE)
-	public static final Block COMPACT_STONE = new Block(Material.ROCK);
+	private static final Block PLACE_HOLDER = new Block(Material.AIR);
+	//--------------------------------Blocks--------------------------------//
+	public static final Block compact_stone = PLACE_HOLDER;
+	public static final Block holy_key_stone = PLACE_HOLDER;
+	public static final Block holy_stone = PLACE_HOLDER;
+	public static final Block kyoumarubotan = PLACE_HOLDER;
+	public static final Block onbashira = PLACE_HOLDER;
+	public static final Block paper_block = PLACE_HOLDER;
+	public static final Block rope_block = PLACE_HOLDER;
+	public static final Block shroom = PLACE_HOLDER;
+	public static final Block crafting_altar = PLACE_HOLDER;
+	public static final Block pillar_altar = PLACE_HOLDER;
+	public static final Block impure_stone = PLACE_HOLDER;
+	public static final Block hihiirokane_block = PLACE_HOLDER;
+	public static final Block sugar_block = PLACE_HOLDER;
+	public static final Block hyper_magic = PLACE_HOLDER;
+	public static final Block dragon_stone = PLACE_HOLDER;
 
-	@ObjectHolder(LibBlockName.HOLY_KEY)
-	public static final Block HOLY_KEY_STONE = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.HOLY_STONE)
-	public static final Block HOLY_STONE = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.KYOUMARUBOTAN)
-	public static final Block KYOUMARUBOTAN = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.ONBASHIRA)
-	public static final Block ONBASHIRA = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.PAPER_BLOCK)
-	public static final Block PAPER_BLOCK = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.ROPE_BLOCK)
-	public static final Block ROPE_BLOCK = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.SHROOM)
-	public static final Block SHROOM = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.CRAFTING_ALTAR)
-	public static final Block ALTAR = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.PILLAR_ALTAR)
-	public static final Block PILLAR_ALTAR = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.IMPURE_STONE)
-	public static final Block IMPURE_STONE = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.HIHIIROKANE_BLOCK)
-	public static final Block HIHIIROKANE_BLOCK = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.SUGAR_BLOCK)
-	public static final Block SUGAR_BLOCK = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.HYPER_MAGIC)
-	public static final Block HYPER_CONCENTRATED_MAGIC = new Block(Material.ROCK);
-	@ObjectHolder(LibBlockName.DRAGON_STONE)
-	public static final Block DRAGON_STONE = new Block(Material.ROCK);
+	public static void register(IForgeRegistry<Block> registry) {
+		Block sugarBlock = new BlockBase(LibBlockName.SUGAR_BLOCK, Material.CLAY)
+				.setSound(SoundType.SNOW)
+				.setHardness(0.2F)
+				.setResistance(5.0F);
+		sugarBlock.setHarvestLevel("axe", 1);
+
+		Block hyperConcentratedMagic = new BlockBase(LibBlockName.HYPER_MAGIC, Material.IRON)
+				.setSound(SoundType.SNOW)
+				.setHardness(0.5F)
+				.setResistance(2.0F);
+		hyperConcentratedMagic.setHarvestLevel("pickaxe", 3);
+
+		registry.register(new BlockBase(LibBlockName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F));
+		registry.register(new BlockHolyKeyStone());
+		registry.register(new BlockHolyStone());
+		registry.register(new BlockKyoumarubotan());
+		registry.register(new BlockOnbashira());
+		registry.register(new BlockPaper());
+		registry.register(new BlockRope());
+		registry.register(new BlockShroom());
+		registry.register(sugarBlock);
+		registry.register(hyperConcentratedMagic);
+		registry.register(new BlockCraftingAltar());
+		registry.register(new BlockPillarAltar());
+		registry.register(new BlockImpureRock());
+		registry.register(new BlockHihiirokane());
+		registry.register(new BlockDragonStone());
+		registerTiles();
+	}
+
+	private static void registerTiles() {
+		GameRegistry.registerTileEntity(TileCraftingAltar.class, LibMod.MOD_ID + ":crafting_altar");
+		GameRegistry.registerTileEntity(TilePillarAltar.class, LibMod.MOD_ID + ":pillar_altar");
+	}
 }

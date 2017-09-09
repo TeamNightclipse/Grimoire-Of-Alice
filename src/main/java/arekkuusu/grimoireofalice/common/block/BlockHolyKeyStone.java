@@ -33,10 +33,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockHolyKeyStone extends BlockMod {
+public class BlockHolyKeyStone extends BlockBase {
 
 	public BlockHolyKeyStone() {
-		super(LibBlockName.HOLY_KEY, Material.ROCK);
+		super(LibBlockName.HOLY_KEY_STONE, Material.ROCK);
 		setHardness(2.0F);
 		setHarvestLevel("pickaxe", 1);
 		setSoundType(SoundType.STONE);

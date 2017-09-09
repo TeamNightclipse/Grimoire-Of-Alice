@@ -15,8 +15,10 @@ import net.minecraft.world.World;
 
 public class ItemBlockOnbashira extends ItemBlock {
 
+	@SuppressWarnings("ConstantConditions")
 	public ItemBlockOnbashira(Block block) {
 		super(block);
+		this.setRegistryName(block.getRegistryName());
 	}
 
 	@SuppressWarnings("deprecation")

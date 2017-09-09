@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -66,7 +66,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> implem
 				ITextComponent text = new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_header.name");
 				text.appendSibling(new TextComponentTranslation("grimoire.tooltip.sanae_gohei_mode_" + modeName));
 
-				GrimoireOfAlice.proxy.displayRecordText(text);
+				Alice.proxy.displayRecordText(text);
 			}
 		}
 		else {
@@ -177,7 +177,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> implem
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SANAE_KOCHIYA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SANAE_KOCHIYA;
 	}
 }

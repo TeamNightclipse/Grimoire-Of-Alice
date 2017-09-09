@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -44,6 +44,6 @@ public class RenderMiracleCircle extends Render<EntityMiracleCircle> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityMiracleCircle entity) {
-		return ResourceLocations.MIRACLE_CIRCLE;
+		return ResourceLibrary.MIRACLE_CIRCLE;
 	}
 }

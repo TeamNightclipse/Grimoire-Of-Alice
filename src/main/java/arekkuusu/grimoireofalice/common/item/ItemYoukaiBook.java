@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemYoukaiBook extends ItemMod implements IOwnedBy {
+public class ItemYoukaiBook extends ItemBase implements IOwnedBy {
 
 	public ItemYoukaiBook() {
 		super(LibItemName.YOUKAI_BOOK);
@@ -62,7 +62,7 @@ public class ItemYoukaiBook extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KOSUZU_MOTOORI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KOSUZU_MOTOORI;
 	}
 }

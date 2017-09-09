@@ -8,11 +8,14 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -20,11 +23,15 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBlockShroom extends ItemBlock {
+public class ItemBlockShroom extends ItemBlock implements IModel {
 
+	@SuppressWarnings("ConstantConditions")
 	public ItemBlockShroom(Block block) {
 		super(block);
+		this.setRegistryName(block.getRegistryName());
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 	}
@@ -71,5 +78,11 @@ public class ItemBlockShroom extends ItemBlock {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return super.getUnlocalizedName() + "_" + stack.getMetadata();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, EnumDyeColor.class);
 	}
 }

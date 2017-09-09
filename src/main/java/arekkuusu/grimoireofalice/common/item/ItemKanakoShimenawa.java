@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelKanakoShimenawa;
+import arekkuusu.grimoireofalice.client.render.model.ModelKanakoShimenawa;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, IOwnedBy {
+public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -92,7 +92,7 @@ public class ItemKanakoShimenawa extends ItemModArmor implements ISpecialArmor, 
 	}
 
 	@Optional.Method(modid = "danmakucore")
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KANAKO_YASAKA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
 	}
 }

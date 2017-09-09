@@ -9,8 +9,8 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelMarisaHat;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.render.model.ModelMarisaHat;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibGuiID;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwnedBy {
+public class ItemMarisaHat extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
@@ -162,7 +162,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 			}
 		}
 		else {
-			player.openGui(GrimoireOfAlice.instance, LibGuiID.HAT, world, hand.ordinal(), -1, -1);
+			player.openGui(Alice.instance, LibGuiID.HAT, world, hand.ordinal(), -1, -1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
@@ -196,7 +196,7 @@ public class ItemMarisaHat extends ItemModArmor implements ISpecialArmor, IOwned
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MARISA_KIRISAME;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MARISA_KIRISAME;
 	}
 }

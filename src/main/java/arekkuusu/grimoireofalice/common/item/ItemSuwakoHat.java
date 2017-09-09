@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelSuwakoHat;
+import arekkuusu.grimoireofalice.client.render.model.ModelSuwakoHat;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemSuwakoHat extends ItemModArmor {
+public class ItemSuwakoHat extends ItemBaseArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;

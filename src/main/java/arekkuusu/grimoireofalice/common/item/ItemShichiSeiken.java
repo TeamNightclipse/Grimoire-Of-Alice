@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
+public class ItemShichiSeiken extends ItemBaseSword implements IOwnedBy {
 
 	public ItemShichiSeiken(ToolMaterial material) {
 		super(material, LibItemName.SHICHI_SEIKEN);
@@ -74,7 +74,7 @@ public class ItemShichiSeiken extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.RINNOSUKE_MORICHIKA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
 	}
 }

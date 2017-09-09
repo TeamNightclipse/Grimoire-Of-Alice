@@ -1,6 +1,0 @@
-{
-  "parent": "grimoireofalice:item/handheld_big",
-  "textures": {
-    "layer0": "grimoireofalice:items/kanakoonbashira"
-  }
-}

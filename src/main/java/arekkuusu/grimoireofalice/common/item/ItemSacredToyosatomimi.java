@@ -8,8 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
@@ -40,7 +40,7 @@ import static net.minecraft.util.text.TextFormatting.*;
 public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSacredToyosatomimi(ToolMaterial material) {
-		super(material, LibItemName.SACRED_TOYOSATOMIMI, ItemFlavor.simpleBuilder()
+		super(material, LibItemName.SACRED_SWORD_OF_TOYOSATOMIMI, ItemFlavor.simpleBuilder()
 				.shift(ImmutableList.of(
 						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"),
 						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_mid.name"),
@@ -128,7 +128,7 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
 	}
 }

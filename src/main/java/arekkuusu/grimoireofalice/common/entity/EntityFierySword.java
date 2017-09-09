@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

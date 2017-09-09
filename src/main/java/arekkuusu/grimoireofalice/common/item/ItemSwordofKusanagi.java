@@ -11,8 +11,8 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
@@ -159,7 +159,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.RINNOSUKE_MORICHIKA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
 	}
 }

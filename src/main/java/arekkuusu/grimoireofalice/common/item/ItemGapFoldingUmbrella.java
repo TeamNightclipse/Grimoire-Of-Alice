@@ -11,8 +11,8 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.Optional;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -36,7 +36,7 @@ import net.minecraft.world.World;
 import static net.minecraft.util.text.TextFormatting.*;
 
 @net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGapFoldingUmbrella extends ItemModFlavored implements IOwnedBy {
+public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemGapFoldingUmbrella() {
 		super(LibItemName.FOLDING_UMBRELLA, ItemFlavor.simpleBuilder().common(
@@ -116,7 +116,7 @@ public class ItemGapFoldingUmbrella extends ItemModFlavored implements IOwnedBy 
 
 	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIJA_KIJIN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
 	}
 }

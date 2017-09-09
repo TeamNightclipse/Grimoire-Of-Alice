@@ -36,7 +36,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider {
+@SuppressWarnings("deprecation")
+public class BlockCraftingAltar extends BlockBase implements ITileEntityProvider {
 
 	private static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
@@ -56,13 +57,17 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+									EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
-		boolean ok = false;
-		if(tile != null) {
-			ok = player.isSneaking() ? tile.removeItem(player) : tile.doCrafting(player);
+		if(tile == null) return false;
+
+		if(player.isSneaking()) {
+			 tile.doCrafting(player);
+		} else {
+			tile.handleItemTransfer(player, hand);
 		}
-		return ok;
+		return true;
 	}
 
 	@Override
@@ -98,7 +103,6 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 		}
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getHorizontal(meta);
@@ -124,7 +128,6 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return AABB;
@@ -136,13 +139,11 @@ public class BlockCraftingAltar extends BlockMod implements ITileEntityProvider 
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

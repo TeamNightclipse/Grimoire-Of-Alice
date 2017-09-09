@@ -12,8 +12,8 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static net.minecraft.item.EnumRarity.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemFakeMiracleMallet extends ItemModFlavored implements IOwnedBy {
+public class ItemFakeMiracleMallet extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemFakeMiracleMallet() {
 		super(LibItemName.FAKE_MIRACLE_MALLET,
@@ -70,7 +70,7 @@ public class ItemFakeMiracleMallet extends ItemModFlavored implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIJA_KIJIN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
 	}
 }

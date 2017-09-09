@@ -10,7 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.BlockLiquid;
@@ -35,12 +35,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
+public class ItemIbarakiBoxEmpty extends ItemBase implements IOwnedBy {
 
 	public ItemIbarakiBoxEmpty() {
 		super(LibItemName.IBARAKI_BOX_EMPTY);
 		setMaxStackSize(1);
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		setCreativeTab(Alice.CREATIVE_TAB);
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 				if((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
 					world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
 					player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(stack, player, ModItems.IBARAKI_BOX_FILLED));
+					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(stack, player, ModItems.ibaraki_box_filled));
 				}
 			}
 			return new ActionResult<>(EnumActionResult.FAIL, stack);
@@ -110,7 +110,7 @@ public class ItemIbarakiBoxEmpty extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KASEN_IBARAKI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KASEN_IBARAKI;
 	}
 }

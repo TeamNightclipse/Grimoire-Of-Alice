@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +20,7 @@ public class BlockModBush extends BlockBush {
 		setUnlocalizedName(id);
 		setDefaultState(defaultState());
 		setRegistryName(id);
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		setCreativeTab(Alice.CREATIVE_TAB);
 	}
 
 	protected IBlockState defaultState() {

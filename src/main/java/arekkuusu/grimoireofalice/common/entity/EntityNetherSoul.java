@@ -8,8 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
@@ -56,10 +55,10 @@ public class EntityNetherSoul extends EntityThrowable {
 		if(isDead) {
 			return;
 		}
-		GrimoireOfAlice.proxy.sparkleFX(ParticleFX.NETHER_FIRE, null, posX, posY, posZ, 0, 0, 0);
+		ParticleUtil.spawnNetherFire(world, posX, posY, posZ, 0, 0, 0, 20 + world.rand.nextInt(40), 0.1F + world.rand.nextFloat());
 		if(ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
-				GrimoireOfAlice.proxy.sparkleFX(ParticleFX.RED_GAS, null, posX, posY, posZ, 0, 0, 0);
+				ParticleUtil.spawnRedGas(world, posX, posY, posZ, 0, 0, 0);
 			}
 		}
 		if(target != null && !target.isDead) {

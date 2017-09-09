@@ -34,8 +34,8 @@ public class HouraiEvents {
 	@SubscribeEvent
 	public void attachPlayer(AttachCapabilitiesEvent<Entity> event) {
 		if(event.getObject() instanceof EntityPlayer) {
-			event.addCapability(new ResourceLocation(LibMod.MODID, "GrimoireData"), new HouraiProvider());
-			event.addCapability(new ResourceLocation(LibMod.MODID, "MalletData"), new MalletProvider());
+			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "GrimoireData"), new HouraiProvider());
+			event.addCapability(new ResourceLocation(LibMod.MOD_ID, "MalletData"), new MalletProvider());
 		}
 	}
 

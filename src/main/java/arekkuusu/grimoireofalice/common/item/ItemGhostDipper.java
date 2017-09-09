@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Queue;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemGhostDipper extends ItemMod implements IOwnedBy {
+public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 
 	public ItemGhostDipper() {
 		super(LibItemName.GHOST_DIPPER);
@@ -178,7 +178,7 @@ public class ItemGhostDipper extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.MINAMITSU_MURASA;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MINAMITSU_MURASA;
 	}
 }

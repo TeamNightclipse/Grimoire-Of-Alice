@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemWatermelonBlade extends ItemModSword implements IOwnedBy {
+public class ItemWatermelonBlade extends ItemBaseSword implements IOwnedBy {
 
 	public ItemWatermelonBlade(ToolMaterial material) {
 		super(material, LibItemName.WATERMELON_BLADE);
@@ -73,7 +73,7 @@ public class ItemWatermelonBlade extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.CIRNO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.CIRNO;
 	}
 }

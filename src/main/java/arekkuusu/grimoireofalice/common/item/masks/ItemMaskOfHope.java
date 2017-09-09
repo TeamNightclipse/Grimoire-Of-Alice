@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item.masks;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelMask;
+import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -35,7 +35,7 @@ public class ItemMaskOfHope extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemMaskOfHope(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.MASKOF_HOPE);
+		super(material, dmg, LibItemName.MASK_OF_HOPE);
 	}
 
 	@Override

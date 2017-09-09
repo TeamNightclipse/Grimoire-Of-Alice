@@ -1,0 +1,14 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/hisou_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cooldown": 0.01
+      },
+      "model": "grimoireofalice:item/hisou_sword_0"
+    }
+  ]
+}

@@ -9,8 +9,8 @@
 package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelKokorosMasks;
-import arekkuusu.grimoireofalice.client.model.ModelMask;
+import arekkuusu.grimoireofalice.client.render.model.ModelKokorosMasks;
+import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -41,7 +41,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	private static final String OWNER_TAG = "GrimoireOwner";
 
 	public ItemKokorosMasks(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.KOKOROS_MASKS);
+		super(material, dmg, LibItemName.KOKORO_MASKS);
 	}
 
 	@SuppressWarnings("ConstantConditions")

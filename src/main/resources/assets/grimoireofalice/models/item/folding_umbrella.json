@@ -1,0 +1,14 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/folding_umbrella"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cooldown": 0.01
+      },
+      "model": "grimoireofalice:item/folding_umbrella_0"
+    }
+  ]
+}

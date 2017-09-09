@@ -120,7 +120,7 @@ public class EntityNazrinPendulum extends Entity {
 				ItemHandlerHelper.giveItemToPlayer(user, stack);
 			}
 			else {
-				dropItem(ModItems.NAZRIN_PENDULUM, 1);
+				dropItem(ModItems.nazrin_pendulum, 1);
 			}
 			setDead();
 		}

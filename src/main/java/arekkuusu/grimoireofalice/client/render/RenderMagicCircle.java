@@ -8,8 +8,8 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -45,6 +45,6 @@ public class RenderMagicCircle extends Render<EntityMagicCircle> {
 	@Override
 	protected ResourceLocation getEntityTexture(EntityMagicCircle circle) {
 		int numTexture = circle.getTexture();
-		return ResourceLocations.CIRCLE_TEXTURE[numTexture];
+		return ResourceLibrary.CIRCLE_TEXTURE[numTexture];
 	}
 }

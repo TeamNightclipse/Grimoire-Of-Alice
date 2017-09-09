@@ -1,0 +1,20 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/nazrin_stick"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "stick": 0.0
+      },
+      "model": "grimoireofalice:item/nazrin_stick"
+    },
+    {
+      "predicate": {
+        "stick": 1.0
+      },
+      "model": "grimoireofalice:item/nazrin_stick_b"
+    }
+  ]
+}

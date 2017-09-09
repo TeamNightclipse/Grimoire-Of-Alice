@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render.tile;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBook;
@@ -37,7 +37,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 		float f2 = te.bookRotationPrev + f1 * partialTicks;
 		GlStateManager.rotate(-f2 * (180F / (float) Math.PI), 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
-		bindTexture(ResourceLocations.GRIMOIRE_BOOK);
+		bindTexture(ResourceLibrary.GRIMOIRE_BOOK);
 		float f3 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.25F;
 		float f4 = te.pageFlipPrev + (te.pageFlip - te.pageFlipPrev) * partialTicks + 0.75F;
 		f3 = (f3 - MathHelper.fastFloor(f3)) * 1.6F - 0.3F;

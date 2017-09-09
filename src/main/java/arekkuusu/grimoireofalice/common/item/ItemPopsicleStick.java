@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemPopsicleStick extends ItemModSword implements IOwnedBy {
+public class ItemPopsicleStick extends ItemBaseSword implements IOwnedBy {
 
 	public ItemPopsicleStick(ToolMaterial material) {
 		super(material, LibItemName.POPSICLE_STICK);
@@ -42,7 +42,7 @@ public class ItemPopsicleStick extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.CIRNO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.CIRNO;
 	}
 }

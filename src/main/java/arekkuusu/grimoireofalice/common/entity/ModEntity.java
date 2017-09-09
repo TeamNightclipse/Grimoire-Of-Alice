@@ -8,13 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityStopWatch;
 import com.google.common.collect.ImmutableMap;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -29,30 +26,28 @@ import static net.minecraftforge.common.BiomeDictionary.Type;
 
 public class ModEntity {
 
+	private static int id;
+
 	public static void preInit() {
-		int modEntityID = 0;
-		registerEntity(EntityNazrinPendulum.class, "pendulum", ++modEntityID, 64, 1, true);
-		registerEntity(EntityGrimoireSpell.class, "spell", ++modEntityID, 64, 10, true);
-		registerEntity(EntityMagicCircle.class, "spell", ++modEntityID, 64, 10, true);
-		registerEntity(EntityDragonJewel.class, "jewel", ++modEntityID, 64, 10, false);
-		registerEntity(EntityUnzanFist.class, "fist", ++modEntityID, 64, 1, true);
-		registerEntity(EntityEllyScythe.class, "scythe", ++modEntityID, 64, 1, true);
-		registerEntity(EntityCursedDecoyDoll.class, "doll", ++modEntityID, 64, 10, true);
-		registerEntity(EntityHakureiOrb.class, "orb", ++modEntityID, 64, 1, true);
-		registerEntity(EntityBarrier.class, "barrier", ++modEntityID, 64, 1, true);
-		registerEntity(EntityMiracleLantern.class, "lantern", ++modEntityID, 64, 1, true);
-		registerEntity(EntityNetherSoul.class, "soul", ++modEntityID, 64, 1, true);
-		registerEntity(EntityFierySword.class, "fiery_sword", ++modEntityID, 64, 1, true);
-		registerEntity(EntityIceBlock.class, "ice_block", ++modEntityID, 64, 10, true);
-		registerEntity(EntityMiracleCircle.class, "mirale_circle", ++modEntityID, 64, 10, true);
-		registerEntity(EntitySpiritualStrikeTalisman.class, "talisman", ++modEntityID, 64, 10, false);
-		registerEntity(EntityGap.class, "gap", ++modEntityID, 64, 10, false);
-		registerEntity(EntityKinkakuJiCeiling.class, "ceiling", ++modEntityID, 64, 10, true);
-		registerEntity(EntityYoukaiBook.class, "youkai", ++modEntityID, 64, 1, true);
-		if(GrimoireOfAlice.danmakuCoreInstalled) {
-			registerEntity(EntityCameraSquare.class, "camera", ++modEntityID, 64, 10, true);
-			registerEntity(EntityStopWatch.class, "watch", ++modEntityID, 64, 1, true);
-		}
+		register(EntityNazrinPendulum.class, "pendulum");
+		register(EntityMagicCircle.class, "spell");
+		register(EntityDragonJewel.class, "jewel");
+		register(EntityUnzanFist.class, "fist");
+		register(EntityEllyScythe.class, "scythe");
+		register(EntityCursedDecoyDoll.class, "doll");
+		register(EntityHakureiOrb.class, "orb");
+		register(EntityBarrier.class, "barrier");
+		register(EntityMiracleLantern.class, "lantern");
+		register(EntityNetherSoul.class, "soul");
+		register(EntityFierySword.class, "fiery_sword");
+		register(EntityIceBlock.class, "ice_block");
+		register(EntityMiracleCircle.class, "mirale_circle");
+		register(EntitySpiritualStrikeTalisman.class, "talisman");
+		register(EntityGap.class, "gap");
+		register(EntityKinkakuJiCeiling.class, "ceiling");
+		register(EntityYoukaiBook.class, "youkai");
+		register(EntityCameraSquare.class, "camera");
+		register(EntityStopWatch.class, "watch");
 
 		//Natural spawns
 		if(ConfigHandler.grimoireOfAlice.spawning.bookSpawning) {
@@ -75,7 +70,8 @@ public class ModEntity {
 		}
 	}
 
-	private static void registerEntity(Class<? extends Entity> clazz, String name, int id, int tracingRange, int updateFrequency, boolean sendVelocityUpdates) {
-		EntityRegistry.registerModEntity(new ResourceLocation(LibMod.MODID, name), clazz, name, id, GrimoireOfAlice.instance, tracingRange, updateFrequency, sendVelocityUpdates);
+	private static void register(Class<? extends Entity> clazz, String name) {
+		ResourceLocation resource = new ResourceLocation(LibMod.MOD_ID, name);
+		EntityRegistry.registerModEntity(resource, clazz, name, ++id, Alice.instance, 64, 1, true);
 	}
 }

@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelSatoriEye;
+import arekkuusu.grimoireofalice.client.render.model.ModelSatoriEye;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
@@ -41,13 +41,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
+public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemThirdEye(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.EYE, EntityEquipmentSlot.CHEST);
+		super(material, dmg, LibItemName.THIRD_EYE, EntityEquipmentSlot.CHEST);
 		setMaxStackSize(1);
 		setMaxDamage(125);
 		setNoRepair();
@@ -170,8 +170,8 @@ public class ItemThirdEye extends ItemModArmor implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.TouhouCharacter.KOISHI_KOMEIJI
-				: net.katsstuff.danmakucore.entity.living.TouhouCharacter.SATORI_KOMEIJI;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KOISHI_KOMEIJI
+				: net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SATORI_KOMEIJI;
 	}
 }

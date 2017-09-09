@@ -12,7 +12,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemGap extends ItemMod {
+public class ItemGap extends ItemBase {
 
 	public ItemGap() {
 		super(LibItemName.GAP);

@@ -26,10 +26,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
+public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
 
 	public ItemKinkakuJiCeiling() {
-		super(LibItemName.SEAMLESS_CEILING_KINKAKU_JI);
+		super(LibItemName.SEAMLESS_CEILING_OF_KINKAKUJI);
 		setMaxStackSize(1);
 	}
 
@@ -108,7 +108,7 @@ public class ItemKinkakuJiCeiling extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KAGUYA_HOURAISAN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item.food;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.item.ItemFood;
 
 public class ItemModFood extends ItemFood {
@@ -17,6 +17,6 @@ public class ItemModFood extends ItemFood {
 		super(healAmount, potionEffectProbability, isWolfFood);
 		setRegistryName(id);
 		setUnlocalizedName(id);
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		setCreativeTab(Alice.CREATIVE_TAB);
 	}
 }

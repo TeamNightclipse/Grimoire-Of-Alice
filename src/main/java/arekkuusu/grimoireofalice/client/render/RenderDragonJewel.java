@@ -1,7 +1,15 @@
+/**
+ * This class was created by <ArekkuusuJerii>. It's distributed as
+ * part of the Grimoire Of Alice Mod. Get the Source Code in github:
+ * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
+ *
+ * Grimore Of Alice is Open Source and distributed under the
+ * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
+ */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -29,7 +37,7 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	@Override
 	public void doRender(EntityDragonJewel entity, double x, double y, double z, float entityYaw, float partialTicks) {
-		ItemStack stack = new ItemStack(ModItems.DRAGON_JEWEL);
+		ItemStack stack = new ItemStack(ModItems.dragon_jewel);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);
@@ -61,6 +69,6 @@ public class RenderDragonJewel extends Render<EntityDragonJewel> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityDragonJewel entity) {
-		return ResourceLocations.DRAGON_JEWEL_TEXTURE;
+		return ResourceLibrary.DRAGON_JEWEL_TEXTURE;
 	}
 }

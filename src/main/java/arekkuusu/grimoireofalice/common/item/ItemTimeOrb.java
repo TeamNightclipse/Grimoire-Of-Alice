@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemTimeOrb extends ItemMod {
+public class ItemTimeOrb extends ItemBase {
 
 	public ItemTimeOrb() {
 		super(LibItemName.TIME_ORB);

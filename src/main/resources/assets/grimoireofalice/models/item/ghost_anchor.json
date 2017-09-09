@@ -1,0 +1,14 @@
+{
+  "parent": "grimoireofalice:item/handheld_big",
+  "textures": {
+    "layer0": "grimoireofalice:items/ghost_anchor"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "grimoireofalice:item/ghost_anchor_active"
+    }
+  ]
+}

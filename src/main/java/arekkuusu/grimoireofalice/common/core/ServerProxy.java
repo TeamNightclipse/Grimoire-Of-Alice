@@ -8,10 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.core;
 
-import javax.annotation.Nullable;
-
-import arekkuusu.grimoireofalice.client.fx.ParticleFX;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -24,10 +20,6 @@ public class ServerProxy implements ISidedProxy {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-	}
-
-	@Override
-	public void sparkleFX(ParticleFX particleFX, @Nullable Entity entity, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
 	}
 
 	@Override

@@ -12,9 +12,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import arekkuusu.grimoireofalice.common.Alice;
 import com.google.common.collect.ImmutableSet;
 
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
@@ -47,7 +47,7 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 		super(4.0F, -2.8F, materialIn, Collections.emptySet());
 		setRegistryName(LibItemName.BUDAH_BOUL);
 		setUnlocalizedName(LibItemName.BUDAH_BOUL);
-		setCreativeTab(GrimoireOfAlice.CREATIVE_TAB);
+		setCreativeTab(Alice.CREATIVE_TAB);
 
 		setHarvestLevel("pickaxe", toolMaterial.getHarvestLevel());
 		setHarvestLevel("axe", toolMaterial.getHarvestLevel());
@@ -110,7 +110,7 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.KAGUYA_HOURAISAN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
 	}
 }

@@ -8,12 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.api.tile.ITileItemHolder;
 import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -36,9 +32,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
+import java.util.List;
 
-	public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+@SuppressWarnings("deprecation")
+public class BlockPillarAltar extends BlockBase implements ITileEntityProvider {
+
+	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyEnum<Model> MODEL = PropertyEnum.create("model", Model.class);
 
 	public BlockPillarAltar() {
@@ -58,12 +57,15 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 									EnumFacing side, float hitX, float hitY, float hitZ) {
-		return MiscHelper.tileEntityHandlerProcesInteract(world, pos, player, hand);
+		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
+		if(tile == null) return false;
+		tile.handleItemTransfer(player, hand);
+		return true;
 	}
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		ITileItemHolder tile = (ITileItemHolder) world.getTileEntity(pos);
+		TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
 		if(tile != null) {
 			tile.destroy();
 		}
@@ -72,7 +74,7 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, PROPERTYFACING, MODEL);
+		return new BlockStateContainer(this, FACING, MODEL);
 	}
 
 	@Override
@@ -80,34 +82,30 @@ public class BlockPillarAltar extends BlockMod implements ITileEntityProvider {
 		return super.defaultState().withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getHorizontal(meta);
-		return getDefaultState().withProperty(PROPERTYFACING, facing).withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
+		return getDefaultState().withProperty(FACING, facing).withProperty(MODEL, Model.fromModel(ConfigHandler.grimoireOfAlice.features.vanillaBlockModels));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		EnumFacing facing = state.getValue(PROPERTYFACING);
+		EnumFacing facing = state.getValue(FACING);
 		return facing.getHorizontalIndex();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 											EntityLivingBase placer) {
 		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
-		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
+		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

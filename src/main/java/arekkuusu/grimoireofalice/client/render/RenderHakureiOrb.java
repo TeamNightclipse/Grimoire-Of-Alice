@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -45,6 +45,6 @@ public class RenderHakureiOrb extends Render<EntityHakureiOrb> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityHakureiOrb entityHakureiOrb) {
-		return ResourceLocations.ORB_TEXTURE;
+		return ResourceLibrary.ORB_TEXTURE;
 	}
 }

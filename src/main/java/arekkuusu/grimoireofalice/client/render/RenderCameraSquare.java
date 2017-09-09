@@ -1,8 +1,8 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelFlat;
-import arekkuusu.grimoireofalice.common.plugin.danmakucore.entity.EntityCameraSquare;
+import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
+import arekkuusu.grimoireofalice.common.entity.EntityCameraSquare;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -37,6 +37,6 @@ public class RenderCameraSquare extends Render<EntityCameraSquare> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityCameraSquare entity) {
-		return ResourceLocations.CAMERA_SQUARE_TEXTURE;
+		return ResourceLibrary.CAMERA_SQUARE_TEXTURE;
 	}
 }

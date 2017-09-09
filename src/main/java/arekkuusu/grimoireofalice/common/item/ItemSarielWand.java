@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.mojang.authlib.GameProfile;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;

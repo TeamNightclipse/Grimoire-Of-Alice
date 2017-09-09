@@ -8,8 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.FormattedString;
-import arekkuusu.grimoireofalice.common.ItemFlavor;
+import arekkuusu.grimoireofalice.common.core.format.FormattedString;
+import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -28,10 +28,10 @@ import net.minecraftforge.fml.common.Optional;
 import static net.minecraft.item.EnumRarity.*;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemCursedDecoyDoll extends ItemModFlavored implements IOwnedBy {
+public class ItemCursedDecoyDoll extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemCursedDecoyDoll() {
-		super(LibItemName.DECOY_DOLL, ItemFlavor.simpleBuilder()
+		super(LibItemName.CURSED_DECOY_DOLL, ItemFlavor.simpleBuilder()
 				.common(FormattedString.withItalics("grimoire.tooltip.decoy_doll_header.name"))
 				.rarity(UNCOMMON)
 				.build());
@@ -69,7 +69,7 @@ public class ItemCursedDecoyDoll extends ItemModFlavored implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIJA_KIJIN;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
 	}
 }

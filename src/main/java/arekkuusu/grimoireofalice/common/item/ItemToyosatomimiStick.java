@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemToyosatomimiStick extends ItemModSword implements IOwnedBy {
+public class ItemToyosatomimiStick extends ItemBaseSword implements IOwnedBy {
 
 	public ItemToyosatomimiStick(ToolMaterial material) {
 		super(material, LibItemName.MIKO_STICK);
@@ -75,7 +75,7 @@ public class ItemToyosatomimiStick extends ItemModSword implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
 	}
 }

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 @Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
+public class ItemWallPassingChisel extends ItemBase implements IOwnedBy {
 
 	public ItemWallPassingChisel() {
 		super(LibItemName.WALL_PASSING_CHISEL);
@@ -115,7 +115,7 @@ public class ItemWallPassingChisel extends ItemMod implements IOwnedBy {
 
 	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.SEIGA_KAKU;
+	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
+		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIGA_KAKU;
 	}
 }

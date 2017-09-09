@@ -8,10 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
-import arekkuusu.grimoireofalice.client.model.ModelNuclearBoots;
-import arekkuusu.grimoireofalice.common.GrimoireOfAlice;
+import arekkuusu.grimoireofalice.client.render.model.ModelNuclearBoots;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -30,14 +30,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
-public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
+public class ItemNuclearBoots extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
@@ -83,15 +81,11 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
 	}
 
 	private boolean isHoldingRod(EntityPlayer player) {
-		boolean hasRod = GrimoireOfAlice.danmakuCoreInstalled;
-		if(hasRod) {
-			ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
-			if(stack.isEmpty()) {
-				stack = player.getHeldItem(EnumHand.OFF_HAND);
-			}
-			hasRod = !stack.isEmpty();
+		ItemStack stack = player.getHeldItem(EnumHand.MAIN_HAND);
+		if(stack.isEmpty()) {
+			stack = player.getHeldItem(EnumHand.OFF_HAND);
 		}
-		return hasRod;
+		return !stack.isEmpty();
 	}
 
 	private static void setBlock(World world, Block block, BlockPos pos) {
@@ -111,13 +105,13 @@ public class ItemNuclearBoots extends ItemModArmor implements IOwnedBy {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.NUCLEAR_BOOTS.toString();
+		return ResourceLibrary.NUCLEAR_BOOTS.toString();
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.TouhouCharacter character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.TouhouCharacter.UTSUHO_REIUJI_OKUU;
+	public EnumTouhouCharacters character(ItemStack stack) {
+		return EnumTouhouCharacters.UTSUHO_REIUJI_OKUU;
 	}
 }

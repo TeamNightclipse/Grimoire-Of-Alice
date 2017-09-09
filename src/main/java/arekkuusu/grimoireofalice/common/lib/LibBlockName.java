@@ -10,20 +10,19 @@ package arekkuusu.grimoireofalice.common.lib;
 
 public class LibBlockName {
 
-	public static final String HOLY_KEY = "holykeystone";
-	public static final String SUGAR_BLOCK = "sugarblock";
-	public static final String ROPE_BLOCK = "ropeblock";
-	public static final String PAPER_BLOCK = "paperblock";
+	public static final String HOLY_KEY_STONE = "holy_key_stone";
+	public static final String SUGAR_BLOCK = "sugar_block";
+	public static final String ROPE_BLOCK = "rope_block";
+	public static final String PAPER_BLOCK = "paper_block";
 	public static final String ONBASHIRA = "onbashira";
-	public static final String HOLY_STONE = "holystone";
-	public static final String COMPACT_STONE = "compactstone";
-	public static final String HYPER_MAGIC = "hyperconcentratedmagic";
+	public static final String HOLY_STONE = "holy_stone";
+	public static final String COMPACT_STONE = "compact_stone";
+	public static final String HYPER_MAGIC = "hyper_magic";
 	public static final String SHROOM = "shroom";
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
-	public static final String IMPURE_STONE = "impurestone";
-	public static final String HIHIIROKANE_BLOCK = "hihiirokaneblock";
-	public static final String DRAGON_STONE = "dragonstone";
-
-	public static final String CRAFTING_ALTAR = "craftingaltar";
-	public static final String PILLAR_ALTAR = "pillaraltar";
+	public static final String IMPURE_STONE = "impure_stone";
+	public static final String HIHIIROKANE_BLOCK = "hihiirokane_block";
+	public static final String DRAGON_STONE = "dragon_stone";
+	public static final String CRAFTING_ALTAR = "crafting_altar";
+	public static final String PILLAR_ALTAR = "pillar_altar";
 }
