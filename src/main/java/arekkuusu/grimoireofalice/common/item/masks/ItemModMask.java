@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.common.Alice;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 
 	public ItemModMask(ArmorMaterial material, int dmg, String id) {
@@ -69,9 +69,8 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.HATA_NO_KOKORO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.HATA_NO_KOKORO;
 	}
 }

@@ -6,11 +6,10 @@ import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import arekkuusu.grimoireofalice.common.core.network.MalletMessage;
 import arekkuusu.grimoireofalice.common.core.network.PacketHandler;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleLantern;
-import arekkuusu.grimoireofalice.common.item.ItemBase;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.ShotData;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -124,7 +123,7 @@ public class ItemMiracleMallet extends ItemBase implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.SHINMYOUMARU_SUKUNA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SHINMYOUMARU_SUKUNA;
 	}
 }

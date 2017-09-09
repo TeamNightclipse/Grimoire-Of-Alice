@@ -13,10 +13,11 @@ import java.util.List;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.data.Vector3;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,15 +32,12 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
 
 import static net.minecraft.item.EnumRarity.*;
 import static net.minecraft.util.text.TextFormatting.*;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSwordofKusanagi(ToolMaterial material) {
@@ -59,31 +57,9 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 		}
 		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 		if(!entityLiving.world.isRemote) {
-			double range = 50.0D;
-			Vec3d look = entityLiving.getLookVec();
-			Vec3d vec3d = new Vec3d(entityLiving.posX, entityLiving.posY + entityLiving.getEyeHeight(), entityLiving.posZ);
-			Vec3d vec3d1 = new Vec3d(entityLiving.posX + look.x * range, entityLiving.posY + look.y * range, entityLiving.posZ + look.z * range);
-			RayTraceResult traceResult = entityLiving.world.rayTraceBlocks(vec3d, vec3d1, false, true, true);
-			range = traceResult != null ? traceResult.hitVec.distanceTo(vec3d) : range;
+			Entity lookAt = Vector3.getEntityLookedAt(entityLiving, Entity::canBeCollidedWith, 50D).orElse(null);
 
-			List<Entity> list = entityLiving.world.getEntitiesInAABBexcluding(entityLiving
-					, entityLiving.getEntityBoundingBox().expand(look.x * range, look.y * range, look.z * range).grow(1.0D)
-					, Entity::canBeCollidedWith);
-
-			Entity entity = null;
-			double d = 0.0D;
-			for(Entity entity1 : list) {
-				RayTraceResult movingObjectPosition1 = entity1.getEntityBoundingBox().calculateIntercept(vec3d, vec3d1);
-				if(movingObjectPosition1 != null) {
-					double d1 = vec3d.distanceTo(movingObjectPosition1.hitVec);
-					if(d1 < d || MathUtil.fuzzyEqual(d, 0D)) {
-						entity = entity1;
-						d = d1;
-					}
-				}
-			}
-
-			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, entity);
+			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, lookAt);
 			entityLiving.world.spawnEntity(entityNetherSoul);
 			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
 		}
@@ -157,9 +133,8 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

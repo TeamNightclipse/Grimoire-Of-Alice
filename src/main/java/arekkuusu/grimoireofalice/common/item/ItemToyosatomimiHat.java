@@ -8,9 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelToyosatomimiHat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -29,7 +30,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemToyosatomimiHat extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -65,12 +65,11 @@ public class ItemToyosatomimiHat extends ItemBaseArmor implements IOwnedBy {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.TOYOSATOMIMI_HAT.toString();
+		return ResourceLibrary.TOYOSATOMIMI_HAT.toString();
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

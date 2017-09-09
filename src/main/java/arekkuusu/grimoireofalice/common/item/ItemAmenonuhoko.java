@@ -14,7 +14,8 @@ import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import com.google.common.collect.ImmutableList;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -116,7 +117,7 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

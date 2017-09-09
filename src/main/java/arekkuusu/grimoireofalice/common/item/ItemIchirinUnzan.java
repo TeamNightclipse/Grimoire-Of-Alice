@@ -8,10 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelIchirinUnzan;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -32,7 +33,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemIchirinUnzan extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -117,12 +117,11 @@ public class ItemIchirinUnzan extends ItemBaseArmor implements ISpecialArmor, IO
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.ICHIRIN_UNZAN.toString();
+		return ResourceLibrary.ICHIRIN_UNZAN.toString();
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.ICHIRIN_KUMOI;
 	}
 }

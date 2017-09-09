@@ -10,9 +10,10 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelSatoriEye;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
@@ -40,7 +41,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -155,7 +155,7 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return isClosed(stack) ? ResourceLocations.KOISHI_EYE.toString() : ResourceLocations.SATORI_EYE.toString();
+		return isClosed(stack) ? ResourceLibrary.KOISHI_EYE.toString() : ResourceLibrary.SATORI_EYE.toString();
 	}
 
 	@Override
@@ -168,10 +168,8 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return isClosed(stack) ? net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KOISHI_KOMEIJI
-				: net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SATORI_KOMEIJI;
+	public TouhouCharacter character(ItemStack stack) {
+		return isClosed(stack) ? TouhouCharacter.KOISHI_KOMEIJI : TouhouCharacter.SATORI_KOMEIJI;
 	}
 }

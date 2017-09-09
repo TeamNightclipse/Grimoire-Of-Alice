@@ -16,6 +16,7 @@ import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -38,7 +39,6 @@ import net.minecraftforge.fml.common.Optional;
 
 import static net.minecraft.util.text.TextFormatting.*;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemDragonJewel extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemDragonJewel() {
@@ -126,9 +126,8 @@ public class ItemDragonJewel extends ItemBaseFlavored implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

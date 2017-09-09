@@ -79,9 +79,9 @@ public class HouraiEvents {
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if(event.player.hasCapability(HOURAI_CAPABILITY, null) && event.player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() > 1) {
-			List<PotionEffect> badPotions = event.player.getActivePotionEffects().stream()
-					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
-			badPotions.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
+			event.player.getActivePotionEffects().stream()
+					.filter(potionEffect -> potionEffect.getPotion().isBadEffect())
+					.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
 		}
 	}
 

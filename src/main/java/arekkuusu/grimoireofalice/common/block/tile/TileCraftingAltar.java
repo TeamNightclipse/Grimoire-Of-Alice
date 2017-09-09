@@ -11,8 +11,8 @@ package arekkuusu.grimoireofalice.common.block.tile;
 import arekkuusu.grimoireofalice.api.AliceAPI;
 import arekkuusu.grimoireofalice.api.recipes.IAltarRecipe;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.event.AchievementEvents;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
@@ -79,7 +79,7 @@ public class TileCraftingAltar extends TileBase implements ITickable {
 			List<ItemStack> stacks = altars.stream().filter(TileBase::hasItemStack).map(TilePillarAltar::getItemStack).collect(Collectors.toList());
 			Optional<IAltarRecipe> optional = AliceAPI.findAltarRecipeMatch(stacks, world);
 			optional.ifPresent(recipe -> {
-				AchievementEvents.onAltarCraft(player, recipe.getResult());
+				AchievementEvents.onAltarCraft(player, recipe.getResult().getItem());
 				altars.forEach(tile -> tile.setItemStack(ItemStack.EMPTY));
 				setItemStack(recipe.getResult());
 				craftEffect();

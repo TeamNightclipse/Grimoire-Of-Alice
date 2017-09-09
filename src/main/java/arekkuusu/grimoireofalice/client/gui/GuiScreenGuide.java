@@ -9,8 +9,9 @@
 package arekkuusu.grimoireofalice.client.gui;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import com.google.common.collect.ImmutableList;
+
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.input.Keyboard;
@@ -101,7 +102,7 @@ public class GuiScreenGuide extends GuiScreen {
 	@Override
 	public void drawScreen(int parWidth, int parHeight, float partialTicks) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[currPage]);
+		mc.getTextureManager().bindTexture(ResourceLibrary.BOOK_GUI_TEXTURES[currPage]);
 		drawTexturedModalRect((width - 250) / 2, 56, 0, 0, 256, 192);
 
 		List<String> get = TEXTS.get(MathHelper.clamp(currPage, 0, 9));
@@ -140,7 +141,7 @@ public class GuiScreenGuide extends GuiScreen {
 			if(visible) {
 				boolean flag = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-				mc.getTextureManager().bindTexture(ResourceLocations.BOOK_GUI_TEXTURES[0]);
+				mc.getTextureManager().bindTexture(ResourceLibrary.BOOK_GUI_TEXTURES[0]);
 				int i = 0;
 				int j = 192;
 

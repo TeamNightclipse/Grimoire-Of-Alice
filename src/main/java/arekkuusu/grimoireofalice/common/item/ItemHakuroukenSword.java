@@ -1,10 +1,9 @@
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.item.ItemBaseSword;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.data.Vector3;
 import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -81,7 +80,7 @@ public class ItemHakuroukenSword extends ItemBaseSword implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.YOUMU_KONPAKU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.YOUMU_KONPAKU;
 	}
 }

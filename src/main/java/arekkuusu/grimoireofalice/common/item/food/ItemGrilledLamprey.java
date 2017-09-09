@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +24,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemGrilledLamprey extends ItemModFood implements IOwnedBy {
 
 	public ItemGrilledLamprey() {
@@ -43,8 +43,7 @@ public class ItemGrilledLamprey extends ItemModFood implements IOwnedBy {
 		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 2400, 0));
 	}
 
-	@Optional.Method(modid = "danmakucore")
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.MYSTIA_LORELEI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.MYSTIA_LORELEI;
 	}
 }

@@ -8,8 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -82,7 +82,7 @@ public class ItemFoxMask extends ItemModMask {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.FOX_MASK.toString();
+		return ResourceLibrary.FOX_MASK.toString();
 	}
 
 	@Override

@@ -11,7 +11,8 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.google.common.collect.Multimap;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -58,7 +59,7 @@ public class ItemOnbashira extends ItemBaseSword implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.KANAKO_YASAKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KANAKO_YASAKA;
 	}
 }

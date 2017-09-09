@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.food;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +24,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemYuugiSake extends ItemModFood implements IOwnedBy {
 
 	public ItemYuugiSake() {
@@ -69,9 +69,8 @@ public class ItemYuugiSake extends ItemModFood implements IOwnedBy {
 		return 32;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.YUUGI_HOSHIGUMA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.YUUGI_HOSHIGUMA;
 	}
 }

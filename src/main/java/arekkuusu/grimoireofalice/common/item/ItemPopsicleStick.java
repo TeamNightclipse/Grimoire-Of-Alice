@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +22,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemPopsicleStick extends ItemBaseSword implements IOwnedBy {
 
 	public ItemPopsicleStick(ToolMaterial material) {
@@ -40,9 +40,8 @@ public class ItemPopsicleStick extends ItemBaseSword implements IOwnedBy {
 		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.popsicle_stick_description.name"));
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.CIRNO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.CIRNO;
 	}
 }

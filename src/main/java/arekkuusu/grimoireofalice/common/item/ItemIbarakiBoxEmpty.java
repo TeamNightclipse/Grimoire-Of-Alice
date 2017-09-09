@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -34,7 +35,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemIbarakiBoxEmpty extends ItemBase implements IOwnedBy {
 
 	public ItemIbarakiBoxEmpty() {
@@ -108,9 +108,8 @@ public class ItemIbarakiBoxEmpty extends ItemBase implements IOwnedBy {
 		}
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KASEN_IBARAKI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KASEN_IBARAKI;
 	}
 }

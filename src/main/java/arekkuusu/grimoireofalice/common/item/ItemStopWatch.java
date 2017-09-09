@@ -2,7 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -91,7 +91,7 @@ public class ItemStopWatch extends ItemBase implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.SAKUYA_IZAYOI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SAKUYA_IZAYOI;
 	}
 }

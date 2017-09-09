@@ -13,6 +13,7 @@ import java.util.List;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemUltramarineOrbElixir extends ItemModFood implements IOwnedBy {
 
 	public ItemUltramarineOrbElixir() {
@@ -73,9 +73,8 @@ public class ItemUltramarineOrbElixir extends ItemModFood implements IOwnedBy {
 		return EnumAction.DRINK;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.EIRIN_YAGOKORO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.EIRIN_YAGOKORO;
 	}
 }

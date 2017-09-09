@@ -13,6 +13,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -31,7 +32,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemShichiSeiken extends ItemBaseSword implements IOwnedBy {
 
 	public ItemShichiSeiken(ToolMaterial material) {
@@ -72,9 +72,8 @@ public class ItemShichiSeiken extends ItemBaseSword implements IOwnedBy {
 		return repair.getItem() == Items.IRON_INGOT;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.RINNOSUKE_MORICHIKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

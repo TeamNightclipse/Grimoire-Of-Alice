@@ -1,8 +1,9 @@
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -25,7 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
 
 	public ItemKinkakuJiCeiling() {
@@ -106,9 +106,8 @@ public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
 		return true;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

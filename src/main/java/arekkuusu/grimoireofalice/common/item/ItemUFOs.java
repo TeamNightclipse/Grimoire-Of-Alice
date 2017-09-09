@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -32,7 +33,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemUFOs extends ItemBase implements IOwnedBy {
 
 	@CapabilityInject(IItemHandler.class)
@@ -126,9 +126,8 @@ public class ItemUFOs extends ItemBase implements IOwnedBy {
 		return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("Active");
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NUE_HOUJUU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.NUE_HOUJUU;
 	}
 }

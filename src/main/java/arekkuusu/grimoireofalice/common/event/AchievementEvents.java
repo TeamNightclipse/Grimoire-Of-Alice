@@ -15,7 +15,6 @@ import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
@@ -52,6 +51,7 @@ public class AchievementEvents {
 		AliceAPI.addAltarAchievement(ModItems.JEWELED_HOURAI, JEWELED_HOURAI.setSpecial());
 		AliceAPI.addAltarAchievement(ModItems.RED_STONE_OF_AJA, AJA_STONE.setSpecial());
 
+		//FIXME: Let other mods use the API to register achievements
 		List<Achievement> achievementList = new ArrayList<>();
 		achievementList.addAll(AliceAPI.getAltarAchievements().values());
 		achievementList.addAll(AliceAPI.getVanillaAchievements());
@@ -60,10 +60,11 @@ public class AchievementEvents {
 		LogHelper.info("Registered Achievements");
 	}
 
-	public static void onAltarCraft(@Nullable EntityPlayer player, ItemStack stack) {
+	//TODO: Duplicate code
+	public static void onAltarCraft(@Nullable EntityPlayer player, Item item) {
 		Map<Item, Achievement> map = AliceAPI.getAltarAchievements();
-		if(player != null && map.containsKey(stack.getItem())) {
-			Achievement achievement = map.get(stack.getItem());
+		if(player != null && map.containsKey(item)) {
+			Achievement achievement = map.get(item);
 			player.addStat(achievement);
 		}
 	}

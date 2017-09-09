@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.common.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,7 +20,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 
 	public ItemIbukiGourd() {
@@ -67,9 +67,8 @@ public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 		return 32;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SUIKA_IKBUKI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SUIKA_IKBUKI;
 	}
 }

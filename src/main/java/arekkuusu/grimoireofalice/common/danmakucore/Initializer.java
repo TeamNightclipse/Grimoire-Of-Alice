@@ -29,10 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class Initializer {
 
-	private static final String DANMAKU_CORE = "danmakucore";
-
 	@SubscribeEvent
-	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
 				new FormWind(),
@@ -42,7 +39,6 @@ public class Initializer {
 	}
 
 	@SubscribeEvent
-	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerSubEntities(RegistryEvent.Register<SubEntityType> event) {
 		event.getRegistry().registerAll(
 				new SubEntityWind(),
@@ -53,7 +49,6 @@ public class Initializer {
 	}
 
 	@SubscribeEvent
-	@Optional.Method(modid = DANMAKU_CORE)
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
 		event.getRegistry().registerAll(
 				new DanmakuVariantGeneric(LibDanmakuVariantName.UFO, () -> LibGOAShotData.UFO, MovementData.constant(0.4D)),

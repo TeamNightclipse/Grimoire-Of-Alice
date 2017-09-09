@@ -12,6 +12,7 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.core.capability.IHouraiCapability;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -33,7 +34,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 
 	@CapabilityInject(IHouraiCapability.class)
@@ -135,9 +135,8 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 		return EnumAction.DRINK;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.FUJIWARA_NO_MOKOU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.FUJIWARA_NO_MOKOU;
 	}
 }

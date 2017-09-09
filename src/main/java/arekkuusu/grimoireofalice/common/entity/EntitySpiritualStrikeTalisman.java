@@ -38,7 +38,7 @@ public class EntitySpiritualStrikeTalisman extends Entity {
 				list.forEach(entity -> {
 					Vec3d vec = getPositionVector();
 					Vec3d mobPos = entity.getPositionVector();
-					if(vec.distanceTo(mobPos) < 5) {
+					if(vec.squareDistanceTo(mobPos) < 5 * 5) {
 						MiscHelper.pushEntity(this, entity);
 					}
 				});

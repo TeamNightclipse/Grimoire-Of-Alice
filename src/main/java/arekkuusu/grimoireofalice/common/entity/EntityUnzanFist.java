@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

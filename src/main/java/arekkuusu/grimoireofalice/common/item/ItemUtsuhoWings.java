@@ -8,9 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelUtsuhoWings;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -28,7 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -61,7 +61,7 @@ public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor, IOw
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.UTSUHO_WINGS.toString();
+		return ResourceLibrary.UTSUHO_WINGS.toString();
 	}
 
 	@Override
@@ -74,9 +74,8 @@ public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor, IOw
 		return model;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.UTSUHO_REIUJI_OKUU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.UTSUHO_REIUJI_OKUU;
 	}
 }

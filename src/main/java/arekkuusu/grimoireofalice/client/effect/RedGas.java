@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;

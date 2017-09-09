@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static arekkuusu.grimoireofalice.client.util.ResourceLibrary.TextureLocation.GUI;
 import static arekkuusu.grimoireofalice.client.util.ResourceLibrary.TextureLocation.MODEL;
 
-@SideOnly(Side.CLIENT)
 public final class ResourceLibrary {
 
 	public static final ResourceLocation BARRIER_TEXTURE = getTexture(MODEL, "entity/barrier");

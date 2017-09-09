@@ -10,8 +10,8 @@ package arekkuusu.grimoireofalice.common.item.masks;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -82,7 +82,7 @@ public class ItemHyottokoMask extends ItemModMask {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.HYOTTOKO_MASK.toString();
+		return ResourceLibrary.HYOTTOKO_MASK.toString();
 	}
 
 	@Override

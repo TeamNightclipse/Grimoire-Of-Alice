@@ -15,6 +15,7 @@ import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,7 +36,6 @@ import net.minecraft.world.World;
 
 import static net.minecraft.util.text.TextFormatting.*;
 
-@net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemGapFoldingUmbrella() {
@@ -76,7 +76,7 @@ public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy
 
 			if(isSafe(world, pos)) {
 				if(!world.isRemote && player instanceof EntityPlayerMP) {
-					((EntityPlayerMP) player).setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+					player.setPositionAndUpdate(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
 				}
 				stack.damageItem(1, player);
 			}
@@ -114,9 +114,8 @@ public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy
 		return 2000;
 	}
 
-	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

@@ -8,9 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelKanakoShimenawa;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
@@ -30,7 +31,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -83,7 +83,7 @@ public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor,
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.KANAKO_SHIMENAWA.toString();
+		return ResourceLibrary.KANAKO_SHIMENAWA.toString();
 	}
 
 	@Override
@@ -91,8 +91,7 @@ public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor,
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KANAKO_YASAKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KANAKO_YASAKA;
 	}
 }

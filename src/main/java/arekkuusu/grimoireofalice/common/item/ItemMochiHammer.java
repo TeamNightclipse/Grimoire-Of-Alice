@@ -16,6 +16,8 @@ import java.util.UUID;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.google.common.collect.Multimap;
+
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -34,7 +36,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@net.minecraftforge.fml.common.Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedBy {
 
 	public ItemMochiHammer(ToolMaterial material) {
@@ -102,9 +103,8 @@ public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedB
 		return repair.getItem() == Item.getItemFromBlock(Blocks.PLANKS);
 	}
 
-	@net.minecraftforge.fml.common.Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIRAN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SEIRAN;
 	}
 }

@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -35,7 +36,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 
 	public ItemIchirinRing(ToolMaterial material) {
@@ -162,9 +162,8 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.ICHIRIN_KUMOI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.ICHIRIN_KUMOI;
 	}
 }

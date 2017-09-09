@@ -8,8 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.block.tile;
 
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
-import net.minecraft.item.ItemStack;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 

@@ -8,9 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -146,15 +146,15 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		if(!stack.hasTagCompound()) {
-			return ResourceLocations.MASK_OF_HOPE.toString();
+			return ResourceLibrary.MASK_OF_HOPE.toString();
 		}
 
 		//noinspection ConstantConditions
 		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId(OWNER_TAG))) {
-			return ResourceLocations.KOKOROS_MASKS.toString();
+			return ResourceLibrary.KOKOROS_MASKS.toString();
 		}
 		else {
-			return ResourceLocations.MASK_OF_HOPE.toString();
+			return ResourceLibrary.MASK_OF_HOPE.toString();
 		}
 	}
 }

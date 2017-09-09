@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.common.entity.EntityGrimoireSpell;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;

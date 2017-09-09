@@ -30,31 +30,31 @@ public class VanillaCrafting {
 		//Blocks
 		shaped().grid("SSS", "SSS", "SSS")
 				.where('S').mapsTo(Items.SUGAR)
-				.outputs(ModBlocks.sugar_block).build();
+				.outputs(ModBlocks.SUGAR_BLOCK).build();
 
 		shaped().grid("ASA", "IWI", "ASA")
 				.where('W').mapsTo("logWood")
 				.where('I').mapsTo("nuggetIron")
 				.where('S').mapsTo(Items.STICK)
 				.where('A').mapsTo(ModItems.PASTE)
-				.outputs(new ItemStack(ModBlocks.rope_block, 8)).build();
+				.outputs(new ItemStack(ModBlocks.ROPE, 8)).build();
 
 		shaped().grid(" S ", " A ", "AAA")
 				.where('A').mapsTo("paper")
 				.where('S').mapsTo(ModItems.SOLIDIFIED_PAPER)
-				.outputs(new ItemStack(ModBlocks.paper_block, 8)).build();
+				.outputs(new ItemStack(ModBlocks.PAPER, 8)).build();
 
 		shaped().grid("AAA", "ASA", "AAA")
 				.where('A').mapsTo("stone")
 				.where('S').mapsTo(new ItemStack(Blocks.DIRT, 1, 1))
-				.outputs(ModBlocks.compact_stone).build();
+				.outputs(ModBlocks.COMPACT_STONE).build();
 
 		shaped().grid("RLR", "PGP")
-				.where('G').mapsTo(ModBlocks.compact_stone)
+				.where('G').mapsTo(ModBlocks.COMPACT_STONE)
 				.where('L').mapsTo("logWood")
-				.where('R').mapsTo(ModBlocks.rope_block)
-				.where('P').mapsTo(ModBlocks.paper_block)
-				.outputs(ModBlocks.pillar_altar).build();
+				.where('R').mapsTo(ModBlocks.ROPE)
+				.where('P').mapsTo(ModBlocks.PAPER)
+				.outputs(ModBlocks.PILLAR_ALTAR).build();
 
 		shaped().grid("FFF", "FIF", "FFF")
 				.where('F').mapsTo(Items.FEATHER)
@@ -65,9 +65,9 @@ public class VanillaCrafting {
 				.where('P').mapsTo("paper")
 				.where('B').mapsTo(Items.BOOK)
 				.where('W').mapsTo("plankWood")
-				.where('D').mapsTo(ModBlocks.compact_stone)
+				.where('D').mapsTo(ModBlocks.COMPACT_STONE)
 				.where('C').mapsTo(Blocks.CRAFTING_TABLE)
-				.outputs(ModBlocks.crafting_altar).build();
+				.outputs(ModBlocks.CRAFTING_ALTAR).build();
 
 		shaped().grid("N N", "PLP", "N N")
 				.where('N').mapsTo("nuggetIron")
@@ -80,7 +80,7 @@ public class VanillaCrafting {
 				.outputs(Items.IRON_INGOT).build();
 
 		shapeless()
-				.add(ModBlocks.sugar_block)
+				.add(ModBlocks.SUGAR_BLOCK)
 				.outputs(new ItemStack(Items.SUGAR, 9)).build();
 
 		shapeless()
@@ -117,13 +117,13 @@ public class VanillaCrafting {
 		if(ConfigHandler.grimoireOfAlice.crafting.hihiirokaneBlock) {
 			shaped().grid("HHH", "HHH", "HHH")
 					.where('H').mapsTo(ModItems.HIHIIROKANE)
-					.outputs(ModBlocks.hihiirokane_block).build();
+					.outputs(ModBlocks.HIHIIROKANE_BLOCK).build();
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.shimenawaRope) {
 			shaped().grid("RRR", "PPP")
-					.where('R').mapsTo(ModBlocks.rope_block)
-					.where('P').mapsTo(ModBlocks.paper_block)
+					.where('R').mapsTo(ModBlocks.ROPE)
+					.where('P').mapsTo(ModBlocks.PAPER)
 					.outputs(ModItems.SHIMENAWA_ROPE).build();
 		}
 
@@ -235,7 +235,7 @@ public class VanillaCrafting {
 		if(ConfigHandler.grimoireOfAlice.food.shroomPowder) {
 			for(int i = 0; i < 16; i++)
 				shapeless()
-						.add(new ItemStack(ModBlocks.shroom, 1, i))
+						.add(new ItemStack(ModBlocks.SHROOM, 1, i))
 						.add(new ItemStack(ModItems.MORTAR_AND_PESTLE, 1, OreDictionary.WILDCARD_VALUE))
 						.outputs(new ItemStack(ModItems.SHROOM_POWDER, 1, 15 - i)).build();
 		}
@@ -246,7 +246,7 @@ public class VanillaCrafting {
 
 		GameRegistry.addSmelting(Items.BLAZE_ROD, new ItemStack(ModItems.TAMAHAGANE_STEEL), 1);
 
-		GameRegistry.addSmelting(ModBlocks.impure_stone, new ItemStack(ModItems.IMPURE_ROCK), 1);
+		GameRegistry.addSmelting(ModBlocks.IMPURE_STONE, new ItemStack(ModItems.IMPURE_ROCK), 1);
 	}
 
 	public static void masks() {

@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.potion;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -45,7 +45,7 @@ public class PotionMod extends Potion {
 
 	@SideOnly(Side.CLIENT)
 	private void render(int x, int y, float alpha) {
-		Minecraft.getMinecraft().renderEngine.bindTexture(ResourceLocations.POTION_TEXTURES);
+		Minecraft.getMinecraft().renderEngine.bindTexture(ResourceLibrary.POTION_TEXTURES);
 		Tessellator tessellator = Tessellator.getInstance();
 		VertexBuffer buf = tessellator.getBuffer();
 		buf.begin(7, DefaultVertexFormats.POSITION_TEX);

@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.client.render.model.ModelNuclearBoots;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -111,7 +111,7 @@ public class ItemNuclearBoots extends ItemBaseArmor implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.UTSUHO_REIUJI_OKUU;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.UTSUHO_REIUJI_OKUU;
 	}
 }

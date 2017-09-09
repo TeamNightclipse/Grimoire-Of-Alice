@@ -2,6 +2,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityIceBlock;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +18,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemIcicleSword extends ItemBaseSword implements IOwnedBy {
 
 	public ItemIcicleSword(ToolMaterial material) {
@@ -50,9 +50,8 @@ public class ItemIcicleSword extends ItemBaseSword implements IOwnedBy {
 		return OreDictionary.itemMatches(new ItemStack(Blocks.ICE), repair, false) || super.getIsRepairable(toRepair, repair);
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.CIRNO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.CIRNO;
 	}
 }

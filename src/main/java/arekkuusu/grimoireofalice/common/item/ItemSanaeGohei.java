@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.entity.EntityMiracleCircle;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -31,7 +32,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> implements IOwnedBy {
 
 	public ItemSanaeGohei() {
@@ -175,9 +175,8 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> implem
 		}
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SANAE_KOCHIYA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SANAE_KOCHIYA;
 	}
 }

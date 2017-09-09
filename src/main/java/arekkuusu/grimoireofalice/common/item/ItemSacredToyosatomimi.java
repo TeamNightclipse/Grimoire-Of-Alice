@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -36,7 +37,6 @@ import com.google.common.collect.ImmutableList;
 import static net.minecraft.item.EnumRarity.*;
 import static net.minecraft.util.text.TextFormatting.*;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSacredToyosatomimi(ToolMaterial material) {
@@ -126,9 +126,8 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.TOYOSATOMIMI_NO_MIKO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

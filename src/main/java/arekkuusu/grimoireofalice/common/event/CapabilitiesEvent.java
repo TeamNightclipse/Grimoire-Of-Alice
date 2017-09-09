@@ -68,7 +68,7 @@ public class CapabilitiesEvent {
 	}
 
 	private void processItemRemoveFlyer(EntityPlayer player, Item item) {
-		if(isFlyItem(item) && !player.capabilities.isCreativeMode) {
+		if(isFlyItem(item) && !player.capabilities.isCreativeMode && !player.isSpectator()) {
 			player.capabilities.allowFlying = false;
 			player.capabilities.isFlying = false;
 			if(!player.world.isRemote) {

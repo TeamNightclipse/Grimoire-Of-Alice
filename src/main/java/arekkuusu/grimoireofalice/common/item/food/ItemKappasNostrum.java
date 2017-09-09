@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item.food;
 import java.util.List;
 
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,7 +29,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemKappasNostrum extends ItemModFood implements IOwnedBy {
 
 	public ItemKappasNostrum() {
@@ -77,9 +77,8 @@ public class ItemKappasNostrum extends ItemModFood implements IOwnedBy {
 		return 32;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KASEN_IBARAKI;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KASEN_IBARAKI;
 	}
 }

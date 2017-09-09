@@ -10,12 +10,13 @@ package arekkuusu.grimoireofalice.common.item;
 
 import com.google.common.collect.ImmutableList;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelFireRobe;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -34,7 +35,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor, IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -129,7 +129,7 @@ public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.FIRE_ROBE.toString();
+		return ResourceLibrary.FIRE_ROBE.toString();
 	}
 
 	@Override
@@ -137,9 +137,8 @@ public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.KAGUYA_HOURAISAN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

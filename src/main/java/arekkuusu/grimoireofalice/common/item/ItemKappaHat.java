@@ -10,9 +10,10 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
-import arekkuusu.grimoireofalice.client.ResourceLocations;
 import arekkuusu.grimoireofalice.client.render.model.ModelKappaHat;
+import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
@@ -29,7 +30,6 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 
 	@SideOnly(Side.CLIENT)
@@ -74,7 +74,7 @@ public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		return ResourceLocations.KAPPA_HAT.toString();
+		return ResourceLibrary.KAPPA_HAT.toString();
 	}
 
 	@Override
@@ -87,9 +87,8 @@ public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 		return model;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.NITORI_KAWASHIRO;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.NITORI_KAWASHIRO;
 	}
 }

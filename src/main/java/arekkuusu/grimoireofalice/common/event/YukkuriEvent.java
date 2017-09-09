@@ -3,8 +3,8 @@ package arekkuusu.grimoireofalice.common.event;
 import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.item.ModItems;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -54,7 +54,7 @@ public class YukkuriEvent {
 	@SubscribeEvent
 	public void livingDeathEvent(LivingDeathEvent event) {
 		Entity attacker = event.getSource().getTrueSource();
-		if(attacker != null && !attacker.world.isRemote && attacker instanceof EntityPlayer) {
+		if(attacker instanceof EntityPlayer && !attacker.world.isRemote) {
 			EntityPlayer player = (EntityPlayer) attacker;
 			ItemStack heldItem = player.getHeldItemMainhand();
 			if(!heldItem.isEmpty() || heldItem.getItem() != ModItems.MOCHI_HAMMER) {

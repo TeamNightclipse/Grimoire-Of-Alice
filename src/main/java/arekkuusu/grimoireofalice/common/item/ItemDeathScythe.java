@@ -12,9 +12,9 @@ import java.util.List;
 
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.core.helper.MathUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
+import net.katsstuff.danmakucore.helper.MathUtil;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -133,7 +133,7 @@ public class ItemDeathScythe extends ItemBaseSwordFlavored implements IOwnedBy {
 	}
 
 	@Override
-	public EnumTouhouCharacters character(ItemStack stack) {
-		return EnumTouhouCharacters.KOMACHI_ONOZUKA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.KOMACHI_ONOZUKA;
 	}
 }

@@ -100,7 +100,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.amenonuhoko) {
 			AliceAPI.registerAltarRecipeRain(new ItemStack(ModItems.AMENONUHOKO)
-					, Items.END_CRYSTAL, Items.END_CRYSTAL, Items.END_CRYSTAL, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModBlocks.compact_stone, Items.NETHER_STAR, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
+					, Items.END_CRYSTAL, Items.END_CRYSTAL, Items.END_CRYSTAL, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE, ModBlocks.COMPACT_STONE, Items.NETHER_STAR, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.HIHIIROKANE, ModItems.HIHIIROKANE);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.bloodThirstyOrb) {
@@ -110,7 +110,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.budahBoul) {
 			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.WAXING_CRESCENT, new ItemStack(ModItems.BUDAH_BOWL)
-					, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE, Blocks.CLAY, Blocks.STONE, Items.NETHER_STAR);
+					, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.STONE, Blocks.CLAY, Blocks.STONE, Items.NETHER_STAR);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.cursedDecoyDoll) {
@@ -125,11 +125,11 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.dragonJewel) {
 			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.NEW_MOON, new ItemStack(ModItems.DRAGON_JEWEL)
-					, new ItemStack(Items.SKULL, 1, 5), ModBlocks.dragon_stone, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
+					, new ItemStack(Items.SKULL, 1, 5), ModBlocks.DRAGON_STONE, "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", "nuggetGold", ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.dragonStone) {
-			AliceAPI.registerAltarRecipe(new ItemStack(ModBlocks.dragon_stone)
+			AliceAPI.registerAltarRecipe(new ItemStack(ModBlocks.DRAGON_STONE)
 					, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE, ModItems.DRAGON_SCALE);
 		}
 
@@ -140,7 +140,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.kakanoShimenawa) {
 			AliceAPI.registerAltarRecipeRain(new ItemStack(ModItems.KANAKO_SHIMENAWA)
-					, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, Items.NETHER_STAR, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block);
+					, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, Items.NETHER_STAR, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.fireRobe) {
@@ -175,7 +175,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.ichirinUnzan) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.ICHIRIN_UNZAN)
-					, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block, ModBlocks.sugar_block);
+					, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK, ModBlocks.SUGAR_BLOCK);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.ichirinRing) {
@@ -268,7 +268,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.rumiaSword) {
 			AliceAPI.registerAltarRecipeDimension(DimensionType.NETHER, new ItemStack(ModItems.RUMIA_SWORD)
-					, ModBlocks.hihiirokane_block, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD);
+					, ModBlocks.HIHIIROKANE_BLOCK, Items.BLAZE_ROD, Items.BLAZE_ROD, Items.BLAZE_ROD);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.sacredToyosatomimiSword) {
@@ -337,7 +337,7 @@ public final class AltarRecipes {
 		}
 
 		if(ConfigHandler.grimoireOfAlice.food.altar.ultramarineOrbElixir) {
-			ItemStack stack = new ItemStack(ModBlocks.shroom, 1, 14);
+			ItemStack stack = new ItemStack(ModBlocks.SHROOM, 1, 14);
 			ItemStack potion = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.STRONG_REGENERATION);
 			AliceAPI.registerAltarRecipeDimension(DimensionType.THE_END, new ItemStack(ModItems.ORB_ELIXIR)
 					, potion, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack, stack);
@@ -366,7 +366,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.utsuhoWings) {
 			AliceAPI.registerAltarRecipeDimension(DimensionType.NETHER, new ItemStack(ModItems.UTSUHO_WINGS)
-					, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, Items.ELYTRA, ModBlocks.hihiirokane_block, Blocks.COAL_BLOCK, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER);
+					, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, Items.ELYTRA, ModBlocks.HIHIIROKANE_BLOCK, Blocks.COAL_BLOCK, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER, ModItems.BLACK_FEATHER);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.nuclearBoots) {
@@ -470,21 +470,21 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.shouLamp) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.SHOU_LAMP)
-					, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.GLOWSTONE, Blocks.GLOWSTONE, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block, ModBlocks.rope_block);
+					, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.GLOWSTONE, Blocks.GLOWSTONE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {
 			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.WANING_CRESCENT, new ItemStack(ModItems.JEWELED_HOURAI)
 					, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.DIAMOND, ModItems.NETHER_SHARD, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
 		}
-		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.holy_stone)
-				, ModBlocks.compact_stone, ModBlocks.rope_block, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block, ModBlocks.paper_block, "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone");
+		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.HOLY_STONE)
+				, ModBlocks.COMPACT_STONE, ModBlocks.ROPE, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone");
 
-		AliceAPI.registerAltarRecipeThunder(new ItemStack(ModBlocks.holy_key_stone)
-				, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModBlocks.compact_stone, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE);
+		AliceAPI.registerAltarRecipeThunder(new ItemStack(ModBlocks.HOLY_KEY_STONE)
+				, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE);
 
-		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.onbashira)
-				, ModBlocks.rope_block, ModBlocks.pillar_altar, ModBlocks.pillar_altar, ModBlocks.paper_block, ModBlocks.pillar_altar, ModBlocks.rope_block, ModBlocks.paper_block, ModBlocks.pillar_altar);
+		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.ONBASHIRA)
+				, ModBlocks.ROPE, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PAPER, ModBlocks.PILLAR_ALTAR, ModBlocks.ROPE, ModBlocks.PAPER, ModBlocks.PILLAR_ALTAR);
 
 		AliceAPI.registerAltarRecipeDimension(DimensionType.THE_END, new ItemStack(Items.END_CRYSTAL)
 				, "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", Items.ENDER_EYE, Items.GHAST_TEAR);

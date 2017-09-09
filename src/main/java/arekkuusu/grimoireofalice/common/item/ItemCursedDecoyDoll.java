@@ -12,6 +12,7 @@ import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -27,7 +28,6 @@ import net.minecraftforge.fml.common.Optional;
 
 import static net.minecraft.item.EnumRarity.*;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemCursedDecoyDoll extends ItemBaseFlavored implements IOwnedBy {
 
 	public ItemCursedDecoyDoll() {
@@ -67,9 +67,8 @@ public class ItemCursedDecoyDoll extends ItemBaseFlavored implements IOwnedBy {
 		return EnumActionResult.SUCCESS;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SEIJA_KIJIN;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

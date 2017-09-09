@@ -1,8 +1,8 @@
 package arekkuusu.grimoireofalice.common.danmakucore;
 
-import net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 
 public class GoATouhouCharacters {
 
-	//public static final EnumTouhouCharacters ELLY = EnumTouhouCharacters.getOrCreate("ELLY", "elly", GoaTouhouSpecies.DEMON);
+	public static final TouhouCharacter ELLY = TouhouCharacter.getOrCreate("ELLY", "elly", GoaTouhouSpecies.DEMON);
 }

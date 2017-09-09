@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -30,7 +31,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-@Optional.Interface(iface = "net.katsstuff.danmakucore.item.IOwnedBy", modid = "danmakucore")
 public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 
 	public ItemShinmyoumaruNeedle(ToolMaterial material) {
@@ -123,9 +123,8 @@ public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 		return 0;
 	}
 
-	@Optional.Method(modid = "danmakucore")
 	@Override
-	public net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters character(ItemStack stack) {
-		return net.katsstuff.danmakucore.entity.living.boss.EnumTouhouCharacters.SHINMYOUMARU_SUKUNA;
+	public TouhouCharacter character(ItemStack stack) {
+		return TouhouCharacter.SHINMYOUMARU_SUKUNA;
 	}
 }

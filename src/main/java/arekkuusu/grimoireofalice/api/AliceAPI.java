@@ -2,6 +2,8 @@ package arekkuusu.grimoireofalice.api;
 
 import arekkuusu.grimoireofalice.api.recipes.*;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
@@ -19,11 +21,11 @@ public final class AliceAPI {
 	private static final List<ItemStack> FLY_ARMOR = new ArrayList<>();
 
 	public static Map<Item, Achievement> getAltarAchievements() {
-		return ALTAR_ACHIEVEMENT_MAP;
+		return ImmutableMap.copyOf(ALTAR_ACHIEVEMENT_MAP);
 	}
 
 	public static List<Achievement> getVanillaAchievements() {
-		return VANILLA_ACHIEVEMENT_LIST;
+		return ImmutableList.copyOf(VANILLA_ACHIEVEMENT_LIST);
 	}
 
 	public static List<IAltarRecipe> getAltarRecipes() {
@@ -35,11 +37,11 @@ public final class AliceAPI {
 	}
 
 	public static List<ItemStack> getFlyingItems() {
-		return FLY_ITEMS;
+		return ImmutableList.copyOf(FLY_ITEMS);
 	}
 
 	public static List<ItemStack> getFlyingArmor() {
-		return FLY_ARMOR;
+		return ImmutableList.copyOf(FLY_ARMOR);
 	}
 
 	public static void addAltarAchievement(Item item, Achievement achievement) {
