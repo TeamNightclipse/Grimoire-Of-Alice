@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import com.google.common.collect.Multimap;
 
 import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
+import net.katsstuff.danmakucore.helper.IntNBTProperty;
 import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
@@ -29,19 +29,20 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedBy {
+public class ItemMochiHammer extends ItemBaseSword implements IOwnedBy {
+
+	public static final IntNBTProperty<ItemStack> LUNATIC = IntNBTProperty.ofStack("Lunatic");
 
 	public ItemMochiHammer(ToolMaterial material) {
 		super(material, LibItemName.MOCHI_HAMMER);
 		addPropertyOverride(new ResourceLocation("deaths"),
-				(stack, world, entity) -> stack.hasTagCompound() ? MathHelper.clamp((float) getData(stack), 0.0F, 90F) : 0F);
+				(stack, world, entity) -> stack.hasTagCompound() ? MathHelper.clamp((float) LUNATIC.get(stack), 0.0F, 90F) : 0F);
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedB
 		else {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.mochi_hammer_shift.name"));
 		}
-		list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mochi_hammer_description.name") + " " + getData(stack));
+		list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mochi_hammer_description.name") + " " + LUNATIC.get(stack));
 	}
 
 	@Override
@@ -77,25 +78,6 @@ public class ItemMochiHammer extends ItemBaseSword implements IItemData, IOwnedB
 			modifiers.remove(modifier);
 			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * 0.2, modifier.getOperation()));
 		}
-	}
-
-	@Override
-	public void setData(ItemStack itemStack, int kills) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		if(nbt == null) {
-			nbt = new NBTTagCompound();
-			itemStack.setTagCompound(nbt);
-			nbt.setInteger("Lunatic", kills);
-		}
-		else if(nbt.getInteger("Lunatic") >= 0) {
-			nbt.setInteger("Lunatic", kills);
-		}
-	}
-
-	@Override
-	public int getData(ItemStack itemStack) {
-		NBTTagCompound nbt = itemStack.getTagCompound();
-		return nbt == null ? 0 : nbt.getInteger("Lunatic");
 	}
 
 	@Override

@@ -41,8 +41,6 @@ import java.util.List;
 
 public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 
-	private static final String TAG = "Jewels";
-
 	public ItemShouLamp() {
 		super(LibItemName.SHOU_LAMP);
 		setMaxStackSize(1);
@@ -59,7 +57,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
 		if(GuiScreen.isShiftKeyDown()) {
 			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
-			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.shou_lamp_jewels.name") + " " + getJewels(stack));
+			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.shou_lamp_jewels.name") + " " + JEWELS.get(stack));
 		}
 		else {
 			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
@@ -68,7 +66,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return getJewels(stack) > 0;
+		return JEWELS.get(stack) > 0;
 	}
 
 	@Override
@@ -98,7 +96,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(getJewels(stack) < 500 && player instanceof EntityPlayer) {
+		if(JEWELS.get(stack) < 500 && player instanceof EntityPlayer) {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
 			if(count % 4 == 0) {
 				player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
@@ -112,7 +110,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(player.isSneaking() && !isActive(player, stack)) {
-				short jewels = getJewels(stack);
+				short jewels = JEWELS.get(stack);
 				if(!world.isRemote) {
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.GOLD_STAR_SMALL, jewels);
 					world.spawnEntity(circle);
@@ -136,7 +134,7 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 	}
 
 	private boolean isActive(EntityPlayer player, ItemStack stack) {
-		return player.getCooldownTracker().hasCooldown(this) && ItemNBTHelper.getInt(stack, TAG, 0) > 0;
+		return player.getCooldownTracker().hasCooldown(this) && JEWELS.get(stack) > 0;
 	}
 
 	@Override

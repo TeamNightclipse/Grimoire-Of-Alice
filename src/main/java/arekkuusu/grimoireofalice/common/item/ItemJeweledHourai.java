@@ -71,7 +71,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(!world.isRemote && entityIn instanceof EntityPlayer) {
-			short jewels = getJewels(stack);
+			short jewels = JEWELS.get(stack);
 			int i = MathHelper.clamp(((EntityPlayer) entityIn).experienceLevel * 2, 0, 150);
 			if(jewels < 5 && entityIn.ticksExisted % (200 - i) == 0) {
 				jewels += 1;
@@ -81,7 +81,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 				else if(jewels > 5) {
 					jewels = 5;
 				}
-				setJewels(stack, jewels);
+				JEWELS.set(jewels, stack);
 			}
 		}
 	}
@@ -102,7 +102,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(!world.isRemote) {
-			short jewels = getJewels(stack);
+			short jewels = JEWELS.get(stack);
 			if(jewels >= 1) {
 				int timeUsed = stack.getMaxItemUseDuration() - timeLeft;
 				if(timeUsed > 30) {
@@ -129,7 +129,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 								.build();
 						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					}
-					setJewels(stack, (short) 0);
+					JEWELS.set((short)0, stack);
 				}
 			}
 		}

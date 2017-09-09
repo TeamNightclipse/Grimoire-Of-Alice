@@ -1,8 +1,8 @@
 package arekkuusu.grimoireofalice.common.event;
 
 import arekkuusu.grimoireofalice.api.items.GoheiMode;
-import arekkuusu.grimoireofalice.api.items.IItemData;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.item.ItemMochiHammer;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.katsstuff.danmakucore.helper.MathUtil;
 import net.minecraft.entity.Entity;
@@ -60,9 +60,8 @@ public class YukkuriEvent {
 			if(!heldItem.isEmpty() || heldItem.getItem() != ModItems.MOCHI_HAMMER) {
 				heldItem = player.getHeldItemOffhand();
 			}
-			if(!heldItem.isEmpty() && heldItem.getItem() == ModItems.MOCHI_HAMMER && heldItem.getItem() instanceof IItemData) {
-				IItemData item = (IItemData) heldItem.getItem();
-				item.setData(heldItem, (item.getData(heldItem) + 1));
+			if(!heldItem.isEmpty() && heldItem.getItem() == ModItems.MOCHI_HAMMER) {
+				ItemMochiHammer.LUNATIC.set(ItemMochiHammer.LUNATIC.get(heldItem) + 1, heldItem);
 			}
 		}
 	}
