@@ -88,11 +88,11 @@ public class EntityCursedDecoyDoll extends EntityLivingBase {
 		if(!world.isRemote) {
 			if(user != null) {
 				if(!user.capabilities.isCreativeMode) {
-					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.cursed_decoy_doll));
+					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.CURSED_DECOY_DOLL));
 				}
 			}
 			else {
-				dropItem(ModItems.cursed_decoy_doll, 1);
+				dropItem(ModItems.CURSED_DECOY_DOLL, 1);
 			}
 			setDead();
 		}

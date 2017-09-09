@@ -82,7 +82,7 @@ public class ItemIbarakiBoxEmpty extends ItemBase implements IOwnedBy {
 				if((material == Material.WATER || material == Material.LAVA) && iblockstate.getValue(BlockLiquid.LEVEL) == 0) {
 					world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 11);
 					player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(stack, player, ModItems.ibaraki_box_filled));
+					return new ActionResult<>(EnumActionResult.SUCCESS, fillBucket(stack, player, ModItems.IBARAKI_BOX_FILLED));
 				}
 			}
 			return new ActionResult<>(EnumActionResult.FAIL, stack);

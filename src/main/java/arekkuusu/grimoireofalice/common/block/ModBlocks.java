@@ -24,27 +24,39 @@ public class ModBlocks {
 
 	private static final Block PLACE_HOLDER = new Block(Material.AIR);
 	//--------------------------------Blocks--------------------------------//
-	public static final Block compact_stone = PLACE_HOLDER;
-	public static final Block holy_key_stone = PLACE_HOLDER;
-	public static final Block holy_stone = PLACE_HOLDER;
-	public static final Block kyoumarubotan = PLACE_HOLDER;
-	public static final Block onbashira = PLACE_HOLDER;
-	public static final Block paper_block = PLACE_HOLDER;
-	public static final Block rope_block = PLACE_HOLDER;
-	public static final Block shroom = PLACE_HOLDER;
-	public static final Block crafting_altar = PLACE_HOLDER;
-	public static final Block pillar_altar = PLACE_HOLDER;
-	public static final Block impure_stone = PLACE_HOLDER;
-	public static final Block hihiirokane_block = PLACE_HOLDER;
-	public static final Block sugar_block = PLACE_HOLDER;
-	public static final Block hyper_magic = PLACE_HOLDER;
-	public static final Block dragon_stone = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.COMPACT_STONE)
+	public static final Block COMPACT_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.HOLY_KEY_STONE)
+	public static final Block HOLY_KEY_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.HOLY_STONE)
+	public static final Block HOLY_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.KYOUMARUBOTAN)
+	public static final Block KYOUMARUBOTAN = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.ONBASHIRA)
+	public static final Block ONBASHIRA = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.PAPER_BLOCK)
+	public static final Block PAPER = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.ROPE_BLOCK)
+	public static final Block ROPE = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.SHROOM)
+	public static final Block SHROOM = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.CRAFTING_ALTAR)
+	public static final Block CRAFTING_ALTAR = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.PILLAR_ALTAR)
+	public static final Block PILLAR_ALTAR = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.IMPURE_STONE)
+	public static final Block IMPURE_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.HIHIIROKANE_BLOCK)
+	public static final Block HIHIIROKANE_BLOCK = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.SUGAR_BLOCK)
+	public static final Block SUGAR_BLOCK = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.HYPER_MAGIC)
+	public static final Block HYPER_MAGIC = PLACE_HOLDER;
+	@ObjectHolder(LibBlockName.DRAGON_STONE)
+	public static final Block DRAGON_STONE = PLACE_HOLDER;
 
 	public static void register(IForgeRegistry<Block> registry) {
-		Block sugarBlock = new BlockBase(LibBlockName.SUGAR_BLOCK, Material.CLAY)
-				.setSound(SoundType.SNOW)
-				.setHardness(0.2F)
-				.setResistance(5.0F);
+		Block sugarBlock = new BlockBase(LibBlockName.SUGAR_BLOCK, Material.CLAY).setSound(SoundType.SNOW).setHardness(0.2F).setResistance(5.0F);
 		sugarBlock.setHarvestLevel("axe", 1);
 
 		Block hyperConcentratedMagic = new BlockBase(LibBlockName.HYPER_MAGIC, Material.IRON)

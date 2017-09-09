@@ -163,7 +163,7 @@ public class EntityGap extends Entity {
 		}
 		else if(player.isSneaking()) {
 			if(!world.isRemote) {
-				dropItem(ModItems.gap, 1);
+				dropItem(ModItems.GAP, 1);
 				setDead();
 			}
 			player.playSound(SoundEvents.ENTITY_ITEMFRAME_BREAK, 1F, 1F);

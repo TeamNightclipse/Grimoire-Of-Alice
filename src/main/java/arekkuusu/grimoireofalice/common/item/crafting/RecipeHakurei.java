@@ -18,7 +18,7 @@ import java.util.List;
 public class RecipeHakurei extends AltarRecipe {
 
 	public RecipeHakurei() {
-		super(new ItemStack(ModItems.hakurei_gohei), "stickWood", "stickWood", ModItems.shimenawa_rope, ModItems.shimenawa_rope, ModItems.shimenawa_rope, ModItems.shimenawa_rope, ModItems.shimenawa_rope, ModItems.shimenawa_rope);
+		super(new ItemStack(ModItems.HAKUREI_GOHEI), "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE);
 	}
 
 	@Override

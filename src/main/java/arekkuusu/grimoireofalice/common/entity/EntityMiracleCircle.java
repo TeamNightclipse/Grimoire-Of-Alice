@@ -107,7 +107,7 @@ public class EntityMiracleCircle extends Entity {
 
 	private static boolean hasFaith(EntityPlayer player) {
 		//noinspection ConstantConditions
-		return player.inventory.hasItemStack(new ItemStack(ModItems.faith_item));
+		return player.inventory.hasItemStack(new ItemStack(ModItems.FAITH));
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -117,7 +117,7 @@ public class EntityMiracleCircle extends Entity {
 
 			for(int i = 0; i < capability.getSlots(); ++i) {
 				ItemStack stack = capability.getStackInSlot(i);
-				if(!stack.isEmpty() && stack.getItem() == ModItems.faith_item) {
+				if(!stack.isEmpty() && stack.getItem() == ModItems.FAITH) {
 					if(!player.capabilities.isCreativeMode) {
 						capability.extractItem(i, 1, false);
 					}

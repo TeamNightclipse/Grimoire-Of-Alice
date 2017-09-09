@@ -32,7 +32,7 @@ public class AliceCreativeTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ModItems.miracle_mallet);
+		return new ItemStack(ModItems.MIRACLE_MALLET);
 	}
 
 	@Override
@@ -45,241 +45,241 @@ public class AliceCreativeTab extends CreativeTabs {
 	public void displayAllRelevantItems(NonNullList<ItemStack> list) {
 		this.list = list;
 		//Blocks
-		addBlock(ModBlocks.compact_stone);
-		addBlock(ModBlocks.impure_stone);
-		addBlock(ModBlocks.hihiirokane_block);
-		addBlock(ModBlocks.sugar_block);
-		addBlock(ModBlocks.hyper_magic);
-		addBlock(ModBlocks.onbashira);
-		addBlock(ModBlocks.pillar_altar);
-		addBlock(ModBlocks.holy_stone);
-		addBlock(ModBlocks.holy_key_stone);
-		addBlock(ModBlocks.crafting_altar);
-		addBlock(ModBlocks.rope_block);
-		addBlock(ModBlocks.paper_block);
-		addBlock(ModBlocks.kyoumarubotan);
-		addBlock(ModBlocks.shroom);
-		addItem(ModItems.shroom_powder);
-		addItem(ModItems.mortar_n_pestle);
+		addBlock(ModBlocks.COMPACT_STONE);
+		addBlock(ModBlocks.IMPURE_STONE);
+		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
+		addBlock(ModBlocks.SUGAR_BLOCK);
+		addBlock(ModBlocks.HYPER_MAGIC);
+		addBlock(ModBlocks.ONBASHIRA);
+		addBlock(ModBlocks.PILLAR_ALTAR);
+		addBlock(ModBlocks.HOLY_STONE);
+		addBlock(ModBlocks.HOLY_KEY_STONE);
+		addBlock(ModBlocks.CRAFTING_ALTAR);
+		addBlock(ModBlocks.ROPE);
+		addBlock(ModBlocks.PAPER);
+		addBlock(ModBlocks.KYOUMARUBOTAN);
+		addBlock(ModBlocks.SHROOM);
+		addItem(ModItems.SHROOM_POWDER);
+		addItem(ModItems.MORTAR_AND_PESTLE);
 
 		//Misc
-		addItem(ModItems.hihiirokane);
-		addItem(ModItems.impure_rock);
-		addItem(ModItems.tamahagane_steel);
-		addItem(ModItems.solidified_paper);
-		addItem(ModItems.paste);
-		addItem(ModItems.shimenawa_rope);
-		addItem(ModItems.black_feather);
-		addItem(ModItems.cowrie_shell);
-		addItem(ModItems.swallow_egg);
-		addItem(ModItems.dragon_scale);
-		addBlock(ModBlocks.dragon_stone);
-		addItem(ModItems.nether_shard);
-		addItem(ModItems.hardened_leather);
-		addItem(ModItems.iron_nugget);
-		addItem(ModItems.mask);
-		addItem(ModItems.ufo_blue);
-		addItem(ModItems.ufo_green);
-		addItem(ModItems.ufo_red);
-		addItem(ModItems.time_orb);
-		addItem(ModItems.full_power_item);
-		addItem(ModItems.star_item);
-		addItem(ModItems.cherry_item);
-		addItem(ModItems.faith_item);
-		addItem(ModItems.spellcard_pouch);
+		addItem(ModItems.HIHIIROKANE);
+		addItem(ModItems.IMPURE_ROCK);
+		addItem(ModItems.TAMAHAGANE_STEEL);
+		addItem(ModItems.SOLIDIFIED_PAPER);
+		addItem(ModItems.PASTE);
+		addItem(ModItems.SHIMENAWA_ROPE);
+		addItem(ModItems.BLACK_FEATHER);
+		addItem(ModItems.COWRIE_SHELL);
+		addItem(ModItems.SWALLOW_EGG);
+		addItem(ModItems.DRAGON_SCALE);
+		addBlock(ModBlocks.DRAGON_STONE);
+		addItem(ModItems.NETHER_SHARD);
+		addItem(ModItems.HARDENED_LEATHER);
+		addItem(ModItems.IRON_NUGGET);
+		addItem(ModItems.MASK);
+		addItem(ModItems.UFO_BLUE);
+		addItem(ModItems.UFO_GREEN);
+		addItem(ModItems.UFO_RED);
+		addItem(ModItems.TIME_ORB);
+		addItem(ModItems.FULL_POWER);
+		addItem(ModItems.STAR);
+		addItem(ModItems.CHERRY);
+		addItem(ModItems.FAITH);
+		addItem(ModItems.SPELLCARD_POUCH);
 
 		//-------------Items - By Character-------------//
 
 		//-------------Patchouli Knowledge-------------//
-		addItem(ModItems.patchy_book);
+		addItem(ModItems.PATCHY_BOOK);
 
 		//-------------Alice Margatroid-------------//
-		addItem(ModItems.grimoire_book);
+		addItem(ModItems.GRIMOIRE_BOOK);
 
 		//-------------Kosuzu Motoori-------------//
-		addItem(ModItems.youkai_book);
+		addItem(ModItems.YOUKAI_BOOK);
 
 		//-------------Aya Shameimaru-------------//
-		addItem(ModItems.tengu_fan);
-		addItem(ModItems.aya_camera);
+		addItem(ModItems.TENGU_FAN);
+		addItem(ModItems.AYA_CAMERA);
 
 		//-------------Hatate Himekaidou-------------//
-		addItem(ModItems.hatate_camera);
+		addItem(ModItems.HATATE_CAMERA);
 
 		//-------------Cirno-------------/
-		addItem(ModItems.icicle_sword);
-		addItem(ModItems.popsicle_stick);
-		addItem(ModItems.watermelon_blade);
-		addItem(ModItems.watermelon_sword);
+		addItem(ModItems.ICICLE_SWORD);
+		addItem(ModItems.POPSICLE_STICK);
+		addItem(ModItems.WATERMELON_BLADE);
+		addItem(ModItems.WATERMELON_SWORD);
 
 		//-------------Elly-------------//
-		addItem(ModItems.elly_scythe);
+		addItem(ModItems.ELLY_SCYTHE);
 
 		//-------------Flandre Scarlet-------------//
-		addItem(ModItems.laevatein);
+		addItem(ModItems.LAEVATEIN);
 
 		//-------------Hata no Kokoro-------------//
-		addItem(ModItems.fox_mask);
-		addItem(ModItems.fuku_no_kami_mask);
-		addItem(ModItems.hannya_mask);
-		addItem(ModItems.hyottoko_mask);
-		addItem(ModItems.koomote_mask);
-		addItem(ModItems.mask_of_hope);
-		addItem(ModItems.monkey_mask);
-		addItem(ModItems.raiden_mask);
-		addItem(ModItems.uba_mask);
-		addItem(ModItems.kokoro_masks);
+		addItem(ModItems.FOX_MASK);
+		addItem(ModItems.FUKU_NO_KAMI_MASK);
+		addItem(ModItems.HANNYA_MASK);
+		addItem(ModItems.HYOTTOKO_MASK);
+		addItem(ModItems.KOOMOTE_MASK);
+		addItem(ModItems.MASK_OF_HOPE);
+		addItem(ModItems.MONKEY_MASK);
+		addItem(ModItems.RAIDEN_MASK);
+		addItem(ModItems.UBA_MASK);
+		addItem(ModItems.KOKORO_MASKS);
 
 		//-------------Ichirin Kumoi-------------//
-		addItem(ModItems.ichirin_unzan);
-		addItem(ModItems.ichirin_ring);
+		addItem(ModItems.ICHIRIN_UNZAN);
+		addItem(ModItems.ICHIRIN_RING);
 
 		//-------------Kaguya Houraisan-------------//
-		addItem(ModItems.jeweled_hourai);
-		addItem(ModItems.budah_bowl);
-		addItem(ModItems.dragon_jewel);
-		addItem(ModItems.fire_robe);
-		addItem(ModItems.swallow_cowrie_shell);
-		addItem(ModItems.seamless_ceiling_of_kinkakuji);
-		addItem(ModItems.red_stone_of_aja);
+		addItem(ModItems.JEWELED_HOURAI);
+		addItem(ModItems.BUDAH_BOWL);
+		addItem(ModItems.DRAGON_JEWEL);
+		addItem(ModItems.FIRE_ROBE);
+		addItem(ModItems.SWALLOW_COWRIE_SHELL);
+		addItem(ModItems.SEAMLESS_CEILING_OF_KINKAKUJI);
+		addItem(ModItems.RED_STONE_OF_AJA);
 
 		//-------------Kanako Yasaka-------------//
-		addItem(ModItems.kanako_shimenawa);
-		addItem(ModItems.kanako_onbashira);
+		addItem(ModItems.KANAKO_SHIMENAWA);
+		addItem(ModItems.KANAKO_ONBASHIRA);
 
 		//-------------Kasen Ibara-------------//
-		addItem(ModItems.ibaraki_box_empty);
-		addItem(ModItems.ibaraki_box_filled);
-		addItem(ModItems.kappas_nostrum);
+		addItem(ModItems.IBARAKI_BOX_EMPTY);
+		addItem(ModItems.IBARAKI_BOX_FILLED);
+		addItem(ModItems.KAPPAS_NOSTRUM);
 
 		//-------------Eirin Yagokoro-------------//
-		addItem(ModItems.hourai_elixir);
-		addItem(ModItems.syringe);
-		addItem(ModItems.orb_elixir);
+		addItem(ModItems.HOURAI_ELIXIR);
+		addItem(ModItems.SYRINGE);
+		addItem(ModItems.ORB_ELIXIR);
 
 		//-------------Koishi Komeiji -  Satori Komeiji-------------//
-		addItem(ModItems.third_eye);
+		addItem(ModItems.THIRD_EYE);
 
 		//-------------Komachi Onozuka-------------//
-		addItem(ModItems.komachi_scythe);
+		addItem(ModItems.KOMACHI_SCYTHE);
 
 		//-------------Kyouko Kasodani-------------//
 		//-------------Lunasa Prismriver - Merlin Prismriver - Lyrica Prismriver-------------//
-		addItem(ModItems.lunasa_violin);
-		addItem(ModItems.lyrica_piano);
-		addItem(ModItems.merlin_trumpet);
+		addItem(ModItems.LUNASA_VIOLIN);
+		addItem(ModItems.LYRICA_PIANO);
+		addItem(ModItems.MERLIN_TRUMPET);
 
 		//-------------Mamizou Futatsuiwa-------------//
-		addItem(ModItems.leaf_item);
+		addItem(ModItems.LEAF);
 
 		//-------------Marisa Kirisame-------------//
-		addItem(ModItems.marisa_hat);
+		addItem(ModItems.MARISA_HAT);
 
 		//-------------Minamitsu Murasa-------------//
-		addItem(ModItems.ghost_dipper);
-		addItem(ModItems.ghost_anchor);
+		addItem(ModItems.GHOST_DIPPER);
+		addItem(ModItems.GHOST_ANCHOR);
 
 		//-------------Momiji Inubashiri-------------//
-		addItem(ModItems.momiji_scimitar_sword);
-		addItem(ModItems.maple_leaf_shield);
+		addItem(ModItems.MOMIJI_SCIMITAR_SWORD);
+		addItem(ModItems.MAPLE_LEAF_SHIELD);
 
 		//-------------Mystia Lorelei-------------//
-		addItem(ModItems.grilled_lamprey);
+		addItem(ModItems.GRILLED_LAMPREY);
 
 		//-------------Nue Houjuu-------------//
-		addItem(ModItems.nue_trident);
-		addItem(ModItems.ufo);
+		addItem(ModItems.NUE_TRIDENT);
+		addItem(ModItems.UFO);
 
 		//-------------Nazrin-------------//
-		addItem(ModItems.nazrin_pendulum);
-		addItem(ModItems.nazrin_stick);
+		addItem(ModItems.NAZRIN_PENDULUM);
+		addItem(ModItems.NAZRIN_STICK);
 
 		//-------------Nitori Kawashiro-------------//
-		addItem(ModItems.cattail_plant);
-		addItem(ModItems.kappa_hat);
+		addItem(ModItems.CATTAIL_PLANT);
+		addItem(ModItems.KAPPA_HAT);
 
 		//-------------Suwako Moriya-------------//
-		addItem(ModItems.suwako_hat);
+		addItem(ModItems.SUWAKO_HAT);
 
 		//-------------Reimu Hakurei-------------//
-		addItem(ModItems.hakurei_gohei);
-		addItem(ModItems.spiritual_strike_talisman);
+		addItem(ModItems.HAKUREI_GOHEI);
+		addItem(ModItems.SPIRITUAL_STRIKE_TALISMAN);
 
 		//-------------Sanae Kochiya-------------//
-		addItem(ModItems.sanae_gohei);
-		addItem(ModItems.charm_of_healing);
+		addItem(ModItems.SANAE_GOHEI);
+		addItem(ModItems.CHARM_OF_HEALING);
 
 		//-------------Seija Kijin-------------//
-		addItem(ModItems.blood_thirsty_orb);
-		addItem(ModItems.folding_umbrella);
-		addItem(ModItems.substitute_jizo);
-		addItem(ModItems.nimble_fabric);
-		addItem(ModItems.fake_miracle_mallet);
-		addItem(ModItems.send_off_lantern);
-		addItem(ModItems.cursed_decoy_doll);
+		addItem(ModItems.BLOOD_THIRSTY_ORB);
+		addItem(ModItems.FOLDING_UMBRELLA);
+		addItem(ModItems.SUBSTITUTE_JIZO);
+		addItem(ModItems.NIMBLE_FABRIC);
+		addItem(ModItems.FAKE_MIRACLE_MALLET);
+		addItem(ModItems.SEND_OFF_LANTERN);
+		addItem(ModItems.CURSED_DECOY_DOLL);
 
 		//-------------Sakuya Izayoi-------------//
-		addItem(ModItems.stopwatch);
+		addItem(ModItems.STOPWATCH);
 
 		//-------------Rin Kaenbyou-------------//
-		addItem(ModItems.orin_skull);
+		addItem(ModItems.ORIN_SKULL);
 
 		//-------------Sariel-------------//
-		addItem(ModItems.sariel_wand);
+		addItem(ModItems.SARIEL_WAND);
 
 		//-------------Rinnosuke Morichika-------------//
-		addItem(ModItems.amenonuhoko);
-		addItem(ModItems.sword_of_kusanagi);
+		addItem(ModItems.AMENONUHOKO);
+		addItem(ModItems.SWORD_OF_KUSANAGI);
 
 		//-------------Rumia-------------//
-		addItem(ModItems.rumia_sword);
+		addItem(ModItems.RUMIA_SWORD);
 
 		//-------------Seiga Kaku-------------//
-		addItem(ModItems.wall_passing_chisel);
+		addItem(ModItems.WALL_PASSING_CHISEL);
 
 		//-------------Seiran-------------//
-		addItem(ModItems.mochi_hammer);
+		addItem(ModItems.MOCHI_HAMMER);
 
 		//-------------Shikieiki Yamaxanadu-------------//
-		addItem(ModItems.rod_of_remorse);
+		addItem(ModItems.ROD_REMORSE);
 
 		//-------------Shinmyoumaru Sukuna-------------//
-		addItem(ModItems.shinmyoumaru_hat);
-		addItem(ModItems.miracle_mallet);
-		addItem(ModItems.shinmyoumaru_needle);
+		addItem(ModItems.SHINMYOUMARU_HAT);
+		addItem(ModItems.MIRACLE_MALLET);
+		addItem(ModItems.SHINMYOUMARU_NEEDLE);
 
 		//-------------Shou Toramaru-------------//
-		addItem(ModItems.shou_lamp);
+		addItem(ModItems.SHOU_LAMP);
 
 		//-------------Suika Ibuki-------------//
-		addItem(ModItems.ibuki_gourd);
+		addItem(ModItems.IBUKI_GOURD);
 
 		//-------------Yuugi Hoshiguma-------------//
-		addItem(ModItems.yuugi_sake);
+		addItem(ModItems.YUUGI_SAKE);
 
 		//-------------Tenshi Hinanawi-------------//
-		addItem(ModItems.hisou_sword);
-		addItem(ModItems.tenshi_hat);
-		addItem(ModItems.heavenly_peach);
+		addItem(ModItems.HISOU_SWORD);
+		addItem(ModItems.TENSHI_HAT);
+		addItem(ModItems.HEAVENLY_PEACH);
 
 		//-------------Toyosatomimi no Miko-------------//
-		addItem(ModItems.miko_cloak);
-		addItem(ModItems.sacred_sword_of_toyosatomimi);
-		addItem(ModItems.shichi_seiken);
-		addItem(ModItems.miko_stick);
-		addItem(ModItems.toyosatomimi_hat);
+		addItem(ModItems.MIKO_CLOAK);
+		addItem(ModItems.SACRED_SWORD_OF_TOYOSATOMIMI);
+		addItem(ModItems.SHICHI_SEIKEN);
+		addItem(ModItems.MIKO_STICK);
+		addItem(ModItems.TOYOSATOMIMI_HAT);
 
 		//-------------Utsuho Reiuji-------------//
-		addItem(ModItems.utsuho_wings);
-		addItem(ModItems.nuclear_boots);
-		addItem(ModItems.nuclear_rod);
+		addItem(ModItems.UTSUHO_WINGS);
+		addItem(ModItems.NUCLEAR_BOOTS);
+		addItem(ModItems.NUCLEAR_ROD);
 
 		//-------------Youmu Konpaku-------------//
-		addItem(ModItems.roukanken);
-		addItem(ModItems.hakurouken);
+		addItem(ModItems.ROUKANKEN);
+		addItem(ModItems.HAKUROUKEN);
 
 		//-------------Yukari Yakumo-------------//
-		addItem(ModItems.gap);
+		addItem(ModItems.GAP);
 	}
 
 	@SideOnly(Side.CLIENT)

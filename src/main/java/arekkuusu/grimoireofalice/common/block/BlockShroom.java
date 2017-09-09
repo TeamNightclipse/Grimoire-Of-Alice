@@ -85,7 +85,7 @@ public class BlockShroom extends BlockModBush implements IModel {
 				|| block == Blocks.HARDENED_CLAY
 				|| block == Blocks.STAINED_HARDENED_CLAY
 				|| block == Blocks.STONE
-				|| block == ModBlocks.compact_stone;
+				|| block == ModBlocks.COMPACT_STONE;
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -95,12 +95,12 @@ public class ItemIchirinUnzan extends ItemBaseArmor implements ISpecialArmor, IO
 
 	private static boolean isHoldingRight(EntityLivingBase player) {
 		ItemStack main = player.getHeldItemMainhand();
-		return !main.isEmpty() && main.getItem() == ModItems.ichirin_ring;
+		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	private static boolean isHoldingLeft(EntityLivingBase player) {
 		ItemStack off = player.getHeldItemOffhand();
-		return !off.isEmpty() && off.getItem() == ModItems.ichirin_ring;
+		return !off.isEmpty() && off.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	@Override

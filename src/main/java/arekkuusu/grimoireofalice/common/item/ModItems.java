@@ -28,132 +28,255 @@ public final class ModItems {
 
 	private static final Item PLACE_HOLDER = new Item();
 	//--------------------------------Items--------------------------------//
-	public static final Item grimoire_book = PLACE_HOLDER;
-	public static final Item paste = PLACE_HOLDER;
-	public static final Item solidified_paper = PLACE_HOLDER;
-	public static final Item tamahagane_steel = PLACE_HOLDER;
-	public static final Item shimenawa_rope = PLACE_HOLDER;
-	public static final Item youkai_book = PLACE_HOLDER;
-	public static final Item mask = PLACE_HOLDER;
-	public static final Item hihiirokane = PLACE_HOLDER;
-	public static final Item ibaraki_box_empty = PLACE_HOLDER;
-	public static final Item impure_rock = PLACE_HOLDER;
-	public static final Item lunasa_violin = PLACE_HOLDER;
-	public static final Item lyrica_piano = PLACE_HOLDER;
-	public static final Item merlin_trumpet = PLACE_HOLDER;
-	public static final Item shou_lamp = PLACE_HOLDER;
-	public static final Item patchy_book = PLACE_HOLDER;
-	public static final Item orin_skull = PLACE_HOLDER;
-	public static final Item spellcard_pouch = PLACE_HOLDER;
-	public static final Item tengu_fan = PLACE_HOLDER;
-	public static final Item nazrin_pendulum = PLACE_HOLDER;
-	public static final Item ghost_dipper = PLACE_HOLDER;
-	public static final Item wall_passing_chisel = PLACE_HOLDER;
-	public static final Item miracle_mallet = PLACE_HOLDER;
-	public static final Item rod_of_remorse = PLACE_HOLDER;
-	public static final Item jeweled_hourai = PLACE_HOLDER;
-	public static final Item budah_bowl = PLACE_HOLDER;
-	public static final Item dragon_jewel = PLACE_HOLDER;
-	public static final Item stopwatch = PLACE_HOLDER;
-	public static final Item mortar_n_pestle = PLACE_HOLDER;
-	public static final Item full_power_item = PLACE_HOLDER;
-	public static final Item star_item = PLACE_HOLDER;
-	public static final Item cherry_item = PLACE_HOLDER;
-	public static final Item time_orb = PLACE_HOLDER;
-	public static final Item faith_item = PLACE_HOLDER;
-	public static final Item ufo_red = PLACE_HOLDER;
-	public static final Item ufo_blue = PLACE_HOLDER;
-	public static final Item ufo_green = PLACE_HOLDER;
-	public static final Item ufo = PLACE_HOLDER;
-	public static final Item third_eye = PLACE_HOLDER;
-	public static final Item leaf_item = PLACE_HOLDER;
-	public static final Item blood_thirsty_orb = PLACE_HOLDER;
-	public static final Item folding_umbrella = PLACE_HOLDER;
-	public static final Item substitute_jizo = PLACE_HOLDER;
-	public static final Item nimble_fabric = PLACE_HOLDER;
-	public static final Item fake_miracle_mallet = PLACE_HOLDER;
-	public static final Item send_off_lantern = PLACE_HOLDER;
-	public static final Item cursed_decoy_doll = PLACE_HOLDER;
-	public static final Item aya_camera = PLACE_HOLDER;
-	public static final Item hatate_camera = PLACE_HOLDER;
-	public static final Item hakurei_gohei = PLACE_HOLDER;
-	public static final Item sanae_gohei = PLACE_HOLDER;
-	public static final Item black_feather = PLACE_HOLDER;
-	public static final Item nether_shard = PLACE_HOLDER;
-	public static final Item iron_nugget = PLACE_HOLDER;
-	public static final Item hardened_leather = PLACE_HOLDER;
-	public static final Item swallow_egg = PLACE_HOLDER;
-	public static final Item cowrie_shell = PLACE_HOLDER;
-	public static final Item dragon_scale = PLACE_HOLDER;
-	public static final Item charm_of_healing = PLACE_HOLDER;
-	public static final Item spiritual_strike_talisman = PLACE_HOLDER;
-	public static final Item gap = PLACE_HOLDER;
-	public static final Item red_stone_of_aja = PLACE_HOLDER;
-	public static final Item seamless_ceiling_of_kinkakuji = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.GRIMOIRE_BOOK)
+	public static final Item GRIMOIRE_BOOK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.PASTE)
+	public static final Item PASTE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SOLIDIFIED_PAPER)
+	public static final Item SOLIDIFIED_PAPER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.TAMAHAGANE_STEEL)
+	public static final Item TAMAHAGANE_STEEL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHIMENAWA_ROPE)
+	public static final Item SHIMENAWA_ROPE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.YOUKAI_BOOK)
+	public static final Item YOUKAI_BOOK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MASK)
+	public static final Item MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HIHIIROKANE)
+	public static final Item HIHIIROKANE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.IBARAKI_BOX_EMPTY)
+	public static final Item IBARAKI_BOX_EMPTY = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.IMPURE_ROCK)
+	public static final Item IMPURE_ROCK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.LUNASA_VIOLIN)
+	public static final Item LUNASA_VIOLIN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.LYRICA_PIANO)
+	public static final Item LYRICA_PIANO = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MERLIN_TRUMPET)
+	public static final Item MERLIN_TRUMPET = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHOU_LAMP)
+	public static final Item SHOU_LAMP = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.PATCHY_BOOK)
+	public static final Item PATCHY_BOOK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ORIN_SKULL)
+	public static final Item ORIN_SKULL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.POUCH)
+	public static final Item SPELLCARD_POUCH = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.TENGU_FAN)
+	public static final Item TENGU_FAN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NAZRIN_PENDULUM)
+	public static final Item NAZRIN_PENDULUM = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.GHOST_DIPPER)
+	public static final Item GHOST_DIPPER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.WALL_PASSING_CHISEL)
+	public static final Item WALL_PASSING_CHISEL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MIRACLE_MALLET)
+	public static final Item MIRACLE_MALLET = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ROD_REMORSE)
+	public static final Item ROD_REMORSE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.JEWELED_HOURAI)
+	public static final Item JEWELED_HOURAI = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.BUDAH_BOUL)
+	public static final Item BUDAH_BOWL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.DRAGON_JEWEL)
+	public static final Item DRAGON_JEWEL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.STOPWATCH)
+	public static final Item STOPWATCH = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MORTAR_AND_PESTLE)
+	public static final Item MORTAR_AND_PESTLE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FULL_POWER)
+	public static final Item FULL_POWER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.STAR)
+	public static final Item STAR = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.CHERRY)
+	public static final Item CHERRY = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.TIME_ORB)
+	public static final Item TIME_ORB = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FAITH)
+	public static final Item FAITH = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UFO_RED)
+	public static final Item UFO_RED = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UFO_BLUE)
+	public static final Item UFO_BLUE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UFO_GREEN)
+	public static final Item UFO_GREEN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UFO)
+	public static final Item UFO = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.THIRD_EYE)
+	public static final Item THIRD_EYE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.LEAF)
+	public static final Item LEAF = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.BLOOD_THIRSTY_ORB)
+	public static final Item BLOOD_THIRSTY_ORB = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FOLDING_UMBRELLA)
+	public static final Item FOLDING_UMBRELLA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SUBSTITUTE_JIZO)
+	public static final Item SUBSTITUTE_JIZO = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NIMBLE_FABRIC)
+	public static final Item NIMBLE_FABRIC = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MIRACLE_MALLET)
+	public static final Item FAKE_MIRACLE_MALLET = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SEND_OFF_LANTERN)
+	public static final Item SEND_OFF_LANTERN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.CURSED_DECOY_DOLL)
+	public static final Item CURSED_DECOY_DOLL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.AYA_CAMERA)
+	public static final Item AYA_CAMERA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HATATE_CAMERA)
+	public static final Item HATATE_CAMERA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HAKUREI_GOHEI)
+	public static final Item HAKUREI_GOHEI = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SANAE_GOHEI)
+	public static final Item SANAE_GOHEI = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.BLACK_FEATHER)
+	public static final Item BLACK_FEATHER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NETHER_SHARD)
+	public static final Item NETHER_SHARD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.IRON_NUGGET)
+	public static final Item IRON_NUGGET = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HARDENED_LEATHER)
+	public static final Item HARDENED_LEATHER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SWALLOW_EGG)
+	public static final Item SWALLOW_EGG = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.COWRIE_SHELL)
+	public static final Item COWRIE_SHELL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.DRAGON_SCALE)
+	public static final Item DRAGON_SCALE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.CHARM_OF_HEALING)
+	public static final Item CHARM_OF_HEALING = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SPIRITUAL_STRIKE_TALISMAN)
+	public static final Item SPIRITUAL_STRIKE_TALISMAN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.GAP)
+	public static final Item GAP = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.RED_STONE_OF_AJA)
+	public static final Item RED_STONE_OF_AJA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SEAMLESS_CEILING_OF_KINKAKUJI)
+	public static final Item SEAMLESS_CEILING_OF_KINKAKUJI = PLACE_HOLDER;
 
-	public static final Item shroom_powder = PLACE_HOLDER;
-	public static final Item grilled_lamprey = PLACE_HOLDER;
-	public static final Item ibaraki_box_filled = PLACE_HOLDER;
-	public static final Item kappas_nostrum = PLACE_HOLDER;
-	public static final Item heavenly_peach = PLACE_HOLDER;
-	public static final Item ibuki_gourd = PLACE_HOLDER;
-	public static final Item swallow_cowrie_shell = PLACE_HOLDER;
-	public static final Item orb_elixir = PLACE_HOLDER;
-	public static final Item hourai_elixir = PLACE_HOLDER;
-	public static final Item yuugi_sake = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHROOM_POWDER)
+	public static final Item SHROOM_POWDER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.GRILLED_LAMPREY)
+	public static final Item GRILLED_LAMPREY = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.IBARAKI_BOX_FILLED)
+	public static final Item IBARAKI_BOX_FILLED = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KAPPAS_NOSTRUM)
+	public static final Item KAPPAS_NOSTRUM = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HEAVENLY_PEACH)
+	public static final Item HEAVENLY_PEACH = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.IBUKI_GOURD)
+	public static final Item IBUKI_GOURD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SWALLOW_COWRIE_SHELL)
+	public static final Item SWALLOW_COWRIE_SHELL = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ORB_ELIXIR)
+	public static final Item ORB_ELIXIR = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HOURAI_ELIXIR)
+	public static final Item HOURAI_ELIXIR = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.YUUGI_SAKE)
+	public static final Item YUUGI_SAKE = PLACE_HOLDER;
 
-	public static final Item fox_mask = PLACE_HOLDER;
-	public static final Item raiden_mask = PLACE_HOLDER;
-	public static final Item monkey_mask = PLACE_HOLDER;
-	public static final Item hyottoko_mask = PLACE_HOLDER;
-	public static final Item fuku_no_kami_mask = PLACE_HOLDER;
-	public static final Item uba_mask = PLACE_HOLDER;
-	public static final Item hannya_mask = PLACE_HOLDER;
-	public static final Item koomote_mask = PLACE_HOLDER;
-	public static final Item mask_of_hope = PLACE_HOLDER;
-	public static final Item kokoro_masks = PLACE_HOLDER;
-	public static final Item maple_leaf_shield = PLACE_HOLDER;
-	public static final Item toyosatomimi_hat = PLACE_HOLDER;
-	public static final Item kanako_shimenawa = PLACE_HOLDER;
-	public static final Item ichirin_unzan = PLACE_HOLDER;
-	public static final Item suwako_hat = PLACE_HOLDER;
-	public static final Item fire_robe = PLACE_HOLDER;
-	public static final Item utsuho_wings = PLACE_HOLDER;
-	public static final Item kappa_hat = PLACE_HOLDER;
-	public static final Item marisa_hat = PLACE_HOLDER;
-	public static final Item miko_cloak = PLACE_HOLDER;
-	public static final Item shinmyoumaru_hat = PLACE_HOLDER;
-	public static final Item tenshi_hat = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FOX_MASK)
+	public static final Item FOX_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.RAIDEN_MASK)
+	public static final Item RAIDEN_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MONKEY_MASK)
+	public static final Item MONKEY_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HYOTTOKO_MASK)
+	public static final Item HYOTTOKO_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FUKU_NO_KAMI_MASK)
+	public static final Item FUKU_NO_KAMI_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UBA_MASK)
+	public static final Item UBA_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HANNYA_MASK)
+	public static final Item HANNYA_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KOOMOTE_MASK)
+	public static final Item KOOMOTE_MASK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MASK_OF_HOPE)
+	public static final Item MASK_OF_HOPE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KOKORO_MASKS)
+	public static final Item KOKORO_MASKS = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MAPLE_LEAF_SHIELD)
+	public static final Item MAPLE_LEAF_SHIELD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.TOYOSATOMIMI_HAT)
+	public static final Item TOYOSATOMIMI_HAT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KANAKO_SHIMENAWA)
+	public static final Item KANAKO_SHIMENAWA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ICHIRIN_UNZAN)
+	public static final Item ICHIRIN_UNZAN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SUWAKO_HAT)
+	public static final Item SUWAKO_HAT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.FIRE_ROBE)
+	public static final Item FIRE_ROBE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.UTSUHO_WINGS)
+	public static final Item UTSUHO_WINGS = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KAPPA_HAT)
+	public static final Item KAPPA_HAT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MARISA_HAT)
+	public static final Item MARISA_HAT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MIKO_CLOAK)
+	public static final Item MIKO_CLOAK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHINMYOUMARU_HAT)
+	public static final Item SHINMYOUMARU_HAT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.TENSHI_HAT)
+	public static final Item TENSHI_HAT = PLACE_HOLDER;
 
-	public static final Item mochi_hammer = PLACE_HOLDER;
-	public static final Item momiji_scimitar_sword = PLACE_HOLDER;
-	public static final Item laevatein = PLACE_HOLDER;
-	public static final Item nazrin_stick = PLACE_HOLDER;
-	public static final Item elly_scythe = PLACE_HOLDER;
-	public static final Item miko_stick = PLACE_HOLDER;
-	public static final Item amenonuhoko = PLACE_HOLDER;
-	public static final Item shinmyoumaru_needle = PLACE_HOLDER;
-	public static final Item nue_trident = PLACE_HOLDER;
-	public static final Item sword_of_kusanagi = PLACE_HOLDER;
-	public static final Item syringe = PLACE_HOLDER;
-	public static final Item ichirin_ring = PLACE_HOLDER;
-	public static final Item kanako_onbashira = PLACE_HOLDER;
-	public static final Item shichi_seiken = PLACE_HOLDER;
-	public static final Item cattail_plant = PLACE_HOLDER;
-	public static final Item popsicle_stick = PLACE_HOLDER;
-	public static final Item rumia_sword = PLACE_HOLDER;
-	public static final Item sariel_wand = PLACE_HOLDER;
-	public static final Item watermelon_blade = PLACE_HOLDER;
-	public static final Item watermelon_sword = PLACE_HOLDER;
-	public static final Item sacred_sword_of_toyosatomimi = PLACE_HOLDER;
-	public static final Item hisou_sword = PLACE_HOLDER;
-	public static final Item komachi_scythe = PLACE_HOLDER;
-	public static final Item roukanken = PLACE_HOLDER;
-	public static final Item nuclear_rod = PLACE_HOLDER;
-	public static final Item nuclear_boots = PLACE_HOLDER;
-	public static final Item icicle_sword = PLACE_HOLDER;
-	public static final Item hakurouken = PLACE_HOLDER;
-	public static final Item ghost_anchor = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MOCHI_HAMMER)
+	public static final Item MOCHI_HAMMER = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MOMIJI_SCIMITAR_SWORD)
+	public static final Item MOMIJI_SCIMITAR_SWORD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.LAEVATEIN)
+	public static final Item LAEVATEIN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NAZRIN_STICK)
+	public static final Item NAZRIN_STICK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ELLY_SCYTHE)
+	public static final Item ELLY_SCYTHE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.MIKO_STICK)
+	public static final Item MIKO_STICK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.AMENONUHOKO)
+	public static final Item AMENONUHOKO = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHINMYOUMARU_NEEDLE)
+	public static final Item SHINMYOUMARU_NEEDLE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NUE_TRIDENT)
+	public static final Item NUE_TRIDENT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SWORD_OF_KUSANAGI)
+	public static final Item SWORD_OF_KUSANAGI = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SYRINGE)
+	public static final Item SYRINGE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ICHIRIN_RING)
+	public static final Item ICHIRIN_RING = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KANAKO_ONBASHIRA)
+	public static final Item KANAKO_ONBASHIRA = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SHICHI_SEIKEN)
+	public static final Item SHICHI_SEIKEN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.CATTAIL_PLANT)
+	public static final Item CATTAIL_PLANT = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.POPSICLE_STICK)
+	public static final Item POPSICLE_STICK = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.RUMIA_SWORD)
+	public static final Item RUMIA_SWORD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SARIEL_WAND)
+	public static final Item SARIEL_WAND = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.WATERMELON_BLADE)
+	public static final Item WATERMELON_BLADE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.WATERMELON_SWORD)
+	public static final Item WATERMELON_SWORD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.SACRED_SWORD_OF_TOYOSATOMIMI)
+	public static final Item SACRED_SWORD_OF_TOYOSATOMIMI = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HISOU_SWORD)
+	public static final Item HISOU_SWORD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.KOMACHI_SCYTHE)
+	public static final Item KOMACHI_SCYTHE = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ROUKANKEN)
+	public static final Item ROUKANKEN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NUCLEAR_ROD)
+	public static final Item NUCLEAR_ROD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.NUCLEAR_BOOTS)
+	public static final Item NUCLEAR_BOOTS = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.ICICLE_SWORD)
+	public static final Item ICICLE_SWORD = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.HAKUROUKEN)
+	public static final Item HAKUROUKEN = PLACE_HOLDER;
+	@ObjectHolder(LibItemName.GHOST_ANCHOR)
+	public static final Item GHOST_ANCHOR = PLACE_HOLDER;
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.register(new ItemTamahaganeSteel());
@@ -288,21 +411,21 @@ public final class ModItems {
 		registry.register(new ItemRedStoneofAja());
 
 		//Blocks
-		registry.register(itemBlock(ModBlocks.holy_key_stone));
-		registry.register(itemBlock(ModBlocks.compact_stone));
-		registry.register(itemBlock(ModBlocks.holy_stone));
-		registry.register(itemBlock(ModBlocks.kyoumarubotan));
-		registry.register(new ItemBlockOnbashira(ModBlocks.onbashira));
-		registry.register(itemBlock(ModBlocks.paper_block));
-		registry.register(itemBlock(ModBlocks.rope_block));
-		registry.register(new ItemBlockShroom(ModBlocks.shroom));
-		registry.register(itemBlock(ModBlocks.sugar_block));
-		registry.register(itemBlock(ModBlocks.hyper_magic));
-		registry.register(itemBlock(ModBlocks.crafting_altar));
-		registry.register(itemBlock(ModBlocks.pillar_altar));
-		registry.register(itemBlock(ModBlocks.impure_stone));
-		registry.register(itemBlock(ModBlocks.hihiirokane_block));
-		registry.register(itemBlock(ModBlocks.dragon_stone));
+		registry.register(itemBlock(ModBlocks.HOLY_KEY_STONE));
+		registry.register(itemBlock(ModBlocks.COMPACT_STONE));
+		registry.register(itemBlock(ModBlocks.HOLY_STONE));
+		registry.register(itemBlock(ModBlocks.KYOUMARUBOTAN));
+		registry.register(new ItemBlockOnbashira(ModBlocks.ONBASHIRA));
+		registry.register(itemBlock(ModBlocks.PAPER));
+		registry.register(itemBlock(ModBlocks.ROPE));
+		registry.register(new ItemBlockShroom(ModBlocks.SHROOM));
+		registry.register(itemBlock(ModBlocks.SUGAR_BLOCK));
+		registry.register(itemBlock(ModBlocks.HYPER_MAGIC));
+		registry.register(itemBlock(ModBlocks.CRAFTING_ALTAR));
+		registry.register(itemBlock(ModBlocks.PILLAR_ALTAR));
+		registry.register(itemBlock(ModBlocks.IMPURE_STONE));
+		registry.register(itemBlock(ModBlocks.HIHIIROKANE_BLOCK));
+		registry.register(itemBlock(ModBlocks.DRAGON_STONE));
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -311,28 +434,28 @@ public final class ModItems {
 	}
 
 	public static void init() {
-		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.iron_nugget));
-		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.impure_stone));
+		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.IRON_NUGGET));
+		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.IMPURE_STONE));
 
-		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.shroom_powder, 1, 0));
-		OreDictionary.registerOre("dyeRed", new ItemStack(ModItems.shroom_powder, 1, 1));
-		OreDictionary.registerOre("dyeGreen", new ItemStack(ModItems.shroom_powder, 1, 2));
-		OreDictionary.registerOre("dyeBrown", new ItemStack(ModItems.shroom_powder, 1, 3));
-		OreDictionary.registerOre("dyeBlue", new ItemStack(ModItems.shroom_powder, 1, 4));
-		OreDictionary.registerOre("dyePurple", new ItemStack(ModItems.shroom_powder, 1, 5));
-		OreDictionary.registerOre("dyeCyan", new ItemStack(ModItems.shroom_powder, 1, 6));
-		OreDictionary.registerOre("dyeLightGray", new ItemStack(ModItems.shroom_powder, 1, 7));
-		OreDictionary.registerOre("dyeGray", new ItemStack(ModItems.shroom_powder, 1, 8));
-		OreDictionary.registerOre("dyePink", new ItemStack(ModItems.shroom_powder, 1, 9));
-		OreDictionary.registerOre("dyeLime", new ItemStack(ModItems.shroom_powder, 1, 10));
-		OreDictionary.registerOre("dyeYellow", new ItemStack(ModItems.shroom_powder, 1, 11));
-		OreDictionary.registerOre("dyeLightBlue", new ItemStack(ModItems.shroom_powder, 1, 12));
-		OreDictionary.registerOre("dyeMagenta", new ItemStack(ModItems.shroom_powder, 1, 13));
-		OreDictionary.registerOre("dyeOrange", new ItemStack(ModItems.shroom_powder, 1, 14));
-		OreDictionary.registerOre("dyeWhite", new ItemStack(ModItems.shroom_powder, 1, 15));
+		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.SHROOM_POWDER, 1, 0));
+		OreDictionary.registerOre("dyeRed", new ItemStack(ModItems.SHROOM_POWDER, 1, 1));
+		OreDictionary.registerOre("dyeGreen", new ItemStack(ModItems.SHROOM_POWDER, 1, 2));
+		OreDictionary.registerOre("dyeBrown", new ItemStack(ModItems.SHROOM_POWDER, 1, 3));
+		OreDictionary.registerOre("dyeBlue", new ItemStack(ModItems.SHROOM_POWDER, 1, 4));
+		OreDictionary.registerOre("dyePurple", new ItemStack(ModItems.SHROOM_POWDER, 1, 5));
+		OreDictionary.registerOre("dyeCyan", new ItemStack(ModItems.SHROOM_POWDER, 1, 6));
+		OreDictionary.registerOre("dyeLightGray", new ItemStack(ModItems.SHROOM_POWDER, 1, 7));
+		OreDictionary.registerOre("dyeGray", new ItemStack(ModItems.SHROOM_POWDER, 1, 8));
+		OreDictionary.registerOre("dyePink", new ItemStack(ModItems.SHROOM_POWDER, 1, 9));
+		OreDictionary.registerOre("dyeLime", new ItemStack(ModItems.SHROOM_POWDER, 1, 10));
+		OreDictionary.registerOre("dyeYellow", new ItemStack(ModItems.SHROOM_POWDER, 1, 11));
+		OreDictionary.registerOre("dyeLightBlue", new ItemStack(ModItems.SHROOM_POWDER, 1, 12));
+		OreDictionary.registerOre("dyeMagenta", new ItemStack(ModItems.SHROOM_POWDER, 1, 13));
+		OreDictionary.registerOre("dyeOrange", new ItemStack(ModItems.SHROOM_POWDER, 1, 14));
+		OreDictionary.registerOre("dyeWhite", new ItemStack(ModItems.SHROOM_POWDER, 1, 15));
 
-		AliceAPI.registerFlyingItem(new ItemStack(ModItems.jeweled_hourai));
-		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.utsuho_wings));
-		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.kanako_shimenawa));
+		AliceAPI.registerFlyingItem(new ItemStack(ModItems.JEWELED_HOURAI));
+		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.UTSUHO_WINGS));
+		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.KANAKO_SHIMENAWA));
 	}
 }

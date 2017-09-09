@@ -34,7 +34,7 @@ public class RenderEllyScytheProyectile extends Render<EntityEllyScythe> {
 
 	@Override
 	public void doRender(EntityEllyScythe ellyScythe, double x, double y, double z, float yaw, float pitch) {
-		ItemStack stack = new ItemStack(ModItems.elly_scythe);
+		ItemStack stack = new ItemStack(ModItems.ELLY_SCYTHE);
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);

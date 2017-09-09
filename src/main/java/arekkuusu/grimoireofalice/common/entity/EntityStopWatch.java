@@ -54,7 +54,7 @@ public class EntityStopWatch extends Entity {
 			}
 			else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
-				if(user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.stopwatch) {
+				if(user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.STOPWATCH) {
 					stopEntity();
 					return;
 				}
@@ -123,11 +123,11 @@ public class EntityStopWatch extends Entity {
 		if(!world.isRemote) {
 			if(user != null) {
 				if(!user.capabilities.isCreativeMode) {
-					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.stopwatch));
+					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOPWATCH));
 				}
 			}
 			else {
-				dropItem(ModItems.stopwatch, 1);
+				dropItem(ModItems.STOPWATCH, 1);
 			}
 			setDead();
 		}

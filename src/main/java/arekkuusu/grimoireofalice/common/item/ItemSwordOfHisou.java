@@ -158,7 +158,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 			stack.damageItem(1, entityLiving);
 			if(!world.isRemote) {
 				EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-						new ItemStack(ModItems.heavenly_peach));
+						new ItemStack(ModItems.HEAVENLY_PEACH));
 
 				entityLiving.world.spawnEntity(entityItem);
 			}

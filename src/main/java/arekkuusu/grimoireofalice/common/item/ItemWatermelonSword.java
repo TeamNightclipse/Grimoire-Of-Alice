@@ -58,7 +58,7 @@ public class ItemWatermelonSword extends ItemBaseSword implements IOwnedBy {
 
 		if(stack.getItemDamage() <= 0 && attacker.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
 			ItemStack rest = ItemHandlerHelper.insertItemStacked(attacker.getCapability(ITEM_HANDLER_CAPABILITY, null),
-					new ItemStack(ModItems.popsicle_stick), false);
+					new ItemStack(ModItems.POPSICLE_STICK), false);
 			if(!rest.isEmpty()) {
 				attacker.dropItem(rest.getItem(), rest.getCount());
 			}

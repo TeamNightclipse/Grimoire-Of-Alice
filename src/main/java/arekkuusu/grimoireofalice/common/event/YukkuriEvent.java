@@ -57,10 +57,10 @@ public class YukkuriEvent {
 		if(attacker != null && !attacker.world.isRemote && attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker;
 			ItemStack heldItem = player.getHeldItemMainhand();
-			if(!heldItem.isEmpty() || heldItem.getItem() != ModItems.mochi_hammer) {
+			if(!heldItem.isEmpty() || heldItem.getItem() != ModItems.MOCHI_HAMMER) {
 				heldItem = player.getHeldItemOffhand();
 			}
-			if(!heldItem.isEmpty() && heldItem.getItem() == ModItems.mochi_hammer && heldItem.getItem() instanceof IItemData) {
+			if(!heldItem.isEmpty() && heldItem.getItem() == ModItems.MOCHI_HAMMER && heldItem.getItem() instanceof IItemData) {
 				IItemData item = (IItemData) heldItem.getItem();
 				item.setData(heldItem, (item.getData(heldItem) + 1));
 			}
@@ -72,13 +72,13 @@ public class YukkuriEvent {
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-			if(!stack.isEmpty() && stack.getItem() == ModItems.kanako_shimenawa) {
+			if(!stack.isEmpty() && stack.getItem() == ModItems.KANAKO_SHIMENAWA) {
 				if((event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion()) {
 					event.setCanceled(true);
 				}
 				return;
 			}
-			if(isUsingItem(player, ModItems.nimble_fabric)) {
+			if(isUsingItem(player, ModItems.NIMBLE_FABRIC)) {
 				event.setCanceled(true);
 				return;
 			}
@@ -92,20 +92,20 @@ public class YukkuriEvent {
 	public void livingHurtEvent(LivingHurtEvent event) {
 		if(event.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-			if(isUsingItem(player, ModItems.nimble_fabric) || event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)
-					|| player.getCooldownTracker().hasCooldown(ModItems.send_off_lantern)) {
+			if(isUsingItem(player, ModItems.NIMBLE_FABRIC) || event.getSource() == DamageSource.FALL && isGoheiMode(player, GoheiMode.PASSIVE)
+					|| player.getCooldownTracker().hasCooldown(ModItems.SEND_OFF_LANTERN)) {
 				event.setCanceled(true);
 				return;
 			}
 
-			if(player.inventory.hasItemStack(new ItemStack(ModItems.substitute_jizo))) {
+			if(player.inventory.hasItemStack(new ItemStack(ModItems.SUBSTITUTE_JIZO))) {
 
 				@SuppressWarnings("ConstantConditions") //Liar
 				IItemHandler capability = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
 				for(int i = 0; i < capability.getSlots(); i++) {
 					ItemStack stack = capability.getStackInSlot(i);
-					if(!stack.isEmpty() && stack.getItem() == ModItems.substitute_jizo) {
+					if(!stack.isEmpty() && stack.getItem() == ModItems.SUBSTITUTE_JIZO) {
 						capability.extractItem(i, 1, false);
 						player.playSound(SoundEvents.BLOCK_GRASS_BREAK, 0.5F, player.world.rand.nextFloat() * 0.1F + 0.9F);
 						event.setCanceled(true);
@@ -115,7 +115,7 @@ public class YukkuriEvent {
 			}
 
 			ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-			if(!stack.isEmpty() && stack.getItem() == ModItems.kanako_shimenawa && (
+			if(!stack.isEmpty() && stack.getItem() == ModItems.KANAKO_SHIMENAWA && (
 					(event.getSource().isProjectile() && !event.getSource().isMagicDamage()) || event.getSource().isExplosion())) {
 				event.setCanceled(true);
 			}
@@ -125,7 +125,7 @@ public class YukkuriEvent {
 
 			if(event.getEntityLiving() instanceof EntityDragon && event.getSource().isProjectile()
 					&& rarity > 0 && event.getEntityLiving().world.rand.nextInt(rarity) == 0) {
-				event.getEntityLiving().dropItem(ModItems.dragon_scale, 1);
+				event.getEntityLiving().dropItem(ModItems.DRAGON_SCALE, 1);
 			}
 		}
 	}
@@ -134,10 +134,10 @@ public class YukkuriEvent {
 	public void onLivingDropsEvent(LivingDropsEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
 		if(entity instanceof EntityDragon && ConfigHandler.grimoireOfAlice.features.swordOfKusanagi) {
-			event.getDrops().add(createDrop(ModItems.sword_of_kusanagi, entity));
+			event.getDrops().add(createDrop(ModItems.SWORD_OF_KUSANAGI, entity));
 		}
 		else if(entity instanceof EntityChicken && event.getEntity().getEntityWorld().rand.nextInt(200) == 1) {
-			event.getDrops().add(createDrop(ModItems.swallow_egg, entity));
+			event.getDrops().add(createDrop(ModItems.SWALLOW_EGG, entity));
 		}
 	}
 
@@ -157,7 +157,7 @@ public class YukkuriEvent {
 	}
 
 	private static boolean isGoheiMode(EntityPlayer player, GoheiMode mode) {
-		ItemStack stack = new ItemStack(ModItems.hakurei_gohei);
+		ItemStack stack = new ItemStack(ModItems.HAKUREI_GOHEI);
 		return hasItemStack(player.inventory.mainInventory, stack) && getValidMode(player.inventory.mainInventory, stack, mode);
 	}
 

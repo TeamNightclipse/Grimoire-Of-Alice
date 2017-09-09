@@ -10,8 +10,6 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
-import arekkuusu.grimoireofalice.common.item.ItemBase;
-import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.katsstuff.danmakucore.data.Quat;
@@ -125,7 +123,7 @@ public class ItemNuclearRod extends ItemBase implements IOwnedBy {
 		ItemStack boots = player.inventory.armorInventory.get(0);
 		ItemStack body = player.inventory.armorInventory.get(2);
 
-		return !boots.isEmpty() && !body.isEmpty() && boots.getItem() == ModItems.nuclear_boots && body.getItem() == ModItems.utsuho_wings;
+		return !boots.isEmpty() && !body.isEmpty() && boots.getItem() == ModItems.NUCLEAR_BOOTS && body.getItem() == ModItems.UTSUHO_WINGS;
 	}
 
 	@Override

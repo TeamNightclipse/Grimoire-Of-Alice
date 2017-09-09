@@ -52,7 +52,7 @@ public class FormLeaf extends FormGeneric {
 				float g = (color >> 8 & 255) / 255.0F;
 				float b = (color & 255) / 255.0F;
 
-				ItemStack stack = new ItemStack(ModItems.leaf_item);
+				ItemStack stack = new ItemStack(ModItems.LEAF);
 				RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 				GlStateManager.enableRescaleNormal();

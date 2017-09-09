@@ -30,27 +30,27 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public class AchievementEvents {
 
-	public static final Achievement ALTAR = new Achievement("achievement.craftAltar", "craftAltar", 0, 0, ModBlocks.crafting_altar, AchievementList.OPEN_INVENTORY);
-	public static final Achievement BUDDHA_BOWL = new Achievement("achievement.craftBuddhaBowl", "craftBuddhaBowl", 0, -5, ModItems.budah_bowl, ALTAR);
-	public static final Achievement JEWELED_HOURAI = new Achievement("achievement.craftJeweledHourai", "craftJeweledHourai", 0, 3, ModItems.jeweled_hourai, ALTAR);
-	public static final Achievement FIRE_ROBE = new Achievement("achievement.craftFireRobe", "craftFireRobe", -4, 0, ModItems.fire_robe, ALTAR);
-	public static final Achievement DRAGON_JEWEL = new Achievement("achievement.craftDragonJewel", "craftDragonJewel", 2, 1, ModItems.dragon_jewel, ALTAR);
-	public static final Achievement COWRIE_SHELL = new Achievement("achievement.craftCowrieShell", "craftCowrieShell", -3, -2, ModItems.swallow_cowrie_shell, ALTAR);
-	public static final Achievement AJA_STONE = new Achievement("achievement.craftAyaStone", "craftAyaStone", -2, 2, ModItems.red_stone_of_aja, ALTAR);
-	public static final Achievement GOLDEN_CEILING = new Achievement("achievement.craftGoldenCeiling", "craftGoldenCeiling", 1, -1, ModItems.seamless_ceiling_of_kinkakuji, ALTAR);
-	public static final Achievement ELIXIR = new Achievement("achievement.craftElixir", "craftElixir", 2, -3, ModItems.hourai_elixir, ALTAR);
+	public static final Achievement ALTAR = new Achievement("achievement.craftAltar", "craftAltar", 0, 0, ModBlocks.CRAFTING_ALTAR, AchievementList.OPEN_INVENTORY);
+	public static final Achievement BUDDHA_BOWL = new Achievement("achievement.craftBuddhaBowl", "craftBuddhaBowl", 0, -5, ModItems.BUDAH_BOWL, ALTAR);
+	public static final Achievement JEWELED_HOURAI = new Achievement("achievement.craftJeweledHourai", "craftJeweledHourai", 0, 3, ModItems.JEWELED_HOURAI, ALTAR);
+	public static final Achievement FIRE_ROBE = new Achievement("achievement.craftFireRobe", "craftFireRobe", -4, 0, ModItems.FIRE_ROBE, ALTAR);
+	public static final Achievement DRAGON_JEWEL = new Achievement("achievement.craftDragonJewel", "craftDragonJewel", 2, 1, ModItems.DRAGON_JEWEL, ALTAR);
+	public static final Achievement COWRIE_SHELL = new Achievement("achievement.craftCowrieShell", "craftCowrieShell", -3, -2, ModItems.SWALLOW_COWRIE_SHELL, ALTAR);
+	public static final Achievement AJA_STONE = new Achievement("achievement.craftAyaStone", "craftAyaStone", -2, 2, ModItems.RED_STONE_OF_AJA, ALTAR);
+	public static final Achievement GOLDEN_CEILING = new Achievement("achievement.craftGoldenCeiling", "craftGoldenCeiling", 1, -1, ModItems.SEAMLESS_CEILING_OF_KINKAKUJI, ALTAR);
+	public static final Achievement ELIXIR = new Achievement("achievement.craftElixir", "craftElixir", 2, -3, ModItems.HOURAI_ELIXIR, ALTAR);
 
 	public static void init() {
 		AliceAPI.addVanillaAchievement(ALTAR);
 
-		AliceAPI.addAltarAchievement(ModItems.budah_bowl, BUDDHA_BOWL.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.fire_robe, FIRE_ROBE.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.dragon_jewel, DRAGON_JEWEL.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.swallow_cowrie_shell, COWRIE_SHELL.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.seamless_ceiling_of_kinkakuji, GOLDEN_CEILING.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.hourai_elixir, ELIXIR.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.jeweled_hourai, JEWELED_HOURAI.setSpecial());
-		AliceAPI.addAltarAchievement(ModItems.red_stone_of_aja, AJA_STONE.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.BUDAH_BOWL, BUDDHA_BOWL.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.FIRE_ROBE, FIRE_ROBE.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.DRAGON_JEWEL, DRAGON_JEWEL.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.SWALLOW_COWRIE_SHELL, COWRIE_SHELL.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.SEAMLESS_CEILING_OF_KINKAKUJI, GOLDEN_CEILING.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.HOURAI_ELIXIR, ELIXIR.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.JEWELED_HOURAI, JEWELED_HOURAI.setSpecial());
+		AliceAPI.addAltarAchievement(ModItems.RED_STONE_OF_AJA, AJA_STONE.setSpecial());
 
 		List<Achievement> achievementList = new ArrayList<>();
 		achievementList.addAll(AliceAPI.getAltarAchievements().values());

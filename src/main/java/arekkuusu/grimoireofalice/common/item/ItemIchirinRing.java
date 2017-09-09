@@ -89,7 +89,7 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(isWearingUnzan(player)) {
 				if(isStand(player) && player.isSneaking()) {
-					player.getCooldownTracker().setCooldown(ModItems.ichirin_unzan, 125);
+					player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
 					player.getCooldownTracker().setCooldown(this, 125);
 					player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
 				}
@@ -134,12 +134,12 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 
 	private static boolean isHoldingRing(EnumHand hand, EntityPlayer player) {
 		ItemStack main = player.getHeldItem(hand);
-		return !main.isEmpty() && main.getItem() == ModItems.ichirin_ring;
+		return !main.isEmpty() && main.getItem() == ModItems.ICHIRIN_RING;
 	}
 
 	private static boolean isWearingUnzan(EntityPlayer player) {
 		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
-		return !stack.isEmpty() && stack.getItem() == ModItems.ichirin_unzan;
+		return !stack.isEmpty() && stack.getItem() == ModItems.ICHIRIN_UNZAN;
 	}
 
 	@Override

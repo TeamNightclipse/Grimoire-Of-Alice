@@ -67,7 +67,7 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 		else {
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
 		}
-		return stack.isEmpty() ? new ItemStack(ModItems.ibaraki_box_empty) : stack;
+		return stack.isEmpty() ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
 	}
 
 	@Override
