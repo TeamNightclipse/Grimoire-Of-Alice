@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.core.helper;
 
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import arekkuusu.grimoireofalice.common.lib.LibMod;
@@ -17,12 +18,15 @@ import net.minecraftforge.fml.common.FMLLog;
 @SuppressWarnings("unused")
 public class LogHelper {
 
-	private static Logger log;
+	private static Logger log = LogManager.getLogger(LibMod.MOD_ID);
+	private static boolean setLog = false;
 
 	public static void setLog(Logger log) {
-		if(LogHelper.log != null) {
+		if(setLog) {
 			throw new IllegalStateException("Logger has already been set");
 		}
+		setLog = true;
+		LogHelper.log = log;
 	}
 
 	private static void log(Level loglevel, Object object) {
