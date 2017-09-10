@@ -85,6 +85,5 @@ public class ItemShroomPowder extends ItemBase {
 	@Override
 	public void registerModel() {
 		ModelHandler.registerModel(this, EnumDyeColor.class);
-		ModelHandler.registerModel(this, 16, new ModelResourceLocation(this.getRegistryName() + "_soup", "inventory"));
 	}
 }
