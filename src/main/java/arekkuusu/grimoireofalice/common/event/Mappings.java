@@ -30,7 +30,6 @@ public class Mappings {
 	}
 
 	public static void init() {
-		addItem("grimoirebook", ModItems.GRIMOIRE_BOOK);
 		addItem("soldifiedpaper", ModItems.SOLIDIFIED_PAPER);
 		addItem("gloriousnipponsteel", ModItems.TAMAHAGANE_STEEL);
 		addItem("shimenawarope", ModItems.SHIMENAWA_ROPE);

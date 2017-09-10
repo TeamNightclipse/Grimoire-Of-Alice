@@ -100,8 +100,6 @@ public class GoAJEIPlugin extends BlankModPlugin {
 
 		addDescription(registry, new ItemStack(ModItems.GRILLED_LAMPREY), "grimoire.jei.descriptions.grilled_lamprey", LINE);
 
-		addDescription(registry, new ItemStack(ModItems.GRIMOIRE_BOOK), "grimoire.jei.descriptions.grimoire_book", LINE);
-
 		addDescription(registry, new ItemStack(ModItems.HAKUREI_GOHEI), "grimoire.jei.descriptions.hakurei_gohei", LINE
 				, "grimoire.jei.descriptions_body.hakurei_gohei"
 				, "grimoire.jei.descriptions_passive.hakurei_gohei"

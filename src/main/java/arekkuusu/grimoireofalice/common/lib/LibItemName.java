@@ -11,7 +11,6 @@ package arekkuusu.grimoireofalice.common.lib;
 public class LibItemName {
 
 	//Item
-	public static final String GRIMOIRE_BOOK = "grimoire_book";
 	public static final String PASTE = "paste";
 	public static final String SOLIDIFIED_PAPER = "solidified_paper";
 	public static final String TAMAHAGANE_STEEL = "tamahagane_steel";

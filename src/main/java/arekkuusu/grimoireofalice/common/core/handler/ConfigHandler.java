@@ -112,8 +112,6 @@ public class ConfigHandler {
 				public boolean gapFoldingUmbrella = true;
 				@Comment("Can players craft the ghost dipper?")
 				public boolean ghostDipper = true;
-				@Comment("Can players craft the grimoire book?")
-				public boolean grimoireBook = false;
 				@Comment("Can players craft the hakurei gohei?")
 				public boolean hakureiGohei = true;
 				@Comment("Can players craft the ibaraki box?")

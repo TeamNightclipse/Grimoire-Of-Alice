@@ -93,9 +93,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		//-------------Patchouli Knowledge-------------//
 		addItem(ModItems.PATCHY_BOOK);
 
-		//-------------Alice Margatroid-------------//
-		addItem(ModItems.GRIMOIRE_BOOK);
-
 		//-------------Kosuzu Motoori-------------//
 		addItem(ModItems.YOUKAI_BOOK);
 

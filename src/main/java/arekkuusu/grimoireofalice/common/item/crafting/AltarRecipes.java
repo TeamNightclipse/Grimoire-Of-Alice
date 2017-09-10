@@ -158,12 +158,6 @@ public final class AltarRecipes {
 					, "stickWood", "stickWood", Items.BOWL, Items.BOWL, new ItemStack(Blocks.SPONGE, 1, 1), new ItemStack(Blocks.SPONGE, 1, 1), Blocks.SPONGE, Blocks.SPONGE);
 		}
 
-		if(ConfigHandler.grimoireOfAlice.crafting.altar.grimoireBook) {
-			ItemStack item = new ItemStack(ModItems.SHROOM_POWDER, 1, OreDictionary.WILDCARD_VALUE);
-			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.GRIMOIRE_BOOK)
-					, Items.WRITABLE_BOOK, ModItems.SOLIDIFIED_PAPER, ModItems.SOLIDIFIED_PAPER, ModItems.SOLIDIFIED_PAPER, item, item, item, item, item, item);
-		}
-
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.hakureiGohei) {
 			AliceAPI.registerAltarRecipe(new RecipeHakurei());
 		}

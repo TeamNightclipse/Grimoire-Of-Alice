@@ -28,8 +28,6 @@ public final class ModItems {
 
 	private static final Item PLACE_HOLDER = new Item();
 	//--------------------------------Items--------------------------------//
-	@ObjectHolder(LibItemName.GRIMOIRE_BOOK)
-	public static final Item GRIMOIRE_BOOK = PLACE_HOLDER;
 	@ObjectHolder(LibItemName.PASTE)
 	public static final Item PASTE = PLACE_HOLDER;
 	@ObjectHolder(LibItemName.SOLIDIFIED_PAPER)
@@ -284,7 +282,6 @@ public final class ModItems {
 		registry.register(new ItemShimenawaRope());
 		registry.register(new ItemTimeOrb());
 		registry.register(new ItemBase(LibItemName.MASK));
-		registry.register(new ItemGrimoireBook());
 		registry.register(new ItemYoukaiBook());
 		registry.register(new ItemBase(LibItemName.PASTE));
 		registry.register(new ItemBase(LibItemName.SOLIDIFIED_PAPER));
