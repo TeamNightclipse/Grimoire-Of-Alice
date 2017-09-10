@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.event;
 
-import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import net.minecraft.client.renderer.GlStateManager;
@@ -37,7 +37,7 @@ public class MalletClientEvent {
 
 				for(int i = 0; i < 10; ++i) {
 					Random rand = entity.world.rand;
-					ParticleUtil.spawnShinmyoumaruSpark(entity.world,
+					Alice.proxy.spawnShinmyoumaruSpark(entity.world,
 							entity.posX + (rand.nextDouble() - 0.5D) * entity.width,
 							entity.posY + rand.nextDouble() * (entity.height * ((double) scale / 10)),
 							entity.posZ + (rand.nextDouble() - 0.5D) * entity.width,

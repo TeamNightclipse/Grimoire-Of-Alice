@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibBlockName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -36,6 +36,6 @@ public class BlockHihiirokane extends BlockBase {
 		float x = pos.getX() + rand.nextFloat();
 		float y = pos.getY() + rand.nextFloat();
 		float z = pos.getZ() + rand.nextFloat();
-		ParticleUtil.spawnRedGas(world, x, y, z, 0F, 0.1F, 0F);
+		Alice.proxy.spawnRedGas(world, x, y, z, 0F, 0.1F, 0F);
 	}
 }

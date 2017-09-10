@@ -8,7 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
+import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
@@ -45,7 +45,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 		super.onUpdate();
 		if(ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
-				ParticleUtil.spawnShinmyoumaruSpark(world, posX, posY, posZ, 0F, 0.1F, 0F);
+				Alice.proxy.spawnShinmyoumaruSpark(world, posX, posY, posZ, 0F, 0.1F, 0F);
 			}
 		}
 	}

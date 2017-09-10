@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -25,7 +25,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -68,7 +67,7 @@ public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 				double dx = player.posX + vec.x * distance;
 				double dy = player.posY + 2.5 + vec.y * distance;
 				double dz = player.posZ + vec.z * distance;
-				ParticleUtil.spawnNeedleSwing(world, dx, dy, dz, itemRand.nextFloat(), 0F, 0F, 20, 0.5F + itemRand.nextFloat());
+				Alice.proxy.spawnNeedleSwing(world, dx, dy, dz, itemRand.nextFloat(), 0F, 0F, 20, 0.5F + itemRand.nextFloat());
 				world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
 
 				if(!world.isRemote) {

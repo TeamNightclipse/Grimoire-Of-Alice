@@ -31,7 +31,7 @@ public class RedGas extends ParticleBase {
 		}
 
 		particleScale *= rand.nextFloat();
-		particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
+		particleMaxAge = (int) (80.0D / (Math.random() * 0.8D + 0.2D));
 		setAtlas(SpriteLibrary.RED_GAS);
 	}
 

@@ -8,7 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.core;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -24,5 +26,27 @@ public class ServerProxy implements ISidedProxy {
 
 	@Override
 	public void displayRecordText(ITextComponent text) {
+	}
+
+	@Override
+	public void spawnNeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age,
+			float scale) {
+	}
+
+	@Override
+	public void spawnNetherFire(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age,
+			float scale) {
+	}
+
+	@Override
+	public void spawnRedGas(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+	}
+
+	@Override
+	public void spawnRedMist(World world, Entity entity, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+	}
+
+	@Override
+	public void spawnShinmyoumaruSpark(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
 	}
 }

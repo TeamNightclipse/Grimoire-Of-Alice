@@ -18,7 +18,7 @@ import static arekkuusu.grimoireofalice.client.util.ResourceLibrary.TextureLocat
 public final class SpriteLibrary {
 
 	//Particle
-	public static final ResourceLocation NEEDLE_SWING = ResourceLibrary.getAtlas(EFFECT, "needle_swing2");
+	public static final ResourceLocation NEEDLE_SWING = ResourceLibrary.getAtlas(EFFECT, "needle_swing");
 	public static final ResourceLocation NETHER_FIRE = ResourceLibrary.getAtlas(EFFECT, "nether_fire");
 	public static final ResourceLocation RED_GAS = ResourceLibrary.getAtlas(EFFECT, "red_gas");
 	public static final ResourceLocation RED_MIST = ResourceLibrary.getAtlas(EFFECT, "red_mist");

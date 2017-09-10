@@ -8,6 +8,11 @@
  */
 package arekkuusu.grimoireofalice.client;
 
+import arekkuusu.grimoireofalice.client.effect.NeedleSwing;
+import arekkuusu.grimoireofalice.client.effect.NetherFire;
+import arekkuusu.grimoireofalice.client.effect.RedGas;
+import arekkuusu.grimoireofalice.client.effect.RedMist;
+import arekkuusu.grimoireofalice.client.effect.ShinmyoumaruSpark;
 import arekkuusu.grimoireofalice.client.event.MalletClientEvent;
 import arekkuusu.grimoireofalice.client.render.ModRenders;
 import arekkuusu.grimoireofalice.client.render.ParticleRenderer;
@@ -16,10 +21,13 @@ import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
 import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.core.ISidedProxy;
 import arekkuusu.grimoireofalice.common.core.handler.GuiHandler;
+import net.katsstuff.danmakucore.DanmakuCore;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -86,5 +94,55 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void displayRecordText(ITextComponent text) {
 		Minecraft.getMinecraft().ingameGUI.setOverlayMessage(text.getFormattedText(), false);
+	}
+
+	@Override
+	public void spawnNeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale) {
+		if(doParticle()) {
+			NeedleSwing particle = new NeedleSwing(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed, age, scale);
+			DanmakuCore.proxy.addParticle(particle);
+		}
+	}
+
+	@Override
+	public void spawnNetherFire(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale) {
+		if(doParticle()) {
+			NetherFire particle = new NetherFire(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed, age, scale);
+			DanmakuCore.proxy.addParticle(particle);
+		}
+	}
+
+	@Override
+	public void spawnRedGas(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+		if(doParticle()) {
+			RedGas particle = new RedGas(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+			DanmakuCore.proxy.addParticle(particle);
+		}
+	}
+
+	@Override
+	public void spawnRedMist(World world, Entity entity, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+		if(doParticle()) {
+			RedMist particle = new RedMist(world, entity, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+			DanmakuCore.proxy.addParticle(particle);
+		}
+	}
+
+	@Override
+	public void spawnShinmyoumaruSpark(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+		if(doParticle()) {
+			ShinmyoumaruSpark particle = new ShinmyoumaruSpark(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+			DanmakuCore.proxy.addParticle(particle);
+		}
+	}
+
+	public boolean doParticle() {
+		float chance = 1F;
+		if(Minecraft.getMinecraft().gameSettings.particleSetting == 1)
+			chance = 0.6F;
+		else if(Minecraft.getMinecraft().gameSettings.particleSetting == 2)
+			chance = 0.2F;
+
+		return chance == 1F || Math.random() < chance;
 	}
 }

@@ -1,11 +1,10 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
+import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
-import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
@@ -84,7 +83,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 			List<EntityMob> list = living.world.getEntitiesWithinAABB(EntityMob.class, living.getEntityBoundingBox().grow(20));
 			if(!list.isEmpty()) {
 				for(EntityLivingBase entityMob : list) {
-					ParticleUtil.spawnRedMist(living.world, living, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+					Alice.proxy.spawnRedMist(living.world, living, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
 				}
 			}
 		}
