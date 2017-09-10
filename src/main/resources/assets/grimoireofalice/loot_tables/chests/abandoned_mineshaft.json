@@ -6,22 +6,22 @@
       "entries": [
         {
           "type": "item",
-          "name": "grimoireofalice:shroompowder",
+          "name": "grimoireofalice:shroom_powder",
           "weight": 4
         },
         {
           "type": "item",
-          "name": "grimoireofalice:fullpoweritem",
+          "name": "grimoireofalice:full_power_item",
           "weight": 5
         },
         {
           "type": "item",
-          "name": "grimoireofalice:ufored",
+          "name": "grimoireofalice:ufo_red",
           "weight": 5
         },
         {
           "type": "item",
-          "name": "grimoireofalice:staritem",
+          "name": "grimoireofalice:star_item",
           "weight": 5,
           "functions": [
             {

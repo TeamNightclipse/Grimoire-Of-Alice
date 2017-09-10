@@ -8,37 +8,37 @@
       "predicate": {
         "jewels": 0.0
       },
-      "model": "grimoireofalice:item/jeweledhourai4"
+      "model": "grimoireofalice:item/jeweled_hourai_4"
     },
     {
       "predicate": {
         "jewels": 1.0
       },
-      "model": "grimoireofalice:item/jeweledhourai3"
+      "model": "grimoireofalice:item/jeweled_hourai_3"
     },
     {
       "predicate": {
         "jewels": 2.0
       },
-      "model": "grimoireofalice:item/jeweledhourai2"
+      "model": "grimoireofalice:item/jeweled_hourai_2"
     },
     {
       "predicate": {
         "jewels": 3.0
       },
-      "model": "grimoireofalice:item/jeweledhourai1"
+      "model": "grimoireofalice:item/jeweled_hourai_1"
     },
     {
       "predicate": {
         "jewels": 4.0
       },
-      "model": "grimoireofalice:item/jeweledhourai0"
+      "model": "grimoireofalice:item/jeweled_hourai_0"
     },
     {
       "predicate": {
         "jewels": 5.0
       },
-      "model": "grimoireofalice:item/jeweledhouraifull"
+      "model": "grimoireofalice:item/jeweled_hourai_full"
     }
   ]
 }

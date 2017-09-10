@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "grimoireofalice:cherryitem",
+          "name": "grimoireofalice:cherry_item",
           "weight": 3,
           "functions": [
             {
@@ -20,7 +20,7 @@
         },
         {
           "type": "item",
-          "name": "grimoireofalice:faithitem",
+          "name": "grimoireofalice:faith_item",
           "weight": 4,
           "functions": [
             {
@@ -34,7 +34,7 @@
         },
         {
           "type": "item",
-          "name": "grimoireofalice:timeorb",
+          "name": "grimoireofalice:time_orb",
           "weight": 7,
           "functions": [
             {

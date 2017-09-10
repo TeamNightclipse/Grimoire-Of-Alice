@@ -71,6 +71,6 @@
     }
   },
   "textures": {
-    "layer0": "grimoireofalice:items/leaf_item"
+    "layer0": "grimoireofalice:items/leaf"
   }
 }

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "grimoireofalice:faithitem",
+          "name": "grimoireofalice:faith_item",
           "weight": 15,
           "functions": [
             {
@@ -20,7 +20,7 @@
         },
         {
           "type": "item",
-          "name": "grimoireofalice:cattailplant",
+          "name": "grimoireofalice:cattail_plant",
           "weight": 1
         },
         {

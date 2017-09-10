@@ -10,7 +10,9 @@ package arekkuusu.grimoireofalice.common.item;
 
 import java.util.List;
 
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -77,5 +79,12 @@ public class ItemShroomPowder extends ItemBase {
 		for(int i = 0; i < 16; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerModel() {
+		ModelHandler.registerModel(this, EnumDyeColor.class);
+		ModelHandler.registerModel(this, 16, new ModelResourceLocation(this.getRegistryName() + "_soup", "inventory"));
 	}
 }

@@ -6,17 +6,17 @@
       "entries": [
         {
           "type": "item",
-          "name": "grimoireofalice:ufored",
+          "name": "grimoireofalice:ufo_red",
           "weight": 4
         },
         {
           "type": "item",
-          "name": "grimoireofalice:ufoblue",
+          "name": "grimoireofalice:ufo_blue",
           "weight": 5
         },
         {
           "type": "item",
-          "name": "grimoireofalice:ufogreen",
+          "name": "grimoireofalice:ufo_green",
           "weight": 6
         },
         {

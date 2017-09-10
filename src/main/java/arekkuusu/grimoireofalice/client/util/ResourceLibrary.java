@@ -26,7 +26,6 @@ public final class ResourceLibrary {
 	public static final ResourceLocation DOLL_TEXTURE = getTexture(MODEL, "entity/Doll");
 	public static final ResourceLocation DRAGON_JEWEL_TEXTURE = getTexture(MODEL, "entity/magic_circle_0");
 	public static final ResourceLocation WHITE = getTexture(MODEL, "entity/white");
-	public static final ResourceLocation GRIMOIRE_CIRCLE_TEXTURE = getTexture(MODEL, "entity/magic_circle_1");
 	public static final ResourceLocation GRIMOIRE_BOOK = getTexture(MODEL, "entity/magic_book");
 	public static final ResourceLocation ORB_TEXTURE = getTexture(MODEL, "entity/orb");
 	public static final ResourceLocation NETHER_SOUL_TEXTURE = getTexture(MODEL, "entity/leaf");

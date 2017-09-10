@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "grimoireofalice:items/full_power_item"
+    "layer0": "grimoireofalice:items/full_power"
   }
 }
