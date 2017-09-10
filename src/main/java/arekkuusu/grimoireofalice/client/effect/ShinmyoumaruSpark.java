@@ -40,9 +40,4 @@ public class ShinmyoumaruSpark extends ParticleBase {
 	public int getBrightnessForRender(float p_189214_1_) {
 		return 255;
 	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-	}
 }

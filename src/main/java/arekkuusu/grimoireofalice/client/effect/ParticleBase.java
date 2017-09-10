@@ -6,16 +6,14 @@
  ******************************************************************************/
 package arekkuusu.grimoireofalice.client.effect;
 
+import net.katsstuff.danmakucore.client.particle.AbstractParticleGlow;
 import net.katsstuff.danmakucore.client.particle.IGlowParticle;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class ParticleBase extends net.minecraft.client.particle.Particle implements IGlowParticle {
+public class ParticleBase extends AbstractParticleGlow implements IGlowParticle {
 
 	private int layer = 3;
 

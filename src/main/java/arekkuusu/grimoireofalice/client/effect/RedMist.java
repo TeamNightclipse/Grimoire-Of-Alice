@@ -43,7 +43,7 @@ public class RedMist extends ParticleBase {
 	}
 
 	@Override
-	public void onUpdate() {
+	public void onUpdateGlow() {
 		if(entity != null && !entity.isDead) {
 			double dx = posX - entity.posX;
 			double dy = posY - entity.posY - entity.getEyeHeight();

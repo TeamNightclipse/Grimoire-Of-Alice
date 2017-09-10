@@ -33,7 +33,7 @@ public class NeedleSwing extends ParticleBase {
 	}
 
 	@Override
-	public void onUpdate() {
+	public void onUpdateGlow() {
 		if(this.particleAge++ >= this.particleMaxAge) {
 			this.setExpired();
 		}
