@@ -48,10 +48,11 @@ public class ClientProxy implements ISidedProxy {
 	@SubscribeEvent
 	public static void onTextureAtlasSprite(TextureStitchEvent event) {
 		TextureMap map = event.getMap();
-		map.registerSprite(SpriteLibrary.SHINMYOUMARU_SPARKLE.getLocation());
-		map.registerSprite(SpriteLibrary.RED_MIST.getLocation());
-		map.registerSprite(SpriteLibrary.RED_GAS.getLocation());
-		map.registerSprite(SpriteLibrary.NETHER_FIRE.getLocation());
+		map.registerSprite(SpriteLibrary.SHINMYOUMARU_SPARKLE);
+		map.registerSprite(SpriteLibrary.RED_MIST);
+		map.registerSprite(SpriteLibrary.RED_GAS);
+		map.registerSprite(SpriteLibrary.NETHER_FIRE);
+		map.registerSprite(SpriteLibrary.NEEDLE_SWING);
 	}
 
 	//----------------Particle Renderer Start----------------//
@@ -64,11 +65,9 @@ public class ClientProxy implements ISidedProxy {
 
 	@SubscribeEvent
 	public static void onRenderAfterWorld(RenderWorldLastEvent event) {
-		if(Alice.proxy instanceof ClientProxy) {
-			GlStateManager.pushMatrix();
-			PARTICLE_RENDERER.renderAll(event.getPartialTicks());
-			GlStateManager.popMatrix();
-		}
+		GlStateManager.pushMatrix();
+		PARTICLE_RENDERER.renderAll(event.getPartialTicks());
+		GlStateManager.popMatrix();
 	}
 	//----------------Particle Renderer End----------------//
 

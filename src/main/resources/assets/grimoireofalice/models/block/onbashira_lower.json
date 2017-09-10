@@ -2,9 +2,9 @@
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
     "particle": "grimoireofalice:blocks/onbashira",
-    "0": "grimoireofalice:models/block/onbashira_log",
-    "1": "grimoireofalice:models/block/onbashira_log",
-    "2": "grimoireofalice:models/block/onbashira_log_top"
+    "0": "grimoireofalice:model/block/onbashira_log",
+    "1": "grimoireofalice:model/block/onbashira_log",
+    "2": "grimoireofalice:model/block/onbashira_log_top"
   },
   "elements": [
     {

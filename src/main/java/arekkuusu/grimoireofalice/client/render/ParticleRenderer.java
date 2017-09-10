@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.effect.ParticleBase;
+import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.ActiveRenderInfo;
@@ -66,22 +67,25 @@ public class ParticleRenderer {
 			VertexBuffer buffer = tess.getBuffer();
 
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+
+			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 			for(ParticleBase particle : particles) {
 				if(!particle.shouldDisableDepth()) {
-					buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 					particle.renderParticle(buffer, entity, partial, f, f4, f1, f2, f3);
-					tess.draw();
 				}
 			}
+			tess.draw();
 
 			GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+
+			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 			for(ParticleBase particle : particles) {
 				if(particle.shouldDisableDepth()) {
-					buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 					particle.renderParticle(buffer, entity, partial, f, f4, f1, f2, f3);
-					tess.draw();
 				}
 			}
+			tess.draw();
+
 			GlStateManager.enableDepth();
 
 			GlStateManager.depthMask(true);

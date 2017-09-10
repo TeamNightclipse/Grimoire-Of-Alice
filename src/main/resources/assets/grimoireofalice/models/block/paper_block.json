@@ -105,8 +105,8 @@
   },
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "particle": "grimoireofalice:models/block/paper",
-    "0": "grimoireofalice:models/block/paper"
+    "particle": "grimoireofalice:model/block/paper",
+    "0": "grimoireofalice:model/block/paper"
   },
   "elements": [
     {

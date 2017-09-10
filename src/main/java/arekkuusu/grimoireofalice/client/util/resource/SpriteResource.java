@@ -27,16 +27,12 @@ public class SpriteResource {
 
 	public SpriteResource(ResourceLocation location) {
 		this.location = location;
+		Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
 		load();
 	}
 
 	public ResourceLocation getLocation() {
 		return location;
-	}
-
-	public void bind() {
-		if(texture == null || SpriteLoader.reloading) return;
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getGlTextureId());
 	}
 
 	public void bindManager() {

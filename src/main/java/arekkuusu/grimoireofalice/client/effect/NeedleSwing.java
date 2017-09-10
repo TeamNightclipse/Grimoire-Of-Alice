@@ -29,20 +29,7 @@ public class NeedleSwing extends ParticleBase {
 		initScale = particleScale;
 		canCollide = false;
 
-		motionX = xSpeed;
-		motionY = ySpeed;
-		motionZ = zSpeed;
-	}
-
-	@Override
-	public void renderParticle(VertexBuffer buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		int life = Minecraft.getMinecraft().player.ticksExisted;
-		SpriteLibrary.NEEDLE_SWING.bindManager();
-		Tuple<Double, Double> uv = SpriteLibrary.NEEDLE_SWING.getUVFrame(life);
-		double uOffset = SpriteLibrary.NEEDLE_SWING.getU();
-		double u = uv.getFirst();
-
-		renderEasy(buffer, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ, u, u + uOffset, 0, 1);
+		setAtlas(SpriteLibrary.NEEDLE_SWING);
 	}
 
 	@Override

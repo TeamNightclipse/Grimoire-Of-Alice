@@ -106,14 +106,14 @@
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
     "particle": "grimoireofalice:blocks/onbashira",
-    "0": "grimoireofalice:models/block/table",
-    "1": "grimoireofalice:models/block/table_one",
-    "2": "grimoireofalice:models/block/table_top",
-    "3": "grimoireofalice:models/block/table_three",
-    "4": "grimoireofalice:models/block/table_book",
-    "5": "grimoireofalice:models/block/table_two",
-    "6": "grimoireofalice:models/block/potion",
-    "7": "grimoireofalice:models/block/glass"
+    "0": "grimoireofalice:model/block/table",
+    "1": "grimoireofalice:model/block/table_one",
+    "2": "grimoireofalice:model/block/table_top",
+    "3": "grimoireofalice:model/block/table_three",
+    "4": "grimoireofalice:model/block/table_book",
+    "5": "grimoireofalice:model/block/table_two",
+    "6": "grimoireofalice:model/block/potion",
+    "7": "grimoireofalice:model/block/glass"
   },
   "elements": [
     {

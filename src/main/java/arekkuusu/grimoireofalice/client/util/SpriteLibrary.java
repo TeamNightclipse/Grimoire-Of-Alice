@@ -8,10 +8,7 @@
  */
 package arekkuusu.grimoireofalice.client.util;
 
-import arekkuusu.grimoireofalice.client.util.resource.FrameSpriteResource;
-import arekkuusu.grimoireofalice.client.util.resource.SpriteLoader;
-import arekkuusu.grimoireofalice.client.util.resource.SpriteResource;
-import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,13 +18,9 @@ import static arekkuusu.grimoireofalice.client.util.ResourceLibrary.TextureLocat
 public final class SpriteLibrary {
 
 	//Particle
-	public static final FrameSpriteResource NEEDLE_SWING = SpriteLoader.load(EFFECT, "needle_swing", 0, 3);
-	public static final SpriteResource NETHER_FIRE = SpriteLoader.load(EFFECT, "nether_fire");
-	public static final SpriteResource RED_GAS = SpriteLoader.load(EFFECT, "red_gas");
-	public static final SpriteResource RED_MIST = SpriteLoader.load(EFFECT, "red_mist");
-	public static final SpriteResource SHINMYOUMARU_SPARKLE = SpriteLoader.load(EFFECT, "shinmyoumaru_sparkle");
-
-	public static void init() {
-		LogHelper.warn("[NEKO MIKU REIMU]");
-	}
+	public static final ResourceLocation NEEDLE_SWING = ResourceLibrary.getAtlas(EFFECT, "needle_swing2");
+	public static final ResourceLocation NETHER_FIRE = ResourceLibrary.getAtlas(EFFECT, "nether_fire");
+	public static final ResourceLocation RED_GAS = ResourceLibrary.getAtlas(EFFECT, "red_gas");
+	public static final ResourceLocation RED_MIST = ResourceLibrary.getAtlas(EFFECT, "red_mist");
+	public static final ResourceLocation SHINMYOUMARU_SPARKLE = ResourceLibrary.getAtlas(EFFECT, "shinmyoumaru_sparkle");
 }

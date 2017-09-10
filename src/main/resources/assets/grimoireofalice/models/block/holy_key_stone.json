@@ -1,10 +1,10 @@
 {
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "0": "grimoireofalice:models/block/key_stone",
-    "1": "grimoireofalice:models/block/key_stone_one",
-    "2": "grimoireofalice:models/block/key_stone_two",
-    "3": "grimoireofalice:models/block/paper",
+    "0": "grimoireofalice:model/block/key_stone",
+    "1": "grimoireofalice:model/block/key_stone_one",
+    "2": "grimoireofalice:model/block/key_stone_two",
+    "3": "grimoireofalice:model/block/paper",
     "particle": "grimoireofalice:blocks/holy_key_stone_side"
   },
   "elements": [

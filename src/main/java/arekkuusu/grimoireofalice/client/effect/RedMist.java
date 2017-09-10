@@ -9,8 +9,10 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
+import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,12 +29,7 @@ public class RedMist extends ParticleBase {
 
 		particleScale = 16F + rand.nextInt(4);
 		particleMaxAge = (int) entity.getDistance(posX, posY, posZ) * 3;
-	}
-
-	@Override
-	public void renderParticle(VertexBuffer buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		SpriteLibrary.RED_MIST.bindManager();
-		renderEasy(buffer, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ, 0, 1, 0, 1);
+		setAtlas(SpriteLibrary.RED_MIST);
 	}
 
 	@Override

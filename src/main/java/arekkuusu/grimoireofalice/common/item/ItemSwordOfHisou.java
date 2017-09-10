@@ -5,6 +5,7 @@ import arekkuusu.grimoireofalice.client.effect.ParticleUtil;
 import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
+import arekkuusu.grimoireofalice.common.core.helper.LogHelper;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;

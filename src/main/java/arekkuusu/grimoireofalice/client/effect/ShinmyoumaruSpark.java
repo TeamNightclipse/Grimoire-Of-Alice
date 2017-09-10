@@ -10,8 +10,6 @@ package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
 import net.katsstuff.danmakucore.helper.MathUtil;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -30,12 +28,7 @@ public class ShinmyoumaruSpark extends ParticleBase {
 		particleScale = 0.4F * rand.nextFloat();
 		particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
 		particleGravity = 0;
-	}
-
-	@Override
-	public void renderParticle(VertexBuffer buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		SpriteLibrary.SHINMYOUMARU_SPARKLE.bindManager();
-		renderEasy(buffer, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ, 0, 1, 0, 1);
+		setAtlas(SpriteLibrary.SHINMYOUMARU_SPARKLE);
 	}
 
 	@Override

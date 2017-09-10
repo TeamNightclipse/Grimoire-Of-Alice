@@ -14,10 +14,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-/**
- * Created by <Arekkuusu> on 23/07/2017.
- * It's distributed as part of Solar.
- */
 public class ParticleBase extends net.minecraft.client.particle.Particle {
 
 	private int layer = 3;
@@ -60,8 +56,7 @@ public class ParticleBase extends net.minecraft.client.particle.Particle {
 	}
 
 	public void setAtlas(ResourceLocation location) {
-		TextureAtlasSprite atlasSprite = Minecraft.getMinecraft().getTextureMapBlocks()
-				.getAtlasSprite(location.toString());
+		TextureAtlasSprite atlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString());
 		layer = 1;
 		setParticleTexture(atlasSprite);
 	}

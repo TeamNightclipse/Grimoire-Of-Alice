@@ -9,8 +9,6 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -30,17 +28,7 @@ public class NetherFire extends ParticleBase {
 		motionX = xSpeed;
 		motionY = ySpeed;
 		motionZ = zSpeed;
-	}
-
-	@Override
-	public void renderParticle(VertexBuffer buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
-		SpriteLibrary.NETHER_FIRE.bindManager();
-		renderEasy(buffer, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ, 0, 1, 0, 1);
-	}
-
-	@Override
-	public int getFXLayer() {
-		return 1;
+		setAtlas(SpriteLibrary.NETHER_FIRE);
 	}
 
 	@Override

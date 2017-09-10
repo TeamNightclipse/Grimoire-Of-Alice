@@ -14,12 +14,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/**
- * Created by <Arekkuusu> on 27/07/2017.
- * It's distributed as part of Solar.
- */
-@SuppressWarnings({"MethodCallSideOnly", "LocalVariableDeclarationSideOnly", "VariableUseSideOnly", "NewExpressionSideOnly"})
-public class ParticleUtil { //A cLaSs ANnOtAtED wItH @SIdEOnLy cAN oNLy Be uSEd iN oThER mAtChIng aNnotAteD cLaSses aNd mEtHodS
+@SideOnly(Side.CLIENT)
+public class ParticleUtil {
 
 	public static void spawnNeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale) {
 		if(doParticle()) {
@@ -58,8 +54,6 @@ public class ParticleUtil { //A cLaSs ANnOtAtED wItH @SIdEOnLy cAN oNLy Be uSEd 
 
 	@SideOnly(Side.CLIENT)
 	private static boolean doParticle() {
-		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) return false;
-
 		float chance = 1F;
 		if(Minecraft.getMinecraft().gameSettings.particleSetting == 1)
 			chance = 0.6F;
