@@ -41,16 +41,16 @@ public class AppendItemFlavor implements ItemFlavor {
 	@Override
 	public List<FormattedString> shiftFlavor(ItemStack stack, EntityPlayer player) {
 		ImmutableList.Builder<FormattedString> b = ImmutableList.builder();
-		b.addAll(first.commonFlavor(stack, player));
-		b.addAll(second.commonFlavor(stack, player));
+		b.addAll(first.shiftFlavor(stack, player));
+		b.addAll(second.shiftFlavor(stack, player));
 		return b.build();
 	}
 
 	@Override
 	public List<FormattedString> debugFlavor(ItemStack stack, EntityPlayer player) {
 		ImmutableList.Builder<FormattedString> b = ImmutableList.builder();
-		b.addAll(first.commonFlavor(stack, player));
-		b.addAll(second.commonFlavor(stack, player));
+		b.addAll(first.debugFlavor(stack, player));
+		b.addAll(second.debugFlavor(stack, player));
 		return b.build();
 	}
 

@@ -43,8 +43,9 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 
 	public ItemSwordOfHisou(ToolMaterial material) {
 		super(material, LibItemName.HISOU_SWORD, ItemFlavor.simpleBuilder().common(
-				FormattedString.withItalics(WHITE, "grimoire.tooltip.hisou_sword_header.name")).shift(
-				FormattedString.withItalics("grimoire.tooltip.hisou_sword_description_top.name")).effect(true).rarity(EPIC).build());
+				FormattedString.withItalics(WHITE, "grimoire.tooltip.hisou_sword_header.name"),
+				FormattedString.withItalics("grimoire.tooltip.hisou_sword_description_top.name")
+		).effect(true).rarity(EPIC).build());
 		setNoRepair();
 	}
 

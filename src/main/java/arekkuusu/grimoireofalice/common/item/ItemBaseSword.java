@@ -8,15 +8,25 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.item.ItemSword;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBaseSword extends ItemSword {
+public class ItemBaseSword extends ItemSword implements IModel {
 
 	public ItemBaseSword(ToolMaterial material, String id) {
 		super(material);
 		setRegistryName(id);
 		setUnlocalizedName(id);
 		setCreativeTab(Alice.CREATIVE_TAB);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }

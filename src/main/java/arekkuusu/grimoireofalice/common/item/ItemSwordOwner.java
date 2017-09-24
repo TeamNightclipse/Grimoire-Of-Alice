@@ -29,7 +29,7 @@ public class ItemSwordOwner extends ItemBaseSwordFlavored {
 	public static final String OWNER_TAG = "GrimoireOwner";
 
 	public ItemSwordOwner(ToolMaterial material, String id, ItemFlavor flavor) {
-		super(material, id, flavor.append(ComplexItemFlavor.of((stack, player) -> {
+		super(material, id, flavor.append(ComplexItemFlavor.builder().shift((stack, player) -> {
 			if(stack.hasTagCompound()) {
 				UUID ownerUuid = getOwnerUUID(stack);
 				if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
@@ -38,7 +38,7 @@ public class ItemSwordOwner extends ItemBaseSwordFlavored {
 			}
 
 			return ImmutableList.of();
-		}), false, false));
+		}).build(), true, true));
 	}
 
 	@SuppressWarnings("ConstantConditions")

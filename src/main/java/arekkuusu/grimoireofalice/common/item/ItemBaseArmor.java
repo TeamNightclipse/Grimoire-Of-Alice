@@ -8,13 +8,17 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBaseArmor extends ItemArmor {
+public class ItemBaseArmor extends ItemArmor implements IModel {
 
 	public ItemBaseArmor(ArmorMaterial materialIn, int dmg, String id, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, dmg, equipmentSlotIn);
@@ -26,5 +30,11 @@ public class ItemBaseArmor extends ItemArmor {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }

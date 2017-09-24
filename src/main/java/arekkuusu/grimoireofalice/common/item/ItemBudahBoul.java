@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.Alice;
 import com.google.common.collect.ImmutableSet;
 
@@ -34,7 +36,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBudahBoul extends ItemTool implements IOwnedBy {
+public class ItemBudahBoul extends ItemTool implements IOwnedBy, IModel {
 
 	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.ROCK, Material.IRON, Material.IRON, Material.GLASS,
 			Material.PISTON, Material.ANVIL, Material.CIRCUITS, Material.WOOD, Material.GOURD, Material.PLANTS, Material.VINE, Material.GRASS,
@@ -111,5 +113,11 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy {
 	@Override
 	public TouhouCharacter character(ItemStack stack) {
 		return TouhouCharacter.KAGUYA_HOURAISAN;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }

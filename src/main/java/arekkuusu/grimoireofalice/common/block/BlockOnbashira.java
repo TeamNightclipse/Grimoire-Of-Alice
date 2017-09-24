@@ -24,6 +24,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -177,19 +178,20 @@ public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		/*TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(state.getValue(PART) == Part.LOWER ? pos.up(3) : pos);
-		if(tile != null) {
-			if(!world.isRemote) {
+		if(hasTileEntity(state)) {
+			TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
+
+			if(tile != null && !world.isRemote) {
 				ItemStack output = tile.getItemStack();
 				if(!output.isEmpty()) {
-					EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
-					if(player != null && !player.capabilities.isCreativeMode) {
-						ItemHandlerHelper.giveItemToPlayer(player, output);
-					}
+					EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
+					item.setPickupDelay(40);
+
+					world.spawnEntity(item);
 				}
 			}
 			world.removeTileEntity(pos);
-		}*/
+		}
 	}
 
 	@Override

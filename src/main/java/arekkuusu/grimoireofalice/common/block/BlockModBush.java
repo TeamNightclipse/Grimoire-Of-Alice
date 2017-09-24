@@ -8,12 +8,16 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.Alice;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockModBush extends BlockBush {
+public class BlockModBush extends BlockBush implements IModel {
 
 	public BlockModBush(String id, Material material) {
 		super(material);
@@ -27,4 +31,9 @@ public class BlockModBush extends BlockBush {
 		return blockState.getBaseState();
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
+	}
 }

@@ -72,8 +72,9 @@ public class Alice {
 
 	@EventHandler
 	public void serverClosing(FMLServerStoppedEvent event) {
-		LogHelper.info("Deep Voice, do you have an answer? Doesn't matter, we must know");
-		LogHelper.info("");
+		LogHelper.info("Deep Voice, do you have an answer...?");
+		LogHelper.info("Yes, but you're not gonna like it...");
+		LogHelper.info("Doesn't matter! We must know!");
 		LogHelper.info("Alright...");
 		LogHelper.info("The answer to the ultimate question, of life, the universe and everything, is...");
 		LogHelper.info(42);

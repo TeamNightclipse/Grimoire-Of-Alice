@@ -23,7 +23,7 @@ public final class ResourceLibrary {
 
 	public static final ResourceLocation BARRIER_TEXTURE = getTexture(MODEL, "entity/barrier");
 	public static final ResourceLocation CAMERA_SQUARE_TEXTURE = getTexture(MODEL, "entity/camera_square");
-	public static final ResourceLocation DOLL_TEXTURE = getTexture(MODEL, "entity/Doll");
+	public static final ResourceLocation DOLL_TEXTURE = getTexture(MODEL, "entity/doll");
 	public static final ResourceLocation DRAGON_JEWEL_TEXTURE = getTexture(MODEL, "entity/magic_circle_0");
 	public static final ResourceLocation WHITE = getTexture(MODEL, "entity/white");
 	public static final ResourceLocation GRIMOIRE_BOOK = getTexture(MODEL, "entity/magic_book");
@@ -55,15 +55,15 @@ public final class ResourceLibrary {
 	public static final ResourceLocation FUKU_NO_KAMI_MASK = getTexture(MODEL, "armor/fuku_no_kami_mask");
 	public static final ResourceLocation HANNYA_MASK = getTexture(MODEL, "armor/hannya_mask");
 	public static final ResourceLocation HYOTTOKO_MASK = getTexture(MODEL, "armor/hyottoko_mask");
-	public static final ResourceLocation KOKOROS_MASKS = getTexture(MODEL, "armor/kokoro_masks_layer_1");
+	public static final ResourceLocation KOKOROS_MASKS = getTexture(MODEL, "armor/kokoro_masks");
 	public static final ResourceLocation KOOMOTE_MASK = getTexture(MODEL, "armor/koomote_mask");
 	public static final ResourceLocation MASK_OF_HOPE = getTexture(MODEL, "armor/mask_of_hope");
 	public static final ResourceLocation MONKEY_MASK = getTexture(MODEL, "armor/monkey_mask");
 	public static final ResourceLocation RAIDEN_MASK = getTexture(MODEL, "armor/raiden_mask");
 	public static final ResourceLocation UBA_MASK = getTexture(MODEL, "armor/uba_mask");
-	public static final ResourceLocation ICHIRIN_UNZAN = getTexture(MODEL, "armor/unzan_model");
+	public static final ResourceLocation ICHIRIN_UNZAN = getTexture(MODEL, "armor/ichirin_unzan");
 	public static final ResourceLocation FIRE_ROBE = getTexture(MODEL, "armor/fire_robe");
-	public static final ResourceLocation KANAKO_SHIMENAWA = getTexture(MODEL, "armor/kanako_aura");
+	public static final ResourceLocation KANAKO_SHIMENAWA = getTexture(MODEL, "armor/kanako_shimenawa");
 	public static final ResourceLocation TOYOSATOMIMI_HAT = getTexture(MODEL, "armor/toyosatomimi_hat");
 	public static final ResourceLocation TOYOSATOMIMI_CLOAK = getTexture(MODEL, "armor/toyosatomimi_cloak");
 	public static final ResourceLocation UTSUHO_WINGS = getTexture(MODEL, "armor/utsuho_wings");
@@ -74,7 +74,7 @@ public final class ResourceLibrary {
 
 	//GUI
 	public static final ResourceLocation POTION_TEXTURES = getTexture(GUI,"potions");
-	public static final ResourceLocation[] BOOK_GUI_TEXTURES = ResourceBuilder.toArray(9, "guide_", name ->
+	public static final ResourceLocation[] BOOK_GUI_TEXTURES = ResourceBuilder.toArray(10, "guide/guide_", name ->
 			getTexture(GUI, name)
 	);
 

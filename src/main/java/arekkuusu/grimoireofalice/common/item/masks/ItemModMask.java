@@ -8,6 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
+import arekkuusu.grimoireofalice.client.util.helper.IModel;
+import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
 import arekkuusu.grimoireofalice.common.Alice;
 import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
 import net.katsstuff.danmakucore.item.IOwnedBy;
@@ -23,7 +25,7 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
+public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy, IModel {
 
 	public ItemModMask(ArmorMaterial material, int dmg, String id) {
 		super(material, dmg, EntityEquipmentSlot.HEAD);
@@ -72,5 +74,11 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy {
 	@Override
 	public TouhouCharacter character(ItemStack stack) {
 		return TouhouCharacter.HATA_NO_KOKORO;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelHandler.registerModel(this, 0);
 	}
 }

@@ -208,7 +208,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
-		return I18n.format("item.hakureigohei.name") + " :"
+		return I18n.format("item.hakurei_gohei.name") + " :"
 				+ I18n.format("grimoire.tooltip.hakurei_gohei_mode_" + getType(stack).toString() + ".name");
 	}
 

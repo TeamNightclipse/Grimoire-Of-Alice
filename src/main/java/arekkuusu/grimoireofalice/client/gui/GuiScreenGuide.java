@@ -44,7 +44,7 @@ public class GuiScreenGuide extends GuiScreen {
 			getText("grimoire.gui.book_9")
 	);
 
-	private static final int BOOK_TOTAL_PAGES = 10;
+	private static final int BOOK_TOTAL_PAGES = 9;
 	private int currPage = 0;
 	private GuiButton buttonDone;
 	private NextPageButton buttonNextPage;
@@ -78,8 +78,8 @@ public class GuiScreenGuide extends GuiScreen {
 
 	@Override
 	public void updateScreen() {
-		buttonDone.visible = currPage == BOOK_TOTAL_PAGES - 1;
-		buttonNextPage.visible = currPage < BOOK_TOTAL_PAGES - 1;
+		buttonDone.visible = currPage == BOOK_TOTAL_PAGES;
+		buttonNextPage.visible = currPage < BOOK_TOTAL_PAGES;
 		buttonPreviousPage.visible = currPage > 0;
 	}
 
@@ -89,7 +89,7 @@ public class GuiScreenGuide extends GuiScreen {
 			mc.displayGuiScreen(null);
 		}
 		else if(parButton == buttonNextPage) {
-			if(currPage < BOOK_TOTAL_PAGES - 1) {
+			if(currPage < BOOK_TOTAL_PAGES) {
 				++currPage;
 			}
 		}
