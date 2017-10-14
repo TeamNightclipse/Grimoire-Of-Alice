@@ -2,7 +2,9 @@ package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelStopWatch;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
+import arekkuusu.grimoireofalice.client.util.ShaderLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -29,6 +31,14 @@ public class RenderStopWatch extends Render<EntityStopWatch> {
 		GlStateManager.rotate(entity.ticksExisted * 8F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.popMatrix();
+
+		timeStopEffect(partialTicks);
+	}
+
+	private void timeStopEffect(float partialTicks) {
+		Minecraft mc = Minecraft.getMinecraft();
+		ShaderLibrary.INVERT.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+		ShaderLibrary.INVERT.render(partialTicks);
 	}
 
 	@Override

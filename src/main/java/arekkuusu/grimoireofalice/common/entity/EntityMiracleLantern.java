@@ -45,7 +45,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 		super.onUpdate();
 		if(ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
-				Alice.proxy.spawnShinmyoumaruSpark(world, posX, posY, posZ, 0F, 0.1F, 0F);
+				Alice.proxy.spawnShinmyoumaruSpark(world, posX, posY, posZ, 0F, 0F, 0F);
 			}
 		}
 	}
