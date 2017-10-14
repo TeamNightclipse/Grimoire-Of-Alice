@@ -65,10 +65,10 @@ public final class AltarRecipes {
 					ModItems.FUKU_NO_KAMI_MASK, ModItems.HANNYA_MASK, ModItems.HYOTTOKO_MASK, ModItems.KOOMOTE_MASK, ModItems.MASK_OF_HOPE,
 					ModItems.MONKEY_MASK, ModItems.RAIDEN_MASK, ModItems.UBA_MASK, potion, ModItems.MASK, Items.NETHER_STAR);
 
-			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.FOX_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
+			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.FIRST_QUARTER, new ItemStack(ModItems.FOX_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
 					ModItems.HARDENED_LEATHER, potion, Items.SUGAR, "dyeBlack");
 
-			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.FUKU_NO_KAMI_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
+			AliceAPI.registerAltarRecipeDimension(DimensionType.THE_END, new ItemStack(ModItems.FUKU_NO_KAMI_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
 					ModItems.HARDENED_LEATHER, potion, Items.BLAZE_POWDER, "dyeOrange");
 
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.HANNYA_MASK), ModItems.MASK, ModItems.NETHER_SHARD,
