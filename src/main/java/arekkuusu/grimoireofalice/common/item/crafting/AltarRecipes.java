@@ -417,9 +417,8 @@ public final class AltarRecipes {
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.ellyScythe) {
-			String dye = "dyeRed";
 			AliceAPI.registerAltarRecipeDimension(DimensionType.NETHER, new ItemStack(ModItems.ELLY_SCYTHE)
-					, dye, dye, dye, dye, dye, dye, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
+					, "dyeRed", Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.laevatein) {
