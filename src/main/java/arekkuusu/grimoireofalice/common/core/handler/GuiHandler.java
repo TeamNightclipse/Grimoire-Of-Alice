@@ -14,7 +14,7 @@ import arekkuusu.grimoireofalice.client.gui.GuiScreenGuide;
 import arekkuusu.grimoireofalice.common.item.HatContainer;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.item.SpellCardContainer;
-import arekkuusu.grimoireofalice.common.lib.LibGuiID;
+import arekkuusu.grimoireofalice.common.lib.LibGui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -28,14 +28,14 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		switch(id) {
-			case LibGuiID.POUCH_BAG:
+			case LibGui.POUCH_BAG:
 				EnumHand hand = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem = player.getHeldItem(hand);
 				if(heldItem.isEmpty() || heldItem.getItem() != ModItems.SPELLCARD_POUCH) {
 					return null;
 				}
 				return new SpellCardContainer(player.inventory, heldItem);
-			case LibGuiID.HAT:
+			case LibGui.HAT:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
 				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.MARISA_HAT) {
@@ -51,16 +51,16 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		switch(id) {
-			case LibGuiID.GUIDE:
+			case LibGui.GUIDE:
 				return new GuiScreenGuide();
-			case LibGuiID.POUCH_BAG:
+			case LibGui.POUCH_BAG:
 				EnumHand hand0 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem0 = player.getHeldItem(hand0);
 				if(heldItem0.isEmpty() || heldItem0.getItem() != ModItems.SPELLCARD_POUCH) {
 					return null;
 				}
 				return new GuiItemInventory(player.inventory, heldItem0);
-			case LibGuiID.HAT:
+			case LibGui.HAT:
 				EnumHand hand1 = EnumHand.MAIN_HAND.ordinal() == x ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 				ItemStack heldItem1 = player.getHeldItem(hand1);
 				if(heldItem1.isEmpty() || heldItem1.getItem() != ModItems.MARISA_HAT) {

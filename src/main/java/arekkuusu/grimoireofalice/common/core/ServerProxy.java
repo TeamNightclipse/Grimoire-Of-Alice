@@ -2,12 +2,13 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.core;
 
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -29,24 +30,22 @@ public class ServerProxy implements ISidedProxy {
 	}
 
 	@Override
-	public void spawnNeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age,
-			float scale) {
+	public void spawnNeedleSwing(World world, Vector3 pos, Vector3 speed, int age, float scale) {
 	}
 
 	@Override
-	public void spawnNetherFire(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age,
-			float scale) {
+	public void spawnNetherFire(World world, Vector3 pos, Vector3 speed, int age, float scale) {
 	}
 
 	@Override
-	public void spawnRedGas(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+	public void spawnRedGas(World world, Vector3 pos, Vector3 speed) {
 	}
 
 	@Override
-	public void spawnRedMist(World world, Entity entity, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+	public void spawnRedMist(World world, Entity entity, Vector3 pos, Vector3 speed) {
 	}
 
 	@Override
-	public void spawnShinmyoumaruSpark(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+	public void spawnShinmyoumaruSpark(World world, Vector3 pos, Vector3 speed) {
 	}
 }

@@ -290,8 +290,6 @@ public class ConfigHandler {
 
 		public static class Features {
 
-			@Comment("Use vanilla block models for the onbashira and pillar?")
-			public boolean vanillaBlockModels = true;
 			@Comment("Can the ender dragon drop the sword of kusanagi?")
 			public boolean swordOfKusanagi = true;
 			@Comment("Allow shichi seiken drop goods?")

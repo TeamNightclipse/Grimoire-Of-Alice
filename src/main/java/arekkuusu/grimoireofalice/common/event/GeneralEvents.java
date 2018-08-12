@@ -4,7 +4,7 @@ import arekkuusu.grimoireofalice.api.items.GoheiMode;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.item.ItemMochiHammer;
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import net.katsstuff.danmakucore.helper.MathUtil;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class YukkuriEvent {
+public class GeneralEvents {
 
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {

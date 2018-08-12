@@ -2,13 +2,11 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.core.handler;
-
-import java.util.List;
 
 import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -19,15 +17,19 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.List;
+
 public class WorldGenPlants {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onWorldDecoration(DecorateBiomeEvent.Decorate event) {
 		if((event.getResult() == Result.ALLOW || event.getResult() == Result.DEFAULT) && event.getType() == EventType.FLOWERS) {
 			int kyo = ConfigHandler.grimoireOfAlice.worldGen.shroomSpawnRate;
+			BlockPos pos = event.getPlacementPos();
+			if(pos == null) return;
 			for(int i = 0; i < kyo; i++) {
-				int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
-				int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;
+				int x = pos.getX() + event.getRand().nextInt(16) + 8;
+				int z = pos.getZ() + event.getRand().nextInt(16) + 8;
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);
@@ -39,8 +41,8 @@ public class WorldGenPlants {
 			}
 			int mush = ConfigHandler.grimoireOfAlice.worldGen.kyoumarubotanSpawnRate;
 			for(int i = 0; i < mush; i++) {
-				int x = event.getPos().getX() + event.getRand().nextInt(16) + 8;
-				int z = event.getPos().getZ() + event.getRand().nextInt(16) + 8;
+				int x = pos.getX() + event.getRand().nextInt(16) + 8;
+				int z = pos.getZ() + event.getRand().nextInt(16) + 8;
 				int y = event.getRand().nextInt(26) + 4;
 
 				BlockPos pos3 = new BlockPos(x, y, z);

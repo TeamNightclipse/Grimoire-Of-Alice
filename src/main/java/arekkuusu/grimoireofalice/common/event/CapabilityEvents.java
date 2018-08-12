@@ -14,7 +14,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CapabilitiesEvent {
+public class CapabilityEvents {
 
 	private final ArrayList<EntityPlayer> playersFlying = new ArrayList<>();
 

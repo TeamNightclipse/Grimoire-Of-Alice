@@ -12,7 +12,7 @@ import arekkuusu.grimoireofalice.common.core.capability.IMalletCapability;
 import arekkuusu.grimoireofalice.common.core.capability.MalletProvider;
 import arekkuusu.grimoireofalice.common.core.network.MalletMessage;
 import arekkuusu.grimoireofalice.common.core.network.PacketHandler;
-import net.katsstuff.danmakucore.helper.MathUtil;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;

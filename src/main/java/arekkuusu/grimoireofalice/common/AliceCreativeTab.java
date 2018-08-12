@@ -30,8 +30,7 @@ public class AliceCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return new ItemStack(ModItems.MIRACLE_MALLET);
 	}
 
@@ -48,8 +47,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.COMPACT_STONE);
 		addBlock(ModBlocks.IMPURE_STONE);
 		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
-		addBlock(ModBlocks.SUGAR_BLOCK);
-		addBlock(ModBlocks.HYPER_MAGIC);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.PILLAR_ALTAR);
 		addBlock(ModBlocks.HOLY_STONE);
@@ -62,7 +59,7 @@ public class AliceCreativeTab extends CreativeTabs {
 		addItem(ModItems.SHROOM_POWDER);
 		addItem(ModItems.MORTAR_AND_PESTLE);
 
-		//Misc
+		//Materials
 		addItem(ModItems.HIHIIROKANE);
 		addItem(ModItems.IMPURE_ROCK);
 		addItem(ModItems.TAMAHAGANE_STEEL);
@@ -281,12 +278,11 @@ public class AliceCreativeTab extends CreativeTabs {
 
 	@SideOnly(Side.CLIENT)
 	private void addItem(Item item) {
-		item.getSubItems(item, this, list);
+		item.getSubItems(this, list);
 	}
 
 	@SideOnly(Side.CLIENT)
 	private void addBlock(Block block) {
-		ItemStack stack = new ItemStack(block);
-		block.getSubBlocks(stack.getItem(), this, list);
+		block.getSubBlocks(this, list);
 	}
 }

@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.common.core;
 
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
@@ -13,16 +14,13 @@ public interface ISidedProxy {
 
 	void displayRecordText(ITextComponent text);
 
-	void spawnNeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale);
+	void spawnNeedleSwing(World world, Vector3 pos, Vector3 speed, int age, float scale);
 
+	void spawnNetherFire(World world, Vector3 pos, Vector3 speed, int age, float scale);
 
+	void spawnRedGas(World world, Vector3 pos, Vector3 speed);
 
-	void spawnNetherFire(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale);
+	void spawnRedMist(World world, Entity entity, Vector3 pos, Vector3 speed);
 
-
-	void spawnRedGas(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed);
-
-	void spawnRedMist(World world, Entity entity, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed);
-
-	void spawnShinmyoumaruSpark(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed);
+	void spawnShinmyoumaruSpark(World world, Vector3 pos, Vector3 speed);
 }
