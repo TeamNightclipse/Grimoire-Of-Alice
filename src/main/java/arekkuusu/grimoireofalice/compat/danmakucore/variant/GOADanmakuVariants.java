@@ -6,20 +6,17 @@
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
-package arekkuusu.grimoireofalice.common.danmakucore.variant;
+package arekkuusu.grimoireofalice.compat.danmakucore.variant;
 
-import arekkuusu.grimoireofalice.common.lib.LibDanmakuVariantName;
+import arekkuusu.grimoireofalice.common.lib.LibDanmakuName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuVariant;
-import net.katsstuff.danmakucore.registry.DanmakuRegistry;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuVariant;
+import net.katsstuff.teamnightclipse.danmakucore.registry.DanmakuRegistry;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 public class GOADanmakuVariants {
 
-	private static final IForgeRegistry<DanmakuVariant> REGISTRY = DanmakuRegistry.DANMAKU_VARIANT;
-
-	public static final DanmakuVariant UFO = REGISTRY.getValue(resource(LibDanmakuVariantName.UFO));
+	public static final DanmakuVariant UFO = DanmakuRegistry.DanmakuVariant().getValue(resource(LibDanmakuName.UFO));
 
 	private static ResourceLocation resource(String name) {
 		return new ResourceLocation(LibMod.MOD_ID, name);
