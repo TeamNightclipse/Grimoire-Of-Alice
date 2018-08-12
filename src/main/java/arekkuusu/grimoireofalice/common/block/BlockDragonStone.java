@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.lib.LibBlockName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -22,12 +22,14 @@ public class BlockDragonStone extends BlockBase {
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.5D, 0.75D);
 
 	public BlockDragonStone() {
-		super(LibBlockName.DRAGON_STONE, Material.ROCK);
+		super(LibName.DRAGON_STONE, Material.ROCK);
+		setHarvestLevel(Tool.PICK, ToolLevel.STONE);
+		setHardness(1F);
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing facing = EnumFacing.getHorizontal(meta);
+		EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
 		return getDefaultState().withProperty(FACING, facing);
 	}
 
@@ -61,7 +63,7 @@ public class BlockDragonStone extends BlockBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

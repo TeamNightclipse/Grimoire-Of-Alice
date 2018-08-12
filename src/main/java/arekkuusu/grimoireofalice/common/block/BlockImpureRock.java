@@ -9,7 +9,7 @@
 package arekkuusu.grimoireofalice.common.block;
 
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import arekkuusu.grimoireofalice.common.lib.LibBlockName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -21,7 +21,7 @@ import java.util.Random;
 public class BlockImpureRock extends BlockBase {
 
 	public BlockImpureRock() {
-		super(LibBlockName.IMPURE_STONE, Material.ROCK);
+		super(LibName.IMPURE_STONE, Material.ROCK);
 		setHarvestLevel("pickaxe", 2);
 		setResistance(10);
 		setHardness(5F);

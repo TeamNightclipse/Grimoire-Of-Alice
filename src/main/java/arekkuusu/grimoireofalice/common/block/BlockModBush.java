@@ -21,10 +21,7 @@ public class BlockModBush extends BlockBush implements IModel {
 
 	public BlockModBush(String id, Material material) {
 		super(material);
-		setUnlocalizedName(id);
-		setDefaultState(defaultState());
-		setRegistryName(id);
-		setCreativeTab(Alice.CREATIVE_TAB);
+		ModBlocks.setRegistry(this, id);
 	}
 
 	protected IBlockState defaultState() {

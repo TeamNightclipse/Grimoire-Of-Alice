@@ -2,18 +2,16 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.lib.LibBlockName;
-import net.minecraft.block.BlockHorizontal;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -27,21 +25,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+
 //Much taken from BlockStairs
 @SuppressWarnings({"deprecation", "WeakerAccess"})
 public class BlockRope extends BlockBase {
 
-	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
 	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
 	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
 	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
-
 	public BlockRope() {
-		super(LibBlockName.ROPE_BLOCK, Material.WOOD);
+		super(LibName.ROPE_BLOCK, Material.WOOD);
 		setSoundType(SoundType.LADDER);
-		setHarvestLevel("axe", 1);
+		setHarvestLevel(Tool.AXE, ToolLevel.STONE);
 		setResistance(5.0F);
 		setHardness(0.5F);
 	}
@@ -72,7 +70,7 @@ public class BlockRope extends BlockBase {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
-		iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(5 - (meta & 3)));
+		iblockstate = iblockstate.withProperty(FACING, EnumFacing.byHorizontalIndex(5 - (meta & 3)));
 		return iblockstate;
 	}
 
@@ -98,8 +96,7 @@ public class BlockRope extends BlockBase {
 		if(isBlockRope(state)) {
 			if(state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
 				return TOP_AABB;
-			}
-			else if(state.getValue(HALF) == BlockStairs.EnumHalf.BOTTOM) {
+			} else if(state.getValue(HALF) == BlockStairs.EnumHalf.BOTTOM) {
 				return BOTTOM_AABB;
 			}
 		}

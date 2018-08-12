@@ -2,13 +2,13 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.lib.LibBlockName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -44,7 +44,7 @@ public class BlockHolyStone extends BlockBase {
 	private final Map<Item, Consumer<EntityPlayer>> effects = effectsMap();
 
 	public BlockHolyStone() {
-		super(LibBlockName.HOLY_STONE, Material.ROCK);
+		super(LibName.HOLY_STONE, Material.ROCK);
 		setHardness(2.0F);
 		setSoundType(SoundType.STONE);
 		setHarvestLevel("pickaxe", 1);
@@ -60,12 +60,6 @@ public class BlockHolyStone extends BlockBase {
 		builder.put(Items.SPECKLED_MELON, player -> player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 2490, 0)));
 		builder.put(Items.DIAMOND, player -> player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2490, 4)));
 		return builder.build();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.holy_stone_header.name"));
 	}
 
 	@Override
@@ -94,10 +88,9 @@ public class BlockHolyStone extends BlockBase {
 	}
 
 	private static Optional<List<EntityLivingBase>> getEntitiesInRange(World world, BlockPos pos) {
-		if(world.isRaining()) {
+		if (world.isRaining()) {
 			return Optional.of(world.getEntitiesWithinAABB(EntityLivingBase.class, SMALL.offset(pos).grow(5)));
-		}
-		else {
+		} else {
 			return Optional.empty();
 		}
 	}
@@ -105,9 +98,9 @@ public class BlockHolyStone extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack heldItem = player.getHeldItem(hand);
-		if(!world.isRemote && !heldItem.isEmpty()) {
+		if (!world.isRemote && !heldItem.isEmpty()) {
 			Optional<Consumer<EntityPlayer>> effect = Optional.ofNullable(effects.get(heldItem.getItem()));
-			if(effect.isPresent()) {
+			if (effect.isPresent()) {
 				heldItem.shrink(1);
 				effect.get().accept(player);
 				player.world.playSound(player, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.PLAYERS, 0.1F, 1.0F);
@@ -130,7 +123,7 @@ public class BlockHolyStone extends BlockBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

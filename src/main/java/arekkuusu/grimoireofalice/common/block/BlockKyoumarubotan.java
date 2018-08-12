@@ -2,49 +2,36 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import java.util.List;
-import java.util.Random;
-
-import arekkuusu.grimoireofalice.common.lib.LibBlockName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockKyoumarubotan extends BlockModBush {
 
 	public BlockKyoumarubotan() {
-		super(LibBlockName.KYOUMARUBOTAN, Material.ROCK);
+		super(LibName.KYOUMARUBOTAN, Material.ROCK);
 		setTickRandomly(true);
 		setLightLevel(0.5F);
 		setHardness(0.5F);
 		setSoundType(SoundType.METAL);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kyoumarubotan_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kyoumarubotan_description.name"));
 	}
 
 	@Override

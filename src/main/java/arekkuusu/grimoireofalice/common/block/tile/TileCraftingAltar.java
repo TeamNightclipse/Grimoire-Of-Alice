@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -11,8 +11,7 @@ package arekkuusu.grimoireofalice.common.block.tile;
 import arekkuusu.grimoireofalice.api.AliceAPI;
 import arekkuusu.grimoireofalice.api.recipes.IAltarRecipe;
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.event.AchievementEvents;
-import net.katsstuff.danmakucore.helper.MathUtil;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
@@ -79,7 +78,6 @@ public class TileCraftingAltar extends TileBase implements ITickable {
 			List<ItemStack> stacks = altars.stream().filter(TileBase::hasItemStack).map(TilePillarAltar::getItemStack).collect(Collectors.toList());
 			Optional<IAltarRecipe> optional = AliceAPI.findAltarRecipeMatch(stacks, world);
 			optional.ifPresent(recipe -> {
-				AchievementEvents.onAltarCraft(player, recipe.getResult().getItem());
 				altars.forEach(tile -> tile.setItemStack(ItemStack.EMPTY));
 				setItemStack(recipe.getResult());
 				craftEffect();
@@ -113,7 +111,7 @@ public class TileCraftingAltar extends TileBase implements ITickable {
 			world.spawnParticle(EnumParticleTypes.END_ROD, p0 + p3, p1 + p3, p2 + p3, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D, world.rand.nextGaussian() * 0.005D);
 		}
 
-		//-----------------BLAME MINECRAFT-----------------//
+		//-----------------BLAME MINECRAFT-----------------// no u
 		EntityPlayer entityplayer = world.getClosestPlayer(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, 5D, false);
 		bookSpreadPrev = bookSpread;
 		bookRotationPrev = bookRotation;
@@ -131,8 +129,7 @@ public class TileCraftingAltar extends TileBase implements ITickable {
 					flipT += world.rand.nextInt(4) - world.rand.nextInt(4);
 				}
 			}
-		}
-		else {
+		} else {
 			tRot += 0.02F;
 			bookSpread -= 0.1F;
 		}
