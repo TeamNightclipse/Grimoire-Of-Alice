@@ -55,7 +55,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound() {
+	protected SoundEvent getHurtSound(DamageSource damageSource) {
 		return GrimoireSoundEvents.PAGE_TURN;
 	}
 
@@ -112,7 +112,7 @@ public class EntityYoukaiBook extends EntityLiving implements IAnimals {
 		}
 
 		if(world.isDaytime() && !world.isRemote) {
-			float f = this.getBrightness(1.0F);
+			float f = this.getBrightness();
 			if(f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(getPosition())) {
 				setFire(2);
 			}

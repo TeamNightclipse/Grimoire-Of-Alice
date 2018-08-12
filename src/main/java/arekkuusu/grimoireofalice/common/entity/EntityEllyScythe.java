@@ -37,7 +37,7 @@ public class EntityEllyScythe extends EntityThrow {
 
 	public EntityEllyScythe(World world, EntityLivingBase thrower, ItemStack itemstack, float velocity) {
 		super(world, thrower);
-		setHeadingFromThrower(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, velocity, 0.0F);
+		shoot(thrower, thrower.rotationPitch, thrower.rotationYaw, 0.0F, velocity, 0.0F);
 		setPickupModeFromEntity(thrower);
 		setStack(itemstack.copy());
 		strength = Math.min(1.5F, velocity);

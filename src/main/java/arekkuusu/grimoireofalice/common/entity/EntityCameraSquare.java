@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,11 +51,11 @@ public class EntityCameraSquare extends Entity {
 					setSize(size + 0.1F);
 				}
 				for(Entity entity : getEntities()) {
-					if(entity instanceof EntityDanmaku) {
+					/*if(entity instanceof EntityDanmaku) {
 						EntityDanmaku danmaku = (EntityDanmaku) entity;
 						danmaku.setShotData(danmaku.getShotData().setDelay(2));
 					}
-					else if(player instanceof EntityPlayerMP) {
+					else */if(player instanceof EntityPlayerMP) {
 						EntityPlayerMP playerMP = (EntityPlayerMP) player;
 						playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.posY, playerMP.prevPosZ);
 					}
@@ -78,10 +77,10 @@ public class EntityCameraSquare extends Entity {
 	private void finish() {
 		if(!world.isRemote) {
 			getEntities().forEach(entity -> {
-				if(entity instanceof EntityDanmaku) {
+				/*if(entity instanceof EntityDanmaku) {
 					((EntityDanmaku) entity).delete();
 				}
-				else {
+				else */{
 					entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10);
 				}
 			});

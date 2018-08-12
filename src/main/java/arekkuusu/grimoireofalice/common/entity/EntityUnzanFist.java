@@ -2,13 +2,13 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.entity;
 
-import net.katsstuff.danmakucore.helper.MathUtil;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,9 +18,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.event.ForgeEventFactory;
 
 import java.util.List;
 
@@ -69,8 +72,7 @@ public class EntityUnzanFist extends EntityThrowable {
 			if(aList.canBeCollidedWith() && !aList.equals(this.ignoreEntity)) {
 				if(this.ticksExisted < 2 && this.ignoreEntity == null) {
 					this.ignoreEntity = aList;
-				}
-				else {
+				} else {
 					AxisAlignedBB axisalignedbb = aList.getEntityBoundingBox().grow(0.30000001192092896D);
 					RayTraceResult result = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
@@ -85,16 +87,13 @@ public class EntityUnzanFist extends EntityThrowable {
 				}
 			}
 		}
-
 		if(entity != null) {
 			raytraceresult = new RayTraceResult(entity);
 		}
-
 		if(raytraceresult != null) {
 			if(raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK && this.world.getBlockState(raytraceresult.getBlockPos()).getBlock() == Blocks.PORTAL) {
 				this.setPortal(raytraceresult.getBlockPos());
-			}
-			else if(!net.minecraftforge.common.ForgeHooks.onThrowableImpact(this, raytraceresult)) {
+			} else if(!ForgeEventFactory.onProjectileImpact(this, raytraceresult)) {
 				this.onImpact(raytraceresult);
 			}
 		}
@@ -130,8 +129,7 @@ public class EntityUnzanFist extends EntityThrowable {
 		if(!world.isRemote) {
 			if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
 				onImpactBlock(result);
-			}
-			else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
+			} else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
 				onImpactEntity(result);
 			}
 		}

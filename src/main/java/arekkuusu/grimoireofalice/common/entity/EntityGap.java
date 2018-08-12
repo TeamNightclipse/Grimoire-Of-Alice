@@ -141,10 +141,10 @@ public class EntityGap extends Entity {
 	private Stream<EntityGap> sortGaps(Stream<EntityGap> gaps) {
 		float maxClose = ConfigHandler.grimoireOfAlice.features.gapRange;
 		float min = 5;
-		ToDoubleFunction<EntityGap> toDouble = g -> g.getDistanceSqToEntity(this);
+		ToDoubleFunction<EntityGap> toDouble = g -> g.getDistanceSq(this);
 
 		return gaps.filter(g -> {
-			double dist = g.getDistanceSqToEntity(this);
+			double dist = g.getDistanceSq(this);
 			return dist > min * min && dist < maxClose * maxClose;
 		}).sorted(Comparator.comparingDouble(toDouble));
 	}

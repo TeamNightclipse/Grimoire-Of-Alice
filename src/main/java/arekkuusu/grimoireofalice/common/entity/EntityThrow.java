@@ -2,16 +2,11 @@
  * This class was created by <Katrix>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.entity;
-
-import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.NO_PICKUP;
-import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PICKUP_ALL;
-import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PICKUP_CREATIVE;
-import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.PICKUP_OWNER;
 
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.block.state.IBlockState;
@@ -29,6 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
+
+import static arekkuusu.grimoireofalice.common.entity.EntityThrow.PickupMode.*;
 
 public abstract class EntityThrow extends EntityThrowable {
 
@@ -93,8 +90,7 @@ public abstract class EntityThrow extends EntityThrowable {
 	protected void onImpact(RayTraceResult result) {
 		if(result.typeOfHit == RayTraceResult.Type.BLOCK) {
 			onImpactBlock(result);
-		}
-		else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
+		} else if(result.typeOfHit == RayTraceResult.Type.ENTITY) {
 			onImpactEntity(result);
 		}
 	}
@@ -114,11 +110,11 @@ public abstract class EntityThrow extends EntityThrowable {
 		throwableShake = getMaxShake();
 
 		if(tile != Blocks.AIR.getDefaultState()) {
-			tile.getBlock().onEntityCollidedWithBlock(world, pos, tile, this);
+			tile.getBlock().onEntityCollision(world, pos, tile, this);
 		}
 	}
 
-	protected void onImpactEntity(RayTraceResult result) {
+	private void onImpactEntity(RayTraceResult result) {
 		bounceBack();
 		if(result.entityHit != null && result.entityHit != getThrower()) {
 			applyHitEffects(result.entityHit);
@@ -135,8 +131,7 @@ public abstract class EntityThrow extends EntityThrowable {
 					ItemHandlerHelper.giveItemToPlayer(entityplayer, stack);
 				}
 				setDead();
-			}
-			else {
+			} else {
 				bounceBack();
 			}
 		}
@@ -147,29 +142,26 @@ public abstract class EntityThrow extends EntityThrowable {
 		double speed = Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
 		if(speed < gravityThreshold()) {
 			return super.getGravityVelocity();
-		}
-		else {
+		} else {
 			return 0F;
 		}
 	}
 
 	abstract double gravityThreshold();
 
-	protected void setPickupModeFromEntity(EntityLivingBase entityliving) {
+	void setPickupModeFromEntity(EntityLivingBase entityliving) {
 		if(entityliving instanceof EntityPlayer) {
 			if(((EntityPlayer) entityliving).capabilities.isCreativeMode) {
 				canBePickedUp(PICKUP_CREATIVE);
-			}
-			else {
+			} else {
 				canBePickedUp(PICKUP_OWNER);
 			}
-		}
-		else {
+		} else {
 			canBePickedUp(NO_PICKUP);
 		}
 	}
 
-	protected void bounceBack() {
+	private void bounceBack() {
 		motionX *= -0.1D;
 		motionY *= -0.1D;
 		motionZ *= -0.1D;
@@ -180,11 +172,9 @@ public abstract class EntityThrow extends EntityThrowable {
 	private boolean canPickup(EntityPlayer entityplayer) {
 		if(canBePickedUp == PICKUP_ALL) {
 			return true;
-		}
-		else if(canBePickedUp == PICKUP_CREATIVE) {
+		} else if(canBePickedUp == PICKUP_CREATIVE) {
 			return entityplayer.capabilities.isCreativeMode;
-		}
-		else {
+		} else {
 			return canBePickedUp == PICKUP_OWNER && entityplayer == getThrower();
 		}
 	}
@@ -197,11 +187,11 @@ public abstract class EntityThrow extends EntityThrowable {
 		return canBePickedUp;
 	}
 
-	protected void canBePickedUp(PickupMode canI) {
+	private void canBePickedUp(PickupMode canI) {
 		canBePickedUp = canI;
 	}
 
-	public int getMaxShake() {
+	private int getMaxShake() {
 		return 0;
 	}
 }

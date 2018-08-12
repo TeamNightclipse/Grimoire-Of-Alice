@@ -2,13 +2,14 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.entity;
 
 import arekkuusu.grimoireofalice.common.Alice;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
@@ -55,10 +56,10 @@ public class EntityNetherSoul extends EntityThrowable {
 		if(isDead) {
 			return;
 		}
-		Alice.proxy.spawnNetherFire(world, posX, posY, posZ, 0, 0, 0, 20 + world.rand.nextInt(40), 0.1F + world.rand.nextFloat());
+		Alice.proxy.spawnNetherFire(world, Vector3.apply(posX, posY, posZ), Vector3.Zero(), 20 + world.rand.nextInt(40), 0.1F + world.rand.nextFloat());
 		if(ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
-				Alice.proxy.spawnRedGas(world, posX, posY, posZ, 0, 0, 0);
+				Alice.proxy.spawnRedGas(world, Vector3.apply(posX, posY, posZ), Vector3.Zero());
 			}
 		}
 		if(target != null && !target.isDead) {
@@ -80,25 +81,22 @@ public class EntityNetherSoul extends EntityThrowable {
 			prevPosZ = posZ += motionZ;
 
 			move(MoverType.SELF, motionX, motionY, motionZ);
-		}
-		else {
+		} else {
 			List<Entity> list = world.getEntitiesInAABBexcluding(getThrower(), getEntityBoundingBox().grow(30),
 					entity -> entity instanceof EntityLivingBase && entity.canBeCollidedWith());
 			if(!list.isEmpty()) {
 				float closest = 30;
 				for(Entity entity : list) {
-					float i = entity.getDistanceToEntity(this);
+					float i = entity.getDistance(this);
 					if(i < closest) {
 						closest = i;
 						target = entity;
 					}
 				}
-			}
-			else if(getThrower() != null) {
+			} else if(getThrower() != null) {
 				Vec3d vec3d = getThrower().getLookVec();
-				setThrowableHeading(vec3d.x, vec3d.y, vec3d.z, 0.5F, 0);
-			}
-			else if(!world.isRemote) {
+				shoot(vec3d.x, vec3d.y, vec3d.z, 0.5F, 0);
+			} else if(!world.isRemote) {
 				setDead();
 			}
 		}
