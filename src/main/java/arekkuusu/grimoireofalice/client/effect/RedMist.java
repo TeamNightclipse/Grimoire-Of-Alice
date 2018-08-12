@@ -9,10 +9,8 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibMod;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -23,8 +21,8 @@ public class RedMist extends ParticleBase {
 	private static final double RETURN_STRENGTH = 0.01D;
 	private final Entity entity;
 
-	public RedMist(World world, Entity entity, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-		super(world, x, y, z, xSpeed, ySpeed, zSpeed);
+	public RedMist(World world, Entity entity, Vector3 pos, Vector3 speed) {
+		super(world, pos, speed);
 		this.entity = entity;
 
 		particleScale = 16F + rand.nextInt(4);

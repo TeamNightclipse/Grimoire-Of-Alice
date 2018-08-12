@@ -2,11 +2,11 @@ package arekkuusu.grimoireofalice.client.gui.jei;
 
 import arekkuusu.grimoireofalice.api.recipes.AltarRecipe;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IStackHelper;
 import net.minecraft.item.ItemStack;
 
-public class AltarRecipeItemsWrapper extends BlankRecipeWrapper {
+public class AltarRecipeItemsWrapper implements IRecipeWrapper {
 
 	private final AltarRecipe recipe;
 	private final IStackHelper stackHelper;

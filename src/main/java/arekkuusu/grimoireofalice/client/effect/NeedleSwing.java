@@ -9,10 +9,7 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.Tuple;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,13 +19,12 @@ public class NeedleSwing extends ParticleBase {
 
 	private final float initScale;
 
-	public NeedleSwing(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale) {
-		super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+	public NeedleSwing(World world, Vector3 pos, Vector3 speed, int age, float scale) {
+		super(world, pos, speed);
 		particleMaxAge = age;
 		particleScale = scale;
 		initScale = particleScale;
 		canCollide = false;
-
 		setAtlas(SpriteLibrary.NEEDLE_SWING);
 	}
 

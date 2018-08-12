@@ -2,27 +2,25 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.client.gui;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import com.google.common.collect.ImmutableList;
-
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.util.math.MathHelper;
-import org.lwjgl.input.Keyboard;
-
+import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -87,13 +85,11 @@ public class GuiScreenGuide extends GuiScreen {
 	protected void actionPerformed(GuiButton parButton) {
 		if(parButton == buttonDone) {
 			mc.displayGuiScreen(null);
-		}
-		else if(parButton == buttonNextPage) {
+		} else if(parButton == buttonNextPage) {
 			if(currPage < BOOK_TOTAL_PAGES) {
 				++currPage;
 			}
-		}
-		else if(parButton == buttonPreviousPage && currPage > 0) {
+		} else if(parButton == buttonPreviousPage && currPage > 0) {
 			--currPage;
 		}
 		playTurnPage();
@@ -137,7 +133,7 @@ public class GuiScreenGuide extends GuiScreen {
 		}
 
 		@Override
-		public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+		public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
 			if(visible) {
 				boolean flag = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

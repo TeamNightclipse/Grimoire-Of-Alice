@@ -1,8 +1,6 @@
 package arekkuusu.grimoireofalice.client.gui.jei;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibJEI;
+import arekkuusu.grimoireofalice.common.lib.LibGui;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -10,7 +8,7 @@ import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -18,7 +16,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeItemsWrapper> {
+import java.util.List;
+
+public class AltarRecipeItemsCategory implements IRecipeCategory<AltarRecipeItemsWrapper> {
 
 	private final IGuiHelper guiHelper;
 
@@ -62,7 +62,7 @@ public class AltarRecipeItemsCategory extends BlankRecipeCategory<AltarRecipeIte
 
 	@Override
 	public String getUid() {
-		return LibJEI.ALTAR_CATEGORY_UID;
+		return LibGui.ALTAR_CATEGORY_UID;
 	}
 
 	@SideOnly(Side.CLIENT)

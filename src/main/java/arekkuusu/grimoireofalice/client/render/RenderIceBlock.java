@@ -1,9 +1,9 @@
 package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.common.entity.EntityIceBlock;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -48,7 +48,7 @@ public class RenderIceBlock extends Render<EntityIceBlock> {
 		bindEntityTexture(box);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vex = tessellator.getBuffer();
+		BufferBuilder vex = tessellator.getBuffer();
 		float width = box.getIceBlockWidth() / 2.0F + 0.4F;
 		float height = box.getIceBlockHeight();
 

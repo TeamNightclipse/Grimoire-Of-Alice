@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TilePillarAltarRenderer extends TileEntitySpecialRenderer<TilePillarAltar> {
 
 	@Override
-	public void renderTileEntityAt(TilePillarAltar te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void render(TilePillarAltar te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5F, y + te.getRenderHeight(), z + 0.5);
 		GlStateManager.scale(1.5, 1.5, 1.5);

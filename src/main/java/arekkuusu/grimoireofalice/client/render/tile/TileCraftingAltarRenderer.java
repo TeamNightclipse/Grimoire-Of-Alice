@@ -18,7 +18,7 @@ public class TileCraftingAltarRenderer extends TileEntitySpecialRenderer<TileCra
 	private final ModelBook modelBook = new ModelBook();
 
 	@Override
-	public void renderTileEntityAt(TileCraftingAltar te, double x, double y, double z, float partialTicks, int destroyStage) {
+	public void render(TileCraftingAltar te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		GlStateManager.pushMatrix();
 		GlStateManager.enableCull();
 		GlStateManager.translate(x + 0.5F, y + 1F, z + 0.5F);

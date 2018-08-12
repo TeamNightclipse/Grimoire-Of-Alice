@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.client.effect;
 
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,16 +19,16 @@ public class NetherFire extends ParticleBase {
 
 	private final float initScale;
 
-	public NetherFire(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int age, float scale) {
-		super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+	public NetherFire(World world, Vector3 pos, Vector3 speed, int age, float scale) {
+		super(world, pos, speed);
 		particleMaxAge = age;
 		particleScale = scale;
 		initScale = particleScale;
 		canCollide = false;
 
-		motionX = xSpeed;
-		motionY = ySpeed;
-		motionZ = zSpeed;
+		motionX = speed.x();
+		motionY = speed.y();
+		motionZ = speed.z();
 		setAtlas(SpriteLibrary.NETHER_FIRE);
 	}
 

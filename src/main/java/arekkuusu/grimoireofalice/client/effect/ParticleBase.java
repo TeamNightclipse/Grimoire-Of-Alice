@@ -5,20 +5,19 @@
  * The source code is available on github: 
  ******************************************************************************/
 package arekkuusu.grimoireofalice.client.effect;
-
-import net.katsstuff.danmakucore.client.particle.AbstractParticleGlow;
-import net.katsstuff.danmakucore.client.particle.IGlowParticle;
+import net.katsstuff.teamnightclipse.mirror.client.particles.AbstractMirrorParticle;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class ParticleBase extends AbstractParticleGlow implements IGlowParticle {
+public class ParticleBase extends AbstractMirrorParticle {
 
 	private int layer = 3;
 
-	ParticleBase(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
-		super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+	ParticleBase(World world, Vector3 pos, Vector3 speed) {
+		super(world, pos, speed);
 	}
 
 	public void setAtlas(ResourceLocation location) {
