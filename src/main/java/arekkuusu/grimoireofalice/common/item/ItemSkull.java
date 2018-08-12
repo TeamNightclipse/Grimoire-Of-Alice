@@ -9,10 +9,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -20,30 +17,18 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemSkull extends ItemBase implements IOwnedBy {
+public class ItemSkull extends ItemBase  {
 
 	public ItemSkull() {
-		super(LibItemName.ORIN_SKULL);
+		super(LibName.ORIN_SKULL);
 		setMaxStackSize(1);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.skull_header.name"));
 	}
 
 	@Override
@@ -54,10 +39,5 @@ public class ItemSkull extends ItemBase implements IOwnedBy {
 			stack.shrink(1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.RIN_KAENBYOU_ORIN;
 	}
 }

@@ -8,12 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -22,24 +17,14 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemWatermelonBlade extends ItemBaseSword implements IOwnedBy {
+public class ItemWatermelonBlade extends ItemBaseSword  {
 
 	public ItemWatermelonBlade(ToolMaterial material) {
-		super(material, LibItemName.WATERMELON_BLADE);
+		super(material, LibName.WATERMELON_BLADE);
 		setMaxDamage(14);
 		setNoRepair();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.watermelon_blade_header.name"));
 	}
 
 	@Override
@@ -69,10 +54,5 @@ public class ItemWatermelonBlade extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.CIRNO;
 	}
 }

@@ -21,35 +21,28 @@ public class ItemBlockOnbashira extends ItemBlock {
 		this.setRegistryName(block.getRegistryName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(facing != EnumFacing.UP) {
 			return EnumActionResult.FAIL;
-		}
-		else {
-			IBlockState iblockstate = world.getBlockState(pos);
-			Block block = iblockstate.getBlock();
-
+		} else {
+			IBlockState state = world.getBlockState(pos);
+			Block block = state.getBlock();
 			if(!block.isReplaceable(world, pos)) {
 				pos = pos.offset(facing);
 			}
-
 			if(!stack.isEmpty() && player.canPlayerEdit(pos, facing, stack)
 					&& world.mayPlace(this.block, pos, false, facing, null) && this.block.canPlaceBlockAt(world, pos)) {
 				int i = this.getMetadata(stack.getMetadata());
-				IBlockState iblockstate1 = this.block.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, i, player);
-
-				if(placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, iblockstate1)) {
+				IBlockState placementState = this.block.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, i, player, hand);
+				if(placeBlockAt(stack, player, world, pos, facing, hitX, hitY, hitZ, placementState)) {
 					SoundType soundtype = world.getBlockState(pos).getBlock().getSoundType(world.getBlockState(pos), world, pos, player);
 					world.playSound(player, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 					stack.shrink(1);
 				}
-
 				return EnumActionResult.SUCCESS;
-			}
-			else {
+			} else {
 				return EnumActionResult.FAIL;
 			}
 		}

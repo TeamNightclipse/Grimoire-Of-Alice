@@ -10,9 +10,7 @@ package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.client.util.helper.IModel;
 import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
-import arekkuusu.grimoireofalice.common.Alice;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -21,18 +19,15 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy, IModel {
+public class ItemModMask extends ItemArmor implements ISpecialArmor, IModel {
 
 	public ItemModMask(ArmorMaterial material, int dmg, String id) {
 		super(material, dmg, EntityEquipmentSlot.HEAD);
-		setRegistryName(id);
-		setUnlocalizedName(id);
+		ModItems.setRegistry(this, id);
 		setNoRepair();
-		setCreativeTab(Alice.CREATIVE_TAB);
 	}
 
 	@Override
@@ -69,11 +64,6 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IOwnedBy, I
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.HATA_NO_KOKORO;
 	}
 
 	@Override

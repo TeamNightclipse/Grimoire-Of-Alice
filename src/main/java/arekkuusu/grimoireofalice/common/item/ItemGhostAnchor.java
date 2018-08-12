@@ -1,9 +1,6 @@
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,19 +11,15 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemGhostAnchor extends ItemBaseSword implements IOwnedBy {
+public class ItemGhostAnchor extends ItemBaseSword {
 
 	public ItemGhostAnchor(ToolMaterial material) {
-		super(material, LibItemName.GHOST_ANCHOR);
+		super(material, LibName.GHOST_ANCHOR);
 		addPropertyOverride(new ResourceLocation("active"),
 				(stack, world, entity) -> entity != null && (entity.motionX * entity.motionX + entity.motionZ * entity.motionZ + entity.motionY * entity.motionY > 6D) ? 1F : 0F);
 	}
@@ -34,12 +27,6 @@ public class ItemGhostAnchor extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_anchor_header.name"));
 	}
 
 	@Override
@@ -112,10 +99,5 @@ public class ItemGhostAnchor extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
 		return 500;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.MINAMITSU_MURASA;
 	}
 }

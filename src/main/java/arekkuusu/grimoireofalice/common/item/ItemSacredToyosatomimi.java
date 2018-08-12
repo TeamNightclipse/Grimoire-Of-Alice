@@ -8,11 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -28,26 +24,15 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
 import java.util.List;
 
-import com.google.common.collect.ImmutableList;
-
-import static net.minecraft.item.EnumRarity.*;
 import static net.minecraft.util.text.TextFormatting.*;
 
-public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
+public class ItemSacredToyosatomimi extends ItemSwordOwner  {
 
 	public ItemSacredToyosatomimi(ToolMaterial material) {
-		super(material, LibItemName.SACRED_SWORD_OF_TOYOSATOMIMI, ItemFlavor.simpleBuilder()
-				.shift(ImmutableList.of(
-						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name"),
-						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_mid.name"),
-						FormattedString.withItalics("grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name")))
-				.effect(true)
-				.rarity(RARE)
-				.build());
+		super(material, LibName.SACRED_SWORD_OF_TOYOSATOMIMI);
 		setNoRepair();
 	}
 
@@ -124,10 +109,5 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

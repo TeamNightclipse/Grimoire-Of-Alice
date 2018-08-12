@@ -8,36 +8,19 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import com.google.common.collect.Multimap;
-
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import com.google.common.collect.Multimap;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMomijisScimitarSword extends ItemBaseSword implements IOwnedBy {
+public class ItemMomijisScimitarSword extends ItemBaseSword  {
 
 	public ItemMomijisScimitarSword(ToolMaterial material) {
-		super(material, LibItemName.MOMIJI_SCIMITAR_SWORD);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.momijis_scimitar_sword_header.name"));
-		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.momijis_scimitar_sword_description.name"));
+		super(material, LibName.MOMIJI_SCIMITAR_SWORD);
 	}
 
 	@Override
@@ -50,10 +33,5 @@ public class ItemMomijisScimitarSword extends ItemBaseSword implements IOwnedBy 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.IRON_INGOT;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.MOMIJI_INUBASHIRI;
 	}
 }

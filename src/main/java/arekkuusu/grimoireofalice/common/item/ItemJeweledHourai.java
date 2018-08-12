@@ -8,15 +8,12 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,14 +24,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
+public class ItemJeweledHourai extends ItemJeweled  {
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -45,7 +39,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	};
 
 	public ItemJeweledHourai() {
-		super(LibItemName.JEWELED_HOURAI);
+		super(LibName.JEWELED_HOURAI);
 		setNoRepair();
 		setMaxStackSize(1);
 	}
@@ -59,13 +53,6 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.jeweled_hourai_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.jeweled_hourai_description.name"));
 	}
 
 	@Override
@@ -114,7 +101,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(entityLiving)
 							.setMovementData(0.8D)
-							.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDamage(5F))
+							.setShot(LibShotData.SHOT_CRYSTAL1.setMainColor(color).setDamage(5F))
 							.build();
 					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					addJewels(stack, (short) -1);
@@ -125,7 +112,7 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)
 								.setMovementData(0.8D)
-								.setShot(LibShotData.SHOT_CRYSTAL1.setColor(color).setDamage(5F).setDelay(i))
+								.setShot(LibShotData.SHOT_CRYSTAL1.setMainColor(color).setDamage(5F).setDelay(i))
 								.build();
 						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
 					}
@@ -150,10 +137,5 @@ public class ItemJeweledHourai extends ItemJeweled implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

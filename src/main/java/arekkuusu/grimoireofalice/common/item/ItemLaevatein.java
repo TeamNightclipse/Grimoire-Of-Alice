@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -10,15 +10,12 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,34 +31,23 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 
-import java.util.List;
-
-public class ItemLaevatein extends ItemBaseSword implements IOwnedBy {
+public class ItemLaevatein extends ItemBaseSword {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemLaevatein(ToolMaterial material) {
-		super(material, LibItemName.LAEVATEIN);
+		super(material, LibName.LAEVATEIN);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.laevatein_header.name"));
 	}
 
 	@Override
@@ -72,6 +58,7 @@ public class ItemLaevatein extends ItemBaseSword implements IOwnedBy {
 		}
 	}
 
+	@SuppressWarnings("ConstantConditions")
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
@@ -85,25 +72,20 @@ public class ItemLaevatein extends ItemBaseSword implements IOwnedBy {
 					for(int i = 0; i < 3; i++) {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(player)
-								.setShot(LibShotData.SHOT_SPHERE_DARK.setColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
+								.setShot(LibShotData.SHOT_SPHERE_DARK.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
 								.build();
-
 						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 10, 5);
 					}
-
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
 					world.spawnEntity(circle);
 				}
-
 				if(!isCreative && player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-					//noinspection ConstantConditions
 					player.getCapability(ITEM_HANDLER_CAPABILITY, null).extractItem(getSlotFor(player, fireCharge), 1, false);
 				}
 				stack.damageItem(10, player);
 				player.getCooldownTracker().setCooldown(this, 40);
 			}
-		}
-		else {
+		} else {
 			player.playSound(SoundEvents.ENTITY_BLAZE_SHOOT, 1F, itemRand.nextFloat() * 0.1F + 0.8F);
 			if(!world.isRemote) {
 				EntityFierySword fierySword = new EntityFierySword(world, player);
@@ -134,8 +116,7 @@ public class ItemLaevatein extends ItemBaseSword implements IOwnedBy {
 
 		if(!player.canPlayerEdit(block, facing, stack)) {
 			return EnumActionResult.PASS;
-		}
-		else {
+		} else {
 			boolean success = false;
 			for(int i = -1; i <= 1; i++) {
 				for(int j = -1; j <= 1; j++) {
@@ -170,10 +151,5 @@ public class ItemLaevatein extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.FLANDRE_SCARLET;
 	}
 }

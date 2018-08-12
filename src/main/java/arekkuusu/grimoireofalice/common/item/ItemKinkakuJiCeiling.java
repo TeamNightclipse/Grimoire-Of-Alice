@@ -1,12 +1,9 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.MathUtil;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,30 +15,20 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
+public class ItemKinkakuJiCeiling extends ItemBase {
 
 	public ItemKinkakuJiCeiling() {
-		super(LibItemName.SEAMLESS_CEILING_OF_KINKAKUJI);
+		super(LibName.SEAMLESS_CEILING_OF_KINKAKUJI);
 		setMaxStackSize(1);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.seamless_ceiling_of_kinkaku_ji_header.name"));
 	}
 
 	@Override
@@ -75,8 +62,7 @@ public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
 			EntityKinkakuJiCeiling ceiling;
 			if(entity != null) {
 				ceiling = new EntityKinkakuJiCeiling(player.world, entity);
-			}
-			else {
+			} else {
 				float distance = 15F;
 				double dx = player.posX + look.x * distance;
 				double dy = player.posY + look.y * distance + player.getEyeHeight();
@@ -104,10 +90,5 @@ public class ItemKinkakuJiCeiling extends ItemBase implements IOwnedBy {
 			player.world.spawnEntity(ceiling);
 		}
 		return true;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

@@ -8,14 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item.food;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.common.core.capability.IHouraiCapability;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -30,17 +24,16 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
+public class ItemHouraiElixir extends ItemModFood  {
 
 	@CapabilityInject(IHouraiCapability.class)
 	private static final Capability<IHouraiCapability> HOURAI_CAPABILITY = null;
 
 	public ItemHouraiElixir() {
-		super(15, 0, false, LibItemName.HOURAI_ELIXIR);
+		super(15, 0, false, LibName.HOURAI_ELIXIR);
 		setMaxDamage(2);
 		setMaxStackSize(1);
 		setAlwaysEdible();
@@ -55,17 +48,6 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_header.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hourai_elixir_shift.name"));
-		}
 	}
 
 	@Override
@@ -133,10 +115,5 @@ public class ItemHouraiElixir extends ItemModFood implements IOwnedBy {
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.DRINK;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.FUJIWARA_NO_MOKOU;
 	}
 }

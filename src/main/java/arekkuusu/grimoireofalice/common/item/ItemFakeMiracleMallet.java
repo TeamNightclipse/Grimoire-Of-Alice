@@ -8,16 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -25,28 +16,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static net.minecraft.item.EnumRarity.*;
+import java.util.List;
 
-public class ItemFakeMiracleMallet extends ItemBaseFlavored implements IOwnedBy {
+public class ItemFakeMiracleMallet extends ItemBase  {
 
 	public ItemFakeMiracleMallet() {
-		super(LibItemName.FAKE_MIRACLE_MALLET,
-				ItemFlavor.of(ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.fake_miracle_mallet_header.name")), true, UNCOMMON));
+		super(LibName.FAKE_MIRACLE_MALLET);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
 		addPropertyOverride(new ResourceLocation("swinging"), (stack, world, entity) -> entity != null && entity.isSwingInProgress ? 1F : 0F);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.fake_miracle_mallet_header.name"));
 	}
 
 	@Override
@@ -66,10 +46,5 @@ public class ItemFakeMiracleMallet extends ItemBaseFlavored implements IOwnedBy 
 		}
 		entityLiving.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		return super.onEntitySwing(entityLiving, stack);
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

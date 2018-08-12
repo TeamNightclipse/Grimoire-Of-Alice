@@ -2,41 +2,32 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
 import arekkuusu.grimoireofalice.client.util.helper.IModel;
 import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
-import arekkuusu.grimoireofalice.common.Alice;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import com.google.common.collect.ImmutableSet;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBudahBoul extends ItemTool implements IOwnedBy, IModel {
+import java.util.Collections;
+import java.util.Set;
+
+public class ItemBudahBoul extends ItemTool implements IModel {
 
 	private static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.ROCK, Material.IRON, Material.IRON, Material.GLASS,
 			Material.PISTON, Material.ANVIL, Material.CIRCUITS, Material.WOOD, Material.GOURD, Material.PLANTS, Material.VINE, Material.GRASS,
@@ -45,12 +36,9 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy, IModel {
 	private static final Set<Material> SWORD_MATERIALS = ImmutableSet.of(Material.PLANTS, Material.VINE, Material.CORAL, Material.LEAVES,
 			Material.GOURD);
 
-	public ItemBudahBoul(ToolMaterial materialIn) {
-		super(4.0F, -2.8F, materialIn, Collections.emptySet());
-		setRegistryName(LibItemName.BUDAH_BOUL);
-		setUnlocalizedName(LibItemName.BUDAH_BOUL);
-		setCreativeTab(Alice.CREATIVE_TAB);
-
+	public ItemBudahBoul() {
+		super(4.0F, -2.8F, ModMaterials.BUDAH_BOUL, Collections.emptySet());
+		ModItems.setRegistry(this, LibName.BUDAH_BOUL);
 		setHarvestLevel("pickaxe", toolMaterial.getHarvestLevel());
 		setHarvestLevel("axe", toolMaterial.getHarvestLevel());
 		setHarvestLevel("shovel", toolMaterial.getHarvestLevel());
@@ -69,14 +57,6 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy, IModel {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.budah_boul_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.budah_boul_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.budah_boul_description_bottom.name"));
-	}
-
-	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
 		world.notifyBlockUpdate(pos, state, state, 8);
 		return true;
@@ -88,31 +68,24 @@ public class ItemBudahBoul extends ItemTool implements IOwnedBy, IModel {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, IBlockState state) {
+	public float getDestroySpeed(ItemStack stack, IBlockState state) {
 		if(state.getBlock() == Blocks.WEB) {
 			return 20.0f;
 		}
 
 		for(String type : getToolClasses(stack)) {
 			if(state.getBlock().isToolEffective(type, state)) {
-				return efficiencyOnProperMaterial;
+				return efficiency;
 			}
 		}
 
 		if(EFFECTIVE_MATERIALS.contains(state.getMaterial())) {
-			return efficiencyOnProperMaterial;
-		}
-		else if(SWORD_MATERIALS.contains(state.getMaterial())) {
+			return efficiency;
+		} else if(SWORD_MATERIALS.contains(state.getMaterial())) {
 			return 1.5f;
-		}
-		else {
+		} else {
 			return 1.0F;
 		}
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 
 	@Override

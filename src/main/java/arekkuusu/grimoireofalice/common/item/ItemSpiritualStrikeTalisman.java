@@ -1,9 +1,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntitySpiritualStrikeTalisman;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -13,12 +11,11 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-public class ItemSpiritualStrikeTalisman extends ItemBase implements IOwnedBy {
+public class ItemSpiritualStrikeTalisman extends ItemBase  {
 
 	public ItemSpiritualStrikeTalisman() {
-		super(LibItemName.SPIRITUAL_STRIKE_TALISMAN);
+		super(LibName.SPIRITUAL_STRIKE_TALISMAN);
 		setMaxStackSize(16);
 	}
 
@@ -46,10 +43,5 @@ public class ItemSpiritualStrikeTalisman extends ItemBase implements IOwnedBy {
 			stack.shrink(1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.REIMU_HAKUREI;
 	}
 }

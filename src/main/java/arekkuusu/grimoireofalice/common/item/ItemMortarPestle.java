@@ -8,13 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.item.ItemStack;
 
 public class ItemMortarPestle extends ItemBase {
 
 	public ItemMortarPestle() {
-		super(LibItemName.MORTAR_AND_PESTLE);
+		super(LibName.MORTAR_AND_PESTLE);
 		setMaxDamage(50);
 		setMaxStackSize(1);
 		setContainerItem(this);

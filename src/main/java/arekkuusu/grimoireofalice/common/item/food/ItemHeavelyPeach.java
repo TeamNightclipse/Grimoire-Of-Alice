@@ -8,28 +8,19 @@
  */
 package arekkuusu.grimoireofalice.common.item.food;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemHeavelyPeach extends ItemModFood implements IOwnedBy {
+public class ItemHeavelyPeach extends ItemModFood  {
 
 	public ItemHeavelyPeach() {
-		super(20, 5F, false, LibItemName.HEAVENLY_PEACH);
+		super(20, 5F, false, LibName.HEAVENLY_PEACH);
 		setMaxStackSize(16);
 		setAlwaysEdible();
 	}
@@ -40,21 +31,9 @@ public class ItemHeavelyPeach extends ItemModFood implements IOwnedBy {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.heavenly_peach_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.heavenly_peach_description.name"));
-	}
-
-	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
 		player.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.5F, itemRand.nextFloat() * 0.1F + 0.9F);
 		player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 160, 0));
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TENSHI_HINANAWI;
 	}
 }

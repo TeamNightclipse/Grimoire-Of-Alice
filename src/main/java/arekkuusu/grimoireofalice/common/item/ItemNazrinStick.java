@@ -8,16 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,16 +33,20 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ItemNazrinStick extends ItemBaseSword {
 
 	private static final String TYPE = "type";
 
 	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
+	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibName.NAZRIN_STICK, nbt = "{" + TYPE + ":0b}")
 	public static final ItemStack TYPEA = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	@SuppressWarnings("ConstantConditions")
-	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibItemName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
+	@ItemStackHolder(value = LibMod.MOD_ID + ":" + LibName.NAZRIN_STICK, nbt = "{" + TYPE + ":1b}")
 	public static final ItemStack TYPEB = new ItemStack(Item.getItemFromBlock(Blocks.BEDROCK));
 
 	public ItemNazrinStick(ToolMaterial material, String id) {
@@ -64,28 +62,9 @@ public class ItemNazrinStick extends ItemBaseSword {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
 		subItems.add(TYPEA);
 		subItems.add(TYPEB);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_description_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_use.name"));
-			if(!isHoldingItemsBothHands(player)) {
-				list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.nazrin_stick_inactive.name"));
-			}
-			else {
-				list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.nazrin_stick_active.name"));
-			}
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_stick_shift.name"));
-		}
 	}
 
 	/* In short, I made the Item only work when you
@@ -168,8 +147,8 @@ public class ItemNazrinStick extends ItemBaseSword {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName(stack) + "." + getType(stack);
+	public String getTranslationKey(ItemStack stack) {
+		return super.getTranslationKey(stack) + "." + getType(stack);
 	}
 
 	private boolean isHoldingItemsBothHands(EntityPlayer player) {

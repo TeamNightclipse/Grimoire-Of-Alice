@@ -8,33 +8,19 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemShimenawaRope extends ItemBase {
 
 	public ItemShimenawaRope() {
-		super(LibItemName.SHIMENAWA_ROPE);
+		super(LibName.SHIMENAWA_ROPE);
 		setMaxStackSize(1);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shimenawa_rope_header.name"));
-		list.add(TextFormatting.GRAY + I18n.format("grimoire.tooltip.shimenawa_rope_description.name"));
 	}
 }

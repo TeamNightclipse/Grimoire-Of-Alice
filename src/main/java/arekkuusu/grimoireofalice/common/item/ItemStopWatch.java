@@ -1,10 +1,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -14,17 +11,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemStopWatch extends ItemBase implements IOwnedBy {
+public class ItemStopWatch extends ItemBase  {
 
 	public ItemStopWatch() {
-		super(LibItemName.STOPWATCH);
+		super(LibName.STOPWATCH);
 		setMaxStackSize(1);
 	}
 
@@ -37,15 +31,6 @@ public class ItemStopWatch extends ItemBase implements IOwnedBy {
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.stop_watch_header.name"));
-		list.add("");
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.stop_watch_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.stop_watch_description_bottom.name"));
 	}
 
 	@Override
@@ -88,10 +73,5 @@ public class ItemStopWatch extends ItemBase implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SAKUYA_IZAYOI;
 	}
 }

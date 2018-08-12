@@ -10,11 +10,8 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelToyosatomimiHat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,30 +19,17 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemToyosatomimiHat extends ItemBaseArmor implements IOwnedBy {
+public class ItemToyosatomimiHat extends ItemBaseArmor  {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemToyosatomimiHat(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.TOYOSATOMIMI_HAT, EntityEquipmentSlot.HEAD);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_description_mid.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.toyosatomimi_hat_description_bottom.name"));
+		super(material, dmg, LibName.TOYOSATOMIMI_HAT, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override
@@ -66,10 +50,5 @@ public class ItemToyosatomimiHat extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLibrary.TOYOSATOMIMI_HAT.toString();
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

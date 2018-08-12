@@ -8,27 +8,22 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRumiaSword extends ItemBaseSword implements IOwnedBy {
+import java.util.List;
+
+public class ItemRumiaSword extends ItemBaseSword  {
 
 	public ItemRumiaSword(ToolMaterial material) {
-		super(material, LibItemName.RUMIA_SWORD);
+		super(material, LibName.RUMIA_SWORD);
 	}
 
 	@Override
@@ -40,13 +35,6 @@ public class ItemRumiaSword extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rumia_sword_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rumia_sword_description.name"));
 	}
 
 	@Override
@@ -65,10 +53,5 @@ public class ItemRumiaSword extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.RUMIA;
 	}
 }

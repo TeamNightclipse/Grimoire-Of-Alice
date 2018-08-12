@@ -2,24 +2,19 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.helper.ItemNBTHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,36 +27,20 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
+public class ItemShouLamp extends ItemJeweled {
 
 	public ItemShouLamp() {
-		super(LibItemName.SHOU_LAMP);
+		super(LibName.SHOU_LAMP);
 		setMaxStackSize(1);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_use.name"));
-			list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.shou_lamp_jewels.name") + " " + JEWELS.get(stack));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.shou_lamp_shift.name"));
-		}
 	}
 
 	@Override
@@ -77,9 +56,8 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(player)
 						.setMovementData(0.5D, 0.5D, 0.1D)
-						.setShot(LibShotData.SHOT_POINTED_LASER_LONG.setColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
+						.setShot(LibShotData.SHOT_POINTED_LASER_LONG.setMainColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
 						.build();
-
 				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 20, 0D);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 				addJewels(stack, (short) -1);
@@ -145,10 +123,5 @@ public class ItemShouLamp extends ItemJeweled implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 500;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SHOU_TORAMARU;
 	}
 }

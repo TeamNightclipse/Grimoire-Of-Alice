@@ -2,6 +2,6 @@
 @ParametersAreNonnullByDefault
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import mcp.MethodsReturnNonnullByDefault;
+
+import javax.annotation.ParametersAreNonnullByDefault;

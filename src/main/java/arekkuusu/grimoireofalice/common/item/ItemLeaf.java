@@ -2,19 +2,17 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import arekkuusu.grimoireofalice.compat.danmakucore.LibGOAShotData;
+import com.google.common.collect.Lists;
+import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
@@ -23,30 +21,21 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.collection.JavaConversions;
 
-import java.util.List;
-
-public class ItemLeaf extends ItemBase implements IOwnedBy {
+public class ItemLeaf extends ItemBase {
 
 	public ItemLeaf() {
-		super(LibItemName.LEAF);
+		super(LibName.LEAF);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.leaf_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.leaf_description.name"));
 	}
 
 	@Override
@@ -60,13 +49,10 @@ public class ItemLeaf extends ItemBase implements IOwnedBy {
 			for(int j = 0; j < 8; ++j) {
 				world.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
 			}
-		}
-		else {
-			DanmakuHelper.playShotSound(player);
+		} else {
 			if(!world.isRemote) {
-				DanmakuTemplate.Builder danmaku = DanmakuTemplate.builder().setUser(player).setShot(LibGOAShotData.LEAF);
-				world.spawnEntity(danmaku.build().asEntity());
-				danmaku.setShot(danmaku.shot.setSize(2));
+				DanmakuTemplate.Builder builder = DanmakuTemplate.builder().setUser(player).setShot(LibGOAShotData.LEAF.setSize(2));
+				DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 			}
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
@@ -80,10 +66,5 @@ public class ItemLeaf extends ItemBase implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72_000;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.MAMIZOU_FUTATSUIWA;
 	}
 }

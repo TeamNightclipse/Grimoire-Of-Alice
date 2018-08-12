@@ -8,21 +8,16 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemHihiirokane extends ItemBase {
 
 	public ItemHihiirokane() {
-		super(LibItemName.HIHIIROKANE);
+		super(LibName.HIHIIROKANE);
 		setMaxStackSize(32);
 	}
 
@@ -36,14 +31,4 @@ public class ItemHihiirokane extends ItemBase {
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hihiirokane_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hihiirokane_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hihiirokane_description_mid.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hihiirokane_description_bottom.name"));
-	}
-
 }

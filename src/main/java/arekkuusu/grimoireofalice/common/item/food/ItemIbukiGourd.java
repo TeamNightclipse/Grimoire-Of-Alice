@@ -1,11 +1,6 @@
 package arekkuusu.grimoireofalice.common.item.food;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -14,16 +9,12 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
+public class ItemIbukiGourd extends ItemModFood  {
 
 	public ItemIbukiGourd() {
-		super(0, 2F, false, LibItemName.IBUKI_GOURD);
+		super(0, 2F, false, LibName.IBUKI_GOURD);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}
@@ -31,13 +22,6 @@ public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibuki_gourd_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibuki_gourd_description.name"));
 	}
 
 	@Override
@@ -65,10 +49,5 @@ public class ItemIbukiGourd extends ItemModFood implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SUIKA_IKBUKI;
 	}
 }

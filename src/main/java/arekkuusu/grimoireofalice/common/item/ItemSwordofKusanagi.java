@@ -8,17 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityNetherSoul;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
@@ -26,27 +20,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-import static net.minecraft.item.EnumRarity.*;
-import static net.minecraft.util.text.TextFormatting.*;
+import java.util.List;
 
-public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
+public class ItemSwordofKusanagi extends ItemSwordOwner  {
 
 	public ItemSwordofKusanagi(ToolMaterial material) {
-		super(material, LibItemName.SWORD_OF_KUSANAGI, ItemFlavor.simpleBuilder()
-				.common(FormattedString.withItalics(WHITE, "grimoire.tooltip.sword_of_kusanagi_header.name"))
-				.shift(FormattedString.withItalics("grimoire.tooltip.sword_of_kusanagi_description_body.name"))
-				.effect(true)
-				.rarity(EPIC)
-				.build());
+		super(material, LibName.SWORD_OF_KUSANAGI);
 		setNoRepair();
 	}
 
@@ -61,7 +43,7 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 
 			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, lookAt);
 			entityLiving.world.spawnEntity(entityNetherSoul);
-			entityNetherSoul.setHeadingFromThrower(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
+			entityNetherSoul.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);
 		}
 		if(entityLiving instanceof EntityPlayer) {
 			((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 15);
@@ -131,10 +113,5 @@ public class ItemSwordofKusanagi extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

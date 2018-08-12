@@ -8,16 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelToyosatomimiCloack;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,20 +20,18 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemToyosatomimiCloak extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
+public class ItemToyosatomimiCloak extends ItemBaseArmor implements ISpecialArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemToyosatomimiCloak(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.MIKO_CLOAK, EntityEquipmentSlot.CHEST);
+		super(materialIn, dmg, LibName.MIKO_CLOAK, EntityEquipmentSlot.CHEST);
 		setNoRepair();
 		setMaxStackSize(1);
 	}
@@ -49,16 +42,10 @@ public class ItemToyosatomimiCloak extends ItemBaseArmor implements ISpecialArmo
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.miko_cloak_header.name"));
-	}
-
-	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		if(player.world.isRemote && (player.onGround && !player.capabilities.isFlying) && player.moveForward > 0F && !player.isInsideOfMaterial(
 				Material.WATER)) {
-			player.moveRelative(0F, 1F, 0.085F);
+			player.moveRelative(0F, 0F, 1F, 0.085F);
 		}
 	}
 
@@ -89,10 +76,5 @@ public class ItemToyosatomimiCloak extends ItemBaseArmor implements ISpecialArmo
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLibrary.TOYOSATOMIMI_CLOAK.toString();
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TOYOSATOMIMI_NO_MIKO;
 	}
 }

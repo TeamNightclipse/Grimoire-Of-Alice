@@ -8,11 +8,11 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 
 public class ItemVajra extends ItemBase {
 
 	public ItemVajra() {
-		super(LibItemName.VAJRA);
+		super(LibName.VAJRA);
 	}
 }

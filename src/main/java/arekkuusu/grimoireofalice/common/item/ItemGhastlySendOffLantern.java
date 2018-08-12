@@ -2,18 +2,13 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -22,20 +17,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class ItemGhastlySendOffLantern extends ItemBase implements IOwnedBy {
+public class ItemGhastlySendOffLantern extends ItemBase {
 
 	private static final String TAG = "timer";
 
 	public ItemGhastlySendOffLantern() {
-		super(LibItemName.SEND_OFF_LANTERN);
+		super(LibName.SEND_OFF_LANTERN);
 	}
 
 	@Override
@@ -47,13 +40,6 @@ public class ItemGhastlySendOffLantern extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return getTimer(stack) <= 0 ? EnumRarity.RARE : EnumRarity.COMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.send_off_lantern_description.name"));
 	}
 
 	@Override
@@ -107,10 +93,5 @@ public class ItemGhastlySendOffLantern extends ItemBase implements IOwnedBy {
 			stack.setTagCompound(tag);
 		}
 		return tag;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

@@ -1,8 +1,6 @@
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,12 +10,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-public class ItemCharmofHealing extends ItemBase implements IOwnedBy {
+public class ItemCharmofHealing extends ItemBase  {
 
 	public ItemCharmofHealing() {
-		super(LibItemName.CHARM_OF_HEALING);
+		super(LibName.CHARM_OF_HEALING);
 		setMaxDamage(25);
 	}
 
@@ -57,10 +54,5 @@ public class ItemCharmofHealing extends ItemBase implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
 		return 25;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SANAE_KOCHIYA;
 	}
 }

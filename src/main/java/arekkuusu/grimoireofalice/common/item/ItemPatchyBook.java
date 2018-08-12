@@ -8,31 +8,24 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.Alice;
-import arekkuusu.grimoireofalice.common.lib.LibGuiID;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibGui;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemPatchyBook extends ItemBase implements IOwnedBy {
+public class ItemPatchyBook extends ItemBase  {
 
 	public ItemPatchyBook() {
-		super(LibItemName.PATCHY_BOOK);
+		super(LibName.PATCHY_BOOK);
 	}
 
 	@Override
@@ -47,17 +40,11 @@ public class ItemPatchyBook extends ItemBase implements IOwnedBy {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.patchy_book_header.name"));
-	}
-
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		player.playSound(GrimoireSoundEvents.PAGE_TURN, 1F, 1F);
 		if(world.isRemote) {
-			player.openGui(Alice.instance, LibGuiID.GUIDE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+			player.openGui(Alice.instance, LibGui.GUIDE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
@@ -65,10 +52,5 @@ public class ItemPatchyBook extends ItemBase implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.PATCHULI_KNOWLEDGE;
 	}
 }

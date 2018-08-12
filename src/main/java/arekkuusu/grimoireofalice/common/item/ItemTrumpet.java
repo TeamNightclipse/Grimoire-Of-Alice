@@ -8,30 +8,15 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.entity.player.EntityPlayer;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemTrumpet extends ItemInstrument implements IOwnedBy {
+public class ItemTrumpet extends ItemInstrument  {
 
 	public ItemTrumpet() {
-		super(LibItemName.MERLIN_TRUMPET);
+		super(LibName.MERLIN_TRUMPET);
 		setMaxDamage(100);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Poltergeists posses this trumpet");
-		list.add(TextFormatting.ITALIC + "Hold right click to use");
 	}
 
 	@Override
@@ -52,10 +37,5 @@ public class ItemTrumpet extends ItemInstrument implements IOwnedBy {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == Items.GOLD_INGOT;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.MERLIN_PRIMSRIVER;
 	}
 }

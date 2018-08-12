@@ -2,39 +2,25 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelTenshiHat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemTenshiHat extends ItemBaseArmor implements IOwnedBy {
+public class ItemTenshiHat extends ItemBaseArmor  {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemTenshiHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.TENSHI_HAT, EntityEquipmentSlot.HEAD);
+		super(materialIn, dmg, LibName.TENSHI_HAT, EntityEquipmentSlot.HEAD);
 		setMaxDamage(10_000);
 		setMaxStackSize(1);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.tenshi_hat_header.name"));
 	}
 
 	@Override
@@ -55,10 +41,5 @@ public class ItemTenshiHat extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLibrary.TENSHI_HAT.toString();
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TENSHI_HINANAWI;
 	}
 }

@@ -10,9 +10,8 @@ package arekkuusu.grimoireofalice.common.item.masks;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,13 +20,10 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemFoxMask extends ItemModMask {
 
@@ -35,20 +31,7 @@ public class ItemFoxMask extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemFoxMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.FOX_MASK);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.fox_mask_header.name"));
-		list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.fox_mask_good_buff_one.name"));
-
-		if(player.experienceLevel >= 40) {
-			list.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.fox_mask_good_buff_two.name"));
-		}
-
-		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.fox_mask_vulnerable.name"));
+		super(material, dmg, LibName.FOX_MASK);
 	}
 
 	@Override

@@ -10,13 +10,10 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelNuclearBoots;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,34 +24,23 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemNuclearBoots extends ItemBaseArmor implements IOwnedBy {
+public class ItemNuclearBoots extends ItemBaseArmor  {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemNuclearBoots(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.NUCLEAR_BOOTS, EntityEquipmentSlot.FEET);
+		super(materialIn, dmg, LibName.NUCLEAR_BOOTS, EntityEquipmentSlot.FEET);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_boots_header.name"));
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_boots_description_top.name"));
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_boots_description_bottom.name"));
 	}
 
 	@Override
@@ -108,10 +94,5 @@ public class ItemNuclearBoots extends ItemBaseArmor implements IOwnedBy {
 	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLibrary.NUCLEAR_BOOTS.toString();
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.UTSUHO_REIUJI_OKUU;
 	}
 }

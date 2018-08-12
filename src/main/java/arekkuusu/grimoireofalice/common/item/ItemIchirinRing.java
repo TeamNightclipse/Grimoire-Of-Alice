@@ -10,11 +10,7 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.entity.EntityUnzanFist;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -28,18 +24,14 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
+public class ItemIchirinRing extends ItemBaseSword  {
 
 	public ItemIchirinRing(ToolMaterial material) {
-		super(material, LibItemName.ICHIRIN_RING);
+		super(material, LibName.ICHIRIN_RING);
 		setMaxStackSize(1);
 		setNoRepair();
 	}
@@ -53,24 +45,6 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack) {
 		return true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_ring_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_use.name"));
-			if(!isWearingUnzan(player)) {
-				list.add(TextFormatting.DARK_RED + I18n.format("grimoire.tooltip.ichirin_inactive.name"));
-			}
-			else {
-				list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.ichirin_active.name"));
-			}
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ichirin_shift.name"));
-		}
 	}
 
 	@Override
@@ -104,7 +78,7 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 						EntityUnzanFist fist = new EntityUnzanFist(world, player);
 						fist.setPosition(dx, dy, dz);
 						world.spawnEntity(fist);
-						fist.setHeadingFromThrower(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
+						fist.shoot(player, player.rotationPitch, player.rotationYaw, 0F, 2F, 0F);
 					}
 					player.getCooldownTracker().setCooldown(this, 10);
 					player.playSound(SoundEvents.ENTITY_IRONGOLEM_HURT, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -160,10 +134,5 @@ public class ItemIchirinRing extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.ICHIRIN_KUMOI;
 	}
 }

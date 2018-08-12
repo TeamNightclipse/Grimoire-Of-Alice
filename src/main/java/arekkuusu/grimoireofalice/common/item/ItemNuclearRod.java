@@ -9,17 +9,15 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import arekkuusu.grimoireofalice.common.potion.ModPotions;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.compat.danmakucore.LibGOAShotData;
+import com.google.common.collect.Lists;
+import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -31,17 +29,15 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.collection.JavaConversions;
 
 import java.util.List;
 
-public class ItemNuclearRod extends ItemBase implements IOwnedBy {
+public class ItemNuclearRod extends ItemBase  {
 
 	public ItemNuclearRod() {
-		super(LibItemName.NUCLEAR_ROD);
+		super(LibName.NUCLEAR_ROD);
 		setMaxStackSize(1);
 		addPropertyOverride(new ResourceLocation("using"),
 				(stack, world, entity) -> entity != null && entity.isHandActive() && entity.getActiveItemStack() == stack ? 1F : 0F);
@@ -50,12 +46,6 @@ public class ItemNuclearRod extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nuclear_rod_header.name"));
 	}
 
 	@Override
@@ -94,9 +84,8 @@ public class ItemNuclearRod extends ItemBase implements IOwnedBy {
 				DanmakuTemplate danmaku = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setMovementData(0.5F)
-						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+						.setShot(LibGOAShotData.SUN.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.build();
-
 				if(entityLiving instanceof EntityPlayer && hasFullSet((EntityPlayer) entityLiving)) {
 					DanmakuCreationHelper.createSphereShot(Quat.orientationOf(entityLiving), danmaku, 4, 5, entityLiving.rotationPitch, 1D);
 				}
@@ -105,12 +94,11 @@ public class ItemNuclearRod extends ItemBase implements IOwnedBy {
 				}
 			}
 			else {
-				EntityDanmaku danmaku = DanmakuTemplate.builder()
+				DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 						.setUser(entityLiving)
-						.setShot(LibGOAShotData.SUN.setColor(LibColor.COLOR_SATURATED_RED).setSize(5))
-						.setMovementData(1F)
-						.build().asEntity();
-				world.spawnEntity(danmaku);
+						.setShot(LibGOAShotData.SUN.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(5))
+						.setMovementData(1F);
+				DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 				Vec3d vec3 = entityLiving.getLookVec();
 				entityLiving.motionX -= vec3.x;
 				entityLiving.motionY -= vec3.y;
@@ -134,10 +122,5 @@ public class ItemNuclearRod extends ItemBase implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 50;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.UTSUHO_REIUJI_OKUU;
 	}
 }

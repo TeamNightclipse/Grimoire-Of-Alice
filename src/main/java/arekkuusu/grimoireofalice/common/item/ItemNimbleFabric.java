@@ -8,12 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -23,16 +18,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNimbleFabric extends ItemBase implements IOwnedBy {
+public class ItemNimbleFabric extends ItemBase  {
 
 	public ItemNimbleFabric() {
-		super(LibItemName.NIMBLE_FABRIC);
+		super(LibName.NIMBLE_FABRIC);
 		setMaxStackSize(1);
 		setMaxDamage(10);
 		addPropertyOverride(new ResourceLocation("blocking"),
@@ -48,13 +41,6 @@ public class ItemNimbleFabric extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nimble_fabric_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nimble_fabric_description.name"));
 	}
 
 	@Override
@@ -94,10 +80,5 @@ public class ItemNimbleFabric extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BLOCK;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

@@ -2,20 +2,16 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.Alice;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.handler.ConfigHandler;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
-import arekkuusu.grimoireofalice.common.danmakucore.LibGOAShotData;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import arekkuusu.grimoireofalice.compat.danmakucore.LibGOAShotData;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -36,16 +32,10 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Optional;
 
-import static net.minecraft.item.EnumRarity.EPIC;
-import static net.minecraft.util.text.TextFormatting.WHITE;
-
-public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
+public class ItemSwordOfHisou extends ItemSwordOwner {
 
 	public ItemSwordOfHisou(ToolMaterial material) {
-		super(material, LibItemName.HISOU_SWORD, ItemFlavor.simpleBuilder().common(
-				FormattedString.withItalics(WHITE, "grimoire.tooltip.hisou_sword_header.name"),
-				FormattedString.withItalics("grimoire.tooltip.hisou_sword_description_top.name")
-		).effect(true).rarity(EPIC).build());
+		super(material, LibName.HISOU_SWORD);
 		setNoRepair();
 	}
 
@@ -55,7 +45,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 			EntityPlayer player = (EntityPlayer) entityLivingBase;
 			if(player.getCooldownTracker().hasCooldown(this)) {
 				Optional<Entity> lookedAt = Vector3.getEntityLookedAt(player, entity -> !player.equals(entity) && entity instanceof EntityLivingBase, 35);
-
 				if(lookedAt.isPresent()) {
 					EntityLivingBase entity = (EntityLivingBase) lookedAt.get();
 					Vec3d look = player.getLookVec();
@@ -84,7 +73,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 			List<EntityMob> list = living.world.getEntitiesWithinAABB(EntityMob.class, living.getEntityBoundingBox().grow(20));
 			if(!list.isEmpty()) {
 				for(EntityLivingBase entityMob : list) {
-					Alice.proxy.spawnRedMist(living.world, living, entityMob.posX, entityMob.posY, entityMob.posZ, 0, 0, 0);
+					Alice.proxy.spawnRedMist(living.world, living, Vector3.fromEntityCenter(entityMob), Vector3.Zero());
 				}
 			}
 		}
@@ -96,9 +85,8 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 				if(isOwner(stack, player)) {
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(player)
-							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setColor(LibColor.COLOR_SATURATED_RED))
+							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setMainColor(LibColor.COLOR_SATURATED_RED))
 							.build();
-
 					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
 				}
 			}
@@ -111,11 +99,11 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 		int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if(!world.isRemote && entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entityLiving;
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(isOwner(stack, player) && timeUsed < 20 && timeUsed > 5) {
 				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(20));
 				if(!list.isEmpty()) {
-					int count = (int)(list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
+					int count = (int) (list.stream().mapToDouble(EntityLivingBase::getHealth).sum() * 2);
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, count);
 					world.spawnEntity(circle);
 					player.getCooldownTracker().setCooldown(this, count);
@@ -186,10 +174,5 @@ public class ItemSwordOfHisou extends ItemSwordOwner implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.TENSHI_HINANAWI;
 	}
 }

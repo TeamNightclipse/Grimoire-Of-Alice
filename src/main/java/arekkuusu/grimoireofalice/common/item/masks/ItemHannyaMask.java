@@ -8,13 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +20,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,15 +31,7 @@ public class ItemHannyaMask extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemHannyaMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.HANNYA_MASK);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.hannya_mask_header.name"));
-		tooltip.add(TextFormatting.GOLD + I18n.format("grimoire.tooltip.hannya_mask_good_buff.name"));
-		tooltip.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.hannya_mask_vulnerable.name"));
+		super(material, dmg, LibName.HANNYA_MASK);
 	}
 
 	@Override

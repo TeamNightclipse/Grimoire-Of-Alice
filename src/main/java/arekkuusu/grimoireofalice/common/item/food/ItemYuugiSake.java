@@ -8,9 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item.food;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -20,14 +18,13 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemYuugiSake extends ItemModFood implements IOwnedBy {
+public class ItemYuugiSake extends ItemModFood  {
 
 	public ItemYuugiSake() {
-		super(0, 2F, false, LibItemName.YUUGI_SAKE);
+		super(0, 2F, false, LibName.YUUGI_SAKE);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}
@@ -67,10 +64,5 @@ public class ItemYuugiSake extends ItemModFood implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.YUUGI_HOSHIGUMA;
 	}
 }

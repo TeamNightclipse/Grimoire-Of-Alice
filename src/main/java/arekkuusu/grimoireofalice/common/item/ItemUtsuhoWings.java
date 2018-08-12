@@ -10,39 +10,25 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelUtsuhoWings;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
+public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemUtsuhoWings(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.UTSUHO_WINGS, EntityEquipmentSlot.CHEST);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.utsuho_wings_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.utsuho_wings_description.name"));
+		super(material, dmg, LibName.UTSUHO_WINGS, EntityEquipmentSlot.CHEST);
 	}
 
 	@Override
@@ -72,10 +58,5 @@ public class ItemUtsuhoWings extends ItemBaseArmor implements ISpecialArmor, IOw
 		}
 		model.setModelAttributes(imodel);
 		return model;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.UTSUHO_REIUJI_OKUU;
 	}
 }

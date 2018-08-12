@@ -2,26 +2,22 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.danmakucore.GoATouhouCharacters;
 import arekkuusu.grimoireofalice.common.entity.EntityEllyScythe;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.AbstractVector3;
-import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.LibColor;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import com.google.common.collect.Lists;
+import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.mirror.data.AbstractVector3;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -33,30 +29,21 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.collection.JavaConversions;
 
-import java.util.List;
 import java.util.Random;
 
-public class ItemEllyScythe extends ItemBaseSword implements IOwnedBy {
+public class ItemEllyScythe extends ItemBaseSword {
 
 	public ItemEllyScythe(ToolMaterial material) {
-		super(material, LibItemName.ELLY_SCYTHE);
+		super(material, LibName.ELLY_SCYTHE);
 		setNoRepair();
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.elly_scythe_header.name"));
 	}
 
 	@Override
@@ -92,7 +79,6 @@ public class ItemEllyScythe extends ItemBaseSword implements IOwnedBy {
 				}
 				durationSeconds *= 1.5F;
 
-				DanmakuHelper.playShotSound(player);
 				if(!world.isRemote) {
 					EntityEllyScythe scythe = new EntityEllyScythe(world, player, stack, durationSeconds);
 					scythe.setCritical(critical);
@@ -107,10 +93,8 @@ public class ItemEllyScythe extends ItemBaseSword implements IOwnedBy {
 				if(!player.capabilities.isCreativeMode) {
 					player.inventory.mainInventory.set(player.inventory.currentItem, ItemStack.EMPTY);
 				}
-			}
-			else if(!world.isRemote) {
+			} else if(!world.isRemote) {
 				for(int i = 0; i < 25; i++) {
-					DanmakuHelper.playShotSound(player);
 					spawnGroundDanmaku(player);
 				}
 				EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 50);
@@ -120,25 +104,20 @@ public class ItemEllyScythe extends ItemBaseSword implements IOwnedBy {
 		}
 	}
 
-	//Taken from DanmakuCore in SpellcardEntityDelusionEnlightenment
 	private static void spawnGroundDanmaku(EntityPlayer player) {
 		AbstractVector3 angle = Vector3.getVecWithoutY(Vector3.randomVector());
 		Random random = new Random();
 		Vector3 posSource = new Vector3(player).offset(angle, random.nextDouble() * 16);
 		Vector3 posReach = posSource.offset(Vector3.Down(), 16);
-
 		RayTraceResult ray = player.world.rayTraceBlocks(posSource.toVec3d(), posReach.toVec3d());
-
 		Vector3 spawnPos = ray != null ? new Vector3(ray.hitVec) : posReach;
-
-		EntityDanmaku danmaku = DanmakuTemplate.builder()
+		DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 				.setUser(player)
 				.setDirection(Vector3.Up())
 				.setMovementData(0.2D)
 				.setPos(spawnPos)
-				.setShot(LibShotData.SHOT_SCALE.setColor(LibColor.COLOR_SATURATED_RED))
-				.build().asEntity();
-		player.world.spawnEntity(danmaku);
+				.setShot(LibShotData.SHOT_SCALE.setMainColor(LibColor.COLOR_SATURATED_RED));
+		DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 	}
 
 	@Override
@@ -154,10 +133,5 @@ public class ItemEllyScythe extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return GoATouhouCharacters.ELLY;
 	}
 }

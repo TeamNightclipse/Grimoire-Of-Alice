@@ -2,20 +2,15 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item.food;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.common.item.ModItems;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.MathUtil;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -27,16 +22,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
+public class ItemIbarakiBoxFilled extends ItemModFood {
 
 	public ItemIbarakiBoxFilled() {
-		super(0, 2F, false, LibItemName.IBARAKI_BOX_FILLED);
+		super(0, 2F, false, LibName.IBARAKI_BOX_FILLED);
 		setMaxStackSize(1);
 		setAlwaysEdible();
 	}
@@ -47,24 +38,15 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ibaraki_box_description.name"));
-	}
-
-	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving) {
 		if(entityLiving instanceof EntityPlayer && !((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
-
 		if(!MathUtil.fuzzyEqual(entityLiving.getHealth(), entityLiving.getMaxHealth())) {
 			entityLiving.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
 			entityLiving.heal(100);
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2400, 0));
-		}
-		else {
+		} else {
 			entityLiving.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 1200, 2));
 		}
 		return stack.isEmpty() ? new ItemStack(ModItems.IBARAKI_BOX_EMPTY) : stack;
@@ -85,10 +67,5 @@ public class ItemIbarakiBoxFilled extends ItemModFood implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 32;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.EIRIN_YAGOKORO;
 	}
 }

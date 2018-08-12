@@ -2,50 +2,31 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-import static net.minecraft.util.text.TextFormatting.*;
+import java.util.List;
 
-public class ItemDragonJewel extends ItemBaseFlavored implements IOwnedBy {
+public class ItemDragonJewel extends ItemBase {
 
 	public ItemDragonJewel() {
-		super(LibItemName.DRAGON_JEWEL, ItemFlavor.of(
-				ImmutableList.of(FormattedString.withItalics(WHITE, "grimoire.tooltip.dragon_jewel_header.name"),
-						FormattedString.withItalics("grimoire.tooltip.dragon_jewel_description_top.name"),
-						FormattedString.withItalics("grimoire.tooltip.dragon_jewel_description_bottom.name")), true, EnumRarity.EPIC));
+		super(LibName.DRAGON_JEWEL);
 		setMaxStackSize(1);
 	}
 
@@ -85,8 +66,7 @@ public class ItemDragonJewel extends ItemBaseFlavored implements IOwnedBy {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!player.isSneaking()) {
 			spawnJewel(stack, world, player);
-		}
-		else {
+		} else {
 			player.getCooldownTracker().setCooldown(this, 30);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
@@ -124,10 +104,5 @@ public class ItemDragonJewel extends ItemBaseFlavored implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

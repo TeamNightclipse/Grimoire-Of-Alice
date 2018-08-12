@@ -2,54 +2,37 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import com.google.common.collect.ImmutableList;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelFireRobe;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityItemFireProof;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor, IOwnedBy {
+public class ItemFireRobe extends ItemBaseArmor implements ISpecialArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemFireRobe(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.FIRE_ROBE, EntityEquipmentSlot.CHEST, ItemFlavor.simpleBuilder()
-				.common(FormattedString.withItalics(TextFormatting.WHITE, "grimoire.tooltip.fire_robe_header.name"))
-				.shift(ImmutableList.of(
-						FormattedString.withItalics("grimoire.tooltip.fire_robe_description_top.name"),
-						FormattedString.withItalics("grimoire.tooltip.fire_robe_description_mid.name"))
-				)
-				.effect(true)
-				.rarity(EnumRarity.EPIC)
-				.build());
+		super(materialIn, dmg, LibName.FIRE_ROBE, EntityEquipmentSlot.CHEST);
 		setNoRepair();
 	}
 
@@ -74,8 +57,7 @@ public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase user) {
 		if(target instanceof EntityPlayer) {
 			extinguishEffect(target, target.world);
-		}
-		else {
+		} else {
 			target.setFire(10);
 		}
 		return true;
@@ -135,10 +117,5 @@ public class ItemFireRobe extends ItemBaseArmorFlavored implements ISpecialArmor
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

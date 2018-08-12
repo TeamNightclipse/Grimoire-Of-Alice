@@ -8,16 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
-import com.google.common.collect.ImmutableList;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import com.mojang.authlib.GameProfile;
-
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,7 +20,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.management.PlayerProfileCache;
@@ -43,7 +34,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-import static net.minecraft.util.text.TextFormatting.*;
+import javax.annotation.Nullable;
+import java.util.UUID;
 
 public class ItemSarielWand extends ItemSwordOwner {
 
@@ -51,13 +43,7 @@ public class ItemSarielWand extends ItemSwordOwner {
 	private static final String PLAYER_UUID = "PlayerUUID";
 
 	public ItemSarielWand(ToolMaterial material) {
-		super(material, LibItemName.SARIEL_WAND, ItemFlavor.complexBuilder()
-				.common((stack, p) -> ImmutableList.of(FormattedString.withItalics(WHITE, "grimoire.tooltip.sariel_wand_header.name"),
-						FormattedString.withItalics("grimoire.tooltip.sariel_wand_description.name"), FormattedString.ofRaw(""),
-						FormattedString.withItalics("grimoire.tooltip.sariel_wand_mode.name").withI18nArgs(getName(stack))))
-				.effect(s -> true)
-				.rarity(s -> EnumRarity.EPIC)
-				.build());
+		super(material, LibName.SARIEL_WAND);
 	}
 
 	@Override

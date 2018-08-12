@@ -8,16 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -31,16 +23,18 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemNazrinPendulum extends ItemBase implements IOwnedBy {
+import java.util.Arrays;
+import java.util.Optional;
+
+public class ItemNazrinPendulum extends ItemBase  {
 
 	public ItemNazrinPendulum() {
-		super(LibItemName.NAZRIN_PENDULUM);
+		super(LibName.NAZRIN_PENDULUM);
 		setMaxStackSize(1);
 	}
 
@@ -53,19 +47,6 @@ public class ItemNazrinPendulum extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_header.name"));
-		list.add(TextFormatting.AQUA + I18n.format("grimoire.tooltip.nazrin_pendulum_ore.name") + " " + getOre(stack));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_description.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.nazrin_pendulum_shift.name"));
-		}
 	}
 
 	@Override
@@ -146,10 +127,5 @@ public class ItemNazrinPendulum extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.BOW;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.NAZRIN;
 	}
 }

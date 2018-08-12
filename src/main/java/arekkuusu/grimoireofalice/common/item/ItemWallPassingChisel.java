@@ -9,11 +9,8 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -24,19 +21,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
-public class ItemWallPassingChisel extends ItemBase implements IOwnedBy {
+public class ItemWallPassingChisel extends ItemBase  {
 
 	public ItemWallPassingChisel() {
-		super(LibItemName.WALL_PASSING_CHISEL);
+		super(LibName.WALL_PASSING_CHISEL);
 	}
 
 	@Override
@@ -45,19 +37,12 @@ public class ItemWallPassingChisel extends ItemBase implements IOwnedBy {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.wall_passing_chisel_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.wall_passing_chisel_description.name"));
-	}
-
-	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
 									  float y, float z) {
 		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
 			if(player instanceof EntityPlayerMP) {
-				((EntityPlayerMP) player).setPositionAndUpdate(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
+				player.setPositionAndUpdate(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
 			}
 			world.playSound(player, travel.getX(), travel.getY(), travel.getZ(), GrimoireSoundEvents.WARP,
 					SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -111,10 +96,5 @@ public class ItemWallPassingChisel extends ItemBase implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIGA_KAKU;
 	}
 }

@@ -1,15 +1,13 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Quat;
-import net.katsstuff.danmakucore.entity.danmaku.DanmakuTemplate;
-import net.katsstuff.danmakucore.entity.danmaku.EntityDanmaku;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.DanmakuCreationHelper;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.katsstuff.danmakucore.lib.data.LibShotData;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import com.google.common.collect.Lists;
+import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -19,17 +17,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.collection.JavaConversions;
 
-import java.util.List;
-
-public class ItemRedStoneofAja extends ItemBase implements IOwnedBy {
+public class ItemRedStoneofAja extends ItemBase {
 
 	public ItemRedStoneofAja() {
-		super(LibItemName.RED_STONE_OF_AJA);
+		super(LibName.RED_STONE_OF_AJA);
 		setMaxDamage(150);
 		setMaxStackSize(1);
 	}
@@ -37,12 +31,6 @@ public class ItemRedStoneofAja extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.red_stone_of_aja_header.name"));
 	}
 
 	@Override
@@ -58,11 +46,11 @@ public class ItemRedStoneofAja extends ItemBase implements IOwnedBy {
 		if(timeLeft <= 90) {
 			if(!world.isRemote) {
 				if(world.canSeeSky(entityLiving.getPosition())) {
-					EntityDanmaku lazer = DanmakuTemplate.builder()
+					DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
-							.setMovementData(3D)
-							.build().asEntity();
+							.setMovementData(3D);
+					DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 					for(int i = 0; i < 4; i++) {
 						DanmakuTemplate circle = DanmakuTemplate.builder()
 								.setUser(entityLiving)
@@ -71,15 +59,12 @@ public class ItemRedStoneofAja extends ItemBase implements IOwnedBy {
 								.build();
 						DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
 					}
-					world.spawnEntity(lazer);
-				}
-				else {
-					EntityDanmaku danmaku = DanmakuTemplate.builder()
+				} else {
+					DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 							.setUser(entityLiving)
 							.setShot(LibShotData.SHOT_POINTED_LASER.setSizeZ(4))
-							.setMovementData(4D)
-							.build().asEntity();
-					world.spawnEntity(danmaku);
+							.setMovementData(4D);
+					DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 				}
 			}
 			entityLiving.playSound(GrimoireSoundEvents.POWER_UP, 0.2F, 1F);
@@ -101,10 +86,5 @@ public class ItemRedStoneofAja extends ItemBase implements IOwnedBy {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 100;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KAGUYA_HOURAISAN;
 	}
 }

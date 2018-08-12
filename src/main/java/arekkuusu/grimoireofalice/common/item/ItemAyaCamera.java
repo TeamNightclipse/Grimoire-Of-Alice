@@ -8,24 +8,16 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.item.ItemStack;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 
-public class ItemAyaCamera extends ItemCamera implements IOwnedBy {
+public class ItemAyaCamera extends ItemCamera  {
 
 	public ItemAyaCamera() {
-		super(LibItemName.AYA_CAMERA);
+		super(LibName.AYA_CAMERA);
 	}
 
 	@Override
 	public int getSize() {
 		return 5;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.AYA_SHAMEIMARU;
 	}
 }

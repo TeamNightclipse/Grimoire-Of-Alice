@@ -8,14 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.helper.MathUtil;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.danmakucore.helper.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -31,15 +25,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import static net.minecraft.item.EnumRarity.*;
-import static net.minecraft.util.text.TextFormatting.*;
+import java.util.List;
 
-public class ItemDeathScythe extends ItemBaseSwordFlavored implements IOwnedBy {
+public class ItemDeathScythe extends ItemBaseSword  {
 
 	public ItemDeathScythe(ToolMaterial material) {
-		super(material, LibItemName.KOMACHI_SCYTHE, ItemFlavor.simpleBuilder().common(
-				FormattedString.withItalics(WHITE, "grimoire.tooltip.death_scythe_header.name"),
-				FormattedString.withItalics("grimoire.tooltip.death_scythe_description.name")).rarity(RARE).build());
+		super(material, LibName.KOMACHI_SCYTHE);
 		setNoRepair();
 	}
 
@@ -99,7 +90,7 @@ public class ItemDeathScythe extends ItemBaseSwordFlavored implements IOwnedBy {
 					entity.motionY += look.y * back;
 					entity.motionZ += look.z * back;
 				}
-				else if(entity.getDistanceToEntity(player) > 2) {
+				else if(entity.getDistanceSq(player) > 2) {
 					entity.motionX -= look.x * back;
 					entity.motionY -= look.y * back;
 					entity.motionZ -= look.z * back;
@@ -130,10 +121,5 @@ public class ItemDeathScythe extends ItemBaseSwordFlavored implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KOMACHI_ONOZUKA;
 	}
 }

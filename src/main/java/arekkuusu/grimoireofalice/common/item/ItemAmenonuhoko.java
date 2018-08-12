@@ -8,15 +8,9 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
-import com.google.common.collect.ImmutableList;
-
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,19 +31,12 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 
 import javax.annotation.Nullable;
 
-import static net.minecraft.item.EnumRarity.RARE;
-import static net.minecraft.util.text.TextFormatting.WHITE;
-
-public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
+public class ItemAmenonuhoko extends ItemSwordOwner {
 
 	public static final ResourceLocation STRUCTURE_BOULDER = new ResourceLocation(LibMod.MOD_ID, "boulder");
 
 	public ItemAmenonuhoko(ToolMaterial material) {
-		super(material, LibItemName.AMENONUHOKO, ItemFlavor.simpleBuilder().common(
-				FormattedString.withItalics(WHITE, "grimoire.tooltip.amenonuhoko_header.name")).shift(
-				ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_top.name"),
-						FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_mid.name"),
-						FormattedString.withItalics("grimoire.tooltip.amenonuhoko_description_bottom.name"))).effect(true).rarity(RARE).build());
+		super(material, LibName.AMENONUHOKO);
 		setNoRepair();
 	}
 
@@ -114,10 +101,5 @@ public class ItemAmenonuhoko extends ItemSwordOwner implements IOwnedBy {
 				return null;
 			}
 		}
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.RINNOSUKE_MORICHIKA;
 	}
 }

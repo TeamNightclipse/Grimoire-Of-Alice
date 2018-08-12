@@ -10,9 +10,8 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelSuwakoHat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,12 +21,9 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemSuwakoHat extends ItemBaseArmor {
 
@@ -35,13 +31,7 @@ public class ItemSuwakoHat extends ItemBaseArmor {
 	private ModelBiped model;
 
 	public ItemSuwakoHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.SUWAKO_HAT, EntityEquipmentSlot.HEAD);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> tooltip, boolean advanced) {
-		tooltip.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.suwako_hat_header.name"));
+		super(materialIn, dmg, LibName.SUWAKO_HAT, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override

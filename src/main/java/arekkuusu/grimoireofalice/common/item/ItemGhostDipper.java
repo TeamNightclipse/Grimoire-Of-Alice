@@ -2,21 +2,16 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import com.google.common.collect.Lists;
-
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -26,19 +21,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
 import java.util.Queue;
 
-public class ItemGhostDipper extends ItemBase implements IOwnedBy {
+public class ItemGhostDipper extends ItemBase {
 
 	public ItemGhostDipper() {
-		super(LibItemName.GHOST_DIPPER);
+		super(LibName.GHOST_DIPPER);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
@@ -49,19 +39,6 @@ public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_description_top.name"));
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_description_bottom.name"));
-		}
-		else {
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.ghost_dipper_shift.name"));
-		}
 	}
 
 	@Override
@@ -76,8 +53,7 @@ public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 		//noinspection ConstantConditions
 		if(raytraceresult == null || raytraceresult.typeOfHit != RayTraceResult.Type.BLOCK) {
 			return new ActionResult<>(EnumActionResult.PASS, stack);
-		}
-		else {
+		} else {
 			if(!player.isSneaking()) {
 				BlockPos blockpos = raytraceresult.getBlockPos();
 
@@ -89,8 +65,7 @@ public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 					player.setActiveHand(hand);
 					return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 				}
-			}
-			else {
+			} else {
 				BlockPos pos = raytraceresult.getBlockPos();
 				boolean replaceable = world.getBlockState(pos).getBlock().isReplaceable(world, pos);
 				BlockPos posUp = replaceable && raytraceresult.sideHit == EnumFacing.UP ? pos : pos.offset(raytraceresult.sideHit);
@@ -111,8 +86,7 @@ public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 								world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posUp.getX() + itemRand.nextDouble(),
 										posUp.getY() + itemRand.nextDouble(), posUp.getZ() + itemRand.nextDouble(), 0.0D, 0.0D, 0.0D);
 							}
-						}
-						else {
+						} else {
 							if(!world.isRemote && (isSolid || canReplace) && !material.isLiquid()) {
 								world.destroyBlock(posUp, true);
 							}
@@ -175,10 +149,5 @@ public class ItemGhostDipper extends ItemBase implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.MINAMITSU_MURASA;
 	}
 }

@@ -2,20 +2,15 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelSatoriEye;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.gui.GuiScreen;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -37,17 +32,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
+import java.util.List;
+
+public class ItemThirdEye extends ItemBaseArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemThirdEye(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.THIRD_EYE, EntityEquipmentSlot.CHEST);
+		super(material, dmg, LibName.THIRD_EYE, EntityEquipmentSlot.CHEST);
 		setMaxStackSize(1);
 		setMaxDamage(125);
 		setNoRepair();
@@ -58,19 +54,6 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_header.name"));
-		if(GuiScreen.isShiftKeyDown()) {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_status.name") + " " + getStatus(stack));
-		}
-		else {
-			list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_activate.name"));
-			list.add(TextFormatting.DARK_GRAY + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.third_eye_shift.name"));
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -91,8 +74,7 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 							.forEach(livingBase -> livingBase.setLastAttackedEntity(null));
 				}
 			}
-		}
-		else {
+		} else {
 			applyEffectNearby(world, player, new PotionEffect(MobEffects.GLOWING, 20, 0));
 		}
 	}
@@ -115,8 +97,7 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 				player.setItemStackToSlot(entityequipmentslot, stack.copy());
 				stack.setCount(0);
 			}
-		}
-		else {
+		} else {
 			player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1F, 1F);
 			setClosed(stack, !isClosed(stack));
 			stack.damageItem(1, player);
@@ -145,8 +126,7 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 			if((model == null || model instanceof ModelSatoriEye)) {
 				model = new ModelSatoriEye();
 			}
-		}
-		else if(model == null || model instanceof ModelSatoriEye) {
+		} else if(model == null || model instanceof ModelSatoriEye) {
 			model = new ModelSatoriEye();
 		}
 		model.setModelAttributes(imodel);
@@ -166,10 +146,5 @@ public class ItemThirdEye extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return isClosed(stack) ? TouhouCharacter.KOISHI_KOMEIJI : TouhouCharacter.SATORI_KOMEIJI;
 	}
 }

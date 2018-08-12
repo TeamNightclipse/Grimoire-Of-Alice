@@ -8,10 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -19,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemTimeOrb extends ItemBase {
 
 	public ItemTimeOrb() {
-		super(LibItemName.TIME_ORB);
+		super(LibName.TIME_ORB);
 	}
 
 	@Override
@@ -39,14 +35,6 @@ public class ItemTimeOrb extends ItemBase {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.time_orb_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.time_orb_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.time_orb_description_bottom.name"));
 	}
 
 	@Override

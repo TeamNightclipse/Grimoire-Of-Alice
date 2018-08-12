@@ -8,13 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +20,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,23 +31,7 @@ public class ItemUbaMask extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemUbaMask(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.UBA_MASK);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.uba_mask_header.name"));
-
-		if(player.experienceLevel <= 90) {
-			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_one.name"));
-			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_two.name"));
-		}
-		else {
-			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.uba_mask_bad_buff_tree.name"));
-		}
-
-		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.uba_mask_vulnerable.name"));
+		super(material, dmg, LibName.UBA_MASK);
 	}
 
 	@Override

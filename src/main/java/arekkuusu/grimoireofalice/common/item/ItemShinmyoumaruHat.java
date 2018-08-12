@@ -10,25 +10,22 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelShinmyoumaruHat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemShinmyoumaruHat extends ItemBaseArmor implements IOwnedBy {
+public class ItemShinmyoumaruHat extends ItemBaseArmor  {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemShinmyoumaruHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.SHINMYOUMARU_HAT, EntityEquipmentSlot.HEAD);
+		super(materialIn, dmg, LibName.SHINMYOUMARU_HAT, EntityEquipmentSlot.HEAD);
 	}
 
 	@Override
@@ -44,10 +41,5 @@ public class ItemShinmyoumaruHat extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 		return ResourceLibrary.SHINMYOUMARU_HAT.toString();
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SHINMYOUMARU_SUKUNA;
 	}
 }

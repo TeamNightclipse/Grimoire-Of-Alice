@@ -8,30 +8,13 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 
-import java.util.List;
-
-public class ItemPiano extends ItemInstrument implements IOwnedBy {
+public class ItemPiano extends ItemInstrument  {
 
 	public ItemPiano() {
-		super(LibItemName.LYRICA_PIANO);
+		super(LibName.LYRICA_PIANO);
 		setMaxDamage(150);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.piano_use.name"));
 	}
 
 	@Override
@@ -47,10 +30,5 @@ public class ItemPiano extends ItemInstrument implements IOwnedBy {
 	@Override
 	public double getDistance() {
 		return 2D;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.LYRICA_PRIMSRIVER;
 	}
 }

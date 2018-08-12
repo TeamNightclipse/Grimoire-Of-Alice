@@ -1,7 +1,7 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.entity.EntityGap;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class ItemGap extends ItemBase {
 
 	public ItemGap() {
-		super(LibItemName.GAP);
+		super(LibName.GAP);
 		setMaxStackSize(1);
 	}
 

@@ -8,12 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.entity.EntityCursedDecoyDoll;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -24,17 +20,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-import static net.minecraft.item.EnumRarity.*;
-
-public class ItemCursedDecoyDoll extends ItemBaseFlavored implements IOwnedBy {
+public class ItemCursedDecoyDoll extends ItemBase  {
 
 	public ItemCursedDecoyDoll() {
-		super(LibItemName.CURSED_DECOY_DOLL, ItemFlavor.simpleBuilder()
-				.common(FormattedString.withItalics("grimoire.tooltip.decoy_doll_header.name"))
-				.rarity(UNCOMMON)
-				.build());
+		super(LibName.CURSED_DECOY_DOLL);
 		setMaxStackSize(1);
 	}
 
@@ -65,10 +55,5 @@ public class ItemCursedDecoyDoll extends ItemBaseFlavored implements IOwnedBy {
 									  float hitX, float hitY, float hitZ) {
 		spawnDoll(player.getHeldItem(hand), world, player);
 		return EnumActionResult.SUCCESS;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

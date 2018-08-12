@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -10,10 +10,8 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.Alice;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,28 +21,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
+public class ItemShinmyoumaruNeedle extends ItemBaseSword {
 
 	public ItemShinmyoumaruNeedle(ToolMaterial material) {
-		super(material, LibItemName.SHINMYOUMARU_NEEDLE);
+		super(material, LibName.SHINMYOUMARU_NEEDLE);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.needle_header.name"));
 	}
 
 	@Override
@@ -67,9 +56,8 @@ public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 				double dx = player.posX + vec.x * distance;
 				double dy = player.posY + 2.5 + vec.y * distance;
 				double dz = player.posZ + vec.z * distance;
-				Alice.proxy.spawnNeedleSwing(world, dx, dy, dz, itemRand.nextFloat(), 0F, 0F, 20, 0.5F + itemRand.nextFloat());
+				Alice.proxy.spawnNeedleSwing(world, Vector3.apply(dx, dy, dz), Vector3.apply(itemRand.nextFloat(), 0F, 0F), 20, 0.5F + itemRand.nextFloat());
 				world.playSound(player, player.getPosition(), GrimoireSoundEvents.NEEDLE_SWEEP, SoundCategory.PLAYERS, 1F, 1F);
-
 				if(!world.isRemote) {
 					List<EntityLivingBase> list = player.world.getEntitiesWithinAABB(EntityLivingBase.class,
 							player.getEntityBoundingBox().offset(vec.x * 2, 0, vec.z * 2).grow(4D), entity -> !player.equals(entity));
@@ -120,10 +108,5 @@ public class ItemShinmyoumaruNeedle extends ItemBaseSword implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SHINMYOUMARU_SUKUNA;
 	}
 }

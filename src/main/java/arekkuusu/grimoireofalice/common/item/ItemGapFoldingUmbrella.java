@@ -2,47 +2,33 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.Optional;
-
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
 import arekkuusu.grimoireofalice.common.core.helper.MiscHelper;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import static net.minecraft.util.text.TextFormatting.*;
+import java.util.Optional;
 
-public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy {
+public class ItemGapFoldingUmbrella extends ItemBase {
 
 	public ItemGapFoldingUmbrella() {
-		super(LibItemName.FOLDING_UMBRELLA, ItemFlavor.simpleBuilder().common(
-				FormattedString.withItalics(WHITE, "grimoire.tooltip.folding_umbrella_header_header.name")).shift(
-				FormattedString.withItalics("grimoire.tooltip.folding_umbrella_header_top.name"),
-				FormattedString.withItalics("grimoire.tooltip.folding_umbrella_header_bottom.name")).effect(true).rarity(EnumRarity.RARE).build());
+		super(LibName.FOLDING_UMBRELLA);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 		setNoRepair();
@@ -64,8 +50,7 @@ public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy
 			BlockPos pos;
 			if(posLookedAt.isPresent() && !player.isSneaking()) {
 				pos = posLookedAt.get();
-			}
-			else {
+			} else {
 				Vec3d look = player.getLookVec();
 				double range = 40.0D;
 				double dx = player.posX + look.x * range;
@@ -90,8 +75,7 @@ public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy
 		RayTraceResult rayTraceResult = MiscHelper.rayTraceLook(player, 40.0D);
 		if(rayTraceResult != null) {
 			return Optional.of(rayTraceResult.getBlockPos().offset(rayTraceResult.sideHit));
-		}
-		else {
+		} else {
 			return Optional.empty();
 		}
 	}
@@ -112,10 +96,5 @@ public class ItemGapFoldingUmbrella extends ItemBaseFlavored implements IOwnedBy
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 2000;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.SEIJA_KIJIN;
 	}
 }

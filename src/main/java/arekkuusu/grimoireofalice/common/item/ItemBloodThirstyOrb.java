@@ -8,14 +8,8 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import com.google.common.collect.ImmutableList;
-
-import arekkuusu.grimoireofalice.common.core.format.FormattedString;
-import arekkuusu.grimoireofalice.common.core.format.ItemFlavor;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.data.Vector3;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,15 +21,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 
-import static net.minecraft.item.EnumRarity.*;
-
-public class ItemBloodThirstyOrb extends ItemBaseFlavored implements IOwnedBy {
+public class ItemBloodThirstyOrb extends ItemBase  {
 
 	public ItemBloodThirstyOrb() {
-		super(LibItemName.BLOOD_THIRSTY_ORB,
-				ItemFlavor.of(ImmutableList.of(FormattedString.withItalics("grimoire.tooltip.blood_thirsty_orb_description.name")), true, RARE));
+		super(LibName.BLOOD_THIRSTY_ORB);
 		setMaxStackSize(1);
 		setMaxDamage(5);
 		setNoRepair();
@@ -93,10 +83,5 @@ public class ItemBloodThirstyOrb extends ItemBaseFlavored implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.REIMU_HAKUREI;
 	}
 }

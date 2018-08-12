@@ -8,13 +8,10 @@
  */
 package arekkuusu.grimoireofalice.common.item.masks;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +21,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -35,28 +31,12 @@ public class ItemMaskOfHope extends ItemModMask {
 	private ModelBiped model;
 
 	public ItemMaskOfHope(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.MASK_OF_HOPE);
+		super(material, dmg, LibName.MASK_OF_HOPE);
 	}
 
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.DARK_AQUA + I18n.format("grimoire.tooltip.mask_of_hope_header.name"));
-		list.add(TextFormatting.DARK_GRAY + I18n.format("grimoire.tooltip.mask_of_hope_description.name"));
-
-		if(player.experienceLevel <= 120) {
-			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_good_buff.name"));
-		}
-		else {
-			list.add(TextFormatting.LIGHT_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_bad_buff.name"));
-		}
-
-		list.add(TextFormatting.DARK_PURPLE + I18n.format("grimoire.tooltip.mask_of_hope_vulnerable.name"));
 	}
 
 	@Override

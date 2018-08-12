@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
@@ -11,7 +11,7 @@ package arekkuusu.grimoireofalice.common.item.masks;
 import arekkuusu.grimoireofalice.client.render.model.ModelKokorosMasks;
 import arekkuusu.grimoireofalice.client.render.model.ModelMask;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,14 +23,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.UsernameCache;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ItemKokorosMasks extends ItemModMask {
@@ -41,7 +38,7 @@ public class ItemKokorosMasks extends ItemModMask {
 	private static final String OWNER_TAG = "GrimoireOwner";
 
 	public ItemKokorosMasks(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.KOKORO_MASKS);
+		super(material, dmg, LibName.KOKORO_MASKS);
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -56,21 +53,6 @@ public class ItemKokorosMasks extends ItemModMask {
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.EPIC;
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + "Tsukumogami of Emotions");
-		list.add(TextFormatting.ITALIC + "Feel the power of 66 masks");
-		list.add(TextFormatting.ITALIC + "being worn at the same time");
-		if(stack.hasTagCompound()) {
-			UUID ownerUuid = stack.getTagCompound().getUniqueId(OWNER_TAG);
-			if(ownerUuid != null && UsernameCache.containsUUID(ownerUuid)) {
-				list.add(TextFormatting.ITALIC + "Property of " + UsernameCache.getLastKnownUsername(ownerUuid));
-			}
-		}
 	}
 
 	@Override
@@ -100,7 +82,7 @@ public class ItemKokorosMasks extends ItemModMask {
 
 		if(player.getUniqueID().equals(armor.getTagCompound().getUniqueId(OWNER_TAG))) {
 			if(player.moveForward > 0) {
-				player.moveRelative(0F, 2F, 0.085F);
+				player.moveRelative(0F, 0F, 2F, 0.085F);
 			}
 			List<PotionEffect> badPotions = player.getActivePotionEffects().stream()
 					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).collect(Collectors.toList());
@@ -135,8 +117,7 @@ public class ItemKokorosMasks extends ItemModMask {
 			if(model == null || model instanceof ModelMask) {
 				model = new ModelKokorosMasks();
 			}
-		}
-		else if(model == null || model instanceof ModelKokorosMasks) {
+		} else if(model == null || model instanceof ModelKokorosMasks) {
 			model = new ModelMask();
 		}
 		model.setModelAttributes(imodel);
@@ -152,8 +133,7 @@ public class ItemKokorosMasks extends ItemModMask {
 		//noinspection ConstantConditions
 		if(entity.getUniqueID().equals(stack.getTagCompound().getUniqueId(OWNER_TAG))) {
 			return ResourceLibrary.KOKOROS_MASKS.toString();
-		}
-		else {
+		} else {
 			return ResourceLibrary.MASK_OF_HOPE.toString();
 		}
 	}

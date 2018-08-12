@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -13,9 +13,7 @@ import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
 import arekkuusu.grimoireofalice.common.entity.EntityHakureiOrb;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
@@ -31,9 +29,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -41,10 +37,10 @@ import java.util.List;
 
 import static arekkuusu.grimoireofalice.api.items.GoheiMode.*;
 
-public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
+public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 
 	public ItemHakureiGohei() {
-		super(LibItemName.HAKUREI_GOHEI, GoheiMode.values());
+		super(LibName.HAKUREI_GOHEI, GoheiMode.values());
 		setMaxDamage(120);
 		setMaxStackSize(1);
 	}
@@ -52,12 +48,6 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.hakurei_gohei_header.name"));
 	}
 
 	@Override
@@ -80,8 +70,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 				if(player.motionZ < 0.5 && player.motionZ > -0.5) {
 					player.motionZ = 0.5 * vec.z;
 				}
-			}
-			else {
+			} else {
 				player.motionY = 0;
 			}
 			player.fallDistance = 0.0F;
@@ -100,8 +89,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 
 				Alice.proxy.displayRecordText(text);
 			}
-		}
-		else {
+		} else {
 			player.setActiveHand(hand);
 
 			GoheiMode mode = getType(stack);
@@ -111,8 +99,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 					EntityHakureiOrb orb = new EntityHakureiOrb(world, player);
 					world.spawnEntity(orb);
 				}
-			}
-			else if((mode == BARRIER_EXPLODE || mode == BARRIER_MOTION) && !world.isRemote) {
+			} else if((mode == BARRIER_EXPLODE || mode == BARRIER_MOTION) && !world.isRemote) {
 				EntityBarrier barrier = new EntityBarrier(world, player, mode.getType());
 				world.spawnEntity(barrier);
 			}
@@ -189,8 +176,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 						target.attackEntityFrom(DamageSource.MAGIC, 5);
 					}
 			}
-		}
-		else {
+		} else {
 			stack.damageItem(1, attacker);
 		}
 		return true;
@@ -231,10 +217,5 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.REIMU_HAKUREI;
 	}
 }

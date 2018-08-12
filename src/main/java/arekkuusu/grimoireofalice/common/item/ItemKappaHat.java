@@ -2,41 +2,34 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
 import arekkuusu.grimoireofalice.client.render.model.ModelKappaHat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
+public class ItemKappaHat extends ItemBaseArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemKappaHat(ArmorMaterial materialIn, int dmg) {
-		super(materialIn, dmg, LibItemName.KAPPA_HAT, EntityEquipmentSlot.HEAD);
+		super(materialIn, dmg, LibName.KAPPA_HAT, EntityEquipmentSlot.HEAD);
 		setNoRepair();
 		setMaxStackSize(1);
 	}
@@ -44,12 +37,6 @@ public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kappa_hat_header.name"));
 	}
 
 	@Override
@@ -63,9 +50,8 @@ public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		if(player.world.isRemote && !player.capabilities.isFlying && player.moveForward > 0F) {
 			if(player.isInWater() || player.isInsideOfMaterial(Material.WATER)) {
-				player.moveRelative(0F, 1F, 0.085F);
-			}
-			else if(!player.isWet()) {
+				player.moveRelative(0F, 0F, 1F, 0.085F);
+			} else if(!player.isWet()) {
 				player.motionX *= 0.4;
 				player.motionZ *= 0.4;
 			}
@@ -85,10 +71,5 @@ public class ItemKappaHat extends ItemBaseArmor implements IOwnedBy {
 		}
 		model.setModelAttributes(imodel);
 		return model;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.NITORI_KAWASHIRO;
 	}
 }

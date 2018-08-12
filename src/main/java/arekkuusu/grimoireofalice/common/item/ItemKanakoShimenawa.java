@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -10,11 +10,8 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.render.model.ModelKanakoShimenawa;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,30 +19,18 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor, IOwnedBy {
+public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor {
 
 	@SideOnly(Side.CLIENT)
 	private ModelBiped model;
 
 	public ItemKanakoShimenawa(ArmorMaterial material, int dmg) {
-		super(material, dmg, LibItemName.KANAKO_SHIMENAWA, EntityEquipmentSlot.CHEST);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_top.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.kanako_shimenawa_description_bottom.name"));
+		super(material, dmg, LibName.KANAKO_SHIMENAWA, EntityEquipmentSlot.CHEST);
 	}
 
 	@Override
@@ -89,9 +74,5 @@ public class ItemKanakoShimenawa extends ItemBaseArmor implements ISpecialArmor,
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.KANAKO_YASAKA;
 	}
 }

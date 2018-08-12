@@ -8,12 +8,7 @@
  */
 package arekkuusu.grimoireofalice.common.item;
 
-import java.util.List;
-
-import arekkuusu.grimoireofalice.common.lib.LibItemName;
-import net.katsstuff.danmakucore.entity.living.TouhouCharacter;
-import net.katsstuff.danmakucore.item.IOwnedBy;
-import net.minecraft.client.resources.I18n;
+import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -31,19 +26,18 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemRodOfRemorse extends ItemBase implements IOwnedBy {
+public class ItemRodOfRemorse extends ItemBase  {
 
 	@CapabilityInject(IItemHandler.class)
 	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	public ItemRodOfRemorse() {
-		super(LibItemName.ROD_REMORSE);
+		super(LibName.ROD_REMORSE);
 		setMaxStackSize(1);
 		setMaxDamage(1);
 		addPropertyOverride(new ResourceLocation("used"),
@@ -59,13 +53,6 @@ public class ItemRodOfRemorse extends ItemBase implements IOwnedBy {
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.UNCOMMON;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean advanced) {
-		list.add(TextFormatting.WHITE + "" + TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rod_of_remorse_header.name"));
-		list.add(TextFormatting.ITALIC + I18n.format("grimoire.tooltip.rod_of_remorse_description.name"));
 	}
 
 	@SuppressWarnings("ConstantConditions")
@@ -124,7 +111,7 @@ public class ItemRodOfRemorse extends ItemBase implements IOwnedBy {
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		if(!target.world.isRemote) {
 			player.sendMessage(new TextComponentString(TextFormatting.YELLOW + "- ")
-					.appendSibling(new TextComponentTranslation(getUnlocalizedName() + ".entityHealthUsage").appendText(": "))
+					.appendSibling(new TextComponentTranslation(getTranslationKey() + ".entityHealthUsage").appendText(": "))
 					.appendText(String.valueOf(target.getHealth())));
 		}
 		return true;
@@ -147,10 +134,5 @@ public class ItemRodOfRemorse extends ItemBase implements IOwnedBy {
 	@Override
 	public int getItemEnchantability() {
 		return 0;
-	}
-
-	@Override
-	public TouhouCharacter character(ItemStack stack) {
-		return TouhouCharacter.EIKU_SHIKI_YAMAXANADU;
 	}
 }
