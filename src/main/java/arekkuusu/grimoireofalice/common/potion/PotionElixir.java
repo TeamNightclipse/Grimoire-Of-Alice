@@ -19,7 +19,7 @@ public class PotionElixir extends PotionMod {
 	}
 
 	@Override
-	public void performEffect(EntityLivingBase entityLivingBaseIn, int p_76394_2_) {
+	public void performEffect(EntityLivingBase entity, int amplifier) {
 		//NO-OP
 	}
 }

@@ -22,16 +22,16 @@ public class PotionRadiationPoisoning extends PotionMod {
 
 	public PotionRadiationPoisoning() {
 		super(LibPotionName.RADIATION_POISONING, true, 0xB934E4, 0);
-		registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, "22653B89-116E-49DC-9B6B-9971489B5BE5", 0.0D, 0);
+		registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, "22652B89-116E-49DC-9B6B-9971189B5CE5", 0.0D, 0);
 	}
 
 	@Override
-	public void performEffect(EntityLivingBase entityLivingBaseIn, int p_76394_2_) {
+	public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
 		if(entityLivingBaseIn.getHealth() > 1.0F) {
 			entityLivingBaseIn.attackEntityFrom(DamageSource.MAGIC, 2.0F);
 		}
 		if(entityLivingBaseIn instanceof EntityPlayer) {
-			((EntityPlayer) entityLivingBaseIn).addExhaustion(0.025F * (float) (p_76394_2_ + 1));
+			((EntityPlayer) entityLivingBaseIn).addExhaustion(0.025F * (float) (amplifier + 1));
 		}
 		entityLivingBaseIn.setFire(100);
 	}
