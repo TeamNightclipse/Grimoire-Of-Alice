@@ -34,15 +34,11 @@ repositories {
 minecraft {
     version = "$mc_version-$forge_version"
     runDir = "run"
-    
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not allways work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
+
     mappings = "snapshot_20180810"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-	replace '@VERSION@', project.version
+
+	replace ':VERSION:', project.version
+    replace ':DANCORE_VERSION:', "$dancore_version"
 	replaceIn 'LibMod.java'
 }
 
@@ -73,8 +69,7 @@ dependencies {
 
 }
 
-processResources
-{
+processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
