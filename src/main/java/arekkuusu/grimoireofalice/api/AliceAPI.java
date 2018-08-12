@@ -2,31 +2,19 @@ package arekkuusu.grimoireofalice.api;
 
 import arekkuusu.grimoireofalice.api.recipes.*;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Achievement;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public final class AliceAPI {
 
-	private static final Map<Item, Achievement> ALTAR_ACHIEVEMENT_MAP = new HashMap<>();
-	private static final List<Achievement> VANILLA_ACHIEVEMENT_LIST = new ArrayList<>();
 	private static final List<IAltarRecipe> ALTAR_RECIPES = new ArrayList<>();
 	private static final List<ItemStack> FLY_ITEMS = new ArrayList<>();
 	private static final List<ItemStack> FLY_ARMOR = new ArrayList<>();
-
-	public static Map<Item, Achievement> getAltarAchievements() {
-		return ImmutableMap.copyOf(ALTAR_ACHIEVEMENT_MAP);
-	}
-
-	public static List<Achievement> getVanillaAchievements() {
-		return ImmutableList.copyOf(VANILLA_ACHIEVEMENT_LIST);
-	}
 
 	public static List<IAltarRecipe> getAltarRecipes() {
 		return ImmutableList.copyOf(ALTAR_RECIPES);
@@ -42,14 +30,6 @@ public final class AliceAPI {
 
 	public static List<ItemStack> getFlyingArmor() {
 		return ImmutableList.copyOf(FLY_ARMOR);
-	}
-
-	public static void addAltarAchievement(Item item, Achievement achievement) {
-		ALTAR_ACHIEVEMENT_MAP.put(item, achievement.registerStat());
-	}
-
-	public static void addVanillaAchievement(Achievement achievement) {
-		VANILLA_ACHIEVEMENT_LIST.add(achievement.registerStat());
 	}
 
 	/**
