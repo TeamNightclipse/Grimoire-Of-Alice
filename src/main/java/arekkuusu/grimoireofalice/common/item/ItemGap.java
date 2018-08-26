@@ -27,11 +27,12 @@ public class ItemGap extends ItemBase {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		player.playSound(SoundEvents.ENTITY_SHULKER_TELEPORT, 0.1F, 0.1F);
 		if(!world.isRemote) {
-			EntityGap gap = new EntityGap(world, player, stack);
+			EntityGap gap = new EntityGap(world);
+			gap.setPositionAndAngles(player);
 			world.spawnEntity(gap);
-		}
+			stack = ItemStack.EMPTY;
+		} else player.playSound(SoundEvents.ENTITY_SHULKER_TELEPORT, 0.1F, 0.1F);
 		player.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}

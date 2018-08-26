@@ -2,13 +2,11 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 package arekkuusu.grimoireofalice.common.entity;
-
-import java.util.Arrays;
 
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.block.Block;
@@ -26,26 +24,25 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Arrays;
+
 public class EntityNazrinPendulum extends Entity {
 
 	private ItemStack stack;
 	private String ore = "";
-
 	private EntityPlayer user;
 	private boolean follow;
 
 	public EntityNazrinPendulum(World world) {
 		super(world);
-		isImmuneToFire = true;
 	}
 
 	public EntityNazrinPendulum(World world, EntityPlayer player, ItemStack stack, String ore, boolean follow) {
 		super(world);
-		user = player;
+		this.user = player;
 		this.stack = stack.copy();
 		this.follow = follow;
 		this.ore = ore;
-		isImmuneToFire = true;
 	}
 
 	@Override
@@ -56,18 +53,17 @@ public class EntityNazrinPendulum extends Entity {
 				stopEntity();
 				return;
 			}
-
 			followPlayer();
 			surveyArea();
 		}
 	}
 
-	private void followPlayer() {
+	public void followPlayer() {
 		if(follow) {
 			Vec3d look = user.getLookVec();
-			float distance = 2F;
+			float distance = 1.25F;
 			double dx = user.posX + look.x * distance;
-			double dy = user.posY + user.getEyeHeight() - 0.5;
+			double dy = user.posY + user.getEyeHeight() + look.y * distance;
 			double dz = user.posZ + look.z * distance;
 			setPosition(dx, dy, dz);
 		}
@@ -79,17 +75,14 @@ public class EntityNazrinPendulum extends Entity {
 		for(int i = 1; i < 20; i++) {
 			Block block = world.getBlockState(pos.down(i)).getBlock();
 			ItemStack blockStack = new ItemStack(block);
-
-			//noinspection ConstantConditions Liar
-			//Check that the block has an item representation
 			if(blockStack.isEmpty()) {
 				continue;
 			}
-
 			boolean searchForOre = !ore.isEmpty();
-			boolean isValuable = Arrays.stream(OreDictionary.getOreIDs(blockStack)).mapToObj(OreDictionary::getOreName).anyMatch(
-					s -> searchForOre ? s.equals(ore) : s.startsWith("ore")) || block == Blocks.CHEST;
-
+			boolean isValuable = Arrays.stream(OreDictionary.getOreIDs(blockStack))
+					.mapToObj(OreDictionary::getOreName)
+					.anyMatch(s -> searchForOre ? s.equals(ore) : s.startsWith("ore"))
+					|| block == Blocks.CHEST;
 			if(isValuable) {
 				count++;
 			}
@@ -118,12 +111,16 @@ public class EntityNazrinPendulum extends Entity {
 					return;
 				}
 				ItemHandlerHelper.giveItemToPlayer(user, stack);
-			}
-			else {
+			} else {
 				dropItem(ModItems.NAZRIN_PENDULUM, 1);
 			}
 			setDead();
 		}
+	}
+
+	@Override
+	public boolean getIsInvulnerable() {
+		return true;
 	}
 
 	@Override

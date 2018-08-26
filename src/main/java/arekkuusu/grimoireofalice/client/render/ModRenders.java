@@ -1,11 +1,7 @@
 package arekkuusu.grimoireofalice.client.render;
 
 import arekkuusu.grimoireofalice.client.render.tile.TileCraftingAltarRenderer;
-import arekkuusu.grimoireofalice.client.render.tile.TilePillarAltarRenderer;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
-import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
-import arekkuusu.grimoireofalice.common.entity.EntityCameraSquare;
-import arekkuusu.grimoireofalice.common.entity.EntityStopWatch;
 import arekkuusu.grimoireofalice.common.entity.*;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
@@ -46,7 +42,6 @@ public class ModRenders {
 		registerEntity(EntityCameraSquare.class, RenderCameraSquare::new);
 
 		registerTESR(TileCraftingAltar.class, new TileCraftingAltarRenderer());
-		registerTESR(TilePillarAltar.class, new TilePillarAltarRenderer());
 	}
 
 	private static <T extends TileEntity> void registerTESR(Class<T> tile, TileEntitySpecialRenderer<T> render) {

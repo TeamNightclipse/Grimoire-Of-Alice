@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -22,16 +22,14 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Arrays;
-import java.util.Optional;
 
-public class ItemNazrinPendulum extends ItemBase  {
+public class ItemNazrinPendulum extends ItemBase {
 
 	public ItemNazrinPendulum() {
 		super(LibName.NAZRIN_PENDULUM);
@@ -63,25 +61,18 @@ public class ItemNazrinPendulum extends ItemBase  {
 			if(timeLeft < 40) {
 				if(!player.getHeldItemOffhand().isEmpty()) {
 					ItemStack itemStack = player.getHeldItemOffhand();
-					Optional<String> ore = Arrays.stream(OreDictionary.getOreIDs(itemStack))
-							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore")).findFirst();
-
-					ore.ifPresent(s -> setOre(stack, s));
-				}
-				else {
+					Arrays.stream(OreDictionary.getOreIDs(itemStack))
+							.mapToObj(OreDictionary::getOreName).filter(s -> s.startsWith("ore"))
+							.findFirst()
+							.ifPresent(s -> setOre(stack, s));
+				} else {
 					setOre(stack, "");
 				}
 				return;
 			}
-
 			if(!world.isRemote) {
 				EntityNazrinPendulum pendulum = new EntityNazrinPendulum(world, player, stack, getOre(stack), !player.isSneaking());
-				Vec3d look = player.getLookVec();
-				float distance = 2F;
-				double dx = player.posX + look.x * distance;
-				double dy = player.posY + player.getEyeHeight() - 0.5;
-				double dz = player.posZ + look.z * distance;
-				pendulum.setPosition(dx, dy, dz);
+				pendulum.followPlayer();
 				world.spawnEntity(pendulum);
 			}
 			player.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1F, itemRand.nextFloat() * 0.4F + 0.8F);

@@ -17,6 +17,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
@@ -27,8 +28,7 @@ import net.minecraft.world.World;
 
 import static net.minecraft.block.BlockHorizontal.FACING;
 
-//Much taken from BlockStairs
-@SuppressWarnings({"deprecation", "WeakerAccess"})
+@SuppressWarnings("deprecation")
 public class BlockRope extends BlockBase {
 
 	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
@@ -58,13 +58,12 @@ public class BlockRope extends BlockBase {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-											EntityLivingBase placer) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState iblockstate = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		iblockstate = iblockstate.withProperty(FACING, placer.getHorizontalFacing()).withProperty(SHAPE, BlockStairs.EnumShape.STRAIGHT);
-		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F) ?
-				iblockstate.withProperty(HALF, BlockStairs.EnumHalf.BOTTOM) :
-				iblockstate.withProperty(HALF, BlockStairs.EnumHalf.TOP);
+		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F)
+				? iblockstate.withProperty(HALF, BlockStairs.EnumHalf.BOTTOM)
+				: iblockstate.withProperty(HALF, BlockStairs.EnumHalf.TOP);
 	}
 
 	@Override
@@ -77,11 +76,9 @@ public class BlockRope extends BlockBase {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int i = 0;
-
 		if(state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
 			i |= 4;
 		}
-
 		i = i | 5 - state.getValue(FACING).getIndex();
 		return i;
 	}
@@ -100,41 +97,32 @@ public class BlockRope extends BlockBase {
 				return BOTTOM_AABB;
 			}
 		}
-
 		return super.getBoundingBox(state, source, pos);
 	}
 
 	private static BlockStairs.EnumShape getRopeShape(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
 		EnumFacing enumfacing = blockState.getValue(FACING);
-		IBlockState iblockstate = blockAccess.getBlockState(blockPos.offset(enumfacing));
-
-		if(isBlockRope(iblockstate) && blockState.getValue(HALF) == iblockstate.getValue(HALF)) {
-			EnumFacing enumfacing1 = iblockstate.getValue(FACING);
-
-			if(enumfacing1.getAxis() != blockState.getValue(FACING).getAxis()
-					&& isDifferentRope(blockState, blockAccess, blockPos, enumfacing1.getOpposite())) {
-				if(enumfacing1 == enumfacing.rotateYCCW()) {
+		IBlockState state0 = blockAccess.getBlockState(blockPos.offset(enumfacing));
+		if(isBlockRope(state0) && blockState.getValue(HALF) == state0.getValue(HALF)) {
+			EnumFacing facing = state0.getValue(FACING);
+			if(facing.getAxis() != blockState.getValue(FACING).getAxis()
+					&& isDifferentRope(blockState, blockAccess, blockPos, facing.getOpposite())) {
+				if(facing == enumfacing.rotateYCCW()) {
 					return BlockStairs.EnumShape.OUTER_LEFT;
 				}
-
 				return BlockStairs.EnumShape.OUTER_RIGHT;
 			}
 		}
-
-		IBlockState iblockstate1 = blockAccess.getBlockState(blockPos.offset(enumfacing.getOpposite()));
-
-		if(isBlockRope(iblockstate1) && blockState.getValue(HALF) == iblockstate1.getValue(HALF)) {
-			EnumFacing enumfacing2 = iblockstate1.getValue(FACING);
-
-			if(enumfacing2.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, enumfacing2)) {
-				if(enumfacing2 == enumfacing.rotateYCCW()) {
+		IBlockState state1 = blockAccess.getBlockState(blockPos.offset(enumfacing.getOpposite()));
+		if(isBlockRope(state1) && blockState.getValue(HALF) == state1.getValue(HALF)) {
+			EnumFacing facing = state1.getValue(FACING);
+			if(facing.getAxis() != blockState.getValue(FACING).getAxis() && isDifferentRope(blockState, blockAccess, blockPos, facing)) {
+				if(facing == enumfacing.rotateYCCW()) {
 					return BlockStairs.EnumShape.INNER_LEFT;
 				}
-
 				return BlockStairs.EnumShape.INNER_RIGHT;
 			}
 		}
-
 		return BlockStairs.EnumShape.STRAIGHT;
 	}
 
@@ -158,10 +146,8 @@ public class BlockRope extends BlockBase {
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
 		EnumFacing enumfacing = state.getValue(FACING);
 		BlockStairs.EnumShape shape = state.getValue(SHAPE);
-
 		switch(mirrorIn) {
 			case LEFT_RIGHT:
-
 				if(enumfacing.getAxis() == EnumFacing.Axis.Z) {
 					switch(shape) {
 						case OUTER_LEFT:
@@ -176,10 +162,8 @@ public class BlockRope extends BlockBase {
 							return state.withRotation(Rotation.CLOCKWISE_180);
 					}
 				}
-
 				break;
 			case FRONT_BACK:
-
 				if(enumfacing.getAxis() == EnumFacing.Axis.X) {
 					switch(shape) {
 						case OUTER_LEFT:
@@ -194,12 +178,10 @@ public class BlockRope extends BlockBase {
 							return state.withRotation(Rotation.CLOCKWISE_180);
 					}
 				}
-
 				break;
 			case NONE:
 				break;
 		}
-
 		return super.withMirror(state, mirrorIn);
 	}
 
@@ -208,13 +190,11 @@ public class BlockRope extends BlockBase {
 		return new BlockStateContainer(this, FACING, HALF, SHAPE);
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;

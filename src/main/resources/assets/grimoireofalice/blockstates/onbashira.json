@@ -1,22 +1,29 @@
 {
+  "forge_marker": 1,
+  "defaults": {
+	"model": "solar:alternator",
+	"uvlock": false
+  },
   "variants": {
-    "model=new,part=lower": {
-      "model": "grimoireofalice:onbashira_lower"
-    },
-    "model=new,part=middle": {
-      "model": "grimoireofalice:onbashira_middle"
-    },
-    "model=new,part=top": {
-      "model": "grimoireofalice:onbashira_top"
-    },
-    "model=old,part=lower": {
-      "model": "grimoireofalice:onbashira_lower_old"
-    },
-    "model=old,part=middle": {
-      "model": "grimoireofalice:onbashira_middle_old"
-    },
-    "model=old,part=top": {
-      "model": "grimoireofalice:onbashira_top_old"
-    }
+	"normal": [{
+        "model": "grimoireofalice:onbashira_top"
+	}],
+    "inventory": [{
+        "model": "grimoireofalice:onbashira"
+	}],
+	"onbashira_piece": {
+	  "lower": {
+        "model": "grimoireofalice:onbashira_lower"
+      },
+      "middle": {
+        "model": "grimoireofalice:onbashira_middle"
+      },
+      "top": {
+        "model": "grimoireofalice:onbashira_top"
+      },
+      "none": {
+        "model": "grimoireofalice:onbashira_none"
+      }
+	}
   }
 }

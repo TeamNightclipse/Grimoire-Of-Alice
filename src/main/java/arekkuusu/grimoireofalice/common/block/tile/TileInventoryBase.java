@@ -30,12 +30,12 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public abstract class TileBase extends TileEntity {
+public abstract class TileInventoryBase extends TileEntity {
 
-	protected final TileHandler handler;
+	protected final InventoryHandler handler;
 
-	public TileBase(int size) {
-		handler = new TileHandler(this, size);
+	public TileInventoryBase(int size) {
+		handler = new InventoryHandler(this, size);
 	}
 
 	public void handleItemTransfer(EntityPlayer player, EnumHand hand) {
@@ -141,11 +141,11 @@ public abstract class TileBase extends TileEntity {
 				: super.getCapability(capability, side);
 	}
 
-	public static class TileHandler extends ItemStackHandler {
+	public static class InventoryHandler extends ItemStackHandler {
 
-		private final TileBase tile;
+		private final TileInventoryBase tile;
 
-		TileHandler(TileBase tile, int size) {
+		InventoryHandler(TileInventoryBase tile, int size) {
 			super(size);
 			this.tile = tile;
 		}

@@ -47,53 +47,6 @@ public class BlockCraftingAltar extends BlockBase implements ITileEntityProvider
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-									EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
-		if (tile == null) return false;
-
-		if (player.isSneaking()) {
-			tile.doCrafting(player);
-		} else {
-			tile.handleItemTransfer(player, hand);
-		}
-		return true;
-	}
-
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileCraftingAltar tile = (TileCraftingAltar) world.getTileEntity(pos);
-		if (tile != null) {
-			tile.destroy();
-		}
-		world.removeTileEntity(pos);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
-		for (int i = -2; i <= 2; ++i) {
-			for (int j = -2; j <= 2; ++j) {
-				if (i > -2 && i < 2 && j == -1) {
-					j = 2;
-				}
-
-				if (rand.nextInt(16) == 0) {
-					for (int k = 0; k <= 1; ++k) {
-
-						if (!world.isAirBlock(pos.add(i / 2, 0, j / 2))) {
-							break;
-						}
-
-						world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, pos.getX() + 0.5D, pos.getY() + 2.0D, pos.getZ() + 0.5D,
-								i + rand.nextFloat() - 0.5D, k - rand.nextFloat() - 1.0F, j + rand.nextFloat() - 0.5D);
-					}
-				}
-			}
-		}
-	}
-
-	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
 		return getDefaultState().withProperty(PROPERTYFACING, facing);
@@ -110,12 +63,10 @@ public class BlockCraftingAltar extends BlockBase implements ITileEntityProvider
 		return new BlockStateContainer(this, PROPERTYFACING);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 											EntityLivingBase placer) {
-		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
-		return this.getDefaultState().withProperty(PROPERTYFACING, enumfacing);
+		return getDefaultState().withProperty(PROPERTYFACING,  EnumFacing.fromAngle(placer.rotationYaw));
 	}
 
 	@Override

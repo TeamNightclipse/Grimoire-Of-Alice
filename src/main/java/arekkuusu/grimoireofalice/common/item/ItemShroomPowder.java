@@ -67,9 +67,11 @@ public class ItemShroomPowder extends ItemBase {
 	}
 
 	@Override
-	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-		for(int i = 0; i < 16; i++) {
-			list.add(new ItemStack(this, 1, i));
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if(isInCreativeTab(tab)) {
+			for(int i = 0; i < 16; i++) {
+				list.add(new ItemStack(this, 1, i));
+			}
 		}
 	}
 

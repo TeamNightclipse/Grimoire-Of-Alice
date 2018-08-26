@@ -19,9 +19,7 @@ import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityWind;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuVariant;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.Form;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntityType;
-import net.katsstuff.teamnightclipse.danmakucore.data.MovementData;
-import net.katsstuff.teamnightclipse.danmakucore.data.RotationData;
-import net.katsstuff.teamnightclipse.danmakucore.impl.danmakuvariant.DanmakuVariantGeneric;
+import net.katsstuff.teamnightclipse.danmakucore.impl.danmakuvariant.DanmakuVariantGeneric$;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -50,9 +48,8 @@ public class Initializer {
 
 	@SubscribeEvent
 	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
-		event.getRegistry().registerAll(
-				new DanmakuVariantGeneric(LibDanmakuName.UFO, () -> LibGOAShotData.UFO, MovementData.constant(0.4D), RotationData.none()),
-				new DanmakuVariantGeneric(LibDanmakuName.SUN, () -> LibGOAShotData.SUN, MovementData.constant(0.2D), RotationData.none())
-		);
+		/*event.getRegistry().registerAll(
+				DanmakuVariantGeneric$.MODULE$.create(LibDanmakuName.LEAF, () -> LibGOAShotData.LEAF, 0.2D)
+		);*/
 	}
 }

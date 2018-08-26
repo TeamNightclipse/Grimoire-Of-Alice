@@ -409,16 +409,13 @@ public final class ModItems {
 		registry.register(new ItemRedStoneofAja());
 
 		//Blocks
-		registry.register(itemBlock(ModBlocks.HOLY_KEY_STONE));
 		registry.register(itemBlock(ModBlocks.COMPACT_STONE));
-		registry.register(itemBlock(ModBlocks.HOLY_STONE));
 		registry.register(itemBlock(ModBlocks.KYOUMARUBOTAN));
-		registry.register(new ItemBlockOnbashira(ModBlocks.ONBASHIRA));
+		registry.register(itemBlock(ModBlocks.ONBASHIRA));
 		registry.register(itemBlock(ModBlocks.PAPER));
 		registry.register(itemBlock(ModBlocks.ROPE));
 		registry.register(new ItemBlockShroom(ModBlocks.SHROOM));
 		registry.register(itemBlock(ModBlocks.CRAFTING_ALTAR));
-		registry.register(itemBlock(ModBlocks.PILLAR_ALTAR));
 		registry.register(itemBlock(ModBlocks.IMPURE_STONE));
 		registry.register(itemBlock(ModBlocks.HIHIIROKANE_BLOCK));
 		registry.register(itemBlock(ModBlocks.DRAGON_STONE));

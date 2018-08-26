@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle>  {
+public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle> {
 
 	public ItemSanaeGohei() {
 		super(LibName.SANAE_GOHEI, EnumMiracle.values());
@@ -51,8 +51,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle>  {
 
 				Alice.proxy.displayRecordText(text);
 			}
-		}
-		else {
+		} else {
 			if(!world.isRemote) {
 				EntityMiracleCircle miracleCircle = new EntityMiracleCircle(world, player, stack);
 				world.spawnEntity(miracleCircle);
@@ -101,7 +100,7 @@ public class ItemSanaeGohei extends ItemGohei<ItemSanaeGohei.EnumMiracle>  {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
-		return I18n.format("item.sanaegohei.name") + " :"
+		return I18n.format("item.sanae_gohei.name") + " :"
 				+ I18n.format("grimoire.tooltip.sanae_gohei_mode_" + getType(stack).toString() + ".name");
 	}
 

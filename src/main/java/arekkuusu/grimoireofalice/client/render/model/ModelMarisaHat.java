@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -100,24 +100,21 @@ public class ModelMarisaHat extends ModelBiped {
 		bipedHead = hat;
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale * 1.25F, entity);
 		GlStateManager.pushMatrix();
-
 		if(this.isChild) {
 			GlStateManager.scale(0.75F, 0.75F, 0.75F);
 			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
-			this.bipedHead.render(scale * 1.25F);
+			this.bipedHead.render(scale);
 			GlStateManager.popMatrix();
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(0.5F, 0.5F, 0.5F);
 			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
-		}
-		else {
+		} else {
 			GlStateManager.translate(0, 0.25, 0);
 			if(entity.isSneaking()) {
 				GlStateManager.translate(0.0F, 0.25F, 0.0F);
 			}
-			this.bipedHead.render(scale * 1.25F);
+			this.bipedHead.render(scale);
 		}
-
 		GlStateManager.popMatrix();
 	}
 

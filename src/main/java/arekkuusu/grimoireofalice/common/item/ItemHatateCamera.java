@@ -18,6 +18,11 @@ public class ItemHatateCamera extends ItemCamera  {
 
 	@Override
 	public int getSize() {
-		return 4;
+		return 2;
+	}
+
+	@Override
+	public float getAngle() {
+		return 90F;
 	}
 }

@@ -16,41 +16,22 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.Stream;
 
 public class EntityGap extends Entity {
 
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 	private static final DataParameter<Byte> COLOR_DATA = EntityDataManager.createKey(EntityGap.class, DataSerializers.BYTE);
 	private static final String COLOR = "color";
 
-	private boolean teleportByColor = true;
 	private int portalCooldown;
-	private EntityPlayer holdingPlayer;
-	private ItemStack holdingStack;
 
 	public EntityGap(World world) {
 		super(world);
-		isImmuneToFire = true;
-	}
-
-	public EntityGap(World world, EntityPlayer holdingPlayer, ItemStack holdingStack) {
-		super(world);
-		setPositionAndAngles(holdingPlayer);
-		this.holdingPlayer = holdingPlayer;
-		this.holdingStack = holdingStack;
-		isImmuneToFire = true;
 	}
 
 	public void setPositionAndAngles(EntityPlayer player) {
@@ -64,64 +45,36 @@ public class EntityGap extends Entity {
 	}
 
 	@Override
+	public boolean getIsInvulnerable() {
+		return true;
+	}
+
+	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		if(!world.isRemote) {
-			if(holdingPlayer != null) {
-				if(holdingPlayer.isHandActive() && !holdingPlayer.isDead) {
-					setPositionAndAngles(holdingPlayer);
-				}
-				else {
-					holdingPlayer.getCooldownTracker().setCooldown(holdingStack.getItem(), 25);
-					reduceStack(holdingPlayer, holdingStack);
-					holdingStack = ItemStack.EMPTY;
-					holdingPlayer = null;
-				}
-			}
 			if(portalCooldown == 0) {
 				List<Entity> inRange = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox(), entity -> entity instanceof EntityLivingBase);
 				if(!inRange.isEmpty()) {
 					teleport((EntityLivingBase) inRange.get(0));
 				}
 			}
-			if(portalCooldown > 0) {
-				--portalCooldown;
-			}
-		}
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	private static void reduceStack(EntityPlayer player, ItemStack toRemove) {
-		if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-			IItemHandler handler = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
-			for(int i = 0; i < handler.getSlots(); i++) {
-				if(toRemove.isItemEqual(handler.getStackInSlot(i))) {
-					handler.extractItem(i, 1, false);
-					break;
-				}
-			}
+			if(portalCooldown > 0) --portalCooldown;
 		}
 	}
 
 	private void teleport(EntityLivingBase base) {
 		Vec3d vec3d = getLookVec();
-
-		@SuppressWarnings("unchecked")
-		List<EntityGap> list = (List<EntityGap>) (List<?>) world.getEntitiesInAABBexcluding(this, getEntityBoundingBox().grow(
-				ConfigHandler.grimoireOfAlice.features.gapRange), entity -> entity instanceof EntityGap);
-
-		EntityGap gap = null;
-		if(teleportByColor) {
-			gap = getColor() == EnumDyeColor.WHITE ? getClosestGap(list) : getClosestGapColorMatch(list);
-		}
-
+		Stream<EntityGap> list = world.getEntitiesInAABBexcluding(this, getEntityBoundingBox()
+				.grow(ConfigHandler.grimoireOfAlice.features.gapRange), entity -> entity instanceof EntityGap).stream()
+				.map(entity -> ((EntityGap) entity));
+		EntityGap gap = getColor() == EnumDyeColor.WHITE ? getClosestGap(list) : getClosestGapColorMatch(list);
 		if(gap != null) {
 			gap.portalCooldown = 50;
 			if(base instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) base;
 				player.setPositionAndUpdate(gap.prevPosX + vec3d.x * 1.5, gap.prevPosY + vec3d.y * 1.5, gap.prevPosZ + vec3d.z * 1.5);
-			}
-			else {
+			} else {
 				base.setPosition(gap.prevPosX + vec3d.x * 1.5, gap.prevPosY + vec3d.y * 1.5, gap.prevPosZ + vec3d.z * 1.5);
 			}
 			gap.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 0.1F, 0.1F);
@@ -129,20 +82,19 @@ public class EntityGap extends Entity {
 	}
 
 	@Nullable
-	private EntityGap getClosestGapColorMatch(List<EntityGap> gaps) {
-		return sortGaps(gaps.stream().filter(g -> g.getColor() == getColor())).findFirst().orElse(null);
+	private EntityGap getClosestGapColorMatch(Stream<EntityGap> gaps) {
+		return sortGaps(gaps.filter(g -> g.getColor() == getColor())).findFirst().orElse(null);
 	}
 
 	@Nullable
-	private EntityGap getClosestGap(List<EntityGap> gaps) {
-		return sortGaps(gaps.stream()).findFirst().orElse(null);
+	private EntityGap getClosestGap(Stream<EntityGap> gaps) {
+		return sortGaps(gaps).findFirst().orElse(null);
 	}
 
 	private Stream<EntityGap> sortGaps(Stream<EntityGap> gaps) {
-		float maxClose = ConfigHandler.grimoireOfAlice.features.gapRange;
-		float min = 5;
 		ToDoubleFunction<EntityGap> toDouble = g -> g.getDistanceSq(this);
-
+		float maxClose = ConfigHandler.grimoireOfAlice.features.gapRange;
+		float min = 2;
 		return gaps.filter(g -> {
 			double dist = g.getDistanceSq(this);
 			return dist > min * min && dist < maxClose * maxClose;
@@ -152,16 +104,14 @@ public class EntityGap extends Entity {
 	@Override
 	public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		Optional<EnumDyeColor> optional = getItemDye(stack);
-		if(!stack.isEmpty() && optional.isPresent()) {
-			EnumDyeColor color = optional.get();
-			if(color != getColor()) {
-				setColor(color);
-				stack.shrink(1);
+		Optional<EnumDyeColor> optional;
+		if(!stack.isEmpty() && (optional = getItemDye(stack)).isPresent()) {
+			if(!world.isRemote) {
+				EnumDyeColor dye = optional.get();
+				setColor(dye);
 			}
 			player.playSound(SoundEvents.ENTITY_ITEMFRAME_PLACE, 1F, 1F);
-		}
-		else if(player.isSneaking()) {
+		} else if(player.isSneaking()) {
 			if(!world.isRemote) {
 				dropItem(ModItems.GAP, 1);
 				setDead();
@@ -175,11 +125,10 @@ public class EntityGap extends Entity {
 		for(int oreId : OreDictionary.getOreIDs(stack)) {
 			String name = OreDictionary.getOreName(oreId);
 			if(name.startsWith("dye")) {
-				name = name.substring(0, 3);
-				return Optional.of(EnumDyeColor.valueOf(name));
+				String dyeName = name.substring(3);
+				return Arrays.stream(EnumDyeColor.values()).filter(dye -> dye.getName().equalsIgnoreCase(dyeName)).findFirst();
 			}
 		}
-
 		return Optional.empty();
 	}
 
@@ -201,10 +150,6 @@ public class EntityGap extends Entity {
 	@Override
 	protected void entityInit() {
 		dataManager.register(COLOR_DATA, (byte) (EnumDyeColor.WHITE.getMetadata() & 15));
-	}
-
-	public void setShouldTeleportByColor(boolean byColor) {
-		this.teleportByColor = byColor;
 	}
 
 	public EnumDyeColor getColor() {

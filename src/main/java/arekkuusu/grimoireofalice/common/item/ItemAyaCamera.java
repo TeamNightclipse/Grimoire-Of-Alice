@@ -18,6 +18,11 @@ public class ItemAyaCamera extends ItemCamera  {
 
 	@Override
 	public int getSize() {
-		return 5;
+		return 4;
+	}
+
+	@Override
+	public float getAngle() {
+		return 0;
 	}
 }

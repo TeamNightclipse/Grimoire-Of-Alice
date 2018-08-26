@@ -145,5 +145,4 @@ public class LibName {
 	public static final String HIHIIROKANE_BLOCK = "hihiirokane_block";
 	public static final String DRAGON_STONE = "dragon_stone";
 	public static final String CRAFTING_ALTAR = "crafting_altar";
-	public static final String PILLAR_ALTAR = "pillar_altar";
 }

@@ -21,12 +21,10 @@ public class RedGas extends ParticleBase {
 	public RedGas(World world, Vector3 pos, Vector3 speed) {
 		super(world, pos, speed);
 		motionY *= 0.20000000298023224D;
-
 		if(MathUtil.fuzzyEqual(speed.x(), 0D) && MathUtil.fuzzyEqual(speed.z(), 0D)) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}
-
 		particleScale *= rand.nextFloat();
 		particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
 		setAtlas(SpriteLibrary.RED_GAS);

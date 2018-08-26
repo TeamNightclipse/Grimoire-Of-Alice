@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelKinkakuJiCeiling;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;
@@ -26,9 +27,13 @@ public class RenderKinkakuJiCeiling extends Render<EntityKinkakuJiCeiling> {
 		GlStateManager.translate(x, y, z);
 		bindEntityTexture(entity);
 		GlStateManager.scale(2F, 1F, 2F);
-
+		ShaderLibrary.BRIGHT.begin();
+		ShaderLibrary.BRIGHT.getUniformJ("brightness").ifPresent(b -> {
+			b.set(0F);
+			b.upload();
+		});
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-
+		ShaderLibrary.BRIGHT.end();
 		GlStateManager.popMatrix();
 	}
 

@@ -46,12 +46,7 @@ public class ItemStopWatch extends ItemBase  {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			EntityStopWatch watch = new EntityStopWatch(world, player);
 			if(!world.isRemote) {
-				Vec3d look = player.getLookVec();
-				float distance = 1F;
-				double dx = player.posX + look.x;
-				double dy = player.posY + player.getEyeHeight() - 1;
-				double dz = player.posZ + look.z * distance;
-				watch.setPosition(dx, dy, dz);
+				watch.followPlayer();
 				world.spawnEntity(watch);
 			}
 			if(!player.capabilities.isCreativeMode) {

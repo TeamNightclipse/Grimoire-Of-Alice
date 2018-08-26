@@ -44,7 +44,7 @@ public class EntityMiracleLantern extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(ticksExisted % 4 == 0) {
+		if(world.isRemote && ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
 				Alice.proxy.spawnShinmyoumaruSpark(world, Vector3.apply(posX, posY, posZ), Vector3.Zero());
 			}

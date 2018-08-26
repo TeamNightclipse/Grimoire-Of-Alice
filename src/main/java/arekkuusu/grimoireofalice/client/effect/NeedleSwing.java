@@ -36,11 +36,9 @@ public class NeedleSwing extends ParticleBase {
 		float life = (float) particleAge / (float) particleMaxAge;
 		this.particleScale = initScale - initScale * life;
 		this.particleAlpha = 0.25F * (1F - life);
-
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
-
 		this.move(this.motionX, this.motionY, this.motionZ);
 	}
 

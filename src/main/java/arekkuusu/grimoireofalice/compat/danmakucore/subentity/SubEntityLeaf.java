@@ -30,28 +30,7 @@ public class SubEntityLeaf extends SubEntityType {
 
 		@Override
 		public DanmakuUpdate subEntityTick(DanmakuState danmaku) {
-			return super.subEntityTick(danmaku).andThen(state -> state.isShotEndTime() ? DanmakuUpdate.oneUpdate(state, $ -> {
-						for(int j = 0; j < 8; ++j) {
-							danmaku.world().spawnParticle(
-									EnumParticleTypes.SMOKE_LARGE,
-									danmaku.pos().x(),
-									danmaku.pos().y(),
-									danmaku.pos().z(),
-									0,
-									0,
-									0
-							);
-						}
-						if(!danmaku.world().isRemote) {
-							DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
-									.setShot(LibGOAShotData.UFO)
-									.setSource($.source())
-									.setDirection(Vector3.randomDirection());
-							DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
-						}
-						return Option.apply($);
-					}) : DanmakuUpdate.noUpdates(state)
-			);
+			return super.subEntityTick(danmaku);
 		}
 	}
 }

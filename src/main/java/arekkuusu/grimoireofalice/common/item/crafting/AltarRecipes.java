@@ -470,14 +470,6 @@ public final class AltarRecipes {
 			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.WANING_CRESCENT, new ItemStack(ModItems.JEWELED_HOURAI)
 					, "treeSapling", Items.NETHER_STAR, Items.DIAMOND, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.DIAMOND, ModItems.NETHER_SHARD, Items.DIAMOND, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT, Items.GOLD_INGOT, ModItems.NETHER_SHARD, ModItems.NETHER_SHARD, Items.GOLD_INGOT);
 		}
-		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.HOLY_STONE)
-				, ModBlocks.COMPACT_STONE, ModBlocks.ROPE, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, "stone", "stone", "stone", "stone", "stone", "stone", "stone", "stone");
-
-		AliceAPI.registerAltarRecipeThunder(new ItemStack(ModBlocks.HOLY_KEY_STONE)
-				, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModBlocks.COMPACT_STONE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, Items.STRING, Items.STRING, ModItems.SHIMENAWA_ROPE);
-
-		AliceAPI.registerAltarRecipeRain(new ItemStack(ModBlocks.ONBASHIRA)
-				, ModBlocks.ROPE, ModBlocks.PILLAR_ALTAR, ModBlocks.PILLAR_ALTAR, ModBlocks.PAPER, ModBlocks.PILLAR_ALTAR, ModBlocks.ROPE, ModBlocks.PAPER, ModBlocks.PILLAR_ALTAR);
 
 		AliceAPI.registerAltarRecipeDimension(DimensionType.THE_END, new ItemStack(Items.END_CRYSTAL)
 				, "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", "blockGlassColorless", Items.ENDER_EYE, Items.GHAST_TEAR);

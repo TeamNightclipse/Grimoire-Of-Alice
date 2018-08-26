@@ -63,8 +63,10 @@ public class ItemNazrinStick extends ItemBaseSword {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-		subItems.add(TYPEA);
-		subItems.add(TYPEB);
+		if(isInCreativeTab(tab)) {
+			subItems.add(TYPEA);
+			subItems.add(TYPEB);
+		}
 	}
 
 	/* In short, I made the Item only work when you

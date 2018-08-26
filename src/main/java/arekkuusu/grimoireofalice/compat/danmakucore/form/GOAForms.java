@@ -11,16 +11,16 @@ package arekkuusu.grimoireofalice.compat.danmakucore.form;
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.Form;
-import net.katsstuff.teamnightclipse.danmakucore.registry.DanmakuRegistry;
-import net.minecraft.util.ResourceLocation;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.FormDummy;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
+@ObjectHolder(LibMod.MOD_ID)
 public class GOAForms {
 
-	public static final Form WIND = DanmakuRegistry.Form().getValue(resource(LibDanmakuName.WIND));
-	public static final Form LEAF = DanmakuRegistry.Form().getValue(resource(LibDanmakuName.LEAF));
-	public static final Form UFO = DanmakuRegistry.Form().getValue(resource(LibDanmakuName.UFO));
-
-	private static ResourceLocation resource(String name) {
-		return new ResourceLocation(LibMod.MOD_ID, name);
-	}
+	@ObjectHolder(LibDanmakuName.WIND)
+	public static final Form WIND = FormDummy.instance();
+	@ObjectHolder(LibDanmakuName.LEAF)
+	public static final Form LEAF = FormDummy.instance();
+	@ObjectHolder(LibDanmakuName.UFO)
+	public static final Form UFO = FormDummy.instance();
 }

@@ -10,6 +10,8 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.client.util.helper.IModel;
 import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
+import arekkuusu.grimoireofalice.common.Alice;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,6 +21,11 @@ public class ItemBase extends Item implements IModel {
 	public ItemBase(String id) {
 		super();
 		ModItems.setRegistry(this, id);
+	}
+
+	@Override
+	protected boolean isInCreativeTab(CreativeTabs targetTab) {
+		return targetTab == Alice.CREATIVE_TAB;
 	}
 
 	@Override

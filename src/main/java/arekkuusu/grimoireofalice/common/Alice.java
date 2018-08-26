@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = LibMod.MOD_ID, name = LibMod.MOD_NAME, version = LibMod.MOD_VERSION, dependencies = LibMod.MOD_DEPENDENCIES, acceptedMinecraftVersions = "[1.11.2]")
+@Mod(modid = LibMod.MOD_ID, name = LibMod.MOD_NAME, version = LibMod.MOD_VERSION, dependencies = LibMod.MOD_DEPENDENCIES, acceptedMinecraftVersions = "[1.12.2]")
 public class Alice {
 
 	public static final AliceCreativeTab CREATIVE_TAB = new AliceCreativeTab();

@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityBarrier;
@@ -26,16 +27,17 @@ public class RenderBarrier extends Render<EntityBarrier> {
 	@Override
 	public void doRender(EntityBarrier entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240F, 240F);
-		GlStateManager.disableLighting();
 		GlStateManager.enableBlend();
+		GlStateManager.disableLighting();
+		ShaderLibrary.BRIGHT.begin();
+		ShaderLibrary.BRIGHT.getUniformJ("brightness").ifPresent(b -> {
+			b.set(0F);
+			b.upload();
+		});
 		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-
-		float colorRev = 3.141593F * 5.6125F / 180F;
+		float colorRev = 3.141593F * 5.6125F / 90F;
 		float color = entity.ticksExisted * colorRev;
-
-		GlStateManager.color(1 + MathHelper.sin(color), 3 + MathHelper.cos(color), 5 + MathHelper.sin(color), 0.90F);
-
+		GlStateManager.color(0.2F + 0.8F * MathHelper.sin(color), 0, 0, 0.90F);
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.scale(2F, 2F, 2F);
@@ -43,9 +45,9 @@ public class RenderBarrier extends Render<EntityBarrier> {
 		GlStateManager.rotate(entity.rotationPitch + 90F, 0F, 0F, 1F);
 		GlStateManager.rotate(entity.ticksExisted * 4F, 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-
-		GlStateManager.disableBlend();
+		ShaderLibrary.BRIGHT.end();
 		GlStateManager.enableLighting();
+		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 

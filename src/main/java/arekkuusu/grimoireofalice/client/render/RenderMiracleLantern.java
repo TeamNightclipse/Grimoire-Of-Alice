@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelMiracleLantern;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.client.util.helper.BlendHelper;
@@ -23,14 +24,20 @@ public class RenderMiracleLantern extends Render<EntityMiracleLantern> {
 	@Override
 	public void doRender(EntityMiracleLantern entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
-		BlendHelper.lightMap(255, 255);
-
+		GlStateManager.disableLighting();
+		ShaderLibrary.BRIGHT.begin();
+		ShaderLibrary.BRIGHT.getUniformJ("brightness").ifPresent(b -> {
+			b.set(0F);
+			b.upload();
+		});
 		bindEntityTexture(entity);
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(entityYaw, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(entity.ticksExisted * 8F, 1.0F, 0.0F, 0.0F);
 		MODEL_MIRACLE_LANTERN.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		MODEL_MIRACLE_LANTERN.renderMore(0.0625F);
+		ShaderLibrary.BRIGHT.end();
+		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 

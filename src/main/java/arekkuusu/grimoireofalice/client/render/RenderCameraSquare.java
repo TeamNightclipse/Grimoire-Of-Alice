@@ -24,12 +24,13 @@ public class RenderCameraSquare extends Render<EntityCameraSquare> {
 	public void doRender(EntityCameraSquare entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		bindEntityTexture(entity);
-		GlStateManager.translate(x, y - 0.4, z);
+		GlStateManager.translate(x, y, z);
 		GlStateManager.disableLighting();
 		float size = entity.getSize();
 		GlStateManager.scale(size, size, size);
 		GlStateManager.rotate(180F - renderManager.playerViewY + 90, 0.0F, 1.0F, 0.0F);
 		GlStateManager.rotate(450F + 180F - renderManager.playerViewX, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate(entity.getAngle(), 0.0F, 1.0F, 0.0F);
 		MODEL.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();

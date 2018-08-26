@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -38,10 +38,10 @@ public class EntityStopWatch extends Entity {
 
 	public EntityStopWatch(World world, EntityPlayer player) {
 		super(world);
-		user = player;
-		excludedPlayers.add(user);
-		ignoreFrustumCheck = true;
-		preventEntitySpawning = true;
+		this.user = player;
+		this.excludedPlayers.add(user);
+		this.ignoreFrustumCheck = true;
+		this.preventEntitySpawning = true;
 	}
 
 	@Override
@@ -51,30 +51,19 @@ public class EntityStopWatch extends Entity {
 			if(ticksExisted > 1000 || (user.isSneaking() && user.isSwingInProgress) || user.getFoodStats().getFoodLevel() <= 6) {
 				stopEntity();
 				return;
-			}
-			else {
+			} else {
 				ItemStack stack = user.getHeldItem(user.getActiveHand());
 				if(user.isHandActive() && !stack.isEmpty() && stack.getItem() == ModItems.STOPWATCH) {
 					stopEntity();
 					return;
 				}
 			}
-
-			Vec3d look = user.getLookVec();
-			float distance = 1F;
-			double dx = user.posX + look.x + distance;
-			double dy = user.posY + user.getEyeHeight() - 1;
-			double dz = user.posZ + look.z + distance;
-			setPosition(dx, dy, dz);
-
+			followPlayer();
 			if(!world.isRemote) {
-				world.setWorldTime(world.getWorldTime() - 1);
-
 				List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(user, user.getEntityBoundingBox().grow(RANGE));
 				list.forEach(this::haltEntity);
 			}
-		}
-		else {
+		} else {
 			stopEntity();
 			return;
 		}
@@ -84,6 +73,15 @@ public class EntityStopWatch extends Entity {
 				user.getFoodStats().addExhaustion(4);
 			}
 		}
+	}
+
+	public void followPlayer() {
+		Vec3d look = user.getLookVec();
+		float distance = 1F;
+		double dx = user.posX + look.x;
+		double dy = user.posY + user.getEyeHeight() - 1 + look.y * distance;
+		double dz = user.posZ + look.z + distance;
+		setPosition(dx, dy, dz);
 	}
 
 	private void addIgnoredPlayers(Entity entity) {
@@ -101,9 +99,7 @@ public class EntityStopWatch extends Entity {
 				|| entity instanceof EntityHanging) {
 			return;
 		}
-
 		addIgnoredPlayers(entity);
-
 		//noinspection SuspiciousMethodCalls
 		if(entity.ticksExisted >= 2 && !excludedPlayers.contains(entity)) {
 			frozen.add(entity);
@@ -125,8 +121,7 @@ public class EntityStopWatch extends Entity {
 				if(!user.capabilities.isCreativeMode) {
 					ItemHandlerHelper.giveItemToPlayer(user, new ItemStack(ModItems.STOPWATCH));
 				}
-			}
-			else {
+			} else {
 				dropItem(ModItems.STOPWATCH, 1);
 			}
 			setDead();

@@ -3,6 +3,7 @@ package arekkuusu.grimoireofalice.compat.danmakucore.form;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuName;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
+import net.katsstuff.teamnightclipse.danmakucore.client.helper.DanCoreRenderHelper;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuState;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.IRenderForm;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.RenderingProperty;
@@ -75,6 +76,11 @@ public class FormLeaf extends FormGeneric {
 			@Override
 			public Map<String, RenderingProperty> defaultAttributeValues() {
 				return Map$.MODULE$.empty();
+			}
+
+			@Override
+			public ResourceLocation shader(DanmakuState state) {
+				return DanCoreRenderHelper.baseDanmakuShaderLoc();
 			}
 		};
 	}

@@ -20,12 +20,10 @@ public class ShinmyoumaruSpark extends ParticleBase {
 
 	public ShinmyoumaruSpark(World world, Vector3 pos, Vector3 speed) {
 		super(world, pos, speed);
-
 		if(MathUtil.fuzzyEqual(speed.x(), 0D) && MathUtil.fuzzyEqual(speed.z(), 0D)) {
 			motionX *= 0.10000000149011612D;
 			motionZ *= 0.10000000149011612D;
 		}
-
 		particleScale = 0.4F * rand.nextFloat();
 		particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
 		particleGravity = 0;

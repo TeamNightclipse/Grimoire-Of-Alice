@@ -31,6 +31,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 public class Miracles {
 
@@ -274,7 +275,7 @@ public class Miracles {
 
 	public static final Miracle TESTIFICATE = new Miracle() {
 
-		private final Method convertZombie = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_82232_p", int.class);
+		private final Method convertZombie = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_82232_p", UUID.class, int.class);
 
 		@Override
 		public String getName() {
@@ -303,7 +304,7 @@ public class Miracles {
 
 		private void convertToVillager(EntityZombieVillager zombie) {
 			try {
-				convertZombie.invoke(zombie, 0);
+				convertZombie.invoke(zombie, zombie.getEntityData().getUniqueId("ConversionPlayer"), zombie.getEntityData().getInteger("ConversionTime"));
 			} catch(IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
 			}

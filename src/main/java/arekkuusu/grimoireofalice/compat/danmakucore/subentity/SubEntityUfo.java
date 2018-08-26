@@ -32,15 +32,7 @@ public class SubEntityUfo extends SubEntityType {
 
 		@Override
 		public DanmakuUpdate subEntityTick(DanmakuState danmaku) {
-			return super.subEntityTick(danmaku)
-					.andThen(state -> state.ticksExisted() % 2 == 0 && rand().nextFloat() < 0.4F ?
-							DanmakuUpdate.oneUpdate(state, $ -> {
-								if(!$.world().isRemote && $.ticksExisted() % 2 == 0 && rand().nextFloat() < 0.4F) {
-									$.entity().setDirection(Vector3.randomDirection());
-								}
-								return Option.apply($);
-							}) : DanmakuUpdate.noUpdates(state)
-					);
+			return super.subEntityTick(danmaku);
 		}
 	}
 }

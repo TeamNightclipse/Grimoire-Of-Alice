@@ -8,34 +8,22 @@
  */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.lib.LibName;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
-public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
+@SuppressWarnings("deprecation")
+public class BlockOnbashira extends BlockBase {
 
-	public static final PropertyEnum<Part> PART = PropertyEnum.create("part", Part.class);
+	public static final PropertyEnum<OnbashiraPiece> PART_LISTED = PropertyEnum.create("onbashira_piece", OnbashiraPiece.class);
 	private static final AxisAlignedBB BB_TOP = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	public BlockOnbashira() {
@@ -47,181 +35,65 @@ public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
 	}
 
 	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, PART);
-	}
-
-	@Override
-	protected IBlockState defaultState() {
-		return super.defaultState().withProperty(PART, Part.LOWER);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(PART, Part.fromIndex(meta));
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return getActualState(state, source, pos).getValue(PART_LISTED) == OnbashiraPiece.TOP ? BB_TOP : FULL_BLOCK_AABB;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(PART).getIndex();
+		return 0;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public float getBlockHardness(IBlockState state, World world, BlockPos pos) {
-		if (state.getValue(PART) == Part.MIDDLE) {
-			return 2000F;
+	public IBlockState getStateFromMeta(int meta) {
+		return getDefaultState();
+	}
+
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
+		boolean up = isOnbashira(world, pos, EnumFacing.UP);
+		boolean down = isOnbashira(world, pos, EnumFacing.DOWN);
+		if(up && down) {
+			state = state.withProperty(PART_LISTED, OnbashiraPiece.MIDDLE);
+		} else if(up) {
+			state = state.withProperty(PART_LISTED, OnbashiraPiece.LOWER);
+		} else if(down) {
+			state = state.withProperty(PART_LISTED, OnbashiraPiece.TOP);
 		} else {
-			return super.getBlockHardness(state, world, pos);
+			state = state.withProperty(PART_LISTED, OnbashiraPiece.NONE);
 		}
+		return state;
 	}
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		if (state.getValue(PART) == Part.TOP) {
-			return BB_TOP;
-		} else {
-			return super.getBoundingBox(state, source, pos);
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public Material getMaterial(IBlockState state) {
-		if (state.getValue(PART) == Part.MIDDLE) {
-			return Material.AIR;
-		} else {
-			return super.getMaterial(state);
-		}
+	private boolean isOnbashira(IBlockAccess world, BlockPos pos, EnumFacing facing) {
+		return world.getBlockState(pos.offset(facing)).getBlock() == ModBlocks.ONBASHIRA;
 	}
 
 	@Override
-	public void onEntityWalk(World world, BlockPos pos, Entity entityIn) {
-		if (entityIn instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entityIn;
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 125, 5));
-		}
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer.Builder(this).add(PART_LISTED).build();
 	}
 
-	@Override
-	public boolean hasTileEntity(IBlockState state) {
-		return state.getValue(PART) == Part.TOP;
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		if (Part.fromIndex(meta) == Part.TOP) {
-			return new TilePillarAltar().setRenderHeight(1F);
-		} else {
-			return null;
-		}
-	}
-
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-									EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (state.getValue(PART) == Part.TOP) {
-			TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
-			if (tile == null) return false;
-			tile.handleItemTransfer(player, hand);
-			return true;
-		} else {
-			return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
-		}
-	}
-
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos) {
-		for (int i = 1; i < 4; i++) {
-			pos = pos.up();
-			Block block = world.getBlockState(pos).getBlock();
-			if (!block.isReplaceable(world, pos)) {
-				return false;
-			}
-		}
-		return world.getBlockState(pos).getBlock().isReplaceable(world, pos);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-											EntityLivingBase placer) {
-		world.setBlockState(pos.up(1), getDefaultState().withProperty(PART, Part.MIDDLE));
-		world.setBlockState(pos.up(2), getDefaultState().withProperty(PART, Part.MIDDLE));
-		world.setBlockState(pos.up(3), getDefaultState().withProperty(PART, Part.TOP));
-		return super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
-	}
-
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		if (hasTileEntity(state)) {
-			TilePillarAltar tile = (TilePillarAltar) world.getTileEntity(pos);
-
-			if (tile != null && !world.isRemote) {
-				ItemStack output = tile.getItemStack();
-				if (!output.isEmpty()) {
-					EntityItem item = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, output);
-					item.setPickupDelay(40);
-
-					world.spawnEntity(item);
-				}
-			}
-			world.removeTileEntity(pos);
-		}
-	}
-
-	@Override
-	public void onPlayerDestroy(World world, BlockPos pos, IBlockState state) {
-		switch (state.getValue(PART)) {
-			case LOWER:
-				for (int i = 0; i < 4; i++) {
-					world.setBlockToAir(pos.up(i));
-				}
-				break;
-			case TOP:
-				for (int i = 0; i < 4; i++) {
-					world.setBlockToAir(pos.down(i));
-				}
-				break;
-			default:
-				break;
-		}
-	}
-
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		return false;
-	}
-
-	@Override
-	public boolean isReplaceable(IBlockAccess world, BlockPos pos) {
-		return false;
-	}
-
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	@SuppressWarnings("deprecation") //Internal
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
-	public enum Part implements IStringSerializable {
+	public enum OnbashiraPiece implements IStringSerializable {
 		LOWER("lower", 0),
 		MIDDLE("middle", 1),
-		TOP("top", 2);
+		TOP("top", 2),
+		NONE("none", 3);
 
 		private final String name;
 		private final int index;
 
-		Part(String name, int index) {
+		OnbashiraPiece(String name, int index) {
 			this.name = name;
 			this.index = index;
 		}
@@ -240,8 +112,8 @@ public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
 			return index;
 		}
 
-		public static Part fromIndex(int index) {
-			switch (index) {
+		public static OnbashiraPiece fromIndex(int index) {
+			switch(index) {
 				case 2:
 					return TOP;
 				case 1:
@@ -249,26 +121,6 @@ public class BlockOnbashira extends BlockBase implements ITileEntityProvider {
 				default:
 					return LOWER;
 			}
-		}
-	}
-
-	public enum Model implements IStringSerializable {
-		NEW("new"),
-		OLD("old");
-
-		private final String name;
-
-		Model(String name) {
-			this.name = name;
-		}
-
-		@Override
-		public String getName() {
-			return name;
-		}
-
-		public static Model fromModel(boolean model) {
-			return model ? NEW : OLD;
 		}
 	}
 }

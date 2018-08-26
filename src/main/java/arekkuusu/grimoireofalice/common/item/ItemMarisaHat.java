@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -96,8 +96,7 @@ public class ItemMarisaHat extends ItemBaseArmor implements ISpecialArmor {
 		@CapabilityInject(IItemHandler.class)
 		private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
-		private final IItemHandler inv = new ItemStackHandler(3) {
-
+		private final ItemStackHandler inv = new ItemStackHandler(3) {
 			@Override
 			public ItemStack insertItem(int slot, ItemStack toInsert, boolean simulate) {
 				return toInsert.hasCapability(ITEM_HANDLER_CAPABILITY, null) ? toInsert : super.insertItem(slot, toInsert, simulate);
@@ -114,20 +113,19 @@ public class ItemMarisaHat extends ItemBaseArmor implements ISpecialArmor {
 		public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inv);
-			}
-			else {
+			} else {
 				return null;
 			}
 		}
 
 		@Override
 		public NBTBase serializeNBT() {
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(inv, null);
+			return inv.serializeNBT();
 		}
 
 		@Override
 		public void deserializeNBT(NBTBase nbt) {
-			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(inv, null, nbt);
+			inv.deserializeNBT((NBTTagCompound) nbt);
 		}
 	}
 
@@ -142,13 +140,11 @@ public class ItemMarisaHat extends ItemBaseArmor implements ISpecialArmor {
 		if(!player.isSneaking()) {
 			EntityEquipmentSlot entityequipmentslot = EntityLiving.getSlotForItemStack(stack);
 			ItemStack slotStack = player.getItemStackFromSlot(entityequipmentslot);
-
 			if(slotStack.isEmpty()) {
 				player.setItemStackToSlot(entityequipmentslot, stack.copy());
 				stack.setCount(0);
 			}
-		}
-		else {
+		} else {
 			player.openGui(Alice.instance, LibGui.HAT, world, hand.ordinal(), -1, -1);
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);

@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "grimoireofalice:paper_block"
+    "facing=north,half=bottom": {
+      "model": "grimoireofalice:paper_block_bottom"
     },
-    "facing=south": {
-      "model": "grimoireofalice:paper_block",
+    "facing=south,half=bottom": {
+      "model": "grimoireofalice:paper_block_bottom",
       "y": 180
     },
-    "facing=east": {
-      "model": "grimoireofalice:paper_block",
+    "facing=east,half=bottom": {
+      "model": "grimoireofalice:paper_block_bottom",
       "y": 90
     },
-    "facing=west": {
-      "model": "grimoireofalice:paper_block",
+    "facing=west,half=bottom": {
+      "model": "grimoireofalice:paper_block_bottom",
+      "y": 270
+    },
+	"facing=north,half=top": {
+      "model": "grimoireofalice:paper_block_top"
+    },
+    "facing=south,half=top": {
+      "model": "grimoireofalice:paper_block_top",
+      "y": 180
+    },
+    "facing=east,half=top": {
+      "model": "grimoireofalice:paper_block_top",
+      "y": 90
+    },
+    "facing=west,half=top": {
+      "model": "grimoireofalice:paper_block_top",
       "y": 270
     }
   }

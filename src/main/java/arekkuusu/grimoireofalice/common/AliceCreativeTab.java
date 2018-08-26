@@ -48,9 +48,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.IMPURE_STONE);
 		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
 		addBlock(ModBlocks.ONBASHIRA);
-		addBlock(ModBlocks.PILLAR_ALTAR);
-		addBlock(ModBlocks.HOLY_STONE);
-		addBlock(ModBlocks.HOLY_KEY_STONE);
 		addBlock(ModBlocks.CRAFTING_ALTAR);
 		addBlock(ModBlocks.ROPE);
 		addBlock(ModBlocks.PAPER);

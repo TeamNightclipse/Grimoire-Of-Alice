@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.common.block;
 
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -23,8 +24,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import static net.minecraft.block.BlockHorizontal.FACING;
+import static net.minecraft.block.BlockStairs.HALF;
+
 @SuppressWarnings("deprecation")
-public class BlockPaper extends BlockModPillar {
+public class BlockPaper extends BlockBase {
 
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.4D, 0.0D, 0.4D, 0.6D, 1.0D, 0.6D);
 
@@ -37,26 +41,34 @@ public class BlockPaper extends BlockModPillar {
 	}
 
 	@Override
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		state = state.withProperty(FACING, placer.getHorizontalFacing());
+		return facing != EnumFacing.DOWN && (facing == EnumFacing.UP || hitY <= 0.5F)
+				? state.withProperty(HALF, BlockStairs.EnumHalf.BOTTOM)
+				: state.withProperty(HALF, BlockStairs.EnumHalf.TOP);
+	}
+
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing facing = EnumFacing.byHorizontalIndex(meta);
-		return getDefaultState().withProperty(BlockHorizontal.FACING, facing);
+		IBlockState state = getDefaultState().withProperty(HALF, (meta & 4) > 0 ? BlockStairs.EnumHalf.TOP : BlockStairs.EnumHalf.BOTTOM);
+		state = state.withProperty(FACING, EnumFacing.byHorizontalIndex(5 - (meta & 3)));
+		return state;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		EnumFacing facing = state.getValue(BlockHorizontal.FACING);
-		return facing.getHorizontalIndex();
+		int i = 0;
+		if(state.getValue(HALF) == BlockStairs.EnumHalf.TOP) {
+			i |= 4;
+		}
+		i = i | 5 - state.getValue(FACING).getIndex();
+		return i;
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, BlockHorizontal.FACING);
-	}
-
-	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		EnumFacing enumfacing = EnumFacing.fromAngle(placer.rotationYaw);
-		return this.getDefaultState().withProperty(BlockHorizontal.FACING, enumfacing);
+		return new BlockStateContainer(this, FACING, HALF);
 	}
 
 	@Override

@@ -1,33 +1,18 @@
 {
   "variants": {
-    "facing=north,model=new": {
+    "facing=north": {
       "model": "grimoireofalice:pillar_altar"
     },
-    "facing=south,model=new": {
+    "facing=south": {
       "model": "grimoireofalice:pillar_altar",
       "y": 180
     },
-    "facing=east,model=new": {
+    "facing=east": {
       "model": "grimoireofalice:pillar_altar",
       "y": 90
     },
-    "facing=west,model=new": {
+    "facing=west": {
       "model": "grimoireofalice:pillar_altar",
-      "y": 270
-    },
-    "facing=north,model=old": {
-      "model": "grimoireofalice:pillar_altar_old"
-    },
-    "facing=south,model=old": {
-      "model": "grimoireofalice:pillar_altar_old",
-      "y": 180
-    },
-    "facing=east,model=old": {
-      "model": "grimoireofalice:pillar_altar_old",
-      "y": 90
-    },
-    "facing=west,model=old": {
-      "model": "grimoireofalice:pillar_altar_old",
       "y": 270
     }
   }

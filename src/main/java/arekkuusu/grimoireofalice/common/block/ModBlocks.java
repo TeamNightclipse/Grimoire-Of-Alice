@@ -10,7 +10,6 @@ package arekkuusu.grimoireofalice.common.block;
 
 import arekkuusu.grimoireofalice.common.Alice;
 import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
-import arekkuusu.grimoireofalice.common.block.tile.TilePillarAltar;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
@@ -28,10 +27,6 @@ public class ModBlocks {
 	//--------------------------------Blocks--------------------------------//
 	@ObjectHolder(LibName.COMPACT_STONE)
 	public static final Block COMPACT_STONE = PLACE_HOLDER;
-	@ObjectHolder(LibName.HOLY_KEY_STONE)
-	public static final Block HOLY_KEY_STONE = PLACE_HOLDER;
-	@ObjectHolder(LibName.HOLY_STONE)
-	public static final Block HOLY_STONE = PLACE_HOLDER;
 	@ObjectHolder(LibName.KYOUMARUBOTAN)
 	public static final Block KYOUMARUBOTAN = PLACE_HOLDER;
 	@ObjectHolder(LibName.ONBASHIRA)
@@ -44,8 +39,6 @@ public class ModBlocks {
 	public static final Block SHROOM = PLACE_HOLDER;
 	@ObjectHolder(LibName.CRAFTING_ALTAR)
 	public static final Block CRAFTING_ALTAR = PLACE_HOLDER;
-	@ObjectHolder(LibName.PILLAR_ALTAR)
-	public static final Block PILLAR_ALTAR = PLACE_HOLDER;
 	@ObjectHolder(LibName.IMPURE_STONE)
 	public static final Block IMPURE_STONE = PLACE_HOLDER;
 	@ObjectHolder(LibName.HIHIIROKANE_BLOCK)
@@ -55,15 +48,12 @@ public class ModBlocks {
 
 	public static void register(IForgeRegistry<Block> registry) {
 		registry.register(new BlockBase(LibName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F));
-		registry.register(new BlockHolyKeyStone());
-		registry.register(new BlockHolyStone());
 		registry.register(new BlockKyoumarubotan());
 		registry.register(new BlockOnbashira());
 		registry.register(new BlockPaper());
 		registry.register(new BlockRope());
 		registry.register(new BlockShroom());
 		registry.register(new BlockCraftingAltar());
-		registry.register(new BlockPillarAltar());
 		registry.register(new BlockImpureRock());
 		registry.register(new BlockHihiirokane());
 		registry.register(new BlockDragonStone());
@@ -72,7 +62,6 @@ public class ModBlocks {
 
 	private static void registerTiles() {
 		registerTile(TileCraftingAltar.class, LibName.CRAFTING_ALTAR);
-		registerTile(TilePillarAltar.class, LibName.PILLAR_ALTAR);
 	}
 
 	private static <T extends TileEntity> void registerTile(Class<T> tile, String name) {

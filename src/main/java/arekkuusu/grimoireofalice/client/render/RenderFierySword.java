@@ -1,5 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
+import arekkuusu.grimoireofalice.client.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelFierySword;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.client.util.helper.BlendHelper;
@@ -24,18 +25,18 @@ public class RenderFierySword extends Render<EntityFierySword> {
 	public void doRender(EntityFierySword entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
-		BlendHelper.lightMap(255, 255);
-
-		bindEntityTexture(entity);
+		ShaderLibrary.BRIGHT.begin();
+		ShaderLibrary.BRIGHT.getUniformJ("brightness").ifPresent(b -> {
+			b.set(0F);
+			b.upload();
+		});
 		GlStateManager.translate(x, y, z);
 		GlStateManager.rotate(-entity.rotationYaw - 180F, 0F, 1F, 0F);
 		GlStateManager.rotate(-entity.rotationPitch - 180F, 1F, 0F, 0F);
+		bindEntityTexture(entity);
 		MODEL.renderInsideForm(0.0625F);
-
-		GlStateManager.pushMatrix();
 		MODEL.render(entity, 1, 0, 0, 0.0F, 0.0F, 0.0625F);
-		GlStateManager.popMatrix();
-
+		ShaderLibrary.BRIGHT.end();
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}

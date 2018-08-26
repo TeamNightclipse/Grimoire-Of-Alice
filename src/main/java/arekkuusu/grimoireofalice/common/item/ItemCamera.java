@@ -39,15 +39,8 @@ public abstract class ItemCamera extends ItemBase {
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!world.isRemote) {
-			int size = getSize();
-
-			EntityCameraSquare camera = new EntityCameraSquare(world, player, size);
-			Vec3d look = player.getLookVec();
-			double distance = size + 4D;
-			double dx = player.posX + look.x * distance;
-			double dy = player.posY + 2 + look.y * distance;
-			double dz = player.posZ + look.z * distance;
-			camera.setPosition(dx, dy, dz);
+			EntityCameraSquare camera = new EntityCameraSquare(world, player, getSize(), getAngle());
+			camera.setPosition();
 			world.spawnEntity(camera);
 		}
 		world.playSound(player, player.getPosition(), GrimoireSoundEvents.CAMERA_BEEP, SoundCategory.PLAYERS, 1F, 1F);
@@ -57,13 +50,6 @@ public abstract class ItemCamera extends ItemBase {
 
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		player.motionX = 0;
-		player.motionY = 0;
-		player.motionZ = 0;
-		if(player instanceof EntityPlayerMP) {
-			EntityPlayerMP playerMP = (EntityPlayerMP) player;
-			playerMP.setPositionAndUpdate(playerMP.prevPosX, playerMP.posY, playerMP.prevPosZ);
-		}
 	}
 
 	@Override
@@ -79,6 +65,8 @@ public abstract class ItemCamera extends ItemBase {
 	}
 
 	public abstract int getSize();
+
+	public abstract float getAngle();
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
