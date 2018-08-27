@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "grimoireofalice:mini_shrine"
+    },
+    "facing=south": {
+      "model": "grimoireofalice:mini_shrine",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "grimoireofalice:mini_shrine",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "grimoireofalice:mini_shrine",
+      "y": 270
+    }
+  }
+}
