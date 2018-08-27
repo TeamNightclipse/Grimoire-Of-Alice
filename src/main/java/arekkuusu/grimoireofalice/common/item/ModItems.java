@@ -1,4 +1,4 @@
-/**
+/*
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
@@ -35,8 +35,6 @@ public final class ModItems {
 	public static final Item SOLIDIFIED_PAPER = PLACE_HOLDER;
 	@ObjectHolder(LibName.TAMAHAGANE_STEEL)
 	public static final Item TAMAHAGANE_STEEL = PLACE_HOLDER;
-	@ObjectHolder(LibName.SHIMENAWA_ROPE)
-	public static final Item SHIMENAWA_ROPE = PLACE_HOLDER;
 	@ObjectHolder(LibName.YOUKAI_BOOK)
 	public static final Item YOUKAI_BOOK = PLACE_HOLDER;
 	@ObjectHolder(LibName.MASK)
@@ -45,8 +43,8 @@ public final class ModItems {
 	public static final Item HIHIIROKANE = PLACE_HOLDER;
 	@ObjectHolder(LibName.IBARAKI_BOX_EMPTY)
 	public static final Item IBARAKI_BOX_EMPTY = PLACE_HOLDER;
-	@ObjectHolder(LibName.IMPURE_ROCK)
-	public static final Item IMPURE_ROCK = PLACE_HOLDER;
+	@ObjectHolder(LibName.IMPURE_HIHIIROKANE)
+	public static final Item IMPURE_HIHIIROKANE = PLACE_HOLDER;
 	@ObjectHolder(LibName.LUNASA_VIOLIN)
 	public static final Item LUNASA_VIOLIN = PLACE_HOLDER;
 	@ObjectHolder(LibName.LYRICA_PIANO)
@@ -55,8 +53,6 @@ public final class ModItems {
 	public static final Item MERLIN_TRUMPET = PLACE_HOLDER;
 	@ObjectHolder(LibName.SHOU_LAMP)
 	public static final Item SHOU_LAMP = PLACE_HOLDER;
-	@ObjectHolder(LibName.PATCHY_BOOK)
-	public static final Item PATCHY_BOOK = PLACE_HOLDER;
 	@ObjectHolder(LibName.ORIN_SKULL)
 	public static final Item ORIN_SKULL = PLACE_HOLDER;
 	@ObjectHolder(LibName.POUCH)
@@ -105,7 +101,7 @@ public final class ModItems {
 	public static final Item SUBSTITUTE_JIZO = PLACE_HOLDER;
 	@ObjectHolder(LibName.NIMBLE_FABRIC)
 	public static final Item NIMBLE_FABRIC = PLACE_HOLDER;
-	@ObjectHolder(LibName.MIRACLE_MALLET)
+	@ObjectHolder(LibName.FAKE_MIRACLE_MALLET)
 	public static final Item FAKE_MIRACLE_MALLET = PLACE_HOLDER;
 	@ObjectHolder(LibName.SEND_OFF_LANTERN)
 	public static final Item SEND_OFF_LANTERN = PLACE_HOLDER;
@@ -268,19 +264,17 @@ public final class ModItems {
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.register(new ItemTamahaganeSteel());
 		registry.register(new ItemHihiirokane());
-		registry.register(new ItemShimenawaRope());
 		registry.register(new ItemTimeOrb());
 		registry.register(new ItemBase(LibName.MASK));
 		registry.register(new ItemYoukaiBook());
 		registry.register(new ItemBase(LibName.PASTE));
 		registry.register(new ItemBase(LibName.SOLIDIFIED_PAPER));
-		registry.register(new ItemBase(LibName.IMPURE_ROCK));
+		registry.register(new ItemBase(LibName.IMPURE_HIHIIROKANE));
 		registry.register(new ItemIbarakiBoxEmpty());
 		registry.register(new ItemBase(LibName.UFO_RED));
 		registry.register(new ItemBase(LibName.UFO_BLUE));
 		registry.register(new ItemBase(LibName.UFO_GREEN));
 		registry.register(new ItemUFOs());
-		registry.register(new ItemPatchyBook());
 		registry.register(new ItemSkull());
 		registry.register(new ItemNazrinPendulum());
 		registry.register(new ItemGhostDipper());
@@ -354,7 +348,7 @@ public final class ModItems {
 		registry.register(new ItemMomijisScimitarSword(ModMaterials.STRONG_IRON));
 		registry.register(new ItemNazrinStick(Item.ToolMaterial.STONE, LibName.NAZRIN_STICK));
 		registry.register(new ItemNueTrident(Item.ToolMaterial.DIAMOND));
-		registry.register(new ItemSwordofKusanagi(ModMaterials.STRONG_GOLD));
+		registry.register(new ItemSwordOfKusanagi(ModMaterials.STRONG_GOLD));
 		registry.register(new ItemSyringe(ModMaterials.WEAK_MATERIAL));
 		registry.register(new ItemIchirinRing(ModMaterials.WEAK_MATERIAL));
 		registry.register(new ItemOnbashira(Item.ToolMaterial.STONE));
@@ -394,11 +388,11 @@ public final class ModItems {
 		registry.register(itemBlock(ModBlocks.COMPACT_STONE));
 		registry.register(itemBlock(ModBlocks.KYOUMARUBOTAN));
 		registry.register(itemBlock(ModBlocks.ONBASHIRA));
-		registry.register(itemBlock(ModBlocks.PAPER));
-		registry.register(itemBlock(ModBlocks.ROPE));
+		registry.register(itemBlock(ModBlocks.SHIDE));
+		registry.register(itemBlock(ModBlocks.SHIMENAWA));
 		registry.register(new ItemBlockShroom(ModBlocks.SHROOM));
 		registry.register(itemBlock(ModBlocks.CRAFTING_ALTAR));
-		registry.register(itemBlock(ModBlocks.IMPURE_STONE));
+		registry.register(itemBlock(ModBlocks.HIHIIROKANE_ORE));
 		registry.register(itemBlock(ModBlocks.HIHIIROKANE_BLOCK));
 		registry.register(itemBlock(ModBlocks.DRAGON_STONE));
 	}
@@ -417,7 +411,7 @@ public final class ModItems {
 	}
 
 	public static void init() {
-		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.IMPURE_STONE));
+		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.HIHIIROKANE_ORE));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.SHROOM_POWDER, 1, 0));
 		OreDictionary.registerOre("dyeRed", new ItemStack(ModItems.SHROOM_POWDER, 1, 1));
 		OreDictionary.registerOre("dyeGreen", new ItemStack(ModItems.SHROOM_POWDER, 1, 2));

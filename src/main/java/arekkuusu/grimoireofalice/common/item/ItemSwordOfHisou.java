@@ -8,9 +8,8 @@ import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import arekkuusu.grimoireofalice.compat.danmakucore.LibGOAShotData;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -48,7 +47,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 				if(lookedAt.isPresent()) {
 					EntityLivingBase entity = (EntityLivingBase) lookedAt.get();
 					Vec3d look = player.getLookVec();
-
 					entity.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 50, 0));
 					entity.attackEntityFrom(DamageSource.MAGIC, 10);
 					entity.motionX -= look.x * 0.5;
@@ -87,7 +85,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 							.setUser(player)
 							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setMainColor(LibColor.COLOR_SATURATED_RED))
 							.build();
-					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
+					DanmakuCreationHelper.createRandomRingShot(danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
 				}
 			}
 		}
@@ -124,7 +122,6 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 					spawnGround(player, -itemRand.nextDouble(), itemRand.nextDouble());
 				}
 			}
-
 			if(!world.isRemote) {
 				List<EntityMob> list = world.getEntitiesWithinAABB(EntityMob.class, player.getEntityBoundingBox().grow(10.0D));
 				for(EntityMob mob : list) {
@@ -146,9 +143,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 		if(ConfigHandler.grimoireOfAlice.food.heavelyPeach && itemRand.nextBoolean() && pos.getY() > 100 && state.getMaterial() == Material.LEAVES) {
 			stack.damageItem(1, entityLiving);
 			if(!world.isRemote) {
-				EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-						new ItemStack(ModItems.HEAVENLY_PEACH));
-
+				EntityItem entityItem = new EntityItem(entityLiving.world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(ModItems.HEAVENLY_PEACH));
 				entityLiving.world.spawnEntity(entityItem);
 			}
 			return true;

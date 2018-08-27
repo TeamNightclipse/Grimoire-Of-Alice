@@ -31,16 +31,16 @@ public class ModBlocks {
 	public static final Block KYOUMARUBOTAN = PLACE_HOLDER;
 	@ObjectHolder(LibName.ONBASHIRA)
 	public static final Block ONBASHIRA = PLACE_HOLDER;
-	@ObjectHolder(LibName.PAPER_BLOCK)
-	public static final Block PAPER = PLACE_HOLDER;
-	@ObjectHolder(LibName.ROPE_BLOCK)
-	public static final Block ROPE = PLACE_HOLDER;
+	@ObjectHolder(LibName.SHIDE)
+	public static final Block SHIDE = PLACE_HOLDER;
+	@ObjectHolder(LibName.SHIMENAWA)
+	public static final Block SHIMENAWA = PLACE_HOLDER;
 	@ObjectHolder(LibName.SHROOM)
 	public static final Block SHROOM = PLACE_HOLDER;
-	@ObjectHolder(LibName.CRAFTING_ALTAR)
+	@ObjectHolder(LibName.MINI_SHRINE)
 	public static final Block CRAFTING_ALTAR = PLACE_HOLDER;
-	@ObjectHolder(LibName.IMPURE_STONE)
-	public static final Block IMPURE_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibName.HIHIIROKANE_ORE)
+	public static final Block HIHIIROKANE_ORE = PLACE_HOLDER;
 	@ObjectHolder(LibName.HIHIIROKANE_BLOCK)
 	public static final Block HIHIIROKANE_BLOCK = PLACE_HOLDER;
 	@ObjectHolder(LibName.DRAGON_STONE)
@@ -50,18 +50,18 @@ public class ModBlocks {
 		registry.register(new BlockBase(LibName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F));
 		registry.register(new BlockKyoumarubotan());
 		registry.register(new BlockOnbashira());
-		registry.register(new BlockPaper());
-		registry.register(new BlockRope());
+		registry.register(new BlockShide());
+		registry.register(new BlockShimenawa());
 		registry.register(new BlockShroom());
-		registry.register(new BlockCraftingAltar());
-		registry.register(new BlockImpureRock());
+		registry.register(new BlockMiniShrine());
+		registry.register(new BlockHihiirokaneOre());
 		registry.register(new BlockHihiirokane());
 		registry.register(new BlockDragonStone());
 		registerTiles();
 	}
 
 	private static void registerTiles() {
-		registerTile(TileCraftingAltar.class, LibName.CRAFTING_ALTAR);
+		registerTile(TileCraftingAltar.class, LibName.MINI_SHRINE);
 	}
 
 	private static <T extends TileEntity> void registerTile(Class<T> tile, String name) {

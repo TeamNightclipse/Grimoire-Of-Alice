@@ -9,7 +9,6 @@
 package arekkuusu.grimoireofalice.common.block;
 
 import arekkuusu.grimoireofalice.common.lib.LibName;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -28,12 +27,12 @@ import static net.minecraft.block.BlockHorizontal.FACING;
 import static net.minecraft.block.BlockStairs.HALF;
 
 @SuppressWarnings("deprecation")
-public class BlockPaper extends BlockBase {
+public class BlockShide extends BlockBase {
 
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.4D, 0.0D, 0.4D, 0.6D, 1.0D, 0.6D);
 
-	public BlockPaper() {
-		super(LibName.PAPER_BLOCK, Material.CARPET);
+	public BlockShide() {
+		super(LibName.SHIDE, Material.CARPET);
 		setHardness(0.5F);
 		setHarvestLevel(Tool.SHEARS, ToolLevel.STONE);
 		setSoundType(SoundType.CLOTH);

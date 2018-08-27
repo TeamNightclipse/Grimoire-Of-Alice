@@ -17,7 +17,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
@@ -29,15 +28,15 @@ import net.minecraft.world.World;
 import static net.minecraft.block.BlockHorizontal.FACING;
 
 @SuppressWarnings("deprecation")
-public class BlockRope extends BlockBase {
+public class BlockShimenawa extends BlockBase {
 
 	public static final PropertyEnum<BlockStairs.EnumHalf> HALF = PropertyEnum.create("half", BlockStairs.EnumHalf.class);
 	public static final PropertyEnum<BlockStairs.EnumShape> SHAPE = PropertyEnum.create("shape", BlockStairs.EnumShape.class);
 	private static final AxisAlignedBB BOTTOM_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.6D, 1.0D);
 	private static final AxisAlignedBB TOP_AABB = new AxisAlignedBB(0.0D, 0.4D, 0.0D, 1.0D, 1.0D, 1.0D);
 
-	public BlockRope() {
-		super(LibName.ROPE_BLOCK, Material.WOOD);
+	public BlockShimenawa() {
+		super(LibName.SHIMENAWA, Material.WOOD);
 		setSoundType(SoundType.LADDER);
 		setHarvestLevel(Tool.AXE, ToolLevel.STONE);
 		setResistance(5.0F);
@@ -134,7 +133,7 @@ public class BlockRope extends BlockBase {
 	}
 
 	public static boolean isBlockRope(IBlockState state) {
-		return state.getBlock() instanceof BlockRope;
+		return state.getBlock() instanceof BlockShimenawa;
 	}
 
 	@Override

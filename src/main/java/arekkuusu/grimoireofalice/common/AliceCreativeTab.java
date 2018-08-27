@@ -45,12 +45,12 @@ public class AliceCreativeTab extends CreativeTabs {
 		this.list = list;
 		//Blocks
 		addBlock(ModBlocks.COMPACT_STONE);
-		addBlock(ModBlocks.IMPURE_STONE);
+		addBlock(ModBlocks.HIHIIROKANE_ORE);
 		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.CRAFTING_ALTAR);
-		addBlock(ModBlocks.ROPE);
-		addBlock(ModBlocks.PAPER);
+		addBlock(ModBlocks.SHIMENAWA);
+		addBlock(ModBlocks.SHIDE);
 		addBlock(ModBlocks.KYOUMARUBOTAN);
 		addBlock(ModBlocks.SHROOM);
 		addItem(ModItems.SHROOM_POWDER);
@@ -58,11 +58,10 @@ public class AliceCreativeTab extends CreativeTabs {
 
 		//Materials
 		addItem(ModItems.HIHIIROKANE);
-		addItem(ModItems.IMPURE_ROCK);
+		addItem(ModItems.IMPURE_HIHIIROKANE);
 		addItem(ModItems.TAMAHAGANE_STEEL);
 		addItem(ModItems.SOLIDIFIED_PAPER);
 		addItem(ModItems.PASTE);
-		addItem(ModItems.SHIMENAWA_ROPE);
 		addItem(ModItems.BLACK_FEATHER);
 		addItem(ModItems.COWRIE_SHELL);
 		addItem(ModItems.SWALLOW_EGG);
@@ -80,7 +79,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		//-------------Items - By Character-------------//
 
 		//-------------Patchouli Knowledge-------------//
-		addItem(ModItems.PATCHY_BOOK);
 
 		//-------------Kosuzu Motoori-------------//
 		addItem(ModItems.YOUKAI_BOOK);

@@ -9,10 +9,9 @@
 package arekkuusu.grimoireofalice.common.item;
 
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -62,7 +61,7 @@ public abstract class ItemInstrument extends ItemBase {
 						.setMovementData(getVelocity())
 						.setShot(LibShotData.SHOT_NOTE1.setMainColor(color))
 						.build();
-				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, getSize(), getDistance());
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, getSize(), getDistance());
 			}
 		}
 		if(count % 10 == 0) {

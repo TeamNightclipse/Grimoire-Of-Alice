@@ -6,8 +6,7 @@ item.shimenawa_rope.name=Shimenawa Rope
 item.youkai_book.name=Youkai Book
 item.mask.name=Mask
 item.hihiirokane.name=Hihi'irokane
-item.impure_rock.name=Impure Mineral
-item.patchy_book.name=Grimoire of Alice Stuff
+item.impure_hihiirokane.name=Impure Hihi'irokane
 item.lunasa_violin.name=Lunasa's Violin
 item.lyrica_piano.name=Lyrica's Piano
 item.merlin_trumpet.name=Merlin's Trumpet
@@ -123,21 +122,14 @@ item.icicle_sword.name=Icicle Sword
 item.hakurouken.name=Hakurouken
 item.ghost_anchor.name=Ghost Anchor
 
-tile.rope_block.name=Enchanted Rope
-tile.paper_block.name=Enchanted Paper
-tile.sugar_block.name=Sugar Block
-tile.compact_stone.name=Primordial Stone
-tile.hyper_magic.name=Hyper Magic
-tile.holy_key_stone.name=Holy KeyStone
+tile.shimenawa.name=Shimenawa
+tile.shide.name=Shide
+tile.compact_stone.name=Compact Stone
 tile.onbashira.name=Onbashira
-tile.onbashira_middle.name=Onbashira
-tile.onbashira_top.name=Onbashira
-tile.holy_stone.name=Holy Stone
-tile.crafting_altar.name=Crafting Altar
-tile.pillar_altar.name=Holy Pillar
-tile.impure_stone.name=Impure Stone
+tile.mini_shrine.name=Mini Shrine
+tile.hihiirokane_ore.name=Hihi'irokane Ore
 tile.hihiirokane_block.name=Hihi'irokane Block
-tile.dragonstone.name=Dragon Weather Stone
+tile.dragonstone.name=Dragon Stone
 
 tile.shroom_0.name=White Shroom
 tile.shroom_1.name=Orange Shroom
@@ -158,11 +150,7 @@ tile.shroom_15.name=Black Shroom
 
 tile.kyoumarubotan.name=Kyoumarubotan
 
-item.full_power_item.name=Full Power Item
-item.star_item.name=Star Item
-item.cherry_item.name=Cherry Item
 item.time_orb.name=Time Orb
-item.faith_item.name=Faith Item
 item.ufo.name=UFOs
 item.ufo_red.name=Red UFO
 item.ufo_blue.name=Blue UFO
@@ -236,9 +224,7 @@ item.toyosatomimi.empty=- - - - - - - No souls found - - - - - - -
 item.hourai.level_0=Your body feels numb, you have become incapable of growing up or aging.
 item.hourai.level_1=The air feels lighter, you are now incapable of becoming ill.
 item.hourai.level_2=Your soul screams in horror, you are now completely immortal to the truest sense.
-item.hourai.level_3=You already are immortal!
-
-//Achievement
+item.hourai.level_3=You cannot undo this action
 
 achievement.craftAltar=Taketori Monogatari
 achievement.craftAltar.desc=Eight impossible requests of the moon princess Kaguya-hime
@@ -267,8 +253,6 @@ achievement.craftGoldenCeiling.desc=Craft the Seamless Ceiling of Kinkaku-ji
 achievement.craftElixir=New Impossible Request "Elixir of immortality"
 achievement.craftElixir.desc=Craft the Hōrai Elixir
 
-//GUI
-
 grimoire.gui.pouch.name=§fSpell Card Pouch
 grimoire.gui.youkaibook_header.name=Grimoire of
 grimoire.gui.youkaibook_description.name=This book must be sealed to prevent someone else from reading the scriptures
@@ -285,8 +269,6 @@ grimoire.gui.book_6=                      -Crafting Altar-|                     
 grimoire.gui.book_7=                      -DanmakuCore-|                            Items|Items that depend on danmakucore, for ex:|"Jeweled Branch of Hourai", and some other|unique items, do not show when the mod is missing.|Why is this? Because they use danmaku.
 grimoire.gui.book_8=                      -DanmakuCore-|                         Danmaku|This mod adds 2 new Shots to DanmakuCore:|||*Sun:               Bouncing.|||*UFO:               Random movements.
 grimoire.gui.book_9=                           -JEI-|As simple as it sounds, you can use JEI to see|recipes in-game. The inside items go on the small|Pillars, the outside items go on the Onbashiras.
-
-//Tooltips
 
 grimoire.tooltip.shift_description=<hold shift for details>
 grimoire.tooltip.ownedProperty=Property of %s
@@ -420,7 +402,6 @@ grimoire.tooltip.grimoire_book_header.name=Spellbook of the ultimate magic
 grimoire.tooltip.grimoire_book_description.name="A grimoire that shines wonderfully with all seven colours of light"
 
 grimoire.tooltip.hakurei_gohei_header.name=Gohei from a powerful Shrine Maiden
-//Gohei Modes
 grimoire.tooltip.hakurei_gohei_mode_header.name=§o§fGohei Mode :
 grimoire.tooltip.hakurei_gohei_mode_passive.name= §fPassive
 grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name= §bAura manipulation
@@ -511,7 +492,6 @@ grimoire.tooltip.sanae_gohei_header.name=Causes miracles to occur
 grimoire.tooltip.sanae_gohei_use.name=Hold right click to charge with food or faith items
 grimoire.tooltip.sanae_gohei_charge.name=Accumulated Faith:
 grimoire.tooltip.sanae_gohei_shift.name=<hold shift for details>
-//Gohei Modes
 grimoire.tooltip.sanae_gohei_mode_header.name=§fGohei Mode :
 grimoire.tooltip.sanae_gohei_mode_clear.name= §bMiracle of Clear Skies
 grimoire.tooltip.sanae_gohei_mode_rain.name= §bMiracle of Endless Rain
@@ -571,8 +551,6 @@ grimoire.tooltip.tengu_camera_header.name=Swipe the space in front of the player
 grimoire.tooltip.time_orb_header.name=Exclusive to Imperishable Night
 grimoire.tooltip.time_orb_description_top.name=They are believed to slow
 grimoire.tooltip.time_orb_description_bottom.name=the passing of the night
-
-grimoire.tooltip.ufos_header.name=Gathers items around the player
 
 grimoire.tooltip.wall_passing_chisel_header.name=Wall passing chisel
 grimoire.tooltip.wall_passing_chisel_description.name=Use on any solid block
@@ -664,7 +642,6 @@ grimoire.tooltip.uba_mask_bad_buff_two.name= - Blindness
 grimoire.tooltip.uba_mask_bad_buff_tree.name= - Melancholy
 grimoire.tooltip.uba_mask_vulnerable.name= *Vulnerable to Magic
 
-//JEI
 grimoire.jei.descriptions.budah_boul=Must be crafted under a Waxing Crescent Moon at Night
 grimoire.jei.descriptions_body.budah_boul=Works as a all-in-one tool that lasts forever. Even though its a legendary relic from buddha himself, you cannot break bedrock with it
 

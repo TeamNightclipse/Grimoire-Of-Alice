@@ -6,17 +6,15 @@ public class LibName {
 	public static final String PASTE = "paste";
 	public static final String SOLIDIFIED_PAPER = "solidified_paper";
 	public static final String TAMAHAGANE_STEEL = "tamahagane_steel";
-	public static final String SHIMENAWA_ROPE = "shimenawa_rope";
 	public static final String YOUKAI_BOOK = "youkai_book";
 	public static final String MASK = "mask";
 	public static final String HIHIIROKANE = "hihiirokane";
-	public static final String IMPURE_ROCK = "impure_rock";
+	public static final String IMPURE_HIHIIROKANE = "impure_hihiirokane";
 	public static final String THIRD_EYE = "third_eye";
 	public static final String LUNASA_VIOLIN = "lunasa_violin";
 	public static final String LYRICA_PIANO = "lyrica_piano";
 	public static final String MERLIN_TRUMPET = "merlin_trumpet";
 	public static final String SHOU_LAMP = "shou_lamp";
-	public static final String PATCHY_BOOK = "patchy_book";
 	public static final String ORIN_SKULL = "orin_skull";
 	public static final String NAZRIN_PENDULUM = "nazrin_pendulum";
 	public static final String GHOST_DIPPER = "ghost_dipper";
@@ -30,11 +28,7 @@ public class LibName {
 	public static final String FOLDING_UMBRELLA = "folding_umbrella";
 	public static final String STOPWATCH = "stopwatch";
 	public static final String MORTAR_AND_PESTLE = "mortar_n_pestle";
-	public static final String FULL_POWER = "full_power_item";
-	public static final String STAR = "star_item";
-	public static final String CHERRY = "cherry_item";
 	public static final String TIME_ORB = "time_orb";
-	public static final String FAITH = "faith_item";
 	public static final String UFO_RED = "ufo_red";
 	public static final String UFO_BLUE = "ufo_blue";
 	public static final String UFO_GREEN = "ufo_green";
@@ -52,7 +46,6 @@ public class LibName {
 	public static final String SANAE_GOHEI = "sanae_gohei";
 	public static final String HAKUREI_GOHEI = "hakurei_gohei";
 	public static final String NETHER_SHARD = "nether_shard";
-	public static final String IRON_NUGGET = "iron_nugget";
 	public static final String HARDENED_LEATHER = "hardened_leather";
 	public static final String BLACK_FEATHER = "black_feather";
 	public static final String SWALLOW_EGG = "swallow_egg";
@@ -115,7 +108,6 @@ public class LibName {
 	public static final String CATTAIL_PLANT = "cattail_plant";
 	public static final String POPSICLE_STICK = "popsicle_stick";
 	public static final String RUMIA_SWORD = "rumia_sword";
-	public static final String SARIEL_WAND = "sariel_wand";
 	public static final String WATERMELON_BLADE = "watermelon_blade";
 	public static final String WATERMELON_SWORD = "watermelon_sword";
 	public static final String SACRED_SWORD_OF_TOYOSATOMIMI = "sacred_sword_of_toyosatomimi";
@@ -133,16 +125,14 @@ public class LibName {
 	public static final String VAJRA = "vajra";
 	public static final String TENGU_FAN = "tengu_fan";
 
-	public static final String HOLY_KEY_STONE = "holy_key_stone";
-	public static final String ROPE_BLOCK = "rope_block";
-	public static final String PAPER_BLOCK = "paper_block";
+	public static final String SHIMENAWA = "shimenawa";
+	public static final String SHIDE = "shide";
 	public static final String ONBASHIRA = "onbashira";
-	public static final String HOLY_STONE = "holy_stone";
 	public static final String COMPACT_STONE = "compact_stone";
 	public static final String SHROOM = "shroom";
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
-	public static final String IMPURE_STONE = "impure_stone";
+	public static final String HIHIIROKANE_ORE = "hihiirokane_ore";
 	public static final String HIHIIROKANE_BLOCK = "hihiirokane_block";
 	public static final String DRAGON_STONE = "dragon_stone";
-	public static final String CRAFTING_ALTAR = "crafting_altar";
+	public static final String MINI_SHRINE = "mini_shrine";
 }

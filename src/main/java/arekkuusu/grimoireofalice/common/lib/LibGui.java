@@ -12,7 +12,6 @@ public class LibGui {
 
 	public static final String ALTAR_CATEGORY_UID = LibMod.MOD_ID + ".altar";
 
-	public static final int GUIDE = 0;
 	public static final int POUCH_BAG = 1;
 	public static final int HAT = 2;
 }

@@ -56,7 +56,7 @@ public class EntityNetherSoul extends EntityThrowable {
 		if(isDead) {
 			return;
 		}
-		Alice.proxy.spawnNetherFire(world, Vector3.apply(posX, posY, posZ), Vector3.Zero(), 20 + world.rand.nextInt(40), 0.1F + world.rand.nextFloat());
+		Alice.proxy.spawnNetherFire(world, Vector3.apply(posX, posY, posZ), Vector3.Zero(), 40 + world.rand.nextInt(40), 0.1F + world.rand.nextFloat());
 		if(ticksExisted % 4 == 0) {
 			for(int i = 0; i < 5; i++) {
 				Alice.proxy.spawnRedGas(world, Vector3.apply(posX, posY, posZ), Vector3.Zero());

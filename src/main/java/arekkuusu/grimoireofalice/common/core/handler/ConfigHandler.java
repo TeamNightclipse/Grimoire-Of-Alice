@@ -81,8 +81,6 @@ public class ConfigHandler {
 				@Comment("Can players craft the hihiirokane?")
 				public boolean hihiirokane = true;
 				@Comment("Can players craft the patchy book?")
-				public boolean patchyBook = true;
-				@Comment("Can players craft the syringe?")
 				public boolean syringe = true;
 				@Comment("Can players craft the simple ufo?")
 				public boolean simpleUfo = false;

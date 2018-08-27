@@ -36,12 +36,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.hihiirokane) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.HIHIIROKANE)
-					, ModItems.IMPURE_ROCK, Blocks.COAL_BLOCK);
-		}
-
-		if(ConfigHandler.grimoireOfAlice.crafting.altar.patchyBook) {
-			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.PATCHY_BOOK)
-					, Items.WRITABLE_BOOK, "stickWood", Items.FEATHER);
+					, ModItems.IMPURE_HIHIIROKANE, Blocks.COAL_BLOCK);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.syringe) {
@@ -135,12 +130,12 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.fakeMiracleMallet) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.FAKE_MIRACLE_MALLET)
-					, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.IMPURE_ROCK);
+					, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, ModItems.PASTE, Items.IRON_INGOT, Items.IRON_INGOT, Items.IRON_INGOT, ModItems.IMPURE_HIHIIROKANE);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.kakanoShimenawa) {
 			AliceAPI.registerAltarRecipeRain(new ItemStack(ModItems.KANAKO_SHIMENAWA)
-					, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, Items.NETHER_STAR, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER, ModBlocks.PAPER);
+					, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, Items.NETHER_STAR, ModBlocks.SHIDE, ModBlocks.SHIDE, ModBlocks.SHIDE, ModBlocks.SHIDE);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.fireRobe) {
@@ -272,7 +267,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.sanaeGohei) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.SANAE_GOHEI)
-					, "paper", "paper", "stickWood", ModItems.SHIMENAWA_ROPE, "paper", "stickWood", "paper", "paper");
+					, "paper", "paper", "stickWood", "paper", "paper", "stickWood", "paper", "paper");
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.sichiSeiken) {
@@ -282,7 +277,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.kanakoOnbashira) {
 			AliceAPI.registerAltarRecipeRain(new ItemStack(ModItems.KANAKO_ONBASHIRA)
-					, "logWood", "logWood", "logWood", "logWood", "stickWood", ModItems.SHIMENAWA_ROPE);
+					, "logWood", "logWood", "logWood", "logWood", "stickWood", "stickWood");
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.skull) {
@@ -413,7 +408,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.ellyScythe) {
 			AliceAPI.registerAltarRecipeDimension(DimensionType.NETHER, new ItemStack(ModItems.ELLY_SCYTHE)
-					, "dyeRed", Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, ModItems.IMPURE_ROCK, ModItems.IMPURE_ROCK);
+					, "dyeRed", Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, Items.NETHERBRICK, ModItems.IMPURE_HIHIIROKANE, ModItems.IMPURE_HIHIIROKANE);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.laevatein) {
@@ -458,7 +453,7 @@ public final class AltarRecipes {
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.shouLamp) {
 			AliceAPI.registerAltarRecipe(new ItemStack(ModItems.SHOU_LAMP)
-					, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.GLOWSTONE, Blocks.GLOWSTONE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE, ModBlocks.ROPE);
+					, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.SEA_LANTERN, Blocks.GLOWSTONE, Blocks.GLOWSTONE, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA);
 		}
 
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.danmakuCore.jeweledHourai) {

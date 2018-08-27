@@ -110,7 +110,7 @@ public class ItemJeweledHourai extends ItemJeweled {
 								.setShot(LibShotData.SHOT_CRYSTAL1.setSize(0.4F).setMainColor(color).setDamage(5F).setDelay(i))
 								.setMovementData(0.8D)
 								.build();
-						DanmakuCreationHelper.createRingShot(danmaku, timeUsed, timeUsed * 0.75F * ((float)i / (float)jewels), 15F, 0D);
+						DanmakuCreationHelper.createRingShot(danmaku, timeUsed, 1 + timeUsed * 0.75F * ((float)i / (float)jewels), 15F, 0D);
 					}
 					JEWELS.set((short) 0, stack);
 				}

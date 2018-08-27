@@ -25,9 +25,9 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemSwordofKusanagi extends ItemSwordOwner  {
+public class ItemSwordOfKusanagi extends ItemSwordOwner  {
 
-	public ItemSwordofKusanagi(ToolMaterial material) {
+	public ItemSwordOfKusanagi(ToolMaterial material) {
 		super(material, LibName.SWORD_OF_KUSANAGI);
 		setNoRepair();
 	}
@@ -40,7 +40,6 @@ public class ItemSwordofKusanagi extends ItemSwordOwner  {
 		entityLiving.playSound(GrimoireSoundEvents.ATTTACK_LONG, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 		if(!entityLiving.world.isRemote) {
 			Entity lookAt = Vector3.getEntityLookedAt(entityLiving, Entity::canBeCollidedWith, 50D).orElse(null);
-
 			EntityNetherSoul entityNetherSoul = new EntityNetherSoul(entityLiving.world, entityLiving, lookAt);
 			entityLiving.world.spawnEntity(entityNetherSoul);
 			entityNetherSoul.shoot(entityLiving, entityLiving.rotationPitch, entityLiving.rotationYaw, 0, 0.1F, 0);

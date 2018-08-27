@@ -58,7 +58,6 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner  {
 			if(timeUsed > 50) {
 				return;
 			}
-
 			if(entityLiving instanceof EntityPlayer) {
 				EntityPlayer player = (EntityPlayer) entityLiving;
 				if(isOwner(stack, player)) {
@@ -92,7 +91,6 @@ public class ItemSacredToyosatomimi extends ItemSwordOwner  {
 		else if(livingBase instanceof EntityWaterMob) {
 			return DARK_AQUA;
 		}
-
 		return DARK_GRAY;
 	}
 

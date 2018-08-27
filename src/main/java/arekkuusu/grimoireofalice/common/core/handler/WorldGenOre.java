@@ -21,7 +21,7 @@ public class WorldGenOre implements IWorldGenerator {
 			int veinSize = ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity < 0 ? 0 : ConfigHandler.grimoireOfAlice.worldGen.impureStoneQuantity;
 			int heightRange = 30;
 			for(int i = 0; i < ConfigHandler.grimoireOfAlice.worldGen.impureStoneSpawnRate; i++) {
-				WorldGenMinable gen = new WorldGenMinable(ModBlocks.IMPURE_STONE.getDefaultState(), veinSize, BlockMatcher.forBlock(Blocks.STONE));
+				WorldGenMinable gen = new WorldGenMinable(ModBlocks.HIHIIROKANE_ORE.getDefaultState(), veinSize, BlockMatcher.forBlock(Blocks.STONE));
 				int xRand = chunkX * 16 + random.nextInt(16);
 				int yRand = random.nextInt(heightRange);
 				int zRand = chunkZ * 16 + random.nextInt(16);

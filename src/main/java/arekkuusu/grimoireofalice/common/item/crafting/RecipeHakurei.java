@@ -9,6 +9,7 @@
 package arekkuusu.grimoireofalice.common.item.crafting;
 
 import arekkuusu.grimoireofalice.api.recipes.AltarRecipe;
+import arekkuusu.grimoireofalice.common.block.ModBlocks;
 import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -18,7 +19,7 @@ import java.util.List;
 public class RecipeHakurei extends AltarRecipe {
 
 	public RecipeHakurei() {
-		super(new ItemStack(ModItems.HAKUREI_GOHEI), "stickWood", "stickWood", ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE, ModItems.SHIMENAWA_ROPE);
+		super(new ItemStack(ModItems.HAKUREI_GOHEI), "stickWood", "stickWood", ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA, ModBlocks.SHIMENAWA);
 	}
 
 	@Override

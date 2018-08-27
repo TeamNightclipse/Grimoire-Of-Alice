@@ -11,10 +11,9 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,7 +57,7 @@ public class ItemShouLamp extends ItemJeweled {
 						.setMovementData(0.5D, 0.5D, 0.1D)
 						.setShot(LibShotData.SHOT_POINTED_LASER_LONG.setMainColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
 						.build();
-				DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 20, 0D);
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 20, 0D);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 				addJewels(stack, (short) -1);
 			}
@@ -94,7 +93,6 @@ public class ItemShouLamp extends ItemJeweled {
 					world.spawnEntity(circle);
 				}
 				player.getCooldownTracker().setCooldown(this, jewels + 1);
-
 				if(timeLeft < 200) {
 					List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class,
 							player.getEntityBoundingBox().grow(4.0D));

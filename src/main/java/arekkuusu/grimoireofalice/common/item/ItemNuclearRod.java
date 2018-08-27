@@ -1,8 +1,8 @@
-/**
+/*
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -15,9 +15,8 @@ import arekkuusu.grimoireofalice.compat.danmakucore.LibGOAShotData;
 import com.google.common.collect.Lists;
 import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -34,7 +33,7 @@ import scala.collection.JavaConversions;
 
 import java.util.List;
 
-public class ItemNuclearRod extends ItemBase  {
+public class ItemNuclearRod extends ItemBase {
 
 	public ItemNuclearRod() {
 		super(LibName.NUCLEAR_ROD);
@@ -77,7 +76,6 @@ public class ItemNuclearRod extends ItemBase  {
 		if(timeUsed < 20) {
 			return;
 		}
-
 		entityLiving.playSound(GrimoireSoundEvents.WAVE, 0.2F, 1F);
 		if(!world.isRemote) {
 			if(entityLiving.isSneaking()) {
@@ -87,13 +85,11 @@ public class ItemNuclearRod extends ItemBase  {
 						.setShot(LibGOAShotData.SUN.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(5))
 						.build();
 				if(entityLiving instanceof EntityPlayer && hasFullSet((EntityPlayer) entityLiving)) {
-					DanmakuCreationHelper.createSphereShot(Quat.orientationOf(entityLiving), danmaku, 4, 5, entityLiving.rotationPitch, 1D);
+					DanmakuCreationHelper.createSphereShot(danmaku, 4, 5, entityLiving.rotationPitch, 1D);
+				} else {
+					DanmakuCreationHelper.createCircleShot(danmaku, 5, entityLiving.rotationPitch, 1D);
 				}
-				else {
-					DanmakuCreationHelper.createCircleShot(Quat.orientationOf(entityLiving), danmaku, 5, entityLiving.rotationPitch, 1D);
-				}
-			}
-			else {
+			} else {
 				DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setShot(LibGOAShotData.SUN.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(5))
@@ -110,7 +106,6 @@ public class ItemNuclearRod extends ItemBase  {
 	private static boolean hasFullSet(EntityPlayer player) {
 		ItemStack boots = player.inventory.armorInventory.get(0);
 		ItemStack body = player.inventory.armorInventory.get(2);
-
 		return !boots.isEmpty() && !body.isEmpty() && boots.getItem() == ModItems.NUCLEAR_BOOTS && body.getItem() == ModItems.UTSUHO_WINGS;
 	}
 
