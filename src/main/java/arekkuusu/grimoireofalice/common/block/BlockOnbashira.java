@@ -20,6 +20,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
+import java.util.Locale;
+
 @SuppressWarnings("deprecation")
 public class BlockOnbashira extends BlockBase {
 
@@ -36,7 +38,8 @@ public class BlockOnbashira extends BlockBase {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return getActualState(state, source, pos).getValue(PART_LISTED) == OnbashiraPiece.TOP ? BB_TOP : FULL_BLOCK_AABB;
+		OnbashiraPiece piece = getActualState(state, source, pos).getValue(PART_LISTED);
+		return piece == OnbashiraPiece.TOP || piece == OnbashiraPiece.NONE ? BB_TOP : FULL_BLOCK_AABB;
 	}
 
 	@Override
@@ -85,42 +88,14 @@ public class BlockOnbashira extends BlockBase {
 	}
 
 	public enum OnbashiraPiece implements IStringSerializable {
-		LOWER("lower", 0),
-		MIDDLE("middle", 1),
-		TOP("top", 2),
-		NONE("none", 3);
-
-		private final String name;
-		private final int index;
-
-		OnbashiraPiece(String name, int index) {
-			this.name = name;
-			this.index = index;
-		}
+		LOWER,
+		MIDDLE,
+		TOP,
+		NONE;
 
 		@Override
 		public String getName() {
-			return name;
-		}
-
-		@Override
-		public String toString() {
-			return name;
-		}
-
-		public int getIndex() {
-			return index;
-		}
-
-		public static OnbashiraPiece fromIndex(int index) {
-			switch(index) {
-				case 2:
-					return TOP;
-				case 1:
-					return MIDDLE;
-				default:
-					return LOWER;
-			}
+			return name().toLowerCase(Locale.ROOT);
 		}
 	}
 }

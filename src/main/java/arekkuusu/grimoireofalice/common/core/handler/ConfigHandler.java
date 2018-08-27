@@ -157,8 +157,6 @@ public class ConfigHandler {
 				@Comment("Can players craft the sanae gohei?")
 				public boolean sanaeGohei = true;
 				@Comment("Can players craft the sariel wand?")
-				public boolean sarielWand = false;
-				@Comment("Can players craft the sichi seiken?")
 				public boolean sichiSeiken = true;
 				@Comment("Can players craft the kanako's onbashira?")
 				public boolean kanakoOnbashira = true;

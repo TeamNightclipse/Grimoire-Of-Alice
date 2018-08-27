@@ -275,11 +275,6 @@ public final class AltarRecipes {
 					, "paper", "paper", "stickWood", ModItems.SHIMENAWA_ROPE, "paper", "stickWood", "paper", "paper");
 		}
 
-		if(ConfigHandler.grimoireOfAlice.crafting.altar.sarielWand) {
-			AliceAPI.registerAltarRecipeThunder(new ItemStack(ModItems.SARIEL_WAND)
-					, Items.NETHER_STAR, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN, Blocks.OBSIDIAN);
-		}
-
 		if(ConfigHandler.grimoireOfAlice.crafting.altar.sichiSeiken) {
 			AliceAPI.registerAltarRecipeMoonPhase(MoonPhase.FIRST_QUARTER, new ItemStack(ModItems.SHICHI_SEIKEN)
 					, Items.IRON_INGOT, Items.GOLD_INGOT, ModItems.TAMAHAGANE_STEEL);

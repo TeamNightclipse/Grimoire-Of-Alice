@@ -70,16 +70,11 @@ public class AliceCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.DRAGON_STONE);
 		addItem(ModItems.NETHER_SHARD);
 		addItem(ModItems.HARDENED_LEATHER);
-		addItem(ModItems.IRON_NUGGET);
 		addItem(ModItems.MASK);
 		addItem(ModItems.UFO_BLUE);
 		addItem(ModItems.UFO_GREEN);
 		addItem(ModItems.UFO_RED);
 		addItem(ModItems.TIME_ORB);
-		addItem(ModItems.FULL_POWER);
-		addItem(ModItems.STAR);
-		addItem(ModItems.CHERRY);
-		addItem(ModItems.FAITH);
 		addItem(ModItems.SPELLCARD_POUCH);
 
 		//-------------Items - By Character-------------//
@@ -214,9 +209,6 @@ public class AliceCreativeTab extends CreativeTabs {
 
 		//-------------Rin Kaenbyou-------------//
 		addItem(ModItems.ORIN_SKULL);
-
-		//-------------Sariel-------------//
-		addItem(ModItems.SARIEL_WAND);
 
 		//-------------Rinnosuke Morichika-------------//
 		addItem(ModItems.AMENONUHOKO);

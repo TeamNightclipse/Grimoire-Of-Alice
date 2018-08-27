@@ -67,7 +67,7 @@ public class EntityHakureiOrb extends EntityThrowable {
 					posY = player.posY + 4;
 					posZ = player.posZ;
 					setPosition(posX, posY, posZ);
-					if(size < 4) {
+					if(size < 8) {
 						setSize(size + 0.1F);
 					}
 				}

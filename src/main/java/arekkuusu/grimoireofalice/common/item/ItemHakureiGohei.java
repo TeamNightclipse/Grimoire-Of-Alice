@@ -59,7 +59,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 	public void onUpdate(ItemStack stack, World world, Entity entityIn, int itemSlot, boolean isSelected) {
 		if(entityIn instanceof EntityPlayer && getType(stack) == PASSIVE) {
 			EntityPlayer player = (EntityPlayer) entityIn;
-			if(!player.isSneaking()) {
+			if(!player.isSneaking() && player.isHandActive()) {
 				Vec3d vec = player.getLookVec();
 				if(player.motionX < 0.5 && player.motionX > -0.5) {
 					player.motionX = 0.5 * vec.x;
@@ -70,8 +70,8 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 				if(player.motionZ < 0.5 && player.motionZ > -0.5) {
 					player.motionZ = 0.5 * vec.z;
 				}
-			} else {
-				player.motionY = 0;
+			} else if(!player.isSneaking()) {
+				player.motionY *= 0.09;
 			}
 			player.fallDistance = 0.0F;
 		}
@@ -91,7 +91,6 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 			}
 		} else {
 			player.setActiveHand(hand);
-
 			GoheiMode mode = getType(stack);
 			if(mode == YING_YANG_ORB) {
 				player.playSound(GrimoireSoundEvents.POWER_UP, 0.1F, itemRand.nextFloat() * 0.1F + 0.8F);
@@ -132,7 +131,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		if(entityLiving instanceof EntityPlayer && !entityLiving.isSneaking()) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(getType(stack) == PASSIVE) {
@@ -141,13 +140,22 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 				double dx = player.posX + look.x * distance;
 				double dy = player.posY + 1 + look.y * distance;
 				double dz = player.posZ + look.z * distance;
-				if(isSafe(world, dx, dy, dz)) {
+				if(isSafe(entityLiving.world, dx, dy, dz)) {
 					if(player instanceof EntityPlayerMP) {
-						((EntityPlayerMP) player).setPositionAndUpdate(dx, dy, dz);
+						player.setPositionAndUpdate(dx, dy, dz);
 					}
 					stack.damageItem(1, player);
 				}
 			}
+			player.getCooldownTracker().setCooldown(this, 10);
+		}
+		return super.onEntitySwing(entityLiving, stack);
+	}
+
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if(entityLiving instanceof EntityPlayer && !entityLiving.isSneaking() && getType(stack) != PASSIVE) {
+			EntityPlayer player = (EntityPlayer) entityLiving;
 			EnumHand hand = player.getHeldItemMainhand() == stack ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
 			player.swingArm(hand);
 			player.getCooldownTracker().setCooldown(this, 10);
@@ -188,7 +196,7 @@ public class ItemHakureiGohei extends ItemGohei<GoheiMode> {
 		}
 		BlockPos pos = new BlockPos(x, y, z);
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock().isAir(state, world, pos) || !state.isSideSolid(world, pos, EnumFacing.UP);
+		return state.getBlock().isAir(state, world, pos) || state.getBlock().isReplaceable(world, pos);
 	}
 
 	@Override

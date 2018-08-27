@@ -1,6 +1,5 @@
 package arekkuusu.grimoireofalice.common.entity;
 
-import arekkuusu.grimoireofalice.common.item.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -8,14 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.items.IItemHandler;
 
 public class EntityMiracleCircle extends Entity {
-
-	@CapabilityInject(IItemHandler.class)
-	private static final Capability<IItemHandler> ITEM_HANDLER_CAPABILITY = null;
 
 	private EntityPlayer user;
 	private ItemStack stack;
@@ -72,8 +65,7 @@ public class EntityMiracleCircle extends Entity {
 				if(getCharge() < 30) {
 					if(hasFaith(user) && consumeFaith(user)) {
 						charge += 5;
-					}
-					else if(!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 8) {
+					} else if(!user.capabilities.isCreativeMode && user.getFoodStats().getFoodLevel() > 8) {
 						int food = user.getFoodStats().getFoodLevel();
 						user.getFoodStats().setFoodLevel(food - 5);
 						charge += 1;
@@ -106,26 +98,11 @@ public class EntityMiracleCircle extends Entity {
 	}
 
 	private static boolean hasFaith(EntityPlayer player) {
-		//noinspection ConstantConditions
-		return player.inventory.hasItemStack(new ItemStack(ModItems.FAITH));
+		return true;
 	}
 
-	@SuppressWarnings("ConstantConditions")
 	private static boolean consumeFaith(EntityPlayer player) {
-		if(player.hasCapability(ITEM_HANDLER_CAPABILITY, null)) {
-			IItemHandler capability = player.getCapability(ITEM_HANDLER_CAPABILITY, null);
-
-			for(int i = 0; i < capability.getSlots(); ++i) {
-				ItemStack stack = capability.getStackInSlot(i);
-				if(!stack.isEmpty() && stack.getItem() == ModItems.FAITH) {
-					if(!player.capabilities.isCreativeMode) {
-						capability.extractItem(i, 1, false);
-					}
-					return true;
-				}
-			}
-		}
-		return false;
+		return true;
 	}
 
 	@Override

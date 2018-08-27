@@ -83,16 +83,8 @@ public final class ModItems {
 	public static final Item STOPWATCH = PLACE_HOLDER;
 	@ObjectHolder(LibName.MORTAR_AND_PESTLE)
 	public static final Item MORTAR_AND_PESTLE = PLACE_HOLDER;
-	@ObjectHolder(LibName.FULL_POWER)
-	public static final Item FULL_POWER = PLACE_HOLDER;
-	@ObjectHolder(LibName.STAR)
-	public static final Item STAR = PLACE_HOLDER;
-	@ObjectHolder(LibName.CHERRY)
-	public static final Item CHERRY = PLACE_HOLDER;
 	@ObjectHolder(LibName.TIME_ORB)
 	public static final Item TIME_ORB = PLACE_HOLDER;
-	@ObjectHolder(LibName.FAITH)
-	public static final Item FAITH = PLACE_HOLDER;
 	@ObjectHolder(LibName.UFO_RED)
 	public static final Item UFO_RED = PLACE_HOLDER;
 	@ObjectHolder(LibName.UFO_BLUE)
@@ -131,8 +123,6 @@ public final class ModItems {
 	public static final Item BLACK_FEATHER = PLACE_HOLDER;
 	@ObjectHolder(LibName.NETHER_SHARD)
 	public static final Item NETHER_SHARD = PLACE_HOLDER;
-	@ObjectHolder(LibName.IRON_NUGGET)
-	public static final Item IRON_NUGGET = PLACE_HOLDER;
 	@ObjectHolder(LibName.HARDENED_LEATHER)
 	public static final Item HARDENED_LEATHER = PLACE_HOLDER;
 	@ObjectHolder(LibName.SWALLOW_EGG)
@@ -252,8 +242,6 @@ public final class ModItems {
 	public static final Item POPSICLE_STICK = PLACE_HOLDER;
 	@ObjectHolder(LibName.RUMIA_SWORD)
 	public static final Item RUMIA_SWORD = PLACE_HOLDER;
-	@ObjectHolder(LibName.SARIEL_WAND)
-	public static final Item SARIEL_WAND = PLACE_HOLDER;
 	@ObjectHolder(LibName.WATERMELON_BLADE)
 	public static final Item WATERMELON_BLADE = PLACE_HOLDER;
 	@ObjectHolder(LibName.WATERMELON_SWORD)
@@ -288,10 +276,6 @@ public final class ModItems {
 		registry.register(new ItemBase(LibName.SOLIDIFIED_PAPER));
 		registry.register(new ItemBase(LibName.IMPURE_ROCK));
 		registry.register(new ItemIbarakiBoxEmpty());
-		registry.register(new ItemBase(LibName.FULL_POWER));
-		registry.register(new ItemBase(LibName.STAR));
-		registry.register(new ItemBase(LibName.CHERRY));
-		registry.register(new ItemBase(LibName.FAITH));
 		registry.register(new ItemBase(LibName.UFO_RED));
 		registry.register(new ItemBase(LibName.UFO_BLUE));
 		registry.register(new ItemBase(LibName.UFO_GREEN));
@@ -316,7 +300,6 @@ public final class ModItems {
 		registry.register(new ItemMortarPestle());
 		registry.register(new ItemBase(LibName.BLACK_FEATHER));
 		registry.register(new ItemBase(LibName.NETHER_SHARD));
-		registry.register(new ItemBase(LibName.IRON_NUGGET));
 		registry.register(new ItemBase(LibName.HARDENED_LEATHER));
 		registry.register(new ItemBase(LibName.SWALLOW_EGG));
 		registry.register(new ItemBase(LibName.COWRIE_SHELL));
@@ -379,7 +362,6 @@ public final class ModItems {
 		registry.register(new ItemCattailPlant(Item.ToolMaterial.WOOD));
 		registry.register(new ItemPopsicleStick(Item.ToolMaterial.WOOD));
 		registry.register(new ItemRumiaSword(ModMaterials.STRONG_GOLD));
-		registry.register(new ItemSarielWand(ModMaterials.NOODLE));
 		registry.register(new ItemWatermelonBlade(Item.ToolMaterial.STONE));
 		registry.register(new ItemWatermelonSword(Item.ToolMaterial.DIAMOND));
 		registry.register(new ItemSacredToyosatomimi(ModMaterials.STRONG_GOLD));
@@ -435,7 +417,6 @@ public final class ModItems {
 	}
 
 	public static void init() {
-		OreDictionary.registerOre("nuggetIron", new ItemStack(ModItems.IRON_NUGGET));
 		OreDictionary.registerOre("oreImpureStone", new ItemStack(ModBlocks.IMPURE_STONE));
 		OreDictionary.registerOre("dyeBlack", new ItemStack(ModItems.SHROOM_POWDER, 1, 0));
 		OreDictionary.registerOre("dyeRed", new ItemStack(ModItems.SHROOM_POWDER, 1, 1));

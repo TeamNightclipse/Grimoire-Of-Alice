@@ -5,9 +5,8 @@ import arekkuusu.grimoireofalice.common.lib.LibName;
 import com.google.common.collect.Lists;
 import net.katsstuff.teamnightclipse.danmakucore.DanmakuCore;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -57,7 +56,7 @@ public class ItemRedStoneofAja extends ItemBase {
 								.setShot(LibShotData.SHOT_CIRCLE.setSize(1.5F).setDelay(i * 2))
 								.setMovementData(3D)
 								.build();
-						DanmakuCreationHelper.createWideShot(Quat.orientationOf(entityLiving), circle, 2, 15, 0, 1F);
+						DanmakuCreationHelper.createWideShot(circle, 2, 15, 0, 1F);
 					}
 				} else {
 					DanmakuTemplate.Builder builder = DanmakuTemplate.builder()

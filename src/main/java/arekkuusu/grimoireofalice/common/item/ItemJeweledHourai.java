@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimore Of Alice is Open Source and distributed under the
  * Grimore Of Alice license: https://github.com/ArekkuusuJerii/Grimore-Of-Alice/blob/master/LICENSE.md
  */
@@ -10,10 +10,9 @@ package arekkuusu.grimoireofalice.common.item;
 
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
-import net.katsstuff.teamnightclipse.mirror.data.Quat;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemJeweledHourai extends ItemJeweled  {
+public class ItemJeweledHourai extends ItemJeweled {
 
 	private static final int[] COLORS = {
 			LibColor.COLOR_SATURATED_GREEN,
@@ -64,8 +63,7 @@ public class ItemJeweledHourai extends ItemJeweled  {
 				jewels += 1;
 				if(jewels < 0) {
 					jewels = 0;
-				}
-				else if(jewels > 5) {
+				} else if(jewels > 5) {
 					jewels = 5;
 				}
 				JEWELS.set(jewels, stack);
@@ -97,26 +95,24 @@ public class ItemJeweledHourai extends ItemJeweled  {
 				}
 				if(!entityLiving.isSneaking()) {
 					int color = COLORS[itemRand.nextInt(COLORS.length)];
-
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(entityLiving)
-							.setMovementData(0.8D)
 							.setShot(LibShotData.SHOT_CRYSTAL1.setMainColor(color).setDamage(5F))
+							.setMovementData(0.8D)
 							.build();
-					DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
+					DanmakuCreationHelper.createRingShot(danmaku, timeUsed, timeUsed * 0.5F, 15, 0D);
 					addJewels(stack, (short) -1);
-				}
-				else {
+				} else {
 					for(int i = 0; i < jewels; i++) {
 						int color = COLORS[itemRand.nextInt(COLORS.length)];
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(entityLiving)
+								.setShot(LibShotData.SHOT_CRYSTAL1.setSize(0.4F).setMainColor(color).setDamage(5F).setDelay(i))
 								.setMovementData(0.8D)
-								.setShot(LibShotData.SHOT_CRYSTAL1.setMainColor(color).setDamage(5F).setDelay(i))
 								.build();
-						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(entityLiving), danmaku, timeUsed, timeUsed * 0.5F, 0D);
+						DanmakuCreationHelper.createRingShot(danmaku, timeUsed, timeUsed * 0.75F * ((float)i / (float)jewels), 15F, 0D);
 					}
-					JEWELS.set((short)0, stack);
+					JEWELS.set((short) 0, stack);
 				}
 			}
 		}
