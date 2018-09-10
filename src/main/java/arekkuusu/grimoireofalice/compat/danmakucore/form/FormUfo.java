@@ -33,7 +33,7 @@ import scala.collection.immutable.Map$;
 
 public class FormUfo extends FormGeneric {
 
-	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/models/entities/Barrier.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(LibMod.MOD_ID, "textures/model/entity/barrier.png");
 
 	public FormUfo() {
 		super(LibDanmakuName.UFO);
@@ -65,19 +65,43 @@ public class FormUfo extends FormGeneric {
 				float b = (color & 255) / 255.0F;
 				ItemStack stack = new ItemStack(ModItems.UFO); //TODO: Ufo models and colors
 				RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-				GlStateManager.enableRescaleNormal();
 				GlStateManager.rotate((float) (-yaw - 180F), 0F, 1F, 0F);
 				GlStateManager.rotate((float) pitch, 1F, 0F, 0F);
 				GlStateManager.rotate((float) roll, 0F, 0F, 1F);
 				GlStateManager.scale(sizeX, sizeY, sizeZ);
 				GlStateManager.rotate(danmaku.ticksExisted() * 32F, 0.0F, 1.0F, 0.0F);
+				GlStateManager.color(r, g, b);
 				renderItem.renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
-				GlStateManager.disableRescaleNormal();
 			}
 
 			@Override
 			public void renderShaders(DanmakuState danmaku, double x, double y, double z, Quat orientation, float partialTicks, RenderManager manager, MirrorShaderProgram shaderProgram) {
-				//NO-OP
+				ShotData shot = danmaku.shot();
+				DanCoreRenderHelper.updateDanmakuShaderAttributes(shaderProgram, this, shot);
+				renderLegacy(danmaku.copy(
+						danmaku.entity(),
+						danmaku.extra().copy(
+								danmaku.extra().user(),
+								danmaku.extra().source(),
+								danmaku.extra().shot().copy(
+										danmaku.extra().shot().form(),
+										danmaku.extra().shot().renderProperties(),
+										DanCoreRenderHelper.OverwriteColorEdge(),
+										DanCoreRenderHelper.OverwriteColorCore(),
+										danmaku.extra().shot().damage(),
+										danmaku.extra().shot().sizeX(),
+										danmaku.extra().shot().sizeY(),
+										danmaku.extra().shot().sizeZ(),
+										danmaku.extra().shot().delay(),
+										danmaku.extra().shot().end(),
+										danmaku.extra().shot().subEntity()
+								),
+								danmaku.extra().subEntity(),
+								danmaku.extra().movement(),
+								danmaku.extra().rotation()
+						),
+						danmaku.tracking()
+				), x, y, z, orientation, partialTicks, manager);
 			}
 
 			@Override

@@ -83,7 +83,7 @@ public class ItemSwordOfHisou extends ItemSwordOwner {
 				if(isOwner(stack, player)) {
 					DanmakuTemplate danmaku = DanmakuTemplate.builder()
 							.setUser(player)
-							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F).setMainColor(LibColor.COLOR_SATURATED_RED))
+							.setShot(LibGOAShotData.SUN.setDamage(5).setSize(1.5F))
 							.build();
 					DanmakuCreationHelper.createRandomRingShot(danmaku, 2 + itemRand.nextInt(3), 5, 0.5D);
 				}

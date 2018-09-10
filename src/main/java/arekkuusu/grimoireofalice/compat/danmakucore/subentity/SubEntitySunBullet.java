@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.compat.danmakucore.subentity;
 import arekkuusu.grimoireofalice.common.lib.LibDanmakuName;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuState;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuUpdate;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuUpdateSignal;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntity;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntityType;
 import net.katsstuff.teamnightclipse.danmakucore.impl.subentity.SubEntityDefault;
@@ -44,25 +45,52 @@ public class SubEntitySunBullet extends SubEntityType {
 
 		@Override
 		public DanmakuUpdate impactBlock(DanmakuState danmaku, RayTraceResult raytrace) {
-			return DanmakuUpdate.oneUpdate(danmaku, state -> {
-				EnumFacing facing = raytrace.sideHit;
-				Vector3 vec = state.direction();
-				if(facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
-					state.entity().setDirection(new Vector3(vec.getX(), vec.getY() * -1D, vec.getZ()));
-					state.motion().multiply(1, -0.5D, 1);
-				} else {
-					double x = vec.getX();
-					double z = vec.getZ();
-					if(facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
-						state.motion().multiply(-0.5D, 1, 1);
-						x *= -1D;
+			return DanmakuUpdate.oneUpdate(danmaku, new DanmakuUpdateSignal() {
+				@Override
+				public Option<DanmakuState> process(DanmakuState state) {
+					state = state.copy(
+							state.entity(),
+							state.extra().copy(
+									state.extra().user(),
+									state.extra().source(),
+									state.extra().shot().copy(
+											state.extra().shot().form(),
+											state.extra().shot().renderProperties(),
+											state.extra().shot().edgeColor(),
+											state.extra().shot().coreColor(),
+											state.extra().shot().damage(),
+											state.extra().shot().sizeX(),
+											state.extra().shot().sizeY(),
+											state.extra().shot().sizeZ(),
+											state.extra().shot().delay(),
+											state.extra().shot().end(),
+											state.extra().shot().subEntity()
+									),
+									state.extra().subEntity(),
+									state.extra().movement(),
+									state.extra().rotation()
+							),
+							state.tracking()
+					);
+					EnumFacing facing = raytrace.sideHit;
+					Vector3 vec = state.direction();
+					if(facing == EnumFacing.UP || facing == EnumFacing.DOWN) {
+						state.entity().setDirection(new Vector3(vec.getX(), vec.getY() * -1D, vec.getZ()));
+						state.motion().multiply(1, -0.5D, 1);
 					} else {
-						state.motion().multiply(1, 1, -0.5D);
-						z *= -1D;
+						double x = vec.getX();
+						double z = vec.getZ();
+						if(facing == EnumFacing.EAST || facing == EnumFacing.WEST) {
+							state.motion().multiply(-0.5D, 1, 1);
+							x *= -1D;
+						} else {
+							state.motion().multiply(1, 1, -0.5D);
+							z *= -1D;
+						}
+						state.entity().setDirection(new Vector3(x, vec.getY(), z));
 					}
-					state.entity().setDirection(new Vector3(x, vec.getY(), z));
+					return Option.apply(state);
 				}
-				return Option.apply(state);
 			});
 		}
 	}

@@ -2,7 +2,7 @@
  * This class was created by <ArekkuusuJerii>. It's distributed as
  * part of the Grimoire Of Alice Mod. Get the Source Code in github:
  * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- *
+ * <p>
  * Grimoire Of Alice is Open Source and distributed under the
  * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemIchirinRing extends ItemBaseSword  {
+public class ItemIchirinRing extends ItemBaseSword {
 
 	public ItemIchirinRing(ToolMaterial material) {
 		super(material, LibName.ICHIRIN_RING);
@@ -62,12 +62,11 @@ public class ItemIchirinRing extends ItemBaseSword  {
 		if(entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entityLiving;
 			if(isWearingUnzan(player)) {
-				if(isStand(player) && player.isSneaking()) {
+				if(player.isSneaking()) {
 					player.getCooldownTracker().setCooldown(ModItems.ICHIRIN_UNZAN, 125);
 					player.getCooldownTracker().setCooldown(this, 125);
 					player.playSound(GrimoireSoundEvents.ORA, 1F, 1F);
-				}
-				else {
+				} else {
 					if(!world.isRemote) {
 						Vec3d look = player.getLookVec();
 						float distance = 5F;
@@ -96,8 +95,7 @@ public class ItemIchirinRing extends ItemBaseSword  {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if(attacker instanceof EntityPlayer && !isWearingUnzan((EntityPlayer) attacker)) {
 			stack.damageItem(1, attacker);
-		}
-		else {
+		} else {
 			target.attackEntityFrom(DamageSource.causeThornsDamage(attacker), 5);
 			attacker.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_STRONG, 1F, itemRand.nextFloat() * 0.4F + 0.8F);
 		}

@@ -17,9 +17,6 @@ import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntityType
 import net.katsstuff.teamnightclipse.danmakucore.impl.subentity.SubEntityDefault;
 import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -47,27 +44,21 @@ public class SubEntityWind extends SubEntityType {
 				}
 				ExtraDanmakuData current = danmaku.extra();
 				current.shot().setDamage(current.shot().getDamage() + current.shot().getDamage() * 0.999F);
-			} else if(danmaku.ticksExisted() % 4 == 0 && danmaku.shot().delay() == 0) {
-				double posX = danmaku.pos().x();
-				double posY = danmaku.pos().y();
-				double posZ = danmaku.pos().z();
-				world.spawnParticle(EnumParticleTypes.CLOUD, posX, posY, posZ, 0.0D, 0.0D, 0.0D);
-				world.playSound(null, posX, posY, posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.5F, 1F);
+				world.getEntitiesInAABBexcluding(danmaku.source().get(), danmaku.encompassingAABB(), e -> e instanceof EntityLiving).forEach(e -> {
+					Vector3 vec = new Vector3.WrappedVec3d(e.getPositionVector()).asImmutable();
+					double ratio = danmaku.pos().distance(vec) / 4;
+					Vector3 motion = danmaku.pos().subtract(vec).subtract(1 - ratio);
+					e.motionX = -motion.x() * danmaku.shot().getDamage() / 2;
+					e.motionY = danmaku.motion().y();
+					e.motionZ = -motion.z() * danmaku.shot().getDamage() / 2;
+				});
 			}
 			return super.subEntityTick(danmaku);
 		}
 
 		@Override
 		public DanmakuUpdate impactEntity(DanmakuState danmaku, RayTraceResult raytrace) {
-			if(!danmaku.world().isRemote && raytrace.entityHit instanceof EntityLiving) {
-				Vector3 mobPos = new Vector3.WrappedVec3d(raytrace.entityHit.getPositionVector()).asImmutable();
-				double ratio = danmaku.pos().distance(mobPos) / 4;
-				Vector3 motion = danmaku.pos().subtract(mobPos).subtract(1 - ratio);
-				raytrace.entityHit.motionX = -motion.x() * danmaku.shot().getDamage() / 2;
-				raytrace.entityHit.motionY = danmaku.motion().y();
-				raytrace.entityHit.motionZ = -motion.z() * danmaku.shot().getDamage() / 2;
-			}
-			return super.impactEntity(danmaku, raytrace);
+			return DanmakuUpdate.noUpdates(danmaku);
 		}
 	}
 }

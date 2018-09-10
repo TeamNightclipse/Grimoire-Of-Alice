@@ -114,7 +114,7 @@ public class EntityUnzanFist extends EntityThrowable {
 
 		this.setPosition(this.posX, this.posY, this.posZ);
 
-		if(!world.isRemote && tick > 20) {
+		if(!world.isRemote && tick > 10) {
 			setDead();
 		}
 		++tick;

@@ -59,7 +59,7 @@ public class ItemTenguFan extends ItemBase {
 				DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 						.setUser(entityLiving)
 						.setMovementData(speed)
-						.setShot(LibGOAShotData.WIND.setSize(5).setDamage(timeUsed));
+						.setShot(LibGOAShotData.WIND.setDamage((float) timeUsed * 0.1F));
 				DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
 			}
 			stack.damageItem(1, entityLiving);
@@ -78,7 +78,7 @@ public class ItemTenguFan extends ItemBase {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack itemStack) {
-		return 24;
+		return 50;
 	}
 
 	@Override

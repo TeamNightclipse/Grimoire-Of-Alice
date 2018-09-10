@@ -10,30 +10,6 @@
           "weight": 4
         },
         {
-          "type": "item",
-          "name": "grimoireofalice:full_power_item",
-          "weight": 5
-        },
-        {
-          "type": "item",
-          "name": "grimoireofalice:ufo_red",
-          "weight": 5
-        },
-        {
-          "type": "item",
-          "name": "grimoireofalice:star_item",
-          "weight": 5,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
           "type": "empty",
           "weight": 35
         }

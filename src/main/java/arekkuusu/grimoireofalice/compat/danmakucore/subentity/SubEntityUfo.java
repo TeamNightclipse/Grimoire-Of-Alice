@@ -32,6 +32,9 @@ public class SubEntityUfo extends SubEntityType {
 
 		@Override
 		public DanmakuUpdate subEntityTick(DanmakuState danmaku) {
+			if(danmaku.isShotEndTime()) {
+
+			}
 			return super.subEntityTick(danmaku);
 		}
 	}

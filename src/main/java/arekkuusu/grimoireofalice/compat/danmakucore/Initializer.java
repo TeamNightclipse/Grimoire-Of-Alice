@@ -8,7 +8,6 @@
  */
 package arekkuusu.grimoireofalice.compat.danmakucore;
 
-import arekkuusu.grimoireofalice.common.lib.LibDanmakuName;
 import arekkuusu.grimoireofalice.compat.danmakucore.form.FormLeaf;
 import arekkuusu.grimoireofalice.compat.danmakucore.form.FormUfo;
 import arekkuusu.grimoireofalice.compat.danmakucore.form.FormWind;
@@ -16,10 +15,8 @@ import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityLeaf;
 import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntitySunBullet;
 import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityUfo;
 import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityWind;
-import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuVariant;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.Form;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntityType;
-import net.katsstuff.teamnightclipse.danmakucore.impl.danmakuvariant.DanmakuVariantGeneric$;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -44,12 +41,5 @@ public class Initializer {
 				new SubEntityLeaf(),
 				new SubEntitySunBullet()
 		);
-	}
-
-	@SubscribeEvent
-	public static void registerVariants(RegistryEvent.Register<DanmakuVariant> event) {
-		/*event.getRegistry().registerAll(
-				DanmakuVariantGeneric$.MODULE$.create(LibDanmakuName.LEAF, () -> LibGOAShotData.LEAF, 0.2D)
-		);*/
 	}
 }
