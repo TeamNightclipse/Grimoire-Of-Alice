@@ -25,8 +25,7 @@ public class AliceCreativeTab extends CreativeTabs {
 
 	AliceCreativeTab() {
 		super(LibMod.MOD_ID);
-		setNoTitle();
-		setBackgroundImageName("item_search.png");
+		setBackgroundImageName("items.png");
 	}
 
 	@Override
@@ -36,7 +35,7 @@ public class AliceCreativeTab extends CreativeTabs {
 
 	@Override
 	public boolean hasSearchBar() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -49,6 +48,7 @@ public class AliceCreativeTab extends CreativeTabs {
 		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.CRAFTING_ALTAR);
+		addBlock(ModBlocks.STONE_SPHERE);
 		addBlock(ModBlocks.SHIMENAWA);
 		addBlock(ModBlocks.SHIDE);
 		addBlock(ModBlocks.KYOUMARUBOTAN);

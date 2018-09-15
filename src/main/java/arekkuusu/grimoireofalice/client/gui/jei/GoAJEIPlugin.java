@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 
 @JEIPlugin
 public class GoAJEIPlugin implements IModPlugin {
-	private static final String LINE = "--------------------------";
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -24,7 +23,6 @@ public class GoAJEIPlugin implements IModPlugin {
 		registry.handleRecipes(AltarRecipe.class, recipe -> new AltarRecipeItemsWrapper(recipe, registry.getJeiHelpers().getStackHelper()), LibGui.ALTAR_CATEGORY_UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.CRAFTING_ALTAR), LibGui.ALTAR_CATEGORY_UID);
 		registry.addRecipes(AliceAPI.getAltarRecipes(), LibGui.ALTAR_CATEGORY_UID);
-
 		addDescriptions(registry);
 	}
 

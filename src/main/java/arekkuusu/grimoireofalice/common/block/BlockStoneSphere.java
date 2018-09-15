@@ -1,14 +1,6 @@
-/*
- * This class was created by <ArekkuusuJerii>. It's distributed as
- * part of the Grimoire Of Alice Mod. Get the Source Code in github:
- * https://github.com/ArekkuusuJerii/Grimore-Of-Alice
- * <p>
- * Grimoire Of Alice is Open Source and distributed under the
- * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
- */
 package arekkuusu.grimoireofalice.common.block;
 
-import arekkuusu.grimoireofalice.common.block.tile.TileMiniShrine;
+import arekkuusu.grimoireofalice.common.block.tile.TileStoneSphere;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -33,14 +25,14 @@ import javax.annotation.Nullable;
 import static net.minecraft.block.BlockHorizontal.FACING;
 
 @SuppressWarnings("deprecation")
-public class BlockMiniShrine extends BlockBase {
+public class BlockStoneSphere extends BlockBase {
 
-	private static final AxisAlignedBB BB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
+	private static final AxisAlignedBB BB = new AxisAlignedBB(0.125, 0.0D, 0.125, 0.875, 0.875, 0.875);
 
-	public BlockMiniShrine() {
-		super(LibName.MINI_SHRINE, Material.ROCK);
+	public BlockStoneSphere() {
+		super(LibName.STONE_SPHERE, Material.ROCK);
 		setDefaultState(getDefaultState().withProperty(FACING, EnumFacing.NORTH));
-		setHarvestLevel(Tool.AXE, ToolLevel.STONE);
+		setHarvestLevel(Tool.PICK, ToolLevel.STONE);
 		setSoundType(SoundType.STONE);
 		setResistance(2000.0F);
 		setHardness(2.0F);
@@ -49,10 +41,8 @@ public class BlockMiniShrine extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity tile = world.getTileEntity(pos);
-		if(tile instanceof TileMiniShrine && player.getHeldItem(hand).isEmpty()) {
-			if(((TileMiniShrine) tile).hasItemStack()) {
-				((TileMiniShrine) tile).handleItemTransfer(player, hand);
-			} else ((TileMiniShrine) tile).craft();
+		if(tile instanceof TileStoneSphere) {
+			((TileStoneSphere) tile).handleItemTransfer(player, hand);
 		}
 		return true;
 	}
@@ -78,7 +68,7 @@ public class BlockMiniShrine extends BlockBase {
 
 	@Override
 	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		EnumFacing enumFacing = EnumFacing.fromAngle(placer.rotationYaw).getOpposite();
+		EnumFacing enumFacing = EnumFacing.fromAngle(placer.rotationYaw);
 		if(enumFacing.getAxis() == EnumFacing.Axis.Y) {
 			enumFacing = EnumFacing.NORTH;
 		}
@@ -93,7 +83,7 @@ public class BlockMiniShrine extends BlockBase {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT;
+		return BlockRenderLayer.TRANSLUCENT;
 	}
 
 	@Override
@@ -114,6 +104,6 @@ public class BlockMiniShrine extends BlockBase {
 	@Nullable
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileMiniShrine();
+		return new TileStoneSphere();
 	}
 }

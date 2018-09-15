@@ -78,19 +78,16 @@ public class AltarRecipeItemsCategory implements IRecipeCategory<AltarRecipeItem
 
 	@Override
 	public IDrawable getBackground() {
-		return guiHelper.createBlankDrawable(100, 80); //TODO
+		return guiHelper.createBlankDrawable(100, 100);
 	}
 
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, AltarRecipeItemsWrapper recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup stackLayout = recipeLayout.getItemStacks();
-
 		stackLayout.init(0, false, 40, 40);
 		stackLayout.set(0, ingredients.getOutputs(ItemStack.class).get(0));
-
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		int size = inputs.size();
-
 		for(int i = 0; i < 8; i++) {
 			stackLayout.init(i + 1, true, INNER_PILLARS[i][0], INNER_PILLARS[i][1]);
 			if(size > i) {

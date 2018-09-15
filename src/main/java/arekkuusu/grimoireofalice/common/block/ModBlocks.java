@@ -9,7 +9,8 @@
 package arekkuusu.grimoireofalice.common.block;
 
 import arekkuusu.grimoireofalice.common.Alice;
-import arekkuusu.grimoireofalice.common.block.tile.TileCraftingAltar;
+import arekkuusu.grimoireofalice.common.block.tile.TileMiniShrine;
+import arekkuusu.grimoireofalice.common.block.tile.TileStoneSphere;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
@@ -45,6 +46,8 @@ public class ModBlocks {
 	public static final Block HIHIIROKANE_BLOCK = PLACE_HOLDER;
 	@ObjectHolder(LibName.DRAGON_STONE)
 	public static final Block DRAGON_STONE = PLACE_HOLDER;
+	@ObjectHolder(LibName.STONE_SPHERE)
+	public static final Block STONE_SPHERE = PLACE_HOLDER;
 
 	public static void register(IForgeRegistry<Block> registry) {
 		registry.register(new BlockBase(LibName.COMPACT_STONE, Material.ROCK).setHardness(2.0F).setResistance(-1F));
@@ -57,11 +60,13 @@ public class ModBlocks {
 		registry.register(new BlockHihiirokaneOre());
 		registry.register(new BlockHihiirokane());
 		registry.register(new BlockDragonStone());
+		registry.register(new BlockStoneSphere());
 		registerTiles();
 	}
 
 	private static void registerTiles() {
-		registerTile(TileCraftingAltar.class, LibName.MINI_SHRINE);
+		registerTile(TileMiniShrine.class, LibName.MINI_SHRINE);
+		registerTile(TileStoneSphere.class, LibName.STONE_SPHERE);
 	}
 
 	private static <T extends TileEntity> void registerTile(Class<T> tile, String name) {

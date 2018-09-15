@@ -395,6 +395,7 @@ public final class ModItems {
 		registry.register(itemBlock(ModBlocks.HIHIIROKANE_ORE));
 		registry.register(itemBlock(ModBlocks.HIHIIROKANE_BLOCK));
 		registry.register(itemBlock(ModBlocks.DRAGON_STONE));
+		registry.register(itemBlock(ModBlocks.STONE_SPHERE));
 	}
 
 	@SuppressWarnings("ConstantConditions")

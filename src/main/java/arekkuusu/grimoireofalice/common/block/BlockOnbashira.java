@@ -16,7 +16,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -26,7 +25,6 @@ import java.util.Locale;
 public class BlockOnbashira extends BlockBase {
 
 	public static final PropertyEnum<OnbashiraPiece> PART_LISTED = PropertyEnum.create("onbashira_piece", OnbashiraPiece.class);
-	private static final AxisAlignedBB BB_TOP = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
 
 	public BlockOnbashira() {
 		super(LibName.ONBASHIRA, Material.WOOD);
@@ -34,12 +32,6 @@ public class BlockOnbashira extends BlockBase {
 		setSoundType(SoundType.STONE);
 		setHarvestLevel(Tool.AXE, ToolLevel.STONE);
 		setResistance(2000.0F);
-	}
-
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		OnbashiraPiece piece = getActualState(state, source, pos).getValue(PART_LISTED);
-		return piece == OnbashiraPiece.TOP || piece == OnbashiraPiece.NONE ? BB_TOP : FULL_BLOCK_AABB;
 	}
 
 	@Override
