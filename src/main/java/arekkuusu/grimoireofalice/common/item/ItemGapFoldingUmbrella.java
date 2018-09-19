@@ -30,7 +30,7 @@ public class ItemGapFoldingUmbrella extends ItemBase {
 	public ItemGapFoldingUmbrella() {
 		super(LibName.FOLDING_UMBRELLA);
 		setMaxStackSize(1);
-		setMaxDamage(100);
+		setMaxDamage(10);
 		setNoRepair();
 	}
 

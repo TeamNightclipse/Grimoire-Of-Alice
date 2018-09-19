@@ -209,7 +209,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		addItem(ModItems.ORIN_SKULL);
 
 		//-------------Rinnosuke Morichika-------------//
-		addItem(ModItems.AMENONUHOKO);
 		addItem(ModItems.SWORD_OF_KUSANAGI);
 
 		//-------------Rumia-------------//

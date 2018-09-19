@@ -97,7 +97,6 @@ public class LibName {
 	public static final String NAZRIN_STICK = "nazrin_stick";
 	public static final String ELLY_SCYTHE = "elly_scythe";
 	public static final String MIKO_STICK = "miko_stick";
-	public static final String AMENONUHOKO = "amenonuhoko";
 	public static final String SHINMYOUMARU_NEEDLE = "shinmyoumaru_needle";
 	public static final String NUE_TRIDENT = "nue_trident";
 	public static final String SWORD_OF_KUSANAGI = "sword_of_kusanagi";

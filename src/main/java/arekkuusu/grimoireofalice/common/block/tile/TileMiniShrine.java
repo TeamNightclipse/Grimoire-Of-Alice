@@ -47,6 +47,7 @@ public class TileMiniShrine extends TileInventoryBase implements ITickable {
 
 	private boolean isValid(BlockPos pos) {
 		boolean valid = false;
+		int height = 0;
 		BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(pos).move(EnumFacing.DOWN);
 		IBlockState state = world.getBlockState(mutableBlockPos);
 		while(state.getBlock() == ModBlocks.ONBASHIRA) {
@@ -56,8 +57,9 @@ public class TileMiniShrine extends TileInventoryBase implements ITickable {
 			} else {
 				state = world.getBlockState(mutableBlockPos.move(EnumFacing.DOWN));
 			}
+			++height;
 		}
-		return valid;
+		return valid && height >= 5;
 	}
 
 	public void craft() {

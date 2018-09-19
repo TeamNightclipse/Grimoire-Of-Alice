@@ -24,7 +24,7 @@ public class ItemFakeMiracleMallet extends ItemBase  {
 	public ItemFakeMiracleMallet() {
 		super(LibName.FAKE_MIRACLE_MALLET);
 		setMaxStackSize(1);
-		setMaxDamage(100);
+		setMaxDamage(10);
 		setNoRepair();
 		addPropertyOverride(new ResourceLocation("swinging"), (stack, world, entity) -> entity != null && entity.isSwingInProgress ? 1F : 0F);
 	}

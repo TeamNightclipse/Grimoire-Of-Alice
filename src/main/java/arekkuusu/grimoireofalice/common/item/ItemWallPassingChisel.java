@@ -29,6 +29,7 @@ public class ItemWallPassingChisel extends ItemBase  {
 
 	public ItemWallPassingChisel() {
 		super(LibName.WALL_PASSING_CHISEL);
+		setMaxDamage(100);
 	}
 
 	@Override
@@ -37,15 +38,14 @@ public class ItemWallPassingChisel extends ItemBase  {
 	}
 
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x,
-									  float y, float z) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
 		BlockPos travel = travelBlockPos(world, player, pos, facing);
 		if(travel != null && isSafePos(world, travel.up())) { //If BlockPos isn't null and the block above is safe -->
 			if(player instanceof EntityPlayerMP) {
 				player.setPositionAndUpdate(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
+				player.getHeldItem(hand).damageItem(1, player);
 			}
-			world.playSound(player, travel.getX(), travel.getY(), travel.getZ(), GrimoireSoundEvents.WARP,
-					SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
+			world.playSound(player, travel.getX(), travel.getY(), travel.getZ(), GrimoireSoundEvents.WARP, SoundCategory.PLAYERS, 0.2F, itemRand.nextFloat() * 0.4F + 0.8F);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;

@@ -37,8 +37,8 @@ public class RenderStopWatch extends Render<EntityStopWatch> {
 
 	private void timeStopEffect(float partialTicks) {
 		Minecraft mc = Minecraft.getMinecraft();
-		ShaderLibrary.ART.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-		ShaderLibrary.ART.render(partialTicks);
+		ShaderLibrary.INVERT.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+		ShaderLibrary.INVERT.render(partialTicks);
 	}
 
 	@Override

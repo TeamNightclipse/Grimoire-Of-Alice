@@ -33,6 +33,7 @@ public class ItemFireRobe extends ItemBaseArmor implements ISpecialArmor {
 
 	public ItemFireRobe(ArmorMaterial materialIn, int dmg) {
 		super(materialIn, dmg, LibName.FIRE_ROBE, EntityEquipmentSlot.CHEST);
+		setMaxDamage(10);
 		setNoRepair();
 	}
 

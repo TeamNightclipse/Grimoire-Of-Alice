@@ -80,7 +80,7 @@ public class ConfigHandler {
 				public boolean mask = false;
 				@Comment("Can players craft the hihiirokane?")
 				public boolean hihiirokane = true;
-				@Comment("Can players craft the patchy book?")
+				@Comment("Can players craft the syringe?")
 				public boolean syringe = true;
 				@Comment("Can players craft the simple ufo?")
 				public boolean simpleUfo = false;
@@ -172,7 +172,7 @@ public class ConfigHandler {
 				public boolean shinmyoumaruBowl = true;
 				@Comment("Can players craft the roukanken?")
 				public boolean roukanken = true;
-				@Comment("Can players craft the simpleUfo?")
+				@Comment("Can players craft the ufo?")
 				public boolean ufo = true;
 				@Comment("Can players craft the wall passing chisel?")
 				public boolean wallPassingChisel = true;
@@ -194,15 +194,6 @@ public class ConfigHandler {
 				public boolean kinkakuCeiling = true;
 				@Comment("Can players craft the Red Stone of Aja?")
 				public boolean redstoneAja = true;
-
-				@Comment("Can players craft holy stones?")
-				public boolean holyStone = true;
-				@Comment("Can players craft holy key stone?")
-				public boolean holyKeyStone = true;
-				@Comment("Can players craft onbashiras?")
-				public boolean onbashira = true;
-				@Comment("Can players craft end crystals?")
-				public boolean endCrystal = true;
 				@Comment("Can player craft nuclear boots?")
 				public boolean nuclearBoots = true;
 

@@ -216,8 +216,6 @@ public final class ModItems {
 	public static final Item ELLY_SCYTHE = PLACE_HOLDER;
 	@ObjectHolder(LibName.MIKO_STICK)
 	public static final Item MIKO_STICK = PLACE_HOLDER;
-	@ObjectHolder(LibName.AMENONUHOKO)
-	public static final Item AMENONUHOKO = PLACE_HOLDER;
 	@ObjectHolder(LibName.SHINMYOUMARU_NEEDLE)
 	public static final Item SHINMYOUMARU_NEEDLE = PLACE_HOLDER;
 	@ObjectHolder(LibName.NUE_TRIDENT)
@@ -342,7 +340,6 @@ public final class ModItems {
 		registry.register(new ItemTenshiHat(ItemArmor.ArmorMaterial.LEATHER, 2));
 
 		//Weapons
-		registry.register(new ItemAmenonuhoko(Item.ToolMaterial.DIAMOND));
 		registry.register(new ItemToyosatomimiStick(ModMaterials.WEAK_MATERIAL));
 		registry.register(new ItemMochiHammer(ModMaterials.STRONG_STONE));
 		registry.register(new ItemMomijisScimitarSword(ModMaterials.STRONG_IRON));

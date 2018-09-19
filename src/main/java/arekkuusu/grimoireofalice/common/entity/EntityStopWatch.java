@@ -68,7 +68,7 @@ public class EntityStopWatch extends Entity {
 			return;
 		}
 		if(ticksExisted % 8 == 0) {
-			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 1.0F, 1.0F + 0.8F);
+			playSound(SoundEvents.BLOCK_METAL_PRESSPLATE_CLICK_OFF, 0.25F, 1.8F);
 			if(!user.capabilities.isCreativeMode) {
 				user.getFoodStats().addExhaustion(4);
 			}
@@ -77,10 +77,10 @@ public class EntityStopWatch extends Entity {
 
 	public void followPlayer() {
 		Vec3d look = user.getLookVec();
-		float distance = 1F;
-		double dx = user.posX + look.x;
-		double dy = user.posY + user.getEyeHeight() - 1 + look.y * distance;
-		double dz = user.posZ + look.z + distance;
+		float distance = 1.25F;
+		double dx = user.posX + look.x * distance;
+		double dy = user.posY + user.getEyeHeight() + look.y * distance;
+		double dz = user.posZ + look.z * distance;
 		setPosition(dx, dy, dz);
 	}
 
