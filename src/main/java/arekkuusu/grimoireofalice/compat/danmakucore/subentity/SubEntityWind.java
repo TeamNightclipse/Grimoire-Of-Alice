@@ -44,7 +44,7 @@ public class SubEntityWind extends SubEntityType {
 				}
 				ExtraDanmakuData current = danmaku.extra();
 				current.shot().setDamage(current.shot().getDamage() + current.shot().getDamage() * 0.999F);
-				world.getEntitiesInAABBexcluding(danmaku.source().get(), danmaku.encompassingAABB(), e -> e instanceof EntityLiving).forEach(e -> {
+				world.getEntitiesInAABBexcluding(danmaku.source().get(), danmaku.encompassingAABB().grow(3), e -> e instanceof EntityLiving).forEach(e -> {
 					Vector3 vec = new Vector3.WrappedVec3d(e.getPositionVector()).asImmutable();
 					double ratio = danmaku.pos().distance(vec) / 4;
 					Vector3 motion = danmaku.pos().subtract(vec).subtract(1 - ratio);
