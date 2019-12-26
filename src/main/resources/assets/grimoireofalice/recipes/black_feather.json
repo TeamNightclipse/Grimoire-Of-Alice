@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "AAA",
+        "ASA",
+        "AAA"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:feather",
+            "data": 0
+        },
+        "A": {
+            "type": "forge:ore_dict",
+            "ore": "dyeBlack"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:black_feather"
+    },
+    "group": "grimoireofalice"
+}

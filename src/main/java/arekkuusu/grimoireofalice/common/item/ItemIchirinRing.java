@@ -42,12 +42,6 @@ public class ItemIchirinRing extends ItemBaseSword {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		if(isHoldingRing(hand, player)) {

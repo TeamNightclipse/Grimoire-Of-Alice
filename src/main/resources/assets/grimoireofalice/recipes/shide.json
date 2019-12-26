@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " S ",
+        " A ",
+        "AAA"
+    ],
+    "key": {
+        "S": {
+            "item": "grimoireofalice:solidified_paper",
+            "data": 0
+        },
+        "A": {
+            "type": "forge:ore_dict",
+            "ore": "paper"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:shide"
+    },
+    "group": "grimoireofalice"
+}

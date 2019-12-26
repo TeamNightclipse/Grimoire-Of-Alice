@@ -45,7 +45,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		//Blocks
 		addBlock(ModBlocks.COMPACT_STONE);
 		addBlock(ModBlocks.HIHIIROKANE_ORE);
-		addBlock(ModBlocks.HIHIIROKANE_BLOCK);
 		addBlock(ModBlocks.ONBASHIRA);
 		addBlock(ModBlocks.CRAFTING_ALTAR);
 		addBlock(ModBlocks.STONE_SPHERE);
@@ -58,7 +57,6 @@ public class AliceCreativeTab extends CreativeTabs {
 
 		//Materials
 		addItem(ModItems.HIHIIROKANE);
-		addItem(ModItems.IMPURE_HIHIIROKANE);
 		addItem(ModItems.TAMAHAGANE_STEEL);
 		addItem(ModItems.SOLIDIFIED_PAPER);
 		addItem(ModItems.PASTE);
@@ -245,7 +243,6 @@ public class AliceCreativeTab extends CreativeTabs {
 		//-------------Toyosatomimi no Miko-------------//
 		addItem(ModItems.MIKO_CLOAK);
 		addItem(ModItems.SACRED_SWORD_OF_TOYOSATOMIMI);
-		addItem(ModItems.SHICHI_SEIKEN);
 		addItem(ModItems.MIKO_STICK);
 		addItem(ModItems.TOYOSATOMIMI_HAT);
 

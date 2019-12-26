@@ -8,13 +8,12 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ShaderLibrary;
+import arekkuusu.grimoireofalice.client.util.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelNazrinPendulum;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityNazrinPendulum;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

@@ -101,15 +101,8 @@ public class ModelMarisaHat extends ModelBiped {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale * 1.25F, entity);
 		GlStateManager.pushMatrix();
 		if(this.isChild) {
-			GlStateManager.scale(0.75F, 0.75F, 0.75F);
-			GlStateManager.translate(0.0F, 16.0F * scale, 0.0F);
 			this.bipedHead.render(scale);
-			GlStateManager.popMatrix();
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(0.5F, 0.5F, 0.5F);
-			GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
 		} else {
-			GlStateManager.translate(0, 0.25, 0);
 			if(entity.isSneaking()) {
 				GlStateManager.translate(0.0F, 0.25F, 0.0F);
 			}

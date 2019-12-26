@@ -28,12 +28,6 @@ public class ItemStopWatch extends ItemBase  {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		player.setActiveHand(hand);

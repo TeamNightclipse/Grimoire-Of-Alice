@@ -27,12 +27,6 @@ public class ItemRumiaSword extends ItemBaseSword  {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}

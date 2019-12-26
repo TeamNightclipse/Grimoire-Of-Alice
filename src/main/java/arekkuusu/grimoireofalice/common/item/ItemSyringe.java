@@ -39,15 +39,15 @@ public class ItemSyringe extends ItemBaseSword  {
 			if(potion != null) {
 				target.addPotionEffect(new PotionEffect(potion, 1200, 0));
 			}
+			target.setHealth(0.5F);
 		}
 	}
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		stack.damageItem(2, player);
+		stack.damageItem(1, player);
 		doPotionEffect(player);
-		player.attackEntityFrom(DamageSource.GENERIC, 3F);
 		player.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}

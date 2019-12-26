@@ -45,14 +45,15 @@ public class EntityIceBlock extends Entity {
 				setIceBlockHeight(getIceBlockHeight() - 0.1F);
 				return;
 			}
-			if(frozen != null && !frozen.isDead && !frozen.isBurning()) {
-				frozen.updateBlocked = true;
-				if(ticksExisted % 20 == 0) {
-					frozen.attackEntityFrom(DamageSource.DROWN, 0.15F);
+			if(ticksExisted < 125) {
+				if(!frozen.isDead && !frozen.isBurning()) {
+					frozen.updateBlocked = true;
+					if(ticksExisted % 20 == 0) {
+						frozen.attackEntityFrom(DamageSource.DROWN, 0.15F);
+					}
+				} else {
+					setDead();
 				}
-			}
-			else {
-				setDead();
 			}
 		}
 	}
@@ -66,6 +67,7 @@ public class EntityIceBlock extends Entity {
 		if(!world.isRemote) {
 			frozen.updateBlocked = false;
 		}
+		frozen = null;
 		super.setDead();
 	}
 

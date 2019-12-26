@@ -10,6 +10,7 @@ package arekkuusu.grimoireofalice.client;
 
 import arekkuusu.grimoireofalice.client.effect.*;
 import arekkuusu.grimoireofalice.client.event.MalletClientEvent;
+import arekkuusu.grimoireofalice.client.event.TimeStopEvent;
 import arekkuusu.grimoireofalice.client.render.ModRenders;
 import arekkuusu.grimoireofalice.client.util.SpriteLibrary;
 import arekkuusu.grimoireofalice.client.util.helper.ModelHandler;
@@ -57,6 +58,7 @@ public class ClientProxy implements ISidedProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(new MalletClientEvent());
+		MinecraftForge.EVENT_BUS.register(new TimeStopEvent());
 		ModRenders.init();
 	}
 

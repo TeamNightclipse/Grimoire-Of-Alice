@@ -1,0 +1,30 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "ASA",
+        "IWI",
+        "ASA"
+    ],
+    "key": {
+        "W": {
+            "type": "forge:ore_dict",
+            "ore": "logWood"
+        },
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetIron"
+        },
+		"S": {
+            "item": "minecraft:stick",
+            "data": 0
+        },
+		"A": {
+            "item": "grimoireofalice:paste",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:shimenawa"
+    },
+    "group": "grimoireofalice"
+}

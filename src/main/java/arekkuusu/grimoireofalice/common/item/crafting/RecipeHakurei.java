@@ -24,6 +24,6 @@ public class RecipeHakurei extends AltarRecipe {
 
 	@Override
 	public boolean checkRecipe(List<ItemStack> usedItems, World world) {
-		return world.isDaytime() && 0 == world.provider.getMoonPhase(world.getWorldTime()) && super.checkRecipe(usedItems, world);
+		return super.checkRecipe(usedItems, world);
 	}
 }

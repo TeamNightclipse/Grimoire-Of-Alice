@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SSS",
+        "SES",
+        "SSS"
+    ],
+    "key": {
+        "E": {
+            "item": "minecraft:ender_eye",
+            "data": 0
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "blockGlassGreen"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:ufo_green"
+    },
+    "group": "grimoireofalice"
+}

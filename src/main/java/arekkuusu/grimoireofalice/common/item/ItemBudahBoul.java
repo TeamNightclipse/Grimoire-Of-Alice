@@ -46,12 +46,6 @@ public class ItemBudahBoul extends ItemTool implements IModel {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}

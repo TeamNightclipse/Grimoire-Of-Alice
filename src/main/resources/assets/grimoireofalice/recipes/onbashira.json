@@ -1,0 +1,29 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "RLR",
+        "PGP"
+    ],
+    "key": {
+        "G": {
+            "item": "grimoireofalice:compact_stone",
+            "data": 0
+        },
+        "L": {
+            "type": "forge:ore_dict",
+            "ore": "logWood"
+        },
+		"R": {
+            "item": "grimoireofalice:shimenawa",
+            "data": 0
+        },
+		"P": {
+            "item": "grimoireofalice:shide",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:onbashira"
+    },
+    "group": "grimoireofalice"
+}

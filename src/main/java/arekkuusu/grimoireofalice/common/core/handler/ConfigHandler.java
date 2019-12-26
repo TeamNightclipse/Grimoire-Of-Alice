@@ -154,8 +154,6 @@ public class ConfigHandler {
 				public boolean sacredToyosatomimiSword = true;
 				@Comment("Can players craft the sanae gohei?")
 				public boolean sanaeGohei = true;
-				@Comment("Can players craft the sariel wand?")
-				public boolean sichiSeiken = true;
 				@Comment("Can players craft the kanako's onbashira?")
 				public boolean kanakoOnbashira = true;
 				@Comment("Can players craft the skull?")
@@ -194,8 +192,10 @@ public class ConfigHandler {
 				public boolean kinkakuCeiling = true;
 				@Comment("Can players craft the Red Stone of Aja?")
 				public boolean redstoneAja = true;
-				@Comment("Can player craft nuclear boots?")
+				@Comment("Can player craft Nuclear boots?")
 				public boolean nuclearBoots = true;
+				@Comment("Can player craft Spiritual Strike Talisman?")
+				public boolean spiritualStrikeTalisman = true;
 
 				public static class Masks {
 

@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "HHH",
+        "HPH",
+        "HHH"
+    ],
+    "key": {
+        "H": {
+            "item": "grimoireofalice:solidified_paper",
+            "data": 0
+        },
+		"P": {
+            "item": "grimoireofalice:paste",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:mask"
+    },
+    "group": "grimoireofalice"
+}

@@ -8,10 +8,9 @@
  */
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ShaderLibrary;
+import arekkuusu.grimoireofalice.client.util.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelFlat;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
-import arekkuusu.grimoireofalice.client.util.helper.BlendHelper;
 import arekkuusu.grimoireofalice.common.entity.EntityGap;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;

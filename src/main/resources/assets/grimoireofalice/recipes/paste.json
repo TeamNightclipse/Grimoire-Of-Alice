@@ -1,0 +1,15 @@
+﻿{
+  "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:water_bucket"
+        },
+		{
+            "item": "grimoireofalice:solidified_paper"
+        }
+    ],
+  "result": {
+    "item": "grimoireofalice:paste"
+  },
+  "group": "grimoireofalice"
+}

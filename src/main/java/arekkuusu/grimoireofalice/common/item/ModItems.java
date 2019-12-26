@@ -16,10 +16,12 @@ import arekkuusu.grimoireofalice.common.item.masks.*;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -43,8 +45,6 @@ public final class ModItems {
 	public static final Item HIHIIROKANE = PLACE_HOLDER;
 	@ObjectHolder(LibName.IBARAKI_BOX_EMPTY)
 	public static final Item IBARAKI_BOX_EMPTY = PLACE_HOLDER;
-	@ObjectHolder(LibName.IMPURE_HIHIIROKANE)
-	public static final Item IMPURE_HIHIIROKANE = PLACE_HOLDER;
 	@ObjectHolder(LibName.LUNASA_VIOLIN)
 	public static final Item LUNASA_VIOLIN = PLACE_HOLDER;
 	@ObjectHolder(LibName.LYRICA_PIANO)
@@ -228,8 +228,6 @@ public final class ModItems {
 	public static final Item ICHIRIN_RING = PLACE_HOLDER;
 	@ObjectHolder(LibName.KANAKO_ONBASHIRA)
 	public static final Item KANAKO_ONBASHIRA = PLACE_HOLDER;
-	@ObjectHolder(LibName.SHICHI_SEIKEN)
-	public static final Item SHICHI_SEIKEN = PLACE_HOLDER;
 	@ObjectHolder(LibName.CATTAIL_PLANT)
 	public static final Item CATTAIL_PLANT = PLACE_HOLDER;
 	@ObjectHolder(LibName.POPSICLE_STICK)
@@ -267,7 +265,6 @@ public final class ModItems {
 		registry.register(new ItemYoukaiBook());
 		registry.register(new ItemBase(LibName.PASTE));
 		registry.register(new ItemBase(LibName.SOLIDIFIED_PAPER));
-		registry.register(new ItemBase(LibName.IMPURE_HIHIIROKANE));
 		registry.register(new ItemIbarakiBoxEmpty());
 		registry.register(new ItemBase(LibName.UFO_RED));
 		registry.register(new ItemBase(LibName.UFO_BLUE));
@@ -349,7 +346,6 @@ public final class ModItems {
 		registry.register(new ItemSyringe(ModMaterials.WEAK_MATERIAL));
 		registry.register(new ItemIchirinRing(ModMaterials.WEAK_MATERIAL));
 		registry.register(new ItemOnbashira(Item.ToolMaterial.STONE));
-		registry.register(new ItemShichiSeiken(ModMaterials.NOODLE));
 		registry.register(new ItemCattailPlant(Item.ToolMaterial.WOOD));
 		registry.register(new ItemPopsicleStick(Item.ToolMaterial.WOOD));
 		registry.register(new ItemRumiaSword(ModMaterials.STRONG_GOLD));
@@ -390,13 +386,12 @@ public final class ModItems {
 		registry.register(new ItemBlockShroom(ModBlocks.SHROOM));
 		registry.register(itemBlock(ModBlocks.CRAFTING_ALTAR));
 		registry.register(itemBlock(ModBlocks.HIHIIROKANE_ORE));
-		registry.register(itemBlock(ModBlocks.HIHIIROKANE_BLOCK));
 		registry.register(itemBlock(ModBlocks.DRAGON_STONE));
 		registry.register(itemBlock(ModBlocks.STONE_SPHERE));
 	}
 
 	@SuppressWarnings("ConstantConditions")
-	private static Item itemBlock(Block block) {
+	public static Item itemBlock(Block block) {
 		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 
@@ -429,5 +424,7 @@ public final class ModItems {
 		AliceAPI.registerFlyingItem(new ItemStack(ModItems.JEWELED_HOURAI));
 		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.UTSUHO_WINGS));
 		AliceAPI.registerFlyingArmor(new ItemStack(ModItems.KANAKO_SHIMENAWA));
+		GameRegistry.addSmelting(ModBlocks.HIHIIROKANE_ORE, new ItemStack(ModItems.HIHIIROKANE), 5F);
+		GameRegistry.addSmelting(Items.BLAZE_ROD, new ItemStack(ModItems.TAMAHAGANE_STEEL), 0.1F);
 	}
 }

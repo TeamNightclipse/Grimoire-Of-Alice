@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "AAA",
+        "ASA",
+        "AAA"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:dirt",
+            "data": 2
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:compact_stone"
+    },
+    "group": "grimoireofalice"
+}

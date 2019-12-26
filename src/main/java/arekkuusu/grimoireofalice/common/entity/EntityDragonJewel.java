@@ -10,6 +10,10 @@ package arekkuusu.grimoireofalice.common.entity;
 
 import arekkuusu.grimoireofalice.api.sound.GrimoireSoundEvents;
 import arekkuusu.grimoireofalice.common.item.ModItems;
+import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
+import net.katsstuff.teamnightclipse.mirror.data.Vector3;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +29,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.List;
+
+import static arekkuusu.grimoireofalice.common.item.ItemDragonJewel.COLORS;
 
 public class EntityDragonJewel extends Entity {
 
@@ -74,20 +80,17 @@ public class EntityDragonJewel extends Entity {
 
 	private void attackEntities() {
 		AxisAlignedBB axis = new AxisAlignedBB(getPosition());
-		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(host, axis.grow(20.0D));
-		list.stream().filter(mob -> mob instanceof EntityLiving).map(mob -> (EntityLiving) mob).forEach(mob -> {
+		List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(this, axis.grow(20.0D));
+		list.stream().filter(mob -> mob instanceof EntityLiving && mob != host).map(mob -> (EntityLiving) mob).forEach(mob -> {
 			if(!world.isRemote && (mob instanceof EntityMob || host.equals(mob.getAttackTarget()))) {
 				mob.setRevengeTarget(null);
-				if(mob.getHealth() > 1) {
-					mob.attackEntityFrom(DamageSource.DRAGON_BREATH, rand.nextInt(25));
-				}
-			}
-			for(int i = 0; i < 2; ++i) {
-				mob.world.spawnParticle(EnumParticleTypes.PORTAL,
-						mob.posX + (rand.nextDouble() - 0.5D) * mob.width,
-						mob.posY + rand.nextDouble() * mob.height - 0.25D,
-						mob.posZ + (rand.nextDouble() - 0.5D) * mob.width,
-						(rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D);
+				int color = COLORS[rand.nextInt(COLORS.length)];
+				DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
+						.setUser(host)
+						.setPos(new Vector3.WrappedVec3d(mob.getPositionEyes(0F)).asImmutable())
+						.setShot(LibShotData.SHOT_SMALLSTAR.setMainColor(color))
+						.setMovementData(-0.01F);
+				DanmakuCreationHelper.createSphereShot(builder.build(), 4, 6, 20, 2);
 			}
 		});
 	}

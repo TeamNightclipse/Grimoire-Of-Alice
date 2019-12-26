@@ -35,12 +35,6 @@ public class ItemYuugiSake extends ItemModFood  {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		super.onFoodEaten(stack, world, player);
 		player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 4800, 5));

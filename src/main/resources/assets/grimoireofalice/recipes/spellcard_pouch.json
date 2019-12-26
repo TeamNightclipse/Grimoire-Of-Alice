@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "L L",
+        "LCL",
+        "LLL"
+    ],
+    "key": {
+        "C": {
+            "type": "forge:ore_dict",
+            "ore": "chestWood"
+        },
+		"L": {
+            "item": "grimoireofalice:hardened_leather",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:spellcard_pouch"
+    },
+    "group": "grimoireofalice"
+}

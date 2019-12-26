@@ -57,7 +57,7 @@ public class ItemShouLamp extends ItemJeweled {
 						.setMovementData(0.5D, 0.5D, 0.1D)
 						.setShot(LibShotData.SHOT_POINTED_LASER_LONG.setMainColor(LibColor.COLOR_SATURATED_YELLOW).setSizeZ(4))
 						.build();
-				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 20, 0D);
+				DanmakuCreationHelper.createRandomRingShot(danmaku, 1, 20, 8D);
 				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 0));
 				addJewels(stack, (short) -1);
 			}

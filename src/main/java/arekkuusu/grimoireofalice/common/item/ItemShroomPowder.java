@@ -40,12 +40,6 @@ public class ItemShroomPowder extends ItemBase {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
 		if(target instanceof EntitySheep) {
 			EntitySheep entitysheep = (EntitySheep) target;

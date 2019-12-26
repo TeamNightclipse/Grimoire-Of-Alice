@@ -9,7 +9,6 @@ public class LibName {
 	public static final String YOUKAI_BOOK = "youkai_book";
 	public static final String MASK = "mask";
 	public static final String HIHIIROKANE = "hihiirokane";
-	public static final String IMPURE_HIHIIROKANE = "impure_hihiirokane";
 	public static final String THIRD_EYE = "third_eye";
 	public static final String LUNASA_VIOLIN = "lunasa_violin";
 	public static final String LYRICA_PIANO = "lyrica_piano";
@@ -103,7 +102,6 @@ public class LibName {
 	public static final String SYRINGE = "syringe";
 	public static final String ICHIRIN_RING = "ichirin_ring";
 	public static final String KANAKO_ONBASHIRA = "kanako_onbashira";
-	public static final String SHICHI_SEIKEN = "shichi_seiken";
 	public static final String CATTAIL_PLANT = "cattail_plant";
 	public static final String POPSICLE_STICK = "popsicle_stick";
 	public static final String RUMIA_SWORD = "rumia_sword";
@@ -131,7 +129,6 @@ public class LibName {
 	public static final String SHROOM = "shroom";
 	public static final String KYOUMARUBOTAN = "kyoumarubotan";
 	public static final String HIHIIROKANE_ORE = "hihiirokane_ore";
-	public static final String HIHIIROKANE_BLOCK = "hihiirokane_block";
 	public static final String DRAGON_STONE = "dragon_stone";
 	public static final String MINI_SHRINE = "mini_shrine";
 	public static final String STONE_SPHERE = "stone_sphere";

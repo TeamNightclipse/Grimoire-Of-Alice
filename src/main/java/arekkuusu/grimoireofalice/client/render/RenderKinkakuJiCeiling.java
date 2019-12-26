@@ -1,6 +1,6 @@
 package arekkuusu.grimoireofalice.client.render;
 
-import arekkuusu.grimoireofalice.client.ShaderLibrary;
+import arekkuusu.grimoireofalice.client.util.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.render.model.ModelKinkakuJiCeiling;
 import arekkuusu.grimoireofalice.client.util.ResourceLibrary;
 import arekkuusu.grimoireofalice.common.entity.EntityKinkakuJiCeiling;

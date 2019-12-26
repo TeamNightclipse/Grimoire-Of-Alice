@@ -33,12 +33,6 @@ public class ItemMiracleMallet extends ItemBase  {
 		return EnumRarity.EPIC;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
 	@SuppressWarnings("ConstantConditions")
 	private void useMallet(EntityPlayer player, EnumHand hand) {
 		if(!player.world.isRemote && player.hasCapability(MalletProvider.MALLET_CAPABILITY, null) && !player.getFoodStats().needFood() || player.capabilities.isCreativeMode) {

@@ -1,0 +1,26 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "IGI",
+        "G G",
+        "SSS"
+    ],
+    "key": {
+        "S": {
+            "item": "grimoireofalice:compact_stone",
+            "data": 0
+        },
+		"I": {
+            "item": "minecraft:glowstone",
+            "data": 0
+        },
+        "G": {
+            "type": "forge:ore_dict",
+            "ore": "blockGlassColorless"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:stone_sphere"
+    },
+    "group": "grimoireofalice"
+}

@@ -1,0 +1,17 @@
+﻿{
+  "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "grimoireofalice:mortar_n_pestle"
+        },
+		{
+            "item": "grimoireofalice:shroom",
+			"data": 6
+        }
+    ],
+  "result": {
+    "item": "grimoireofalice:shroom_powder",
+    "data": 6
+  },
+  "group": "grimoireofalice"
+}

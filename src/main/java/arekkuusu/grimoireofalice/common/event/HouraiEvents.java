@@ -10,6 +10,7 @@ import arekkuusu.grimoireofalice.common.potion.ModPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
@@ -53,21 +54,20 @@ public class HouraiEvents {
 					player.isDead = false;
 					player.setHealth(player.getMaxHealth());
 					player.getFoodStats().addStats(100, 100);
-					event.setCanceled(true);
-
 					world.playSound(null, player.getPosition(), SoundEvents.ENTITY_WITHER_DEATH, SoundCategory.PLAYERS, 1F, 1F);
-
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.BLUE_NORMAL,
 							player.hurtResistantTime);
 					world.spawnEntity(circle);
-				}
-				else {
+					event.setCanceled(true);
+				} else {
 					@SuppressWarnings("ConstantConditions")
 					boolean potion = player.isPotionActive(ModPotions.ELIXIR);
 					if(potion) {
 						player.hurtResistantTime = 100;
 						player.isDead = false;
 						player.setHealth(player.getMaxHealth());
+						player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 1000, 0));
+						player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 1000, 5));
 						event.setCanceled(true);
 					}
 				}
@@ -79,9 +79,10 @@ public class HouraiEvents {
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if(event.player.hasCapability(HOURAI_CAPABILITY, null) && event.player.getCapability(HOURAI_CAPABILITY, null).getHouraiLevel() > 1) {
-			event.player.getActivePotionEffects().stream()
-					.filter(potionEffect -> potionEffect.getPotion().isBadEffect())
-					.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
+			List<PotionEffect> list = event.player.getActivePotionEffects().stream()
+					.filter(potionEffect -> potionEffect.getPotion().isBadEffect()).distinct()
+					.collect(Collectors.toList());
+			list.forEach(potionEffect -> event.player.removePotionEffect(potionEffect.getPotion()));
 		}
 	}
 

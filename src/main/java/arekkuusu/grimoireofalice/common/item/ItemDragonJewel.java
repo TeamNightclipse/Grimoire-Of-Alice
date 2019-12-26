@@ -11,6 +11,7 @@ package arekkuusu.grimoireofalice.common.item;
 import arekkuusu.grimoireofalice.common.entity.EntityDragonJewel;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
+import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
 import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.minecraft.entity.Entity;
@@ -25,6 +26,14 @@ import net.minecraft.world.World;
 
 public class ItemDragonJewel extends ItemBase {
 
+	public static final int[] COLORS = {
+			LibColor.COLOR_SATURATED_GREEN,
+			LibColor.COLOR_SATURATED_YELLOW,
+			LibColor.COLOR_SATURATED_MAGENTA,
+			LibColor.COLOR_SATURATED_RED,
+			LibColor.COLOR_SATURATED_BLUE
+	};
+
 	public ItemDragonJewel() {
 		super(LibName.DRAGON_JEWEL);
 		setMaxStackSize(1);
@@ -36,12 +45,13 @@ public class ItemDragonJewel extends ItemBase {
 			EntityPlayer player = (EntityPlayer) entityIn;
 			if(player.getCooldownTracker().hasCooldown(this) && player.ticksExisted % 2 == 0) {
 				if(!world.isRemote) {
+					int color = COLORS[itemRand.nextInt(COLORS.length)];
 					DanmakuTemplate.Builder builder = DanmakuTemplate.builder()
 							.setUser(player)
-							.setShot(LibShotData.SHOT_CRYSTAL1.setCoreColor(0x000000).setEdgeColor(0XFFFFFF))
+							.setShot(LibShotData.SHOT_CRYSTAL1.setMainColor(color).setDelay(40))
 							.setMovementData(0.5F);
 					float cooldown = player.getCooldownTracker().getCooldown(this, 0);
-					DanmakuCreationHelper.createWideShot(builder.build(), 3, 270, 360 * 2 * cooldown, 1);
+					DanmakuCreationHelper.createWideShot(builder.build(), 6, 360, 360 * 2 * cooldown, 2);
 				} else {
 					world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ILLAGER_CAST_SPELL, SoundCategory.PLAYERS, 0.1F, 1F);
 				}

@@ -1,6 +1,5 @@
 package arekkuusu.grimoireofalice.client.render.tile;
 
-import arekkuusu.grimoireofalice.client.ShaderLibrary;
 import arekkuusu.grimoireofalice.client.util.helper.BlendHelper;
 import arekkuusu.grimoireofalice.common.block.tile.TileMiniShrine;
 import net.minecraft.client.Minecraft;

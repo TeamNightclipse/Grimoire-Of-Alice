@@ -1,0 +1,15 @@
+﻿{
+  "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:bowl"
+        },
+		{
+            "item": "minecraft:stick"
+        }
+    ],
+  "result": {
+    "item": "grimoireofalice:mortar_n_pestle"
+  },
+  "group": "grimoireofalice"
+}

@@ -42,8 +42,6 @@ public class ModBlocks {
 	public static final Block CRAFTING_ALTAR = PLACE_HOLDER;
 	@ObjectHolder(LibName.HIHIIROKANE_ORE)
 	public static final Block HIHIIROKANE_ORE = PLACE_HOLDER;
-	@ObjectHolder(LibName.HIHIIROKANE_BLOCK)
-	public static final Block HIHIIROKANE_BLOCK = PLACE_HOLDER;
 	@ObjectHolder(LibName.DRAGON_STONE)
 	public static final Block DRAGON_STONE = PLACE_HOLDER;
 	@ObjectHolder(LibName.STONE_SPHERE)
@@ -58,7 +56,6 @@ public class ModBlocks {
 		registry.register(new BlockShroom());
 		registry.register(new BlockMiniShrine());
 		registry.register(new BlockHihiirokaneOre());
-		registry.register(new BlockHihiirokane());
 		registry.register(new BlockDragonStone());
 		registry.register(new BlockStoneSphere());
 		registerTiles();

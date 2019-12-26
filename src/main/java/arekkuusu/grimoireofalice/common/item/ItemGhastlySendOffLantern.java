@@ -32,12 +32,6 @@ public class ItemGhastlySendOffLantern extends ItemBase {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return getTimer(stack) <= 0;
-	}
-
-	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return getTimer(stack) <= 0 ? EnumRarity.RARE : EnumRarity.COMMON;
 	}

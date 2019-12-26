@@ -12,9 +12,9 @@ import arekkuusu.grimoireofalice.common.entity.EntityFierySword;
 import arekkuusu.grimoireofalice.common.entity.EntityMagicCircle;
 import arekkuusu.grimoireofalice.common.lib.LibName;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.DanmakuTemplate;
-import net.katsstuff.teamnightclipse.danmakucore.javastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.danmakucore.lib.LibColor;
 import net.katsstuff.teamnightclipse.danmakucore.lib.data.LibShotData;
+import net.katsstuff.teamnightclipse.danmakucore.scalastuff.DanmakuCreationHelper;
 import net.katsstuff.teamnightclipse.mirror.data.Quat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -73,8 +73,9 @@ public class ItemLaevatein extends ItemBaseSword {
 						DanmakuTemplate danmaku = DanmakuTemplate.builder()
 								.setUser(player)
 								.setShot(LibShotData.SHOT_SPHERE_DARK.setMainColor(LibColor.COLOR_SATURATED_RED).setSize(2F))
+								.setMovementData(0.8D)
 								.build();
-						DanmakuCreationHelper.createRandomRingShot(Quat.orientationOf(player), danmaku, 1, 10, 5);
+						DanmakuCreationHelper.createRandomRingShot(danmaku, 5, 10, 5);
 					}
 					EntityMagicCircle circle = new EntityMagicCircle(world, player, EntityMagicCircle.EnumTextures.RED_NORMAL, 15);
 					world.spawnEntity(circle);
@@ -107,33 +108,6 @@ public class ItemLaevatein extends ItemBaseSword {
 		}
 
 		return -1;
-	}
-
-	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z) {
-		BlockPos block = pos.offset(facing);
-		ItemStack stack = player.getHeldItem(hand);
-
-		if(!player.canPlayerEdit(block, facing, stack)) {
-			return EnumActionResult.PASS;
-		} else {
-			boolean success = false;
-			for(int i = -1; i <= 1; i++) {
-				for(int j = -1; j <= 1; j++) {
-					BlockPos newPos = block.add(i, 0, j);
-					if(world.isAirBlock(newPos)) {
-						world.setBlockState(newPos, Blocks.FIRE.getDefaultState());
-						success = true;
-					}
-				}
-			}
-
-			if(success) {
-				player.playSound(SoundEvents.ENTITY_BLAZE_DEATH, 0.5F, itemRand.nextFloat() * 0.4F + 0.8F);
-			}
-			stack.damageItem(1, player);
-			return success ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
-		}
 	}
 
 	@Override

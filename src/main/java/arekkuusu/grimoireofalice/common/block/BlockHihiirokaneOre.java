@@ -29,11 +29,6 @@ public class BlockHihiirokaneOre extends BlockBase {
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ModItems.IMPURE_HIHIIROKANE;
-	}
-
-	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
 		if(fortune > 0) {
 			int i = random.nextInt(fortune + 2) - 1;

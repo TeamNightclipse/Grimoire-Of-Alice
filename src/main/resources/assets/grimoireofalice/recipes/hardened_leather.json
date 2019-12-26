@@ -1,0 +1,26 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "A A",
+        "LSL",
+        "A A"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick",
+            "data": 0
+        },
+		"L": {
+            "item": "minecraft:leather",
+            "data": 0
+        },
+        "A": {
+            "item": "minecraft:iron_nugget",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:hardened_leather"
+    },
+    "group": "grimoireofalice"
+}

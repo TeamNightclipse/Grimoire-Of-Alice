@@ -275,7 +275,7 @@ public class Miracles {
 
 	public static final Miracle TESTIFICATE = new Miracle() {
 
-		private final Method convertZombie = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_82232_p", UUID.class, int.class);
+		private final Method convertZombie = ReflectionHelper.findMethod(EntityZombieVillager.class, "startConverting", "func_191991_a", UUID.class, int.class);
 
 		@Override
 		public String getName() {

@@ -8,10 +8,11 @@
  */
 package arekkuusu.grimoireofalice.client.util;
 
-import arekkuusu.grimoireofalice.client.util.resource.ResourceBuilder;
 import arekkuusu.grimoireofalice.common.lib.LibMod;
 import net.katsstuff.teamnightclipse.mirror.client.helper.*;
 import net.minecraft.util.ResourceLocation;
+
+import java.util.function.Function;
 
 public final class ResourceLibrary {
 
@@ -23,7 +24,7 @@ public final class ResourceLibrary {
 	public static final ResourceLocation WHITE = getTexture(TextureLocation.Model(), "entity/white");
 	public static final ResourceLocation ORB_TEXTURE = getTexture(TextureLocation.Model(), "entity/orb");
 	public static final ResourceLocation NETHER_SOUL_TEXTURE = getTexture(TextureLocation.Model(), "entity/leaf");
-	public static final ResourceLocation[] CIRCLE_TEXTURE = ResourceBuilder.toArray(5, "entity/magic_circle_", name ->
+	public static final ResourceLocation[] CIRCLE_TEXTURE = toArray(5, "entity/magic_circle_", name ->
 			getTexture(TextureLocation.Model(), name)
 	);
 	public static final ResourceLocation NAZRIN_TEXTURE = getTexture(TextureLocation.Model(), "entity/nazrin_pendulum");
@@ -66,7 +67,7 @@ public final class ResourceLibrary {
 	public static final ResourceLocation BRIGHT_SHADER = getShader(ShaderLocation.Program(), "bright");
 	//GUI
 	public static final ResourceLocation POTION_TEXTURES = getTexture(TextureLocation.Gui(), "potions");
-	public static final ResourceLocation[] BOOK_GUI_TEXTURES = ResourceBuilder.toArray(10, "guide/guide_", name ->
+	public static final ResourceLocation[] BOOK_GUI_TEXTURES = toArray(10, "guide/guide_", name ->
 			getTexture(TextureLocation.Gui(), name)
 	);
 
@@ -74,11 +75,19 @@ public final class ResourceLibrary {
 		return ResourceHelperStatic.getAtlas(LibMod.MOD_ID, TextureLocation.Effect(), name);
 	}
 
-	private static ResourceLocation getTexture(Location location, String name) {
+	public static ResourceLocation getTexture(Location location, String name) {
 		return ResourceHelperStatic.getTexture(LibMod.MOD_ID, location, name);
 	}
 
-	private static ResourceLocation getShader(Location location, String name) {
+	public static ResourceLocation getShader(Location location, String name) {
 		return ResourceHelperStatic.getLocation(LibMod.MOD_ID, AssetLocation.Shaders(), location, name, "");
+	}
+
+	public static ResourceLocation[] toArray(int amount, String name, Function<String, ResourceLocation> function) {
+		ResourceLocation[] locations = new ResourceLocation[amount];
+		for(int i = 0; i < amount; i++) {
+			locations[i] = function.apply(name + i);
+		}
+		return locations;
 	}
 }

@@ -36,12 +36,6 @@ public class ItemModMask extends ItemArmor implements ISpecialArmor, IModel {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 		return new ArmorProperties(1, 5, 10);
 	}

@@ -37,12 +37,6 @@ public class ItemNazrinPendulum extends ItemBase {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.RARE;
 	}
