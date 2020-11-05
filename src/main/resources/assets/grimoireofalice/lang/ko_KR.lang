@@ -1,0 +1,955 @@
+item.grimoire_book.name=그리므와르
+item.paste.name=접착제
+item.solidified_paper.name=견고한 종이
+item.tamahagane_steel.name=타마하가네
+item.shimenawa_rope.name=금줄
+item.youkaibook.name=요괴책
+item.mask.name=가면
+item.hihiirokane.name=히히이로카네
+item.impure_hihiirokane.name=불순한 히히이로카네
+item.lunasa_violin.name=루나사의 바이올린
+item.lyrica_piano.name=리리카의 키보드
+item.merlin_trumpet.name=메를랑의 트럼펫
+item.shou_lamp.name=비사문천의 보탑
+item.orin_skull.name=해골
+item.nazrin_pendulum.name=나즈린 펜듈럼
+item.ghost_dipper.name=뱃유령의 국자
+item.wall_passing_chisel.name=세이가의 비녀
+item.miracle_mallet.name=요술망치
+item.rod_of_remorse.name=회오의 봉
+item.jeweled_hourai.name=봉래의 옥의 가지
+item.budah_bowl.name=부처의 석발
+item.fire_robe.name=불쥐의 가죽옷
+item.dragon_jewel.name=용 목의 구슬
+item.swallow_cowrie_shell.name=제비의 자안패
+item.folding_umbrella.name=스키마의 접이식 우산
+item.stopwatch.name=사쿠야의 회중시계
+item.mortar_n_pestle.name=막자와 사발
+item.black_feather.name=검은 깃털
+item.shinkiwand.name=신키의 지팡이
+item.nether_shard.name=지옥 파편
+item.iron_nugget.name=철 조각
+item.hardened_leather.name=견고한 가죽
+item.swallow_egg.name=제비 알
+item.cowrie_shell.name=자안패
+item.dragon_scale.name=용 비늘
+item.charm_of_healing.name=치유의 부적
+item.spiritual_strike_talisman.name=영격찰
+item.gap.name=스키마
+item.seamless_ceiling_of_kinkakuji.name=금각사의 천정 한 겹
+item.red_stone_of_aja.name=에이쟈의 적석
+
+item.shroom_powder.white.name=흰색 버섯 분말
+item.shroom_powder.orange.name= 주황색 버섯 분말
+item.shroom_powder.magenta.name=자홍색 버섯 분말
+item.shroom_powder.lightBlue.name=하늘색 버섯 분말
+item.shroom_powder.yellow.name=노란색 버섯 분말
+item.shroom_powder.lime.name=연두색 버섯 분말
+item.shroom_powder.pink.name=분홍색 버섯 분말
+item.shroom_powder.gray.name=회색 버섯 분말
+item.shroom_powder.silver.name=회백색 버섯 분말
+item.shroom_powder.cyan.name=청록색 버섯 분말
+item.shroom_powder.purple.name=보라색 버섯 분말
+item.shroom_powder.blue.name=푸른색 버섯 분말
+item.shroom_powder.brown.name=갈색 버섯 분말
+item.shroom_powder.green.name=초록색 버섯 분말
+item.shroom_powder.red.name=빨간색 버섯 분말
+item.shroom_powder.black.name=검정색 버섯 분말
+item.grilled_lamprey.name=장어 구이
+item.ibaraki_box_filled.name=이바라키 백약승
+item.kappas_nostrum.name=캇파의 특효약
+item.ibaraki_box_empty.name=이바라키 백약승
+item.heavenly_peach.name=천계의 복숭아
+item.ibuki_gourd.name=이부키효
+item.orb_elixir.name=감주의 약
+item.hourai_elixir.name=봉래의 약
+item.yuugi_sake.name=호시구마하이
+
+item.fox_mask.name=요호 가면
+item.raiden_mask.name=라이덴 가면
+item.monkey_mask.name=원숭이 가면
+item.hyottoko_mask.name=횻토코 가면
+item.fuku_no_kami_mask.name=후쿠노카미 가면
+item.uba_mask.name=우바 가면
+item.hannya_mask.name=한냐 가면
+item.koomote_mask.name=코오모테 가면
+item.mask_of_hope.name=희망의 가면
+item.kokoro_masks.name=코코로의 가면
+item.maple_leaf_shield.name=단풍잎 방패
+item.toyosatomimi_hat.name=귀마개
+item.kanako_shimenawa.name=신성한 금줄
+item.ichirin_unzan.name=뉴도
+item.suwako_hat.name=스와코의 모자
+item.utsuho_wings.name=우츠호의 날개
+item.kappa_hat.name=니토리의 모자
+item.marisa_hat.name=마리사의 모자
+item.miko_cloak.name=미코의 망토
+item.shinmyoumaru_hat.name=신묘마루의 그릇
+item.nuclear_boots.name=방사능 차폐 부츠
+item.tenshi_hat.name=텐시의 모자
+
+item.aura_byakuren.name=진주 목걸이
+item.aura_mokou.name=귀여운 리본
+
+item.mochi_hammer.name=떡메
+item.momiji_scimitar_sword.name=모미지의 만도
+item.laevatein.name=레바테인
+item.nazrin_stick.0.name=나즈린의 다우징 막대
+item.nazrin_stick.1.name=나즈린의 다른 다우징 막대
+item.elly_scythe.name=쓸모없는 문지기의 낫
+item.miko_stick.name=토요사토미미의 막대
+item.amenonuhoko.name=아메노누호코
+item.shinmyoumaru_needle.name=신묘마루의 바늘
+item.nue_trident.name=누에의 삼지창
+item.sword_of_kusanagi.name=쿠사나기의 검
+item.syringe.name=에이린의 주사기
+item.ichirin_ring.name=이치린의 고리
+item.kanako_onbashira.name=카나코의 온바시라
+item.shichi_seiken.name=칠성검
+item.cattail_plant.name=캇파의 부들
+item.popsicle_stick.name=아이스크림 막대
+item.rumia_sword.name=루미아의 검
+item.sariel_wand.name=사리엘의 지팡이
+item.watermelon_blade.name=수박 칼날
+item.watermelon_sword.name=수박 검
+item.tengu_fan.name=텐구의 엽단
+item.sacred_sword_of_toyosatomimi.name=토요사토미미의 보검
+item.hisou_sword.name=비상의 검
+item.komachi_scythe.name=사신의 대낫
+item.roukanken.name=누관검
+item.nuclear_rod.name=핵제어봉
+item.icicle_sword.name=고드름 칼
+item.hakurouken.name=백루검
+item.ghost_anchor.name=유령 닻
+
+tile.shimenawa.name=금줄
+tile.shide.name=시데
+tile.compact_stone.name=압축석
+tile.onbashira.name=온바시라
+tile.mini_shrine.name=소형 신단
+tile.hihiirokane_ore.name=히히이로카네 광석
+tile.hihiirokane_block.name=히히이로카네 블록
+tile.dragonstone.name=용석
+
+tile.shroom_15.name=흰색 버섯
+tile.shroom_14.name=주황색 버섯
+tile.shroom_13.name=자홍색 버섯
+tile.shroom_12.name=하늘색 버섯
+tile.shroom_11.name=노란색 버섯
+tile.shroom_10.name=연두색 버섯
+tile.shroom_9.name=분홍색 버섯
+tile.shroom_8.name=회색 버섯
+tile.shroom_7.name=회백색 버섯
+tile.shroom_6.name=청록색 버섯
+tile.shroom_5.name=보라색 버섯
+tile.shroom_4.name=푸른색 버섯
+tile.shroom_3.name=갈색 버섯
+tile.shroom_2.name=초록색 버섯
+tile.shroom_1.name=빨간색 버섯
+tile.shroom_0.name=검정색 버섯
+
+tile.kyoumarubotan.name=경환모란꽃
+
+item.time_orb.name=시간 아이템
+item.ufo.name=벤토라
+item.ufo_red.name=빨간 벤토라
+item.ufo_blue.name=파란 벤토라
+item.ufo_green.name=녹색 벤토라
+item.third_eye.name=서드 아이
+item.spellcard_pouch.name=스펠 카드 파우치
+item.leaf_item.name=잎사귀
+item.blood_thirsty_orb.name=피에 굶주린 음양옥
+item.fake_miracle_mallet.name=오니의 요술망치 (레플리카)
+item.substitute_jizo.name=대역 지장보살
+item.nimble_fabric.name=펄럭이는 천
+item.send_off_lantern.name=망령의 오쿠리초친
+item.cursed_decoy_doll.name=저주의 데코이 인형
+item.aya_camera.name=아야의 카메라
+item.hatate_camera.name=하타테의 카메라
+item.hakurei_gohei.name=하쿠레이 무녀의 불제봉
+item.sanae_gohei.name=카제하후리의 불제봉
+
+item.danmaku.danmakuvariant.grimoireofalice.leaf.name=잎사귀탄
+item.danmaku.danmakuvariant.grimoireofalice.ufo.name=벤토라탄
+item.danmaku.danmakuvariant.grimoireofalice.wind.name=바람탄
+item.danmaku.danmakuvariant.grimoireofalice.note.name=음표탄
+item.danmaku.danmakuvariant.grimoireofalice.sun.name=태양탄
+
+item.danmaku.danmakuvariant.form.grimoireofalice.leaf=중력 작용
+item.danmaku.danmakuvariant.form.grimoireofalice.ufo=무작위 이동
+item.danmaku.danmakuvariant.form.grimoireofalice.wind=몹 밀쳐내기
+item.danmaku.danmakuvariant.form.grimoireofalice.note=느리게 이동
+
+subentity.grimoireofalice.ufo=무작위 이동
+subentity.grimoireofalice.wind=몹 밀쳐내기
+subentity.grimoireofalice.note=느리게 이동
+subentity.grimoireofalice.sun=튕겨냄
+
+form.grimoireofalice.leaf=중력 작용
+form.grimoireofalice.ufo=무작위 이동
+form.grimoireofalice.wind=몹 밀쳐내기
+form.grimoireofalice.note=느리게 이동
+
+danmakuvariant.grimoireofalice.leaf.name=잎사귀탄
+danmakuvariant.grimoireofalice.ufo.name=벤토라탄
+danmakuvariant.grimoireofalice.wind.name=바람탄
+danmakuvariant.grimoireofalice.note.name=음표탄
+danmakuvariant.grimoireofalice.sun.name=태양탄
+
+entity.grimoireofalice.pendulum.name=펜듈럼
+entity.grimoireofalice.spell.name=스펠
+entity.grimoireofalice.jewel.name=용 목의 구슬
+entity.grimoireofalice.fist.name=주먹
+entity.grimoireofalice.scythe.name=낫
+entity.grimoireofalice.doll.name=인형
+entity.grimoireofalice.orb.name=구체
+entity.grimoireofalice.barrier.name=결계
+entity.grimoireofalice.lantern.name=등불
+entity.grimoireofalice.soul.name=영혼
+entity.grimoireofalice.fiery_sword.name=불의 검
+entity.grimoireofalice.ice_block.name=얼음
+entity.grimoireofalice.mirale_circle.name=기적
+entity.grimoireofalice.talisman.name=부적
+entity.grimoireofalice.gap.name=스키마
+entity.grimoireofalice.ceiling.name=금각사의 천정 한 겹
+entity.grimoireofalice.youkai.name=요괴의 책
+entity.grimoireofalice.camera.name=카메라 프레임
+entity.grimoireofalice.watch.name=시계
+
+effect.grimoireofalice.elixir_potion=약
+effect.grimoireofalice.radiation_poisoning_potion=방사능 중독
+
+item.rodofremorse.entityHealthUsage=체력
+item.toyosatomimi.empty=- - - - - - - 영혼이 감지되지 않음 - - - - - - -
+item.hourai.level_0=몸이 마비된 것 같은 느낌이 들면서, 더 이상 자라지 않게 됩니다.
+item.hourai.level_1=공기가 가벼워진 것 같은 느낌이 들면서, 더 이상 아프지 않게 됩니다.
+item.hourai.level_2=당신의 영혼이 공포에 비명을 지르면서, 원초적 감각에 대하여 완전히 불멸이 되어버렸습니다.
+item.hourai.level_3=당신은 이미 불로불사입니다!
+
+achievement.craftAltar=카구야 공주 이야기
+achievement.craftAltar.desc=카구야 공주가 낸 8개의 난제.
+
+achievement.craftBuddhaBowl=신난제 "부처의 석발"
+achievement.craftBuddhaBowl.desc=부처의 석발을 만드세요.
+
+achievement.craftJeweledHourai=신난제 "봉래의 옥의 가지"
+achievement.craftJeweledHourai.desc=봉래의 옥의 가지를 만드세요.
+
+achievement.craftFireRobe=신난제 "불쥐의 가죽옷"
+achievement.craftFireRobe.desc=불쥐의 가죽옷을 만드세요.
+
+achievement.craftDragonJewel=신난제 "용 목의 구슬"
+achievement.craftDragonJewel.desc=용 목의 구슬을 만드세요.
+
+achievement.craftCowrieShell=신난제 "제비의 자안패"
+achievement.craftCowrieShell.desc=제비의 자안패를 만드세요.
+
+achievement.craftAyaStone=신난제 "에이쟈의 적석"
+achievement.craftAyaStone.desc=에이쟈의 적석을 만드세요.
+
+achievement.craftGoldenCeiling=신난제 "금각사의 천정 한 겹"
+achievement.craftGoldenCeiling.desc=금각사의 천정 한 겹을 만드세요.
+
+achievement.craftElixir=신난제 "불사의 약"
+achievement.craftElixir.desc=봉래의 약을 만드세요.
+
+grimoire.gui.pouch.name=§f스펠 카드 파우치
+grimoire.gui.youkaibook_header.name=Grimoire of
+grimoire.gui.youkaibook_description.name=이 책은 다른 누군가가 읽는 것을 방지하기 위해 봉인되어야 합니다.
+grimoire.gui.hat.name=§f마리사의 모자
+
+itemGroup.grimoireofalice=Grimoire of Alice
+
+grimoire.gui.book_1=                          -개요-|1.- 소개|2.- 월드 자연 생성| 2.1.- 버섯| 2.2.- 광물| 2.3.- 경환모란꽃|3.- 제단 만들기|4.- DanmakuCore| 4.1.- 아이템| 4.2.- 탄막|5.- JEI
+grimoire.gui.book_2=                     -소개-|                         반갑습니다!|여기서 이 모드의 개괄적인 메커니즘을 이해|하기 쉽도록 읽어볼 수 있습니다. 굉장히|간단한 모드이기 때문에, 머리가 지끈거릴 일|은 없을 겁니다.||다음 페이지들은 툴팁으로는 알기 어려운|자연 생성물, 조합법, 그리고 타 모드와의 연계|에 대한 설명입니다.|||느긋하게 있으라구!
+grimoire.gui.book_3=                   -월드 자연 생성-|                          버섯|'마법'의 버섯들은 땅 속 깊이 자라며, 어둠 |속에서 빛나고, 일부는 섭취 시 치명적이기도|합니다.||||||| 평범한 버섯인걸요...| 먹지 말아주세요!
+grimoire.gui.book_4=                   -월드 자연 생성-|                             광물|불순석이란 이 모드에서 추가되는 유일한 광물로,|찾아보기 매우 쉬우며 Y 높이 30 이하에서만생성됩니다.|철 도구 이상 티어의 곡괭이를 필요로 하며,|채광 시 히히이로카네를 제조하는데 쓰이는|불순광을 얻을 수 있습니다.
+grimoire.gui.book_5=                   -월드 자연 생성-|                      경환모란꽃|이 희귀한 광물은 꽃의 형태로 돌 안에서 자라며,|흔히 보이지는 않습니다.|* 채광 시, 3~8개의 금 조각을 얻을 수 있습니다.
+grimoire.gui.book_6=                      -제단 만들기-|                         조합법|아이템의 조합법은 간단합니다 - 투입이 있으면 산출이 |있는 법이죠.|제단 내 조합법은 일반 조합과는 다릅니다.|아이템을 한꺼번에 대량 제조할 수 없으며,|재료는 조합 후 소멸되고, 조합에 특별 조건이 필요합니다.|조건들은 복잡하며, 예를 들어 비 오는 날이라던가,|밤낮의 차이, 달의 위상, 위치 차원 등이 있습니다.
+grimoire.gui.book_7=                      -DanmakuCore-|                            아이템|DanmakuCore를 필요로 하는 아이템이 있습니다 (예를 들어|"봉래의 옥의 가지"라던가, 다른|특별한 아이템들 말이죠). 해당 아이템들은|DanmakuCore가 없을 시 나타나지 않습니다. 왜냐고요?|그 아이템들은 탄막이 필요하기 때문이죠.
+grimoire.gui.book_8=                      -DanmakuCore-|                         탄막|이 모드는 2개의 새로운 탄막 종류를 DanmakuCore에|추가합니다.|||*태양탄:               튕깁니다.|||*벤토라탄:               무작위로 이동합니다.
+grimoire.gui.book_9=                           -JEI-|JEI를 이용해 아이템들의 조합법을 볼 수 있습니다.|간단하죠? 안 쪽에 위치한 아이템은 작은|기둥에, 바깥쪽에 위치한 아이템은 큰 온바시라에|배치하면 됩니다.
+
+grimoire.tooltip.shift_description=<Shift를 눌러 상세 정보 확인>
+grimoire.tooltip.ownedProperty=소유자 : %s
+
+grimoire.tooltip.crafting_altar_header.name=조합대를 만드는 것보단 어려울걸요.
+
+grimoire.tooltip.holy_key_stone_header.name=검고 단단한 돌로 만들어진 무거운 물체
+
+grimoire.tooltip.holy_stone_header.name=자체의 중력장을 갖고 있는 마법의 돌
+
+grimoire.tooltip.kyoumarubotan_header.name=신비로운 모란꽃의 세계
+grimoire.tooltip.kyoumarubotan_description.name=꽃 모양의 적철광
+
+grimoire.tooltip.shroom_block_tasty.name=맛 좋은 간식
+
+grimoire.tooltip.onbashira_block_header.name=무겁습니다.
+
+grimoire.tooltip.pillar_altar_header.name=무겁습니다.
+
+grimoire.tooltip.ichirin_unzan_header.name=강력한 스탠드를 얻습니다.
+grimoire.tooltip.ichirin_unzan_description.name=고리를 이용해 형체를 조종합니다.
+
+grimoire.tooltip.kanako_shimenawa_header.name=얽히고 섥힌 뱀의 형상
+grimoire.tooltip.kanako_shimenawa_description_top.name=전설에 따르면 진정한 힘은 아직 아무도 모른다 합니다.
+grimoire.tooltip.kanako_shimenawa_description_bottom.name=사람에게 상상할 수 없는 힘을 제공해줍니다.
+
+grimoire.tooltip.toyosatomimi_hat_header.name="무한한 지식"
+grimoire.tooltip.toyosatomimi_hat_description_top.name=나는 한 번에 열 명의 얘기를 들을 수 있네만,
+grimoire.tooltip.toyosatomimi_hat_description_mid.name=안타깝게도 자네는 열 한 번째더군.
+grimoire.tooltip.toyosatomimi_hat_description_bottom.name=참으로 가엾도다
+
+grimoire.tooltip.utsuho_wings_header.name=지옥까마귀 with 야타가라스
+grimoire.tooltip.utsuho_wings_description.name=착용자에게 무한정한 비행을 제공합니다.
+
+grimoire.tooltip.nuclear_rod_header.name=궁극의 에너지 핵융합을 다루는 제어봉
+
+grimoire.tooltip.grilled_lamprey_header.name=구운 닭고기 대용품
+
+grimoire.tooltip.heavenly_peach_header.name=하늘에서 떨어진 과일
+grimoire.tooltip.heavenly_peach_description.name=이걸 따기 위해선 하늘 높이 올라가야 할 거야
+
+grimoire.tooltip.hourai_elixir_header.name=누구든지 이 금약을 마시는 자는 더 이상 늙지도, 아프지도, 죽지도 않을 것이다. 여느때와 같이 연약하고 취약하겠지만 입게 되는 모든 부상은 금방 나을 것이다. 치명적인 상처 또한 며칠 내로 나을 것이고, 완전히 파괴되어도 어느새 복구될 것이다.
+grimoire.tooltip.hourai_elixir_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.ibaraki_box_header.name=고통을 치유하는 대신에, 음용자의 인격은
+grimoire.tooltip.ibaraki_box_description.name=잠시동안 오니와도 같아질 것입니다.
+
+grimoire.tooltip.ibuki_gourd_header.name=이 두레박에 물이 한 방울만 떨어져도
+grimoire.tooltip.ibuki_gourd_description.name=술이 계속해서 나올 것입니다.
+
+grimoire.tooltip.icicle_sword_header.name=퍼펙트 프리즈!
+
+grimoire.tooltip.kappas_nostrum_header.name=캇파를 쥐어짜면서까지 만들어낸 강력한 회복제입니다.
+grimoire.tooltip.kappas_nostrum_description.name=재생을 제공하며, 모든 포션 효과를 제거합니다.
+
+grimoire.tooltip.shroom_dust_header.name=가루형 사일로사이빈
+grimoire.tooltip.shroom_dust_description.name=환각에 조심하세요
+
+grimoire.tooltip.nuclear_boots_header.name="핵융합을 다루는 정도의 능력"
+grimoire.tooltip.nuclear_boots_description_top.name=왼쪽 발 "분해의 발"
+grimoire.tooltip.nuclear_boots_description_bottom.name=오른쪽 발 "융합의 발"
+
+grimoire.tooltip.orb_elixir_header.name=죽음의 불순을 제거하고,
+grimoire.tooltip.orb_elixir_description_top.name=사용자로 하여금 즉시
+grimoire.tooltip.orb_elixir_description_bottom.name=미래를 보도록 도와줍니다.
+
+grimoire.tooltip.third_eye_header.name=사토리의 서드 아이
+grimoire.tooltip.third_eye_activate.name=Shift+우클릭으로 상태를 설정합니다.
+grimoire.tooltip.third_eye_status.name=상태:
+grimoire.tooltip.third_eye_open.name= 열림
+grimoire.tooltip.third_eye_closed.name= 닫힘
+grimoire.tooltip.third_eye_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.amenonuhoko_header.name=천상의 창
+grimoire.tooltip.amenonuhoko_description_top.name=한 때 태초의 땅덩어리인
+grimoire.tooltip.amenonuhoko_description_mid.name=오노고로시마를 바다로부터
+grimoire.tooltip.amenonuhoko_description_bottom.name=들어올렸던 창.
+grimoire.tooltip.amenonuhoko_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.blood_thirsty_orb_description.name=피를 먹여 희생자를 불러들이세요.
+
+grimoire.tooltip.budah_boul_header.name=부처가 사용했다고 알려진 석발.
+grimoire.tooltip.budah_boul_description_top.name="깨달음을 위해 한 평생이 걸렸고
+grimoire.tooltip.budah_boul_description_bottom.name=수 천 번 더 반복해야 이를 얻으리라"
+
+grimoire.tooltip.cattail_plant_header.name=이걸 줍기 위해 거대한 기계장치를 사용했습니다...
+
+grimoire.tooltip.suwako_hat_header.name="뿅 뿅"
+
+grimoire.tooltip.decoy_doll_header.name=플레이어 대신 피해를 입는 인형입니다.
+
+grimoire.tooltip.death_scythe_header.name=사신의 낫
+grimoire.tooltip.death_scythe_description.name=죽은자의 한기가 느껴집니다.
+
+grimoire.tooltip.dragon_jewel_header.name=용목에 걸려 있던 오색의 구슬.
+grimoire.tooltip.dragon_jewel_description_top.name="이 구슬을 갖는 자는
+grimoire.tooltip.dragon_jewel_description_bottom.name=무슨 소망이든 이루어지리라"
+
+grimoire.tooltip.fake_miracle_mallet_header.name=전방의 공간을 쓸어 피해를 가합니다.
+
+grimoire.tooltip.fire_robe_header.name=불 속에서도 살 수 있는 신비로운 쥐의 털로 만들어졌습니다.
+grimoire.tooltip.fire_robe_description_top.name=완전히 방염이며, 착용자는 지옥 그 자체로부터 안전합니다.
+grimoire.tooltip.fire_robe_description_mid.name=여지껏 그 어떤 사람이 만든 갑옷보다 강력합니다.
+grimoire.tooltip.fire_robe_description_bottom.name=정화의 결계에 의해 무효화될 수 있습니다.
+grimoire.tooltip.fire_robe_description_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.folding_umbrella_header_header.name=사람을 보내는 마법의 양산.
+grimoire.tooltip.folding_umbrella_header_top.name=우클릭으로 바라보고 있는 방향으로
+grimoire.tooltip.folding_umbrella_header_bottom.name=40블록 떨어진 곳까지 텔레포트합니다.
+grimoire.tooltip.folding_umbrella_header_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.send_off_lantern_header.name=플레이어가 짧은 시간 동안 모든
+grimoire.tooltip.send_off_lantern_description.name=피해를 무효화하도록 합니다.
+
+grimoire.tooltip.maple_leaf_shield_header.name=단풍잎이 그려진 둥근 방패입니다.
+grimoire.tooltip.maple_leaf_shield_effect.name="사용 시 신속을 제공합니다."
+
+grimoire.tooltip.ufos_header.name=플레이어 주변 아이템을 수집합니다.
+grimoire.tooltip.ufos_status.name=상대:
+grimoire.tooltip.ufos_on.name= 활성화
+grimoire.tooltip.ufos_off.name= 비활성화
+
+grimoire.tooltip.ghost_dipper_header.name=선박들을 가라앉힌다고 알려진 공포스런 여인의 물건.
+grimoire.tooltip.ghost_dipper_description_top.name=- 물에 대고 우클릭할 시 물을 비웁니다.
+grimoire.tooltip.ghost_dipper_description_bottom.name=- 지면에 대고 우클릭할 시 물을 설치합니다.
+grimoire.tooltip.ghost_dipper_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.glorious_nippon_steel_header.name=둥그렇고 값진 강철.
+
+grimoire.tooltip.grimoire_book_header.name=궁극의 마법이 담긴 스펠 책.
+grimoire.tooltip.grimoire_book_description.name="일곱 빛깔의 색으로 찬란히 빛나는 마도서"
+
+grimoire.tooltip.hakurei_gohei_header.name=강력한 무녀의 불제봉.
+grimoire.tooltip.hakurei_gohei_mode_header.name=§o§f불제봉 모드 :
+grimoire.tooltip.hakurei_gohei_mode_passive.name= §f무저항
+grimoire.tooltip.hakurei_gohei_mode_aura_manipulation.name= §b오라 조작
+grimoire.tooltip.hakurei_gohei_mode_hakurei_yin_yang_orbs.name= §d하쿠레이 음양옥
+grimoire.tooltip.hakurei_gohei_mode_exploding_barrier.name= §eE폭발결계
+grimoire.tooltip.hakurei_gohei_mode_motion_barrier.name= §6동작결계
+grimoire.tooltip.hakurei_gohei_mode_offensive.name= §4공격적
+
+grimoire.tooltip.hakurouken_sword_header.name=탄막을 반사합니다.
+
+grimoire.tooltip.hihiirokane_header.name="선홍빛 광물"
+grimoire.tooltip.hihiirokane_description_top.name=알 수 없는 물질적 개체가 한 때
+grimoire.tooltip.hihiirokane_description_mid.name=특별한 전설적인 무기를 제련하기
+grimoire.tooltip.hihiirokane_description_bottom.name=위해 사용하던 적색의 신비로운 금속.
+
+grimoire.tooltip.ichirin_ring_header.name=뉴도 조종기
+grimoire.tooltip.ichirin_use.name=양 손에 고리를 들어 사용합니다.
+grimoire.tooltip.ichirin_inactive.name=비활성화
+grimoire.tooltip.ichirin_active.name=활성화
+grimoire.tooltip.ichirin_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.kappa_hat_header.name="리버-캐슬"
+
+grimoire.tooltip.marisa_hat_header.name="마녀의 모자"
+grimoire.tooltip.marisa_hat_description.name=5블록 내의 아이템을 줍습니다.
+
+grimoire.tooltip.miko_cloak_header.name=간지나는 망토!
+
+grimoire.tooltip.miko_stick_header.name=토요사토미미노 미코의 소유물
+grimoire.tooltip.miko_stick_description.name=물 양동이보다 낫다!
+
+grimoire.tooltip.miracle_mallet_header.name=옛 적 난쟁이가 쓰던 보물로, 세대를 걸쳐 전해졌습니다.
+grimoire.tooltip.miracle_mallet_description.name=사용자가 바라는 소원을 들어준다고 합니다.
+
+grimoire.tooltip.mochi_hammer_header.name=땅의 주인이신 오오쿠니누시노미코토시여...
+grimoire.tooltip.mochi_hammer_description_top.name="이건 다이코쿠 님의 몫~
+grimoire.tooltip.mochi_hammer_description_mid.name=이것도 다이코쿠 님의 몫~
+grimoire.tooltip.mochi_hammer_description_bottom.name=아직 180명분의 몫이 남았어..."
+grimoire.tooltip.mochi_hammer_shift.name=<Shift를 눌러 상세 정보 확인>
+grimoire.tooltip.mochi_hammer_description.name=희생자 수:
+
+grimoire.tooltip.momijis_scimitar_sword_header.name=매우 날카롭고 무겁습니다.
+grimoire.tooltip.momijis_scimitar_sword_description.name=희귀한 금속으로 제련되었습니다.
+
+grimoire.tooltip.nazrin_pendulum_header.name=지하의 광맥을 찾기 위한 신비한 펜듈럼.
+grimoire.tooltip.nazrin_pendulum_ore.name=광물:
+grimoire.tooltip.nazrin_pendulum_description.name=우클릭으로 활성화하며, Shift로 취소합니다
+grimoire.tooltip.nazrin_pendulum_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.nazrin_stick_header.name=옛 시대의 희귀한 보물.
+grimoire.tooltip.nazrin_stick_description_header.name=들고만 있어도 자그마한 다우저 대장이 될 수 있습니다.
+grimoire.tooltip.nazrin_stick_use.name=양 손에 들어서 사용할 수 있습니다.
+grimoire.tooltip.nazrin_stick_inactive.name=비활성화
+grimoire.tooltip.nazrin_stick_active.name=활성화
+grimoire.tooltip.nazrin_stick_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.ghost_anchor_header.name=배를 파괴하기 위한 커다란 닻.
+
+grimoire.tooltip.needle_header.name=슝!
+
+grimoire.tooltip.nimble_fabric_header.name=잠시동안 투명화가 됩니다.
+grimoire.tooltip.nimble_fabric_description.name=그 동안 이동하거나 사격할 수 없습니다.
+
+grimoire.tooltip.nue_trident_header.name=봉인된 짐승이자 불분명한 형상의 종자가 쓰던 삼지창입니다.
+grimoire.tooltip.nue_trident_description.name=무지를 두려워하라, 약한 인간이여!
+
+grimoire.tooltip.onbashira_header.name=나무거신의 다리
+grimoire.tooltip.onbashira_description.name=엄청나게 빽빽해서 드는 것 조차 버겁습니다.
+
+grimoire.tooltip.patchy_book_header.name=저자: 파츄리 널릿지
+
+grimoire.tooltip.popsicle_stick_header.name=누군가 핥았어...
+grimoire.tooltip.popsicle_stick_description.name=수박 블록과 조합하여 수박 검을 만들 수 있습니다.
+
+grimoire.tooltip.rod_of_remorse_header.name=죄가 깊을수록 회오봉은 무거워지리라.
+grimoire.tooltip.rod_of_remorse_description.name=심판받는 이는 회개할 때까지 맞으리라.
+
+grimoire.tooltip.rumia_sword_header.name=비공식
+grimoire.tooltip.rumia_sword_description.name=적을 불길에 휩싸이게 합니다.
+
+grimoire.tooltip.sacred_sword_of_toyosatomimi_header.name=토요사토미미의 성검.
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_top.name=플레이어 근처의 영혼을 찾은 뒤,
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_middle.name=생명의 정수를 구체 형태로
+grimoire.tooltip.sacred_sword_of_toyosatomimi_description_bottom.name=수집합니다.
+grimoire.tooltip.sacred_sword_of_toyosatomimi_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.sanae_gohei_header.name=기적을 불러일으켜봐요.
+grimoire.tooltip.sanae_gohei_use.name=음식이나 신앙 아이템으로 신앙을 충전합니다.
+grimoire.tooltip.sanae_gohei_charge.name=모인 신앙:
+grimoire.tooltip.sanae_gohei_shift.name=<Shift를 눌러 상세 정보 확인>
+grimoire.tooltip.sanae_gohei_mode_header.name=§f불제봉 모드 :
+grimoire.tooltip.sanae_gohei_mode_clear.name= §b맑은 하늘의 기적
+grimoire.tooltip.sanae_gohei_mode_rain.name= §b끝없는 비의 기적
+grimoire.tooltip.sanae_gohei_mode_thunder.name= §b천둥번개의 기적
+grimoire.tooltip.sanae_gohei_mode_testificate.name= §b증명의 기적
+grimoire.tooltip.sanae_gohei_mode_wind.name= §b바람의 기적
+grimoire.tooltip.sanae_gohei_mode_heal.name= §b회춘의 기적
+grimoire.tooltip.sanae_gohei_mode_potions.name= §b양조의 기적
+grimoire.tooltip.sanae_gohei_mode_soil.name= §b비옥의 기적
+grimoire.tooltip.sanae_gohei_mode_time.name= §b시간 전환의 기적
+
+grimoire.tooltip.sariel_wand_header.name=막대한 지식을 지닌 죽음의 천사이자 신의 지휘자시여...
+grimoire.tooltip.sariel_wand_description.name=타천사가 가지고 있던 전설적인 지팡이입니다.
+grimoire.tooltip.sariel_wand_mode.name=머리:
+
+grimoire.tooltip.skull_0.name=스켈레톤
+grimoire.tooltip.skull_1.name=위더 스켈레톤
+grimoire.tooltip.skull_2.name=좀비
+grimoire.tooltip.skull_3.name=플레이어
+grimoire.tooltip.skull_4.name=크리퍼
+
+grimoire.tooltip.shichi_seiken_header.name=북두칠성과 구름의 모양으로 금빛 장식이 새겨진 보검입니다.
+
+grimoire.tooltip.shimenawa_rope_header.name=텐시의 자그마한 선물.
+grimoire.tooltip.shimenawa_rope_description.name=천계로부터의 작은 조각
+
+grimoire.tooltip.skull_header.name=무덤에서 훔쳐왔습니다.
+
+grimoire.tooltip.stop_watch_header.name="시간아 멈춰라"
+grimoire.tooltip.stop_watch_description_top.name=우클릭으로 발동합니다.
+grimoire.tooltip.stop_watch_description_bottom.name=Shift+좌클릭으로 취소합니다.
+
+grimoire.tooltip.substitute_jizo_header.name=사용자가 한 대의 공격을 버티도록 해줍니다.
+grimoire.tooltip.substitute_jizo_description.name=아이템을 떨굴 수 없습니다.
+
+grimoire.tooltip.cowrie_shell_header.name=제비가 품고 있던 조개.
+
+grimoire.tooltip.seamless_ceiling_of_kinkaku_ji_header.name=거대한 건축물의 무거운 천장.
+
+grimoire.tooltip.red_stone_of_aja_header.name=완벽하게 빛나는 보석.
+
+grimoire.tooltip.tenshi_hat_header.name=천상의 피학주의자가 쓰던 모자.
+
+grimoire.tooltip.sword_of_kusanagi_header.name=신비로운 금속인 히히이로카네로 제련된 신성한 검입니다.
+grimoire.tooltip.sword_of_kusanagi_description_body.name=스사노오노미코토가 8개의 머리와 꼬리가 달린 야마타노오로치를 죽였을 때 네번째 꼬리에서 발견했습니다.
+grimoire.tooltip.sword_of_kusanagi_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.roukanken_header.name=요괴가 만들었다고 알려진 날이 긴 일본도입니다.
+grimoire.tooltip.roukanken_description_top.name="요괴가 제련한 이 누관검으로,
+grimoire.tooltip.roukanken_description_bottom.name=벨 수 없는 것은 아무것도 없다!"
+grimoire.tooltip.roukanken_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.syringe_header.name=무작위 포션 효과를 부여합니다.
+
+grimoire.tooltip.tengu_camera_header.name=사진을 찍어 전방의 공간을 휩씁니다.
+
+grimoire.tooltip.time_orb_header.name=영야초 한정.
+grimoire.tooltip.time_orb_description_top.name=밤이 흐르는 것을 느리게
+grimoire.tooltip.time_orb_description_bottom.name=만든다고 알려져 있습니다.
+
+grimoire.tooltip.wall_passing_chisel_header.name=벽을 뚫는 끌.
+grimoire.tooltip.wall_passing_chisel_description.name=고체 블록에 사용할 수 있습니다.
+
+grimoire.tooltip.watermelon_blade_header.name=날 먹어!
+
+grimoire.tooltip.watermelon_sword_header.name=이 검을 먹을 수는 없습니다.
+grimoire.tooltip.watermelon_sword_description.name=대신 피해를 입을 시 수박을 떨굽니다.
+
+grimoire.tooltip.youkai_book_header.name=요괴가 쓴 책.
+grimoire.tooltip.youkai_book_description.name=악령이 있을 수도 있습니다.
+
+grimoire.tooltip.elly_scythe_header.name="피의 수확자"
+
+grimoire.tooltip.jeweled_hourai_header.name=신비로운 봉래섬에 있던 옥 달린 가지.
+grimoire.tooltip.jeweled_hourai_description.name="신기루란—무형의 현현이라"
+
+grimoire.tooltip.laevatein_header.name=마법 지팡이 감반테인, 불과 혼돈의 레바테인
+
+grimoire.tooltip.leaf_header.name=신령묘의 마미조의 잎사귀.
+grimoire.tooltip.leaf_description.name=적을 즐겁게 해보세요!
+
+grimoire.tooltip.shou_lamp_header.name=부를 불러들입니다.
+grimoire.tooltip.shou_lamp_use.name=차지해서 탄막을 발사합니다.
+grimoire.tooltip.shou_lamp_jewels.name=보석:
+grimoire.tooltip.shou_lamp_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.spell_card_pouch_header.name=스펠 카드를 담을 수 있습니다.
+
+grimoire.tooltip.hisou_sword_header.name=비상비비상천의 검.
+grimoire.tooltip.hisou_sword_description_top.name=황금빛으로, 고대 중국식 도검의 모습을 띄고 있습니다.
+grimoire.tooltip.hisou_sword_shift.name=<Shift를 눌러 상세 정보 확인>
+
+grimoire.tooltip.tengu_fan_header.name=바람을 조종하는 부채.
+
+grimoire.tooltip.piano_header.name=소령이 깃든 피아노입니다.
+grimoire.tooltip.piano_use.name=우클릭을 꾹 눌러 연주합니다.
+
+grimoire.tooltip.trumpet_header.name=소령이 깃든 트럼펫입니다.
+grimoire.tooltip.trumpet_use.name=우클릭을 꾹 눌러 연주합니다.
+
+grimoire.tooltip.violin_header.name=소령이 깃든 바이올린입니다.
+grimoire.tooltip.violin_use.name=우클릭을 꾹 눌러 연주합니다.
+
+grimoire.tooltip.fox_mask_header.name=결의의 츠쿠모가미.
+grimoire.tooltip.fox_mask_good_buff_one.name= + 신속
+grimoire.tooltip.fox_mask_good_buff_two.name= + 저항
+grimoire.tooltip.fox_mask_vulnerable.name= *마법에 취약함.
+
+grimoire.tooltip.fuku_no_kami_mask_header.name=익살의 츠쿠모가미.
+grimoire.tooltip.fuku_no_kami_mask_good_buff_one.name= + 화염 저항
+grimoire.tooltip.fuku_no_kami_mask_good_buff_two.name= + 야간 투시
+grimoire.tooltip.fuku_no_kami_mask_bad_buff.name= - 혼란
+grimoire.tooltip.fuku_no_kami_mask_vulnerable.name= *시듦에 취약함.
+
+grimoire.tooltip.hannya_mask_header.name=분노의 츠쿠모가미.
+grimoire.tooltip.hannya_mask_good_buff.name= + 힘
+grimoire.tooltip.hannya_mask_vulnerable.name= *마법에 취약함.
+
+grimoire.tooltip.hyottoko_mask_header.name=고무의 츠쿠모가미.
+grimoire.tooltip.hyottoko_mask_good_buff_one.name= + 재생 V
+grimoire.tooltip.hyottoko_mask_good_buff_two.name= + 점프 강화
+grimoire.tooltip.hyottoko_mask_vulnerable.name= *마법에 취약함.
+
+grimoire.tooltip.koomote_mask_header.name=유쾌의 츠쿠모가미.
+grimoire.tooltip.koomote_mask_good_buff.name= + 흡수
+grimoire.tooltip.koomote_mask_bad_buff.name= - 배고픔
+grimoire.tooltip.koomote_mask_vulnerable.name= *폭발에 취약함.
+
+grimoire.tooltip.mask_of_hope_header.name=지장보살의 츠쿠모가미.
+grimoire.tooltip.mask_of_hope_description.name=찾을 시 코코로에게 돌려주세요, 안 그러면...
+grimoire.tooltip.mask_of_hope_good_buff.name= - 시듦
+grimoire.tooltip.mask_of_hope_bad_buff.name= - 독
+grimoire.tooltip.mask_of_hope_vulnerable.name= *시듦에 취약함.
+
+grimoire.tooltip.monkey_mask_header.name=당혹의 츠쿠모가미.
+grimoire.tooltip.monkey_mask_good_buff.name= - 투명화
+grimoire.tooltip.monkey_mask_bad_buff.name= - 구속 III
+grimoire.tooltip.monkey_mask_vulnerable.name= *폭발에 취약함.
+
+grimoire.tooltip.raiden_mask_header.name=경악의 츠쿠모가미.
+grimoire.tooltip.raiden_mask_good_buff.name= + 서두름 IV
+grimoire.tooltip.raiden_mask_bad_buff.name= - 나약함
+grimoire.tooltip.raiden_mask_vulnerable.name= *불에 취약함.
+
+grimoire.tooltip.uba_mask_header.name=근심의 츠쿠모가미.
+grimoire.tooltip.uba_mask_bad_buff_one.name= - 피로
+grimoire.tooltip.uba_mask_bad_buff_two.name= - 시야 제한
+grimoire.tooltip.uba_mask_bad_buff_tree.name= - 우울
+grimoire.tooltip.uba_mask_vulnerable.name= *마법에 취약함.
+
+grimoire.jei.descriptions.budah_boul=그믐달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.budah_boul=영원히 사용할 수 있는 만능 도구로 쓰입니다. 허나 아무리 부처의 전설적 유물이라 할 지라도 기반암은 부술 수 없습니다.
+
+grimoire.jei.descriptions.nazrin_stick=땅 밑에 묻힌 보물을 찾기 위해 제작된 특별한 막대입니다.
+grimoire.jei.descriptions_body.nazrin_stick=10블록의 사거리를 가지고 있으며, 모든 종류의 광물을 찾을 수 있습니다.
+
+grimoire.jei.descriptions.amenonuhoko=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.amenonuhoko=사용 시 태초의 돌 무더기를 생성합니다.
+
+grimoire.jei.descriptions.aya_camera=신문기자 샤메이마루 아야의 옛 사진기.
+grimoire.jei.descriptions_body.aya_camera=사진을 찍으면 근접한 탄막을 지우고 피해를 가합니다.
+
+grimoire.jei.descriptions.blood_orb=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.blood_orb=플레이어를 대상의 위치로 옮깁니다.
+
+grimoire.jei.descriptions.cattail_plant=니토리™ 느긋하게 있으라구!
+
+grimoire.jei.descriptions.charm_of_healing=플레이어를 능동/수동적으로 치유합니다.
+grimoire.jei.descriptions_body.charm_of_healing=이 아이템을 사용해 부상을 치유할 수 있습니다.
+
+grimoire.jei.descriptions.cherry=사막 피라미드의 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.cowrie_shell=낚시로만 얻을 수 있는 희귀한 보물입니다.
+
+grimoire.jei.descriptions.cursed_decoy_doll=플레이어를 공격하는 몬스터로부터 피해를 대신 입어주는 저주받은 인형입니다.
+grimoire.jei.descriptions_body.cursed_decoy_doll=제한된 횟수만큼 사용할 수 있습니다.
+
+grimoire.jei.descriptions.death_scythe=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.death_scythe=서 있는 상태에서 사용 시 몬스터를 끌어당깁니다. Shift를 누른 상태에서 사용 시 몬스터를 밀쳐냅니다.
+
+grimoire.jei.descriptions.dragon_jewel=초승달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.dragon_jewel=20블록 내의 모든 몬스터를 재웁니다. Shift+우클릭으로 용의 숨결을 내뿜습니다.
+
+grimoire.jei.descriptions.dragon_scale=엔더 드래곤을 원거리 무기로 공격해서 얻을 수 있습니다.
+
+grimoire.jei.descriptions.dragon_stone=작은 용이 깃들어 있는 기질석입니다.
+
+grimoire.jei.descriptions.elly_scythe=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.elly_scythe=대상에게 저주를 가하고 플레이어를 치유하는 치명적인 낫을 던집니다. 또한 땅에서부터 탄막을 불러들입니다.
+
+grimoire.jei.descriptions.faith=사막 피라미드 및 정글 사원의 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.fake_miracle_mallet=한 번에 여러 대상을 공격합니다. 보다시피 가품이며, 진품은 훨씬 강력합니다.
+
+grimoire.jei.descriptions.fire_robe=그믐달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.fire_robe=불로부터 면역이며 물리적 피해에 뛰어난 저항력을 갖는 마법의 웃옷입니다.
+
+grimoire.jei.descriptions.gap=시공간의 틈새.
+grimoire.jei.descriptions_body.gap=눈 깜짝할 새 이곳 저곳을 순간이동할 수 있습니다. 가장 가까운 곳에 위치한 동일 스키마를 향합니다.
+grimoire.jei.descriptions_color.gap=염료를 이용해 스키마를 염색하고, 뼛가루로 탈염시킬 수 있습니다. Shift+우클릭으로 해체합니다.
+
+grimoire.jei.descriptions.gap_folding_umbrella=마법의 힘이 품어진 우산입니다. 사용자를 특정 방향으로 순간이동시킵니다.
+
+grimoire.jei.descriptions.fox_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.fuku_no_kami_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.full_power=폐광의 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.ghastly_send_off_lantern=플레이어를 무적으로 만드는 유령의 초롱불입니다.  아이템의 재사용 대기 시간동안 효과가 지속됩니다.
+
+grimoire.jei.descriptions.ghost_anchor=바다의 망령의 닻.
+grimoire.jei.descriptions_body.ghost_anchor=당신의 적을 향해 돌진하고 거대한 폭발을 일으킵니다.
+
+grimoire.jei.descriptions.ghost_dipper=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.ghost_dipper=마치 바다가 담긴 듯이, 물이 끝없이 들어가는 국자입니다. 스폰지와 같이 대량의 물을 제거할 수 있으며, 양동이와 같이 물을 무한정 쏟아부을 수 있습니다.
+
+grimoire.jei.descriptions.grilled_lamprey=생선을 꼬치에 꽂아 만들 수 있습니다. 비타민 A가 풍부합니다.
+
+grimoire.jei.descriptions.grimoire_book=스펠을 시전하거나 인형을 조종하는데 쓰이는 마법의 책입니다.
+
+grimoire.jei.descriptions.hakurei_gohei=초승달이 뜨는 날 낮에 조합해야 합니다.
+grimoire.jei.descriptions_body.hakurei_gohei=6개의 모드가 있습니다:
+grimoire.jei.descriptions_passive.hakurei_gohei= -무저항: 사용자에게 크리에이티브 비행 모드를 제공합니다.
+grimoire.jei.descriptions_aura_manipulation.hakurei_gohei= -오라 조작: 대상을 공중으로 띄웁니다.
+grimoire.jei.descriptions_hakurei_yin_yang_orbs.hakurei_gohei= -하쿠레이 음양옥: 튕기는 음양옥을 소환합니다.
+grimoire.jei.descriptions_exploding_barrier.hakurei_gohei= -폭발결계: 개체와 접촉 시 폭발하는 결계를 소환합니다.
+grimoire.jei.descriptionsi_motion_barrier.hakurei_gohe= -동작결계: 몬스터를 밀쳐내는 결계를 소환합니다.
+grimoire.jei.descriptions_offensive.hakurei_gohei= -공격적: 피해를 가합니다.
+
+grimoire.jei.descriptions.hannya_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.hatate_camera=신문기자 히메카이도 하타테의 사진기.
+grimoire.jei.descriptions_body.hatate_camera=사진을 찍으면 피해를 가합니다.
+
+grimoire.jei.descriptions.heavenly_peach=Y 높이 100 이상에서 비상의 검으로 나뭇잎을 파괴해서 얻을 수 있습니다.
+
+grimoire.jei.descriptions.hihiirokane=불순석과 석탄으로 조합할 수 있습니다.
+
+grimoire.jei.descriptions.hisou=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.hisou=주위의 영혼 에너지를 충전해 적에게 내뿜을 수 있습니다. 휘둘러 멀리 있는 적을 공격할 수 있으며, 땅에 대고 우클릭 시 지진을 일으키고, 우클릭을 꾹 눌러 탄막 광선을 발사할 수 있습니다. 
+
+grimoire.jei.descriptions.hourai_elixir=디 엔드에서 조합해야 합니다.
+grimoire.jei.descriptions_body.hourai_elixir=음용자를 죽지도 살아있지도 않은 상태로 만듭니다. 복용하면, 죽지 않습니다.
+
+grimoire.jei.descriptions.hyottoko_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.ibaraki_box=이바라키 카센이 가진 특제 백약승으로, 복용자에게 인간을 뛰어넘은 힘을 주기도 하면서 모든 부상을 치유합니다.
+
+grimoire.jei.descriptions.ibuki_gourd=음용자에게 힘과 멀미를 줍니다.
+
+grimoire.jei.descriptions.icicle_sword=퍼펙트 프리즈로 적을 얼리십시오!
+grimoire.jei.descriptions_body.icicle_sword=얼어붙은 적은 시간에 따른 지속 피해를 입습니다.
+
+grimoire.jei.descriptions.ichirin_unzan=격투 게임 마냥 운잔을 사용할 수 있습니다.
+
+grimoire.jei.descriptions.ichirin_ring=천둥번개 치는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.ichirin_ring=미코시뉴도 운잔을 제어하는데 사용됩니다. 양손에 고리를 들고 우클릭해 주먹을 날립니다.
+
+grimoire.jei.descriptions.impure_rock=불순석을 채광하거나 녹여서 얻을 수 있습니다.
+
+grimoire.jei.descriptions.jeweled_hourai=그믐달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.jeweled_hourai=차지해서 여러 색의 탄막들을 발사할 수 있습니다. Shift를 누른 채 사용하면 한 번에 모든 탄막을 발사합니다. 가진 XP가 많을수록 옥이 충전되는 속도가 빨라집니다.
+
+grimoire.jei.descriptions.kanako_shimenawa=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.kanako_shimenawa=비가 내릴 때 빛이 납니다. 또한 크리에이티브 비행 능력을 주며, 모든 투사체로부터 거의 무적이 됩니다.
+
+grimoire.jei.descriptions.kanako_onbashira=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.kanako_onbashira=엄청난 피해를 가합니다. 유일한 단점은 도끼보다도 공격 속도가 느리단 것입니다.
+
+grimoire.jei.descriptions.kappa_hat=플레이어가 젖었다면 신속을, 말랐다면 구속을 제공합니다.
+
+grimoire.jei.descriptions.kappa_nostrum=마실 시 기적적으로 부상이 낫습니다.
+
+grimoire.jei.descriptions.kokoros_masks=모든 9개의 가면들을 하나로 뭉치면 희망이 없는 가면 무도회만치 강렬한 것이 탄생하리라...
+grimoire.jei.descriptions_body.kokoros_masks=플레이어에게 힘 3, 초고속, 저항 3, 점프 강화 4, 화염 저항을 제공하며, 모든 종류의 공격에 탁월한 보호력을 주면서 플레이어가 거의 무적이 되도록 만듭니다. 또한, 착용자의 부정적 포션 효과를 전부 제거합니다.
+
+grimoire.jei.descriptions.koomote_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.laevatein=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.laevatein=악랄한 파괴의 힘을 지닌 악마가 갖고 있던 가지입니다. 탄막을 발사하는데 화염구가 필요합니다. 땅에 대고 사용할 시 불길을 일으키며, 우클릭 시 불의 검을 만들어내고, Shift+우클릭을 사용할 시 거대한 탄막을 발사합니다.
+
+grimoire.jei.descriptions.leaf=땅에 대고 사용할 시 연기 장막을 만듭니다. 이후 가끔 공중에 벤토라를 만들어냅니다.
+
+grimoire.jei.descriptions.lunasa_violin=마법 피해를 입히는 음표를 발사합니다.
+
+grimoire.jei.descriptions.lyrica_piano=마법 피해를 입히는 음표를 발사합니다.
+
+grimoire.jei.descriptions.maple_leaf_shield=일반 방패처럼 작동합니다. 사용 시 신속을 제공합니다.
+
+grimoire.jei.descriptions.marisa_hat=플레이어 주변의 아이템을 수집합니다.
+
+grimoire.jei.descriptions.mask=코코로의 가면을 만드는 데 사용됩니다.
+
+grimoire.jei.descriptions.mask_of_hope=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.merlin_trumpet=마법 피해를 입히는 음표를 발사합니다.
+
+grimoire.jei.descriptions.miko_cloak=도교계 성자의 마법 망토입니다.
+grimoire.jei.descriptions_body.miko_cloak=착용자로 하여금 먼 거리를 엄청 빠른 속도로 이동할 수 있게 합니다.
+
+grimoire.jei.descriptions.miko_needle=무녀가 요괴와 싸울 때 쓰는 물건입니다. 화살과 똑같습니다.
+
+grimoire.jei.descriptions.miko_stick=막대로 때릴 시 불을 끕니다. 사용할 시 경험치 레벨을 1 소모하고 재생 효과를 줍니다.
+
+grimoire.jei.descriptions.miracle_mallet=그릇 안에 담긴 작은 공주가 쓰던 전설적인 유물입니다. 마음대로 대상의 크기를 바꿀 수 있습니다.
+grimoire.jei.descriptions_body.miracle_mallet=우클릭 시 자신의 크기를 바꾸고, 플레이어에 대고 사용할 시 대상의 크기를 바꿉니다. 휘두를 시 탄막을 발사해 여러 대상을 공격하고, Shift를 누르고 휘두를 시 바라보고 있는 탄막의 크기를 바꿉니다.
+
+grimoire.jei.descriptions.mochi_hammer=기우는 보름달이 뜬 날 밤에 조합해야 합니다.
+grimoire.jei.descriptions_body.mochi_hammer=맛있는 떡을 찧는데 사용되지만, 가끔 공격적인 무기로 쓰는 사람도 있습니다...
+
+grimoire.jei.descriptions.momijis_scimitar_sword=백랑 텐구 이누바시리 모미지가 쓰는 검입니다.
+
+grimoire.jei.descriptions.monkey_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.mortal_n_pestle=버섯을 가루로 만드는 데 사용됩니다.
+
+grimoire.jei.descriptions.nazrin_pendulum=나즈린이 땅에 묻힌 보물을 찾을 때 쓰는 매우 희귀한 아이템입니다. 땅 밑에 파묻힌 광석과 상자들을 찾아낼 수 있습니다.
+grimoire.jei.descriptions_body.nazrin_pendulum=왼손에 광물을 든 채 우클릭을 꾹 눌렀다 떼면 해당 광물을 지정합니다. 왼손을 비운 채 우클릭을 꾹 눌렀다 떼면 지정 광물을 비웁니다.
+
+grimoire.jei.descriptions.nimble_fabric=사용자로 하여금 받는 모든 피해를 무효화해주는 천입니다. 다만 사용자 또한 아무 것도 할 수 없게 됩니다.
+
+grimoire.jei.descriptions.nue_trident=외계인으로부터의 외계 물건일까요? 손잡이에 알아볼 수 없는 문구가 새겨져 있습니다.
+grimoire.jei.descriptions_body.nue_trident=공격 대상에게 실명과 멀미를 줍니다.
+
+grimoire.jei.descriptions.nuclear_boots=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.nuclear_boots=착용자에게 방사능 면역을 제공합니다.
+
+grimoire.jei.descriptions.nuclear_rod=핵에너지를 제어하기 위한 제어봉입니다.
+grimoire.jei.descriptions_body.nuclear_rod=방사능 중독은 덤으로 딸려옵니다.
+
+grimoire.jei.descriptions.orb_elixir=디 엔드에서 조합해야 합니다.
+grimoire.jei.descriptions_body.orb_elixir=잠시동안 모든 종류의 질병과 죽음을 치료합니다.
+
+grimoire.jei.descriptions.patchy_book=Grimoire of Alice 가이드로, 모드에 대한 정보가 들어있습니다.
+
+grimoire.jei.descriptions.popsicle_stick=꿀맛!
+
+grimoire.jei.descriptions.pouch=스펠 카드들을 저장하는 데 적격입니다. 너무 많은 스펠카드들을 들고 다니면서 인벤토리가 지저분해지는 것을 방지합니다.
+
+grimoire.jei.descriptions.raiden_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.red_stone_of_aja=보름달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.red_stone_of_aja=멀리까지 초고속 레이저를 발사합니다. 경험치 레벨이 높을수록 아이템이 받는 피해가 줄어듭니다.
+
+grimoire.jei.descriptions.rod_of_remorse=세상에 죄오를 알리리라...
+grimoire.jei.descriptions_body.rod_of_remorse=몬스터의 체력을 1/4 깎습니다. 죄인은 저지른 죄악의 크기에 따라 뉘우침의 정도가 깊어질 것입니다.
+
+grimoire.jei.descriptions.roukanken=다수의 개체를 한 번에 베어나갈 수 있는 유령의 검입니다.
+grimoire.jei.descriptions_body.roukanken=우클릭으로 차지해서 적을 향해 돌진할 수 있습니다.
+
+grimoire.jei.descriptions.rumia_sword=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.rumia_sword=보이는 모든 것들을 불태우는 거대한 검입니다.
+
+grimoire.jei.descriptions.sacred_toyosatomimi_sword=주위의 몬스터들을 찾고, 각각의 위치를 채팅창에 표시합니다. 또한 강력한 밀쳐내는 힘을 가지고 있습니다.
+
+grimoire.jei.descriptions.sanae_gohei=아라히토가미 여신의 후손의 불제봉입니다.
+grimoire.jei.descriptions_body.sanae_gohei=신앙을 다음 기적과 바꿀 수 있습니다:
+grimoire.jei.descriptions_body.sanae_gohei_clear=맑은 하늘의 기적 : 1 신앙 -> 날씨를 맑게 바꿉니다.
+grimoire.jei.descriptions_body.sanae_gohei_rain=끝없는 비의 기적 : 4 신앙 -> 비가 오게 합니다.
+grimoire.jei.descriptions_body.sanae_gohei_thunder=천둥번개의 기적 : 5 신앙 -> 뇌우가 치게 합니다.
+grimoire.jei.descriptions_body.sanae_gohei_wind=바람의 기적 : 1 신앙 -> 강한 바람으로 적들을 날려보냅니다.
+grimoire.jei.descriptions_body.sanae_gohei_moses=증명의 기적 : 15 신앙 -> 주변의 좀비들을 주민으로 바꿉니다.
+grimoire.jei.descriptions_body.sanae_gohei_heal=회춘의 기적 : 2 신앙 -> 플레이어의 데미지를 회복시킵니다.
+grimoire.jei.descriptions_body.sanae_gohei_potions=양조의 기적 : 3 신앙 -> 플레이어에 모든 포션 효과를 줍니다.
+grimoire.jei.descriptions_body.sanae_gohei_crops=비옥의 기적 : 8 신앙 -> 주변 무작위 블록에 뼛가루 효과를 가합니다.
+grimoire.jei.descriptions_body.sanae_gohei_time=시간 전환의 기적 : 15 신앙 -> 낮과 밤을 뒤바꿉니다.
+
+grimoire.jei.descriptions.sariel_wand=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.sariel_wand=플레이어와 일부 몬스터로부터 머리를 수집합니다. 이후 설치할 수 있습니다.
+
+grimoire.jei.descriptions.seamless_ceiling_of_kinkaku_ji=초승달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.seamless_ceiling_of_kinkaku_ji=거대한 순금으로 적을 깔아뭉개십시오. 엔티티에 대고 우클릭을 할 시 천정을 설치합니다.
+
+grimoire.jei.descriptions.shichi_seiken=상현달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.shichi_seiken=광물을 캘 시 0~4개의 아이템을 얻을 확률이 있습니다.
+
+grimoire.jei.descriptions.shinmyoumaru_hat=크기를 자유자재로 바꾸는 신비로운 망치를 지닌 작은 공주님의 그릇입니다.
+
+grimoire.jei.descriptions.shinmyoumaru_needle=휘침성에 사는 소인족 스쿠나 신묘마루의 소지품입니다.
+grimoire.jei.descriptions_body.shinmyoumaru_needle=우클릭을 꾹 눌러 소인족 파워를 모읍니다. 이후 차지를 떼 오라오라오라오라오라오라오라오라오라오라
+
+grimoire.jei.descriptions.shou_lamp=사용 시 레이저 탄막을 발사합니다. 꾹 눌러 보석 파워를 모으고, Shift+우클릭으로 활성화합니다. 보석 파워에 비례해 탄막을 발사합니다.
+
+grimoire.jei.descriptions.shroom_powder=DanmakuCore가 설치되어 있을 시 탄막 포션을 만드는데 사용됩니다.
+
+grimoire.jei.descriptions.skull=플레이어를 보호하는 해골을 주변에 소환합니다 (미구현)
+
+grimoire.jei.descriptions.star=폐광에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.stop_watch=시간을 완전히 멈출 수 있는 신비한 시계입니다. 잠시 모든 엔티티의 이동을 멈추며, 이후 시간 정지가 풀리면 원래의 가속도로 돌려줍니다.
+
+grimoire.jei.descriptions.substitute_jizo=사용자를 피해로부터 보호하며, 다 소진될 시 파괴됩니다.
+
+grimoire.jei.descriptions.suwako_hat=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.suwako_hat=가시 X이 마법부여 되어있습니다.
+
+grimoire.jei.descriptions.swallow_cowrie_shell=차는 볼록달이 뜬 날 밤 조합해야 합니다.
+grimoire.jei.descriptions_body.swallow_cowrie_shell=플레이어에게 강렬한 포만감을 제공합니다.
+
+grimoire.jei.descriptions.swallow_egg=닭이 죽을 시 1% 미만의 확률로 떨굽니다.
+
+grimoire.jei.descriptions.sword_of_kusanagi=엔더 드래곤을 처치할 시 획득할 수 있습니다.
+grimoire.jei.descriptions_body.sword_of_kusanagi=적들을 밀쳐내는 신풍을 플레이어 주위에 소환합니다. 휘두를 시, 근처 엔티티를 공격하는 영혼을 불러냅니다.
+
+grimoire.jei.descriptions.syringe=무작위 긍정적 혹은 부정적 포션 효과를 제공합니다.
+
+grimoire.jei.descriptions.tengu_fan=개체를 밀어내는 강력한 바람을 발사합니다.
+
+grimoire.jei.descriptions.third_eye=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.third_eye=눈이 떠져있을 시 주변의 모든 개체를 보여줍니다. 눈이 감겨있을 시 사용자가 투명이 됩니다.
+
+grimoire.jei.descriptions.time_orb=사막 피라미드 상자 안에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.toyosatomimi_hat=착용자에게 도약 효과를 부여합니다.
+grimoire.jei.descriptions_body.toyosatomimi_hat=착용자로 하여금 더 높이 뛸 수 있게 해줍니다.
+
+grimoire.jei.descriptions.uba_mask=하타노 코코로가 사용하던 가면들 중 하나입니다. 감정을 조종하는 힘을 지니고 있습니다.
+
+grimoire.jei.descriptions.ufo_blue=일반 던전 내 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.ufo_green=일반 던전 내 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.ufo_red=일반 던전 내 상자에서 발견할 수 있습니다.
+
+grimoire.jei.descriptions.ufos=디 엔드에서 조합해야 합니다.
+grimoire.jei.descriptions_body.ufos=10블록 내의 모든 아이템을 플레이어에게 전합니다. 아이템을 가지고 있지 않으면서도 옮길 수 있습니다.
+
+grimoire.jei.descriptions.utsuho_wings=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.utsuho_wings=플레이어에게 크리에이티브 비행 능력을 줍니다. 핵융합을 다루는 힘을 가진 지옥까마귀인 우츠호의 전유물로, 착용 시 핵제어봉의 쿨타임을 없앱니다.
+
+grimoire.jei.descriptions.wall_passing_chisel=이 끌을 들고 아무 벽이나 우클릭할 시 가능하다면 반대편으로 이동할 수 있습니다.
+
+grimoire.jei.descriptions.watermelon_blade=먹을 수 있지만 허기를 많이 회복시키진 않습니다.
+
+grimoire.jei.descriptions.watermelon_sword=개체를 타격할 시 파괴되며, 수박을 떨어트립니다.
+
+grimoire.jei.descriptions.youkai_book=요괴가 작성한 책
+
+grimoire.jei.descriptions.yuugi_sake=지옥에서 조합해야 합니다.
+grimoire.jei.descriptions_body.yuugi_sake=지옥의 강력한 술로, 음용자로 하여금 취하거나 배불러하지도 않고 강력한 힘을 얻게 해줍니다.
+
+grimoire.jei.descriptions.impure_stone=y 높이 0~30 사이에서 생성됩니다.
+
+grimoire.jei.descriptions.holy_stone=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.holy_stone=비가 올 때 플레이어에게 공중부양 효과를 제공합니다. 또한 아이템에 따라 효과가 다릅니다:
+grimoire.jei.descriptions.holy_stone_gold_nugget= 1 금 조각 -> 경험치
+grimoire.jei.descriptions.holy_stone_gold_ingot= 1 금괴 -> 신속
+grimoire.jei.descriptions.holy_stone_iron_ingot= 1 철괴 -> 저항
+grimoire.jei.descriptions.holy_stone_blaze_powder= 1 블레이즈 가루 -> 화염 저항
+grimoire.jei.descriptions.holy_stone_speckled_melon= 1 반짝이는 수박 -> 재생
+grimoire.jei.descriptions.holy_stone_diamond= 1 다이아몬드 -> 흡수
+
+grimoire.jei.descriptions.onbashira=비 오는 날 조합해야 합니다.
+grimoire.jei.descriptions_body.onbashira=낚시할 때 서있기 딱 좋은 장소입니다. 조합 제단에서 물건을 조합하는 데에 사용됩니다.
+
+grimoire.jei.descriptions.pillar=조합 제단에서 물건을 조합하는 데에 사용됩니다.
+
+grimoire.jei.descriptions.altar=Grimoire of Alice의 아이템들을 조합하는데 사용됩니다. 비 오는 날, 혹은 특정 차원과 같은 특별한 조건을 요구할 때도 있습니다.
+
+grimoire.jei.altar.title=작은 신단
