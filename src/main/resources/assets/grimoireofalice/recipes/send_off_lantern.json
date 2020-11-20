@@ -1,0 +1,24 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "EAE",
+        "ASA",
+        "EAE"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:glass_pane",
+            "data": 32767
+        },
+        "E": {
+            "item": "grimoireofalice:solidified_paper"
+        },
+        "S": {
+            "item": "minecraft:torch"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:send_off_lantern"
+    },
+    "group": "grimoireofalice"
+}

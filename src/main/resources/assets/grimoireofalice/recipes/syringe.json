@@ -1,0 +1,20 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "P",
+        "B"
+    ],
+    "key": {
+        "P": {
+            "item": "grimoireofalice:shroom",
+            "data": 32767
+        },
+        "B": {
+            "item": "minecraft:glass_bottle"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:syringe"
+    },
+    "group": "grimoireofalice"
+}

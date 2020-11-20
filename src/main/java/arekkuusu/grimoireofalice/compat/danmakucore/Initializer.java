@@ -8,12 +8,8 @@
  */
 package arekkuusu.grimoireofalice.compat.danmakucore;
 
-import arekkuusu.grimoireofalice.compat.danmakucore.form.FormLeaf;
-import arekkuusu.grimoireofalice.compat.danmakucore.form.FormUfo;
 import arekkuusu.grimoireofalice.compat.danmakucore.form.FormWind;
-import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityLeaf;
 import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntitySunBullet;
-import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityUfo;
 import arekkuusu.grimoireofalice.compat.danmakucore.subentity.SubEntityWind;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.form.Form;
 import net.katsstuff.teamnightclipse.danmakucore.danmaku.subentity.SubEntityType;
@@ -27,9 +23,7 @@ public class Initializer {
 	@SubscribeEvent
 	public static void registerForms(RegistryEvent.Register<Form> event) {
 		event.getRegistry().registerAll(
-				new FormWind(),
-				new FormUfo(),
-				new FormLeaf()
+				new FormWind()
 		);
 	}
 
@@ -37,8 +31,6 @@ public class Initializer {
 	public static void registerSubEntities(RegistryEvent.Register<SubEntityType> event) {
 		event.getRegistry().registerAll(
 				new SubEntityWind(),
-				new SubEntityUfo(),
-				new SubEntityLeaf(),
 				new SubEntitySunBullet()
 		);
 	}

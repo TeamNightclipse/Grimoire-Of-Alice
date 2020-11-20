@@ -1,0 +1,22 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "FFF",
+        "FFF",
+        " S "
+    ],
+    "key": {
+        "F": {
+            "item": "minecraft:cooked_fish",
+            "data": 0
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:grilled_lamprey"
+    },
+    "group": "grimoireofalice"
+}

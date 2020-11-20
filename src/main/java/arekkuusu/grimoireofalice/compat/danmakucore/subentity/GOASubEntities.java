@@ -19,10 +19,6 @@ public class GOASubEntities {
 
 	@ObjectHolder(LibDanmakuName.WIND)
 	public static final SubEntityType WIND = SubEntityTypeDummy.instance();
-	@ObjectHolder(LibDanmakuName.LEAF)
-	public static final SubEntityType LEAF = SubEntityTypeDummy.instance();
-	@ObjectHolder(LibDanmakuName.UFO)
-	public static final SubEntityType UFO = SubEntityTypeDummy.instance();
 	@ObjectHolder(LibDanmakuName.SUN)
 	public static final SubEntityType SUN = SubEntityTypeDummy.instance();
 }

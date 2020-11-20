@@ -1,0 +1,20 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "I  ",
+        "S  "
+    ],
+    "key": {
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:hakurouken"
+    },
+    "group": "grimoireofalice"
+}

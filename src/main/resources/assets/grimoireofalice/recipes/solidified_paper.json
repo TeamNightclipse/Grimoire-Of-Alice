@@ -1,0 +1,21 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "SSS",
+        "SES",
+        "SSS"
+    ],
+    "key": {
+        "E": {
+            "item": "minecraft:clay_ball"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "paper"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:solidified_paper"
+    },
+    "group": "grimoireofalice"
+}

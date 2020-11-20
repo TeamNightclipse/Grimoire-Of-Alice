@@ -59,7 +59,7 @@ public class TileMiniShrine extends TileInventoryBase implements ITickable {
 			}
 			++height;
 		}
-		return valid && height >= 3;
+		return valid && height >= 2;
 	}
 
 	public void craft() {

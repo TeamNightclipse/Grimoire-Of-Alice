@@ -1,0 +1,21 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " M ",
+        " M ",
+        "MS "
+    ],
+    "key": {
+        "M": {
+            "item": "minecraft:melon"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:watermelon_blade"
+    },
+    "group": "grimoireofalice"
+}

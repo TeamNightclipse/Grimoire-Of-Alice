@@ -19,8 +19,4 @@ public class GOAForms {
 
 	@ObjectHolder(LibDanmakuName.WIND)
 	public static final Form WIND = FormDummy.instance();
-	@ObjectHolder(LibDanmakuName.LEAF)
-	public static final Form LEAF = FormDummy.instance();
-	@ObjectHolder(LibDanmakuName.UFO)
-	public static final Form UFO = FormDummy.instance();
 }

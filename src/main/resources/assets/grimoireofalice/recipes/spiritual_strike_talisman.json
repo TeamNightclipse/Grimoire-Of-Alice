@@ -1,0 +1,20 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "G  ",
+        " P ",
+        "  G"
+    ],
+    "key": {
+        "G": {
+            "item": "minecraft:glowstone_dust"
+        },
+        "P": {
+            "item": "grimoireofalice:solidified_paper"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:spiritual_strike_talisman"
+    },
+    "group": "grimoireofalice"
+}

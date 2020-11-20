@@ -1,0 +1,18 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " S ",
+        "SS ",
+        "SS "
+    ],
+    "key": {
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:popsicle_stick"
+    },
+    "group": "grimoireofalice"
+}

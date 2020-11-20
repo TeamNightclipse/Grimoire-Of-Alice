@@ -1,0 +1,23 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " M ",
+        " I ",
+        " P "
+    ],
+    "key": {
+        "M": {
+            "item": "minecraft:melon_block"
+        },
+        "I": {
+            "item": "minecraft:ice"
+        },
+        "P": {
+            "item": "grimoireofalice:popsicle_stick"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:watermelon_sword"
+    },
+    "group": "grimoireofalice"
+}

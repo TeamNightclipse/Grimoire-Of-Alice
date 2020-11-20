@@ -51,8 +51,7 @@ public class ItemLeaf extends ItemBase {
 			}
 		} else {
 			if(!world.isRemote) {
-				DanmakuTemplate.Builder builder = DanmakuTemplate.builder().setUser(player).setShot(LibGOAShotData.LEAF.setSize(1F));
-				DanmakuCore.proxy().spawnDanmaku(JavaConversions.asScalaBuffer(Lists.newArrayList(builder.build().asEntity())));
+
 			}
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);

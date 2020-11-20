@@ -1,0 +1,24 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "AE ",
+        " AS",
+        " SA"
+    ],
+    "key": {
+        "A": {
+            "item": "minecraft:vine"
+        },
+        "E": {
+            "item": "minecraft:slime_ball"
+        },
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:cattail_plant"
+    },
+    "group": "grimoireofalice"
+}

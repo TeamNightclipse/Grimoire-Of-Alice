@@ -1,0 +1,23 @@
+﻿{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "F F",
+        "CHC"
+    ],
+    "key": {
+        "F": {
+            "item": "grimoireofalice:heavenly_peach"
+        },
+        "H": {
+            "item": "minecraft:leather_helmet"
+        },
+        "C": {
+            "item": "minecraft:wool",
+            "data": 32767
+        }
+    },
+    "result": {
+        "item": "grimoireofalice:tenshi_hat"
+    },
+    "group": "grimoireofalice"
+}

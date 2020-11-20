@@ -26,24 +26,6 @@ public class LibGOAShotData {
 			.setDelay(0)
 			.setEnd(50);
 
-	public static final ShotData UFO = ShotData.DefaultShotData()
-			.setSubEntity(GOASubEntities.UFO)
-			.setForm(GOAForms.UFO)
-			.setMainColor(COLOR_VANILLA_WHITE)
-			.setDamage(0.5F)
-			.setSize(0.5F)
-			.setDelay(0)
-			.setEnd(50);
-
-	public static final ShotData LEAF = ShotData.DefaultShotData()
-			.setSubEntity(GOASubEntities.LEAF)
-			.setForm(GOAForms.LEAF)
-			.setMainColor(COLOR_SATURATED_GREEN)
-			.setDamage(0.4F)
-			.setSize(0.5F)
-			.setDelay(0)
-			.setEnd(50);
-
 	public static final ShotData SUN = ShotData.DefaultShotData()
 			.setSubEntity(GOASubEntities.SUN)
 			.setForm(LibForms.BUBBLE)
