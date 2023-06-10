@@ -39,7 +39,7 @@ dependencies {
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 
-    provided fileTree(dir:"libs",includes:['*jar'])
+    complie fileTree(dir:"libs",includes:['*jar'])
 }
 
 processResources {
@@ -64,6 +64,11 @@ idea {
 
 sourceSets {
     main {
-        output.resourcesDir = output.classesDir
+        output.resourcesDir = file('build/combined')
+        java.outputDir = file('build/combined')
     }
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
