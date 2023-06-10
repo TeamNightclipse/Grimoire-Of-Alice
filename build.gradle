@@ -24,11 +24,6 @@ repositories {
         name = "JEI"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-
-    maven {
-        name = "TeamNightclipse Bintray"
-        url = "https://dl.bintray.com/team-nightclipse/maven/"
-    }
 }
 
 minecraft {
@@ -41,7 +36,7 @@ minecraft {
 }
 
 dependencies {
-    compile "net.katsstuff.teamnightclipse:danmakucore:${mc_version}-${dancore_version}"
+    compile fileTree(dir:"libs",includes:['*jar'])
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 }
