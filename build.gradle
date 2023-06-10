@@ -24,11 +24,6 @@ repositories {
         name = "JEI"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-
-    maven {
-        name = "TeamNightclipse Bintray"
-        url = "https://dl.bintray.com/team-nightclipse/maven/"
-    }
 }
 
 minecraft {
@@ -41,9 +36,10 @@ minecraft {
 }
 
 dependencies {
-    compile "net.katsstuff.teamnightclipse:danmakucore:${mc_version}-${dancore_version}"
     deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
     runtime "mezz.jei:jei_${mc_version}:${jei_version}"
+
+    compile fileTree(dir:"libs",includes:['*jar'])
 }
 
 processResources {
@@ -68,6 +64,11 @@ idea {
 
 sourceSets {
     main {
-        output.resourcesDir = output.classesDir
+        output.resourcesDir = file('build/combined')
+        java.outputDir = file('build/combined')
     }
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
