@@ -35,10 +35,20 @@ public class SubEntitySunBullet extends SubEntityType {
 
 		@Override
 		public DanmakuUpdate subEntityTick(DanmakuState danmaku) {
-			return super.subEntityTick(danmaku).addCallbackIf(!danmaku.world().isRemote, () -> {
-				AxisAlignedBB bb = new AxisAlignedBB(danmaku.pos().toBlockPos()).grow(danmaku.shot().sizeX(), danmaku.shot().sizeY(), danmaku.shot().sizeZ());
-				danmaku.world().getEntitiesWithinAABB(EntityLivingBase.class, bb).forEach(e -> e.setFire(5));
-			});
+		        return super.subEntityTick(danmaku)
+		                .addCallbackIf(!danmaku.world().isRemote, () -> {
+		                    AxisAlignedBB bb = new AxisAlignedBB(danmaku.pos().toBlockPos()).grow(danmaku.shot().sizeX(),
+		                            danmaku.shot().sizeY(), danmaku.shot().sizeZ());
+		                    danmaku.world().getEntitiesWithinAABB(EntityLivingBase.class, bb).forEach(e -> {
+		                        if (!danmaku.user().isEmpty()) {
+		                            if (e != danmaku.user().get()) {
+		                                e.setFire(5);
+		                            }
+		                        } else {
+		                            e.setFire(5);
+		                        }
+		                    });
+		                });
 		}
 
 		@Override
