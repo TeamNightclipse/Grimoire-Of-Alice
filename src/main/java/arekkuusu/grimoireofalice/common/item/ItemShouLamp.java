@@ -70,18 +70,24 @@ public class ItemShouLamp extends ItemJeweled {
 		player.setActiveHand(hand);
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
-
+	
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-		if(JEWELS.get(stack) < 500 && player instanceof EntityPlayer) {
-			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
-			if(count % 4 == 0) {
-				player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
+		if(entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = ((EntityPlayer) entityLiving);
+			int timeUsed = getMaxItemUseDuration(stack) - timeLeft;
+			if(timeUsed > 500) {
+				timeUsed = 500;
 			}
-			addJewels(stack, (short) 1);
+			addJewels(stack, (short) timeUsed);
+			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
+			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
+			if(JEWELS.get(stack) > 500){
+				JEWELS.set((short) 500);
+			}
 		}
 	}
-
+	
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entityLiving, int timeLeft) {
 		if(entityLiving instanceof EntityPlayer) {
