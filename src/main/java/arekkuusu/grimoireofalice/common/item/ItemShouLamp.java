@@ -83,7 +83,7 @@ public class ItemShouLamp extends ItemJeweled {
 			player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, 5));
 			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.1F, 1F);
 			if(JEWELS.get(stack) > 500){
-				JEWELS.set((short) 500);
+				JEWELS.set((short) 500, stack);
 			}
 		}
 	}
