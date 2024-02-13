@@ -26,6 +26,7 @@ public class ItemMiracleMallet extends ItemBase  {
 	public ItemMiracleMallet() {
 		super(LibName.MIRACLE_MALLET);
 		setNoRepair();
+		setMaxStackSize(1);
 	}
 
 	@Override

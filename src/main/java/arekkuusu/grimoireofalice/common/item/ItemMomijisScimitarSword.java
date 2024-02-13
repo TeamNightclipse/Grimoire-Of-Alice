@@ -17,21 +17,21 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-public class ItemMomijisScimitarSword extends ItemBaseSword  {
+public class ItemMomijisScimitarSword extends ItemBaseSword {
 
-	public ItemMomijisScimitarSword(ToolMaterial material) {
-		super(material, LibName.MOMIJI_SCIMITAR_SWORD);
-	}
+    public ItemMomijisScimitarSword(ToolMaterial material) {
+        super(material, LibName.MOMIJI_SCIMITAR_SWORD);
+    }
 
-	@Override
-	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
-		Multimap<String, AttributeModifier> modifiers = super.getAttributeModifiers(slot, stack);
-		MiscHelper.multiplyItemModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, 4);
-		return modifiers;
-	}
+    @Override
+    public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
+        Multimap<String, AttributeModifier> modifiers = super.getAttributeModifiers(slot, stack);
+        MiscHelper.multiplyItemModifier(modifiers, SharedMonsterAttributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER, -0.7);
+        return modifiers;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == Items.IRON_INGOT;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Items.IRON_INGOT;
+    }
 }
